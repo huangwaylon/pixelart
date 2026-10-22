@@ -1,0 +1,520 @@
+{
+  "anchors": {
+    "carry": {
+      "N": [
+        [
+          24.9,
+          35.3
+        ],
+        [
+          25.5,
+          36.5
+        ],
+        [
+          24.6,
+          35.7
+        ],
+        [
+          23.3,
+          34.6
+        ],
+        [
+          23.1,
+          35.3
+        ],
+        [
+          22.5,
+          36.5
+        ],
+        [
+          23.4,
+          35.7
+        ],
+        [
+          24.7,
+          34.6
+        ]
+      ],
+      "NE": [
+        [
+          27.2,
+          35.8
+        ],
+        [
+          27.7,
+          37.0
+        ],
+        [
+          27.4,
+          36.1
+        ],
+        [
+          26.1,
+          34.8
+        ],
+        [
+          26.0,
+          35.4
+        ],
+        [
+          25.6,
+          36.5
+        ],
+        [
+          26.5,
+          35.9
+        ],
+        [
+          27.1,
+          35.1
+        ]
+      ],
+      "NW": [
+        [
+          22.0,
+          35.4
+        ],
+        [
+          22.4,
+          36.5
+        ],
+        [
+          21.5,
+          35.9
+        ],
+        [
+          20.9,
+          35.1
+        ],
+        [
+          20.8,
+          35.8
+        ],
+        [
+          20.3,
+          37.0
+        ],
+        [
+          20.6,
+          36.1
+        ],
+        [
+          21.9,
+          34.8
+        ]
+      ]
+    },
+    "hand_L": {
+      "N": [
+        [
+          15.1,
+          38.1
+        ],
+        [
+          15.5,
+          38.0
+        ],
+        [
+          14.7,
+          36.4
+        ],
+        [
+          12.8,
+          34.5
+        ],
+        [
+          13.4,
+          32.5
+        ],
+        [
+          12.5,
+          34.9
+        ],
+        [
+          13.5,
+          34.9
+        ],
+        [
+          14.2,
+          34.8
+        ]
+      ],
+      "NE": [
+        [
+          20.3,
+          36.7
+        ],
+        [
+          21.2,
+          36.7
+        ],
+        [
+          21.3,
+          35.1
+        ],
+        [
+          18.8,
+          32.6
+        ],
+        [
+          19.3,
+          30.7
+        ],
+        [
+          17.9,
+          32.9
+        ],
+        [
+          18.6,
+          33.1
+        ],
+        [
+          19.6,
+          33.1
+        ]
+      ],
+      "NW": [
+        [
+          15.2,
+          40.1
+        ],
+        [
+          14.7,
+          40.0
+        ],
+        [
+          13.5,
+          38.7
+        ],
+        [
+          13.4,
+          37.0
+        ],
+        [
+          13.8,
+          34.8
+        ],
+        [
+          13.8,
+          37.4
+        ],
+        [
+          14.6,
+          37.2
+        ],
+        [
+          14.5,
+          37.0
+        ]
+      ]
+    },
+    "hand_R": {
+      "N": [
+        [
+          34.6,
+          32.5
+        ],
+        [
+          35.5,
+          34.9
+        ],
+        [
+          34.5,
+          34.9
+        ],
+        [
+          33.8,
+          34.8
+        ],
+        [
+          32.9,
+          38.1
+        ],
+        [
+          32.5,
+          38.0
+        ],
+        [
+          33.3,
+          36.4
+        ],
+        [
+          35.2,
+          34.5
+        ]
+      ],
+      "NE": [
+        [
+          34.2,
+          34.8
+        ],
+        [
+          34.2,
+          37.4
+        ],
+        [
+          33.4,
+          37.2
+        ],
+        [
+          33.5,
+          37.0
+        ],
+        [
+          32.8,
+          40.1
+        ],
+        [
+          33.3,
+          40.0
+        ],
+        [
+          34.5,
+          38.7
+        ],
+        [
+          34.6,
+          37.0
+        ]
+      ],
+      "NW": [
+        [
+          28.7,
+          30.7
+        ],
+        [
+          30.1,
+          32.9
+        ],
+        [
+          29.4,
+          33.1
+        ],
+        [
+          28.4,
+          33.1
+        ],
+        [
+          27.7,
+          36.7
+        ],
+        [
+          26.8,
+          36.7
+        ],
+        [
+          26.7,
+          35.1
+        ],
+        [
+          29.2,
+          32.6
+        ]
+      ]
+    }
+  },
+  "animation": "climb",
+  "buildHash": "97a26152d3f8",
+  "buildId": "97a26152d3f8",
+  "cameraElevation": 16,
+  "cycle_rise_px": 24,
+  "directions": [
+    "N",
+    "NE",
+    "NW"
+  ],
+  "engine_notes": "climb -> climb_top transition only on grip_R (f1) or grip_L (f5); drop is allowed on any frame. Rise is spread by rise_weights (body rises during the pull frames, not during reaches).",
+  "frameSize": [
+    48,
+    64
+  ],
+  "frames": [
+    {
+      "cancelable": true,
+      "duration_ms": 120,
+      "events": [
+        "grip_R"
+      ],
+      "face": "determined",
+      "index": 0,
+      "name": "grip_R",
+      "phase": "reach",
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": true,
+      "duration_ms": 120,
+      "events": [],
+      "face": "determined",
+      "index": 1,
+      "name": "pull_R1",
+      "phase": "pull",
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": true,
+      "duration_ms": 120,
+      "events": [],
+      "face": "determined",
+      "index": 2,
+      "name": "pull_R2",
+      "phase": "pull",
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": true,
+      "duration_ms": 120,
+      "events": [],
+      "face": "determined",
+      "index": 3,
+      "name": "swap_L",
+      "phase": "reach",
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": true,
+      "duration_ms": 120,
+      "events": [
+        "grip_L"
+      ],
+      "face": "determined",
+      "index": 4,
+      "name": "grip_L",
+      "phase": "reach",
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": true,
+      "duration_ms": 120,
+      "events": [],
+      "face": "determined",
+      "index": 5,
+      "name": "pull_L1",
+      "phase": "pull",
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": true,
+      "duration_ms": 120,
+      "events": [],
+      "face": "determined",
+      "index": 6,
+      "name": "pull_L2",
+      "phase": "pull",
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": true,
+      "duration_ms": 120,
+      "events": [],
+      "face": "determined",
+      "index": 7,
+      "name": "swap_R",
+      "phase": "reach",
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    }
+  ],
+  "image": "climb_sheet.png",
+  "inputLockEnd_ms": 0,
+  "layers": {
+    "fxBack": "climb_fx_back.png",
+    "fxFront": "climb_fx_front.png",
+    "note": "shadow/fx strips are direction-independent, same frame size & pivot; draw shadow+fxBack under the character, fxFront over it; offset only the character by z_px",
+    "shadow": "climb_shadow.png"
+  },
+  "layout": "rows=directions, cols=frames, no padding",
+  "loop": true,
+  "palette": [
+    "#241628",
+    "#4A2448",
+    "#6E3C3A",
+    "#A85A3A",
+    "#D07C74",
+    "#EBA586",
+    "#FCD6B4",
+    "#20223E",
+    "#2F3A6C",
+    "#4E609C",
+    "#45435E",
+    "#9C8EB2",
+    "#D2BFA4",
+    "#F2E6CE",
+    "#8E2C4A",
+    "#BA4A58",
+    "#DC3A40",
+    "#F06A58",
+    "#9C5C2E",
+    "#E2A434",
+    "#FAD872",
+    "#EC7032",
+    "#1C4C54",
+    "#2A8C8E",
+    "#6ACBB6",
+    "#3C6248",
+    "#6E8C5A",
+    "#6E5A92",
+    "#6A7AA8",
+    "#A8C0E0",
+    "#DFEAF6",
+    "#FFFFFF"
+  ],
+  "paletteId": "frost_r3_oatmeal",
+  "pipelineVersion": "1.0",
+  "pivot": [
+    24,
+    57
+  ],
+  "props": [],
+  "rise_weights": [
+    1,
+    5,
+    5,
+    1,
+    1,
+    5,
+    5,
+    1
+  ],
+  "root_px_mode": "cumulative offset from clip start",
+  "totalMs": 960
+}

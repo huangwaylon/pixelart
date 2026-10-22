@@ -1,6 +1,6 @@
-# r11 - S4 action set (draft 4: review round 3 fixes)
+# r11 - S4 action set: APPROVED by all reviewers (v1)
 
-Review round 3: game director APPROVED all 13; animation director approved 12/13; art director approved 9/13. Remaining fixes applied: crate rope hidden in side/diagonal views (crate balanced on the head, as in S/N), carry_throw push-frame crate lowered onto the mittens, snow-streak fx declared. Final confirmation checks are running.
+4 review rounds. Art director, animation director and game director all approve all 13 clips. Engine-ready copy: releases/S4_actions_v1/ (body sheets + JSON, shadow/fx strips, prop_back/prop_front strips, shared prop definitions). Engine notes are in each <clip>_sheet.json (engine_notes, events, cancel windows, anchors, root_px, rise weights). Next: re-render on the high-detail 3D model.
 
 | Clip (click for 8-dir GIF) | Frames / time | Dirs | Events | QA |
 |---|---|---|---|---|

@@ -22,3 +22,11 @@ Checked the current builds. Nothing rebuilt.
 
 ## New observation (not animation)
 The crate wood is now `pom` (oat). It shares its value with the coat body. It still separates from the coat because it sits above the head and has its own outline, but in E/W it is close in value to the coat front. Art should confirm whether this is intended.
+
+## Round 4 confirmation
+**carry_throw: APPROVE.**
+- **Push offset:** the push prop offset `[0, 17.4, 1.2]` is in the data and the build (rebuilt 23:30), with the rope still hidden.
+- **Contact:** in the contact-sheet composite (back + body + front), the crate bottom outline now touches the hair top in S, SE, E, NE, W and SW, so it reads as held.
+- **N/NW nit:** about 1-2 px of gap remains in N and NW, which is acceptable for a 70 ms frame. If it gets polished later, push offset y 17.4 -> 17.0 in N/NW only, or for all directions if clearance QA still passes.
+- **Spawn:** the crate shows on dip/push and is hidden from f3, which is where the projectile spawns.
+- **Status:** no animation blockers remain in the r11 action set.

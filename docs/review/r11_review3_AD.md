@@ -29,3 +29,20 @@ Method: 23:2x builds, back + body + front composited, 8-direction strips, rope z
 - **CHANGES (side-view rope only):** pick_up, carry_idle, carry_walk, carry_throw (f0).
 
 No animation changes are needed. I will approve the carry clips on a visual check of E/W once the rope is fixed.
+
+## Round 4 confirmation
+I checked the 23:29-23:30 builds, compositing back + body + front, at 3x in all 8 directions and 12x in E.
+
+- **Side-view rope:** FIXED. There are no rope pixels over the hair or face in E/W/SE/SW/NE/NW in any frame of pick_up, carry_idle, carry_walk or carry_throw.
+- **S/N stubs:** unchanged and still read as the crate resting on her head.
+- **carry_throw f1 push:** improved. The crate sits 1-3 px above the head in N/E/W and reads as the launch. Accepted.
+- **Note for the HD re-render (not blocking):** in the diagonal views (SE/SW/NE/NW) the crate's silhouette is squat and rounded, so it reads slightly like a bun. A 1 px squarer corner, or less snow-mound overhang, would help.
+
+| clip | verdict |
+|---|---|
+| pick_up | APPROVE |
+| carry_idle | APPROVE |
+| carry_walk | APPROVE |
+| carry_throw | APPROVE |
+
+**The Art Director approves all 13 r11 clips.**

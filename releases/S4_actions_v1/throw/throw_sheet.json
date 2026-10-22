@@ -1,0 +1,1177 @@
+{
+  "anchors": {
+    "carry": {
+      "E": [
+        [
+          27.1,
+          48.2
+        ],
+        [
+          30.3,
+          38.9
+        ],
+        [
+          27.4,
+          39.7
+        ],
+        [
+          26.5,
+          40.3
+        ],
+        [
+          25.7,
+          40.2
+        ],
+        [
+          24.7,
+          43.9
+        ],
+        [
+          27.6,
+          44.8
+        ],
+        [
+          25.4,
+          45.8
+        ]
+      ],
+      "N": [
+        [
+          23.1,
+          47.5
+        ],
+        [
+          24.1,
+          37.1
+        ],
+        [
+          27.5,
+          37.8
+        ],
+        [
+          26.4,
+          39.0
+        ],
+        [
+          24.3,
+          39.6
+        ],
+        [
+          20.8,
+          44.6
+        ],
+        [
+          23.2,
+          44.1
+        ],
+        [
+          24.0,
+          45.4
+        ]
+      ],
+      "NE": [
+        [
+          25.6,
+          47.6
+        ],
+        [
+          28.5,
+          37.7
+        ],
+        [
+          28.9,
+          38.8
+        ],
+        [
+          27.5,
+          39.6
+        ],
+        [
+          25.5,
+          39.8
+        ],
+        [
+          22.3,
+          44.0
+        ],
+        [
+          26.0,
+          44.2
+        ],
+        [
+          25.0,
+          45.5
+        ]
+      ],
+      "NW": [
+        [
+          21.2,
+          48.0
+        ],
+        [
+          19.6,
+          37.6
+        ],
+        [
+          24.0,
+          37.4
+        ],
+        [
+          23.9,
+          38.7
+        ],
+        [
+          23.0,
+          39.7
+        ],
+        [
+          21.2,
+          45.3
+        ],
+        [
+          20.9,
+          44.5
+        ],
+        [
+          23.0,
+          45.5
+        ]
+      ],
+      "S": [
+        [
+          24.9,
+          49.3
+        ],
+        [
+          23.9,
+          40.6
+        ],
+        [
+          20.5,
+          39.7
+        ],
+        [
+          21.6,
+          40.3
+        ],
+        [
+          23.7,
+          40.6
+        ],
+        [
+          27.2,
+          45.0
+        ],
+        [
+          24.8,
+          46.0
+        ],
+        [
+          24.0,
+          46.2
+        ]
+      ],
+      "SE": [
+        [
+          26.8,
+          48.9
+        ],
+        [
+          28.4,
+          40.1
+        ],
+        [
+          24.0,
+          40.1
+        ],
+        [
+          24.1,
+          40.6
+        ],
+        [
+          25.0,
+          40.5
+        ],
+        [
+          26.8,
+          44.3
+        ],
+        [
+          27.1,
+          45.6
+        ],
+        [
+          25.0,
+          46.1
+        ]
+      ],
+      "SW": [
+        [
+          22.4,
+          49.2
+        ],
+        [
+          19.5,
+          40.1
+        ],
+        [
+          19.1,
+          38.8
+        ],
+        [
+          20.5,
+          39.7
+        ],
+        [
+          22.5,
+          40.4
+        ],
+        [
+          25.7,
+          45.6
+        ],
+        [
+          22.0,
+          45.9
+        ],
+        [
+          23.0,
+          46.1
+        ]
+      ],
+      "W": [
+        [
+          20.9,
+          48.7
+        ],
+        [
+          17.7,
+          38.9
+        ],
+        [
+          20.6,
+          37.8
+        ],
+        [
+          21.5,
+          39.0
+        ],
+        [
+          22.3,
+          40.0
+        ],
+        [
+          23.3,
+          45.7
+        ],
+        [
+          20.4,
+          45.3
+        ],
+        [
+          22.6,
+          45.8
+        ]
+      ]
+    },
+    "hand_L": {
+      "E": [
+        [
+          25.8,
+          45.5
+        ],
+        [
+          30.2,
+          37.8
+        ],
+        [
+          33.8,
+          35.7
+        ],
+        [
+          33.2,
+          37.8
+        ],
+        [
+          18.3,
+          42.2
+        ],
+        [
+          18.4,
+          42.3
+        ],
+        [
+          25.6,
+          43.4
+        ],
+        [
+          25.4,
+          44.2
+        ]
+      ],
+      "N": [
+        [
+          15.0,
+          47.5
+        ],
+        [
+          19.8,
+          37.3
+        ],
+        [
+          20.7,
+          33.9
+        ],
+        [
+          17.5,
+          37.1
+        ],
+        [
+          16.9,
+          45.7
+        ],
+        [
+          17.3,
+          45.7
+        ],
+        [
+          16.8,
+          44.9
+        ],
+        [
+          18.2,
+          45.4
+        ]
+      ],
+      "NE": [
+        [
+          18.9,
+          45.9
+        ],
+        [
+          25.4,
+          37.0
+        ],
+        [
+          28.6,
+          34.1
+        ],
+        [
+          25.9,
+          36.5
+        ],
+        [
+          15.0,
+          43.9
+        ],
+        [
+          15.3,
+          43.9
+        ],
+        [
+          20.1,
+          43.6
+        ],
+        [
+          20.9,
+          44.4
+        ]
+      ],
+      "NW": [
+        [
+          16.4,
+          49.4
+        ],
+        [
+          16.6,
+          38.6
+        ],
+        [
+          14.7,
+          35.4
+        ],
+        [
+          12.9,
+          39.1
+        ],
+        [
+          23.1,
+          46.6
+        ],
+        [
+          23.2,
+          46.6
+        ],
+        [
+          17.8,
+          46.4
+        ],
+        [
+          18.9,
+          46.7
+        ]
+      ],
+      "S": [
+        [
+          33.0,
+          48.5
+        ],
+        [
+          28.2,
+          40.7
+        ],
+        [
+          27.3,
+          39.3
+        ],
+        [
+          30.5,
+          42.1
+        ],
+        [
+          31.1,
+          42.6
+        ],
+        [
+          30.7,
+          42.6
+        ],
+        [
+          31.2,
+          45.8
+        ],
+        [
+          29.8,
+          46.2
+        ]
+      ],
+      "SE": [
+        [
+          31.6,
+          46.6
+        ],
+        [
+          31.4,
+          39.4
+        ],
+        [
+          33.3,
+          37.9
+        ],
+        [
+          35.1,
+          40.1
+        ],
+        [
+          24.9,
+          41.7
+        ],
+        [
+          24.8,
+          41.8
+        ],
+        [
+          30.2,
+          44.2
+        ],
+        [
+          29.1,
+          45.0
+        ]
+      ],
+      "SW": [
+        [
+          29.1,
+          50.1
+        ],
+        [
+          22.6,
+          41.0
+        ],
+        [
+          19.4,
+          39.2
+        ],
+        [
+          22.1,
+          42.7
+        ],
+        [
+          33.0,
+          44.4
+        ],
+        [
+          32.7,
+          44.4
+        ],
+        [
+          27.9,
+          47.0
+        ],
+        [
+          27.1,
+          47.2
+        ]
+      ],
+      "W": [
+        [
+          22.2,
+          50.5
+        ],
+        [
+          17.8,
+          40.2
+        ],
+        [
+          14.2,
+          37.5
+        ],
+        [
+          14.8,
+          41.4
+        ],
+        [
+          29.7,
+          46.1
+        ],
+        [
+          29.6,
+          46.0
+        ],
+        [
+          22.4,
+          47.3
+        ],
+        [
+          22.6,
+          47.4
+        ]
+      ]
+    },
+    "hand_R": {
+      "E": [
+        [
+          28.5,
+          50.8
+        ],
+        [
+          30.4,
+          40.0
+        ],
+        [
+          21.1,
+          43.8
+        ],
+        [
+          19.8,
+          42.8
+        ],
+        [
+          33.2,
+          38.1
+        ],
+        [
+          31.1,
+          45.5
+        ],
+        [
+          29.6,
+          46.3
+        ],
+        [
+          25.4,
+          47.4
+        ]
+      ],
+      "N": [
+        [
+          31.3,
+          47.6
+        ],
+        [
+          28.4,
+          37.0
+        ],
+        [
+          34.2,
+          41.7
+        ],
+        [
+          35.4,
+          40.9
+        ],
+        [
+          31.8,
+          33.5
+        ],
+        [
+          24.2,
+          43.5
+        ],
+        [
+          29.6,
+          43.2
+        ],
+        [
+          29.8,
+          45.4
+        ]
+      ],
+      "NE": [
+        [
+          32.3,
+          49.4
+        ],
+        [
+          31.7,
+          38.4
+        ],
+        [
+          29.2,
+          43.5
+        ],
+        [
+          29.0,
+          42.7
+        ],
+        [
+          36.0,
+          35.7
+        ],
+        [
+          29.2,
+          44.1
+        ],
+        [
+          31.9,
+          44.8
+        ],
+        [
+          29.1,
+          46.7
+        ]
+      ],
+      "NW": [
+        [
+          26.0,
+          46.5
+        ],
+        [
+          22.6,
+          36.7
+        ],
+        [
+          33.3,
+          39.5
+        ],
+        [
+          35.0,
+          38.3
+        ],
+        [
+          23.0,
+          32.7
+        ],
+        [
+          19.2,
+          44.0
+        ],
+        [
+          24.0,
+          42.6
+        ],
+        [
+          27.1,
+          44.4
+        ]
+      ],
+      "S": [
+        [
+          16.7,
+          50.1
+        ],
+        [
+          19.6,
+          40.5
+        ],
+        [
+          13.8,
+          40.1
+        ],
+        [
+          12.6,
+          38.5
+        ],
+        [
+          16.2,
+          38.5
+        ],
+        [
+          23.8,
+          47.4
+        ],
+        [
+          18.4,
+          46.3
+        ],
+        [
+          18.2,
+          46.2
+        ]
+      ],
+      "SE": [
+        [
+          22.0,
+          51.1
+        ],
+        [
+          25.4,
+          40.9
+        ],
+        [
+          14.7,
+          42.4
+        ],
+        [
+          13.0,
+          41.1
+        ],
+        [
+          25.0,
+          39.3
+        ],
+        [
+          28.8,
+          46.9
+        ],
+        [
+          24.0,
+          46.9
+        ],
+        [
+          20.9,
+          47.2
+        ]
+      ],
+      "SW": [
+        [
+          15.7,
+          48.3
+        ],
+        [
+          16.3,
+          39.2
+        ],
+        [
+          18.8,
+          38.4
+        ],
+        [
+          19.0,
+          36.7
+        ],
+        [
+          12.0,
+          36.3
+        ],
+        [
+          18.8,
+          46.8
+        ],
+        [
+          16.1,
+          44.8
+        ],
+        [
+          18.9,
+          45.0
+        ]
+      ],
+      "W": [
+        [
+          19.5,
+          46.8
+        ],
+        [
+          17.6,
+          37.6
+        ],
+        [
+          26.9,
+          38.1
+        ],
+        [
+          28.2,
+          36.6
+        ],
+        [
+          14.8,
+          33.9
+        ],
+        [
+          16.9,
+          45.4
+        ],
+        [
+          18.4,
+          43.2
+        ],
+        [
+          22.6,
+          44.2
+        ]
+      ]
+    }
+  },
+  "animation": "throw",
+  "buildHash": "cffa588ea91b",
+  "buildId": "cffa588ea91b",
+  "cameraElevation": 16,
+  "cycle_rise_px": 0,
+  "directions": [
+    "S",
+    "SE",
+    "E",
+    "NE",
+    "N",
+    "NW",
+    "W",
+    "SW"
+  ],
+  "engine_notes": "",
+  "frameSize": [
+    48,
+    64
+  ],
+  "frames": [
+    {
+      "cancelable": false,
+      "duration_ms": 60,
+      "events": [
+        "prop_show"
+      ],
+      "face": "determined",
+      "index": 0,
+      "name": "scoop",
+      "phase": "anticipation",
+      "prop": {
+        "ids": [
+          "snowball"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "split",
+          "NE": "split",
+          "NW": "back",
+          "S": "front",
+          "SE": "front",
+          "SW": "split",
+          "W": "back"
+        },
+        "visible": true
+      },
+      "props": [
+        "snowball"
+      ],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 60,
+      "events": [],
+      "face": "determined",
+      "index": 1,
+      "name": "pack",
+      "phase": "anticipation",
+      "prop": {
+        "ids": [
+          "snowball"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "back",
+          "NE": "split",
+          "NW": "back",
+          "S": "front",
+          "SE": "front",
+          "SW": "front",
+          "W": "split"
+        },
+        "visible": true
+      },
+      "props": [
+        "snowball"
+      ],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 100,
+      "events": [],
+      "face": "determined",
+      "index": 2,
+      "name": "cock",
+      "phase": "anticipation",
+      "prop": {
+        "ids": [
+          "snowball"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "split",
+          "NE": "front",
+          "NW": "split",
+          "S": "split",
+          "SE": "split",
+          "SW": "split",
+          "W": "split"
+        },
+        "visible": true
+      },
+      "props": [
+        "snowball"
+      ],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 50,
+      "events": [],
+      "face": "determined",
+      "index": 3,
+      "name": "step",
+      "phase": "action",
+      "prop": {
+        "ids": [
+          "snowball"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "front",
+          "NE": "front",
+          "NW": "split",
+          "S": "split",
+          "SE": "split",
+          "SW": "split",
+          "W": "split"
+        },
+        "visible": true
+      },
+      "props": [
+        "snowball"
+      ],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 80,
+      "events": [
+        "throw_release"
+      ],
+      "face": "joyful",
+      "index": 4,
+      "name": "release",
+      "phase": "action",
+      "prop": {
+        "ids": [
+          "smear"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "front",
+          "NE": "front",
+          "NW": "front",
+          "S": "front",
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
+        },
+        "visible": true
+      },
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 60,
+      "events": [],
+      "face": "joyful",
+      "index": 5,
+      "name": "follow",
+      "phase": "action",
+      "prop": {
+        "ids": [
+          "smear"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "front",
+          "NE": "front",
+          "NW": "front",
+          "S": "front",
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
+        },
+        "visible": true
+      },
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": true,
+      "duration_ms": 60,
+      "events": [],
+      "face": "smile",
+      "index": 6,
+      "name": "recover",
+      "phase": "recovery",
+      "prop": {
+        "ids": [],
+        "layer": {
+          "E": null,
+          "N": null,
+          "NE": null,
+          "NW": null,
+          "S": null,
+          "SE": null,
+          "SW": null,
+          "W": null
+        },
+        "visible": false
+      },
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": true,
+      "duration_ms": 50,
+      "events": [],
+      "face": "smile",
+      "index": 7,
+      "name": "ready",
+      "phase": "recovery",
+      "prop": {
+        "ids": [],
+        "layer": {
+          "E": null,
+          "N": null,
+          "NE": null,
+          "NW": null,
+          "S": null,
+          "SE": null,
+          "SW": null,
+          "W": null
+        },
+        "visible": false
+      },
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    }
+  ],
+  "image": "throw_sheet.png",
+  "inputLockEnd_ms": 410,
+  "layers": {
+    "fxBack": "throw_fx_back.png",
+    "fxFront": "throw_fx_front.png",
+    "note": "shadow/fx strips are direction-independent, same frame size & pivot; draw shadow+fxBack under the character, fxFront over it; offset only the character by z_px; props are depth-split per pixel: draw propBack BEHIND the character and propFront IN FRONT (same grid/pivot; offset both by z_px like the body)",
+    "propBack": "throw_prop_back.png",
+    "propFront": "throw_prop_front.png",
+    "shadow": "throw_shadow.png"
+  },
+  "layout": "rows=directions, cols=frames, no padding",
+  "loop": false,
+  "palette": [
+    "#241628",
+    "#4A2448",
+    "#6E3C3A",
+    "#A85A3A",
+    "#D07C74",
+    "#EBA586",
+    "#FCD6B4",
+    "#20223E",
+    "#2F3A6C",
+    "#4E609C",
+    "#45435E",
+    "#9C8EB2",
+    "#D2BFA4",
+    "#F2E6CE",
+    "#8E2C4A",
+    "#BA4A58",
+    "#DC3A40",
+    "#F06A58",
+    "#9C5C2E",
+    "#E2A434",
+    "#FAD872",
+    "#EC7032",
+    "#1C4C54",
+    "#2A8C8E",
+    "#6ACBB6",
+    "#3C6248",
+    "#6E8C5A",
+    "#6E5A92",
+    "#6A7AA8",
+    "#A8C0E0",
+    "#DFEAF6",
+    "#FFFFFF"
+  ],
+  "paletteId": "frost_r3_oatmeal",
+  "pipelineVersion": "1.0",
+  "pivot": [
+    24,
+    57
+  ],
+  "props": [
+    {
+      "bone": "hand_R",
+      "name": "snowball",
+      "offset": [
+        0,
+        -1.6,
+        0.7
+      ],
+      "ref": "snowball",
+      "release_event": "throw_release"
+    },
+    {
+      "fx": true,
+      "name": "smear",
+      "ref": "smear"
+    }
+  ],
+  "rise_weights": null,
+  "root_px_mode": "cumulative offset from clip start",
+  "totalMs": 520
+}

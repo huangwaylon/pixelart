@@ -1,0 +1,918 @@
+{
+  "anchors": {
+    "carry": {
+      "E": [
+        [
+          22.7,
+          35.2
+        ],
+        [
+          27.7,
+          30.6
+        ],
+        [
+          29.7,
+          33.8
+        ],
+        [
+          31.4,
+          37.1
+        ],
+        [
+          29.9,
+          43.2
+        ],
+        [
+          25.8,
+          45.7
+        ]
+      ],
+      "N": [
+        [
+          24.0,
+          35.6
+        ],
+        [
+          24.0,
+          29.6
+        ],
+        [
+          24.0,
+          32.2
+        ],
+        [
+          24.1,
+          35.0
+        ],
+        [
+          23.9,
+          41.6
+        ],
+        [
+          24.0,
+          45.2
+        ]
+      ],
+      "NE": [
+        [
+          23.1,
+          35.5
+        ],
+        [
+          26.6,
+          29.9
+        ],
+        [
+          28.0,
+          32.7
+        ],
+        [
+          29.3,
+          35.6
+        ],
+        [
+          28.1,
+          42.1
+        ],
+        [
+          25.3,
+          45.4
+        ]
+      ],
+      "NW": [
+        [
+          24.9,
+          35.5
+        ],
+        [
+          21.4,
+          29.9
+        ],
+        [
+          20.0,
+          32.7
+        ],
+        [
+          18.8,
+          35.6
+        ],
+        [
+          19.7,
+          42.1
+        ],
+        [
+          22.7,
+          45.4
+        ]
+      ],
+      "S": [
+        [
+          24.0,
+          34.8
+        ],
+        [
+          24.0,
+          31.6
+        ],
+        [
+          24.0,
+          35.3
+        ],
+        [
+          23.9,
+          39.1
+        ],
+        [
+          24.1,
+          44.9
+        ],
+        [
+          24.0,
+          46.2
+        ]
+      ],
+      "SE": [
+        [
+          23.1,
+          35.0
+        ],
+        [
+          26.6,
+          31.3
+        ],
+        [
+          28.0,
+          34.9
+        ],
+        [
+          29.2,
+          38.5
+        ],
+        [
+          28.3,
+          44.4
+        ],
+        [
+          25.3,
+          46.1
+        ]
+      ],
+      "SW": [
+        [
+          24.9,
+          35.0
+        ],
+        [
+          21.4,
+          31.3
+        ],
+        [
+          20.0,
+          34.9
+        ],
+        [
+          18.7,
+          38.5
+        ],
+        [
+          19.9,
+          44.4
+        ],
+        [
+          22.7,
+          46.1
+        ]
+      ],
+      "W": [
+        [
+          25.3,
+          35.2
+        ],
+        [
+          20.3,
+          30.6
+        ],
+        [
+          18.3,
+          33.8
+        ],
+        [
+          16.6,
+          37.0
+        ],
+        [
+          18.1,
+          43.3
+        ],
+        [
+          22.2,
+          45.7
+        ]
+      ]
+    },
+    "hand_L": {
+      "E": [
+        [
+          22.7,
+          32.7
+        ],
+        [
+          27.7,
+          28.2
+        ],
+        [
+          29.7,
+          31.5
+        ],
+        [
+          31.4,
+          34.3
+        ],
+        [
+          29.8,
+          41.3
+        ],
+        [
+          25.8,
+          44.1
+        ]
+      ],
+      "N": [
+        [
+          14.7,
+          35.6
+        ],
+        [
+          15.5,
+          29.6
+        ],
+        [
+          15.7,
+          32.2
+        ],
+        [
+          15.0,
+          34.8
+        ],
+        [
+          16.7,
+          41.7
+        ],
+        [
+          18.2,
+          45.2
+        ]
+      ],
+      "NE": [
+        [
+          16.5,
+          33.7
+        ],
+        [
+          20.6,
+          28.2
+        ],
+        [
+          22.1,
+          31.1
+        ],
+        [
+          22.9,
+          33.6
+        ],
+        [
+          22.9,
+          40.8
+        ],
+        [
+          21.2,
+          44.2
+        ]
+      ],
+      "NW": [
+        [
+          18.4,
+          37.3
+        ],
+        [
+          15.3,
+          31.5
+        ],
+        [
+          14.1,
+          34.3
+        ],
+        [
+          12.4,
+          37.1
+        ],
+        [
+          14.8,
+          43.6
+        ],
+        [
+          18.6,
+          46.5
+        ]
+      ],
+      "S": [
+        [
+          33.3,
+          34.8
+        ],
+        [
+          32.5,
+          31.6
+        ],
+        [
+          32.3,
+          35.3
+        ],
+        [
+          33.0,
+          38.9
+        ],
+        [
+          31.3,
+          44.9
+        ],
+        [
+          29.8,
+          46.2
+        ]
+      ],
+      "SE": [
+        [
+          29.6,
+          33.1
+        ],
+        [
+          32.7,
+          29.6
+        ],
+        [
+          33.9,
+          33.3
+        ],
+        [
+          35.6,
+          36.5
+        ],
+        [
+          33.2,
+          43.0
+        ],
+        [
+          29.4,
+          45.0
+        ]
+      ],
+      "SW": [
+        [
+          31.5,
+          36.8
+        ],
+        [
+          27.4,
+          33.0
+        ],
+        [
+          25.9,
+          36.5
+        ],
+        [
+          25.1,
+          40.0
+        ],
+        [
+          25.1,
+          45.9
+        ],
+        [
+          26.8,
+          47.2
+        ]
+      ],
+      "W": [
+        [
+          25.3,
+          37.8
+        ],
+        [
+          20.3,
+          32.9
+        ],
+        [
+          18.3,
+          36.1
+        ],
+        [
+          16.6,
+          39.3
+        ],
+        [
+          18.2,
+          45.3
+        ],
+        [
+          22.2,
+          47.3
+        ]
+      ]
+    },
+    "hand_R": {
+      "E": [
+        [
+          22.7,
+          37.8
+        ],
+        [
+          27.7,
+          32.9
+        ],
+        [
+          29.7,
+          36.1
+        ],
+        [
+          31.4,
+          39.8
+        ],
+        [
+          30.0,
+          45.2
+        ],
+        [
+          25.8,
+          47.3
+        ]
+      ],
+      "N": [
+        [
+          33.3,
+          35.6
+        ],
+        [
+          32.5,
+          29.6
+        ],
+        [
+          32.3,
+          32.2
+        ],
+        [
+          33.2,
+          35.2
+        ],
+        [
+          31.0,
+          41.6
+        ],
+        [
+          29.8,
+          45.2
+        ]
+      ],
+      "NE": [
+        [
+          29.6,
+          37.3
+        ],
+        [
+          32.7,
+          31.5
+        ],
+        [
+          33.9,
+          34.3
+        ],
+        [
+          35.8,
+          37.6
+        ],
+        [
+          33.2,
+          43.4
+        ],
+        [
+          29.4,
+          46.5
+        ]
+      ],
+      "NW": [
+        [
+          31.5,
+          33.7
+        ],
+        [
+          27.4,
+          28.2
+        ],
+        [
+          25.9,
+          31.1
+        ],
+        [
+          25.3,
+          34.0
+        ],
+        [
+          24.7,
+          40.7
+        ],
+        [
+          26.8,
+          44.2
+        ]
+      ],
+      "S": [
+        [
+          14.7,
+          34.8
+        ],
+        [
+          15.5,
+          31.6
+        ],
+        [
+          15.7,
+          35.3
+        ],
+        [
+          14.8,
+          39.3
+        ],
+        [
+          17.0,
+          44.9
+        ],
+        [
+          18.2,
+          46.2
+        ]
+      ],
+      "SE": [
+        [
+          16.5,
+          36.8
+        ],
+        [
+          20.6,
+          33.0
+        ],
+        [
+          22.1,
+          36.5
+        ],
+        [
+          22.7,
+          40.5
+        ],
+        [
+          23.3,
+          45.8
+        ],
+        [
+          21.2,
+          47.2
+        ]
+      ],
+      "SW": [
+        [
+          18.4,
+          33.1
+        ],
+        [
+          15.3,
+          29.6
+        ],
+        [
+          14.1,
+          33.3
+        ],
+        [
+          12.2,
+          36.9
+        ],
+        [
+          14.8,
+          43.0
+        ],
+        [
+          18.6,
+          45.0
+        ]
+      ],
+      "W": [
+        [
+          25.3,
+          32.7
+        ],
+        [
+          20.3,
+          28.2
+        ],
+        [
+          18.3,
+          31.5
+        ],
+        [
+          16.6,
+          34.7
+        ],
+        [
+          18.0,
+          41.3
+        ],
+        [
+          22.2,
+          44.1
+        ]
+      ]
+    }
+  },
+  "animation": "carry_throw",
+  "buildHash": "7b2d6e57f21b",
+  "buildId": "7b2d6e57f21b",
+  "cameraElevation": 16,
+  "cycle_rise_px": 0,
+  "directions": [
+    "S",
+    "SE",
+    "E",
+    "NE",
+    "N",
+    "NW",
+    "W",
+    "SW"
+  ],
+  "engine_notes": "throw_release fires on f3 (release); the crate is drawn on dip+push and hidden from f3. Spawn the projectile at anchors.carry[dir][push] (prop.spawn_anchor_frame = push) so it leaves exactly where the held crate was last drawn.",
+  "frameSize": [
+    48,
+    64
+  ],
+  "frames": [
+    {
+      "cancelable": false,
+      "duration_ms": 130,
+      "events": [],
+      "face": "determined",
+      "index": 0,
+      "name": "dip",
+      "phase": "anticipation",
+      "prop": {
+        "ids": [
+          "crate"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "split",
+          "NE": "front",
+          "NW": "front",
+          "S": "split",
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
+        },
+        "visible": true
+      },
+      "props": [
+        "crate"
+      ],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 70,
+      "events": [],
+      "face": "determined",
+      "index": 1,
+      "name": "push",
+      "phase": "action",
+      "prop": {
+        "ids": [
+          "crate"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "front",
+          "NE": "front",
+          "NW": "front",
+          "S": "front",
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
+        },
+        "visible": true
+      },
+      "props": [
+        "crate"
+      ],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 60,
+      "events": [
+        "throw_release"
+      ],
+      "face": "joyful",
+      "index": 2,
+      "name": "release",
+      "phase": "action",
+      "prop": {
+        "ids": [
+          "smear"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "front",
+          "NE": "front",
+          "NW": "front",
+          "S": "front",
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
+        },
+        "visible": true
+      },
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 100,
+      "events": [],
+      "face": "joyful",
+      "index": 3,
+      "name": "follow",
+      "phase": "action",
+      "prop": {
+        "ids": [
+          "smear"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "front",
+          "NE": "front",
+          "NW": "front",
+          "S": "front",
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
+        },
+        "visible": true
+      },
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": true,
+      "duration_ms": 90,
+      "events": [],
+      "face": "smile",
+      "index": 4,
+      "name": "recover",
+      "phase": "recovery",
+      "prop": {
+        "ids": [],
+        "layer": {
+          "E": null,
+          "N": null,
+          "NE": null,
+          "NW": null,
+          "S": null,
+          "SE": null,
+          "SW": null,
+          "W": null
+        },
+        "visible": false
+      },
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": true,
+      "duration_ms": 90,
+      "events": [],
+      "face": "smile",
+      "index": 5,
+      "name": "ready",
+      "phase": "recovery",
+      "prop": {
+        "ids": [],
+        "layer": {
+          "E": null,
+          "N": null,
+          "NE": null,
+          "NW": null,
+          "S": null,
+          "SE": null,
+          "SW": null,
+          "W": null
+        },
+        "visible": false
+      },
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    }
+  ],
+  "image": "carry_throw_sheet.png",
+  "inputLockEnd_ms": 360,
+  "layers": {
+    "fxBack": "carry_throw_fx_back.png",
+    "fxFront": "carry_throw_fx_front.png",
+    "note": "shadow/fx strips are direction-independent, same frame size & pivot; draw shadow+fxBack under the character, fxFront over it; offset only the character by z_px; props are depth-split per pixel: draw propBack BEHIND the character and propFront IN FRONT (same grid/pivot; offset both by z_px like the body)",
+    "propBack": "carry_throw_prop_back.png",
+    "propFront": "carry_throw_prop_front.png",
+    "shadow": "carry_throw_shadow.png"
+  },
+  "layout": "rows=directions, cols=frames, no padding",
+  "loop": false,
+  "palette": [
+    "#241628",
+    "#4A2448",
+    "#6E3C3A",
+    "#A85A3A",
+    "#D07C74",
+    "#EBA586",
+    "#FCD6B4",
+    "#20223E",
+    "#2F3A6C",
+    "#4E609C",
+    "#45435E",
+    "#9C8EB2",
+    "#D2BFA4",
+    "#F2E6CE",
+    "#8E2C4A",
+    "#BA4A58",
+    "#DC3A40",
+    "#F06A58",
+    "#9C5C2E",
+    "#E2A434",
+    "#FAD872",
+    "#EC7032",
+    "#1C4C54",
+    "#2A8C8E",
+    "#6ACBB6",
+    "#3C6248",
+    "#6E8C5A",
+    "#6E5A92",
+    "#6A7AA8",
+    "#A8C0E0",
+    "#DFEAF6",
+    "#FFFFFF"
+  ],
+  "paletteId": "frost_r3_oatmeal",
+  "pipelineVersion": "1.0",
+  "pivot": [
+    24,
+    57
+  ],
+  "props": [
+    {
+      "bone": "carry",
+      "name": "crate",
+      "offset": [
+        0.0,
+        19.2,
+        0.0
+      ],
+      "ref": "crate",
+      "release_event": "throw_release",
+      "spawn_anchor_frame": "push"
+    },
+    {
+      "fx": true,
+      "name": "smear",
+      "ref": "smear"
+    }
+  ],
+  "rise_weights": null,
+  "root_px_mode": "cumulative offset from clip start",
+  "totalMs": 540
+}
