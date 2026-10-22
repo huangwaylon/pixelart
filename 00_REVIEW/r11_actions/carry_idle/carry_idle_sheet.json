@@ -440,8 +440,8 @@
     }
   },
   "animation": "carry_idle",
-  "buildHash": "a87e404ea446",
-  "buildId": "a87e404ea446",
+  "buildHash": "364df9fa5952",
+  "buildId": "364df9fa5952",
   "cameraElevation": 16,
   "cycle_rise_px": 0,
   "directions": [
@@ -473,14 +473,14 @@
           "crate"
         ],
         "layer": {
-          "E": "split",
+          "E": "front",
           "N": "split",
-          "NE": "split",
-          "NW": "split",
+          "NE": "front",
+          "NW": "front",
           "S": "split",
-          "SE": "split",
-          "SW": "split",
-          "W": "split"
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
         },
         "visible": true
       },
@@ -506,14 +506,14 @@
           "crate"
         ],
         "layer": {
-          "E": "split",
+          "E": "front",
           "N": "split",
-          "NE": "split",
-          "NW": "split",
+          "NE": "front",
+          "NW": "front",
           "S": "split",
-          "SE": "split",
-          "SW": "split",
-          "W": "split"
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
         },
         "visible": true
       },
@@ -539,14 +539,14 @@
           "crate"
         ],
         "layer": {
-          "E": "split",
+          "E": "front",
           "N": "split",
-          "NE": "split",
-          "NW": "split",
+          "NE": "front",
+          "NW": "front",
           "S": "split",
-          "SE": "split",
-          "SW": "split",
-          "W": "split"
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
         },
         "visible": true
       },
@@ -572,14 +572,14 @@
           "crate"
         ],
         "layer": {
-          "E": "split",
+          "E": "front",
           "N": "split",
-          "NE": "split",
-          "NW": "split",
+          "NE": "front",
+          "NW": "front",
           "S": "split",
-          "SE": "split",
-          "SW": "split",
-          "W": "split"
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
         },
         "visible": true
       },

@@ -920,8 +920,8 @@
     }
   },
   "animation": "pick_up",
-  "buildHash": "0e910d01319a",
-  "buildId": "0e910d01319a",
+  "buildHash": "d81a28c62f85",
+  "buildId": "d81a28c62f85",
   "cameraElevation": 16,
   "cycle_rise_px": 0,
   "directions": [
@@ -1145,14 +1145,14 @@
           "crate"
         ],
         "layer": {
-          "E": "split",
+          "E": "front",
           "N": "split",
-          "NE": "split",
-          "NW": "split",
+          "NE": "front",
+          "NW": "front",
           "S": "split",
-          "SE": "split",
-          "SW": "split",
-          "W": "split"
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
         },
         "visible": true
       },
@@ -1178,14 +1178,14 @@
           "crate"
         ],
         "layer": {
-          "E": "split",
+          "E": "front",
           "N": "split",
-          "NE": "split",
-          "NW": "split",
+          "NE": "front",
+          "NW": "front",
           "S": "split",
-          "SE": "split",
-          "SW": "split",
-          "W": "split"
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
         },
         "visible": true
       },
@@ -1211,14 +1211,14 @@
           "crate"
         ],
         "layer": {
-          "E": "split",
+          "E": "front",
           "N": "split",
-          "NE": "split",
-          "NW": "split",
+          "NE": "front",
+          "NW": "front",
           "S": "split",
-          "SE": "split",
-          "SW": "split",
-          "W": "split"
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
         },
         "visible": true
       },

@@ -1,6 +1,6 @@
-# r11 - S4 action set (draft 3: review rounds 1-2 fixes applied)
+# r11 - S4 action set (draft 4: review round 3 fixes)
 
-Review rounds 1-2 fixes applied. Round 2 results: animation director 11/13, art director 9/13, game director 7/13 approved. Since then: run strengthened, idle exit height fixed, throw release arm + snow streak, carry_throw crate hidden on release, crate rope tucked behind the head (props depth-split into _prop_back/_prop_front), lighter crate wood. Review round 3 is running.
+Review round 3: game director APPROVED all 13; animation director approved 12/13; art director approved 9/13. Remaining fixes applied: crate rope hidden in side/diagonal views (crate balanced on the head, as in S/N), carry_throw push-frame crate lowered onto the mittens, snow-streak fx declared. Final confirmation checks are running.
 
 | Clip (click for 8-dir GIF) | Frames / time | Dirs | Events | QA |
 |---|---|---|---|---|

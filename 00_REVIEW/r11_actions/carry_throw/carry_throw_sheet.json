@@ -632,8 +632,8 @@
     }
   },
   "animation": "carry_throw",
-  "buildHash": "046632dfc9db",
-  "buildId": "046632dfc9db",
+  "buildHash": "7b2d6e57f21b",
+  "buildId": "7b2d6e57f21b",
   "cameraElevation": 16,
   "cycle_rise_px": 0,
   "directions": [
@@ -665,14 +665,14 @@
           "crate"
         ],
         "layer": {
-          "E": "split",
+          "E": "front",
           "N": "split",
-          "NE": "split",
-          "NW": "split",
+          "NE": "front",
+          "NW": "front",
           "S": "split",
-          "SE": "split",
-          "SW": "split",
-          "W": "split"
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
         },
         "visible": true
       },
@@ -905,6 +905,11 @@
       "ref": "crate",
       "release_event": "throw_release",
       "spawn_anchor_frame": "push"
+    },
+    {
+      "fx": true,
+      "name": "smear",
+      "ref": "smear"
     }
   ],
   "rise_weights": null,

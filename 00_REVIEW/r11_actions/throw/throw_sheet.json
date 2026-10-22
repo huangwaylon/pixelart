@@ -824,8 +824,8 @@
     }
   },
   "animation": "throw",
-  "buildHash": "8392ab7c8a4c",
-  "buildId": "8392ab7c8a4c",
+  "buildHash": "cffa588ea91b",
+  "buildId": "cffa588ea91b",
   "cameraElevation": 16,
   "cycle_rise_px": 0,
   "directions": [
@@ -1164,6 +1164,11 @@
       ],
       "ref": "snowball",
       "release_event": "throw_release"
+    },
+    {
+      "fx": true,
+      "name": "smear",
+      "ref": "smear"
     }
   ],
   "rise_weights": null,

@@ -824,8 +824,8 @@
     }
   },
   "animation": "carry_walk",
-  "buildHash": "945aa1993d37",
-  "buildId": "945aa1993d37",
+  "buildHash": "4f7d1ed8e918",
+  "buildId": "4f7d1ed8e918",
   "cameraElevation": 16,
   "cycle_rise_px": 0,
   "directions": [
@@ -859,14 +859,14 @@
           "crate"
         ],
         "layer": {
-          "E": "split",
+          "E": "front",
           "N": "split",
-          "NE": "split",
-          "NW": "split",
+          "NE": "front",
+          "NW": "front",
           "S": "split",
-          "SE": "split",
-          "SW": "split",
-          "W": "split"
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
         },
         "visible": true
       },
@@ -892,14 +892,14 @@
           "crate"
         ],
         "layer": {
-          "E": "split",
+          "E": "front",
           "N": "split",
-          "NE": "split",
-          "NW": "split",
+          "NE": "front",
+          "NW": "front",
           "S": "split",
-          "SE": "split",
-          "SW": "split",
-          "W": "split"
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
         },
         "visible": true
       },
@@ -925,14 +925,14 @@
           "crate"
         ],
         "layer": {
-          "E": "split",
+          "E": "front",
           "N": "split",
-          "NE": "split",
-          "NW": "split",
+          "NE": "front",
+          "NW": "front",
           "S": "split",
-          "SE": "split",
-          "SW": "split",
-          "W": "split"
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
         },
         "visible": true
       },
@@ -958,14 +958,14 @@
           "crate"
         ],
         "layer": {
-          "E": "split",
+          "E": "front",
           "N": "split",
-          "NE": "split",
-          "NW": "split",
+          "NE": "front",
+          "NW": "front",
           "S": "split",
-          "SE": "split",
-          "SW": "split",
-          "W": "split"
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
         },
         "visible": true
       },
@@ -993,14 +993,14 @@
           "crate"
         ],
         "layer": {
-          "E": "split",
+          "E": "front",
           "N": "split",
-          "NE": "split",
-          "NW": "split",
+          "NE": "front",
+          "NW": "front",
           "S": "split",
-          "SE": "split",
-          "SW": "split",
-          "W": "split"
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
         },
         "visible": true
       },
@@ -1026,14 +1026,14 @@
           "crate"
         ],
         "layer": {
-          "E": "split",
+          "E": "front",
           "N": "split",
-          "NE": "split",
-          "NW": "split",
+          "NE": "front",
+          "NW": "front",
           "S": "split",
-          "SE": "split",
-          "SW": "split",
-          "W": "split"
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
         },
         "visible": true
       },
@@ -1059,14 +1059,14 @@
           "crate"
         ],
         "layer": {
-          "E": "split",
+          "E": "front",
           "N": "split",
-          "NE": "split",
-          "NW": "split",
+          "NE": "front",
+          "NW": "front",
           "S": "split",
-          "SE": "split",
-          "SW": "split",
-          "W": "split"
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
         },
         "visible": true
       },
@@ -1092,14 +1092,14 @@
           "crate"
         ],
         "layer": {
-          "E": "split",
+          "E": "front",
           "N": "split",
-          "NE": "split",
-          "NW": "split",
+          "NE": "front",
+          "NW": "front",
           "S": "split",
-          "SE": "split",
-          "SW": "split",
-          "W": "split"
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
         },
         "visible": true
       },
