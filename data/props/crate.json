@@ -11,7 +11,7 @@
   2.9600000000000004,
   4.4
  ],
- "material": "prop_wood",
+ "material": "pom",
  "parts": [
   {
    "offset": [
@@ -24,7 +24,7 @@
     9.62,
     14.3
    ],
-   "material": "prop_wood",
+   "material": "pom",
    "clip_all": [
     [
      0,
@@ -63,7 +63,7 @@
     9.62,
     14.3
    ],
-   "material": "prop_wood",
+   "material": "pom",
    "clip_all": [
     [
      0,
@@ -102,7 +102,7 @@
     0.22,
     14.3
    ],
-   "material": "prop_wood",
+   "material": "pom",
    "clip_all": [
     [
      1,
@@ -141,7 +141,7 @@
     0.22,
     14.3
    ],
-   "material": "prop_wood",
+   "material": "pom",
    "clip_all": [
     [
      1,
@@ -180,7 +180,7 @@
     9.62,
     0.22
    ],
-   "material": "prop_wood",
+   "material": "pom",
    "clip_all": [
     [
      1,
@@ -219,7 +219,7 @@
     9.62,
     0.22
    ],
-   "material": "prop_wood",
+   "material": "pom",
    "clip_all": [
     [
      1,
@@ -419,41 +419,79 @@
   {
    "tag": "rope",
    "offset": [
-    9.15,
-    8.65,
-    -2.0
+    6.25,
+    11.45,
+    -1.0
    ],
    "radii": [
     0.85,
-    7.534,
+    4.45,
+    1.1
+   ],
+   "material": "pants",
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.64
+   ]
+  },
+  {
+   "tag": "rope",
+   "offset": [
+    8.4,
+    4.3,
+    -1.0
+   ],
+   "radii": [
+    0.85,
+    3.483,
     1.1
    ],
    "material": "pants",
    "rot": [
     -0.0,
     0.0,
-    15.79
+    39.17
    ]
   },
   {
    "tag": "rope",
    "offset": [
-    -9.15,
-    8.65,
-    -2.0
+    -6.25,
+    11.45,
+    -1.0
    ],
    "radii": [
     0.85,
-    7.534,
+    4.45,
+    1.1
+   ],
+   "material": "pants",
+   "rot": [
+    -0.0,
+    0.0,
+    0.64
+   ]
+  },
+  {
+   "tag": "rope",
+   "offset": [
+    -8.4,
+    4.3,
+    -1.0
+   ],
+   "radii": [
+    0.85,
+    3.483,
     1.1
    ],
    "material": "pants",
    "rot": [
     -0.0,
     -0.0,
-    -15.79
+    -39.17
    ]
   }
  ],
- "notes": "r11 round 1 (WP C). Cube 11 x 7.4 x 11 u (+1.2 u snow mound). carry offset (0, 19.2, 0) above the hand midpoint for the hold pose arms raise 176 / spread 38 / elbow 10-15: crate bottom clears the hair top by >= 2 u (~1.5 px). The plan's (0, 3, 1.5) would put the crate inside the head (chibi hands reach only ear height). Ropes: end panels -> mittens, 2 u behind the head plane. Per-frame placement (pick_up) via frame.prop {offset, rot}."
+ "notes": "r11 round 2 (WP C): light wood (pom ramp), ropes tuck into the hair below the crate and are depth-split behind the head. Cube 11 x 7.4 x 11 u (+1.2 u snow mound). carry offset (0, 19.2, 0) above the hand midpoint for the hold pose arms raise 176 / spread 38 / elbow 10-15: crate bottom clears the hair top by >= 2 u (~1.5 px). The plan's (0, 3, 1.5) would put the crate inside the head (chibi hands reach only ear height). Ropes: end panels -> mittens, 2 u behind the head plane. Per-frame placement (pick_up) via frame.prop {offset, rot}."
 }
