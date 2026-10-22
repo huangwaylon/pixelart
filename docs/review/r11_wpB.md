@@ -1,0 +1,39 @@
+# r11 WP B: Vertical (climb, climb_top), Animator B
+
+Files: `data/animations/climb.json`, `data/animations/climb_top.json`. Both are 48x64 cells with the pivot at (24,57), directions N/NE/NW. QA passes on both: 0 penetrations, 0 orphans, height delta ≤ 2, loop seam 0.0. Review copies are in `00_REVIEW/r11_climb/` and `00_REVIEW/r11_climb_top/` (that folder also has a ledge composite with root_px applied).
+
+## climb (loop, 8 x 120 ms = 960 ms, `cycle_rise_px: 24`, every frame cancelable)
+| f | name | intent | events |
+|---|---|---|---|
+| 1 | grip_R | R hand high and out, L foot stepped high (knee out) | grip_R |
+| 2 | pull_R1 | R elbow bends, L leg pushes | |
+| 3 | pull_R2 | legs cross, body compressed (squash 0.97) | |
+| 4 | swap_L | L hand travels up outside the head | |
+| 5-8 | grip_L .. swap_R | mirror of f1-f4 | grip_L f5 |
+
+Opposite hand and foot move together. Arms are spread 46-66° so the hands stay outside the large head; with fully vertical reaches the hands were lost behind the hair. The spine turns ±12° toward the reaching side, and the head tilts up and rolls, so the bow and ponytail sway every half-cycle. Knees are spread out (16-26°) so the steps show below the skirt.
+
+## climb_top (one-shot, 8 x 90 ms = 720 ms, not cancelable)
+root_px is the cumulative offset from the clip start.
+| f | name | root_px | intent |
+|---|---|---|---|
+| 1 | hang | 0,0 | both hands on the ledge lip |
+| 2 | elbows | 0,-7 | elbows splayed wide on the ledge |
+| 3 | press | 0,-13 | push down, R knee starts up |
+| 4 | knee_up | 0,-19 | R knee on the ledge, body over it |
+| 5 | roll_over | 0,-24 | weight rolls forward |
+| 6 | step_up | 0,-28 | L leg comes up (event step_up) |
+| 7 | rise | 0,-30 | planted, small crouch |
+| 8 | stand | 0,-30 | rest pose, joyful face |
+
+## Engine blockers (the shipping pipeline does not build these clips)
+1. `fx.fx_frames` raises `KeyError` on any event not in `PUFFS` (grip_R, grip_L, step_up; footstep_L/R and throw_release will hit the same). Fix: `if ev in PUFFS`.
+2. `qa.run_qa` foot-slide check raises `IndexError` when no frame is planted. All of climb is unplanted. Fix: skip the check when `planted` is empty.
+
+I verified with a patched copy in `/tmp/wpB/proj` (the repo pipeline is not edited).
+
+## Known issues
+- NE/NW: the far arm is mostly hidden by the long hair mass. The near arm and the bow read.
+- The chibi arms are short: the reaching hand peaks around head and bow height, not above the head.
+- climb_top f4/f5: the raised knee is mostly covered by the skirt.
+- `cycle_rise_px` is not exported to the sheet JSON (build.py meta).

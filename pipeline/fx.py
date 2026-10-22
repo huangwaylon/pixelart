@@ -55,7 +55,8 @@ def fx_frames(event_times, t_ms, size, pivot, palette, ppu=1.0):
     """Returns (back_idx, front_idx) for the snow puffs alive at time t_ms."""
     prims = []
     for ev, te in event_times:
-        prims += puff_prims(ev, t_ms - te)
+        if ev in PUFFS:                       # only takeoff/land spawn snow puffs; other events are gameplay hooks
+            prims += puff_prims(ev, t_ms - te)
     W, H = size
     out = []
     for front in (False, True):

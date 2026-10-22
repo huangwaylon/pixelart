@@ -1,0 +1,841 @@
+{
+ "name": "carry_walk",
+ "version": 1,
+ "frame_size": [
+  48,
+  64
+ ],
+ "pivot": [
+  24,
+  57
+ ],
+ "directions": [
+  "S",
+  "SE",
+  "E",
+  "NE",
+  "N",
+  "NW",
+  "W",
+  "SW"
+ ],
+ "conventions": "Degrees. spine/head tilt + = forward/down. arm raise + = forward/up from hanging (180 = overhead), - = back; spread + = out to the side; elbow + = bend. leg hip + = thigh forward, knee + = bend, ankle + = toes down. plant=true solves legs with IK so feet stay pinned. z_px = engine vertical offset in screen px. squash < 1 squashes, > 1 stretches (volume preserved).",
+ "loop": true,
+ "rest": {
+  "z_px": 0,
+  "pelvis_drop": 0,
+  "squash": 1.0,
+  "plant": true,
+  "face": "neutral",
+  "spine": {
+   "tilt": 0,
+   "turn": 0,
+   "lean": 0
+  },
+  "head": {
+   "tilt": 0,
+   "turn": 0,
+   "roll": 0
+  },
+  "arm_L": {
+   "raise": 0,
+   "spread": 12,
+   "elbow": 10
+  },
+  "arm_R": {
+   "raise": 0,
+   "spread": 12,
+   "elbow": 10
+  },
+  "leg_L": {
+   "hip": 0,
+   "knee": 0,
+   "ankle": 0,
+   "spread": 0
+  },
+  "leg_R": {
+   "hip": 0,
+   "knee": 0,
+   "ankle": 0,
+   "spread": 0
+  }
+ },
+ "qa": {
+  "max_height_delta_px": 3,
+  "max_orphans": 0,
+  "min_margin_px": 2,
+  "lead_in_ms": 40
+ },
+ "frames": [
+  {
+   "name": "contact_L",
+   "ms": 120,
+   "face": "smile",
+   "plant": false,
+   "squash": 1.0,
+   "spine": {
+    "tilt": -1,
+    "lean": 1.5,
+    "turn": 0
+   },
+   "head": {
+    "tilt": 0,
+    "roll": 2,
+    "turn": 0
+   },
+   "leg_L": {
+    "hip": 16,
+    "knee": 4,
+    "ankle": -6,
+    "spread": -3
+   },
+   "leg_R": {
+    "hip": -14,
+    "knee": 10,
+    "ankle": 14,
+    "spread": -3
+   },
+   "arm_L": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 10
+   },
+   "arm_R": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 11
+   },
+   "pelvis_drop": 0.12,
+   "events": [
+    "footstep_L"
+   ],
+   "cancelable": true
+  },
+  {
+   "name": "down_L",
+   "ms": 120,
+   "face": "smile",
+   "plant": false,
+   "squash": 1.0,
+   "spine": {
+    "tilt": -1,
+    "lean": 2.0,
+    "turn": 0
+   },
+   "head": {
+    "tilt": 0,
+    "roll": 3,
+    "turn": 0
+   },
+   "leg_L": {
+    "hip": 10,
+    "knee": 20,
+    "ankle": -2,
+    "spread": -3
+   },
+   "leg_R": {
+    "hip": -10,
+    "knee": 28,
+    "ankle": 16,
+    "spread": -3
+   },
+   "arm_L": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 12
+   },
+   "arm_R": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 13
+   },
+   "pelvis_drop": 0.17,
+   "cancelable": true
+  },
+  {
+   "name": "pass_L",
+   "ms": 120,
+   "face": "smile",
+   "plant": false,
+   "squash": 1.0,
+   "spine": {
+    "tilt": -1,
+    "lean": 1.5,
+    "turn": 0
+   },
+   "head": {
+    "tilt": 0,
+    "roll": 2,
+    "turn": 0
+   },
+   "leg_L": {
+    "hip": 0,
+    "knee": 6,
+    "ankle": 2,
+    "spread": -3
+   },
+   "leg_R": {
+    "hip": 10,
+    "knee": 40,
+    "ankle": 4,
+    "spread": -3
+   },
+   "arm_L": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 11
+   },
+   "arm_R": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 11
+   },
+   "pelvis_drop": -0.03,
+   "cancelable": true
+  },
+  {
+   "name": "up_L",
+   "ms": 120,
+   "face": "smile",
+   "plant": false,
+   "squash": 1.0,
+   "spine": {
+    "tilt": -1,
+    "lean": 0.5,
+    "turn": 0
+   },
+   "head": {
+    "tilt": 0,
+    "roll": 1,
+    "turn": 0
+   },
+   "leg_L": {
+    "hip": -8,
+    "knee": 2,
+    "ankle": 6,
+    "spread": -3
+   },
+   "leg_R": {
+    "hip": 16,
+    "knee": 22,
+    "ankle": -4,
+    "spread": -3
+   },
+   "arm_L": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 10
+   },
+   "arm_R": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 10
+   },
+   "pelvis_drop": -0.03,
+   "cancelable": true
+  },
+  {
+   "name": "contact_R",
+   "ms": 120,
+   "face": "smile",
+   "plant": false,
+   "squash": 1.0,
+   "spine": {
+    "tilt": -1,
+    "lean": -1.5,
+    "turn": 0
+   },
+   "head": {
+    "tilt": 0,
+    "roll": -2,
+    "turn": 0
+   },
+   "leg_L": {
+    "hip": -14,
+    "knee": 10,
+    "ankle": 14,
+    "spread": -3
+   },
+   "leg_R": {
+    "hip": 16,
+    "knee": 4,
+    "ankle": -6,
+    "spread": -3
+   },
+   "arm_L": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 11
+   },
+   "arm_R": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 10
+   },
+   "pelvis_drop": 0.13,
+   "events": [
+    "footstep_R"
+   ],
+   "cancelable": true
+  },
+  {
+   "name": "down_R",
+   "ms": 120,
+   "face": "smile",
+   "plant": false,
+   "squash": 1.0,
+   "spine": {
+    "tilt": -1,
+    "lean": -2.0,
+    "turn": 0
+   },
+   "head": {
+    "tilt": 0,
+    "roll": -3,
+    "turn": 0
+   },
+   "leg_L": {
+    "hip": -10,
+    "knee": 28,
+    "ankle": 16,
+    "spread": -3
+   },
+   "leg_R": {
+    "hip": 10,
+    "knee": 20,
+    "ankle": -2,
+    "spread": -3
+   },
+   "arm_L": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 13
+   },
+   "arm_R": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 12
+   },
+   "pelvis_drop": 0.17,
+   "cancelable": true
+  },
+  {
+   "name": "pass_R",
+   "ms": 120,
+   "face": "smile",
+   "plant": false,
+   "squash": 1.0,
+   "spine": {
+    "tilt": -1,
+    "lean": -1.5,
+    "turn": 0
+   },
+   "head": {
+    "tilt": 0,
+    "roll": -2,
+    "turn": 0
+   },
+   "leg_L": {
+    "hip": 10,
+    "knee": 40,
+    "ankle": 4,
+    "spread": -3
+   },
+   "leg_R": {
+    "hip": 0,
+    "knee": 6,
+    "ankle": 2,
+    "spread": -3
+   },
+   "arm_L": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 11
+   },
+   "arm_R": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 11
+   },
+   "pelvis_drop": -0.03,
+   "cancelable": true
+  },
+  {
+   "name": "up_R",
+   "ms": 120,
+   "face": "smile",
+   "plant": false,
+   "squash": 1.0,
+   "spine": {
+    "tilt": -1,
+    "lean": -0.5,
+    "turn": 0
+   },
+   "head": {
+    "tilt": 0,
+    "roll": -1,
+    "turn": 0
+   },
+   "leg_L": {
+    "hip": 16,
+    "knee": 22,
+    "ankle": -4,
+    "spread": -3
+   },
+   "leg_R": {
+    "hip": -8,
+    "knee": 2,
+    "ankle": 6,
+    "spread": -3
+   },
+   "arm_L": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 10
+   },
+   "arm_R": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 10
+   },
+   "pelvis_drop": -0.04,
+   "cancelable": true
+  }
+ ],
+ "props": [
+  {
+   "name": "crate",
+   "bone": "carry",
+   "offset": [
+    0.0,
+    17.8,
+    0.0
+   ],
+   "radii": [
+    7.2,
+    3.6799999999999997,
+    5.28
+   ],
+   "material": "pom",
+   "frames": "all",
+   "parts": [
+    {
+     "offset": [
+      9.0,
+      17.8,
+      0.0
+     ],
+     "radii": [
+      0.35,
+      7.36,
+      10.56
+     ],
+     "material": "pom",
+     "clip_all": [
+      [
+       0,
+       1,
+       0,
+       -0.625
+      ],
+      [
+       0,
+       -1,
+       0,
+       -0.625
+      ],
+      [
+       0,
+       0,
+       1,
+       -0.625
+      ],
+      [
+       0,
+       0,
+       -1,
+       -0.625
+      ]
+     ]
+    },
+    {
+     "offset": [
+      -9.0,
+      17.8,
+      0.0
+     ],
+     "radii": [
+      0.35,
+      7.36,
+      10.56
+     ],
+     "material": "pom",
+     "clip_all": [
+      [
+       0,
+       1,
+       0,
+       -0.625
+      ],
+      [
+       0,
+       -1,
+       0,
+       -0.625
+      ],
+      [
+       0,
+       0,
+       1,
+       -0.625
+      ],
+      [
+       0,
+       0,
+       -1,
+       -0.625
+      ]
+     ]
+    },
+    {
+     "offset": [
+      0.0,
+      22.4,
+      0.0
+     ],
+     "radii": [
+      14.4,
+      0.35,
+      10.56
+     ],
+     "material": "pom",
+     "clip_all": [
+      [
+       1,
+       0,
+       0,
+       -0.625
+      ],
+      [
+       -1,
+       0,
+       0,
+       -0.625
+      ],
+      [
+       0,
+       0,
+       1,
+       -0.625
+      ],
+      [
+       0,
+       0,
+       -1,
+       -0.625
+      ]
+     ]
+    },
+    {
+     "offset": [
+      0.0,
+      13.2,
+      0.0
+     ],
+     "radii": [
+      14.4,
+      0.35,
+      10.56
+     ],
+     "material": "pom",
+     "clip_all": [
+      [
+       1,
+       0,
+       0,
+       -0.625
+      ],
+      [
+       -1,
+       0,
+       0,
+       -0.625
+      ],
+      [
+       0,
+       0,
+       1,
+       -0.625
+      ],
+      [
+       0,
+       0,
+       -1,
+       -0.625
+      ]
+     ]
+    },
+    {
+     "offset": [
+      0.0,
+      17.8,
+      6.6
+     ],
+     "radii": [
+      14.4,
+      7.36,
+      0.35
+     ],
+     "material": "pom",
+     "clip_all": [
+      [
+       1,
+       0,
+       0,
+       -0.625
+      ],
+      [
+       -1,
+       0,
+       0,
+       -0.625
+      ],
+      [
+       0,
+       1,
+       0,
+       -0.625
+      ],
+      [
+       0,
+       -1,
+       0,
+       -0.625
+      ]
+     ]
+    },
+    {
+     "offset": [
+      0.0,
+      17.8,
+      -6.6
+     ],
+     "radii": [
+      14.4,
+      7.36,
+      0.35
+     ],
+     "material": "pom",
+     "clip_all": [
+      [
+       1,
+       0,
+       0,
+       -0.625
+      ],
+      [
+       -1,
+       0,
+       0,
+       -0.625
+      ],
+      [
+       0,
+       1,
+       0,
+       -0.625
+      ],
+      [
+       0,
+       -1,
+       0,
+       -0.625
+      ]
+     ]
+    },
+    {
+     "offset": [
+      9.3,
+      18.0,
+      0.0
+     ],
+     "radii": [
+      0.35,
+      1.44,
+      11.04
+     ],
+     "material": "pants",
+     "clip_all": [
+      [
+       0,
+       1,
+       0,
+       -0.625
+      ],
+      [
+       0,
+       -1,
+       0,
+       -0.625
+      ],
+      [
+       0,
+       0,
+       1,
+       -0.625
+      ],
+      [
+       0,
+       0,
+       -1,
+       -0.625
+      ]
+     ]
+    },
+    {
+     "offset": [
+      -9.3,
+      18.0,
+      0.0
+     ],
+     "radii": [
+      0.35,
+      1.44,
+      11.04
+     ],
+     "material": "pants",
+     "clip_all": [
+      [
+       0,
+       1,
+       0,
+       -0.625
+      ],
+      [
+       0,
+       -1,
+       0,
+       -0.625
+      ],
+      [
+       0,
+       0,
+       1,
+       -0.625
+      ],
+      [
+       0,
+       0,
+       -1,
+       -0.625
+      ]
+     ]
+    },
+    {
+     "offset": [
+      0.0,
+      18.0,
+      6.9
+     ],
+     "radii": [
+      14.88,
+      1.44,
+      0.35
+     ],
+     "material": "pants",
+     "clip_all": [
+      [
+       1,
+       0,
+       0,
+       -0.625
+      ],
+      [
+       -1,
+       0,
+       0,
+       -0.625
+      ],
+      [
+       0,
+       1,
+       0,
+       -0.625
+      ],
+      [
+       0,
+       -1,
+       0,
+       -0.625
+      ]
+     ]
+    },
+    {
+     "offset": [
+      0.0,
+      18.0,
+      -6.9
+     ],
+     "radii": [
+      14.88,
+      1.44,
+      0.35
+     ],
+     "material": "pants",
+     "clip_all": [
+      [
+       1,
+       0,
+       0,
+       -0.625
+      ],
+      [
+       -1,
+       0,
+       0,
+       -0.625
+      ],
+      [
+       0,
+       1,
+       0,
+       -0.625
+      ],
+      [
+       0,
+       -1,
+       0,
+       -0.625
+      ]
+     ]
+    },
+    {
+     "offset": [
+      10.0,
+      9.5,
+      0.0
+     ],
+     "radii": [
+      1.0,
+      7.300000000000001,
+      1.3
+     ],
+     "material": "pants"
+    },
+    {
+     "offset": [
+      -10.0,
+      9.5,
+      0.0
+     ],
+     "radii": [
+      1.0,
+      7.300000000000001,
+      1.3
+     ],
+     "material": "pants"
+    }
+   ]
+  }
+ ]
+}

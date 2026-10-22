@@ -56,7 +56,7 @@ def run_qa(scene, final, overrides_meta, palette, release=False):
     # 3. foot slide: planted frames keep ankles on the same pixel per direction
     slide = 0.0
     planted = [i for i in range(n) if scene.anim.poses[i]["plant"]]
-    for d in scene.dirs:
+    for d in scene.dirs if planted else ():      # clips without planted frames (climb, fall) have no foot slide
         pts = np.array([np.array(scene.ankle_px(i, d)).reshape(-1) for i in planted])
         slide = max(slide, float(np.abs(pts - pts[0]).max()))
     metrics["foot_slide_px"] = round(slide, 3)

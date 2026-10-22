@@ -130,6 +130,8 @@ def write_build(anim_name, scene, palette, base, final, ov_meta, bid, hashes, ou
         "animation": anim_name, "buildId": bid, "buildHash": bid, "pipelineVersion": PIPELINE_VERSION,
         "inputLockEnd_ms": lock_end, "cameraElevation": scene.cam.elevation,
         "loop": bool(scene.anim_data.get("loop", False)),
+        "cycle_rise_px": scene.anim_data.get("cycle_rise_px", 0),
+        "root_px_mode": "cumulative offset from clip start",
         "props": [{k: v for k, v in pr.items() if k in ("name", "bone", "offset", "release_event")}
                   for pr in scene.anim_data.get("props", [])],
         "image": f"{anim_name}_sheet.png", "frameSize": [W, H], "pivot": list(scene.pivot),
