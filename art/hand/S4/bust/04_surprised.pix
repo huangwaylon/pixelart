@@ -1,44 +1,52 @@
-# r13 dialogue bust: surprised. wide, lash up 1px, 3px pinpoint irises / floating arcs / small o / shock ticks
+# r13 dialogue bust: surprised. wide, lash up 1px, 5px irises with pinpoint pupils / floating arcs / small o / shock ticks
 # Hand-authored face patches over bust_base.pix (lead pixel artist).
 extends: bust_base.pix
-patch: 24 22
+patch: 24 16
 K_
 _K
-patch: 20 27
+patch: 20 21
 KK
-patch: 35 31
-_ddddd__
-dssssss_
-s_KKKKK_
-KK_____K
-_wwwwww_
-s_W___WW
-___i_iWW
-___j_jWW
-__W__jWW
-__WWWWWW
-__WWWW_s
-_sLLLLs_
-__ss____
-patch: 51 31
-___ddddd___
-___sssssd__
-__KKKKKKs__
-KK______KK_
-_wwwwwwww_K
-wWW___WWW_s
-_W_i_iWWW__
-_W_j_jWWW__
-_WW__jWWW__
-_WWWWWWWW__
-_WWWWW_WW__
-_LLLLLLL___
-______ss___
-patch: 22 32
+patch: 21 26
 _K
 K_
-patch: 45 48
-_LL_
-LrrL
-_yyL
-_LL_
+patch: 35 30
+_ddddd_____
+_ssssss____
+s__KKKKK___
+_KK_____KK_
+Kswwwwwwws_
+ssW_____W__
+__Wi__i_W__
+__Wij_j_W__
+__Wi_j__W__
+__Wikkk_W__
+__WWiiiWW__
+__LLLsss___
+_ssssss____
+___________
+___________
+ssssss_____
+ssssss_____
+___________
+________rr_
+_______rrrr
+_______ryyr
+________rr_
+patch: 51 30
+____dddd___
+___sssss___
+__KKKKK__s_
+KK_____KKK_
+wwwwwwww_KK
+W______Wsss
+W____iiWs__
+W____iiWs__
+W____jiWs__
+W_kkkkiWs__
+WWiiiiWWs__
+_ssssssLL__
+__sssssss__
+___________
+___________
+_sssssss___
+_sssssss___

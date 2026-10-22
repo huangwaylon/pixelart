@@ -1,42 +1,37 @@
-# r13 dialogue bust: laugh. closed ^^ / high arch / open D with crn_2 tongue / light blush
+# r13 dialogue bust: laugh. closed ^^ / high arch / open D (no lip outline) with crn_2 tongue / blush
 # Hand-authored face patches over bust_base.pix (lead pixel artist).
 extends: bust_base.pix
-patch: 35 31
-_ddddd________
-dsssss________
-s_____________
-__sssss_______
-ssssssss______
-sssKKKss______
-_sKK__Ks______
-__KsssKK______
-K_sssssKK_____
-KsssssssK_____
-_sssssss______
-_ssssss_______
-__ss__________
-______________
-_ttxttx_______
-_txttxt_______
-______________
-________LLLLLL
-________rrrrrr
-________LryyrL
-_________LLLL_
-patch: 51 31
-___ddddd___
-___sssssd__
-________s__
-__ssssss___
-ssssssssss_
-sssKKKKssss
-ssKK___Kss_
-sKKssssKKs_
-KKssssssK__
-Kssssssss_K
-ssssssssss_
-_ssssssss__
-______ss___
-___________
-__ttxttx___
-__txttxt___
+patch: 35 30
+_ddddd____
+dsssss____
+s_________
+___sssss__
+_sssssssss
+ssssKKsss_
+__KKK__Ks_
+_KKssssKK_
+KKssssssKK
+K_sssssss_
+__sssssss_
+__ssssss__
+_ssssss___
+patch: 51 30
+____ddddd__
+____sssssd_
+_________s_
+__sssss____
+sssssssss__
+ssssKKsssss
+ssKK___Ks__
+sKKssssKK__
+KKssssssKK_
+KssssssssKK
+sssssssss__
+_sssssss___
+__sssssss__
+patch: 40 48
+LLLLLL
+rrrrrr
+rrrrrr
+ryyyyr
+_ryyr_

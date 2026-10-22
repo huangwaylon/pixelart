@@ -1,59 +1,59 @@
-# r13 dialogue bust: embarrassed. averted down-left, lower lids up / wavy / ~ / 3-row blush across the nose / steam puffs
+# r13 dialogue bust: embarrassed. averted, lower lids up / wavy / ~ / hatched blush over both cheeks + nose / steam
 # Hand-authored face patches over bust_base.pix (lead pixel artist).
 extends: bust_base.pix
-patch: 36 0
+patch: 19 0
 _zz_
 zWWz
+zWzz
 _zz_
-patch: 21 1
-_zz__________
-zWWz_________
-zWzz_________
-_zz__________
-________zzz__
-_______zWWWz_
-______zWWWWWz
-______zWWWWzz
-_______zzzz__
-patch: 28 5
-_zzz_
-zWWWz
-patch: 35 31
-u____dd_______
-___s_ss_______
-___d__________
-______________
-______________
-______w_______
-___K_iW_______
-__jK_jW_______
-___K_jW_______
-______W_______
-_______L______
-_sLLLLL_______
-__ss__________
-______________
-_ttxttxtttttt_
-_txttxtttt_tt_
-_xttxtttttttt_
-______________
-_________LL__L
-________L_s___
-patch: 40 31
-dd
-patch: 53 31
+patch: 27 0
+_________zz_
+________zWWz
+_zzz_____zz_
+zWWWz_______
+WWWWWz______
+WWWWzz______
+zzzz________
+patch: 26 2
+__zzz_
+_zWWWz
+zWWWWW
+zWWWWz
+patch: 38 30
+__dd
+s_ss
+d___
+patch: 54 30
 dd__
 ss_s
 ___d
-patch: 51 37
-iW_K__iW__
-iW_K__iW__
-j___Kj_W__
-j______W__
-k___W_kWL_
-_LLLLLLLs_
-______ss__
-__________
-_ttxttxttx
-_txttxttxt
-_xttxttxtt
+patch: 35 36
+__WKKjj__________WKK_jj__
+___KKjj___________KK_jj__
+____Kj_____________K_j___
+_________________________
+___LLLLLL_________LLLLLLL
+__ssssss_________sssssss_
+_ssssss___________sssssss
+_________________________
+_________________________
+______t_____x_x_t_xt_xt_x
+______t____x_x__txt_xt_xt
+xttxttt_________xttxttxtt
+_________________________
+_______LL________________
+______Ls_Ls______________
+________ssLL_____________
+patch: 49 36
+___WKK_jj__
+____KK_jj__
+_____K_j___
+___________
+____LLLLLLL
+___sssssss_
+____sssssss
+___________
+___________
+x_t_xt_xt_x
+patch: 47 45
+x

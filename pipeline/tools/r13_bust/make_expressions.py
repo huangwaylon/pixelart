@@ -54,8 +54,8 @@ __iWWKKiw_
 __iWWKKiw_
 __ijjKjiw_
 __ijjjjiw_
-__iLLLLiw_
-__L____L__
+__ikkkkiw_
+__iLLLLi__
 """), blk("""
 ___KKKKK____
 _KKKKKKKKK__
@@ -64,8 +64,8 @@ _wiWWKKKiw__
 _wiWWKKKiw__
 _wijjjKjiw__
 _wijjjjjiw__
-_wiLLLLLiw__
-__L_____L___
+_wikkkkkiw__
+__iLLLLLi___
 """), 33)
 EYES["laugh"] = (blk("""
 ____KK____
@@ -229,7 +229,7 @@ BROWS = {
  "angry":       [(30, 36, 37), (31, 37, 39), (32, 39, 42), (32, 52, 55), (31, 55, 58), (30, 58, 60)],
  "embarrassed": [(32, 35, 35), (31, 36, 37), (32, 38, 38), (31, 39, 39), (30, 40, 41),
                  (30, 54, 55), (31, 56, 56), (32, 57, 57), (31, 58, 59), (32, 60, 60)],
- "determined":  [(31, 35, 39), (32, 38, 42), (32, 52, 56), (31, 55, 60)],
+ "determined":  [(30, 36, 37), (31, 37, 39), (32, 39, 42), (32, 52, 55), (31, 55, 57), (30, 57, 60)],
  "worried":     [(32, 35, 37), (31, 38, 39), (30, 40, 41), (31, 42, 42), (31, 53, 53), (30, 54, 55), (31, 56, 57),
                  (32, 58, 60)],
  "content":     [(32, 36, 41), (32, 54, 59)],
@@ -238,13 +238,13 @@ BROWS = {
 # ---------- mouths (block, x, y); no lip outlines on open mouths ----------
 MOUTH = {
  "neutral":     (blk("L__L\n_LL_"), 42, 50),
- "smile":       (blk("L___L\n_LLL_"), 41, 49),
+ "smile":       (blk("r____r\n_rrrr_\n__yy__"), 40, 49),
  "laugh":       (blk("LLLLLL\nrrrrrr\nrrrrrr\nryyyyr\n_ryyr_"), 40, 48),
  "surprised":   (blk("_rr_\nrrrr\nryyr\n_rr_"), 42, 48),
  "sad":         (blk("_LLL_\nL___L"), 41, 50),
  "angry":       (blk("__L__\n_L_L_\nL___L"), 41, 49),
  "embarrassed": (blk("_LL___\nL__L__\n____LL"), 41, 49),
- "determined":  (blk("LLLL_\n____L"), 41, 50),
+ "determined":  (blk("LLLLL"), 41, 51),
  "worried":     (blk("_L_L\nL_L_"), 42, 50),
  "content":     (blk("L____L\n_LLLL_"), 40, 49),
 }

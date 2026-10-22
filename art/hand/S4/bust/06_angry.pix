@@ -1,43 +1,55 @@
-# r13 dialogue bust: angry. lid cut flat on a slant / inner ends sharply down / ^ pout + puffed near cheek / red_1 vein mark
+# r13 dialogue bust: angry. lids cut on a slant + lower lid up (glare) / V brows / ^ pout + puffed cheek / red_1 vein
 # Hand-authored face patches over bust_base.pix (lead pixel artist).
 extends: bust_base.pix
-patch: 56 20
+patch: 56 18
 _R_R_
 RR_RR
 _____
 RR_RR
 _R_R_
-patch: 35 31
-_d______
-_____ss_
-s___dddd
-__sssss_
-___sssss
-__KKKKss
-__iii_KK
-______j_
-____K___
-patch: 51 31
-_______ddd_
-__ss_______
-_dddd___s__
+patch: 35 30
+_dd________
+_s___ss____
+s___dddd___
+_KK__sss___
+K__________
+ss____KKKK_
+___________
+___________
+_____jK____
+__LLLLLLL__
+__sssssss__
 __ssssss___
-ssssssss__K
-ssssKKKK___
-KKKK_ii_K__
-_j_________
-patch: 40 32
-ss
-patch: 52 32
-_ss
+_ssssss____
+___________
+___________
+ssssss_____
+ssssss_____
+___________
+___________
+________L__
+_________Ls
+______L_ssL
+patch: 51 30
+_______ddd___
+___s____s____
+_dddd____s___
+__ss___K_____
+_________KK__
+KKKK______s__
+_____________
+_____________
+_____jK______
+LLLLLLLLL____
+sssssssss____
+_sssssss_____
+__sssssss____
+_____________
+___________sP
+_sssssss___sP
+_sssssss___sP
+___________sP
+___________sP
+patch: 52 31
+__s
 ddd
-patch: 62 45
-sP
-sP
-sP
-sP
-sP
-patch: 44 48
-__L__
-_L_L_
-LsssL

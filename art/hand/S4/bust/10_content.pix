@@ -1,50 +1,35 @@
-# r13 dialogue bust: content. closed u arcs / relaxed low / closed smile / light blush
+# r13 dialogue bust: content. closed u arcs / relaxed low / closed smile / blush
 # Hand-authored face patches over bust_base.pix (lead pixel artist).
 extends: bust_base.pix
 patch: 35 31
-u_________
-_s____s___
-_d____d___
-__sssss___
-ssssssss__
-ssssssss__
-_sssssss__
-Ksssssss__
-K_sssssKK_
-__KKKKKK__
-_sssssss__
 _ssssss___
-__ss______
-__________
-_ttxttx___
-_txttxt___
-__________
-__________
-________L_
-_________L
-patch: 41 32
-s
-d
-patch: 48 32
-_____s____s___
-_____d____d___
-_____ssssss___
-___ssssssssss_
-___sssssssssss
-___ssssssssss_
-___ssssssssssK
-___KKssssssK_K
-___sKKKKKKKKs_
-___ssssssssss_
-____ssssssss__
-_________ss___
-______________
-_____ttxttx___
-_____txttxt___
-______________
-______________
-_L____________
-L_____________
-patch: 58 32
-s
-d
+sdddddd___
+___sssss__
+_sssssssss
+sssssssss_
+__sssssss_
+K_sssssss_
+KKsssssKK_
+__KKKKKss_
+__sssssss_
+__ssssss__
+_ssssss___
+patch: 51 31
+___ssssss__
+___dddddds_
+__sssss____
+sssssssss__
+sssssssssss
+sssssssss__
+sssssssss_K
+KKssssssKKK
+ssKKKKKKs__
+sssssssss__
+_sssssss___
+__sssssss__
+patch: 40 49
+L____L
+_L_LLs
+___ss_
+patch: 45 49
+L
