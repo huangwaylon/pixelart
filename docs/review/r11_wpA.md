@@ -34,3 +34,14 @@ contact, down, push, flight per side. footstep_L on f1, footstep_R on f5.
 - There is no closed-eye cel: face.py rejects unknown expressions, so the blink uses the half-lid.
 - The coat is rigid. On drive-knee frames (S/SE) a 1 px cream thigh shows under the hem.
 - The leg solver lives in `/tmp/wpA/` and is not in the repo. The JSON is the source.
+
+## Round 1 fixes
+All three rebuilt on the repo pipeline: QA PASS, 0 penetrations, loop seam 0.4 / 0.04 / 0.0 px (idle/walk/run).
+- **idle:** f6 uses the engine `blink` cel at 80 ms; the other frames use `smile`. E eye is now constant: 4 ink + 1 catchlight on every frame. Body bob is 0 or exactly 1 px (drop 0/1.387, squash 1), with head pitch held constant. Arms are fixed at (20, 18, 34), so the mitten sits clear of the coat front and the dark-teal hip speck is gone.
+- **run:** trail_wind 1000, so the ponytail and scarf now trail.
+  - Spine tilt 15 on contact/down, head -10 (net 5). E/W eye visible on every frame (4+ ink px).
+  - Squash 0.96 on down, 1.04 on flight. Ankle targets are pre-compensated for the squash pivot, so feet stay grounded.
+  - Head centre sits 1.8-2.5 px ahead of the hips in E/W and 1.2-2.0 in SE/SW.
+  - Flight foot spread is 8.5 px (+2.4) against 6.4 for walk. Arm pump ±60/50 with push-frame spread 28 to clear the torso.
+  - engine_notes: about 53 u/s, roughly 40 px/s in E/W.
+- **walk:** trail_wind 300, engine_notes added. Footsteps stay on f1/f5 in walk and run.

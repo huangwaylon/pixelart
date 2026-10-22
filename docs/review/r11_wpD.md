@@ -33,3 +33,23 @@ touchdown, hop, plop, settle, ready; 290 ms; `land` on f1.
 - **Fall, E/W:** the arm flaps are mostly in depth and read weakly.
 - **Land cancel:** a derived clip inherits hop's cancelable flag, so cancel opens at f2 instead of f3.
 - **Crate, N/NE:** the crate draws over the hair top on screen. This is depth ordering only, the same as in carry_idle.
+
+## Round 1 fixes
+- **throw.**
+  - Timing: scoop 60, step 50, release 80 (turn 34, arm_R spread 50), ready 50. Pack face is now determined.
+  - Release now fires 270 ms after input. The arm reads in S, N and NW.
+  - Prop: `{"ref": "snowball"}`, shown on f1-f4, then `throw_release` on f5.
+- **carry_throw.**
+  - Dip: 130 ms, pelvis 3.2, squash 0.94, head tilt -8.
+  - Arm raise: 140 on release, 115 on follow (no more foreshortening in S). Follow is 100 ms.
+  - Spawn: `throw_release` moved to push (f2), so the projectile spawns at the push anchor where the crate is drawn. Total 540 ms; cancel opens at f5.
+  - Prop: `{"ref": "crate"}`.
+  - Clearance: crate to bow is 7.5u in the dip versus 6-7.3u in carry_idle. On screen it overlaps the hair as much as carry_idle does.
+- **fall.**
+  - Flap keys follow the reviewer's spacing (50/82, 50/82, 105, 5), applied to both arms with L one key ahead.
+  - Added `engine_notes`: on the jump_sc -> fall handoff, the engine must add the current z_px to world height.
+- **land.** Override `hop: cancelable false`, so cancel opens at plop and `inputLockEnd_ms` is 120. The sheet now has `derivedFrom`.
+- All four clips QA PASS.
+- **Engine gaps:**
+  - `frame_info` needs `name` next to `ref`, which I added.
+  - The sheet-JSON `props` exports the unresolved entry, so `bone` and `offset` are missing.

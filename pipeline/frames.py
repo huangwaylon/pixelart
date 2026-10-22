@@ -33,6 +33,16 @@ class Scene:
         self.cam = Camera(rnd.get("camera_elevation", 26.565), rnd.get("ppu", 1.0))
         extra = [self.anim.total_ms] if anim.get("loop") else []
         self.chains = ChainSim(self.rig, self.anim).run(self.anim.times + extra)
+        # resolve shared prop references once, so metadata/frame info/rendering all see the full definition
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        resolved = []
+        for pr in anim.get("props", []):
+            if pr.get("ref"):
+                with open(os.path.join(root, "data", "props", f"{pr['ref']}.json")) as fh:
+                    pr = dict(json.load(fh), **{k: v for k, v in pr.items() if k != "ref"}, ref=pr["ref"])
+            resolved.append(pr)
+        if resolved:
+            self.anim_data = dict(anim, props=resolved)
         self.deliberate = {}    # (dir, frame) -> {(y, x)} designed 1-2px elements (e.g. boot soles) for QA
         self.body_bbox = {}     # (dir, frame) -> bbox of body pixels (excl. pom/scarf/hair chains) for QA
         self.events = [(ev, self.anim.times[i]) for i, f in enumerate(anim["frames"]) for ev in f.get("events", [])]
@@ -109,11 +119,7 @@ class Scene:
         out = []
         names = [f["name"] for f in self.anim_data["frames"]]
         for pr in self.anim_data.get("props", []):
-            if pr.get("ref"):
-                # shared prop definition (data/props/<ref>.json) so every clip uses the identical object
-                root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-                with open(os.path.join(root, "data", "props", f"{pr['ref']}.json")) as fh:
-                    pr = dict(json.load(fh), **{k: v for k, v in pr.items() if k != "ref"})
+            # (refs to data/props/*.json are resolved in __init__)
             vis = pr.get("frames", "all")
             if vis != "all" and i not in [names.index(v) if isinstance(v, str) else v for v in vis]:
                 continue

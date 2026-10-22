@@ -417,6 +417,7 @@
    "material": "prop_snow"
   },
   {
+   "tag": "rope",
    "offset": [
     8.3,
     8.65,
@@ -435,6 +436,7 @@
    ]
   },
   {
+   "tag": "rope",
    "offset": [
     -8.3,
     8.65,
