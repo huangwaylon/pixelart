@@ -37,3 +37,36 @@
 - front eyes off the silhouette
 - brows raised 1 px
 - embarrassed whites reduced
+
+## Round 1 fixes (AD review 1)
+
+### Brows
+- Now 2 px: an ink core with plum_0 tapers, and no skin underside (the arcs with a skin_1 underside read as glasses).
+- They sit at y28-29, clear of the bang notches, which start at y30-31.
+- Brow x positions follow A's eye anchors, so the turned face carries them.
+- Angry far brow is a steep 3-row diagonal.
+
+### Expressions
+- **smile:** upturned plum 5 px mouth, lower lids up 1 row.
+- **sad:** lids droop at the outer corner, tear drop below the near eye, plum frown with corners down.
+- **worried:** iris hard to the right, zigzag mouth, sweat drop.
+- **angry:** clenched tooth row. fx_anger is now 7x7 and floats in open space at (22,15).
+- **determined:** lid lowered 2 rows, brows set 1 px lower and slanted, plum set mouth.
+- **embarrassed:** 5-row red_2 hatch.
+- **No blush:** neutral, determined, angry, surprised, worried and sad.
+
+### Front bust
+- Neutral mouth is a 3 px flat line. Smile mouth is a 4 px plum curve, with lids up and blush.
+- New eyeBF_L/R cels: sclera on the outer side only, mirrored per eye, catchlight upper-left on both. This fixes the gaze drift.
+
+### A's turned face
+- Re-checked after A's anchor move: eyes now at x30 and x40.
+- `gen` now writes only the brow, fx and sweat anchors. A owns all the others.
+
+### Gate
+Blind 1x tests, run by a fresh agent each time:
+- Test 1: 8/10. Worried and embarrassed swapped.
+- Test 2: 10/10, three low-confidence.
+- Test 3: 10/10, 7 high and 3 med.
+
+Every variant is at most 24 colours with fewer than 10 orphans.
