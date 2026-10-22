@@ -63,3 +63,17 @@ All three PASS: penetrations 0, seam 0.0, orphans 0, slide ≤0.25.
 **QA:** all PASS. Penetrations 0, seam 0, height delta ≤ 2, slide ≤ 0.25. pick_up was verified with the patch applied.
 
 **Note for animator D:** carry_throw already uses `ref: crate`, so it picks up the new crate. Use the hold arms 176/38/10–15, or recheck head clearance.
+
+## Round 2 fixes
+**Crate (`data/props/crate.json`)**
+- **Rope:** rerouted in two segments.
+  - Each rope drops from the crate's underside (x ±6.3) to a tuck point inside the hair cap (local (±3.5, 5.0, −1), about 2 u under the hair top). From there it runs to the mitten.
+  - With the depth split, the part inside the hair draws behind the head. In E/W/SE/SW/NE/NW only a 2–3 px stub shows from the crate bottom into the hair top. Nothing reaches the eye line any more.
+  - In S/N the ropes appear to tuck behind the hair.
+  - Rope material is now `prop_wood` (colours already in the body palette).
+- **Wood:** now `pom` (mauve/oat_1/oat_2 light wood), with the `coat_trim` slat band and snow mound kept. It is clearly lighter than the dark-brown hair. The prop strip's own outline gives a dark edge on every side, including the bottom.
+- **Colours:** composite (back + body + front) is at most 16 per frame in all four clips.
+
+**Rebuilt:** pick_up, carry_idle, carry_walk, carry_throw. All QA PASS.
+
+**Note for animator D:** on carry_throw `push` the hands move forward, so the rope runs down over the hair. Add `"prop": {"hide": ["rope"]}` to that frame.
