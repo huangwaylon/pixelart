@@ -161,7 +161,7 @@ def write_build(anim_name, scene, palette, base, final, ov_meta, bid, hashes, ou
     bk = {d: [ex.baked_frame(final[d][i], shadows[i], fx[i][0], fx[i][1], infos[i]["z_px"], palette, scene.size,
                              scene.pivot, ch, background=False) for i in range(n)] for d in scene.dirs}
     ex.save_png(palette.to_rgba(ex.sheet(bk, scene.dirs, (W, ch))), f"{out_dir}/preview/{anim_name}_sheet_baked.png")
-    ex.distance_test(final, ["S", "SE", "E", "NE", "N"], palette, scene.size, f"{out_dir}/preview/distance_test.png")
+    ex.distance_test(final, [d for d in ("S", "SE", "E", "NE", "N", "NW") if d in scene.dirs][:5], palette, scene.size, f"{out_dir}/preview/distance_test.png")
     ex.greyscale_check(final, scene.dirs, palette, scene.size, f"{out_dir}/preview/greyscale_check.png")
     ex.contact_sheet(final, scene.dirs, infos, palette, scene.size, f"{out_dir}/preview/{anim_name}_contact_sheet.png", scale=gs)
 

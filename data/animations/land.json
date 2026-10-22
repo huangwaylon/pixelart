@@ -1,0 +1,5 @@
+{
+ "name": "land",
+ "derived": {"clip": "jump_sc", "frames": [9, 13]},
+ "loop": false
+}

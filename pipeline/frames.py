@@ -189,7 +189,8 @@ class Scene:
         if v2:
             skin_ids = {self.palette.index[n] for n in self.palette.ramps["skin"]}
             idx = despeckle(idx, keep=keep, material=pix.material)          # 1) merge within each part
-            idx = despeckle(idx, keep=keep | skin_ids)                      # 2) any remaining specks, but skin stays
+            skin_base = skin_ids - {self.palette.index[self.palette.ramps["skin"][0]]}
+            idx = despeckle(idx, keep=keep | skin_base)                     # 2) remaining specks; base skin stays
             # skin pixels touching eye/lash pixels are designed face spacing, not orphans
             eye_c = {self.palette.special.get(k) for k in ("eye", "catchlight", "outline")}
             Hh, Ww = idx.shape
