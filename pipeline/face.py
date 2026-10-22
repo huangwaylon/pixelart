@@ -323,7 +323,13 @@ def apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam
     if view == "back":
         return idx, view
     spec = cels["views"].get(view, {})
-    cel = spec.get(expression) or spec.get("neutral")
+    cel = spec.get(expression)
+    if cel is None and expression == "blink" and spec.get("neutral"):
+        # synthesized blink: the neutral cel's lash row only, dropped onto the eye's middle row (closed lid)
+        n = spec["neutral"]
+        lash = n["rows"][0].replace("C", "E")
+        cel = {"origin": n["origin"], "rows": ["." * len(lash), lash]}
+    cel = cel or spec.get("neutral")
     if not cel:
         return idx, view
     rows = cel["rows"] if (right or view == "front") else [r[::-1] for r in cel["rows"]]

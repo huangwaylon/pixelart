@@ -60,6 +60,7 @@ def input_files(anim, variant=None):
         files += sorted(glob.glob(os.path.join(ROOT, "data", "variants", "*.json")))
     files += sorted(glob.glob(os.path.join(ROOT, "pipeline", "*.py")))
     files += sorted(glob.glob(os.path.join(ROOT, "data", "faces", "*.json")))
+    files += sorted(glob.glob(os.path.join(ROOT, "data", "props", "*.json")))
     files += sorted(glob.glob(os.path.join(ROOT, "overrides", overrides_key(anim, variant), "*", "*.json")))
     return files
 
@@ -110,7 +111,7 @@ def anchors_for(scene):
     return out
 
 
-def write_build(anim_name, scene, palette, base, final, ov_meta, bid, hashes, out_dir):
+def write_build(anim_name, scene, palette, base, final, ov_meta, bid, hashes, out_dir, props=None):
     W, H = scene.size
     n = len(scene.anim.keys)
     infos = [scene.frame_info(i) for i in range(n)]
@@ -145,13 +146,36 @@ def write_build(anim_name, scene, palette, base, final, ov_meta, bid, hashes, ou
         "frames": [{k: v for k, v in inf.items() if k != "planted"} for inf in infos],
         "anchors": anchors_for(scene),
     }
+    if scene.anim_data.get("derived"):
+        meta["derivedFrom"] = {"clip": scene.anim_data["derived"]["clip"], "frames": scene.anim_data["derived"]["frames"]}
+    if props is not None:
+        meta["layers"]["prop"] = f"{anim_name}_prop.png"
+        meta["layers"]["note"] += "; prop strip (same grid as the body sheet) is drawn behind or in front of the body per frame.prop.layer"
+        for k, f in enumerate(meta["frames"]):
+            f["prop"] = {"ids": props["ids"][k], "visible": bool(props["ids"][k]),
+                         "layer": {d: props["layer"][d][k] for d in scene.dirs}}
     with open(f"{out_dir}/{anim_name}_sheet.json", "w") as f:
         json.dump(meta, f, indent=2, sort_keys=True)
 
     # --- previews (baked z offset, shadow + fx, snow ground)
+    if props is not None:
+        ex.save_png(palette.to_rgba(ex.sheet(props["idx"], scene.dirs, scene.size)), f"{out_dir}/{anim_name}_prop.png")
+        view = {}
+        for d in scene.dirs:
+            view[d] = []
+            for i in range(n):
+                body, pr = final[d][i].copy(), props["idx"][d][i]
+                if props["layer"][d][i] == "front":
+                    body[pr >= 0] = pr[pr >= 0]
+                else:
+                    m = (pr >= 0) & (body < 0)
+                    body[m] = pr[m]
+                view[d].append(body)
+    else:
+        view = final
     ch = H + int(round(PREVIEW_HEADROOM * scene.cam.ppu))
     gs = max(2, int(round(256 / W)))   # preview upscale so every resolution is shown ~256px wide
-    baked = {d: [ex.baked_frame(final[d][i], shadows[i], fx[i][0], fx[i][1], infos[i]["z_px"], palette,
+    baked = {d: [ex.baked_frame(view[d][i], shadows[i], fx[i][0], fx[i][1], infos[i]["z_px"], palette,
                                 scene.size, scene.pivot, ch) for i in range(n)] for d in scene.dirs}
     for d in scene.dirs:
         ex.gif(baked[d], durations, palette, f"{out_dir}/preview/{anim_name}_{d}.gif", scale=gs)
@@ -160,12 +184,12 @@ def write_build(anim_name, scene, palette, base, final, ov_meta, bid, hashes, ou
     compass = [ex.compass_frame(baked, i, (W, ch), palette) for i in range(n)]
     ex.gif(compass, durations, palette, f"{out_dir}/preview/{anim_name}_8dir.gif", scale=max(1, gs - 1))
     ex.gif(compass, [t * 4 for t in durations], palette, f"{out_dir}/preview/slowmo/{anim_name}_8dir_slow.gif", scale=max(1, gs - 1))
-    bk = {d: [ex.baked_frame(final[d][i], shadows[i], fx[i][0], fx[i][1], infos[i]["z_px"], palette, scene.size,
+    bk = {d: [ex.baked_frame(view[d][i], shadows[i], fx[i][0], fx[i][1], infos[i]["z_px"], palette, scene.size,
                              scene.pivot, ch, background=False) for i in range(n)] for d in scene.dirs}
     ex.save_png(palette.to_rgba(ex.sheet(bk, scene.dirs, (W, ch))), f"{out_dir}/preview/{anim_name}_sheet_baked.png")
     ex.distance_test(final, [d for d in ("S", "SE", "E", "NE", "N", "NW") if d in scene.dirs][:5], palette, scene.size, f"{out_dir}/preview/distance_test.png")
     ex.greyscale_check(final, scene.dirs, palette, scene.size, f"{out_dir}/preview/greyscale_check.png")
-    ex.contact_sheet(final, scene.dirs, infos, palette, scene.size, f"{out_dir}/preview/{anim_name}_contact_sheet.png", scale=gs)
+    ex.contact_sheet(view, scene.dirs, infos, palette, scene.size, f"{out_dir}/preview/{anim_name}_contact_sheet.png", scale=gs)
 
     # --- QA + manifest + input snapshot
     report = run_qa(scene, final, ov_meta, palette, release=RELEASE)
@@ -222,7 +246,7 @@ def main(argv=None):
         keep = {k: anim[k] for k in ("name", "loop", "derived", "props", "conventions") if k in anim}
         anim = dict(src, **keep)
         a0, a1 = dv["frames"]
-        anim["frames"] = src["frames"][a0:a1 + 1]
+        anim["frames"] = [dict(f, **dv.get("overrides", {}).get(f["name"], {})) for f in src["frames"][a0:a1 + 1]]
         if dv.get("rest_from_first"):
             anim["rest"] = src["rest"]
     if spec:
@@ -245,13 +269,25 @@ def main(argv=None):
             character = json.load(f)
     scene = Scene(character, anim, palette)
     ov_key = overrides_key(a.anim, a.variant)
+    props = None
+    if anim.get("props"):
+        scene.prop_mode = "separate"            # GD r11: props are their own layer, never baked into the body
+        props = {"idx": {}, "layer": {}, "ids": []}
+        for d in scene.dirs:
+            props["idx"][d], props["layer"][d] = [], []
+            for i in range(len(scene.anim.keys)):
+                pi, lay, ids = scene.render_props(i, d)
+                props["idx"][d].append(pi)
+                props["layer"][d].append(lay)
+                if d == scene.dirs[0]:
+                    props["ids"].append(ids)
     base, final, ov_meta = render_all(scene, a.anim, ov_key)
     tag = a.anim if not a.variant else f"{a.variant}_{a.anim}"
     out_dir = os.path.join(ROOT, "builds", *(["variants"] if a.variant else []), f"{tag}_{bid}")
     if os.path.exists(out_dir):
         shutil.rmtree(out_dir)
     os.makedirs(out_dir)
-    report = write_build(a.anim, scene, palette, base, final, ov_meta, bid, hashes, out_dir)
+    report = write_build(a.anim, scene, palette, base, final, ov_meta, bid, hashes, out_dir, props=props)
     os.makedirs(os.path.join(out_dir, "guide"), exist_ok=True)
     with open(os.path.join(out_dir, "guide", "guide.json"), "w") as f:
         json.dump(guide_data(scene), f)

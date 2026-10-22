@@ -1,0 +1,16 @@
+{
+ "name": "snowball",
+ "bone": "hand_R",
+ "offset": [
+  0,
+  -1.6,
+  0.7
+ ],
+ "radii": [
+  2.5,
+  2.4,
+  2.5
+ ],
+ "material": "prop_snow",
+ "release_event": "throw_release"
+}

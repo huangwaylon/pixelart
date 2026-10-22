@@ -61,10 +61,32 @@ class Scene:
         for c in self.char.get("chains", []):
             prims += chain_primitives(c, self.chains[self.anim.times[i]][c["name"]], body_c,
                                       subdiv=self.char.get("render", {}).get("smooth_chains", 1))
-        prims += self._prop_prims(i, worlds)
+        if getattr(self, "prop_mode", "baked") == "baked":
+            prims += self._prop_prims(i, worlds)
         for p in prims:
             p["M"] = face_m @ p["M"]
         return prims, {k: face_m @ v for k, v in worlds.items()}
+
+    def render_props(self, i, direction):
+        """Prop-only layer for the engine (prop_mode 'separate'): (idx, layer 'front'|'back', ids)."""
+        from .render import render_pixels, add_outline
+        ch = self.anim.keys[i]
+        worlds = self.rig.world(ch, include_height=True)
+        drop = translate(0, -ch["z_world"], 0)
+        face_m = rot_y(DIRECTION_YAW[direction]) @ drop
+        props = self._prop_prims(i, worlds)
+        W, H = self.size
+        if not props:
+            return np.full((H, W), -1, int), None, []
+        for p in props:
+            p["M"] = face_m @ p["M"]
+        pix = render_pixels(props, self.palette, self.size, self.pivot, cam=self.cam, cast_shadows=False)
+        idx = add_outline(despeckle(pix.idx), self.palette.special["outline"])
+        chest = (face_m @ worlds["chest"])[:3, 3]
+        pc = np.mean([p["M"][:3, 3] for p in props], axis=0)
+        layer = "front" if self.cam.depth(pc) < self.cam.depth(chest) else "back"
+        ids = sorted({p["name"].split("_")[0] if p["name"][-1].isdigit() else p["name"] for p in props})
+        return idx, layer, ids
 
     def _prop_prims(self, i, worlds):
         """Props held by the character (snowball, crate, ...): attached to a bone, visible on listed frames.
@@ -72,6 +94,11 @@ class Scene:
         out = []
         names = [f["name"] for f in self.anim_data["frames"]]
         for pr in self.anim_data.get("props", []):
+            if pr.get("ref"):
+                # shared prop definition (data/props/<ref>.json) so every clip uses the identical object
+                root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                with open(os.path.join(root, "data", "props", f"{pr['ref']}.json")) as fh:
+                    pr = dict(json.load(fh), **{k: v for k, v in pr.items() if k != "ref"})
             vis = pr.get("frames", "all")
             if vis != "all" and i not in [names.index(v) if isinstance(v, str) else v for v in vis]:
                 continue
