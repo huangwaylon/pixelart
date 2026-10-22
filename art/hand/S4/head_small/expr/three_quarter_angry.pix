@@ -1,0 +1,39 @@
+# r13 head_small THREE-QUARTER expression: angry. Pixel artist 3. Hand-authored patches over head_three_quarter.pix.
+extends: ../head_three_quarter.pix
+patch: 7 15
+uuduuuuuuuuduuuuu
+sssdssssssdsssssu
+ssssdsssddssssssu
+patch: 8 17
+_____
+sKKss
+KiiKK
+sjWin
+sjjjs
+skkjs
+sLLss
+patch: 15 17
+______
+ssKKKs
+KKiiiK
+iWjjns
+jjjjss
+jkkkss
+ssLLLs
+patch: 6 24
+sxxxsssssssxxxsssu
+LtttsssvssstttsssL
+patch: 10 26
+sssrrsss
+ssrssrss
+ssssssss
+patch: 2 1
+_R_R_
+RR_RR
+_____
+RR_RR
+_R_R_
+patch: 22 26
+sL
+patch: 21 27
+sL

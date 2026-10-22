@@ -1,0 +1,5 @@
+# r13 dialogue bust: neutral. open eyes / flat brows / 3px line / none
+# Hand-authored face patches over bust_base.pix (lead pixel artist).
+extends: bust_base.pix
+patch: 35 31
+u

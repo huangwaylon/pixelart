@@ -1,0 +1,34 @@
+# r13 head_small THREE-QUARTER expression: surprised. Pixel artist 3. Hand-authored patches over head_three_quarter.pix.
+extends: ../head_three_quarter.pix
+patch: 7 15
+uuudduuuuddduuuuu
+ssdssdssdsssdsssu
+ssssssssssssssssu
+patch: 8 17
+sKKKK
+Kniin
+snWjn
+snjjn
+snkkn
+ssnns
+ssLLs
+patch: 15 17
+KKKKKs
+niiinK
+nWjjns
+njjjns
+nkkkns
+snnnss
+ssLLss
+patch: 6 24
+sssssssssssssssssu
+LssssssvsssssssssL
+patch: 10 26
+sssrrsss
+ssrrrrss
+sssrrsss
+patch: 0 9
+___K
+_K_K
+_K__
+K___

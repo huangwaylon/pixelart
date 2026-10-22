@@ -1,0 +1,32 @@
+# r13 head_small FRONT expression: laugh. Pixel artist 3. Hand-authored patches over head_front.pix.
+extends: ../head_front.pix
+patch: 11 15
+uuddduuuuuuuuddduu
+udsssdssssssdsssdu
+ussssssssssssssssu
+patch: 11 17
+______
+usssss
+ussKss
+usKsKs
+uKsssK
+usssss
+usssss
+patch: 23 17
+______
+sssssu
+ssKssu
+sKsKsu
+KsssKu
+sssssu
+sssssu
+patch: 11 24
+uxxxtsssssssstxxxu
+utttsssssssssstttu
+patch: 20 25
+v
+patch: 16 26
+ssrrrrss
+ssrzzrss
+sssrrsss
+ssssssss

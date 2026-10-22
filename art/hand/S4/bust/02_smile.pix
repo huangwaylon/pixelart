@@ -1,0 +1,37 @@
+# r13 dialogue bust: smile. lower lids pushed up (crescent) / brows raised 1px / small u / light blush
+# Hand-authored face patches over bust_base.pix (lead pixel artist).
+extends: bust_base.pix
+patch: 35 31
+_dddddd
+dssssss
+s______
+patch: 53 31
+dddddd_
+ssssssd
+______s
+patch: 36 40
+______L__
+_jLLLjL__
+sLsssL___
+_ss______
+_________
+ttxttx___
+txttxt___
+_________
+_________
+________L
+patch: 53 40
+______L
+LLLLLjL
+sssssLs
+____ss_
+_______
+ttxttx_
+txttxt_
+patch: 37 41
+jL
+patch: 51 41
+LjLLL
+_Lsss
+patch: 48 49
+L

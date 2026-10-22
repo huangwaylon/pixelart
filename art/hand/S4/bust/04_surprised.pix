@@ -1,0 +1,44 @@
+# r13 dialogue bust: surprised. wide, lash up 1px, 3px pinpoint irises / floating arcs / small o / shock ticks
+# Hand-authored face patches over bust_base.pix (lead pixel artist).
+extends: bust_base.pix
+patch: 24 22
+K_
+_K
+patch: 20 27
+KK
+patch: 35 31
+_ddddd__
+dssssss_
+s_KKKKK_
+KK_____K
+_wwwwww_
+s_W___WW
+___i_iWW
+___j_jWW
+__W__jWW
+__WWWWWW
+__WWWW_s
+_sLLLLs_
+__ss____
+patch: 51 31
+___ddddd___
+___sssssd__
+__KKKKKKs__
+KK______KK_
+_wwwwwwww_K
+wWW___WWW_s
+_W_i_iWWW__
+_W_j_jWWW__
+_WW__jWWW__
+_WWWWWWWW__
+_WWWWW_WW__
+_LLLLLLL___
+______ss___
+patch: 22 32
+_K
+K_
+patch: 45 48
+_LL_
+LrrL
+_yyL
+_LL_

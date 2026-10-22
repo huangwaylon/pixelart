@@ -1,0 +1,38 @@
+# r13 dialogue bust: sad. half-lid, gaze down / inner ends up / downturned / outer tear (snow_1)
+# Hand-authored face patches over bust_base.pix (lead pixel artist).
+extends: bust_base.pix
+patch: 35 31
+u____dd_
+_ss__ss_
+_dd_____
+__sssss_
+ssssss__
+sssKKKK_
+K_KK_i_K
+__iiii__
+__WW_j__
+__WWKK__
+____KKk_
+___zz___
+patch: 40 31
+dd
+patch: 51 31
+__dd________
+__ss__ss____
+______dd____
+__ssssss____
+__ssssssss__
+_KKKKssssss_
+K_ii___KK_K_
+__iiiii_K___
+_WW__j______
+_WW_KKK_____
+____KKK_____
+___zzz______
+__________z_
+_________zWz
+_________zWz
+__________z_
+patch: 44 49
+_LLL_
+LsssL

@@ -1,0 +1,29 @@
+# r13 head_small THREE-QUARTER expression: determined. Pixel artist 3. Hand-authored patches over head_three_quarter.pix.
+extends: ../head_three_quarter.pix
+patch: 7 15
+uuuuuuuuuuuuuuuuu
+sssddsssssddssssu
+sssssdsssdssssssu
+patch: 8 17
+_____
+sKKKK
+KiiiK
+sjWjn
+sjjWs
+skkjs
+sLLss
+patch: 15 17
+______
+KKKKKs
+KiiiiK
+jWjjns
+jjWjss
+jkkkss
+ssLLLs
+patch: 6 24
+sssssssssssssssssu
+LssssssvsssssssssL
+patch: 10 26
+ssssssrs
+sssrrrss
+ssssssss

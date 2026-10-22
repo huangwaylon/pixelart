@@ -1,0 +1,32 @@
+# r13 head_small FRONT expression: content. Pixel artist 3. Hand-authored patches over head_front.pix.
+extends: ../head_front.pix
+patch: 11 15
+uuuuuuuuuuuuuuuuuu
+ussssssssssssssssu
+usdddssssssssdddsu
+patch: 11 17
+______
+usssss
+usssss
+usssss
+uKsssK
+usKKKs
+usssss
+patch: 23 17
+______
+sssssu
+sssssu
+sssssu
+KsssKu
+sKKKsu
+sssssu
+patch: 11 24
+uxxtsssssssssstxxu
+uttssssssssssssttu
+patch: 20 25
+v
+patch: 16 26
+ssssssss
+srssssrs
+ssrrrrss
+ssssssss
