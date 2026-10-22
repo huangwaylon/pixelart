@@ -10,7 +10,7 @@ Faces are copied pixel-for-pixel (eyes, brows, nose, mouth, blush, jaw) from Pix
 ## Landmark rows (round 3, 5.0 heads, identical in all 4 views)
 | landmark | y |
 |---|---|
-| bow (front wedges / back loops / side lobes) | 8-13 / 4-17 / 8-20 |
+| bow (one design, 38 px span x29-66 in front/back; loops about y6-15) | 6-15 |
 | crown / bang cut (2 notches) | 5 / 14 |
 | brow / top lash / iris / lower lash | 15 / 18 / 19-23 / 24 |
 | mouth / chin | 26-28 / 31 |
@@ -49,3 +49,13 @@ Faces are copied pixel-for-pixel (eyes, brows, nose, mouth, blush, jaw) from Pix
 - **Boots (6):** 7 px shafts narrowing to 6 at the ankle, a flared cuff, and a diagonal plum fold.
 - **Re-sync (1, 7):** copied Artist 3's updated `head_front` (wedge bow loops at y8-13 with a crease) and `head_side` (soft forehead, upturned nose, small mouth) exactly. The side face region was re-shaped to their contour. The 3/4 file was unchanged.
 - **Silhouettes (8):** rechecked on light, dark and black backgrounds. Only allowed orphans remain.
+
+## Round 4 (review 3)
+- **Bow (ruling a; fixes 1-4):** every view now uses Artist 3's bow from `head_small`, copied exactly.
+  - Front: flared fans at y7-14.
+  - Back: 38 px fans at y6-15 with a 5x5 knot (x45-49) and the rounded hair arc kept between the loops. My two tails continue from their roots at x41-45 and x50-54 down to y40.
+  - 3/4: near-loop fan at y6-14, far nub lowered behind the crown.
+  - Side: the near loop faces the viewer on the back of the skull.
+- **Heads (fixes 5, 6):** the 3/4 and side views now take Artist 3's whole head, rows 5-31: face, crown, side-bang overhang, filled hole, bow, ponytail root and tail roots. My ponytails, tails and back hair continue from their positions below y31; the 3/4 view keeps the S-curve. The 3/4 skull is therefore their narrower one (back edge x57).
+- **Back hair tips (fix 7):** 5 rounded points (bottom falls off as dx^2 from each tip) at y64-74, each with 1-2 `hair_1` shadow pixels on one side only. The shredded split wedges are gone.
+- **Checks:** silhouettes rechecked on light, dark and black. Only allowed orphans remain. 14-28 colours per view.
