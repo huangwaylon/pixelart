@@ -1,0 +1,24 @@
+{
+ "variant": "S4_halfup_bow",
+ "ppu": 6.0,
+ "direction": "SE",
+ "use": "dialogue portraits",
+ "image": "portraits_sheet.png",
+ "frameSize": [
+  336,
+  198
+ ],
+ "frames": [
+  "neutral",
+  "smile",
+  "joyful",
+  "laugh",
+  "surprised",
+  "sad",
+  "angry",
+  "embarrassed",
+  "determined",
+  "calm",
+  "squint"
+ ]
+}

@@ -1,7 +1,7 @@
 {
  "extends": "S0_semichibi_base",
  "name": "S4_halfup_bow",
- "label": "S4 - half-up long hair + big back bow, hime bangs",
+ "label": "S4 - single tapered ponytail under a big back bow, hime bangs",
  "outfit": {
   "hair": "long",
   "hair_len": 2.0,
@@ -12,9 +12,9 @@
  "prim_overrides": {
   "ribbon_loop_0": {
    "center": [
-    -4.0,
-    11.4,
-    -9.0
+    -4.2,
+    11.2,
+    -9.9
    ],
    "radii": [
     3.9,
@@ -29,9 +29,9 @@
   },
   "ribbon_loop_1": {
    "center": [
-    4.0,
-    11.4,
-    -9.0
+    4.2,
+    11.2,
+    -9.9
    ],
    "radii": [
     3.9,
@@ -47,8 +47,8 @@
   "ribbon_knot": {
    "center": [
     0,
-    10.9,
-    -9.6
+    10.8,
+    -10.6
    ],
    "radii": [
     1.5,
@@ -90,57 +90,18 @@
     0,
     -2
    ]
-  }
- },
- "chain_overrides": {
-  "lock_0": {
-   "rest_dir": [
-    -0.2,
-    -1,
-    -0.25
-   ],
-   "widths": [
-    4.6,
-    4.8,
-    4.6,
-    4.0,
-    2.8,
-    1.2
-   ],
-   "thickness": 2.6,
-   "stiffness": 200,
-   "damping": 0.18
   },
-  "lock_1": {
-   "widths": [
+  "hair_back": {
+   "center": [
+    0,
     4.6,
-    4.8,
-    4.6,
-    4.2,
-    3.0,
-    1.3
+    -4.4
    ],
-   "thickness": 2.6,
-   "stiffness": 200,
-   "damping": 0.18
-  },
-  "lock_2": {
-   "rest_dir": [
-    0.2,
-    -1,
-    -0.25
-   ],
-   "widths": [
-    4.6,
-    4.8,
-    4.6,
-    4.0,
-    2.8,
-    1.2
-   ],
-   "thickness": 2.6,
-   "stiffness": 200,
-   "damping": 0.18
+   "radii": [
+    7.8,
+    5.2,
+    4.0
+   ]
   }
  },
  "add_prims": [
@@ -149,8 +110,8 @@
    "bone": "head",
    "center": [
     -2.0,
-    6.6,
-    -9.6
+    7.0,
+    -10.6
    ],
    "radii": [
     1.3,
@@ -170,8 +131,8 @@
    "bone": "head",
    "center": [
     2.0,
-    6.6,
-    -9.6
+    7.0,
+    -10.6
    ],
    "radii": [
     1.3,
@@ -204,7 +165,7 @@
   ],
   "hair": [
    -0.3,
-   0.985
+   0.999
   ]
  },
  "render": {
@@ -216,11 +177,50 @@
    "line_az_min": 50,
    "ring_y": 0.64,
    "ring_w": 0.12,
-   "ring_az": 110,
+   "ring_az": 180,
    "under_band": 0.14
   },
   "lineart": {
    "angel_ring": false
   }
- }
+ },
+ "remove": [
+  "lock_0",
+  "lock_1",
+  "lock_2"
+ ],
+ "add_chains": [
+  {
+   "name": "pony",
+   "anchor_bone": "head",
+   "anchor": [
+    0,
+    8.2,
+    -9.1
+   ],
+   "rest_dir": [
+    0,
+    -1,
+    -0.2
+   ],
+   "segments": 7,
+   "seg_len": 3.1,
+   "widths": [
+    3.2,
+    4.2,
+    4.6,
+    4.4,
+    3.6,
+    2.4,
+    0.8
+   ],
+   "thickness": 2.8,
+   "material": "hair",
+   "group": "head",
+   "stiffness": 500,
+   "damping": 0.2,
+   "gravity": 2400,
+   "collide": true
+  }
+ ]
 }

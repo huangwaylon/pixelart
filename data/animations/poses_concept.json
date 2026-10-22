@@ -1,0 +1,32 @@
+{
+ "name": "poses_concept", "version": 1, "frame_size": [48, 64], "pivot": [24, 57],
+ "directions": ["S", "SE", "E", "NE", "N", "NW", "W", "SW"],
+ "conventions": "Static concept poses (not an animation): each frame is one pose; see jump.json for channel conventions.",
+ "preroll_ms": 1500, "qa": {"max_height_delta_px": 99, "max_orphans": 99, "min_margin_px": 0, "lead_in_ms": 40},
+ "rest": {"z_px": 0, "pelvis_drop": 0, "squash": 1.0, "plant": true, "face": "neutral",
+          "spine": {"tilt": 0, "turn": 0, "lean": 0}, "head": {"tilt": 0, "turn": 0, "roll": 0},
+          "arm_L": {"raise": 0, "spread": 12, "elbow": 10}, "arm_R": {"raise": 0, "spread": 12, "elbow": 10},
+          "leg_L": {"hip": 0, "knee": 0, "ankle": 0, "spread": 0}, "leg_R": {"hip": 0, "knee": 0, "ankle": 0, "spread": 0}},
+ "frames": [
+  {"name": "idle", "ms": 600, "face": "smile", "head": {"tilt": 3, "roll": -4}, "spine": {"lean": 2},
+   "arm_L": {"raise": 8, "spread": 10, "elbow": 20}, "arm_R": {"raise": 8, "spread": 10, "elbow": 20},
+   "leg_L": {"spread": -4}, "leg_R": {"spread": -4}},
+  {"name": "wave", "ms": 600, "face": "joyful", "head": {"tilt": -4, "roll": 8}, "spine": {"lean": -4},
+   "arm_L": {"raise": 150, "spread": 38, "elbow": 40}, "arm_R": {"raise": 10, "spread": 14, "elbow": 25}},
+  {"name": "hands_clasped", "ms": 600, "face": "embarrassed", "head": {"tilt": 10, "roll": 10}, "spine": {"tilt": 4},
+   "arm_L": {"raise": 35, "spread": -18, "elbow": 70}, "arm_R": {"raise": 35, "spread": -18, "elbow": 70},
+   "leg_L": {"spread": -7}, "leg_R": {"spread": -7}},
+  {"name": "cheer", "ms": 600, "face": "laugh", "head": {"tilt": -10}, "squash": 1.03,
+   "arm_L": {"raise": 165, "spread": 30, "elbow": 15}, "arm_R": {"raise": 165, "spread": 30, "elbow": 15}},
+  {"name": "thinking", "ms": 600, "face": "calm", "head": {"tilt": 6, "roll": -10, "turn": -8}, "spine": {"lean": 3},
+   "arm_L": {"raise": 30, "spread": 6, "elbow": 60}, "arm_R": {"raise": 70, "spread": -10, "elbow": 120}},
+  {"name": "surprised", "ms": 600, "face": "surprised", "head": {"tilt": -6}, "spine": {"tilt": -6},
+   "arm_L": {"raise": 60, "spread": 30, "elbow": 90}, "arm_R": {"raise": 60, "spread": 30, "elbow": 90}},
+  {"name": "determined", "ms": 600, "face": "determined", "head": {"tilt": 4}, "spine": {"tilt": 6}, "pelvis_drop": 0.6,
+   "arm_L": {"raise": 40, "spread": 20, "elbow": 95}, "arm_R": {"raise": 40, "spread": 20, "elbow": 95},
+   "leg_L": {"spread": 6}, "leg_R": {"spread": 6}},
+  {"name": "sad", "ms": 600, "face": "sad", "head": {"tilt": 14}, "spine": {"tilt": 8},
+   "arm_L": {"raise": 5, "spread": 4, "elbow": 15}, "arm_R": {"raise": 5, "spread": 4, "elbow": 15},
+   "leg_L": {"spread": -5}, "leg_R": {"spread": -5}}
+ ]
+}

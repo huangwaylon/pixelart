@@ -59,6 +59,7 @@ def input_files(anim, variant=None):
     if variant:
         files += sorted(glob.glob(os.path.join(ROOT, "data", "variants", "*.json")))
     files += sorted(glob.glob(os.path.join(ROOT, "pipeline", "*.py")))
+    files += sorted(glob.glob(os.path.join(ROOT, "data", "faces", "*.json")))
     files += sorted(glob.glob(os.path.join(ROOT, "overrides", overrides_key(anim, variant), "*", "*.json")))
     return files
 

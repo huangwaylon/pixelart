@@ -1,0 +1,10 @@
+{
+ "extends": "S4_halfup_bow",
+ "name": "OL_dark",
+ "label": "outline: dark",
+ "render": {
+  "lineart": {
+   "outline": "dark"
+  }
+ }
+}

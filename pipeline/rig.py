@@ -306,10 +306,30 @@ class ChainSim:
                 pts[i] = pts[i - 1] + (math.cos(lim) * d + math.sin(lim) * perp) * L
 
 
-def chain_primitives(chain, pts, body_center):
+def _subdivide(pts, widths, n):
+    """Catmull-Rom resample of the chain so it renders as one smooth tapered tube instead of beads."""
+    P = [pts[0] * 2 - pts[1]] + list(pts) + [pts[-1] * 2 - pts[-2]]
+    out, ws = [], []
+    for i in range(1, len(P) - 2):
+        p0, p1, p2, p3 = P[i - 1], P[i], P[i + 1], P[i + 2]
+        for k in range(n):
+            t = k / n
+            out.append(0.5 * ((2 * p1) + (-p0 + p2) * t + (2 * p0 - 5 * p1 + 4 * p2 - p3) * t * t +
+                              (-p0 + 3 * p1 - 3 * p2 + p3) * t ** 3))
+            seg = i - 1
+            w0 = widths[min(seg, len(widths) - 1)]
+            w1 = widths[min(seg + 1, len(widths) - 1)]
+            ws.append(w0 + (w1 - w0) * t)
+    out.append(pts[-1])
+    return np.array(out), ws
+
+
+def chain_primitives(chain, pts, body_center, subdiv=1):
     """Render primitives for one simulated chain (points in canonical space)."""
     prims = []
     widths = chain.get("widths", [1.0])
+    if subdiv > 1 and len(pts) >= 3 and chain.get("draw_segments", True):
+        pts, widths = _subdivide(np.asarray(pts), widths, subdiv)
     if chain.get("draw_segments", True):
         for i in range(len(pts) - 1):
             a, b = pts[i], pts[i + 1]
@@ -320,7 +340,7 @@ def chain_primitives(chain, pts, body_center):
             hint = out if np.linalg.norm(out) > 1e-6 else np.array([0, 0, 1.0])
             R = align_y_to(seg, hint)
             w = widths[min(i, len(widths) - 1)]
-            half = np.linalg.norm(seg) / 2 + 0.7
+            half = np.linalg.norm(seg) / 2 + (0.7 if subdiv == 1 else 0.35 + 0.5 * w)
             M = translate(*mid) @ R @ scale(w, half, chain.get("thickness", 1.0))
             prims.append({"name": f'{chain["name"]}_{i}', "M": M, "material": chain["material"],
                           "group": chain.get("group", chain["name"])})

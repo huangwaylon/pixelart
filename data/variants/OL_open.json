@@ -1,0 +1,10 @@
+{
+ "extends": "S4_halfup_bow",
+ "name": "OL_open",
+ "label": "outline: open",
+ "render": {
+  "lineart": {
+   "outline": "open"
+  }
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "variant": "S4_halfup_bow",
+ "ppu": 3.0,
+ "direction": "SE",
+ "image": "fullbody_sheet.png",
+ "frameSize": [
+  268,
+  158
+ ],
+ "frames": [
+  "idle",
+  "wave",
+  "hands_clasped",
+  "cheer",
+  "thinking",
+  "surprised",
+  "determined",
+  "sad"
+ ]
+}

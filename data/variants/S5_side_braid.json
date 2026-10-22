@@ -11,55 +11,44 @@
   "ahoge": false
  },
  "remove": [
-  "beanie_cuff"
+  "beanie_cuff",
+  "tie"
  ],
- "prim_overrides": {
-  "tie": {
-   "center": [
-    -5.2,
-    2.2,
-    1.0
-   ],
-   "radii": [
-    1.4,
-    1.4,
-    1.4
-   ]
-  }
- },
+ "prim_overrides": {},
  "chain_overrides": {
   "pony": {
+   "anchor_bone": "chest",
    "anchor": [
-    -4.8,
-    8.6,
-    1.2
+    -5.8,
+    5.2,
+    2.6
    ],
    "rest_dir": [
-    0.08,
+    0.12,
     -1,
-    0.9
+    0.6
    ],
-   "segments": 8,
-   "seg_len": 2.2,
+   "segments": 6,
+   "seg_len": 2.3,
    "widths": [
-    4.0,
-    2.4,
-    3.8,
-    2.3,
-    3.6,
-    2.2,
-    3.2,
-    2.2
+    3.4,
+    1.9,
+    3.4,
+    1.9,
+    3.0,
+    1.5
    ],
-   "thickness": 3.0,
+   "thickness": 2.6,
    "tip": {
     "radius": 1.6,
     "material": "ribbon"
    },
-   "stiffness": 240,
-   "max_swing": 30,
-   "damping": 0.2,
-   "anchor_bone": "chest"
+   "stiffness": 700,
+   "damping": 0.25,
+   "gravity": 800,
+   "max_swing": 40,
+   "group": "pony",
+   "material": "hair_auburn"
   }
  },
  "add_prims": [
@@ -68,13 +57,13 @@
    "bone": "head",
    "center": [
     -1.0,
-    1.4,
-    -4.6
+    3.0,
+    -4.4
    ],
    "radii": [
-    8.0,
-    8.2,
-    4.0
+    7.4,
+    5.8,
+    3.8
    ],
    "material": "hair",
    "group": "head"
@@ -83,21 +72,21 @@
    "name": "hair_sweep",
    "bone": "head",
    "center": [
-    -4.4,
-    1.2,
-    -2.6
+    -5.4,
+    0.8,
+    -1.4
    ],
    "radii": [
-    3.4,
     3.0,
-    3.2
+    3.4,
+    3.0
    ],
    "material": "hair",
    "group": "head",
    "rot": [
     0,
     0,
-    30
+    35
    ]
   }
  ],
@@ -106,6 +95,37 @@
    "crn_1",
    "red_1",
    "red_2"
+  ],
+  "hair_auburn": [
+   "plum_0",
+   "hair_1",
+   "hair_2"
+  ]
+ },
+ "render": {
+  "hair_style": {
+   "clump_deg": 120,
+   "clump_offset": 0,
+   "line_start": 0.3,
+   "line_px": 0.7,
+   "line_az_min": 100,
+   "ring_y": 0.0,
+   "ring_w": 0.0,
+   "ring_az": 0,
+   "under_band": 0.0
+  },
+  "lineart": {
+   "angel_ring": false
+  }
+ },
+ "material_bands": {
+  "hair": [
+   -0.3,
+   0.45
+  ],
+  "hair_auburn": [
+   -0.45,
+   0.42
   ]
  }
 }

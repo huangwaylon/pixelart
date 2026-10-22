@@ -1,0 +1,186 @@
+{
+ "name": "kawaii_v2",
+ "notes": "kawaii_v2 (face designer r10)",
+ "views": {
+  "front": {
+   "neutral": {
+    "origin": [
+     4,
+     1
+    ],
+    "rows": [
+     "EEE...EEE",
+     ".CE...CE.",
+     ".EE...EE.",
+     ".BB...BB."
+    ]
+   },
+   "smile": {
+    "origin": [
+     4,
+     1
+    ],
+    "rows": [
+     "EEE...EEE",
+     ".CE...CE.",
+     ".EE...EE.",
+     ".BB.M.BB."
+    ]
+   },
+   "determined": {
+    "origin": [
+     4,
+     1
+    ],
+    "rows": [
+     ".........",
+     "EEE...EEE",
+     ".EE...EE.",
+     "....M...."
+    ]
+   },
+   "joyful": {
+    "origin": [
+     4,
+     1
+    ],
+    "rows": [
+     ".E.....E.",
+     "E.E...E.E",
+     "BB.MMM.BB",
+     "....M...."
+    ]
+   },
+   "squint": {
+    "origin": [
+     4,
+     1
+    ],
+    "rows": [
+     "EE.....EE",
+     "..E...E..",
+     "EE.....EE",
+     ".BB.M.BB."
+    ]
+   }
+  },
+  "three_quarter": {
+   "neutral": {
+    "origin": [
+     6,
+     1
+    ],
+    "rows": [
+     "EEE.EE.",
+     ".CE.EE.",
+     ".EE....",
+     ".BB...."
+    ]
+   },
+   "smile": {
+    "origin": [
+     6,
+     1
+    ],
+    "rows": [
+     "EEE.EE.",
+     ".CE.EE.",
+     ".EE....",
+     ".BB.M.."
+    ]
+   },
+   "determined": {
+    "origin": [
+     6,
+     1
+    ],
+    "rows": [
+     ".......",
+     "EEE.EE.",
+     ".EE....",
+     "....M.."
+    ]
+   },
+   "joyful": {
+    "origin": [
+     6,
+     1
+    ],
+    "rows": [
+     ".E...E.",
+     "E.E.E..",
+     ".BBMM..",
+     "....M.."
+    ]
+   },
+   "squint": {
+    "origin": [
+     6,
+     1
+    ],
+    "rows": [
+     "EE...E.",
+     "..E.E..",
+     "EE.....",
+     ".BB.M.."
+    ]
+   }
+  },
+  "profile": {
+   "neutral": {
+    "origin": [
+     4,
+     1
+    ],
+    "rows": [
+     ".EE..",
+     ".CE..",
+     "..E.."
+    ]
+   },
+   "smile": {
+    "origin": [
+     4,
+     1
+    ],
+    "rows": [
+     ".EE..",
+     ".CE..",
+     "..E.."
+    ]
+   },
+   "determined": {
+    "origin": [
+     4,
+     1
+    ],
+    "rows": [
+     ".....",
+     ".EE..",
+     "..E.."
+    ]
+   },
+   "joyful": {
+    "origin": [
+     4,
+     1
+    ],
+    "rows": [
+     ".E...",
+     "..E.."
+    ]
+   },
+   "squint": {
+    "origin": [
+     4,
+     1
+    ],
+    "rows": [
+     ".E...",
+     "..E..",
+     ".E..."
+    ]
+   }
+  }
+ }
+}

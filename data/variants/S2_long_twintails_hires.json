@@ -1,0 +1,18 @@
+{
+ "extends": "S2_long_twintails",
+ "name": "S2_long_twintails_hires",
+ "label": "S2 hires test (ppu 1.0, 64x80)",
+ "render": {
+  "ppu": 1.0
+ },
+ "frame": {
+  "size": [
+   64,
+   80
+  ],
+  "pivot": [
+   32,
+   72
+  ]
+ }
+}

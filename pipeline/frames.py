@@ -9,7 +9,7 @@ from .mathutil import rot_y, translate, xform_point
 from .rig import Rig, Animation, ChainSim, body_primitives, chain_primitives
 from .render import (render_pixels, add_outline, remove_lone_pixels, despeckle, DIRECTION_YAW, Camera,
                      pixel_perfect_outline, selout_outline, regularize_silhouette)
-from .face import apply_face
+from .face import apply_face, apply_face_cels
 from .pixelrules import apply_rules, apply_post_outline, pom_cel, angel_ring, ALL_RULES, POST_OUTLINE_RULES
 from .fx import shadow_frame, fx_frames
 
@@ -55,7 +55,8 @@ class Scene:
         prims = body_primitives(self.rig, worlds)
         body_c = xform_point(worlds["spine"], [0, 0, 0])
         for c in self.char.get("chains", []):
-            prims += chain_primitives(c, self.chains[self.anim.times[i]][c["name"]], body_c)
+            prims += chain_primitives(c, self.chains[self.anim.times[i]][c["name"]], body_c,
+                                      subdiv=self.char.get("render", {}).get("smooth_chains", 1))
         for p in prims:
             p["M"] = face_m @ p["M"]
         return prims, {k: face_m @ v for k, v in worlds.items()}
@@ -133,14 +134,26 @@ class Scene:
                 pix.group, [k for k, g in enumerate(pix.group_names) if g == "ahoge"])
             idx = regularize_silhouette(idx, protect=protect)
             pix.material = np.where(idx >= 0, pix.material, None)
-        idx = add_outline(idx, self.palette.special["outline"])
-        if la.get("pixel_perfect"):
+        mode = la.get("outline", "selout" if la.get("selout") else "dark")
+        # outline modes (r10 comparison): dark | selout | open | colored | none
+        if mode != "none":
+            idx = add_outline(idx, self.palette.special["outline"])
+        if la.get("pixel_perfect") and mode != "none":
             idx = pixel_perfect_outline(idx, {self.palette.special["outline"]}, exterior=pix.material == None)  # noqa: E711
-        if la.get("selout"):
-            idx = selout_outline(idx, pix.material, self.palette)
+        if mode in ("selout", "open", "colored"):
+            idx = selout_outline(idx, pix.material, self.palette, mode=mode)
         if v2:
             idx = apply_post_outline(idx, self.palette, [r for r in rules if r != "grounded_soles"])
-        idx = apply_face(idx, pix, worlds[face["bone"]], face, expr, self.palette, self.pivot, self.cam, v2=v2)
+        if rnd.get("face_hd"):
+            from .face_hd import apply_face_hd
+            idx = apply_face_hd(idx, self.palette, worlds[face["bone"]], face, self._face_cels(rnd["face_hd"]), expr,
+                                self.pivot, self.cam)
+        elif rnd.get("face_cels"):
+            # v3: designed face cels (consistent in every view) instead of procedural eye placement
+            cels = self._face_cels(rnd["face_cels"])
+            idx, _ = apply_face_cels(idx, self.palette, worlds[face["bone"]], face, cels, expr, self.pivot, self.cam)
+        else:
+            idx = apply_face(idx, pix, worlds[face["bone"]], face, expr, self.palette, self.pivot, self.cam, v2=v2)
         # decals can split shading bands into 1-2px fragments; clean again with face + outline colours protected
         keep = {self.palette.special[k] for k in ("eye", "catchlight", "mouth", "blush", "outline") if k in self.palette.special}
         idx = despeckle(idx, keep=keep)
@@ -161,6 +174,13 @@ class Scene:
             idx = apply_post_outline(idx, self.palette, ["grounded_soles"], deliberate=soles, part_mask=grown)
             self.deliberate[(direction, i)] = soles
         return idx
+
+    def _face_cels(self, name):
+        if not hasattr(self, "_cels"):
+            root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            with open(os.path.join(root, "data", "faces", f"{name}.json")) as f:
+                self._cels = json.load(f)
+        return self._cels
 
     def render_shadow(self, i):
         zmax = max(p_["z_px"] for p_ in self.anim.poses) or 1

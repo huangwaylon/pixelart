@@ -448,7 +448,7 @@ def pixel_perfect_outline(idx, outline_colors, exterior=None):
     return out
 
 
-def selout_outline(idx, material, palette, pivot_row_bottom=None):
+def selout_outline(idx, material, palette, pivot_row_bottom=None, mode="selout"):
     """Line-art pass 3 (色トレス): exterior line colour follows the material it wraps. Lit (top/left-facing)
     edges use the material's darkest tone; shadow-side (right/bottom-facing) edges and the feet use the
     near-black outline colour."""
@@ -472,7 +472,15 @@ def selout_outline(idx, material, palette, pivot_row_bottom=None):
                 continue
             mat, fy, fx = cand[0]
             lit_side = (fy < 0 or fx < 0) and not (fy > 0 or fx > 0)
-            if y >= bottom - 1 or not lit_side or mat not in palette.ramps:
+            if mat not in palette.ramps:
+                continue
+            if mode == "colored":          # every exterior edge takes the wrapped material's darkest tone
+                out[y, x] = palette.index[line_cols.get(mat) or palette.ramps[mat][0]]
+                continue
+            if y >= bottom - 1 or not lit_side:
+                continue
+            if mode == "open":             # lit edges have no line at all: the shape is defined by its fill
+                out[y, x] = -1
                 continue
             name = line_cols.get(mat) or palette.ramps[mat][0]
             out[y, x] = palette.index[name]

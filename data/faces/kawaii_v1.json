@@ -1,0 +1,27 @@
+{
+ "name": "kawaii_v1",
+ "notes": "Starter set (lead). front = mirrored pair 3px apart; three_quarter/profile drawn facing SCREEN-RIGHT (mirrored for left). origin = cel pixel on the face centre at the eye line. E eye/lash, C catchlight, B blush, M mouth, S skin shadow.",
+ "views": {
+  "front": {
+   "neutral":    {"origin": [4, 1], "rows": ["EEE...EEE", ".CE...CE.", ".EE...EE.", "BB.....BB"]},
+   "smile":      {"origin": [4, 1], "rows": ["EEE...EEE", ".CE...CE.", ".EE...EE.", "BB.....BB", "....M...."]},
+   "determined": {"origin": [4, 1], "rows": ["EEE...EEE", ".EE...EE.", ".........", ".........", "...MM...."]},
+   "joyful":     {"origin": [4, 1], "rows": [".E.....E.", "E.E...E.E", ".........", "BB.....BB", "...MM....", "...MM...."]},
+   "squint":     {"origin": [4, 1], "rows": ["E.......E", ".E.....E.", "E.......E", "BB.....BB", "....M...."]}
+  },
+  "three_quarter": {
+   "neutral":    {"origin": [4, 1], "rows": ["EEE..EE.", ".CE..EE.", ".EE..EE.", "BB......"]},
+   "smile":      {"origin": [4, 1], "rows": ["EEE..EE.", ".CE..EE.", ".EE..EE.", "BB......", ".....M.."]},
+   "determined": {"origin": [4, 1], "rows": ["EEE..EE.", ".EE..EE.", "........", "........", ".....M.."]},
+   "joyful":     {"origin": [4, 1], "rows": [".E...E..", "E.E.E.E.", "........", "BB......", ".....M..", ".....M.."]},
+   "squint":     {"origin": [4, 1], "rows": ["E....E..", ".E..E...", "E....E..", "BB......"]}
+  },
+  "profile": {
+   "neutral":    {"origin": [2, 0], "rows": ["CE.", ".E."]},
+   "smile":      {"origin": [2, 0], "rows": ["CE.", ".E."]},
+   "determined": {"origin": [2, 0], "rows": [".E.", ".E."]},
+   "joyful":     {"origin": [2, 0], "rows": ["E..", ".E."]},
+   "squint":     {"origin": [2, 0], "rows": ["E..", ".E.", "E.."]}
+  }
+ }
+}

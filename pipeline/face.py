@@ -33,6 +33,9 @@ EYES_BY_STYLE = {
     },
 }
 EYES = EYES_BY_STYLE["small"]
+# 3/4 far eye for the kawaii face model: 2px wide, no outward lash (foreshortened), catchlight dropped
+FAR_EYES = {"neutral": ["EE", "EE", "EE"], "smile": ["EE", "EE", "EE"], "determined": ["EE", "EE"],
+            "joyful": ["EE"], "squint": ["E", "E"]}
 # v2 profile eyes (one eye visible): drawn 1px behind the face front so a nose column remains.
 # Patterns are written facing RIGHT and mirrored for left-facing views.
 PROFILE_EYES = {   # AD locked rule 2: 1x2 eye column, catchlight on the BACK side (left when facing right)
@@ -135,7 +138,19 @@ def apply_face(frame_idx, pix, head_world, face, expression, palette, pivot, cam
             return max(ys) if ys else None
         return _profile_eye(idx, skin, visible[0], head_world, face, expression, colors, pivot, cam, cuff_rows)
     visible.sort(key=lambda e: e[0])
-    pats = EYES_BY_STYLE[face.get("eyes", "small")][expression]
+    if v2 and len(visible) == 2:
+        # eyes share one pixel row (a 1px offset reads as a crooked face) unless the head is deliberately rolled
+        ey = head_world[:3, 1] / np.linalg.norm(head_world[:3, 1])
+        a = cam.project(np.zeros(3), (0, 0)); b = cam.project(ey, (0, 0))
+        # screen-space roll = how far the head's up-axis leans from vertical (independent of facing yaw)
+        roll = abs(math.degrees(math.atan2(b[0] - a[0], -(b[1] - a[1]) + 1e-9)))
+        if roll < 12.0:
+            row = math.floor((visible[0][1] + visible[1][1]) / 2.0) + 0.5
+            visible = [(visible[0][0], row, visible[0][2]), (visible[1][0], row, visible[1][2])]
+    style = EYES_BY_STYLE[face.get("eyes", "small")]
+    if expression not in style:
+        expression = "neutral"           # HD-only expressions (sad, surprised, ...) fall back for sprite faces
+    pats = style[expression]
     eye_boxes = []
     for k, (sx, sy, _) in enumerate(visible):
         # screen-left eye uses the "L" pattern unless only one eye is visible
@@ -145,6 +160,21 @@ def apply_face(frame_idx, pix, head_world, face, expression, palette, pivot, cam
         is_far = far_x is not None and abs(sx - far_x) < 1e-6
         if is_far:
             pat = [row.replace("C", "E") for row in pat]
+            if v2 and face.get("eyes") == "kawaii":
+                # 3/4 far eye (face model): narrower, no outward lash, same row as the near eye
+                pat = FAR_EYES.get(expression, pat)
+            if v2:
+                # keep >= 1 skin pixel between the far eye and the face edge (hair/outline) on its outer side
+                outer_dir = -1 if k == 0 else 1
+                wpat = len(pat[0])
+                for _ in range(3):
+                    x0_ = int(math.floor(sx - wpat / 2 + 0.5))
+                    edge_x = x0_ - 1 if outer_dir < 0 else x0_ + wpat
+                    rows_ = range(int(math.floor(sy - 0.5)), int(math.floor(sy - 0.5)) + len(pat))
+                    ok = all(0 <= edge_x < idx.shape[1] and 0 <= yy < idx.shape[0] and skin[yy, edge_x] for yy in rows_)
+                    if ok:
+                        break
+                    sx -= outer_dir          # nudge toward the face centre
         top = sy - 0.5  # anchor marks the upper eye pixel for 2-tall eyes
         mask = skin
         if v2 and is_far:
@@ -163,7 +193,7 @@ def apply_face(frame_idx, pix, head_world, face, expression, palette, pivot, cam
             mask = skin & ~near_outer
         x0, y0, w, h = _stamp(idx, mask, pat, sx, top + len(pat) / 2, colors)
         eye_boxes.append((x0, y0, w, h))
-        if BLUSH[expression]:
+        if BLUSH[expression] and not (v2 and is_far):
             outward = -1 if (k == 0 and len(visible) == 2) else 1
             if len(visible) == 1:
                 outward = 0
@@ -266,3 +296,58 @@ def _profile_eye(idx, skin, eye, head_world, face, expression, colors, pivot, ca
             if ch != "." and 0 <= x < W and 0 <= y < H and skin[y, x]:
                 idx[y, x] = colors[ch]
     return idx
+
+
+# ----------------------------------------------------------------------------------------------------------
+# Face cels (v3): hand-designed faces per view class, pinned to the projected 3D eye line -> identical design in
+# every frame/direction. File: data/faces/<name>.json
+#   {"views": {"front": {"<expr>": {"rows": [...], "origin": [ox, oy]}}, "three_quarter": {...}, "profile": {...}}}
+# rows are drawn for a head facing the viewer (front) or facing SCREEN-RIGHT (three_quarter/profile; mirrored for
+# left-facing views). Chars: E eye/lash (outline colour), C catchlight, B blush, M mouth, S skin shadow,
+# s skin base (to clear), '.' untouched. origin = cel pixel placed on the anchor (face centre on the eye line).
+FACE_CLASSES = (("front", 22.5), ("three_quarter", 67.5), ("profile", 112.5))
+
+
+def face_view(head_world, cam):
+    """(class, facing_right) from the head's forward axis relative to the camera."""
+    fwd = head_world[:3, 2] / np.linalg.norm(head_world[:3, 2])
+    ang = math.degrees(math.atan2(float(np.dot(fwd, cam.right)), float(np.dot(fwd, cam.to_cam))))
+    for name, lim in FACE_CLASSES:
+        if abs(ang) <= lim:
+            return name, ang > 0
+    return "back", ang > 0
+
+
+def apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam):
+    view, right = face_view(head_world, cam)
+    if view == "back":
+        return idx, view
+    spec = cels["views"].get(view, {})
+    cel = spec.get(expression) or spec.get("neutral")
+    if not cel:
+        return idx, view
+    rows = cel["rows"] if (right or view == "front") else [r[::-1] for r in cel["rows"]]
+    ox, oy = cel["origin"]
+    if not (right or view == "front"):
+        ox = len(cel["rows"][0]) - 1 - ox
+    # anchor: front surface of the head on the eye line (centre of the face), projected
+    pitch = math.radians(face.get("eye_pitch", -8))
+    c = np.asarray(face["center"], float)
+    r = np.asarray(face["radii"], float)
+    p = c + r * np.array([0.0, math.sin(pitch), math.cos(pitch)])
+    ax, ay = cam.project(xform_point(head_world, p), pivot)
+    x0, y0 = int(math.floor(ax)) - ox, int(math.floor(ay)) - oy
+    skin_ids = [palette.index[n] for n in palette.ramps["skin"]]
+    colors = {"E": palette.special["eye"], "C": palette.special.get("catchlight", palette.special["eye"]),
+              "B": palette.special["blush"], "M": palette.special["mouth"],
+              "S": skin_ids[0], "s": skin_ids[min(1, len(skin_ids) - 1)]}
+    out = idx.copy()
+    H, W = out.shape
+    for j, row in enumerate(rows):
+        for i, ch in enumerate(row):
+            if ch == ".":
+                continue
+            x, y = x0 + i, y0 + j
+            if 0 <= x < W and 0 <= y < H and out[y, x] in skin_ids:      # only ever paint on visible skin
+                out[y, x] = colors[ch]
+    return out, view

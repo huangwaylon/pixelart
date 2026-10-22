@@ -18,24 +18,25 @@
     -7.6
    ],
    "rest_dir": [
-    0.3,
+    0.15,
     -1,
-    -0.3
+    -0.4
    ],
    "segments": 8,
    "seg_len": 3.5,
    "widths": [
-    4.2,
-    5.0,
-    5.0,
-    4.4,
+    2.4,
+    4.0,
+    4.0,
     3.6,
-    2.6,
-    1.7,
-    1.0
+    3.0,
+    2.2,
+    1.4,
+    0.7
    ],
-   "thickness": 3.8,
-   "stiffness": 120
+   "thickness": 3.0,
+   "stiffness": 120,
+   "group": "pony"
   }
  },
  "prim_overrides": {
@@ -99,5 +100,87 @@
     0.9
    ]
   }
- }
+ },
+ "render": {
+  "hair_style": {
+   "clump_deg": 120,
+   "clump_offset": 60,
+   "line_start": 0.45,
+   "line_px": 0.6,
+   "line_az_min": 70,
+   "ring_y": 0.5,
+   "ring_w": 0.2,
+   "ring_az": 180,
+   "under_band": 0.12
+  },
+  "lineart": {
+   "angel_ring": false
+  }
+ },
+ "material_bands": {
+  "hair": [
+   -0.35,
+   0.985
+  ]
+ },
+ "remove": [
+  "sidelock_L",
+  "sidelock_R"
+ ],
+ "add_chains": [
+  {
+   "name": "side_L",
+   "anchor_bone": "head",
+   "anchor": [
+    8.6,
+    6.2,
+    1.8
+   ],
+   "rest_dir": [
+    0.1,
+    -1,
+    0.15
+   ],
+   "segments": 3,
+   "seg_len": 2.0,
+   "widths": [
+    2.4,
+    1.9,
+    0.8
+   ],
+   "thickness": 1.6,
+   "material": "hair",
+   "group": "head",
+   "stiffness": 300,
+   "damping": 0.3,
+   "gravity": 400
+  },
+  {
+   "name": "side_R",
+   "anchor_bone": "head",
+   "anchor": [
+    -8.6,
+    6.2,
+    1.8
+   ],
+   "rest_dir": [
+    -0.1,
+    -1,
+    0.15
+   ],
+   "segments": 3,
+   "seg_len": 2.0,
+   "widths": [
+    2.4,
+    1.9,
+    0.8
+   ],
+   "thickness": 1.6,
+   "material": "hair",
+   "group": "head",
+   "stiffness": 300,
+   "damping": 0.3,
+   "gravity": 400
+  }
+ ]
 }
