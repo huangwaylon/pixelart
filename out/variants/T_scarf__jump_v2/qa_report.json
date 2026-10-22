@@ -6,26 +6,26 @@
     "chain_penetrations_by_chain": {},
     "colours_used": 17,
     "foot_slide_px": 0.256,
-    "jaggies_total": 64,
+    "jaggies_total": 73,
     "jaggies_worst": [
       [
-        "S_01",
-        2
-      ],
-      [
         "S_03",
-        2
+        4
       ],
       [
-        "S_06",
-        2
+        "S_10",
+        3
+      ],
+      [
+        "E_02",
+        3
+      ],
+      [
+        "NW_08",
+        3
       ],
       [
         "S_08",
-        2
-      ],
-      [
-        "SE_08",
         2
       ]
     ],

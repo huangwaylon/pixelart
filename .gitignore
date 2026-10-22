@@ -1,0 +1,11 @@
+# environment / OS
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# reproducible build outputs (regenerate with python -m pipeline.build); boards + releases are kept
+builds/
+out/*
+!out/boards/
+**/pixelreview/

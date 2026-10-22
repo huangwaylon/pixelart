@@ -258,6 +258,9 @@ class ChainSim:
                                 nxt[i] = cc + v / dist * rr
                     if body:
                         self._collide_body(c, nxt, body, anchor)
+                        # the ground is solid too: nothing hangs through the floor (feet are at y=0 when grounded)
+                        floor = worlds["root"][1, 3] + c.get("thickness", 1.0) * 0.5 + 0.4
+                        nxt[1:, 1] = np.maximum(nxt[1:, 1], floor)
                     if c.get("max_swing"):
                         self._limit_swing(c, nxt, rest)
                 state[c["name"]] = (nxt, cur)
@@ -273,13 +276,12 @@ class ChainSim:
                 continue
             lim = 1.0 + margin / rmin
             for i in range(1, len(pts)):
-                for q in (pts[i], pts[i - 1] * 0.25 + pts[i] * 0.75, (pts[i] + pts[i - 1]) * 0.5,
-                          pts[i - 1] * 0.75 + pts[i] * 0.25):
+                for q in (pts[i], (pts[i] + pts[i - 1]) * 0.5):
                     loc = Mi @ (q - tr)
                     d = float(np.sqrt(loc @ loc))
                     if 1e-9 < d < lim:
                         push = M3 @ (loc / d * lim) + tr - q
-                        pts[i] += push if q is pts[i] else push * 0.6
+                        pts[i] += push if q is pts[i] else push * 0.5
 
     @staticmethod
     def _limit_swing(chain, pts, rest):

@@ -34,6 +34,10 @@ DEFAULT_PROPORTIONS = {
     "hand_r": 2.0,
     "foot": [2.9, 2.3, 3.8],
     "ankle_h": 2.0,
+    "waist": 1.0,        # aline coat: waist width factor (curvy < 1)
+    "hip": 1.0,          # aline coat: hip/skirt width factor
+    "flare": 1.0,        # aline coat: hem flare factor
+    "bust": 1.0,         # aline coat: upper bodice fullness
 }
 DEFAULT_OUTFIT = {"hair": "bob", "hat": "beanie", "coat": "parka", "scarf": "long", "legs": "pants",
                   "boots": "snow", "sleeve_cuffs": False, "hem_trim": False, "coat_len": 0.55,
@@ -129,6 +133,23 @@ def build(spec):
             if O["hem_trim"]:
                 prims.append(_p("hem", "pelvis", [0, bottom + 0.5, 0.2], [bw * 1.1, 0.9, bd * 1.08], "coat_trim", "torso"))
         prims.append(_p("hood", "chest", [0, 0.24 * T, -bd * 0.84], [bw * 0.8, 0.34 * T, bd * 0.52], "coat", "torso"))
+    elif coat == "aline":
+        # fitted bodice -> cinched waist (belt) -> flared skirt coat: the feminine hourglass silhouette
+        wa, hp, fl, bu = P["waist"], P["hip"], P["flare"], P["bust"]
+        prims.append(_p("bodice", "chest", [0, -0.02 * T, 0.05], [bw * 0.8 * bu, 0.36 * T, bd * 0.8 * bu], "coat", "torso"))
+        prims.append(_p("waist", "spine", [0, 0.05 * T, 0.1], [bw * 0.7 * wa, 0.26 * T, bd * 0.68 * wa], "coat", "torso"))
+        prims.append(_p("belt", "spine", [0, -0.08 * T, 0.1], [bw * 0.74 * wa, 0.06 * T + 0.5, bd * 0.72 * wa],
+                        "coat_trim", "belt"))
+        top = -0.12 * T
+        bottom = -O["coat_len"] * L
+        prims.append(_p("skirt_coat", "pelvis", [0, (top + bottom) / 2 + 0.4 * T * 0.3, 0.15],
+                        [bw * 0.95 * hp * fl, (top - bottom) / 2 + 0.6, bd * 0.95 * hp * fl], "coat", "torso",
+                        clip_all=[[0, -1, 0, -0.85]]))
+        prims.append(_p("hips_coat", "pelvis", [0, 0.1 * T, 0.12], [bw * 0.82 * hp, 0.22 * T, bd * 0.8 * hp], "coat", "torso"))
+        if O["hem_trim"]:
+            prims.append(_p("hem", "pelvis", [0, bottom + 0.6, 0.15], [bw * 1.0 * hp * fl, 0.8, bd * 1.0 * hp * fl],
+                            "coat_trim", "torso"))
+        prims.append(_p("collar", "neck", [0, -0.6, 0.0], [bw * 0.55, 0.12 * T, bd * 0.55], "coat_trim", "torso"))
     elif coat == "puffer":
         prims.append(_p("core", "spine", [0, 0.1 * T, 0.1], [bw * 0.9, 0.55 * T, bd * 0.88], "coat", "torso"))
         for k, (bone, y, sx) in enumerate((("pelvis", 0.06 * T, 1.04), ("spine", 0.14 * T, 1.0), ("chest", 0.04 * T, 0.92))):
@@ -157,7 +178,7 @@ def build(spec):
         prims.append(_p("scarf_wrap1", "neck", [0, 0.5, 0.3], [bw * 0.79 * big, 2.0 * big, bd * 0.89 * big], "scarf", "scarf"))
         prims.append(_p("scarf_wrap2", "neck", [0.3, -0.9, 0.6], [bw * 0.87 * big, 1.7 * big, bd * 0.95 * big], "scarf",
                         "scarf", rot=[0, 0, 6]))
-        tails = [("scarf_front", [bw * 0.55, -0.6, bd * 0.74], [0.2, -1, 0.6])]
+        tails = [("scarf_front", [bw * 0.55, -0.6, bd * 0.74], [0.18, -1, 0.28] if O.get("scarf_v2") else [0.2, -1, 0.6])]
         seg_len = O["scarf_len"] or round(3.2 * T / 10.0, 3)
         if sc == "long" and O["scarf_tails"] >= 2:
             tails.append(("scarf_back", [-bw * 0.58, -0.2, -bd * 0.74], [-0.4, -1, -0.45]))
@@ -167,7 +188,7 @@ def build(spec):
             chains.append({"name": name, "anchor_bone": "neck", "anchor": anchor, "rest_dir": rd,
                            "segments": nseg, "seg_len": seg_len, "widths": [w - 0.2 * i for i in range(nseg)],
                            "thickness": 1.3, "material": "scarf",
-                           **({"stiffness": 250, "damping": 0.08, "gravity": 1200, "max_swing": 55} if O.get("scarf_v2")
+                           **({"stiffness": 140, "damping": 0.08, "gravity": 1200, "max_swing": 40} if O.get("scarf_v2")
                               else {"stiffness": 40, "damping": 0.10, "gravity": 650})})
             if O.get("scarf_v2") and name == "scarf_front":
                 # visible knot where the tail leaves the wrap: the tie side reads the same in every view
@@ -235,26 +256,28 @@ def build(spec):
                            "seg_len": seg, "widths": [w0 + (w1 - w0) * k / max(n - 1, 1) for k in range(n)],
                            "thickness": thick, "material": hair_mat, "stiffness": stiff, "damping": 0.12,
                            "gravity": 520, **({"tie": tie} if tie else {})})
+        hl = O.get("hair_len", 1.0)          # long styles: 1.0 = shoulder blades, 2.0 = waist
+        nseg = max(2, int(round(3 * hl)))
         if hair == "long":
             prims.append(_p("hair_back", "head", [0, hc - 0.5 * hr, -0.55 * hr], [hr * 0.98, hr * 0.85, hr * 0.5],
                             hair_mat, "head"))
             for k, x in enumerate((-0.55, 0.0, 0.55)):
-                lock(f"lock_{k}", [x * hr, hc - 1.0 * hr, -0.62 * hr], [x * 0.2, -1, -0.25], 3, 0.34 * hr,
-                     0.36 * hr, 0.22 * hr, 0.26 * hr)
+                lock(f"lock_{k}", [x * hr, hc - 1.0 * hr, -0.62 * hr], [x * 0.25, -1, -0.25], nseg, 0.34 * hr,
+                     0.38 * hr, 0.18 * hr, 0.26 * hr)
         elif hair == "twintails":
             for s_, sg in (("L", 1), ("R", -1)):
                 a = [sg * hr * 0.98, hc + 0.42 * hr, -0.38 * hr]
                 tl = O.get("tail_len", 1.0)
-                lock(f"tail_{s_}", [a[0] + sg * 0.12 * hr, a[1], a[2]], [sg * 0.9, -1, -0.15], 4, 0.3 * hr * tl,
+                lock(f"tail_{s_}", [a[0] + sg * 0.12 * hr, a[1], a[2]], [sg * 0.9, -1, -0.15], max(4, nseg), 0.3 * hr * tl,
                      0.3 * hr, 0.16 * hr, 0.26 * hr)
                 prims.append(_p(f"tie_{s_}", "head", [a[0] + sg * 0.1 * hr, a[1], a[2]], [hr * 0.2] * 3, "ribbon", "hat"))
         elif hair == "side_pony":
             a = [hr * 0.88, hc + 0.22 * hr, -0.42 * hr]
-            lock("pony", a, [0.5, -1, -0.25], 4, 0.34 * hr, 0.4 * hr, 0.2 * hr, 0.32 * hr)
+            lock("pony", a, [0.5, -1, -0.25], max(4, nseg), 0.34 * hr, 0.4 * hr, 0.2 * hr, 0.32 * hr)
             prims.append(_p("tie", "head", [a[0] + 0.1 * hr, a[1], a[2]], [hr * 0.2] * 3, "ribbon", "hat"))
         elif hair == "pony":
             a = [0, hc + 0.42 * hr, -0.96 * hr]
-            lock("pony", a, [0, -1, -0.55], 4, 0.34 * hr, 0.4 * hr, 0.2 * hr, 0.32 * hr)
+            lock("pony", a, [0, -1, -0.55], max(4, nseg), 0.34 * hr, 0.4 * hr, 0.2 * hr, 0.32 * hr)
             prims.append(_p("tie", "head", [a[0], a[1], a[2] - 0.1 * hr], [hr * 0.2] * 3, "ribbon", "hat"))
         elif hair == "buns":
             for s_, sg in (("L", 1), ("R", -1)):

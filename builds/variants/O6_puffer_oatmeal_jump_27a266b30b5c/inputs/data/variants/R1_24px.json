@@ -1,2 +1,0 @@
-{"extends": "A_chibi", "name": "R1_24px", "label": "R1 · ~24px tall (GBA-like) · 32x32 cell",
- "render": {"ppu": 0.55}, "face": {"eyes": "small"}, "frame": {"size": [32, 32], "pivot": [16, 29]}}

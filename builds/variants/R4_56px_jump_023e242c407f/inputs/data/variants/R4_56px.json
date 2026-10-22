@@ -1,2 +1,0 @@
-{"extends": "A_chibi", "name": "R4_56px", "label": "R4 · ~56px tall (HD-pixel) · 80x80 cell",
- "render": {"ppu": 1.33}, "frame": {"size": [80, 80], "pivot": [40, 71]}}
