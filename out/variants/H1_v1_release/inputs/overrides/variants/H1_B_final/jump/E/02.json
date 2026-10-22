@@ -1,0 +1,45 @@
+{
+ "px": [
+  [
+   27,
+   23,
+   0
+  ],
+  [
+   28,
+   22,
+   0
+  ],
+  [
+   29,
+   23,
+   0
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:13",
+   "author": "pixel-EW",
+   "pixels": [
+    [
+     28,
+     22,
+     "outline"
+    ],
+    [
+     27,
+     23,
+     "outline"
+    ],
+    [
+     29,
+     23,
+     "outline"
+    ]
+   ],
+   "why": "profile face had no eye (decal dropped at silhouette edge) - added the joyful closed-eye ^ arc (same .E./E.E pattern as S/SE) with a 1px nose in front"
+  }
+ ],
+ "note": "",
+ "base_hash": "01fd654b888422d6"
+}

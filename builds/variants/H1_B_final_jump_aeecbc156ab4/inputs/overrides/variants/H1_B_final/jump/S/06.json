@@ -1,0 +1,25 @@
+{
+ "px": [
+  [
+   24,
+   32,
+   16
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:16",
+   "author": "pixel-SN",
+   "pixels": [
+    [
+     24,
+     32,
+     "red_1"
+    ]
+   ],
+   "why": "1px coat hole in scarf bottom edge (RR c RRRR) left a 2px stub; filling it makes one clean edge flowing into the tail (bridges f6 band to f8 V-shape)"
+  }
+ ],
+ "note": "",
+ "base_hash": "6610aef203fddaed"
+}

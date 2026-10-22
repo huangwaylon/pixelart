@@ -1,0 +1,49 @@
+{
+  "name": "D_trainer",
+  "label": "D · Trainer art (5 heads)",
+  "palette": "cw_charcoal",
+  "proportions": {
+    "head_r": 6.5,
+    "neck": 1.8,
+    "torso": 17,
+    "leg": 21,
+    "arm": 17,
+    "body_w": 5.4,
+    "body_d": 4.4,
+    "shoulder_w": 4.8,
+    "hip_w": 2.3,
+    "limb": 0.8,
+    "hand_r": 1.4,
+    "foot": [
+      2.2,
+      1.8,
+      3.0
+    ],
+    "ankle_h": 1.6
+  },
+  "outfit": {
+    "hair": "bob",
+    "hat": "beanie",
+    "coat": "parka",
+    "scarf": "long",
+    "legs": "pants",
+    "boots": "snow",
+    "pom_size": 1.5
+  },
+  "face": {
+    "eyes": "small"
+  },
+  "render": {
+    "camera_elevation": 14
+  },
+  "frame": {
+    "size": [
+      64,
+      80
+    ],
+    "pivot": [
+      32,
+      72
+    ]
+  }
+}

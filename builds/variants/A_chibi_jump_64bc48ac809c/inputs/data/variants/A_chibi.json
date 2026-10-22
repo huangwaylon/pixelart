@@ -1,0 +1,9 @@
+{
+  "name": "A_chibi",
+  "label": "A · Chibi (2.5 heads)",
+  "palette": "cw_charcoal",
+  "proportions": {},
+  "outfit": {"hair": "bob", "hat": "beanie", "coat": "parka", "scarf": "long", "legs": "pants", "boots": "snow"},
+  "face": {"eyes": "large"},
+  "render": {"camera_elevation": 16}
+}

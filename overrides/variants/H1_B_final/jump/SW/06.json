@@ -1,0 +1,42 @@
+{
+ "px": [
+  [
+   22,
+   21,
+   12
+  ],
+  [
+   25,
+   30,
+   14
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     22,
+     21,
+     "oat_1"
+    ]
+   ],
+   "why": "1px red_1 tooth from the hat poking into the cuff band (f7 only); mirrors SE f7 fix"
+  },
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     25,
+     30,
+     "crn_1"
+    ]
+   ],
+   "why": "Lit mitten fused with the red_1 scarf collar into one red mass; crn_1 contact shadow on the scarf separates hand from scarf (SE f7 separates them with hair)"
+  }
+ ],
+ "note": "",
+ "base_hash": "eb2f923a01c13802"
+}

@@ -1,0 +1,38 @@
+{
+  "name": "A_chibi",
+  "label": "A · Chibi (2.5 heads)",
+  "palette": "cw_charcoal",
+  "proportions": {
+    "head_r": 9.4,
+    "leg": 8.6,
+    "torso": 10.6,
+    "neck": 1.8,
+    "arm": 10
+  },
+  "outfit": {
+    "hair": "bob",
+    "hat": "beanie",
+    "coat": "parka",
+    "scarf": "long",
+    "legs": "pants",
+    "boots": "snow",
+    "pom_size": 1.5
+  },
+  "face": {
+    "eyes": "large",
+    "eye_spacing": 0.34
+  },
+  "render": {
+    "camera_elevation": 16
+  },
+  "frame": {
+    "size": [
+      64,
+      64
+    ],
+    "pivot": [
+      32,
+      55
+    ]
+  }
+}

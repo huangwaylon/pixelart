@@ -1,0 +1,79 @@
+{
+ "px": [
+  [
+   18,
+   27,
+   2
+  ],
+  [
+   19,
+   13,
+   12
+  ],
+  [
+   20,
+   12,
+   12
+  ],
+  [
+   20,
+   13,
+   12
+  ],
+  [
+   25,
+   30,
+   16
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     20,
+     12,
+     "oat_1"
+    ],
+    [
+     19,
+     13,
+     "oat_1"
+    ],
+    [
+     20,
+     13,
+     "oat_1"
+    ]
+   ],
+   "why": "pom highlight blinked on/off in NE f3-f6 (f3 on, f4 off, f5 on, f6 off); removed so the air phase matches NW, which has no pom highlight in f3-f6"
+  },
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     25,
+     30,
+     "red_1"
+    ]
+   ],
+   "why": "scarf tail was 1px wide in its middle row (min feature width 2px) and widths flickered vs neighbouring frame; widened to a 2px stair"
+  },
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     18,
+     27,
+     "hair_1"
+    ]
+   ],
+   "why": "doubled outline corner on a diagonal contour; fill with the adjacent interior colour so the stair is a clean 1px line"
+  }
+ ],
+ "note": "",
+ "base_hash": "393d46b006fb63c9"
+}

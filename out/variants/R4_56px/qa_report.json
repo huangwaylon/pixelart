@@ -1,0 +1,27 @@
+{
+  "errors": [
+    "body silhouette height differs by 5px across directions at frame 4"
+  ],
+  "metrics": {
+    "airborne_at_ms": 110,
+    "colours_used": 17,
+    "foot_slide_px": 0.0,
+    "max_height_delta_px": 5,
+    "orphan_pixels_total": 0,
+    "orphan_pixels_worst": [],
+    "overrides": 0,
+    "standing_height_px": {
+      "E": 55,
+      "N": 54,
+      "NE": 55,
+      "NW": 55,
+      "S": 54,
+      "SE": 55,
+      "SW": 55,
+      "W": 55
+    },
+    "total_ms": 770
+  },
+  "pass": false,
+  "warnings": []
+}

@@ -1,0 +1,216 @@
+{
+  "animation": "jump_v2",
+  "buildHash": "660e80d0e5aa",
+  "buildId": "660e80d0e5aa",
+  "cameraElevation": 16,
+  "directions": [
+    "S",
+    "SE",
+    "E",
+    "NE",
+    "N",
+    "NW",
+    "W",
+    "SW"
+  ],
+  "frameSize": [
+    48,
+    48
+  ],
+  "frames": [
+    {
+      "cancelable": false,
+      "duration_ms": 40,
+      "events": [],
+      "face": "smile",
+      "index": 0,
+      "name": "tuck_in",
+      "phase": "anticipation",
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 70,
+      "events": [],
+      "face": "determined",
+      "index": 1,
+      "name": "scrunch",
+      "phase": "anticipation",
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 50,
+      "events": [
+        "takeoff"
+      ],
+      "face": "joyful",
+      "index": 2,
+      "name": "spring",
+      "phase": "takeoff",
+      "z_px": 2
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 60,
+      "events": [],
+      "face": "joyful",
+      "index": 3,
+      "name": "rise",
+      "phase": "air",
+      "z_px": 8
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 60,
+      "events": [],
+      "face": "joyful",
+      "index": 4,
+      "name": "float_up",
+      "phase": "air",
+      "z_px": 13
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 70,
+      "events": [],
+      "face": "joyful",
+      "index": 5,
+      "name": "peak",
+      "phase": "air",
+      "z_px": 15
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 60,
+      "events": [],
+      "face": "joyful",
+      "index": 6,
+      "name": "peak_hold",
+      "phase": "air",
+      "z_px": 15
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 60,
+      "events": [],
+      "face": "smile",
+      "index": 7,
+      "name": "fall",
+      "phase": "air",
+      "z_px": 11
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 50,
+      "events": [],
+      "face": "smile",
+      "index": 8,
+      "name": "reach",
+      "phase": "air",
+      "z_px": 4
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 60,
+      "events": [
+        "land"
+      ],
+      "face": "squint",
+      "index": 9,
+      "name": "touchdown",
+      "phase": "landing",
+      "z_px": 0
+    },
+    {
+      "cancelable": true,
+      "duration_ms": 50,
+      "events": [],
+      "face": "joyful",
+      "index": 10,
+      "name": "hop",
+      "phase": "landing",
+      "z_px": 2
+    },
+    {
+      "cancelable": true,
+      "duration_ms": 40,
+      "events": [],
+      "face": "smile",
+      "index": 11,
+      "name": "plop",
+      "phase": "landing",
+      "z_px": 0
+    },
+    {
+      "cancelable": true,
+      "duration_ms": 60,
+      "events": [],
+      "face": "smile",
+      "index": 12,
+      "name": "settle",
+      "phase": "recovery",
+      "z_px": 0
+    },
+    {
+      "cancelable": true,
+      "duration_ms": 60,
+      "events": [],
+      "face": "smile",
+      "index": 13,
+      "name": "ready",
+      "phase": "recovery",
+      "z_px": 0
+    }
+  ],
+  "image": "jump_v2_sheet.png",
+  "inputLockEnd_ms": 580,
+  "layers": {
+    "fxBack": "jump_v2_fx_back.png",
+    "fxFront": "jump_v2_fx_front.png",
+    "note": "shadow/fx strips are direction-independent, same frame size & pivot; draw shadow+fxBack under the character, fxFront over it; offset only the character by z_px",
+    "shadow": "jump_v2_shadow.png"
+  },
+  "layout": "rows=directions, cols=frames, no padding",
+  "palette": [
+    "#241628",
+    "#4A2448",
+    "#6E3C3A",
+    "#A85A3A",
+    "#D07C74",
+    "#EBA586",
+    "#FCD6B4",
+    "#20223E",
+    "#2F3A6C",
+    "#4E609C",
+    "#45435E",
+    "#9C8EB2",
+    "#D2BFA4",
+    "#F2E6CE",
+    "#8E2C4A",
+    "#BA4A58",
+    "#DC3A40",
+    "#F06A58",
+    "#9C5C2E",
+    "#E2A434",
+    "#FAD872",
+    "#EC7032",
+    "#1C4C54",
+    "#2A8C8E",
+    "#6ACBB6",
+    "#3C6248",
+    "#6E8C5A",
+    "#6E5A92",
+    "#6A7AA8",
+    "#A8C0E0",
+    "#DFEAF6",
+    "#FFFFFF"
+  ],
+  "paletteId": "frost_r3_charcoal",
+  "pipelineVersion": "1.0",
+  "pivot": [
+    24,
+    41
+  ],
+  "totalMs": 790
+}

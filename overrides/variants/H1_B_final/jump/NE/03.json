@@ -1,0 +1,136 @@
+{
+ "px": [
+  [
+   18,
+   14,
+   13
+  ],
+  [
+   18,
+   27,
+   2
+  ],
+  [
+   19,
+   13,
+   13
+  ],
+  [
+   19,
+   14,
+   13
+  ],
+  [
+   19,
+   30,
+   10
+  ],
+  [
+   20,
+   30,
+   10
+  ],
+  [
+   21,
+   30,
+   10
+  ],
+  [
+   30,
+   19,
+   12
+  ],
+  [
+   31,
+   18,
+   12
+  ],
+  [
+   31,
+   19,
+   12
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     18,
+     27,
+     "hair_1"
+    ]
+   ],
+   "why": "doubled outline corner on a diagonal contour; fill with the adjacent interior colour so the stair is a clean 1px line"
+  },
+  {
+   "time": "2026-10-22 12:32",
+   "author": "AD-xcheck",
+   "pixels": [
+    [
+     31,
+     18,
+     "oat_1"
+    ],
+    [
+     30,
+     19,
+     "oat_1"
+    ],
+    [
+     31,
+     19,
+     "oat_1"
+    ]
+   ],
+   "why": "AD style lock: hat cuff = oat_1/oat_2 only. Mauve appeared on the hat cuff only in squash/drop frames (f2/f8/f9, f11 S end), read as a lilac headband and blinked against neighbours; S f2 was already fixed this way by pixel-SN, so the other directions now match."
+  },
+  {
+   "time": "2026-10-22 12:32",
+   "author": "AD-xcheck",
+   "pixels": [
+    [
+     19,
+     30,
+     "char_1"
+    ],
+    [
+     20,
+     30,
+     "char_1"
+    ],
+    [
+     21,
+     30,
+     "char_1"
+    ]
+   ],
+   "why": "AD style lock: coat is char_1 + ink, no lav_1. lav_1 slivers were already removed in S/N/SW; here they blinked on/off frame to frame (NE on in f2-5,7,9,11, off in f1,6,8,10,12; E only in f9)."
+  },
+  {
+   "time": "2026-10-22 12:32",
+   "author": "AD-xcheck",
+   "pixels": [
+    [
+     19,
+     13,
+     "oat_2"
+    ],
+    [
+     18,
+     14,
+     "oat_2"
+    ],
+    [
+     19,
+     14,
+     "oat_2"
+    ]
+   ],
+   "why": "AD style lock: pom carries a 3px oat_2 top-left highlight whenever its top-left faces the light (upright, or lying on the lit/left half of the dome in tilt-back f3-f6 as in E/SE). Fills the f4 gap so f3-f6 hold the highlight steadily."
+  }
+ ],
+ "note": "",
+ "base_hash": "b19bc85cba209717"
+}

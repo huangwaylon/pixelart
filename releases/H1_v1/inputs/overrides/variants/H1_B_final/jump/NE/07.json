@@ -1,0 +1,92 @@
+{
+ "px": [
+  [
+   18,
+   28,
+   10
+  ],
+  [
+   18,
+   29,
+   10
+  ],
+  [
+   19,
+   28,
+   10
+  ],
+  [
+   19,
+   29,
+   10
+  ],
+  [
+   31,
+   20,
+   2
+  ],
+  [
+   31,
+   21,
+   2
+  ],
+  [
+   31,
+   22,
+   2
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     31,
+     20,
+     "hair_1"
+    ],
+    [
+     31,
+     21,
+     "hair_1"
+    ],
+    [
+     31,
+     22,
+     "hair_1"
+    ]
+   ],
+   "why": "back 3/4 view has no face: 1px skin cheek sliver at the head edge appeared/disappeared between frames (flicker) and only on NW; replaced with the adjacent bob hair tone so the side lock reads continuous like NE"
+  },
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     18,
+     28,
+     "char_1"
+    ],
+    [
+     19,
+     28,
+     "char_1"
+    ],
+    [
+     18,
+     29,
+     "char_1"
+    ],
+    [
+     19,
+     29,
+     "char_1"
+    ]
+   ],
+   "why": "2x2 ink patch on the lit left shoulder flickered dark between lav_1-lit f7 and f9 and read as a hole; set to coat base char_1"
+  }
+ ],
+ "note": "",
+ "base_hash": "72f42ff745844599"
+}

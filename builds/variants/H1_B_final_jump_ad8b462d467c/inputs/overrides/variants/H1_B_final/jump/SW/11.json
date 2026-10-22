@@ -1,0 +1,82 @@
+{
+ "px": [
+  [
+   22,
+   29,
+   4
+  ],
+  [
+   23,
+   29,
+   4
+  ],
+  [
+   24,
+   29,
+   4
+  ],
+  [
+   25,
+   29,
+   4
+  ],
+  [
+   25,
+   41,
+   1
+  ],
+  [
+   26,
+   41,
+   1
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     22,
+     29,
+     "skin_0"
+    ],
+    [
+     23,
+     29,
+     "skin_0"
+    ],
+    [
+     24,
+     29,
+     "skin_0"
+    ],
+    [
+     25,
+     29,
+     "skin_0"
+    ]
+   ],
+   "why": "No under-chin shadow (skin_1 straight into scarf); skin_0 jaw row matches SE f12 ssss and SW f10/f1"
+  },
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     25,
+     41,
+     "plum_0"
+    ],
+    [
+     26,
+     41,
+     "plum_0"
+    ]
+   ],
+   "why": "Near boot mauve cuff ran to the ground row; plum_0 sole (rule 8)"
+  }
+ ],
+ "note": "",
+ "base_hash": "a15cf43c419c8559"
+}

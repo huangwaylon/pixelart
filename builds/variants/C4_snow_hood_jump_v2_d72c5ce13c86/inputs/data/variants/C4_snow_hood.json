@@ -1,0 +1,11 @@
+{"extends": "H1v2_B_final", "name": "C4_snow_hood", "label": "C4 - fur-trim hood up, bob + bangs, puffer",
+ "palette": "cw_charcoal",
+ "outfit": {"hair": "bob", "hat": "hood", "bangs": "straight", "accessory": null, "ahoge": false,
+            "coat": "puffer", "scarf": "none", "scarf_tails": 1, "hair_color": "espresso", "fringe": "low"},
+ "face": {"eyes": "kawaii", "eye_pitch": -12},
+ "ramp_overrides": {"hair_espresso": ["plum_0", "plum_0", "hair_1"],
+                    "coat": ["plum_0", "crn_1", "crn_2"], "coat_trim": ["mauve", "oat_2"],
+                    "mitten": ["gold_0", "gold_1"]},
+ "render": {"ppu": 0.75, "lineart": {"smooth": 0.7, "line_min_run": 3, "pixel_perfect": true, "selout": true,
+            "no_face_lines": true, "angel_ring": true, "regularize": true}},
+ "anim_patch": {}}

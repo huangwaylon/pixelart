@@ -1,0 +1,48 @@
+{
+  "errors": [],
+  "metrics": {
+    "airborne_at_ms": 110,
+    "colours_used": 24,
+    "foot_slide_px": 0.0,
+    "max_height_delta_px": 5,
+    "orphan_pixels_total": 86,
+    "orphan_pixels_worst": [
+      [
+        "S_3",
+        4
+      ],
+      [
+        "N_10",
+        4
+      ],
+      [
+        "E_5",
+        3
+      ],
+      [
+        "E_10",
+        3
+      ],
+      [
+        "E_12",
+        3
+      ]
+    ],
+    "overrides": 0,
+    "standing_height_px": {
+      "E": 44,
+      "N": 44,
+      "NE": 45,
+      "NW": 44,
+      "S": 42,
+      "SE": 44,
+      "SW": 44,
+      "W": 44
+    },
+    "total_ms": 770
+  },
+  "pass": true,
+  "warnings": [
+    "silhouette height differs by 5px across directions at frame 2"
+  ]
+}

@@ -1,0 +1,821 @@
+{
+  "animation": "jump",
+  "buildId": "2b04357cf7bc",
+  "frameHashes": {
+    "E": [
+      "df94b95652f2d33b",
+      "711e540c9cbea308",
+      "48562f2e3a7ad43f",
+      "9f5d3081495ebd2b",
+      "3a8d7564bae4887c",
+      "9acff60e88e24c38",
+      "1fc83fe50a9eaadc",
+      "c7243754f3cadb46",
+      "2ff7e2834bb425bd",
+      "00174fad0b94b031",
+      "7cd5ab349fbf2261",
+      "27aca6809bb11da5"
+    ],
+    "N": [
+      "2d615fb63953eab8",
+      "d5783f58f0a1aaf3",
+      "8b3e85b91df34803",
+      "ede012c40c2d621f",
+      "b818c7903c924b57",
+      "a968df89d81a9afc",
+      "e9c5e395a2b1ffb5",
+      "41f6adb15362549b",
+      "bd3c3bd73e0f42eb",
+      "78376f3ecf57232e",
+      "a022bb868bd17f30",
+      "33a836e83c41362e"
+    ],
+    "NE": [
+      "dc28ec8147ee267d",
+      "432ec28721e5b25d",
+      "fb672c5f91e69da6",
+      "d3055cfb217aa15c",
+      "56e495f12a87d590",
+      "8f39cb25d1a5d228",
+      "75393b31c6603802",
+      "7e915705510a0eba",
+      "ab09148fdd59a717",
+      "6007919638006130",
+      "fc86c5b72b6c88db",
+      "3399551d1834ac14"
+    ],
+    "NW": [
+      "dbb9916e4353b75c",
+      "c954f1c6c4dc0dbe",
+      "9bbdd4ddd1ee4cd8",
+      "fd23fb6881f18f92",
+      "41019f0a5c4e3cc4",
+      "fb8fe690325a3f8f",
+      "95718933e2969db5",
+      "21a70ea9148c2294",
+      "bb1369a239eb5bef",
+      "c0b0f90589f5615a",
+      "3296f67ef9812276",
+      "ba5a38dedf894d40"
+    ],
+    "S": [
+      "47d28d29f6191f9f",
+      "27017df0d4d6a110",
+      "2c53bd4349b695f0",
+      "bee0a7390a137510",
+      "86ec212d995cd2c2",
+      "fb9419e48fcf38fe",
+      "342d861a300b2fe5",
+      "0ada49acfdedf900",
+      "b6e3bbda0568d6a6",
+      "77f8fff71b3a89c0",
+      "acf74caee4638cdb",
+      "0d85a21eaa1e5948"
+    ],
+    "SE": [
+      "3f014b76ae133b26",
+      "41fcee8a7b6da915",
+      "6cb43425ffac7e92",
+      "b84bdd3b249455b1",
+      "cd3bb26a57e421f2",
+      "fb58d872fc3080f3",
+      "646ec30f16a9bff2",
+      "4050ad0666347a3a",
+      "3140b34091eea0b9",
+      "ca68c832caa6eb28",
+      "0aa6f318eeb3aeca",
+      "46989838a157c666"
+    ],
+    "SW": [
+      "fcda5f908a969524",
+      "39d76e6adb1bc301",
+      "8391817e49dbc099",
+      "1502f59095ce9143",
+      "a4b6d45e3bd2b959",
+      "15b606718f26b41e",
+      "6fca34a4969271b7",
+      "6add085dfb220473",
+      "730c004deeff29a5",
+      "5b92ee78fa2c897f",
+      "a06207cd287b0a67",
+      "59f602f41193b731"
+    ],
+    "W": [
+      "b7f6b9117a46686d",
+      "7ccc4646fcf93457",
+      "0fd2c831e79de2fc",
+      "d73072926ff95ee0",
+      "787d66d9562a913a",
+      "704c1fa29c2a9562",
+      "928c802166fc8adb",
+      "d419fe3c41f55a15",
+      "8ad8a0bd38ce5a7e",
+      "ddb376fcd584c3be",
+      "9a9b3578032198f0",
+      "180550b9d982af5d"
+    ]
+  },
+  "inputs": {
+    "data/animations/jump.json": "d105d9ce0fb1eba0dbc814e40eff07d8a6f240f35d3da7da355f25d1f0e63819",
+    "data/palettes/cw_charcoal.json": "5a9dc16b65e524ed6992a7f8697fbc304c0f65f185f73652e9937fdf7acdc67f",
+    "data/variants/A_chibi.json": "e0d727e1d27192344f2e9f5642d953f3266d668e781fc88726b27d2b269798de",
+    "data/variants/BO1_parka_charcoal.json": "783436b1498763a677f3f477c772a7c7b5fd4199507a1b26a65b7b7fde4e35ec",
+    "data/variants/BO2_puffer_navy.json": "e0036a81dbb4d5caf57240aaaafa9aab4ccd06e1fe78b45c2aa6a288ba52cedd",
+    "data/variants/BO3_duffle_cranberry.json": "3e2b79d82256d947e0eb3dd290bb4a279f935289e8d1c9c094e9535eb6a1f56b",
+    "data/variants/BO4_parka_forest.json": "eb49bcb0011817db74775d20015f4f117955b9f0ce015fcc96a144a5cbd37b10",
+    "data/variants/BO5_duffle_lavender.json": "afb59845a11790c0b1ffeea8d84d60a01dddb9b2917b41af32e6d13f3761b191",
+    "data/variants/BO6_puffer_oatmeal.json": "36a1b9237867ad1fcb27455671dee9f8e8f2d285c81c26ec6f5394c4d97c836e",
+    "data/variants/B_pokemon_ow.json": "b6713159432642c61151daa0ebcb9d16e55abb123da8154e7aa1866b837162e4",
+    "data/variants/C_semichibi.json": "b15d63b11f476b0745d9d8ac450eeff0c1589792903cb4ac075a14f36463dff3",
+    "data/variants/D_trainer.json": "08e6f921797a200a4a450e2479c03eddfa17f642e1b30cb20451db9f943c587b",
+    "data/variants/E_puffball.json": "257a2ed16375da1a275ba2f707c915a091489c52314e8cbf0e04b989b6cdeedc",
+    "data/variants/H1_B_final.json": "efbcb8424453134e2ea2915d0c52484908543708a9cc9c15f831653e5a617511",
+    "data/variants/H1v2_B_final.json": "e15b7890da02d8ef1bdf0888f4bf40afa5b085a7bcf6c360863d19c574d1945d",
+    "data/variants/H2_A_final.json": "74317f60ee1ceb39667864581d7398c70b561aea26cf32ea09fb76b14dbe095c",
+    "data/variants/H2v2_A_final.json": "adf4a2a219c2365b585d1b8590a4cf0043a4861153ed9ed43cd2671ea704e7ee",
+    "data/variants/O1_parka_charcoal.json": "3012b2139dc11e1a7fad257150f03102180b3b3d6bca9ae50ba0cb2139c7bdbd",
+    "data/variants/O2_puffer_navy.json": "33a2d5fba220811f89dd77c91610ed46254f68000f5867db7a6bacaa78c20fec",
+    "data/variants/O3_duffle_cranberry.json": "22533f958a06a0c38fc4ad4d3901b8ea6849e1198abb2d5067e69d581946bcf2",
+    "data/variants/O4_parka_forest.json": "2ccec4b586997f71413db5fa4f195f2af6fea04beaeef9ec4e01170b3ca8d3fc",
+    "data/variants/O5_duffle_lavender.json": "0288d808f31e9c47fe0ea9cb1b32dbe71592cb17d88d8339d60b1b305ec70a2c",
+    "data/variants/O6_puffer_oatmeal.json": "bc5999e357cdc47f9849e36e352850591d79419db7b2a2e0367477ad8d2d8ffc",
+    "data/variants/R1_24px.json": "4aa7f0efb11047b0d619d41254fb41dd640238e89978e97773485ae82f74ece9",
+    "data/variants/R2_32px.json": "df093e99b29899c25fc4be0a04d01ffaecbd24756b0f4e82fab5f77732ebd089",
+    "data/variants/R3_42px.json": "6d011e4bab2839f26ab230e8445998fa03592f9cf55e90b32ab631b22008e273",
+    "data/variants/R4_56px.json": "78a811c4db94e5d71963ca457d38944fc9cb2595168ee09ce483f367f05abaa0",
+    "overrides/variants/H1v2_B_final/jump/E/00.json": "f7dcd9ac0a03b92bcc551d8f47cf180c85c00526269d0ad1f32837be2ed8eebc",
+    "overrides/variants/H1v2_B_final/jump/E/02.json": "e51fe0596b4092d4923aed695273d888bb3e5988945a849e7b4da5aeb488b713",
+    "overrides/variants/H1v2_B_final/jump/E/03.json": "87e97a0ed2da05ebd4bd8d5d4fcaf408bdf0416d2c7f58a754b241f1dd61c23a",
+    "overrides/variants/H1v2_B_final/jump/E/04.json": "7acc840b34450c6e1fb1816c37bb367872f5fc3ee13f08e5e36d7136ad6a256f",
+    "overrides/variants/H1v2_B_final/jump/E/05.json": "320d8db58f36dd8c3132e7b7bef79809d3e1d2b8b0ccc184ca50a78c36a97256",
+    "overrides/variants/H1v2_B_final/jump/E/06.json": "46d013cc62c5d1c5070be3a77afbf87837c385ee8ecc982c732736edaf4283d6",
+    "overrides/variants/H1v2_B_final/jump/E/08.json": "777b0414258d6d6312b5966f48ee29ebb58de44b23424cdb7deafe34f8187f8a",
+    "overrides/variants/H1v2_B_final/jump/E/09.json": "d274e8504d2cfc1b84fa31940181bee6539717a11ea5874922d5ba445bfd20a7",
+    "overrides/variants/H1v2_B_final/jump/E/11.json": "5c264dd8e605c5cd09e81b5044457e3285202b7cadc00caac6d25859dbb6c549",
+    "overrides/variants/H1v2_B_final/jump/NE/07.json": "320695ec54f363f85ddbbc5843be639297c60c998a829729406a0accce2378c4",
+    "overrides/variants/H1v2_B_final/jump/S/02.json": "2010b64b92eca6120c3657f83f2d224b9aedfc9c04ac69c80db06f9be9ea98bd",
+    "overrides/variants/H1v2_B_final/jump/S/05.json": "62d5b3a89db99fa388f20be1c3115aca93d0e1c51e44c2f6d42463d5bf47faea",
+    "overrides/variants/H1v2_B_final/jump/SE/04.json": "fe44e3c253313bd39c5a19092d1640239cccb6adc1fef259a7d93a1f3c5168e9",
+    "overrides/variants/H1v2_B_final/jump/SE/05.json": "cf56873b12ad94b5b1cc3125e5a7327c11f535da36d67d6785bc85f4bb1cbdd5",
+    "overrides/variants/H1v2_B_final/jump/SW/02.json": "9658475c46d4e1e5e440616fb7bb410f789e0165d96fa490ae3f71d585022a04",
+    "overrides/variants/H1v2_B_final/jump/SW/03.json": "3a8c744d9626363a71b9d2fb4df0585049017412d24c97d734acdd0a434bb42e",
+    "overrides/variants/H1v2_B_final/jump/SW/05.json": "edd65f3f966a450baff3cbab204ff08a814a9e1ee38ae5f307c481c98619a989",
+    "overrides/variants/H1v2_B_final/jump/SW/06.json": "f989a58ba1f17c22442ccf856ccf53ff2e53e6e4b58af2138945e749d4af527b",
+    "overrides/variants/H1v2_B_final/jump/SW/07.json": "cbbf2eed14940b5748f69bb74916b793c2c48859926d543068f3da2679344fc0",
+    "overrides/variants/H1v2_B_final/jump/SW/11.json": "20a23ad58420a79ddbaee060feb9f78b23c6d1e74396b2d35d74c079f5f59ec9",
+    "overrides/variants/H1v2_B_final/jump/W/00.json": "e665f607836e3ad72013fc7573962c197c60c54e748d3eb4056ca81668708c2c",
+    "overrides/variants/H1v2_B_final/jump/W/02.json": "02778ea24dd452d362ee4b54da868ea7d72e9ef7597a981867bafe25c144ab9b",
+    "overrides/variants/H1v2_B_final/jump/W/03.json": "82da5d4ecf1c11566602bff74a1241c1b41978e4f52e82c14e9a761e8cd53416",
+    "overrides/variants/H1v2_B_final/jump/W/04.json": "a860f91cda1a96fb831c51570fb5bd80c25710d8840ee8a6ea9919024f948c63",
+    "overrides/variants/H1v2_B_final/jump/W/05.json": "58486a39e55191bcf788ebb759714d2b39f0d65911acac3a6b5a69d8a7a50efa",
+    "overrides/variants/H1v2_B_final/jump/W/08.json": "2d77142792f5ab242db9a7e22a65dc2f2948bbb535cafa4c150e70dc58a8a96e",
+    "overrides/variants/H1v2_B_final/jump/W/09.json": "77e57c3d59c4d11641b87ba68b5da0766cc21e9f7c3253d51eddea3297b49851",
+    "overrides/variants/H1v2_B_final/jump/W/11.json": "d8bd165369cc4ffa35628b829587a9f83776d3ca70c8d7b8ff246005c2dae317",
+    "pipeline/__init__.py": "61e345e5204ba4eb6200f88984a33f9f36397f58c859bf1c21dec2101fd29ccd",
+    "pipeline/board.py": "b030ca8809fc1d4075f78d7f41ca0f9b87ea571cd69dead578d41552470f70f3",
+    "pipeline/build.py": "49f387f5fbbff363586bd7f07ee8077553a031af7b7e2fc8a87b4a36b2455b65",
+    "pipeline/chargen.py": "c032f500e4c7fb5d125ac91deab036156775d70cc98ec4784dbfcd318e02addb",
+    "pipeline/export.py": "b83196415e47bf02db9227567719942f43fffd16dfb4a7c4148d673ade3d494f",
+    "pipeline/face.py": "ece0ccf388ab41ae2cb216e42761def78eba745cbc684f2535d5ed6fe72d163b",
+    "pipeline/frames.py": "715a262e2d2dbb866e3f08239afcb5af3ea08bf2ec705ae7570c91050087f748",
+    "pipeline/fx.py": "e78f85ab65d951130a829b83cf6ca43f90dcecc990b8e6b6974ed2cf80f89a90",
+    "pipeline/mathutil.py": "3758139d547d0ba514952357022301c3c9f463079decd7e5a749244aea126318",
+    "pipeline/override.py": "9dc8b7d18682af98c00f5c8bfc35e9de31303faa8aa71456a7e94e8828299ffe",
+    "pipeline/palette.py": "a7001e0b650b7ad8dbaf39c0d1c5f518823278e73191a327f65612acf3b72da2",
+    "pipeline/pixelreview.py": "477481ed761d06a5783d25a349b5b295936b3f28b4f79cbd563ce9249225cf6e",
+    "pipeline/pixelrules.py": "0e22c82d52d2b1abc3c7bffb72a41bbcfd50586fc1c74269f0fec3eeebb62f34",
+    "pipeline/qa.py": "511a1de99891e933623f8f1cf486877923fe403d3c6f3532c4b1b75f82ec5ad3",
+    "pipeline/reference.py": "0dd5790e43665c6e822e381832aaf0401aa78c1b9d6bfce9927ac3f768c98eea",
+    "pipeline/render.py": "a516892fd1d3ce11d2cdc809a41c3cc22b5638dab9143cecac265f24ed907f10",
+    "pipeline/rig.py": "994ed386ecb2badbd5c6bbc3fb932e20d228a94f6734d0c34c1436e87e807be2",
+    "pipeline/server.py": "95be6f5f2ef5a9c349cd272cc1481e67c578aad977c7f13b0cb51c760887ee7c"
+  },
+  "overrides": {
+    "E_01": {
+      "coords": [
+        [
+          31,
+          25
+        ],
+        [
+          31,
+          27
+        ]
+      ],
+      "note": "",
+      "pixels": 2,
+      "reasons": 4,
+      "stale": true
+    },
+    "E_03": {
+      "coords": [
+        [
+          27,
+          23
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 3,
+      "stale": true
+    },
+    "E_04": {
+      "coords": [
+        [
+          27,
+          23
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 1,
+      "stale": true
+    },
+    "E_05": {
+      "coords": [
+        [
+          27,
+          24
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 3,
+      "stale": true
+    },
+    "E_06": {
+      "coords": [
+        [
+          28,
+          24
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 1,
+      "stale": true
+    },
+    "E_07": {
+      "coords": [
+        [
+          25,
+          30
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 3,
+      "stale": true
+    },
+    "E_09": {
+      "coords": [
+        [
+          30,
+          29
+        ],
+        [
+          32,
+          31
+        ],
+        [
+          33,
+          28
+        ],
+        [
+          33,
+          30
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 5,
+      "stale": true
+    },
+    "E_10": {
+      "coords": [
+        [
+          30,
+          23
+        ],
+        [
+          30,
+          24
+        ],
+        [
+          30,
+          26
+        ],
+        [
+          31,
+          22
+        ],
+        [
+          31,
+          25
+        ],
+        [
+          32,
+          25
+        ],
+        [
+          33,
+          25
+        ]
+      ],
+      "note": "",
+      "pixels": 7,
+      "reasons": 8,
+      "stale": true
+    },
+    "E_12": {
+      "coords": [
+        [
+          29,
+          22
+        ],
+        [
+          29,
+          23
+        ],
+        [
+          30,
+          22
+        ],
+        [
+          30,
+          24
+        ],
+        [
+          30,
+          25
+        ]
+      ],
+      "note": "",
+      "pixels": 5,
+      "reasons": 5,
+      "stale": true
+    },
+    "NE_08": {
+      "coords": [
+        [
+          26,
+          42
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 4,
+      "stale": true
+    },
+    "SE_05": {
+      "coords": [
+        [
+          28,
+          27
+        ],
+        [
+          29,
+          26
+        ],
+        [
+          29,
+          27
+        ],
+        [
+          30,
+          26
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 2,
+      "stale": true
+    },
+    "SE_06": {
+      "coords": [
+        [
+          27,
+          28
+        ],
+        [
+          28,
+          27
+        ],
+        [
+          28,
+          28
+        ],
+        [
+          29,
+          27
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 6,
+      "stale": true
+    },
+    "SW_03": {
+      "coords": [
+        [
+          19,
+          26
+        ],
+        [
+          19,
+          27
+        ],
+        [
+          20,
+          26
+        ],
+        [
+          20,
+          28
+        ],
+        [
+          21,
+          27
+        ],
+        [
+          21,
+          28
+        ],
+        [
+          22,
+          27
+        ],
+        [
+          22,
+          43
+        ]
+      ],
+      "note": "",
+      "pixels": 8,
+      "reasons": 12,
+      "stale": true
+    },
+    "SW_04": {
+      "coords": [
+        [
+          18,
+          27
+        ],
+        [
+          19,
+          26
+        ],
+        [
+          19,
+          27
+        ],
+        [
+          20,
+          26
+        ],
+        [
+          20,
+          28
+        ],
+        [
+          21,
+          27
+        ],
+        [
+          21,
+          28
+        ],
+        [
+          22,
+          27
+        ]
+      ],
+      "note": "",
+      "pixels": 8,
+      "reasons": 10,
+      "stale": true
+    },
+    "SW_06": {
+      "coords": [
+        [
+          17,
+          26
+        ],
+        [
+          17,
+          27
+        ],
+        [
+          18,
+          27
+        ],
+        [
+          19,
+          27
+        ],
+        [
+          19,
+          28
+        ],
+        [
+          20,
+          27
+        ],
+        [
+          20,
+          28
+        ],
+        [
+          21,
+          28
+        ]
+      ],
+      "note": "",
+      "pixels": 8,
+      "reasons": 12,
+      "stale": true
+    },
+    "SW_07": {
+      "coords": [
+        [
+          17,
+          26
+        ],
+        [
+          17,
+          27
+        ],
+        [
+          18,
+          27
+        ]
+      ],
+      "note": "",
+      "pixels": 3,
+      "reasons": 7,
+      "stale": true
+    },
+    "SW_08": {
+      "coords": [
+        [
+          21,
+          42
+        ],
+        [
+          22,
+          42
+        ]
+      ],
+      "note": "",
+      "pixels": 2,
+      "reasons": 10,
+      "stale": true
+    },
+    "SW_12": {
+      "coords": [
+        [
+          21,
+          40
+        ],
+        [
+          22,
+          40
+        ]
+      ],
+      "note": "",
+      "pixels": 2,
+      "reasons": 10,
+      "stale": true
+    },
+    "S_03": {
+      "coords": [
+        [
+          22,
+          26
+        ],
+        [
+          22,
+          27
+        ],
+        [
+          22,
+          43
+        ],
+        [
+          23,
+          26
+        ],
+        [
+          23,
+          28
+        ],
+        [
+          24,
+          27
+        ],
+        [
+          24,
+          28
+        ],
+        [
+          25,
+          43
+        ]
+      ],
+      "note": "",
+      "pixels": 8,
+      "reasons": 9,
+      "stale": true
+    },
+    "S_06": {
+      "coords": [
+        [
+          22,
+          28
+        ],
+        [
+          22,
+          29
+        ],
+        [
+          23,
+          29
+        ],
+        [
+          24,
+          28
+        ],
+        [
+          25,
+          28
+        ],
+        [
+          27,
+          28
+        ],
+        [
+          27,
+          29
+        ]
+      ],
+      "note": "",
+      "pixels": 7,
+      "reasons": 9,
+      "stale": true
+    },
+    "W_01": {
+      "coords": [
+        [
+          16,
+          25
+        ],
+        [
+          16,
+          27
+        ]
+      ],
+      "note": "",
+      "pixels": 2,
+      "reasons": 7,
+      "stale": true
+    },
+    "W_03": {
+      "coords": [
+        [
+          20,
+          23
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 3,
+      "stale": true
+    },
+    "W_04": {
+      "coords": [
+        [
+          20,
+          23
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 1,
+      "stale": true
+    },
+    "W_05": {
+      "coords": [
+        [
+          20,
+          24
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 3,
+      "stale": true
+    },
+    "W_06": {
+      "coords": [
+        [
+          19,
+          24
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 4,
+      "stale": true
+    },
+    "W_09": {
+      "coords": [
+        [
+          14,
+          28
+        ],
+        [
+          14,
+          30
+        ],
+        [
+          15,
+          31
+        ]
+      ],
+      "note": "",
+      "pixels": 3,
+      "reasons": 4,
+      "stale": true
+    },
+    "W_10": {
+      "coords": [
+        [
+          14,
+          25
+        ],
+        [
+          15,
+          21
+        ],
+        [
+          15,
+          22
+        ],
+        [
+          15,
+          25
+        ],
+        [
+          16,
+          22
+        ],
+        [
+          16,
+          25
+        ],
+        [
+          17,
+          23
+        ],
+        [
+          17,
+          24
+        ],
+        [
+          17,
+          26
+        ]
+      ],
+      "note": "",
+      "pixels": 9,
+      "reasons": 13,
+      "stale": true
+    },
+    "W_12": {
+      "coords": [
+        [
+          17,
+          22
+        ],
+        [
+          17,
+          24
+        ],
+        [
+          18,
+          22
+        ],
+        [
+          18,
+          23
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 8,
+      "stale": true
+    }
+  },
+  "pipelineVersion": "1.0",
+  "qaPass": true
+}

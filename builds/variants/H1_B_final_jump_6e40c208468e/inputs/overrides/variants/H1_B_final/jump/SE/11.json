@@ -1,0 +1,35 @@
+{
+ "px": [
+  [
+   21,
+   41,
+   1
+  ],
+  [
+   22,
+   41,
+   1
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     21,
+     41,
+     "plum_0"
+    ],
+    [
+     22,
+     41,
+     "plum_0"
+    ]
+   ],
+   "why": "Rear boot cuff (mauve) ran to the ground row; plum_0 sole so it reads as boot, consistent with f11"
+  }
+ ],
+ "note": "",
+ "base_hash": "18797089b87fb905"
+}

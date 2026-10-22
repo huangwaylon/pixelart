@@ -1,0 +1,251 @@
+{
+ "px": [
+  [
+   19,
+   26,
+   14
+  ],
+  [
+   19,
+   27,
+   14
+  ],
+  [
+   20,
+   26,
+   14
+  ],
+  [
+   20,
+   28,
+   4
+  ],
+  [
+   21,
+   27,
+   17
+  ],
+  [
+   21,
+   28,
+   4
+  ],
+  [
+   22,
+   27,
+   5
+  ],
+  [
+   22,
+   43,
+   2
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 13:02",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     21,
+     43,
+     "hair_1"
+    ],
+    [
+     26,
+     43,
+     "plum_0"
+    ]
+   ],
+   "why": "AD rule 6: boot ground row is hair_1/plum_0, never cuff colour (matches signed v1.1)"
+  },
+  {
+   "time": "2026-10-22 13:02",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     17,
+     23,
+     "skin_1"
+    ],
+    [
+     17,
+     24,
+     "skin_1"
+    ],
+    [
+     18,
+     24,
+     "skin_1"
+    ],
+    [
+     19,
+     26,
+     "crn_1"
+    ],
+    [
+     20,
+     26,
+     "crn_1"
+    ],
+    [
+     19,
+     27,
+     "crn_1"
+    ],
+    [
+     20,
+     27,
+     "crn_1"
+    ]
+   ],
+   "why": "AD rules 1-3/7: restore signed v1.1 face pixels (profile eye 1px behind nose, no eye/jaw contact, joyful mouth position, single-px cheek outline)"
+  },
+  {
+   "time": "2026-10-22 13:02",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     22,
+     43,
+     "hair_1"
+    ],
+    [
+     25,
+     43,
+     "plum_0"
+    ],
+    [
+     26,
+     42,
+     "plum_0"
+    ]
+   ],
+   "why": "AD rule 6: finish boot sole run (no 1px plum/hair islands)"
+  },
+  {
+   "time": "2026-10-22 13:10",
+   "author": "prune",
+   "pixels": [],
+   "why": "rebased onto new generator output; 4 px now produced procedurally and removed; 8 px still differ"
+  },
+  {
+   "time": "2026-10-22 13:15",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     18,
+     24,
+     "REVERT"
+    ]
+   ],
+   "why": "v2.2 base now draws this itself (far-eye mark clear of outline / pom highlight); drop hand px"
+  },
+  {
+   "time": "2026-10-22 13:15",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     20,
+     28,
+     "skin_0"
+    ],
+    [
+     23,
+     43,
+     "hair_1"
+    ]
+   ],
+   "why": "v2.2 base feature conflicts with kept v1.1 face/sole (doubled profile eye, doubled mouth, stray cuff px on sole); restore signed v1.1 pixel"
+  },
+  {
+   "time": "2026-10-22 13:15",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     "approved"
+    ]
+   ],
+   "why": "AD round 3: leftover px re-checked on v2.2 base; doubled eyes/mouths and stray sole px resolved, far-eye/pom px dropped where base now draws them"
+  },
+  {
+   "time": "2026-10-22 13:29",
+   "author": "prune",
+   "pixels": [],
+   "why": "rebased onto new generator output; 1 px now produced procedurally and removed; 8 px still differ"
+  },
+  {
+   "time": "2026-10-22 13:31",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     23,
+     43,
+     "REVERT"
+    ],
+    [
+     25,
+     43,
+     "REVERT"
+    ],
+    [
+     26,
+     42,
+     "REVERT"
+    ],
+    [
+     26,
+     43,
+     "REVERT"
+    ]
+   ],
+   "why": "v2.3 grounded_soles now gives a clean ground row here; cuff above sole is acceptable (rule 6 is the ground row) - drop hand px"
+  },
+  {
+   "time": "2026-10-22 13:32",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     19,
+     27,
+     "crn_1"
+    ],
+    [
+     21,
+     28,
+     "skin_0"
+    ]
+   ],
+   "why": "v2.2 base feature conflicts with kept v1.1 face/sole (doubled profile eye, doubled mouth, stray cuff px on sole); restore signed v1.1 pixel"
+  },
+  {
+   "time": "2026-10-22 13:32",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     21,
+     27,
+     "red_2"
+    ],
+    [
+     22,
+     27,
+     "skin_1"
+    ]
+   ],
+   "why": "finish v1.1 restore next to the kept mouth / temple (v2.3 base shifted scarf end and temple px)"
+  },
+  {
+   "time": "2026-10-22 13:33",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     "approved"
+    ]
+   ],
+   "why": "AD round 4: re-checked on v2.3 base; doubled eyes/mouths removed, redundant sole px dropped, remaining px are v1.1 face/sole pixels the generator still misses"
+  }
+ ],
+ "note": "",
+ "base_hash": "9290f67a356da52d"
+}

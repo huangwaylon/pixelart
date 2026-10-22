@@ -1,0 +1,16 @@
+{
+ "extends": "B_pokemon_ow",
+ "name": "BO6_puffer_oatmeal",
+ "label": "B-O6 \u00b7 Puffer + tall boots, oatmeal/teal",
+ "palette": "cw_oatmeal",
+ "outfit": {
+  "coat": "puffer",
+  "sleeve_cuffs": true,
+  "scarf": "long",
+  "hat": "beanie_tall",
+  "pom_size": 1.3,
+  "legs": "pants",
+  "boots": "tall",
+  "hair": "bob"
+ }
+}

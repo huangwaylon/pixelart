@@ -1,0 +1,48 @@
+{
+  "name": "E_puffball",
+  "label": "E · Puffball (2.2 heads, round)",
+  "palette": "cw_charcoal",
+  "proportions": {
+    "head_r": 9.5,
+    "torso": 9,
+    "leg": 3.5,
+    "arm": 7,
+    "body_w": 9.5,
+    "body_d": 8,
+    "shoulder_w": 7,
+    "hip_w": 3,
+    "limb": 1.25,
+    "hand_r": 2.2,
+    "foot": [
+      2.8,
+      2.2,
+      3.4
+    ],
+    "ankle_h": 1.8
+  },
+  "outfit": {
+    "hair": "bob",
+    "hat": "beanie_tall",
+    "coat": "puffer",
+    "scarf": "chunky",
+    "legs": "pants",
+    "boots": "snow",
+    "pom_size": 2.0
+  },
+  "face": {
+    "eyes": "large"
+  },
+  "render": {
+    "camera_elevation": 16
+  },
+  "frame": {
+    "size": [
+      64,
+      64
+    ],
+    "pivot": [
+      32,
+      55
+    ]
+  }
+}

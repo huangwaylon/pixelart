@@ -1,0 +1,35 @@
+{
+ "px": [
+  [
+   14,
+   29,
+   0
+  ],
+  [
+   14,
+   30,
+   0
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:13",
+   "author": "pixel-EW",
+   "pixels": [
+    [
+     14,
+     29,
+     "outline"
+    ],
+    [
+     14,
+     30,
+     "outline"
+    ]
+   ],
+   "why": "profile face had no eye (generator dropped the decal: anchor fell on the silhouette edge) - added determined eye as a 1x2 outline column 1px behind the face front (frontal 2x2 determined eye, foreshortened); keeps a 1px nose"
+  }
+ ],
+ "note": "",
+ "base_hash": "2859637a4795a5a7"
+}

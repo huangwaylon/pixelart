@@ -1,0 +1,204 @@
+{
+ "extends": "H1v2_B_final",
+ "name": "C2_hime_beret",
+ "label": "C2 - hime cut + small tilted beret + side ribbon",
+ "palette": "cw_charcoal",
+ "outfit": {
+  "hair": "long",
+  "hat": "beret",
+  "bangs": "straight",
+  "accessory": "ribbon_side",
+  "ahoge": false,
+  "scarf": "long",
+  "scarf_tails": 1,
+  "hair_color": "blueblack"
+ },
+ "face": {
+  "eyes": "kawaii",
+  "eye_pitch": -12
+ },
+ "render": {
+  "ppu": 0.75,
+  "lineart": {
+   "smooth": 0.7,
+   "line_min_run": 3,
+   "pixel_perfect": true,
+   "selout": true,
+   "no_face_lines": true,
+   "angel_ring": false,
+   "regularize": true
+  }
+ },
+ "ramp_overrides": {
+  "hair_blueblack": [
+   "ink",
+   "char_1",
+   "char_1"
+  ],
+  "coat": [
+   "lav_1",
+   "mauve",
+   "mauve"
+  ],
+  "ribbon": [
+   "crn_1",
+   "red_1",
+   "red_2"
+  ]
+ },
+ "prim_overrides": {
+  "hair_cap": {
+   "clip_all": [
+    [
+     0,
+     1,
+     0,
+     -0.72
+    ]
+   ]
+  },
+  "beret": {
+   "center": [
+    -4.2,
+    17.8,
+    -1.0
+   ],
+   "radii": [
+    7.8,
+    2.1,
+    7.4
+   ],
+   "rot": [
+    -8,
+    0,
+    28
+   ]
+  },
+  "beret_nub": {
+   "center": [
+    -5.6,
+    20.0,
+    -1.0
+   ],
+   "radii": [
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  "ribbon_loop_0": {
+   "center": [
+    10.9,
+    14.0,
+    -4.0
+   ],
+   "radii": [
+    1.8,
+    2.3,
+    2.0
+   ]
+  },
+  "ribbon_loop_1": {
+   "center": [
+    11.5,
+    14.0,
+    0.4
+   ],
+   "radii": [
+    1.8,
+    2.3,
+    2.0
+   ]
+  },
+  "ribbon_knot": {
+   "center": [
+    11.8,
+    14.0,
+    -1.8
+   ],
+   "radii": [
+    1.2,
+    1.2,
+    1.2
+   ]
+  },
+  "hair_back": {
+   "center": [
+    0,
+    5.0,
+    -5.6
+   ],
+   "radii": [
+    10.2,
+    7.6,
+    5.0
+   ]
+  }
+ },
+ "chain_overrides": {
+  "lock_0": {
+   "seg_len": 3.0,
+   "rest_dir": [
+    -0.3,
+    -1,
+    -0.35
+   ],
+   "widths": [
+    4.2,
+    3.4,
+    2.0
+   ],
+   "stiffness": 70,
+   "gravity": 520,
+   "anchor": [
+    -5.6,
+    -1.0,
+    -6.4
+   ],
+   "thickness": 3.0
+  },
+  "lock_1": {
+   "seg_len": 3.0,
+   "rest_dir": [
+    0.0,
+    -1,
+    -0.35
+   ],
+   "widths": [
+    4.2,
+    3.4,
+    2.0
+   ],
+   "stiffness": 70,
+   "gravity": 520,
+   "anchor": [
+    0.0,
+    -1.0,
+    -6.4
+   ],
+   "thickness": 3.0
+  },
+  "lock_2": {
+   "seg_len": 3.0,
+   "rest_dir": [
+    0.3,
+    -1,
+    -0.35
+   ],
+   "widths": [
+    4.2,
+    3.4,
+    2.0
+   ],
+   "stiffness": 70,
+   "gravity": 520,
+   "anchor": [
+    5.6,
+    -1.0,
+    -6.4
+   ],
+   "thickness": 3.0
+  }
+ },
+ "anim_patch": {}
+}

@@ -1,0 +1,35 @@
+{
+ "px": [
+  [
+   21,
+   41,
+   1
+  ],
+  [
+   22,
+   41,
+   1
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     21,
+     41,
+     "plum_0"
+    ],
+    [
+     22,
+     41,
+     "plum_0"
+    ]
+   ],
+   "why": "Rear boot was cuff colour (mauve) down to the ground row so it read as a lilac sock; give it a plum_0 sole (rule 8: boots darkest on ground row)"
+  }
+ ],
+ "note": "",
+ "base_hash": "a7fd087a4876d513"
+}

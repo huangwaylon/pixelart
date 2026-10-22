@@ -1,0 +1,1671 @@
+{
+  "animation": "jump",
+  "buildId": "fa0275fce161",
+  "frameHashes": {
+    "E": [
+      "8089d0dfd60dca60",
+      "75acf50f44344183",
+      "9a775f7074526a52",
+      "246ec2cc4587f3ae",
+      "8e123dc3ce0da251",
+      "bcfcabe26e45ba4a",
+      "d6b8f906044ed49a",
+      "aef1cd8724fea343",
+      "037df49e5f954195",
+      "70539ab207edbcbe",
+      "5cbec64197131419",
+      "b7e49e2f6f7919fe"
+    ],
+    "N": [
+      "2d615fb63953eab8",
+      "3fe435cd4c0b5acd",
+      "b65de8a51e2b3ca2",
+      "fe57708786f58c86",
+      "de3ad3e7603f6d04",
+      "02a4b62783318d61",
+      "4e1672d5c080e642",
+      "e9bd4692b8aec1fc",
+      "4c9cc81c38ddc5ac",
+      "edaec69ecd94ff93",
+      "7a5403654856e675",
+      "3736c217b6255565"
+    ],
+    "NE": [
+      "bd17328b7c2dde5e",
+      "c31894352eb81810",
+      "a84b74c6aa3ea78d",
+      "1daa76b16aa22c28",
+      "5c70bdba523049aa",
+      "1fdb4725a59f63f9",
+      "87335e765746269a",
+      "dd4d3154f6eff035",
+      "8998595babbdc50d",
+      "70b79b25e0674184",
+      "09af7cc763b3e0a4",
+      "170eb9db19dcba6d"
+    ],
+    "NW": [
+      "89c631612dda9a4e",
+      "f64fa6d61b2bae2b",
+      "2eef2e7a32ae906c",
+      "07d060ff74b73043",
+      "ac9fe31352199eca",
+      "eda1471480105d62",
+      "b407b9d903268fd4",
+      "4e3567b3c3aebdf4",
+      "60340864f0f1ebb7",
+      "5ffb1743177866be",
+      "3d0954e70e215926",
+      "d6915c4a5ee1967c"
+    ],
+    "S": [
+      "da919b716b4b810e",
+      "2838cb02686bbe21",
+      "b9343c2e6e2936ae",
+      "2784eb9f068d2400",
+      "d0550239feb4f87a",
+      "be6433fe6bc90b47",
+      "47ecad6740bf2d60",
+      "357d9c945f4eaf89",
+      "49b2871a7511d50f",
+      "d9efcf3dd2f6c9e6",
+      "2a0784a72edbe85d",
+      "690cb927ab7d2688"
+    ],
+    "SE": [
+      "b4da8d59f56d92cb",
+      "6b3f52c5d2c20c6f",
+      "d8feb4522d5a67c0",
+      "7775777b28d84d4e",
+      "fcf69b66b7276c56",
+      "2f9b09cbf6a413a0",
+      "bdadabecd0f4e87a",
+      "de45a363123002a7",
+      "0b09faa883102dd1",
+      "e106f3540229c790",
+      "5e8443cf8236abc6",
+      "105921a7e5708eb7"
+    ],
+    "SW": [
+      "3e4eb1205bfa3a5e",
+      "a04a1f4e6d9cba60",
+      "e934ebe16d451254",
+      "ff783805041a48da",
+      "c0076ea6f723c28d",
+      "56e827cf43cd3e7f",
+      "e5e51d7e1bace2ca",
+      "d871748dd9091be6",
+      "60a611261193df40",
+      "fc896b876634ab94",
+      "c490b829804494e5",
+      "fb1c463022856834"
+    ],
+    "W": [
+      "9ed572c6aad85661",
+      "7e652a79e259cd60",
+      "207eba62fb9704c2",
+      "6697c6fc4c54d8d6",
+      "9962799527a0388a",
+      "11e8d4f4972ef803",
+      "93e3b2b8d56a1048",
+      "f267418a71f601c1",
+      "8fc988a75897e6fd",
+      "ef089ac3e5d14870",
+      "a4b77f610f377cd6",
+      "15cd44c767eaf58b"
+    ]
+  },
+  "inputs": {
+    "data/animations/jump.json": "d105d9ce0fb1eba0dbc814e40eff07d8a6f240f35d3da7da355f25d1f0e63819",
+    "data/palettes/cw_charcoal.json": "5a9dc16b65e524ed6992a7f8697fbc304c0f65f185f73652e9937fdf7acdc67f",
+    "data/variants/A_chibi.json": "e0d727e1d27192344f2e9f5642d953f3266d668e781fc88726b27d2b269798de",
+    "data/variants/BO1_parka_charcoal.json": "783436b1498763a677f3f477c772a7c7b5fd4199507a1b26a65b7b7fde4e35ec",
+    "data/variants/BO2_puffer_navy.json": "e0036a81dbb4d5caf57240aaaafa9aab4ccd06e1fe78b45c2aa6a288ba52cedd",
+    "data/variants/BO3_duffle_cranberry.json": "3e2b79d82256d947e0eb3dd290bb4a279f935289e8d1c9c094e9535eb6a1f56b",
+    "data/variants/BO4_parka_forest.json": "eb49bcb0011817db74775d20015f4f117955b9f0ce015fcc96a144a5cbd37b10",
+    "data/variants/BO5_duffle_lavender.json": "afb59845a11790c0b1ffeea8d84d60a01dddb9b2917b41af32e6d13f3761b191",
+    "data/variants/BO6_puffer_oatmeal.json": "36a1b9237867ad1fcb27455671dee9f8e8f2d285c81c26ec6f5394c4d97c836e",
+    "data/variants/B_pokemon_ow.json": "b6713159432642c61151daa0ebcb9d16e55abb123da8154e7aa1866b837162e4",
+    "data/variants/C_semichibi.json": "b15d63b11f476b0745d9d8ac450eeff0c1589792903cb4ac075a14f36463dff3",
+    "data/variants/D_trainer.json": "08e6f921797a200a4a450e2479c03eddfa17f642e1b30cb20451db9f943c587b",
+    "data/variants/E_puffball.json": "257a2ed16375da1a275ba2f707c915a091489c52314e8cbf0e04b989b6cdeedc",
+    "data/variants/H1_B_final.json": "eb31d447b7e560d8736b0c9b7822f681a0f24c51ca4e466ace27dea143b23fde",
+    "data/variants/H1v2_B_final.json": "9c4f76b13400e8f38ed43579b33380d8f7e6efa614b40d7df8d50783b1f24272",
+    "data/variants/H2_A_final.json": "b4b91487656732a088ff4b2a2be04215370bd667e847726e2f6a026fa7e1a921",
+    "data/variants/H2v2_A_final.json": "ef807407db97229dde8098cc1853542d3ed9a7306e698ee6e59c86b177b2f7bb",
+    "data/variants/O1_parka_charcoal.json": "3012b2139dc11e1a7fad257150f03102180b3b3d6bca9ae50ba0cb2139c7bdbd",
+    "data/variants/O2_puffer_navy.json": "33a2d5fba220811f89dd77c91610ed46254f68000f5867db7a6bacaa78c20fec",
+    "data/variants/O3_duffle_cranberry.json": "22533f958a06a0c38fc4ad4d3901b8ea6849e1198abb2d5067e69d581946bcf2",
+    "data/variants/O4_parka_forest.json": "2ccec4b586997f71413db5fa4f195f2af6fea04beaeef9ec4e01170b3ca8d3fc",
+    "data/variants/O5_duffle_lavender.json": "0288d808f31e9c47fe0ea9cb1b32dbe71592cb17d88d8339d60b1b305ec70a2c",
+    "data/variants/O6_puffer_oatmeal.json": "bc5999e357cdc47f9849e36e352850591d79419db7b2a2e0367477ad8d2d8ffc",
+    "data/variants/R1_24px.json": "4aa7f0efb11047b0d619d41254fb41dd640238e89978e97773485ae82f74ece9",
+    "data/variants/R2_32px.json": "df093e99b29899c25fc4be0a04d01ffaecbd24756b0f4e82fab5f77732ebd089",
+    "data/variants/R3_42px.json": "6d011e4bab2839f26ab230e8445998fa03592f9cf55e90b32ab631b22008e273",
+    "data/variants/R4_56px.json": "78a811c4db94e5d71963ca457d38944fc9cb2595168ee09ce483f367f05abaa0",
+    "overrides/variants/H1v2_B_final/jump/E/00.json": "09cb7edab5fd75f872dee0d5cc98855662537d7fadd934e1f06de8d19736a6f4",
+    "overrides/variants/H1v2_B_final/jump/E/01.json": "7c80d8f2d87ded2a9ef07b611023d3bc3a5e78d1dca232b47ae98271be8aab29",
+    "overrides/variants/H1v2_B_final/jump/E/02.json": "69c8862ac6e245b53e6a43b5fc5374be07264a0d238f007e9af280e235d07038",
+    "overrides/variants/H1v2_B_final/jump/E/03.json": "87e97a0ed2da05ebd4bd8d5d4fcaf408bdf0416d2c7f58a754b241f1dd61c23a",
+    "overrides/variants/H1v2_B_final/jump/E/04.json": "68c0c77e53b2e1f5076231e04ad2640fbaf68f9cabb7f889fb670cbb3a64c5ed",
+    "overrides/variants/H1v2_B_final/jump/E/05.json": "320d8db58f36dd8c3132e7b7bef79809d3e1d2b8b0ccc184ca50a78c36a97256",
+    "overrides/variants/H1v2_B_final/jump/E/06.json": "6a3b0236959c9deefe0f97902c721c51b2958b3254a536c7eb585e81c03049ef",
+    "overrides/variants/H1v2_B_final/jump/E/08.json": "8e4b812cdf41f340273138f0b87c4c3792f1790d3634fc4bac51b93558771018",
+    "overrides/variants/H1v2_B_final/jump/E/09.json": "069c4df28a728b98e21c6f86e2ec516b3eeda8c96a85f1d23ebccbea54606b96",
+    "overrides/variants/H1v2_B_final/jump/E/10.json": "00b5a228f51b8746385b73a96c4f5d4bb09d877571923853a4e8453f42972131",
+    "overrides/variants/H1v2_B_final/jump/E/11.json": "70839b8d784afc55b70bc0344d29e4560826cd538b12706dfeff310887db7d58",
+    "overrides/variants/H1v2_B_final/jump/N/01.json": "e3a1b39db7767edf1a7f4ca9d04661755b824e306fcf2d5c9d7278060ff17757",
+    "overrides/variants/H1v2_B_final/jump/N/08.json": "2fd06ecd02f9df8d786dfd57e2df8707b54b13b286884aa6dcf0db4a53e6552c",
+    "overrides/variants/H1v2_B_final/jump/NE/07.json": "8a851516476f220755acee8c300499a2e6b60ff9f63eb78c43d0c4b7dffbb201",
+    "overrides/variants/H1v2_B_final/jump/NE/08.json": "673e49bbee1fcc6e45bb72d82c02ca345ef26d14e5d2d8fd523ac87a7f58af0f",
+    "overrides/variants/H1v2_B_final/jump/NW/05.json": "575ff14305abbc099ee2bfe893d4e4c9fb9d716d7628b284b1e6a55311479be4",
+    "overrides/variants/H1v2_B_final/jump/NW/09.json": "7a7c63e6066175eb703899065058d13999ebfb8b547d354b9522811de945aaa6",
+    "overrides/variants/H1v2_B_final/jump/NW/10.json": "284c0c87761a6cc177977fbeb70d5425533dd0ab5caf1a907b7aca47cf119f34",
+    "overrides/variants/H1v2_B_final/jump/S/02.json": "ca846664bba09a4e39d4b9d23b1d8cb894ee8450915c0c1eef15558053b1abe4",
+    "overrides/variants/H1v2_B_final/jump/S/03.json": "823104941da568b50e48d05b738a9af3cdd9c88c2abb774677de8dc55fd70b74",
+    "overrides/variants/H1v2_B_final/jump/S/05.json": "6edaa16997413ae42c8b09e4118488898c8c03a09e2b1a41ec8e9d464dd902ed",
+    "overrides/variants/H1v2_B_final/jump/SE/01.json": "8a1e3b763d73a3cd45f995a2a0e38aa2fbda562439b8865625acb06b35448371",
+    "overrides/variants/H1v2_B_final/jump/SE/02.json": "c5fce321748f92a737be76a6a6b0f0f9abcde6c6f879ead8d28d96719f87eb51",
+    "overrides/variants/H1v2_B_final/jump/SE/03.json": "bb0eaf879ed74f6c3f116b347ca09db63474355f32d3fd73a35f82a65606e14e",
+    "overrides/variants/H1v2_B_final/jump/SE/04.json": "fe44e3c253313bd39c5a19092d1640239cccb6adc1fef259a7d93a1f3c5168e9",
+    "overrides/variants/H1v2_B_final/jump/SE/05.json": "e5d6fcf6059498f49b65cbfaf540f8879f97a3868f0e74dbbe859bfcc4bcdd09",
+    "overrides/variants/H1v2_B_final/jump/SE/06.json": "d5add0d419ecce53a64316ee426a1220ae8ec0559c468b697b2c4393e50fee08",
+    "overrides/variants/H1v2_B_final/jump/SE/07.json": "b330b60dc585e635d78acd85c263eb51bbe22a34bc31902e9e87316736b5a087",
+    "overrides/variants/H1v2_B_final/jump/SE/08.json": "65ec0ab4607523d4cfa8e9fc86b084f3f1cd51288275909a936fc7c978ff606f",
+    "overrides/variants/H1v2_B_final/jump/SE/09.json": "b986b37bef8ccb07ea9d039800eb9cd319dcb92c9e6dc9007b0a078e9977ea57",
+    "overrides/variants/H1v2_B_final/jump/SE/10.json": "10f4d8d212d2a3ff4512f7faa465f98100d855b7e8c39baf340252b25c97bd9b",
+    "overrides/variants/H1v2_B_final/jump/SE/11.json": "b5c1c2ab1018ca877c340d50e8bbc81d128d43733c6e766131aeba554b0a8aa8",
+    "overrides/variants/H1v2_B_final/jump/SW/00.json": "5bb515e417c2f80366159b2849724ab0a55f54bd900ff02ebd86c9142e3ce7a5",
+    "overrides/variants/H1v2_B_final/jump/SW/01.json": "956a0d942b8e28663d063673ae706fa9468b27be1b93a66c81e51be376279e65",
+    "overrides/variants/H1v2_B_final/jump/SW/02.json": "4e660304adca177cc726ebf0aa6ddf7f7c60f958eec914781b09024f2841c686",
+    "overrides/variants/H1v2_B_final/jump/SW/03.json": "018d36d429de28bfb41c3d8c8f5dc666c089e38d8c60b3958e73c8f0ab386b96",
+    "overrides/variants/H1v2_B_final/jump/SW/05.json": "441556d6000689b606eaaf05478cea8960b9429a2c91e1c5f68ef51e49780a93",
+    "overrides/variants/H1v2_B_final/jump/SW/06.json": "c8186882c0d9dfcbf38d12bd036af7d390a6ee3706e9261ee3a544d3b7d3a0ba",
+    "overrides/variants/H1v2_B_final/jump/SW/07.json": "938a4f6e0e553fe7f9b977f832fe0818e8ded33fb3dd7244870d861abbc49a95",
+    "overrides/variants/H1v2_B_final/jump/SW/08.json": "d98938e1f2e6bebe0a0682b49c53d926e033c4be5fe1ea0fd2a0c186484cd579",
+    "overrides/variants/H1v2_B_final/jump/SW/09.json": "e580b7f2ee8e3b56f40850690c191a9d2298dd7ac5f1dcce1429fd47b9610523",
+    "overrides/variants/H1v2_B_final/jump/SW/10.json": "ec836a1c7d9af1cc8ab7a355b23e2d6f9168238dfa84485ad86c52b14edd1df9",
+    "overrides/variants/H1v2_B_final/jump/SW/11.json": "ca7cb0f1253dff484311160b1165be19cb12cab5fdd1f78cf9ac608a7ecf5c69",
+    "overrides/variants/H1v2_B_final/jump/W/00.json": "ba191564b068637dc887d59e1e9464f7252d1f6a6be85392a021971d6b6dee97",
+    "overrides/variants/H1v2_B_final/jump/W/01.json": "4c1c0b4e7b98d497684973380fa8635385f6ff37583770740afafa10e20fe24e",
+    "overrides/variants/H1v2_B_final/jump/W/02.json": "83af82b5ddae8f692b1e344850f8bd6f6d1654d447dc5c840d79397cdb864e65",
+    "overrides/variants/H1v2_B_final/jump/W/03.json": "82da5d4ecf1c11566602bff74a1241c1b41978e4f52e82c14e9a761e8cd53416",
+    "overrides/variants/H1v2_B_final/jump/W/04.json": "6227e3ac5fed1115149dbdede9e3764093f4ca817c5775be5045a47587e69a9a",
+    "overrides/variants/H1v2_B_final/jump/W/05.json": "dffb9ca542d73d4c9f7e04a60d92f45916a88650cf49470ab7b595bfbe9427ab",
+    "overrides/variants/H1v2_B_final/jump/W/06.json": "970cb7f08b05e92ac9ccdfe881a37eb75217ea08b2d66b9dd3829fdf901e84bb",
+    "overrides/variants/H1v2_B_final/jump/W/08.json": "ed4c913dedb6b73acf5c98f7171485019c9d27900242b17b973e66ef77aa0bae",
+    "overrides/variants/H1v2_B_final/jump/W/09.json": "467e30f4bad46363cfcc68a88d248066d1b009b2d629011e19f4c026499ace90",
+    "overrides/variants/H1v2_B_final/jump/W/10.json": "eeb16f74762f41d51e616bce1f571d456f10b1f5f355639755a04820a5936da2",
+    "overrides/variants/H1v2_B_final/jump/W/11.json": "dcb875f333e49575da997c33eadfa4db1f60b37318ce7ff05443dc9a6c72ab45",
+    "pipeline/__init__.py": "61e345e5204ba4eb6200f88984a33f9f36397f58c859bf1c21dec2101fd29ccd",
+    "pipeline/board.py": "b030ca8809fc1d4075f78d7f41ca0f9b87ea571cd69dead578d41552470f70f3",
+    "pipeline/build.py": "fa692554de9355c961f1600b386980537b5dfbe093480bafb40296f7137d98af",
+    "pipeline/chargen.py": "c04009d065f7943d53851c2629e991e1f6d903ec69da4ca1d96d586f43d0b1a9",
+    "pipeline/export.py": "b83196415e47bf02db9227567719942f43fffd16dfb4a7c4148d673ade3d494f",
+    "pipeline/face.py": "e97f460bad11862809c47f814bb9f7a6b016a1a0ce16d737c4146fa684a644b7",
+    "pipeline/frames.py": "0f6d487f9ae49e7135be0116b9945a71c7887cd5ae31fabc09a9c418a6a8f0bd",
+    "pipeline/fx.py": "8182d87a243bb3a97577ca8416607d74f42eff8946decf7f509b8846c194c049",
+    "pipeline/mathutil.py": "3758139d547d0ba514952357022301c3c9f463079decd7e5a749244aea126318",
+    "pipeline/override.py": "9508afa08b8080eefa272182dc462ff67a536b65b46910cea412994411e86f9c",
+    "pipeline/palette.py": "a7001e0b650b7ad8dbaf39c0d1c5f518823278e73191a327f65612acf3b72da2",
+    "pipeline/pixelreview.py": "477481ed761d06a5783d25a349b5b295936b3f28b4f79cbd563ce9249225cf6e",
+    "pipeline/pixelrules.py": "aebe04eeca2c4088b158d44bea58bd3b72ec132949b59c5baaa9b644cbaf1273",
+    "pipeline/qa.py": "08c3f5e90f4e2a9393016794fcba5ef85ead8fd50a4c63a9ef2def1c2bb2f5b9",
+    "pipeline/reference.py": "0dd5790e43665c6e822e381832aaf0401aa78c1b9d6bfce9927ac3f768c98eea",
+    "pipeline/render.py": "8c0818b0ab7c5e75921f59a6225a47111b4396472576511ed6e110385f745c1b",
+    "pipeline/rig.py": "994ed386ecb2badbd5c6bbc3fb932e20d228a94f6734d0c34c1436e87e807be2",
+    "pipeline/server.py": "95be6f5f2ef5a9c349cd272cc1481e67c578aad977c7f13b0cb51c760887ee7c"
+  },
+  "overrides": {
+    "E_01": {
+      "coords": [
+        [
+          31,
+          26
+        ],
+        [
+          31,
+          27
+        ],
+        [
+          32,
+          25
+        ],
+        [
+          32,
+          26
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 1,
+      "stale": false
+    },
+    "E_02": {
+      "coords": [
+        [
+          33,
+          29
+        ],
+        [
+          33,
+          30
+        ],
+        [
+          34,
+          29
+        ],
+        [
+          34,
+          30
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 1,
+      "stale": false
+    },
+    "E_03": {
+      "coords": [
+        [
+          27,
+          23
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 1,
+      "stale": false
+    },
+    "E_04": {
+      "coords": [
+        [
+          27,
+          23
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 1,
+      "stale": false
+    },
+    "E_05": {
+      "coords": [
+        [
+          27,
+          24
+        ],
+        [
+          28,
+          23
+        ],
+        [
+          29,
+          23
+        ],
+        [
+          29,
+          24
+        ],
+        [
+          30,
+          24
+        ]
+      ],
+      "note": "",
+      "pixels": 5,
+      "reasons": 1,
+      "stale": false
+    },
+    "E_06": {
+      "coords": [
+        [
+          28,
+          24
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 1,
+      "stale": false
+    },
+    "E_07": {
+      "coords": [
+        [
+          25,
+          30
+        ],
+        [
+          29,
+          23
+        ],
+        [
+          30,
+          23
+        ],
+        [
+          30,
+          24
+        ],
+        [
+          31,
+          23
+        ],
+        [
+          31,
+          24
+        ]
+      ],
+      "note": "",
+      "pixels": 6,
+      "reasons": 1,
+      "stale": false
+    },
+    "E_09": {
+      "coords": [
+        [
+          26,
+          15
+        ],
+        [
+          26,
+          16
+        ],
+        [
+          27,
+          15
+        ],
+        [
+          30,
+          29
+        ],
+        [
+          31,
+          28
+        ],
+        [
+          32,
+          29
+        ],
+        [
+          32,
+          31
+        ],
+        [
+          33,
+          30
+        ]
+      ],
+      "note": "",
+      "pixels": 8,
+      "reasons": 2,
+      "stale": true
+    },
+    "E_10": {
+      "coords": [
+        [
+          28,
+          23
+        ],
+        [
+          29,
+          22
+        ],
+        [
+          30,
+          24
+        ],
+        [
+          30,
+          26
+        ],
+        [
+          31,
+          25
+        ],
+        [
+          32,
+          25
+        ],
+        [
+          33,
+          25
+        ]
+      ],
+      "note": "",
+      "pixels": 7,
+      "reasons": 2,
+      "stale": true
+    },
+    "E_11": {
+      "coords": [
+        [
+          29,
+          24
+        ],
+        [
+          30,
+          24
+        ],
+        [
+          30,
+          25
+        ],
+        [
+          31,
+          24
+        ],
+        [
+          31,
+          25
+        ]
+      ],
+      "note": "",
+      "pixels": 5,
+      "reasons": 1,
+      "stale": false
+    },
+    "E_12": {
+      "coords": [
+        [
+          29,
+          22
+        ],
+        [
+          29,
+          23
+        ],
+        [
+          30,
+          24
+        ],
+        [
+          30,
+          25
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 2,
+      "stale": false
+    },
+    "NE_08": {
+      "coords": [
+        [
+          26,
+          42
+        ],
+        [
+          26,
+          43
+        ],
+        [
+          27,
+          42
+        ]
+      ],
+      "note": "",
+      "pixels": 3,
+      "reasons": 2,
+      "stale": false
+    },
+    "NE_09": {
+      "coords": [
+        [
+          25,
+          14
+        ],
+        [
+          25,
+          15
+        ],
+        [
+          26,
+          14
+        ]
+      ],
+      "note": "",
+      "pixels": 3,
+      "reasons": 1,
+      "stale": true
+    },
+    "NW_06": {
+      "coords": [
+        [
+          25,
+          13
+        ],
+        [
+          25,
+          14
+        ],
+        [
+          26,
+          13
+        ]
+      ],
+      "note": "",
+      "pixels": 3,
+      "reasons": 1,
+      "stale": true
+    },
+    "NW_10": {
+      "coords": [
+        [
+          24,
+          13
+        ],
+        [
+          24,
+          14
+        ],
+        [
+          25,
+          13
+        ]
+      ],
+      "note": "",
+      "pixels": 3,
+      "reasons": 1,
+      "stale": true
+    },
+    "NW_11": {
+      "coords": [
+        [
+          24,
+          11
+        ],
+        [
+          24,
+          12
+        ],
+        [
+          25,
+          11
+        ]
+      ],
+      "note": "",
+      "pixels": 3,
+      "reasons": 1,
+      "stale": true
+    },
+    "N_02": {
+      "coords": [
+        [
+          20,
+          40
+        ],
+        [
+          21,
+          40
+        ],
+        [
+          21,
+          41
+        ],
+        [
+          22,
+          40
+        ],
+        [
+          22,
+          41
+        ],
+        [
+          25,
+          40
+        ],
+        [
+          25,
+          41
+        ],
+        [
+          26,
+          40
+        ],
+        [
+          26,
+          41
+        ],
+        [
+          27,
+          40
+        ]
+      ],
+      "note": "",
+      "pixels": 10,
+      "reasons": 2,
+      "stale": false
+    },
+    "N_09": {
+      "coords": [
+        [
+          20,
+          40
+        ],
+        [
+          21,
+          40
+        ],
+        [
+          21,
+          41
+        ],
+        [
+          22,
+          40
+        ],
+        [
+          22,
+          41
+        ],
+        [
+          25,
+          40
+        ],
+        [
+          25,
+          41
+        ],
+        [
+          26,
+          40
+        ],
+        [
+          26,
+          41
+        ],
+        [
+          27,
+          40
+        ]
+      ],
+      "note": "",
+      "pixels": 10,
+      "reasons": 2,
+      "stale": false
+    },
+    "SE_02": {
+      "coords": [
+        [
+          33,
+          31
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 1,
+      "stale": true
+    },
+    "SE_03": {
+      "coords": [
+        [
+          27,
+          26
+        ],
+        [
+          27,
+          27
+        ],
+        [
+          28,
+          26
+        ],
+        [
+          28,
+          27
+        ],
+        [
+          29,
+          24
+        ],
+        [
+          29,
+          25
+        ],
+        [
+          29,
+          26
+        ],
+        [
+          30,
+          23
+        ],
+        [
+          30,
+          24
+        ]
+      ],
+      "note": "",
+      "pixels": 9,
+      "reasons": 2,
+      "stale": true
+    },
+    "SE_04": {
+      "coords": [
+        [
+          27,
+          26
+        ],
+        [
+          27,
+          27
+        ],
+        [
+          28,
+          26
+        ],
+        [
+          28,
+          27
+        ],
+        [
+          29,
+          24
+        ],
+        [
+          30,
+          23
+        ]
+      ],
+      "note": "",
+      "pixels": 6,
+      "reasons": 1,
+      "stale": true
+    },
+    "SE_05": {
+      "coords": [
+        [
+          28,
+          27
+        ],
+        [
+          29,
+          26
+        ],
+        [
+          29,
+          27
+        ],
+        [
+          30,
+          26
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 2,
+      "stale": false
+    },
+    "SE_06": {
+      "coords": [
+        [
+          27,
+          28
+        ],
+        [
+          28,
+          27
+        ],
+        [
+          28,
+          28
+        ],
+        [
+          29,
+          27
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 2,
+      "stale": true
+    },
+    "SE_07": {
+      "coords": [
+        [
+          31,
+          24
+        ],
+        [
+          31,
+          25
+        ]
+      ],
+      "note": "",
+      "pixels": 2,
+      "reasons": 1,
+      "stale": true
+    },
+    "SE_08": {
+      "coords": [
+        [
+          30,
+          23
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 1,
+      "stale": true
+    },
+    "SE_09": {
+      "coords": [
+        [
+          24,
+          16
+        ],
+        [
+          24,
+          17
+        ],
+        [
+          25,
+          16
+        ],
+        [
+          33,
+          31
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 2,
+      "stale": true
+    },
+    "SE_10": {
+      "coords": [
+        [
+          31,
+          25
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 1,
+      "stale": true
+    },
+    "SE_11": {
+      "coords": [
+        [
+          31,
+          25
+        ],
+        [
+          31,
+          26
+        ]
+      ],
+      "note": "",
+      "pixels": 2,
+      "reasons": 1,
+      "stale": true
+    },
+    "SE_12": {
+      "coords": [
+        [
+          30,
+          24
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 1,
+      "stale": true
+    },
+    "SW_01": {
+      "coords": [
+        [
+          25,
+          41
+        ],
+        [
+          26,
+          41
+        ]
+      ],
+      "note": "",
+      "pixels": 2,
+      "reasons": 1,
+      "stale": true
+    },
+    "SW_02": {
+      "coords": [
+        [
+          14,
+          31
+        ],
+        [
+          15,
+          31
+        ],
+        [
+          15,
+          32
+        ]
+      ],
+      "note": "",
+      "pixels": 3,
+      "reasons": 1,
+      "stale": true
+    },
+    "SW_03": {
+      "coords": [
+        [
+          17,
+          23
+        ],
+        [
+          17,
+          24
+        ],
+        [
+          18,
+          24
+        ],
+        [
+          19,
+          26
+        ],
+        [
+          19,
+          27
+        ],
+        [
+          20,
+          26
+        ],
+        [
+          20,
+          27
+        ],
+        [
+          21,
+          43
+        ],
+        [
+          22,
+          43
+        ],
+        [
+          25,
+          43
+        ],
+        [
+          26,
+          42
+        ],
+        [
+          26,
+          43
+        ]
+      ],
+      "note": "",
+      "pixels": 12,
+      "reasons": 3,
+      "stale": true
+    },
+    "SW_04": {
+      "coords": [
+        [
+          17,
+          23
+        ],
+        [
+          18,
+          24
+        ],
+        [
+          18,
+          27
+        ],
+        [
+          19,
+          26
+        ],
+        [
+          19,
+          27
+        ],
+        [
+          20,
+          26
+        ],
+        [
+          20,
+          27
+        ]
+      ],
+      "note": "",
+      "pixels": 7,
+      "reasons": 2,
+      "stale": true
+    },
+    "SW_06": {
+      "coords": [
+        [
+          16,
+          24
+        ],
+        [
+          17,
+          25
+        ],
+        [
+          17,
+          26
+        ],
+        [
+          17,
+          27
+        ],
+        [
+          18,
+          27
+        ],
+        [
+          25,
+          12
+        ],
+        [
+          25,
+          13
+        ],
+        [
+          26,
+          12
+        ]
+      ],
+      "note": "",
+      "pixels": 8,
+      "reasons": 4,
+      "stale": true
+    },
+    "SW_07": {
+      "coords": [
+        [
+          16,
+          24
+        ],
+        [
+          16,
+          25
+        ],
+        [
+          17,
+          26
+        ],
+        [
+          17,
+          27
+        ],
+        [
+          18,
+          27
+        ]
+      ],
+      "note": "",
+      "pixels": 5,
+      "reasons": 4,
+      "stale": true
+    },
+    "SW_08": {
+      "coords": [
+        [
+          16,
+          23
+        ],
+        [
+          20,
+          41
+        ],
+        [
+          20,
+          42
+        ],
+        [
+          21,
+          42
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 3,
+      "stale": true
+    },
+    "SW_09": {
+      "coords": [
+        [
+          14,
+          31
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 1,
+      "stale": true
+    },
+    "SW_10": {
+      "coords": [
+        [
+          16,
+          25
+        ],
+        [
+          24,
+          12
+        ],
+        [
+          25,
+          12
+        ]
+      ],
+      "note": "",
+      "pixels": 3,
+      "reasons": 2,
+      "stale": true
+    },
+    "SW_11": {
+      "coords": [
+        [
+          16,
+          25
+        ],
+        [
+          16,
+          26
+        ],
+        [
+          24,
+          11
+        ],
+        [
+          24,
+          12
+        ],
+        [
+          25,
+          11
+        ],
+        [
+          25,
+          41
+        ],
+        [
+          26,
+          41
+        ]
+      ],
+      "note": "",
+      "pixels": 7,
+      "reasons": 3,
+      "stale": true
+    },
+    "SW_12": {
+      "coords": [
+        [
+          16,
+          24
+        ],
+        [
+          20,
+          39
+        ],
+        [
+          20,
+          40
+        ],
+        [
+          21,
+          40
+        ],
+        [
+          25,
+          41
+        ],
+        [
+          26,
+          41
+        ]
+      ],
+      "note": "",
+      "pixels": 6,
+      "reasons": 3,
+      "stale": true
+    },
+    "S_03": {
+      "coords": [
+        [
+          21,
+          43
+        ],
+        [
+          21,
+          44
+        ],
+        [
+          22,
+          43
+        ],
+        [
+          22,
+          44
+        ],
+        [
+          23,
+          26
+        ],
+        [
+          23,
+          28
+        ],
+        [
+          23,
+          43
+        ],
+        [
+          24,
+          26
+        ],
+        [
+          24,
+          28
+        ],
+        [
+          24,
+          43
+        ],
+        [
+          25,
+          43
+        ]
+      ],
+      "note": "",
+      "pixels": 11,
+      "reasons": 3,
+      "stale": true
+    },
+    "S_04": {
+      "coords": [
+        [
+          23,
+          26
+        ],
+        [
+          23,
+          28
+        ],
+        [
+          24,
+          26
+        ],
+        [
+          24,
+          28
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 1,
+      "stale": true
+    },
+    "S_06": {
+      "coords": [
+        [
+          23,
+          28
+        ],
+        [
+          24,
+          28
+        ],
+        [
+          25,
+          28
+        ]
+      ],
+      "note": "",
+      "pixels": 3,
+      "reasons": 2,
+      "stale": true
+    },
+    "W_01": {
+      "coords": [
+        [
+          15,
+          25
+        ],
+        [
+          15,
+          26
+        ],
+        [
+          16,
+          26
+        ],
+        [
+          16,
+          27
+        ],
+        [
+          23,
+          12
+        ],
+        [
+          23,
+          13
+        ],
+        [
+          24,
+          12
+        ]
+      ],
+      "note": "",
+      "pixels": 7,
+      "reasons": 2,
+      "stale": true
+    },
+    "W_02": {
+      "coords": [
+        [
+          13,
+          29
+        ],
+        [
+          13,
+          30
+        ],
+        [
+          14,
+          29
+        ],
+        [
+          14,
+          30
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 1,
+      "stale": false
+    },
+    "W_03": {
+      "coords": [
+        [
+          20,
+          23
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 1,
+      "stale": false
+    },
+    "W_04": {
+      "coords": [
+        [
+          20,
+          23
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 1,
+      "stale": false
+    },
+    "W_05": {
+      "coords": [
+        [
+          17,
+          24
+        ],
+        [
+          18,
+          23
+        ],
+        [
+          18,
+          24
+        ],
+        [
+          19,
+          23
+        ],
+        [
+          20,
+          24
+        ]
+      ],
+      "note": "",
+      "pixels": 5,
+      "reasons": 1,
+      "stale": false
+    },
+    "W_06": {
+      "coords": [
+        [
+          19,
+          24
+        ],
+        [
+          26,
+          13
+        ],
+        [
+          26,
+          14
+        ],
+        [
+          27,
+          13
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 2,
+      "stale": true
+    },
+    "W_07": {
+      "coords": [
+        [
+          16,
+          23
+        ],
+        [
+          16,
+          24
+        ],
+        [
+          17,
+          23
+        ],
+        [
+          17,
+          24
+        ],
+        [
+          18,
+          23
+        ]
+      ],
+      "note": "",
+      "pixels": 5,
+      "reasons": 1,
+      "stale": false
+    },
+    "W_09": {
+      "coords": [
+        [
+          14,
+          30
+        ],
+        [
+          15,
+          29
+        ],
+        [
+          15,
+          31
+        ],
+        [
+          16,
+          28
+        ],
+        [
+          17,
+          29
+        ]
+      ],
+      "note": "",
+      "pixels": 5,
+      "reasons": 1,
+      "stale": true
+    },
+    "W_10": {
+      "coords": [
+        [
+          14,
+          25
+        ],
+        [
+          15,
+          25
+        ],
+        [
+          16,
+          25
+        ],
+        [
+          17,
+          24
+        ],
+        [
+          17,
+          26
+        ],
+        [
+          18,
+          22
+        ],
+        [
+          19,
+          23
+        ],
+        [
+          24,
+          41
+        ],
+        [
+          25,
+          13
+        ],
+        [
+          25,
+          40
+        ],
+        [
+          25,
+          41
+        ],
+        [
+          26,
+          13
+        ]
+      ],
+      "note": "",
+      "pixels": 12,
+      "reasons": 5,
+      "stale": true
+    },
+    "W_11": {
+      "coords": [
+        [
+          16,
+          24
+        ],
+        [
+          16,
+          25
+        ],
+        [
+          17,
+          24
+        ],
+        [
+          17,
+          25
+        ],
+        [
+          18,
+          24
+        ],
+        [
+          24,
+          41
+        ],
+        [
+          25,
+          11
+        ],
+        [
+          25,
+          12
+        ],
+        [
+          25,
+          41
+        ],
+        [
+          26,
+          11
+        ]
+      ],
+      "note": "",
+      "pixels": 10,
+      "reasons": 3,
+      "stale": true
+    },
+    "W_12": {
+      "coords": [
+        [
+          17,
+          24
+        ],
+        [
+          18,
+          22
+        ],
+        [
+          18,
+          23
+        ],
+        [
+          24,
+          9
+        ],
+        [
+          24,
+          10
+        ],
+        [
+          24,
+          41
+        ],
+        [
+          25,
+          9
+        ],
+        [
+          25,
+          41
+        ]
+      ],
+      "note": "",
+      "pixels": 8,
+      "reasons": 3,
+      "stale": true
+    }
+  },
+  "pipelineVersion": "1.0",
+  "qaPass": true
+}

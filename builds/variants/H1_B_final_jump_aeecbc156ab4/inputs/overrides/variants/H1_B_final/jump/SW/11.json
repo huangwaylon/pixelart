@@ -1,0 +1,116 @@
+{
+ "px": [
+  [
+   16,
+   24,
+   5
+  ],
+  [
+   19,
+   27,
+   5
+  ],
+  [
+   22,
+   29,
+   4
+  ],
+  [
+   23,
+   29,
+   4
+  ],
+  [
+   24,
+   29,
+   4
+  ],
+  [
+   25,
+   29,
+   4
+  ],
+  [
+   25,
+   41,
+   1
+  ],
+  [
+   26,
+   41,
+   1
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     22,
+     29,
+     "skin_0"
+    ],
+    [
+     23,
+     29,
+     "skin_0"
+    ],
+    [
+     24,
+     29,
+     "skin_0"
+    ],
+    [
+     25,
+     29,
+     "skin_0"
+    ]
+   ],
+   "why": "No under-chin shadow (skin_1 straight into scarf); skin_0 jaw row matches SE f12 ssss and SW f10/f1"
+  },
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     25,
+     41,
+     "plum_0"
+    ],
+    [
+     26,
+     41,
+     "plum_0"
+    ]
+   ],
+   "why": "Near boot mauve cuff ran to the ground row; plum_0 sole (rule 8)"
+  },
+  {
+   "time": "2026-10-22 12:32",
+   "author": "AD-xcheck",
+   "pixels": [
+    [
+     16,
+     24,
+     "skin_1"
+    ]
+   ],
+   "why": "AD style lock: in 3/4 the far eye never carries a catchlight. This snow_3 sat against the silhouette outline as a white notch and blinked (absent in f7/f11); same defect pixel-EW fixed in W f12."
+  },
+  {
+   "time": "2026-10-22 12:32",
+   "author": "AD-xcheck",
+   "pixels": [
+    [
+     19,
+     27,
+     "skin_1"
+    ]
+   ],
+   "why": "AD style lock: mouth must sit 1 row below the eye bottom and touch neither eye, scarf nor outline (S f12 rule). In 3/4 smile there is no such pixel, so the mouth is omitted, as in 3/4 f7/f8/f10. It read as a smear on the eye."
+  }
+ ],
+ "note": "",
+ "base_hash": "a15cf43c419c8559"
+}

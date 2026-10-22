@@ -1,0 +1,164 @@
+{
+ "extends": "H1v2_B_final",
+ "name": "C3_sidepony_cat",
+ "label": "C3 - side ponytail + cat-ear beanie",
+ "palette": "cw_charcoal",
+ "outfit": {
+  "hair": "side_pony",
+  "hat": "cat_beanie",
+  "bangs": "side",
+  "accessory": "clip",
+  "ahoge": false,
+  "scarf": "long",
+  "scarf_tails": 1,
+  "hair_color": "espresso"
+ },
+ "face": {
+  "eyes": "kawaii",
+  "eye_pitch": -12
+ },
+ "remove": [
+  "pom",
+  "uparm_L"
+ ],
+ "prim_overrides": {
+  "hair_cap": {
+   "clip_all": [
+    [
+     0,
+     1,
+     0,
+     -0.72
+    ],
+    [
+     0,
+     -1,
+     0,
+     -0.66
+    ]
+   ]
+  },
+  "beanie": {
+   "center": [
+    0,
+    15.0,
+    -0.8
+   ],
+   "radii": [
+    10.4,
+    4.8,
+    10.2
+   ]
+  },
+  "beanie_cuff": {
+   "center": [
+    0,
+    15.7,
+    -0.5
+   ],
+   "radii": [
+    11.1,
+    1.3,
+    10.8
+   ]
+  },
+  "cat_ear_L": {
+   "center": [
+    6.0,
+    19.6,
+    -0.8
+   ],
+   "radii": [
+    3.0,
+    3.6,
+    1.8
+   ]
+  },
+  "cat_ear_R": {
+   "center": [
+    -6.0,
+    19.6,
+    -0.8
+   ],
+   "radii": [
+    3.0,
+    3.6,
+    1.8
+   ]
+  },
+  "tie": {
+   "center": [
+    9.6,
+    13.0,
+    -4.6
+   ],
+   "radii": [
+    2.0,
+    2.0,
+    2.0
+   ]
+  }
+ },
+ "chain_overrides": {
+  "pony": {
+   "anchor": [
+    10.2,
+    13.0,
+    -4.8
+   ],
+   "rest_dir": [
+    0.75,
+    -0.9,
+    -0.75
+   ],
+   "seg_len": 3.8,
+   "widths": [
+    4.8,
+    4.4,
+    3.6,
+    2.2
+   ],
+   "thickness": 4.2
+  }
+ },
+ "ramp_overrides": {
+  "hat": [
+   "crn_1",
+   "red_1",
+   "red_2"
+  ],
+  "hatcuff": [
+   "oat_1",
+   "oat_1",
+   "oat_2"
+  ],
+  "coat": [
+   "plum_0",
+   "lav_1",
+   "lav_1"
+  ],
+  "ribbon": [
+   "crn_1",
+   "red_1",
+   "red_2"
+  ],
+  "hair_espresso": [
+   "outline",
+   "plum_0",
+   "hair_1"
+  ]
+ },
+ "render": {
+  "ppu": 0.75,
+  "lineart": {
+   "smooth": 0.7,
+   "line_min_run": 3,
+   "pixel_perfect": true,
+   "selout": true,
+   "no_face_lines": true,
+   "angel_ring": true,
+   "regularize": true
+  }
+ },
+ "anim_patch": {}
+}

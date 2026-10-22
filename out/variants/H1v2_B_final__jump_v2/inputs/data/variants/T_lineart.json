@@ -1,0 +1,2 @@
+{"extends": "H1v2_B_final", "name": "T_lineart", "label": "test - lineart pass",
+ "render": {"lineart": {"smooth": 0.7, "line_min_run": 3, "pixel_perfect": true, "selout": true, "no_face_lines": true}}}

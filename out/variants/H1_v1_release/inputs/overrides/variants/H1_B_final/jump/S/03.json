@@ -1,0 +1,55 @@
+{
+ "px": [
+  [
+   22,
+   29,
+   4
+  ],
+  [
+   23,
+   29,
+   4
+  ],
+  [
+   24,
+   29,
+   4
+  ],
+  [
+   25,
+   29,
+   4
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:16",
+   "author": "pixel-SN",
+   "pixels": [
+    [
+     22,
+     29,
+     "skin_0"
+    ],
+    [
+     23,
+     29,
+     "skin_0"
+    ],
+    [
+     24,
+     29,
+     "skin_0"
+    ],
+    [
+     25,
+     29,
+     "skin_0"
+    ]
+   ],
+   "why": "2x2 mouth bottom touched the scarf band (mouth merged into scarf); chin-over-scarf RssssR row as in f5/f12 separates them"
+  }
+ ],
+ "note": "",
+ "base_hash": "b744935ceb878375"
+}

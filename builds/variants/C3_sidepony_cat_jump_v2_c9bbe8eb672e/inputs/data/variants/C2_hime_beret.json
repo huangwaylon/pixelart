@@ -1,0 +1,7 @@
+{"extends": "H1v2_B_final", "name": "C2_hime_beret", "label": "C2 - hime cut + tilted beret + side ribbon",
+ "palette": "cw_charcoal",
+ "outfit": {"hair": "long", "hat": "beret", "bangs": "straight", "accessory": "ribbon_side", "ahoge": false, "scarf": "long", "scarf_tails": 1},
+ "face": {"eyes": "kawaii", "eye_pitch": -12},
+ "render": {"ppu": 0.75, "lineart": {"smooth": 0.7, "line_min_run": 3, "pixel_perfect": true, "selout": true,
+            "no_face_lines": true, "angel_ring": true, "regularize": true}},
+ "anim_patch": {}}

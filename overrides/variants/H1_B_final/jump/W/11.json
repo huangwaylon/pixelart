@@ -1,0 +1,92 @@
+{
+ "px": [
+  [
+   16,
+   24,
+   5
+  ],
+  [
+   17,
+   23,
+   0
+  ],
+  [
+   17,
+   25,
+   5
+  ],
+  [
+   17,
+   26,
+   5
+  ],
+  [
+   18,
+   23,
+   31
+  ],
+  [
+   24,
+   41,
+   1
+  ],
+  [
+   25,
+   41,
+   1
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:13",
+   "author": "pixel-EW",
+   "pixels": [
+    [
+     18,
+     23,
+     "snow_3"
+    ],
+    [
+     17,
+     23,
+     "outline"
+    ],
+    [
+     16,
+     24,
+     "skin_1"
+    ],
+    [
+     17,
+     25,
+     "skin_1"
+    ],
+    [
+     17,
+     26,
+     "skin_1"
+    ]
+   ],
+   "why": "generated eye fused with the face outline, catchlight jammed against the outline, no nose - rebuilt as the mirrored profile eye (1x2 outline + catchlight behind), 1px nose, restored skin"
+  },
+  {
+   "time": "2026-10-22 12:32",
+   "author": "AD-xcheck",
+   "pixels": [
+    [
+     24,
+     41,
+     "plum_0"
+    ],
+    [
+     25,
+     41,
+     "plum_0"
+    ]
+   ],
+   "why": "AD style lock: ground row of every boot is boot ramp. W rear boot was mauve cuff to the ground (lilac sock); E f11/f12 mirror has a plum sole."
+  }
+ ],
+ "note": "",
+ "base_hash": "8b9966614b622fb4"
+}

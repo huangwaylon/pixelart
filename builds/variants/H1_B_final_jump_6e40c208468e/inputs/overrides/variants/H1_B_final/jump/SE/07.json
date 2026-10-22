@@ -1,0 +1,35 @@
+{
+ "px": [
+  [
+   30,
+   21,
+   12
+  ],
+  [
+   31,
+   21,
+   12
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     30,
+     21,
+     "oat_1"
+    ],
+    [
+     31,
+     21,
+     "oat_1"
+    ]
+   ],
+   "why": "Cheek skin punched a 2px hole in the lower cuff row, leaving an orphan oat_1 at x32; continue the 2-row cuff to the edge as in f7"
+  }
+ ],
+ "note": "",
+ "base_hash": "01e62864a981d7e2"
+}

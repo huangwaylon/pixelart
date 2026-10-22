@@ -1,0 +1,45 @@
+{
+ "px": [
+  [
+   22,
+   41,
+   2
+  ],
+  [
+   23,
+   41,
+   2
+  ],
+  [
+   24,
+   41,
+   2
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     22,
+     41,
+     "hair_1"
+    ],
+    [
+     23,
+     41,
+     "hair_1"
+    ],
+    [
+     24,
+     41,
+     "hair_1"
+    ]
+   ],
+   "why": "Front boot cuff (oat_2) reached the ground row; boot-tone sole as in SW f4/f6 and SE f5"
+  }
+ ],
+ "note": "",
+ "base_hash": "32ab69f57b90f7a2"
+}

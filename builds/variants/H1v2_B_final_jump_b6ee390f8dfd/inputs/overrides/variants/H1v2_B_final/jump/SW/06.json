@@ -1,0 +1,96 @@
+{
+ "px": [
+  [
+   16,
+   24,
+   5
+  ],
+  [
+   16,
+   25,
+   5
+  ],
+  [
+   17,
+   26,
+   4
+  ],
+  [
+   17,
+   27,
+   4
+  ],
+  [
+   18,
+   27,
+   4
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 13:02",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     16,
+     24,
+     "skin_1"
+    ],
+    [
+     16,
+     25,
+     "skin_1"
+    ]
+   ],
+   "why": "AD rules 1-3/7: restore signed v1.1 face pixels (profile eye 1px behind nose, no eye/jaw contact, joyful mouth position, single-px cheek outline)"
+  },
+  {
+   "time": "2026-10-22 13:02",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     17,
+     26,
+     "skin_0"
+    ]
+   ],
+   "why": "AD rules 2/7: neighbours of restored v1.1 face pixels (outline closure, no 1px tone islands)"
+  },
+  {
+   "time": "2026-10-22 13:03",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     16,
+     27,
+     "skin_0"
+    ],
+    [
+     17,
+     27,
+     "skin_0"
+    ]
+   ],
+   "why": "AD rule 7: chin row skin_0 (also closes 1px skin_0 island)"
+  },
+  {
+   "time": "2026-10-22 13:03",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     18,
+     27,
+     "skin_0"
+    ],
+    [
+     16,
+     27,
+     "REVERT"
+    ]
+   ],
+   "why": "AD rule 7: chin row skin_0 at x17-18 (correct column; (16,27) back to generated scarf)"
+  }
+ ],
+ "note": "",
+ "base_hash": "06441a899a2d5b25"
+}

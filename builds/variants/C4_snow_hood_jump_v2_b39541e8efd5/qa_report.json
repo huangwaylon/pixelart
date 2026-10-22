@@ -1,0 +1,49 @@
+{
+  "errors": [],
+  "metrics": {
+    "airborne_at_ms": 110,
+    "colours_used": 15,
+    "foot_slide_px": 0.256,
+    "jaggies_total": 22,
+    "jaggies_worst": [
+      [
+        "E_09",
+        2
+      ],
+      [
+        "S_10",
+        1
+      ],
+      [
+        "SE_02",
+        1
+      ],
+      [
+        "E_03",
+        1
+      ],
+      [
+        "E_04",
+        1
+      ]
+    ],
+    "max_colours_per_frame": 15,
+    "max_height_delta_px": 2,
+    "orphan_pixels_total": 0,
+    "orphan_pixels_worst": [],
+    "overrides": 0,
+    "standing_height_px": {
+      "E": 29,
+      "N": 30,
+      "NE": 29,
+      "NW": 29,
+      "S": 29,
+      "SE": 29,
+      "SW": 29,
+      "W": 29
+    },
+    "total_ms": 800
+  },
+  "pass": true,
+  "warnings": []
+}

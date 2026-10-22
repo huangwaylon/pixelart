@@ -1,0 +1,20 @@
+{"extends": "H1v2_B_final", "name": "C2_hime_beret", "label": "C2 - hime cut + small tilted beret + side ribbon",
+ "palette": "cw_charcoal",
+ "outfit": {"hair": "long", "hat": "beret", "bangs": "straight", "accessory": "ribbon_side", "ahoge": false, "scarf": "long", "scarf_tails": 1, "hair_color": "blueblack"},
+ "face": {"eyes": "kawaii", "eye_pitch": -12},
+ "render": {"ppu": 0.75, "lineart": {"smooth": 0.7, "line_min_run": 3, "pixel_perfect": true, "selout": true,
+            "no_face_lines": true, "angel_ring": true, "regularize": true}},
+ "ramp_overrides": {"coat": ["lav_1", "mauve", "mauve"], "scarf": ["oat_1", "oat_2", "oat_2"],
+                    "ribbon": ["crn_1", "red_1", "red_2"], "mitten": ["crn_1", "red_1"]},
+ "prim_overrides": {
+   "hair_cap": {"clip_all": [[0, 1, 0, -0.72]]},
+   "beret": {"center": [-2.6, 18.4, -0.8], "radii": [8.2, 2.5, 7.8], "rot": [-8, 0, 16]},
+   "beret_nub": {"center": [-3.0, 20.9, -0.8], "radii": [1.0, 1.0, 1.0]},
+   "ribbon_loop_0": {"center": [10.6, 14.6, -3.6], "radii": [1.6, 2.0, 1.8]},
+   "ribbon_loop_1": {"center": [11.2, 14.6, 0.2], "radii": [1.6, 2.0, 1.8]},
+   "ribbon_knot": {"center": [11.4, 14.6, -1.7], "radii": [1.1, 1.1, 1.1]}},
+ "chain_overrides": {
+   "lock_0": {"seg_len": 2.6, "rest_dir": [-0.25, -1, -0.3]},
+   "lock_1": {"seg_len": 2.6},
+   "lock_2": {"seg_len": 2.6, "rest_dir": [0.25, -1, -0.3]}},
+ "anim_patch": {}}

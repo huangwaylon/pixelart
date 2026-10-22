@@ -1,0 +1,129 @@
+{
+ "px": [
+  [
+   18,
+   28,
+   5
+  ],
+  [
+   19,
+   30,
+   4
+  ],
+  [
+   19,
+   31,
+   4
+  ],
+  [
+   20,
+   30,
+   4
+  ],
+  [
+   21,
+   30,
+   4
+  ],
+  [
+   22,
+   30,
+   4
+  ],
+  [
+   23,
+   30,
+   4
+  ],
+  [
+   24,
+   30,
+   4
+  ],
+  [
+   25,
+   41,
+   1
+  ],
+  [
+   26,
+   41,
+   1
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     19,
+     30,
+     "skin_0"
+    ],
+    [
+     20,
+     30,
+     "skin_0"
+    ],
+    [
+     21,
+     30,
+     "skin_0"
+    ],
+    [
+     22,
+     30,
+     "skin_0"
+    ],
+    [
+     23,
+     30,
+     "skin_0"
+    ],
+    [
+     24,
+     30,
+     "skin_0"
+    ],
+    [
+     19,
+     31,
+     "skin_0"
+    ]
+   ],
+   "why": "No under-chin shadow: flat skin_1 block ran 2 rows into the scarf making a long chin; skin_0 jaw row as in SW f10/f1 and SE f11"
+  },
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     25,
+     41,
+     "plum_0"
+    ],
+    [
+     26,
+     41,
+     "plum_0"
+    ]
+   ],
+   "why": "Near boot mauve cuff ran to the ground row; plum_0 sole (rule 8), consistent with f1/f12 fix"
+  },
+  {
+   "time": "2026-10-22 12:32",
+   "author": "AD-xcheck",
+   "pixels": [
+    [
+     18,
+     28,
+     "skin_1"
+    ]
+   ],
+   "why": "AD style lock: mouth must sit 1 row below the eye bottom and touch neither eye, scarf nor outline (S f12 rule). In 3/4 smile there is no such pixel, so the mouth is omitted, as in 3/4 f7/f8/f10. It read as a smear on the eye."
+  }
+ ],
+ "note": "",
+ "base_hash": "d1c4fb3bff6a7444"
+}

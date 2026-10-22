@@ -1,0 +1,52 @@
+{
+ "px": [
+  [
+   19,
+   23,
+   3
+  ],
+  [
+   20,
+   23,
+   3
+  ],
+  [
+   30,
+   26,
+   1
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     19,
+     23,
+     "hair_2"
+    ],
+    [
+     20,
+     23,
+     "hair_2"
+    ]
+   ],
+   "why": "hair_2 highlight band: closed a 1-2px dark pocket/stray drip in the band edge so the band reads as one clean chunk (no noise inside the highlight)"
+  },
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     30,
+     26,
+     "plum_0"
+    ]
+   ],
+   "why": "doubled outline corner on a diagonal contour; fill with the adjacent interior colour so the stair is a clean 1px line"
+  }
+ ],
+ "note": "",
+ "base_hash": "818c2f22e7958f08"
+}

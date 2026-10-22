@@ -1,0 +1,72 @@
+{
+ "px": [
+  [
+   22,
+   28,
+   12
+  ],
+  [
+   23,
+   28,
+   12
+  ],
+  [
+   25,
+   29,
+   12
+  ],
+  [
+   26,
+   29,
+   12
+  ],
+  [
+   27,
+   29,
+   12
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     22,
+     28,
+     "oat_1"
+    ],
+    [
+     23,
+     28,
+     "oat_1"
+    ]
+   ],
+   "why": "Close 2px gap in beanie cuff: forehead skin touched red hat directly at x22-23 so the cuff band broke; mirrors SW f2 fix"
+  },
+  {
+   "time": "2026-10-22 12:32",
+   "author": "AD-xcheck",
+   "pixels": [
+    [
+     25,
+     29,
+     "oat_1"
+    ],
+    [
+     26,
+     29,
+     "oat_1"
+    ],
+    [
+     27,
+     29,
+     "oat_1"
+    ]
+   ],
+   "why": "AD style lock: hat cuff = oat_1/oat_2 only. Mauve appeared on the hat cuff only in squash/drop frames (f2/f8/f9, f11 S end), read as a lilac headband and blinked against neighbours; S f2 was already fixed this way by pixel-SN, so the other directions now match."
+  }
+ ],
+ "note": "",
+ "base_hash": "1ee7c79b9812be87"
+}

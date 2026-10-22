@@ -1,0 +1,72 @@
+{
+ "px": [
+  [
+   21,
+   29,
+   10
+  ],
+  [
+   22,
+   29,
+   10
+  ],
+  [
+   25,
+   29,
+   10
+  ],
+  [
+   26,
+   29,
+   10
+  ],
+  [
+   32,
+   25,
+   1
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:17",
+   "author": "pixel-SN",
+   "pixels": [
+    [
+     21,
+     29,
+     "char_1"
+    ],
+    [
+     22,
+     29,
+     "char_1"
+    ],
+    [
+     25,
+     29,
+     "char_1"
+    ],
+    [
+     26,
+     29,
+     "char_1"
+    ]
+   ],
+   "why": "two 2px skin_0 specks inside the coat under the nape (cc ss cc ss cc) are ambiguous noise; coat colour leaves one clean nape row like the other N frames"
+  },
+  {
+   "time": "2026-10-22 12:17",
+   "author": "pixel-SN",
+   "pixels": [
+    [
+     32,
+     25,
+     "plum_0"
+    ]
+   ],
+   "why": "1px hair_1 sliver between the shadow pixel and the outline on the shadow side (p h #); plum_0 makes the edge shadow continuous with rows 26-27 like f4"
+  }
+ ],
+ "note": "",
+ "base_hash": "9648a3469089ebf0"
+}

@@ -1,0 +1,99 @@
+{
+ "px": [
+  [
+   16,
+   25,
+   5
+  ],
+  [
+   16,
+   26,
+   5
+  ],
+  [
+   24,
+   11,
+   13
+  ],
+  [
+   24,
+   12,
+   13
+  ],
+  [
+   25,
+   11,
+   13
+  ],
+  [
+   25,
+   41,
+   1
+  ],
+  [
+   26,
+   41,
+   1
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 13:02",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     25,
+     41,
+     "plum_0"
+    ],
+    [
+     26,
+     41,
+     "plum_0"
+    ]
+   ],
+   "why": "AD rule 6: boot ground row is hair_1/plum_0, never cuff colour (matches signed v1.1)"
+  },
+  {
+   "time": "2026-10-22 13:02",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     16,
+     25,
+     "skin_1"
+    ],
+    [
+     16,
+     26,
+     "skin_1"
+    ]
+   ],
+   "why": "AD rules 1-3/7: restore signed v1.1 face pixels (profile eye 1px behind nose, no eye/jaw contact, joyful mouth position, single-px cheek outline)"
+  },
+  {
+   "time": "2026-10-22 13:02",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     24,
+     11,
+     "oat_2"
+    ],
+    [
+     24,
+     12,
+     "oat_2"
+    ],
+    [
+     25,
+     11,
+     "oat_2"
+    ]
+   ],
+   "why": "AD rule 5: pom lit (3px oat_2 top-left) except NW/W/SW f3-5"
+  }
+ ],
+ "note": "",
+ "base_hash": "483a335fc701b197"
+}

@@ -1,0 +1,85 @@
+{
+ "px": [
+  [
+   30,
+   24,
+   0
+  ],
+  [
+   30,
+   26,
+   0
+  ],
+  [
+   31,
+   24,
+   5
+  ],
+  [
+   31,
+   25,
+   0
+  ],
+  [
+   31,
+   26,
+   4
+  ],
+  [
+   32,
+   25,
+   5
+  ],
+  [
+   33,
+   25,
+   0
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:13",
+   "author": "pixel-EW",
+   "pixels": [
+    [
+     31,
+     24,
+     "skin_1"
+    ],
+    [
+     30,
+     24,
+     "outline"
+    ],
+    [
+     32,
+     25,
+     "skin_1"
+    ],
+    [
+     31,
+     25,
+     "outline"
+    ],
+    [
+     33,
+     25,
+     "outline"
+    ],
+    [
+     30,
+     26,
+     "outline"
+    ],
+    [
+     31,
+     26,
+     "skin_0"
+    ]
+   ],
+   "why": "generated squint fused into the face outline (tip replaced the edge, doubled outline at row 26) - moved the > 1px inside, restored nose skin and a single-pixel jaw outline"
+  }
+ ],
+ "note": "",
+ "base_hash": "a7caeaa2babdeca2"
+}

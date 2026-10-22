@@ -1,0 +1,72 @@
+{
+ "px": [
+  [
+   20,
+   26,
+   2
+  ],
+  [
+   20,
+   41,
+   2
+  ],
+  [
+   21,
+   41,
+   2
+  ],
+  [
+   22,
+   41,
+   2
+  ],
+  [
+   23,
+   41,
+   2
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     20,
+     41,
+     "hair_1"
+    ],
+    [
+     21,
+     41,
+     "hair_1"
+    ],
+    [
+     22,
+     41,
+     "hair_1"
+    ],
+    [
+     23,
+     41,
+     "hair_1"
+    ]
+   ],
+   "why": "boot ground row must be boot leather (darkest on ground row); cuff colour on the ground row made the boot read as a cream/lilac sock blob. Cuff kept as the 1-2 rows above"
+  },
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     20,
+     26,
+     "hair_1"
+    ]
+   ],
+   "why": "hair_2 highlight band: closed a 1-2px dark pocket/stray drip in the band edge so the band reads as one clean chunk (no noise inside the highlight)"
+  }
+ ],
+ "note": "",
+ "base_hash": "26fd0375a381a1f2"
+}

@@ -1,0 +1,25 @@
+{
+  "errors": [],
+  "metrics": {
+    "airborne_at_ms": 110,
+    "colours_used": 16,
+    "foot_slide_px": 0.0,
+    "max_height_delta_px": 3,
+    "orphan_pixels_total": 0,
+    "orphan_pixels_worst": [],
+    "overrides": 0,
+    "standing_height_px": {
+      "E": 29,
+      "N": 29,
+      "NE": 29,
+      "NW": 29,
+      "S": 29,
+      "SE": 29,
+      "SW": 29,
+      "W": 29
+    },
+    "total_ms": 770
+  },
+  "pass": true,
+  "warnings": []
+}

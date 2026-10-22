@@ -1,0 +1,45 @@
+{
+ "px": [
+  [
+   22,
+   29,
+   4
+  ],
+  [
+   23,
+   29,
+   4
+  ],
+  [
+   24,
+   29,
+   4
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:32",
+   "author": "AD-xcheck",
+   "pixels": [
+    [
+     22,
+     29,
+     "skin_0"
+    ],
+    [
+     23,
+     29,
+     "skin_0"
+    ],
+    [
+     24,
+     29,
+     "skin_0"
+    ]
+   ],
+   "why": "AD style lock: nape = skin_0 in all back views (shadowed under the bob, rule 7). NE/NW were unified to skin_0; N still split skin_1/skin_0 and flickered. Strip shape remains G2 for the generator."
+  }
+ ],
+ "note": "",
+ "base_hash": "dd0ecef91e2e8a7a"
+}

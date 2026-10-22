@@ -1,0 +1,1375 @@
+{
+ "name": "C4_snow_hood",
+ "label": "C4 - fur-trim hood up, bob + bangs, puffer",
+ "version": 2,
+ "generated_from": {
+  "name": "C4_snow_hood",
+  "label": "C4 - fur-trim hood up, bob + bangs, puffer",
+  "palette": "cw_charcoal",
+  "proportions": {
+   "head_r": 10.6,
+   "torso": 8,
+   "leg": 5.4,
+   "arm": 7,
+   "body_w": 7.0,
+   "body_d": 5.8,
+   "shoulder_w": 5.4,
+   "hip_w": 2.6,
+   "hand_r": 2.0,
+   "foot": [
+    2.7,
+    2.2,
+    3.4
+   ],
+   "ankle_h": 1.8,
+   "limb": 1.1
+  },
+  "outfit": {
+   "hair": "bob",
+   "hat": "hood",
+   "coat": "puffer",
+   "scarf": "none",
+   "legs": "pants",
+   "boots": "snow",
+   "pom_size": 1.5,
+   "hem_trim": false,
+   "sleeve_cuffs": true,
+   "scarf_tails": 1,
+   "scarf_len": 2.0,
+   "hair_color": "espresso",
+   "fringe": "high",
+   "bangs": "straight",
+   "accessory": null,
+   "ahoge": false
+  },
+  "face": {
+   "eyes": "kawaii",
+   "eye_spacing": 0.36,
+   "eye_pitch": -12
+  },
+  "render": {
+   "camera_elevation": 16,
+   "ppu": 0.75,
+   "v2": true,
+   "rules": [
+    "grounded_soles",
+    "cuff_continuity",
+    "temple_cover",
+    "backview_skin",
+    "chin_shadow",
+    "thin_highlights"
+   ],
+   "lineart": {
+    "smooth": 0.7,
+    "line_min_run": 3,
+    "pixel_perfect": true,
+    "selout": true,
+    "no_face_lines": true,
+    "angel_ring": true,
+    "regularize": true
+   }
+  },
+  "frame": {
+   "size": [
+    48,
+    48
+   ],
+   "pivot": [
+    24,
+    41
+   ]
+  },
+  "anim_patch": {
+   "frames": {
+    "dip": {
+     "pelvis_drop": 1.0
+    },
+    "crouch": {
+     "pelvis_drop": 2.2,
+     "head": {
+      "tilt": -14
+     },
+     "arm_L": {
+      "raise": -55,
+      "spread": 40
+     },
+     "arm_R": {
+      "raise": -52,
+      "spread": 40
+     }
+    },
+    "apex": {
+     "arm_L": {
+      "spread": 72
+     },
+     "arm_R": {
+      "spread": 68
+     },
+     "leg_R": {
+      "hip": -4,
+      "knee": 10,
+      "ankle": 30
+     }
+    },
+    "land": {
+     "pelvis_drop": 2.0,
+     "squash": 0.82,
+     "head": {
+      "tilt": -8
+     },
+     "arm_L": {
+      "spread": 60
+     },
+     "arm_R": {
+      "spread": 60
+     }
+    }
+   }
+  },
+  "shadow": {
+   "w": 15,
+   "h": 5,
+   "apex_scale": 0.65
+  },
+  "ramp_overrides": {
+   "hatcuff": [
+    "oat_1",
+    "oat_1",
+    "oat_2"
+   ],
+   "coat": [
+    "crn_1",
+    "crn_2",
+    "red_2"
+   ],
+   "hair_espresso": [
+    "plum_0",
+    "plum_0",
+    "hair_1"
+   ],
+   "coat_trim": [
+    "oat_1",
+    "oat_2"
+   ],
+   "mitten": [
+    "teal_0",
+    "teal_1"
+   ],
+   "pom": [
+    "teal_1",
+    "teal_1",
+    "teal_2"
+   ],
+   "boot_cuff": [
+    "oat_1",
+    "oat_2"
+   ]
+  },
+  "prim_overrides": {
+   "hood_up": {
+    "center": [
+     0,
+     9.646,
+     -1.0
+    ],
+    "radii": [
+     11.6,
+     11.4,
+     11.8
+    ]
+   },
+   "hair_cap": {
+    "clip_all": [
+     [
+      0,
+      1,
+      0,
+      -0.62
+     ]
+    ]
+   },
+   "hood_fur_0": {
+    "center": [
+     -9.526,
+     13.91,
+     3.8
+    ],
+    "radii": [
+     2.7,
+     2.7,
+     2.4840000000000004
+    ]
+   },
+   "hood_fur_1": {
+    "center": [
+     -5.5,
+     17.204,
+     3.8
+    ],
+    "radii": [
+     2.7,
+     2.7,
+     2.4840000000000004
+    ]
+   },
+   "hood_fur_2": {
+    "center": [
+     0.0,
+     18.41,
+     3.8
+    ],
+    "radii": [
+     2.7,
+     2.7,
+     2.4840000000000004
+    ]
+   },
+   "hood_fur_3": {
+    "center": [
+     5.5,
+     17.204,
+     3.8
+    ],
+    "radii": [
+     2.7,
+     2.7,
+     2.4840000000000004
+    ]
+   },
+   "hood_fur_4": {
+    "center": [
+     9.526,
+     13.91,
+     3.8
+    ],
+    "radii": [
+     2.7,
+     2.7,
+     2.4840000000000004
+    ]
+   },
+   "hood_fur_5": {
+    "center": [
+     11.0,
+     9.41,
+     3.8
+    ],
+    "radii": [
+     2.7,
+     2.7,
+     2.4840000000000004
+    ]
+   },
+   "hood_fur_6": {
+    "center": [
+     9.526,
+     3.51,
+     2.7
+    ],
+    "radii": [
+     2.7,
+     2.7,
+     2.4840000000000004
+    ]
+   },
+   "hood_fur_7": {
+    "center": [
+     5.5,
+     -0.809,
+     1.895
+    ],
+    "radii": [
+     2.7,
+     2.7,
+     2.4840000000000004
+    ]
+   },
+   "hood_fur_8": {
+    "center": [
+     0.0,
+     -2.39,
+     1.6
+    ],
+    "radii": [
+     2.7,
+     2.7,
+     2.4840000000000004
+    ]
+   },
+   "hood_fur_9": {
+    "center": [
+     -5.5,
+     -0.809,
+     1.895
+    ],
+    "radii": [
+     2.7,
+     2.7,
+     2.4840000000000004
+    ]
+   }
+  },
+  "add_prims": [
+   {
+    "name": "tie_pom_L",
+    "bone": "head",
+    "center": [
+     4.2,
+     -2.6,
+     8.6
+    ],
+    "radii": [
+     1.7,
+     1.7,
+     1.7
+    ],
+    "material": "pom",
+    "group": "hat"
+   },
+   {
+    "name": "tie_pom_R",
+    "bone": "head",
+    "center": [
+     -4.2,
+     -2.6,
+     8.6
+    ],
+    "radii": [
+     1.7,
+     1.7,
+     1.7
+    ],
+    "material": "pom",
+    "group": "hat"
+   },
+   {
+    "name": "hood_fur_10",
+    "bone": "head",
+    "material": "coat_trim",
+    "group": "hat",
+    "center": [
+     -9.526,
+     3.51,
+     2.7
+    ],
+    "radii": [
+     2.7,
+     2.7,
+     2.4840000000000004
+    ]
+   },
+   {
+    "name": "hood_fur_11",
+    "bone": "head",
+    "material": "coat_trim",
+    "group": "hat",
+    "center": [
+     -11.0,
+     9.41,
+     3.8
+    ],
+    "radii": [
+     2.7,
+     2.7,
+     2.4840000000000004
+    ]
+   }
+  ],
+  "remove": [
+   "bob_L",
+   "bob_R",
+   "bob_side_L",
+   "bob_side_R"
+  ]
+ },
+ "head_bones": [
+  "head"
+ ],
+ "render": {
+  "camera_elevation": 16,
+  "ppu": 0.75,
+  "v2": true,
+  "rules": [
+   "grounded_soles",
+   "cuff_continuity",
+   "temple_cover",
+   "backview_skin",
+   "chin_shadow",
+   "thin_highlights"
+  ],
+  "lineart": {
+   "smooth": 0.7,
+   "line_min_run": 3,
+   "pixel_perfect": true,
+   "selout": true,
+   "no_face_lines": true,
+   "angel_ring": true,
+   "regularize": true
+  }
+ },
+ "shadow": {
+  "w": 15,
+  "h": 5,
+  "apex_scale": 0.65
+ },
+ "bones": [
+  {
+   "name": "root",
+   "parent": null,
+   "offset": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "name": "pelvis",
+   "parent": "root",
+   "offset": [
+    0,
+    8.2,
+    0
+   ]
+  },
+  {
+   "name": "spine",
+   "parent": "pelvis",
+   "offset": [
+    0,
+    2.4,
+    0
+   ]
+  },
+  {
+   "name": "chest",
+   "parent": "spine",
+   "offset": [
+    0,
+    3.2,
+    0
+   ]
+  },
+  {
+   "name": "neck",
+   "parent": "chest",
+   "offset": [
+    0,
+    2.4,
+    0
+   ]
+  },
+  {
+   "name": "head",
+   "parent": "neck",
+   "offset": [
+    0,
+    1.5,
+    0
+   ]
+  },
+  {
+   "name": "shoulder_L",
+   "parent": "chest",
+   "offset": [
+    5.4,
+    1.6,
+    0
+   ]
+  },
+  {
+   "name": "elbow_L",
+   "parent": "shoulder_L",
+   "offset": [
+    0,
+    -3.71,
+    0
+   ]
+  },
+  {
+   "name": "hand_L",
+   "parent": "elbow_L",
+   "offset": [
+    0,
+    -3.29,
+    0
+   ]
+  },
+  {
+   "name": "hip_L",
+   "parent": "pelvis",
+   "offset": [
+    2.6,
+    -1.0,
+    0
+   ]
+  },
+  {
+   "name": "knee_L",
+   "parent": "hip_L",
+   "offset": [
+    0,
+    -2.7,
+    0
+   ]
+  },
+  {
+   "name": "ankle_L",
+   "parent": "knee_L",
+   "offset": [
+    0,
+    -2.7,
+    0
+   ]
+  },
+  {
+   "name": "shoulder_R",
+   "parent": "chest",
+   "offset": [
+    -5.4,
+    1.6,
+    0
+   ]
+  },
+  {
+   "name": "elbow_R",
+   "parent": "shoulder_R",
+   "offset": [
+    0,
+    -3.71,
+    0
+   ]
+  },
+  {
+   "name": "hand_R",
+   "parent": "elbow_R",
+   "offset": [
+    0,
+    -3.29,
+    0
+   ]
+  },
+  {
+   "name": "hip_R",
+   "parent": "pelvis",
+   "offset": [
+    -2.6,
+    -1.0,
+    0
+   ]
+  },
+  {
+   "name": "knee_R",
+   "parent": "hip_R",
+   "offset": [
+    0,
+    -2.7,
+    0
+   ]
+  },
+  {
+   "name": "ankle_R",
+   "parent": "knee_R",
+   "offset": [
+    0,
+    -2.7,
+    0
+   ]
+  }
+ ],
+ "primitives": [
+  {
+   "name": "thigh_L",
+   "bone": "hip_L",
+   "center": [
+    0,
+    -1.35,
+    0
+   ],
+   "radii": [
+    2.64,
+    2.25,
+    2.64
+   ],
+   "material": "pants",
+   "group": "leg_L"
+  },
+  {
+   "name": "shin_L",
+   "bone": "knee_L",
+   "center": [
+    0,
+    -1.35,
+    0
+   ],
+   "radii": [
+    2.09,
+    1.95,
+    2.09
+   ],
+   "material": "pants",
+   "group": "leg_L"
+  },
+  {
+   "name": "boot_L",
+   "bone": "ankle_L",
+   "center": [
+    0,
+    -0.2,
+    0.85
+   ],
+   "radii": [
+    2.7,
+    2.2,
+    3.4
+   ],
+   "material": "boots",
+   "group": "leg_L",
+   "clip_all": [
+    [
+     0,
+     1,
+     0,
+     -0.7273
+    ]
+   ]
+  },
+  {
+   "name": "bootcuff_L",
+   "bone": "ankle_L",
+   "center": [
+    0,
+    1.5,
+    0.2
+   ],
+   "radii": [
+    3.159,
+    1.4,
+    3.159
+   ],
+   "material": "boot_cuff",
+   "group": "leg_L"
+  },
+  {
+   "name": "thigh_R",
+   "bone": "hip_R",
+   "center": [
+    0,
+    -1.35,
+    0
+   ],
+   "radii": [
+    2.64,
+    2.25,
+    2.64
+   ],
+   "material": "pants",
+   "group": "leg_R"
+  },
+  {
+   "name": "shin_R",
+   "bone": "knee_R",
+   "center": [
+    0,
+    -1.35,
+    0
+   ],
+   "radii": [
+    2.09,
+    1.95,
+    2.09
+   ],
+   "material": "pants",
+   "group": "leg_R"
+  },
+  {
+   "name": "boot_R",
+   "bone": "ankle_R",
+   "center": [
+    0,
+    -0.2,
+    0.85
+   ],
+   "radii": [
+    2.7,
+    2.2,
+    3.4
+   ],
+   "material": "boots",
+   "group": "leg_R",
+   "clip_all": [
+    [
+     0,
+     1,
+     0,
+     -0.7273
+    ]
+   ]
+  },
+  {
+   "name": "bootcuff_R",
+   "bone": "ankle_R",
+   "center": [
+    0,
+    1.5,
+    0.2
+   ],
+   "radii": [
+    3.159,
+    1.4,
+    3.159
+   ],
+   "material": "boot_cuff",
+   "group": "leg_R"
+  },
+  {
+   "name": "hips",
+   "bone": "pelvis",
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "radii": [
+    4.62,
+    2.6,
+    3.77
+   ],
+   "material": "pants",
+   "group": "torso"
+  },
+  {
+   "name": "core",
+   "bone": "spine",
+   "center": [
+    0,
+    0.8,
+    0.1
+   ],
+   "radii": [
+    6.3,
+    4.4,
+    5.104
+   ],
+   "material": "coat",
+   "group": "torso"
+  },
+  {
+   "name": "puff_0",
+   "bone": "pelvis",
+   "center": [
+    0,
+    0.48,
+    0.2
+   ],
+   "radii": [
+    7.28,
+    1.6,
+    6.032
+   ],
+   "material": "coat",
+   "group": "torso"
+  },
+  {
+   "name": "puff_1",
+   "bone": "spine",
+   "center": [
+    0,
+    1.12,
+    0.2
+   ],
+   "radii": [
+    7.0,
+    1.6,
+    5.8
+   ],
+   "material": "coat",
+   "group": "torso"
+  },
+  {
+   "name": "puff_2",
+   "bone": "chest",
+   "center": [
+    0,
+    0.32,
+    0.2
+   ],
+   "radii": [
+    6.44,
+    1.6,
+    5.336
+   ],
+   "material": "coat",
+   "group": "torso"
+  },
+  {
+   "name": "collar",
+   "bone": "neck",
+   "center": [
+    0,
+    -0.3,
+    0
+   ],
+   "radii": [
+    4.2,
+    1.76,
+    3.48
+   ],
+   "material": "coat",
+   "group": "torso"
+  },
+  {
+   "name": "uparm_L",
+   "bone": "shoulder_L",
+   "center": [
+    0,
+    -1.82,
+    0
+   ],
+   "radii": [
+    2.75,
+    2.455,
+    2.75
+   ],
+   "material": "coat",
+   "group": "arm_L"
+  },
+  {
+   "name": "forearm_L",
+   "bone": "elbow_L",
+   "center": [
+    0,
+    -1.645,
+    0
+   ],
+   "radii": [
+    2.42,
+    2.095,
+    2.42
+   ],
+   "material": "coat",
+   "group": "arm_L"
+  },
+  {
+   "name": "cuff_L",
+   "bone": "elbow_L",
+   "center": [
+    0,
+    -2.79,
+    0
+   ],
+   "radii": [
+    2.695,
+    0.75,
+    2.695
+   ],
+   "material": "coat_trim",
+   "group": "arm_L"
+  },
+  {
+   "name": "mitten_L",
+   "bone": "hand_L",
+   "center": [
+    0,
+    -1.5,
+    0.2
+   ],
+   "radii": [
+    2.0,
+    2.1,
+    2.0
+   ],
+   "material": "mitten",
+   "group": "arm_L"
+  },
+  {
+   "name": "thumb_L",
+   "bone": "hand_L",
+   "center": [
+    -0.8,
+    -0.9,
+    1.6
+   ],
+   "radii": [
+    0.9,
+    0.9,
+    0.9
+   ],
+   "material": "mitten",
+   "group": "arm_L"
+  },
+  {
+   "name": "uparm_R",
+   "bone": "shoulder_R",
+   "center": [
+    0,
+    -1.82,
+    0
+   ],
+   "radii": [
+    2.75,
+    2.455,
+    2.75
+   ],
+   "material": "coat",
+   "group": "arm_R"
+  },
+  {
+   "name": "forearm_R",
+   "bone": "elbow_R",
+   "center": [
+    0,
+    -1.645,
+    0
+   ],
+   "radii": [
+    2.42,
+    2.095,
+    2.42
+   ],
+   "material": "coat",
+   "group": "arm_R"
+  },
+  {
+   "name": "cuff_R",
+   "bone": "elbow_R",
+   "center": [
+    0,
+    -2.79,
+    0
+   ],
+   "radii": [
+    2.695,
+    0.75,
+    2.695
+   ],
+   "material": "coat_trim",
+   "group": "arm_R"
+  },
+  {
+   "name": "mitten_R",
+   "bone": "hand_R",
+   "center": [
+    0,
+    -1.5,
+    0.2
+   ],
+   "radii": [
+    2.0,
+    2.1,
+    2.0
+   ],
+   "material": "mitten",
+   "group": "arm_R"
+  },
+  {
+   "name": "thumb_R",
+   "bone": "hand_R",
+   "center": [
+    0.8,
+    -0.9,
+    1.6
+   ],
+   "radii": [
+    0.9,
+    0.9,
+    0.9
+   ],
+   "material": "mitten",
+   "group": "arm_R"
+  },
+  {
+   "name": "neck",
+   "bone": "neck",
+   "center": [
+    0,
+    0.6,
+    0
+   ],
+   "radii": [
+    2.4,
+    2.2,
+    2.4
+   ],
+   "material": "skin",
+   "group": "torso"
+  },
+  {
+   "name": "head",
+   "bone": "head",
+   "center": [
+    0,
+    9.01,
+    0.5
+   ],
+   "radii": [
+    10.6,
+    10.07,
+    10.07
+   ],
+   "material": "skin",
+   "group": "head"
+  },
+  {
+   "name": "hair_cap",
+   "bone": "head",
+   "center": [
+    0,
+    9.434,
+    0.1
+   ],
+   "radii": [
+    11.342,
+    10.812,
+    10.918
+   ],
+   "material": "hair_espresso",
+   "group": "head",
+   "clip_all": [
+    [
+     0,
+     1,
+     0,
+     -0.62
+    ]
+   ],
+   "clip_any": [
+    [
+     0,
+     0,
+     -1,
+     -0.22
+    ],
+    [
+     0,
+     1,
+     0,
+     0.3
+    ]
+   ]
+  },
+  {
+   "name": "fringe",
+   "bone": "head",
+   "center": [
+    0,
+    11.13,
+    8.904
+   ],
+   "radii": [
+    7.844,
+    1.59,
+    1.908
+   ],
+   "material": "hair_espresso",
+   "group": "head"
+  },
+  {
+   "name": "hood_up",
+   "bone": "head",
+   "center": [
+    0,
+    9.646,
+    -1.0
+   ],
+   "radii": [
+    11.6,
+    11.4,
+    11.8
+   ],
+   "material": "coat",
+   "group": "hat",
+   "clip_any": [
+    [
+     0,
+     0,
+     -1,
+     -0.42
+    ],
+    [
+     0,
+     1,
+     0,
+     0.58
+    ],
+    [
+     0,
+     -1,
+     0,
+     0.8
+    ]
+   ]
+  },
+  {
+   "name": "hood_fur_0",
+   "bone": "head",
+   "center": [
+    -9.526,
+    13.91,
+    3.8
+   ],
+   "radii": [
+    2.7,
+    2.7,
+    2.4840000000000004
+   ],
+   "material": "coat_trim",
+   "group": "hat"
+  },
+  {
+   "name": "hood_fur_1",
+   "bone": "head",
+   "center": [
+    -5.5,
+    17.204,
+    3.8
+   ],
+   "radii": [
+    2.7,
+    2.7,
+    2.4840000000000004
+   ],
+   "material": "coat_trim",
+   "group": "hat"
+  },
+  {
+   "name": "hood_fur_2",
+   "bone": "head",
+   "center": [
+    0.0,
+    18.41,
+    3.8
+   ],
+   "radii": [
+    2.7,
+    2.7,
+    2.4840000000000004
+   ],
+   "material": "coat_trim",
+   "group": "hat"
+  },
+  {
+   "name": "hood_fur_3",
+   "bone": "head",
+   "center": [
+    5.5,
+    17.204,
+    3.8
+   ],
+   "radii": [
+    2.7,
+    2.7,
+    2.4840000000000004
+   ],
+   "material": "coat_trim",
+   "group": "hat"
+  },
+  {
+   "name": "hood_fur_4",
+   "bone": "head",
+   "center": [
+    9.526,
+    13.91,
+    3.8
+   ],
+   "radii": [
+    2.7,
+    2.7,
+    2.4840000000000004
+   ],
+   "material": "coat_trim",
+   "group": "hat"
+  },
+  {
+   "name": "hood_fur_5",
+   "bone": "head",
+   "center": [
+    11.0,
+    9.41,
+    3.8
+   ],
+   "radii": [
+    2.7,
+    2.7,
+    2.4840000000000004
+   ],
+   "material": "coat_trim",
+   "group": "hat"
+  },
+  {
+   "name": "hood_fur_6",
+   "bone": "head",
+   "center": [
+    9.526,
+    3.51,
+    2.7
+   ],
+   "radii": [
+    2.7,
+    2.7,
+    2.4840000000000004
+   ],
+   "material": "coat_trim",
+   "group": "hat"
+  },
+  {
+   "name": "hood_fur_7",
+   "bone": "head",
+   "center": [
+    5.5,
+    -0.809,
+    1.895
+   ],
+   "radii": [
+    2.7,
+    2.7,
+    2.4840000000000004
+   ],
+   "material": "coat_trim",
+   "group": "hat"
+  },
+  {
+   "name": "hood_fur_8",
+   "bone": "head",
+   "center": [
+    0.0,
+    -2.39,
+    1.6
+   ],
+   "radii": [
+    2.7,
+    2.7,
+    2.4840000000000004
+   ],
+   "material": "coat_trim",
+   "group": "hat"
+  },
+  {
+   "name": "hood_fur_9",
+   "bone": "head",
+   "center": [
+    -5.5,
+    -0.809,
+    1.895
+   ],
+   "radii": [
+    2.7,
+    2.7,
+    2.4840000000000004
+   ],
+   "material": "coat_trim",
+   "group": "hat"
+  },
+  {
+   "group": "hat",
+   "material": "pom",
+   "name": "tie_pom_L",
+   "bone": "head",
+   "center": [
+    4.2,
+    -2.6,
+    8.6
+   ],
+   "radii": [
+    1.7,
+    1.7,
+    1.7
+   ]
+  },
+  {
+   "group": "hat",
+   "material": "pom",
+   "name": "tie_pom_R",
+   "bone": "head",
+   "center": [
+    -4.2,
+    -2.6,
+    8.6
+   ],
+   "radii": [
+    1.7,
+    1.7,
+    1.7
+   ]
+  },
+  {
+   "group": "hat",
+   "material": "coat_trim",
+   "name": "hood_fur_10",
+   "bone": "head",
+   "center": [
+    -9.526,
+    3.51,
+    2.7
+   ],
+   "radii": [
+    2.7,
+    2.7,
+    2.4840000000000004
+   ]
+  },
+  {
+   "group": "hat",
+   "material": "coat_trim",
+   "name": "hood_fur_11",
+   "bone": "head",
+   "center": [
+    -11.0,
+    9.41,
+    3.8
+   ],
+   "radii": [
+    2.7,
+    2.7,
+    2.4840000000000004
+   ]
+  }
+ ],
+ "chains": [],
+ "colliders": [
+  {
+   "bone": "spine",
+   "center": [
+    0,
+    -0.32,
+    0.2
+   ],
+   "radius": 5.974
+  },
+  {
+   "bone": "chest",
+   "center": [
+    0,
+    -0.32,
+    0
+   ],
+   "radius": 5.22
+  },
+  {
+   "bone": "head",
+   "center": [
+    0,
+    9.01,
+    0.5
+   ],
+   "radius": 10.388
+  }
+ ],
+ "face": {
+  "bone": "head",
+  "center": [
+   0,
+   9.01,
+   0.5
+  ],
+  "radii": [
+   10.6,
+   10.069999999999999,
+   10.069999999999999
+  ],
+  "eye_yaw": 21.595,
+  "eye_pitch": -12,
+  "mouth_pitch": -32,
+  "eyes": "kawaii",
+  "visibility_min": 0.18
+ }
+}

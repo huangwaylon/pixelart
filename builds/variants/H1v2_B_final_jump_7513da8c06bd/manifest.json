@@ -1,0 +1,1200 @@
+{
+  "animation": "jump",
+  "buildId": "7513da8c06bd",
+  "frameHashes": {
+    "E": [
+      "58be4a82ccca5237",
+      "5ee054711aea4eae",
+      "420499e8fee34b3e",
+      "246ec2cc4587f3ae",
+      "7ca5850b56597143",
+      "bcfcabe26e45ba4a",
+      "a7557a28101a22f7",
+      "aef1cd8724fea343",
+      "037df49e5f954195",
+      "bf4039c56b669d6b",
+      "80afb2a17dccf174",
+      "584fc5955d2a76ca"
+    ],
+    "N": [
+      "2d615fb63953eab8",
+      "a495956224aa7f61",
+      "b65de8a51e2b3ca2",
+      "fe57708786f58c86",
+      "de3ad3e7603f6d04",
+      "02a4b62783318d61",
+      "4e1672d5c080e642",
+      "e9bd4692b8aec1fc",
+      "5a2bed01ce94f33c",
+      "edaec69ecd94ff93",
+      "7a5403654856e675",
+      "94b709b1dbd15c8c"
+    ],
+    "NE": [
+      "bd17328b7c2dde5e",
+      "5bf08f2264eb2d7a",
+      "a84b74c6aa3ea78d",
+      "1daa76b16aa22c28",
+      "5c70bdba523049aa",
+      "1fdb4725a59f63f9",
+      "26d24ad4d6515314",
+      "3a88faa92f13b57a",
+      "8998595babbdc50d",
+      "2795f8cffebf63c9",
+      "e12fe40c2730b513",
+      "a46e54af77db1623"
+    ],
+    "NW": [
+      "89c631612dda9a4e",
+      "f64fa6d61b2bae2b",
+      "2eef2e7a32ae906c",
+      "07d060ff74b73043",
+      "ac9fe31352199eca",
+      "6d0adffb93f5571f",
+      "b407b9d903268fd4",
+      "4e3567b3c3aebdf4",
+      "60340864f0f1ebb7",
+      "cac3f856a624044c",
+      "68de4f2b4cbc45c7",
+      "68f19c249a8e80b4"
+    ],
+    "S": [
+      "da919b716b4b810e",
+      "2838cb02686bbe21",
+      "222817fce10badc9",
+      "2784eb9f068d2400",
+      "d0550239feb4f87a",
+      "daaabd0676244530",
+      "c0066760944ce39c",
+      "6cf1638ebe8b3db8",
+      "49b2871a7511d50f",
+      "d9efcf3dd2f6c9e6",
+      "2a0784a72edbe85d",
+      "690cb927ab7d2688"
+    ],
+    "SE": [
+      "b4da8d59f56d92cb",
+      "6b3f52c5d2c20c6f",
+      "40bb2d7e87aac862",
+      "643fb91790a89cbe",
+      "fcf69b66b7276c56",
+      "2aea8685a7140ac2",
+      "bdadabecd0f4e87a",
+      "de45a363123002a7",
+      "0b09faa883102dd1",
+      "e106f3540229c790",
+      "b75329a4a7a09bd2",
+      "175191b10eca912a"
+    ],
+    "SW": [
+      "4ebc74579cf4d21c",
+      "a04a1f4e6d9cba60",
+      "444708adc1e88698",
+      "09e72b6bcc3dbbe1",
+      "c2d97d51996a044e",
+      "4a4aa6fc05e0a888",
+      "e5e51d7e1bace2ca",
+      "b6d1834b099c150f",
+      "60a611261193df40",
+      "fc896b876634ab94",
+      "0d5b48c73875acf4",
+      "4d10633b902b7986"
+    ],
+    "W": [
+      "385d72458b871d7b",
+      "f6d6e7ef4a8d65b7",
+      "30e970c53cdc72cd",
+      "6697c6fc4c54d8d6",
+      "5b211fc1114dafda",
+      "11e8d4f4972ef803",
+      "6d966aec28414d96",
+      "2d5b201f304cf4a0",
+      "8fc988a75897e6fd",
+      "79204f412afff97e",
+      "f070e0227daf631c",
+      "66539b145f688b1d"
+    ]
+  },
+  "inputs": {
+    "data/animations/jump.json": "d105d9ce0fb1eba0dbc814e40eff07d8a6f240f35d3da7da355f25d1f0e63819",
+    "data/palettes/cw_charcoal.json": "5a9dc16b65e524ed6992a7f8697fbc304c0f65f185f73652e9937fdf7acdc67f",
+    "data/variants/A_chibi.json": "e0d727e1d27192344f2e9f5642d953f3266d668e781fc88726b27d2b269798de",
+    "data/variants/BO1_parka_charcoal.json": "783436b1498763a677f3f477c772a7c7b5fd4199507a1b26a65b7b7fde4e35ec",
+    "data/variants/BO2_puffer_navy.json": "e0036a81dbb4d5caf57240aaaafa9aab4ccd06e1fe78b45c2aa6a288ba52cedd",
+    "data/variants/BO3_duffle_cranberry.json": "3e2b79d82256d947e0eb3dd290bb4a279f935289e8d1c9c094e9535eb6a1f56b",
+    "data/variants/BO4_parka_forest.json": "eb49bcb0011817db74775d20015f4f117955b9f0ce015fcc96a144a5cbd37b10",
+    "data/variants/BO5_duffle_lavender.json": "afb59845a11790c0b1ffeea8d84d60a01dddb9b2917b41af32e6d13f3761b191",
+    "data/variants/BO6_puffer_oatmeal.json": "36a1b9237867ad1fcb27455671dee9f8e8f2d285c81c26ec6f5394c4d97c836e",
+    "data/variants/B_pokemon_ow.json": "b6713159432642c61151daa0ebcb9d16e55abb123da8154e7aa1866b837162e4",
+    "data/variants/C_semichibi.json": "b15d63b11f476b0745d9d8ac450eeff0c1589792903cb4ac075a14f36463dff3",
+    "data/variants/D_trainer.json": "08e6f921797a200a4a450e2479c03eddfa17f642e1b30cb20451db9f943c587b",
+    "data/variants/E_puffball.json": "257a2ed16375da1a275ba2f707c915a091489c52314e8cbf0e04b989b6cdeedc",
+    "data/variants/H1_B_final.json": "eb31d447b7e560d8736b0c9b7822f681a0f24c51ca4e466ace27dea143b23fde",
+    "data/variants/H1v2_B_final.json": "9c4f76b13400e8f38ed43579b33380d8f7e6efa614b40d7df8d50783b1f24272",
+    "data/variants/H2_A_final.json": "b4b91487656732a088ff4b2a2be04215370bd667e847726e2f6a026fa7e1a921",
+    "data/variants/H2v2_A_final.json": "ef807407db97229dde8098cc1853542d3ed9a7306e698ee6e59c86b177b2f7bb",
+    "data/variants/O1_parka_charcoal.json": "3012b2139dc11e1a7fad257150f03102180b3b3d6bca9ae50ba0cb2139c7bdbd",
+    "data/variants/O2_puffer_navy.json": "33a2d5fba220811f89dd77c91610ed46254f68000f5867db7a6bacaa78c20fec",
+    "data/variants/O3_duffle_cranberry.json": "22533f958a06a0c38fc4ad4d3901b8ea6849e1198abb2d5067e69d581946bcf2",
+    "data/variants/O4_parka_forest.json": "2ccec4b586997f71413db5fa4f195f2af6fea04beaeef9ec4e01170b3ca8d3fc",
+    "data/variants/O5_duffle_lavender.json": "0288d808f31e9c47fe0ea9cb1b32dbe71592cb17d88d8339d60b1b305ec70a2c",
+    "data/variants/O6_puffer_oatmeal.json": "bc5999e357cdc47f9849e36e352850591d79419db7b2a2e0367477ad8d2d8ffc",
+    "data/variants/R1_24px.json": "4aa7f0efb11047b0d619d41254fb41dd640238e89978e97773485ae82f74ece9",
+    "data/variants/R2_32px.json": "df093e99b29899c25fc4be0a04d01ffaecbd24756b0f4e82fab5f77732ebd089",
+    "data/variants/R3_42px.json": "6d011e4bab2839f26ab230e8445998fa03592f9cf55e90b32ab631b22008e273",
+    "data/variants/R4_56px.json": "78a811c4db94e5d71963ca457d38944fc9cb2595168ee09ce483f367f05abaa0",
+    "overrides/variants/H1v2_B_final/jump/E/00.json": "09cb7edab5fd75f872dee0d5cc98855662537d7fadd934e1f06de8d19736a6f4",
+    "overrides/variants/H1v2_B_final/jump/E/01.json": "7c80d8f2d87ded2a9ef07b611023d3bc3a5e78d1dca232b47ae98271be8aab29",
+    "overrides/variants/H1v2_B_final/jump/E/02.json": "69c8862ac6e245b53e6a43b5fc5374be07264a0d238f007e9af280e235d07038",
+    "overrides/variants/H1v2_B_final/jump/E/03.json": "87e97a0ed2da05ebd4bd8d5d4fcaf408bdf0416d2c7f58a754b241f1dd61c23a",
+    "overrides/variants/H1v2_B_final/jump/E/04.json": "68c0c77e53b2e1f5076231e04ad2640fbaf68f9cabb7f889fb670cbb3a64c5ed",
+    "overrides/variants/H1v2_B_final/jump/E/05.json": "320d8db58f36dd8c3132e7b7bef79809d3e1d2b8b0ccc184ca50a78c36a97256",
+    "overrides/variants/H1v2_B_final/jump/E/06.json": "6a3b0236959c9deefe0f97902c721c51b2958b3254a536c7eb585e81c03049ef",
+    "overrides/variants/H1v2_B_final/jump/E/08.json": "777b0414258d6d6312b5966f48ee29ebb58de44b23424cdb7deafe34f8187f8a",
+    "overrides/variants/H1v2_B_final/jump/E/09.json": "f48b83b54c1b03b10cbcc986c91b5c3723d1b7380a0771a0245d215c0ce16557",
+    "overrides/variants/H1v2_B_final/jump/E/10.json": "00b5a228f51b8746385b73a96c4f5d4bb09d877571923853a4e8453f42972131",
+    "overrides/variants/H1v2_B_final/jump/E/11.json": "70839b8d784afc55b70bc0344d29e4560826cd538b12706dfeff310887db7d58",
+    "overrides/variants/H1v2_B_final/jump/N/01.json": "e3a1b39db7767edf1a7f4ca9d04661755b824e306fcf2d5c9d7278060ff17757",
+    "overrides/variants/H1v2_B_final/jump/N/08.json": "2fd06ecd02f9df8d786dfd57e2df8707b54b13b286884aa6dcf0db4a53e6552c",
+    "overrides/variants/H1v2_B_final/jump/NE/07.json": "8a851516476f220755acee8c300499a2e6b60ff9f63eb78c43d0c4b7dffbb201",
+    "overrides/variants/H1v2_B_final/jump/S/02.json": "b1f5f1137dc359184b33dee8a61c41dda72fe897b2e575866f6ead1c1c99e068",
+    "overrides/variants/H1v2_B_final/jump/S/05.json": "74c254ec34cdead21041f3093514ce3e3f9245c43a06cf6561a23243016ac48e",
+    "overrides/variants/H1v2_B_final/jump/SE/02.json": "6cd79517f87bbe39c055cf284f1602e8bb256054a9bc871e968cf326773b1a87",
+    "overrides/variants/H1v2_B_final/jump/SE/03.json": "3763406fcf2478838cb5f6ef1c8d067ad6cedb0f07ee4756c8f7a1e14f2eacbb",
+    "overrides/variants/H1v2_B_final/jump/SE/04.json": "fe44e3c253313bd39c5a19092d1640239cccb6adc1fef259a7d93a1f3c5168e9",
+    "overrides/variants/H1v2_B_final/jump/SE/05.json": "3d5c120c0558e0df2a952a7589aecb547b4f19d78676efb29a0b8754fb80cabc",
+    "overrides/variants/H1v2_B_final/jump/SW/00.json": "8f72a595d92348c6784d5ef5ac71f3d4603e538fde5bfc476236a354dd1c45fb",
+    "overrides/variants/H1v2_B_final/jump/SW/02.json": "be95d8ba4ca2e08ac3fc356206631bb3a29e9b488b32718d4868f693fe0db1e5",
+    "overrides/variants/H1v2_B_final/jump/SW/03.json": "886396274ef4f683c4dbfc6d5e671313ec99b90fb6f2c896468580c4875574ce",
+    "overrides/variants/H1v2_B_final/jump/SW/05.json": "0ae51bd8e120daf64b833b1a9fb3bca4a2f98845baa423f29adcbee85195d7a6",
+    "overrides/variants/H1v2_B_final/jump/SW/06.json": "f989a58ba1f17c22442ccf856ccf53ff2e53e6e4b58af2138945e749d4af527b",
+    "overrides/variants/H1v2_B_final/jump/SW/07.json": "6f495cd4bec791480f3e621a9e600abc75fab8a72350a55c409b83779f59ba82",
+    "overrides/variants/H1v2_B_final/jump/SW/10.json": "11f1c06da56664fc5445ff8b3967ec276d3604fa57b40bf1b369c1573144285f",
+    "overrides/variants/H1v2_B_final/jump/SW/11.json": "02a7284adbc87e9316c051b0bb36d7537a5e0afaaa6a4e7e10f38adb7025b834",
+    "overrides/variants/H1v2_B_final/jump/W/00.json": "ca4ff58445df44bd92e20ff92a47e379b562e225876926ac3926c3e4473d15f9",
+    "overrides/variants/H1v2_B_final/jump/W/01.json": "4c1c0b4e7b98d497684973380fa8635385f6ff37583770740afafa10e20fe24e",
+    "overrides/variants/H1v2_B_final/jump/W/02.json": "83af82b5ddae8f692b1e344850f8bd6f6d1654d447dc5c840d79397cdb864e65",
+    "overrides/variants/H1v2_B_final/jump/W/03.json": "82da5d4ecf1c11566602bff74a1241c1b41978e4f52e82c14e9a761e8cd53416",
+    "overrides/variants/H1v2_B_final/jump/W/04.json": "6227e3ac5fed1115149dbdede9e3764093f4ca817c5775be5045a47587e69a9a",
+    "overrides/variants/H1v2_B_final/jump/W/05.json": "58486a39e55191bcf788ebb759714d2b39f0d65911acac3a6b5a69d8a7a50efa",
+    "overrides/variants/H1v2_B_final/jump/W/06.json": "970cb7f08b05e92ac9ccdfe881a37eb75217ea08b2d66b9dd3829fdf901e84bb",
+    "overrides/variants/H1v2_B_final/jump/W/08.json": "2d77142792f5ab242db9a7e22a65dc2f2948bbb535cafa4c150e70dc58a8a96e",
+    "overrides/variants/H1v2_B_final/jump/W/09.json": "3f7d8199b8e33e2cf1f3edda6b1ea0bd361b97e2077885a6a9f07d7fce32b1ad",
+    "overrides/variants/H1v2_B_final/jump/W/10.json": "f92c648cf6e4a5da451fbc4842da84bfa86ef2054203e69fc3ac6c162e043ae1",
+    "overrides/variants/H1v2_B_final/jump/W/11.json": "887917c9d4656f34bf243736ac36ccf9468634763b29b64ab99bb810d553d01a",
+    "pipeline/__init__.py": "61e345e5204ba4eb6200f88984a33f9f36397f58c859bf1c21dec2101fd29ccd",
+    "pipeline/board.py": "b030ca8809fc1d4075f78d7f41ca0f9b87ea571cd69dead578d41552470f70f3",
+    "pipeline/build.py": "fa692554de9355c961f1600b386980537b5dfbe093480bafb40296f7137d98af",
+    "pipeline/chargen.py": "c04009d065f7943d53851c2629e991e1f6d903ec69da4ca1d96d586f43d0b1a9",
+    "pipeline/export.py": "b83196415e47bf02db9227567719942f43fffd16dfb4a7c4148d673ade3d494f",
+    "pipeline/face.py": "47e18fbeafebc506fd372f4b2e40f78ac3b493159fcb3938c38a97631cc58971",
+    "pipeline/frames.py": "bc441748433a46895d99c740ba096d190ce68f57d82f2b8e57d1e4ad5b1386ac",
+    "pipeline/fx.py": "8182d87a243bb3a97577ca8416607d74f42eff8946decf7f509b8846c194c049",
+    "pipeline/mathutil.py": "3758139d547d0ba514952357022301c3c9f463079decd7e5a749244aea126318",
+    "pipeline/override.py": "9dc8b7d18682af98c00f5c8bfc35e9de31303faa8aa71456a7e94e8828299ffe",
+    "pipeline/palette.py": "a7001e0b650b7ad8dbaf39c0d1c5f518823278e73191a327f65612acf3b72da2",
+    "pipeline/pixelreview.py": "477481ed761d06a5783d25a349b5b295936b3f28b4f79cbd563ce9249225cf6e",
+    "pipeline/pixelrules.py": "aebe04eeca2c4088b158d44bea58bd3b72ec132949b59c5baaa9b644cbaf1273",
+    "pipeline/qa.py": "08c3f5e90f4e2a9393016794fcba5ef85ead8fd50a4c63a9ef2def1c2bb2f5b9",
+    "pipeline/reference.py": "0dd5790e43665c6e822e381832aaf0401aa78c1b9d6bfce9927ac3f768c98eea",
+    "pipeline/render.py": "8c0818b0ab7c5e75921f59a6225a47111b4396472576511ed6e110385f745c1b",
+    "pipeline/rig.py": "994ed386ecb2badbd5c6bbc3fb932e20d228a94f6734d0c34c1436e87e807be2",
+    "pipeline/server.py": "95be6f5f2ef5a9c349cd272cc1481e67c578aad977c7f13b0cb51c760887ee7c"
+  },
+  "overrides": {
+    "E_01": {
+      "coords": [
+        [
+          31,
+          26
+        ],
+        [
+          31,
+          27
+        ],
+        [
+          32,
+          25
+        ],
+        [
+          32,
+          26
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 1,
+      "stale": true
+    },
+    "E_02": {
+      "coords": [
+        [
+          33,
+          29
+        ],
+        [
+          33,
+          30
+        ],
+        [
+          34,
+          29
+        ],
+        [
+          34,
+          30
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 1,
+      "stale": true
+    },
+    "E_03": {
+      "coords": [
+        [
+          27,
+          23
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 1,
+      "stale": true
+    },
+    "E_04": {
+      "coords": [
+        [
+          27,
+          23
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 1,
+      "stale": false
+    },
+    "E_05": {
+      "coords": [
+        [
+          27,
+          24
+        ],
+        [
+          28,
+          23
+        ],
+        [
+          29,
+          23
+        ],
+        [
+          29,
+          24
+        ],
+        [
+          30,
+          24
+        ]
+      ],
+      "note": "",
+      "pixels": 5,
+      "reasons": 1,
+      "stale": true
+    },
+    "E_06": {
+      "coords": [
+        [
+          28,
+          24
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 1,
+      "stale": false
+    },
+    "E_07": {
+      "coords": [
+        [
+          25,
+          30
+        ],
+        [
+          29,
+          23
+        ],
+        [
+          30,
+          23
+        ],
+        [
+          30,
+          24
+        ],
+        [
+          31,
+          23
+        ],
+        [
+          31,
+          24
+        ]
+      ],
+      "note": "",
+      "pixels": 6,
+      "reasons": 1,
+      "stale": true
+    },
+    "E_09": {
+      "coords": [
+        [
+          30,
+          29
+        ],
+        [
+          32,
+          31
+        ],
+        [
+          33,
+          28
+        ],
+        [
+          33,
+          30
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 5,
+      "stale": false
+    },
+    "E_10": {
+      "coords": [
+        [
+          30,
+          23
+        ],
+        [
+          30,
+          24
+        ],
+        [
+          30,
+          26
+        ],
+        [
+          31,
+          25
+        ],
+        [
+          32,
+          25
+        ],
+        [
+          33,
+          25
+        ]
+      ],
+      "note": "",
+      "pixels": 6,
+      "reasons": 5,
+      "stale": true
+    },
+    "E_11": {
+      "coords": [
+        [
+          29,
+          24
+        ],
+        [
+          30,
+          24
+        ],
+        [
+          30,
+          25
+        ],
+        [
+          31,
+          24
+        ],
+        [
+          31,
+          25
+        ]
+      ],
+      "note": "",
+      "pixels": 5,
+      "reasons": 1,
+      "stale": true
+    },
+    "E_12": {
+      "coords": [
+        [
+          29,
+          22
+        ],
+        [
+          29,
+          23
+        ],
+        [
+          30,
+          24
+        ],
+        [
+          30,
+          25
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 2,
+      "stale": true
+    },
+    "NE_08": {
+      "coords": [
+        [
+          26,
+          42
+        ],
+        [
+          26,
+          43
+        ],
+        [
+          27,
+          42
+        ]
+      ],
+      "note": "",
+      "pixels": 3,
+      "reasons": 2,
+      "stale": true
+    },
+    "N_02": {
+      "coords": [
+        [
+          20,
+          40
+        ],
+        [
+          21,
+          40
+        ],
+        [
+          21,
+          41
+        ],
+        [
+          22,
+          40
+        ],
+        [
+          22,
+          41
+        ],
+        [
+          25,
+          40
+        ],
+        [
+          25,
+          41
+        ],
+        [
+          26,
+          40
+        ],
+        [
+          26,
+          41
+        ],
+        [
+          27,
+          40
+        ]
+      ],
+      "note": "",
+      "pixels": 10,
+      "reasons": 2,
+      "stale": true
+    },
+    "N_09": {
+      "coords": [
+        [
+          20,
+          40
+        ],
+        [
+          21,
+          40
+        ],
+        [
+          21,
+          41
+        ],
+        [
+          22,
+          40
+        ],
+        [
+          22,
+          41
+        ],
+        [
+          25,
+          40
+        ],
+        [
+          25,
+          41
+        ],
+        [
+          26,
+          40
+        ],
+        [
+          26,
+          41
+        ],
+        [
+          27,
+          40
+        ]
+      ],
+      "note": "",
+      "pixels": 10,
+      "reasons": 2,
+      "stale": true
+    },
+    "SE_03": {
+      "coords": [
+        [
+          27,
+          26
+        ],
+        [
+          27,
+          27
+        ],
+        [
+          28,
+          26
+        ],
+        [
+          29,
+          25
+        ],
+        [
+          29,
+          26
+        ]
+      ],
+      "note": "",
+      "pixels": 5,
+      "reasons": 5,
+      "stale": true
+    },
+    "SE_04": {
+      "coords": [
+        [
+          27,
+          26
+        ],
+        [
+          27,
+          27
+        ],
+        [
+          28,
+          26
+        ]
+      ],
+      "note": "",
+      "pixels": 3,
+      "reasons": 4,
+      "stale": true
+    },
+    "SE_05": {
+      "coords": [
+        [
+          28,
+          27
+        ],
+        [
+          29,
+          26
+        ],
+        [
+          29,
+          27
+        ],
+        [
+          30,
+          26
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 2,
+      "stale": false
+    },
+    "SE_06": {
+      "coords": [
+        [
+          27,
+          28
+        ],
+        [
+          28,
+          27
+        ],
+        [
+          28,
+          28
+        ],
+        [
+          29,
+          27
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 4,
+      "stale": true
+    },
+    "SW_01": {
+      "coords": [
+        [
+          25,
+          41
+        ],
+        [
+          26,
+          41
+        ]
+      ],
+      "note": "",
+      "pixels": 2,
+      "reasons": 3,
+      "stale": true
+    },
+    "SW_03": {
+      "coords": [
+        [
+          19,
+          26
+        ],
+        [
+          20,
+          26
+        ],
+        [
+          20,
+          28
+        ],
+        [
+          21,
+          43
+        ],
+        [
+          22,
+          43
+        ],
+        [
+          23,
+          43
+        ],
+        [
+          25,
+          43
+        ],
+        [
+          26,
+          42
+        ],
+        [
+          26,
+          43
+        ]
+      ],
+      "note": "",
+      "pixels": 9,
+      "reasons": 7,
+      "stale": true
+    },
+    "SW_04": {
+      "coords": [
+        [
+          19,
+          26
+        ],
+        [
+          20,
+          26
+        ],
+        [
+          20,
+          28
+        ]
+      ],
+      "note": "",
+      "pixels": 3,
+      "reasons": 6,
+      "stale": true
+    },
+    "SW_06": {
+      "coords": [
+        [
+          17,
+          26
+        ],
+        [
+          17,
+          27
+        ],
+        [
+          18,
+          27
+        ],
+        [
+          19,
+          28
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 8,
+      "stale": true
+    },
+    "SW_07": {
+      "coords": [
+        [
+          17,
+          26
+        ],
+        [
+          17,
+          27
+        ],
+        [
+          18,
+          27
+        ]
+      ],
+      "note": "",
+      "pixels": 3,
+      "reasons": 7,
+      "stale": false
+    },
+    "SW_08": {
+      "coords": [
+        [
+          20,
+          41
+        ],
+        [
+          20,
+          42
+        ],
+        [
+          21,
+          42
+        ],
+        [
+          22,
+          42
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 7,
+      "stale": true
+    },
+    "SW_11": {
+      "coords": [
+        [
+          25,
+          41
+        ],
+        [
+          26,
+          41
+        ]
+      ],
+      "note": "",
+      "pixels": 2,
+      "reasons": 5,
+      "stale": true
+    },
+    "SW_12": {
+      "coords": [
+        [
+          20,
+          39
+        ],
+        [
+          20,
+          40
+        ],
+        [
+          21,
+          40
+        ],
+        [
+          22,
+          40
+        ],
+        [
+          25,
+          41
+        ],
+        [
+          26,
+          41
+        ]
+      ],
+      "note": "",
+      "pixels": 6,
+      "reasons": 7,
+      "stale": true
+    },
+    "S_03": {
+      "coords": [
+        [
+          21,
+          43
+        ],
+        [
+          21,
+          44
+        ],
+        [
+          22,
+          43
+        ],
+        [
+          22,
+          44
+        ],
+        [
+          23,
+          43
+        ],
+        [
+          24,
+          43
+        ],
+        [
+          25,
+          43
+        ]
+      ],
+      "note": "",
+      "pixels": 7,
+      "reasons": 5,
+      "stale": true
+    },
+    "S_06": {
+      "coords": [
+        [
+          23,
+          28
+        ],
+        [
+          23,
+          29
+        ],
+        [
+          24,
+          28
+        ],
+        [
+          24,
+          29
+        ],
+        [
+          25,
+          28
+        ]
+      ],
+      "note": "",
+      "pixels": 5,
+      "reasons": 5,
+      "stale": true
+    },
+    "W_01": {
+      "coords": [
+        [
+          15,
+          25
+        ],
+        [
+          15,
+          26
+        ],
+        [
+          16,
+          26
+        ],
+        [
+          16,
+          27
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 4,
+      "stale": true
+    },
+    "W_02": {
+      "coords": [
+        [
+          13,
+          29
+        ],
+        [
+          13,
+          30
+        ],
+        [
+          14,
+          29
+        ],
+        [
+          14,
+          30
+        ]
+      ],
+      "note": "",
+      "pixels": 4,
+      "reasons": 1,
+      "stale": true
+    },
+    "W_03": {
+      "coords": [
+        [
+          20,
+          23
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 1,
+      "stale": true
+    },
+    "W_04": {
+      "coords": [
+        [
+          20,
+          23
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 1,
+      "stale": false
+    },
+    "W_05": {
+      "coords": [
+        [
+          17,
+          24
+        ],
+        [
+          18,
+          23
+        ],
+        [
+          18,
+          24
+        ],
+        [
+          19,
+          23
+        ],
+        [
+          20,
+          24
+        ]
+      ],
+      "note": "",
+      "pixels": 5,
+      "reasons": 1,
+      "stale": true
+    },
+    "W_06": {
+      "coords": [
+        [
+          19,
+          24
+        ]
+      ],
+      "note": "",
+      "pixels": 1,
+      "reasons": 4,
+      "stale": false
+    },
+    "W_07": {
+      "coords": [
+        [
+          16,
+          23
+        ],
+        [
+          16,
+          24
+        ],
+        [
+          17,
+          23
+        ],
+        [
+          17,
+          24
+        ],
+        [
+          18,
+          23
+        ]
+      ],
+      "note": "",
+      "pixels": 5,
+      "reasons": 1,
+      "stale": true
+    },
+    "W_09": {
+      "coords": [
+        [
+          14,
+          28
+        ],
+        [
+          14,
+          30
+        ],
+        [
+          15,
+          31
+        ]
+      ],
+      "note": "",
+      "pixels": 3,
+      "reasons": 4,
+      "stale": false
+    },
+    "W_10": {
+      "coords": [
+        [
+          14,
+          25
+        ],
+        [
+          15,
+          25
+        ],
+        [
+          16,
+          25
+        ],
+        [
+          17,
+          23
+        ],
+        [
+          17,
+          24
+        ],
+        [
+          17,
+          26
+        ],
+        [
+          24,
+          41
+        ],
+        [
+          25,
+          40
+        ],
+        [
+          25,
+          41
+        ]
+      ],
+      "note": "",
+      "pixels": 9,
+      "reasons": 8,
+      "stale": true
+    },
+    "W_11": {
+      "coords": [
+        [
+          16,
+          24
+        ],
+        [
+          16,
+          25
+        ],
+        [
+          17,
+          24
+        ],
+        [
+          17,
+          25
+        ],
+        [
+          18,
+          24
+        ],
+        [
+          24,
+          41
+        ],
+        [
+          25,
+          41
+        ]
+      ],
+      "note": "",
+      "pixels": 7,
+      "reasons": 5,
+      "stale": true
+    },
+    "W_12": {
+      "coords": [
+        [
+          17,
+          24
+        ],
+        [
+          18,
+          22
+        ],
+        [
+          18,
+          23
+        ],
+        [
+          24,
+          41
+        ],
+        [
+          25,
+          41
+        ]
+      ],
+      "note": "",
+      "pixels": 5,
+      "reasons": 5,
+      "stale": true
+    }
+  },
+  "pipelineVersion": "1.0",
+  "qaPass": false
+}

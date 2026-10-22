@@ -1,0 +1,59 @@
+{
+ "px": [
+  [
+   17,
+   25,
+   3
+  ],
+  [
+   22,
+   30,
+   16
+  ],
+  [
+   29,
+   27,
+   1
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     17,
+     25,
+     "hair_2"
+    ]
+   ],
+   "why": "hair_2 highlight band: closed a 1-2px dark pocket/stray drip in the band edge so the band reads as one clean chunk (no noise inside the highlight)"
+  },
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     22,
+     30,
+     "red_1"
+    ]
+   ],
+   "why": "scarf tail was 1px wide in its middle row (min feature width 2px) and widths flickered vs neighbouring frame; widened to a 2px stair"
+  },
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     29,
+     27,
+     "plum_0"
+    ]
+   ],
+   "why": "doubled outline corner on a diagonal contour; fill with the adjacent interior colour so the stair is a clean 1px line"
+  }
+ ],
+ "note": "",
+ "base_hash": "e95a568579642d33"
+}

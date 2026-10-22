@@ -1,0 +1,42 @@
+{
+ "px": [
+  [
+   25,
+   41,
+   1
+  ],
+  [
+   26,
+   41,
+   1
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 13:02",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     25,
+     41,
+     "plum_0"
+    ],
+    [
+     26,
+     41,
+     "plum_0"
+    ]
+   ],
+   "why": "AD rule 6: boot ground row is hair_1/plum_0, never cuff colour (matches signed v1.1)"
+  },
+  {
+   "time": "2026-10-22 13:10",
+   "author": "prune",
+   "pixels": [],
+   "why": "rebased onto new generator output; 0 px now produced procedurally and removed; 2 px still differ"
+  }
+ ],
+ "note": "",
+ "base_hash": "needs_review",
+ "needs_review": true
+}

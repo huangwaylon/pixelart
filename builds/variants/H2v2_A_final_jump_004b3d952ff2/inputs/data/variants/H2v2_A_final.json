@@ -1,0 +1,2 @@
+{"extends": "H2_A_final", "name": "H2v2_A_final", "label": "H2 v2 - A body, procedural rules",
+ "render": {"v2": true}, "ramp_overrides": {"hatcuff": ["oat_1", "oat_2"], "coat": ["ink", "char_1"]}}

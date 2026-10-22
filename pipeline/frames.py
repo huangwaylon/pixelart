@@ -1,0 +1,192 @@
+"""Compose a frame for (direction, frame): body + chains -> pixels -> outline -> face -> overrides."""
+import hashlib
+import json
+import os
+
+import numpy as np
+
+from .mathutil import rot_y, translate, xform_point
+from .rig import Rig, Animation, ChainSim, body_primitives, chain_primitives
+from .render import (render_pixels, add_outline, remove_lone_pixels, despeckle, DIRECTION_YAW, Camera,
+                     pixel_perfect_outline, selout_outline, regularize_silhouette)
+from .face import apply_face
+from .pixelrules import apply_rules, apply_post_outline, pom_cel, angel_ring, ALL_RULES, POST_OUTLINE_RULES
+from .fx import shadow_frame, fx_frames
+
+
+def idx_hash(idx):
+    return hashlib.sha1(np.ascontiguousarray(idx.astype(np.int16)).tobytes()).hexdigest()[:16]
+
+
+class Scene:
+    """Everything needed to render one animation; built once per build."""
+
+    def __init__(self, character, anim, palette):
+        self.char, self.anim_data, self.palette = character, anim, palette
+        self.rig = Rig(character)
+        self.anim = Animation(anim, self.rig)
+        self.size = tuple(anim["frame_size"])
+        self.pivot = tuple(anim["pivot"])
+        self.dirs = anim["directions"]
+        # Character camera may be a few degrees lower than the 2:1 world camera so faces read (AD/GD call).
+        rnd = character.get("render", {})
+        self.cam = Camera(rnd.get("camera_elevation", 26.565), rnd.get("ppu", 1.0))
+        self.chains = ChainSim(self.rig, self.anim).run(self.anim.times)
+        self.deliberate = {}    # (dir, frame) -> {(y, x)} designed 1-2px elements (e.g. boot soles) for QA
+        self.body_bbox = {}     # (dir, frame) -> bbox of body pixels (excl. pom/scarf/hair chains) for QA
+        self.events = [(ev, self.anim.times[i]) for i, f in enumerate(anim["frames"]) for ev in f.get("events", [])]
+
+    def frame_info(self, i):
+        f = self.anim_data["frames"][i]
+        pose = self.anim.poses[i]
+        return {"index": i, "name": f["name"], "duration_ms": f["ms"], "z_px": self.z_px(i),
+                "phase": f.get("phase", ""), "events": f.get("events", []),
+                "cancelable": bool(f.get("cancelable", False)), "face": pose["face"],
+                "planted": bool(pose["plant"])}
+
+    def z_px(self, i):
+        return int(round(self.anim.poses[i]["z_px"] * self.cam.ppu))
+
+    def primitives(self, i, direction, in_place=True):
+        ch = self.anim.keys[i]
+        worlds = self.rig.world(ch, include_height=True)
+        drop = translate(0, -ch["z_world"], 0) if in_place else np.eye(4)
+        face_m = rot_y(DIRECTION_YAW[direction]) @ drop
+        prims = body_primitives(self.rig, worlds)
+        body_c = xform_point(worlds["spine"], [0, 0, 0])
+        for c in self.char.get("chains", []):
+            prims += chain_primitives(c, self.chains[self.anim.times[i]][c["name"]], body_c)
+        for p in prims:
+            p["M"] = face_m @ p["M"]
+        return prims, {k: face_m @ v for k, v in worlds.items()}
+
+    def render_base(self, i, direction, expression=None):
+        rnd = self.char.get("render", {})
+        v2 = bool(rnd.get("v2", False))
+        rules = rnd.get("rules", ALL_RULES + POST_OUTLINE_RULES) if v2 else []
+        prims, worlds = self.primitives(i, direction)
+        pom = None
+        if v2 and rnd.get("pom_part", True):
+            # pom-pom is a hand-style pixel part placed at the simulated 3D position (no shading flicker)
+            for p in prims:
+                if p["name"] == "pom_tip":
+                    pom = p
+            prims = [p for p in prims if p is not pom]
+        la = rnd.get("lineart") or {}
+        pix = render_pixels(prims, self.palette, self.size, self.pivot, cam=self.cam,
+                            smooth=la.get("smooth", 0.0), line_min_run=la.get("line_min_run", 1),
+                            no_face_lines=la.get("no_face_lines", False))
+        chain_names = {c["name"] for c in self.char.get("chains", [])}
+        body_ids = [k for k, g in enumerate(pix.group_names) if g not in chain_names]
+        ys, xs = np.nonzero(np.isin(pix.group, body_ids))
+        if len(ys):
+            self.body_bbox[(direction, i)] = (int(xs.min()), int(ys.min()), int(xs.max()), int(ys.max()))
+        idx = despeckle(remove_lone_pixels(pix.idx), max_island=3 if v2 else 2,
+                        material=pix.material if v2 else None)
+        pix.material = np.where(idx >= 0, pix.material, None)
+        face = self.char["face"]
+        expr = expression or self.anim.poses[i]["face"]
+        if v2:
+            info = {}
+            apply_face(idx, pix, worlds[face["bone"]], face, expr, self.palette, self.pivot, self.cam, v2=True, info=info)
+            # back view = head's forward axis points away from the camera (not "no eye found")
+            fwd = worlds[face["bone"]][:3, 2]
+            facing_cam = float(np.dot(fwd / np.linalg.norm(fwd), self.cam.to_cam))
+            idx = apply_rules(idx, pix, self.palette, rules, facing_cam > -0.15)
+        if pom is not None:
+            c = pom["M"][:3, 3]
+            r = float(np.linalg.norm(pom["M"][:3, 0]))
+            px, py = self.cam.project(c, self.pivot)
+            head_x = self.cam.project(worlds["head"][:3, 3], self.pivot)[0]
+            # unlit only while rising with the pom dragged >2px onto the shadow side of the dome
+            # (AD rule 5 table: NW/W/SW f3-5); otherwise the designed highlight is always on
+            zs = [p_["z_px"] for p_ in self.anim.poses]
+            rising = i + 1 < len(zs) and zs[i + 1] > zs[i]
+            cel = pom_cel(r * self.cam.ppu, self.palette, lit=not (rising and (px - head_x) > 2.0))
+            d = self.cam.depth(c) - r
+            h, w = cel.shape
+            x0, y0 = int(round(px - w / 2.0)), int(round(py - h / 2.0))
+            H, W = idx.shape
+            pom_hi_px = []
+            hi = self.palette.index[self.palette.ramps["pom"][-1]]
+            for yy in range(h):
+                for xx in range(w):
+                    X, Y = x0 + xx, y0 + yy
+                    if cel[yy, xx] >= 0 and 0 <= X < W and 0 <= Y < H and (idx[Y, X] < 0 or pix.depth[Y, X] > d):
+                        idx[Y, X] = cel[yy, xx]
+                        pix.material[Y, X] = "pom"
+                        if cel[yy, xx] == hi:
+                            pom_hi_px.append((Y, X))
+        if la.get("angel_ring") and self.char.get("generated_from", {}).get("outfit", {}).get("hat", "beanie") in ("none", "earmuffs", "beret"):
+            hair_mat = next((p_["material"] for p_ in self.char["primitives"] if p_["name"] == "hair_cap"), "hair")
+            idx = angel_ring(idx, pix, self.palette, hair_mat)
+        if la.get("regularize"):
+            # accessories are deliberate small shapes: never shave them off as "bumps"
+            protect = np.isin(pix.material, ["ribbon", "pom", "scarf"]) | np.isin(
+                pix.group, [k for k, g in enumerate(pix.group_names) if g == "ahoge"])
+            idx = regularize_silhouette(idx, protect=protect)
+            pix.material = np.where(idx >= 0, pix.material, None)
+        idx = add_outline(idx, self.palette.special["outline"])
+        if la.get("pixel_perfect"):
+            idx = pixel_perfect_outline(idx, {self.palette.special["outline"]}, exterior=pix.material == None)  # noqa: E711
+        if la.get("selout"):
+            idx = selout_outline(idx, pix.material, self.palette)
+        if v2:
+            idx = apply_post_outline(idx, self.palette, [r for r in rules if r != "grounded_soles"])
+        idx = apply_face(idx, pix, worlds[face["bone"]], face, expr, self.palette, self.pivot, self.cam, v2=v2)
+        # decals can split shading bands into 1-2px fragments; clean again with face + outline colours protected
+        keep = {self.palette.special[k] for k in ("eye", "catchlight", "mouth", "blush", "outline") if k in self.palette.special}
+        idx = despeckle(idx, keep=keep)
+        if pom is not None:
+            vis = [(Y, X) for Y, X in pom_hi_px if idx[Y, X] >= 0 and idx[Y, X] != self.palette.special["outline"]]
+            if len(vis) >= 2:                    # designed highlight survives cleanup (by position), never as 1px
+                for Y, X in vis:
+                    idx[Y, X] = hi
+        if v2 and "grounded_soles" in rules:
+            # last step: a 1-2px sole is a deliberate design element, so it must not be "despeckled" away
+            soles = set()
+            boot_mask = np.isin(pix.material, ["boots", "boot_cuff"])
+            # the rig part mask is render-time; grow it 1px so outline-adjacent boot pixels are included
+            grown = boot_mask.copy()
+            grown[1:, :] |= boot_mask[:-1, :]; grown[:-1, :] |= boot_mask[1:, :]
+            grown[:, 1:] |= boot_mask[:, :-1]; grown[:, :-1] |= boot_mask[:, 1:]
+            grown &= ~np.isin(pix.material, ["mitten", "scarf", "coat", "coat_trim", "skirt"])
+            idx = apply_post_outline(idx, self.palette, ["grounded_soles"], deliberate=soles, part_mask=grown)
+            self.deliberate[(direction, i)] = soles
+        return idx
+
+    def render_shadow(self, i):
+        zmax = max(p_["z_px"] for p_ in self.anim.poses) or 1
+        return shadow_frame(self.size, self.pivot, self.anim.poses[i]["z_px"], self.palette, z_max=zmax,
+                            ppu=self.cam.ppu, spec=self.char.get("shadow"))
+
+    def render_fx(self, i):
+        return fx_frames(self.events, self.anim.times[i], self.size, self.pivot, self.palette, ppu=self.cam.ppu)
+
+    def ankle_px(self, i, direction):
+        """Projected ankle positions (for foot-slide QA)."""
+        _, worlds = self.primitives(i, direction)
+        pts = [worlds[b][:3, 3] * np.array([1, 0, 1]) for b in ("ankle_L", "ankle_R")]   # ground contact
+        return [self.cam.project(p, self.pivot) for p in pts]
+
+
+# ------------------------------------------------------------------ overrides
+def override_path(root, anim, direction, i):
+    return os.path.join(root, anim, direction, f"{i:02d}.json")
+
+
+def load_override(root, anim, direction, i):
+    p = override_path(root, anim, direction, i)
+    if not os.path.exists(p):
+        return None
+    with open(p) as f:
+        return json.load(f)
+
+
+def apply_override(idx, ov):
+    out = idx.copy()
+    H, W = out.shape
+    for x, y, v in ov.get("px", []):
+        if 0 <= x < W and 0 <= y < H:
+            out[y, x] = v
+    return out

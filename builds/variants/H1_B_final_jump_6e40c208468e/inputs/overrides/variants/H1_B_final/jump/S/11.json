@@ -1,0 +1,35 @@
+{
+ "px": [
+  [
+   24,
+   27,
+   5
+  ],
+  [
+   24,
+   28,
+   14
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:16",
+   "author": "pixel-SN",
+   "pixels": [
+    [
+     24,
+     27,
+     "skin_1"
+    ],
+    [
+     24,
+     28,
+     "crn_1"
+    ]
+   ],
+   "why": "mouth sat on the same row as the eye bottoms (too high, between the eyes); move 1px down to the chin row so mouth-to-eye spacing matches f10/f11 (eyes bottom + 1)"
+  }
+ ],
+ "note": "",
+ "base_hash": "d4640b1ab1ce3212"
+}

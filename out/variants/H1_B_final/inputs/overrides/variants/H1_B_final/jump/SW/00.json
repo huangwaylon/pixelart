@@ -1,0 +1,35 @@
+{
+ "px": [
+  [
+   25,
+   41,
+   1
+  ],
+  [
+   26,
+   41,
+   1
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     25,
+     41,
+     "plum_0"
+    ],
+    [
+     26,
+     41,
+     "plum_0"
+    ]
+   ],
+   "why": "Near boot was mauve cuff down to the ground row (reads as lilac sock); plum_0 sole (rule 8)"
+  }
+ ],
+ "note": "",
+ "base_hash": "7090fe76d67d3dd7"
+}

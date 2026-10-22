@@ -1,0 +1,109 @@
+{
+ "px": [
+  [
+   18,
+   20,
+   12
+  ],
+  [
+   18,
+   23,
+   0
+  ],
+  [
+   19,
+   20,
+   12
+  ],
+  [
+   19,
+   22,
+   0
+  ],
+  [
+   20,
+   23,
+   0
+  ],
+  [
+   25,
+   29,
+   16
+  ],
+  [
+   25,
+   30,
+   16
+  ],
+  [
+   25,
+   31,
+   16
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:13",
+   "author": "pixel-EW",
+   "pixels": [
+    [
+     18,
+     20,
+     "oat_1"
+    ],
+    [
+     19,
+     20,
+     "oat_1"
+    ]
+   ],
+   "why": "2px skin hole inside the hat-cuff band (cuff tip in front of skin) - filled with oat_1 so the cuff reads as one continuous band and its lower edge matches neighbouring frames"
+  },
+  {
+   "time": "2026-10-22 12:13",
+   "author": "pixel-EW",
+   "pixels": [
+    [
+     19,
+     22,
+     "outline"
+    ],
+    [
+     18,
+     23,
+     "outline"
+    ],
+    [
+     20,
+     23,
+     "outline"
+    ]
+   ],
+   "why": "profile face had no eye (decal dropped at silhouette edge) - added the joyful closed-eye ^ arc (same .E./E.E pattern as S/SE) with a 1px nose in front"
+  },
+  {
+   "time": "2026-10-22 12:13",
+   "author": "pixel-EW",
+   "pixels": [
+    [
+     25,
+     29,
+     "red_1"
+    ],
+    [
+     25,
+     30,
+     "red_1"
+    ],
+    [
+     25,
+     31,
+     "red_1"
+    ]
+   ],
+   "why": "near mitten was a 1px red sliver (ink column beside it) - widened to 2x3 red_1 (min feature width 2), matching its position in f3"
+  }
+ ],
+ "note": "",
+ "base_hash": "d54457b65c3c614e"
+}

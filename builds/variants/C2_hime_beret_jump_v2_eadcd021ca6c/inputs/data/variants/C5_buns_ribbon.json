@@ -1,0 +1,273 @@
+{
+ "extends": "H1v2_B_final",
+ "name": "C5_buns_ribbon",
+ "label": "C5 - odango buns + rose ribbons, no hat, short scarf",
+ "palette": "cw_lavender",
+ "outfit": {
+  "hair": "buns",
+  "hat": "none",
+  "bangs": "points",
+  "accessory": null,
+  "ahoge": false,
+  "scarf": "long",
+  "scarf_tails": 1,
+  "scarf_len": 1.5,
+  "hair_color": "espresso"
+ },
+ "face": {
+  "eyes": "kawaii",
+  "eye_pitch": -12
+ },
+ "ramp_overrides": {
+  "scarf": [
+   "crn_1",
+   "crn_2",
+   "red_2"
+  ],
+  "ribbon": [
+   "crn_1",
+   "crn_2",
+   "red_2"
+  ],
+  "mitten": [
+   "crn_1",
+   "crn_2"
+  ],
+  "coat": [
+   "plum_0",
+   "lav_1",
+   "mauve"
+  ],
+  "hair_espresso": [
+   "plum_0",
+   "hair_1",
+   "hair_1",
+   "hair_2"
+  ]
+ },
+ "render": {
+  "ppu": 0.75,
+  "lineart": {
+   "smooth": 0.7,
+   "line_min_run": 3,
+   "pixel_perfect": true,
+   "selout": true,
+   "no_face_lines": true,
+   "angel_ring": true,
+   "regularize": true
+  }
+ },
+ "anim_patch": {},
+ "prim_overrides": {
+  "hair_cap": {
+   "clip_all": [
+    [
+     0,
+     1,
+     0,
+     -0.45
+    ]
+   ]
+  },
+  "bun_L": {
+   "center": [
+    6.8,
+    18.6,
+    0.0
+   ],
+   "radii": [
+    4.0,
+    4.0,
+    4.0
+   ]
+  },
+  "bun_R": {
+   "center": [
+    -6.8,
+    18.6,
+    0.0
+   ],
+   "radii": [
+    4.0,
+    4.0,
+    4.0
+   ]
+  },
+  "bun_tie_L": {
+   "center": [
+    7.2,
+    17.6,
+    3.9
+   ],
+   "radii": [
+    1.0,
+    1.1,
+    1.0
+   ]
+  },
+  "bun_tie_R": {
+   "center": [
+    -7.2,
+    17.6,
+    3.9
+   ],
+   "radii": [
+    1.0,
+    1.1,
+    1.0
+   ]
+  },
+  "sidelock_L": {
+   "center": [
+    9.3,
+    7.0,
+    2.2
+   ],
+   "radii": [
+    2.5,
+    6.0,
+    3.0
+   ]
+  },
+  "sidelock_R": {
+   "center": [
+    -9.3,
+    7.0,
+    2.2
+   ],
+   "radii": [
+    2.5,
+    6.0,
+    3.0
+   ]
+  }
+ },
+ "add_prims": [
+  {
+   "name": "bow_L_in",
+   "bone": "head",
+   "center": [
+    5.6,
+    17.8,
+    3.6
+   ],
+   "radii": [
+    1.8,
+    2.1,
+    1.0
+   ],
+   "rot": [
+    0,
+    0,
+    -30
+   ],
+   "material": "ribbon",
+   "group": "hat"
+  },
+  {
+   "name": "bow_L_out",
+   "bone": "head",
+   "center": [
+    8.9,
+    17.8,
+    3.0
+   ],
+   "radii": [
+    1.8,
+    2.1,
+    1.0
+   ],
+   "rot": [
+    0,
+    0,
+    30
+   ],
+   "material": "ribbon",
+   "group": "hat"
+  },
+  {
+   "name": "bow_R_in",
+   "bone": "head",
+   "center": [
+    -5.6,
+    17.8,
+    3.6
+   ],
+   "radii": [
+    1.8,
+    2.1,
+    1.0
+   ],
+   "rot": [
+    0,
+    0,
+    30
+   ],
+   "material": "ribbon",
+   "group": "hat"
+  },
+  {
+   "name": "bow_R_out",
+   "bone": "head",
+   "center": [
+    -8.9,
+    17.8,
+    3.0
+   ],
+   "radii": [
+    1.8,
+    2.1,
+    1.0
+   ],
+   "rot": [
+    0,
+    0,
+    -30
+   ],
+   "material": "ribbon",
+   "group": "hat"
+  },
+  {
+   "name": "bowback_L",
+   "bone": "head",
+   "center": [
+    7.0,
+    17.4,
+    -3.6
+   ],
+   "radii": [
+    2.2,
+    1.6,
+    1.0
+   ],
+   "rot": [
+    0,
+    0,
+    15
+   ],
+   "material": "ribbon",
+   "group": "hat"
+  },
+  {
+   "name": "bowback_R",
+   "bone": "head",
+   "center": [
+    -7.0,
+    17.4,
+    -3.6
+   ],
+   "radii": [
+    2.2,
+    1.6,
+    1.0
+   ],
+   "rot": [
+    0,
+    0,
+    -15
+   ],
+   "material": "ribbon",
+   "group": "hat"
+  }
+ ]
+}

@@ -1,0 +1,82 @@
+{
+ "px": [
+  [
+   31,
+   27,
+   12
+  ],
+  [
+   32,
+   27,
+   12
+  ],
+  [
+   33,
+   27,
+   12
+  ],
+  [
+   33,
+   29,
+   0
+  ],
+  [
+   33,
+   30,
+   0
+  ],
+  [
+   34,
+   27,
+   12
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:13",
+   "author": "pixel-EW",
+   "pixels": [
+    [
+     33,
+     29,
+     "outline"
+    ],
+    [
+     33,
+     30,
+     "outline"
+    ]
+   ],
+   "why": "profile face had no eye (generator dropped the decal: anchor fell on the silhouette edge) - added determined eye as a 1x2 outline column 1px behind the face front (frontal 2x2 determined eye, foreshortened); keeps a 1px nose"
+  },
+  {
+   "time": "2026-10-22 12:32",
+   "author": "AD-xcheck",
+   "pixels": [
+    [
+     31,
+     27,
+     "oat_1"
+    ],
+    [
+     32,
+     27,
+     "oat_1"
+    ],
+    [
+     33,
+     27,
+     "oat_1"
+    ],
+    [
+     34,
+     27,
+     "oat_1"
+    ]
+   ],
+   "why": "AD style lock: hat cuff = oat_1/oat_2 only. Mauve appeared on the hat cuff only in squash/drop frames (f2/f8/f9, f11 S end), read as a lilac headband and blinked against neighbours; S f2 was already fixed this way by pixel-SN, so the other directions now match."
+  }
+ ],
+ "note": "",
+ "base_hash": "9deb090293f2c3b8"
+}

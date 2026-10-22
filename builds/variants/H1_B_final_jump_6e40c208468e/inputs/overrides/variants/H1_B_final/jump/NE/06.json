@@ -1,0 +1,79 @@
+{
+ "px": [
+  [
+   17,
+   23,
+   3
+  ],
+  [
+   17,
+   26,
+   2
+  ],
+  [
+   21,
+   28,
+   4
+  ],
+  [
+   22,
+   28,
+   4
+  ],
+  [
+   23,
+   28,
+   4
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     21,
+     28,
+     "skin_0"
+    ],
+    [
+     22,
+     28,
+     "skin_0"
+    ],
+    [
+     23,
+     28,
+     "skin_0"
+    ]
+   ],
+   "why": "nape skin unified to skin_0: nape sits in the bob's shadow; NE alternated skin_0/skin_1 frame to frame (flicker) and disagreed with NW, which uses skin_0"
+  },
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     17,
+     23,
+     "hair_2"
+    ]
+   ],
+   "why": "hair_2 highlight band: closed a 1-2px dark pocket/stray drip in the band edge so the band reads as one clean chunk (no noise inside the highlight)"
+  },
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     17,
+     26,
+     "hair_1"
+    ]
+   ],
+   "why": "doubled outline corner on a diagonal contour; fill with the adjacent interior colour so the stair is a clean 1px line"
+  }
+ ],
+ "note": "",
+ "base_hash": "ebbd8bfb99f28a14"
+}

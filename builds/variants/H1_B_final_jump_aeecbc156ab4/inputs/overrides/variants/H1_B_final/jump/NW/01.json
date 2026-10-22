@@ -1,0 +1,62 @@
+{
+ "px": [
+  [
+   22,
+   41,
+   2
+  ],
+  [
+   23,
+   41,
+   2
+  ],
+  [
+   28,
+   21,
+   16
+  ],
+  [
+   29,
+   31,
+   10
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     22,
+     41,
+     "hair_1"
+    ],
+    [
+     23,
+     41,
+     "hair_1"
+    ]
+   ],
+   "why": "boot ground row must be boot leather (darkest on ground row); cuff colour on the ground row made the boot read as a cream/lilac sock blob. Cuff kept as the 1-2 rows above"
+  },
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     28,
+     21,
+     "red_1"
+    ],
+    [
+     29,
+     31,
+     "char_1"
+    ]
+   ],
+   "why": "doubled outline corner on a diagonal contour; fill with the adjacent interior colour so the stair is a clean 1px line"
+  }
+ ],
+ "note": "",
+ "base_hash": "cb85bb6e367b0365"
+}

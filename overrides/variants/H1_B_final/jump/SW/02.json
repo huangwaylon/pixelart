@@ -1,0 +1,85 @@
+{
+ "px": [
+  [
+   20,
+   43,
+   2
+  ],
+  [
+   21,
+   43,
+   2
+  ],
+  [
+   22,
+   43,
+   2
+  ],
+  [
+   22,
+   44,
+   2
+  ],
+  [
+   23,
+   43,
+   2
+  ],
+  [
+   23,
+   44,
+   2
+  ],
+  [
+   24,
+   44,
+   2
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     20,
+     43,
+     "hair_1"
+    ],
+    [
+     21,
+     43,
+     "hair_1"
+    ],
+    [
+     22,
+     43,
+     "hair_1"
+    ],
+    [
+     23,
+     43,
+     "hair_1"
+    ],
+    [
+     22,
+     44,
+     "hair_1"
+    ],
+    [
+     23,
+     44,
+     "hair_1"
+    ],
+    [
+     24,
+     44,
+     "hair_1"
+    ]
+   ],
+   "why": "Front boot was a 5x5 oat_2 block to the ground (bare white foot); bottom 2 rows to boot tone so cuff(3 rows)+boot(2 rows) matches SE f3 and SW f4"
+  }
+ ],
+ "note": "",
+ "base_hash": "6e4c9dcbd9ce359b"
+}

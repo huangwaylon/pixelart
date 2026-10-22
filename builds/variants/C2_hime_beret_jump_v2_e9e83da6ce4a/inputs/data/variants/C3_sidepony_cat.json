@@ -1,0 +1,222 @@
+{
+ "extends": "H1v2_B_final",
+ "name": "C3_sidepony_cat",
+ "label": "C3 - side ponytail + cat-ear beanie",
+ "palette": "cw_charcoal",
+ "outfit": {
+  "hair": "side_pony",
+  "hat": "cat_beanie",
+  "bangs": "side",
+  "accessory": null,
+  "ahoge": false,
+  "scarf": "long",
+  "scarf_tails": 1,
+  "hair_color": "espresso"
+ },
+ "face": {
+  "eyes": "kawaii",
+  "eye_pitch": -12
+ },
+ "remove": [
+  "pom",
+  "beanie_cuff"
+ ],
+ "prim_overrides": {
+  "hair_cap": {
+   "clip_all": [
+    [
+     0,
+     1,
+     0,
+     -0.72
+    ],
+    [
+     0,
+     -1,
+     0,
+     -0.72
+    ]
+   ]
+  },
+  "beanie": {
+   "center": [
+    0,
+    15.2,
+    -1.6
+   ],
+   "radii": [
+    9.8,
+    4.2,
+    9.8
+   ],
+   "rot": [
+    12,
+    0,
+    0
+   ]
+  },
+  "cat_ear_L": {
+   "center": [
+    5.8,
+    19.4,
+    -0.8
+   ],
+   "radii": [
+    3.3,
+    4.2,
+    1.9
+   ],
+   "rot": [
+    0,
+    0,
+    -22
+   ]
+  },
+  "cat_ear_R": {
+   "center": [
+    -5.8,
+    19.4,
+    -0.8
+   ],
+   "radii": [
+    3.3,
+    4.2,
+    1.9
+   ],
+   "rot": [
+    0,
+    0,
+    22
+   ]
+  },
+  "tie": {
+   "center": [
+    10.0,
+    11.6,
+    -4.8
+   ],
+   "radii": [
+    1.8,
+    1.8,
+    1.8
+   ]
+  }
+ },
+ "chain_overrides": {
+  "pony": {
+   "anchor": [
+    10.4,
+    11.6,
+    -4.8
+   ],
+   "rest_dir": [
+    0.75,
+    -0.9,
+    -0.75
+   ],
+   "seg_len": 3.8,
+   "widths": [
+    4.8,
+    4.4,
+    3.6,
+    2.2
+   ],
+   "thickness": 4.2
+  }
+ },
+ "ramp_overrides": {
+  "hat": [
+   "lav_1",
+   "mauve",
+   "mauve"
+  ],
+  "coat": [
+   "navy_1",
+   "navy_2",
+   "navy_2"
+  ],
+  "ribbon": [
+   "crn_1",
+   "red_1",
+   "red_2"
+  ],
+  "hair_espresso": [
+   "plum_0",
+   "plum_0",
+   "hair_1"
+  ]
+ },
+ "render": {
+  "ppu": 0.75,
+  "lineart": {
+   "smooth": 0.7,
+   "line_min_run": 3,
+   "pixel_perfect": true,
+   "selout": true,
+   "no_face_lines": true,
+   "angel_ring": true,
+   "regularize": true
+  }
+ },
+ "anim_patch": {},
+ "add_prims": [
+  {
+   "name": "bow_a",
+   "bone": "head",
+   "center": [
+    12.4,
+    13.0,
+    -2.4
+   ],
+   "radii": [
+    1.8,
+    2.2,
+    2.4
+   ],
+   "material": "ribbon",
+   "group": "hat",
+   "rot": [
+    35,
+    0,
+    0
+   ]
+  },
+  {
+   "name": "bow_b",
+   "bone": "head",
+   "center": [
+    12.4,
+    13.0,
+    -7.2
+   ],
+   "radii": [
+    1.8,
+    2.2,
+    2.4
+   ],
+   "material": "ribbon",
+   "group": "hat",
+   "rot": [
+    -35,
+    0,
+    0
+   ]
+  },
+  {
+   "name": "bow_k",
+   "bone": "head",
+   "center": [
+    12.2,
+    12.0,
+    -4.8
+   ],
+   "radii": [
+    1.5,
+    1.5,
+    1.5
+   ],
+   "material": "ribbon",
+   "group": "hat"
+  }
+ ]
+}

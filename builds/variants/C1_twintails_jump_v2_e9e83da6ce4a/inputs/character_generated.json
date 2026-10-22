@@ -1,0 +1,1434 @@
+{
+ "name": "C1_twintails",
+ "label": "C1 - twin tails + cream earmuffs + long scarf",
+ "version": 2,
+ "generated_from": {
+  "name": "C1_twintails",
+  "label": "C1 - twin tails + cream earmuffs + long scarf",
+  "palette": "cw_charcoal",
+  "proportions": {
+   "head_r": 10.6,
+   "torso": 8,
+   "leg": 5.4,
+   "arm": 7,
+   "body_w": 7.0,
+   "body_d": 5.8,
+   "shoulder_w": 5.4,
+   "hip_w": 2.6,
+   "hand_r": 2.0,
+   "foot": [
+    2.7,
+    2.2,
+    3.4
+   ],
+   "ankle_h": 1.8,
+   "limb": 1.1
+  },
+  "outfit": {
+   "hair": "twintails",
+   "hat": "earmuffs",
+   "coat": "parka",
+   "scarf": "long",
+   "legs": "pants",
+   "boots": "snow",
+   "pom_size": 1.5,
+   "hem_trim": false,
+   "sleeve_cuffs": true,
+   "scarf_tails": 1,
+   "scarf_len": 2.0,
+   "hair_color": "espresso",
+   "fringe": "high",
+   "bangs": "points",
+   "accessory": null,
+   "ahoge": false,
+   "tail_len": 1.75
+  },
+  "face": {
+   "eyes": "kawaii",
+   "eye_spacing": 0.36,
+   "eye_pitch": -12
+  },
+  "render": {
+   "camera_elevation": 16,
+   "ppu": 0.75,
+   "v2": true,
+   "rules": [
+    "grounded_soles",
+    "cuff_continuity",
+    "temple_cover",
+    "backview_skin",
+    "chin_shadow",
+    "thin_highlights"
+   ],
+   "lineart": {
+    "smooth": 0.7,
+    "line_min_run": 3,
+    "pixel_perfect": true,
+    "selout": true,
+    "no_face_lines": true,
+    "angel_ring": true,
+    "regularize": true
+   }
+  },
+  "frame": {
+   "size": [
+    48,
+    48
+   ],
+   "pivot": [
+    24,
+    41
+   ]
+  },
+  "anim_patch": {
+   "frames": {
+    "dip": {
+     "pelvis_drop": 1.0
+    },
+    "crouch": {
+     "pelvis_drop": 2.2,
+     "head": {
+      "tilt": -14
+     },
+     "arm_L": {
+      "raise": -55,
+      "spread": 40
+     },
+     "arm_R": {
+      "raise": -52,
+      "spread": 40
+     }
+    },
+    "apex": {
+     "arm_L": {
+      "spread": 72
+     },
+     "arm_R": {
+      "spread": 68
+     },
+     "leg_R": {
+      "hip": -4,
+      "knee": 10,
+      "ankle": 30
+     }
+    },
+    "land": {
+     "pelvis_drop": 2.0,
+     "squash": 0.82,
+     "head": {
+      "tilt": -8
+     },
+     "arm_L": {
+      "spread": 60
+     },
+     "arm_R": {
+      "spread": 60
+     }
+    }
+   }
+  },
+  "shadow": {
+   "w": 15,
+   "h": 5,
+   "apex_scale": 0.65
+  },
+  "ramp_overrides": {
+   "hatcuff": [
+    "oat_1",
+    "oat_1",
+    "oat_2"
+   ],
+   "coat": [
+    "char_1",
+    "lav_1",
+    "mauve"
+   ],
+   "hair_espresso": [
+    "plum_0",
+    "hair_1",
+    "hair_1",
+    "hair_2"
+   ],
+   "hat": [
+    "mauve",
+    "oat_1",
+    "oat_2"
+   ]
+  },
+  "chain_overrides": {
+   "tail_L": {
+    "anchor": [
+     10.4,
+     14.0,
+     -5.6
+    ],
+    "rest_dir": [
+     0.5,
+     -1,
+     -0.45
+    ],
+    "widths": [
+     3.4,
+     3.1,
+     2.6,
+     1.8
+    ],
+    "stiffness": 450,
+    "damping": 0.2,
+    "gravity": 900
+   },
+   "tail_R": {
+    "anchor": [
+     -10.4,
+     14.0,
+     -5.6
+    ],
+    "rest_dir": [
+     -0.5,
+     -1,
+     -0.45
+    ],
+    "widths": [
+     3.4,
+     3.1,
+     2.6,
+     1.8
+    ],
+    "stiffness": 450,
+    "damping": 0.2,
+    "gravity": 900
+   }
+  },
+  "prim_overrides": {
+   "tie_L": {
+    "center": [
+     11.0,
+     14.4,
+     -4.8
+    ],
+    "radii": [
+     1.3,
+     1.5,
+     1.3
+    ]
+   },
+   "tie_R": {
+    "center": [
+     -11.0,
+     14.4,
+     -4.8
+    ],
+    "radii": [
+     1.3,
+     1.5,
+     1.3
+    ]
+   },
+   "muff_L": {
+    "radii": [
+     2.4,
+     3.2,
+     3.2
+    ],
+    "center": [
+     11.0,
+     9.0,
+     -2.4
+    ]
+   },
+   "muff_R": {
+    "radii": [
+     2.4,
+     3.2,
+     3.2
+    ],
+    "center": [
+     -11.0,
+     9.0,
+     -2.4
+    ]
+   }
+  },
+  "add_prims": [
+   {
+    "name": "bow_L0",
+    "bone": "head",
+    "center": [
+     11.6,
+     16.2,
+     -3.6
+    ],
+    "radii": [
+     1.88,
+     2.5,
+     2.25
+    ],
+    "material": "ribbon",
+    "group": "hat",
+    "rot": [
+     -30,
+     0,
+     0
+    ]
+   },
+   {
+    "name": "bow_L1",
+    "bone": "head",
+    "center": [
+     11.6,
+     13.0,
+     -6.2
+    ],
+    "radii": [
+     1.88,
+     2.25,
+     2.5
+    ],
+    "material": "ribbon",
+    "group": "hat",
+    "rot": [
+     -30,
+     0,
+     0
+    ]
+   },
+   {
+    "name": "bow_R0",
+    "bone": "head",
+    "center": [
+     -11.6,
+     16.2,
+     -3.6
+    ],
+    "radii": [
+     1.88,
+     2.5,
+     2.25
+    ],
+    "material": "ribbon",
+    "group": "hat",
+    "rot": [
+     -30,
+     0,
+     0
+    ]
+   },
+   {
+    "name": "bow_R1",
+    "bone": "head",
+    "center": [
+     -11.6,
+     13.0,
+     -6.2
+    ],
+    "radii": [
+     1.88,
+     2.25,
+     2.5
+    ],
+    "material": "ribbon",
+    "group": "hat",
+    "rot": [
+     -30,
+     0,
+     0
+    ]
+   }
+  ]
+ },
+ "head_bones": [
+  "head"
+ ],
+ "render": {
+  "camera_elevation": 16,
+  "ppu": 0.75,
+  "v2": true,
+  "rules": [
+   "grounded_soles",
+   "cuff_continuity",
+   "temple_cover",
+   "backview_skin",
+   "chin_shadow",
+   "thin_highlights"
+  ],
+  "lineart": {
+   "smooth": 0.7,
+   "line_min_run": 3,
+   "pixel_perfect": true,
+   "selout": true,
+   "no_face_lines": true,
+   "angel_ring": true,
+   "regularize": true
+  }
+ },
+ "shadow": {
+  "w": 15,
+  "h": 5,
+  "apex_scale": 0.65
+ },
+ "bones": [
+  {
+   "name": "root",
+   "parent": null,
+   "offset": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "name": "pelvis",
+   "parent": "root",
+   "offset": [
+    0,
+    8.2,
+    0
+   ]
+  },
+  {
+   "name": "spine",
+   "parent": "pelvis",
+   "offset": [
+    0,
+    2.4,
+    0
+   ]
+  },
+  {
+   "name": "chest",
+   "parent": "spine",
+   "offset": [
+    0,
+    3.2,
+    0
+   ]
+  },
+  {
+   "name": "neck",
+   "parent": "chest",
+   "offset": [
+    0,
+    2.4,
+    0
+   ]
+  },
+  {
+   "name": "head",
+   "parent": "neck",
+   "offset": [
+    0,
+    1.5,
+    0
+   ]
+  },
+  {
+   "name": "shoulder_L",
+   "parent": "chest",
+   "offset": [
+    5.4,
+    1.6,
+    0
+   ]
+  },
+  {
+   "name": "elbow_L",
+   "parent": "shoulder_L",
+   "offset": [
+    0,
+    -3.71,
+    0
+   ]
+  },
+  {
+   "name": "hand_L",
+   "parent": "elbow_L",
+   "offset": [
+    0,
+    -3.29,
+    0
+   ]
+  },
+  {
+   "name": "hip_L",
+   "parent": "pelvis",
+   "offset": [
+    2.6,
+    -1.0,
+    0
+   ]
+  },
+  {
+   "name": "knee_L",
+   "parent": "hip_L",
+   "offset": [
+    0,
+    -2.7,
+    0
+   ]
+  },
+  {
+   "name": "ankle_L",
+   "parent": "knee_L",
+   "offset": [
+    0,
+    -2.7,
+    0
+   ]
+  },
+  {
+   "name": "shoulder_R",
+   "parent": "chest",
+   "offset": [
+    -5.4,
+    1.6,
+    0
+   ]
+  },
+  {
+   "name": "elbow_R",
+   "parent": "shoulder_R",
+   "offset": [
+    0,
+    -3.71,
+    0
+   ]
+  },
+  {
+   "name": "hand_R",
+   "parent": "elbow_R",
+   "offset": [
+    0,
+    -3.29,
+    0
+   ]
+  },
+  {
+   "name": "hip_R",
+   "parent": "pelvis",
+   "offset": [
+    -2.6,
+    -1.0,
+    0
+   ]
+  },
+  {
+   "name": "knee_R",
+   "parent": "hip_R",
+   "offset": [
+    0,
+    -2.7,
+    0
+   ]
+  },
+  {
+   "name": "ankle_R",
+   "parent": "knee_R",
+   "offset": [
+    0,
+    -2.7,
+    0
+   ]
+  }
+ ],
+ "primitives": [
+  {
+   "name": "thigh_L",
+   "bone": "hip_L",
+   "center": [
+    0,
+    -1.35,
+    0
+   ],
+   "radii": [
+    2.64,
+    2.25,
+    2.64
+   ],
+   "material": "pants",
+   "group": "leg_L"
+  },
+  {
+   "name": "shin_L",
+   "bone": "knee_L",
+   "center": [
+    0,
+    -1.35,
+    0
+   ],
+   "radii": [
+    2.09,
+    1.95,
+    2.09
+   ],
+   "material": "pants",
+   "group": "leg_L"
+  },
+  {
+   "name": "boot_L",
+   "bone": "ankle_L",
+   "center": [
+    0,
+    -0.2,
+    0.85
+   ],
+   "radii": [
+    2.7,
+    2.2,
+    3.4
+   ],
+   "material": "boots",
+   "group": "leg_L",
+   "clip_all": [
+    [
+     0,
+     1,
+     0,
+     -0.7273
+    ]
+   ]
+  },
+  {
+   "name": "bootcuff_L",
+   "bone": "ankle_L",
+   "center": [
+    0,
+    1.5,
+    0.2
+   ],
+   "radii": [
+    3.159,
+    1.4,
+    3.159
+   ],
+   "material": "boot_cuff",
+   "group": "leg_L"
+  },
+  {
+   "name": "thigh_R",
+   "bone": "hip_R",
+   "center": [
+    0,
+    -1.35,
+    0
+   ],
+   "radii": [
+    2.64,
+    2.25,
+    2.64
+   ],
+   "material": "pants",
+   "group": "leg_R"
+  },
+  {
+   "name": "shin_R",
+   "bone": "knee_R",
+   "center": [
+    0,
+    -1.35,
+    0
+   ],
+   "radii": [
+    2.09,
+    1.95,
+    2.09
+   ],
+   "material": "pants",
+   "group": "leg_R"
+  },
+  {
+   "name": "boot_R",
+   "bone": "ankle_R",
+   "center": [
+    0,
+    -0.2,
+    0.85
+   ],
+   "radii": [
+    2.7,
+    2.2,
+    3.4
+   ],
+   "material": "boots",
+   "group": "leg_R",
+   "clip_all": [
+    [
+     0,
+     1,
+     0,
+     -0.7273
+    ]
+   ]
+  },
+  {
+   "name": "bootcuff_R",
+   "bone": "ankle_R",
+   "center": [
+    0,
+    1.5,
+    0.2
+   ],
+   "radii": [
+    3.159,
+    1.4,
+    3.159
+   ],
+   "material": "boot_cuff",
+   "group": "leg_R"
+  },
+  {
+   "name": "hips",
+   "bone": "pelvis",
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "radii": [
+    4.62,
+    2.6,
+    3.77
+   ],
+   "material": "pants",
+   "group": "torso"
+  },
+  {
+   "name": "coat_up",
+   "bone": "chest",
+   "center": [
+    0,
+    -0.32,
+    0
+   ],
+   "radii": [
+    6.09,
+    3.68,
+    5.046
+   ],
+   "material": "coat",
+   "group": "torso"
+  },
+  {
+   "name": "coat_low",
+   "bone": "spine",
+   "center": [
+    0,
+    -0.32,
+    0.2
+   ],
+   "radii": [
+    7.0,
+    3.84,
+    5.8
+   ],
+   "material": "coat",
+   "group": "torso"
+  },
+  {
+   "name": "hem",
+   "bone": "pelvis",
+   "center": [
+    0,
+    0.16,
+    0.2
+   ],
+   "radii": [
+    7.35,
+    1.76,
+    6.148
+   ],
+   "material": "coat",
+   "group": "torso"
+  },
+  {
+   "name": "hood",
+   "bone": "chest",
+   "center": [
+    0,
+    1.92,
+    -4.872
+   ],
+   "radii": [
+    5.6,
+    2.72,
+    3.016
+   ],
+   "material": "coat",
+   "group": "torso"
+  },
+  {
+   "name": "uparm_L",
+   "bone": "shoulder_L",
+   "center": [
+    0,
+    -1.82,
+    0
+   ],
+   "radii": [
+    2.75,
+    2.455,
+    2.75
+   ],
+   "material": "coat",
+   "group": "arm_L"
+  },
+  {
+   "name": "forearm_L",
+   "bone": "elbow_L",
+   "center": [
+    0,
+    -1.645,
+    0
+   ],
+   "radii": [
+    2.42,
+    2.095,
+    2.42
+   ],
+   "material": "coat",
+   "group": "arm_L"
+  },
+  {
+   "name": "cuff_L",
+   "bone": "elbow_L",
+   "center": [
+    0,
+    -2.79,
+    0
+   ],
+   "radii": [
+    2.695,
+    0.75,
+    2.695
+   ],
+   "material": "coat_trim",
+   "group": "arm_L"
+  },
+  {
+   "name": "mitten_L",
+   "bone": "hand_L",
+   "center": [
+    0,
+    -1.5,
+    0.2
+   ],
+   "radii": [
+    2.0,
+    2.1,
+    2.0
+   ],
+   "material": "mitten",
+   "group": "arm_L"
+  },
+  {
+   "name": "thumb_L",
+   "bone": "hand_L",
+   "center": [
+    -0.8,
+    -0.9,
+    1.6
+   ],
+   "radii": [
+    0.9,
+    0.9,
+    0.9
+   ],
+   "material": "mitten",
+   "group": "arm_L"
+  },
+  {
+   "name": "uparm_R",
+   "bone": "shoulder_R",
+   "center": [
+    0,
+    -1.82,
+    0
+   ],
+   "radii": [
+    2.75,
+    2.455,
+    2.75
+   ],
+   "material": "coat",
+   "group": "arm_R"
+  },
+  {
+   "name": "forearm_R",
+   "bone": "elbow_R",
+   "center": [
+    0,
+    -1.645,
+    0
+   ],
+   "radii": [
+    2.42,
+    2.095,
+    2.42
+   ],
+   "material": "coat",
+   "group": "arm_R"
+  },
+  {
+   "name": "cuff_R",
+   "bone": "elbow_R",
+   "center": [
+    0,
+    -2.79,
+    0
+   ],
+   "radii": [
+    2.695,
+    0.75,
+    2.695
+   ],
+   "material": "coat_trim",
+   "group": "arm_R"
+  },
+  {
+   "name": "mitten_R",
+   "bone": "hand_R",
+   "center": [
+    0,
+    -1.5,
+    0.2
+   ],
+   "radii": [
+    2.0,
+    2.1,
+    2.0
+   ],
+   "material": "mitten",
+   "group": "arm_R"
+  },
+  {
+   "name": "thumb_R",
+   "bone": "hand_R",
+   "center": [
+    0.8,
+    -0.9,
+    1.6
+   ],
+   "radii": [
+    0.9,
+    0.9,
+    0.9
+   ],
+   "material": "mitten",
+   "group": "arm_R"
+  },
+  {
+   "name": "neck",
+   "bone": "neck",
+   "center": [
+    0,
+    0.6,
+    0
+   ],
+   "radii": [
+    2.4,
+    2.2,
+    2.4
+   ],
+   "material": "skin",
+   "group": "torso"
+  },
+  {
+   "name": "scarf_wrap1",
+   "bone": "neck",
+   "center": [
+    0,
+    0.5,
+    0.3
+   ],
+   "radii": [
+    5.53,
+    2.0,
+    5.162
+   ],
+   "material": "scarf",
+   "group": "scarf"
+  },
+  {
+   "name": "scarf_wrap2",
+   "bone": "neck",
+   "center": [
+    0.3,
+    -0.9,
+    0.6
+   ],
+   "radii": [
+    6.09,
+    1.7,
+    5.51
+   ],
+   "material": "scarf",
+   "group": "scarf",
+   "rot": [
+    0,
+    0,
+    6
+   ]
+  },
+  {
+   "name": "head",
+   "bone": "head",
+   "center": [
+    0,
+    9.01,
+    0.5
+   ],
+   "radii": [
+    10.6,
+    10.07,
+    10.07
+   ],
+   "material": "skin",
+   "group": "head"
+  },
+  {
+   "name": "hair_cap",
+   "bone": "head",
+   "center": [
+    0,
+    9.434,
+    0.0
+   ],
+   "radii": [
+    11.342,
+    10.918,
+    11.024
+   ],
+   "material": "hair_espresso",
+   "group": "head",
+   "clip_all": [
+    [
+     0,
+     1,
+     0,
+     -0.72
+    ]
+   ],
+   "clip_any": [
+    [
+     0,
+     0,
+     -1,
+     -0.22
+    ],
+    [
+     0,
+     1,
+     0,
+     0.32
+    ]
+   ]
+  },
+  {
+   "name": "sidelock_L",
+   "bone": "head",
+   "center": [
+    9.116,
+    5.618,
+    2.332
+   ],
+   "radii": [
+    2.544,
+    5.3,
+    3.392
+   ],
+   "material": "hair_espresso",
+   "group": "head",
+   "rot": [
+    0,
+    0,
+    6
+   ]
+  },
+  {
+   "name": "sidelock_R",
+   "bone": "head",
+   "center": [
+    -9.116,
+    5.618,
+    2.332
+   ],
+   "radii": [
+    2.544,
+    5.3,
+    3.392
+   ],
+   "material": "hair_espresso",
+   "group": "head",
+   "rot": [
+    0,
+    0,
+    -6
+   ]
+  },
+  {
+   "name": "tie_L",
+   "bone": "head",
+   "center": [
+    11.0,
+    14.4,
+    -4.8
+   ],
+   "radii": [
+    1.3,
+    1.5,
+    1.3
+   ],
+   "material": "ribbon",
+   "group": "hat"
+  },
+  {
+   "name": "tie_R",
+   "bone": "head",
+   "center": [
+    -11.0,
+    14.4,
+    -4.8
+   ],
+   "radii": [
+    1.3,
+    1.5,
+    1.3
+   ],
+   "material": "ribbon",
+   "group": "hat"
+  },
+  {
+   "name": "bang_0",
+   "bone": "head",
+   "center": [
+    -5.088,
+    11.554,
+    9.116
+   ],
+   "radii": [
+    2.12,
+    2.544,
+    1.696
+   ],
+   "material": "hair_espresso",
+   "group": "head"
+  },
+  {
+   "name": "bang_1",
+   "bone": "head",
+   "center": [
+    -1.696,
+    11.554,
+    9.116
+   ],
+   "radii": [
+    2.12,
+    2.544,
+    1.696
+   ],
+   "material": "hair_espresso",
+   "group": "head"
+  },
+  {
+   "name": "bang_2",
+   "bone": "head",
+   "center": [
+    1.696,
+    11.554,
+    9.116
+   ],
+   "radii": [
+    2.12,
+    2.544,
+    1.696
+   ],
+   "material": "hair_espresso",
+   "group": "head"
+  },
+  {
+   "name": "bang_3",
+   "bone": "head",
+   "center": [
+    5.088,
+    11.554,
+    9.116
+   ],
+   "radii": [
+    2.12,
+    2.544,
+    1.696
+   ],
+   "material": "hair_espresso",
+   "group": "head"
+  },
+  {
+   "name": "muff_band",
+   "bone": "head",
+   "center": [
+    0,
+    9.54,
+    -0.53
+   ],
+   "radii": [
+    11.872,
+    11.872,
+    1.484
+   ],
+   "material": "hat",
+   "group": "hat",
+   "clip_all": [
+    [
+     0,
+     1,
+     0,
+     0.0
+    ]
+   ]
+  },
+  {
+   "name": "muff_L",
+   "bone": "head",
+   "center": [
+    11.0,
+    9.0,
+    -2.4
+   ],
+   "radii": [
+    2.4,
+    3.2,
+    3.2
+   ],
+   "material": "pom",
+   "group": "hat"
+  },
+  {
+   "name": "muff_R",
+   "bone": "head",
+   "center": [
+    -11.0,
+    9.0,
+    -2.4
+   ],
+   "radii": [
+    2.4,
+    3.2,
+    3.2
+   ],
+   "material": "pom",
+   "group": "hat"
+  },
+  {
+   "group": "hat",
+   "material": "ribbon",
+   "name": "bow_L0",
+   "bone": "head",
+   "center": [
+    11.6,
+    16.2,
+    -3.6
+   ],
+   "radii": [
+    1.88,
+    2.5,
+    2.25
+   ],
+   "rot": [
+    -30,
+    0,
+    0
+   ]
+  },
+  {
+   "group": "hat",
+   "material": "ribbon",
+   "name": "bow_L1",
+   "bone": "head",
+   "center": [
+    11.6,
+    13.0,
+    -6.2
+   ],
+   "radii": [
+    1.88,
+    2.25,
+    2.5
+   ],
+   "rot": [
+    -30,
+    0,
+    0
+   ]
+  },
+  {
+   "group": "hat",
+   "material": "ribbon",
+   "name": "bow_R0",
+   "bone": "head",
+   "center": [
+    -11.6,
+    16.2,
+    -3.6
+   ],
+   "radii": [
+    1.88,
+    2.5,
+    2.25
+   ],
+   "rot": [
+    -30,
+    0,
+    0
+   ]
+  },
+  {
+   "group": "hat",
+   "material": "ribbon",
+   "name": "bow_R1",
+   "bone": "head",
+   "center": [
+    -11.6,
+    13.0,
+    -6.2
+   ],
+   "radii": [
+    1.88,
+    2.25,
+    2.5
+   ],
+   "rot": [
+    -30,
+    0,
+    0
+   ]
+  }
+ ],
+ "chains": [
+  {
+   "name": "scarf_front",
+   "anchor_bone": "neck",
+   "anchor": [
+    3.8500000000000005,
+    -0.6,
+    4.292
+   ],
+   "rest_dir": [
+    0.2,
+    -1,
+    0.6
+   ],
+   "segments": 4,
+   "seg_len": 2.0,
+   "widths": [
+    3.0,
+    2.8,
+    2.6,
+    2.4
+   ],
+   "thickness": 1.3,
+   "material": "scarf",
+   "stiffness": 40,
+   "damping": 0.1,
+   "gravity": 650
+  },
+  {
+   "name": "tail_L",
+   "anchor_bone": "head",
+   "anchor": [
+    10.4,
+    14.0,
+    -5.6
+   ],
+   "rest_dir": [
+    0.5,
+    -1,
+    -0.45
+   ],
+   "segments": 4,
+   "seg_len": 5.5649999999999995,
+   "widths": [
+    3.4,
+    3.1,
+    2.6,
+    1.8
+   ],
+   "thickness": 2.756,
+   "material": "hair_espresso",
+   "stiffness": 450,
+   "damping": 0.2,
+   "gravity": 900
+  },
+  {
+   "name": "tail_R",
+   "anchor_bone": "head",
+   "anchor": [
+    -10.4,
+    14.0,
+    -5.6
+   ],
+   "rest_dir": [
+    -0.5,
+    -1,
+    -0.45
+   ],
+   "segments": 4,
+   "seg_len": 5.5649999999999995,
+   "widths": [
+    3.4,
+    3.1,
+    2.6,
+    1.8
+   ],
+   "thickness": 2.756,
+   "material": "hair_espresso",
+   "stiffness": 450,
+   "damping": 0.2,
+   "gravity": 900
+  }
+ ],
+ "colliders": [
+  {
+   "bone": "spine",
+   "center": [
+    0,
+    -0.32,
+    0.2
+   ],
+   "radius": 5.974
+  },
+  {
+   "bone": "chest",
+   "center": [
+    0,
+    -0.32,
+    0
+   ],
+   "radius": 5.22
+  },
+  {
+   "bone": "head",
+   "center": [
+    0,
+    9.01,
+    0.5
+   ],
+   "radius": 10.388
+  }
+ ],
+ "face": {
+  "bone": "head",
+  "center": [
+   0,
+   9.01,
+   0.5
+  ],
+  "radii": [
+   10.6,
+   10.069999999999999,
+   10.069999999999999
+  ],
+  "eye_yaw": 21.595,
+  "eye_pitch": -12,
+  "mouth_pitch": -32,
+  "eyes": "kawaii",
+  "visibility_min": 0.18
+ }
+}

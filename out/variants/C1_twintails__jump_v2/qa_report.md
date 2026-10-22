@@ -1,0 +1,23 @@
+# QA report — PASS
+
+## Errors (0)
+- none
+
+## Warnings (0)
+- none
+
+## Metrics
+- **foot_slide_px**: 0.256
+- **max_height_delta_px**: 3
+- **standing_height_px**: {'S': 29, 'SE': 29, 'E': 29, 'NE': 29, 'N': 29, 'NW': 29, 'W': 29, 'SW': 29}
+- **orphan_pixels_total**: 0
+- **orphan_pixels_worst**: []
+- **chain_penetrations**: 0
+- **chain_penetrations_by_chain**: {}
+- **jaggies_total**: 65
+- **jaggies_worst**: [('S_10', 3), ('SE_10', 3), ('W_08', 3), ('S_03', 2), ('S_05', 2)]
+- **max_colours_per_frame**: 16
+- **colours_used**: 17
+- **overrides**: 0
+- **total_ms**: 800
+- **airborne_at_ms**: 110

@@ -1,0 +1,196 @@
+{
+  "animation": "jump",
+  "buildHash": "d051a1ccb1df",
+  "buildId": "d051a1ccb1df",
+  "cameraElevation": 18.0,
+  "directions": [
+    "S",
+    "SE",
+    "E",
+    "NE",
+    "N",
+    "NW",
+    "W",
+    "SW"
+  ],
+  "frameSize": [
+    64,
+    64
+  ],
+  "frames": [
+    {
+      "cancelable": false,
+      "duration_ms": 40,
+      "events": [],
+      "face": "determined",
+      "index": 0,
+      "name": "dip",
+      "phase": "anticipation",
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 70,
+      "events": [],
+      "face": "determined",
+      "index": 1,
+      "name": "crouch",
+      "phase": "anticipation",
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 50,
+      "events": [
+        "takeoff"
+      ],
+      "face": "joyful",
+      "index": 2,
+      "name": "launch",
+      "phase": "takeoff",
+      "z_px": 3
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 60,
+      "events": [],
+      "face": "joyful",
+      "index": 3,
+      "name": "rise",
+      "phase": "air",
+      "z_px": 11
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 70,
+      "events": [],
+      "face": "joyful",
+      "index": 4,
+      "name": "rise_high",
+      "phase": "air",
+      "z_px": 17
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 110,
+      "events": [],
+      "face": "joyful",
+      "index": 5,
+      "name": "apex",
+      "phase": "air",
+      "z_px": 20
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 70,
+      "events": [],
+      "face": "neutral",
+      "index": 6,
+      "name": "fall",
+      "phase": "air",
+      "z_px": 17
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 60,
+      "events": [],
+      "face": "neutral",
+      "index": 7,
+      "name": "drop",
+      "phase": "air",
+      "z_px": 8
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 60,
+      "events": [
+        "land"
+      ],
+      "face": "squint",
+      "index": 8,
+      "name": "land",
+      "phase": "landing",
+      "z_px": 0
+    },
+    {
+      "cancelable": true,
+      "duration_ms": 50,
+      "events": [],
+      "face": "squint",
+      "index": 9,
+      "name": "rebound",
+      "phase": "landing",
+      "z_px": 0
+    },
+    {
+      "cancelable": true,
+      "duration_ms": 60,
+      "events": [],
+      "face": "smile",
+      "index": 10,
+      "name": "settle",
+      "phase": "recovery",
+      "z_px": 0
+    },
+    {
+      "cancelable": true,
+      "duration_ms": 70,
+      "events": [],
+      "face": "smile",
+      "index": 11,
+      "name": "ready",
+      "phase": "recovery",
+      "z_px": 0
+    }
+  ],
+  "image": "jump_sheet.png",
+  "inputLockEnd_ms": 590,
+  "layers": {
+    "fxBack": "jump_fx_back.png",
+    "fxFront": "jump_fx_front.png",
+    "note": "shadow/fx strips are direction-independent, same frame size & pivot; draw shadow+fxBack under the character, fxFront over it; offset only the character by z_px",
+    "shadow": "jump_shadow.png"
+  },
+  "layout": "rows=directions, cols=frames, no padding",
+  "palette": [
+    "#241628",
+    "#B0606A",
+    "#E8A07C",
+    "#F8C8A0",
+    "#FFE6CC",
+    "#4A2430",
+    "#7A3E2E",
+    "#A8603A",
+    "#4E1A3A",
+    "#8A2440",
+    "#C23A44",
+    "#EE7A5E",
+    "#7A4A2A",
+    "#C08A2A",
+    "#E8B83A",
+    "#FDE27A",
+    "#9A8AA0",
+    "#D8CBB8",
+    "#F4EAD2",
+    "#1E1E3E",
+    "#2E3462",
+    "#46528A",
+    "#3A2228",
+    "#6A3E2E",
+    "#94603E",
+    "#6A7AA8",
+    "#A8C0E0",
+    "#DFEAF6",
+    "#FFFFFF",
+    "#3E4A6E",
+    "#6E6A8A",
+    "#2A4A4A"
+  ],
+  "paletteId": "snowpeak_v1",
+  "pipelineVersion": "1.0",
+  "pivot": [
+    32,
+    56
+  ],
+  "totalMs": 770
+}

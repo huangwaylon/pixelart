@@ -1,0 +1,109 @@
+{
+ "px": [
+  [
+   20,
+   32,
+   10
+  ],
+  [
+   29,
+   20,
+   12
+  ],
+  [
+   29,
+   22,
+   31
+  ],
+  [
+   30,
+   20,
+   12
+  ],
+  [
+   30,
+   22,
+   0
+  ],
+  [
+   30,
+   23,
+   0
+  ],
+  [
+   31,
+   20,
+   12
+  ],
+  [
+   32,
+   20,
+   12
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:13",
+   "author": "pixel-EW",
+   "pixels": [
+    [
+     29,
+     22,
+     "snow_3"
+    ],
+    [
+     30,
+     22,
+     "outline"
+    ],
+    [
+     30,
+     23,
+     "outline"
+    ]
+   ],
+   "why": "profile face had no eye (decal dropped at silhouette edge) - added open eye: 1x2 outline column + snow_3 catchlight on its top-back side, 1px nose in front; mirrors the other profile (Gen3: right = mirrored left)"
+  },
+  {
+   "time": "2026-10-22 12:13",
+   "author": "pixel-EW",
+   "pixels": [
+    [
+     20,
+     32,
+     "char_1"
+    ]
+   ],
+   "why": "1px outline dent in the back contour (edge x18 at row 31, x19 at row 33, but x20 at row 32) - filled with char_1 for a clean back line"
+  },
+  {
+   "time": "2026-10-22 12:32",
+   "author": "AD-xcheck",
+   "pixels": [
+    [
+     29,
+     20,
+     "oat_1"
+    ],
+    [
+     30,
+     20,
+     "oat_1"
+    ],
+    [
+     31,
+     20,
+     "oat_1"
+    ],
+    [
+     32,
+     20,
+     "oat_1"
+    ]
+   ],
+   "why": "AD style lock: hat cuff = oat_1/oat_2 only. Mauve appeared on the hat cuff only in squash/drop frames (f2/f8/f9, f11 S end), read as a lilac headband and blinked against neighbours; S f2 was already fixed this way by pixel-SN, so the other directions now match."
+  }
+ ],
+ "note": "",
+ "base_hash": "1b3acedffecc769f"
+}

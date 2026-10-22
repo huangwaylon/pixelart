@@ -1,0 +1,26 @@
+{
+ "extends": "O1_parka_charcoal",
+ "name": "H2_A_final",
+ "label": "H2 - A body (chibi 2.5h) + O1 charcoal - R2 48px",
+ "outfit": {
+  "scarf_tails": 1,
+  "scarf_len": 2.4,
+  "hem_trim": false,
+  "sleeve_cuffs": true,
+  "hair_color": "espresso",
+  "fringe": "high"
+ },
+ "render": {
+  "ppu": 0.75
+ },
+ "frame": {
+  "size": [
+   48,
+   48
+  ],
+  "pivot": [
+   24,
+   40
+  ]
+ }
+}

@@ -1,0 +1,70 @@
+{
+  "errors": [
+    "S f3: margin < 2px, bbox (14, 8, 33, 47)",
+    "S f4: margin < 2px, bbox (13, 10, 34, 46)",
+    "S f8: margin < 2px, bbox (11, 8, 36, 46)",
+    "SE f3: margin < 2px, bbox (15, 8, 32, 47)",
+    "SE f4: margin < 2px, bbox (15, 10, 32, 47)",
+    "SE f8: margin < 2px, bbox (15, 8, 36, 46)",
+    "E f3: margin < 2px, bbox (15, 8, 32, 47)",
+    "E f4: margin < 2px, bbox (15, 9, 32, 46)",
+    "E f8: margin < 2px, bbox (16, 8, 33, 46)",
+    "NE f3: margin < 2px, bbox (15, 8, 32, 47)",
+    "NE f4: margin < 2px, bbox (15, 9, 32, 46)",
+    "NE f8: margin < 2px, bbox (15, 8, 36, 46)",
+    "N f3: margin < 2px, bbox (14, 8, 33, 46)",
+    "NW f3: margin < 2px, bbox (15, 8, 32, 47)",
+    "NW f8: margin < 2px, bbox (11, 8, 32, 46)",
+    "W f3: margin < 2px, bbox (15, 8, 32, 47)",
+    "W f4: margin < 2px, bbox (15, 9, 32, 46)",
+    "W f8: margin < 2px, bbox (14, 8, 31, 46)",
+    "SW f3: margin < 2px, bbox (15, 8, 32, 47)",
+    "SW f4: margin < 2px, bbox (15, 10, 32, 46)",
+    "SW f8: margin < 2px, bbox (11, 8, 32, 46)",
+    "silhouette height differs by 3px across directions at frame 6",
+    "8 orphan pixels (limit 0); worst [('SW_9', 2), ('SE_2', 1), ('SE_6', 1)]"
+  ],
+  "metrics": {
+    "airborne_at_ms": 110,
+    "colours_used": 17,
+    "foot_slide_px": 0.0,
+    "max_height_delta_px": 3,
+    "orphan_pixels_total": 8,
+    "orphan_pixels_worst": [
+      [
+        "SW_9",
+        2
+      ],
+      [
+        "SE_2",
+        1
+      ],
+      [
+        "SE_6",
+        1
+      ],
+      [
+        "SE_9",
+        1
+      ],
+      [
+        "SE_11",
+        1
+      ]
+    ],
+    "overrides": 0,
+    "standing_height_px": {
+      "E": 35,
+      "N": 35,
+      "NE": 35,
+      "NW": 35,
+      "S": 34,
+      "SE": 34,
+      "SW": 34,
+      "W": 35
+    },
+    "total_ms": 770
+  },
+  "pass": false,
+  "warnings": []
+}

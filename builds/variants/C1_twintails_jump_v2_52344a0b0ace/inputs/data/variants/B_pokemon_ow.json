@@ -1,0 +1,49 @@
+{
+  "name": "B_pokemon_ow",
+  "label": "B · Pokémon overworld (2 heads)",
+  "palette": "cw_charcoal",
+  "proportions": {
+    "head_r": 10.6,
+    "torso": 8,
+    "leg": 4.6,
+    "arm": 7,
+    "body_w": 7.0,
+    "body_d": 5.8,
+    "shoulder_w": 5.4,
+    "hip_w": 2.6,
+    "hand_r": 2.0,
+    "foot": [
+      2.7,
+      2.2,
+      3.4
+    ],
+    "ankle_h": 1.8,
+    "limb": 1.1
+  },
+  "outfit": {
+    "hair": "bob",
+    "hat": "beanie",
+    "coat": "parka",
+    "scarf": "long",
+    "legs": "pants",
+    "boots": "snow",
+    "pom_size": 1.5
+  },
+  "face": {
+    "eyes": "large",
+    "eye_spacing": 0.36
+  },
+  "render": {
+    "camera_elevation": 16
+  },
+  "frame": {
+    "size": [
+      64,
+      64
+    ],
+    "pivot": [
+      32,
+      54
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+ "px": [
+  [
+   22,
+   30,
+   16
+  ],
+  [
+   29,
+   27,
+   1
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     22,
+     30,
+     "red_1"
+    ]
+   ],
+   "why": "scarf tail was 1px wide in its middle row (min feature width 2px) and widths flickered vs neighbouring frame; widened to a 2px stair"
+  },
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     29,
+     27,
+     "plum_0"
+    ]
+   ],
+   "why": "doubled outline corner on a diagonal contour; fill with the adjacent interior colour so the stair is a clean 1px line"
+  }
+ ],
+ "note": "",
+ "base_hash": "1a1a287547d09438"
+}

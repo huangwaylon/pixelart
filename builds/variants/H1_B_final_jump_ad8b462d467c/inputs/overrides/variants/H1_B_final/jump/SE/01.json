@@ -1,0 +1,35 @@
+{
+ "px": [
+  [
+   22,
+   28,
+   12
+  ],
+  [
+   23,
+   28,
+   12
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     22,
+     28,
+     "oat_1"
+    ],
+    [
+     23,
+     28,
+     "oat_1"
+    ]
+   ],
+   "why": "Close 2px gap in beanie cuff: forehead skin touched red hat directly at x22-23 so the cuff band broke; mirrors SW f2 fix"
+  }
+ ],
+ "note": "",
+ "base_hash": "1ee7c79b9812be87"
+}

@@ -1,0 +1,55 @@
+{
+ "px": [
+  [
+   33,
+   29,
+   0
+  ],
+  [
+   33,
+   30,
+   0
+  ],
+  [
+   34,
+   29,
+   5
+  ],
+  [
+   34,
+   30,
+   4
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 13:02",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     33,
+     29,
+     "outline"
+    ],
+    [
+     34,
+     29,
+     "skin_1"
+    ],
+    [
+     33,
+     30,
+     "outline"
+    ],
+    [
+     34,
+     30,
+     "skin_0"
+    ]
+   ],
+   "why": "AD rules 1-3/7: restore signed v1.1 face pixels (profile eye 1px behind nose, no eye/jaw contact, joyful mouth position, single-px cheek outline)"
+  }
+ ],
+ "note": "",
+ "base_hash": "75acf50f44344183"
+}

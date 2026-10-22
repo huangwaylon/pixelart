@@ -1,0 +1,82 @@
+{
+ "px": [
+  [
+   16,
+   21,
+   2
+  ],
+  [
+   16,
+   22,
+   3
+  ],
+  [
+   16,
+   23,
+   3
+  ],
+  [
+   23,
+   9,
+   13
+  ],
+  [
+   24,
+   8,
+   13
+  ],
+  [
+   24,
+   9,
+   13
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     16,
+     21,
+     "hair_1"
+    ],
+    [
+     16,
+     22,
+     "hair_2"
+    ],
+    [
+     16,
+     23,
+     "hair_2"
+    ]
+   ],
+   "why": "back 3/4 view has no face: 1px skin cheek sliver at the head edge appeared/disappeared between frames (flicker) and only on NW; replaced with the adjacent bob hair tone so the side lock reads continuous like NE"
+  },
+  {
+   "time": "2026-10-22 12:14",
+   "author": "pixel-NENW",
+   "pixels": [
+    [
+     24,
+     8,
+     "oat_2"
+    ],
+    [
+     23,
+     9,
+     "oat_2"
+    ],
+    [
+     24,
+     9,
+     "oat_2"
+    ]
+   ],
+   "why": "pom highlight missing in a single frame between frames that have it (blink); restored the 3px top-left oat_2 L used by the neighbouring frames"
+  }
+ ],
+ "note": "",
+ "base_hash": "d399057066c8ae5b"
+}

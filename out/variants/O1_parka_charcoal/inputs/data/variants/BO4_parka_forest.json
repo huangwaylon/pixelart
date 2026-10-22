@@ -1,0 +1,16 @@
+{
+ "extends": "B_pokemon_ow",
+ "name": "BO4_parka_forest",
+ "label": "B-O4 \u00b7 Parka + tall boots, forest/orange",
+ "palette": "cw_forest",
+ "outfit": {
+  "coat": "parka",
+  "sleeve_cuffs": true,
+  "scarf": "long",
+  "hat": "beanie_tall",
+  "pom_size": 1.3,
+  "legs": "pants",
+  "boots": "tall",
+  "hair": "bob"
+ }
+}

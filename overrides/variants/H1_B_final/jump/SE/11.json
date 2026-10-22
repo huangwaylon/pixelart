@@ -1,0 +1,69 @@
+{
+ "px": [
+  [
+   21,
+   41,
+   1
+  ],
+  [
+   22,
+   41,
+   1
+  ],
+  [
+   28,
+   27,
+   5
+  ],
+  [
+   30,
+   24,
+   5
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     21,
+     41,
+     "plum_0"
+    ],
+    [
+     22,
+     41,
+     "plum_0"
+    ]
+   ],
+   "why": "Rear boot cuff (mauve) ran to the ground row; plum_0 sole so it reads as boot, consistent with f11"
+  },
+  {
+   "time": "2026-10-22 12:32",
+   "author": "AD-xcheck",
+   "pixels": [
+    [
+     30,
+     24,
+     "skin_1"
+    ]
+   ],
+   "why": "AD style lock: in 3/4 the far eye never carries a catchlight. This snow_3 sat against the silhouette outline as a white notch and blinked (absent in f7/f11); same defect pixel-EW fixed in W f12."
+  },
+  {
+   "time": "2026-10-22 12:32",
+   "author": "AD-xcheck",
+   "pixels": [
+    [
+     28,
+     27,
+     "skin_1"
+    ]
+   ],
+   "why": "AD style lock: mouth must sit 1 row below the eye bottom and touch neither eye, scarf nor outline (S f12 rule). In 3/4 smile there is no such pixel, so the mouth is omitted, as in 3/4 f7/f8/f10. It read as a smear on the eye."
+  }
+ ],
+ "note": "",
+ "base_hash": "18797089b87fb905"
+}

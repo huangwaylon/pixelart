@@ -1,0 +1,78 @@
+{
+ "px": [
+  [
+   28,
+   27,
+   14
+  ],
+  [
+   29,
+   26,
+   5
+  ],
+  [
+   29,
+   27,
+   14
+  ],
+  [
+   30,
+   26,
+   5
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 13:02",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     28,
+     27,
+     "crn_1"
+    ],
+    [
+     29,
+     27,
+     "crn_1"
+    ]
+   ],
+   "why": "AD rules 1-3/7: restore signed v1.1 face pixels (profile eye 1px behind nose, no eye/jaw contact, joyful mouth position, single-px cheek outline)"
+  },
+  {
+   "time": "2026-10-22 13:02",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     29,
+     26,
+     "skin_1"
+    ],
+    [
+     30,
+     26,
+     "skin_1"
+    ]
+   ],
+   "why": "AD rules 2/7: neighbours of restored v1.1 face pixels (outline closure, no 1px tone islands)"
+  },
+  {
+   "time": "2026-10-22 13:48",
+   "author": "prune",
+   "pixels": [],
+   "why": "rebased onto new generator output; 0 px now produced procedurally and removed; 4 px still differ"
+  },
+  {
+   "time": "2026-10-22 13:51",
+   "author": "AD-v2",
+   "pixels": [
+    [
+     "approved"
+    ]
+   ],
+   "why": "AD v2.4 check: re-verified on material-aware base; doubled near-eye/mouth px resolved"
+  }
+ ],
+ "note": "",
+ "base_hash": "cd3bb26a57e421f2"
+}

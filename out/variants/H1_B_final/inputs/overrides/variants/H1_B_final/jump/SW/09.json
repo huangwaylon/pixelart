@@ -1,0 +1,82 @@
+{
+ "px": [
+  [
+   24,
+   10,
+   0
+  ],
+  [
+   24,
+   11,
+   13
+  ],
+  [
+   25,
+   11,
+   13
+  ],
+  [
+   25,
+   12,
+   13
+  ],
+  [
+   26,
+   10,
+   0
+  ],
+  [
+   26,
+   11,
+   12
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     24,
+     10,
+     "outline"
+    ],
+    [
+     26,
+     10,
+     "outline"
+    ],
+    [
+     24,
+     11,
+     "oat_2"
+    ],
+    [
+     26,
+     11,
+     "oat_1"
+    ]
+   ],
+   "why": "Pom top was a 1px spike; round to 3-wide cap like f9/f11 (mirrors SE f10 fix)"
+  },
+  {
+   "time": "2026-10-22 12:32",
+   "author": "AD-xcheck",
+   "pixels": [
+    [
+     25,
+     11,
+     "oat_2"
+    ],
+    [
+     25,
+     12,
+     "oat_2"
+    ]
+   ],
+   "why": "AD style lock: pom carries a 3px oat_2 top-left highlight whenever its top-left faces the light (upright, or lying on the lit/left half of the dome in tilt-back f3-f6 as in E/SE). SW f10 had a single oat_2 px; completes the 3px L used in SE/W f10."
+  }
+ ],
+ "note": "",
+ "base_hash": "382ae6be5ec5ee80"
+}

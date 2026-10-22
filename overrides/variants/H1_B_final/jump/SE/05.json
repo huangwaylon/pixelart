@@ -1,0 +1,72 @@
+{
+ "px": [
+  [
+   18,
+   30,
+   16
+  ],
+  [
+   18,
+   31,
+   16
+  ],
+  [
+   19,
+   12,
+   13
+  ],
+  [
+   20,
+   12,
+   13
+  ],
+  [
+   21,
+   11,
+   13
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     21,
+     11,
+     "oat_2"
+    ],
+    [
+     19,
+     12,
+     "oat_2"
+    ],
+    [
+     20,
+     12,
+     "oat_2"
+    ]
+   ],
+   "why": "Pom lost its top-left oat_2 highlight only on apex (f5/f7 have it): flat oat_1 pom flickers on the longest-held frame; restore 3px highlight"
+  },
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     18,
+     30,
+     "red_1"
+    ],
+    [
+     18,
+     31,
+     "red_1"
+    ]
+   ],
+   "why": "Raised mitten was 2x2 while its oat_2 cuff was 8px, so the cuff read as a white hand; widen mitten to 3x2 (matches f5/f7 and SW f6 mitten mass)"
+  }
+ ],
+ "note": "",
+ "base_hash": "14546f4541bb5417"
+}

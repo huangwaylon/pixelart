@@ -1,0 +1,45 @@
+{
+ "px": [
+  [
+   20,
+   33,
+   10
+  ],
+  [
+   21,
+   33,
+   10
+  ],
+  [
+   22,
+   33,
+   10
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:10",
+   "author": "pixel-SESW",
+   "pixels": [
+    [
+     20,
+     33,
+     "char_1"
+    ],
+    [
+     21,
+     33,
+     "char_1"
+    ],
+    [
+     22,
+     33,
+     "char_1"
+    ]
+   ],
+   "why": "3x1 lav_1 strip on the belly: 1px-tall highlight island that appears f4, vanishes f5, returns f6 (flicker) and never appears in SE"
+  }
+ ],
+ "note": "",
+ "base_hash": "d8df49c16ae7520a"
+}

@@ -1,0 +1,45 @@
+{
+  "errors": [
+    "silhouette height differs by 3px across directions at frame 2",
+    "4 orphan pixels (limit 0); worst [('S_12', 1), ('SE_5', 1), ('SE_6', 1)]"
+  ],
+  "metrics": {
+    "airborne_at_ms": 110,
+    "colours_used": 18,
+    "foot_slide_px": 0.0,
+    "max_height_delta_px": 3,
+    "orphan_pixels_total": 4,
+    "orphan_pixels_worst": [
+      [
+        "S_12",
+        1
+      ],
+      [
+        "SE_5",
+        1
+      ],
+      [
+        "SE_6",
+        1
+      ],
+      [
+        "SW_9",
+        1
+      ]
+    ],
+    "overrides": 0,
+    "standing_height_px": {
+      "E": 58,
+      "N": 57,
+      "NE": 57,
+      "NW": 56,
+      "S": 57,
+      "SE": 58,
+      "SW": 57,
+      "W": 56
+    },
+    "total_ms": 770
+  },
+  "pass": false,
+  "warnings": []
+}

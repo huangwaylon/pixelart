@@ -1,0 +1,45 @@
+{
+ "px": [
+  [
+   32,
+   29,
+   0
+  ],
+  [
+   32,
+   31,
+   0
+  ],
+  [
+   33,
+   30,
+   0
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:13",
+   "author": "pixel-EW",
+   "pixels": [
+    [
+     32,
+     29,
+     "outline"
+    ],
+    [
+     33,
+     30,
+     "outline"
+    ],
+    [
+     32,
+     31,
+     "outline"
+    ]
+   ],
+   "why": "profile face had no eye (decal dropped) - added squint chevron pointing to the front (same pattern as f10, 1px inside the face) so f9-f10 read as one expression"
+  }
+ ],
+ "note": "",
+ "base_hash": "c0321d57014ebd5f"
+}

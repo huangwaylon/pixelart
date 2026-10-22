@@ -1,0 +1,33 @@
+{
+ "extends": "H1_B_final",
+ "name": "H1v2_B_final",
+ "label": "H1 v2 - procedural fixes from pixel reviews",
+ "render": {
+  "v2": true,
+  "rules": [
+   "grounded_soles",
+   "cuff_continuity",
+   "temple_cover",
+   "backview_skin",
+   "chin_shadow",
+   "thin_highlights"
+  ]
+ },
+ "ramp_overrides": {
+  "hatcuff": [
+   "oat_1",
+   "oat_1",
+   "oat_2"
+  ],
+  "coat": [
+   "ink",
+   "char_1",
+   "char_1"
+  ]
+ },
+ "shadow": {
+  "w": 15,
+  "h": 5,
+  "apex_scale": 0.65
+ }
+}

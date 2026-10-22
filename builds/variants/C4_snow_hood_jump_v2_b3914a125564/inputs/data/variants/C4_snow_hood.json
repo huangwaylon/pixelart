@@ -1,0 +1,241 @@
+{
+ "extends": "H1v2_B_final",
+ "name": "C4_snow_hood",
+ "label": "C4 - fur-trim hood up, bob + bangs, puffer",
+ "palette": "cw_charcoal",
+ "outfit": {
+  "hair": "bob",
+  "hat": "hood",
+  "bangs": "straight",
+  "accessory": null,
+  "ahoge": false,
+  "coat": "puffer",
+  "scarf": "none",
+  "scarf_tails": 1,
+  "hair_color": "espresso",
+  "fringe": "low"
+ },
+ "face": {
+  "eyes": "kawaii",
+  "eye_pitch": -12
+ },
+ "ramp_overrides": {
+  "hair_espresso": [
+   "plum_0",
+   "plum_0",
+   "hair_1"
+  ],
+  "coat": [
+   "crn_1",
+   "crn_2",
+   "crn_2"
+  ],
+  "coat_trim": [
+   "mauve",
+   "oat_2"
+  ],
+  "mitten": [
+   "teal_0",
+   "teal_1"
+  ]
+ },
+ "render": {
+  "ppu": 0.75,
+  "lineart": {
+   "smooth": 0.7,
+   "line_min_run": 3,
+   "pixel_perfect": true,
+   "selout": true,
+   "no_face_lines": true,
+   "angel_ring": true,
+   "regularize": true
+  }
+ },
+ "anim_patch": {},
+ "prim_overrides": {
+  "hood_up": {
+   "center": [
+    0,
+    9.646,
+    -1.0
+   ],
+   "radii": [
+    12.0,
+    11.7,
+    12.0
+   ]
+  },
+  "hood_fur_0": {
+   "radii": [
+    2.8,
+    2.8,
+    2.6
+   ]
+  },
+  "hood_fur_1": {
+   "radii": [
+    2.8,
+    2.8,
+    2.6
+   ]
+  },
+  "hood_fur_2": {
+   "radii": [
+    2.8,
+    2.8,
+    2.6
+   ]
+  },
+  "hood_fur_3": {
+   "radii": [
+    2.8,
+    2.8,
+    2.6
+   ]
+  },
+  "hood_fur_4": {
+   "radii": [
+    2.8,
+    2.8,
+    2.6
+   ]
+  },
+  "hood_fur_5": {
+   "radii": [
+    2.8,
+    2.8,
+    2.6
+   ]
+  },
+  "hood_fur_6": {
+   "radii": [
+    2.8,
+    2.8,
+    2.6
+   ]
+  },
+  "hood_fur_7": {
+   "radii": [
+    2.8,
+    2.8,
+    2.6
+   ]
+  },
+  "hood_fur_8": {
+   "radii": [
+    2.8,
+    2.8,
+    2.6
+   ]
+  },
+  "hood_fur_9": {
+   "radii": [
+    2.8,
+    2.8,
+    2.6
+   ]
+  }
+ },
+ "add_prims": [
+  {
+   "name": "hood_fur_10",
+   "bone": "head",
+   "center": [
+    -10.07,
+    9.54,
+    6.572
+   ],
+   "radii": [
+    2.8,
+    2.8,
+    2.6
+   ],
+   "material": "coat_trim",
+   "group": "hat"
+  },
+  {
+   "name": "lock_front_L",
+   "bone": "head",
+   "center": [
+    7.6,
+    2.2,
+    7.2
+   ],
+   "radii": [
+    2.4,
+    4.2,
+    2.2
+   ],
+   "material": "hair_espresso",
+   "group": "head",
+   "rot": [
+    0,
+    0,
+    8
+   ]
+  },
+  {
+   "name": "lock_front_R",
+   "bone": "head",
+   "center": [
+    -7.6,
+    2.2,
+    7.2
+   ],
+   "radii": [
+    2.4,
+    4.2,
+    2.2
+   ],
+   "material": "hair_espresso",
+   "group": "head",
+   "rot": [
+    0,
+    0,
+    -8
+   ]
+  },
+  {
+   "name": "bunny_ear_L",
+   "bone": "head",
+   "center": [
+    4.6,
+    21.6,
+    -3.0
+   ],
+   "radii": [
+    2.3,
+    5.0,
+    1.8
+   ],
+   "material": "coat",
+   "group": "hat",
+   "rot": [
+    0,
+    0,
+    -14
+   ]
+  },
+  {
+   "name": "bunny_ear_R",
+   "bone": "head",
+   "center": [
+    -4.6,
+    21.6,
+    -3.0
+   ],
+   "radii": [
+    2.3,
+    5.0,
+    1.8
+   ],
+   "material": "coat",
+   "group": "hat",
+   "rot": [
+    0,
+    0,
+    14
+   ]
+  }
+ ]
+}

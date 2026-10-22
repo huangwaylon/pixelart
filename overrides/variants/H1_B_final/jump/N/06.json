@@ -1,0 +1,99 @@
+{
+ "px": [
+  [
+   15,
+   26,
+   16
+  ],
+  [
+   21,
+   28,
+   4
+  ],
+  [
+   22,
+   28,
+   4
+  ],
+  [
+   23,
+   28,
+   4
+  ],
+  [
+   24,
+   7,
+   0
+  ],
+  [
+   24,
+   8,
+   12
+  ],
+  [
+   24,
+   28,
+   4
+  ]
+ ],
+ "reasons": [
+  {
+   "time": "2026-10-22 12:17",
+   "author": "pixel-SN",
+   "pixels": [
+    [
+     24,
+     8,
+     "oat_1"
+    ],
+    [
+     24,
+     7,
+     "outline"
+    ]
+   ],
+   "why": "pom top was a 1px spike (single O pixel under a lone outline); widen to the 2px rounded top used by S f7 so the pom matches its mirror view"
+  },
+  {
+   "time": "2026-10-22 12:17",
+   "author": "pixel-SN",
+   "pixels": [
+    [
+     15,
+     26,
+     "red_1"
+    ]
+   ],
+   "why": "left mitten was a 1px-wide sliver (R/R/RR); one more red_1 pixel gives a 2x2 blob (rule 3/8) and matches f6's mitten mass"
+  },
+  {
+   "time": "2026-10-22 12:32",
+   "author": "AD-xcheck",
+   "pixels": [
+    [
+     21,
+     28,
+     "skin_0"
+    ],
+    [
+     22,
+     28,
+     "skin_0"
+    ],
+    [
+     23,
+     28,
+     "skin_0"
+    ],
+    [
+     24,
+     28,
+     "skin_0"
+    ]
+   ],
+   "why": "AD style lock: nape = skin_0 in all back views (shadowed under the bob, rule 7). NE/NW were unified to skin_0; N still split skin_1/skin_0 and flickered. Strip shape remains G2 for the generator."
+  }
+ ],
+ "note": "",
+ "base_hash": "9a3bf1008fc1ef38"
+}
