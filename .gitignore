@@ -9,3 +9,4 @@ builds/
 out/*
 !out/boards/
 **/pixelreview/
+out/.DS_Store

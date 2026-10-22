@@ -101,24 +101,28 @@
    ],
    "widths": [
     4.6,
+    4.8,
     4.6,
-    4.4,
     4.0,
-    3.4,
-    2.6
+    2.8,
+    1.2
    ],
-   "thickness": 2.6
+   "thickness": 2.6,
+   "stiffness": 200,
+   "damping": 0.18
   },
   "lock_1": {
    "widths": [
     4.6,
+    4.8,
     4.6,
-    4.4,
-    4.0,
-    3.4,
-    2.6
+    4.2,
+    3.0,
+    1.3
    ],
-   "thickness": 2.6
+   "thickness": 2.6,
+   "stiffness": 200,
+   "damping": 0.18
   },
   "lock_2": {
    "rest_dir": [
@@ -128,13 +132,15 @@
    ],
    "widths": [
     4.6,
+    4.8,
     4.6,
-    4.4,
     4.0,
-    3.4,
-    2.6
+    2.8,
+    1.2
    ],
-   "thickness": 2.6
+   "thickness": 2.6,
+   "stiffness": 200,
+   "damping": 0.18
   }
  },
  "add_prims": [
@@ -195,6 +201,26 @@
  "material_bands": {
   "ribbon": [
    -0.2
+  ],
+  "hair": [
+   -0.3,
+   0.985
   ]
+ },
+ "render": {
+  "hair_style": {
+   "clump_deg": 72,
+   "clump_offset": 0,
+   "line_start": 0.2,
+   "line_px": 0.75,
+   "line_az_min": 50,
+   "ring_y": 0.64,
+   "ring_w": 0.12,
+   "ring_az": 110,
+   "under_band": 0.14
+  },
+  "lineart": {
+   "angel_ring": false
+  }
  }
 }
