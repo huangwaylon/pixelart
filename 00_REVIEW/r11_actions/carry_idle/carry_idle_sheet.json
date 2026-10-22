@@ -440,8 +440,8 @@
     }
   },
   "animation": "carry_idle",
-  "buildHash": "aac6afc75d5d",
-  "buildId": "aac6afc75d5d",
+  "buildHash": "a87e404ea446",
+  "buildId": "a87e404ea446",
   "cameraElevation": 16,
   "cycle_rise_px": 0,
   "directions": [
@@ -473,14 +473,14 @@
           "crate"
         ],
         "layer": {
-          "E": "front",
-          "N": "front",
-          "NE": "front",
-          "NW": "front",
-          "S": "front",
-          "SE": "front",
-          "SW": "front",
-          "W": "front"
+          "E": "split",
+          "N": "split",
+          "NE": "split",
+          "NW": "split",
+          "S": "split",
+          "SE": "split",
+          "SW": "split",
+          "W": "split"
         },
         "visible": true
       },
@@ -506,14 +506,14 @@
           "crate"
         ],
         "layer": {
-          "E": "front",
-          "N": "front",
-          "NE": "front",
-          "NW": "front",
-          "S": "front",
-          "SE": "front",
-          "SW": "front",
-          "W": "front"
+          "E": "split",
+          "N": "split",
+          "NE": "split",
+          "NW": "split",
+          "S": "split",
+          "SE": "split",
+          "SW": "split",
+          "W": "split"
         },
         "visible": true
       },
@@ -539,14 +539,14 @@
           "crate"
         ],
         "layer": {
-          "E": "front",
-          "N": "front",
-          "NE": "front",
-          "NW": "front",
-          "S": "front",
-          "SE": "front",
-          "SW": "front",
-          "W": "front"
+          "E": "split",
+          "N": "split",
+          "NE": "split",
+          "NW": "split",
+          "S": "split",
+          "SE": "split",
+          "SW": "split",
+          "W": "split"
         },
         "visible": true
       },
@@ -572,14 +572,14 @@
           "crate"
         ],
         "layer": {
-          "E": "front",
-          "N": "front",
-          "NE": "front",
-          "NW": "front",
-          "S": "front",
-          "SE": "front",
-          "SW": "front",
-          "W": "front"
+          "E": "split",
+          "N": "split",
+          "NE": "split",
+          "NW": "split",
+          "S": "split",
+          "SE": "split",
+          "SW": "split",
+          "W": "split"
         },
         "visible": true
       },
@@ -598,8 +598,9 @@
   "layers": {
     "fxBack": "carry_idle_fx_back.png",
     "fxFront": "carry_idle_fx_front.png",
-    "note": "shadow/fx strips are direction-independent, same frame size & pivot; draw shadow+fxBack under the character, fxFront over it; offset only the character by z_px; prop strip (same grid as the body sheet) is drawn behind or in front of the body per frame.prop.layer",
-    "prop": "carry_idle_prop.png",
+    "note": "shadow/fx strips are direction-independent, same frame size & pivot; draw shadow+fxBack under the character, fxFront over it; offset only the character by z_px; props are depth-split per pixel: draw propBack BEHIND the character and propFront IN FRONT (same grid/pivot; offset both by z_px like the body)",
+    "propBack": "carry_idle_prop_back.png",
+    "propFront": "carry_idle_prop_front.png",
     "shadow": "carry_idle_shadow.png"
   },
   "layout": "rows=directions, cols=frames, no padding",

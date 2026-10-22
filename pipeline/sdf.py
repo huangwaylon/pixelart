@@ -549,40 +549,50 @@ def occluded(prims, origins, direction, skip_groups):
     return occ
 
 
+def sdf_units(C):
+    """Independent hard-union units of a compiled part list: ("set", st) or ("part", i), with a world bound sphere."""
+    units, in_set = [], set()
+    for st in C.sets:
+        in_set |= set(st[0]) | set(st[1]) | set(st[2])
+        c = np.mean([C.center[i] for i in st[0]], 0)
+        r = max(np.linalg.norm(C.center[i] - c) + C.radius[i] for i in st[0])
+        units.append((("set", st), c, r))
+    for i, pr in enumerate(C.prims):
+        if i not in in_set and pr.get("op", "union") == "union":
+            units.append((("part", i), C.center[i], C.radius[i]))
+    return units
+
+
+def unit_sdf(C, unit, pts):
+    """(distance, part index) of one unit at world points; clip planes act as half-space intersections."""
+    kind, v = unit
+    if kind == "set":
+        return C.set_sdf(v, pts)
+    i = v
+    di = C.part_sdf_world(i, pts)
+    pr = C.prims[i]
+    if pr.get("clip_all") or pr.get("clip_any"):
+        q = pts @ C.Fi[i].T + C.ft[i]
+        s_ = C.sv[i]
+        for nx, ny, nz, c0 in pr.get("clip_all", []):
+            di = np.maximum(di, (c0 - (q[:, 0] * nx + q[:, 1] * ny + q[:, 2] * nz)) * s_)
+        if pr.get("clip_any"):
+            m = np.full(len(pts), np.inf)
+            for nx, ny, nz, c0 in pr["clip_any"]:
+                m = np.minimum(m, (c0 - (q[:, 0] * nx + q[:, 1] * ny + q[:, 2] * nz)) * s_)
+            di = np.maximum(di, m)
+    return di, np.full(len(pts), i)
+
+
 def scene_sdf(prims, pts, C=None):
-    """Union SDF of a posed part list at world points (meshing). Clip planes act as half-space intersections.
-    Returns (distance, part index of the nearest surface)."""
+    """Union SDF of a posed part list at world points. Returns (distance, part index of the nearest surface)."""
     C = C or _Compiled(prims)
     d = np.full(len(pts), np.inf)
     arg = np.full(len(pts), -1, int)
-
-    def clipped(i, di, p):
-        pr = C.prims[i]
-        if not pr.get("clip_all") and not pr.get("clip_any"):
-            return di
-        q = p @ C.Fi[i].T + C.ft[i]
-        s = C.sv[i]
-        for nx, ny, nz, c0 in pr.get("clip_all", []):
-            di = np.maximum(di, (c0 - (q[:, 0] * nx + q[:, 1] * ny + q[:, 2] * nz)) * s)
-        if pr.get("clip_any"):
-            m = np.full(len(p), np.inf)
-            for nx, ny, nz, c0 in pr["clip_any"]:
-                m = np.minimum(m, (c0 - (q[:, 0] * nx + q[:, 1] * ny + q[:, 2] * nz)) * s)
-            di = np.maximum(di, m)
-        return di
-
-    in_set = set()
-    for st in C.sets:
-        in_set |= set(st[0]) | set(st[1]) | set(st[2])
-        dd, mem = C.set_sdf(st, pts)
+    for unit, _, _ in sdf_units(C):
+        dd, a = unit_sdf(C, unit, pts)
         better = dd < d
-        d[better], arg[better] = dd[better], mem[better]
-    for i, pr in enumerate(prims):
-        if i in in_set or pr.get("op", "union") != "union":
-            continue
-        di = clipped(i, C.part_sdf_world(i, pts), pts)
-        better = di < d
-        d[better], arg[better] = di[better], i
+        d[better], arg[better] = dd[better], a[better]
     return d, arg
 
 

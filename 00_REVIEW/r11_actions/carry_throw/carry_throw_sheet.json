@@ -11,8 +11,8 @@
           30.6
         ],
         [
-          30.8,
-          34.6
+          29.7,
+          33.8
         ],
         [
           31.4,
@@ -38,7 +38,7 @@
         ],
         [
           24.0,
-          32.7
+          32.2
         ],
         [
           24.1,
@@ -63,8 +63,8 @@
           29.9
         ],
         [
-          28.8,
-          33.3
+          28.0,
+          32.7
         ],
         [
           29.3,
@@ -89,8 +89,8 @@
           29.9
         ],
         [
-          19.2,
-          33.3
+          20.0,
+          32.7
         ],
         [
           18.8,
@@ -116,7 +116,7 @@
         ],
         [
           24.0,
-          36.5
+          35.3
         ],
         [
           23.9,
@@ -141,8 +141,8 @@
           31.3
         ],
         [
-          28.8,
-          35.9
+          28.0,
+          34.9
         ],
         [
           29.2,
@@ -167,8 +167,8 @@
           31.3
         ],
         [
-          19.2,
-          35.9
+          20.0,
+          34.9
         ],
         [
           18.7,
@@ -193,8 +193,8 @@
           30.6
         ],
         [
-          17.2,
-          34.6
+          18.3,
+          33.8
         ],
         [
           16.6,
@@ -221,8 +221,8 @@
           28.2
         ],
         [
-          30.8,
-          32.3
+          29.7,
+          31.5
         ],
         [
           31.4,
@@ -248,7 +248,7 @@
         ],
         [
           15.7,
-          32.7
+          32.2
         ],
         [
           15.0,
@@ -273,8 +273,8 @@
           28.2
         ],
         [
-          22.9,
-          31.6
+          22.1,
+          31.1
         ],
         [
           22.9,
@@ -299,8 +299,8 @@
           31.5
         ],
         [
-          13.3,
-          34.9
+          14.1,
+          34.3
         ],
         [
           12.4,
@@ -326,7 +326,7 @@
         ],
         [
           32.3,
-          36.5
+          35.3
         ],
         [
           33.0,
@@ -351,8 +351,8 @@
           29.6
         ],
         [
-          34.7,
-          34.3
+          33.9,
+          33.3
         ],
         [
           35.6,
@@ -377,8 +377,8 @@
           33.0
         ],
         [
-          25.1,
-          37.5
+          25.9,
+          36.5
         ],
         [
           25.1,
@@ -403,8 +403,8 @@
           32.9
         ],
         [
-          17.2,
-          36.9
+          18.3,
+          36.1
         ],
         [
           16.6,
@@ -431,8 +431,8 @@
           32.9
         ],
         [
-          30.8,
-          36.9
+          29.7,
+          36.1
         ],
         [
           31.4,
@@ -458,7 +458,7 @@
         ],
         [
           32.3,
-          32.7
+          32.2
         ],
         [
           33.2,
@@ -483,8 +483,8 @@
           31.5
         ],
         [
-          34.7,
-          34.9
+          33.9,
+          34.3
         ],
         [
           35.8,
@@ -509,8 +509,8 @@
           28.2
         ],
         [
-          25.1,
-          31.6
+          25.9,
+          31.1
         ],
         [
           25.3,
@@ -536,7 +536,7 @@
         ],
         [
           15.7,
-          36.5
+          35.3
         ],
         [
           14.8,
@@ -561,8 +561,8 @@
           33.0
         ],
         [
-          22.9,
-          37.5
+          22.1,
+          36.5
         ],
         [
           22.7,
@@ -587,8 +587,8 @@
           29.6
         ],
         [
-          13.3,
-          34.3
+          14.1,
+          33.3
         ],
         [
           12.2,
@@ -613,8 +613,8 @@
           28.2
         ],
         [
-          17.2,
-          32.3
+          18.3,
+          31.5
         ],
         [
           16.6,
@@ -632,8 +632,8 @@
     }
   },
   "animation": "carry_throw",
-  "buildHash": "254223d5b1d8",
-  "buildId": "254223d5b1d8",
+  "buildHash": "046632dfc9db",
+  "buildId": "046632dfc9db",
   "cameraElevation": 16,
   "cycle_rise_px": 0,
   "directions": [
@@ -646,7 +646,7 @@
     "W",
     "SW"
   ],
-  "engine_notes": "",
+  "engine_notes": "throw_release fires on f3 (release); the crate is drawn on dip+push and hidden from f3. Spawn the projectile at anchors.carry[dir][push] (prop.spawn_anchor_frame = push) so it leaves exactly where the held crate was last drawn.",
   "frameSize": [
     48,
     64
@@ -665,14 +665,14 @@
           "crate"
         ],
         "layer": {
-          "E": "front",
-          "N": "front",
-          "NE": "front",
-          "NW": "front",
-          "S": "front",
-          "SE": "front",
-          "SW": "front",
-          "W": "front"
+          "E": "split",
+          "N": "split",
+          "NE": "split",
+          "NW": "split",
+          "S": "split",
+          "SE": "split",
+          "SW": "split",
+          "W": "split"
         },
         "visible": true
       },
@@ -688,9 +688,7 @@
     {
       "cancelable": false,
       "duration_ms": 70,
-      "events": [
-        "throw_release"
-      ],
+      "events": [],
       "face": "determined",
       "index": 1,
       "name": "push",
@@ -723,24 +721,28 @@
     {
       "cancelable": false,
       "duration_ms": 60,
-      "events": [],
+      "events": [
+        "throw_release"
+      ],
       "face": "joyful",
       "index": 2,
       "name": "release",
       "phase": "action",
       "prop": {
-        "ids": [],
+        "ids": [
+          "smear"
+        ],
         "layer": {
-          "E": null,
-          "N": null,
-          "NE": null,
-          "NW": null,
-          "S": null,
-          "SE": null,
-          "SW": null,
-          "W": null
+          "E": "front",
+          "N": "front",
+          "NE": "front",
+          "NW": "front",
+          "S": "front",
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
         },
-        "visible": false
+        "visible": true
       },
       "props": [],
       "root_px": [
@@ -758,18 +760,20 @@
       "name": "follow",
       "phase": "action",
       "prop": {
-        "ids": [],
+        "ids": [
+          "smear"
+        ],
         "layer": {
-          "E": null,
-          "N": null,
-          "NE": null,
-          "NW": null,
-          "S": null,
-          "SE": null,
-          "SW": null,
-          "W": null
+          "E": "front",
+          "N": "front",
+          "NE": "front",
+          "NW": "front",
+          "S": "front",
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
         },
-        "visible": false
+        "visible": true
       },
       "props": [],
       "root_px": [
@@ -842,8 +846,9 @@
   "layers": {
     "fxBack": "carry_throw_fx_back.png",
     "fxFront": "carry_throw_fx_front.png",
-    "note": "shadow/fx strips are direction-independent, same frame size & pivot; draw shadow+fxBack under the character, fxFront over it; offset only the character by z_px; prop strip (same grid as the body sheet) is drawn behind or in front of the body per frame.prop.layer",
-    "prop": "carry_throw_prop.png",
+    "note": "shadow/fx strips are direction-independent, same frame size & pivot; draw shadow+fxBack under the character, fxFront over it; offset only the character by z_px; props are depth-split per pixel: draw propBack BEHIND the character and propFront IN FRONT (same grid/pivot; offset both by z_px like the body)",
+    "propBack": "carry_throw_prop_back.png",
+    "propFront": "carry_throw_prop_front.png",
     "shadow": "carry_throw_shadow.png"
   },
   "layout": "rows=directions, cols=frames, no padding",
@@ -898,7 +903,8 @@
         0.0
       ],
       "ref": "crate",
-      "release_event": "throw_release"
+      "release_event": "throw_release",
+      "spawn_anchor_frame": "push"
     }
   ],
   "rise_weights": null,

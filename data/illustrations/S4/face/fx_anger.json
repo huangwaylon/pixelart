@@ -1,17 +1,20 @@
 {
- "note": "anger vein",
+ "note": "anger vein, 7x7, floats in open space beside the head",
  "anchor": [
-  2,
-  2
+  3,
+  3
  ],
  "legend": {
-  "R": "red_1"
+  "R": "red_1",
+  "r": "crn_1"
  },
  "grid": [
-  ".R.R.",
-  "RR.RR",
-  ".....",
-  "RR.RR",
-  ".R.R."
+  "R.....R",
+  ".RR.RR.",
+  ".R...R.",
+  ".......",
+  ".R...R.",
+  ".RR.RR.",
+  "R.....R"
  ]
 }

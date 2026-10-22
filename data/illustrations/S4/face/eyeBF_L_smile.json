@@ -1,0 +1,30 @@
+{
+ "note": "front bust eye 10x12; sclera on the OUTER side only (mirrored L/R so the gaze is straight), catchlight upper-left on both; smile: lower lid up 1 row",
+ "anchor": [
+  0,
+  0
+ ],
+ "legend": {
+  "K": "ink",
+  "d": "iris_0",
+  "m": "iris_1",
+  "l": "iris_2",
+  "W": "snow_3",
+  "w": "snow_3",
+  "s": "line_skin"
+ },
+ "grid": [
+  "..KKKKK...",
+  "KKKKKKKKK.",
+  "KwdddddddK",
+  ".wdWWdddd.",
+  ".wdWWmmmd.",
+  ".wdWmmmmd.",
+  ".wdmmmmld.",
+  ".wdmmmlld.",
+  "..dmmllWd.",
+  "..ddddddd.",
+  "..ssss....",
+  ".........."
+ ]
+}

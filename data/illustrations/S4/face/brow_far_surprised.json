@@ -6,12 +6,12 @@
  ],
  "legend": {
   "P": "plum_0",
+  "K": "ink",
   "b": "skin_1"
  },
  "grid": [
-  ".PPP..",
-  "PbbbP.",
-  "b...bP",
-  ".....b"
+  ".PKKP.",
+  "KP..PK",
+  ".....P"
  ]
 }

@@ -1,5 +1,5 @@
 {
- "note": "front bust eye, viewer-left (outer corner left); mirror of eye_near_neutral with catchlight kept upper-left",
+ "note": "front bust eye 10x12; sclera on the OUTER side only (mirrored L/R so the gaze is straight), catchlight upper-left on both",
  "anchor": [
   0,
   0
@@ -16,15 +16,15 @@
  "grid": [
   "..KKKKK...",
   "KKKKKKKKK.",
-  "KwddddddwK",
-  ".wdWWdddw.",
-  ".wdWWmmdw.",
-  ".wdWmmmdw.",
-  ".wdmmmldw.",
-  ".wdmmlldw.",
-  "..dmllWd..",
-  ".dllllld..",
-  "...dddd...",
+  "KwdddddddK",
+  ".wdWWdddd.",
+  ".wdWWmmmd.",
+  ".wdWmmmmd.",
+  ".wdmmmmld.",
+  ".wdmmmlld.",
+  "..dmmllWd.",
+  "..dllllld.",
+  "...ddddd..",
   "..ssss...."
  ]
 }

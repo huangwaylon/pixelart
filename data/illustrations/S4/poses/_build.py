@@ -91,6 +91,11 @@ class Rig:
         t = ((p[0] - S[0]) * ax + (p[1] - S[1]) * ay) / L
         e = ((E[0] - S[0]) * ax + (E[1] - S[1]) * ay) / L
         w = smooth(e - 18, e + 18, t)
+        k = self.P.get("pinch_" + side, 0)
+        if k:  # elbow taper: pull the sleeve edges toward the arm axis around the elbow
+            f = k * math.exp(-((t - e) / 34.0) ** 2)
+            fx, fy = S[0] + ax / L * t, S[1] + ay / L * t
+            p = (fx + (p[0] - fx) * (1 - f), fy + (p[1] - fy) * (1 - f))
         p = self.shrug(p)
         Ss, Es = self.shrug(S), self.shrug(E)
         up = rot(p, Ss, a1)
@@ -101,7 +106,8 @@ class Rig:
         j = LEG[side]
         a1, a2 = self.P.get("leg_" + side, (0, 0))[:2]
         H, K = j["H"], j["K"]
-        w = smooth(K[1] - 25, K[1] + 25, p[1])
+        kb = self.P.get("knee_soft", {}).get(side, 25)
+        w = smooth(K[1] - kb, K[1] + kb, p[1])
         wh = smooth(H[1] - 10, H[1] + 40, p[1])  # tights top stays tucked under the hem
         up = lerp(p, rot(p, H, a1), wh)
         lo = rot(rot(p, K, a2), H, a1)
@@ -246,7 +252,8 @@ def build(pname, P):
     for extra in P.get("add", []):
         e = copy.deepcopy(extra)
         fn = {"head": rig.T_head, "torso": rig.T_torso, "root": rig.T_root, "none": lambda p: p,
-              "arm_near": lambda p: rig.T_arm("near", p), "arm_far": lambda p: rig.T_arm("far", p)}[e.pop("bone", "none")]
+              "arm_near": lambda p: rig.T_arm("near", p), "arm_far": lambda p: rig.T_arm("far", p),
+              "leg_near": lambda p: rig.T_leg("near", p), "leg_far": lambda p: rig.T_leg("far", p)}[e.pop("bone", "none")]
         if "d" in e:
             e["d"] = warp_d(e["d"], fn)
         if "paths" in e:
@@ -269,8 +276,63 @@ def build(pname, P):
         "canvas": SHEET["canvas"], "design_scale": 8, "size": SHEET["size"], "palette": SHEET["palette"],
         "outline": dict(SHEET["outline"], line_colors=dict(SHEET["outline"]["line_colors"], scarf_up="teal_0")), "layers": layers, "anchors": anchors, "cels": cels,
     }
-    json.dump(src, open(os.path.join(HERE, f"{pname}.json"), "w"), indent=0)
+    path = os.path.join(HERE, f"{pname}.json")
+    json.dump(src, open(path, "w"), indent=0)
+    if P.get("cleanup", True):
+        cleanup(path, src)
     return src
+
+
+def _orphans(idx):
+    import numpy as np
+    H, W = idx.shape
+    pad = np.full((H + 2, W + 2), -9, int)
+    pad[1:-1, 1:-1] = idx
+    same = np.zeros((H, W), bool)
+    for dy in (-1, 0, 1):
+        for dx in (-1, 0, 1):
+            if dy or dx:
+                same |= pad[1 + dy:H + 1 + dy, 1 + dx:W + 1 + dx] == idx
+    return (idx >= 0) & ~same
+
+
+def cleanup(path, src, rounds=3):
+    """Pixel-pass step 5 for warped shapes: recolour each isolated 1 px speck (not part of a face/fx cel)
+    to its dominant 4-neighbour colour. Stored as 1x1 'fix_*' cels so the source stays one JSON."""
+    import numpy as np
+    from collections import Counter
+    from pipeline.illustrate import render_illustration
+    H, W = src["size"][1], src["size"][0]
+    prot = np.zeros((H, W), bool)
+    for slot, cel in src["cels"].items():
+        X, Y = src["anchors"].get(slot, (None, None))
+        if X is None:
+            continue
+        ax, ay = cel.get("anchor", (0, 0))
+        for r, row in enumerate(cel["grid"]):
+            for c, ch in enumerate(row):
+                y, x = Y - ay + r, X - ax + c
+                if ch not in ". " and 0 <= y < H and 0 <= x < W:
+                    prot[y, x] = True
+    n = 0
+    for _ in range(rounds):
+        pal, idx, _, _ = render_illustration(path)
+        orph = _orphans(idx) & ~prot
+        if not orph.any():
+            break
+        for y, x in zip(*np.nonzero(orph)):
+            nb = [idx[y + dy, x + dx] for dy, dx in ((1, 0), (-1, 0), (0, 1), (0, -1))
+                  if 0 <= y + dy < H and 0 <= x + dx < W and idx[y + dy, x + dx] >= 0]
+            if not nb:
+                continue
+            col = pal.names[Counter(nb).most_common(1)[0][0]]
+            slot = f"fix_{n}"
+            n += 1
+            src["anchors"][slot] = [int(x), int(y)]
+            src["cels"][slot] = {"anchor": [0, 0], "legend": {"c": col}, "grid": ["c"]}
+        json.dump(src, open(path, "w"), indent=0)
+    src["cleanup_px"] = n
+    json.dump(src, open(path, "w"), indent=0)
 
 
 if __name__ == "__main__":

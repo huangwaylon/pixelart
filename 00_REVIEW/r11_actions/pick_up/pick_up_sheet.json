@@ -920,8 +920,8 @@
     }
   },
   "animation": "pick_up",
-  "buildHash": "cc7d5421a02d",
-  "buildId": "cc7d5421a02d",
+  "buildHash": "0e910d01319a",
+  "buildId": "0e910d01319a",
   "cameraElevation": 16,
   "cycle_rise_px": 0,
   "directions": [
@@ -1013,14 +1013,14 @@
           "crate"
         ],
         "layer": {
-          "E": "back",
-          "N": "back",
-          "NE": "back",
-          "NW": "back",
+          "E": "split",
+          "N": "split",
+          "NE": "split",
+          "NW": "split",
           "S": "front",
-          "SE": "front",
-          "SW": "front",
-          "W": "back"
+          "SE": "split",
+          "SW": "split",
+          "W": "split"
         },
         "visible": true
       },
@@ -1046,14 +1046,14 @@
           "crate"
         ],
         "layer": {
-          "E": "back",
-          "N": "back",
-          "NE": "back",
-          "NW": "back",
+          "E": "split",
+          "N": "split",
+          "NE": "split",
+          "NW": "split",
           "S": "front",
-          "SE": "front",
-          "SW": "front",
-          "W": "back"
+          "SE": "split",
+          "SW": "split",
+          "W": "split"
         },
         "visible": true
       },
@@ -1079,14 +1079,14 @@
           "crate"
         ],
         "layer": {
-          "E": "front",
+          "E": "split",
           "N": "back",
-          "NE": "back",
-          "NW": "back",
+          "NE": "split",
+          "NW": "split",
           "S": "front",
-          "SE": "front",
-          "SW": "front",
-          "W": "front"
+          "SE": "split",
+          "SW": "split",
+          "W": "split"
         },
         "visible": true
       },
@@ -1112,14 +1112,14 @@
           "crate"
         ],
         "layer": {
-          "E": "front",
+          "E": "split",
           "N": "back",
-          "NE": "back",
-          "NW": "back",
+          "NE": "split",
+          "NW": "split",
           "S": "front",
           "SE": "front",
           "SW": "front",
-          "W": "front"
+          "W": "split"
         },
         "visible": true
       },
@@ -1145,14 +1145,14 @@
           "crate"
         ],
         "layer": {
-          "E": "front",
-          "N": "front",
-          "NE": "front",
-          "NW": "front",
-          "S": "front",
-          "SE": "front",
-          "SW": "front",
-          "W": "front"
+          "E": "split",
+          "N": "split",
+          "NE": "split",
+          "NW": "split",
+          "S": "split",
+          "SE": "split",
+          "SW": "split",
+          "W": "split"
         },
         "visible": true
       },
@@ -1178,14 +1178,14 @@
           "crate"
         ],
         "layer": {
-          "E": "front",
-          "N": "front",
-          "NE": "front",
-          "NW": "front",
-          "S": "front",
-          "SE": "front",
-          "SW": "front",
-          "W": "front"
+          "E": "split",
+          "N": "split",
+          "NE": "split",
+          "NW": "split",
+          "S": "split",
+          "SE": "split",
+          "SW": "split",
+          "W": "split"
         },
         "visible": true
       },
@@ -1211,14 +1211,14 @@
           "crate"
         ],
         "layer": {
-          "E": "front",
-          "N": "front",
-          "NE": "front",
-          "NW": "front",
-          "S": "front",
-          "SE": "front",
-          "SW": "front",
-          "W": "front"
+          "E": "split",
+          "N": "split",
+          "NE": "split",
+          "NW": "split",
+          "S": "split",
+          "SE": "split",
+          "SW": "split",
+          "W": "split"
         },
         "visible": true
       },
@@ -1237,8 +1237,9 @@
   "layers": {
     "fxBack": "pick_up_fx_back.png",
     "fxFront": "pick_up_fx_front.png",
-    "note": "shadow/fx strips are direction-independent, same frame size & pivot; draw shadow+fxBack under the character, fxFront over it; offset only the character by z_px; prop strip (same grid as the body sheet) is drawn behind or in front of the body per frame.prop.layer",
-    "prop": "pick_up_prop.png",
+    "note": "shadow/fx strips are direction-independent, same frame size & pivot; draw shadow+fxBack under the character, fxFront over it; offset only the character by z_px; props are depth-split per pixel: draw propBack BEHIND the character and propFront IN FRONT (same grid/pivot; offset both by z_px like the body)",
+    "propBack": "pick_up_prop_back.png",
+    "propFront": "pick_up_prop_front.png",
     "shadow": "pick_up_shadow.png"
   },
   "layout": "rows=directions, cols=frames, no padding",

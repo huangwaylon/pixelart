@@ -294,11 +294,11 @@
  "anchors": {
   "brow_L": [
    45,
-   30
+   28
   ],
   "brow_R": [
    50,
-   30
+   28
   ],
   "eye_L": [
    36,
@@ -337,11 +337,11 @@
   "brow_L": "brow_near_neutral:flip",
   "brow_R": "brow_near_neutral",
   "eye_L": "eyeBF_L_neutral",
-  "eye_R": "eye_near_neutral",
+  "eye_R": "eyeBF_R_neutral",
   "nose": "nose_q",
   "mouth": "mouthBF_neutral",
-  "blush_L": "blush_far:flip",
-  "blush_R": "blush_far",
+  "blush_L": null,
+  "blush_R": null,
   "sweat": null,
   "fx": null
  },
@@ -351,11 +351,11 @@
     "brow_L": "brow_near_neutral:flip",
     "brow_R": "brow_near_neutral",
     "eye_L": "eyeBF_L_neutral",
-    "eye_R": "eye_near_neutral",
+    "eye_R": "eyeBF_R_neutral",
     "nose": "nose_q",
     "mouth": "mouthBF_neutral",
-    "blush_L": "blush_far:flip",
-    "blush_R": "blush_far",
+    "blush_L": null,
+    "blush_R": null,
     "sweat": null,
     "fx": null
    }
@@ -364,8 +364,8 @@
    "cels": {
     "brow_L": "brow_near_neutral:flip",
     "brow_R": "brow_near_neutral",
-    "eye_L": "eyeBF_L_neutral",
-    "eye_R": "eye_near_neutral",
+    "eye_L": "eyeBF_L_smile",
+    "eye_R": "eyeBF_R_smile",
     "nose": "nose_q",
     "mouth": "mouthBF_smile",
     "blush_L": "blush_far:flip",

@@ -14,17 +14,17 @@
   "s": "line_skin"
  },
  "grid": [
+  ".......",
   "..KKKK.",
   "KKKKKKK",
-  "KKddddw",
-  "KdWWddw",
-  ".dWWmdw",
-  ".dmmmdw",
+  "KKdddWw",
+  "KdWWmdw",
+  ".dWmmdw",
   ".dmmWdw",
   ".dWlld.",
-  ".dWllW.",
-  ".WllllW",
-  "..WWW..",
-  ".ss...."
+  ".dlWlW.",
+  ".dllld.",
+  "W.WWW..",
+  "Wss...."
  ]
 }

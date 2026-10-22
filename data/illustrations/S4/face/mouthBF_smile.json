@@ -1,18 +1,14 @@
 {
- "note": "front bust mouth, smile",
+ "note": "front bust mouth, smile: 4 px plum curve",
  "anchor": [
   1,
   0
  ],
  "legend": {
-  "s": "line_skin",
-  "o": "crn_1",
-  "t": "crn_2",
-  "h": "skin_1",
-  "W": "snow_3"
+  "P": "plum_0"
  },
  "grid": [
-  "s..s",
-  ".ss."
+  "P..P",
+  ".PP."
  ]
 }

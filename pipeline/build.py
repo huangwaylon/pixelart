@@ -336,6 +336,11 @@ def main(argv=None):
     if not a.no_reference:
         build_reference(scene, palette, os.path.join(out_dir, "reference"))
         grounding_sheet(scene, palette, final, os.path.join(out_dir, "reference", "grounding_3d_vs_pixel.png"))
+        if getattr(scene, "model", "legacy") == "hd":
+            # HD reference model: printable/viewable meshes (rest pose + jump apex)
+            from .meshexport import export_poses
+            with open(os.path.join(out_dir, "reference", "model_meshes.json"), "w") as f:
+                json.dump(export_poses(scene, palette, os.path.join(out_dir, "reference")), f, indent=2)
 
     if a.verify:
         scene2 = Scene(character, anim, palette)

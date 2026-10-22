@@ -34,7 +34,8 @@ def main():
                  (f"preview/slowmo/{clip}_8dir_slow.gif", f"{clip}_8dir_slow.gif"),
                  (f"preview/{clip}_contact_sheet.png", f"{clip}_contact_sheet.png"),
                  (f"{clip}_sheet.png", f"{clip}_sheet.png"), (f"{clip}_sheet.json", f"{clip}_sheet.json"),
-                 ("qa_report.md", "qa_report.md")]
+                 ("qa_report.md", "qa_report.md"),
+                 (f"{clip}_prop_front.png", f"{clip}_prop_front.png"), (f"{clip}_prop_back.png", f"{clip}_prop_back.png")]
         for s, d in pairs:
             if os.path.exists(os.path.join(src, s)):
                 shutil.copy2(os.path.join(src, s), os.path.join(dst, d))

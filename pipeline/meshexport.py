@@ -9,7 +9,7 @@ import struct
 
 import numpy as np
 
-from .sdf import _Compiled, scene_sdf
+from .sdf import _Compiled, sdf_units, unit_sdf
 
 # cube corners and the 6-tetrahedra split along the 0-6 diagonal (consistent across cubes -> watertight)
 CORNERS = np.array([[0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0], [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]])
@@ -92,7 +92,6 @@ def _march(field, origin, h):
 
 def mesh_parts(parts, scale_h=1.0):
     """Posed part list -> {material: (triangles, edge keys)}."""
-    C = _Compiled(parts)
     mats = sorted({p["material"] for p in parts if p.get("op", "union") == "union"})
     out = {}
     for m in mats:
@@ -105,25 +104,23 @@ def mesh_parts(parts, scale_h=1.0):
         Cs = _Compiled(sub)
         lo = np.min([Cs.center[k] - Cs.radius[k] for k in uni], 0) - 0.5
         hi = np.max([Cs.center[k] + Cs.radius[k] for k in uni], 0) + 0.5
-        h = float(np.clip(0.4 * min(_thickness(sub[k]) for k in uni), 0.1, 0.4)) * scale_h
+        h = float(np.clip(0.4 * np.percentile([_thickness(sub[k]) for k in uni], 20), 0.12, 0.4)) * scale_h
         n = np.ceil((hi - lo) / h).astype(int) + 1
         while np.prod(n) > 6e6:
             h *= 1.15
             n = np.ceil((hi - lo) / h).astype(int) + 1
-        g = [lo[a] + h * np.arange(n[a]) for a in range(3)]
-        X, Y, Z = np.meshgrid(*g, indexing="ij")
-        pts = np.stack([X.ravel(), Y.ravel(), Z.ravel()], 1)
-        d = np.full(len(pts), 1e3)
-        # evaluate in chunks restricted to each part's bound (distance far away just stays positive)
-        for start in range(0, len(pts), 400000):
-            P = pts[start:start + 400000]
-            near = np.zeros(len(P), bool)
-            for k in uni:
-                near |= ((P - Cs.center[k]) ** 2).sum(1) < (Cs.radius[k] + 2 * h) ** 2
-            if near.any():
-                d[start:start + 400000][near] = scene_sdf(sub, P[near], Cs)[0]
-        out[m] = _march(d.reshape(n), lo, h)
-    del C
+        d = np.full(tuple(n), 1e3)
+        for unit, c, r in sdf_units(Cs):
+            i0 = np.maximum(np.floor((c - r - 2 * h - lo) / h).astype(int), 0)
+            i1 = np.minimum(np.ceil((c + r + 2 * h - lo) / h).astype(int) + 1, n)
+            if (i1 <= i0).any():
+                continue
+            g = [lo[a] + h * np.arange(i0[a], i1[a]) for a in range(3)]
+            X, Y, Z = np.meshgrid(*g, indexing="ij")
+            dd = unit_sdf(Cs, unit, np.stack([X.ravel(), Y.ravel(), Z.ravel()], 1))[0].reshape(X.shape)
+            sl = tuple(slice(i0[a], i1[a]) for a in range(3))
+            d[sl] = np.minimum(d[sl], dd)
+        out[m] = _march(d, lo, h)
     return out
 
 

@@ -335,6 +335,77 @@ def auto_lines(idx, part, info, ill, palette):
     return out
 
 
+def selout(out, ring, op, part, o, palette, ol, r=2):
+    """Sel-out per contiguous edge RUN (not per pixel): each exterior line pixel gets the outward normal of the
+    local silhouette segment (sum of offsets from the fill pixels in a (2r+1)^2 window). Normals facing the light
+    (default upper-left) take the part's line colour, the rest stay outline. A run-majority filter along the
+    8-connected line then removes alternating 'zipper' pixels and 1-pixel lit/dark islands."""
+    lc = o.get("line_colors", {})
+    lx, ly = o.get("light", (-1.0, -1.0))
+    ln = (lx * lx + ly * ly) ** 0.5
+    thresh = o.get("lit_threshold", 0.2)
+    H, W = out.shape
+    pts = [(y, x) for y, x in zip(*np.nonzero((out == ol) & ring)) if y < H - 3]
+    lit = {}
+    for y, x in pts:
+        y0, y1, x0, x1 = max(0, y - r), min(H, y + r + 1), max(0, x - r), min(W, x + r + 1)
+        qy, qx = np.nonzero(op[y0:y1, x0:x1])
+        if len(qy) == 0:
+            continue
+        nx, ny = float(np.sum(x - (qx + x0))), float(np.sum(y - (qy + y0)))
+        nn = (nx * nx + ny * ny) ** 0.5
+        lit[(y, x)] = nn > 0 and (nx * lx + ny * ly) / (nn * ln) > thresh
+    nbrs = {p: [(p[0] + dy, p[1] + dx) for dy in (-1, 0, 1) for dx in (-1, 0, 1)
+                if (dy or dx) and (p[0] + dy, p[1] + dx) in lit] for p in lit}
+    for _ in range(3):                       # run smoothing: majority of self + line neighbours
+        new = {}
+        for p, v in lit.items():
+            nb = [lit[q] for q in nbrs[p]]
+            if not nb:
+                new[p] = False
+                continue
+            votes = sum(nb) + v
+            new[p] = votes * 2 > len(nb) + 1 if votes * 2 != len(nb) + 1 else v
+            if v and not any(nb):            # lone lit pixel
+                new[p] = False
+            if not v and len(nb) >= 2 and all(nb):
+                new[p] = True
+        if new == lit:
+            break
+        lit = new
+    for (y, x), v in lit.items():
+        if not v:
+            continue
+        cand = [part[y + dy, x + dx] for dy, dx in DIRS4
+                if 0 <= y + dy < H and 0 <= x + dx < W and op[y + dy, x + dx] and part[y + dy, x + dx] in lc]
+        if cand:
+            out[y, x] = palette.index[lc[max(set(cand), key=cand.count)]]
+    return out
+
+
+def orphan_cleanup(out, passes=2):
+    """Final vector-pass cleanup: a pixel with no same-colour 8-neighbour takes the dominant colour of its
+    8-neighbourhood (transparent never wins, so the silhouette is unchanged). Face cels are stamped afterwards,
+    so deliberate cel pixels are never touched."""
+    H, W = out.shape
+    for _ in range(passes):
+        changed = False
+        for y, x in zip(*np.nonzero(out >= 0)):
+            v = out[y, x]
+            nb = [int(out[y + dy, x + dx]) for dy in (-1, 0, 1) for dx in (-1, 0, 1)
+                  if (dy or dx) and 0 <= y + dy < H and 0 <= x + dx < W]
+            if v in nb:
+                continue
+            opq = [c for c in nb if c >= 0]
+            if not opq:
+                continue
+            out[y, x] = max(sorted(set(opq)), key=opq.count)
+            changed = True
+        if not changed:
+            break
+    return out
+
+
 def pixel_pass(idx, part, info, ill, palette):
     """Pixel-art finishing: speck cleanup, inner auto lines, exterior outline (closed, pixel-perfect, sel-out)."""
     names = sorted({p for p in part.ravel() if p is not None})
@@ -355,18 +426,9 @@ def pixel_pass(idx, part, info, ill, palette):
     out[ring] = ol
     out = pixel_perfect_outline(out, {ol}, exterior=ring)
     if o.get("selout"):
-        lc = o.get("line_colors", {})
-        H, W = out.shape
-        for y in range(H):
-            for x in range(W):
-                if out[y, x] != ol or not ring[y, x]:
-                    continue
-                # lit side = fill lies to the right/below of this outline pixel (light from upper-left)
-                for dy, dx in ((1, 0), (0, 1)):
-                    yy, xx = y + dy, x + dx
-                    if 0 <= yy < H and 0 <= xx < W and op[yy, xx] and part[yy, xx] in lc and y < H - 3:
-                        out[y, x] = palette.index[lc[part[yy, xx]]]
-                        break
+        out = selout(out, ring, op, part, o, palette, ol)
+    if ill.get("orphan_cleanup", True):
+        out = orphan_cleanup(out)
     return out
 
 
@@ -445,11 +507,24 @@ def render_illustration(path, variant=None):
     return pal, out, ill, stats
 
 
+def orphan_list(idx, pal):
+    """(x, y, colour) of pixels with no same-colour 8-neighbour (what qa.orphan_count counts)."""
+    H, W = idx.shape
+    res = []
+    for y, x in zip(*np.nonzero(idx >= 0)):
+        v = idx[y, x]
+        if not any(0 <= y + dy < H and 0 <= x + dx < W and idx[y + dy, x + dx] == v
+                   for dy in (-1, 0, 1) for dx in (-1, 0, 1) if dy or dx):
+            res.append((int(x), int(y), pal.names[v]))
+    return res
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("source")
     ap.add_argument("--out", required=True)
     ap.add_argument("--scale", type=int, default=4, help="nearest-neighbour preview scale")
+    ap.add_argument("--orphans", action="store_true", help="list orphan pixel coordinates")
     a = ap.parse_args()
     ill = json.load(open(a.source))
     name = os.path.splitext(os.path.basename(a.source))[0]
@@ -467,6 +542,8 @@ def main():
         used = len(set(idx[idx >= 0].ravel().tolist()))
         print(f"{tag}: {used} colours, {orphan_count(idx)} orphans, overrides {stats['override_px']} px "
               f"({100 * stats['override_px'] / max(1, (idx >= 0).sum()):.1f}%)")
+        if a.orphans:
+            print("  orphans:", orphan_list(idx, pal))
         cells.append((tag, im))
     # labelled preview sheet on three backgrounds (snow, navy, dialogue box)
     W, H = cells[0][1].size

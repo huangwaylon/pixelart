@@ -1,6 +1,6 @@
-# r11 - S4 action set (draft 2: review round 1 fixes applied)
+# r11 - S4 action set (draft 3: review rounds 1-2 fixes applied)
 
-All review-round-1 fixes from the art director, animation director and game director are applied: blink + stable faces, run clearly distinct from walk (lean, stride, arm pump, hair trailing), climb reaches, throw timing and readability, heavier crate throw, redesigned wooden crate as a separate prop layer (<clip>_prop.png), land cancel window. Review round 2 is running.
+Review rounds 1-2 fixes applied. Round 2 results: animation director 11/13, art director 9/13, game director 7/13 approved. Since then: run strengthened, idle exit height fixed, throw release arm + snow streak, carry_throw crate hidden on release, crate rope tucked behind the head (props depth-split into _prop_back/_prop_front), lighter crate wood. Review round 3 is running.
 
 | Clip (click for 8-dir GIF) | Frames / time | Dirs | Events | QA |
 |---|---|---|---|---|

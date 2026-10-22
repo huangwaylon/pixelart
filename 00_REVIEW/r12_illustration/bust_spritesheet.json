@@ -6,7 +6,15 @@
  ],
  "frames": [
   "base",
+  "neutral",
   "smile",
+  "laugh",
+  "surprised",
+  "sad",
+  "angry",
+  "embarrassed",
+  "determined",
+  "worried",
   "content"
  ]
 }

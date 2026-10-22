@@ -1,7 +1,7 @@
 {
  "note": "bust mouth, angry",
  "anchor": [
-  0,
+  1,
   0
  ],
  "legend": {
@@ -13,7 +13,8 @@
   "n": "plum_0"
  },
  "grid": [
-  ".ss.",
-  "s..s"
+  "nnnnn",
+  "nWWWn",
+  ".nnn."
  ]
 }

@@ -2,15 +2,17 @@
  "note": "embarrassed: heavy /// hatching",
  "anchor": [
   0,
-  0
+  1
  ],
  "legend": {
-  "r": "red_2"
+  "r": "red_2",
+  "R": "red_1"
  },
  "grid": [
-  "..r..r..r",
-  ".r..r..r.",
-  "r..r..r..",
-  ".r..r...."
+  "...R..r..R",
+  "..R..r..R.",
+  ".R..r..R..",
+  "R..r..R..r",
+  "..r..R...."
  ]
 }

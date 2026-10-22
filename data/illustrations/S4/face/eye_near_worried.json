@@ -16,15 +16,15 @@
  "grid": [
   "...KKKKK..",
   ".KKKKKKKKK",
-  "KwwwdddddK",
-  ".wwdWWddd.",
-  ".wwdWWmmd.",
-  ".wwdWmmmd.",
-  ".wwdmmmld.",
-  ".wwdmmlld.",
-  "..wdmllWd.",
-  "..wdlllld.",
-  "...wddd...",
+  "KwwwwdddKK",
+  ".wwwdWWdd.",
+  ".wwwdWmmd.",
+  ".wwwdmmmd.",
+  ".wwwdmmld.",
+  ".wwwdmlld.",
+  "..wwdllWd.",
+  "..wwdllld.",
+  "...wwddd..",
   "....ssss.."
  ]
 }

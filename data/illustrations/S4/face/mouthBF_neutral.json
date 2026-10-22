@@ -1,7 +1,7 @@
 {
- "note": "front bust mouth, neutral",
+ "note": "front bust mouth, neutral: 3 px flat line",
  "anchor": [
-  0,
+  1,
   0
  ],
  "legend": {
@@ -12,6 +12,6 @@
   "W": "snow_3"
  },
  "grid": [
-  "ss"
+  "sss"
  ]
 }
