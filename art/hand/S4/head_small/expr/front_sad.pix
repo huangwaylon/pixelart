@@ -1,10 +1,10 @@
 # r13 head_small FRONT expression: sad. Pixel artist 3. Hand-authored patches over head_front.pix.
 extends: ../head_front.pix
-patch: 11 15
+patch: 13 15
 uuuudduuuuuudduuuu
 usddssssssssssddsu
 ussssssssssssssssu
-patch: 11 17
+patch: 13 17
 ______
 usssss
 uKKKKK
@@ -13,7 +13,7 @@ ujWjjn
 ujjjjs
 ukkkks
 uLLLLs
-patch: 23 17
+patch: 25 17
 ______
 sssssu
 KKKKKu
@@ -22,17 +22,17 @@ njWjju
 sjjjju
 skkkku
 sLLLLu
-patch: 11 25
+patch: 13 25
 usttssssssssssttsu
 LsttssssssssssttsL
-patch: 20 25
+patch: 22 25
 v
-patch: 16 26
+patch: 18 26
 ssssssss
 ssrrrrss
 srssssrs
 ssssssss
-patch: 12 25
+patch: 14 25
 w
-patch: 12 26
+patch: 14 26
 w

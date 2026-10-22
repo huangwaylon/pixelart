@@ -1,8 +1,8 @@
 # r13 head at full-body scale (3/4, facing screen-LEFT). Pixel artist 3. Hand-authored grid. (round-1 fixes)
 # Landmarks as head_front: crown y5, bang cut y14 (notches x9,x17), brow y15, lash y18, iris y19-23, lower lash y24,
-# blush y25-26, nose y25, mouth y27-28, chin y31. Far eye x9-12 (narrow), bridge gap x13-14, near eye x15-19 (+flick x20).
-# Bow knot 5x5 on the back of the skull x30-34 y8-12; far-loop nub behind the crown y5-7; near loop fan x35-39 y6-14.
-size: 40 40
+# blush y25-26, nose y25, mouth y27-28, chin y31. Far eye x11-14 (narrow), bridge gap x15-16, near eye x17-21 (+flick x22).
+# Canvas 44 (turnaround x = x+26). Skull back edge x33 (y8-28). Knot x32-36 y8-12; near-loop teardrop x34-42 y4-16; far loop hidden.
+size: 44 40
 legend:
 . = transparent
 K = #241628 outline
@@ -29,43 +29,43 @@ x = #F06A58 red_2
 w = #A8C0E0 snow_1 tear/sweat
 R = #DC3A40 red_1 FX
 grid:
-........................................
-........................................
-........................................
-........................................
-........................................
-............KKKKKKKKKKKK..KKK...........
-.........KKKmmmmmmmmmmmmKKKccK........KK
-.......KKmmmmmmmmmmmmmmmmmmKKcK......KeK
-......KmmmllllmmmllllmmmmmmmdKKKKKKKKecK
-.....KmllmmllmmmmmllmmmmmmmmddKccbKeeccK
-.....KmmmdmmmmmmmdmmmmmmmmmdddKcbbKcbbcK
-....KmmmmdmmmmmmmdmmmmmmPmmdddKbbbKcccbK
-....KmmmmPmmmmmmmPmmmmmmPmmdddKKKKKKKcbK
-...KmmmmPtPmmmmmPtPmmmmmPmmdPdKecK.KKKbK
-..KmmdPPtttPPPPPtttPPPPPPmmdPdKecKmlmdKK
-..KmmdPuuudduuuuddduuuuuPmmdPdKecKmlmdK.
-..KmmdPssssssssssssssssuPlmdPdKecKmlmdK.
-..KmmdPssssssssssssssssuPlmdPdKecKmlmddK
-..KmmdPssKKKKssKKKKKsssuPmmdPdKecKmlmddK
-..KmmdPsKKiinssiiiinKssuPmmdPdKecKmlmddK
-..KmmdPssiWinssiWiinsssuPmmdPdKecKmlmddK
-..KmmdPssjjjsssjjjjssssuPmmdPdKecKmlmddK
-..KmmPsssjjjsssjjjjssssuPmmdPdKecKlmmdK.
-..KmmPssskkjsssjkkkssssuPmmdPdKecKlmmdK.
-..KmmPsssLLssssssLLLsssuPmmdPdKecKlmmdK.
-..KmmdLxxssssvssstxxsssLPmmdPdKbbKlmmdK.
-..KmmddLssssssssssttssLdPmmdPdKdmKlmmdK.
-..KmmdddLsssrssrsssssLudPmmdPddKmlmmdK..
-..KmmddddLsssrrsssssLuddPmmdPddKmlmmdK..
-..KmmdddddLsssssssLLuuddPmmdPddKmlmmdK..
-..KmmddddddLLsssLLuuudddPmmdPddKmlmmdK..
-..KmmddddddddLLLuuuuudddPmmdPddKmlmmdK..
-..KmmdKKKKKKKKuuuuuuKKKKPmmdPddKmlmmdK..
-..KmmKeeeeeeeKKKKKKKeeeePmmdPddKmlmmdK..
-..KmKcecceeeceeeceeeceecPmmdPdddKmmlmdK.
-..KKcccbcccbcccbcccbccccPmmdPdddKmmlmdK.
-...KcccbcccbcccbcccbccccKKKKKdddKmmlmdK.
-...KbbbbbbbbbbbbbbbbbbbbbbbbbdddKmmlmdK.
-...KccbeeebeeebeeebeeebeeebbKdddKmmlmdK.
-...KccbcccbcccbcccbcccbcccbbKdddKmmlmdK.
+............................................
+............................................
+............................................
+............................................
+......................................KKK...
+..............KKKKKKKKKKKK...........KeeeK..
+...........KKKmmmmmmmmmmmmKKK.......KecccK..
+.........KKmmmmmmmmmmmmmmmmmmKKK...KecccccK.
+........KmmmllllmmmllllmmmmmmmddKKKKKcccccK.
+.......KmllmmllmmmmmllmmmmmmmmddKccbKcccccK.
+.......KmmmdmmmmmmmdmmmmmmmmmdddKcbbKcccccK.
+......KmmmmdmmmmmmmdmmmmmmPmmdddKbbbKbbbbcK.
+......KmmmmPmmmmmmmPmmmmmmPmmdddKKKKKccbbcK.
+.....KmmmmPtPmmmmmPtPmmmmmPmmdPdddKKcccbbbK.
+....KmmdPPtttPPPPPtttPPPPPPmmdPdddKeKccccbK.
+....KmmdPuuudduuuuddduuuuuPmmdPdddKecKbbbbK.
+....KmmdPssssssssssssssssuPlmdPdddKecKKKKKK.
+....KmmdPssssssssssssssssuPlmdPdddKecKmlmddK
+....KmmdPssKKKKssKKKKKsssuPmmdPdddKecKmlmddK
+....KmmdPsKKiinssiiiinKssuPmmdPdddKecKmlmddK
+....KmmdPssiWinssiWiinsssuPmmdPdddKecKmlmddK
+....KmmdPssjjjsssjjjjssssuPmmdPdddKecKmlmddK
+....KmmPsssjjjsssjjjjssssuPmmdPdddKecKlmmdK.
+....KmmPssskkjsssjkkkssssuPmmdPdddKecKlmmdK.
+....KmmPsssLLssssssLLLsssuPmmdPdddKecKlmmdK.
+....KmmdLxxssssvssstxxsssLPmmdPdddKbbKlmmdK.
+....KmmddLssssssssssttssLdPmmdPdddKdmKlmmdK.
+....KmmdddLsssrssrsssssLudPmmdPddddKmlmmdK..
+....KmmddddLsssrrsssssLuddPmmdPddddKmlmmdK..
+....KmmdddddLsssssssLLuuddPmmdPddddKmlmmdK..
+....KmmddddddLLsssLLuuudddPmmdPddddKmlmmdK..
+....KmmddddddddLLLuuuuudddPmmdPddddKmlmmdK..
+....KmmdKKKKKKKKuuuuuuKKKKPmmdPddddKmlmmdK..
+....KmmKeeeeeeeKKKKKKKeeeePmmdPddddKmlmmdK..
+....KmKcecceeeceeeceeeceecPmmdPdddddKmmlmdK.
+....KKcccbcccbcccbcccbccccPmmdPdddddKmmlmdK.
+.....KcccbcccbcccbcccbccccKKKKKdddddKmmlmdK.
+.....KbbbbbbbbbbbbbbbbbbbbbbbbbdddddKmmlmdK.
+.....KccbeeebeeebeeebeeebeeebbKdddddKmmlmdK.
+.....KccbcccbcccbcccbcccbcccbbKdddddKmmlmdK.

@@ -1,10 +1,10 @@
 # r13 head_small FRONT expression: smile. Pixel artist 3. Hand-authored patches over head_front.pix.
 extends: ../head_front.pix
-patch: 11 15
+patch: 13 15
 uuddduuuuuuuuddduu
 udssssssssssssssdu
 ussssssssssssssssu
-patch: 11 17
+patch: 13 17
 ______
 uKKKKK
 KKiiiK
@@ -13,7 +13,7 @@ ujjjjn
 ukkkjs
 uLLLLs
 usssss
-patch: 23 17
+patch: 25 17
 ______
 KKKKKu
 KiiiKK
@@ -22,12 +22,12 @@ njjjju
 sjkkku
 sLLLLu
 sssssu
-patch: 11 25
+patch: 13 25
 uxxtsssssssssstxxu
 LttssssssssssssttL
-patch: 20 25
+patch: 22 25
 v
-patch: 16 26
+patch: 18 26
 ssssssss
 srssssrs
 ssrrrrss

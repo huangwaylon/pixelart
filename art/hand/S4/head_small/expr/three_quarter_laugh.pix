@@ -1,10 +1,10 @@
 # r13 head_small THREE-QUARTER expression: laugh. Pixel artist 3. Hand-authored patches over head_three_quarter.pix.
 extends: ../head_three_quarter.pix
-patch: 7 15
+patch: 9 15
 uuudduuuuddduuuuu
 ssdssdssdsssdsssu
 ssssssssssssssssu
-patch: 8 17
+patch: 10 17
 _____
 sssss
 sssss
@@ -13,7 +13,7 @@ ssKKs
 sKssK
 sssss
 sssss
-patch: 15 17
+patch: 17 17
 ______
 ssssss
 ssssss
@@ -22,10 +22,10 @@ sKsKss
 KsssKs
 ssssss
 ssssss
-patch: 6 25
+patch: 8 25
 LxxtsssvsstxxxsssL
 dLtsssssssstttssLd
-patch: 11 26
+patch: 13 26
 srrrrs
 srzzrs
 ssrrss

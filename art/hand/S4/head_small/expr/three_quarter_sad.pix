@@ -1,10 +1,10 @@
 # r13 head_small THREE-QUARTER expression: sad. Pixel artist 3. Hand-authored patches over head_three_quarter.pix.
 extends: ../head_three_quarter.pix
-patch: 7 15
+patch: 9 15
 uuuuduuuuduuuuuuu
 sssdssssssddssssu
 ssssssssssssssssu
-patch: 8 17
+patch: 10 17
 _____
 sssss
 sKKKK
@@ -13,7 +13,7 @@ sjWjn
 sjjjs
 skkks
 sLLLs
-patch: 15 17
+patch: 17 17
 ______
 ssssss
 KKKKKs
@@ -22,10 +22,10 @@ jWjjns
 jjjjss
 kkkkss
 sLLLLs
-patch: 6 25
+patch: 8 25
 LswssssvssstttsssL
 dLwsssssssssttssLd
-patch: 11 26
+patch: 13 26
 ssssss
 srrrrs
 rssssr

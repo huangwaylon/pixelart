@@ -1,10 +1,10 @@
 # r13 head_small FRONT expression: angry. Pixel artist 3. Hand-authored patches over head_front.pix.
 extends: ../head_front.pix
-patch: 11 15
+patch: 13 15
 uduuuuuuuuuuuuuudu
 usddssssssssssddsu
 ussssddssssddssssu
-patch: 11 17
+patch: 13 17
 ______
 uKKKss
 KKiiKK
@@ -13,7 +13,7 @@ ujjjjn
 ujjjjs
 ukkkjs
 uLLLss
-patch: 23 17
+patch: 25 17
 ______
 ssKKKu
 KKiiKK
@@ -22,23 +22,23 @@ njjjju
 sjjjju
 sjkkku
 ssLLLu
-patch: 11 25
+patch: 13 25
 uxxxtsssssssstxxxu
 LtttsssssssssstttL
-patch: 20 25
+patch: 22 25
 v
-patch: 16 26
+patch: 18 26
 sssrrsss
 ssrssrss
 ssssssss
 ssssssss
-patch: 23 7
+patch: 25 7
 _R_R_
 RR_RR
 _____
 RR_RR
 _R_R_
-patch: 27 27
+patch: 29 27
 sL
-patch: 26 28
+patch: 28 28
 sL
