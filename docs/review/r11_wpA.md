@@ -1,0 +1,36 @@
+# r11 WP A: Locomotion (idle, walk, run)
+
+All three are 8-dir loops. QA PASS on the repo pipeline: penetrations 0, loop seam 0.0 px, orphans 0, height delta 1/3/1 px. Review copies: `00_REVIEW/r11_{idle,walk,run}/`.
+
+## idle (8 f / 1600 ms, planted)
+| f | name | ms | intent |
+|---|---|---|---|
+| 1 | rest | 220 | exhaled |
+| 2-3 | inhale, inhale_top | 220/200 | rise (squash 1.022), shoulders open, chin up |
+| 4 | hold_shift | 200 | weight shift (lean 1.8), head counter-rolls |
+| 5 | exhale | 200 | settle down |
+| 6 | blink | 120 | half-lid `determined` cel |
+| 7-8 | settle, settle_b | 220 | lean overshoots, ponytail swings back |
+
+## walk (8 f / 800 ms, 100 ms each)
+contact_L (footstep_L), down_L, pass_L, up_L, then a mirrored half (footstep_R on f5).
+- Legs are FK, solved offline from foot paths: heel strike, toe-off, swing lift.
+- About 1 px bob, knees-in cross-over steps.
+- Arms swing about ±24°, one frame behind the legs. The head cancels the shoulder twist.
+
+## run (8 f / 560 ms, 70 ms each)
+contact, down, push, flight per side. footstep_L on f1, footstep_R on f5.
+- Spine tilt 11-15.
+- Head counter-tilts so the face stays visible.
+- About 1.7 px bob. Both feet are off the ground on f4/f8.
+- Arms pump with bent elbows, drive knee on push.
+
+## Engine speed (feet match the ground)
+- Walk: 21.5 world u/s, about 16 px/s in E/W.
+- Run: 41 u/s, about 31 px/s.
+
+## Known issues
+- Chains are simulated in place, so the ponytail and scarf cannot trail. The lean and bob stand in for it. Needs a chain wind or velocity term.
+- There is no closed-eye cel: face.py rejects unknown expressions, so the blink uses the half-lid.
+- The coat is rigid. On drive-knee frames (S/SE) a 1 px cream thigh shows under the hem.
+- The leg solver lives in `/tmp/wpA/` and is not in the repo. The JSON is the source.

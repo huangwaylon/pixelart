@@ -1,0 +1,764 @@
+{
+ "name": "carry_throw",
+ "version": 1,
+ "frame_size": [
+  48,
+  64
+ ],
+ "pivot": [
+  24,
+  57
+ ],
+ "directions": [
+  "S",
+  "SE",
+  "E",
+  "NE",
+  "N",
+  "NW",
+  "W",
+  "SW"
+ ],
+ "conventions": "Degrees. spine/head tilt + = forward/down. arm raise + = forward/up from hanging (180 = overhead), - = back; spread + = out to the side; elbow + = bend. leg hip + = thigh forward, knee + = bend, ankle + = toes down. plant=true solves legs with IK so feet stay pinned. z_px = engine vertical offset in screen px. squash < 1 squashes, > 1 stretches (volume preserved). carry_throw: two-handed overhead push throw of the carried crate; crate prop copied from carry_idle.json (WP C spec); step with leg_L on f3-f5 (FK).",
+ "preroll_ms": 1200,
+ "rest": {
+  "z_px": 0,
+  "pelvis_drop": 0,
+  "squash": 1.0,
+  "plant": true,
+  "face": "neutral",
+  "spine": {
+   "tilt": 0,
+   "turn": 0,
+   "lean": 0
+  },
+  "head": {
+   "tilt": 0,
+   "turn": 0,
+   "roll": 0
+  },
+  "arm_L": {
+   "raise": 0,
+   "spread": 12,
+   "elbow": 10
+  },
+  "arm_R": {
+   "raise": 0,
+   "spread": 12,
+   "elbow": 10
+  },
+  "leg_L": {
+   "hip": 0,
+   "knee": 0,
+   "ankle": 0,
+   "spread": 0
+  },
+  "leg_R": {
+   "hip": 0,
+   "knee": 0,
+   "ankle": 0,
+   "spread": 0
+  }
+ },
+ "qa": {
+  "max_height_delta_px": 3,
+  "max_orphans": 0,
+  "min_margin_px": 2,
+  "lead_in_ms": 40
+ },
+ "props": [
+  {
+   "name": "crate",
+   "bone": "carry",
+   "offset": [
+    0.0,
+    17.8,
+    0.0
+   ],
+   "radii": [
+    7.2,
+    3.6799999999999997,
+    5.28
+   ],
+   "material": "pom",
+   "frames": [
+    "dip",
+    "push"
+   ],
+   "parts": [
+    {
+     "offset": [
+      9.0,
+      17.8,
+      0.0
+     ],
+     "radii": [
+      0.22,
+      11.96,
+      17.16
+     ],
+     "material": "coat_trim",
+     "clip_all": [
+      [
+       0,
+       1,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       -1,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       0,
+       1,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       0,
+       -1,
+       -0.3846153846153846
+      ]
+     ]
+    },
+    {
+     "offset": [
+      -9.0,
+      17.8,
+      0.0
+     ],
+     "radii": [
+      0.22,
+      11.96,
+      17.16
+     ],
+     "material": "coat_trim",
+     "clip_all": [
+      [
+       0,
+       1,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       -1,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       0,
+       1,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       0,
+       -1,
+       -0.3846153846153846
+      ]
+     ]
+    },
+    {
+     "offset": [
+      0.0,
+      22.4,
+      0.0
+     ],
+     "radii": [
+      23.4,
+      0.22,
+      17.16
+     ],
+     "material": "pom",
+     "clip_all": [
+      [
+       1,
+       0,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       -1,
+       0,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       0,
+       1,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       0,
+       -1,
+       -0.3846153846153846
+      ]
+     ]
+    },
+    {
+     "offset": [
+      0.0,
+      13.2,
+      0.0
+     ],
+     "radii": [
+      23.4,
+      0.22,
+      17.16
+     ],
+     "material": "pom",
+     "clip_all": [
+      [
+       1,
+       0,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       -1,
+       0,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       0,
+       1,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       0,
+       -1,
+       -0.3846153846153846
+      ]
+     ]
+    },
+    {
+     "offset": [
+      0.0,
+      17.8,
+      6.6
+     ],
+     "radii": [
+      23.4,
+      11.96,
+      0.22
+     ],
+     "material": "pom",
+     "clip_all": [
+      [
+       1,
+       0,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       -1,
+       0,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       1,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       -1,
+       0,
+       -0.3846153846153846
+      ]
+     ]
+    },
+    {
+     "offset": [
+      0.0,
+      17.8,
+      -6.6
+     ],
+     "radii": [
+      23.4,
+      11.96,
+      0.22
+     ],
+     "material": "pom",
+     "clip_all": [
+      [
+       1,
+       0,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       -1,
+       0,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       1,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       -1,
+       0,
+       -0.3846153846153846
+      ]
+     ]
+    },
+    {
+     "offset": [
+      9.3,
+      18.0,
+      0.0
+     ],
+     "radii": [
+      0.22,
+      2.34,
+      17.94
+     ],
+     "material": "pants",
+     "clip_all": [
+      [
+       0,
+       1,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       -1,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       0,
+       1,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       0,
+       -1,
+       -0.3846153846153846
+      ]
+     ]
+    },
+    {
+     "offset": [
+      -9.3,
+      18.0,
+      0.0
+     ],
+     "radii": [
+      0.22,
+      2.34,
+      17.94
+     ],
+     "material": "pants",
+     "clip_all": [
+      [
+       0,
+       1,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       -1,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       0,
+       1,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       0,
+       -1,
+       -0.3846153846153846
+      ]
+     ]
+    },
+    {
+     "offset": [
+      0.0,
+      18.0,
+      6.9
+     ],
+     "radii": [
+      24.18,
+      2.34,
+      0.22
+     ],
+     "material": "pants",
+     "clip_all": [
+      [
+       1,
+       0,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       -1,
+       0,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       1,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       -1,
+       0,
+       -0.3846153846153846
+      ]
+     ]
+    },
+    {
+     "offset": [
+      0.0,
+      18.0,
+      -6.9
+     ],
+     "radii": [
+      24.18,
+      2.34,
+      0.22
+     ],
+     "material": "pants",
+     "clip_all": [
+      [
+       1,
+       0,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       -1,
+       0,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       1,
+       0,
+       -0.3846153846153846
+      ],
+      [
+       0,
+       -1,
+       0,
+       -0.3846153846153846
+      ]
+     ]
+    },
+    {
+     "offset": [
+      10.0,
+      9.5,
+      0.0
+     ],
+     "radii": [
+      1.0,
+      7.3,
+      1.3
+     ],
+     "material": "pants",
+     "rot": [
+      -0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "offset": [
+      -10.0,
+      9.5,
+      0.0
+     ],
+     "radii": [
+      1.0,
+      7.3,
+      1.3
+     ],
+     "material": "pants",
+     "rot": [
+      -0.0,
+      0.0,
+      0.0
+     ]
+    }
+   ],
+   "release_event": "throw_release"
+  }
+ ],
+ "frames": [
+  {
+   "name": "dip",
+   "ms": 90,
+   "phase": "anticipation",
+   "face": "determined",
+   "spine": {
+    "tilt": -5,
+    "turn": 0,
+    "lean": 0
+   },
+   "head": {
+    "tilt": -12,
+    "turn": 0,
+    "roll": 4
+   },
+   "arm_L": {
+    "raise": 172,
+    "spread": 40,
+    "elbow": 22
+   },
+   "arm_R": {
+    "raise": 172,
+    "spread": 40,
+    "elbow": 22
+   },
+   "leg_L": {
+    "hip": 0,
+    "knee": 0,
+    "ankle": 0,
+    "spread": -6
+   },
+   "leg_R": {
+    "hip": 0,
+    "knee": 0,
+    "ankle": 0,
+    "spread": -6
+   },
+   "pelvis_drop": 2.6,
+   "squash": 0.92
+  },
+  {
+   "name": "push",
+   "ms": 70,
+   "phase": "action",
+   "face": "determined",
+   "spine": {
+    "tilt": 6,
+    "turn": 0,
+    "lean": 0
+   },
+   "head": {
+    "tilt": -6,
+    "turn": 0,
+    "roll": -2
+   },
+   "arm_L": {
+    "raise": 152,
+    "spread": 36,
+    "elbow": 8
+   },
+   "arm_R": {
+    "raise": 152,
+    "spread": 36,
+    "elbow": 8
+   },
+   "leg_L": {
+    "hip": 0,
+    "knee": 0,
+    "ankle": 0,
+    "spread": -6
+   },
+   "leg_R": {
+    "hip": 0,
+    "knee": 0,
+    "ankle": 0,
+    "spread": -6
+   },
+   "pelvis_drop": 0.0,
+   "squash": 1.06
+  },
+  {
+   "name": "release",
+   "ms": 60,
+   "phase": "action",
+   "face": "joyful",
+   "spine": {
+    "tilt": 14,
+    "turn": 0,
+    "lean": 0
+   },
+   "head": {
+    "tilt": -8,
+    "turn": 0,
+    "roll": -4
+   },
+   "arm_L": {
+    "raise": 118,
+    "spread": 32,
+    "elbow": 0
+   },
+   "arm_R": {
+    "raise": 118,
+    "spread": 32,
+    "elbow": 0
+   },
+   "plant": false,
+   "leg_L": {
+    "hip": 30,
+    "knee": 22,
+    "ankle": 0,
+    "spread": -4
+   },
+   "leg_R": {
+    "hip": -18,
+    "knee": 14,
+    "ankle": 22,
+    "spread": -4
+   },
+   "pelvis_drop": 1.0,
+   "events": [
+    "throw_release"
+   ]
+  },
+  {
+   "name": "follow",
+   "ms": 80,
+   "phase": "action",
+   "face": "joyful",
+   "spine": {
+    "tilt": 16,
+    "turn": 0,
+    "lean": 2
+   },
+   "head": {
+    "tilt": -6,
+    "turn": 0,
+    "roll": -6
+   },
+   "arm_L": {
+    "raise": 92,
+    "spread": 40,
+    "elbow": 12
+   },
+   "arm_R": {
+    "raise": 96,
+    "spread": 38,
+    "elbow": 14
+   },
+   "plant": false,
+   "leg_L": {
+    "hip": 28,
+    "knee": 22,
+    "ankle": 0,
+    "spread": -4
+   },
+   "leg_R": {
+    "hip": -16,
+    "knee": 14,
+    "ankle": 20,
+    "spread": -4
+   },
+   "pelvis_drop": 1.2
+  },
+  {
+   "name": "recover",
+   "ms": 90,
+   "phase": "recovery",
+   "face": "smile",
+   "spine": {
+    "tilt": 6,
+    "turn": 0,
+    "lean": 0
+   },
+   "head": {
+    "tilt": -2,
+    "turn": 0,
+    "roll": 6
+   },
+   "arm_L": {
+    "raise": 36,
+    "spread": 26,
+    "elbow": 30
+   },
+   "arm_R": {
+    "raise": 38,
+    "spread": 24,
+    "elbow": 30
+   },
+   "plant": false,
+   "leg_L": {
+    "hip": 12,
+    "knee": 10,
+    "ankle": 6,
+    "spread": -4
+   },
+   "leg_R": {
+    "hip": -6,
+    "knee": 6,
+    "ankle": 8,
+    "spread": -4
+   },
+   "pelvis_drop": 0.4,
+   "cancelable": true
+  },
+  {
+   "name": "ready",
+   "ms": 90,
+   "phase": "recovery",
+   "face": "smile",
+   "spine": {
+    "tilt": 2,
+    "turn": 0,
+    "lean": 0
+   },
+   "head": {
+    "tilt": 0,
+    "turn": 0,
+    "roll": 4
+   },
+   "arm_L": {
+    "raise": 6,
+    "spread": 14,
+    "elbow": 16
+   },
+   "arm_R": {
+    "raise": 6,
+    "spread": 14,
+    "elbow": 16
+   },
+   "leg_L": {
+    "hip": 0,
+    "knee": 0,
+    "ankle": 0,
+    "spread": -6
+   },
+   "leg_R": {
+    "hip": 0,
+    "knee": 0,
+    "ankle": 0,
+    "spread": -6
+   },
+   "cancelable": true
+  }
+ ]
+}
