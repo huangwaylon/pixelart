@@ -1,0 +1,1302 @@
+{
+  "anchors": {
+    "carry": {
+      "E": [
+        [
+          28.5,
+          45.7
+        ],
+        [
+          29.7,
+          50.9
+        ],
+        [
+          29.8,
+          51.1
+        ],
+        [
+          30.1,
+          48.1
+        ],
+        [
+          30.6,
+          39.8
+        ],
+        [
+          28.8,
+          35.3
+        ],
+        [
+          23.0,
+          30.6
+        ],
+        [
+          23.3,
+          30.5
+        ],
+        [
+          23.4,
+          33.0
+        ]
+      ],
+      "N": [
+        [
+          24.0,
+          44.5
+        ],
+        [
+          24.0,
+          49.3
+        ],
+        [
+          24.0,
+          49.5
+        ],
+        [
+          24.0,
+          46.4
+        ],
+        [
+          24.0,
+          38.0
+        ],
+        [
+          24.0,
+          34.0
+        ],
+        [
+          24.0,
+          30.9
+        ],
+        [
+          24.0,
+          30.7
+        ],
+        [
+          24.0,
+          33.2
+        ]
+      ],
+      "NE": [
+        [
+          27.2,
+          44.8
+        ],
+        [
+          28.0,
+          49.8
+        ],
+        [
+          28.1,
+          50.0
+        ],
+        [
+          28.3,
+          46.9
+        ],
+        [
+          28.6,
+          38.5
+        ],
+        [
+          27.4,
+          34.4
+        ],
+        [
+          23.3,
+          30.8
+        ],
+        [
+          23.5,
+          30.7
+        ],
+        [
+          23.6,
+          33.1
+        ]
+      ],
+      "NW": [
+        [
+          20.8,
+          44.8
+        ],
+        [
+          20.0,
+          49.8
+        ],
+        [
+          19.9,
+          50.0
+        ],
+        [
+          19.7,
+          46.9
+        ],
+        [
+          19.4,
+          38.5
+        ],
+        [
+          20.6,
+          34.4
+        ],
+        [
+          24.7,
+          30.8
+        ],
+        [
+          24.5,
+          30.7
+        ],
+        [
+          24.4,
+          33.1
+        ]
+      ],
+      "S": [
+        [
+          24.0,
+          46.9
+        ],
+        [
+          24.0,
+          52.4
+        ],
+        [
+          24.0,
+          52.7
+        ],
+        [
+          24.0,
+          49.8
+        ],
+        [
+          24.0,
+          41.6
+        ],
+        [
+          24.0,
+          36.7
+        ],
+        [
+          24.0,
+          30.3
+        ],
+        [
+          24.0,
+          30.4
+        ],
+        [
+          24.0,
+          32.8
+        ]
+      ],
+      "SE": [
+        [
+          27.2,
+          46.6
+        ],
+        [
+          28.0,
+          52.0
+        ],
+        [
+          28.1,
+          52.3
+        ],
+        [
+          28.3,
+          49.3
+        ],
+        [
+          28.6,
+          41.1
+        ],
+        [
+          27.4,
+          36.3
+        ],
+        [
+          23.3,
+          30.4
+        ],
+        [
+          23.5,
+          30.4
+        ],
+        [
+          23.6,
+          32.9
+        ]
+      ],
+      "SW": [
+        [
+          20.8,
+          46.6
+        ],
+        [
+          20.0,
+          52.0
+        ],
+        [
+          19.9,
+          52.3
+        ],
+        [
+          19.7,
+          49.3
+        ],
+        [
+          19.4,
+          41.1
+        ],
+        [
+          20.6,
+          36.3
+        ],
+        [
+          24.7,
+          30.4
+        ],
+        [
+          24.5,
+          30.4
+        ],
+        [
+          24.4,
+          32.9
+        ]
+      ],
+      "W": [
+        [
+          19.5,
+          45.7
+        ],
+        [
+          18.3,
+          50.9
+        ],
+        [
+          18.2,
+          51.1
+        ],
+        [
+          17.9,
+          48.1
+        ],
+        [
+          17.4,
+          39.8
+        ],
+        [
+          19.2,
+          35.3
+        ],
+        [
+          25.0,
+          30.6
+        ],
+        [
+          24.7,
+          30.5
+        ],
+        [
+          24.6,
+          33.0
+        ]
+      ]
+    },
+    "hand_L": {
+      "E": [
+        [
+          28.5,
+          43.8
+        ],
+        [
+          29.7,
+          49.0
+        ],
+        [
+          29.8,
+          49.3
+        ],
+        [
+          30.1,
+          46.4
+        ],
+        [
+          30.6,
+          38.0
+        ],
+        [
+          28.8,
+          33.5
+        ],
+        [
+          23.0,
+          28.3
+        ],
+        [
+          23.3,
+          28.1
+        ],
+        [
+          23.4,
+          30.5
+        ]
+      ],
+      "N": [
+        [
+          17.2,
+          44.4
+        ],
+        [
+          17.0,
+          49.3
+        ],
+        [
+          17.4,
+          49.5
+        ],
+        [
+          17.8,
+          46.4
+        ],
+        [
+          17.6,
+          38.0
+        ],
+        [
+          17.4,
+          34.0
+        ],
+        [
+          15.4,
+          30.9
+        ],
+        [
+          15.2,
+          30.7
+        ],
+        [
+          14.9,
+          33.2
+        ]
+      ],
+      "NE": [
+        [
+          22.4,
+          43.5
+        ],
+        [
+          23.1,
+          48.4
+        ],
+        [
+          23.5,
+          48.7
+        ],
+        [
+          23.9,
+          45.7
+        ],
+        [
+          24.1,
+          37.3
+        ],
+        [
+          22.8,
+          33.1
+        ],
+        [
+          17.2,
+          29.1
+        ],
+        [
+          17.3,
+          29.0
+        ],
+        [
+          17.1,
+          31.3
+        ]
+      ],
+      "NW": [
+        [
+          16.0,
+          46.1
+        ],
+        [
+          15.1,
+          51.1
+        ],
+        [
+          15.2,
+          51.3
+        ],
+        [
+          15.3,
+          48.1
+        ],
+        [
+          14.9,
+          39.8
+        ],
+        [
+          15.9,
+          35.7
+        ],
+        [
+          18.6,
+          32.5
+        ],
+        [
+          18.2,
+          32.4
+        ],
+        [
+          18.0,
+          34.9
+        ]
+      ],
+      "S": [
+        [
+          30.8,
+          46.9
+        ],
+        [
+          31.0,
+          52.4
+        ],
+        [
+          30.6,
+          52.7
+        ],
+        [
+          30.2,
+          49.8
+        ],
+        [
+          30.4,
+          41.6
+        ],
+        [
+          30.6,
+          36.7
+        ],
+        [
+          32.6,
+          30.3
+        ],
+        [
+          32.8,
+          30.4
+        ],
+        [
+          33.1,
+          32.8
+        ]
+      ],
+      "SE": [
+        [
+          32.0,
+          45.2
+        ],
+        [
+          32.9,
+          50.6
+        ],
+        [
+          32.8,
+          51.0
+        ],
+        [
+          32.7,
+          48.0
+        ],
+        [
+          33.1,
+          39.8
+        ],
+        [
+          32.1,
+          35.0
+        ],
+        [
+          29.4,
+          28.7
+        ],
+        [
+          29.8,
+          28.7
+        ],
+        [
+          30.0,
+          31.1
+        ]
+      ],
+      "SW": [
+        [
+          25.6,
+          47.9
+        ],
+        [
+          24.9,
+          53.3
+        ],
+        [
+          24.5,
+          53.5
+        ],
+        [
+          24.1,
+          50.5
+        ],
+        [
+          23.9,
+          42.3
+        ],
+        [
+          25.2,
+          37.6
+        ],
+        [
+          30.8,
+          32.1
+        ],
+        [
+          30.7,
+          32.1
+        ],
+        [
+          30.9,
+          34.7
+        ]
+      ],
+      "W": [
+        [
+          19.5,
+          47.6
+        ],
+        [
+          18.3,
+          52.8
+        ],
+        [
+          18.2,
+          52.9
+        ],
+        [
+          17.9,
+          49.8
+        ],
+        [
+          17.4,
+          41.6
+        ],
+        [
+          19.2,
+          37.1
+        ],
+        [
+          25.0,
+          33.0
+        ],
+        [
+          24.7,
+          33.0
+        ],
+        [
+          24.6,
+          35.5
+        ]
+      ]
+    },
+    "hand_R": {
+      "E": [
+        [
+          28.4,
+          47.6
+        ],
+        [
+          29.7,
+          52.8
+        ],
+        [
+          29.8,
+          52.9
+        ],
+        [
+          30.1,
+          49.8
+        ],
+        [
+          30.6,
+          41.6
+        ],
+        [
+          28.8,
+          37.1
+        ],
+        [
+          23.0,
+          33.0
+        ],
+        [
+          23.3,
+          33.0
+        ],
+        [
+          23.4,
+          35.5
+        ]
+      ],
+      "N": [
+        [
+          30.8,
+          44.5
+        ],
+        [
+          31.0,
+          49.3
+        ],
+        [
+          30.6,
+          49.5
+        ],
+        [
+          30.2,
+          46.4
+        ],
+        [
+          30.4,
+          38.0
+        ],
+        [
+          30.6,
+          34.0
+        ],
+        [
+          32.6,
+          30.9
+        ],
+        [
+          32.8,
+          30.7
+        ],
+        [
+          33.1,
+          33.2
+        ]
+      ],
+      "NE": [
+        [
+          31.9,
+          46.2
+        ],
+        [
+          32.9,
+          51.1
+        ],
+        [
+          32.8,
+          51.3
+        ],
+        [
+          32.7,
+          48.1
+        ],
+        [
+          33.1,
+          39.8
+        ],
+        [
+          32.1,
+          35.7
+        ],
+        [
+          29.4,
+          32.5
+        ],
+        [
+          29.8,
+          32.4
+        ],
+        [
+          30.0,
+          34.9
+        ]
+      ],
+      "NW": [
+        [
+          25.7,
+          43.5
+        ],
+        [
+          24.9,
+          48.4
+        ],
+        [
+          24.5,
+          48.7
+        ],
+        [
+          24.1,
+          45.7
+        ],
+        [
+          23.9,
+          37.3
+        ],
+        [
+          25.2,
+          33.1
+        ],
+        [
+          30.8,
+          29.1
+        ],
+        [
+          30.7,
+          29.0
+        ],
+        [
+          30.9,
+          31.3
+        ]
+      ],
+      "S": [
+        [
+          17.2,
+          46.9
+        ],
+        [
+          17.0,
+          52.4
+        ],
+        [
+          17.4,
+          52.7
+        ],
+        [
+          17.8,
+          49.8
+        ],
+        [
+          17.6,
+          41.6
+        ],
+        [
+          17.4,
+          36.7
+        ],
+        [
+          15.4,
+          30.3
+        ],
+        [
+          15.2,
+          30.4
+        ],
+        [
+          14.9,
+          32.8
+        ]
+      ],
+      "SE": [
+        [
+          22.3,
+          47.9
+        ],
+        [
+          23.1,
+          53.3
+        ],
+        [
+          23.5,
+          53.5
+        ],
+        [
+          23.9,
+          50.5
+        ],
+        [
+          24.1,
+          42.3
+        ],
+        [
+          22.8,
+          37.6
+        ],
+        [
+          17.2,
+          32.1
+        ],
+        [
+          17.3,
+          32.1
+        ],
+        [
+          17.1,
+          34.7
+        ]
+      ],
+      "SW": [
+        [
+          16.1,
+          45.3
+        ],
+        [
+          15.1,
+          50.6
+        ],
+        [
+          15.2,
+          51.0
+        ],
+        [
+          15.3,
+          48.0
+        ],
+        [
+          14.9,
+          39.8
+        ],
+        [
+          15.9,
+          35.0
+        ],
+        [
+          18.6,
+          28.7
+        ],
+        [
+          18.2,
+          28.7
+        ],
+        [
+          18.0,
+          31.1
+        ]
+      ],
+      "W": [
+        [
+          19.6,
+          43.9
+        ],
+        [
+          18.3,
+          49.0
+        ],
+        [
+          18.2,
+          49.3
+        ],
+        [
+          17.9,
+          46.4
+        ],
+        [
+          17.4,
+          38.0
+        ],
+        [
+          19.2,
+          33.5
+        ],
+        [
+          25.0,
+          28.3
+        ],
+        [
+          24.7,
+          28.1
+        ],
+        [
+          24.6,
+          30.5
+        ]
+      ]
+    }
+  },
+  "animation": "pick_up",
+  "buildHash": "2bddc1ae04a6",
+  "buildId": "2bddc1ae04a6",
+  "cameraElevation": 16,
+  "cycle_rise_px": 0,
+  "directions": [
+    "S",
+    "SE",
+    "E",
+    "NE",
+    "N",
+    "NW",
+    "W",
+    "SW"
+  ],
+  "engine_notes": "pick_up ends on carry_idle's 'low' pose (settle == low): continue with carry_idle at frame index 3 ('rise'); starting at index 2 ('low') is also seamless but holds the pose 200 ms longer. World crate spot before 'grab': centre 13.4 u (10.1 px) in front of the pivot, on the ground. Per-frame frame.prop {offset, rot, hide} needs the frames.py hook in docs/review/r11_wpC.md.",
+  "frameSize": [
+    48,
+    64
+  ],
+  "frames": [
+    {
+      "cancelable": false,
+      "duration_ms": 70,
+      "events": [],
+      "face": "neutral",
+      "index": 0,
+      "name": "eye_dip",
+      "phase": "",
+      "prop": {
+        "ids": [],
+        "layer": {
+          "E": null,
+          "N": null,
+          "NE": null,
+          "NW": null,
+          "S": null,
+          "SE": null,
+          "SW": null,
+          "W": null
+        },
+        "visible": false
+      },
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 90,
+      "events": [],
+      "face": "determined",
+      "index": 1,
+      "name": "squat_reach",
+      "phase": "",
+      "prop": {
+        "ids": [],
+        "layer": {
+          "E": null,
+          "N": null,
+          "NE": null,
+          "NW": null,
+          "S": null,
+          "SE": null,
+          "SW": null,
+          "W": null
+        },
+        "visible": false
+      },
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 80,
+      "events": [
+        "grab"
+      ],
+      "face": "determined",
+      "index": 2,
+      "name": "grab",
+      "phase": "",
+      "prop": {
+        "ids": [
+          "crate"
+        ],
+        "layer": {
+          "E": "split",
+          "N": "split",
+          "NE": "split",
+          "NW": "split",
+          "S": "front",
+          "SE": "split",
+          "SW": "split",
+          "W": "split"
+        },
+        "visible": true
+      },
+      "props": [
+        "crate"
+      ],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 80,
+      "events": [],
+      "face": "squint",
+      "index": 3,
+      "name": "heave",
+      "phase": "",
+      "prop": {
+        "ids": [
+          "crate"
+        ],
+        "layer": {
+          "E": "split",
+          "N": "split",
+          "NE": "split",
+          "NW": "split",
+          "S": "front",
+          "SE": "split",
+          "SW": "split",
+          "W": "split"
+        },
+        "visible": true
+      },
+      "props": [
+        "crate"
+      ],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 80,
+      "events": [],
+      "face": "determined",
+      "index": 4,
+      "name": "clean",
+      "phase": "",
+      "prop": {
+        "ids": [
+          "crate"
+        ],
+        "layer": {
+          "E": "split",
+          "N": "back",
+          "NE": "split",
+          "NW": "split",
+          "S": "front",
+          "SE": "split",
+          "SW": "split",
+          "W": "split"
+        },
+        "visible": true
+      },
+      "props": [
+        "crate"
+      ],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 60,
+      "events": [],
+      "face": "squint",
+      "index": 5,
+      "name": "drive",
+      "phase": "",
+      "prop": {
+        "ids": [
+          "crate"
+        ],
+        "layer": {
+          "E": "split",
+          "N": "back",
+          "NE": "split",
+          "NW": "split",
+          "S": "front",
+          "SE": "front",
+          "SW": "front",
+          "W": "split"
+        },
+        "visible": true
+      },
+      "props": [
+        "crate"
+      ],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 70,
+      "events": [],
+      "face": "determined",
+      "index": 6,
+      "name": "press",
+      "phase": "",
+      "prop": {
+        "ids": [
+          "crate"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "split",
+          "NE": "front",
+          "NW": "front",
+          "S": "split",
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
+        },
+        "visible": true
+      },
+      "props": [
+        "crate"
+      ],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 90,
+      "events": [],
+      "face": "joyful",
+      "index": 7,
+      "name": "lockout",
+      "phase": "",
+      "prop": {
+        "ids": [
+          "crate"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "split",
+          "NE": "front",
+          "NW": "front",
+          "S": "split",
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
+        },
+        "visible": true
+      },
+      "props": [
+        "crate"
+      ],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 80,
+      "events": [],
+      "face": "determined",
+      "index": 8,
+      "name": "settle",
+      "phase": "",
+      "prop": {
+        "ids": [
+          "crate"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "split",
+          "NE": "front",
+          "NW": "front",
+          "S": "split",
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
+        },
+        "visible": true
+      },
+      "props": [
+        "crate"
+      ],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    }
+  ],
+  "image": "pick_up_sheet.png",
+  "inputLockEnd_ms": 700,
+  "layers": {
+    "fxBack": "pick_up_fx_back.png",
+    "fxFront": "pick_up_fx_front.png",
+    "note": "shadow/fx strips are direction-independent, same frame size & pivot; draw shadow+fxBack under the character, fxFront over it; offset only the character by z_px; props are depth-split per pixel: draw propBack BEHIND the character and propFront IN FRONT (same grid/pivot; offset both by z_px like the body)",
+    "propBack": "pick_up_prop_back.png",
+    "propFront": "pick_up_prop_front.png",
+    "shadow": "pick_up_shadow.png"
+  },
+  "layout": "rows=directions, cols=frames, no padding",
+  "loop": false,
+  "palette": [
+    "#241628",
+    "#4A2448",
+    "#6E3C3A",
+    "#A85A3A",
+    "#D07C74",
+    "#EBA586",
+    "#FCD6B4",
+    "#20223E",
+    "#2F3A6C",
+    "#4E609C",
+    "#45435E",
+    "#9C8EB2",
+    "#D2BFA4",
+    "#F2E6CE",
+    "#8E2C4A",
+    "#BA4A58",
+    "#DC3A40",
+    "#F06A58",
+    "#9C5C2E",
+    "#E2A434",
+    "#FAD872",
+    "#EC7032",
+    "#1C4C54",
+    "#2A8C8E",
+    "#6ACBB6",
+    "#3C6248",
+    "#6E8C5A",
+    "#6E5A92",
+    "#6A7AA8",
+    "#A8C0E0",
+    "#DFEAF6",
+    "#FFFFFF"
+  ],
+  "paletteId": "frost_r3_oatmeal",
+  "pipelineVersion": "1.0",
+  "pivot": [
+    24,
+    57
+  ],
+  "props": [
+    {
+      "bone": "carry",
+      "name": "crate",
+      "offset": [
+        0.0,
+        19.2,
+        0.0
+      ],
+      "ref": "crate"
+    }
+  ],
+  "rise_weights": null,
+  "root_px_mode": "cumulative offset from clip start",
+  "totalMs": 700
+}

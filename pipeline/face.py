@@ -376,7 +376,7 @@ def apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam
     return out, view
 
 
-def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam, spec):
+def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam, spec, material=None):
     """Opt-in per-eye face cels (render.face_eyes, HD model): the view's cel is split into its eye blocks (columns
     holding E/C, with the blush under them) and the mouth; each eye block is placed at its OWN projected eye marker
     (modelled eye positions on the head, head-bone space), the mouth at the projected mouth marker. Spacing rules:
@@ -430,11 +430,17 @@ def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam
         step = -1 if k == 0 else 1
         x = starts[k] - 1 if k == 0 else starts[k] + len(blocks[k])
         n = 0
-        while 0 <= x < W and idx[y, x] in skin_ids and n < 4:
+        while 0 <= x < W and idx[y, x] in skin_ids and (material is None or material[y, x] is not None) and n < 4:
             n += 1
             x += step
         return n
-    for _ in range(4):
+    gf = spec.get("gap_front")
+    if view == "front" and gf is not None:           # front: a locked bridge (no 2/3 px jitter), centred on the eyes
+        tot = len(blocks[0]) + int(gf) + len(blocks[1])
+        c = (mk[0][0][0] + mk[1][0][0]) / 2.0
+        starts[0] = int(math.floor(c - tot / 2.0 + 0.5))
+        starts[1] = starts[0] + len(blocks[0]) + int(gf)
+    for _ in range(0 if (view == "front" and gf is not None) else 4):
         g = starts[1] - (starts[0] + len(blocks[0]))
         if g < gap:                                             # nose bridge first: push the eyes apart
             k = 1 - far if skin_out(1 - far) > contour else far
@@ -468,6 +474,9 @@ def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam
                 continue
             if ch == "M" and mp is not None:
                 x = int(math.floor(mp[0])) + (i - (mcols[0] + mcols[-1]) // 2)
+                if view != "front" and spec.get("mouth_bias"):   # 3/4: nudge toward the nose bridge
+                    bridge = (starts[0] + len(blocks[0]) + starts[1]) / 2.0
+                    x += int(math.copysign(min(int(spec["mouth_bias"]), abs(round(bridge - x))), bridge - x))
             else:
                 k = 0 if abs(i - blocks[0][len(blocks[0]) // 2]) <= abs(i - blocks[1][len(blocks[1]) // 2]) else 1
                 x = starts[k] + (i - blocks[k][0])

@@ -21,8 +21,9 @@ S4 (old, ellipsoids) vs **S4_hd** (new, SDF parts). The design is unchanged: one
 4. **Sprites, old (left) vs new (right)**: [run](boards/run.gif), [walk](boards/walk.gif), [jump_sc](boards/jump_sc.gif), [idle](boards/idle.gif), [throw](boards/throw.gif), [carry_walk](boards/carry_walk.gif).
    - Each board also has `_slow.gif` and `_keys.png` versions.
    - The boards show the body sheet only. Props (crate, snowball) are separate layers, but they are **not** identical
-     to v1: the per-pixel front/back split is re-derived from the HD body's depth (`throw_sheet.json` layer tags differ
-     at f0 E/W and f1 E; all 5 prop clips move pixels between `prop_front` and `prop_back`, total prop pixels unchanged).
+     to v1: the per-pixel front/back split is re-derived from the HD body's depth (round 3: `throw_sheet.json` layer
+     tags differ from v1 only at frame 0 W, back -> split; prop clips move some pixels between `prop_front` and
+     `prop_back`, total prop pixels unchanged).
      **The HD body sheet, its `_sheet.json` and its prop strips ship together as one set - never pair HD bodies with
      v1 prop strips.**
    - The jump_sc 8-dir GIFs and contact sheets are in this folder too.
@@ -74,6 +75,25 @@ Images in [r13/](r13/).
 - **D. Hair sway**: curtain + ponytail get a gait-driven lateral force, in phase with the torso lean (counter to the
   hips). The verlet sim adds the lag. Ponytail tip sway: walk +/-1.8 px, run +/-2.1 px (legacy +/-0.2). 0 penetrations.
   [r13_walk_sway.png](r13/r13_walk_sway.png), [r13_run_sway.png](r13/r13_run_sway.png).
-- **E. Hand fixes** (data overrides, `overrides/variants/S4_hd/`, each with a reason):
-  `jump_sc/E/10` and `land/E/01` change 1 px: a skin_0 sliver between the side lock and the landing squint eye becomes
-  hair. Nothing else needed hand work.
+- **E. Hand fixes** (data overrides, `overrides/variants/S4_hd/`, each with a reason): round 3 retired the jump_sc /
+  land 1-px fixes (the final orphan pass now handles them); `carry_idle/NW/00` (4 px) hides a temple-skin sliver.
+
+## Round 3 fixes (re-reviews: GD approved; AD + animation director)
+Crops in `fixes/r3_*.png` (v1 legacy | round 2 | round 3). Legacy `_sheet.png` byte-identical to a fresh HEAD build
+(idle, throw, carry_walk, walk). 13/13 QA PASS, 0 warnings, <= 16 colours per frame.
+
+| # | Fix | Change | Evidence |
+|---|---|---|---|
+| 1 | Bow volume | `render.bow_shine`: 2 px teal_2 highlight on each loop's outer top + 1 teal_0 fold at the knot end (skipped only in a frame already at 16 colours) | [r3_01](fixes/r3_01_bow_highlight.png); #6ACBB6 px idle 0 -> 160 |
+| 2 | S ears | loops raised + tilted (y 11.8, 26 deg, taper .35, length 3.4); hair line runs kept after despeckle | [r3_02](fixes/r3_02_s_ears.png): 4 x 2 px, mirrored |
+| 3 | Jump crouch ears | `follow.max_drop` world-up clamp | [r3_03](fixes/r3_03_jump_ears.png); S f1 ears (2,2) legacy / (0,0) / (8,8) |
+| 4 | Idle blips | bow springs off in idle/carry_idle; `temporal_hold` covers the scarf tail | [r3_04](fixes/r3_04_idle_blips.png); teal blips S 36/51/8, SE 22/41/7, W 29/47/18 |
+| 5 | Walk sway | walk force x1.15 with a flattened (held) extreme | [r3_05](fixes/r3_05_walk_sway.png); tip +/-2.0-2.2 px, f2-3 / f6-7 held; run unchanged; walk NE f7->f0 diff 164 -> 154 px (legacy 124: the larger sway itself; the chain loop seam is 0.04 px) |
+| 6 | NW skin | cranium pulled in (no temple poke) + 1 override | [r3_06](fixes/r3_06_nw_skin.png); 0 skin_0 px in carry_idle f0 / throw f4 / climb |
+| 7 | Head rust | `lineart.ring_trim`: 2 px inside the outline, 1 px clear of the bow, runs < 3 dropped | [r3_07](fixes/r3_07_head_rust.png); idle head rust 603 / 886 / 549, hem unchanged |
+| 8 | S bridge | `face_eyes.gap_front` 3 | [r3_08](fixes/r3_08_eye_gap.png); 3 px in every S frame |
+| 9 | 3/4 face | mouth 1 px toward the bridge; `skin_edge_dark` (dark face outline both cheeks); SE stub gone | [r3_09](fixes/r3_09_face_34.png) |
+| 10 | Back ponytail (Anim5) | ponytail is its own group -> plum depth line against the curtain | [r3_10](fixes/r3_10_pony.png) |
+
+Not done: E/SE ponytail flat tip, throw E bow colour mix, climb NW strays (item 10 extras). Release:
+[`releases/S4_hd_actions_v1/`](../../releases/S4_hd_actions_v1/README.md).

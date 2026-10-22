@@ -1,0 +1,87 @@
+{
+  "variant": "S4_hd",
+  "git_base": "592f73f",
+  "note": "built from the working tree on top of this commit (round-3 changes uncommitted at build time)",
+  "clips": {
+    "carry_idle": {
+      "buildHash": "3991c37a5b4d",
+      "pipelineVersion": "1.0",
+      "paletteId": "frost_r3_oatmeal"
+    },
+    "carry_throw": {
+      "buildHash": "f99b990228b0",
+      "pipelineVersion": "1.0",
+      "paletteId": "frost_r3_oatmeal"
+    },
+    "carry_walk": {
+      "buildHash": "c42a26416761",
+      "pipelineVersion": "1.0",
+      "paletteId": "frost_r3_oatmeal"
+    },
+    "climb": {
+      "buildHash": "ef4d9cc98370",
+      "pipelineVersion": "1.0",
+      "paletteId": "frost_r3_oatmeal"
+    },
+    "climb_top": {
+      "buildHash": "8ad1dada7b84",
+      "pipelineVersion": "1.0",
+      "paletteId": "frost_r3_oatmeal"
+    },
+    "fall": {
+      "buildHash": "95d54a7172f8",
+      "pipelineVersion": "1.0",
+      "paletteId": "frost_r3_oatmeal"
+    },
+    "idle": {
+      "buildHash": "3d77b5a60122",
+      "pipelineVersion": "1.0",
+      "paletteId": "frost_r3_oatmeal"
+    },
+    "jump_sc": {
+      "buildHash": "a217369a10e2",
+      "pipelineVersion": "1.0",
+      "paletteId": "frost_r3_oatmeal"
+    },
+    "land": {
+      "buildHash": "d61a7b4331da",
+      "pipelineVersion": "1.0",
+      "paletteId": "frost_r3_oatmeal"
+    },
+    "pick_up": {
+      "buildHash": "2bddc1ae04a6",
+      "pipelineVersion": "1.0",
+      "paletteId": "frost_r3_oatmeal"
+    },
+    "run": {
+      "buildHash": "8bcfb1f3653d",
+      "pipelineVersion": "1.0",
+      "paletteId": "frost_r3_oatmeal"
+    },
+    "throw": {
+      "buildHash": "38f2a846e9b4",
+      "pipelineVersion": "1.0",
+      "paletteId": "frost_r3_oatmeal"
+    },
+    "walk": {
+      "buildHash": "26eb7308a7d0",
+      "pipelineVersion": "1.0",
+      "paletteId": "frost_r3_oatmeal"
+    }
+  },
+  "qa": {
+    "carry_idle": "# QA report \u2014 PASS",
+    "carry_throw": "# QA report \u2014 PASS",
+    "carry_walk": "# QA report \u2014 PASS",
+    "climb": "# QA report \u2014 PASS",
+    "climb_top": "# QA report \u2014 PASS",
+    "fall": "# QA report \u2014 PASS",
+    "idle": "# QA report \u2014 PASS",
+    "jump_sc": "# QA report \u2014 PASS",
+    "land": "# QA report \u2014 PASS",
+    "pick_up": "# QA report \u2014 PASS",
+    "run": "# QA report \u2014 PASS",
+    "throw": "# QA report \u2014 PASS",
+    "walk": "# QA report \u2014 PASS"
+  }
+}

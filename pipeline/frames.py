@@ -76,7 +76,8 @@ class Scene:
         if self.tracer is not None:
             body_c = xform_point(worlds["spine"], [0, 0, 0])
             parts = self.tracer.pose_parts(self.char, worlds, self.chains[self.anim.times[i]], body_c, face_m, lod=lod,
-                                           subdiv=self.char.get("render", {}).get("smooth_chains", 1))
+                                           subdiv=self.char.get("render", {}).get("smooth_chains", 1),
+                                           clip=self.anim_data.get("name"))
             props = self._prop_prims(i, worlds) if getattr(self, "prop_mode", "baked") == "baked" else []
             for p in props:
                 p["M"] = face_m @ p["M"]
@@ -258,7 +259,7 @@ class Scene:
             if rnd.get("face_eyes"):          # opt-in: each eye at its own projected modelled eye (HD variant)
                 from .face import apply_face_eyes
                 idx, _ = apply_face_eyes(idx, self.palette, worlds[face["bone"]], face, cels, expr, self.pivot, self.cam,
-                                         rnd["face_eyes"])
+                                         rnd["face_eyes"], material=pix.material)
             else:
                 idx, _ = apply_face_cels(idx, self.palette, worlds[face["bone"]], face, cels, expr, self.pivot, self.cam)
             self.deliberate[(direction, i)] = self.deliberate.get((direction, i), set()) | getattr(
@@ -307,7 +308,194 @@ class Scene:
             grown &= ~np.isin(pix.material, ["mitten", "scarf", "coat", "coat_trim", "skirt"])
             idx = apply_post_outline(idx, self.palette, ["grounded_soles"], deliberate=soles, part_mask=grown)
             self.deliberate[(direction, i)] = self.deliberate.get((direction, i), set()) | soles
+        if la.get("ring_trim"):
+            idx = self._ring_trim(idx, pix, la["ring_trim"])
+        if la.get("skin_edge_dark"):
+            idx = self._skin_edge(idx, pix)
+        if rnd.get("bow_shine"):
+            idx = self._bow_shine(idx, pix, worlds, rnd["bow_shine"], direction, i)
+        if rnd.get("final_orphan_pass"):
+            idx = self._final_orphans(idx, direction, i)
         return idx
+
+    def _final_orphans(self, idx, direction, i):
+        """Opt-in last pass: a pixel with no same-colour 8-neighbour (left by the opt-in edge / highlight passes) takes
+        the most common colour of its opaque 4-neighbours. Face colours and deliberate pixels are never touched."""
+        pal = self.palette
+        keep = {pal.special[k] for k in ("eye", "catchlight", "mouth", "blush") if k in pal.special}
+        dl = self.deliberate.get((direction, i), set())
+        H, W = idx.shape
+        out = idx.copy()
+        for _ in range(2):
+            changed = False
+            for y in range(H):
+                for x in range(W):
+                    v = out[y, x]
+                    if v < 0 or v in keep or (y, x) in dl:
+                        continue
+                    if any(0 <= y + a < H and 0 <= x + b < W and (a or b) and out[y + a, x + b] == v
+                           for a in (-1, 0, 1) for b in (-1, 0, 1)):
+                        continue
+                    nb = [int(out[y + a, x + b]) for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1))
+                          if 0 <= y + a < H and 0 <= x + b < W and out[y + a, x + b] >= 0]
+                    if nb:
+                        out[y, x] = max(sorted(set(nb)), key=nb.count)
+                        changed = True
+            if not changed:
+                break
+        return out
+
+    def _ring_trim(self, idx, pix, spec):
+        """Opt-in (lineart.ring_trim: {"margin", "min_run"}): the hair highlight (top hair tone) stops `margin` px inside
+        the silhouette and short runs (< min_run px: seams, crown specks) fall back to the base hair tone."""
+        pal = self.palette
+        H, W = idx.shape
+        mats = {m for m in pal.ramps if m.startswith("hair")}
+        out = idx.copy()
+        for m in mats:
+            r = pal.ramps[m]
+            if len(r) < 3:
+                continue
+            hi, base = pal.index[r[-1]], pal.index[r[1]]
+            hm = (idx == hi) & (np.isin(pix.material, [m]) | np.equal(pix.material, None))
+            if not hm.any():
+                continue
+            ext = (idx < 0) | (np.equal(pix.material, None) & (idx != hi))
+            k = int(spec.get("margin", 2))
+            near = np.zeros_like(ext)
+            for a in range(-k, k + 1):
+                for b in range(-k, k + 1):
+                    sh = np.zeros_like(ext)
+                    ys0, ys1 = max(a, 0), H + min(a, 0)
+                    xs0, xs1 = max(b, 0), W + min(b, 0)
+                    sh[ys0 - a:ys1 - a, xs0 - b:xs1 - b] = ext[ys0:ys1, xs0:xs1]
+                    near |= sh
+            out[hm & near] = base
+            if spec.get("stop_at"):                    # and 1 px clear of the bow (no seam rust beside the loops)
+                st_m = np.isin(pix.material, list(spec["stop_at"])) & (idx >= 0)
+                nb = np.zeros_like(st_m)
+                nb[1:, :] |= st_m[:-1, :]; nb[:-1, :] |= st_m[1:, :]; nb[:, 1:] |= st_m[:, :-1]; nb[:, :-1] |= st_m[:, 1:]
+                out[hm & nb] = base
+            hm = (out == hi) & (np.isin(pix.material, [m]) | np.equal(pix.material, None))
+            seen = np.zeros_like(hm)
+            for y0, x0 in zip(*np.nonzero(hm)):
+                if seen[y0, x0]:
+                    continue
+                comp, st = [], [(y0, x0)]
+                seen[y0, x0] = True
+                while st:
+                    y, x = st.pop()
+                    comp.append((y, x))
+                    for yy, xx in ((y + 1, x), (y - 1, x), (y, x + 1), (y, x - 1)):
+                        if 0 <= yy < H and 0 <= xx < W and hm[yy, xx] and not seen[yy, xx]:
+                            seen[yy, xx] = True
+                            st.append((yy, xx))
+                if len(comp) < int(spec.get("min_run", 3)):
+                    for c in comp:
+                        out[c] = base
+        return out
+
+    def _skin_edge(self, idx, pix):
+        """Opt-in (lineart.skin_edge_dark): the exterior line along the face is the dark outline on both cheeks (the lit
+        side sel-out gave the near cheek a soft skin_0 edge, the far cheek a dark one); a skin_0 exterior pixel whose
+        fill neighbour is no longer skin (back-view head skin turned hair) takes the hair line colour."""
+        pal = self.palette
+        sl = pal.index[pal.data.get("line_colors", {}).get("skin") or pal.ramps["skin"][0]]
+        skin = {pal.index[c] for c in pal.ramps["skin"]} | {pal.special[k] for k in ("eye", "catchlight", "blush", "mouth")
+                                                              if k in pal.special}
+        hair_mat = next((m for m in pal.ramps if m.startswith("hair")), "hair")
+        hair = {pal.index[c] for c in pal.ramps[hair_mat]}
+        hl = pal.index[pal.data.get("line_colors", {}).get(hair_mat) or pal.ramps[hair_mat][0]]
+        ol = pal.special["outline"]
+        H, W = idx.shape
+        out = idx.copy()
+        ext = (idx == sl) & np.equal(pix.material, None)
+        for y, x in zip(*np.nonzero(ext)):
+            nb = [idx[y + a, x + b] for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1))
+                  if 0 <= y + a < H and 0 <= x + b < W and pix.material[y + a, x + b] is not None]
+            if any(v in skin for v in nb):
+                out[y, x] = ol
+            elif any(v in hair for v in nb):
+                out[y, x] = hl
+
+        def lone(y, x, im):
+            return im[y, x] >= 0 and not any(0 <= y + a < H and 0 <= x + b < W and (a or b) and im[y + a, x + b] == im[y, x]
+                                             for a in (-1, 0, 1) for b in (-1, 0, 1))
+        for _ in range(4):                      # never create an orphan: a lone recoloured edge pixel stays as it was
+            bad = [(y, x) for y, x in zip(*np.nonzero(out != idx))
+                   if lone(y, x, out) or any(lone(y + a, x + b, out) and not lone(y + a, x + b, idx)
+                                             for a in (-1, 0, 1) for b in (-1, 0, 1) if 0 <= y + a < H and 0 <= x + b < W)]
+            if not bad:
+                break
+            for y, x in bad:
+                out[y, x] = idx[y, x]
+        return out
+
+    def _bow_shine(self, idx, pix, worlds, spec, direction, i):
+        """Opt-in designed bow volume (render.bow_shine): on each visible loop (connected fill of `material`, >= min_px)
+        a 2 px `hi` highlight on its upper-front (top row, light side = screen left) and one `fold` pixel at the end
+        nearest the knot. Placed after all cleanup, recorded as deliberate (the shading bands alone never produce it)."""
+        pal = self.palette
+        mat = spec.get("material", "ribbon")
+        fill = pal.index[spec.get("fill", pal.ramps[mat][1])]
+        hi, fold = pal.index[spec["hi"]], pal.index[spec["fold"]]
+        knot_mat = spec.get("knot", "hatcuff")
+        H, W = idx.shape
+        m = (idx == fill) & (pix.material == mat)
+        ky, kx = np.nonzero(pix.material == knot_mat)
+        if len(kx):
+            kc = (float(ky.mean()), float(kx.mean()))
+        else:
+            hx, hy = self.cam.project(worlds["head"][:3, 3], self.pivot)
+            kc = (hy, hx)
+        seen = np.zeros_like(m)
+        out = idx.copy()
+        dl = self.deliberate.setdefault((direction, i), set())
+        used = set(np.unique(idx[idx >= 0]).tolist())
+        if hi not in used and len(used) >= int(spec.get("max_colours", 16)):
+            hi = fill                                  # palette budget: no highlight in an already 16-colour frame
+        for y0 in range(H):
+            for x0 in range(W):
+                if not m[y0, x0] or seen[y0, x0]:
+                    continue
+                comp, st = [], [(y0, x0)]
+                seen[y0, x0] = True
+                while st:
+                    y, x = st.pop()
+                    comp.append((y, x))
+                    for yy, xx in ((y + 1, x), (y - 1, x), (y, x + 1), (y, x - 1)):
+                        if 0 <= yy < H and 0 <= xx < W and m[yy, xx] and not seen[yy, xx]:
+                            seen[yy, xx] = True
+                            st.append((yy, xx))
+                if len(comp) < int(spec.get("min_px", 7)):
+                    continue
+                cs = set(comp)
+                top = min(y for y, _ in comp)
+                row = sorted(x for y, x in comp if y == top)
+                far_x = -1 if abs(row[0] - kc[1]) > abs(row[-1] - kc[1]) else 1       # highlight away from the knot
+                x = row[0] if far_x < 0 else row[-1]
+                pts = [(top, x)]
+                nb = (top, x - far_x) if (top, x - far_x) in cs else (top + 1, x) if (top + 1, x) in cs else None
+                if nb:
+                    pts.append(nb)
+                for p_ in pts:
+                    out[p_] = hi
+                    dl.add(p_)
+                cand = [c for c in comp if c not in pts and out[c] == fill]
+                ring = {(p_[0] + a_, p_[1] + b_) for p_ in pts for a_ in (-1, 0, 1) for b_ in (-1, 0, 1)
+                        if 0 <= p_[0] + a_ < H and 0 <= p_[1] + b_ < W and out[p_[0] + a_, p_[1] + b_] == fill}
+                cand = sorted(set(cand) | ring)
+                for c in cand:                 # never strand a 1 px fill pixel beside the highlight
+                    if not any(out[c[0] + a_, c[1] + b_] == fill for a_ in (-1, 0, 1) for b_ in (-1, 0, 1)
+                               if (a_ or b_) and 0 <= c[0] + a_ < H and 0 <= c[1] + b_ < W):
+                        out[c] = hi
+                        dl.add(c)
+                cand = [c for c in cand if out[c] == fill]
+                if cand and len(comp) >= int(spec.get("fold_min_px", 12)):
+                    f = min(cand, key=lambda c: ((c[0] - kc[0]) ** 2 + (c[1] - kc[1]) ** 2, c))
+                    out[f] = fold
+                    dl.add(f)
+        return out
 
     def temporal_hold(self, frames, direction, th):
         """Opt-in 1-frame flicker hold for near-static loops (render.temporal_hold: {"clips", "colors", "rows"}):

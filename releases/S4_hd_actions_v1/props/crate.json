@@ -1,0 +1,517 @@
+{
+ "name": "crate",
+ "bone": "carry",
+ "offset": [
+  0.0,
+  19.2,
+  0.0
+ ],
+ "radii": [
+  5.760000000000001,
+  2.9600000000000004,
+  4.4
+ ],
+ "material": "pom",
+ "parts": [
+  {
+   "offset": [
+    7.2,
+    19.2,
+    0.0
+   ],
+   "radii": [
+    0.22,
+    9.62,
+    14.3
+   ],
+   "material": "pom",
+   "clip_all": [
+    [
+     0,
+     1,
+     0,
+     -0.3846
+    ],
+    [
+     0,
+     -1,
+     0,
+     -0.3846
+    ],
+    [
+     0,
+     0,
+     1,
+     -0.3846
+    ],
+    [
+     0,
+     0,
+     -1,
+     -0.3846
+    ]
+   ]
+  },
+  {
+   "offset": [
+    -7.2,
+    19.2,
+    0.0
+   ],
+   "radii": [
+    0.22,
+    9.62,
+    14.3
+   ],
+   "material": "pom",
+   "clip_all": [
+    [
+     0,
+     1,
+     0,
+     -0.3846
+    ],
+    [
+     0,
+     -1,
+     0,
+     -0.3846
+    ],
+    [
+     0,
+     0,
+     1,
+     -0.3846
+    ],
+    [
+     0,
+     0,
+     -1,
+     -0.3846
+    ]
+   ]
+  },
+  {
+   "offset": [
+    0.0,
+    22.9,
+    0.0
+   ],
+   "radii": [
+    18.72,
+    0.22,
+    14.3
+   ],
+   "material": "pom",
+   "clip_all": [
+    [
+     1,
+     0,
+     0,
+     -0.3846
+    ],
+    [
+     -1,
+     0,
+     0,
+     -0.3846
+    ],
+    [
+     0,
+     0,
+     1,
+     -0.3846
+    ],
+    [
+     0,
+     0,
+     -1,
+     -0.3846
+    ]
+   ]
+  },
+  {
+   "offset": [
+    0.0,
+    15.5,
+    0.0
+   ],
+   "radii": [
+    18.72,
+    0.22,
+    14.3
+   ],
+   "material": "pom",
+   "clip_all": [
+    [
+     1,
+     0,
+     0,
+     -0.3846
+    ],
+    [
+     -1,
+     0,
+     0,
+     -0.3846
+    ],
+    [
+     0,
+     0,
+     1,
+     -0.3846
+    ],
+    [
+     0,
+     0,
+     -1,
+     -0.3846
+    ]
+   ]
+  },
+  {
+   "offset": [
+    0.0,
+    19.2,
+    5.5
+   ],
+   "radii": [
+    18.72,
+    9.62,
+    0.22
+   ],
+   "material": "pom",
+   "clip_all": [
+    [
+     1,
+     0,
+     0,
+     -0.3846
+    ],
+    [
+     -1,
+     0,
+     0,
+     -0.3846
+    ],
+    [
+     0,
+     1,
+     0,
+     -0.3846
+    ],
+    [
+     0,
+     -1,
+     0,
+     -0.3846
+    ]
+   ]
+  },
+  {
+   "offset": [
+    0.0,
+    19.2,
+    -5.5
+   ],
+   "radii": [
+    18.72,
+    9.62,
+    0.22
+   ],
+   "material": "pom",
+   "clip_all": [
+    [
+     1,
+     0,
+     0,
+     -0.3846
+    ],
+    [
+     -1,
+     0,
+     0,
+     -0.3846
+    ],
+    [
+     0,
+     1,
+     0,
+     -0.3846
+    ],
+    [
+     0,
+     -1,
+     0,
+     -0.3846
+    ]
+   ]
+  },
+  {
+   "offset": [
+    7.45,
+    18.8,
+    0.0
+   ],
+   "radii": [
+    0.22,
+    2.08,
+    14.95
+   ],
+   "material": "coat_trim",
+   "clip_all": [
+    [
+     0,
+     1,
+     0,
+     -0.3846
+    ],
+    [
+     0,
+     -1,
+     0,
+     -0.3846
+    ],
+    [
+     0,
+     0,
+     1,
+     -0.3846
+    ],
+    [
+     0,
+     0,
+     -1,
+     -0.3846
+    ]
+   ]
+  },
+  {
+   "offset": [
+    -7.45,
+    18.8,
+    0.0
+   ],
+   "radii": [
+    0.22,
+    2.08,
+    14.95
+   ],
+   "material": "coat_trim",
+   "clip_all": [
+    [
+     0,
+     1,
+     0,
+     -0.3846
+    ],
+    [
+     0,
+     -1,
+     0,
+     -0.3846
+    ],
+    [
+     0,
+     0,
+     1,
+     -0.3846
+    ],
+    [
+     0,
+     0,
+     -1,
+     -0.3846
+    ]
+   ]
+  },
+  {
+   "offset": [
+    0.0,
+    18.8,
+    5.75
+   ],
+   "radii": [
+    19.37,
+    2.08,
+    0.22
+   ],
+   "material": "coat_trim",
+   "clip_all": [
+    [
+     1,
+     0,
+     0,
+     -0.3846
+    ],
+    [
+     -1,
+     0,
+     0,
+     -0.3846
+    ],
+    [
+     0,
+     1,
+     0,
+     -0.3846
+    ],
+    [
+     0,
+     -1,
+     0,
+     -0.3846
+    ]
+   ]
+  },
+  {
+   "offset": [
+    0.0,
+    18.8,
+    -5.75
+   ],
+   "radii": [
+    19.37,
+    2.08,
+    0.22
+   ],
+   "material": "coat_trim",
+   "clip_all": [
+    [
+     1,
+     0,
+     0,
+     -0.3846
+    ],
+    [
+     -1,
+     0,
+     0,
+     -0.3846
+    ],
+    [
+     0,
+     1,
+     0,
+     -0.3846
+    ],
+    [
+     0,
+     -1,
+     0,
+     -0.3846
+    ]
+   ]
+  },
+  {
+   "offset": [
+    0.0,
+    22.95,
+    0.0
+   ],
+   "radii": [
+    4.3,
+    0.95,
+    4.1
+   ],
+   "material": "prop_snow"
+  },
+  {
+   "tag": "rope",
+   "offset": [
+    4.9,
+    10.45,
+    -1.0
+   ],
+   "radii": [
+    0.85,
+    5.627,
+    1.1
+   ],
+   "material": "prop_wood",
+   "rot": [
+    -0.0,
+    -0.0,
+    -14.41
+   ]
+  },
+  {
+   "tag": "rope",
+   "offset": [
+    7.05,
+    3.3,
+    -1.0
+   ],
+   "radii": [
+    0.85,
+    3.936,
+    1.1
+   ],
+   "material": "prop_wood",
+   "rot": [
+    -0.0,
+    0.0,
+    64.41
+   ]
+  },
+  {
+   "tag": "rope",
+   "offset": [
+    -4.9,
+    10.45,
+    -1.0
+   ],
+   "radii": [
+    0.85,
+    5.627,
+    1.1
+   ],
+   "material": "prop_wood",
+   "rot": [
+    -0.0,
+    0.0,
+    14.41
+   ]
+  },
+  {
+   "tag": "rope",
+   "offset": [
+    -7.05,
+    3.3,
+    -1.0
+   ],
+   "radii": [
+    0.85,
+    3.936,
+    1.1
+   ],
+   "material": "prop_wood",
+   "rot": [
+    -0.0,
+    -0.0,
+    -64.41
+   ]
+  }
+ ],
+ "notes": "r11 round 2 (WP C): light wood (pom ramp), ropes tuck into the hair below the crate and are depth-split behind the head. Cube 11 x 7.4 x 11 u (+1.2 u snow mound). carry offset (0, 19.2, 0) above the hand midpoint for the hold pose arms raise 176 / spread 38 / elbow 10-15: crate bottom clears the hair top by >= 2 u (~1.5 px). The plan's (0, 3, 1.5) would put the crate inside the head (chibi hands reach only ear height). Ropes: end panels -> mittens, 2 u behind the head plane. Per-frame placement (pick_up) via frame.prop {offset, rot}. | AD r3: ropes hidden in side/diagonal views (the tuck point is camera-side there); crate reads as balanced on the head as in S/N. | AD r4: smaller, flatter snow mound (4.3 x 0.95 x 4.1) so the diagonal-view silhouette stays boxy, not a bun.",
+ "hide_tags_by_dir": {
+  "E": [
+   "rope"
+  ],
+  "W": [
+   "rope"
+  ],
+  "SE": [
+   "rope"
+  ],
+  "SW": [
+   "rope"
+  ],
+  "NE": [
+   "rope"
+  ],
+  "NW": [
+   "rope"
+  ]
+ }
+}

@@ -884,7 +884,7 @@ def _ell_from_legacy(p, M):
             "vote": None}
 
 
-def pose_parts(char, worlds, chain_pts, body_c, face_m, lod="all", subdiv=1):
+def pose_parts(char, worlds, chain_pts, body_c, face_m, lod="all", subdiv=1, clip=None):
     """Posed HD part list (world space, facing applied) for one frame."""
     from .rig import chain_primitives
     lods = ("all",) if lod == "all" else ("all", "ref")
@@ -896,7 +896,7 @@ def pose_parts(char, worlds, chain_pts, body_c, face_m, lod="all", subdiv=1):
             sweeps.setdefault(sp["chain"], []).append(sp)
             continue
         if sp.get("follow"):
-            out += _pose_static(sp, _follow_worlds(sp, char, worlds, chain_pts), face_m, lods)
+            out += _pose_static(sp, _follow_worlds(sp, char, worlds, chain_pts, clip), face_m, lods)
             continue
         out += _pose_static(sp, worlds, face_m, lods)
     for c in char.get("chains", []):
@@ -915,10 +915,13 @@ def pose_parts(char, worlds, chain_pts, body_c, face_m, lod="all", subdiv=1):
     return out
 
 
-def _follow_worlds(sp, char, worlds, chain_pts):
-    """"follow": {"chain", "gain"}: a rigid part (e.g. a bow loop) rides a spring chain. Its bone frame is rotated
-    about the chain anchor by the chain's deflection from its rest direction (times gain) -> bounce and lag."""
+def _follow_worlds(sp, char, worlds, chain_pts, clip=None):
+    """"follow": {"chain", "gain", "gain_by_clip": {clip: g}, "max_drop"}: a rigid part (e.g. a bow loop) rides a
+    spring chain. Its bone frame is rotated about the chain anchor by the chain's deflection from its rest direction
+    (times gain) -> bounce and lag. max_drop limits how far the direction may sink below rest (sine, bone-up axis),
+    so a lagging loop never drops behind the crown."""
     fo = sp["follow"]
+    gain = float(fo.get("gain_by_clip", {}).get(clip, fo.get("gain", 1.0)))
     c = next(c for c in char["chains"] if c["name"] == fo["chain"])
     m = worlds[c["anchor_bone"]]
     a = m[:3, :3] @ np.asarray(c["anchor"], float) + m[:3, 3]
@@ -927,9 +930,31 @@ def _follow_worlds(sp, char, worlds, chain_pts):
     pts = chain_pts[c["name"]]
     u = np.asarray(pts[1], float) - np.asarray(pts[0], float)
     u /= max(np.linalg.norm(u), 1e-9)
+    if "max_drop" in fo:
+        up = m[:3, 1] / np.linalg.norm(m[:3, 1])
+        lo = float(r @ up) - float(fo["max_drop"])
+        if fo.get("drop_frame") == "world":
+            # world-up clamp against the rest direction of an UPRIGHT head (yaw only): when the head pitches down in a
+            # crouch the loops stay lifted instead of tipping behind the crown
+            up = np.array([0.0, 1.0, 0.0])
+            f = m[:3, 2] - (m[:3, 2] @ up) * up
+            f /= max(np.linalg.norm(f), 1e-9)
+            x = np.cross(up, f)
+            rd = np.asarray(c["rest_dir"], float)
+            rw = rd[0] * x + rd[1] * up + rd[2] * f
+            rw /= np.linalg.norm(rw)
+            lo = float(rw @ up) - float(fo["max_drop"])
+        if float(u @ up) < lo:
+            h = u - (u @ up) * up
+            hn = np.linalg.norm(h)
+            h = h / hn if hn > 1e-9 else r - (r @ up) * up
+            h /= max(np.linalg.norm(h), 1e-9)
+            u = h * math.sqrt(max(1 - lo * lo, 0.0)) + up * lo
     ax = np.cross(r, u)
     s_, c_ = np.linalg.norm(ax), float(np.clip(r @ u, -1, 1))
-    ang = math.atan2(s_, c_) * float(fo.get("gain", 1.0))
+    ang = math.atan2(s_, c_) * gain
+    if gain == 0.0:
+        return worlds
     R = np.eye(4)
     if s_ > 1e-9:
         k = ax / s_

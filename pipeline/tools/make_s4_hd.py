@@ -18,9 +18,10 @@ BACK_C, BACK_R = np.array([0, 4.6, -4.4]), np.array([7.8, 5.2, 4.0])
 
 # ---- r12 round-2 tuning (reviews docs/review/r12_hd_review_{AD,anim,GD}.md)
 SIDELOCK_FRONT_Z = 0.6                       # was 2.8: profile eye glint (AD1)
-BOW_LOOP = {"R": [3.7, 1.55], "r": 0.5, "w": 2.8, "taper": 0.18, "round": 0.85}  # AD5 + r13 C (puffy)
+BOW_LOOP = {"R": [3.4, 1.55], "r": 0.5, "w": 2.8, "taper": 0.35, "round": 0.85}  # AD5 + r13 C (puffy)
 BOW_SPRING_GAIN = 0.8
-BOW_TILT, BOW_Y = 24, 10.8
+BOW_MAX_DROP = 0.04
+BOW_TILT, BOW_Y = 26, 11.8
 CROWN_LIFT = -0.42                           # GD4: crown clumps 0.12 closer to the cap (1 px crown bump in run NE)
 HEM_R, HEM_W, HEM_Y = [8.15, 6.8], 1.15, -5.05   # AD2
 CUFF_R, CUFF_Y = [1.65, 1.65], -4.75         # AD4
@@ -148,15 +149,16 @@ EYE_MARK = (3.55, 5.55)      # eye centre x, y (head-bone space); z found on the
 MOUTH_MARK = (0.0, 2.35)
 # r13 D: gait-driven lateral hair sway [amp (units/s^2), phase (cycles), periods per loop] per clip; force in phase with
 # the torso lean = counter-phase to the hips, the verlet chains add the lag / follow-through
-SWAY_CURTAIN = {"walk": [520, 0.0, 1], "carry_walk": [420, 0.0, 1], "run": [650, 0.0, 1]}
-SWAY_PONY = {"walk": [1300, 0.0, 1], "carry_walk": [1000, 0.0, 1], "run": [1600, 0.0, 1]}
+# round 3 (anim4): walk ~1.5x with a flattened (held) extreme [.., shape 0.4]; run unchanged
+SWAY_CURTAIN = {"walk": [620, 0.0, 1, 0.4], "carry_walk": [420, 0.0, 1], "run": [650, 0.0, 1]}
+SWAY_PONY = {"walk": [1500, 0.0, 1, 0.4], "carry_walk": [1000, 0.0, 1], "run": [1600, 0.0, 1]}
 FACE_SET = {"set": "face", "k": 1.6}
 
 
 def head_parts():
     """Rounder cranium, cheeks narrowing to a soft pointed chin, a slight cheekbone plane, a jaw line visible in 3/4
     and profile. Replaces the legacy head sphere (which stays as the sim / QA collider)."""
-    P = [{"name": "cranium", "bone": "head", "shape": "ellipsoid", "center": [0, 7.7, 0.1], "radii": [8.35, 7.7, 7.85],
+    P = [{"name": "cranium", "bone": "head", "shape": "ellipsoid", "center": [0, 7.6, 0.45], "radii": [8.2, 7.6, 7.6],
           "material": "skin", "group": "head", "blend": dict(FACE_SET), "lod": "all"},
          # lower face: narrower than the cranium (jaw taper), pushed forward
          {"name": "jaw", "bone": "head", "shape": "ellipsoid", "center": [0, 3.9, 1.7], "radii": [6.5, 4.4, 6.35],
@@ -212,7 +214,9 @@ def bow_parts():
     for sg, s in ((-1, "L"), (1, "R")):
         rot = [0, 180, BOW_TILT] if sg < 0 else [0, 0, BOW_TILT]
         zs = 1 if sg < 0 else -1        # local z of the outward (visible) face after the 180 deg yaw
-        fol = {"chain": f"bow_spring_{s}", "gain": BOW_SPRING_GAIN}
+        # round 3 (anim3): rigid in the idle loops (no blips); anim2: never sinks behind the crown
+        fol = {"chain": f"bow_spring_{s}", "gain": BOW_SPRING_GAIN, "gain_by_clip": {"idle": 0.0, "carry_idle": 0.0},
+               "max_drop": BOW_MAX_DROP, "drop_frame": "world"}
         P.append({"name": f"bow_loop_{s}", "bone": "head", "shape": "torus", "center": [sg * 4.2, BOW_Y, -9.9], "rot": rot,
                   # group = its spring chain: like the pom / scarf, a bouncing loop is secondary motion for the QA height
                   "params": dict(BOW_LOOP), "material": "ribbon", "group": f"bow_spring_{s}", "follow": fol,
@@ -419,7 +423,8 @@ def pony_chain():
     """The legacy pony chain (S4_halfup_bow add_chains) with the r13 gait sway."""
     with open(os.path.join(ROOT, "data", "variants", "S4_halfup_bow.json")) as f:
         base = json.load(f)["add_chains"]
-    return [dict(c, sway=SWAY_PONY) if c["name"] == "pony" else c for c in base]
+    # round 3 (Anim5): the ponytail is its own group, so the depth-break line separates it from the back curtain
+    return [dict(c, sway=SWAY_PONY, group="pony") if c["name"] == "pony" else c for c in base]
 
 
 def main():
@@ -440,12 +445,18 @@ def main():
                            **{n: {"blend": {"set": "torso", "k": 0.8}} for n in ("bodice", "waist", "hips_coat")}},
         "render": {"hair_style": dict(RING),
                    # r13 B: sprite face eyes at their own projected modelled eye positions (perspective)
-                   "face_eyes": {"markers": marks[:2], "mouth": marks[2], "gap": 2, "contour": 1}, "lineart": {"keep_selout_runs": ["ribbon"]},
+                   "face_eyes": {"markers": marks[:2], "mouth": marks[2], "gap": 2, "contour": 1,
+                                 "gap_front": 3, "mouth_bias": 1},          # round 3: AD4 locked S bridge, AD5 mouth
+                   "lineart": {"keep_selout_runs": ["ribbon", "hair"], "skin_edge_dark": True,
+                               "ring_trim": {"margin": 2, "min_run": 3, "stop_at": ["ribbon", "hatcuff"]}},     # round 3 AD1: head rust only
                    # anim3: bow loop vs raised teal mitten get a 1 px teal_0 separation (same fill colour)
                    "separate_materials": [["ribbon", "mitten"]],
-                   # anim2: hold 1-frame crown / bow-knot flicker in the idle loops
-                   "temporal_hold": {"clips": ["idle", "carry_idle"], "rows": 12,
-                                     "colors": ["outline", "plum_0", "hair_1", "hair_2", "teal_0", "teal_1"]}},
+                   # round 3 (AD2 / anim1): designed bow volume - 2 px teal_2 highlight + 1 teal_0 fold per loop
+                   "final_orphan_pass": True,
+                   "bow_shine": {"material": "ribbon", "hi": "teal_2", "fold": "teal_0", "knot": "hatcuff", "min_px": 7},
+                   # anim2 (round 2) + anim3 (round 3): hold 1-frame crown, bow and scarf-tail flicker in the idle loops
+                   "temporal_hold": {"clips": ["idle", "carry_idle"], "rows": 30,
+                                     "colors": ["outline", "plum_0", "hair_1", "hair_2", "teal_0", "teal_1", "teal_2", "mauve", "oat_1"]}},
         "add_chains": pony_chain(),
         "hd_chains": tail_chains() + curtain_chains() + loop_chains(),
         "parts": head_parts() + eye_ref_parts(marks) + hair_parts() + bow_parts() + coat_parts() + scarf_parts()

@@ -78,26 +78,38 @@
     [
      3.55,
      5.55,
-     7.232
+     7.3
     ],
     [
      -3.55,
      5.55,
-     7.232
+     7.3
     ]
    ],
    "mouth": [
     0.0,
     2.35,
-    7.761
+    7.77
    ],
    "gap": 2,
-   "contour": 1
+   "contour": 1,
+   "gap_front": 3,
+   "mouth_bias": 1
   },
   "lineart": {
    "keep_selout_runs": [
-    "ribbon"
-   ]
+    "ribbon",
+    "hair"
+   ],
+   "skin_edge_dark": true,
+   "ring_trim": {
+    "margin": 2,
+    "min_run": 3,
+    "stop_at": [
+     "ribbon",
+     "hatcuff"
+    ]
+   }
   },
   "separate_materials": [
    [
@@ -105,19 +117,30 @@
     "mitten"
    ]
   ],
+  "final_orphan_pass": true,
+  "bow_shine": {
+   "material": "ribbon",
+   "hi": "teal_2",
+   "fold": "teal_0",
+   "knot": "hatcuff",
+   "min_px": 7
+  },
   "temporal_hold": {
    "clips": [
     "idle",
     "carry_idle"
    ],
-   "rows": 12,
+   "rows": 30,
    "colors": [
     "outline",
     "plum_0",
     "hair_1",
     "hair_2",
     "teal_0",
-    "teal_1"
+    "teal_1",
+    "teal_2",
+    "mauve",
+    "oat_1"
    ]
   }
  },
@@ -148,16 +171,17 @@
    ],
    "thickness": 2.8,
    "material": "hair",
-   "group": "head",
+   "group": "pony",
    "stiffness": 500,
    "damping": 0.2,
    "gravity": 2400,
    "collide": true,
    "sway": {
     "walk": [
-     1300,
+     1500,
      0.0,
-     1
+     1,
+     0.4
     ],
     "carry_walk": [
      1000,
@@ -259,9 +283,10 @@
    "collide": true,
    "sway": {
     "walk": [
-     520,
+     620,
      0.0,
-     1
+     1,
+     0.4
     ],
     "carry_walk": [
      420,
@@ -303,9 +328,10 @@
    "collide": true,
    "sway": {
     "walk": [
-     520,
+     620,
      0.0,
-     1
+     1,
+     0.4
     ],
     "carry_walk": [
      420,
@@ -347,9 +373,10 @@
    "collide": true,
    "sway": {
     "walk": [
-     520,
+     620,
      0.0,
-     1
+     1,
+     0.4
     ],
     "carry_walk": [
      420,
@@ -391,9 +418,10 @@
    "collide": true,
    "sway": {
     "walk": [
-     520,
+     620,
      0.0,
-     1
+     1,
+     0.4
     ],
     "carry_walk": [
      420,
@@ -435,9 +463,10 @@
    "collide": true,
    "sway": {
     "walk": [
-     520,
+     620,
      0.0,
-     1
+     1,
+     0.4
     ],
     "carry_walk": [
      420,
@@ -515,13 +544,13 @@
    "shape": "ellipsoid",
    "center": [
     0,
-    7.7,
-    0.1
+    7.6,
+    0.45
    ],
    "radii": [
-    8.35,
-    7.7,
-    7.85
+    8.2,
+    7.6,
+    7.6
    ],
    "material": "skin",
    "group": "head",
@@ -640,7 +669,7 @@
    "center": [
     3.55,
     5.55,
-    7.082
+    7.1499999999999995
    ],
    "radii": [
     1.25,
@@ -663,7 +692,7 @@
    "center": [
     -3.55,
     5.55,
-    7.082
+    7.1499999999999995
    ],
    "radii": [
     1.25,
@@ -2802,29 +2831,35 @@
    "shape": "torus",
    "center": [
     -4.2,
-    10.8,
+    11.8,
     -9.9
    ],
    "rot": [
     0,
     180,
-    24
+    26
    ],
    "params": {
     "R": [
-     3.7,
+     3.4,
      1.55
     ],
     "r": 0.5,
     "w": 2.8,
-    "taper": 0.18,
+    "taper": 0.35,
     "round": 0.85
    },
    "material": "ribbon",
    "group": "bow_spring_L",
    "follow": {
     "chain": "bow_spring_L",
-    "gain": 0.8
+    "gain": 0.8,
+    "gain_by_clip": {
+     "idle": 0.0,
+     "carry_idle": 0.0
+    },
+    "max_drop": 0.04,
+    "drop_frame": "world"
    },
    "blend": {
     "set": "loop_L",
@@ -2838,13 +2873,13 @@
    "shape": "capsule",
    "center": [
     -4.2,
-    10.8,
+    11.8,
     -9.9
    ],
    "rot": [
     0,
     180,
-    24
+    26
    ],
    "params": {
     "a": [
@@ -2864,7 +2899,13 @@
    "op": "subtract",
    "follow": {
     "chain": "bow_spring_L",
-    "gain": 0.8
+    "gain": 0.8,
+    "gain_by_clip": {
+     "idle": 0.0,
+     "carry_idle": 0.0
+    },
+    "max_drop": 0.04,
+    "drop_frame": "world"
    },
    "blend": {
     "set": "loop_L",
@@ -2878,13 +2919,13 @@
    "shape": "capsule",
    "center": [
     -4.2,
-    10.8,
+    11.8,
     -9.9
    ],
    "rot": [
     0,
     180,
-    24
+    26
    ],
    "params": {
     "a": [
@@ -2904,7 +2945,13 @@
    "op": "subtract",
    "follow": {
     "chain": "bow_spring_L",
-    "gain": 0.8
+    "gain": 0.8,
+    "gain_by_clip": {
+     "idle": 0.0,
+     "carry_idle": 0.0
+    },
+    "max_drop": 0.04,
+    "drop_frame": "world"
    },
    "blend": {
     "set": "loop_L",
@@ -2918,29 +2965,35 @@
    "shape": "torus",
    "center": [
     4.2,
-    10.8,
+    11.8,
     -9.9
    ],
    "rot": [
     0,
     0,
-    24
+    26
    ],
    "params": {
     "R": [
-     3.7,
+     3.4,
      1.55
     ],
     "r": 0.5,
     "w": 2.8,
-    "taper": 0.18,
+    "taper": 0.35,
     "round": 0.85
    },
    "material": "ribbon",
    "group": "bow_spring_R",
    "follow": {
     "chain": "bow_spring_R",
-    "gain": 0.8
+    "gain": 0.8,
+    "gain_by_clip": {
+     "idle": 0.0,
+     "carry_idle": 0.0
+    },
+    "max_drop": 0.04,
+    "drop_frame": "world"
    },
    "blend": {
     "set": "loop_R",
@@ -2954,13 +3007,13 @@
    "shape": "capsule",
    "center": [
     4.2,
-    10.8,
+    11.8,
     -9.9
    ],
    "rot": [
     0,
     0,
-    24
+    26
    ],
    "params": {
     "a": [
@@ -2980,7 +3033,13 @@
    "op": "subtract",
    "follow": {
     "chain": "bow_spring_R",
-    "gain": 0.8
+    "gain": 0.8,
+    "gain_by_clip": {
+     "idle": 0.0,
+     "carry_idle": 0.0
+    },
+    "max_drop": 0.04,
+    "drop_frame": "world"
    },
    "blend": {
     "set": "loop_R",
@@ -2994,13 +3053,13 @@
    "shape": "capsule",
    "center": [
     4.2,
-    10.8,
+    11.8,
     -9.9
    ],
    "rot": [
     0,
     0,
-    24
+    26
    ],
    "params": {
     "a": [
@@ -3020,7 +3079,13 @@
    "op": "subtract",
    "follow": {
     "chain": "bow_spring_R",
-    "gain": 0.8
+    "gain": 0.8,
+    "gain_by_clip": {
+     "idle": 0.0,
+     "carry_idle": 0.0
+    },
+    "max_drop": 0.04,
+    "drop_frame": "world"
    },
    "blend": {
     "set": "loop_R",
@@ -3034,13 +3099,13 @@
    "shape": "capsule",
    "center": [
     4.2,
-    10.8,
+    11.8,
     -9.9
    ],
    "rot": [
     0,
     0,
-    24
+    26
    ],
    "params": {
     "a": [
@@ -3060,7 +3125,13 @@
    "op": "subtract",
    "follow": {
     "chain": "bow_spring_R",
-    "gain": 0.8
+    "gain": 0.8,
+    "gain_by_clip": {
+     "idle": 0.0,
+     "carry_idle": 0.0
+    },
+    "max_drop": 0.04,
+    "drop_frame": "world"
    },
    "blend": {
     "set": "loop_R",

@@ -264,7 +264,10 @@ class ChainSim:
                     cyc = float(sway[2]) if len(sway) > 2 else 1.0           # sway periods per clip loop
                     w_ = 2 * math.pi * cyc * ((t + SIM_DT * 1000) / self.anim.total_ms) + 2 * math.pi * phase
                     side = worlds["pelvis"][:3, 0] / np.linalg.norm(worlds["pelvis"][:3, 0])
-                    acc += amp * math.sin(w_) * side
+                    sv = math.sin(w_)
+                    if len(sway) > 3:                       # shape < 1 flattens the extremes (a held swing)
+                        sv = math.copysign(abs(sv) ** float(sway[3]), sv)
+                    acc += amp * sv * side
                 acc += c["stiffness"] * (rest - cur)
                 nxt = cur + (cur - prev) * (1 - c["damping"]) + acc * SIM_DT * SIM_DT
                 nxt[0] = anchor
