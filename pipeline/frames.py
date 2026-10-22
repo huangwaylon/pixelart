@@ -203,6 +203,8 @@ class Scene:
             fwd = worlds[face["bone"]][:3, 2]
             facing_cam = float(np.dot(fwd / np.linalg.norm(fwd), self.cam.to_cam))
             idx = apply_rules(idx, pix, self.palette, rules, facing_cam > -0.15)
+        for ma, mb in rnd.get("separate_materials", []):
+            idx = _separate_materials(idx, pix, self.palette, ma, mb)
         if pom is not None:
             c = pom["M"][:3, 3]
             r = float(np.linalg.norm(pom["M"][:3, 0]))
@@ -253,7 +255,12 @@ class Scene:
         elif rnd.get("face_cels"):
             # v3: designed face cels (consistent in every view) instead of procedural eye placement
             cels = self._face_cels(rnd["face_cels"])
-            idx, _ = apply_face_cels(idx, self.palette, worlds[face["bone"]], face, cels, expr, self.pivot, self.cam)
+            if rnd.get("face_eyes"):          # opt-in: each eye at its own projected modelled eye (HD variant)
+                from .face import apply_face_eyes
+                idx, _ = apply_face_eyes(idx, self.palette, worlds[face["bone"]], face, cels, expr, self.pivot, self.cam,
+                                         rnd["face_eyes"])
+            else:
+                idx, _ = apply_face_cels(idx, self.palette, worlds[face["bone"]], face, cels, expr, self.pivot, self.cam)
             self.deliberate[(direction, i)] = self.deliberate.get((direction, i), set()) | getattr(
                 apply_face_cels, "last_stamped", set())
         else:
@@ -262,9 +269,17 @@ class Scene:
         keep = {self.palette.special[k] for k in ("eye", "catchlight", "mouth", "blush", "outline") if k in self.palette.special}
         if v2:
             skin_ids = {self.palette.index[n] for n in self.palette.ramps["skin"]}
+            pre_ds = idx.copy()
             idx = despeckle(idx, keep=keep, material=pix.material)          # 1) merge within each part
             skin_base = skin_ids - {self.palette.index[self.palette.ramps["skin"][0]]}
             idx = despeckle(idx, keep=keep | skin_base)                     # 2) remaining specks; base skin stays
+            if rnd.get("face_eyes"):
+                # despeckle must not grow the eyes: a 1-2 px skin gap between eye and hairline stays skin
+                face_ink = np.isin(idx, [self.palette.special[k] for k in ("eye", "catchlight") if k in self.palette.special])
+                grown = face_ink & np.isin(pre_ds, list(skin_ids))
+                idx[grown] = pre_ds[grown]
+            if la.get("keep_selout_runs"):
+                idx = _restore_outline_runs(idx, pre_ds, pix.material, la["keep_selout_runs"], self.palette)
             # skin pixels touching eye/lash pixels are designed face spacing, not orphans
             eye_c = {self.palette.special.get(k) for k in ("eye", "catchlight", "outline")}
             Hh, Ww = idx.shape
@@ -294,6 +309,42 @@ class Scene:
             self.deliberate[(direction, i)] = self.deliberate.get((direction, i), set()) | soles
         return idx
 
+    def temporal_hold(self, frames, direction, th):
+        """Opt-in 1-frame flicker hold for near-static loops (render.temporal_hold: {"clips", "colors", "rows"}):
+        in the top `rows` rows of the body (crown + bow), a pixel whose colour differs from the previous and next
+        frame, which agree, takes their colour when both colours are in `colors` (no silhouette change) and the
+        result is not an orphan. Sub-pixel head bob otherwise toggles clump seams / bow edges at 220 ms."""
+        ids = {self.palette.index[c] for c in th["colors"]}
+        n = len(frames)
+        out = [f.copy() for f in frames]
+        H, W = frames[0].shape
+        for i in range(n):
+            a, b, c = frames[(i - 1) % n], frames[i], frames[(i + 1) % n]
+            bb = self.body_bbox.get((direction, i))
+            if bb is None:
+                continue
+            y1 = min(bb[1] + int(th.get("rows", 12)), H)
+            for y in range(max(bb[1] - 2, 0), y1):
+                for x in range(W):
+                    if a[y, x] == c[y, x] and b[y, x] != a[y, x] and a[y, x] in ids and b[y, x] in ids:
+                        out[i][y, x] = a[y, x]
+            o = out[i]
+
+            def lone(y, x, im):
+                return im[y, x] >= 0 and not any(0 <= y + p < H and 0 <= x + q < W and (p or q) and im[y + p, x + q] == im[y, x]
+                                                 for p in (-1, 0, 1) for q in (-1, 0, 1))
+            for _ in range(4):                               # never create an orphan (changed pixel or a neighbour)
+                bad = [(y, x) for y in range(max(bb[1] - 3, 0), min(y1 + 1, H)) for x in range(W)
+                       if lone(y, x, o) and not lone(y, x, b)]
+                if not bad:
+                    break
+                for y, x in bad:
+                    for p in (-1, 0, 1):
+                        for q in (-1, 0, 1):
+                            if 0 <= y + p < H and 0 <= x + q < W:
+                                o[y + p, x + q] = b[y + p, x + q]
+        return out
+
     def _face_cels(self, name):
         if not hasattr(self, "_cels"):
             root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -314,6 +365,57 @@ class Scene:
         _, worlds = self.primitives(i, direction)
         pts = [worlds[b][:3, 3] * np.array([1, 0, 1]) for b in ("ankle_L", "ankle_R")]   # ground contact
         return [self.cam.project(p, self.pivot) for p in pts]
+
+
+def _separate_materials(idx, pix, palette, ma, mb):
+    """Opt-in (render.separate_materials: [[a, b], ...]): where two parts that share fill colours touch (bow loop vs
+    raised teal mitten), the nearer pixel takes its material's line colour so they never fuse into one shape."""
+    out = idx.copy()
+    H, W = idx.shape
+    mat, dep = pix.material, pix.depth
+    lc = palette.data.get("line_colors", {})
+    for y in range(H):
+        for x in range(W):
+            m = mat[y, x]
+            if m not in (ma, mb) or idx[y, x] < 0:
+                continue
+            other = mb if m == ma else ma
+            for a, b in ((0, 1), (0, -1), (1, 0), (-1, 0)):
+                yy, xx = y + a, x + b
+                if 0 <= yy < H and 0 <= xx < W and mat[yy, xx] == other and idx[yy, xx] >= 0 and dep[y, x] < dep[yy, xx]:
+                    out[y, x] = palette.index[lc.get(m) or palette.ramps[m][0]]
+                    break
+    return out
+
+
+def _restore_outline_runs(idx, pre, material, mats, palette):
+    """Opt-in (render.lineart.keep_selout_runs: [materials]): short sel-out runs on the exterior outline of these
+    materials (e.g. the 2-3 px teal_0 line over a bow loop poking above the head) are line art, not speckle; give them
+    back after despeckle when the restored pixel has a same-colour 8-neighbour (never creates an orphan)."""
+    out = idx.copy()
+    H, W = idx.shape
+    ext = (pre >= 0) & np.equal(material, None) & (pre != idx)
+    near = np.zeros_like(ext)
+    fill = {palette.index[c] for m_ in mats for c in palette.ramps[m_][1:]}
+    m = np.isin(material, list(mats)) & np.isin(idx, list(fill))       # still a visible fill pixel of that part
+    near[1:, :] |= m[:-1, :]; near[:-1, :] |= m[1:, :]; near[:, 1:] |= m[:, :-1]; near[:, :-1] |= m[:, 1:]
+    lines = [palette.index[palette.data.get("line_colors", {}).get(m_) or palette.ramps[m_][0]] for m_ in mats]
+    ext &= near & np.isin(pre, lines) & np.isin(idx, list(fill))    # the line was absorbed into the part's fill
+    pts = list(zip(*np.nonzero(ext)))
+    for y, x in pts:
+        out[y, x] = pre[y, x]
+
+    def lone(y, x):
+        return out[y, x] >= 0 and not any(0 <= y + a < H and 0 <= x + b < W and (a or b) and out[y + a, x + b] == out[y, x]
+                                          for a in (-1, 0, 1) for b in (-1, 0, 1))
+    for _ in range(3):                       # never leave an orphan (restored pixel or a neighbour it isolates)
+        bad = [(y, x) for y, x in pts if out[y, x] != idx[y, x] and (lone(y, x) or any(
+            lone(y + a, x + b) for a in (-1, 0, 1) for b in (-1, 0, 1) if 0 <= y + a < H and 0 <= x + b < W))]
+        if not bad:
+            break
+        for y, x in bad:
+            out[y, x] = idx[y, x]
+    return out
 
 
 # ------------------------------------------------------------------ overrides

@@ -1,0 +1,25 @@
+{
+ "px": [
+  [
+   25,
+   29,
+   2
+  ]
+ ],
+ "base_hash": "81473fbee2783fe1",
+ "note": "r13 E: 1px skin_0 sliver between the side lock and the squint eye (anchor row lands on the bang tips in the landing pose) - joins the side lock",
+ "reasons": [
+  {
+   "time": "2026-10-23 07:40",
+   "author": "hd-engineer r13",
+   "pixels": [
+    [
+     25,
+     29,
+     "hair_1"
+    ]
+   ],
+   "why": "r13 E: 1px skin_0 sliver between the side lock and the squint eye (anchor row lands on the bang tips in the landing pose) - joins the side lock"
+  }
+ ]
+}

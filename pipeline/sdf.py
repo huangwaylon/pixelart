@@ -81,14 +81,19 @@ def _sd_rbox(p, P):
 
 def _sd_torus(p, P):
     """Band ring: elliptical ring (Rx, Rz) in local xz, stadium cross-section (half thickness r, half width w),
-    width tapering linearly along local x (taper > 0 = wider at +x)."""
+    width tapering linearly along local x (taper > 0 = wider at +x); `round` > 0 narrows the width toward both
+    x ends (w * sqrt(1 - round * (x/Rx)^2)) so a bow loop reads as a rounded petal instead of a flat plank."""
     x, y, z = p[:, 0], p[:, 1], p[:, 2]
     Rx, Rz = P["R"][..., 0], P["R"][..., 1]
     rho = np.sqrt((x / Rx) ** 2 + (z / Rz) ** 2)
     g = np.sqrt((x / Rx ** 2) ** 2 + (z / Rz ** 2) ** 2)
     e = np.where(g > 1e-9, (rho - 1.0) * rho / np.maximum(g, 1e-9), -np.minimum(Rx, Rz))
     r = P["r"]
-    w = np.maximum(P["w"] * (1.0 + P["taper"] * np.clip(x / Rx, -1.0, 1.0)), r)
+    xn = np.clip(x / Rx, -1.0, 1.0)
+    w = P["w"] * (1.0 + P["taper"] * xn)
+    if np.any(P["round"]):
+        w = w * np.sqrt(np.maximum(1.0 - P["round"] * xn * xn, 0.05))
+    w = np.maximum(w, r)
     qy = np.maximum(np.abs(y) - (w - r), 0.0)
     return np.sqrt(e * e + qy * qy) - r
 
@@ -126,7 +131,7 @@ def _with_detail(f):
 
 SDF = {"seg": _with_detail(_sd_seg), "rbox": _with_detail(_sd_rbox), "torus": _with_detail(_sd_torus)}
 PARAM_KEYS = {"seg": ("a", "b", "ra", "rb", "n2", "n2b", "flat", "flatb", "capped") + DETAIL_KEYS,
-              "rbox": ("b", "r") + DETAIL_KEYS, "torus": ("R", "r", "w", "taper") + DETAIL_KEYS}
+              "rbox": ("b", "r") + DETAIL_KEYS, "torus": ("R", "r", "w", "taper", "round") + DETAIL_KEYS}
 
 
 def _detail_params(det, size):
@@ -699,7 +704,9 @@ def _base(sp):
     return {"name": sp["name"], "material": sp["material"], "group": sp.get("group", sp.get("bone", "head")),
             "set": b.get("set"), "k": float(b.get("k", 0.0)), "op": sp.get("op", "union"),
             "clip_all": sp.get("clip_all", []), "clip_any": sp.get("clip_any", []),
-            "vote": None if sp.get("legacy") else f'{sp["material"]}|{sp.get("group", "head")}'}
+            # "vote": parts sharing a key act as one part for the pixel pass (an explicit key lets a converted legacy
+            # ellipsoid, e.g. the hair cap under the HD clumps, join the clumps so their seams don't blur the shading)
+            "vote": sp.get("vote") or (None if sp.get("legacy") else f'{sp["material"]}|{sp.get("group", "head")}')}
 
 
 def _bone_matrix(sp, worlds):
@@ -742,7 +749,7 @@ def _pose_static(sp, worlds, face_m, lods=("all", "ref")):
         R = pr["R"] if isinstance(pr["R"], (list, tuple)) else [pr["R"], pr["R"]]
         out.append(dict(base, kind="torus", M=F, params={
             "R": _vec(R)[None], "r": np.array([float(pr["r"])]), "w": np.array([float(pr.get("w", pr["r"]))]),
-            "taper": np.array([float(pr.get("taper", 0.0))])}))
+            "taper": np.array([float(pr.get("taper", 0.0))]), "round": np.array([float(pr.get("round", 0.0))])}))
     else:
         raise ValueError(f"unknown shape {shape!r} in part {sp['name']}")
     if det:
@@ -888,6 +895,9 @@ def pose_parts(char, worlds, chain_pts, body_c, face_m, lod="all", subdiv=1):
         if "chain" in sp:
             sweeps.setdefault(sp["chain"], []).append(sp)
             continue
+        if sp.get("follow"):
+            out += _pose_static(sp, _follow_worlds(sp, char, worlds, chain_pts), face_m, lods)
+            continue
         out += _pose_static(sp, worlds, face_m, lods)
     for c in char.get("chains", []):
         pts = chain_pts[c["name"]]
@@ -903,6 +913,30 @@ def pose_parts(char, worlds, chain_pts, body_c, face_m, lod="all", subdiv=1):
             for p in chain_primitives(c, pts, body_c, subdiv=subdiv):
                 out.append(_ell_from_legacy(p, face_m @ p["M"]))
     return out
+
+
+def _follow_worlds(sp, char, worlds, chain_pts):
+    """"follow": {"chain", "gain"}: a rigid part (e.g. a bow loop) rides a spring chain. Its bone frame is rotated
+    about the chain anchor by the chain's deflection from its rest direction (times gain) -> bounce and lag."""
+    fo = sp["follow"]
+    c = next(c for c in char["chains"] if c["name"] == fo["chain"])
+    m = worlds[c["anchor_bone"]]
+    a = m[:3, :3] @ np.asarray(c["anchor"], float) + m[:3, 3]
+    r = m[:3, :3] @ np.asarray(c["rest_dir"], float)
+    r /= np.linalg.norm(r)
+    pts = chain_pts[c["name"]]
+    u = np.asarray(pts[1], float) - np.asarray(pts[0], float)
+    u /= max(np.linalg.norm(u), 1e-9)
+    ax = np.cross(r, u)
+    s_, c_ = np.linalg.norm(ax), float(np.clip(r @ u, -1, 1))
+    ang = math.atan2(s_, c_) * float(fo.get("gain", 1.0))
+    R = np.eye(4)
+    if s_ > 1e-9:
+        k = ax / s_
+        K = np.array([[0, -k[2], k[1]], [k[2], 0, -k[0]], [-k[1], k[0], 0]])
+        R[:3, :3] = np.eye(3) + math.sin(ang) * K + (1 - math.cos(ang)) * (K @ K)
+    M = translate(*a) @ R @ translate(*(-a)) @ worlds[sp["bone"]]
+    return dict(worlds, **{sp["bone"]: M})
 
 
 def legacy_to_parts(prims):

@@ -16,6 +16,19 @@ CAP_C, CAP_R = np.array([0, 7.476, 0.0]), np.array([8.988, 8.652, 8.736])
 HEAD_C, HEAD_R = np.array([0, 7.14, 0.5]), np.array([8.4, 7.98, 7.98])
 BACK_C, BACK_R = np.array([0, 4.6, -4.4]), np.array([7.8, 5.2, 4.0])
 
+# ---- r12 round-2 tuning (reviews docs/review/r12_hd_review_{AD,anim,GD}.md)
+SIDELOCK_FRONT_Z = 0.6                       # was 2.8: profile eye glint (AD1)
+BOW_LOOP = {"R": [3.7, 1.55], "r": 0.5, "w": 2.8, "taper": 0.18, "round": 0.85}  # AD5 + r13 C (puffy)
+BOW_SPRING_GAIN = 0.8
+BOW_TILT, BOW_Y = 24, 10.8
+CROWN_LIFT = -0.42                           # GD4: crown clumps 0.12 closer to the cap (1 px crown bump in run NE)
+HEM_R, HEM_W, HEM_Y = [8.15, 6.8], 1.15, -5.05   # AD2
+CUFF_R, CUFF_Y = [1.65, 1.65], -4.75         # AD4
+BELT_R = [3.05, 2.55]
+BELT_CLIP = [[0, 0, 1, -0.6]]                # anim1: no belt behind the hips (it grazed the hips and strobed in NE/NW)
+PALM_B, MCUFF_R = [1.45, 1.6, 1.2], [1.25, 1.2]
+RING = {"ring_w": 0.14}                      # AD3: bang/crown rust highlight arc (legacy hair_style ring_w 0.12)
+
 
 def r3(v):
     return [round(float(x), 3) for x in v]
@@ -69,7 +82,7 @@ def hair_parts():
         for sg, s in ((1, "L"), (-1, "R")):
             u0 = unit(sg * az, el)
             u1 = unit(sg * (180 - 7 - 3.2 * k), el_end)
-            pts = [on_ell(CAP_C, CAP_R, slerp(u0, u1, t), lift=-0.3) for t in np.linspace(0, 1, 13)]
+            pts = [on_ell(CAP_C, CAP_R, slerp(u0, u1, t), lift=CROWN_LIFT) for t in np.linspace(0, 1, 13)]
             rr = list(np.interp(np.linspace(0, 1, 13), [0, 0.15, 0.35, 0.7, 1.0], [0.9, 1.45, 1.6, 1.3, 0.8]))
             P.append(part(f"crown_{s}{k}", "tube", {"pts": [r3(p) for p in pts], "r": r3(rr), "flat": 0.42,
                                                      "flat_c": r3(CAP_C)}))
@@ -109,7 +122,8 @@ def hair_parts():
                                      "flat_c": r3(HEAD_C)}))
     # --- flat-cut hime side locks: 2 clumps per side, cut straight across at the jaw (cone = flat ends)
     for sg, s in ((1, "L"), (-1, "R")):
-        for nm, z, ybot, dx in (("front", 2.8, -0.9, 0.0), ("back", 0.4, -0.2, 0.55)):
+        # r12 round 2 (AD1): the front clump sits 0.8 further back than M1 so the profile eye + glint stay on skin
+        for nm, z, ybot, dx in (("front", SIDELOCK_FRONT_Z, -0.9, 0.0), ("back", 0.4, -0.2, 0.55)):
             pts = [[sg * (7.3 + dx), 10.2, z - 0.2], [sg * (8.35 + dx), 4.6, z + 0.1], [sg * (7.95 + dx), ybot, z + 0.4]]
             P.append(part(f"sidelock_{s}_{nm}", "tube", {"pts": [r3(p) for p in pts], "r": [1.5, 1.85, 1.65],
                                                           "flat": 0.5, "flat_c": r3(HEAD_C), "cut_end": True}))
@@ -129,31 +143,111 @@ def hair_parts():
     return P
 
 
+# ---- r13 user request A/B: anime head construction + modelled eyes (reference geometry)
+EYE_MARK = (3.55, 5.55)      # eye centre x, y (head-bone space); z found on the face surface
+MOUTH_MARK = (0.0, 2.35)
+# r13 D: gait-driven lateral hair sway [amp (units/s^2), phase (cycles), periods per loop] per clip; force in phase with
+# the torso lean = counter-phase to the hips, the verlet chains add the lag / follow-through
+SWAY_CURTAIN = {"walk": [520, 0.0, 1], "carry_walk": [420, 0.0, 1], "run": [650, 0.0, 1]}
+SWAY_PONY = {"walk": [1300, 0.0, 1], "carry_walk": [1000, 0.0, 1], "run": [1600, 0.0, 1]}
+FACE_SET = {"set": "face", "k": 1.6}
+
+
+def head_parts():
+    """Rounder cranium, cheeks narrowing to a soft pointed chin, a slight cheekbone plane, a jaw line visible in 3/4
+    and profile. Replaces the legacy head sphere (which stays as the sim / QA collider)."""
+    P = [{"name": "cranium", "bone": "head", "shape": "ellipsoid", "center": [0, 7.7, 0.1], "radii": [8.35, 7.7, 7.85],
+          "material": "skin", "group": "head", "blend": dict(FACE_SET), "lod": "all"},
+         # lower face: narrower than the cranium (jaw taper), pushed forward
+         {"name": "jaw", "bone": "head", "shape": "ellipsoid", "center": [0, 3.9, 1.7], "radii": [6.5, 4.4, 6.35],
+          "material": "skin", "group": "head", "blend": dict(FACE_SET), "lod": "all"},
+         # chin: soft point, forward and down
+         P_("chin", "head", "rcone", {"a": [0, 3.2, 3.9], "b": [0, 0.15, 5.7], "ra": 3.0, "rb": 1.05}, "skin", "head",
+            blend=dict(FACE_SET))]
+    for sg, s in ((1, "L"), (-1, "R")):
+        # cheekbone plane: a flattened pad under each eye that squares the cheek in 3/4
+        P.append({"name": f"cheek_{s}", "bone": "head", "shape": "ellipsoid", "center": [sg * 4.2, 4.3, 4.4],
+                  "radii": [2.2, 2.0, 1.9], "rot": [0, sg * 28, 0], "material": "skin", "group": "head",
+                  "blend": dict(FACE_SET), "lod": "all"})
+    return P
+
+
+def eye_marks():
+    """Eye centres on the modelled face surface (head-bone space), used by the sprite face pass for per-eye
+    perspective and drawn as dark almond lenses on the hi-res refs / STL only (lod ref)."""
+    import sys
+    sys.path.insert(0, ROOT)
+    from pipeline import sdf
+    parts = [dict({"group": "head", "op": "union", "lod": "all"}, **p) for p in head_parts()]
+    W = {"head": np.eye(4)}
+    prims = []
+    for sp in parts:
+        prims += sdf._pose_static(sp, W, np.eye(4))
+    C = sdf._Compiled(prims)
+    out = []
+    for sg, (x, y) in ((1, EYE_MARK), (-1, EYE_MARK), (0, MOUTH_MARK)):
+        x = sg * x
+        lo, hi = 0.0, 12.0
+        for _ in range(40):                     # bisection along +z for the front skin surface
+            m = (lo + hi) / 2
+            d, _ = sdf.scene_sdf(prims, np.array([[x, y, m]]), C)
+            lo, hi = (m, hi) if d[0] < 0 else (lo, m)
+        out.append([round(x, 3), round(y, 3), round(lo, 3)])
+    return out
+
+
+def eye_ref_parts(marks):
+    P = []
+    for (x, y, z), s in zip(marks[:2], "LR"):
+        yaw = math.degrees(math.atan2(x, 6.0))
+        P.append({"name": f"eye_ref_{s}", "bone": "head", "shape": "ellipsoid", "center": [x, y, z - 0.15],
+                  "radii": [1.25, 1.55, 0.45], "rot": [0, yaw, 0], "material": "pants", "group": "head", "lod": "ref"})
+    return P
+
+
 def bow_parts():
+    """r13 C: puffy bow. Loops are thick rounded band rings (real volume, not plates) riding spring chains (bounce on
+    run / jump / land, lag on turns); unequal soft folds (refs); a pinched knot; V-cut tails on their own chains."""
     P = []
     for sg, s in ((-1, "L"), (1, "R")):
-        # open loop: flattened elliptical band ring, ribbon width along local y, wider toward the outer end
-        rot = [0, 180, 18] if sg < 0 else [0, 0, 18]
+        rot = [0, 180, BOW_TILT] if sg < 0 else [0, 0, BOW_TILT]
         zs = 1 if sg < 0 else -1        # local z of the outward (visible) face after the 180 deg yaw
-        P.append({"name": f"bow_loop_{s}", "bone": "head", "shape": "torus", "center": [sg * 4.2, 10.9, -9.9], "rot": rot,
-                  "params": {"R": [3.7, 1.2], "r": 0.3, "w": 1.95, "taper": 0.18}, "material": "ribbon", "group": "hat",
+        fol = {"chain": f"bow_spring_{s}", "gain": BOW_SPRING_GAIN}
+        P.append({"name": f"bow_loop_{s}", "bone": "head", "shape": "torus", "center": [sg * 4.2, BOW_Y, -9.9], "rot": rot,
+                  # group = its spring chain: like the pom / scarf, a bouncing loop is secondary motion for the QA height
+                  "params": dict(BOW_LOOP), "material": "ribbon", "group": f"bow_spring_{s}", "follow": fol,
                   "blend": {"set": f"loop_{s}", "k": 0.0}, "lod": "all"})
-        for c, (y0, y1) in enumerate(((0.75, 0.3), (-0.75, -0.3))):
-            P.append({"name": f"bow_crease_{s}{c}", "bone": "head", "shape": "capsule", "center": [sg * 4.2, 10.9, -9.9],
-                      "rot": rot, "params": {"a": [-2.7, y0 * 1.3, zs * 1.5], "b": [0.9, y1, zs * 1.42], "r": 0.22},
-                      "material": "ribbon", "group": "hat", "op": "subtract", "blend": {"set": f"loop_{s}", "k": 0.12},
-                      "lod": "ref"})
-    P.append({"name": "bow_knot", "bone": "head", "shape": "rbox", "center": [0, 10.8, -10.6],
-              "params": {"b": [1.3, 1.55, 1.05], "r": 0.6}, "material": "hatcuff", "group": "hat",
+        # unequal soft folds: two creases on the left loop, three on the right, at different heights
+        folds = ((0.75, 0.3), (-0.75, -0.3)) if sg < 0 else ((0.95, 0.45), (0.05, -0.1), (-0.85, -0.4))
+        dz = BOW_LOOP["R"][1] + BOW_LOOP["r"]
+        for c, (y0, y1) in enumerate(folds):
+            P.append({"name": f"bow_crease_{s}{c}", "bone": "head", "shape": "capsule", "center": [sg * 4.2, BOW_Y, -9.9],
+                      "rot": rot, "params": {"a": [-2.7, y0 * 1.3, zs * dz], "b": [0.9, y1, zs * (dz - 0.08)], "r": 0.26},
+                      "material": "ribbon", "group": f"bow_spring_{s}", "op": "subtract", "follow": fol,
+                      "blend": {"set": f"loop_{s}", "k": 0.15}, "lod": "ref"})
+    # pinched knot: a narrow waisted core (the loops' rounded inner ends pinch into it)
+    P.append({"name": "bow_knot", "bone": "head", "shape": "rbox", "center": [0, 10.8, -10.7],
+              "params": {"b": [1.05, 1.45, 1.1], "r": 0.65}, "material": "hatcuff", "group": "hat",
               "blend": {"set": "knot", "k": 0.0}, "lod": "all"})
     for sg in (-1, 1):
         P.append({"name": f"knot_groove_{'L' if sg < 0 else 'R'}", "bone": "head", "shape": "capsule",
-                  "center": [0, 10.8, -10.6], "params": {"a": [sg * 0.5, -1.0, -1.12], "b": [sg * 0.45, 1.0, -1.12], "r": 0.2},
+                  "center": [0, 10.8, -10.7], "params": {"a": [sg * 0.45, -1.0, -1.2], "b": [sg * 0.4, 1.0, -1.2], "r": 0.2},
                   "material": "hatcuff", "group": "hat", "op": "subtract", "blend": {"set": "knot", "k": 0.1}, "lod": "ref"})
     for s in "LR":
         P.append({"name": f"bow_tail_{s}_sweep", "chain": f"bow_tail_{s}", "material": "hatcuff", "group": "hat",
                   "lod": "all", "sweep": {"clumps": 1, "tip": "fork", "fork_depth": 0.6}})
     return P
+
+
+def loop_chains():
+    """Invisible 1-segment spring chains that carry the bow loops (draw_segments False: only the loops render)."""
+    out = []
+    for sg, s in ((-1, "L"), (1, "R")):
+        out.append({"name": f"bow_spring_{s}", "anchor_bone": "head", "anchor": [sg * 1.0, 10.9, -10.6],
+                    "rest_dir": [sg * 0.92, 0.38, 0.0], "segments": 1, "seg_len": 3.6, "widths": [1.0],
+                    "thickness": 0.5, "material": "ribbon", "group": "hat", "draw_segments": False,
+                    "stiffness": 480, "damping": 0.16, "gravity": 160, "collide": False, "max_swing": 15})
+    return out
 
 
 def curtain_chains():
@@ -162,7 +256,7 @@ def curtain_chains():
         out.append({"name": f"curtain_{k}", "anchor_bone": "head", "anchor": r3([x, 8.6, cap_z(x, 8.6, sign=-1, out=-0.4)]),
                     "rest_dir": r3([x * 0.07, -1, -0.22]), "segments": 2, "seg_len": 4.6 if k % 2 == 0 else 4.1,
                     "widths": [1.7, 1.55], "thickness": 0.75, "material": "hair", "group": "head", "stiffness": 260,
-                    "damping": 0.15, "gravity": 900, "collide": True})
+                    "damping": 0.15, "gravity": 900, "collide": True, "sway": SWAY_CURTAIN})
     return out
 
 
@@ -198,8 +292,8 @@ def coat_parts():
                   "center": r3([0, y, surf(BODICE_C, BODICE_R, 0, y, 1, 0.2)]), "radii": [0.42, 0.42, 0.22], "lod": "ref"})
     # stand collar (under the scarf) and belt band with a buckle (hole + tongue on refs)
     P.append(P_("collar_band", "neck", "torus", {"R": [3.0, 2.5], "r": 0.4, "w": 1.2}, "coat_trim", "torso", center=[0, -0.5, 0.0]))
-    P.append(P_("belt_band", "spine", "torus", {"R": [3.05, 2.55], "r": 0.45, "w": 0.75}, "coat_trim", "belt",
-                center=[0, -0.3, 0.1]))
+    P.append(P_("belt_band", "spine", "torus", {"R": BELT_R, "r": 0.45, "w": 0.75}, "coat_trim", "belt",
+                center=[0, -0.3, 0.1], clip_all=BELT_CLIP))
     bz = 0.1 + 2.55 + 0.45 + 0.1
     P.append(P_("buckle", "spine", "rbox", {"b": [0.95, 0.75, 0.22], "r": 0.15}, "ribbon", "belt", center=[0, -0.3, bz],
                 blend={"set": "buckle", "k": 0.0}))
@@ -212,8 +306,10 @@ def coat_parts():
                                                  "flat": 0.83, "flat_n": [0, 0, 1]}, "coat", "torso", center=[0, 0, 0.15],
                 blend={"set": "torso", "k": 0.8},
                 detail={"type": "pleats", "n": 10, "depth": 0.45, "y0": -0.8, "y1": -5.25, "lod": "all"}))
-    P.append(P_("hem_band", "pelvis", "torus", {"R": [8.15, 6.8], "r": 0.45, "w": 0.75}, "coat_trim", "torso",
-                center=[0, -5.45, 0.15], detail={"type": "scallop", "n": 16, "depth": 0.45, "y0": -0.15, "y1": -0.75, "lod": "all"}))
+    # r12 round 2 (AD2/GD5): a 2-px rust hem band at sprite size (legacy y49-50); scallops only on the hi-res refs
+    P.append(P_("hem_band", "pelvis", "torus", {"R": HEM_R, "r": 0.45, "w": HEM_W}, "coat_trim", "torso",
+                center=[0, HEM_Y, 0.15], detail={"type": "scallop", "n": 16, "depth": 0.45, "y0": HEM_W - 0.9,
+                                                 "y1": -HEM_W, "lod": "ref"}))
     # pocket flaps on the skirt front, following the cone slope
     for sx in (-1, 1):
         y = -1.3
@@ -238,6 +334,24 @@ def scarf_parts():
     return P
 
 
+SOLE_Y = -1.95        # GD3: flat sole plane in ankle space (cuts the boot set smooth-min bulge below the sole)
+TOE_SPRING = (2.0, 0.5)   # GD3: sole turns up 0.5 per unit forward of z=2.0 (a planted forward foot no longer dips
+                           # a pixel below the ground line through the 16 deg camera)
+HEEL_SPRING = (-1.4, 0.5)  # GD4: same for the heel back edge (back views of the run stride sat 1 px lower)
+
+
+def sole_clip(c, radii=(1.0, 1.0, 1.0)):
+    """clip_all planes (ankle space: y >= SOLE_Y and the toe spring) in the local frame of a part centred at c
+    (ellipsoid parts: local = unit sphere scaled by radii)."""
+    z0, k = TOE_SPRING
+    out = []
+    zh, kh = HEEL_SPRING
+    for n, d in (((0.0, 1.0, 0.0), SOLE_Y), ((0.0, 1.0, -k), SOLE_Y - k * z0), ((0.0, 1.0, kh), SOLE_Y + kh * zh)):
+        nl = [n[i] * radii[i] for i in range(3)]
+        out.append([round(v, 4) for v in nl] + [round(d - sum(n[i] * c[i] for i in range(3)), 4)])
+    return out
+
+
 def limb_parts():
     P = []
     for s, sg in (("L", 1), ("R", -1)):
@@ -249,17 +363,18 @@ def limb_parts():
         for c, y in enumerate((0.9, -0.9)):
             P.append(P_(f"sleeve_crease_{s}{c}", f"elbow_{s}", "torus", {"R": [2.05, 2.05], "r": 0.16}, "coat", f"arm_{s}",
                         lod="ref", center=[0, y, 0], rot=[0, 0, 8 * (1 - 2 * c)], op="subtract", blend={"set": st, "k": 0.1}))
-        P.append(P_(f"cuff_hd_{s}", f"elbow_{s}", "torus", {"R": [1.65, 1.65], "r": 0.45, "w": 0.75}, "coat_trim", f"arm_{s}",
-                    center=[0, -4.75, 0]))
+        # r12 round 2 (AD4): slimmer cuff set back from the wrist so the teal mitten always wins over it
+        P.append(P_(f"cuff_hd_{s}", f"elbow_{s}", "torus", {"R": CUFF_R, "r": 0.35, "w": 0.68}, "coat_trim", f"arm_{s}",
+                    center=[0, CUFF_Y, 0]))
         # mitten: rounded palm box, thumb at 35 deg with a gap, ribbed knit cuff
-        P.append(P_(f"palm_{s}", f"hand_{s}", "rbox", {"b": [1.45, 1.6, 1.2], "r": 1.0}, "mitten", f"arm_{s}",
+        P.append(P_(f"palm_{s}", f"hand_{s}", "rbox", {"b": PALM_B, "r": 1.0}, "mitten", f"arm_{s}",
                     center=[0, -1.25, 0.15]))
         a = np.array([-sg * 0.85, -0.5, 0.95])
         dvec = np.array([-sg * math.sin(math.radians(35)) * 0.6, -math.cos(math.radians(35)), math.sin(math.radians(35)) * 0.8])
         dvec /= np.linalg.norm(dvec)
         P.append(P_(f"thumb_hd_{s}", f"hand_{s}", "rcone", {"a": r3(a), "b": r3(a + 1.3 * dvec), "ra": 0.68, "rb": 0.58},
                     "mitten", f"arm_{s}"))
-        P.append(P_(f"mitten_cuff_{s}", f"hand_{s}", "torus", {"R": [1.25, 1.2], "r": 0.42, "w": 0.68}, "mitten", f"arm_{s}",
+        P.append(P_(f"mitten_cuff_{s}", f"hand_{s}", "torus", {"R": MCUFF_R, "r": 0.42, "w": 0.68}, "mitten", f"arm_{s}",
                     center=[0, 0.05, 0.1], detail={"type": "ridges", "n": 12, "depth": 0.12, "lod": "ref"}))
         # tights: thigh capsule + calf cone blended at the knee
         P.append(P_(f"thigh_hd_{s}", f"hip_{s}", "rcone", {"a": [0, -0.2, 0], "b": [0, -6.5, 0], "ra": 1.75, "rb": 1.45},
@@ -271,16 +386,16 @@ def limb_parts():
         P.append(P_(f"shaft_{s}", f"knee_{s}", "cone", {"a": [0, -0.2, 0], "b": [0, -6.3, 0], "ra": 1.95, "rb": 1.7},
                     "boots", f"leg_{s}", blend={"set": bs, "k": 0.7}))
         P.append(P_(f"foot_{s}", f"ankle_{s}", "rbox", {"b": [1.95, 0.95, 2.6], "r": 0.95}, "boots", f"leg_{s}",
-                    center=[0, -0.95, 0.55], blend={"set": bs, "k": 0.7}))
+                    center=[0, -0.95, 0.55], blend={"set": bs, "k": 0.7}, clip_all=sole_clip([0, -0.95, 0.55])))
         P.append({"name": f"toe_{s}", "bone": f"ankle_{s}", "shape": "ellipsoid", "center": [0, -0.8, 1.75],
                   "radii": [2.0, 1.0, 1.5], "material": "boots", "group": f"leg_{s}", "lod": "all",
-                  "blend": {"set": bs, "k": 0.35}})
+                  "blend": {"set": bs, "k": 0.35}, "clip_all": sole_clip([0, -0.8, 1.75], [2.0, 1.0, 1.5])})
         P.append(P_(f"sole_{s}", f"ankle_{s}", "rbox", {"b": [2.05, 0.3, 2.3], "r": 0.25}, "boots", f"leg_{s}",
-                    center=[0, -1.6, 0.3], blend={"set": bs, "k": 0.1}))
+                    center=[0, -1.6, 0.3], blend={"set": bs, "k": 0.1}, clip_all=sole_clip([0, -1.6, 0.3])))
         P.append(P_(f"welt_{s}", f"ankle_{s}", "rbox", {"b": [2.13, 0.07, 2.38], "r": 0.05}, "boots", f"leg_{s}", lod="ref",
                     center=[0, -1.27, 0.3], blend={"set": bs, "k": 0.0}))
         P.append(P_(f"heel_{s}", f"ankle_{s}", "rbox", {"b": [1.55, 0.6, 0.95], "r": 0.2}, "boots", f"leg_{s}",
-                    center=[0, -1.3, -1.25], blend={"set": bs, "k": 0.1}))
+                    center=[0, -1.3, -1.25], blend={"set": bs, "k": 0.1}, clip_all=sole_clip([0, -1.3, -1.25])))
         P.append(P_(f"boot_seam_{s}", f"knee_{s}", "capsule", {"a": [0, -1.2, -1.95], "b": [0, -6.0, -1.72], "r": 0.14},
                     "boots", f"leg_{s}", lod="ref", op="subtract", blend={"set": bs, "k": 0.05}))
         P.append(P_(f"bootcuff_hd_{s}", f"knee_{s}", "torus", {"R": [1.9, 1.9], "r": 0.6, "w": 1.3}, "boot_cuff",
@@ -300,22 +415,41 @@ def tail_chains():
     return out
 
 
+def pony_chain():
+    """The legacy pony chain (S4_halfup_bow add_chains) with the r13 gait sway."""
+    with open(os.path.join(ROOT, "data", "variants", "S4_halfup_bow.json")) as f:
+        base = json.load(f)["add_chains"]
+    return [dict(c, sway=SWAY_PONY) if c["name"] == "pony" else c for c in base]
+
+
 def main():
+    marks = eye_marks()
     spec = {
         "extends": "S4_halfup_bow",
         "name": "S4_hd",
         "label": "S4 HD - SDF reference model (r12 M1-M3: hair, bow, coat, scarf, limbs)",
         "model": "hd",
-        "remove_parts": ["fringe", "sidelock_L", "sidelock_R", "ribbon_loop_0", "ribbon_loop_1", "ribbon_knot",
+        "remove_parts": ["head", "fringe", "sidelock_L", "sidelock_R", "ribbon_loop_0", "ribbon_loop_1", "ribbon_knot",
                          "ribbon_tail_L", "ribbon_tail_R",
                          # M2/M3: body ellipsoids replaced by HD parts (legacy prims stay as sim/QA colliders)
                          "skirt_coat", "hem", "belt", "collar", "scarf_wrap1", "scarf_wrap2", "scarf_knot"]
                         + [f"{n}_{s}" for s in "LR" for n in ("uparm", "forearm", "cuff", "mitten", "thumb", "thigh",
                                                               "shin", "boot", "bootcuff")],
-        "part_overrides": {"hair_cap": {"blend": {"set": "cap", "k": 0.0}},
+        "part_overrides": {"hair_cap": {"blend": {"set": "cap", "k": 0.0}, "vote": "hair|head"},
+                           "hair_back": {"vote": "hair|head"},
                            **{n: {"blend": {"set": "torso", "k": 0.8}} for n in ("bodice", "waist", "hips_coat")}},
-        "hd_chains": tail_chains() + curtain_chains(),
-        "parts": hair_parts() + bow_parts() + coat_parts() + scarf_parts() + limb_parts(),
+        "render": {"hair_style": dict(RING),
+                   # r13 B: sprite face eyes at their own projected modelled eye positions (perspective)
+                   "face_eyes": {"markers": marks[:2], "mouth": marks[2], "gap": 2, "contour": 1}, "lineart": {"keep_selout_runs": ["ribbon"]},
+                   # anim3: bow loop vs raised teal mitten get a 1 px teal_0 separation (same fill colour)
+                   "separate_materials": [["ribbon", "mitten"]],
+                   # anim2: hold 1-frame crown / bow-knot flicker in the idle loops
+                   "temporal_hold": {"clips": ["idle", "carry_idle"], "rows": 12,
+                                     "colors": ["outline", "plum_0", "hair_1", "hair_2", "teal_0", "teal_1"]}},
+        "add_chains": pony_chain(),
+        "hd_chains": tail_chains() + curtain_chains() + loop_chains(),
+        "parts": head_parts() + eye_ref_parts(marks) + hair_parts() + bow_parts() + coat_parts() + scarf_parts()
+                 + limb_parts(),
     }
     path = os.path.join(ROOT, "data", "variants", "S4_hd.json")
     with open(path, "w") as f:

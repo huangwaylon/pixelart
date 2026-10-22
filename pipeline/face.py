@@ -374,3 +374,106 @@ def apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam
                 stamped.add((y, x))
     apply_face_cels.last_stamped = stamped        # designed pixels -> QA treats them as deliberate
     return out, view
+
+
+def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam, spec):
+    """Opt-in per-eye face cels (render.face_eyes, HD model): the view's cel is split into its eye blocks (columns
+    holding E/C, with the blush under them) and the mouth; each eye block is placed at its OWN projected eye marker
+    (modelled eye positions on the head, head-bone space), the mouth at the projected mouth marker. Spacing rules:
+    >= `gap` px nose bridge between the eyes and >= `contour` px skin between each eye and the cheek contour (the
+    far eye moves in first, then the near eye moves out). Profile / back views keep the nose-pinned cel."""
+    view, right = face_view(head_world, cam)
+    if view in ("back", "profile"):
+        return apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam)
+    vs = cels["views"].get(view, {})
+    cel = vs.get(expression)
+    if cel is None and expression == "blink" and vs.get("neutral"):
+        n = vs["neutral"]
+        lash = n["rows"][0].replace("C", "E")
+        cel = {"origin": n["origin"], "rows": ["." * len(lash), lash]}
+    cel = cel or vs.get("neutral")
+    if not cel:
+        return idx, view
+    rows = cel["rows"] if (right or view == "front") else [r[::-1] for r in cel["rows"]]
+    ox, oy = cel["origin"]
+    w = len(rows[0])
+    eye_cols = [c for c in range(w) if any(r[c] in "EC" for r in rows)]
+    blocks = []
+    for c in eye_cols:
+        if blocks and c == blocks[-1][-1] + 1:
+            blocks[-1].append(c)
+        else:
+            blocks.append([c])
+    if len(blocks) != 2:
+        return apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam)
+    # projected markers, sorted screen-left -> right, with facing (front-ness) per eye
+    c0 = xform_point(head_world, face["center"])
+    mk = []
+    for m in spec["markers"]:
+        p = xform_point(head_world, m)
+        nrm = (p - c0) / np.linalg.norm(p - c0)
+        mk.append((cam.project(p, pivot), float(np.dot(nrm, cam.to_cam))))
+    mk.sort(key=lambda e: e[0][0])
+    ey = int(math.floor(sum(e[0][1] for e in mk) / 2))          # eyes share one row (alignment rule)
+    skin_ids = [palette.index[n] for n in palette.ramps["skin"]]
+    H, W = idx.shape
+    gap, contour = int(spec.get("gap", 2)), int(spec.get("contour", 1))
+    starts = [int(math.floor(e[0][0])) - (len(b) - 1) // 2 for e, b in zip(mk, blocks)]
+    far = 0 if mk[0][1] < mk[1][1] else 1
+    rowy = ey - oy + max(0, min(oy + 1, len(rows) - 1))        # middle eye row on screen
+
+    def skin_out(k):
+        """skin pixels between eye block k and the face contour on its outer side, on the middle eye row."""
+        y = rowy
+        if not 0 <= y < H:
+            return contour
+        step = -1 if k == 0 else 1
+        x = starts[k] - 1 if k == 0 else starts[k] + len(blocks[k])
+        n = 0
+        while 0 <= x < W and idx[y, x] in skin_ids and n < 4:
+            n += 1
+            x += step
+        return n
+    for _ in range(4):
+        g = starts[1] - (starts[0] + len(blocks[0]))
+        if g < gap:                                             # nose bridge first: push the eyes apart
+            k = 1 - far if skin_out(1 - far) > contour else far
+            starts[k] += -1 if k == 0 else 1
+            continue
+        moved = False
+        for k in (far, 1 - far):
+            if skin_out(k) < contour:
+                if g <= gap:                                    # make room: the other eye steps outward first
+                    o = 1 - k
+                    if skin_out(o) <= (0 if o != far else contour):   # the near eye may meet the hairline
+                        continue
+                    starts[o] += -1 if o == 0 else 1
+                starts[k] += 1 if k == 0 else -1               # move in, never closing the bridge below `gap`
+                moved = True
+                break
+        if not moved:
+            break
+    # paint: eye blocks (+ blush under them), mouth at the mouth marker
+    colors = {"E": palette.special["eye"], "C": palette.special.get("catchlight", palette.special["eye"]),
+              "B": palette.special["blush"], "M": palette.special["mouth"],
+              "S": skin_ids[0], "s": skin_ids[min(1, len(skin_ids) - 1)]}
+    mcols = [c for c in range(w) if any(r[c] == "M" for r in rows)]
+    mp = cam.project(xform_point(head_world, spec["mouth"]), pivot) if spec.get("mouth") else None
+    out = idx.copy()
+    stamped = set()
+    y0 = ey - oy
+    for j, row in enumerate(rows):
+        for i, ch in enumerate(row):
+            if ch == ".":
+                continue
+            if ch == "M" and mp is not None:
+                x = int(math.floor(mp[0])) + (i - (mcols[0] + mcols[-1]) // 2)
+            else:
+                k = 0 if abs(i - blocks[0][len(blocks[0]) // 2]) <= abs(i - blocks[1][len(blocks[1]) // 2]) else 1
+                x = starts[k] + (i - blocks[k][0])
+            y = y0 + j
+            if 0 <= x < W and 0 <= y < H and out[y, x] in skin_ids:
+                out[y, x] = colors[ch]
+                stamped.add((y, x))
+    apply_face_cels.last_stamped = stamped
+    return out, view

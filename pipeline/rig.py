@@ -256,6 +256,15 @@ class ChainSim:
                 if wind:
                     acc[:, 2] -= wind
                     acc[:, 1] += 0.15 * wind          # slight lift so trailing locks float rather than drag
+                sway = c.get("sway", {}).get(self.anim.anim.get("name", ""))
+                if sway:
+                    # opt-in (HD variant): lateral sway driven by the gait cycle, in the pelvis frame, so long hair
+                    # swings left/right in counter-phase to the hips; the verlet sim adds the lag / follow-through
+                    amp, phase = float(sway[0]), float(sway[1])
+                    cyc = float(sway[2]) if len(sway) > 2 else 1.0           # sway periods per clip loop
+                    w_ = 2 * math.pi * cyc * ((t + SIM_DT * 1000) / self.anim.total_ms) + 2 * math.pi * phase
+                    side = worlds["pelvis"][:3, 0] / np.linalg.norm(worlds["pelvis"][:3, 0])
+                    acc += amp * math.sin(w_) * side
                 acc += c["stiffness"] * (rest - cur)
                 nxt = cur + (cur - prev) * (1 - c["damping"]) + acc * SIM_DT * SIM_DT
                 nxt[0] = anchor

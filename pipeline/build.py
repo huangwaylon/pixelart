@@ -93,6 +93,9 @@ def render_all(scene, anim_name, ov_key=None):
                 final[d].append(apply_override(b, ov))
             else:
                 final[d].append(b)
+    th = scene.char.get("render", {}).get("temporal_hold")
+    if th and scene.anim_data.get("loop") and anim_name in th.get("clips", []):
+        final = {d: scene.temporal_hold(final[d], d, th) for d in scene.dirs}   # opt-in (HD variant), see frames.py
     return base, final, ov_meta
 
 
