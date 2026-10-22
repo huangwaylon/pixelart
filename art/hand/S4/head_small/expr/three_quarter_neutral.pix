@@ -1,14 +1,15 @@
 # r13 head_small THREE-QUARTER expression: neutral. Pixel artist 3. Hand-authored patches over head_three_quarter.pix.
 extends: ../head_three_quarter.pix
 patch: 7 15
-uuuuuuuuuuuuuuuuu
-sssddssssdddssssu
+uuudduuuuddduuuuu
+ssssssssssssssssu
 ssssssssssssssssu
 patch: 8 17
 _____
 sKKKK
-Kiiin
-sjWjn
+KKiin
+siWin
+sjjjs
 sjjjs
 skkjs
 sLLss
@@ -16,14 +17,15 @@ patch: 15 17
 ______
 KKKKKs
 iiiinK
-jWjjns
+iWiins
+jjjjss
 jjjjss
 jkkkss
 ssLLLs
-patch: 6 24
-sxxsssssssstxxsssu
-LttssssvssssttsssL
-patch: 10 26
-ssssssss
-sssrrsss
-ssssssss
+patch: 6 25
+LxxssssvssstxxsssL
+dLssssssssssttssLd
+patch: 11 26
+ssssss
+srssrs
+ssrrss

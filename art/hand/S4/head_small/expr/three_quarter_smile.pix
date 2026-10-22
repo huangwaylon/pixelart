@@ -2,28 +2,30 @@
 extends: ../head_three_quarter.pix
 patch: 7 15
 uuudduuuuddduuuuu
-ssssssssssssssssu
+ssdsssssssssdsssu
 ssssssssssssssssu
 patch: 8 17
 _____
 sKKKK
-Kiiin
-sjWjn
+KKiin
+siWin
 sjjjs
+skkjs
 sLLLs
 sssss
 patch: 15 17
 ______
 KKKKKs
 iiiinK
-jWjjns
+iWiins
 jjjjss
+jkkkss
 sLLLLs
 ssssss
-patch: 6 24
-sxxsssssssstxxsssu
-LttssssvssssttsssL
-patch: 10 26
-ssssssss
-ssrssrss
-sssrrsss
+patch: 6 25
+LxxssssvssstxxsssL
+dLssssssssssttssLd
+patch: 11 26
+ssssss
+rssssr
+srrrrs

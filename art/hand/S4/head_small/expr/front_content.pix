@@ -2,10 +2,11 @@
 extends: ../head_front.pix
 patch: 11 15
 uuuuuuuuuuuuuuuuuu
-ussssssssssssssssu
 usdddssssssssdddsu
+ussssssssssssssssu
 patch: 11 17
 ______
+usssss
 usssss
 usssss
 usssss
@@ -17,16 +18,17 @@ ______
 sssssu
 sssssu
 sssssu
+sssssu
 KsssKu
 sKKKsu
 sssssu
-patch: 11 24
+patch: 11 25
 uxxtsssssssssstxxu
-uttssssssssssssttu
+LttssssssssssssttL
 patch: 20 25
 v
 patch: 16 26
 ssssssss
-srssssrs
-ssrrrrss
+ssrssrss
+sssrrsss
 ssssssss
