@@ -336,13 +336,26 @@ def apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam
     r = np.asarray(face["radii"], float)
     p = c + r * np.array([0.0, math.sin(pitch), math.cos(pitch)])
     ax, ay = cam.project(xform_point(head_world, p), pivot)
-    x0, y0 = int(math.floor(ax)) - ox, int(math.floor(ay)) - oy
     skin_ids = [palette.index[n] for n in palette.ramps["skin"]]
+    if view == "profile":
+        # pin the profile cel to the face's actual front edge on the eye row -> nose is always exactly 1px
+        xi, yi = int(math.floor(ax)), int(math.floor(ay))
+        step = 1 if right else -1
+        H_, W_ = idx.shape
+        if 0 <= yi < H_:
+            x = min(max(xi, 0), W_ - 1)
+            while 0 <= x - step < W_ and idx[yi, x] not in skin_ids:
+                x -= step                     # walk back onto the face if the anchor fell outside
+            while 0 <= x + step < W_ and idx[yi, x + step] in skin_ids:
+                x += step                     # then forward to the last skin pixel (the nose tip)
+            ax = x + 0.5
+    x0, y0 = int(math.floor(ax)) - ox, int(math.floor(ay)) - oy
     colors = {"E": palette.special["eye"], "C": palette.special.get("catchlight", palette.special["eye"]),
               "B": palette.special["blush"], "M": palette.special["mouth"],
               "S": skin_ids[0], "s": skin_ids[min(1, len(skin_ids) - 1)]}
     out = idx.copy()
     H, W = out.shape
+    stamped = set()
     for j, row in enumerate(rows):
         for i, ch in enumerate(row):
             if ch == ".":
@@ -350,4 +363,6 @@ def apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam
             x, y = x0 + i, y0 + j
             if 0 <= x < W and 0 <= y < H and out[y, x] in skin_ids:      # only ever paint on visible skin
                 out[y, x] = colors[ch]
+                stamped.add((y, x))
+    apply_face_cels.last_stamped = stamped        # designed pixels -> QA treats them as deliberate
     return out, view

@@ -94,6 +94,22 @@ def render_all(scene, anim_name, ov_key=None):
     return base, final, ov_meta
 
 
+def anchors_for(scene):
+    """Projected hand / carry pixel anchors per direction and frame (engine spawns projectiles here)."""
+    out = {"hand_L": {}, "hand_R": {}, "carry": {}}
+    for d in scene.dirs:
+        for k in out:
+            out[k][d] = []
+        for i in range(len(scene.anim.keys)):
+            _, worlds = scene.primitives(i, d)
+            pl = scene.cam.project(worlds["hand_L"][:3, 3], scene.pivot)
+            pr = scene.cam.project(worlds["hand_R"][:3, 3], scene.pivot)
+            out["hand_L"][d].append([round(pl[0], 1), round(pl[1], 1)])
+            out["hand_R"][d].append([round(pr[0], 1), round(pr[1], 1)])
+            out["carry"][d].append([round((pl[0] + pr[0]) / 2, 1), round((pl[1] + pr[1]) / 2, 1)])
+    return out
+
+
 def write_build(anim_name, scene, palette, base, final, ov_meta, bid, hashes, out_dir):
     W, H = scene.size
     n = len(scene.anim.keys)
@@ -113,6 +129,9 @@ def write_build(anim_name, scene, palette, base, final, ov_meta, bid, hashes, ou
     meta = {
         "animation": anim_name, "buildId": bid, "buildHash": bid, "pipelineVersion": PIPELINE_VERSION,
         "inputLockEnd_ms": lock_end, "cameraElevation": scene.cam.elevation,
+        "loop": bool(scene.anim_data.get("loop", False)),
+        "props": [{k: v for k, v in pr.items() if k in ("name", "bone", "offset", "release_event")}
+                  for pr in scene.anim_data.get("props", [])],
         "image": f"{anim_name}_sheet.png", "frameSize": [W, H], "pivot": list(scene.pivot),
         "layout": "rows=directions, cols=frames, no padding",
         "directions": scene.dirs, "paletteId": palette.data["name"],
@@ -122,6 +141,7 @@ def write_build(anim_name, scene, palette, base, final, ov_meta, bid, hashes, ou
                    "note": "shadow/fx strips are direction-independent, same frame size & pivot; draw shadow+fxBack "
                            "under the character, fxFront over it; offset only the character by z_px"},
         "frames": [{k: v for k, v in inf.items() if k != "planted"} for inf in infos],
+        "anchors": anchors_for(scene),
     }
     with open(f"{out_dir}/{anim_name}_sheet.json", "w") as f:
         json.dump(meta, f, indent=2, sort_keys=True)
@@ -192,6 +212,17 @@ def main(argv=None):
             palette.ramps[mat] = names
     with open(os.path.join(ROOT, "data", "animations", f"{a.anim}.json")) as f:
         anim = json.load(f)
+    if anim.get("derived"):
+        # derived clip: frames sliced from another animation (e.g. land = jump_sc f10-f14)
+        dv = anim["derived"]
+        with open(os.path.join(ROOT, "data", "animations", f"{dv['clip']}.json")) as f:
+            src = json.load(f)
+        keep = {k: anim[k] for k in ("name", "loop", "derived", "props", "conventions") if k in anim}
+        anim = dict(src, **keep)
+        a0, a1 = dv["frames"]
+        anim["frames"] = src["frames"][a0:a1 + 1]
+        if dv.get("rest_from_first"):
+            anim["rest"] = src["rest"]
     if spec:
         from .chargen import build as gen_character
         character = gen_character(spec)

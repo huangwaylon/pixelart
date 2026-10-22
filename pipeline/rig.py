@@ -159,7 +159,18 @@ class Animation:
         self.total_ms = t
 
     def channels_at(self, t_ms):
-        """Smooth (Catmull-Rom) interpolation between key poses; holds rest before start / after end."""
+        """Smooth (Catmull-Rom) interpolation between key poses; holds rest before start / after end.
+        Looping animations ("loop": true) wrap: the last key interpolates back into the first."""
+        if self.anim.get("loop"):
+            n = len(self.keys)
+            t = t_ms % self.total_ms
+            i = max(j for j in range(n) if self.times[j] <= t)
+            t1 = self.times[i + 1] if i + 1 < n else self.total_ms
+            u = (t - self.times[i]) / (t1 - self.times[i])
+            p0, p1, p2, p3 = (self.keys[(i + k) % n] for k in (-1, 0, 1, 2))
+            u2, u3 = u * u, u * u * u
+            w = [(-u3 + 2 * u2 - u) / 2, (3 * u3 - 5 * u2 + 2) / 2, (-3 * u3 + 4 * u2 + u) / 2, (u3 - u2) / 2]
+            return Rig.blend([p0, p1, p2, p3], w)
         lead = self.anim.get("qa", {}).get("lead_in_ms", 40)
         if t_ms <= 0:
             if t_ms <= -lead:
@@ -205,7 +216,10 @@ class ChainSim:
         return a, rest
 
     def run(self, sample_times_ms):
-        pre = self.anim.anim.get("preroll_ms", 1000)
+        # loops: pre-roll two full cycles so secondary motion is already in its periodic state at frame 1
+        pre = self.anim.anim.get("preroll_ms", 2 * self.anim.total_ms if self.anim.anim.get("loop") else 1000)
+        if self.anim.anim.get("loop"):
+            pre = int(round(pre / self.anim.total_ms)) * self.anim.total_ms or 2 * self.anim.total_ms
         t = -pre
         worlds = self.rig.world(self.anim.channels_at(t))
         state = {}

@@ -1,6 +1,6 @@
 {
  "name": "kawaii_v2",
- "notes": "kawaii_v2 (face designer r10)",
+ "notes": "Face designer r10. Coords relative to the anchor pixel (face front on the eye line). front: cols -4..4, rows -1..+2 (bangs cover row -2 in pitched frames); 3/4 and profile drawn facing screen-right (mirrored for left views). 3/4: near eye lash -6..-4, iris -5..-4; far eye 2x2 at -2..-1 (no lash or catchlight, at least 1 skin px to the edge). profile: eye column -2, catchlight -3 (back), nose -1. Shape family: ^ joyful, > < squint, lowered-lid determined.",
  "views": {
   "front": {
    "neutral": {
@@ -109,7 +109,7 @@
     "rows": [
      ".E...E.",
      "E.E.E..",
-     ".BBMM..",
+     ".BB.M..",
      "....M.."
     ]
    },
@@ -121,7 +121,7 @@
     "rows": [
      "EE...E.",
      "..E.E..",
-     "EE.....",
+     "EE...E.",
      ".BB.M.."
     ]
    }
@@ -166,8 +166,8 @@
      1
     ],
     "rows": [
-     ".E...",
-     "..E.."
+     "..E..",
+     ".E..."
     ]
    },
    "squint": {

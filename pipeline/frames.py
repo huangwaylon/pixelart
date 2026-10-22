@@ -31,7 +31,8 @@ class Scene:
         # Character camera may be a few degrees lower than the 2:1 world camera so faces read (AD/GD call).
         rnd = character.get("render", {})
         self.cam = Camera(rnd.get("camera_elevation", 26.565), rnd.get("ppu", 1.0))
-        self.chains = ChainSim(self.rig, self.anim).run(self.anim.times)
+        extra = [self.anim.total_ms] if anim.get("loop") else []
+        self.chains = ChainSim(self.rig, self.anim).run(self.anim.times + extra)
         self.deliberate = {}    # (dir, frame) -> {(y, x)} designed 1-2px elements (e.g. boot soles) for QA
         self.body_bbox = {}     # (dir, frame) -> bbox of body pixels (excl. pom/scarf/hair chains) for QA
         self.events = [(ev, self.anim.times[i]) for i, f in enumerate(anim["frames"]) for ev in f.get("events", [])]
@@ -42,6 +43,9 @@ class Scene:
         return {"index": i, "name": f["name"], "duration_ms": f["ms"], "z_px": self.z_px(i),
                 "phase": f.get("phase", ""), "events": f.get("events", []),
                 "cancelable": bool(f.get("cancelable", False)), "face": pose["face"],
+                "root_px": f.get("root_px", [0, 0]),
+                "props": [pr["name"] for pr in self.anim_data.get("props", []) if pr.get("frames", "all") == "all"
+                          or f["name"] in pr.get("frames", []) or i in pr.get("frames", [])],
                 "planted": bool(pose["plant"])}
 
     def z_px(self, i):
@@ -57,9 +61,33 @@ class Scene:
         for c in self.char.get("chains", []):
             prims += chain_primitives(c, self.chains[self.anim.times[i]][c["name"]], body_c,
                                       subdiv=self.char.get("render", {}).get("smooth_chains", 1))
+        prims += self._prop_prims(i, worlds)
         for p in prims:
             p["M"] = face_m @ p["M"]
         return prims, {k: face_m @ v for k, v in worlds.items()}
+
+    def _prop_prims(self, i, worlds):
+        """Props held by the character (snowball, crate, ...): attached to a bone, visible on listed frames.
+        anim "props": [{"name", "bone", "offset", "radii", "rot", "material", "frames": [names or indices]}]"""
+        out = []
+        names = [f["name"] for f in self.anim_data["frames"]]
+        for pr in self.anim_data.get("props", []):
+            vis = pr.get("frames", "all")
+            if vis != "all" and i not in [names.index(v) if isinstance(v, str) else v for v in vis]:
+                continue
+            from .mathutil import euler, scale
+            if pr["bone"] == "carry":      # virtual bone: midpoint of both hands, oriented like the chest
+                base = worlds["chest"].copy()
+                base[:3, 3] = (worlds["hand_L"][:3, 3] + worlds["hand_R"][:3, 3]) / 2
+                worlds = dict(worlds, carry=base)
+            M = worlds[pr["bone"]] @ translate(*pr.get("offset", [0, 0, 0]))
+            M = M @ euler(*pr.get("rot", [0, 0, 0])) @ scale(*pr["radii"])
+            out.append({"name": pr["name"], "M": M, "material": pr.get("material", "prop"), "group": "prop"})
+            for k, part in enumerate(pr.get("parts", [])):      # extra shapes (e.g. crate lid, snowball shading)
+                Mk = worlds[pr["bone"]] @ translate(*part["offset"]) @ euler(*part.get("rot", [0, 0, 0])) @ scale(*part["radii"])
+                out.append({"name": f'{pr["name"]}_{k}', "M": Mk, "material": part.get("material", pr.get("material", "prop")),
+                            "group": "prop", "clip_all": part.get("clip_all", [])})
+        return out
 
     def render_base(self, i, direction, expression=None):
         rnd = self.char.get("render", {})
@@ -152,11 +180,27 @@ class Scene:
             # v3: designed face cels (consistent in every view) instead of procedural eye placement
             cels = self._face_cels(rnd["face_cels"])
             idx, _ = apply_face_cels(idx, self.palette, worlds[face["bone"]], face, cels, expr, self.pivot, self.cam)
+            self.deliberate[(direction, i)] = self.deliberate.get((direction, i), set()) | getattr(
+                apply_face_cels, "last_stamped", set())
         else:
             idx = apply_face(idx, pix, worlds[face["bone"]], face, expr, self.palette, self.pivot, self.cam, v2=v2)
         # decals can split shading bands into 1-2px fragments; clean again with face + outline colours protected
         keep = {self.palette.special[k] for k in ("eye", "catchlight", "mouth", "blush", "outline") if k in self.palette.special}
-        idx = despeckle(idx, keep=keep)
+        if v2:
+            skin_ids = {self.palette.index[n] for n in self.palette.ramps["skin"]}
+            idx = despeckle(idx, keep=keep, material=pix.material)          # 1) merge within each part
+            idx = despeckle(idx, keep=keep | skin_ids)                      # 2) any remaining specks, but skin stays
+            # skin pixels touching eye/lash pixels are designed face spacing, not orphans
+            eye_c = {self.palette.special.get(k) for k in ("eye", "catchlight", "outline")}
+            Hh, Ww = idx.shape
+            spacing = set()
+            for yy, xx in zip(*np.nonzero(np.isin(idx, list(skin_ids)))):
+                if any(0 <= yy + a < Hh and 0 <= xx + b < Ww and idx[yy + a, xx + b] in eye_c
+                       for a, b in ((0, 1), (0, -1), (1, 0), (-1, 0))):
+                    spacing.add((int(yy), int(xx)))
+            self.deliberate[(direction, i)] = self.deliberate.get((direction, i), set()) | spacing
+        else:
+            idx = despeckle(idx, keep=keep)
         if pom is not None:
             vis = [(Y, X) for Y, X in pom_hi_px if idx[Y, X] >= 0 and idx[Y, X] != self.palette.special["outline"]]
             if len(vis) >= 2:                    # designed highlight survives cleanup (by position), never as 1px
@@ -172,7 +216,7 @@ class Scene:
             grown[:, 1:] |= boot_mask[:, :-1]; grown[:, :-1] |= boot_mask[:, 1:]
             grown &= ~np.isin(pix.material, ["mitten", "scarf", "coat", "coat_trim", "skirt"])
             idx = apply_post_outline(idx, self.palette, ["grounded_soles"], deliberate=soles, part_mask=grown)
-            self.deliberate[(direction, i)] = soles
+            self.deliberate[(direction, i)] = self.deliberate.get((direction, i), set()) | soles
         return idx
 
     def _face_cels(self, name):

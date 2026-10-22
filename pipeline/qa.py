@@ -127,6 +127,15 @@ def run_qa(scene, final, overrides_meta, palette, release=False):
         (errors if scene.char.get("sim", {}).get("body_collide") else warnings).append(
             f"secondary motion penetrates the body at {pen} sample points: {worst}")
 
+    # 6c. loop seam: secondary motion must be periodic (state at t=total == state at t=0)
+    if scene.anim_data.get("loop"):
+        a, b = scene.chains.get(0), scene.chains.get(scene.anim.total_ms)
+        if a and b:
+            seam = max((float(np.abs(a[k] - b[k]).max()) for k in a), default=0.0) * scene.cam.ppu
+            metrics["loop_seam_px"] = round(seam, 2)
+            if seam > lim.get("max_loop_seam_px", 1.0):
+                errors.append(f"loop seam {seam:.2f}px (secondary motion not periodic; limit {lim.get('max_loop_seam_px', 1.0)})")
+
     # 6b. line-art metrics (Japanese research rules 1-4, 12): jaggies + colours per frame
     from .render import jaggy_count
     jag = {f"{d}_{i + 1:02d}": jaggy_count(f) for d, fr in final.items() for i, f in enumerate(fr)}

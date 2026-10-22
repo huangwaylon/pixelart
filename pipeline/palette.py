@@ -5,7 +5,7 @@ import numpy as np
 
 MATERIAL_FALLBACK = {"skirt": "coat_trim", "hatcuff": "hat", "pom": "hat", "coat_trim": "coat",
                      "boot_cuff": "coat_trim", "mitten": "scarf", "knit": "hatcuff", "scarf": "mustard",
-                     "ribbon": "scarf"}
+                     "ribbon": "scarf", "prop": "boots", "prop_wood": "boots", "prop_snow": "snow"}
 
 
 class Palette:

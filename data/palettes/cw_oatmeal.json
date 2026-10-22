@@ -222,7 +222,7 @@
   },
   "special": {
     "outline": "outline",
-    "eye": "outline",
+    "eye": "ink",
     "catchlight": "snow_3",
     "mouth": "crn_1",
     "blush": "red_2",
@@ -245,5 +245,21 @@
     "teal_1",
     "teal_2"
   ],
-  "notes": "Oatmeal coat (2 tones, no near-white so it never merges with snow) with camel piping (keeps it off the snow), teal beanie/scarf/mittens, cream pom. Darkest hair + charcoal pants anchor the value read; lightest-coat option, weakest on snow. Default hair: espresso; alternates in hair_espresso / hair_auburn / hair_blueblack."
+  "notes": "Oatmeal coat (2 tones, no near-white so it never merges with snow) with camel piping (keeps it off the snow), teal beanie/scarf/mittens, cream pom. Darkest hair + charcoal pants anchor the value read; lightest-coat option, weakest on snow. Default hair: espresso; alternates in hair_espresso / hair_auburn / hair_blueblack. | r10 outline decision: sel-out line_colors; eyes use ink so the outline index is exterior-only (engine swaps it to a light rim on dark tiles).",
+  "line_colors": {
+    "coat": "mauve",
+    "pom": "mauve",
+    "hatcuff": "mauve",
+    "boot_cuff": "mauve",
+    "coat_trim": "hair_1",
+    "skin": "skin_0",
+    "hair": "plum_0",
+    "hair_espresso": "plum_0",
+    "hair_auburn": "plum_0",
+    "hat": "teal_0",
+    "scarf": "teal_0",
+    "mitten": "teal_0",
+    "ribbon": "teal_0",
+    "skirt": "plum_0"
+  }
 }

@@ -68,7 +68,7 @@
    "angel_ring": true,
    "regularize": true
   },
-  "face_cels": "kawaii_v1",
+  "face_cels": "kawaii_v2",
   "smooth_chains": 3
  },
  "sim": {

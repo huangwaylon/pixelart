@@ -116,9 +116,11 @@ def contact_sheet(frames_by_dir, dirs, infos, palette, size, path, scale=4):
     img.save(path)
 
 
-def greyscale_check(frames_by_dir, dirs, palette, size, path, frames=(0, 5, 11), scale=3):
+def greyscale_check(frames_by_dir, dirs, palette, size, path, frames=None, scale=3):
     """Luminance-only view on the snow ground: the silhouette must read without colour (GD criterion 6)."""
     W, H = size
+    n = len(next(iter(frames_by_dir.values())))
+    frames = frames or sorted({0, n // 2, n - 1})
     img = Image.new("L", (len(frames) * W * scale, len(dirs) * H * scale))
     for r, d in enumerate(dirs):
         for c, f in enumerate(frames):

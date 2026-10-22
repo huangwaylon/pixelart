@@ -484,7 +484,29 @@ def selout_outline(idx, material, palette, pivot_row_bottom=None, mode="selout")
                 continue
             name = line_cols.get(mat) or palette.ramps[mat][0]
             out[y, x] = palette.index[name]
-    return out
+    return _even_outline_runs(out, material, palette)
+
+
+def _even_outline_runs(out, material, palette):
+    """Outline colour runs must be continuous: an exterior outline pixel whose colour matches none of its outline
+    neighbours (8-connected along the contour) takes the neighbours' colour (no speckled sel-out)."""
+    H, W = out.shape
+    ext = (out >= 0) & np.equal(material, None)
+    res = out.copy()
+    for _ in range(2):
+        changed = False
+        for y in range(H):
+            for x in range(W):
+                if not ext[y, x]:
+                    continue
+                nb = [int(res[y + a, x + b]) for a in (-1, 0, 1) for b in (-1, 0, 1)
+                      if (a or b) and 0 <= y + a < H and 0 <= x + b < W and ext[y + a, x + b]]
+                if nb and res[y, x] not in nb:
+                    res[y, x] = max(sorted(set(nb)), key=nb.count)
+                    changed = True
+        if not changed:
+            break
+    return res
 
 
 def _extent_spikes(e):
