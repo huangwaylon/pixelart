@@ -1,0 +1,18 @@
+{
+ "extends": "S1_waist_beret",
+ "name": "T_hair",
+ "label": "test stylized hair",
+ "render": {
+  "hair_style": {
+   "clump_deg": 45,
+   "clump_offset": 22,
+   "line_start": 0.25,
+   "ring_y": 0.6,
+   "ring_w": 0.08,
+   "line_px": 0.45
+  },
+  "lineart": {
+   "angel_ring": false
+  }
+ }
+}

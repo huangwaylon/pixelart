@@ -254,7 +254,7 @@ def build(spec):
         def lock(name, anchor, rd, n, seg, w0, w1, thick, tie=None, stiff=160):
             chains.append({"name": name, "anchor_bone": "head", "anchor": anchor, "rest_dir": rd, "segments": n,
                            "seg_len": seg, "widths": [w0 + (w1 - w0) * k / max(n - 1, 1) for k in range(n)],
-                           "thickness": thick, "material": hair_mat, "stiffness": stiff, "damping": 0.12,
+                           "thickness": thick, "material": hair_mat, "group": "head", "stiffness": stiff, "damping": 0.12,
                            "gravity": 520, **({"tie": tie} if tie else {})})
         hl = O.get("hair_len", 1.0)          # long styles: 1.0 = shoulder blades, 2.0 = waist
         nseg = max(2, int(round(3 * hl)))
@@ -334,7 +334,7 @@ def build(spec):
         prims.append(_p("beret_nub", "head", [0.2 * hr, hc + 1.06 * hr, -0.05 * hr], [hr * 0.12] * 3, "hat", "hat"))
     elif O["hat"] == "earmuffs":
         prims.append(_p("muff_band", "head", [0, hc + 0.05 * hr, -0.05 * hr], [hr * 1.12, hr * 1.12, hr * 0.14],
-                        "hat", "hat", clip_all=[[0, 1, 0, 0.0]]))
+                        "hat", "hat", clip_all=[[0, 1, 0, 0.35]]))   # only the arc over the crown
         for s_, sg in (("L", 1), ("R", -1)):
             prims.append(_p(f"muff_{s_}", "head", [sg * hr * 1.02, hc - 0.02 * hr, -0.18 * hr], [hr * 0.2, hr * 0.27, hr * 0.27],
                             "pom", "hat"))
@@ -371,6 +371,9 @@ def build(spec):
     prims = [dict(p_, **po.get(p_["name"], {})) for p_ in prims if p_["name"] not in rm]
     chains = [dict(c_, **co.get(c_["name"], {})) for c_ in chains if c_["name"] not in rm]
     prims += [dict({"group": "hat", "material": "hat"}, **ap) for ap in spec.get("add_prims", [])]
+    # designers may add whole chains (extra hair locks, ribbon tails, tassels): same schema as generated chains
+    chains += [dict({"segments": 2, "seg_len": 2.0, "widths": [1.5], "thickness": 1.0, "stiffness": 160,
+                     "damping": 0.1, "gravity": 520, "rest_dir": [0, -1, 0]}, **ac) for ac in spec.get("add_chains", [])]
     yaw = math.degrees(math.asin(min(F["eye_spacing"] / math.cos(math.radians(F["eye_pitch"])), 0.9)))
     return {
         "name": spec.get("name", "variant"),

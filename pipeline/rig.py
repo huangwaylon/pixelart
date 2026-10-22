@@ -259,7 +259,7 @@ class ChainSim:
                             dist = np.linalg.norm(v)
                             if dist < rr and dist > 1e-9:
                                 nxt[i] = cc + v / dist * rr
-                    if body:
+                    if body and c.get("collide", True):
                         self._collide_body(c, nxt, body, anchor)
                         # the ground is solid too: nothing hangs through the floor (feet are at y=0 when grounded)
                         floor = worlds["root"][1, 3] + c.get("thickness", 1.0) * 0.5 + 0.4
@@ -323,7 +323,7 @@ def chain_primitives(chain, pts, body_center):
             half = np.linalg.norm(seg) / 2 + 0.7
             M = translate(*mid) @ R @ scale(w, half, chain.get("thickness", 1.0))
             prims.append({"name": f'{chain["name"]}_{i}', "M": M, "material": chain["material"],
-                          "group": chain["name"]})
+                          "group": chain.get("group", chain["name"])})
     tip = chain.get("tip")
     if tip:
         r = tip["radius"]

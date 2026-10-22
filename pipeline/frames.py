@@ -73,9 +73,16 @@ class Scene:
                     pom = p
             prims = [p for p in prims if p is not pom]
         la = rnd.get("lineart") or {}
+        hs = None
+        if rnd.get("hair_style"):
+            # stylized hair: designed clump lines + highlight ring defined on the 3D head (same in every view)
+            hs = dict(rnd["hair_style"])
+            face = self.char["face"]
+            hs.update(head_M=worlds[face["bone"]], center=face["center"], radius=face["radii"][0], ppu=self.cam.ppu,
+                      materials={p_["material"] for p_ in prims if p_["material"].startswith("hair")})
         pix = render_pixels(prims, self.palette, self.size, self.pivot, cam=self.cam,
                             smooth=la.get("smooth", 0.0), line_min_run=la.get("line_min_run", 1),
-                            no_face_lines=la.get("no_face_lines", False))
+                            no_face_lines=la.get("no_face_lines", False), hair_style=hs)
         chain_names = {c["name"] for c in self.char.get("chains", [])}
         body_ids = [k for k, g in enumerate(pix.group_names) if g not in chain_names]
         ys, xs = np.nonzero(np.isin(pix.group, body_ids))

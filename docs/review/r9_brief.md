@@ -16,7 +16,7 @@ scarf_v2 (knot, swing limit, consistent side), `sim.body_collide` (chains collid
 `hair_color` espresso|auburn|blueblack); hat `none|beret|earmuffs|cat_beanie|hood|beanie*`; bangs `straight|side|points`;
 accessory `ribbon_side|ribbon_back|clip|null`; `ahoge`; coat `aline|parka|puffer|duffle` (+`coat_len`, `hem_trim`, `sleeve_cuffs`);
 legs `skirt_tights|pants`; boots `tall|snow`; scarf `long|chunky|none`, `scarf_len`, `scarf_v2`.
-Sculpt via `prim_overrides`, `chain_overrides`, `remove`, `add_prims`; colours via `ramp_overrides` (master palette names)
+Sculpt via `prim_overrides`, `chain_overrides` (incl. `"collide": false`), `remove`, `add_prims`, `add_chains` (full chain specs); colours via `ramp_overrides` (master palette names)
 and `material_bands` (per-material shading thresholds). Prim/chain names: `out/variants/<name>__jump_v2/inputs/character_generated.json`.
 Teal family only: you may shift accents within the master palette (teal_0/1/2, oat, mauve, hair tones, a small red/gold accent ok).
 

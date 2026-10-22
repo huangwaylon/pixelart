@@ -112,7 +112,7 @@ class PixelFrame:
 
 
 def render_pixels(prims, palette, size, pivot, cam=ISO_CAMERA, ss=3, inner_line_depth=2.2, cast_shadows=True,
-                  smooth=0.0, line_min_run=1, no_face_lines=False):
+                  smooth=0.0, line_min_run=1, no_face_lines=False, hair_style=None):
     W, H = size
     prims = _prep(prims)
     # Subsample grid
@@ -126,6 +126,8 @@ def render_pixels(prims, palette, size, pivot, cam=ISO_CAMERA, ss=3, inner_line_
     t, pi, nrm = raycast(prims, origins, cam.fwd)
     hit = pi >= 0
     lam = np.einsum("ij,j->i", nrm, cam.light)
+    if hair_style and hit.any():
+        lam = _stylize_hair(prims, origins, t, pi, hit, lam, cam, hair_style)
     if cast_shadows and hit.any():
         groups = np.array([p["group"] for p in prims], dtype=object)
         hp = origins[hit] + t[hit, None] * cam.fwd + nrm[hit] * 0.35
@@ -533,4 +535,49 @@ def regularize_silhouette(idx, protect=None):
                             a[r, x] = col
                     ext[r] = target
         out = a if axis == 0 else a.T.copy()
+    return out
+
+
+
+def _stylize_hair(prims, origins, t, pi, hit, lam, cam, hs):
+    """Designed anime-style hair shading in head space (consistent in every view).
+    Parameters (render.hair_style): clump_deg, clump_offset, line_start, line_px, line_az_min, ring_y, ring_w,
+    ring_az, under_band.
+    * clump lines: dark separations at fixed azimuths around the head, starting below the crown and running down
+      to the tips, so the hair reads as a few deliberate locks (毛束) instead of random strands;
+    * one highlight ring (天使の輪) at a fixed height on the crown, broken at the clump lines;
+    * a soft shadow under the crown so the mass has one clean light-to-dark read."""
+    hair_ids = [k for k, p in enumerate(prims) if p["material"] in hs["materials"]]
+    if not hair_ids:
+        return lam
+    m = hit & np.isin(pi, hair_ids)
+    if not m.any():
+        return lam
+    Hm = np.linalg.inv(hs["head_M"])
+    pts = origins[m] + t[m, None] * cam.fwd
+    loc = pts @ Hm[:3, :3].T + Hm[:3, 3]
+    c = np.asarray(hs["center"], float)
+    r = float(hs["radius"])
+    rel = (loc - c) / r                                  # head-local, unit = head radius
+    az = np.degrees(np.arctan2(rel[:, 0], rel[:, 2]))    # 0 = front, +90 = her left
+    y = rel[:, 1]                                        # +1 crown ... -1 chin, below = long hair
+    out = lam.copy()
+    sub = out[m]
+    spacing = hs.get("clump_deg", 36.0)
+    off = hs.get("clump_offset", 18.0)
+    # line half-width in degrees ~ 0.5 px at the head silhouette, widening slightly as locks hang
+    # line half-width: ~0.5 px measured at the head radius; long hair hanging lower is further from the head axis,
+    # so convert using the actual horizontal distance to keep a constant ~1px line all the way down
+    rad = np.maximum(np.hypot(rel[:, 0], rel[:, 2]), 0.35) * r * hs.get("ppu", 1.0)
+    halfw = np.degrees(hs.get("line_px", 0.5) / rad)
+    d = np.abs(((az - off) + spacing / 2) % spacing - spacing / 2)
+    start = hs.get("line_start", 0.35)                   # lines begin below this height (crown stays clean)
+    line = (d < halfw) & (y < start) & (np.abs(az) > hs.get("line_az_min", 50.0))   # keep the face frame clean
+    sub[line] = -1.0
+    ring_y, ring_w = hs.get("ring_y", 0.62), hs.get("ring_w", 0.1)
+    ring = (np.abs(y - ring_y) < ring_w) & ~line & (np.abs(az) < hs.get("ring_az", 110))
+    sub[ring] = 1.0
+    under = (y < ring_y - ring_w) & (y > ring_y - ring_w - hs.get("under_band", 0.16)) & ~line
+    sub[under] = np.minimum(sub[under], 0.2)             # crisp shade just under the ring
+    out[m] = sub
     return out
