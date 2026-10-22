@@ -824,8 +824,8 @@
     }
   },
   "animation": "walk",
-  "buildHash": "bbaa6e18e9b1",
-  "buildId": "bbaa6e18e9b1",
+  "buildHash": "6f030678d2bb",
+  "buildId": "6f030678d2bb",
   "cameraElevation": 16,
   "cycle_rise_px": 0,
   "directions": [
@@ -838,6 +838,7 @@
     "W",
     "SW"
   ],
+  "engine_notes": "Move at ~21.5 world u/s (~16 px/s E/W) so stance feet stick. footstep_L f1 / footstep_R f5 match run (swap at same frame index).",
   "frameSize": [
     48,
     64
@@ -1019,6 +1020,7 @@
     57
   ],
   "props": [],
+  "rise_weights": null,
   "root_px_mode": "cumulative offset from clip start",
   "totalMs": 800
 }

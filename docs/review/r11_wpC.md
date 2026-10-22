@@ -39,3 +39,27 @@ All three PASS: penetrations 0, seam 0.0, orphans 0, slide ≤0.25.
 - Raised forearms overlap the rigid sidelocks; QA doesn't check this.
 - Chibi arms can't reach above the head, so the ropes bridge the gap.
 - f5 → f6 is a deliberate snap.
+
+## Round 1 fixes
+**Crate (`data/props/crate.json`, shared via `{"ref": "crate"}`)**
+- Box half-extents 7.2 × 3.7 × 5.5 (14 × 7 × 11 u, a cube-ish box from every side). Body `prop_wood`, slat band `coat_trim`, snow mound `prop_snow` (radii 4.9/1.2/4.9).
+- Width is 7.2, not the suggested 5.5. With 5.5 the low-frame grip pulls her arms in, and scarf_front clips the arms in the squat (QA failed).
+- Final carry offset `[0, 19.2, 0]` (was 17.8, +1.5 px): crate bottom clears the hair top by ≥ 2 u.
+- The plan's `(0, 3, 1.5)` can't work: the hands only reach ear height, so it would sit inside the head.
+- Ropes (tag `rope`) run 2 u behind the head plane, from the end panels to the mittens.
+- Body colours ≤ 15 per frame (the prop is its own layer).
+
+**Clips:** each has one `{"ref": "crate"}` declaration.
+- **pick_up** (9 frames / 700 ms)
+  - Added `drive` after clean: 60 ms, raise 100, spread 24, elbow 60, pelvis_drop 1.6, squash 0.96, squint. Crate sits under the chin.
+  - press squash is now 1.05.
+  - Low frames place the crate with frame-level `"prop": {"offset", "rot", "hide": ["rope"]}`.
+  - The current engine ignores that key: **apply `docs/review/r11_wpC_frame_prop.patch`** (11 lines in `Scene._prop_prims`).
+  - `settle` == carry_idle `low`. Per `engine_notes`, continue with carry_idle index 3 (`rise`); index 2 is also seamless.
+  - The world crate spot moved to 13.4 u in front of the pivot.
+- **carry_walk:** elbow lag (contact 10, down 12, pass 15, up 11); down_* squash 0.98.
+- **carry_idle:** poses unchanged.
+
+**QA:** all PASS. Penetrations 0, seam 0, height delta ≤ 2, slide ≤ 0.25. pick_up was verified with the patch applied.
+
+**Note for animator D:** carry_throw already uses `ref: crate`, so it picks up the new crate. Use the hold arms 176/38/10–15, or recheck head clearance.

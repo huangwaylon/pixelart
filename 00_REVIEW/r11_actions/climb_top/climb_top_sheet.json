@@ -314,8 +314,8 @@
     }
   },
   "animation": "climb_top",
-  "buildHash": "0408b16e0988",
-  "buildId": "0408b16e0988",
+  "buildHash": "fedf05a00257",
+  "buildId": "fedf05a00257",
   "cameraElevation": 16,
   "cycle_rise_px": 0,
   "directions": [
@@ -323,6 +323,7 @@
     "NE",
     "NW"
   ],
+  "engine_notes": "",
   "frameSize": [
     48,
     64
@@ -502,6 +503,7 @@
     57
   ],
   "props": [],
+  "rise_weights": null,
   "root_px_mode": "cumulative offset from clip start",
   "totalMs": 720
 }

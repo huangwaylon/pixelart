@@ -536,10 +536,17 @@
     }
   },
   "animation": "land",
-  "buildHash": "dffafd269062",
-  "buildId": "dffafd269062",
+  "buildHash": "8f9bab94da01",
+  "buildId": "8f9bab94da01",
   "cameraElevation": 16,
   "cycle_rise_px": 0,
+  "derivedFrom": {
+    "clip": "jump_sc",
+    "frames": [
+      9,
+      13
+    ]
+  },
   "directions": [
     "S",
     "SE",
@@ -550,6 +557,7 @@
     "W",
     "SW"
   ],
+  "engine_notes": "",
   "frameSize": [
     48,
     64
@@ -573,7 +581,7 @@
       "z_px": 0
     },
     {
-      "cancelable": true,
+      "cancelable": false,
       "duration_ms": 50,
       "events": [],
       "face": "joyful",
@@ -634,7 +642,7 @@
     }
   ],
   "image": "land_sheet.png",
-  "inputLockEnd_ms": 70,
+  "inputLockEnd_ms": 120,
   "layers": {
     "fxBack": "land_fx_back.png",
     "fxFront": "land_fx_front.png",
@@ -684,6 +692,7 @@
     57
   ],
   "props": [],
+  "rise_weights": null,
   "root_px_mode": "cumulative offset from clip start",
   "totalMs": 290
 }

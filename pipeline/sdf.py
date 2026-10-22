@@ -32,30 +32,45 @@ RELAX = 0.85            # step = RELAX * distance bound (taper / flattening make
 EPS = 0.004             # convergence distance (world units)
 FD_H = 0.01             # finite-difference step for normals (world units)
 SHADOW_T0 = 0.05
+SMOOTH_JOINTS = False
 
 
 # ------------------------------------------------------------------ local SDFs (p: (n,3), params broadcast)
 def _sd_seg(p, P):
+    """Tapered segment a->b. Round ends: exact round cone (side tangent to both end spheres, so chained segments
+    sharing joint spheres are seamless). capped: frustum with flat cuts. Flattening scales the cross-section
+    along n2 by `flat` (distance returned as a lower bound)."""
     a, b = P["a"], P["b"]
-    ab = b - a
-    L2 = (ab * ab).sum(-1)
-    v = p - a
-    hr = (v * ab).sum(-1) / L2
-    capped = P["capped"]
-    hh = np.where(capped, hr, np.clip(hr, 0.0, 1.0))
-    perp = v - hh[:, None] * ab
-    n2 = P["n2"] + np.clip(hh, 0.0, 1.0)[:, None] * (P["n2b"] - P["n2"])     # flattening axis, lerped a -> b
+    ba = b - a
+    l2 = (ba * ba).sum(-1)
+    pa = p - a
+    y = (pa * ba).sum(-1)
+    hr = y / l2
+    h = np.clip(hr, 0.0, 1.0)
+    perp = pa - hr[:, None] * ba
+    n2 = P["n2"] + h[:, None] * (P["n2b"] - P["n2"])     # flattening axis, lerped a -> b
     n2 = n2 / np.maximum(np.sqrt((n2 * n2).sum(-1)), 1e-9)[:, None]
-    flat = P["flat"]
+    flat = P["flat"] + h * (P["flatb"] - P["flat"])     # cross-section flattening, lerped a -> b
     c2 = (perp * n2).sum(-1)
-    pp = (perp * perp).sum(-1)
-    q = np.sqrt(np.maximum(pp - c2 * c2 + (c2 / flat) ** 2, 0.0))
+    q2 = np.maximum((perp * perp).sum(-1) - c2 * c2 + (c2 / flat) ** 2, 0.0)   # stretched perpendicular dist^2
     ra, rb = P["ra"], P["rb"]
-    r = ra + np.clip(hh, 0.0, 1.0) * (rb - ra)
-    L = np.sqrt(L2)
-    cosa = L / np.sqrt(L2 + (ra - rb) ** 2)
-    lat = (q - r) * flat * cosa
-    return np.where(capped, np.maximum(lat, np.maximum(-hr, hr - 1.0) * L), lat)
+    rr = ra - rb
+    # round cone (IQ), in stretched space
+    a2 = l2 - rr * rr
+    x2 = q2 * l2 * l2
+    z = y - l2
+    y2, z2 = y * y * l2, z * z * l2
+    k = np.sign(rr) * rr * rr * x2
+    d_end = np.sqrt(x2 + z2) / l2 - rb
+    d_start = np.sqrt(x2 + y2) / l2 - ra
+    d_side = (np.sqrt(x2 * a2 / l2) + y * rr) / l2 - ra
+    rnd = np.where(np.sign(z) * a2 * z2 > k, d_end, np.where(np.sign(y) * a2 * y2 < k, d_start, d_side))
+    # flat-cut frustum
+    L = np.sqrt(l2)
+    cosa = L / np.sqrt(l2 + rr * rr)
+    lat = (np.sqrt(q2) - (ra - hr * rr)) * cosa
+    cut = np.maximum(lat, np.maximum(-hr, hr - 1.0) * L)
+    return np.where(P["capped"], cut, rnd) * np.minimum(P["flat"], P["flatb"])
 
 
 def _sd_rbox(p, P):
@@ -79,7 +94,7 @@ def _sd_torus(p, P):
 
 
 SDF = {"seg": _sd_seg, "rbox": _sd_rbox, "torus": _sd_torus}
-PARAM_KEYS = {"seg": ("a", "b", "ra", "rb", "n2", "n2b", "flat", "capped"), "rbox": ("b", "r"),
+PARAM_KEYS = {"seg": ("a", "b", "ra", "rb", "n2", "n2b", "flat", "flatb", "capped"), "rbox": ("b", "r"),
               "torus": ("R", "r", "w", "taper")}
 
 
@@ -138,6 +153,13 @@ class _Compiled:
             if st:
                 sets.setdefault(st, []).append(i)
         self.rep_of = rep_of
+        # consecutive segments of one strand (tube / sweep clump): neighbours for G1-smoothed shading normals
+        self.prev = np.full(n, -1, int)
+        self.next = np.full(n, -1, int)
+        for i in range(1, n):
+            sid = prims[i].get("strand")
+            if sid is not None and prims[i - 1].get("strand") == sid:
+                self.prev[i], self.next[i - 1] = i - 1, i
         # a set reduced to one plain union member by LOD filtering is just a singleton
         self.sets = []
         single = set(range(n))
@@ -392,12 +414,28 @@ def raycast(prims, origins, direction):
         ibest[r[w]] = pid[w]
         pl = ol[w] + t[w, None] * dl[w]
         P = {k: v[w] for k, v in prm.items()}
+        fn = SDF[kind]
+        if kind == "seg" and SMOOTH_JOINTS:
+            # shading normal from the strand smooth-min'd with its neighbour segments: no ring at every joint
+            st_ = C.stack[kind]
+            pw_, nx_ = C.prev[pid[w]], C.next[pid[w]]
+            Pp = {k: st_[k][st_["_pos"][np.where(pw_ >= 0, pw_, pid[w])]] for k in PARAM_KEYS[kind]}
+            Pn = {k: st_[k][st_["_pos"][np.where(nx_ >= 0, nx_, pid[w])]] for k in PARAM_KEYS[kind]}
+            kp, kn = 0.6 * P["ra"], 0.6 * P["rb"]
+
+            def fn(q, P_, Pp=Pp, Pn=Pn, kp=kp, kn=kn):
+                d = _sd_seg(q, P_)
+                for Q, k in ((Pp, kp), (Pn, kn)):
+                    dq = _sd_seg(q, Q)
+                    h = np.maximum(k - np.abs(d - dq), 0.0) / k
+                    d = np.minimum(d, dq) - h * h * k * 0.25
+                return d
         g = np.zeros((len(w), 3))
         hl = FD_H / C.sv[pid[w]]
         for ax in range(3):
             e = np.zeros((len(w), 3))
             e[:, ax] = hl
-            g[:, ax] = SDF[kind](pl + e, P) - SDF[kind](pl - e, P)
+            g[:, ax] = fn(pl + e, P) - fn(pl - e, P)
         nw = np.einsum("nij,ni->nj", C.Fi[pid[w]], g)
         nbest[r[w]] = nw / np.maximum(np.linalg.norm(nw, axis=1, keepdims=True), 1e-12)
     # 3) blend / CSG sets
@@ -553,7 +591,7 @@ def _vec(v):
     return np.asarray(v, float)
 
 
-def _seg_params(a, b, ra, rb, flat=1.0, n2=None, capped=False, n2b=None):
+def _seg_params(a, b, ra, rb, flat=1.0, n2=None, capped=False, n2b=None, flatb=None):
     """Tapered segment. Flattening axis n2 (at a) -> n2b (at b), orthogonalised against the segment axis;
     consecutive segments sharing the joint axis give seamless tubes."""
     a, b = _vec(a), _vec(b)
@@ -567,11 +605,18 @@ def _seg_params(a, b, ra, rb, flat=1.0, n2=None, capped=False, n2b=None):
         return n / nn if nn > 1e-9 else None
     na = ortho(n2)
     nb = ortho(n2b if n2b is not None else n2)
-    if na is None or nb is None or flat >= 0.999:
+    flatb = flat if flatb is None else flatb
+    if na is None or nb is None or min(flat, flatb) >= 0.999:
         na = nb = np.array([1.0, 0, 0])
-        flat = 1.0
-    return {"a": a[None], "b": b[None], "ra": np.array([float(ra)]), "rb": np.array([max(float(rb), 1e-3)]),
-            "n2": na[None], "n2b": nb[None], "flat": np.array([float(flat)]), "capped": np.array([bool(capped)])}
+        flat = flatb = 1.0
+    L = float(np.linalg.norm(b - a))
+    ra, rb = float(ra), max(float(rb), 1e-3)
+    if abs(ra - rb) > 0.95 * L:           # one end sphere would swallow the other: keep a valid round cone
+        m = (ra + rb) / 2
+        ra, rb = m + np.sign(ra - rb) * 0.475 * L, m - np.sign(ra - rb) * 0.475 * L
+    return {"a": a[None], "b": b[None], "ra": np.array([ra]), "rb": np.array([max(rb, 1e-3)]),
+            "n2": na[None], "n2b": nb[None], "flat": np.array([float(flat)]),
+            "flatb": np.array([float(flatb)]), "capped": np.array([bool(capped)])}
 
 
 def _point_normals(pr, pts):
@@ -635,7 +680,7 @@ def _pose_static(sp, worlds, face_m):
         for k in range(len(pts) - 1):
             prm = _seg_params(pts[k], pts[k + 1], rr[k], rr[k + 1], pr.get("flat", 1.0), nrm[k],
                               capped=bool(pr.get("cut_end")) and k == len(pts) - 2, n2b=nrm[k + 1])
-            out.append(dict(base, name=f'{sp["name"]}_{k}', kind="seg", M=F, params=prm))
+            out.append(dict(base, name=f'{sp["name"]}_{k}', kind="seg", M=F, params=prm, strand=sp["name"]))
     elif shape == "rbox":
         out.append(dict(base, kind="rbox", M=F, params={"b": _vec(pr["b"])[None], "r": np.array([float(pr.get("r", 0.0))])}))
     elif shape == "torus":
@@ -695,9 +740,9 @@ def _pose_sweep(sp, chain, pts, body_c, face_m, subdiv):
         fork = sw.get("tip") == "fork"
         last = len(pts) - (2 if fork else 1)
         for k in range(last):
-            prm = _seg_params(pts[k], pts[k + 1], rr[k], rr[k + 1], (flat[k] + flat[k + 1]) / 2, Z[k],
-                              capped=fork and k == last - 1, n2b=Z[k + 1])
-            out.append(dict(base, name=f'{sp["name"]}_{k}', kind="seg", M=face_m, params=prm))
+            prm = _seg_params(pts[k], pts[k + 1], rr[k], rr[k + 1], flat[k], Z[k],
+                              capped=fork and k == last - 1, n2b=Z[k + 1], flatb=flat[k + 1])
+            out.append(dict(base, name=f'{sp["name"]}_{k}', kind="seg", M=face_m, params=prm, strand=sp["name"]))
         if fork:
             P0, P1 = pts[-2], pts[-1]
             w0 = rr[-2]
@@ -727,9 +772,12 @@ def _pose_sweep(sp, chain, pts, body_c, face_m, subdiv):
         if len(keep) < 2:
             continue
         cpts, crad = [], []
+        root_len = float(sw.get("root_len", 0.0))
         for k in keep:
             th = th0 + twist * s[k]
-            off = spread * (ws[k] * math.cos(th) * X[k] + ez[k] * math.sin(th) * Z[k])
+            g = 1.0 if root_len <= 0 else min(s[k] / root_len, 1.0)
+            g = 0.35 + 0.65 * g * g * (3 - 2 * g)          # clumps gathered at the tie, fanning out below it
+            off = g * spread * (ws[k] * math.cos(th) * X[k] + ez[k] * math.sin(th) * Z[k])
             u = min(max((s[k] - (end - taper_len)) / taper_len, 0.0), 1.0)
             u = u * u * (3 - 2 * u)
             tip_off = tip * 0.42 * ws[k_mid] * (1 - s[k] * 0.5) * X[k]
@@ -740,9 +788,10 @@ def _pose_sweep(sp, chain, pts, body_c, face_m, subdiv):
         crad[-1] = tip_r
         flat = np.clip(ez[keep] / np.maximum(ws[keep], 1e-6), 0.2, 1.0)
         for k in range(len(cpts) - 1):
-            prm = _seg_params(cpts[k], cpts[k + 1], crad[k], crad[k + 1], (flat[k] + flat[k + 1]) / 2,
-                              Z[keep[k]], n2b=Z[keep[k + 1]])
-            out.append(dict(base, name=f'{sp["name"]}_c{j}_{k}', kind="seg", M=face_m, params=prm))
+            prm = _seg_params(cpts[k], cpts[k + 1], crad[k], crad[k + 1], flat[k],
+                              Z[keep[k]], n2b=Z[keep[k + 1]], flatb=flat[k + 1])
+            out.append(dict(base, name=f'{sp["name"]}_c{j}_{k}', kind="seg", M=face_m, params=prm,
+                            strand=f'{sp["name"]}_c{j}'))
     return out
 
 

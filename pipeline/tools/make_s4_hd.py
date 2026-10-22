@@ -129,7 +129,7 @@ def hair_parts():
     # --- ponytail: 5 twisted sub-clumps swept along the simulated "pony" chain, ending in 3 sharp points
     P.append({"name": "pony_sweep", "chain": "pony", "material": "hair", "group": "head", "lod": "all",
               "sweep": {"clumps": 5, "twist": 40, "spread": 0.45, "clump_r": 0.6, "tips": 3, "tip": "sharp", "thickness": 2.3,
-                        "taper_len": 0.35, "side_end": 0.88}})
+                        "taper_len": 0.35, "side_end": 0.88, "root_len": 0.2}})
     return P
 
 
@@ -164,8 +164,8 @@ def tail_chains():
     out = []
     for sg, s in ((-1, "L"), (1, "R")):
         out.append({"name": f"bow_tail_{s}", "anchor_bone": "head", "anchor": [sg * 0.9, 10.0, -11.9],
-                    "rest_dir": [sg * 0.29, -1, -0.05], "segments": 3, "seg_len": 2.2, "widths": [1.2, 1.3, 1.45],
-                    "thickness": 0.32, "material": "hatcuff", "group": "hat", "stiffness": 420, "damping": 0.2,
+                    "rest_dir": [sg * 0.8, -1, -0.55], "segments": 3, "seg_len": 2.0, "widths": [1.2, 1.3, 1.45],
+                    "thickness": 0.32, "material": "hatcuff", "group": "hat", "stiffness": 600, "damping": 0.2,
                     "gravity": 900, "collide": True, "max_swing": 35})
     return out
 

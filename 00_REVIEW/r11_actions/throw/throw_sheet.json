@@ -19,8 +19,8 @@
           40.3
         ],
         [
-          27.3,
-          41.7
+          26.7,
+          41.8
         ],
         [
           24.7,
@@ -53,8 +53,8 @@
           39.0
         ],
         [
-          22.5,
-          41.2
+          23.1,
+          41.3
         ],
         [
           20.8,
@@ -88,7 +88,7 @@
         ],
         [
           25.3,
-          41.1
+          41.3
         ],
         [
           22.3,
@@ -121,7 +121,7 @@
           38.7
         ],
         [
-          20.6,
+          21.5,
           41.7
         ],
         [
@@ -155,8 +155,8 @@
           40.3
         ],
         [
-          25.5,
-          43.0
+          24.9,
+          42.8
         ],
         [
           27.2,
@@ -189,7 +189,7 @@
           40.6
         ],
         [
-          27.4,
+          26.5,
           42.4
         ],
         [
@@ -224,7 +224,7 @@
         ],
         [
           22.7,
-          43.0
+          42.7
         ],
         [
           25.7,
@@ -257,8 +257,8 @@
           39.0
         ],
         [
-          20.7,
-          42.5
+          21.3,
+          42.3
         ],
         [
           23.3,
@@ -293,8 +293,8 @@
           37.8
         ],
         [
-          20.2,
-          42.0
+          18.3,
+          42.2
         ],
         [
           18.4,
@@ -327,8 +327,8 @@
           37.1
         ],
         [
-          15.8,
-          45.3
+          16.9,
+          45.7
         ],
         [
           17.3,
@@ -361,8 +361,8 @@
           36.5
         ],
         [
-          15.5,
-          43.4
+          15.0,
+          43.9
         ],
         [
           15.3,
@@ -395,7 +395,7 @@
           39.1
         ],
         [
-          20.9,
+          23.1,
           46.6
         ],
         [
@@ -429,8 +429,8 @@
           42.1
         ],
         [
-          32.2,
-          43.2
+          31.1,
+          42.6
         ],
         [
           30.7,
@@ -463,8 +463,8 @@
           40.1
         ],
         [
-          27.1,
-          41.9
+          24.9,
+          41.7
         ],
         [
           24.8,
@@ -497,8 +497,8 @@
           42.7
         ],
         [
-          32.5,
-          45.1
+          33.0,
+          44.4
         ],
         [
           32.7,
@@ -531,8 +531,8 @@
           41.4
         ],
         [
-          27.8,
-          46.5
+          29.7,
+          46.1
         ],
         [
           29.6,
@@ -567,8 +567,8 @@
           42.8
         ],
         [
-          34.5,
-          41.3
+          35.2,
+          41.4
         ],
         [
           31.1,
@@ -602,7 +602,7 @@
         ],
         [
           29.3,
-          37.0
+          36.8
         ],
         [
           24.2,
@@ -635,7 +635,7 @@
           42.7
         ],
         [
-          35.2,
+          35.7,
           38.8
         ],
         [
@@ -669,8 +669,8 @@
           38.3
         ],
         [
-          20.3,
-          36.8
+          19.9,
+          36.7
         ],
         [
           19.2,
@@ -704,7 +704,7 @@
         ],
         [
           18.7,
-          42.8
+          43.0
         ],
         [
           23.8,
@@ -737,8 +737,8 @@
           41.1
         ],
         [
-          27.7,
-          43.0
+          28.1,
+          43.1
         ],
         [
           28.8,
@@ -771,8 +771,8 @@
           36.7
         ],
         [
-          12.8,
-          40.9
+          12.3,
+          41.1
         ],
         [
           18.8,
@@ -805,8 +805,8 @@
           36.6
         ],
         [
-          13.5,
-          38.4
+          12.8,
+          38.5
         ],
         [
           16.9,
@@ -824,8 +824,8 @@
     }
   },
   "animation": "throw",
-  "buildHash": "04e973896033",
-  "buildId": "04e973896033",
+  "buildHash": "14895ab7c478",
+  "buildId": "14895ab7c478",
   "cameraElevation": 16,
   "cycle_rise_px": 0,
   "directions": [
@@ -838,6 +838,7 @@
     "W",
     "SW"
   ],
+  "engine_notes": "",
   "frameSize": [
     48,
     64
@@ -845,7 +846,7 @@
   "frames": [
     {
       "cancelable": false,
-      "duration_ms": 70,
+      "duration_ms": 60,
       "events": [
         "prop_show"
       ],
@@ -853,6 +854,22 @@
       "index": 0,
       "name": "scoop",
       "phase": "anticipation",
+      "prop": {
+        "ids": [
+          "snowball"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "back",
+          "NE": "front",
+          "NW": "back",
+          "S": "front",
+          "SE": "front",
+          "SW": "back",
+          "W": "back"
+        },
+        "visible": true
+      },
       "props": [
         "snowball"
       ],
@@ -866,10 +883,26 @@
       "cancelable": false,
       "duration_ms": 60,
       "events": [],
-      "face": "smile",
+      "face": "determined",
       "index": 1,
       "name": "pack",
       "phase": "anticipation",
+      "prop": {
+        "ids": [
+          "snowball"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "back",
+          "NE": "back",
+          "NW": "back",
+          "S": "front",
+          "SE": "front",
+          "SW": "front",
+          "W": "back"
+        },
+        "visible": true
+      },
       "props": [
         "snowball"
       ],
@@ -887,23 +920,22 @@
       "index": 2,
       "name": "cock",
       "phase": "anticipation",
-      "props": [
-        "snowball"
-      ],
-      "root_px": [
-        0,
-        0
-      ],
-      "z_px": 0
-    },
-    {
-      "cancelable": false,
-      "duration_ms": 60,
-      "events": [],
-      "face": "determined",
-      "index": 3,
-      "name": "step",
-      "phase": "action",
+      "prop": {
+        "ids": [
+          "snowball"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "front",
+          "NE": "front",
+          "NW": "back",
+          "S": "back",
+          "SE": "front",
+          "SW": "back",
+          "W": "back"
+        },
+        "visible": true
+      },
       "props": [
         "snowball"
       ],
@@ -916,6 +948,39 @@
     {
       "cancelable": false,
       "duration_ms": 50,
+      "events": [],
+      "face": "determined",
+      "index": 3,
+      "name": "step",
+      "phase": "action",
+      "prop": {
+        "ids": [
+          "snowball"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "front",
+          "NE": "front",
+          "NW": "back",
+          "S": "back",
+          "SE": "front",
+          "SW": "back",
+          "W": "back"
+        },
+        "visible": true
+      },
+      "props": [
+        "snowball"
+      ],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 80,
       "events": [
         "throw_release"
       ],
@@ -923,6 +988,20 @@
       "index": 4,
       "name": "release",
       "phase": "action",
+      "prop": {
+        "ids": [],
+        "layer": {
+          "E": null,
+          "N": null,
+          "NE": null,
+          "NW": null,
+          "S": null,
+          "SE": null,
+          "SW": null,
+          "W": null
+        },
+        "visible": false
+      },
       "props": [],
       "root_px": [
         0,
@@ -938,6 +1017,20 @@
       "index": 5,
       "name": "follow",
       "phase": "action",
+      "prop": {
+        "ids": [],
+        "layer": {
+          "E": null,
+          "N": null,
+          "NE": null,
+          "NW": null,
+          "S": null,
+          "SE": null,
+          "SW": null,
+          "W": null
+        },
+        "visible": false
+      },
       "props": [],
       "root_px": [
         0,
@@ -953,6 +1046,20 @@
       "index": 6,
       "name": "recover",
       "phase": "recovery",
+      "prop": {
+        "ids": [],
+        "layer": {
+          "E": null,
+          "N": null,
+          "NE": null,
+          "NW": null,
+          "S": null,
+          "SE": null,
+          "SW": null,
+          "W": null
+        },
+        "visible": false
+      },
       "props": [],
       "root_px": [
         0,
@@ -962,12 +1069,26 @@
     },
     {
       "cancelable": true,
-      "duration_ms": 60,
+      "duration_ms": 50,
       "events": [],
       "face": "smile",
       "index": 7,
       "name": "ready",
       "phase": "recovery",
+      "prop": {
+        "ids": [],
+        "layer": {
+          "E": null,
+          "N": null,
+          "NE": null,
+          "NW": null,
+          "S": null,
+          "SE": null,
+          "SW": null,
+          "W": null
+        },
+        "visible": false
+      },
       "props": [],
       "root_px": [
         0,
@@ -977,11 +1098,12 @@
     }
   ],
   "image": "throw_sheet.png",
-  "inputLockEnd_ms": 400,
+  "inputLockEnd_ms": 410,
   "layers": {
     "fxBack": "throw_fx_back.png",
     "fxFront": "throw_fx_front.png",
-    "note": "shadow/fx strips are direction-independent, same frame size & pivot; draw shadow+fxBack under the character, fxFront over it; offset only the character by z_px",
+    "note": "shadow/fx strips are direction-independent, same frame size & pivot; draw shadow+fxBack under the character, fxFront over it; offset only the character by z_px; prop strip (same grid as the body sheet) is drawn behind or in front of the body per frame.prop.layer",
+    "prop": "throw_prop.png",
     "shadow": "throw_shadow.png"
   },
   "layout": "rows=directions, cols=frames, no padding",
@@ -1035,9 +1157,11 @@
         -1.6,
         0.7
       ],
+      "ref": "snowball",
       "release_event": "throw_release"
     }
   ],
+  "rise_weights": null,
   "root_px_mode": "cumulative offset from clip start",
   "totalMs": 520
 }

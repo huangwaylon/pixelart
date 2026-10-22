@@ -1400,8 +1400,8 @@
     }
   },
   "animation": "jump_sc",
-  "buildHash": "ffce2cdcdc70",
-  "buildId": "ffce2cdcdc70",
+  "buildHash": "7ae70cdb8d2e",
+  "buildId": "7ae70cdb8d2e",
   "cameraElevation": 16,
   "cycle_rise_px": 0,
   "directions": [
@@ -1414,6 +1414,7 @@
     "W",
     "SW"
   ],
+  "engine_notes": "",
   "frameSize": [
     48,
     64
@@ -1685,6 +1686,7 @@
     57
   ],
   "props": [],
+  "rise_weights": null,
   "root_px_mode": "cumulative offset from clip start",
   "totalMs": 840
 }

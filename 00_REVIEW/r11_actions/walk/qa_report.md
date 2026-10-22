@@ -14,9 +14,9 @@
 - **orphan_pixels_worst**: []
 - **chain_penetrations**: 0
 - **chain_penetrations_by_chain**: {}
-- **loop_seam_px**: 0.0
-- **jaggies_total**: 71
-- **jaggies_worst**: [('E_03', 4), ('SE_02', 3), ('E_01', 3), ('E_02', 3), ('W_05', 3)]
+- **loop_seam_px**: 0.04
+- **jaggies_total**: 73
+- **jaggies_worst**: [('E_03', 4), ('SW_06', 4), ('SE_02', 3), ('E_02', 3), ('E_04', 3)]
 - **max_colours_per_frame**: 15
 - **colours_used**: 15
 - **overrides**: 0

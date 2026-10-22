@@ -440,8 +440,8 @@
     }
   },
   "animation": "carry_idle",
-  "buildHash": "e9e544aab583",
-  "buildId": "e9e544aab583",
+  "buildHash": "aac6afc75d5d",
+  "buildId": "aac6afc75d5d",
   "cameraElevation": 16,
   "cycle_rise_px": 0,
   "directions": [
@@ -454,6 +454,7 @@
     "W",
     "SW"
   ],
+  "engine_notes": "",
   "frameSize": [
     48,
     64
@@ -467,6 +468,22 @@
       "index": 0,
       "name": "up",
       "phase": "",
+      "prop": {
+        "ids": [
+          "crate"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "front",
+          "NE": "front",
+          "NW": "front",
+          "S": "front",
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
+        },
+        "visible": true
+      },
       "props": [
         "crate"
       ],
@@ -484,6 +501,22 @@
       "index": 1,
       "name": "sink",
       "phase": "",
+      "prop": {
+        "ids": [
+          "crate"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "front",
+          "NE": "front",
+          "NW": "front",
+          "S": "front",
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
+        },
+        "visible": true
+      },
       "props": [
         "crate"
       ],
@@ -501,6 +534,22 @@
       "index": 2,
       "name": "low",
       "phase": "",
+      "prop": {
+        "ids": [
+          "crate"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "front",
+          "NE": "front",
+          "NW": "front",
+          "S": "front",
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
+        },
+        "visible": true
+      },
       "props": [
         "crate"
       ],
@@ -518,6 +567,22 @@
       "index": 3,
       "name": "rise",
       "phase": "",
+      "prop": {
+        "ids": [
+          "crate"
+        ],
+        "layer": {
+          "E": "front",
+          "N": "front",
+          "NE": "front",
+          "NW": "front",
+          "S": "front",
+          "SE": "front",
+          "SW": "front",
+          "W": "front"
+        },
+        "visible": true
+      },
       "props": [
         "crate"
       ],
@@ -533,7 +598,8 @@
   "layers": {
     "fxBack": "carry_idle_fx_back.png",
     "fxFront": "carry_idle_fx_front.png",
-    "note": "shadow/fx strips are direction-independent, same frame size & pivot; draw shadow+fxBack under the character, fxFront over it; offset only the character by z_px",
+    "note": "shadow/fx strips are direction-independent, same frame size & pivot; draw shadow+fxBack under the character, fxFront over it; offset only the character by z_px; prop strip (same grid as the body sheet) is drawn behind or in front of the body per frame.prop.layer",
+    "prop": "carry_idle_prop.png",
     "shadow": "carry_idle_shadow.png"
   },
   "layout": "rows=directions, cols=frames, no padding",
@@ -584,11 +650,13 @@
       "name": "crate",
       "offset": [
         0.0,
-        17.8,
+        19.2,
         0.0
-      ]
+      ],
+      "ref": "crate"
     }
   ],
+  "rise_weights": null,
   "root_px_mode": "cumulative offset from clip start",
   "totalMs": 800
 }
