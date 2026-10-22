@@ -349,7 +349,7 @@
     3.6799999999999997,
     4.0
    ],
-   "material": "pom",
+   "material": "prop_snow",
    "frames": [
     "grab"
    ],
@@ -453,7 +453,7 @@
       0.22,
       13.0
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -497,7 +497,7 @@
       0.22,
       13.0
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -541,7 +541,7 @@
       11.96,
       0.22
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -585,7 +585,7 @@
       11.96,
       0.22
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -629,7 +629,7 @@
       2.34,
       13.78
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        0,
@@ -673,7 +673,7 @@
       2.34,
       13.78
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        0,
@@ -717,7 +717,7 @@
       2.34,
       0.22
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        1,
@@ -761,7 +761,7 @@
       2.34,
       0.22
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        1,
@@ -850,7 +850,7 @@
     3.6799999999999997,
     4.0
    ],
-   "material": "pom",
+   "material": "prop_snow",
    "frames": [
     "heave"
    ],
@@ -954,7 +954,7 @@
       0.22,
       13.0
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -998,7 +998,7 @@
       0.22,
       13.0
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -1042,7 +1042,7 @@
       11.96,
       0.22
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -1086,7 +1086,7 @@
       11.96,
       0.22
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -1130,7 +1130,7 @@
       2.34,
       13.78
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        0,
@@ -1174,7 +1174,7 @@
       2.34,
       13.78
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        0,
@@ -1218,7 +1218,7 @@
       2.34,
       0.22
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        1,
@@ -1262,7 +1262,7 @@
       2.34,
       0.22
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        1,
@@ -1351,7 +1351,7 @@
     3.6799999999999997,
     4.0
    ],
-   "material": "pom",
+   "material": "prop_snow",
    "frames": [
     "clean"
    ],
@@ -1455,7 +1455,7 @@
       0.22,
       13.0
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -1499,7 +1499,7 @@
       0.22,
       13.0
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -1543,7 +1543,7 @@
       11.96,
       0.22
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -1587,7 +1587,7 @@
       11.96,
       0.22
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -1631,7 +1631,7 @@
       2.34,
       13.78
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        0,
@@ -1675,7 +1675,7 @@
       2.34,
       13.78
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        0,
@@ -1719,7 +1719,7 @@
       2.34,
       0.22
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        1,
@@ -1763,7 +1763,7 @@
       2.34,
       0.22
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        1,
@@ -1852,7 +1852,7 @@
     3.6799999999999997,
     4.0
    ],
-   "material": "pom",
+   "material": "prop_snow",
    "frames": [
     "press"
    ],
@@ -1946,7 +1946,7 @@
       0.22,
       13.0
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -1985,7 +1985,7 @@
       0.22,
       13.0
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -2024,7 +2024,7 @@
       11.96,
       0.22
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -2063,7 +2063,7 @@
       11.96,
       0.22
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -2102,7 +2102,7 @@
       2.34,
       13.78
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        0,
@@ -2141,7 +2141,7 @@
       2.34,
       13.78
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        0,
@@ -2180,7 +2180,7 @@
       2.34,
       0.22
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        1,
@@ -2219,7 +2219,7 @@
       2.34,
       0.22
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        1,
@@ -2298,7 +2298,7 @@
     3.6799999999999997,
     4.0
    ],
-   "material": "pom",
+   "material": "prop_snow",
    "frames": [
     "lockout"
    ],
@@ -2392,7 +2392,7 @@
       0.22,
       13.0
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -2431,7 +2431,7 @@
       0.22,
       13.0
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -2470,7 +2470,7 @@
       11.96,
       0.22
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -2509,7 +2509,7 @@
       11.96,
       0.22
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -2548,7 +2548,7 @@
       2.34,
       13.78
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        0,
@@ -2587,7 +2587,7 @@
       2.34,
       13.78
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        0,
@@ -2626,7 +2626,7 @@
       2.34,
       0.22
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        1,
@@ -2665,7 +2665,7 @@
       2.34,
       0.22
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        1,
@@ -2744,7 +2744,7 @@
     3.6799999999999997,
     4.0
    ],
-   "material": "pom",
+   "material": "prop_snow",
    "frames": [
     "settle"
    ],
@@ -2838,7 +2838,7 @@
       0.22,
       13.0
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -2877,7 +2877,7 @@
       0.22,
       13.0
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -2916,7 +2916,7 @@
       11.96,
       0.22
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -2955,7 +2955,7 @@
       11.96,
       0.22
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -2994,7 +2994,7 @@
       2.34,
       13.78
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        0,
@@ -3033,7 +3033,7 @@
       2.34,
       13.78
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        0,
@@ -3072,7 +3072,7 @@
       2.34,
       0.22
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        1,
@@ -3111,7 +3111,7 @@
       2.34,
       0.22
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        1,

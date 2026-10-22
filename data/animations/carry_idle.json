@@ -212,9 +212,9 @@
    "radii": [
     7.2,
     3.6799999999999997,
-    5.28
+    4.0
    ],
-   "material": "pom",
+   "material": "prop_snow",
    "frames": "all",
    "parts": [
     {
@@ -226,7 +226,7 @@
      "radii": [
       0.22,
       11.96,
-      17.16
+      13.0
      ],
      "material": "coat_trim",
      "clip_all": [
@@ -265,7 +265,7 @@
      "radii": [
       0.22,
       11.96,
-      17.16
+      13.0
      ],
      "material": "coat_trim",
      "clip_all": [
@@ -304,9 +304,9 @@
      "radii": [
       23.4,
       0.22,
-      17.16
+      13.0
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -343,9 +343,9 @@
      "radii": [
       23.4,
       0.22,
-      17.16
+      13.0
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -377,14 +377,14 @@
      "offset": [
       0.0,
       17.8,
-      6.6
+      5.0
      ],
      "radii": [
       23.4,
       11.96,
       0.22
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -416,14 +416,14 @@
      "offset": [
       0.0,
       17.8,
-      -6.6
+      -5.0
      ],
      "radii": [
       23.4,
       11.96,
       0.22
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -460,9 +460,9 @@
      "radii": [
       0.22,
       2.34,
-      17.94
+      13.78
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        0,
@@ -499,9 +499,9 @@
      "radii": [
       0.22,
       2.34,
-      17.94
+      13.78
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        0,
@@ -533,14 +533,14 @@
      "offset": [
       0.0,
       18.0,
-      6.9
+      5.3
      ],
      "radii": [
       24.18,
       2.34,
       0.22
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        1,
@@ -572,14 +572,14 @@
      "offset": [
       0.0,
       18.0,
-      -6.9
+      -5.3
      ],
      "radii": [
       24.18,
       2.34,
       0.22
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        1,
@@ -609,7 +609,7 @@
     },
     {
      "offset": [
-      10.0,
+      10.4,
       9.5,
       0.0
      ],
@@ -627,7 +627,7 @@
     },
     {
      "offset": [
-      -10.0,
+      -10.4,
       9.5,
       0.0
      ],
