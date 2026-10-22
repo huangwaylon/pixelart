@@ -376,11 +376,11 @@
  ],
  "anchors": {
   "brow_L": [
-   32,
+   30,
    28
   ],
   "brow_R": [
-   43,
+   40,
    28
   ],
   "eye_L": [
@@ -492,8 +492,8 @@
     "eye_L": "eye_far_sad",
     "eye_R": "eye_near_sad",
     "mouth": "mouth_sad",
-    "blush_L": "blush_far",
-    "blush_R": "blush_near",
+    "blush_L": null,
+    "blush_R": null,
     "sweat": null,
     "fx": null,
     "nose": "nose_q"

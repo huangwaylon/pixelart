@@ -14,3 +14,12 @@ Tool additions: centre-sampled raster, `paths[]`, `mirror`, `translate`, `z`, `c
 - **Colours:** hair hair_2/hair_1/plum_0 line, ring hair_hi. Skin skin_2/skin_1/line_skin. Coat oat_2/oat_1/mauve. Trim hair_2. Teal parts teal_1/teal_0/teal_2. Tights char_1/ink. Boots hair_1/plum_0/hair_2. Eyes ink lash, iris_0..2, snow_3. Blush red_2 hatched ///.
 - **Lines:** front part owns the 1 px inner line. Silhouette sel-out: lit top-left takes the part line colour, the rest outline. No outline colour inside.
 - **Bust slots** (L = viewer-left/far): brow_L/R (over bangs), eye_L/R, nose, mouth, blush_L/R, sweat, fx. Swap via `variants.<v>.cels`.
+
+## Round 1 fixes (AD review 1)
+1. **Sel-out zipper fixed** (`illustrate.py` `selout()`). Each outline pixel now takes the outward normal of its edge segment, measured over a 5x5 window. A majority vote along the line then decides whole runs, so pixels no longer flip one by one. Light comes from the upper-left (`outline.light`, `lit_threshold`). After it, a new `orphan_cleanup` pass runs. Cels are stamped later and are never cleaned. Orphans: sheet 49 to 2, turnaround 3, idle and cheer poses 0-1. The bust's remaining 5-12 per expression come from B's cels: lone `W` pixels in the eyes, plum/skin_1 brow ends, the sad tear.
+2. **3/4 face turned.** Far eye 6 px, near eye 8 px, features 2 px toward the facing side. The far sidelock now sits *behind* the face, so the cheek contour shows, with a 1 px nose bump at y38-41. The jaw tapers to a chin under the far eye (x≈41). Propagated to `bust.json` (layers only; B's variants and cels are kept).
+   **Anchor changes:** sheet 3/4 eye_L 37→36, eye_R 46→44, mouth 42→39, nose removed. Bust: brow_L 32→30, brow_R 43→40, eye_L 32→30, eye_R 43→40, nose 39→36, mouth 38→35, blush_L 30→28, blush_R 46→43. y unchanged.
+3. **Coat line**: the new `oat_0` #957A80 (warm mauve, darker than oat_1) replaces lavender `mauve` on the coat, arms and boot cuffs. The portrait palette now has 39 colours.
+4. **Brows canonical**: 2-row ink arcs on the bangs at y22, above the notch tips. Cels `browF_neutral`, `browQ_near/far_neutral`.
+5. **New `turnaround.json`**: 5 views (front, 3/4, profile, rear 3/4, back), 96x64 each, model-sheet scale. The front, 3/4 and back views reuse the model-sheet shapes.
+6. **New `bust_16.json`**: 15 colours plus transparency, built with `extends` + `color_map`. The iris uses the teal ramp, lashes use outline.

@@ -38,6 +38,8 @@ Layer keys:
 Face cel file: {"anchor": [ax, ay], "legend": {"#": "ink", "o": "iris_1", "x": null}, "grid": ["..#..", ...]}
   A cel ref "name:flip" mirrors the grid horizontally (anchor mirrored too).
   '.' and ' ' are transparent, null in the legend = clear to the base face colour under the anchor ("base" key).
+"extends": "<file>.json" inherits another source; "color_map": {"from": "to"} merges colours at the very end
+  (used by the 16-colour stress bust).
 Overrides: overrides/illustrations/<name>[_<variant>].png (opaque pixels replace; #FF00FF = transparent).
 
     python -m pipeline.illustrate data/illustrations/S4/bust.json --out 00_REVIEW/r12_illustration
@@ -480,8 +482,18 @@ def _render_stack(src, ill, pal, base_dir, variant):
     return composite_cels(out, src, pal, base_dir, variant)
 
 
-def render_illustration(path, variant=None):
+def load_illustration(path):
+    """Load a source; {"extends": "other.json", ...} overlays its keys on another source (same folder)."""
     ill = json.load(open(path))
+    if ill.get("extends"):
+        base = load_illustration(os.path.join(os.path.dirname(os.path.abspath(path)), ill["extends"]))
+        base.update({k: v for k, v in ill.items() if k != "extends"})
+        ill = base
+    return ill
+
+
+def render_illustration(path, variant=None):
+    ill = load_illustration(path)
     base_dir = os.path.dirname(os.path.abspath(path))
     pal = Palette(os.path.join(ROOT, "data", "palettes", f"{ill['palette']}.json"))
     if ill.get("panels"):
@@ -504,6 +516,9 @@ def render_illustration(path, variant=None):
                 out[y, x] = -1 if (r, g, b) == (255, 0, 255) else pal.rgb.index((r, g, b))
                 stats["override_px"] += 1
             break
+    if ill.get("color_map"):                 # palette-reduction stress tests: merge colours after all passes
+        cm = {pal.index[a]: pal.index[b] for a, b in ill["color_map"].items()}
+        out = np.vectorize(lambda v: cm.get(v, v))(out)
     return pal, out, ill, stats
 
 
@@ -526,7 +541,7 @@ def main():
     ap.add_argument("--scale", type=int, default=4, help="nearest-neighbour preview scale")
     ap.add_argument("--orphans", action="store_true", help="list orphan pixel coordinates")
     a = ap.parse_args()
-    ill = json.load(open(a.source))
+    ill = load_illustration(a.source)
     name = os.path.splitext(os.path.basename(a.source))[0]
     out = os.path.join(ROOT, a.out)
     os.makedirs(out, exist_ok=True)

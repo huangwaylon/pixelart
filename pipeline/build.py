@@ -185,6 +185,8 @@ def write_build(anim_name, scene, palette, base, final, ov_meta, bid, hashes, ou
     }
     if scene.anim_data.get("derived"):
         meta["derivedFrom"] = {"clip": scene.anim_data["derived"]["clip"], "frames": scene.anim_data["derived"]["frames"]}
+    if props is not None and any("smear" in ids for ids in props["ids"]):
+        meta["props"].append({"name": "smear", "ref": "smear", "fx": True})     # declared, engine looks up by ids
     if props is not None:
         meta["layers"]["propBack"] = f"{anim_name}_prop_back.png"
         meta["layers"]["propFront"] = f"{anim_name}_prop_front.png"

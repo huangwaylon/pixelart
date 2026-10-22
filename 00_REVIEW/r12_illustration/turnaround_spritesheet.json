@@ -1,0 +1,10 @@
+{
+ "image": "turnaround_spritesheet.png",
+ "frameSize": [
+  480,
+  64
+ ],
+ "frames": [
+  "base"
+ ]
+}

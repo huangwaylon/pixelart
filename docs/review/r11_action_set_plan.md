@@ -26,11 +26,11 @@ Character: S4_halfup_bow, 48x64 cells, pivot (24,57), 8 directions. Clips follow
 | run | stick >=50% | loop | 8/560 | 8 | contact, down, push, flight x2; lean 8, 1-2 px bob | footstep_L f1, footstep_R f5 | any |
 | fall | falling >200 ms | loop | 4/320 | 8 | arms out flutter, knees tucked | - | on land |
 | land | contact after fall | one-shot | 5/290 (jump_sc f10-14) | 8 | touchdown, hop, plop, settle, ready | land f1 | f3+ |
-| pick_up | tap item in range | one-shot | 8/640 | 8 | squat, reach, grab, lift, press overhead | grab f3 | none |
+| pick_up | tap item in range | one-shot | 9/700 (final) | 8 | squat, reach, grab, lift, press overhead | grab f3 | none |
 | carry_idle | holding, no input | loop | 4/800 | 8 | arms up, weight bob | - | any |
 | carry_walk | holding, moving | loop | 8/960 | 8 | short stride, upright, no arm swing | footstep_L f1, footstep_R f5 | any |
 | throw | throw, empty hands | one-shot | 8/520 | 8 | scoop, cock, step, release, follow-through, recover | prop_show f1, throw_release f5 | f7+ |
-| carry_throw | throw while carrying | one-shot | 6/480 | 8 | dip, push up-forward, release, recover | throw_release f3 | f5+ |
+| carry_throw | throw while carrying | one-shot | 6/540 (final; release f3, spawn at push anchor) | 8 | dip, push up-forward, release, recover | throw_release f3 | f5+ |
 | climb | touch climbable face | loop | 8/960 | N, NE, NW | reach R, pull, reach L, pull | grip_R f1, grip_L f5 | drop any |
 | climb_top | top of climbable face | one-shot | 8/720 | N, NE, NW | elbows on ledge, knee up, roll over, stand | step_up f6 | none |
 

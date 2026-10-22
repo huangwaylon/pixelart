@@ -1,0 +1,14 @@
+{
+ "extends": "bust.json",
+ "name": "S4 bust, 16-colour stress test",
+ "note": "neutral bust reduced to 15 colours + transparency (FE GBA budget): iris shares the scarf teal ramp, lashes use outline, buckle uses hair tones.",
+ "variants": {},
+ "color_map": {
+  "gold_0": "hair_1",
+  "gold_1": "hair_hi",
+  "iris_0": "teal_0",
+  "iris_1": "teal_1",
+  "iris_2": "teal_2",
+  "ink": "outline"
+ }
+}

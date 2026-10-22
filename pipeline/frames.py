@@ -93,6 +93,7 @@ class Scene:
         return prims, {k: face_m @ v for k, v in worlds.items()}
 
     def render_props(self, i, direction):
+        self._cur_dir = direction
         """Prop-only layer for the engine (prop_mode 'separate'): (idx, layer 'front'|'back', ids)."""
         from .render import render_pixels, add_outline
         ch = self.anim.keys[i]
@@ -151,7 +152,8 @@ class Scene:
             M = M @ euler(*pr.get("rot", [0, 0, 0])) @ scale(*pr["radii"])
             out.append({"name": pr["name"], "M": M, "material": pr.get("material", "prop"), "group": "prop"})
             for k, part in enumerate(pr.get("parts", [])):      # extra shapes (e.g. crate lid, snowball shading)
-                if part.get("tag") and part["tag"] in fo.get("hide", []):
+                hide_dir = pr.get("hide_tags_by_dir", {}).get(getattr(self, "_cur_dir", ""), [])
+                if part.get("tag") and (part["tag"] in fo.get("hide", []) or part["tag"] in hide_dir):
                     continue                                    # per-frame hidden part (e.g. slack crate ropes)
                 Mk = B @ translate(*part["offset"]) @ euler(*part.get("rot", [0, 0, 0])) @ scale(*part["radii"])
                 out.append({"name": f'{pr["name"]}_{k}', "M": Mk, "material": part.get("material", pr.get("material", "prop")),

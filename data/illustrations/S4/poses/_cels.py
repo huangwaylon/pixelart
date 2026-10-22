@@ -20,6 +20,15 @@ C = {
  "bQ_near_shy": (EYE, ["........", "........", ".KKKKKK.", "KKKKKKKK", "WWddwwwK", "mmldwww.", "llldww..", "ddd.....", ".....ss."]),
  "bQ_far_squeeze": (EYE, ["......", "......", "K.....", ".KK...", "...KK.", ".KK...", "K....."]),
  "bQ_near_squeeze": (EYE, ["........", "........", "......KK", "....KK..", "..KK....", "....KK..", "......KK"]),
+ # --- brows (model-sheet browQ_* geometry: far 4x2, near 7x2; inner ends = far right / near left) ---
+ "bQ_brow_far_up": (EYE, [".KKK", "K..."], [0, 1]),
+ "bQ_brow_near_up": (EYE, [".KKKKK.", "K.....K"], [0, 1]),
+ "bQ_brow_far_det": (EYE, ["KK..", "..KK"]),
+ "bQ_brow_near_det": (EYE, ["....KKK", "KKKK..."]),
+ "bQ_brow_far_flat": (EYE, ["....", "KKKK"]),
+ "bQ_brow_near_flat": (EYE, [".......", ".KKKKKK"]),
+ "bQ_brow_far_worry": (EYE, ["..KK", "KK.."]),
+ "bQ_brow_near_worry": (EYE, ["KKK....", "...KKKK"]),
  # --- mouths (anchor offset so the mouth stays centred on the model-sheet mouth anchor) ---
  "bQ_mouth_smile": (MOUTH, ["s..s", ".ss."], [1, 0]),
  "bQ_mouth_joy": (MOUTH, ["pppp", "pctp", ".pp."], [1, 0]),
