@@ -61,7 +61,10 @@ class Rig:
                 ankle = -(hip + knee) * 0.5 + lg["ankle"]
             spread = pose["leg_" + side].get("spread", 0)
             ch["hip_" + side] = [hip, 0.0, sgn * spread]
-            ch["knee_" + side] = [knee, 0.0, 0.0]
+            # planted feet: counter-rotate the knee by 2x the hip spread so knees move in/out but the ankle stays
+            # under the hip (thigh == shin length) -> pigeon-toe / knees-together poses keep 0 foot slide
+            knee_z = -2.0 * sgn * spread if pose["plant"] else 0.0
+            ch["knee_" + side] = [knee, 0.0, knee_z]
             ch["ankle_" + side] = [ankle, 0.0, 0.0]
         ch["root"] = [0.0, 0.0, 0.0]
         ch["pelvis"] = [0.0, 0.0, 0.0]

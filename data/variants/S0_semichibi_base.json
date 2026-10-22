@@ -1,0 +1,19 @@
+{
+ "name": "S0_semichibi_base", "label": "S0 - semi-chibi base (curvy A-line, long hair, teal)",
+ "palette": "cw_oatmeal",
+ "proportions": {"head_r": 8.4, "torso": 12.5, "leg": 13.0, "arm": 11.5, "body_w": 6.0, "body_d": 5.0,
+                 "shoulder_w": 5.0, "hip_w": 2.3, "limb": 0.85, "hand_r": 1.6, "foot": [2.3, 2.0, 3.3],
+                 "ankle_h": 1.9, "neck": 2.2, "waist": 0.74, "hip": 1.12, "flare": 1.22, "bust": 1.04},
+ "outfit": {"hair": "long", "hair_len": 2.0, "hat": "beret", "bangs": "side", "accessory": "ribbon_side",
+            "coat": "aline", "coat_len": 0.45, "hem_trim": true, "sleeve_cuffs": true,
+            "legs": "skirt_tights", "boots": "tall", "scarf": "long", "scarf_tails": 1, "scarf_v2": true,
+            "scarf_len": 2.6},
+ "face": {"eyes": "kawaii", "eye_pitch": -10, "eye_spacing": 0.34},
+ "render": {"camera_elevation": 16, "ppu": 0.75, "v2": true,
+            "rules": ["grounded_soles", "cuff_continuity", "temple_cover", "backview_skin", "chin_shadow", "thin_highlights"],
+            "lineart": {"smooth": 0.7, "line_min_run": 3, "pixel_perfect": true, "selout": true,
+                        "no_face_lines": true, "angel_ring": true, "regularize": true}},
+ "sim": {"body_collide": true},
+ "shadow": {"w": 13, "h": 4, "apex_scale": 0.65},
+ "frame": {"size": [48, 64], "pivot": [24, 57]}
+}
