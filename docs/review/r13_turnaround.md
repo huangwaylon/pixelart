@@ -7,24 +7,22 @@ Five passes per view: silhouette, flats, selective lines, shading, details. Line
 
 Faces are copied pixel-for-pixel (eyes, brows, nose, mouth, blush, jaw) from Pixel Artist 3's `head_small/head_{front,three_quarter,side}.pix` at offset x+28, so the faces match. Their landmark rows are used throughout.
 
-## Landmark rows (round 2, identical in all 4 views)
+## Landmark rows (round 3, 5.0 heads, identical in all 4 views)
 | landmark | y |
 |---|---|
-| bow top (front loops y3-17; back y4-17; side lobes y8-20) | 3 |
+| bow (front wedges / back loops / side lobes) | 8-13 / 4-17 / 8-20 |
 | crown / bang cut (2 notches) | 5 / 14 |
 | brow / top lash / iris / lower lash | 15 / 18 / 19-23 / 24 |
-| mouth (1-2-1) / chin | 27-28 / 31 |
+| mouth / chin | 26-28 / 31 |
 | scarf top / bottom | 32-33 / 42 |
 | shoulder (her right 1 px lower) | 38 |
-| bust / waist (20 px) | 46-49 / 52-58 |
-| belt | 59-61 |
-| elbow bend | 58 |
-| ponytail point | 60 |
+| bust / waist (20 px) / belt | 46-49 / 52-58 / 59-61 |
+| elbow / ponytail point | 58 / 60 |
 | cuff / mittens | 71-73 / 74-81 |
-| hem (curved: sides / centre) | 85 / 88 |
-| knee | 108-111 |
-| boot cuff (flared) | 124-128 |
-| sole (free foot 1 px up) | 154 (153) |
+| hem (sides / centre) | 85 / 88 |
+| knee | 100-111 |
+| boot cuff (flared) | 119-122 |
+| sole (free foot 1 px up) | 142 (141) |
 
 ## View notes
 - **Front:** the bow wings span x15-80 and the knot shows above the crown. The scarf tail hangs on her left (the viewer's right). There are 6 buttons, a gold buckle, and transparent gaps between the arms and the waist.
@@ -43,3 +41,11 @@ Faces are copied pixel-for-pixel (eyes, brows, nose, mouth, blush, jaw) from Pix
 - **Legs:** added `char_2 #6A6688` sheen on the kneecap and shin, with ink on the inner edges. Widths are 9/6/7 px, with a thigh gap below the hem. The free knee turns in and its heel is up 1 px. Boots have a flared cuff, one fold, and toes turned out.
 - **Faces (6, 7, 9):** front, 3/4 and side faces are copied exactly from Artist 3's round-1 `head_small` files (offset x+28), including the crown clumps. The 3/4 has a narrow far eye, more skull behind the ear, and an S-curve ponytail.
 - **Stats:** 14-28 colours per view. Allowed orphans only, plus four notch-flank pixels that come from Artist 3's front file.
+
+## Round 3 (review 2 fixes 2-6, 8)
+- **Back hair (2):** a curtain 30 px wide (x33-62) that tapers to 22 px, with 5 clump tips staggered from y60 to y76 and split wedges between them. The sleeves now show at the sides. In the front and 3/4 views, the hair beside the arms is a 2 px strand broken at y47 and ending by y62.
+- **Proportion (3):** now 5.0 heads (crown y5 to sole y142). The legs lost 6 px and the boot shafts lost 6 px. The guides are updated.
+- **Legs (4, 5):** one monotonic taper (9, 8, 7, 7, 6, 5) with a straight inner edge, so the seam is the single 1 px line. Each leg has one continuous `char_2` sheen line from y94 to y117. In the side view the back of the leg is now the 1 px outline.
+- **Boots (6):** 7 px shafts narrowing to 6 at the ankle, a flared cuff, and a diagonal plum fold.
+- **Re-sync (1, 7):** copied Artist 3's updated `head_front` (wedge bow loops at y8-13 with a crease) and `head_side` (soft forehead, upturned nose, small mouth) exactly. The side face region was re-shaped to their contour. The 3/4 file was unchanged.
+- **Silhouettes (8):** rechecked on light, dark and black backgrounds. Only allowed orphans remain.
