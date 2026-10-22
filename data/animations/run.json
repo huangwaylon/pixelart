@@ -21,7 +21,7 @@
   "SW"
  ],
  "conventions": "Degrees. spine/head tilt + = forward/down. arm raise + = forward/up from hanging (180 = overhead), - = back; spread + = out to the side; elbow + = bend. leg hip + = thigh forward, knee + = bend, ankle + = toes down. plant=true solves legs with IK so feet stay pinned. z_px = engine vertical offset in screen px. squash < 1 squashes, > 1 stretches (volume preserved). WP A: walk/run legs are FK solved offline from foot trajectories (ankle z fwd, y up, world units; stance feet slide back linearly = in-place treadmill).",
- "notes": "WP A r11. Energetic run: forward lean, 1-2 px bob, pumping bent arms, drive knee, flight frames 4/8.",
+ "notes": "WP A r11 round 1. Energetic run: 15 deg lean, squash/stretch, wide push/flight stride, pumping elbows, trail_wind for ponytail/scarf.",
  "rest": {
   "z_px": 0,
   "pelvis_drop": 0,
@@ -77,35 +77,35 @@
    "pelvis_drop": 1.0,
    "squash": 1.0,
    "spine": {
-    "tilt": 13,
+    "tilt": 15,
     "turn": 6,
     "lean": 0
    },
    "head": {
-    "tilt": -8,
+    "tilt": -10,
     "turn": -4,
     "roll": 1
    },
    "arm_L": {
-    "raise": -44,
-    "spread": 20,
-    "elbow": 60
+    "raise": -50,
+    "spread": 24,
+    "elbow": 62
    },
    "arm_R": {
-    "raise": 54,
-    "spread": 8,
+    "raise": 60,
+    "spread": 12,
     "elbow": 92
    },
    "leg_L": {
-    "hip": 36.1,
-    "knee": 43.4,
-    "ankle": -9.7,
+    "hip": 36.9,
+    "knee": 37.7,
+    "ankle": -6.4,
     "spread": -2
    },
    "leg_R": {
-    "hip": 17.2,
-    "knee": 87.5,
-    "ankle": 6.8,
+    "hip": 6.3,
+    "knee": 82.6,
+    "ankle": 3.9,
     "spread": -2
    },
    "cancelable": true,
@@ -120,37 +120,37 @@
    "face": "smile",
    "plant": false,
    "pelvis_drop": 2.3,
-   "squash": 1.0,
+   "squash": 0.96,
    "spine": {
     "tilt": 15,
     "turn": 4,
     "lean": -1.5
    },
    "head": {
-    "tilt": -6,
+    "tilt": -10,
     "turn": -3,
     "roll": 2
    },
    "arm_L": {
-    "raise": -20,
-    "spread": 18,
+    "raise": -24,
+    "spread": 20,
     "elbow": 72
    },
    "arm_R": {
-    "raise": 24,
-    "spread": 10,
+    "raise": 30,
+    "spread": 12,
     "elbow": 86
    },
    "leg_L": {
-    "hip": 35.1,
-    "knee": 69.2,
-    "ankle": -17.0,
+    "hip": 31.6,
+    "knee": 60.2,
+    "ankle": -14.3,
     "spread": -2
    },
    "leg_R": {
-    "hip": 39.1,
-    "knee": 126.8,
-    "ankle": 4.1,
+    "hip": 33.0,
+    "knee": 127.0,
+    "ankle": 3.0,
     "spread": -2
    },
    "cancelable": true
@@ -164,35 +164,35 @@
    "pelvis_drop": 1.0,
    "squash": 1.0,
    "spine": {
-    "tilt": 13,
+    "tilt": 14,
     "turn": -1,
     "lean": -1
    },
    "head": {
-    "tilt": -9,
+    "tilt": -10,
     "turn": 0,
     "roll": 1
    },
    "arm_L": {
-    "raise": 22,
-    "spread": 10,
-    "elbow": 86
+    "raise": 40,
+    "spread": 16,
+    "elbow": 84
    },
    "arm_R": {
-    "raise": -18,
-    "spread": 18,
+    "raise": -40,
+    "spread": 28,
     "elbow": 66
    },
    "leg_L": {
-    "hip": 19.0,
-    "knee": 68.1,
-    "ankle": 5.4,
+    "hip": 14.6,
+    "knee": 65.4,
+    "ankle": 4.6,
     "spread": -2
    },
    "leg_R": {
-    "hip": 71.2,
-    "knee": 106.5,
-    "ankle": -7.6,
+    "hip": 79.7,
+    "knee": 101.4,
+    "ankle": -0.8,
     "spread": -2
    },
    "cancelable": true
@@ -204,9 +204,9 @@
    "face": "smile",
    "plant": false,
    "pelvis_drop": 0.0,
-   "squash": 1.0,
+   "squash": 1.04,
    "spine": {
-    "tilt": 11,
+    "tilt": 12,
     "turn": -5,
     "lean": 0
    },
@@ -216,25 +216,25 @@
     "roll": 0
    },
    "arm_L": {
-    "raise": 48,
-    "spread": 8,
+    "raise": 58,
+    "spread": 12,
     "elbow": 90
    },
    "arm_R": {
-    "raise": -40,
-    "spread": 20,
+    "raise": -50,
+    "spread": 26,
     "elbow": 58
    },
    "leg_L": {
-    "hip": 5.5,
-    "knee": 56.0,
-    "ankle": 16.7,
+    "hip": -3.7,
+    "knee": 57.6,
+    "ankle": 14.4,
     "spread": -2
    },
    "leg_R": {
-    "hip": 42.1,
-    "knee": 47.0,
-    "ankle": -10.5,
+    "hip": 48.6,
+    "knee": 43.1,
+    "ankle": -5.2,
     "spread": -2
    },
    "cancelable": true
@@ -248,35 +248,35 @@
    "pelvis_drop": 1.0,
    "squash": 1.0,
    "spine": {
-    "tilt": 13,
+    "tilt": 15,
     "turn": -6,
     "lean": 0
    },
    "head": {
-    "tilt": -8,
+    "tilt": -10,
     "turn": 4,
     "roll": -1
    },
    "arm_L": {
-    "raise": 54,
-    "spread": 8,
+    "raise": 60,
+    "spread": 12,
     "elbow": 92
    },
    "arm_R": {
-    "raise": -44,
-    "spread": 20,
-    "elbow": 60
+    "raise": -50,
+    "spread": 24,
+    "elbow": 62
    },
    "leg_L": {
-    "hip": 17.2,
-    "knee": 87.5,
-    "ankle": 6.8,
+    "hip": 6.3,
+    "knee": 82.6,
+    "ankle": 3.9,
     "spread": -2
    },
    "leg_R": {
-    "hip": 36.1,
-    "knee": 43.4,
-    "ankle": -9.7,
+    "hip": 36.9,
+    "knee": 37.7,
+    "ankle": -6.4,
     "spread": -2
    },
    "cancelable": true,
@@ -291,37 +291,37 @@
    "face": "smile",
    "plant": false,
    "pelvis_drop": 2.3,
-   "squash": 1.0,
+   "squash": 0.96,
    "spine": {
     "tilt": 15,
     "turn": -4,
     "lean": 1.5
    },
    "head": {
-    "tilt": -6,
+    "tilt": -10,
     "turn": 3,
     "roll": -2
    },
    "arm_L": {
-    "raise": 24,
-    "spread": 10,
+    "raise": 30,
+    "spread": 12,
     "elbow": 86
    },
    "arm_R": {
-    "raise": -20,
-    "spread": 18,
+    "raise": -24,
+    "spread": 20,
     "elbow": 72
    },
    "leg_L": {
-    "hip": 39.1,
-    "knee": 126.8,
-    "ankle": 4.1,
+    "hip": 33.0,
+    "knee": 127.0,
+    "ankle": 3.0,
     "spread": -2
    },
    "leg_R": {
-    "hip": 35.1,
-    "knee": 69.2,
-    "ankle": -17.0,
+    "hip": 31.6,
+    "knee": 60.2,
+    "ankle": -14.3,
     "spread": -2
    },
    "cancelable": true
@@ -335,35 +335,35 @@
    "pelvis_drop": 1.0,
    "squash": 1.0,
    "spine": {
-    "tilt": 13,
+    "tilt": 14,
     "turn": 1,
     "lean": 1
    },
    "head": {
-    "tilt": -9,
+    "tilt": -10,
     "turn": 0,
     "roll": -1
    },
    "arm_L": {
-    "raise": -18,
-    "spread": 18,
+    "raise": -40,
+    "spread": 28,
     "elbow": 66
    },
    "arm_R": {
-    "raise": 22,
-    "spread": 10,
-    "elbow": 86
+    "raise": 40,
+    "spread": 16,
+    "elbow": 84
    },
    "leg_L": {
-    "hip": 71.2,
-    "knee": 106.5,
-    "ankle": -7.6,
+    "hip": 79.7,
+    "knee": 101.4,
+    "ankle": -0.8,
     "spread": -2
    },
    "leg_R": {
-    "hip": 19.0,
-    "knee": 68.1,
-    "ankle": 5.4,
+    "hip": 14.6,
+    "knee": 65.4,
+    "ankle": 4.6,
     "spread": -2
    },
    "cancelable": true
@@ -375,9 +375,9 @@
    "face": "smile",
    "plant": false,
    "pelvis_drop": 0.0,
-   "squash": 1.0,
+   "squash": 1.04,
    "spine": {
-    "tilt": 11,
+    "tilt": 12,
     "turn": 5,
     "lean": 0
    },
@@ -387,28 +387,30 @@
     "roll": 0
    },
    "arm_L": {
-    "raise": -40,
-    "spread": 20,
+    "raise": -50,
+    "spread": 26,
     "elbow": 58
    },
    "arm_R": {
-    "raise": 48,
-    "spread": 8,
+    "raise": 58,
+    "spread": 12,
     "elbow": 90
    },
    "leg_L": {
-    "hip": 42.1,
-    "knee": 47.0,
-    "ankle": -10.5,
+    "hip": 48.6,
+    "knee": 43.1,
+    "ankle": -5.2,
     "spread": -2
    },
    "leg_R": {
-    "hip": 5.5,
-    "knee": 56.0,
-    "ankle": 16.7,
+    "hip": -3.7,
+    "knee": 57.6,
+    "ankle": 14.4,
     "spread": -2
    },
    "cancelable": true
   }
- ]
+ ],
+ "trail_wind": 1000,
+ "engine_notes": "Move at ~53 world u/s (~40 px/s E/W) so stance feet stick. footstep_L f1 / footstep_R f5 match walk (swap at same frame index)."
 }

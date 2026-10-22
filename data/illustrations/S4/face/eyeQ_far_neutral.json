@@ -1,0 +1,27 @@
+{
+ "note": "3/4 facing left: far eye (viewer-left), foreshortened 6x9",
+ "anchor": [
+  0,
+  0
+ ],
+ "legend": {
+  "K": "ink",
+  "d": "iris_0",
+  "m": "iris_1",
+  "l": "iris_2",
+  "W": "snow_3",
+  "w": "snow_3",
+  "s": "line_skin"
+ },
+ "grid": [
+  ".KKKK.",
+  "KKKKKK",
+  "KdWWdw",
+  ".dWddw",
+  ".dmmdw",
+  ".dmldw",
+  ".dlld.",
+  "..ddd.",
+  ".s...."
+ ]
+}

@@ -74,7 +74,7 @@
    "phase": "idle",
    "face": "smile",
    "plant": true,
-   "pelvis_drop": 0.9,
+   "pelvis_drop": 1.387,
    "squash": 1.0,
    "spine": {
     "tilt": 1,
@@ -82,19 +82,19 @@
     "lean": 0
    },
    "head": {
-    "tilt": 1,
+    "tilt": 0,
     "turn": 0,
     "roll": 0.5
    },
    "arm_L": {
-    "raise": -3,
-    "spread": 14,
-    "elbow": 18
+    "raise": 12,
+    "spread": 18,
+    "elbow": 28
    },
    "arm_R": {
-    "raise": -3,
-    "spread": 14,
-    "elbow": 18
+    "raise": 12,
+    "spread": 18,
+    "elbow": 28
    },
    "leg_L": {
     "hip": 0,
@@ -116,27 +116,27 @@
    "phase": "idle",
    "face": "smile",
    "plant": true,
-   "pelvis_drop": 0.35,
-   "squash": 1.012,
+   "pelvis_drop": 0.0,
+   "squash": 1.0,
    "spine": {
     "tilt": 0,
     "turn": 0,
     "lean": 0.6
    },
    "head": {
-    "tilt": 0,
+    "tilt": 1,
     "turn": 0,
     "roll": 0.5
    },
    "arm_L": {
-    "raise": -2,
-    "spread": 15,
-    "elbow": 16
+    "raise": 12,
+    "spread": 18,
+    "elbow": 28
    },
    "arm_R": {
-    "raise": -2,
-    "spread": 15,
-    "elbow": 16
+    "raise": 12,
+    "spread": 18,
+    "elbow": 28
    },
    "leg_L": {
     "hip": 0,
@@ -159,26 +159,26 @@
    "face": "smile",
    "plant": true,
    "pelvis_drop": 0.0,
-   "squash": 1.022,
+   "squash": 1.0,
    "spine": {
-    "tilt": -1,
+    "tilt": 0,
     "turn": 0,
     "lean": 1.3
    },
    "head": {
-    "tilt": -1,
+    "tilt": 1,
     "turn": 0,
     "roll": 0
    },
    "arm_L": {
-    "raise": -1,
-    "spread": 16,
-    "elbow": 14
+    "raise": 12,
+    "spread": 18,
+    "elbow": 28
    },
    "arm_R": {
-    "raise": -2,
-    "spread": 16,
-    "elbow": 15
+    "raise": 12,
+    "spread": 18,
+    "elbow": 28
    },
    "leg_L": {
     "hip": 0,
@@ -200,27 +200,27 @@
    "phase": "idle",
    "face": "smile",
    "plant": true,
-   "pelvis_drop": 0.1,
-   "squash": 1.02,
+   "pelvis_drop": 0.0,
+   "squash": 1.0,
    "spine": {
-    "tilt": -1,
+    "tilt": 0,
     "turn": 0,
     "lean": 1.8
    },
    "head": {
-    "tilt": -1,
+    "tilt": 1,
     "turn": 0,
     "roll": -0.5
    },
    "arm_L": {
-    "raise": -1,
-    "spread": 17,
-    "elbow": 14
+    "raise": 12,
+    "spread": 18,
+    "elbow": 28
    },
    "arm_R": {
-    "raise": -3,
-    "spread": 14,
-    "elbow": 17
+    "raise": 12,
+    "spread": 18,
+    "elbow": 28
    },
    "leg_L": {
     "hip": 0,
@@ -242,10 +242,10 @@
    "phase": "idle",
    "face": "smile",
    "plant": true,
-   "pelvis_drop": 0.7,
-   "squash": 1.006,
+   "pelvis_drop": 1.387,
+   "squash": 1.0,
    "spine": {
-    "tilt": 0,
+    "tilt": 1,
     "turn": 0,
     "lean": 1.4
    },
@@ -255,14 +255,14 @@
     "roll": -0.5
    },
    "arm_L": {
-    "raise": -2,
-    "spread": 15,
-    "elbow": 16
+    "raise": 12,
+    "spread": 18,
+    "elbow": 28
    },
    "arm_R": {
-    "raise": -3,
-    "spread": 14,
-    "elbow": 18
+    "raise": 12,
+    "spread": 18,
+    "elbow": 28
    },
    "leg_L": {
     "hip": 0,
@@ -280,31 +280,31 @@
   },
   {
    "name": "blink",
-   "ms": 120,
+   "ms": 80,
    "phase": "idle",
-   "face": "determined",
+   "face": "blink",
    "plant": true,
-   "pelvis_drop": 1.0,
-   "squash": 0.996,
+   "pelvis_drop": 1.387,
+   "squash": 1.0,
    "spine": {
     "tilt": 1,
     "turn": 0,
     "lean": 0.6
    },
    "head": {
-    "tilt": 1,
+    "tilt": 0,
     "turn": 0,
     "roll": 0
    },
    "arm_L": {
-    "raise": -3,
-    "spread": 14,
-    "elbow": 18
+    "raise": 12,
+    "spread": 18,
+    "elbow": 28
    },
    "arm_R": {
-    "raise": -3,
-    "spread": 14,
-    "elbow": 18
+    "raise": 12,
+    "spread": 18,
+    "elbow": 28
    },
    "leg_L": {
     "hip": 0,
@@ -322,31 +322,31 @@
   },
   {
    "name": "settle",
-   "ms": 220,
+   "ms": 240,
    "phase": "idle",
    "face": "smile",
    "plant": true,
-   "pelvis_drop": 1.1,
-   "squash": 0.995,
+   "pelvis_drop": 1.387,
+   "squash": 1.0,
    "spine": {
     "tilt": 1,
     "turn": 0,
     "lean": -0.4
    },
    "head": {
-    "tilt": 1,
+    "tilt": 0,
     "turn": 0,
     "roll": 0.8
    },
    "arm_L": {
-    "raise": -4,
-    "spread": 14,
-    "elbow": 19
+    "raise": 12,
+    "spread": 18,
+    "elbow": 28
    },
    "arm_R": {
-    "raise": -3,
-    "spread": 13,
-    "elbow": 19
+    "raise": 12,
+    "spread": 18,
+    "elbow": 28
    },
    "leg_L": {
     "hip": 0,
@@ -364,31 +364,31 @@
   },
   {
    "name": "settle_b",
-   "ms": 220,
+   "ms": 240,
    "phase": "idle",
    "face": "smile",
    "plant": true,
-   "pelvis_drop": 1.0,
-   "squash": 0.998,
+   "pelvis_drop": 1.387,
+   "squash": 1.0,
    "spine": {
     "tilt": 1,
     "turn": 0,
     "lean": 0.1
    },
    "head": {
-    "tilt": 1,
+    "tilt": 0,
     "turn": 0,
     "roll": 0.4
    },
    "arm_L": {
-    "raise": -3,
-    "spread": 14,
-    "elbow": 18
+    "raise": 12,
+    "spread": 18,
+    "elbow": 28
    },
    "arm_R": {
-    "raise": -3,
-    "spread": 14,
-    "elbow": 18
+    "raise": 12,
+    "spread": 18,
+    "elbow": 28
    },
    "leg_L": {
     "hip": 0,

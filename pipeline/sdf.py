@@ -1,0 +1,766 @@
+"""HD reference model: signed-distance parts, culled deterministic sphere tracing, posing.
+
+Selected by a variant's `"model": "hd"` (legacy variants never import this module's tracer).
+`raycast` / `occluded` have the same signature and return the same buffers as render.raycast / render.occluded
+(t, prim index, world normal), so the pixel pass, face cels, line-art passes and QA are unchanged.
+
+Part spec (character["parts"], bone space; emitted by chargen next to "primitives"):
+  {"name", "bone" | "bones": [[bone, w], ...], "shape", "center", "rot", "scale", "params",
+   "material", "group", "blend": {"set": str, "k": float}, "op": union|subtract|intersect, "lod": all|ref,
+   "clip_all", "clip_any"}
+shapes (params in the part frame = bone @ T(center) @ R(rot) @ S(scale)):
+  ellipsoid {radii at top level, legacy-identical matrix}        capsule {a, b, r}
+  rcone {a, b, ra, rb, flat, flat_n | flat_c}  (round ends; rb ~0.05 = sharp tip; flat < 1 = thin along flat_n)
+  cone  {same, flat-cut ends}                                     tube {pts, r: [...], flat, flat_n | flat_c}
+  rbox  {b: half extents, r: rounding}                            torus {R: [Rx, Rz] ring in local xz, r, w, taper}
+  chain sweep: {"chain": name, "sweep": {"clumps", "twist", "spread", "clump_r", "tip": sharp|fork, "tips"}}
+Combination: parts without a blend set are hard-unioned (hard min across parts/materials keeps colour borders
+crisp); smooth-min, subtract and intersect act only inside their own set. Clip planes keep legacy semantics:
+a surface point failing the clip is not drawn (no cap), the ray continues to whatever is behind.
+Tracing: per-part bounding volume (exact ellipsoid / oriented box) culled through a 2D ray grid, then a fixed
+maximum of STEPS float64 sphere-tracing steps. Fully deterministic (no randomness, fixed iteration order).
+"""
+import math
+
+import numpy as np
+
+from .mathutil import translate, scale, euler
+from .render import _clip_ok
+
+STEPS = 48
+RELAX = 0.85            # step = RELAX * distance bound (taper / flattening make bounds approximate)
+EPS = 0.004             # convergence distance (world units)
+FD_H = 0.01             # finite-difference step for normals (world units)
+SHADOW_T0 = 0.05
+
+
+# ------------------------------------------------------------------ local SDFs (p: (n,3), params broadcast)
+def _sd_seg(p, P):
+    a, b = P["a"], P["b"]
+    ab = b - a
+    L2 = (ab * ab).sum(-1)
+    v = p - a
+    hr = (v * ab).sum(-1) / L2
+    capped = P["capped"]
+    hh = np.where(capped, hr, np.clip(hr, 0.0, 1.0))
+    perp = v - hh[:, None] * ab
+    n2 = P["n2"]
+    flat = P["flat"]
+    c2 = (perp * n2).sum(-1)
+    pp = (perp * perp).sum(-1)
+    q = np.sqrt(np.maximum(pp - c2 * c2 + (c2 / flat) ** 2, 0.0))
+    ra, rb = P["ra"], P["rb"]
+    r = ra + np.clip(hh, 0.0, 1.0) * (rb - ra)
+    L = np.sqrt(L2)
+    cosa = L / np.sqrt(L2 + (ra - rb) ** 2)
+    lat = (q - r) * flat * cosa
+    return np.where(capped, np.maximum(lat, np.maximum(-hr, hr - 1.0) * L), lat)
+
+
+def _sd_rbox(p, P):
+    r = P["r"]
+    q = np.abs(p) - (P["b"] - r[..., None])
+    return np.sqrt((np.maximum(q, 0.0) ** 2).sum(-1)) + np.minimum(q.max(-1), 0.0) - r
+
+
+def _sd_torus(p, P):
+    """Band ring: elliptical ring (Rx, Rz) in local xz, stadium cross-section (half thickness r, half width w),
+    width tapering linearly along local x (taper > 0 = wider at +x)."""
+    x, y, z = p[:, 0], p[:, 1], p[:, 2]
+    Rx, Rz = P["R"][..., 0], P["R"][..., 1]
+    rho = np.sqrt((x / Rx) ** 2 + (z / Rz) ** 2)
+    g = np.sqrt((x / Rx ** 2) ** 2 + (z / Rz ** 2) ** 2)
+    e = np.where(g > 1e-9, (rho - 1.0) * rho / np.maximum(g, 1e-9), -np.minimum(Rx, Rz))
+    r = P["r"]
+    w = np.maximum(P["w"] * (1.0 + P["taper"] * np.clip(x / Rx, -1.0, 1.0)), r)
+    qy = np.maximum(np.abs(y) - (w - r), 0.0)
+    return np.sqrt(e * e + qy * qy) - r
+
+
+SDF = {"seg": _sd_seg, "rbox": _sd_rbox, "torus": _sd_torus}
+PARAM_KEYS = {"seg": ("a", "b", "ra", "rb", "n2", "flat", "capped"), "rbox": ("b", "r"),
+              "torus": ("R", "r", "w", "taper")}
+
+
+def _local_box(part):
+    """Local-frame AABB (lo, hi) of a part's shape."""
+    k, P = part["kind"], part["params"]
+    if k == "ell":
+        return -np.ones(3), np.ones(3)
+    if k == "seg":
+        r = max(float(P["ra"][0]), float(P["rb"][0]))
+        a, b = P["a"][0], P["b"][0]
+        return np.minimum(a, b) - r, np.maximum(a, b) + r
+    if k == "rbox":
+        return -P["b"][0], P["b"][0]
+    if k == "torus":
+        Rx, Rz = P["R"][0]
+        r = float(P["r"][0])
+        w = float(P["w"][0]) * (1 + abs(float(P["taper"][0])))
+        h = np.array([Rx + r, max(r, w), Rz + r])
+        return -h, h
+    raise ValueError(k)
+
+
+# ------------------------------------------------------------------ compiled scene
+class _Compiled:
+    def __init__(self, prims):
+        self.prims = prims
+        n = len(prims)
+        self.Fi = np.zeros((n, 3, 3))
+        self.ft = np.zeros((n, 3))
+        self.sv = np.ones(n)
+        self.lo = np.zeros((n, 3))
+        self.hi = np.zeros((n, 3))
+        self.center = np.zeros((n, 3))
+        self.radius = np.zeros(n)
+        rep, rep_of = {}, np.arange(n)
+        sets = {}
+        for i, p in enumerate(prims):
+            M = p["M"]
+            Mi = np.linalg.inv(M)
+            self.Fi[i], self.ft[i] = Mi[:3, :3], Mi[:3, 3]
+            sing = np.linalg.svd(M[:3, :3], compute_uv=False)
+            self.sv[i] = sing.min()
+            lo, hi = _local_box(p)
+            st = p.get("set")
+            if st:
+                m = (p.get("k", 0.0) * 0.25 + 0.05) / self.sv[i]   # smooth-min may bulge by k/4
+                lo, hi = lo - m, hi + m
+            self.lo[i], self.hi[i] = lo, hi
+            c = (lo + hi) / 2
+            self.center[i] = M[:3, :3] @ c + M[:3, 3]
+            self.radius[i] = sing.max() * float(np.linalg.norm((hi - lo) / 2)) + 1e-6
+            key = p.get("vote")
+            if key is not None:
+                rep_of[i] = rep.setdefault(key, i)
+            if st:
+                sets.setdefault(st, []).append(i)
+        self.rep_of = rep_of
+        # a set reduced to one plain union member by LOD filtering is just a singleton
+        self.sets = []
+        single = set(range(n))
+        for name, idx in sets.items():
+            ops = [prims[i].get("op", "union") for i in idx]
+            if len(idx) == 1 and ops[0] == "union":
+                continue
+            self.sets.append(([i for i, o in zip(idx, ops) if o == "union"],
+                              [i for i, o in zip(idx, ops) if o == "subtract"],
+                              [i for i, o in zip(idx, ops) if o == "intersect"]))
+            single -= set(idx)
+        self.ell = [i for i in sorted(single) if prims[i]["kind"] == "ell" and prims[i].get("op", "union") == "union"]
+        self.batch = {k: [i for i in sorted(single) if prims[i]["kind"] == k and prims[i].get("op", "union") == "union"]
+                      for k in SDF}
+        self.stack = {}
+        for k, ids in self.batch.items():
+            if ids:
+                self.stack[k] = {key: np.concatenate([prims[i]["params"][key] for i in ids]) for key in PARAM_KEYS[k]}
+                pos = np.full(n, -1, int)
+                pos[ids] = np.arange(len(ids))
+                self.stack[k]["_pos"] = pos
+
+    def part_sdf_world(self, i, p):
+        """World-space distance bound of part i at world points p."""
+        q = p @ self.Fi[i].T + self.ft[i]
+        pr = self.prims[i]
+        if pr["kind"] == "ell":
+            k = np.maximum(np.sqrt((q * q).sum(-1)), 1e-9)
+            g = np.sqrt((((q / k[:, None]) @ self.Fi[i]) ** 2).sum(-1))
+            return (k - 1.0) / np.maximum(g, 1e-9)
+        return SDF[pr["kind"]](q, pr["params"]) * self.sv[i]
+
+    def set_sdf(self, st, p):
+        uni, sub, inter = st
+        d = arg = raw = None
+        for j, i in enumerate(uni):
+            di = self.part_sdf_world(i, p)
+            if d is None:
+                d, raw, arg = di, di.copy(), np.zeros(len(p), int)
+                continue
+            k = self.prims[i].get("k", 0.0)
+            if k > 0:
+                h = np.maximum(k - np.abs(d - di), 0.0) / k
+                d = np.minimum(d, di) - h * h * k * 0.25
+            else:
+                d = np.minimum(d, di)
+            better = di < raw
+            raw = np.where(better, di, raw)
+            arg = np.where(better, j, arg)
+        for i in sub:
+            ds = -self.part_sdf_world(i, p)
+            k = self.prims[i].get("k", 0.0)
+            if k > 0:
+                h = np.maximum(k - np.abs(d - ds), 0.0) / k
+                d = np.maximum(d, ds) + h * h * k * 0.25
+            else:
+                d = np.maximum(d, ds)
+        for i in inter:
+            d = np.maximum(d, self.part_sdf_world(i, p))
+        return d, np.asarray(uni)[arg]
+
+    def clip_ok_world(self, i, p):
+        pr = self.prims[i]
+        if not pr.get("clip_all") and not pr.get("clip_any"):
+            return np.ones(len(p), bool)
+        return _clip_ok(p @ self.Fi[i].T + self.ft[i], pr)
+
+
+class _RayGrid:
+    """Rays bucketed on the plane perpendicular to their (shared) direction -> candidate lists per bound."""
+
+    def __init__(self, origins, direction):
+        d = np.asarray(direction, float) / np.linalg.norm(direction)
+        a = np.array([1.0, 0, 0]) if abs(d[0]) < 0.9 else np.array([0, 1.0, 0])
+        e1 = np.cross(d, a)
+        e1 /= np.linalg.norm(e1)
+        e2 = np.cross(d, e1)
+        self.e1, self.e2 = e1, e2
+        u, v = origins @ e1, origins @ e2
+        self.u0, self.v0 = u.min(), v.min()
+        ext = max(u.max() - self.u0, v.max() - self.v0, 1e-6)
+        self.cell = ext / 64.0 + 1e-9
+        iu = ((u - self.u0) / self.cell).astype(int)
+        iv = ((v - self.v0) / self.cell).astype(int)
+        self.nu, self.nv = iu.max() + 1, iv.max() + 1
+        key = iv * self.nu + iu
+        self.order = np.argsort(key, kind="stable")
+        self.starts = np.searchsorted(key[self.order], np.arange(self.nu * self.nv + 1))
+
+    def query(self, c, rho):
+        cu, cv = c @ self.e1, c @ self.e2
+        iu0 = max(int(math.floor((cu - rho - self.u0) / self.cell)), 0)
+        iu1 = min(int(math.floor((cu + rho - self.u0) / self.cell)), self.nu - 1)
+        iv0 = max(int(math.floor((cv - rho - self.v0) / self.cell)), 0)
+        iv1 = min(int(math.floor((cv + rho - self.v0) / self.cell)), self.nv - 1)
+        if iu0 > iu1 or iv0 > iv1:
+            return np.zeros(0, int)
+        segs = [self.order[self.starts[r * self.nu + iu0]:self.starts[r * self.nu + iu1 + 1]] for r in range(iv0, iv1 + 1)]
+        out = np.concatenate(segs)
+        return np.sort(out)
+
+
+def _slab(ol, dl, lo, hi):
+    with np.errstate(divide="ignore", invalid="ignore"):
+        zero = np.abs(dl) < 1e-12
+        inv = np.where(zero, 0.0, 1.0 / np.where(zero, 1.0, dl))
+        t1 = (lo - ol) * inv
+        t2 = (hi - ol) * inv
+        inside = (ol >= lo) & (ol <= hi)
+        tmin = np.where(zero, np.where(inside, -np.inf, np.inf), np.minimum(t1, t2))
+        tmax = np.where(zero, np.where(inside, np.inf, -np.inf), np.maximum(t1, t2))
+    return tmin.max(-1), tmax.min(-1)
+
+
+def _trace(f, o, d, t0, t1):
+    """Fixed-step sphere tracing. f(idx, points) -> distance bound. Returns (hit, t)."""
+    n = len(t0)
+    t = t0.copy()
+    hit = np.zeros(n, bool)
+    act = np.arange(n)
+    for _ in range(STEPS):
+        if not act.size:
+            break
+        dist = f(act, o[act] + t[act, None] * d[act])
+        conv = dist < EPS
+        hit[act[conv]] = True
+        t[act] += np.where(conv, np.maximum(dist, 0.0), dist * RELAX)
+        act = act[~conv]
+        act = act[t[act] <= t1[act]]
+    if act.size:                                  # grazing rays that used every step: accept if close
+        dist = f(act, o[act] + t[act, None] * d[act])
+        hit[act[dist < 10 * EPS]] = True
+    return hit & (t <= t1 + EPS), t
+
+
+def _batch_pairs(C, kind, grid, origins, direction, tlimit, tmin, ray_ok=None, skip_groups=None):
+    """(ray, part, o_local, d_local, t0, t1) for every ray whose path enters a part's bounding box."""
+    R, Pi, OL, DL, T0, T1 = [], [], [], [], [], []
+    for i in C.batch[kind]:
+        cand = grid.query(C.center[i], C.radius[i])
+        if ray_ok is not None and cand.size:
+            cand = cand[ray_ok[cand]]
+        if skip_groups is not None and cand.size:
+            cand = cand[skip_groups[cand] != C.prims[i]["group"]]
+        if not cand.size:
+            continue
+        ol = origins[cand] @ C.Fi[i].T + C.ft[i]
+        dl = C.Fi[i] @ direction
+        ta, tb = _slab(ol, dl, C.lo[i], C.hi[i])
+        ta = np.maximum(ta, tmin)
+        tb = np.minimum(tb, tlimit[cand])
+        keep = tb > ta
+        if not keep.any():
+            continue
+        R.append(cand[keep]); Pi.append(np.full(int(keep.sum()), i)); OL.append(ol[keep])
+        DL.append(np.broadcast_to(dl, (int(keep.sum()), 3))); T0.append(ta[keep]); T1.append(tb[keep])
+    if not R:
+        return None
+    return (np.concatenate(R), np.concatenate(Pi), np.concatenate(OL), np.concatenate(DL),
+            np.concatenate(T0), np.concatenate(T1))
+
+
+def _batch_trace(C, kind, pairs):
+    r, pid, ol, dl, t0, t1 = pairs
+    st = C.stack[kind]
+    pos = st["_pos"][pid]
+    prm = {k: st[k][pos] for k in PARAM_KEYS[kind]}
+    sv = C.sv[pid]
+    fn = SDF[kind]
+
+    def f(act, p):
+        return fn(p, {k: v[act] for k, v in prm.items()}) * sv[act]
+
+    hit, t = _trace(f, ol, dl, t0, t1)
+    # legacy clip semantics: a clipped surface point is simply not there
+    for i in np.unique(pid[hit]):
+        pr = C.prims[i]
+        if pr.get("clip_all") or pr.get("clip_any"):
+            m = hit & (pid == i)
+            loc = ol[m] + t[m, None] * dl[m]
+            ok = _clip_ok(loc, pr)
+            hit[np.nonzero(m)[0][~ok]] = False
+    return hit, t, pos, prm
+
+
+def _first_per_ray(r, t, pid):
+    order = np.lexsort((pid, t, r))
+    r, t, pid = r[order], t[order], pid[order]
+    first = np.ones(len(r), bool)
+    first[1:] = r[1:] != r[:-1]
+    return order[first]
+
+
+def _ellipsoid_hits(C, i, origins, direction, cand):
+    o = origins[cand] @ C.Fi[i].T + C.ft[i]
+    d = C.Fi[i] @ direction
+    a = d @ d
+    b = o @ d
+    c = np.einsum("ij,ij->i", o, o) - 1.0
+    disc = b * b - a * c
+    hit = disc > 0
+    s = np.sqrt(np.where(hit, disc, 0))
+    return o, d, a, b, s, hit
+
+
+# ------------------------------------------------------------------ public API (same as render.raycast/occluded)
+def raycast(prims, origins, direction):
+    n = origins.shape[0]
+    tbest = np.full(n, np.inf)
+    ibest = np.full(n, -1, int)
+    nbest = np.zeros((n, 3))
+    if not prims:
+        return tbest, ibest, nbest
+    C = _Compiled(prims)
+    grid = _RayGrid(origins, direction)
+    # 1) analytic ellipsoids (legacy math)
+    for i in C.ell:
+        cand = grid.query(C.center[i], C.radius[i])
+        if not cand.size:
+            continue
+        o, d, a, b, s, hit = _ellipsoid_hits(C, i, origins, direction, cand)
+        if not hit.any():
+            continue
+        t0 = (-b - s) / a
+        p0 = o + t0[:, None] * d
+        ok = hit & _clip_ok(p0, C.prims[i])
+        better = ok & (t0 < tbest[cand])
+        if better.any():
+            sel = cand[better]
+            tbest[sel] = t0[better]
+            ibest[sel] = i
+            nl = p0[better] @ C.Fi[i]
+            nbest[sel] = nl / np.linalg.norm(nl, axis=1, keepdims=True)
+    # 2) batched traced singletons
+    for kind in SDF:
+        if not C.batch[kind]:
+            continue
+        pairs = _batch_pairs(C, kind, grid, origins, direction, tbest, -np.inf)
+        if pairs is None:
+            continue
+        r, pid, ol, dl, _, _ = pairs
+        hit, t, pos, prm = _batch_trace(C, kind, pairs)
+        if not hit.any():
+            continue
+        hs = np.nonzero(hit)[0]
+        w = hs[_first_per_ray(r[hs], t[hs], pid[hs])]
+        better = t[w] < tbest[r[w]]
+        w = w[better]
+        if not w.size:
+            continue
+        tbest[r[w]] = t[w]
+        ibest[r[w]] = pid[w]
+        pl = ol[w] + t[w, None] * dl[w]
+        P = {k: v[w] for k, v in prm.items()}
+        g = np.zeros((len(w), 3))
+        hl = FD_H / C.sv[pid[w]]
+        for ax in range(3):
+            e = np.zeros((len(w), 3))
+            e[:, ax] = hl
+            g[:, ax] = SDF[kind](pl + e, P) - SDF[kind](pl - e, P)
+        nw = np.einsum("nij,ni->nj", C.Fi[pid[w]], g)
+        nbest[r[w]] = nw / np.maximum(np.linalg.norm(nw, axis=1, keepdims=True), 1e-12)
+    # 3) blend / CSG sets
+    for st in C.sets:
+        cand, t0, t1 = _set_interval(C, st, grid, origins, direction, -np.inf)
+        if cand is None:
+            continue
+        t1 = np.minimum(t1, tbest[cand])
+        keep = t1 > t0
+        cand, t0, t1 = cand[keep], t0[keep], t1[keep]
+        if not cand.size:
+            continue
+        O, Dd = origins[cand], np.broadcast_to(direction, (len(cand), 3))
+        hit, t = _trace(lambda act, p: C.set_sdf(st, p)[0], O, Dd, t0, t1)
+        hs = np.nonzero(hit)[0]
+        if not hs.size:
+            continue
+        pw = O[hs] + t[hs, None] * direction
+        _, mem = C.set_sdf(st, pw)
+        ok = np.ones(len(hs), bool)
+        for i in np.unique(mem):
+            m = mem == i
+            ok[m] = C.clip_ok_world(i, pw[m])
+        hs, pw, mem = hs[ok], pw[ok], mem[ok]
+        better = t[hs] < tbest[cand[hs]]
+        hs, pw, mem = hs[better], pw[better], mem[better]
+        if not hs.size:
+            continue
+        sel = cand[hs]
+        tbest[sel] = t[hs]
+        ibest[sel] = mem
+        g = np.zeros((len(hs), 3))
+        for ax in range(3):
+            e = np.zeros(3)
+            e[ax] = FD_H
+            g[:, ax] = C.set_sdf(st, pw + e)[0] - C.set_sdf(st, pw - e)[0]
+        nbest[sel] = g / np.maximum(np.linalg.norm(g, axis=1, keepdims=True), 1e-12)
+    hitm = ibest >= 0
+    ibest[hitm] = C.rep_of[ibest[hitm]]
+    return tbest, ibest, nbest
+
+
+def _set_interval(C, st, grid, origins, direction, tmin, ray_ok=None):
+    uni = st[0]
+    cands = [grid.query(C.center[i], C.radius[i]) for i in uni]
+    cand = np.unique(np.concatenate(cands)) if cands else np.zeros(0, int)
+    if ray_ok is not None and cand.size:
+        cand = cand[ray_ok[cand]]
+    if not cand.size:
+        return None, None, None
+    t0 = np.full(len(cand), np.inf)
+    t1 = np.full(len(cand), -np.inf)
+    for i in uni:
+        ol = origins[cand] @ C.Fi[i].T + C.ft[i]
+        ta, tb = _slab(ol, C.Fi[i] @ direction, C.lo[i], C.hi[i])
+        v = tb > np.maximum(ta, tmin)
+        t0 = np.where(v, np.minimum(t0, np.maximum(ta, tmin)), t0)
+        t1 = np.where(v, np.maximum(t1, tb), t1)
+    keep = t1 > t0
+    return cand[keep], t0[keep], t1[keep]
+
+
+def occluded(prims, origins, direction, skip_groups):
+    """Shadow rays; a part never shadows its own group (handled by N.L), as in render.occluded."""
+    n = origins.shape[0]
+    occ = np.zeros(n, bool)
+    if not prims or not n:
+        return occ
+    C = _Compiled(prims)
+    grid = _RayGrid(origins, direction)
+    for i in C.ell:
+        cand = grid.query(C.center[i], C.radius[i])
+        if not cand.size:
+            continue
+        o, d, a, b, s, hit = _ellipsoid_hits(C, i, origins, direction, cand)
+        hit &= skip_groups[cand] != C.prims[i]["group"]
+        if not hit.any():
+            continue
+        for t in ((-b - s) / a, (-b + s) / a):
+            p = o + t[:, None] * d
+            occ[cand] |= hit & (t > SHADOW_T0) & _clip_ok(p, C.prims[i])
+    inf = np.full(n, np.inf)
+    for kind in SDF:
+        if not C.batch[kind]:
+            continue
+        pairs = _batch_pairs(C, kind, grid, origins, direction, inf, SHADOW_T0, ray_ok=~occ, skip_groups=skip_groups)
+        if pairs is None:
+            continue
+        hit, _, _, _ = _batch_trace(C, kind, pairs)
+        occ[pairs[0][hit]] = True
+    for st in C.sets:
+        grp = C.prims[st[0][0]]["group"] if st[0] else None
+        cand, t0, t1 = _set_interval(C, st, grid, origins, direction, SHADOW_T0, ray_ok=~occ)
+        if cand is None:
+            continue
+        keep = skip_groups[cand] != grp
+        cand, t0, t1 = cand[keep], t0[keep], t1[keep]
+        if not cand.size:
+            continue
+        O, Dd = origins[cand], np.broadcast_to(direction, (len(cand), 3))
+        hit, t = _trace(lambda act, p: C.set_sdf(st, p)[0], O, Dd, t0, t1)
+        hs = np.nonzero(hit)[0]
+        if hs.size:
+            pw = O[hs] + t[hs, None] * direction
+            _, mem = C.set_sdf(st, pw)
+            ok = np.ones(len(hs), bool)
+            for i in np.unique(mem):
+                m = mem == i
+                ok[m] = C.clip_ok_world(i, pw[m])
+            occ[cand[hs[ok]]] = True
+    return occ
+
+
+def scene_sdf(prims, pts, C=None):
+    """Union SDF of a posed part list at world points (meshing). Clip planes act as half-space intersections.
+    Returns (distance, part index of the nearest surface)."""
+    C = C or _Compiled(prims)
+    d = np.full(len(pts), np.inf)
+    arg = np.full(len(pts), -1, int)
+
+    def clipped(i, di, p):
+        pr = C.prims[i]
+        if not pr.get("clip_all") and not pr.get("clip_any"):
+            return di
+        q = p @ C.Fi[i].T + C.ft[i]
+        s = C.sv[i]
+        for nx, ny, nz, c0 in pr.get("clip_all", []):
+            di = np.maximum(di, (c0 - (q[:, 0] * nx + q[:, 1] * ny + q[:, 2] * nz)) * s)
+        if pr.get("clip_any"):
+            m = np.full(len(p), np.inf)
+            for nx, ny, nz, c0 in pr["clip_any"]:
+                m = np.minimum(m, (c0 - (q[:, 0] * nx + q[:, 1] * ny + q[:, 2] * nz)) * s)
+            di = np.maximum(di, m)
+        return di
+
+    in_set = set()
+    for st in C.sets:
+        in_set |= set(st[0]) | set(st[1]) | set(st[2])
+        dd, mem = C.set_sdf(st, pts)
+        better = dd < d
+        d[better], arg[better] = dd[better], mem[better]
+    for i, pr in enumerate(prims):
+        if i in in_set or pr.get("op", "union") != "union":
+            continue
+        di = clipped(i, C.part_sdf_world(i, pts), pts)
+        better = di < d
+        d[better], arg[better] = di[better], i
+    return d, arg
+
+
+# ------------------------------------------------------------------ posing
+def _vec(v):
+    return np.asarray(v, float)
+
+
+def _seg_params(a, b, ra, rb, flat=1.0, n2=None, capped=False):
+    a, b = _vec(a), _vec(b)
+    if n2 is None or flat >= 0.999:
+        n = np.zeros(3)
+        flat = 1.0
+    else:
+        u = (b - a) / max(np.linalg.norm(b - a), 1e-9)
+        n = _vec(n2) - (_vec(n2) @ u) * u
+        nn = np.linalg.norm(n)
+        n = n / nn if nn > 1e-9 else np.zeros(3)
+        if nn <= 1e-9:
+            flat = 1.0
+    return {"a": a[None], "b": b[None], "ra": np.array([float(ra)]), "rb": np.array([max(float(rb), 1e-3)]),
+            "n2": n[None], "flat": np.array([float(flat)]), "capped": np.array([bool(capped)])}
+
+
+def _flat_dir(pr, a, b):
+    if "flat_n" in pr:
+        return _vec(pr["flat_n"])
+    if "flat_c" in pr:
+        return (_vec(a) + _vec(b)) / 2 - _vec(pr["flat_c"])
+    return np.array([0.0, 0.0, 1.0])
+
+
+def _base(sp):
+    b = sp.get("blend") or {}
+    return {"name": sp["name"], "material": sp["material"], "group": sp.get("group", sp.get("bone", "head")),
+            "set": b.get("set"), "k": float(b.get("k", 0.0)), "op": sp.get("op", "union"),
+            "clip_all": sp.get("clip_all", []), "clip_any": sp.get("clip_any", []),
+            "vote": None if sp.get("legacy") else f'{sp["material"]}|{sp.get("group", "head")}'}
+
+
+def _bone_matrix(sp, worlds):
+    if "bones" in sp:
+        return sum(float(w) * worlds[b] for b, w in sp["bones"])
+    return worlds[sp["bone"]]
+
+
+def _pose_static(sp, worlds, face_m):
+    W = _bone_matrix(sp, worlds)
+    shape = sp["shape"]
+    base = _base(sp)
+    if shape == "ellipsoid":
+        # identical expression to rig.body_primitives so converted parts keep the legacy matrix bits
+        M = W @ translate(*sp["center"]) @ euler(*sp.get("rot", [0, 0, 0])) @ scale(*sp["radii"])
+        return [dict(base, kind="ell", M=face_m @ M, params={})]
+    F = W @ translate(*sp.get("center", [0, 0, 0])) @ euler(*sp.get("rot", [0, 0, 0]))
+    if sp.get("scale"):
+        F = F @ scale(*sp["scale"])
+    F = face_m @ F
+    pr = sp.get("params", {})
+    out = []
+    if shape in ("capsule", "rcone", "cone"):
+        ra = pr.get("ra", pr.get("r"))
+        rb = pr.get("rb", pr.get("r"))
+        prm = _seg_params(pr["a"], pr["b"], ra, rb, pr.get("flat", 1.0), _flat_dir(pr, pr["a"], pr["b"]),
+                          capped=shape == "cone")
+        out.append(dict(base, kind="seg", M=F, params=prm))
+    elif shape == "tube":
+        pts, rr = pr["pts"], pr["r"]
+        for k in range(len(pts) - 1):
+            prm = _seg_params(pts[k], pts[k + 1], rr[k], rr[k + 1], pr.get("flat", 1.0),
+                              _flat_dir(pr, pts[k], pts[k + 1]),
+                              capped=bool(pr.get("cut_end")) and k == len(pts) - 2)
+            out.append(dict(base, name=f'{sp["name"]}_{k}', kind="seg", M=F, params=prm))
+    elif shape == "rbox":
+        out.append(dict(base, kind="rbox", M=F, params={"b": _vec(pr["b"])[None], "r": np.array([float(pr.get("r", 0.0))])}))
+    elif shape == "torus":
+        R = pr["R"] if isinstance(pr["R"], (list, tuple)) else [pr["R"], pr["R"]]
+        out.append(dict(base, kind="torus", M=F, params={
+            "R": _vec(R)[None], "r": np.array([float(pr["r"])]), "w": np.array([float(pr.get("w", pr["r"]))]),
+            "taper": np.array([float(pr.get("taper", 0.0))])}))
+    else:
+        raise ValueError(f"unknown shape {shape!r} in part {sp['name']}")
+    return out
+
+
+def _chain_frames(pts, body_c):
+    """Per-point tangent T, sideways X and outward Z (same convention as rig.chain_primitives beads)."""
+    n = len(pts)
+    T = np.zeros((n, 3))
+    for k in range(n):
+        a, b = pts[max(k - 1, 0)], pts[min(k + 1, n - 1)]
+        T[k] = (b - a) / max(np.linalg.norm(b - a), 1e-9)
+    X, Z = np.zeros((n, 3)), np.zeros((n, 3))
+    for k in range(n):
+        out = pts[k] - body_c
+        out[1] = 0
+        hint = out if np.linalg.norm(out) > 1e-6 else np.array([0, 0, 1.0])
+        if abs(np.dot(hint / np.linalg.norm(hint), T[k])) > 0.95:
+            hint = np.array([1.0, 0, 0])
+        x = np.cross(T[k], hint)
+        X[k] = x / np.linalg.norm(x)
+        Z[k] = np.cross(X[k], T[k])
+    return T, X, Z
+
+
+def _pose_sweep(sp, chain, pts, body_c, face_m, subdiv):
+    """Chain-driven swept clumps along the Catmull-Rom resampled chain (tapered tubes, sharp or forked tips)."""
+    from .rig import _subdivide
+    sw = sp.get("sweep", {})
+    widths = chain.get("widths", [1.0])
+    pts = np.asarray(pts, float)
+    if subdiv > 1 and len(pts) >= 3:
+        pts, ws = _subdivide(pts, widths, subdiv)
+        ws = list(ws) + [widths[-1]]
+    else:
+        ws = [widths[min(k, len(widths) - 1)] for k in range(len(pts))]
+    ws = np.asarray(ws, float) * sw.get("width_scale", 1.0)
+    thick = float(sw.get("thickness", chain.get("thickness", 1.0)))
+    ez = np.minimum(thick, ws)
+    seglen = np.linalg.norm(np.diff(pts, axis=0), axis=1)
+    s = np.concatenate([[0.0], np.cumsum(seglen)])
+    s = s / max(s[-1], 1e-9)
+    T, X, Z = _chain_frames(pts, body_c)
+    base = _base(sp)
+    out = []
+    tip_r = float(sw.get("tip_r", 0.04))
+    nc = int(sw.get("clumps", 1))
+    if nc <= 1:                                     # one flat ribbon (bow tails), optional forked V-cut tip
+        rr, flat = ws, np.clip(ez / np.maximum(ws, 1e-6), 0.05, 1.0)
+        fork = sw.get("tip") == "fork"
+        last = len(pts) - (2 if fork else 1)
+        for k in range(last):
+            prm = _seg_params(pts[k], pts[k + 1], rr[k], rr[k + 1], (flat[k] + flat[k + 1]) / 2, Z[k] + Z[k + 1],
+                              capped=fork and k == last - 1)
+            out.append(dict(base, name=f'{sp["name"]}_{k}', kind="seg", M=face_m, params=prm))
+        if fork:
+            P0, P1 = pts[-2], pts[-1]
+            w0 = rr[-2]
+            depth = float(sw.get("fork_depth", 0.6))
+            for sgn in (-1, 1):
+                a = P0 + sgn * 0.45 * w0 * X[-2]
+                b = P1 + sgn * 0.75 * w0 * X[-1] + T[-1] * depth * w0 * 0.3
+                prm = _seg_params(a, b, 0.55 * w0, tip_r, flat[-2], Z[-2] + Z[-1])
+                out.append(dict(base, name=f'{sp["name"]}_fork{sgn:+d}', kind="seg", M=face_m, params=prm))
+        return out
+    spread = float(sw.get("spread", 0.45))
+    cr = float(sw.get("clump_r", 1.0 - spread + 0.05))
+    twist = math.radians(float(sw.get("twist", 0.0)))
+    taper_len = float(sw.get("taper_len", 0.35))
+    side_end = float(sw.get("side_end", 0.9))
+    ntips = int(sw.get("tips", 1))
+    k_mid = int(np.argmax(ws))
+    for j in range(nc):
+        th0 = 2 * math.pi * j / nc + math.radians(float(sw.get("phase", 90.0)))
+        th_end = th0 + twist
+        side = math.cos(th_end)
+        tip = 0
+        if ntips >= 3 and abs(side) > 0.5:
+            tip = 1 if side > 0 else -1
+        end = 1.0 if tip == 0 else side_end
+        keep = np.nonzero(s <= end + 1e-9)[0]
+        if len(keep) < 2:
+            continue
+        cpts, crad = [], []
+        for k in keep:
+            th = th0 + twist * s[k]
+            off = spread * (ws[k] * math.cos(th) * X[k] + ez[k] * math.sin(th) * Z[k])
+            u = min(max((s[k] - (end - taper_len)) / taper_len, 0.0), 1.0)
+            u = u * u * (3 - 2 * u)
+            tip_off = tip * 0.42 * ws[k_mid] * (1 - s[k] * 0.5) * X[k]
+            c = pts[k] + off * (1 - u) + tip_off * u
+            cpts.append(c)
+            crad.append(cr * ws[k] * (1 - u) + tip_r * u)
+        cpts, crad = np.array(cpts), np.array(crad)
+        crad[-1] = tip_r
+        flat = np.clip(ez[keep] / np.maximum(ws[keep], 1e-6), 0.2, 1.0)
+        for k in range(len(cpts) - 1):
+            prm = _seg_params(cpts[k], cpts[k + 1], crad[k], crad[k + 1], (flat[k] + flat[k + 1]) / 2,
+                              Z[keep[k]] + Z[keep[k + 1]])
+            out.append(dict(base, name=f'{sp["name"]}_c{j}_{k}', kind="seg", M=face_m, params=prm))
+    return out
+
+
+def _ell_from_legacy(p, M):
+    return {"name": p["name"], "material": p["material"], "group": p["group"], "kind": "ell", "M": M, "params": {},
+            "set": None, "k": 0.0, "op": "union", "clip_all": p.get("clip_all", []), "clip_any": p.get("clip_any", []),
+            "vote": None}
+
+
+def pose_parts(char, worlds, chain_pts, body_c, face_m, lod="all", subdiv=1):
+    """Posed HD part list (world space, facing applied) for one frame."""
+    from .rig import chain_primitives
+    lods = ("all",) if lod == "all" else ("all", "ref")
+    out, sweeps = [], {}
+    for sp in char["parts"]:
+        if sp.get("lod", "all") not in lods:
+            continue
+        if "chain" in sp:
+            sweeps.setdefault(sp["chain"], []).append(sp)
+            continue
+        out += _pose_static(sp, worlds, face_m)
+    for c in char.get("chains", []):
+        pts = chain_pts[c["name"]]
+        if c["name"] in sweeps:
+            for sp in sweeps[c["name"]]:
+                out += _pose_sweep(sp, c, pts, body_c, face_m, subdiv)
+            tip = c.get("tip")
+            if tip:
+                r = tip["radius"]
+                out.append(_ell_from_legacy({"name": c["name"] + "_tip", "material": tip["material"], "group": c["name"]},
+                                            face_m @ (translate(*pts[-1]) @ scale(r, r, r))))
+        else:
+            for p in chain_primitives(c, pts, body_c, subdiv=subdiv):
+                out.append(_ell_from_legacy(p, face_m @ p["M"]))
+    return out
+
+
+def legacy_to_parts(prims):
+    """Already-posed legacy primitive dicts (props, fx) -> analytic ellipsoid parts."""
+    return [_ell_from_legacy(p, p["M"]) for p in prims]

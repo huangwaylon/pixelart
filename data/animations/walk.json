@@ -410,5 +410,7 @@
    },
    "cancelable": true
   }
- ]
+ ],
+ "trail_wind": 300,
+ "engine_notes": "Move at ~21.5 world u/s (~16 px/s E/W) so stance feet stick. footstep_L f1 / footstep_R f5 match run (swap at same frame index)."
 }

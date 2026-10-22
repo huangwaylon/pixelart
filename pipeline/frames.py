@@ -36,6 +36,12 @@ class Scene:
         self.deliberate = {}    # (dir, frame) -> {(y, x)} designed 1-2px elements (e.g. boot soles) for QA
         self.body_bbox = {}     # (dir, frame) -> bbox of body pixels (excl. pom/scarf/hair chains) for QA
         self.events = [(ev, self.anim.times[i]) for i, f in enumerate(anim["frames"]) for ev in f.get("events", [])]
+        # "model": "hd" -> SDF parts + sphere tracing (pipeline/sdf.py); legacy variants keep the analytic raycaster
+        self.model = character.get("model", "legacy")
+        self.tracer = None
+        if self.model == "hd":
+            from . import sdf
+            self.tracer = sdf
 
     def frame_info(self, i):
         f = self.anim_data["frames"][i]
@@ -51,11 +57,20 @@ class Scene:
     def z_px(self, i):
         return int(round(self.anim.poses[i]["z_px"] * self.cam.ppu))
 
-    def primitives(self, i, direction, in_place=True):
+    def primitives(self, i, direction, in_place=True, lod="all"):
+        """Posed render primitives. `lod` ("all" sprites | "ref" hi-res refs) only affects HD parts."""
         ch = self.anim.keys[i]
         worlds = self.rig.world(ch, include_height=True)
         drop = translate(0, -ch["z_world"], 0) if in_place else np.eye(4)
         face_m = rot_y(DIRECTION_YAW[direction]) @ drop
+        if self.tracer is not None:
+            body_c = xform_point(worlds["spine"], [0, 0, 0])
+            parts = self.tracer.pose_parts(self.char, worlds, self.chains[self.anim.times[i]], body_c, face_m, lod=lod,
+                                           subdiv=self.char.get("render", {}).get("smooth_chains", 1))
+            props = self._prop_prims(i, worlds)
+            for p in props:
+                p["M"] = face_m @ p["M"]
+            return parts + self.tracer.legacy_to_parts(props), {k: face_m @ v for k, v in worlds.items()}
         prims = body_primitives(self.rig, worlds)
         body_c = xform_point(worlds["spine"], [0, 0, 0])
         for c in self.char.get("chains", []):
@@ -138,7 +153,7 @@ class Scene:
                       materials={p_["material"] for p_ in prims if p_["material"].startswith("hair")})
         pix = render_pixels(prims, self.palette, self.size, self.pivot, cam=self.cam,
                             smooth=la.get("smooth", 0.0), line_min_run=la.get("line_min_run", 1),
-                            no_face_lines=la.get("no_face_lines", False), hair_style=hs)
+                            no_face_lines=la.get("no_face_lines", False), hair_style=hs, tracer=self.tracer)
         chain_names = {c["name"] for c in self.char.get("chains", [])}
         body_ids = [k for k, g in enumerate(pix.group_names) if g not in chain_names]
         ys, xs = np.nonzero(np.isin(pix.group, body_ids))

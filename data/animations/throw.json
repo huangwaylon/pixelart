@@ -68,19 +68,8 @@
  },
  "props": [
   {
+   "ref": "snowball",
    "name": "snowball",
-   "bone": "hand_R",
-   "offset": [
-    0,
-    -1.6,
-    0.7
-   ],
-   "radii": [
-    2.5,
-    2.4,
-    2.5
-   ],
-   "material": "prop_snow",
    "frames": [
     "scoop",
     "pack",
@@ -93,7 +82,7 @@
  "frames": [
   {
    "name": "scoop",
-   "ms": 70,
+   "ms": 60,
    "phase": "anticipation",
    "face": "determined",
    "spine": {
@@ -138,7 +127,7 @@
    "name": "pack",
    "ms": 60,
    "phase": "anticipation",
-   "face": "smile",
+   "face": "determined",
    "spine": {
     "tilt": 6,
     "turn": 0,
@@ -216,7 +205,7 @@
   },
   {
    "name": "step",
-   "ms": 60,
+   "ms": 50,
    "phase": "action",
    "face": "determined",
    "spine": {
@@ -256,12 +245,12 @@
   },
   {
    "name": "release",
-   "ms": 50,
+   "ms": 80,
    "phase": "action",
    "face": "joyful",
    "spine": {
     "tilt": 14,
-    "turn": 20,
+    "turn": 34,
     "lean": 2
    },
    "head": {
@@ -276,7 +265,7 @@
    },
    "arm_R": {
     "raise": -262,
-    "spread": 32,
+    "spread": 50,
     "elbow": 0
    },
    "plant": false,
@@ -380,7 +369,7 @@
   },
   {
    "name": "ready",
-   "ms": 60,
+   "ms": 50,
    "phase": "recovery",
    "face": "smile",
    "spine": {

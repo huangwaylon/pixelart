@@ -60,6 +60,7 @@
    "spread": 0
   }
  },
+ "engine_notes": "jump_sc -> fall handoff: jump_sc moves the sprite with per-frame z_px, fall leaves height to the engine. On handoff the runtime must add the current jump z_px to world height (up to 11 px) or the sprite pops.",
  "qa": {
   "max_height_delta_px": 3,
   "max_orphans": 0,
@@ -86,12 +87,12 @@
     "roll": -4
    },
    "arm_L": {
-    "raise": 40,
-    "spread": 95,
+    "raise": 50,
+    "spread": 82,
     "elbow": 20
    },
    "arm_R": {
-    "raise": 80,
+    "raise": 105,
     "spread": 40,
     "elbow": 20
    },
@@ -127,13 +128,13 @@
     "roll": -1
    },
    "arm_L": {
-    "raise": 20,
+    "raise": 5,
     "spread": 124,
     "elbow": 14
    },
    "arm_R": {
-    "raise": 40,
-    "spread": 95,
+    "raise": 50,
+    "spread": 82,
     "elbow": 20
    },
    "leg_L": {
@@ -168,12 +169,12 @@
     "roll": 4
    },
    "arm_L": {
-    "raise": 60,
-    "spread": 68,
+    "raise": 50,
+    "spread": 82,
     "elbow": 24
    },
    "arm_R": {
-    "raise": 20,
+    "raise": 5,
     "spread": 124,
     "elbow": 14
    },
@@ -209,13 +210,13 @@
     "roll": 1
    },
    "arm_L": {
-    "raise": 80,
+    "raise": 105,
     "spread": 40,
     "elbow": 20
    },
    "arm_R": {
-    "raise": 60,
-    "spread": 68,
+    "raise": 50,
+    "spread": 82,
     "elbow": 24
    },
    "leg_L": {

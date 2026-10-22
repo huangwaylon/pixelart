@@ -77,8 +77,9 @@ def build_reference(scene, palette, out_dir):
     t3 = Image.new("RGB", (len(dirs) * SW, SH + 30), (223, 234, 246))
     d_ = ImageDraw.Draw(t3)
     for k, d in enumerate(dirs):
-        prims, _ = scene.primitives(rest, d)
-        rgba, _, _ = render_smooth(prims, palette, (SW, SH), (SW // 2, SH - 20), ppu, cam=scene.cam)
+        prims, _ = scene.primitives(rest, d, lod="ref")
+        rgba, _, _ = render_smooth(prims, palette, (SW, SH), (SW // 2, SH - 20), ppu, cam=scene.cam,
+                                   tracer=getattr(scene, "tracer", None))
         im = Image.new("RGBA", (SW, SH), (223, 234, 246, 255))
         im.alpha_composite(Image.fromarray(rgba))
         t3.paste(im.convert("RGB"), (k * SW, 30))
@@ -89,8 +90,9 @@ def build_reference(scene, palette, out_dir):
     keys = Image.new("RGB", (len(scene.anim.keys) * 200, 300), (223, 234, 246))
     d_ = ImageDraw.Draw(keys)
     for i in range(len(scene.anim.keys)):
-        prims, _ = scene.primitives(i, "SE", in_place=False)
-        rgba, _, _ = render_smooth(prims, palette, (200, 280), (100, 270), 4, cam=scene.cam)
+        prims, _ = scene.primitives(i, "SE", in_place=False, lod="ref")
+        rgba, _, _ = render_smooth(prims, palette, (200, 280), (100, 270), 4, cam=scene.cam,
+                                   tracer=getattr(scene, "tracer", None))
         im = Image.new("RGBA", (200, 280), (223, 234, 246, 255))
         im.alpha_composite(Image.fromarray(rgba))
         keys.paste(im.convert("RGB"), (i * 200, 20))
@@ -149,9 +151,10 @@ def grounding_sheet(scene, palette, final, out_path, dirs=("S", "SE", "E", "N"),
         for i in range(n):
             ox, oy = i * cw, r * chh
             dr.text((ox + 4, oy + 3), f"{d} f{i + 1} {scene.anim.anim['frames'][i]['name']}", fill=PAPER)
-            prims, worlds = scene.primitives(i, d)
+            prims, worlds = scene.primitives(i, d, lod="ref")
             piv = (scene.pivot[0] * z, scene.pivot[1] * z)
-            rgba, _, _ = render_smooth(prims, palette, (W * z, H * z), piv, z * scene.cam.ppu, cam=scene.cam)
+            rgba, _, _ = render_smooth(prims, palette, (W * z, H * z), piv, z * scene.cam.ppu, cam=scene.cam,
+                                       tracer=getattr(scene, "tracer", None))
             ref = Image.new("RGBA", (W * z, H * z), (223, 234, 246, 255))
             ref.alpha_composite(Image.fromarray(rgba))
             img.paste(ref.convert("RGB"), (ox, oy + 16))

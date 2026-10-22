@@ -264,6 +264,8 @@ def _profile_eye(idx, skin, eye, head_world, face, expression, colors, pivot, ca
     sx, sy, _ = eye
     hcx = cam.project(xform_point(head_world, face["center"]), pivot)[0]
     facing_right = sx > hcx
+    if expression not in PROFILE_EYES:
+        expression = "neutral"           # blink / HD-only expressions: the real face comes from the cels
     pat = PROFILE_EYES[expression]
     if not facing_right:
         pat = [row[::-1] for row in pat]

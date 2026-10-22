@@ -1,6 +1,6 @@
 # r11 WP B: Vertical (climb, climb_top), Animator B
 
-Files: `data/animations/climb.json`, `data/animations/climb_top.json`. Both are 48x64 cells with the pivot at (24,57), directions N/NE/NW. QA passes on both: 0 penetrations, 0 orphans, height delta ≤ 2, loop seam 0.0. Review copies are in `00_REVIEW/r11_climb/` and `00_REVIEW/r11_climb_top/` (that folder also has a ledge composite with root_px applied).
+Files: `data/animations/climb.json`, `data/animations/climb_top.json`. Both are 48x64 cells with the pivot at (24,57), directions N/NE/NW. QA passes on both: 0 penetrations, 0 orphans, height delta ≤ 2, loop seam 0.0. Review output is published to `00_REVIEW/r11_actions/climb*/`.
 
 ## climb (loop, 8 x 120 ms = 960 ms, `cycle_rise_px: 24`, every frame cancelable)
 | f | name | intent | events |
@@ -37,3 +37,11 @@ I verified with a patched copy in `/tmp/wpB/proj` (the repo pipeline is not edit
 - The chibi arms are short: the reaching hand peaks around head and bow height, not above the head.
 - climb_top f4/f5: the raised knee is mostly covered by the skirt.
 - `cycle_rise_px` is not exported to the sheet JSON (build.py meta).
+
+## Round 1 fixes (climb; climb_top approved, rebuilt unchanged)
+- grip_R/grip_L arms: raise 160 -> 172, spread 62 -> 50. In N the hand now angles up past the bow tail at ear height, so it reads as a reach instead of a wave.
+- grip frames: spine tilt (toward the wall) 5 -> 10.
+- NE f4 -> f5 bow jump: the cause was spine.turn, not head.turn. It jumped from +12 to -12 because swap_L carried the reaching-R sign. Turn now follows the reaching arm smoothly: +12, +6, 0, -6, -12, -6, 0, +6. Head turn stays 0. The bow now shifts at most 1-2 px between f4 and f5.
+- Added `"rise_weights": [1,5,5,1,1,5,5,1]` (the body rises on the pull frames).
+- Added `"engine_notes"`: the climb -> climb_top entry is allowed only on grip_R (f1) or grip_L (f5); drop is allowed on any frame. Both rise_weights and engine_notes appear in the sheet JSON, along with cycle_rise_px 24.
+- The engine blockers above are fixed. Both clips now build with the repo pipeline and pass QA (climb seam 0.0, penetrations 0, orphans 0).

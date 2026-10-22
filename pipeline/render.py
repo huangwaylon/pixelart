@@ -112,9 +112,11 @@ class PixelFrame:
 
 
 def render_pixels(prims, palette, size, pivot, cam=ISO_CAMERA, ss=3, inner_line_depth=2.2, cast_shadows=True,
-                  smooth=0.0, line_min_run=1, no_face_lines=False, hair_style=None):
+                  smooth=0.0, line_min_run=1, no_face_lines=False, hair_style=None, tracer=None):
+    """`tracer`: module with raycast/occluded (pipeline.sdf for "model": "hd"); None = analytic ellipsoids."""
     W, H = size
     prims = _prep(prims)
+    rc, occ_fn = (raycast, occluded) if tracer is None else (tracer.raycast, tracer.occluded)
     # Subsample grid
     u = (np.arange(ss) + 0.5) / ss
     xs = (np.arange(W)[:, None] + u[None, :]).reshape(-1)
@@ -123,7 +125,7 @@ def render_pixels(prims, palette, size, pivot, cam=ISO_CAMERA, ss=3, inner_line_
     sx = (gx - pivot[0]) / cam.ppu
     sy = (pivot[1] + 0.5 - gy) / cam.ppu
     origins = sx.reshape(-1, 1) * cam.right + sy.reshape(-1, 1) * cam.up + RAY_START * cam.to_cam
-    t, pi, nrm = raycast(prims, origins, cam.fwd)
+    t, pi, nrm = rc(prims, origins, cam.fwd)
     hit = pi >= 0
     lam = np.einsum("ij,j->i", nrm, cam.light)
     if hair_style and hit.any():
@@ -131,7 +133,7 @@ def render_pixels(prims, palette, size, pivot, cam=ISO_CAMERA, ss=3, inner_line_
     if cast_shadows and hit.any():
         groups = np.array([p["group"] for p in prims], dtype=object)
         hp = origins[hit] + t[hit, None] * cam.fwd + nrm[hit] * 0.35
-        sh = occluded(prims, hp, cam.light, groups[pi[hit]])
+        sh = occ_fn(prims, hp, cam.light, groups[pi[hit]])
         lam_h = lam[hit]
         lam_h[sh] = np.minimum(lam_h[sh], -0.2)
         lam[hit] = lam_h
@@ -266,21 +268,22 @@ def remove_lone_pixels(idx):
     return out
 
 
-def render_smooth(prims, palette, size, pivot, px_per_unit, cam=ISO_CAMERA):
+def render_smooth(prims, palette, size, pivot, px_per_unit, cam=ISO_CAMERA, tracer=None):
     """High-res smooth-shaded 3D reference render (no pixel pass) -> RGBA uint8 array."""
     W, H = size
     prims = _prep(prims)
+    raycast_, occluded_ = (raycast, occluded) if tracer is None else (tracer.raycast, tracer.occluded)
     gx, gy = np.meshgrid(np.arange(W) + 0.5, np.arange(H) + 0.5)
     sx = (gx - pivot[0]) / px_per_unit
     sy = (pivot[1] - gy) / px_per_unit
     origins = sx.reshape(-1, 1) * cam.right + sy.reshape(-1, 1) * cam.up + RAY_START * cam.to_cam
-    t, pi, nrm = raycast(prims, origins, cam.fwd)
+    t, pi, nrm = raycast_(prims, origins, cam.fwd)
     hit = pi >= 0
     lam = np.einsum("ij,j->i", nrm, cam.light)
     groups = np.array([p["group"] for p in prims], dtype=object)
     if hit.any():
         hp = origins[hit] + t[hit, None] * cam.fwd + nrm[hit] * 0.35
-        sh = occluded(prims, hp, cam.light, groups[pi[hit]])
+        sh = occluded_(prims, hp, cam.light, groups[pi[hit]])
         lh = lam[hit]
         lh[sh] = np.minimum(lh[sh], -0.2)
         lam[hit] = lh

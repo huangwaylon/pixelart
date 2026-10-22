@@ -375,6 +375,12 @@ def build(spec):
     chains += [dict({"segments": 2, "seg_len": 2.0, "widths": [1.5], "thickness": 1.0, "stiffness": 160,
                      "damping": 0.1, "gravity": 520, "rest_dir": [0, -1, 0]}, **ac) for ac in spec.get("add_chains", [])]
     yaw = math.degrees(math.asin(min(F["eye_spacing"] / math.cos(math.radians(F["eye_pitch"])), 0.9)))
+    hd = {}
+    if spec.get("model") == "hd":
+        # HD reference model: SDF parts next to the legacy primitives (which stay the sim/QA collision proxies)
+        chains += [dict({"segments": 2, "seg_len": 2.0, "widths": [1.5], "thickness": 1.0, "stiffness": 160,
+                         "damping": 0.1, "gravity": 520, "rest_dir": [0, -1, 0]}, **ac) for ac in spec.get("hd_chains", [])]
+        hd = {"model": "hd", "parts": hd_parts(prims, spec)}
     return {
         "name": spec.get("name", "variant"),
         "label": spec.get("label", spec.get("name", "")),
@@ -388,4 +394,28 @@ def build(spec):
         "face": {"bone": "head", "center": [0, hc, 0.5], "radii": [hr, hr * 0.95, hr * 0.95],
                  "eye_yaw": round(yaw, 3), "eye_pitch": F["eye_pitch"], "mouth_pitch": F["mouth_pitch"],
                  "eyes": F["eyes"], "visibility_min": 0.18},
+        **hd,
     }
+
+
+def hd_parts(prims, spec):
+    """Legacy ellipsoids converted 1:1 to parts, then the variant's HD parts.
+    Variant keys: "parts" / "add_parts" (part specs, see pipeline/sdf.py), "remove_parts" (names, parts only:
+    the legacy primitives stay as collision proxies), "part_overrides": {"<name>": {...}}."""
+    rm = set(spec.get("remove_parts", []))
+    po = spec.get("part_overrides", {})
+    parts = []
+    for p_ in prims:
+        if p_["name"] in rm:
+            continue
+        d = {"name": p_["name"], "bone": p_["bone"], "shape": "ellipsoid", "center": p_["center"],
+             "radii": p_["radii"], "rot": p_.get("rot", [0, 0, 0]), "material": p_["material"],
+             "group": p_.get("group", p_["bone"]), "legacy": True}
+        for k in ("clip_all", "clip_any"):
+            if p_.get(k):
+                d[k] = p_[k]
+        parts.append(dict(d, **po.get(p_["name"], {})))
+    for ap in spec.get("parts", []) + spec.get("add_parts", []):
+        if ap["name"] not in rm:
+            parts.append(dict({"group": "head", "op": "union", "lod": "all"}, **ap, **po.get(ap["name"], {})))
+    return parts
