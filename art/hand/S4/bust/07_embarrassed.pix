@@ -1,18 +1,23 @@
 # r13 dialogue bust: embarrassed. averted down-left, lower lids up / wavy / ~ / 3-row blush across the nose / steam puffs
 # Hand-authored face patches over bust_base.pix (lead pixel artist).
 extends: bust_base.pix
-patch: 31 2
-zz
-zz
-patch: 21 3
-_zz
-zWz
-_z_
-patch: 26 8
+patch: 36 0
 _zz_
 zWWz
-zWWz
 _zz_
+patch: 21 1
+_zz__________
+zWWz_________
+zWzz_________
+_zz__________
+________zzz__
+_______zWWWz_
+______zWWWWWz
+______zWWWWzz
+_______zzzz__
+patch: 28 5
+_zzz_
+zWWWz
 patch: 35 31
 u____dd_______
 ___s_ss_______

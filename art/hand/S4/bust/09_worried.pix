@@ -1,17 +1,17 @@
 # r13 dialogue bust: worried. open, glancing sideways / inner up / small flat / one sweat drop
 # Hand-authored face patches over bust_base.pix (lead pixel artist).
 extends: bust_base.pix
-patch: 63 30
+patch: 29 31
 __K__
 _KzK_
 _KzK_
-_WzzK
-_WzzK
+KWzzK
+KWzzK
 KzzzK
 _KKK_
 patch: 35 31
-u___dd__
-_s__ss_d
+u___ddd_
+_s__sssd
 _d______
 ________
 ________
@@ -23,10 +23,10 @@ __ww___j
 __ww___k
 __ww____
 patch: 39 31
-dd
+ddd
 patch: 52 31
-__dd____
-d_ss__s_
+_ddd____
+dsss__s_
 ______d_
 ________
 ________

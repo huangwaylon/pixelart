@@ -1,9 +1,17 @@
 # r13 dialogue bust: determined. flattened top lid / straight down-in / firm, pulled up on one side / star catchlight
 # Hand-authored face patches over bust_base.pix (lead pixel artist).
 extends: bust_base.pix
+patch: 28 17
+___z___
+___W___
+__zWz__
+zWWWWWz
+__zWz__
+___W___
+___z___
 patch: 35 31
 u_______
-d___sss_
+d_____s_
 s__ddddd
 __sssss_
 ________
@@ -15,10 +23,10 @@ ________
 ________
 _LLLLLL_
 __ss____
-patch: 39 32
-sss
+patch: 41 32
+s
 patch: 52 32
-_ss____d__
+_s_____d__
 ddddd__s__
 _ssssss___
 _________K
@@ -32,7 +40,7 @@ LLLLLLL___
 _____ss___
 patch: 59 32
 d
-patch: 48 49
-L
 patch: 43 50
 LL
+patch: 48 51
+L

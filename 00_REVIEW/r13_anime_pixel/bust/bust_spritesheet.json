@@ -1,0 +1,19 @@
+{
+ "image": "bust_spritesheet.png",
+ "frameSize": [
+  96,
+  96
+ ],
+ "frames": [
+  "neutral",
+  "smile",
+  "laugh",
+  "surprised",
+  "sad",
+  "angry",
+  "embarrassed",
+  "determined",
+  "worried",
+  "content"
+ ]
+}

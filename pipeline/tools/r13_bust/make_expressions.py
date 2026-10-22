@@ -52,9 +52,9 @@ KKiiiiiK_
 _KWWKKiw_
 _KWWKKiw_
 _KjjjKjw_
-_KjjjjjL_
 _KjLLLjL_
-__L___L__
+_KL___L__
+_________
 _________
 """), blk("""
 ____________
@@ -64,9 +64,9 @@ _KiiiiiiiKKK
 _wiWWKKKiwK_
 _wiWWKKKiwK_
 _wjjjjKjjwK_
-_wjjjjjjjLK_
 _LjLLLLLjLK_
-__L_____L___
+__L_____LK__
+____________
 ____________
 """))
 EYES["laugh"] = (blk("""
@@ -282,8 +282,8 @@ BROWS = {
  "angry":       [(31, 35, 36), (32, 36, 39), (33, 39, 42), (33, 52, 55), (32, 55, 58), (31, 58, 60)],
  "embarrassed": [(33, 35, 35), (32, 36, 37), (33, 38, 38), (32, 39, 39), (31, 40, 41),
                  (31, 53, 54), (32, 55, 55), (33, 56, 56), (32, 57, 58), (33, 59, 59)],
- "determined":  [(32, 35, 38), (33, 38, 42), (33, 52, 56), (32, 55, 59)],
- "worried":     [(33, 35, 36), (32, 37, 38), (31, 39, 40), (32, 41, 42), (32, 52, 53), (31, 54, 55), (32, 56, 57), (33, 58, 59)],
+ "determined":  [(32, 35, 40), (33, 38, 42), (33, 52, 56), (32, 54, 59)],
+ "worried":     [(33, 35, 36), (32, 37, 38), (31, 39, 41), (32, 42, 42), (32, 52, 52), (31, 53, 55), (32, 56, 57), (33, 58, 59)],
  "content":     [(33, 35, 36), (32, 37, 40), (33, 41, 41), (33, 53, 53), (32, 54, 57), (33, 58, 59)],
 }
 
@@ -296,7 +296,7 @@ MOUTH = {
  "sad":         (blk("_LLL_\nL___L"), 44, 49),
  "angry":       (blk("__L__\n_L_L_\nL___L"), 44, 48),
  "embarrassed": (blk("_LL__L\nL__LL_"), 43, 49),
- "determined":  (blk("_____L\nLLLLL_"), 43, 49),
+ "determined":  (blk("LLLLL_\n_____L"), 43, 50),
  "worried":     (blk("LL_\n__L"), 45, 50),
  "content":     (blk("L_____L\n_LLLLL_"), 43, 49),
 }
@@ -313,9 +313,9 @@ FX = {
  "sad":       [(blk("_z_\nzWz\nzWz\n_z_"), 60, 43)],
  "angry":     [(blk("_R_R_\nRR_RR\n_____\nRR_RR\n_R_R_"), 56, 20),
                (blk("s\ns\ns\ns\ns"), 62, 45), (blk("P\nP\nP\nP\nP"), 63, 45)],
- "embarrassed": [(blk("_zz_\nzWWz\nzWWz\n_zz_"), 26, 8), (blk("_zz\nzWz\n_z_"), 21, 3), (blk("zz\nzz"), 31, 2)],
- "determined": [],
- "worried":   [(blk("__K__\n_KzK_\n_KzK_\nKWzzK\nKWzzK\nKzzzK\n_KKK_"), 63, 30)],
+ "embarrassed": [(blk("__zzz__\n_zWWWz_\nzWWWWWz\nzWWWWzz\n_zzzz__"), 27, 5), (blk("_zz_\nzWWz\nzWzz\n_zz_"), 21, 1), (blk("_zz_\nzWWz\n_zz_"), 36, 0)],
+ "determined": [(blk("___z___\n___W___\n__zWz__\nzWWWWWz\n__zWz__\n___W___\n___z___"), 28, 17)],
+ "worried":   [(blk("__K__\n_KzK_\n_KzK_\nKWzzK\nKWzzK\nKzzzK\n_KKK_"), 29, 31)],
 }
 
 NAMES = ["neutral", "smile", "laugh", "surprised", "sad", "angry", "embarrassed", "determined", "worried", "content"]
