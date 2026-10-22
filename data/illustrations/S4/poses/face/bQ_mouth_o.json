@@ -1,0 +1,16 @@
+{
+ "note": "S4 pose cel",
+ "anchor": [
+  0,
+  0
+ ],
+ "legend": {
+  "c": "crn_1",
+  "p": "plum_0"
+ },
+ "grid": [
+  ".p.",
+  "pcp",
+  ".p."
+ ]
+}

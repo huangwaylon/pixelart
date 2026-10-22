@@ -1,0 +1,17 @@
+{
+ "note": "front bust mouth, neutral",
+ "anchor": [
+  0,
+  0
+ ],
+ "legend": {
+  "s": "line_skin",
+  "o": "crn_1",
+  "t": "crn_2",
+  "h": "skin_1",
+  "W": "snow_3"
+ },
+ "grid": [
+  "ss"
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "note": "embarrassed: heavy /// hatching, never solid",
+ "anchor": [
+  1,
+  0
+ ],
+ "legend": {
+  "r": "red_2"
+ },
+ "grid": [
+  "..r..r..r..",
+  ".r..r..r..r",
+  "r..r..r..r.",
+  ".r..r..r..."
+ ]
+}

@@ -4,6 +4,7 @@
     python -m pipeline.build --anim jump --verify   # also re-render and assert byte-identical output
 """
 import argparse
+import math
 import glob
 import hashlib
 import json
@@ -95,6 +96,39 @@ def render_all(scene, anim_name, ov_key=None):
     return base, final, ov_meta
 
 
+def add_release_smears(scene, palette, props):
+    """Throw readability (animation r2): a 2-frame snow smear from shoulder to hand on the release event frame
+    and the next, drawn into the (direction-dependent) prop layer in front of the body."""
+    rel = [i for i, f in enumerate(scene.anim_data["frames"]) if "throw_release" in f.get("events", [])]
+    if not rel or not any(pr.get("smear", True) for pr in scene.anim_data.get("props", [])):
+        return
+    core, edge = palette.index["snow_3"], palette.index["snow_1"]
+    n = len(scene.anim.keys)
+    for d in scene.dirs:
+        for k, i in enumerate([rel[0], rel[0] + 1]):
+            if i >= n:
+                continue
+            _, worlds = scene.primitives(i, d)
+            bone = scene.anim_data["props"][0].get("bone", "hand_R")
+            b = "hand_R" if bone == "carry" else bone
+            sh = scene.cam.project(worlds["shoulder_R" if b == "hand_R" else "shoulder_L"][:3, 3], scene.pivot)
+            hd = scene.cam.project(worlds[b][:3, 3], scene.pivot)
+            img = props["idx"][d][i]
+            H, W = img.shape
+            steps = 6
+            for t in range(steps + 1):
+                u = 0.35 + 0.65 * t / steps if k == 0 else 0.6 + 0.4 * t / steps   # second frame: shorter tail
+                x = sh[0] + (hd[0] - sh[0]) * u
+                y = sh[1] + (hd[1] - sh[1]) * u - 1.5 * math.sin(math.pi * u)        # slight arc
+                xi, yi = int(math.floor(x)), int(math.floor(y))
+                for dx, dy, c in ((0, 0, core), (1, 0, edge), (0, 1, edge)):
+                    if 0 <= xi + dx < W and 0 <= yi + dy < H and img[yi + dy, xi + dx] < 0:
+                        img[yi + dy, xi + dx] = c
+            props["layer"][d][i] = "front"
+            if "smear" not in props["ids"][i]:
+                props["ids"][i] = props["ids"][i] + ["smear"]
+
+
 def anchors_for(scene):
     """Projected hand / carry pixel anchors per direction and frame (engine spawns projectiles here)."""
     out = {"hand_L": {}, "hand_R": {}, "carry": {}}
@@ -135,7 +169,7 @@ def write_build(anim_name, scene, palette, base, final, ov_meta, bid, hashes, ou
         "rise_weights": scene.anim_data.get("rise_weights"),
         "engine_notes": scene.anim_data.get("engine_notes", ""),
         "root_px_mode": "cumulative offset from clip start",
-        "props": [{k: v for k, v in pr.items() if k in ("name", "ref", "bone", "offset", "release_event")}
+        "props": [{k: v for k, v in pr.items() if k in ("name", "ref", "bone", "offset", "release_event", "spawn_anchor_frame")}
                   for pr in scene.anim_data.get("props", [])],
         "image": f"{anim_name}_sheet.png", "frameSize": [W, H], "pivot": list(scene.pivot),
         "layout": "rows=directions, cols=frames, no padding",
@@ -283,6 +317,8 @@ def main(argv=None):
                 props["layer"][d].append(lay)
                 if d == scene.dirs[0]:
                     props["ids"].append(ids)
+    if props is not None:
+        add_release_smears(scene, palette, props)
     base, final, ov_meta = render_all(scene, a.anim, ov_key)
     tag = a.anim if not a.variant else f"{a.variant}_{a.anim}"
     out_dir = os.path.join(ROOT, "builds", *(["variants"] if a.variant else []), f"{tag}_{bid}")

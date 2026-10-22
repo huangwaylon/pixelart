@@ -374,11 +374,11 @@
  "anchors": {
   "brow_L": [
    32,
-   30
+   32
   ],
   "brow_R": [
-   44,
-   30
+   43,
+   32
   ],
   "eye_L": [
    32,
@@ -406,7 +406,7 @@
   ],
   "sweat": [
    56,
-   36
+   33
   ],
   "fx": [
    58,
@@ -418,24 +418,142 @@
   "brow_R": "brow_near_neutral",
   "eye_L": "eye_far_neutral",
   "eye_R": "eye_near_neutral",
-  "nose": "nose_q",
   "mouth": "mouth_neutral",
   "blush_L": "blush_far",
   "blush_R": "blush_near",
   "sweat": null,
-  "fx": null
+  "fx": null,
+  "nose": "nose_q"
  },
  "variants": {
+  "neutral": {
+   "cels": {
+    "brow_L": "brow_far_neutral",
+    "brow_R": "brow_near_neutral",
+    "eye_L": "eye_far_neutral",
+    "eye_R": "eye_near_neutral",
+    "mouth": "mouth_neutral",
+    "blush_L": "blush_far",
+    "blush_R": "blush_near",
+    "sweat": null,
+    "fx": null
+   }
+  },
   "smile": {
    "cels": {
-    "mouth": "mouth_smile"
+    "brow_L": "brow_far_neutral",
+    "brow_R": "brow_near_neutral",
+    "eye_L": "eye_far_neutral",
+    "eye_R": "eye_near_neutral",
+    "mouth": "mouth_smile",
+    "blush_L": "blush_far",
+    "blush_R": "blush_near",
+    "sweat": null,
+    "fx": null
+   }
+  },
+  "laugh": {
+   "cels": {
+    "brow_L": "brow_far_laugh",
+    "brow_R": "brow_near_laugh",
+    "eye_L": "eye_far_laugh",
+    "eye_R": "eye_near_laugh",
+    "mouth": "mouth_laugh",
+    "blush_L": "blush_far",
+    "blush_R": "blush_near",
+    "sweat": null,
+    "fx": null
+   }
+  },
+  "surprised": {
+   "cels": {
+    "brow_L": "brow_far_surprised",
+    "brow_R": "brow_near_surprised",
+    "eye_L": "eye_far_surprised",
+    "eye_R": "eye_near_surprised",
+    "mouth": "mouth_surprised",
+    "blush_L": "blush_far",
+    "blush_R": "blush_near",
+    "sweat": null,
+    "fx": null
+   }
+  },
+  "sad": {
+   "cels": {
+    "brow_L": "brow_far_sad",
+    "brow_R": "brow_near_sad",
+    "eye_L": "eye_far_sad",
+    "eye_R": "eye_near_sad",
+    "mouth": "mouth_sad",
+    "blush_L": "blush_far",
+    "blush_R": "blush_near",
+    "sweat": null,
+    "fx": null
+   }
+  },
+  "angry": {
+   "cels": {
+    "brow_L": "brow_far_angry",
+    "brow_R": "brow_near_angry",
+    "eye_L": "eye_far_angry",
+    "eye_R": "eye_near_angry",
+    "mouth": "mouth_angry",
+    "blush_L": "blush_far",
+    "blush_R": "blush_near",
+    "sweat": null,
+    "fx": "fx_anger"
+   }
+  },
+  "embarrassed": {
+   "cels": {
+    "brow_L": "brow_far_embarrassed",
+    "brow_R": "brow_near_embarrassed",
+    "eye_L": "eye_far_embarrassed",
+    "eye_R": "eye_near_embarrassed",
+    "mouth": "mouth_embarrassed",
+    "blush_L": "blush_far_heavy",
+    "blush_R": "blush_near_heavy",
+    "sweat": "sweat_drop",
+    "fx": null
+   }
+  },
+  "determined": {
+   "cels": {
+    "brow_L": "brow_far_determined",
+    "brow_R": "brow_near_determined",
+    "eye_L": "eye_far_determined",
+    "eye_R": "eye_near_determined",
+    "mouth": "mouth_determined",
+    "blush_L": "blush_far",
+    "blush_R": "blush_near",
+    "sweat": null,
+    "fx": null
+   }
+  },
+  "worried": {
+   "cels": {
+    "brow_L": "brow_far_worried",
+    "brow_R": "brow_near_worried",
+    "eye_L": "eye_far_worried",
+    "eye_R": "eye_near_worried",
+    "mouth": "mouth_worried",
+    "blush_L": "blush_far",
+    "blush_R": "blush_near",
+    "sweat": null,
+    "fx": null
    }
   },
   "content": {
    "cels": {
-    "eye_L": "eye_far_closed",
-    "eye_R": "eye_near_closed",
-    "mouth": "mouth_smile"
+    "brow_L": "brow_far_content",
+    "brow_R": "brow_near_content",
+    "eye_L": "eye_far_content",
+    "eye_R": "eye_near_content",
+    "mouth": "mouth_content",
+    "blush_L": "blush_far",
+    "blush_R": "blush_near",
+    "sweat": null,
+    "fx": null
    }
   }
  }

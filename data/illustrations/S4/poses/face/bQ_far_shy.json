@@ -1,0 +1,27 @@
+{
+ "note": "S4 pose cel",
+ "anchor": [
+  0,
+  0
+ ],
+ "legend": {
+  "K": "ink",
+  "W": "snow_3",
+  "d": "iris_0",
+  "l": "iris_2",
+  "m": "iris_1",
+  "s": "line_skin",
+  "w": "snow_3"
+ },
+ "grid": [
+  "......",
+  "......",
+  ".KKKK.",
+  "KKKKKK",
+  "dWdwww",
+  "dmdww.",
+  "ldd...",
+  "......",
+  ".s...."
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "note": "bust far eye 7x12, embarrassed",
+ "anchor": [
+  0,
+  0
+ ],
+ "legend": {
+  "K": "ink",
+  "d": "iris_0",
+  "m": "iris_1",
+  "l": "iris_2",
+  "W": "snow_3",
+  "w": "snow_3",
+  "s": "line_skin"
+ },
+ "grid": [
+  ".......",
+  "..KKKK.",
+  "KKKKKKK",
+  "Kdddwww",
+  "dWWdwww",
+  "dWmdwww",
+  "dmldwww",
+  "dlldww.",
+  "dlWdw..",
+  "dlldw..",
+  ".ddd...",
+  ".ss...."
+ ]
+}

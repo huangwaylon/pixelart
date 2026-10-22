@@ -1,0 +1,70 @@
+{
+ "image": "poses_spritesheet.png",
+ "frameSize": [
+  96,
+  160
+ ],
+ "frames": [
+  "idle",
+  "wave",
+  "point",
+  "hands_on_hips",
+  "recoil",
+  "shy",
+  "shiver",
+  "cheer"
+ ],
+ "rects": {
+  "idle": [
+   0,
+   0,
+   96,
+   160
+  ],
+  "wave": [
+   96,
+   0,
+   96,
+   160
+  ],
+  "point": [
+   192,
+   0,
+   96,
+   160
+  ],
+  "hands_on_hips": [
+   288,
+   0,
+   96,
+   160
+  ],
+  "recoil": [
+   384,
+   0,
+   96,
+   160
+  ],
+  "shy": [
+   480,
+   0,
+   96,
+   160
+  ],
+  "shiver": [
+   576,
+   0,
+   96,
+   160
+  ],
+  "cheer": [
+   672,
+   0,
+   96,
+   160
+  ]
+ },
+ "ground_y": 153,
+ "palette": "cw_oatmeal_portrait",
+ "source": "data/illustrations/S4/poses/<pose>.json"
+}

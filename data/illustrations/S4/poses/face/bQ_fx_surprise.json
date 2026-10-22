@@ -1,0 +1,15 @@
+{
+ "note": "S4 pose cel",
+ "anchor": [
+  0,
+  0
+ ],
+ "legend": {
+  "K": "outline"
+ },
+ "grid": [
+  "K...K...K",
+  ".K..K..K.",
+  "....K...."
+ ]
+}

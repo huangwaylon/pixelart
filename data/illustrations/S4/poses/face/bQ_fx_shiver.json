@@ -1,0 +1,16 @@
+{
+ "note": "S4 pose cel",
+ "anchor": [
+  0,
+  0
+ ],
+ "legend": {
+  "o": "snow_0"
+ },
+ "grid": [
+  "o.",
+  ".o",
+  "o.",
+  ".o"
+ ]
+}

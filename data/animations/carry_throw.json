@@ -60,6 +60,7 @@
    "spread": 0
   }
  },
+ "engine_notes": "throw_release fires on f3 (release); the crate is drawn on dip+push and hidden from f3. Spawn the projectile at anchors.carry[dir][push] (prop.spawn_anchor_frame = push) so it leaves exactly where the held crate was last drawn.",
  "qa": {
   "max_height_delta_px": 3,
   "max_orphans": 0,
@@ -74,7 +75,8 @@
     "dip",
     "push"
    ],
-   "release_event": "throw_release"
+   "release_event": "throw_release",
+   "spawn_anchor_frame": "push"
   }
  ],
  "frames": [
@@ -156,10 +158,7 @@
     "spread": -6
    },
    "pelvis_drop": 0.0,
-   "squash": 1.06,
-   "events": [
-    "throw_release"
-   ]
+   "squash": 1.06
   },
   {
    "name": "release",
@@ -199,7 +198,10 @@
     "ankle": 22,
     "spread": -4
    },
-   "pelvis_drop": 1.0
+   "pelvis_drop": 1.0,
+   "events": [
+    "throw_release"
+   ]
   },
   {
    "name": "follow",

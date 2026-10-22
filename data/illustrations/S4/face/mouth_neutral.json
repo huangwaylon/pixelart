@@ -1,11 +1,16 @@
 {
- "note": "",
+ "note": "bust mouth, neutral",
  "anchor": [
   0,
   0
  ],
  "legend": {
-  "s": "line_skin"
+  "s": "line_skin",
+  "o": "plum_0",
+  "t": "crn_2",
+  "h": "skin_1",
+  "W": "snow_3",
+  "n": "plum_0"
  },
  "grid": [
   "sss"

@@ -1,14 +1,16 @@
 {
- "note": "",
+ "note": "brow: plum_0 stroke + skin_1 see-through underside (over bangs)",
  "anchor": [
   0,
   0
  ],
  "legend": {
-  "b": "plum_0"
+  "P": "plum_0",
+  "b": "skin_1"
  },
  "grid": [
-  ".bbb",
-  "b..."
+  ".PPPP.",
+  "PPbbPP",
+  "bb..bb"
  ]
 }

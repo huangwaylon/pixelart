@@ -1,0 +1,30 @@
+{
+ "note": "front bust eye, viewer-left (outer corner left); mirror of eye_near_neutral with catchlight kept upper-left",
+ "anchor": [
+  0,
+  0
+ ],
+ "legend": {
+  "K": "ink",
+  "d": "iris_0",
+  "m": "iris_1",
+  "l": "iris_2",
+  "W": "snow_3",
+  "w": "snow_3",
+  "s": "line_skin"
+ },
+ "grid": [
+  "..KKKKK...",
+  "KKKKKKKKK.",
+  "KwddddddwK",
+  ".wdWWdddw.",
+  ".wdWWmmdw.",
+  ".wdWmmmdw.",
+  ".wdmmmldw.",
+  ".wdmmlldw.",
+  "..dmllWd..",
+  ".dllllld..",
+  "...dddd...",
+  "..ssss...."
+ ]
+}

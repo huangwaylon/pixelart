@@ -1,0 +1,10 @@
+{
+ "image": "hands_on_hips_spritesheet.png",
+ "frameSize": [
+  96,
+  160
+ ],
+ "frames": [
+  "base"
+ ]
+}

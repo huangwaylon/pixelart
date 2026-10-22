@@ -1,0 +1,13 @@
+{
+ "note": "S4 pose cel",
+ "anchor": [
+  0,
+  0
+ ],
+ "legend": {
+  "r": "red_2"
+ },
+ "grid": [
+  "r.r.r"
+ ]
+}

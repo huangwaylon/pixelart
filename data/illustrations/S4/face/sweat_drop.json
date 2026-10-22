@@ -1,0 +1,19 @@
+{
+ "note": "sweat drop on the temple",
+ "anchor": [
+  1,
+  0
+ ],
+ "legend": {
+  "o": "snow_0",
+  "W": "snow_3",
+  "S": "snow_1"
+ },
+ "grid": [
+  "..o.",
+  ".oWo",
+  "oWSo",
+  "oSSo",
+  ".oo."
+ ]
+}

@@ -1,0 +1,17 @@
+{
+ "note": "anger vein",
+ "anchor": [
+  2,
+  2
+ ],
+ "legend": {
+  "R": "red_1"
+ },
+ "grid": [
+  ".R.R.",
+  "RR.RR",
+  ".....",
+  "RR.RR",
+  ".R.R."
+ ]
+}

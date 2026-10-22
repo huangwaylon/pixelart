@@ -137,13 +137,13 @@ def bow_parts():
     P = []
     for sg, s in ((-1, "L"), (1, "R")):
         # open loop: flattened elliptical band ring, ribbon width along local y, wider toward the outer end
-        rot = [0, 180, 24] if sg < 0 else [0, 0, 24]
+        rot = [0, 180, 18] if sg < 0 else [0, 0, 18]
         zs = 1 if sg < 0 else -1        # local z of the outward (visible) face after the 180 deg yaw
-        P.append({"name": f"bow_loop_{s}", "bone": "head", "shape": "torus", "center": [sg * 4.2, 11.2, -9.9], "rot": rot,
-                  "params": {"R": [3.7, 1.2], "r": 0.3, "w": 2.0, "taper": 0.3}, "material": "ribbon", "group": "hat",
+        P.append({"name": f"bow_loop_{s}", "bone": "head", "shape": "torus", "center": [sg * 4.2, 10.9, -9.9], "rot": rot,
+                  "params": {"R": [3.7, 1.2], "r": 0.3, "w": 1.95, "taper": 0.18}, "material": "ribbon", "group": "hat",
                   "blend": {"set": f"loop_{s}", "k": 0.0}, "lod": "all"})
         for c, (y0, y1) in enumerate(((0.75, 0.3), (-0.75, -0.3))):
-            P.append({"name": f"bow_crease_{s}{c}", "bone": "head", "shape": "capsule", "center": [sg * 4.2, 11.2, -9.9],
+            P.append({"name": f"bow_crease_{s}{c}", "bone": "head", "shape": "capsule", "center": [sg * 4.2, 10.9, -9.9],
                       "rot": rot, "params": {"a": [-2.7, y0 * 1.3, zs * 1.5], "b": [0.9, y1, zs * 1.42], "r": 0.22},
                       "material": "ribbon", "group": "hat", "op": "subtract", "blend": {"set": f"loop_{s}", "k": 0.12},
                       "lod": "ref"})
