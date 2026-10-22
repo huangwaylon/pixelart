@@ -250,6 +250,12 @@ class ChainSim:
                 rest = np.array(rest)
                 acc = np.zeros_like(cur)
                 acc[:, 1] -= c["gravity"]
+                # locomotion: the character moves forward (+Z canonical) but is rendered in place, so moving air
+                # pushes hair/scarf backwards. "trail_wind" (units/s^2) per clip; chains may scale it ("wind" factor)
+                wind = self.anim.anim.get("trail_wind", 0.0) * c.get("wind", 1.0)
+                if wind:
+                    acc[:, 2] -= wind
+                    acc[:, 1] += 0.15 * wind          # slight lift so trailing locks float rather than drag
                 acc += c["stiffness"] * (rest - cur)
                 nxt = cur + (cur - prev) * (1 - c["damping"]) + acc * SIM_DT * SIM_DT
                 nxt[0] = anchor

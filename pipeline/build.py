@@ -132,6 +132,8 @@ def write_build(anim_name, scene, palette, base, final, ov_meta, bid, hashes, ou
         "inputLockEnd_ms": lock_end, "cameraElevation": scene.cam.elevation,
         "loop": bool(scene.anim_data.get("loop", False)),
         "cycle_rise_px": scene.anim_data.get("cycle_rise_px", 0),
+        "rise_weights": scene.anim_data.get("rise_weights"),
+        "engine_notes": scene.anim_data.get("engine_notes", ""),
         "root_px_mode": "cumulative offset from clip start",
         "props": [{k: v for k, v in pr.items() if k in ("name", "bone", "offset", "release_event")}
                   for pr in scene.anim_data.get("props", [])],

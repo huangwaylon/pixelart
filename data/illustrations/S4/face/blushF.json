@@ -1,0 +1,14 @@
+{
+ "note": "hatched blush, never solid",
+ "anchor": [
+  0,
+  0
+ ],
+ "legend": {
+  "r": "red_2"
+ },
+ "grid": [
+  ".r.r",
+  "r.r."
+ ]
+}

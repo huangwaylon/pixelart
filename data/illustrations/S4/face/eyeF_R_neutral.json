@@ -1,0 +1,27 @@
+{
+ "note": "front eye, viewer-right; catchlight kept upper-left",
+ "anchor": [
+  0,
+  0
+ ],
+ "legend": {
+  "K": "ink",
+  "d": "iris_0",
+  "m": "iris_1",
+  "l": "iris_2",
+  "W": "snow_3",
+  "w": "snow_3",
+  "s": "line_skin"
+ },
+ "grid": [
+  ".KKKKK..",
+  "KKKKKKKK",
+  "wdWWddwK",
+  "wdWdddw.",
+  "wdmmmdw.",
+  "wdmmldw.",
+  ".dmlldw.",
+  ".ddddd..",
+  ".....ss."
+ ]
+}

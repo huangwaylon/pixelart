@@ -3,6 +3,17 @@
  "version": 1,
  "loop": true,
  "cycle_rise_px": 24,
+ "rise_weights": [
+  1,
+  5,
+  5,
+  1,
+  1,
+  5,
+  5,
+  1
+ ],
+ "engine_notes": "climb -> climb_top transition only on grip_R (f1) or grip_L (f5); drop is allowed on any frame. Rise is spread by rise_weights (body rises during the pull frames, not during reaches).",
  "frame_size": [
   48,
   64
@@ -73,7 +84,7 @@
    "squash": 1.03,
    "plant": false,
    "spine": {
-    "tilt": 5,
+    "tilt": 10,
     "lean": 6,
     "turn": 12
    },
@@ -83,8 +94,8 @@
     "turn": 0
    },
    "arm_R": {
-    "raise": 160,
-    "spread": 62,
+    "raise": 172,
+    "spread": 50,
     "elbow": 8
    },
    "arm_L": {
@@ -162,7 +173,7 @@
    "spine": {
     "tilt": 8,
     "lean": 1,
-    "turn": 6
+    "turn": 0
    },
    "head": {
     "tilt": -8,
@@ -204,7 +215,7 @@
    "spine": {
     "tilt": 5,
     "lean": -4,
-    "turn": 12
+    "turn": -6
    },
    "head": {
     "tilt": -14,
@@ -244,7 +255,7 @@
    "squash": 1.03,
    "plant": false,
    "spine": {
-    "tilt": 5,
+    "tilt": 10,
     "lean": -6,
     "turn": -12
    },
@@ -254,8 +265,8 @@
     "turn": 0
    },
    "arm_L": {
-    "raise": 160,
-    "spread": 62,
+    "raise": 172,
+    "spread": 50,
     "elbow": 8
    },
    "arm_R": {
@@ -333,7 +344,7 @@
    "spine": {
     "tilt": 8,
     "lean": -1,
-    "turn": -6
+    "turn": 0
    },
    "head": {
     "tilt": -8,
@@ -375,7 +386,7 @@
    "spine": {
     "tilt": 5,
     "lean": 4,
-    "turn": -12
+    "turn": 6
    },
    "head": {
     "tilt": -14,
