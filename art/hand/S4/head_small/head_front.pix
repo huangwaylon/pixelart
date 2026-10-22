@@ -1,5 +1,5 @@
 # r13 head at full-body scale (FRONT). Pixel artist 3. Hand-authored grid.
-# Landmarks (shared by all views): bow lobes x1-10/x33-42 y6-17 (behind hair, 42 px), crown y5, bang cut y14 (2 notches), brow y15, top lash y18, iris y19-23,
+# Landmarks (shared by all views): bow lobes x1-8/x35-42 y5-16 (outer half of the back loop) (behind hair, 42 px), crown y5, bang cut y14 (2 notches), brow y15, top lash y18, iris y19-23,
 # lower lash y24, blush y25-26, nose y25, mouth y27-28 (1-2-1 smile), chin y31, scarf top y32-33. Canvas 44 wide: centre between x21|x22 (turnaround x = this x + 26).
 size: 44 40
 legend:
@@ -33,19 +33,19 @@ grid:
 ............................................
 ............................................
 ............................................
-................KKKKKKKKKKKK................
-......KK.....KKKmmmmmmmmmmmmKKK.....KK......
-....KKeeK..KKmmmmmmmmmmmmmmmmmmKK..KeeKK....
-...KeecceKKmmmmmmmmmmmmmmmmmmmmmmKKecceeK...
-..KecccccKmmllllmmmmllllmmmmllllmmKccccceK..
-..KcccccbKmmmllmmdmmmllmmmdmmllmmmKbcccccK..
-.KccccbbKmmmdmmmmdmmmmmmmmdmmmmdmmmKbbccccK.
-.KcbbbccKmmmdmmmmPmmmmmmmmPmmmmdmmmKccbbbcK.
-.KcbbcccKmmmdmmmPtPmmmmmmPtPmmmdmmmKcccbbcK.
-.KbbbcbcKmmmPPPPtttPPPPPPtttPPPPmmmKcbcbbbK.
-.KbbcbbKKmmdPuuddduuuuuuuuddduuPdmmKKbbcbbK.
-..KbbbK.KmmdPussssssssssssssssuPdmmK.KbbbK..
-...KKK..KmmdPussssssssssssssssuPdmmK..KKK...
+..KK............KKKKKKKKKKKK............KK..
+..KeK........KKKmmmmmmmmmmmmKKK........KeK..
+.KcceK.....KKmmmmmmmmmmmmmmmmmmKK.....KeccK.
+.KccceK...KmmmmmmmmmmmmmmmmmmmmmmK...KecccK.
+.KcccceKKKmmllllmmmmllllmmmmllllmmKKKeccccK.
+.KcbbcccKKmmmllmmdmmmllmmmdmmllmmmKKcccbbcK.
+.KcbbbbbKmmmdmmmmdmmmmmmmmdmmmmdmmmKbbbbbcK.
+.KcbbcccKmmmdmmmmPmmmmmmmmPmmmmdmmmKcccbbcK.
+.KccccKKKmmmdmmmPtPmmmmmmPtPmmmdmmmKKKccccK.
+.KbccK..KmmmPPPPtttPPPPPPtttPPPPmmmK..KccbK.
+..KbK...KmmdPuuddduuuuuuuuddduuPdmmK...KbK..
+..KK....KmmdPussssssssssssssssuPdmmK....KK..
+........KmmdPussssssssssssssssuPdmmK........
 ........KmmdPuKKKKKssssssKKKKKuPdmmK........
 ........KmmdPKKiiiKssssssKiiiKKPdmmK........
 ........KmmdPuiWiinssssssniWiiuPdmmK........

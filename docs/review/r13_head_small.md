@@ -1,4 +1,4 @@
-# r13 Head at full-body scale (Pixel Artist 3), review-4 bow applied
+# r13 Head at full-body scale (Pixel Artist 3), review-5 final fixes applied
 
 This is candidate C's face as a ~27 px head. **The canvas is now 44x40, so paste at x+26** (turnaround x = head_small x + 26). Rows are unchanged; all x values below are 44-canvas.
 
@@ -21,16 +21,14 @@ This is candidate C's face as a ~27 px head. **The canvas is now 44x40, so paste
 
 ## Bow (review 4: puffy teardrops, 42 px)
 - **Back (master):** loops x1-18 and x24-42, 13 rows at the outer end (y4-16), pinching to 5 rows (y9-13) at a 5x7 knot (x19-23, y8-14). Corners are rounded and the bottom droops. Each loop has a 3x3 `teal_0` pocket (x4-6 / x37-39, y9-11) and a crease to the knot. `teal_2` is on the top arc only, with no stripes.
-- **Front:** behind-hair lobes at x1-10 and x33-42. They meet the head at y8-13 and swell to y6-17 at the tip. The top slopes down outward so they droop. The pocket is 2x3 at x3-4 / x39-40, y12-14. I lowered the lobes 1 row from the spec so the silhouette doesn't read as ears.
-- **3/4:** the skull's back edge moves to x33 (y8-28); the tail and ponytail moved +2. Knot at x32-36, y8-12. The near-loop teardrop is at x34-42, y4-16 with a 2x3 pocket. The far loop is hidden.
+- **Front (R5):** each lobe is the visible outer half of the back loop. The outer end is at x1-3, y5-16 with rounded corners. The edges step in toward the head (top: y5 x2-3, then x4, 5, 6, 7; bottom: y16 x2-3, then x4, 5, x6-7 at y13). The tip tucks under the hair at x7-8, y9-13. Each has a `teal_0` pocket at x3-4, y10-12, a crease at y11, and `teal_2` on the top arc. Mirrored at x35-42.
+- **3/4:** the skull's back edge moves to x33 (y8-28); the tail and ponytail moved +2. Knot (R5): a pinched 3x6 `teal_1` knot at x33-35, y8-13, with a `teal_2` pixel at (34,9), a `teal_0` bottom row, and no outline on the loop side. The near-loop teardrop is at x34-42, y4-16 with a 2x3 pocket. The far loop is hidden.
 - **Side:** the near loop is seen face-on at x31-39, y4-15, drooping back (6 px past the back hair), with a 3x4 opening and the knot at x28-30, y8-12. The gap at x34, y27-30 is filled with `d`.
 
-## Side profile
-- The forehead curves from x12 to x10.
-- The nose is a 1 px upturned tip at (9,23), and the face steps back at y24.
-- The mouth is a single `line_skin` pixel at (11,26).
-- The chin is rounded at y27-31.
-- The bang overhangs 2 px with a rounded tip (row 14 starts at x10). The hole at (18,15) is filled with `u`.
+## Side profile (R5)
+- The bangs hang to y16 at x11-13, so skin starts at y17.
+- Profile `L`: y17 x11; y18-22 x10; y23 x9 (nose); y24-25 x10; y26-28 x11; y29 x12. The mouth is a single `L` at (12,26).
+- The jaw is steeper: y28 x17-18, y29 x15-16, y30 x13-14. The neck below is `u` (x15-18, y30-31), and the old jaw block is cleared.
 - There are no side expressions.
 
 **3/4:** far eye 4 px (3 px iris), near eye 5 px, 2 px nose-bridge gap.
