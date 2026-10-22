@@ -1,0 +1,57 @@
+# r13 AD style swatch: 32x32 eye + brow + bang tip at BUST scale (96x96 bust).
+# Character's RIGHT eye (screen-left), 3/4 view facing screen-left. Light: upper-left front.
+# Demonstrates: selective outline (plum on hair, line_skin on skin, ink only for lashes/pupil),
+# 2px upper lash with outer wing, iris ramp dark-top -> light-bottom, 2x2 + 1px catchlights,
+# 1px soft brow in hair_1, clumped bangs with broken angel-ring band, cast hair shadow on skin,
+# blush as 3 diagonal hatches. No AA except 1 step (skin_mid) on the lash->skin outer wing.
+size: 32 32
+legend:
+. = transparent
+p = #4A2448   plum_0 hair line / deepest hair
+h = #6E3C3A   hair_1 hair shadow
+H = #A85A3A   hair_2 hair base
+L = #D08658   hair_hi band highlight
+s = #FCD6B4   skin_2 skin base
+m = #F6BCA6   skin_mid 1-step AA / soft shade
+S = #EBA586   skin_1 skin shadow (hair cast shadow)
+l = #B0606A   line_skin skin line, lower lash
+k = #20223E   ink lashes, pupil
+a = #153E4E   iris_0
+b = #2C9696   iris_1
+c = #86DCC6   iris_2
+w = #FFFFFF   snow_3 catchlight / sclera
+W = #DFEAF6   snow_2 sclera shade under lash
+r = #F06A58   red_2 blush hatch
+grid:
+HHHhHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+HHHhHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+HHHhHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+HHHhHHLLLLHHHHLLLLLHHHHLLLLHHHLL
+HHHhHHHLLHHHHHHLLLHHHHHHLLHHHHHL
+HHHhHHHHHHHhHHHHHHHHhHHHHHHhHHHH
+HHHhHHHHHHHhHHHHHHHHhHHHHHHhHHHH
+HHHhHHHHHHhhHHHHHHHhhHHHHHhhHHHH
+HHHhHHHHHHhphHHHHHHhphHHHHhphHHH
+HHHhHHHHHHpSpHHHHHHpSpHHHHpSpHHH
+HHHphhhhhpSSSpHHHHhpSphhhhpSphhh
+HHHppppppSSSSSpHHhhpSSppppSSpppp
+HHhpSSSSSSSSSSSpHhhpSSSSSSSSSSSS
+HHhpSsssssssssssphpSssssssssssss
+HHhpSsssshhhhhssspSsssssssssssss
+HHhpSsshhssssshsssssssssssssssss
+HHhpSshsssssssssssssssssssssssss
+HHhpSsssssssssssssssssssssssssss
+HHhpSssssskkkkksssssssssssssssss
+HHhpSssskkkkkkkkksssssssssssssss
+HHhpSskkkaaaaaaakkssssssssssssss
+HHhpSsskkawwaaaaWsssssssssssssss
+HHhpSssskawwkkbaWsssssssssssssss
+HHhpSssswabkkkbawsssssssssssssss
+HHhpSssswabbkbbawsssssssssssssss
+HHhpSssswabcccbawsssssssssssssss
+HHhpSssslacccwcaWsssssssssssssss
+HHhpSsssllaaaaasssssssssssssssss
+HHhpSsssssssssssssssssssssssssss
+HHhpSsssmmrmmrmmrmssssssssssssss
+HHhpSsssmrmmrmmrmmssssssssssssss
+HHhpSsssrmmrmmrmmsssssssssssssss

@@ -1,6 +1,6 @@
 {
  "name": "kawaii_v2",
- "notes": "Face designer r10. Coords relative to the anchor pixel (face front on the eye line). front: cols -4..4, rows -1..+2 (bangs cover row -2 in pitched frames); 3/4 and profile drawn facing screen-right (mirrored for left views). 3/4: near eye lash -6..-4, iris -5..-4; far eye 2x2 at -2..-1 (no lash or catchlight, at least 1 skin px to the edge). profile: eye column -2, catchlight -3 (back), nose -1. Shape family: ^ joyful, > < squint, lowered-lid determined.",
+ "notes": "Face designer r10. Coords relative to the anchor pixel (face front on the eye line). front: cols -4..4, rows -1..+2 (bangs cover row -2 in pitched frames); 3/4 and profile drawn facing screen-right (mirrored for left views). 3/4 (r13 perspective fix): near eye lash -6..-4, iris -5..-4; 2px nose-bridge gap at -3..-2; far eye 2x2 at -1..0 with >= 2 skin px of far cheek beyond it, mouth at -1 (no lash or catchlight, at least 1 skin px to the edge). profile: eye column -2, catchlight -3 (back), nose -1. Shape family: ^ joyful, > < squint, lowered-lid determined.",
  "views": {
   "front": {
    "neutral": {
@@ -71,10 +71,10 @@
      1
     ],
     "rows": [
-     "EEE.EE.",
-     ".CE.EE.",
-     ".EE....",
-     ".BB...."
+     "EEE..EE.",
+     ".CE..EE.",
+     ".EE.....",
+     ".BB....."
     ]
    },
    "smile": {
@@ -83,10 +83,10 @@
      1
     ],
     "rows": [
-     "EEE.EE.",
-     ".CE.EE.",
-     ".EE....",
-     ".BB.M.."
+     "EEE..EE.",
+     ".CE..EE.",
+     ".EE.....",
+     ".BB..M.."
     ]
    },
    "determined": {
@@ -95,10 +95,10 @@
      1
     ],
     "rows": [
-     ".......",
-     "EEE.EE.",
-     ".EE....",
-     "....M.."
+     "........",
+     "EEE..EE.",
+     ".EE.....",
+     ".....M.."
     ]
    },
    "joyful": {
@@ -107,10 +107,10 @@
      1
     ],
     "rows": [
-     ".E...E.",
-     "E.E.E..",
-     ".BB.M..",
-     "....M.."
+     ".E....E.",
+     "E.E..E..",
+     ".BB..M..",
+     ".....M.."
     ]
    },
    "squint": {
@@ -119,10 +119,10 @@
      1
     ],
     "rows": [
-     "EE...E.",
-     "..E.E..",
-     "EE...E.",
-     ".BB.M.."
+     "EE....E.",
+     "..E..E..",
+     "EE....E.",
+     ".BB..M.."
     ]
    }
   },
