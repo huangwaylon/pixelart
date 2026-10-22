@@ -78,9 +78,9 @@
    "radii": [
     7.2,
     3.6799999999999997,
-    5.28
+    4.0
    ],
-   "material": "pom",
+   "material": "prop_snow",
    "frames": [
     "dip",
     "push"
@@ -95,7 +95,7 @@
      "radii": [
       0.22,
       11.96,
-      17.16
+      13.0
      ],
      "material": "coat_trim",
      "clip_all": [
@@ -134,7 +134,7 @@
      "radii": [
       0.22,
       11.96,
-      17.16
+      13.0
      ],
      "material": "coat_trim",
      "clip_all": [
@@ -173,9 +173,9 @@
      "radii": [
       23.4,
       0.22,
-      17.16
+      13.0
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -212,9 +212,9 @@
      "radii": [
       23.4,
       0.22,
-      17.16
+      13.0
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -246,14 +246,14 @@
      "offset": [
       0.0,
       17.8,
-      6.6
+      5.0
      ],
      "radii": [
       23.4,
       11.96,
       0.22
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -285,14 +285,14 @@
      "offset": [
       0.0,
       17.8,
-      -6.6
+      -5.0
      ],
      "radii": [
       23.4,
       11.96,
       0.22
      ],
-     "material": "pom",
+     "material": "prop_snow",
      "clip_all": [
       [
        1,
@@ -329,9 +329,9 @@
      "radii": [
       0.22,
       2.34,
-      17.94
+      13.78
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        0,
@@ -368,9 +368,9 @@
      "radii": [
       0.22,
       2.34,
-      17.94
+      13.78
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        0,
@@ -402,14 +402,14 @@
      "offset": [
       0.0,
       18.0,
-      6.9
+      5.3
      ],
      "radii": [
       24.18,
       2.34,
       0.22
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        1,
@@ -441,14 +441,14 @@
      "offset": [
       0.0,
       18.0,
-      -6.9
+      -5.3
      ],
      "radii": [
       24.18,
       2.34,
       0.22
      ],
-     "material": "pants",
+     "material": "coat_trim",
      "clip_all": [
       [
        1,
@@ -478,7 +478,7 @@
     },
     {
      "offset": [
-      10.0,
+      10.4,
       9.5,
       0.0
      ],
@@ -496,7 +496,7 @@
     },
     {
      "offset": [
-      -10.0,
+      -10.4,
       9.5,
       0.0
      ],
@@ -528,19 +528,19 @@
     "lean": 0
    },
    "head": {
-    "tilt": -12,
+    "tilt": -14,
     "turn": 0,
     "roll": 4
    },
    "arm_L": {
-    "raise": 172,
-    "spread": 40,
-    "elbow": 22
+    "raise": 176,
+    "spread": 38,
+    "elbow": 12
    },
    "arm_R": {
-    "raise": 172,
-    "spread": 40,
-    "elbow": 22
+    "raise": 176,
+    "spread": 38,
+    "elbow": 12
    },
    "leg_L": {
     "hip": 0,
@@ -555,7 +555,7 @@
     "spread": -6
    },
    "pelvis_drop": 2.6,
-   "squash": 0.92
+   "squash": 0.97
   },
   {
    "name": "push",

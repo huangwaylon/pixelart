@@ -1,6 +1,6 @@
 # r11 - S4 action set (draft 1, before team review rounds)
 
-First pass by 4 parallel animators; all clips pass automated QA (no penetration, seamless loops, 0 orphans). carry_throw still uses a placeholder crate (being updated to the final crate). Team review rounds for consistency and animation quality are running next. These will be re-rendered on the new high-detail model; the animation data carries over.
+First pass by 4 parallel animators; all clips pass automated QA (no penetration, seamless loops, 0 orphans). Team review rounds for consistency and animation quality are running next. These will be re-rendered on the new high-detail model; the animation data carries over.
 
 | Clip (click for 8-dir GIF) | Frames / time | Dirs | Events | QA |
 |---|---|---|---|---|
