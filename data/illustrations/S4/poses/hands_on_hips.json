@@ -593,16 +593,16 @@
 },
 "grid": [
 "......",
-"......",
-"......",
+".KKK..",
 "KKKKKK",
-".dWWdw",
+"KdWWKK",
+".dmmdw",
 ".dmldw",
 ".dlld.",
 "..ddd.",
-".s...."
+".ss..."
 ],
-"ref": "bQ_far_smug"
+"ref": "bQ_far_det2"
 },
 "eye_R": {
 "note": "S4 pose cel",
@@ -621,16 +621,16 @@
 },
 "grid": [
 "........",
-"........",
-"........",
+"...KKKK.",
 "KKKKKKKK",
-"wdWWddwK",
+"KKWWddwK",
+"wdWdddw.",
 "wdmmldw.",
 "wdmlldw.",
 ".ddddd..",
 ".....ss."
 ],
-"ref": "bQ_near_smug"
+"ref": "bQ_near_det2"
 },
 "mouth": {
 "note": "S4 pose cel",
@@ -646,36 +646,6 @@
 "sss."
 ],
 "ref": "bQ_mouth_smirk"
-},
-"blush_L": {
-"note": "",
-"anchor": [
-0,
-0
-],
-"legend": {
-"r": "red_2"
-},
-"grid": [
-".r.",
-"r.."
-],
-"ref": "blushQ_far"
-},
-"blush_R": {
-"note": "hatched blush, never solid",
-"anchor": [
-0,
-0
-],
-"legend": {
-"r": "red_2"
-},
-"grid": [
-".r.r",
-"r.r."
-],
-"ref": "blushF"
 }
 },
 "cleanup_px": 0

@@ -1,7 +1,7 @@
 {
- "note": "bust mouth, determined",
+ "note": "bust mouth, determined: set 4 px plum line, line_skin ends turn 1 px down",
  "anchor": [
-  1,
+  2,
   0
  ],
  "legend": {
@@ -13,7 +13,7 @@
   "n": "plum_0"
  },
  "grid": [
-  "nnnn",
-  ".hh."
+  "snnnns",
+  "s.hh.s"
  ]
 }

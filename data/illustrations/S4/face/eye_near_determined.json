@@ -1,5 +1,5 @@
 {
- "note": "bust near eye 10x12, determined",
+ "note": "bust near eye 10x12, determined: lowered lid, lash slants 1 px down toward the nose (inner = left)",
  "anchor": [
   0,
   0
@@ -18,11 +18,11 @@
  "grid": [
   "..........",
   "..........",
-  ".KKKKKKKK.",
+  ".....KKKK.",
   "KKKKKKKKKK",
+  "KKKKKdddw.",
   ".wdWWmmdw.",
   ".wdWmmmdw.",
-  ".wdmmmldw.",
   ".wdmmlldw.",
   "..dmllWd..",
   "..dllllld.",

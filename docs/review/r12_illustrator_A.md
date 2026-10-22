@@ -23,3 +23,14 @@ Tool additions: centre-sampled raster, `paths[]`, `mirror`, `translate`, `z`, `c
 4. **Brows canonical**: 2-row ink arcs on the bangs at y22, above the notch tips. Cels `browF_neutral`, `browQ_near/far_neutral`.
 5. **New `turnaround.json`**: 5 views (front, 3/4, profile, rear 3/4, back), 96x64 each, model-sheet scale. The front, 3/4 and back views reuse the model-sheet shapes.
 6. **New `bust_16.json`**: 15 colours plus transparency, built with `extends` + `color_map`. The iris uses the teal ramp, lashes use outline.
+
+## Round 2 fixes (AD review 2)
+1. **Turnaround rear-3/4 cheek** (`turnaround.json`, panel `rear_three_quarter`).
+   - The sidelock now has `line_color: plum_0`. The ink column at x321 y28-42 was the sidelock's auto line falling back to `outline`. It is now hair line, so the cheek tucks under the hair instead of being walled off.
+   - The face path's lower edge now ends at a chin point (≈x320 y43), behind the sidelock. The cheek tapers 2 px at y41 to 1 px at y42.
+   - A new `sidelock_under` layer (hair_1, plum auto line) fills the gap between the sidelock tips. The skin leak at (323,42) and (323-324,43) is gone.
+   - Before/after: `00_REVIEW/r12_illustration/fixes/r2_A_turnaround_cheek.png`. Turnaround: 20 colours, 3 orphans.
+2. **Optional, sheet front mouth: done.** Mouth anchor moved 41 to 40.
+   - The nose then touched the mouth vertically, so the nose moved up one row (38 to 37). The lower face now spaces out as nose y37-38, gap, mouth y40, two skin rows, chin line.
+   - Applied to both the model_sheet and turnaround front panels, which share these shapes. The 3/4 and profile views are unchanged.
+   - **Updated rule:** front mouth 2 px at y40, nose at y37. Model sheet: 23 colours, 2 orphans.

@@ -1,20 +1,20 @@
 {
- "note": "anger vein, 7x7, floats in open space beside the head",
+ "note": "anger vein 7x7: red_2 2 px corner arms, plum_0 outer edge; sits on the hair edge at the temple",
  "anchor": [
   3,
   3
  ],
  "legend": {
-  "R": "red_1",
-  "r": "crn_1"
+  "r": "red_2",
+  "P": "plum_0"
  },
  "grid": [
-  "R.....R",
-  ".RR.RR.",
-  ".R...R.",
+  ".PP.PP.",
+  "Prr.rrP",
+  "Pr...rP",
   ".......",
-  ".R...R.",
-  ".RR.RR.",
-  "R.....R"
+  "Pr...rP",
+  "Prr.rrP",
+  ".PP.PP."
  ]
 }

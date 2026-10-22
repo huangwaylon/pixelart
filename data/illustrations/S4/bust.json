@@ -412,8 +412,8 @@
    33
   ],
   "fx": [
-   22,
-   15
+   28,
+   16
   ]
  },
  "cels": {
@@ -522,7 +522,7 @@
     "mouth": "mouth_embarrassed",
     "blush_L": "blush_far_heavy",
     "blush_R": "blush_near_heavy",
-    "sweat": "sweat_drop",
+    "sweat": null,
     "fx": null,
     "nose": "nose_q"
    }

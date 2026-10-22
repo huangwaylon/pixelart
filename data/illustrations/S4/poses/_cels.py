@@ -18,6 +18,9 @@ C = {
  "bQ_near_smug": (EYE, ["........", "........", "........", "KKKKKKKK", "wdWWddwK", "wdmmldw.", "wdmlldw.", ".ddddd..", ".....ss."]),
  "bQ_far_shy": (EYE, ["......", "......", ".KKKK.", "KKKKKK", "WWdwww", "mmdww.", "lld...", "dd....", ".s...."]),
  "bQ_near_shy": (EYE, ["........", "........", ".KKKKKK.", "KKKKKKKK", "WWddwwwK", "mmldwww.", "llldww..", "ddd.....", ".....ss."]),
+ # determined (B's bust determined eye, lid lowered, lashes slanted 1 px down toward the nose), pose scale
+ "bQ_far_det2": (EYE, ["......", ".KKK..", "KKKKKK", "KdWWKK", ".dmmdw", ".dmldw", ".dlld.", "..ddd.", ".ss..."]),
+ "bQ_near_det2": (EYE, ["........", "...KKKK.", "KKKKKKKK", "KKWWddwK", "wdWdddw.", "wdmmldw.", "wdmlldw.", ".ddddd..", ".....ss."]),
  "bQ_far_squeeze": (EYE, ["......", "......", "K.....", ".KK...", "...KK.", ".KK...", "K....."]),
  "bQ_near_squeeze": (EYE, ["........", "........", "......KK", "....KK..", "..KK....", "....KK..", "......KK"]),
  # --- brows (model-sheet browQ_* geometry: far 4x2, near 7x2; inner ends = far right / near left) ---
@@ -40,6 +43,9 @@ C = {
  "bQ_nose_cold": ({"r": "red_2"}, ["rr"], [1, 0]),
  "bQ_blush_far_heavy": ({"r": "red_2"}, [".r.r", "r.r."], [1, 0]),
  "bQ_blush_near_heavy": ({"r": "red_2"}, [".r.r.r", "r.r.r."], [1, 0]),
+ # --- wave knee (r2 fix 7): leg split extension + back-leg bend highlight ---
+ "bQ_knee_split": ({"k": "ink"}, ["k"] * 6),
+ "bQ_knee_hi": ({"m": "mauve"}, ["mm"]),
  # --- fx ---
  "bQ_fx_sweat": (FX, [".b.", "bWb", "bWb", ".b."]),
  "bQ_fx_surprise": (FX, ["...K...", "K..K...", ".K.....", "......K", "....KK."]),

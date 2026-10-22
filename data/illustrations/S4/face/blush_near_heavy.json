@@ -1,5 +1,5 @@
 {
- "note": "embarrassed: heavy /// hatching, never solid",
+ "note": "heavy blush: 2-px diagonal hatch (2 on, 1 off), embarrassed only",
  "anchor": [
   2,
   1
@@ -8,10 +8,10 @@
   "r": "red_2"
  },
  "grid": [
-  "...r..r..r.",
-  "..r..r..r..",
-  ".r..r..r..r",
-  "r..r..r..r.",
-  "..r..r....."
+  "...rr.rr.r.",
+  "..rr.rr.r..",
+  ".rr.rr.rr.r",
+  "rr.rr.rr.r.",
+  "..rr.r....."
  ]
 }

@@ -662,36 +662,6 @@
 ],
 "ref": "bQ_mouth_det"
 },
-"blush_L": {
-"note": "",
-"anchor": [
-0,
-0
-],
-"legend": {
-"r": "red_2"
-},
-"grid": [
-".r.",
-"r.."
-],
-"ref": "blushQ_far"
-},
-"blush_R": {
-"note": "hatched blush, never solid",
-"anchor": [
-0,
-0
-],
-"legend": {
-"r": "red_2"
-},
-"grid": [
-".r.r",
-"r.r."
-],
-"ref": "blushF"
-},
 "fix_0": {
 "anchor": [
 0,
