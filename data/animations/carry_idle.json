@@ -98,7 +98,8 @@
     "tilt": -2,
     "roll": 2,
     "turn": 0
-   }
+   },
+   "cancelable": true
   },
   {
    "name": "sink",
@@ -124,14 +125,15 @@
    },
    "spine": {
     "tilt": -1,
-    "lean": 0,
+    "lean": 1.0,
     "turn": 0
    },
    "head": {
     "tilt": 0,
     "roll": 3,
     "turn": 0
-   }
+   },
+   "cancelable": true
   },
   {
    "name": "low",
@@ -164,7 +166,8 @@
     "tilt": 1,
     "roll": 2,
     "turn": 0
-   }
+   },
+   "cancelable": true
   },
   {
    "name": "rise",
@@ -190,14 +193,15 @@
    },
    "spine": {
     "tilt": -2,
-    "lean": 0,
+    "lean": -1.0,
     "turn": 0
    },
    "head": {
     "tilt": -1,
     "roll": 1,
     "turn": 0
-   }
+   },
+   "cancelable": true
   }
  ],
  "props": [
