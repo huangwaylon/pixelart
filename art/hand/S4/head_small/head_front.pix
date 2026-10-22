@@ -1,5 +1,5 @@
 # r13 head at full-body scale (FRONT). Pixel artist 3. Hand-authored grid.
-# Landmarks (shared by all views): bow loops y8-13 (wedges behind the hair), crown y5, bang cut y14 (2 notches), brow y15, top lash y18, iris y19-23,
+# Landmarks (shared by all views): bow fans y7-14 (x1-5 / x34-38, 38 px), crown y5, bang cut y14 (2 notches), brow y15, top lash y18, iris y19-23,
 # lower lash y24, blush y25-26, nose y25, mouth y27-28 (1-2-1 smile), chin y31, scarf top y32-33. Centre between x19|x20.
 size: 40 40
 legend:
@@ -35,14 +35,14 @@ grid:
 ........................................
 ..............KKKKKKKKKKKK..............
 ...........KKKmmmmmmmmmmmmKKK...........
-.........KKmmmmmmmmmmmmmmmmmmKK.........
-..KKK...KmmmmmmmmmmmmmmmmmmmmmmK...KKK..
-.KeeeKKKmmllllmmmmllllmmmmllllmmKKKcccK.
-.KecccbKmmmllmmdmmmllmmmdmmllmmmKbccccK.
-.KcccbKmmmdmmmmdmmmmmmmmdmmmmdmmmKbcccK.
+..KK.....KKmmmmmmmmmmmmmmmmmmKK.....KK..
+.KeeK...KmmmmmmmmmmmmmmmmmmmmmmK...KeeK.
+.KcceK.KmmllllmmmmllllmmmmllllmmK.KeccK.
+.KccceKKmmmllmmdmmmllmmmdmmllmmmKKecccK.
+.KcbbcKmmmdmmmmdmmmmmmmmdmmmmdmmmKcbbcK.
 .KccbKKmmmdmmmmPmmmmmmmmPmmmmdmmmKKbccK.
-..KKK.KmmmdmmmPtPmmmmmmPtPmmmdmmmK.KKK..
-......KmmmPPPPtttPPPPPPtttPPPPmmmK......
+.KcKK.KmmmdmmmPtPmmmmmmPtPmmmdmmmK.KKcK.
+.KK...KmmmPPPPtttPPPPPPtttPPPPmmmK...KK.
 ......KmmdPuuddduuuuuuuuddduuPdmmK......
 ......KmmdPussssssssssssssssuPdmmK......
 ......KmmdPussssssssssssssssuPdmmK......

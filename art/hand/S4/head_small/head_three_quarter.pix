@@ -1,7 +1,7 @@
 # r13 head at full-body scale (3/4, facing screen-LEFT). Pixel artist 3. Hand-authored grid. (round-1 fixes)
 # Landmarks as head_front: crown y5, bang cut y14 (notches x9,x17), brow y15, lash y18, iris y19-23, lower lash y24,
 # blush y25-26, nose y25, mouth y27-28, chin y31. Far eye x9-12 (narrow), bridge gap x13-14, near eye x15-19 (+flick x20).
-# Bow knot 5x5 on the back of the skull x30-34 y8-12; far loop peeks over the crown, near loop up-back.
+# Bow knot 5x5 on the back of the skull x30-34 y8-12; far-loop nub behind the crown y5-7; near loop fan x35-39 y6-14.
 size: 40 40
 legend:
 . = transparent
@@ -32,18 +32,18 @@ grid:
 ........................................
 ........................................
 ........................................
-.........................KKKK......KKKK.
-........................KcccbK....KeeccK
-............KKKKKKKKKKKKccbbbK...KeccccK
-.........KKKmmmmmmmmmmmmKKKbbbK..KcccbcK
-.......KKmmmmmmmmmmmmmmmmmmKKbK..KccbcKK
-......KmmmllllmmmllllmmmmmmmdKKKKKKbcccK
-.....KmllmmllmmmmmllmmmmmmmmddKccbKccccK
-.....KmmmdmmmmmmmdmmmmmmmmmdddKcbbKcccbK
-....KmmmmdmmmmmmmdmmmmmmPmmdddKbbbKbbbK.
-....KmmmmPmmmmmmmPmmmmmmPmmdddKKKKKbbK..
-...KmmmmPtPmmmmmPtPmmmmmPmmdPdKecK.KK...
-..KmmdPPtttPPPPPtttPPPPPPmmdPdKecKmlmdK.
+........................................
+........................................
+............KKKKKKKKKKKK..KKK...........
+.........KKKmmmmmmmmmmmmKKKccK........KK
+.......KKmmmmmmmmmmmmmmmmmmKKcK......KeK
+......KmmmllllmmmllllmmmmmmmdKKKKKKKKecK
+.....KmllmmllmmmmmllmmmmmmmmddKccbKeeccK
+.....KmmmdmmmmmmmdmmmmmmmmmdddKcbbKcbbcK
+....KmmmmdmmmmmmmdmmmmmmPmmdddKbbbKcccbK
+....KmmmmPmmmmmmmPmmmmmmPmmdddKKKKKKKcbK
+...KmmmmPtPmmmmmPtPmmmmmPmmdPdKecK.KKKbK
+..KmmdPPtttPPPPPtttPPPPPPmmdPdKecKmlmdKK
 ..KmmdPuuudduuuuddduuuuuPmmdPdKecKmlmdK.
 ..KmmdPssssssssssssssssuPlmdPdKecKmlmdK.
 ..KmmdPssssssssssssssssuPlmdPdKecKmlmddK
