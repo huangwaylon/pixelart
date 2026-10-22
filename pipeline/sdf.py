@@ -44,7 +44,8 @@ def _sd_seg(p, P):
     capped = P["capped"]
     hh = np.where(capped, hr, np.clip(hr, 0.0, 1.0))
     perp = v - hh[:, None] * ab
-    n2 = P["n2"]
+    n2 = P["n2"] + np.clip(hh, 0.0, 1.0)[:, None] * (P["n2b"] - P["n2"])     # flattening axis, lerped a -> b
+    n2 = n2 / np.maximum(np.sqrt((n2 * n2).sum(-1)), 1e-9)[:, None]
     flat = P["flat"]
     c2 = (perp * n2).sum(-1)
     pp = (perp * perp).sum(-1)
@@ -78,7 +79,7 @@ def _sd_torus(p, P):
 
 
 SDF = {"seg": _sd_seg, "rbox": _sd_rbox, "torus": _sd_torus}
-PARAM_KEYS = {"seg": ("a", "b", "ra", "rb", "n2", "flat", "capped"), "rbox": ("b", "r"),
+PARAM_KEYS = {"seg": ("a", "b", "ra", "rb", "n2", "n2b", "flat", "capped"), "rbox": ("b", "r"),
               "torus": ("R", "r", "w", "taper")}
 
 
@@ -552,20 +553,38 @@ def _vec(v):
     return np.asarray(v, float)
 
 
-def _seg_params(a, b, ra, rb, flat=1.0, n2=None, capped=False):
+def _seg_params(a, b, ra, rb, flat=1.0, n2=None, capped=False, n2b=None):
+    """Tapered segment. Flattening axis n2 (at a) -> n2b (at b), orthogonalised against the segment axis;
+    consecutive segments sharing the joint axis give seamless tubes."""
     a, b = _vec(a), _vec(b)
-    if n2 is None or flat >= 0.999:
-        n = np.zeros(3)
-        flat = 1.0
-    else:
-        u = (b - a) / max(np.linalg.norm(b - a), 1e-9)
-        n = _vec(n2) - (_vec(n2) @ u) * u
+    u = (b - a) / max(np.linalg.norm(b - a), 1e-9)
+
+    def ortho(n):
+        if n is None:
+            return None
+        n = _vec(n) - (_vec(n) @ u) * u
         nn = np.linalg.norm(n)
-        n = n / nn if nn > 1e-9 else np.zeros(3)
-        if nn <= 1e-9:
-            flat = 1.0
+        return n / nn if nn > 1e-9 else None
+    na = ortho(n2)
+    nb = ortho(n2b if n2b is not None else n2)
+    if na is None or nb is None or flat >= 0.999:
+        na = nb = np.array([1.0, 0, 0])
+        flat = 1.0
     return {"a": a[None], "b": b[None], "ra": np.array([float(ra)]), "rb": np.array([max(float(rb), 1e-3)]),
-            "n2": n[None], "flat": np.array([float(flat)]), "capped": np.array([bool(capped)])}
+            "n2": na[None], "n2b": nb[None], "flat": np.array([float(flat)]), "capped": np.array([bool(capped)])}
+
+
+def _point_normals(pr, pts):
+    """Per-point flattening axes for a tube (flat_n constant, or radial from flat_c), made normal to the tangent."""
+    pts = [_vec(p) for p in pts]
+    out = []
+    for k, p in enumerate(pts):
+        t = pts[min(k + 1, len(pts) - 1)] - pts[max(k - 1, 0)]
+        t = t / max(np.linalg.norm(t), 1e-9)
+        n = _vec(pr["flat_n"]) if "flat_n" in pr else (p - _vec(pr["flat_c"]) if "flat_c" in pr else np.array([0, 0, 1.0]))
+        n = n - (n @ t) * t
+        out.append(n / max(np.linalg.norm(n), 1e-9))
+    return out
 
 
 def _flat_dir(pr, a, b):
@@ -612,10 +631,10 @@ def _pose_static(sp, worlds, face_m):
         out.append(dict(base, kind="seg", M=F, params=prm))
     elif shape == "tube":
         pts, rr = pr["pts"], pr["r"]
+        nrm = _point_normals(pr, pts)
         for k in range(len(pts) - 1):
-            prm = _seg_params(pts[k], pts[k + 1], rr[k], rr[k + 1], pr.get("flat", 1.0),
-                              _flat_dir(pr, pts[k], pts[k + 1]),
-                              capped=bool(pr.get("cut_end")) and k == len(pts) - 2)
+            prm = _seg_params(pts[k], pts[k + 1], rr[k], rr[k + 1], pr.get("flat", 1.0), nrm[k],
+                              capped=bool(pr.get("cut_end")) and k == len(pts) - 2, n2b=nrm[k + 1])
             out.append(dict(base, name=f'{sp["name"]}_{k}', kind="seg", M=F, params=prm))
     elif shape == "rbox":
         out.append(dict(base, kind="rbox", M=F, params={"b": _vec(pr["b"])[None], "r": np.array([float(pr.get("r", 0.0))])}))
@@ -676,8 +695,8 @@ def _pose_sweep(sp, chain, pts, body_c, face_m, subdiv):
         fork = sw.get("tip") == "fork"
         last = len(pts) - (2 if fork else 1)
         for k in range(last):
-            prm = _seg_params(pts[k], pts[k + 1], rr[k], rr[k + 1], (flat[k] + flat[k + 1]) / 2, Z[k] + Z[k + 1],
-                              capped=fork and k == last - 1)
+            prm = _seg_params(pts[k], pts[k + 1], rr[k], rr[k + 1], (flat[k] + flat[k + 1]) / 2, Z[k],
+                              capped=fork and k == last - 1, n2b=Z[k + 1])
             out.append(dict(base, name=f'{sp["name"]}_{k}', kind="seg", M=face_m, params=prm))
         if fork:
             P0, P1 = pts[-2], pts[-1]
@@ -686,7 +705,7 @@ def _pose_sweep(sp, chain, pts, body_c, face_m, subdiv):
             for sgn in (-1, 1):
                 a = P0 + sgn * 0.45 * w0 * X[-2]
                 b = P1 + sgn * 0.75 * w0 * X[-1] + T[-1] * depth * w0 * 0.3
-                prm = _seg_params(a, b, 0.55 * w0, tip_r, flat[-2], Z[-2] + Z[-1])
+                prm = _seg_params(a, b, 0.55 * w0, tip_r, flat[-2], Z[-2], n2b=Z[-1])
                 out.append(dict(base, name=f'{sp["name"]}_fork{sgn:+d}', kind="seg", M=face_m, params=prm))
         return out
     spread = float(sw.get("spread", 0.45))
@@ -722,7 +741,7 @@ def _pose_sweep(sp, chain, pts, body_c, face_m, subdiv):
         flat = np.clip(ez[keep] / np.maximum(ws[keep], 1e-6), 0.2, 1.0)
         for k in range(len(cpts) - 1):
             prm = _seg_params(cpts[k], cpts[k + 1], crad[k], crad[k + 1], (flat[k] + flat[k + 1]) / 2,
-                              Z[keep[k]] + Z[keep[k + 1]])
+                              Z[keep[k]], n2b=Z[keep[k + 1]])
             out.append(dict(base, name=f'{sp["name"]}_c{j}_{k}', kind="seg", M=face_m, params=prm))
     return out
 

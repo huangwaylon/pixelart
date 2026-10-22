@@ -30,7 +30,8 @@ Layer keys:
                   Any other value -> a stroke of that colour, width "line_w" (design units), L-doubles removed.
   part            part name (default: layer name minus _shade/_shade2/_hi/_hi2/_dark/_line suffix)
   clip            list of part names (or true = own part); shape only paints over those parts. Layers with a
-                  shading suffix clip to their part by default and never change part ownership.
+                  shading suffix clip to their own part by default and never change part ownership; other clipped
+                  layers (e.g. a hem band clipped to the coat) become their own part (own sel-out / auto line).
   mirror          x (design units): also draw the shape mirrored about this vertical axis
   translate       [dx, dy] design units
   z               sort key (layers without z inherit the previous layer's z)

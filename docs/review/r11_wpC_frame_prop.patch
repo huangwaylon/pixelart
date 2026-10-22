@@ -1,0 +1,24 @@
+--- /Users/waylonhuang/Documents/other/pixelart/pipeline/frames.py	2026-10-22 22:51:15
++++ pipeline/frames.py	2026-10-22 22:53:06
+@@ -122,11 +122,19 @@
+                 base = worlds["chest"].copy()
+                 base[:3, 3] = (worlds["hand_L"][:3, 3] + worlds["hand_R"][:3, 3]) / 2
+                 worlds = dict(worlds, carry=base)
+-            M = worlds[pr["bone"]] @ translate(*pr.get("offset", [0, 0, 0]))
++            B = worlds[pr["bone"]]
++            fo = self.anim_data["frames"][i].get("prop") or {}
++            if "offset" in fo or "rot" in fo:
++                # per-frame placement (one declaration per clip): move/rotate the whole rigid prop about its centre
++                o0 = pr.get("offset", [0, 0, 0])
++                B = B @ translate(*fo.get("offset", o0)) @ euler(*fo.get("rot", [0, 0, 0])) @ translate(*[-v for v in o0])
++            M = B @ translate(*pr.get("offset", [0, 0, 0]))
+             M = M @ euler(*pr.get("rot", [0, 0, 0])) @ scale(*pr["radii"])
+             out.append({"name": pr["name"], "M": M, "material": pr.get("material", "prop"), "group": "prop"})
+             for k, part in enumerate(pr.get("parts", [])):      # extra shapes (e.g. crate lid, snowball shading)
+-                Mk = worlds[pr["bone"]] @ translate(*part["offset"]) @ euler(*part.get("rot", [0, 0, 0])) @ scale(*part["radii"])
++                if part.get("tag") and part["tag"] in fo.get("hide", []):
++                    continue                                    # per-frame hidden part (e.g. slack crate ropes)
++                Mk = B @ translate(*part["offset"]) @ euler(*part.get("rot", [0, 0, 0])) @ scale(*part["radii"])
+                 out.append({"name": f'{pr["name"]}_{k}', "M": Mk, "material": part.get("material", pr.get("material", "prop")),
+                             "group": "prop", "clip_all": part.get("clip_all", [])})
+         return out

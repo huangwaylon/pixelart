@@ -60,11 +60,10 @@
   }
  },
  "qa": {
-  "max_height_delta_px": 5,
+  "max_height_delta_px": 3,
   "max_orphans": 0,
   "min_margin_px": 2,
-  "lead_in_ms": 40,
-  "note": "kept from r0; with props on their own layer body-only height delta is <= 1"
+  "lead_in_ms": 40
  },
  "frames": [
   {
@@ -91,12 +90,12 @@
    },
    "arm_L": {
     "raise": 22,
-    "spread": 14,
+    "spread": 22,
     "elbow": 34
    },
    "arm_R": {
     "raise": 20,
-    "spread": 14,
+    "spread": 22,
     "elbow": 36
    }
   },
@@ -107,7 +106,7 @@
    "pelvis_drop": 7.5,
    "squash": 0.96,
    "spine": {
-    "tilt": 32.0,
+    "tilt": 30.0,
     "lean": 0,
     "turn": 0
    },
@@ -123,14 +122,14 @@
     "spread": -3.2
    },
    "arm_L": {
-    "raise": 47.8,
-    "spread": 11.8,
-    "elbow": 21.0
+    "raise": 56.0,
+    "spread": 20.8,
+    "elbow": 2.2
    },
    "arm_R": {
-    "raise": 47.8,
-    "spread": 11.8,
-    "elbow": 21.0
+    "raise": 56.0,
+    "spread": 20.8,
+    "elbow": 2.2
    }
   },
   {
@@ -140,7 +139,7 @@
    "pelvis_drop": 7.5,
    "squash": 0.94,
    "spine": {
-    "tilt": 32.0,
+    "tilt": 30.0,
     "lean": 0,
     "turn": 0
    },
@@ -156,14 +155,14 @@
     "spread": -3.2
    },
    "arm_L": {
-    "raise": 47.0,
-    "spread": 6.2,
-    "elbow": 23.0
+    "raise": 55.8,
+    "spread": 18.0,
+    "elbow": 3.0
    },
    "arm_R": {
-    "raise": 47.0,
-    "spread": 6.2,
-    "elbow": 23.0
+    "raise": 55.8,
+    "spread": 18.0,
+    "elbow": 3.0
    },
    "events": [
     "grab"
@@ -171,11 +170,11 @@
    "prop": {
     "offset": [
      0.0,
-     -1.381,
-     7.231
+     -1.991,
+     7.427
     ],
     "rot": [
-     -30.92,
+     -29.0,
      0.0,
      0.0
     ],
@@ -207,20 +206,20 @@
     "spread": -4
    },
    "arm_L": {
-    "raise": 46.2,
-    "spread": 6.0,
-    "elbow": 16.0
+    "raise": 47.0,
+    "spread": 16.2,
+    "elbow": 14.0
    },
    "arm_R": {
-    "raise": 46.2,
-    "spread": 6.0,
-    "elbow": 16.0
+    "raise": 47.0,
+    "spread": 16.2,
+    "elbow": 14.0
    },
    "prop": {
     "offset": [
      0.0,
-     0.606,
-     4.464
+     0.38,
+     4.744
     ],
     "rot": [
      -21.84,
@@ -255,20 +254,20 @@
     "spread": -4
    },
    "arm_L": {
-    "raise": 41.5,
-    "spread": 9.8,
-    "elbow": 65.2
+    "raise": 43.8,
+    "spread": 23.2,
+    "elbow": 57.5
    },
    "arm_R": {
-    "raise": 41.5,
-    "spread": 9.8,
-    "elbow": 65.2
+    "raise": 43.8,
+    "spread": 23.2,
+    "elbow": 57.5
    },
    "prop": {
     "offset": [
      0.0,
-     0.8,
-     2.618
+     0.694,
+     2.738
     ],
     "rot": [
      0.07,
@@ -304,19 +303,19 @@
    },
    "arm_L": {
     "raise": 100,
-    "spread": 10,
+    "spread": 24,
     "elbow": 60
    },
    "arm_R": {
     "raise": 100,
-    "spread": 10,
+    "spread": 24,
     "elbow": 60
    },
    "prop": {
     "offset": [
      0.0,
-     1.374,
-     6.613
+     -1.749,
+     6.365
     ],
     "rot": [
      -0.25,
