@@ -68,3 +68,8 @@ Faces are copied pixel-for-pixel (eyes, brows, nose, mouth, blush, jaw) from Pix
   - Side: the near loop is face-on at x55-63, and the gap at x60 is filled.
 - **Body continuation:** in the back view the tails continue from the new roots (x41-45 and x50-54) down to the swallowtail ends at y40. In the 3/4 view the ponytail S-curve and the back hair are shifted 2 px right to continue from the new root (x62-66 at y31), and the point is now at x71, y60.
 - **Checks:** turnaround, guides and silhouette checks are re-rendered. Only allowed orphans remain, with 14-28 colours per view.
+
+## Round 6 (review 5 head fixes)
+- **Re-sync:** Artist 3's front, 3/4 and side files (08:45) and back file (08:36) are copied at offset x+26. A check script confirms 0 pixel mismatches against `head_small` in all four views. The orphan cleanup now skips the copied head rows, so their pixels (for example the side nose `v`) stay exact.
+- **Side neck/collar:** the scarf top now starts at x40 on y32 and x38 on y33. The neck's front edge sits on the collar under the steeper jaw, with no notch.
+- **Checks:** re-rendered, including the guides and silhouette check. The only orphans outside catchlights and noses come from Artist 3's files: back (35,16) and 3/4 (60,9).
