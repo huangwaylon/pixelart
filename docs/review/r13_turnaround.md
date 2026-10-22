@@ -10,7 +10,7 @@ Faces are copied pixel-for-pixel (eyes, brows, nose, mouth, blush, jaw) from Pix
 ## Landmark rows (round 3, 5.0 heads, identical in all 4 views)
 | landmark | y |
 |---|---|
-| bow (one design, 38 px span x29-66 in front/back; loops about y6-15) | 6-15 |
+| bow (one teardrop design, 42 px x27-68; knot 5x7 at y8-14) | 4-16 |
 | crown / bang cut (2 notches) | 5 / 14 |
 | brow / top lash / iris / lower lash | 15 / 18 / 19-23 / 24 |
 | mouth / chin | 26-28 / 31 |
@@ -59,3 +59,12 @@ Faces are copied pixel-for-pixel (eyes, brows, nose, mouth, blush, jaw) from Pix
 - **Heads (fixes 5, 6):** the 3/4 and side views now take Artist 3's whole head, rows 5-31: face, crown, side-bang overhang, filled hole, bow, ponytail root and tail roots. My ponytails, tails and back hair continue from their positions below y31; the 3/4 view keeps the S-curve. The 3/4 skull is therefore their narrower one (back edge x57).
 - **Back hair tips (fix 7):** 5 rounded points (bottom falls off as dx^2 from each tip) at y64-74, each with 1-2 `hair_1` shadow pixels on one side only. The shredded split wedges are gone.
 - **Checks:** silhouettes rechecked on light, dark and black. Only allowed orphans remain. 14-28 colours per view.
+
+## Round 5 (review 4)
+- **Re-sync:** Artist 3's four `head_small` files were updated at 08:35-08:38, with the canvas widened to 44 px. The copy now reads each file's width and uses a centre-aligned offset (x+26), so no fixed x+28 is assumed. Front, 3/4, side and back heads and bows are copied exactly.
+  - Back (master): puffy teardrop loops x27-68, y4-16, with a 5x7 knot and the hair arc.
+  - Front: drooping lobes x27-33 and x62-68 at y5-16, with pockets.
+  - 3/4: teardrop near loop at x60-68, and the skull back edge moved to x59.
+  - Side: the near loop is face-on at x55-63, and the gap at x60 is filled.
+- **Body continuation:** in the back view the tails continue from the new roots (x41-45 and x50-54) down to the swallowtail ends at y40. In the 3/4 view the ponytail S-curve and the back hair are shifted 2 px right to continue from the new root (x62-66 at y31), and the point is now at x71, y60.
+- **Checks:** turnaround, guides and silhouette checks are re-rendered. Only allowed orphans remain, with 14-28 colours per view.
