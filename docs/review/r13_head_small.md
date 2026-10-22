@@ -1,31 +1,37 @@
-# r13 Head at full-body scale (Pixel Artist 3), round-1 fixes applied
+# r13 Head at full-body scale (Pixel Artist 3), review-2 fixes 1 and 7 applied
 
-These are candidate C's face, hand-pixelled down to a ~27 px head on 40x40 canvases (the canvas size is unchanged). They are pasted into the 96x160 full bodies at x+28.
+This is candidate C's face as a ~27 px head on 40x40 canvases, pasted into the 96x160 bodies at x+28.
 
-**Files:** `art/hand/S4/head_small/head_{front,three_quarter,side,back}.pix`. Expressions are in `expr/{front,three_quarter}_{10 names}.pix`; each one `extends:` its base view and adds patches.
-**Review images:** `00_REVIEW/r13_anime_pixel/head_small/`: `heads_x4.png`, `head_*_x8.png`, `expressions_x4.png`, and `expressions_x1x2.png` (1x/2x on snow and on a dark background).
+**Files:** `art/hand/S4/head_small/head_{front,three_quarter,side,back}.pix`, plus `expr/{front,three_quarter}_*.pix` (10 each; each one `extends:` its base view).
+**Review images:** `00_REVIEW/r13_anime_pixel/head_small/` (`heads_x4`, `head_*_x8`, `expressions_x4`, `expressions_x1x2`).
 
-## Landmark rows (the same in every view; the round-1 changes are marked)
+## Landmark rows (the same in every view)
 | row | feature |
 |---|---|
-| y4 | bow top (new) |
 | y5 | crown |
-| y14 | bang cut, with 2 notched V's |
-| y15 | brows: 1 px `hair_1` (moved up 1 row) |
+| y14 | bang cut, 2 notches |
+| y15 | 1 px `hair_1` brows |
 | y18 | lash |
-| y19-23 | iris: i, i+catchlight, j, j, k |
+| y19-23 | iris ramp, 1 catchlight on the upper-left |
 | y24 | lower lash |
 | y25-26 | blush |
-| y25 | nose |
-| y27-28 | mouth: 1-2-1 smile |
+| y25 | nose (side view: y23) |
+| y27-28 | 1-2-1 smile |
 | y31 | chin |
 
-## Bow (per review 1)
-- **Front:** the loops peek 6 px each side, behind the hair, at y4-12, with a fold line. The knot is hidden and the total width is 40 px.
-- **3/4:** a 5x5 knot sits on the back of the skull (x30-34, y8-12). The far loop shows over the crown and the near loop rises up and back. One tail hangs down, and the ponytail has an S-curve.
-- **Side:** a lobe at y8-18 behind a 5x5 knot (x29-33, y10-14). The ponytail arcs back.
-- **Back:** loops at y4-13 and a 5x5 knot (x17-21, y9-13) over the ponytail root. The dome shows above the knot. Two tails run off the bottom edge (they reach about y40 on the body).
+## Bow
+- **Front:** a wedge on each side, coming out from behind the hair at y8-13 (x1-6 and x33-38). It shows 5 px or less, widens outward and has one `teal_0` crease. The outer corner is the highest point.
+- **3/4:** a 5x5 knot on the back of the skull (x30-34, y8-12). The far loop shows over the crown and the near loop goes up and back.
+- **Side:** lobe y8-18, knot x29-33 y10-14.
+- **Back:** a 5x5 knot (x17-21, y9-13) over the ponytail root; two tails run off the bottom edge.
 
-## Face notes
-- **3/4:** the far eye is 4 px wide (3 px iris) and the near eye is 5 px. There is a 2 px nose-bridge gap and 1-2 px of skin to the cheek contour. The jaw runs 1-1-1-2-2 to a soft chin.
-- Every file uses 21 colours or fewer. The only orphan pixels are catchlights, the nose and FX.
+## Side profile
+- The forehead curves from x10 to x8.
+- The nose is a 1 px upturned tip at (7,23), and the face steps back at y24.
+- The mouth is a single `line_skin` pixel at (9,26).
+- The chin is rounded at y27-31.
+- There are no side expressions.
+
+**3/4:** far eye 4 px (3 px iris), near eye 5 px, 2 px nose-bridge gap.
+
+Every file uses 21 colours or fewer. The only orphan pixels are catchlights, the nose and FX.
