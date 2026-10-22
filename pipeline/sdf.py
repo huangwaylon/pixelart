@@ -93,9 +93,51 @@ def _sd_torus(p, P):
     return np.sqrt(e * e + qy * qy) - r
 
 
-SDF = {"seg": _sd_seg, "rbox": _sd_rbox, "torus": _sd_torus}
-PARAM_KEYS = {"seg": ("a", "b", "ra", "rb", "n2", "n2b", "flat", "flatb", "capped"), "rbox": ("b", "r"),
-              "torus": ("R", "r", "w", "taper")}
+DETAIL_MODES = {"none": 0, "pleats": 1, "ridges": 2, "rings": 3, "scallop": 4}
+DETAIL_KEYS = ("dmode", "dn", "ddepth", "dy0", "dy1", "dlip")
+
+
+def _detail(q, d, P):
+    """Surface detail as a displacement in the part frame (angle about local y, height = local y).
+    pleats: box-pleat folds deepening from y0 down to y1 | ridges: n ribs around y (knit, ribbed cuffs)
+    rings: n grooves between y0 and y1 | scallop: n scallops on the edge below y0 (to y1)."""
+    mode = P["dmode"]
+    if not np.any(mode):
+        return d
+    th = np.arctan2(q[:, 0], q[:, 2])
+    y = q[:, 1]
+    n, dep = P["dn"], P["ddepth"]
+    span = np.where(np.abs(P["dy0"] - P["dy1"]) > 1e-9, P["dy0"] - P["dy1"], 1.0)
+    w = np.clip((P["dy0"] - y) / span, 0.0, 1.0)
+    box = np.clip(2.5 * np.cos(n * th), -1.0, 1.0)
+    disp = np.select([mode == 1, mode == 2, mode == 3, mode == 4],
+                     [dep * 0.5 * (1 - box) * w,
+                      dep * 0.5 * (1 + np.cos(n * th)),
+                      dep * 0.5 * (1 + np.cos(2 * np.pi * n * (P["dy0"] - y) / span)) * (w > 0) * (w < 1),
+                      dep * np.abs(np.sin(n * th / 2)) * w], 0.0)
+    return (d + disp) * P["dlip"]
+
+
+def _with_detail(f):
+    def g(q, P):
+        return _detail(q, f(q, P), P) if "dmode" in P else f(q, P)
+    return g
+
+
+SDF = {"seg": _with_detail(_sd_seg), "rbox": _with_detail(_sd_rbox), "torus": _with_detail(_sd_torus)}
+PARAM_KEYS = {"seg": ("a", "b", "ra", "rb", "n2", "n2b", "flat", "flatb", "capped") + DETAIL_KEYS,
+              "rbox": ("b", "r") + DETAIL_KEYS, "torus": ("R", "r", "w", "taper") + DETAIL_KEYS}
+
+
+def _detail_params(det, size):
+    """Part-spec "detail" -> param arrays (`size` ~ part radius, for the Lipschitz correction)."""
+    if not det:
+        return {"dmode": np.array([0]), "dn": np.array([0.0]), "ddepth": np.array([0.0]), "dy0": np.array([0.0]),
+                "dy1": np.array([0.0]), "dlip": np.array([1.0])}
+    n, dep = float(det.get("n", 8)), float(det.get("depth", 0.2))
+    return {"dmode": np.array([DETAIL_MODES[det["type"]]]), "dn": np.array([n]), "ddepth": np.array([dep]),
+            "dy0": np.array([float(det.get("y0", 0.0))]), "dy1": np.array([float(det.get("y1", 0.0))]),
+            "dlip": np.array([1.0 / (1.0 + dep * n * 0.6 / max(size, 0.5))])}
 
 
 def _local_box(part):
@@ -133,6 +175,8 @@ class _Compiled:
         rep, rep_of = {}, np.arange(n)
         sets = {}
         for i, p in enumerate(prims):
+            if p["kind"] != "ell" and "dmode" not in p["params"]:
+                p["params"].update(_detail_params(None, 1.0))
             M = p["M"]
             Mi = np.linalg.inv(M)
             self.Fi[i], self.ft[i] = Mi[:3, :3], Mi[:3, 3]
@@ -664,7 +708,7 @@ def _bone_matrix(sp, worlds):
     return worlds[sp["bone"]]
 
 
-def _pose_static(sp, worlds, face_m):
+def _pose_static(sp, worlds, face_m, lods=("all", "ref")):
     W = _bone_matrix(sp, worlds)
     shape = sp["shape"]
     base = _base(sp)
@@ -678,6 +722,7 @@ def _pose_static(sp, worlds, face_m):
     F = face_m @ F
     pr = sp.get("params", {})
     out = []
+    det = sp.get("detail") if sp.get("detail", {}).get("lod", "all") in lods else None
     if shape in ("capsule", "rcone", "cone"):
         ra = pr.get("ra", pr.get("r"))
         rb = pr.get("rb", pr.get("r"))
@@ -700,6 +745,12 @@ def _pose_static(sp, worlds, face_m):
             "taper": np.array([float(pr.get("taper", 0.0))])}))
     else:
         raise ValueError(f"unknown shape {shape!r} in part {sp['name']}")
+    if det:
+        for o in out:
+            P = o["params"]
+            size = float(np.max(P["ra"])) if o["kind"] == "seg" else (
+                float(np.min(P["R"])) if o["kind"] == "torus" else float(np.min(P["b"])))
+            P.update(_detail_params(det, size))
     return out
 
 
@@ -741,18 +792,33 @@ def _pose_sweep(sp, chain, pts, body_c, face_m, subdiv):
     s = np.concatenate([[0.0], np.cumsum(seglen)])
     s = s / max(s[-1], 1e-9)
     T, X, Z = _chain_frames(pts, body_c)
-    base = _base(sp)
+    # chain parts keep the chain's group (as legacy beads do) so body-only QA bboxes still exclude them
+    base = dict(_base(sp), group=chain.get("group", chain["name"]))
+    base["vote"] = f'{sp["material"]}|{base["group"]}'
+
     out = []
     tip_r = float(sw.get("tip_r", 0.04))
     nc = int(sw.get("clumps", 1))
     if nc <= 1:                                     # one flat ribbon (bow tails), optional forked V-cut tip
         rr, flat = ws, np.clip(ez / np.maximum(ws, 1e-6), 0.05, 1.0)
-        fork = sw.get("tip") == "fork"
+        tipk = sw.get("tip", "sharp")
+        fork = tipk == "fork"
         last = len(pts) - (2 if fork else 1)
-        for k in range(last):
+        cut = fork or tipk in ("cut", "fringe")
+        for k in range(last if not sw.get("only_fringe") else 0):
             prm = _seg_params(pts[k], pts[k + 1], rr[k], rr[k + 1], flat[k], Z[k],
-                              capped=fork and k == last - 1, n2b=Z[k + 1], flatb=flat[k + 1])
+                              capped=cut and k == last - 1, n2b=Z[k + 1], flatb=flat[k + 1])
             out.append(dict(base, name=f'{sp["name"]}_{k}', kind="seg", M=face_m, params=prm, strand=sp["name"]))
+        if tipk == "fringe":                      # flat-cut end with a row of fringe capsules
+            nf = int(sw.get("fringe", 6))
+            fl, fr = float(sw.get("fringe_len", 1.2)), float(sw.get("fringe_r", 0.3))
+            Pe, Te = pts[-1], T[-1]
+            for f in range(nf):
+                u = -0.8 + 1.6 * f / max(nf - 1, 1)
+                a = Pe + u * rr[-1] * X[-1] - Te * fr
+                b = a + Te * fl + u * 0.15 * fl * X[-1]
+                prm = _seg_params(a, b, fr, fr * 0.8)
+                out.append(dict(base, name=f'{sp["name"]}_fringe{f}', kind="seg", M=face_m, params=prm))
         if fork:
             P0, P1 = pts[-2], pts[-1]
             w0 = rr[-2]
@@ -822,7 +888,7 @@ def pose_parts(char, worlds, chain_pts, body_c, face_m, lod="all", subdiv=1):
         if "chain" in sp:
             sweeps.setdefault(sp["chain"], []).append(sp)
             continue
-        out += _pose_static(sp, worlds, face_m)
+        out += _pose_static(sp, worlds, face_m, lods)
     for c in char.get("chains", []):
         pts = chain_pts[c["name"]]
         if c["name"] in sweeps:
@@ -842,3 +908,57 @@ def pose_parts(char, worlds, chain_pts, body_c, face_m, lod="all", subdiv=1):
 def legacy_to_parts(prims):
     """Already-posed legacy primitive dicts (props, fx) -> analytic ellipsoid parts."""
     return [_ell_from_legacy(p, p["M"]) for p in prims]
+
+
+# ------------------------------------------------------------------ QA: sprite-LOD features must be >= 1 px
+def feature_px(sp, chains, ppu):
+    """Smallest visible extent (px) of an authored part spec at the sprite camera, or None if not applicable.
+    Visible extent = the shape's width across its silhouette (not the flattened thickness of a lying clump)."""
+    if sp.get("legacy"):
+        return None
+    pr = sp.get("params", {})
+    sh = sp.get("shape")
+    if "chain" in sp:
+        sw = sp.get("sweep", {})
+        c = next((c for c in chains if c["name"] == sp["chain"]), None)
+        if c is None:
+            return None
+        if sw.get("only_fringe") or sw.get("tip") == "fringe":
+            w = 2 * float(sw.get("fringe_r", 0.3))
+        elif int(sw.get("clumps", 1)) > 1:
+            w = 2 * float(sw.get("clump_r", 0.55)) * max(c.get("widths", [1.0]))
+        else:
+            w = 2 * max(c.get("widths", [1.0]))
+    elif sh == "ellipsoid":
+        w = 2 * sorted(sp["radii"])[1]
+    elif sh in ("capsule", "rcone", "cone"):
+        w = 2 * max(pr.get("ra", pr.get("r", 0)), pr.get("rb", pr.get("r", 0)))
+    elif sh == "tube":
+        w = 2 * max(pr["r"])
+    elif sh == "rbox":
+        w = 2 * sorted(pr["b"])[1]
+    elif sh == "torus":
+        w = 2 * max(pr["r"], pr.get("w", pr["r"]))
+    else:
+        return None
+    if sp.get("scale"):
+        w *= sorted(sp["scale"])[1]
+    out = w * ppu
+    det = sp.get("detail")
+    if det and det.get("lod", "all") == "all":
+        R = max(pr.get("ra", 0), pr.get("rb", 0), max(pr.get("R", [0])) if isinstance(pr.get("R"), list) else pr.get("R", 0))
+        if R:
+            out = min(out, 2 * math.pi * R / float(det.get("n", 8)) * ppu)      # one pleat / scallop period
+    return out
+
+
+def subpixel_features(char, ppu):
+    """[(part name, px)] for lod 'all' parts (or lod 'all' details) smaller than 1 px."""
+    bad = []
+    for sp in char.get("parts", []):
+        if sp.get("lod", "all") != "all":
+            continue
+        px = feature_px(sp, char.get("chains", []), ppu)
+        if px is not None and px < 1.0:
+            bad.append((sp["name"], round(px, 2)))
+    return bad

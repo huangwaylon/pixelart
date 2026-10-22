@@ -34,3 +34,36 @@
 - Belt, buckle (subtract), buttons, A-line pleats, scallop hem, collar.
 - Scarf with knot and fringe.
 - Add `detail` modifiers and per-material mesh budgets.
+
+## M2 + M3 (coat, scarf, limbs) - done
+- **Engine:**
+  - `detail` modifiers: pleats, ridges, rings and scallop, each with its own `lod`.
+  - Sweep tips `cut` and `fringe`. Sweeps keep the chain's group, so the body-only height QA still excludes them.
+  - The HD path now respects `prop_mode` (props render as separate layers).
+  - New QA rule: `lod: all` features under 1 px raise a warning and the `hd_subpixel_features` metric (S4_hd: 0).
+- **Content (S4_hd, 112 specs, about 470 posed parts):**
+  - Coat: bodice, waist and hips blended with the pleated A-line cone, princess seams, placket, buttons, collar, belt band, buckle (hole and tongue on refs only), scallop hem, pockets.
+  - Scarf: knit tori, knot, cut tail with fringe.
+  - Arms: blended sleeves with creases, cuffs, mittens (palm, 35-degree thumb, ribbed cuff).
+  - Legs: tights, and boots (shaft, fold cuff and rim, toe box, sole and welt, heel, back seam).
+  - Hair: the back curtain is now 5 chains.
+- **Gates:**
+  - All 13 clips: QA PASS, 0 penetrations, anchors identical, prop coverage identical.
+  - jump_sc `--verify`: IDENTICAL.
+  - Legacy S4 (all 13 clips): byte-identical to HEAD code.
+- **Timings (jump_sc):**
+
+  | Build | S4_hd | Legacy |
+  |---|---|---|
+  | Sprites only (`--no-reference`) | 23 s | 11 s |
+  | Full (refs + 2 STLs) | 66 s | 20 s |
+
+- **Also done at the lead's request:**
+  - Smaller crate snow mound.
+  - carry_throw push offset y changed from 17.4 to 17.0 (legacy QA PASS).
+- **Gaps:**
+  - Faint light streaks on the boots and tights in the hi-res refs.
+  - Boards do not composite props.
+  - Laces and eyelets not modelled.
+- **Next (M4):** skirt panels weighted to the hips, an SDF/chain penetration check, and re-publishing r11 on S4_hd.
+

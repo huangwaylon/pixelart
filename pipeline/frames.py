@@ -77,7 +77,7 @@ class Scene:
             body_c = xform_point(worlds["spine"], [0, 0, 0])
             parts = self.tracer.pose_parts(self.char, worlds, self.chains[self.anim.times[i]], body_c, face_m, lod=lod,
                                            subdiv=self.char.get("render", {}).get("smooth_chains", 1))
-            props = self._prop_prims(i, worlds)
+            props = self._prop_prims(i, worlds) if getattr(self, "prop_mode", "baked") == "baked" else []
             for p in props:
                 p["M"] = face_m @ p["M"]
             return parts + self.tracer.legacy_to_parts(props), {k: face_m @ v for k, v in worlds.items()}

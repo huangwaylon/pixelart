@@ -162,6 +162,14 @@ def run_qa(scene, final, overrides_meta, palette, release=False):
         (errors if release else warnings).append(
             f"stale overrides (base changed since painted; re-approve with override --approve): {', '.join(stale)}")
 
+    # 7b. HD model: every sprite-LOD ("lod": "all") feature must be at least 1 px, else mark it "lod": "ref"
+    if scene.char.get("model") == "hd":
+        from .sdf import subpixel_features
+        sub = subpixel_features(scene.char, scene.cam.ppu)
+        metrics["hd_subpixel_features"] = len(sub)
+        if sub:
+            warnings.append(f"{len(sub)} lod:all HD features < 1 px (use lod ref): {sub[:8]}")
+
     # 8. timing
     metrics["total_ms"] = scene.anim.total_ms
     air = [scene.anim.times[i] for i in range(n) if scene.anim.poses[i]["z_px"] > 0]

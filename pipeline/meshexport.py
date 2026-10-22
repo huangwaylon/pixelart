@@ -160,22 +160,22 @@ def write_obj(path, meshes, palette):
         fh.write("\n".join(mtl))
 
 
-def export_poses(scene, palette, out_dir):
+def export_poses(scene, palette, out_dir, poses=None):
     """STL + OBJ at the rest pose and the jump apex (highest z), facing S, in place, LOD ref."""
     os.makedirs(out_dir, exist_ok=True)
     n = len(scene.anim.keys)
     zs = [p["z_px"] for p in scene.anim.poses]
-    poses = {"rest": n - 1, "apex": int(np.argmax(zs))}
+    poses = dict(poses or {"rest": n - 1, "apex": int(np.argmax(zs))})
     stats = {}
     for name, i in poses.items():
         parts, _ = scene.primitives(i, "S", lod="ref")
-        s = 1.0
-        while True:
+        s = 1.8                      # first guess for ~100k triangles at S4 scale
+        for _ in range(4):           # triangle count ~ 1/h^2: rescale the grid to the budget in 1-2 passes
             meshes = mesh_parts(parts, s)
             tri = sum(len(t) for t, _ in meshes.values())
             if tri <= MAX_TRIS:
                 break
-            s *= 1.12
+            s *= max(1.05, (tri / (0.97 * MAX_TRIS)) ** 0.5)
         ntri = write_stl(os.path.join(out_dir, f"model_{name}.stl"), meshes)
         write_obj(os.path.join(out_dir, f"model_{name}.obj"), meshes, palette)
         stats[name] = {"frame": i + 1, "triangles": ntri,

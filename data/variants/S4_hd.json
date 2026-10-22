@@ -1,7 +1,7 @@
 {
  "extends": "S4_halfup_bow",
  "name": "S4_hd",
- "label": "S4 HD - SDF reference model (r12 M1: hair + bow)",
+ "label": "S4 HD - SDF reference model (r12 M1-M3: hair, bow, coat, scarf, limbs)",
  "model": "hd",
  "remove_parts": [
   "fringe",
@@ -11,13 +11,56 @@
   "ribbon_loop_1",
   "ribbon_knot",
   "ribbon_tail_L",
-  "ribbon_tail_R"
+  "ribbon_tail_R",
+  "skirt_coat",
+  "hem",
+  "belt",
+  "collar",
+  "scarf_wrap1",
+  "scarf_wrap2",
+  "scarf_knot",
+  "uparm_L",
+  "forearm_L",
+  "cuff_L",
+  "mitten_L",
+  "thumb_L",
+  "thigh_L",
+  "shin_L",
+  "boot_L",
+  "bootcuff_L",
+  "uparm_R",
+  "forearm_R",
+  "cuff_R",
+  "mitten_R",
+  "thumb_R",
+  "thigh_R",
+  "shin_R",
+  "boot_R",
+  "bootcuff_R"
  ],
  "part_overrides": {
   "hair_cap": {
    "blend": {
     "set": "cap",
     "k": 0.0
+   }
+  },
+  "bodice": {
+   "blend": {
+    "set": "torso",
+    "k": 0.8
+   }
+  },
+  "waist": {
+   "blend": {
+    "set": "torso",
+    "k": 0.8
+   }
+  },
+  "hips_coat": {
+   "blend": {
+    "set": "torso",
+    "k": 0.8
    }
   }
  },
@@ -79,6 +122,141 @@
    "gravity": 900,
    "collide": true,
    "max_swing": 35
+  },
+  {
+   "name": "curtain_0",
+   "anchor_bone": "head",
+   "anchor": [
+    -4.8,
+    8.6,
+    -6.898
+   ],
+   "rest_dir": [
+    -0.336,
+    -1.0,
+    -0.22
+   ],
+   "segments": 2,
+   "seg_len": 4.6,
+   "widths": [
+    1.7,
+    1.55
+   ],
+   "thickness": 0.75,
+   "material": "hair",
+   "group": "head",
+   "stiffness": 260,
+   "damping": 0.15,
+   "gravity": 900,
+   "collide": true
+  },
+  {
+   "name": "curtain_1",
+   "anchor_bone": "head",
+   "anchor": [
+    -2.4,
+    8.6,
+    -7.942
+   ],
+   "rest_dir": [
+    -0.168,
+    -1.0,
+    -0.22
+   ],
+   "segments": 2,
+   "seg_len": 4.1,
+   "widths": [
+    1.7,
+    1.55
+   ],
+   "thickness": 0.75,
+   "material": "hair",
+   "group": "head",
+   "stiffness": 260,
+   "damping": 0.15,
+   "gravity": 900,
+   "collide": true
+  },
+  {
+   "name": "curtain_2",
+   "anchor_bone": "head",
+   "anchor": [
+    0.0,
+    8.6,
+    -8.262
+   ],
+   "rest_dir": [
+    0.0,
+    -1.0,
+    -0.22
+   ],
+   "segments": 2,
+   "seg_len": 4.6,
+   "widths": [
+    1.7,
+    1.55
+   ],
+   "thickness": 0.75,
+   "material": "hair",
+   "group": "head",
+   "stiffness": 260,
+   "damping": 0.15,
+   "gravity": 900,
+   "collide": true
+  },
+  {
+   "name": "curtain_3",
+   "anchor_bone": "head",
+   "anchor": [
+    2.4,
+    8.6,
+    -7.942
+   ],
+   "rest_dir": [
+    0.168,
+    -1.0,
+    -0.22
+   ],
+   "segments": 2,
+   "seg_len": 4.1,
+   "widths": [
+    1.7,
+    1.55
+   ],
+   "thickness": 0.75,
+   "material": "hair",
+   "group": "head",
+   "stiffness": 260,
+   "damping": 0.15,
+   "gravity": 900,
+   "collide": true
+  },
+  {
+   "name": "curtain_4",
+   "anchor_bone": "head",
+   "anchor": [
+    4.8,
+    8.6,
+    -6.898
+   ],
+   "rest_dir": [
+    0.336,
+    -1.0,
+    -0.22
+   ],
+   "segments": 2,
+   "seg_len": 4.6,
+   "widths": [
+    1.7,
+    1.55
+   ],
+   "thickness": 0.75,
+   "material": "hair",
+   "group": "head",
+   "stiffness": 260,
+   "damping": 0.15,
+   "gravity": 900,
+   "collide": true
   }
  ],
  "parts": [
@@ -2096,384 +2274,89 @@
    "lod": "ref"
   },
   {
-   "name": "curtain_0",
-   "bone": "head",
-   "shape": "tube",
-   "params": {
-    "pts": [
-     [
-      -4.48,
-      8.6,
-      -7.188
-     ],
-     [
-      -5.32,
-      3.6,
-      -7.472
-     ],
-     [
-      -5.6,
-      -1.3,
-      -6.0
-     ]
-    ],
-    "r": [
-     1.55,
-     1.4,
-     0.05
-    ],
-    "flat": 0.42,
-    "flat_c": [
-     0.0,
-     4.6,
-     -2.0
-    ]
-   },
+   "name": "curtain_0_sweep",
+   "chain": "curtain_0",
    "material": "hair",
    "group": "head",
-   "lod": "all"
+   "lod": "all",
+   "sweep": {
+    "clumps": 2,
+    "spread": 0.5,
+    "clump_r": 0.55,
+    "phase": 0,
+    "tips": 1,
+    "twist": 0,
+    "thickness": 0.75,
+    "taper_len": 0.45
+   }
   },
   {
-   "name": "curtain_1",
-   "bone": "head",
-   "shape": "tube",
-   "params": {
-    "pts": [
-     [
-      -3.484,
-      8.6,
-      -7.672
-     ],
-     [
-      -4.138,
-      3.6,
-      -7.952
-     ],
-     [
-      -4.356,
-      -0.3,
-      -6.056
-     ]
-    ],
-    "r": [
-     1.55,
-     1.4,
-     0.05
-    ],
-    "flat": 0.42,
-    "flat_c": [
-     0.0,
-     4.6,
-     -2.0
-    ]
-   },
+   "name": "curtain_1_sweep",
+   "chain": "curtain_1",
    "material": "hair",
    "group": "head",
-   "lod": "all"
+   "lod": "all",
+   "sweep": {
+    "clumps": 2,
+    "spread": 0.5,
+    "clump_r": 0.55,
+    "phase": 0,
+    "tips": 1,
+    "twist": 0,
+    "thickness": 0.75,
+    "taper_len": 0.45
+   }
   },
   {
-   "name": "curtain_2",
-   "bone": "head",
-   "shape": "tube",
-   "params": {
-    "pts": [
-     [
-      -2.489,
-      8.6,
-      -8.017
-     ],
-     [
-      -2.956,
-      3.6,
-      -8.271
-     ],
-     [
-      -3.111,
-      -1.3,
-      -6.111
-     ]
-    ],
-    "r": [
-     1.55,
-     1.4,
-     0.05
-    ],
-    "flat": 0.42,
-    "flat_c": [
-     0.0,
-     4.6,
-     -2.0
-    ]
-   },
+   "name": "curtain_2_sweep",
+   "chain": "curtain_2",
    "material": "hair",
    "group": "head",
-   "lod": "all"
+   "lod": "all",
+   "sweep": {
+    "clumps": 2,
+    "spread": 0.5,
+    "clump_r": 0.55,
+    "phase": 0,
+    "tips": 1,
+    "twist": 0,
+    "thickness": 0.75,
+    "taper_len": 0.45
+   }
   },
   {
-   "name": "curtain_3",
-   "bone": "head",
-   "shape": "tube",
-   "params": {
-    "pts": [
-     [
-      -1.493,
-      8.6,
-      -8.239
-     ],
-     [
-      -1.773,
-      3.6,
-      -8.469
-     ],
-     [
-      -1.867,
-      -0.3,
-      -6.167
-     ]
-    ],
-    "r": [
-     1.55,
-     1.4,
-     0.05
-    ],
-    "flat": 0.42,
-    "flat_c": [
-     0.0,
-     4.6,
-     -2.0
-    ]
-   },
+   "name": "curtain_3_sweep",
+   "chain": "curtain_3",
    "material": "hair",
    "group": "head",
-   "lod": "all"
+   "lod": "all",
+   "sweep": {
+    "clumps": 2,
+    "spread": 0.5,
+    "clump_r": 0.55,
+    "phase": 0,
+    "tips": 1,
+    "twist": 0,
+    "thickness": 0.75,
+    "taper_len": 0.45
+   }
   },
   {
-   "name": "curtain_4",
-   "bone": "head",
-   "shape": "tube",
-   "params": {
-    "pts": [
-     [
-      -0.498,
-      8.6,
-      -8.348
-     ],
-     [
-      -0.591,
-      3.6,
-      -8.564
-     ],
-     [
-      -0.622,
-      -1.3,
-      -6.222
-     ]
-    ],
-    "r": [
-     1.55,
-     1.4,
-     0.05
-    ],
-    "flat": 0.42,
-    "flat_c": [
-     0.0,
-     4.6,
-     -2.0
-    ]
-   },
+   "name": "curtain_4_sweep",
+   "chain": "curtain_4",
    "material": "hair",
    "group": "head",
-   "lod": "all"
-  },
-  {
-   "name": "curtain_5",
-   "bone": "head",
-   "shape": "tube",
-   "params": {
-    "pts": [
-     [
-      0.498,
-      8.6,
-      -8.348
-     ],
-     [
-      0.591,
-      3.6,
-      -8.564
-     ],
-     [
-      0.622,
-      -0.3,
-      -6.222
-     ]
-    ],
-    "r": [
-     1.55,
-     1.4,
-     0.05
-    ],
-    "flat": 0.42,
-    "flat_c": [
-     0.0,
-     4.6,
-     -2.0
-    ]
-   },
-   "material": "hair",
-   "group": "head",
-   "lod": "all"
-  },
-  {
-   "name": "curtain_6",
-   "bone": "head",
-   "shape": "tube",
-   "params": {
-    "pts": [
-     [
-      1.493,
-      8.6,
-      -8.239
-     ],
-     [
-      1.773,
-      3.6,
-      -8.469
-     ],
-     [
-      1.867,
-      -1.3,
-      -6.167
-     ]
-    ],
-    "r": [
-     1.55,
-     1.4,
-     0.05
-    ],
-    "flat": 0.42,
-    "flat_c": [
-     0.0,
-     4.6,
-     -2.0
-    ]
-   },
-   "material": "hair",
-   "group": "head",
-   "lod": "all"
-  },
-  {
-   "name": "curtain_7",
-   "bone": "head",
-   "shape": "tube",
-   "params": {
-    "pts": [
-     [
-      2.489,
-      8.6,
-      -8.017
-     ],
-     [
-      2.956,
-      3.6,
-      -8.271
-     ],
-     [
-      3.111,
-      -0.3,
-      -6.111
-     ]
-    ],
-    "r": [
-     1.55,
-     1.4,
-     0.05
-    ],
-    "flat": 0.42,
-    "flat_c": [
-     0.0,
-     4.6,
-     -2.0
-    ]
-   },
-   "material": "hair",
-   "group": "head",
-   "lod": "all"
-  },
-  {
-   "name": "curtain_8",
-   "bone": "head",
-   "shape": "tube",
-   "params": {
-    "pts": [
-     [
-      3.484,
-      8.6,
-      -7.672
-     ],
-     [
-      4.138,
-      3.6,
-      -7.952
-     ],
-     [
-      4.356,
-      -1.3,
-      -6.056
-     ]
-    ],
-    "r": [
-     1.55,
-     1.4,
-     0.05
-    ],
-    "flat": 0.42,
-    "flat_c": [
-     0.0,
-     4.6,
-     -2.0
-    ]
-   },
-   "material": "hair",
-   "group": "head",
-   "lod": "all"
-  },
-  {
-   "name": "curtain_9",
-   "bone": "head",
-   "shape": "tube",
-   "params": {
-    "pts": [
-     [
-      4.48,
-      8.6,
-      -7.188
-     ],
-     [
-      5.32,
-      3.6,
-      -7.472
-     ],
-     [
-      5.6,
-      -0.3,
-      -6.0
-     ]
-    ],
-    "r": [
-     1.55,
-     1.4,
-     0.05
-    ],
-    "flat": 0.42,
-    "flat_c": [
-     0.0,
-     4.6,
-     -2.0
-    ]
-   },
-   "material": "hair",
-   "group": "head",
-   "lod": "all"
+   "lod": "all",
+   "sweep": {
+    "clumps": 2,
+    "spread": 0.5,
+    "clump_r": 0.55,
+    "phase": 0,
+    "tips": 1,
+    "twist": 0,
+    "thickness": 0.75,
+    "taper_len": 0.45
+   }
   },
   {
    "name": "pony_sweep",
@@ -2810,6 +2693,1585 @@
     "tip": "fork",
     "fork_depth": 0.6
    }
+  },
+  {
+   "name": "seam_FR",
+   "bone": "chest",
+   "shape": "tube",
+   "params": {
+    "pts": [
+     [
+      -2.9,
+      3.0,
+      1.662
+     ],
+     [
+      -2.4,
+      1.0,
+      3.56
+     ],
+     [
+      -2.2,
+      -1.0,
+      3.769
+     ],
+     [
+      -2.35,
+      -3.2,
+      2.556
+     ]
+    ],
+    "r": [
+     0.2,
+     0.2,
+     0.2,
+     0.2
+    ]
+   },
+   "material": "coat",
+   "group": "torso",
+   "lod": "ref",
+   "op": "subtract",
+   "blend": {
+    "set": "torso",
+    "k": 0.15
+   }
+  },
+  {
+   "name": "seam_FL",
+   "bone": "chest",
+   "shape": "tube",
+   "params": {
+    "pts": [
+     [
+      2.9,
+      3.0,
+      1.662
+     ],
+     [
+      2.4,
+      1.0,
+      3.56
+     ],
+     [
+      2.2,
+      -1.0,
+      3.769
+     ],
+     [
+      2.35,
+      -3.2,
+      2.556
+     ]
+    ],
+    "r": [
+     0.2,
+     0.2,
+     0.2,
+     0.2
+    ]
+   },
+   "material": "coat",
+   "group": "torso",
+   "lod": "ref",
+   "op": "subtract",
+   "blend": {
+    "set": "torso",
+    "k": 0.15
+   }
+  },
+  {
+   "name": "seam_BR",
+   "bone": "chest",
+   "shape": "tube",
+   "params": {
+    "pts": [
+     [
+      -2.9,
+      3.0,
+      -1.562
+     ],
+     [
+      -2.4,
+      1.0,
+      -3.46
+     ],
+     [
+      -2.2,
+      -1.0,
+      -3.669
+     ],
+     [
+      -2.35,
+      -3.2,
+      -2.456
+     ]
+    ],
+    "r": [
+     0.2,
+     0.2,
+     0.2,
+     0.2
+    ]
+   },
+   "material": "coat",
+   "group": "torso",
+   "lod": "ref",
+   "op": "subtract",
+   "blend": {
+    "set": "torso",
+    "k": 0.15
+   }
+  },
+  {
+   "name": "seam_BL",
+   "bone": "chest",
+   "shape": "tube",
+   "params": {
+    "pts": [
+     [
+      2.9,
+      3.0,
+      -1.562
+     ],
+     [
+      2.4,
+      1.0,
+      -3.46
+     ],
+     [
+      2.2,
+      -1.0,
+      -3.669
+     ],
+     [
+      2.35,
+      -3.2,
+      -2.456
+     ]
+    ],
+    "r": [
+     0.2,
+     0.2,
+     0.2,
+     0.2
+    ]
+   },
+   "material": "coat",
+   "group": "torso",
+   "lod": "ref",
+   "op": "subtract",
+   "blend": {
+    "set": "torso",
+    "k": 0.15
+   }
+  },
+  {
+   "name": "placket",
+   "bone": "chest",
+   "shape": "tube",
+   "params": {
+    "pts": [
+     [
+      0.0,
+      2.8,
+      3.129
+     ],
+     [
+      0.0,
+      0.8,
+      4.115
+     ],
+     [
+      0.0,
+      -1.4,
+      4.092
+     ],
+     [
+      0.0,
+      -3.6,
+      2.848
+     ]
+    ],
+    "r": [
+     0.6,
+     0.6,
+     0.6,
+     0.6
+    ],
+    "flat": 0.3,
+    "flat_c": [
+     0.0,
+     -0.25,
+     0.05
+    ]
+   },
+   "material": "coat",
+   "group": "torso",
+   "lod": "ref"
+  },
+  {
+   "name": "button_0",
+   "bone": "chest",
+   "shape": "ellipsoid",
+   "material": "coat_trim",
+   "group": "torso",
+   "center": [
+    0.0,
+    2.0,
+    3.853
+   ],
+   "radii": [
+    0.42,
+    0.42,
+    0.22
+   ],
+   "lod": "ref"
+  },
+  {
+   "name": "button_1",
+   "bone": "chest",
+   "shape": "ellipsoid",
+   "material": "coat_trim",
+   "group": "torso",
+   "center": [
+    0.0,
+    0.6,
+    4.335
+   ],
+   "radii": [
+    0.42,
+    0.42,
+    0.22
+   ],
+   "lod": "ref"
+  },
+  {
+   "name": "button_2",
+   "bone": "chest",
+   "shape": "ellipsoid",
+   "material": "coat_trim",
+   "group": "torso",
+   "center": [
+    0.0,
+    -0.8,
+    4.379
+   ],
+   "radii": [
+    0.42,
+    0.42,
+    0.22
+   ],
+   "lod": "ref"
+  },
+  {
+   "name": "button_3",
+   "bone": "chest",
+   "shape": "ellipsoid",
+   "material": "coat_trim",
+   "group": "torso",
+   "center": [
+    0.0,
+    -2.2,
+    3.999
+   ],
+   "radii": [
+    0.42,
+    0.42,
+    0.22
+   ],
+   "lod": "ref"
+  },
+  {
+   "name": "collar_band",
+   "bone": "neck",
+   "shape": "torus",
+   "params": {
+    "R": [
+     3.0,
+     2.5
+    ],
+    "r": 0.4,
+    "w": 1.2
+   },
+   "material": "coat_trim",
+   "group": "torso",
+   "lod": "all",
+   "center": [
+    0,
+    -0.5,
+    0.0
+   ]
+  },
+  {
+   "name": "belt_band",
+   "bone": "spine",
+   "shape": "torus",
+   "params": {
+    "R": [
+     3.05,
+     2.55
+    ],
+    "r": 0.45,
+    "w": 0.75
+   },
+   "material": "coat_trim",
+   "group": "belt",
+   "lod": "all",
+   "center": [
+    0,
+    -0.3,
+    0.1
+   ]
+  },
+  {
+   "name": "buckle",
+   "bone": "spine",
+   "shape": "rbox",
+   "params": {
+    "b": [
+     0.95,
+     0.75,
+     0.22
+    ],
+    "r": 0.15
+   },
+   "material": "ribbon",
+   "group": "belt",
+   "lod": "all",
+   "center": [
+    0,
+    -0.3,
+    3.2
+   ],
+   "blend": {
+    "set": "buckle",
+    "k": 0.0
+   }
+  },
+  {
+   "name": "buckle_hole",
+   "bone": "spine",
+   "shape": "rbox",
+   "params": {
+    "b": [
+     0.5,
+     0.38,
+     0.6
+    ],
+    "r": 0.08
+   },
+   "material": "ribbon",
+   "group": "belt",
+   "lod": "ref",
+   "center": [
+    0,
+    -0.3,
+    3.2
+   ],
+   "op": "subtract",
+   "blend": {
+    "set": "buckle",
+    "k": 0.0
+   }
+  },
+  {
+   "name": "buckle_tongue",
+   "bone": "spine",
+   "shape": "capsule",
+   "params": {
+    "a": [
+     -0.5,
+     0,
+     0.05
+    ],
+    "b": [
+     0.3,
+     0,
+     0.12
+    ],
+    "r": 0.12
+   },
+   "material": "coat_trim",
+   "group": "belt",
+   "lod": "ref",
+   "center": [
+    0,
+    -0.3,
+    3.2
+   ]
+  },
+  {
+   "name": "skirt_cone",
+   "bone": "pelvis",
+   "shape": "cone",
+   "params": {
+    "a": [
+     0,
+     1.6,
+     0
+    ],
+    "b": [
+     0,
+     -5.25,
+     0
+    ],
+    "ra": 5.2,
+    "rb": 8.4,
+    "flat": 0.83,
+    "flat_n": [
+     0,
+     0,
+     1
+    ]
+   },
+   "material": "coat",
+   "group": "torso",
+   "lod": "all",
+   "center": [
+    0,
+    0,
+    0.15
+   ],
+   "blend": {
+    "set": "torso",
+    "k": 0.8
+   },
+   "detail": {
+    "type": "pleats",
+    "n": 10,
+    "depth": 0.45,
+    "y0": -0.8,
+    "y1": -5.25,
+    "lod": "all"
+   }
+  },
+  {
+   "name": "hem_band",
+   "bone": "pelvis",
+   "shape": "torus",
+   "params": {
+    "R": [
+     8.15,
+     6.8
+    ],
+    "r": 0.45,
+    "w": 0.75
+   },
+   "material": "coat_trim",
+   "group": "torso",
+   "lod": "all",
+   "center": [
+    0,
+    -5.45,
+    0.15
+   ],
+   "detail": {
+    "type": "scallop",
+    "n": 16,
+    "depth": 0.45,
+    "y0": -0.15,
+    "y1": -0.75,
+    "lod": "all"
+   }
+  },
+  {
+   "name": "pocket_R",
+   "bone": "pelvis",
+   "shape": "rbox",
+   "params": {
+    "b": [
+     1.35,
+     0.68,
+     0.16
+    ],
+    "r": 0.12
+   },
+   "material": "coat_trim",
+   "group": "torso",
+   "lod": "all",
+   "center": [
+    -3.4,
+    -1.3,
+    4.921
+   ],
+   "rot": [
+    26,
+    -24.996514120586752,
+    0
+   ]
+  },
+  {
+   "name": "pocket_L",
+   "bone": "pelvis",
+   "shape": "rbox",
+   "params": {
+    "b": [
+     1.35,
+     0.68,
+     0.16
+    ],
+    "r": 0.12
+   },
+   "material": "coat_trim",
+   "group": "torso",
+   "lod": "all",
+   "center": [
+    3.4,
+    -1.3,
+    4.921
+   ],
+   "rot": [
+    26,
+    24.996514120586752,
+    0
+   ]
+  },
+  {
+   "name": "scarf_wrap_1",
+   "bone": "neck",
+   "shape": "torus",
+   "params": {
+    "R": [
+     3.5,
+     3.2
+    ],
+    "r": 1.25,
+    "w": 1.9
+   },
+   "material": "scarf",
+   "group": "scarf",
+   "lod": "all",
+   "center": [
+    0,
+    0.5,
+    0.3
+   ],
+   "detail": {
+    "type": "ridges",
+    "n": 28,
+    "depth": 0.18,
+    "lod": "ref"
+   }
+  },
+  {
+   "name": "scarf_wrap_2",
+   "bone": "neck",
+   "shape": "torus",
+   "params": {
+    "R": [
+     3.95,
+     3.45
+    ],
+    "r": 1.3,
+    "w": 1.6
+   },
+   "material": "scarf",
+   "group": "scarf",
+   "lod": "all",
+   "center": [
+    0.3,
+    -0.9,
+    0.6
+   ],
+   "rot": [
+    0,
+    0,
+    6
+   ],
+   "detail": {
+    "type": "ridges",
+    "n": 30,
+    "depth": 0.18,
+    "lod": "ref"
+   }
+  },
+  {
+   "name": "scarf_knot_hd",
+   "bone": "neck",
+   "shape": "rbox",
+   "params": {
+    "b": [
+     1.45,
+     1.2,
+     1.05
+    ],
+    "r": 0.75
+   },
+   "material": "scarf",
+   "group": "scarf",
+   "lod": "all",
+   "center": [
+    3.3,
+    -0.4,
+    3.7
+   ]
+  },
+  {
+   "name": "scarf_tail",
+   "chain": "scarf_front",
+   "material": "scarf",
+   "group": "scarf",
+   "lod": "all",
+   "sweep": {
+    "clumps": 1,
+    "tip": "cut"
+   }
+  },
+  {
+   "name": "scarf_fringe",
+   "chain": "scarf_front",
+   "material": "scarf",
+   "group": "scarf",
+   "lod": "ref",
+   "sweep": {
+    "clumps": 1,
+    "tip": "fringe",
+    "only_fringe": true,
+    "fringe": 6,
+    "fringe_len": 1.3,
+    "fringe_r": 0.32
+   }
+  },
+  {
+   "name": "uparm_hd_L",
+   "bone": "shoulder_L",
+   "shape": "rcone",
+   "params": {
+    "a": [
+     0,
+     -1.0,
+     0
+    ],
+    "b": [
+     0,
+     -6.1,
+     0
+    ],
+    "ra": 2.1,
+    "rb": 1.95
+   },
+   "material": "coat",
+   "group": "arm_L",
+   "lod": "all",
+   "blend": {
+    "set": "sleeve_L",
+    "k": 0.9
+   }
+  },
+  {
+   "name": "forearm_hd_L",
+   "bone": "elbow_L",
+   "shape": "rcone",
+   "params": {
+    "a": [
+     0,
+     0,
+     0
+    ],
+    "b": [
+     0,
+     -4.5,
+     0
+    ],
+    "ra": 1.95,
+    "rb": 1.8
+   },
+   "material": "coat",
+   "group": "arm_L",
+   "lod": "all",
+   "blend": {
+    "set": "sleeve_L",
+    "k": 0.9
+   }
+  },
+  {
+   "name": "sleeve_crease_L0",
+   "bone": "elbow_L",
+   "shape": "torus",
+   "params": {
+    "R": [
+     2.05,
+     2.05
+    ],
+    "r": 0.16
+   },
+   "material": "coat",
+   "group": "arm_L",
+   "lod": "ref",
+   "center": [
+    0,
+    0.9,
+    0
+   ],
+   "rot": [
+    0,
+    0,
+    8
+   ],
+   "op": "subtract",
+   "blend": {
+    "set": "sleeve_L",
+    "k": 0.1
+   }
+  },
+  {
+   "name": "sleeve_crease_L1",
+   "bone": "elbow_L",
+   "shape": "torus",
+   "params": {
+    "R": [
+     2.05,
+     2.05
+    ],
+    "r": 0.16
+   },
+   "material": "coat",
+   "group": "arm_L",
+   "lod": "ref",
+   "center": [
+    0,
+    -0.9,
+    0
+   ],
+   "rot": [
+    0,
+    0,
+    -8
+   ],
+   "op": "subtract",
+   "blend": {
+    "set": "sleeve_L",
+    "k": 0.1
+   }
+  },
+  {
+   "name": "cuff_hd_L",
+   "bone": "elbow_L",
+   "shape": "torus",
+   "params": {
+    "R": [
+     1.65,
+     1.65
+    ],
+    "r": 0.45,
+    "w": 0.75
+   },
+   "material": "coat_trim",
+   "group": "arm_L",
+   "lod": "all",
+   "center": [
+    0,
+    -4.75,
+    0
+   ]
+  },
+  {
+   "name": "palm_L",
+   "bone": "hand_L",
+   "shape": "rbox",
+   "params": {
+    "b": [
+     1.45,
+     1.6,
+     1.2
+    ],
+    "r": 1.0
+   },
+   "material": "mitten",
+   "group": "arm_L",
+   "lod": "all",
+   "center": [
+    0,
+    -1.25,
+    0.15
+   ]
+  },
+  {
+   "name": "thumb_hd_L",
+   "bone": "hand_L",
+   "shape": "rcone",
+   "params": {
+    "a": [
+     -0.85,
+     -0.5,
+     0.95
+    ],
+    "b": [
+     -1.297,
+     -1.565,
+     1.547
+    ],
+    "ra": 0.68,
+    "rb": 0.58
+   },
+   "material": "mitten",
+   "group": "arm_L",
+   "lod": "all"
+  },
+  {
+   "name": "mitten_cuff_L",
+   "bone": "hand_L",
+   "shape": "torus",
+   "params": {
+    "R": [
+     1.25,
+     1.2
+    ],
+    "r": 0.42,
+    "w": 0.68
+   },
+   "material": "mitten",
+   "group": "arm_L",
+   "lod": "all",
+   "center": [
+    0,
+    0.05,
+    0.1
+   ],
+   "detail": {
+    "type": "ridges",
+    "n": 12,
+    "depth": 0.12,
+    "lod": "ref"
+   }
+  },
+  {
+   "name": "thigh_hd_L",
+   "bone": "hip_L",
+   "shape": "rcone",
+   "params": {
+    "a": [
+     0,
+     -0.2,
+     0
+    ],
+    "b": [
+     0,
+     -6.5,
+     0
+    ],
+    "ra": 1.75,
+    "rb": 1.45
+   },
+   "material": "pants",
+   "group": "leg_L",
+   "lod": "all",
+   "blend": {
+    "set": "tights_L",
+    "k": 0.6
+   }
+  },
+  {
+   "name": "calf_L",
+   "bone": "knee_L",
+   "shape": "rcone",
+   "params": {
+    "a": [
+     0,
+     0,
+     0
+    ],
+    "b": [
+     0,
+     -3.0,
+     0
+    ],
+    "ra": 1.45,
+    "rb": 1.25
+   },
+   "material": "pants",
+   "group": "leg_L",
+   "lod": "all",
+   "blend": {
+    "set": "tights_L",
+    "k": 0.6
+   }
+  },
+  {
+   "name": "shaft_L",
+   "bone": "knee_L",
+   "shape": "cone",
+   "params": {
+    "a": [
+     0,
+     -0.2,
+     0
+    ],
+    "b": [
+     0,
+     -6.3,
+     0
+    ],
+    "ra": 1.95,
+    "rb": 1.7
+   },
+   "material": "boots",
+   "group": "leg_L",
+   "lod": "all",
+   "blend": {
+    "set": "boot_L",
+    "k": 0.7
+   }
+  },
+  {
+   "name": "foot_L",
+   "bone": "ankle_L",
+   "shape": "rbox",
+   "params": {
+    "b": [
+     1.95,
+     0.95,
+     2.6
+    ],
+    "r": 0.95
+   },
+   "material": "boots",
+   "group": "leg_L",
+   "lod": "all",
+   "center": [
+    0,
+    -0.95,
+    0.55
+   ],
+   "blend": {
+    "set": "boot_L",
+    "k": 0.7
+   }
+  },
+  {
+   "name": "toe_L",
+   "bone": "ankle_L",
+   "shape": "ellipsoid",
+   "center": [
+    0,
+    -0.8,
+    1.75
+   ],
+   "radii": [
+    2.0,
+    1.0,
+    1.5
+   ],
+   "material": "boots",
+   "group": "leg_L",
+   "lod": "all",
+   "blend": {
+    "set": "boot_L",
+    "k": 0.35
+   }
+  },
+  {
+   "name": "sole_L",
+   "bone": "ankle_L",
+   "shape": "rbox",
+   "params": {
+    "b": [
+     2.05,
+     0.3,
+     2.3
+    ],
+    "r": 0.25
+   },
+   "material": "boots",
+   "group": "leg_L",
+   "lod": "all",
+   "center": [
+    0,
+    -1.6,
+    0.3
+   ],
+   "blend": {
+    "set": "boot_L",
+    "k": 0.1
+   }
+  },
+  {
+   "name": "welt_L",
+   "bone": "ankle_L",
+   "shape": "rbox",
+   "params": {
+    "b": [
+     2.13,
+     0.07,
+     2.38
+    ],
+    "r": 0.05
+   },
+   "material": "boots",
+   "group": "leg_L",
+   "lod": "ref",
+   "center": [
+    0,
+    -1.27,
+    0.3
+   ],
+   "blend": {
+    "set": "boot_L",
+    "k": 0.0
+   }
+  },
+  {
+   "name": "heel_L",
+   "bone": "ankle_L",
+   "shape": "rbox",
+   "params": {
+    "b": [
+     1.55,
+     0.6,
+     0.95
+    ],
+    "r": 0.2
+   },
+   "material": "boots",
+   "group": "leg_L",
+   "lod": "all",
+   "center": [
+    0,
+    -1.3,
+    -1.25
+   ],
+   "blend": {
+    "set": "boot_L",
+    "k": 0.1
+   }
+  },
+  {
+   "name": "boot_seam_L",
+   "bone": "knee_L",
+   "shape": "capsule",
+   "params": {
+    "a": [
+     0,
+     -1.2,
+     -1.95
+    ],
+    "b": [
+     0,
+     -6.0,
+     -1.72
+    ],
+    "r": 0.14
+   },
+   "material": "boots",
+   "group": "leg_L",
+   "lod": "ref",
+   "op": "subtract",
+   "blend": {
+    "set": "boot_L",
+    "k": 0.05
+   }
+  },
+  {
+   "name": "bootcuff_hd_L",
+   "bone": "knee_L",
+   "shape": "torus",
+   "params": {
+    "R": [
+     1.9,
+     1.9
+    ],
+    "r": 0.6,
+    "w": 1.3
+   },
+   "material": "boot_cuff",
+   "group": "leg_L",
+   "lod": "all",
+   "center": [
+    0,
+    -0.6,
+    0.1
+   ]
+  },
+  {
+   "name": "bootcuff_rim_L",
+   "bone": "knee_L",
+   "shape": "torus",
+   "params": {
+    "R": [
+     2.05,
+     2.05
+    ],
+    "r": 0.3
+   },
+   "material": "boot_cuff",
+   "group": "leg_L",
+   "lod": "ref",
+   "center": [
+    0,
+    0.55,
+    0.1
+   ]
+  },
+  {
+   "name": "uparm_hd_R",
+   "bone": "shoulder_R",
+   "shape": "rcone",
+   "params": {
+    "a": [
+     0,
+     -1.0,
+     0
+    ],
+    "b": [
+     0,
+     -6.1,
+     0
+    ],
+    "ra": 2.1,
+    "rb": 1.95
+   },
+   "material": "coat",
+   "group": "arm_R",
+   "lod": "all",
+   "blend": {
+    "set": "sleeve_R",
+    "k": 0.9
+   }
+  },
+  {
+   "name": "forearm_hd_R",
+   "bone": "elbow_R",
+   "shape": "rcone",
+   "params": {
+    "a": [
+     0,
+     0,
+     0
+    ],
+    "b": [
+     0,
+     -4.5,
+     0
+    ],
+    "ra": 1.95,
+    "rb": 1.8
+   },
+   "material": "coat",
+   "group": "arm_R",
+   "lod": "all",
+   "blend": {
+    "set": "sleeve_R",
+    "k": 0.9
+   }
+  },
+  {
+   "name": "sleeve_crease_R0",
+   "bone": "elbow_R",
+   "shape": "torus",
+   "params": {
+    "R": [
+     2.05,
+     2.05
+    ],
+    "r": 0.16
+   },
+   "material": "coat",
+   "group": "arm_R",
+   "lod": "ref",
+   "center": [
+    0,
+    0.9,
+    0
+   ],
+   "rot": [
+    0,
+    0,
+    8
+   ],
+   "op": "subtract",
+   "blend": {
+    "set": "sleeve_R",
+    "k": 0.1
+   }
+  },
+  {
+   "name": "sleeve_crease_R1",
+   "bone": "elbow_R",
+   "shape": "torus",
+   "params": {
+    "R": [
+     2.05,
+     2.05
+    ],
+    "r": 0.16
+   },
+   "material": "coat",
+   "group": "arm_R",
+   "lod": "ref",
+   "center": [
+    0,
+    -0.9,
+    0
+   ],
+   "rot": [
+    0,
+    0,
+    -8
+   ],
+   "op": "subtract",
+   "blend": {
+    "set": "sleeve_R",
+    "k": 0.1
+   }
+  },
+  {
+   "name": "cuff_hd_R",
+   "bone": "elbow_R",
+   "shape": "torus",
+   "params": {
+    "R": [
+     1.65,
+     1.65
+    ],
+    "r": 0.45,
+    "w": 0.75
+   },
+   "material": "coat_trim",
+   "group": "arm_R",
+   "lod": "all",
+   "center": [
+    0,
+    -4.75,
+    0
+   ]
+  },
+  {
+   "name": "palm_R",
+   "bone": "hand_R",
+   "shape": "rbox",
+   "params": {
+    "b": [
+     1.45,
+     1.6,
+     1.2
+    ],
+    "r": 1.0
+   },
+   "material": "mitten",
+   "group": "arm_R",
+   "lod": "all",
+   "center": [
+    0,
+    -1.25,
+    0.15
+   ]
+  },
+  {
+   "name": "thumb_hd_R",
+   "bone": "hand_R",
+   "shape": "rcone",
+   "params": {
+    "a": [
+     0.85,
+     -0.5,
+     0.95
+    ],
+    "b": [
+     1.297,
+     -1.565,
+     1.547
+    ],
+    "ra": 0.68,
+    "rb": 0.58
+   },
+   "material": "mitten",
+   "group": "arm_R",
+   "lod": "all"
+  },
+  {
+   "name": "mitten_cuff_R",
+   "bone": "hand_R",
+   "shape": "torus",
+   "params": {
+    "R": [
+     1.25,
+     1.2
+    ],
+    "r": 0.42,
+    "w": 0.68
+   },
+   "material": "mitten",
+   "group": "arm_R",
+   "lod": "all",
+   "center": [
+    0,
+    0.05,
+    0.1
+   ],
+   "detail": {
+    "type": "ridges",
+    "n": 12,
+    "depth": 0.12,
+    "lod": "ref"
+   }
+  },
+  {
+   "name": "thigh_hd_R",
+   "bone": "hip_R",
+   "shape": "rcone",
+   "params": {
+    "a": [
+     0,
+     -0.2,
+     0
+    ],
+    "b": [
+     0,
+     -6.5,
+     0
+    ],
+    "ra": 1.75,
+    "rb": 1.45
+   },
+   "material": "pants",
+   "group": "leg_R",
+   "lod": "all",
+   "blend": {
+    "set": "tights_R",
+    "k": 0.6
+   }
+  },
+  {
+   "name": "calf_R",
+   "bone": "knee_R",
+   "shape": "rcone",
+   "params": {
+    "a": [
+     0,
+     0,
+     0
+    ],
+    "b": [
+     0,
+     -3.0,
+     0
+    ],
+    "ra": 1.45,
+    "rb": 1.25
+   },
+   "material": "pants",
+   "group": "leg_R",
+   "lod": "all",
+   "blend": {
+    "set": "tights_R",
+    "k": 0.6
+   }
+  },
+  {
+   "name": "shaft_R",
+   "bone": "knee_R",
+   "shape": "cone",
+   "params": {
+    "a": [
+     0,
+     -0.2,
+     0
+    ],
+    "b": [
+     0,
+     -6.3,
+     0
+    ],
+    "ra": 1.95,
+    "rb": 1.7
+   },
+   "material": "boots",
+   "group": "leg_R",
+   "lod": "all",
+   "blend": {
+    "set": "boot_R",
+    "k": 0.7
+   }
+  },
+  {
+   "name": "foot_R",
+   "bone": "ankle_R",
+   "shape": "rbox",
+   "params": {
+    "b": [
+     1.95,
+     0.95,
+     2.6
+    ],
+    "r": 0.95
+   },
+   "material": "boots",
+   "group": "leg_R",
+   "lod": "all",
+   "center": [
+    0,
+    -0.95,
+    0.55
+   ],
+   "blend": {
+    "set": "boot_R",
+    "k": 0.7
+   }
+  },
+  {
+   "name": "toe_R",
+   "bone": "ankle_R",
+   "shape": "ellipsoid",
+   "center": [
+    0,
+    -0.8,
+    1.75
+   ],
+   "radii": [
+    2.0,
+    1.0,
+    1.5
+   ],
+   "material": "boots",
+   "group": "leg_R",
+   "lod": "all",
+   "blend": {
+    "set": "boot_R",
+    "k": 0.35
+   }
+  },
+  {
+   "name": "sole_R",
+   "bone": "ankle_R",
+   "shape": "rbox",
+   "params": {
+    "b": [
+     2.05,
+     0.3,
+     2.3
+    ],
+    "r": 0.25
+   },
+   "material": "boots",
+   "group": "leg_R",
+   "lod": "all",
+   "center": [
+    0,
+    -1.6,
+    0.3
+   ],
+   "blend": {
+    "set": "boot_R",
+    "k": 0.1
+   }
+  },
+  {
+   "name": "welt_R",
+   "bone": "ankle_R",
+   "shape": "rbox",
+   "params": {
+    "b": [
+     2.13,
+     0.07,
+     2.38
+    ],
+    "r": 0.05
+   },
+   "material": "boots",
+   "group": "leg_R",
+   "lod": "ref",
+   "center": [
+    0,
+    -1.27,
+    0.3
+   ],
+   "blend": {
+    "set": "boot_R",
+    "k": 0.0
+   }
+  },
+  {
+   "name": "heel_R",
+   "bone": "ankle_R",
+   "shape": "rbox",
+   "params": {
+    "b": [
+     1.55,
+     0.6,
+     0.95
+    ],
+    "r": 0.2
+   },
+   "material": "boots",
+   "group": "leg_R",
+   "lod": "all",
+   "center": [
+    0,
+    -1.3,
+    -1.25
+   ],
+   "blend": {
+    "set": "boot_R",
+    "k": 0.1
+   }
+  },
+  {
+   "name": "boot_seam_R",
+   "bone": "knee_R",
+   "shape": "capsule",
+   "params": {
+    "a": [
+     0,
+     -1.2,
+     -1.95
+    ],
+    "b": [
+     0,
+     -6.0,
+     -1.72
+    ],
+    "r": 0.14
+   },
+   "material": "boots",
+   "group": "leg_R",
+   "lod": "ref",
+   "op": "subtract",
+   "blend": {
+    "set": "boot_R",
+    "k": 0.05
+   }
+  },
+  {
+   "name": "bootcuff_hd_R",
+   "bone": "knee_R",
+   "shape": "torus",
+   "params": {
+    "R": [
+     1.9,
+     1.9
+    ],
+    "r": 0.6,
+    "w": 1.3
+   },
+   "material": "boot_cuff",
+   "group": "leg_R",
+   "lod": "all",
+   "center": [
+    0,
+    -0.6,
+    0.1
+   ]
+  },
+  {
+   "name": "bootcuff_rim_R",
+   "bone": "knee_R",
+   "shape": "torus",
+   "params": {
+    "R": [
+     2.05,
+     2.05
+    ],
+    "r": 0.3
+   },
+   "material": "boot_cuff",
+   "group": "leg_R",
+   "lod": "ref",
+   "center": [
+    0,
+    0.55,
+    0.1
+   ]
   }
  ]
 }

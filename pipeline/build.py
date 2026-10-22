@@ -342,7 +342,8 @@ def main(argv=None):
             # HD reference model: printable/viewable meshes (rest pose + jump apex)
             from .meshexport import export_poses
             with open(os.path.join(out_dir, "reference", "model_meshes.json"), "w") as f:
-                json.dump(export_poses(scene, palette, os.path.join(out_dir, "reference")), f, indent=2)
+                poses = {"idle": 0} if a.anim == "idle" else None        # idle clip -> idle-pose STL
+                json.dump(export_poses(scene, palette, os.path.join(out_dir, "reference"), poses), f, indent=2)
 
     if a.verify:
         scene2 = Scene(character, anim, palette)
