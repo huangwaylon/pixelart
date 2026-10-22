@@ -102,16 +102,29 @@ class Scene:
         props = self._prop_prims(i, worlds)
         W, H = self.size
         if not props:
-            return np.full((H, W), -1, int), None, []
+            empty = np.full((H, W), -1, int)
+            return (empty, empty.copy()), None, []
         for p in props:
             p["M"] = face_m @ p["M"]
         pix = render_pixels(props, self.palette, self.size, self.pivot, cam=self.cam, cast_shadows=False)
-        idx = add_outline(despeckle(pix.idx), self.palette.special["outline"])
-        chest = (face_m @ worlds["chest"])[:3, 3]
-        pc = np.mean([p["M"][:3, 3] for p in props], axis=0)
-        layer = "front" if self.cam.depth(pc) < self.cam.depth(chest) else "back"
+        fill = despeckle(pix.idx)
+        idx = add_outline(fill, self.palette.special["outline"])
         ids = sorted({p["name"].split("_")[0] if p["name"][-1].isdigit() else p["name"] for p in props})
-        return idx, layer, ids
+        # per-pixel depth split against the body (AD r2: rope behind the head, crate in front)
+        bd = getattr(self, "body_depth", {}).get((direction, i))
+        if bd is None:
+            bd = np.full((H, W), np.inf)
+        front_m = (fill >= 0) & (pix.depth < bd - 0.05)
+        back_m = (fill >= 0) & ~front_m
+        ol = (idx >= 0) & (fill < 0)
+        for y, x in zip(*np.nonzero(ol)):          # outline pixels follow the adjacent prop pixels' side
+            nb_f = sum(1 for a, b in ((0, 1), (0, -1), (1, 0), (-1, 0)) if 0 <= y + a < H and 0 <= x + b < W and front_m[y + a, x + b])
+            nb_b = sum(1 for a, b in ((0, 1), (0, -1), (1, 0), (-1, 0)) if 0 <= y + a < H and 0 <= x + b < W and back_m[y + a, x + b])
+            (front_m if nb_f >= nb_b else back_m)[y, x] = True
+        front = np.where(front_m, idx, -1)
+        back = np.where(back_m, idx, -1)
+        layer = "split" if front_m.any() and back_m.any() else ("front" if front_m.any() else "back")
+        return (front, back), layer, ids
 
     def _prop_prims(self, i, worlds):
         """Props held by the character (snowball, crate, ...): attached to a bone, visible on listed frames.
@@ -168,6 +181,9 @@ class Scene:
         pix = render_pixels(prims, self.palette, self.size, self.pivot, cam=self.cam,
                             smooth=la.get("smooth", 0.0), line_min_run=la.get("line_min_run", 1),
                             no_face_lines=la.get("no_face_lines", False), hair_style=hs, tracer=self.tracer)
+        if not hasattr(self, "body_depth"):
+            self.body_depth = {}
+        self.body_depth[(direction, i)] = pix.depth.copy()    # for depth-splitting props (front/back strips)
         chain_names = {c["name"] for c in self.char.get("chains", [])}
         body_ids = [k for k, g in enumerate(pix.group_names) if g not in chain_names]
         ys, xs = np.nonzero(np.isin(pix.group, body_ids))

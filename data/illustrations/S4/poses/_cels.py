@@ -24,7 +24,7 @@ C = {
  "bQ_mouth_smile": (MOUTH, ["s..s", ".ss."], [1, 0]),
  "bQ_mouth_joy": (MOUTH, ["pppp", "pctp", ".pp."], [1, 0]),
  "bQ_mouth_cheer": (MOUTH, ["ppppp", "pcccp", "pcttp", ".ppp."], [1, 0]),
- "bQ_mouth_o": (MOUTH, [".p.", "pcp", ".p."], [0, 0]),
+ "bQ_mouth_o": (dict(MOUTH, c="hair_1"), [".p.", "pcp", ".p."], [0, 0]),
  "bQ_mouth_det": (MOUTH, ["sss", "...s"], [1, 0]),
  "bQ_mouth_smirk": (MOUTH, ["...s", "sss."], [1, 0]),
  "bQ_mouth_wobble": (MOUTH, ["s.s.", ".s.s"], [1, 0]),
@@ -32,11 +32,12 @@ C = {
  "bQ_blush_far_heavy": ({"r": "red_2"}, [".r.r", "r.r."], [1, 0]),
  "bQ_blush_near_heavy": ({"r": "red_2"}, [".r.r.r", "r.r.r."], [1, 0]),
  # --- fx ---
- "bQ_fx_sweat": (FX, [".o.", "obo", "oWo", ".o."]),
- "bQ_fx_surprise": (FX, ["K...K...K", ".K..K..K.", "....K...."]),
+ "bQ_fx_sweat": (FX, [".b.", "bWb", "bWb", ".b."]),
+ "bQ_fx_surprise": (FX, ["...K...", "K..K...", ".K.....", "......K", "....KK."]),
  "bQ_fx_sparkle": (FX, ["..y..", ".yWy.", "..y.."]),
  "bQ_fx_sparkle_s": (FX, [".y.", "yWy", ".y."]),
- "bQ_fx_shiver": (FX, ["o.", ".o", "o.", ".o"]),
+ "bQ_fx_shiver": (FX, ["o.", "o.", ".o", ".o", "o.", "o."]),
+ "bQ_fx_wave": (FX, ["o..", ".o.", ".o.", "o.."]),
  "bQ_fx_shy": (FX, ["r.r.r"]),
 }
 if __name__ == "__main__":

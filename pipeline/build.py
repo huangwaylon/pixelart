@@ -113,7 +113,7 @@ def add_release_smears(scene, palette, props):
             b = "hand_R" if bone == "carry" else bone
             sh = scene.cam.project(worlds["shoulder_R" if b == "hand_R" else "shoulder_L"][:3, 3], scene.pivot)
             hd = scene.cam.project(worlds[b][:3, 3], scene.pivot)
-            img = props["idx"][d][i]
+            img = props["front"][d][i]
             H, W = img.shape
             steps = 6
             for t in range(steps + 1):
@@ -124,7 +124,8 @@ def add_release_smears(scene, palette, props):
                 for dx, dy, c in ((0, 0, core), (1, 0, edge), (0, 1, edge)):
                     if 0 <= xi + dx < W and 0 <= yi + dy < H and img[yi + dy, xi + dx] < 0:
                         img[yi + dy, xi + dx] = c
-            props["layer"][d][i] = "front"
+            if props["layer"][d][i] in (None, "back"):
+                props["layer"][d][i] = "front" if props["layer"][d][i] is None else "split"
             if "smear" not in props["ids"][i]:
                 props["ids"][i] = props["ids"][i] + ["smear"]
 
@@ -185,8 +186,10 @@ def write_build(anim_name, scene, palette, base, final, ov_meta, bid, hashes, ou
     if scene.anim_data.get("derived"):
         meta["derivedFrom"] = {"clip": scene.anim_data["derived"]["clip"], "frames": scene.anim_data["derived"]["frames"]}
     if props is not None:
-        meta["layers"]["prop"] = f"{anim_name}_prop.png"
-        meta["layers"]["note"] += "; prop strip (same grid as the body sheet) is drawn behind or in front of the body per frame.prop.layer"
+        meta["layers"]["propBack"] = f"{anim_name}_prop_back.png"
+        meta["layers"]["propFront"] = f"{anim_name}_prop_front.png"
+        meta["layers"]["note"] += ("; props are depth-split per pixel: draw propBack BEHIND the character and propFront IN FRONT "
+                                   "(same grid/pivot; offset both by z_px like the body)")
         for k, f in enumerate(meta["frames"]):
             f["prop"] = {"ids": props["ids"][k], "visible": bool(props["ids"][k]),
                          "layer": {d: props["layer"][d][k] for d in scene.dirs}}
@@ -195,17 +198,17 @@ def write_build(anim_name, scene, palette, base, final, ov_meta, bid, hashes, ou
 
     # --- previews (baked z offset, shadow + fx, snow ground)
     if props is not None:
-        ex.save_png(palette.to_rgba(ex.sheet(props["idx"], scene.dirs, scene.size)), f"{out_dir}/{anim_name}_prop.png")
+        ex.save_png(palette.to_rgba(ex.sheet(props["front"], scene.dirs, scene.size)), f"{out_dir}/{anim_name}_prop_front.png")
+        ex.save_png(palette.to_rgba(ex.sheet(props["back"], scene.dirs, scene.size)), f"{out_dir}/{anim_name}_prop_back.png")
         view = {}
         for d in scene.dirs:
             view[d] = []
             for i in range(n):
-                body, pr = final[d][i].copy(), props["idx"][d][i]
-                if props["layer"][d][i] == "front":
-                    body[pr >= 0] = pr[pr >= 0]
-                else:
-                    m = (pr >= 0) & (body < 0)
-                    body[m] = pr[m]
+                body = final[d][i].copy()
+                pb, pf = props["back"][d][i], props["front"][d][i]
+                m = (pb >= 0) & (body < 0)
+                body[m] = pb[m]                      # back strip: only where the body doesn't cover it
+                body[pf >= 0] = pf[pf >= 0]          # front strip: over the body
                 view[d].append(body)
     else:
         view = final
@@ -307,19 +310,20 @@ def main(argv=None):
     ov_key = overrides_key(a.anim, a.variant)
     props = None
     if anim.get("props"):
-        scene.prop_mode = "separate"            # GD r11: props are their own layer, never baked into the body
-        props = {"idx": {}, "layer": {}, "ids": []}
+        scene.prop_mode = "separate"            # GD r11: props are their own layers, never baked into the body
+    base, final, ov_meta = render_all(scene, a.anim, ov_key)     # renders the body first (depth for the split)
+    if anim.get("props"):
+        props = {"front": {}, "back": {}, "layer": {}, "ids": []}
         for d in scene.dirs:
-            props["idx"][d], props["layer"][d] = [], []
+            props["front"][d], props["back"][d], props["layer"][d] = [], [], []
             for i in range(len(scene.anim.keys)):
-                pi, lay, ids = scene.render_props(i, d)
-                props["idx"][d].append(pi)
+                (pf, pb), lay, ids = scene.render_props(i, d)
+                props["front"][d].append(pf)
+                props["back"][d].append(pb)
                 props["layer"][d].append(lay)
                 if d == scene.dirs[0]:
                     props["ids"].append(ids)
-    if props is not None:
         add_release_smears(scene, palette, props)
-    base, final, ov_meta = render_all(scene, a.anim, ov_key)
     tag = a.anim if not a.variant else f"{a.variant}_{a.anim}"
     out_dir = os.path.join(ROOT, "builds", *(["variants"] if a.variant else []), f"{tag}_{bid}")
     if os.path.exists(out_dir):

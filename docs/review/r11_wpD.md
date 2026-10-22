@@ -53,3 +53,15 @@ touchdown, hop, plop, settle, ready; 290 ms; `land` on f1.
 - **Engine gaps:**
   - `frame_info` needs `name` next to `ref`, which I added.
   - The sheet-JSON `props` exports the unresolved entry, so `bone` and `offset` are missing.
+
+## Round 2 fixes
+- **throw release arm:** arm_R changed from (-262, 50, 0) to (-220, 60, 20). The hand is now above the shoulder line (y 29.8), out to the side, and forward. -250 was not enough because the hand stayed below the shoulder.
+- **Release visibility by view (render check):**
+  - In-hand snowball/mitten pixels: S 4, N 4, E 5, W 4, SE 4, NE 5, SW 4.
+  - S: the arm points toward the camera, so it reads mainly through the body twist and the engine smear.
+  - N: the smear reads clearly as a diagonal streak.
+  - NW: the arm is still hidden. With spine turn 34 it points straight away from the NW camera, and no arm pose in my grid search shows more than 2-4 px. In NW the release reads through the smear and the counter-swinging left arm.
+- **carry_throw:** `throw_release` is back on f3 (release). The prop declares `spawn_anchor_frame: "push"`, and `engine_notes` describes the spawn at the push anchor. The crate is drawn on dip and push only, so the two-crate overlap is gone.
+- **carry_throw release spine tilt:** changed from 14 to 6 (AD). In S the arms now read up beside the head instead of foreshortening.
+- **carry_throw crate visibility:** the crate `frames` list is ["dip", "push"]. In the sheet JSON, `prop.ids` is `crate` on f1-f2 and only the engine `smear` on f3-f4, so no crate is drawn on the release frame. The depth-split strips `_prop_back.png` and `_prop_front.png` are exported.
+- Both clips: QA PASS.

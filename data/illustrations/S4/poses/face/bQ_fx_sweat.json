@@ -6,13 +6,12 @@
  ],
  "legend": {
   "W": "snow_3",
-  "b": "snow_1",
-  "o": "snow_0"
+  "b": "snow_1"
  },
  "grid": [
-  ".o.",
-  "obo",
-  "oWo",
-  ".o."
+  ".b.",
+  "bWb",
+  "bWb",
+  ".b."
  ]
 }

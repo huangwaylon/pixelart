@@ -74,7 +74,7 @@
    "phase": "idle",
    "face": "smile",
    "plant": true,
-   "pelvis_drop": 1.387,
+   "pelvis_drop": 0.0,
    "squash": 1.0,
    "spine": {
     "tilt": 1,

@@ -264,9 +264,9 @@
     "elbow": 30
    },
    "arm_R": {
-    "raise": -250,
-    "spread": 50,
-    "elbow": 0
+    "raise": -220,
+    "spread": 60,
+    "elbow": 20
    },
    "plant": false,
    "leg_L": {

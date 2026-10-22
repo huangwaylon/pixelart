@@ -1,0 +1,12 @@
+{
+ "image": "bust_front_spritesheet.png",
+ "frameSize": [
+  96,
+  96
+ ],
+ "frames": [
+  "base",
+  "neutral",
+  "smile"
+ ]
+}
