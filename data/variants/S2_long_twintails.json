@@ -1,0 +1,152 @@
+{
+ "extends": "S0_semichibi_base",
+ "name": "S2_long_twintails",
+ "label": "S2 - knee-length twin tails, earmuffs, short flared coat",
+ "outfit": {
+  "hair": "twintails",
+  "hair_len": 2.0,
+  "tail_len": 2.2,
+  "hat": "earmuffs",
+  "bangs": "points",
+  "accessory": null,
+  "coat": "aline",
+  "coat_len": 0.3,
+  "scarf_len": 1.8
+ },
+ "proportions": {
+  "flare": 1.3,
+  "waist": 0.66,
+  "hip": 1.14
+ },
+ "ramp_overrides": {
+  "hat": [
+   "teal_0",
+   "teal_1",
+   "teal_2"
+  ],
+  "pom": [
+   "teal_0",
+   "teal_1",
+   "teal_2"
+  ],
+  "ribbon": [
+   "crn_1",
+   "red_1",
+   "red_2"
+  ]
+ },
+ "chain_overrides": {
+  "tail_L": {
+   "anchor": [
+    9.6,
+    11.8,
+    -3.6
+   ],
+   "rest_dir": [
+    0.12,
+    -1,
+    -0.25
+   ],
+   "widths": [
+    3.4,
+    3.3,
+    3.1,
+    2.8,
+    2.4,
+    1.8
+   ],
+   "thickness": 2.6,
+   "stiffness": 220,
+   "damping": 0.2,
+   "gravity": 1000
+  },
+  "tail_R": {
+   "anchor": [
+    -9.6,
+    11.8,
+    -3.6
+   ],
+   "rest_dir": [
+    -0.12,
+    -1,
+    -0.25
+   ],
+   "widths": [
+    3.4,
+    3.3,
+    3.1,
+    2.8,
+    2.4,
+    1.8
+   ],
+   "thickness": 2.6,
+   "stiffness": 220,
+   "damping": 0.2,
+   "gravity": 1000
+  },
+  "scarf_front": {
+   "rest_dir": [
+    0.3,
+    -1,
+    0.55
+   ]
+  }
+ },
+ "prim_overrides": {
+  "muff_L": {
+   "center": [
+    9.8,
+    7.6,
+    -1.0
+   ],
+   "radii": [
+    2.0,
+    2.7,
+    2.7
+   ]
+  },
+  "muff_R": {
+   "center": [
+    -9.8,
+    7.6,
+    -1.0
+   ],
+   "radii": [
+    2.0,
+    2.7,
+    2.7
+   ]
+  },
+  "tie_L": {
+   "center": [
+    9.6,
+    11.9,
+    -3.4
+   ],
+   "radii": [
+    1.6,
+    1.6,
+    1.6
+   ]
+  },
+  "tie_R": {
+   "center": [
+    -9.6,
+    11.9,
+    -3.4
+   ],
+   "radii": [
+    1.6,
+    1.6,
+    1.6
+   ]
+  },
+  "muff_band": {
+   "radii": [
+    9.9,
+    9.9,
+    1.3
+   ]
+  }
+ }
+}

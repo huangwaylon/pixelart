@@ -1,0 +1,184 @@
+{
+ "extends": "S0_semichibi_base",
+ "name": "S1_waist_beret",
+ "label": "S1 - waist-length flowing hair, small tilted beret + side ribbon, belted A-line",
+ "outfit": {
+  "hair": "long",
+  "hair_len": 2.0,
+  "hat": "beret",
+  "accessory": "ribbon_side",
+  "bangs": "side",
+  "coat": "aline",
+  "scarf_len": 1.8
+ },
+ "prim_overrides": {
+  "beret": {
+   "center": [
+    -3.2,
+    14.4,
+    -0.6
+   ],
+   "radii": [
+    6.9,
+    1.8,
+    6.5
+   ],
+   "rot": [
+    -6,
+    0,
+    24
+   ]
+  },
+  "beret_nub": {
+   "center": [
+    -4.6,
+    16.4,
+    -0.6
+   ],
+   "radii": [
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  "ribbon_loop_0": {
+   "center": [
+    9.0,
+    12.2,
+    -3.6
+   ],
+   "radii": [
+    1.6,
+    2.0,
+    1.8
+   ]
+  },
+  "ribbon_loop_1": {
+   "center": [
+    9.4,
+    12.2,
+    0.4
+   ],
+   "radii": [
+    1.6,
+    2.0,
+    1.8
+   ]
+  },
+  "ribbon_knot": {
+   "center": [
+    9.6,
+    12.2,
+    -1.6
+   ],
+   "radii": [
+    1.1,
+    1.1,
+    1.1
+   ]
+  },
+  "belt": {
+   "radii": [
+    3.6,
+    1.0,
+    2.9
+   ]
+  },
+  "hair_back": {
+   "center": [
+    0,
+    3.4,
+    -4.8
+   ],
+   "radii": [
+    9.2,
+    7.4,
+    4.4
+   ]
+  }
+ },
+ "chain_overrides": {
+  "lock_0": {
+   "rest_dir": [
+    -0.5,
+    -1,
+    -0.3
+   ],
+   "anchor": [
+    -6.4,
+    -0.6,
+    -5.0
+   ],
+   "widths": [
+    3.6,
+    3.6,
+    3.7,
+    3.8,
+    3.6,
+    2.6
+   ],
+   "stiffness": 60,
+   "gravity": 700,
+   "damping": 0.14,
+   "thickness": 2.6
+  },
+  "lock_1": {
+   "rest_dir": [
+    0.0,
+    -1,
+    -0.3
+   ],
+   "widths": [
+    4.0,
+    4.0,
+    3.9,
+    3.8,
+    3.4,
+    2.6
+   ],
+   "stiffness": 60,
+   "gravity": 700,
+   "damping": 0.14,
+   "thickness": 2.6
+  },
+  "lock_2": {
+   "rest_dir": [
+    0.5,
+    -1,
+    -0.3
+   ],
+   "anchor": [
+    6.4,
+    -0.6,
+    -5.0
+   ],
+   "widths": [
+    3.6,
+    3.6,
+    3.7,
+    3.8,
+    3.6,
+    2.6
+   ],
+   "stiffness": 60,
+   "gravity": 700,
+   "damping": 0.14,
+   "thickness": 2.6
+  },
+  "scarf_front": {
+   "max_swing": 30
+  }
+ },
+ "ramp_overrides": {
+  "ribbon": [
+   "crn_1",
+   "red_1",
+   "red_2"
+  ]
+ },
+ "proportions": {
+  "waist": 0.66,
+  "hip": 1.16,
+  "flare": 1.3
+ }
+}

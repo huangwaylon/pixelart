@@ -1,0 +1,111 @@
+{
+ "extends": "S0_semichibi_base",
+ "name": "S5_side_braid",
+ "label": "S5 - long side braid over right shoulder, cat-ear beanie",
+ "outfit": {
+  "hair": "side_pony",
+  "hair_len": 2.0,
+  "hat": "cat_beanie",
+  "bangs": "side",
+  "accessory": null,
+  "ahoge": false
+ },
+ "remove": [
+  "beanie_cuff"
+ ],
+ "prim_overrides": {
+  "tie": {
+   "center": [
+    -5.2,
+    2.2,
+    1.0
+   ],
+   "radii": [
+    1.4,
+    1.4,
+    1.4
+   ]
+  }
+ },
+ "chain_overrides": {
+  "pony": {
+   "anchor": [
+    -4.8,
+    8.6,
+    1.2
+   ],
+   "rest_dir": [
+    0.08,
+    -1,
+    0.9
+   ],
+   "segments": 8,
+   "seg_len": 2.2,
+   "widths": [
+    4.0,
+    2.4,
+    3.8,
+    2.3,
+    3.6,
+    2.2,
+    3.2,
+    2.2
+   ],
+   "thickness": 3.0,
+   "tip": {
+    "radius": 1.6,
+    "material": "ribbon"
+   },
+   "stiffness": 240,
+   "max_swing": 30,
+   "damping": 0.2,
+   "anchor_bone": "chest"
+  }
+ },
+ "add_prims": [
+  {
+   "name": "hair_back",
+   "bone": "head",
+   "center": [
+    -1.0,
+    1.4,
+    -4.6
+   ],
+   "radii": [
+    8.0,
+    8.2,
+    4.0
+   ],
+   "material": "hair",
+   "group": "head"
+  },
+  {
+   "name": "hair_sweep",
+   "bone": "head",
+   "center": [
+    -4.4,
+    1.2,
+    -2.6
+   ],
+   "radii": [
+    3.4,
+    3.0,
+    3.2
+   ],
+   "material": "hair",
+   "group": "head",
+   "rot": [
+    0,
+    0,
+    30
+   ]
+  }
+ ],
+ "ramp_overrides": {
+  "ribbon": [
+   "crn_1",
+   "red_1",
+   "red_2"
+  ]
+ }
+}

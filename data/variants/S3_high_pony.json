@@ -1,0 +1,103 @@
+{
+ "extends": "S0_semichibi_base",
+ "name": "S3_high_pony",
+ "label": "S3 - high ponytail + clip, sporty-cute",
+ "outfit": {
+  "hair": "pony",
+  "hair_len": 2.0,
+  "hat": "earmuffs",
+  "bangs": "side",
+  "accessory": "clip",
+  "ahoge": false
+ },
+ "chain_overrides": {
+  "pony": {
+   "anchor": [
+    0,
+    13.2,
+    -7.6
+   ],
+   "rest_dir": [
+    0.3,
+    -1,
+    -0.3
+   ],
+   "segments": 8,
+   "seg_len": 3.5,
+   "widths": [
+    4.2,
+    5.0,
+    5.0,
+    4.4,
+    3.6,
+    2.6,
+    1.7,
+    1.0
+   ],
+   "thickness": 3.8,
+   "stiffness": 120
+  }
+ },
+ "prim_overrides": {
+  "tie": {
+   "center": [
+    0,
+    13.4,
+    -7.9
+   ],
+   "radii": [
+    2.3,
+    1.6,
+    1.8
+   ]
+  },
+  "hairclip": {
+   "center": [
+    4.6,
+    12.0,
+    7.2
+   ],
+   "radii": [
+    3.0,
+    1.3,
+    1.1
+   ],
+   "rot": [
+    0,
+    0,
+    -28
+   ]
+  },
+  "belt": {
+   "radii": [
+    3.5,
+    1.15,
+    2.85
+   ]
+  },
+  "muff_L": {
+   "radii": [
+    1.5,
+    2.1,
+    2.1
+   ],
+   "material": "hat"
+  },
+  "muff_R": {
+   "radii": [
+    1.5,
+    2.1,
+    2.1
+   ],
+   "material": "hat"
+  },
+  "muff_band": {
+   "material": "hat",
+   "radii": [
+    9.5,
+    9.6,
+    0.9
+   ]
+  }
+ }
+}

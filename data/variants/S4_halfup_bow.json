@@ -1,0 +1,200 @@
+{
+ "extends": "S0_semichibi_base",
+ "name": "S4_halfup_bow",
+ "label": "S4 - half-up long hair + big back bow, hime bangs",
+ "outfit": {
+  "hair": "long",
+  "hair_len": 2.0,
+  "hat": "none",
+  "bangs": "straight",
+  "accessory": "ribbon_back"
+ },
+ "prim_overrides": {
+  "ribbon_loop_0": {
+   "center": [
+    -4.0,
+    11.4,
+    -9.0
+   ],
+   "radii": [
+    3.9,
+    2.7,
+    1.6
+   ],
+   "rot": [
+    0,
+    0,
+    -24
+   ]
+  },
+  "ribbon_loop_1": {
+   "center": [
+    4.0,
+    11.4,
+    -9.0
+   ],
+   "radii": [
+    3.9,
+    2.7,
+    1.6
+   ],
+   "rot": [
+    0,
+    0,
+    24
+   ]
+  },
+  "ribbon_knot": {
+   "center": [
+    0,
+    10.9,
+    -9.6
+   ],
+   "radii": [
+    1.5,
+    1.5,
+    1.3
+   ],
+   "material": "hatcuff"
+  },
+  "sidelock_L": {
+   "center": [
+    7.3,
+    3.4,
+    2.0
+   ],
+   "radii": [
+    2.0,
+    5.4,
+    2.6
+   ],
+   "rot": [
+    0,
+    0,
+    2
+   ]
+  },
+  "sidelock_R": {
+   "center": [
+    -7.3,
+    3.4,
+    2.0
+   ],
+   "radii": [
+    2.0,
+    5.4,
+    2.6
+   ],
+   "rot": [
+    0,
+    0,
+    -2
+   ]
+  }
+ },
+ "chain_overrides": {
+  "lock_0": {
+   "rest_dir": [
+    -0.2,
+    -1,
+    -0.25
+   ],
+   "widths": [
+    4.6,
+    4.6,
+    4.4,
+    4.0,
+    3.4,
+    2.6
+   ],
+   "thickness": 2.6
+  },
+  "lock_1": {
+   "widths": [
+    4.6,
+    4.6,
+    4.4,
+    4.0,
+    3.4,
+    2.6
+   ],
+   "thickness": 2.6
+  },
+  "lock_2": {
+   "rest_dir": [
+    0.2,
+    -1,
+    -0.25
+   ],
+   "widths": [
+    4.6,
+    4.6,
+    4.4,
+    4.0,
+    3.4,
+    2.6
+   ],
+   "thickness": 2.6
+  }
+ },
+ "add_prims": [
+  {
+   "name": "ribbon_tail_L",
+   "bone": "head",
+   "center": [
+    -2.0,
+    6.6,
+    -9.6
+   ],
+   "radii": [
+    1.3,
+    3.4,
+    0.9
+   ],
+   "rot": [
+    0,
+    0,
+    -16
+   ],
+   "material": "hatcuff",
+   "group": "hat"
+  },
+  {
+   "name": "ribbon_tail_R",
+   "bone": "head",
+   "center": [
+    2.0,
+    6.6,
+    -9.6
+   ],
+   "radii": [
+    1.3,
+    3.4,
+    0.9
+   ],
+   "rot": [
+    0,
+    0,
+    16
+   ],
+   "material": "hatcuff",
+   "group": "hat"
+  }
+ ],
+ "ramp_overrides": {
+  "hatcuff": [
+   "teal_0",
+   "teal_0"
+  ],
+  "ribbon": [
+   "teal_1",
+   "teal_1",
+   "teal_2"
+  ]
+ },
+ "material_bands": {
+  "ribbon": [
+   -0.2
+  ]
+ }
+}

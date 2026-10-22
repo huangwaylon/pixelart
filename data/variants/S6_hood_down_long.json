@@ -1,0 +1,313 @@
+{
+ "extends": "S0_semichibi_base",
+ "name": "S6_hood_down_long",
+ "label": "S6 - long flowing hair, hood down as fur collar, earmuffs",
+ "outfit": {
+  "hair": "long",
+  "hair_len": 2.0,
+  "hat": "earmuffs",
+  "bangs": "side",
+  "accessory": null,
+  "ahoge": false,
+  "scarf": "none"
+ },
+ "remove": [
+  "collar"
+ ],
+ "ramp_overrides": {
+  "pom": [
+   "oat_1",
+   "oat_2",
+   "snow_2"
+  ]
+ },
+ "add_prims": [
+  {
+   "name": "fur_0",
+   "bone": "neck",
+   "center": [
+    0.0,
+    -3.5,
+    5.1
+   ],
+   "radii": [
+    3.0,
+    2.2,
+    3.0
+   ],
+   "material": "hat",
+   "group": "torso"
+  },
+  {
+   "name": "fur_1",
+   "bone": "neck",
+   "center": [
+    3.2,
+    -3.629,
+    4.444
+   ],
+   "radii": [
+    3.0,
+    2.2,
+    3.0
+   ],
+   "material": "hat",
+   "group": "torso"
+  },
+  {
+   "name": "fur_2",
+   "bone": "neck",
+   "center": [
+    5.543,
+    -3.483,
+    2.65
+   ],
+   "radii": [
+    3.0,
+    2.2,
+    3.0
+   ],
+   "material": "hat",
+   "group": "torso"
+  },
+  {
+   "name": "fur_3",
+   "bone": "neck",
+   "center": [
+    6.4,
+    -3.1,
+    0.2
+   ],
+   "radii": [
+    3.0,
+    2.2,
+    3.0
+   ],
+   "material": "hat",
+   "group": "torso"
+  },
+  {
+   "name": "fur_4",
+   "bone": "neck",
+   "center": [
+    5.543,
+    -3.033,
+    -2.25
+   ],
+   "radii": [
+    3.0,
+    2.2,
+    3.0
+   ],
+   "material": "hat",
+   "group": "torso"
+  },
+  {
+   "name": "fur_5",
+   "bone": "neck",
+   "center": [
+    3.2,
+    -2.85,
+    -4.044
+   ],
+   "radii": [
+    3.0,
+    2.2,
+    3.0
+   ],
+   "material": "hat",
+   "group": "torso"
+  },
+  {
+   "name": "fur_6",
+   "bone": "neck",
+   "center": [
+    0.0,
+    -2.6,
+    -4.7
+   ],
+   "radii": [
+    3.0,
+    2.2,
+    3.0
+   ],
+   "material": "hat",
+   "group": "torso"
+  },
+  {
+   "name": "fur_7",
+   "bone": "neck",
+   "center": [
+    -3.2,
+    -2.85,
+    -4.044
+   ],
+   "radii": [
+    3.0,
+    2.2,
+    3.0
+   ],
+   "material": "hat",
+   "group": "torso"
+  },
+  {
+   "name": "fur_8",
+   "bone": "neck",
+   "center": [
+    -5.543,
+    -3.033,
+    -2.25
+   ],
+   "radii": [
+    3.0,
+    2.2,
+    3.0
+   ],
+   "material": "hat",
+   "group": "torso"
+  },
+  {
+   "name": "fur_9",
+   "bone": "neck",
+   "center": [
+    -6.4,
+    -3.1,
+    0.2
+   ],
+   "radii": [
+    3.0,
+    2.2,
+    3.0
+   ],
+   "material": "hat",
+   "group": "torso"
+  },
+  {
+   "name": "fur_10",
+   "bone": "neck",
+   "center": [
+    -5.543,
+    -3.483,
+    2.65
+   ],
+   "radii": [
+    3.0,
+    2.2,
+    3.0
+   ],
+   "material": "hat",
+   "group": "torso"
+  },
+  {
+   "name": "fur_11",
+   "bone": "neck",
+   "center": [
+    -3.2,
+    -3.629,
+    4.444
+   ],
+   "radii": [
+    3.0,
+    2.2,
+    3.0
+   ],
+   "material": "hat",
+   "group": "torso"
+  },
+  {
+   "name": "hood_down",
+   "bone": "chest",
+   "center": [
+    0,
+    2.4,
+    -5.0
+   ],
+   "radii": [
+    4.6,
+    2.8,
+    2.2
+   ],
+   "material": "coat",
+   "group": "torso",
+   "rot": [
+    -20,
+    0,
+    0
+   ]
+  },
+  {
+   "name": "clasp",
+   "bone": "neck",
+   "center": [
+    0,
+    -3.6,
+    5.6
+   ],
+   "radii": [
+    1.4,
+    1.4,
+    1.1
+   ],
+   "material": "pom",
+   "group": "torso"
+  }
+ ],
+ "prim_overrides": {
+  "muff_L": {
+   "center": [
+    9.0,
+    7.0,
+    -1.5
+   ],
+   "radii": [
+    2.3,
+    3.0,
+    3.0
+   ]
+  },
+  "muff_R": {
+   "center": [
+    -9.0,
+    7.0,
+    -1.5
+   ],
+   "radii": [
+    2.3,
+    3.0,
+    3.0
+   ]
+  }
+ },
+ "chain_overrides": {
+  "lock_0": {
+   "widths": [
+    3.6,
+    3.4,
+    3.1,
+    2.8,
+    2.4,
+    2.0
+   ]
+  },
+  "lock_1": {
+   "widths": [
+    3.6,
+    3.4,
+    3.1,
+    2.8,
+    2.4,
+    2.0
+   ]
+  },
+  "lock_2": {
+   "widths": [
+    3.6,
+    3.4,
+    3.1,
+    2.8,
+    2.4,
+    2.0
+   ]
+  }
+ }
+}
