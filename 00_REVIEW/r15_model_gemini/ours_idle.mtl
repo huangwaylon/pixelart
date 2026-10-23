@@ -1,0 +1,59 @@
+newmtl boot_cuff
+Kd 0.9490 0.9020 0.8078
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl boots
+Kd 0.4314 0.2353 0.2275
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl coat
+Kd 0.8235 0.7490 0.6431
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl coat_trim
+Kd 0.6588 0.3529 0.2275
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl hair
+Kd 0.4314 0.2353 0.2275
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl hatcuff
+Kd 0.1647 0.5490 0.5569
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl mitten
+Kd 0.1647 0.5490 0.5569
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl pants
+Kd 0.2706 0.2627 0.3686
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl ribbon
+Kd 0.1647 0.5490 0.5569
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl scarf
+Kd 0.1647 0.5490 0.5569
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl skin
+Kd 0.9216 0.6471 0.5255
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl skirt
+Kd 0.6588 0.3529 0.2275
+Ka 0 0 0
+Ks 0 0 0

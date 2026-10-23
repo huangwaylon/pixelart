@@ -9,7 +9,7 @@ import struct
 
 import numpy as np
 
-from .sdf import _Compiled, sdf_units, unit_sdf
+from .sdf import _Compiled, sdf_units, unit_sdf, scene_sdf
 
 # cube corners and the 6-tetrahedra split along the 0-6 diagonal (consistent across cubes -> watertight)
 CORNERS = np.array([[0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0], [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]])
@@ -90,8 +90,10 @@ def _march(field, origin, h):
     return T[keep], K[keep]
 
 
-def mesh_parts(parts, scale_h=1.0):
-    """Posed part list -> {material: (triangles, edge keys)}."""
+def mesh_parts(parts, scale_h=1.0, open_clips=False):
+    """Posed part list -> {material: (triangles, edge keys)}.
+    open_clips: renderer clip semantics (sdf.raycast) - surface whose nearest part fails that part's clip planes is
+    dropped (open shell, e.g. the hair cap's face opening) instead of meshing the unclipped set (default, legacy)."""
     mats = sorted({p["material"] for p in parts if p.get("op", "union") == "union"})
     out = {}
     for m in mats:
@@ -120,7 +122,17 @@ def mesh_parts(parts, scale_h=1.0):
             dd = unit_sdf(Cs, unit, np.stack([X.ravel(), Y.ravel(), Z.ravel()], 1))[0].reshape(X.shape)
             sl = tuple(slice(i0[a], i1[a]) for a in range(3))
             d[sl] = np.minimum(d[sl], dd)
-        out[m] = _march(d, lo, h)
+        T, K = _march(d, lo, h)
+        if open_clips and len(T) and any(p.get("clip_all") or p.get("clip_any") for p in sub):
+            cen = T.mean(1)
+            _, arg = scene_sdf(sub, cen, Cs)
+            ok = np.ones(len(T), bool)
+            for k in np.unique(arg):
+                if k >= 0 and (sub[k].get("clip_all") or sub[k].get("clip_any")):
+                    mk = arg == k
+                    ok[mk] = Cs.clip_ok_world(k, cen[mk])
+            T, K = T[ok], K[ok]
+        out[m] = (T, K)
     return out
 
 
