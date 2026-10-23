@@ -154,6 +154,9 @@ class Scene:
         bd = getattr(self, "body_depth", {}).get((direction, i))
         if bd is None:
             bd = np.full((H, W), np.inf)
+        # the body's 1 px outline ring has no depth (outline is added after the raycast): give it the depth of the
+        # body fill it wraps, so a prop behind the body never draws over the body's outline (crate band over legs)
+        bd = _dilate_depth(bd)
         front_m = (fill >= 0) & (pix.depth < bd - 0.05)
         back_m = (fill >= 0) & ~front_m
         ol = (idx >= 0) & (fill < 0)
@@ -187,6 +190,7 @@ class Scene:
                 B = B @ translate(*fo.get("offset", o0)) @ euler(*fo.get("rot", [0, 0, 0])) @ translate(*[-v for v in o0])
             M = B @ translate(*pr.get("offset", [0, 0, 0]))
             M = M @ euler(*pr.get("rot", [0, 0, 0])) @ scale(*pr["radii"])
+            n0 = len(out)
             out.append({"name": pr["name"], "M": M, "material": pr.get("material", "prop"), "group": "prop"})
             for k, part in enumerate(pr.get("parts", [])):      # extra shapes (e.g. crate lid, snowball shading)
                 hide_dir = pr.get("hide_tags_by_dir", {}).get(getattr(self, "_cur_dir", ""), [])
@@ -195,6 +199,16 @@ class Scene:
                 Mk = B @ translate(*part["offset"]) @ euler(*part.get("rot", [0, 0, 0])) @ scale(*part["radii"])
                 out.append({"name": f'{pr["name"]}_{k}', "M": Mk, "material": part.get("material", pr.get("material", "prop")),
                             "group": "prop", "clip_all": part.get("clip_all", [])})
+            ro = pr.get("rest_on")
+            if ro:
+                # prop data "rest_on": {"bone", "y", "max_gap"}: an overhead load never rides higher above the head top
+                # (bone-local y) than max_gap (world units); press / lockout / push poses otherwise float it 1 px off
+                top = float((worlds[ro["bone"]] @ np.array([0.0, float(ro["y"]), 0.0, 1.0]))[1])
+                bottom = float(M[1, 3] - np.sqrt((M[1, :3] ** 2).sum()))
+                excess = bottom - top - float(ro["max_gap"])
+                if excess > 0:
+                    for o in out[n0:]:
+                        o["M"] = translate(0, -excess, 0) @ o["M"]
         return out
 
     def render_base(self, i, direction, expression=None):
@@ -660,6 +674,20 @@ def _restore_outline_runs(idx, pre, material, mats, palette):
         for y, x in bad:
             out[y, x] = idx[y, x]
     return out
+
+
+def _dilate_depth(bd):
+    """1 px dilation of a depth map into its empty (inf) border: each empty pixel takes the nearest (min) finite depth
+    of its 8 neighbours."""
+    H, W = bd.shape
+    pad = np.full((H + 2, W + 2), np.inf)
+    pad[1:-1, 1:-1] = bd
+    nb = np.full((H, W), np.inf)
+    for dy in (-1, 0, 1):
+        for dx in (-1, 0, 1):
+            if dy or dx:
+                nb = np.minimum(nb, pad[1 + dy:H + 1 + dy, 1 + dx:W + 1 + dx])
+    return np.where(np.isfinite(bd), bd, nb)
 
 
 # ------------------------------------------------------------------ overrides

@@ -120,3 +120,11 @@ Not done in round 3: throw E bow colour mix and climb NW strays (deferred to v1.
 - **throw E f5:** the 4-px cap is now a 2-px shadowed tip.
 - **Unchanged:** jump_sc E/W f2/f10 are still flat, as they are in legacy. They are deferred to v1.1, with the throw E bow colour mix and the climb NW strays.
 - **Checks:** rebuilt on HEAD `d010b5d` (r14 engine). 13/13 QA PASS, 0 warnings. Legacy `_sheet.png` (idle, throw, carry_walk, walk, run) is byte-identical to a fresh HEAD build. `releases/S4_hd_actions_v1` is rebuilt.
+
+## Round 6 (AD: round 5 tip regressions)
+- **run W f1:** the hollow 1-px point from round 4 had turned into a solid 3x2 black blob. The round 4 point is restored.
+- **jump_sc E f3 ("rise"):** the frame had ended in a flat cap at y40. The round 4 point down to y42 is restored.
+- **How:** both fixes are documented 1-frame overrides, `overrides/variants/S4_hd/run/W/01.json` (10 px) and `jump_sc/E/03.json` (8 px), copying the round 4 pixels. Only those two frames change from round 5.
+- [r6_01_tip_regressions.png](fixes/r6_01_tip_regressions.png)
+- **Checks:** QA PASS. The release is updated (run and jump_sc only).
+

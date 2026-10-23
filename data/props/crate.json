@@ -513,5 +513,10 @@
   "NW": [
    "rope"
   ]
+ },
+ "rest_on": {
+  "bone": "head",
+  "y": 15.79,
+  "max_gap": 6.1
  }
 }

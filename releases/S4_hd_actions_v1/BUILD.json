@@ -1,8 +1,8 @@
 {
   "variant": "S4_hd",
-  "revision": "round 5 (AD: run swing-frame ponytail tip; throw E f5 / jump_sc tips)",
-  "git_base": "d010b5d",
-  "note": "built from the working tree on top of this commit (round-5 data + sdf.py sweep by_clip uncommitted at build time)",
+  "revision": "round 6 (AD: run W f1 / jump_sc E f3 tip regressions restored by 1-frame overrides)",
+  "git_base": "23747fc",
+  "note": "built from the working tree on top of this commit (round-6 overrides uncommitted at build time)",
   "clips": {
     "carry_idle": {
       "buildHash": "bfc94999d330",
@@ -40,7 +40,7 @@
       "paletteId": "frost_r3_oatmeal"
     },
     "jump_sc": {
-      "buildHash": "7501b86232dd",
+      "buildHash": "28038c25aa71",
       "pipelineVersion": "1.0",
       "paletteId": "frost_r3_oatmeal"
     },
@@ -55,7 +55,7 @@
       "paletteId": "frost_r3_oatmeal"
     },
     "run": {
-      "buildHash": "44c1359b8651",
+      "buildHash": "73f8d403e5ca",
       "pipelineVersion": "1.0",
       "paletteId": "frost_r3_oatmeal"
     },

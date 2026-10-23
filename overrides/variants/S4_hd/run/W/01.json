@@ -1,0 +1,115 @@
+{
+ "px": [
+  [
+   29,
+   40,
+   1
+  ],
+  [
+   29,
+   41,
+   1
+  ],
+  [
+   30,
+   41,
+   2
+  ],
+  [
+   30,
+   42,
+   0
+  ],
+  [
+   33,
+   42,
+   2
+  ],
+  [
+   34,
+   42,
+   0
+  ],
+  [
+   33,
+   43,
+   2
+  ],
+  [
+   34,
+   43,
+   0
+  ],
+  [
+   33,
+   44,
+   2
+  ],
+  [
+   33,
+   45,
+   2
+  ]
+ ],
+ "base_hash": "89de92a149be75b3",
+ "note": "round 6 AD: the round-5 fuller run tip fills this frame's hollow point into a 3x2 black blob; the round-4 tip pixels (outlined 1-px point) are restored",
+ "reasons": [
+  {
+   "time": "2026-10-23 09:45",
+   "author": "hd-engineer r12 round 6",
+   "pixels": [
+    [
+     29,
+     40,
+     "plum_0"
+    ],
+    [
+     29,
+     41,
+     "plum_0"
+    ],
+    [
+     30,
+     41,
+     "hair_1"
+    ],
+    [
+     30,
+     42,
+     "outline"
+    ],
+    [
+     33,
+     42,
+     "hair_1"
+    ],
+    [
+     34,
+     42,
+     "outline"
+    ],
+    [
+     33,
+     43,
+     "hair_1"
+    ],
+    [
+     34,
+     43,
+     "outline"
+    ],
+    [
+     33,
+     44,
+     "hair_1"
+    ],
+    [
+     33,
+     45,
+     "hair_1"
+    ]
+   ],
+   "why": "round 6 AD: the round-5 fuller run tip fills this frame's hollow point into a 3x2 black blob; the round-4 tip pixels (outlined 1-px point) are restored"
+  }
+ ]
+}

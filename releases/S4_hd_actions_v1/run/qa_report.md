@@ -20,7 +20,7 @@
 - **jaggies_worst**: [('E_06', 4), ('SE_06', 3), ('E_01', 3), ('E_02', 3), ('E_03', 3)]
 - **max_colours_per_frame**: 16
 - **colours_used**: 17
-- **overrides**: 1
+- **overrides**: 2
 - **hd_subpixel_features**: 0
 - **budget**: {'total_ms': 560, 'lock_ms': 0, 'event_ms': {'footstep_L': 0, 'footstep_R': 280}}
 - **total_ms**: 560

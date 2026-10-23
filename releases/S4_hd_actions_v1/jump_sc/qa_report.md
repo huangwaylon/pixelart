@@ -14,11 +14,11 @@
 - **orphan_pixels_worst**: []
 - **chain_penetrations**: 0
 - **chain_penetrations_by_chain**: {}
-- **jaggies_total**: 106
+- **jaggies_total**: 107
 - **jaggies_worst**: [('SE_01', 4), ('SE_05', 3), ('E_02', 3), ('E_14', 3), ('NE_09', 3)]
 - **max_colours_per_frame**: 15
 - **colours_used**: 16
-- **overrides**: 0
+- **overrides**: 1
 - **hd_subpixel_features**: 0
 - **budget**: {'total_ms': 840, 'lock_ms': 620, 'event_ms': {'takeoff': 120, 'land': 550}, 'takeoff->land_ms': 430}
 - **total_ms**: 840

@@ -1,4 +1,4 @@
-# S4_hd actions v1 (HD SDF reference model, r12 round 5)
+# S4_hd actions v1 (HD SDF reference model, r12 round 6)
 
 The in-game hero body on the HD model. The GD and the animation director approved it, and it includes the round 4 Art Director blocker fix: the E/W/SE/SW ponytail is back to its legacy length and tapers to a 1-px point, and the SE rust arc no longer has a 1-px break. Round 5 extends the same taper to the run swing frames (run E f1/f4/f5, W f5) and to the throw and jump/land tips. Fix notes: `docs/review/r12_hd_fixes_round3.md`, plus the Round 4 section of `00_REVIEW/r12_hd_model/README.md`. `releases/S4_actions_v1` is untouched; it is the rollback.
 
@@ -10,7 +10,7 @@ The in-game hero body on the HD model. The GD and the animation director approve
   - `_prop_front.png` / `_prop_back.png` (prop clips only);
   - `qa_report.md` (all 13 PASS, 0 warnings) and `_8dir.gif`.
 - **`props/*.json`:** the prop definitions these strips were rendered with. smear and snowball are identical to v1. crate has the flattened r12 snow mound, as noted in the v1 post-release note.
-- **`overrides/S4_hd/`:** the hand pixel fixes, re-applied by the pipeline. There are two: `carry_idle/NW/00` (4 px), which hides a temple-skin sliver, and `run/W/05` (6 px erased), which removes the dark outline blob under the 1-px ponytail point.
+- **`overrides/S4_hd/`:** the hand pixel fixes, re-applied by the pipeline. There are four: `carry_idle/NW/00` (4 px), which hides a temple-skin sliver; `run/W/05` (6 px erased), which removes the dark outline blob under the 1-px ponytail point; and `run/W/01` (10 px) and `jump_sc/E/03` (8 px), which restore the round 4 tapered ponytail point that the fuller round 5 tip filled in.
 - **`BUILD.json`:** buildHash per clip, plus the git base commit.
 
 ## Engine notes (GD)
@@ -46,6 +46,8 @@ The in-game hero body on the HD model. The GD and the animation director approve
 - **Climb NW f0 strays:** an unoutlined hand and a cream hem blob. Climb is a low-visibility clip.
 - **jump_sc E/W f2 and f10 ponytail:** still flat and about 3 rows short; legacy is flat in these frames too.
 - **throw E f5 ponytail:** the 4-px cap is now a 2-px shadowed tip, not a 1-px point.
+- **pick_up N grab/heave/heave_strain crate band (Animator B, r14):** the split prop layer drew crate pixels over the body's outline ring (the outline has no depth). This is fixed for v2 in `pipeline/frames.py`, where the outline ring takes the body depth, and is shipped in the r14 line; this v1 build still has it.
+- **Overhead crate floating ~1 px at lockout (E/NE, Animator B, r14):** this is fixed for v2 by the `rest_on` clamp in `data/props/crate.json`, which keeps an overhead load from riding higher above the head than in carry_idle/carry_walk. This v1 build still has it.
 
 ## Rebuild
 ```

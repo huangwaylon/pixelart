@@ -1,0 +1,95 @@
+{
+ "px": [
+  [
+   13,
+   40,
+   1
+  ],
+  [
+   14,
+   40,
+   2
+  ],
+  [
+   15,
+   40,
+   2
+  ],
+  [
+   16,
+   40,
+   0
+  ],
+  [
+   13,
+   41,
+   1
+  ],
+  [
+   14,
+   41,
+   2
+  ],
+  [
+   15,
+   41,
+   0
+  ],
+  [
+   14,
+   42,
+   0
+  ]
+ ],
+ "base_hash": "a81b488c1bbd5b7b",
+ "note": "round 6 AD: the round-5 fuller jump tip flattens this 'rise' frame into a KKK cap at y40; the round-4 tapered point to y42 is restored",
+ "reasons": [
+  {
+   "time": "2026-10-23 09:45",
+   "author": "hd-engineer r12 round 6",
+   "pixels": [
+    [
+     13,
+     40,
+     "plum_0"
+    ],
+    [
+     14,
+     40,
+     "hair_1"
+    ],
+    [
+     15,
+     40,
+     "hair_1"
+    ],
+    [
+     16,
+     40,
+     "outline"
+    ],
+    [
+     13,
+     41,
+     "plum_0"
+    ],
+    [
+     14,
+     41,
+     "hair_1"
+    ],
+    [
+     15,
+     41,
+     "outline"
+    ],
+    [
+     14,
+     42,
+     "outline"
+    ]
+   ],
+   "why": "round 6 AD: the round-5 fuller jump tip flattens this 'rise' frame into a KKK cap at y40; the round-4 tapered point to y42 is restored"
+  }
+ ]
+}
