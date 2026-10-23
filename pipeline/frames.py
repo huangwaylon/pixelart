@@ -364,7 +364,13 @@ class Scene:
             idx = apply_post_outline(idx, self.palette, ["grounded_soles"], deliberate=soles, part_mask=grown)
             self.deliberate[(direction, i)] = self.deliberate.get((direction, i), set()) | soles
         if la.get("ring_trim"):
+            pre_rt = idx
             idx = self._ring_trim(idx, pix, la["ring_trim"])
+            if (rnd.get("face_eyes") or {}).get("s_fringe"):
+                # r16 round 2: the designed fringe edge (per-clump 2-px highlights, dark V-notches) is not a stray
+                # ring speck - the face pass's pixels keep their colour
+                for (yy, xx) in getattr(apply_face_cels, "last_fringe", set()):
+                    idx[yy, xx] = pre_rt[yy, xx]
         if la.get("skin_edge_dark"):
             idx = self._skin_edge(idx, pix)
         if rnd.get("bow_shine"):
@@ -407,7 +413,7 @@ class Scene:
         H, W = idx.shape
         mats = {m for m in pal.ramps if m.startswith("hair")}
         out = idx.copy()
-        for m in mats:
+        for m in sorted(mats):              # r16: sorted -> deterministic when there are 2+ hair materials (hair, hair_dk)
             r = pal.ramps[m]
             if len(r) < 3:
                 continue

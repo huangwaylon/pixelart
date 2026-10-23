@@ -485,13 +485,94 @@ def _face_hem(out, L, eye_x0, eye_x1, palette, view, far_side, stamped, shadow=F
                     if 0 <= xx < W and out[yy, xx] in skin_ids:
                         put(yy, xx, hair_ids[0] if edge else hair_c)    # silhouette edge -> the plum hair outline
     # lone hair pixels inside the face (bridge bang tips): >= 3 of 4 neighbours are skin / face ink
-    for y in range(max(1, L - 4), min(H - 1, L + 6)):
-        for x in range(max(1, x0), min(W - 1, x1 + 1)):
-            if out[y, x] in hair_ids:
-                n = sum(out[y + a, x + b] in face for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1)))
-                if n >= 3:
-                    put(y, x, skin_c)
+    for _ in range(2 if layered else 1):         # r16: a second sweep catches a pixel orphaned by the first
+        for y in range(max(1, L - 4), min(H - 1, L + 6)):
+            for x in range(max(1, x0), min(W - 1, x1 + 1)):
+                if out[y, x] in hair_ids:
+                    n = sum(out[y + a, x + b] in face for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+                    if n >= 3:
+                        put(y, x, skin_c)
     stamped.update(changed)
+
+
+def _s_fringe(out, L, palette, stamped, eye_span=None):
+    """r16 round 2 (AD r16 fixes 1-4, front view): the fringe edge is designed relative to the pinned hem, so it reads
+    as 3 wide clumps in every S frame instead of a comb over a headband. Hem row Hr = L-2 (lash row L).
+    - clumps: the fringe's hair span on Hr split into Left | gap | Centre (4 px on the span centre) | gap | Right, mid tone
+    - the 2 gaps: a dark V-notch at Hr-1 and the forehead (skin shadow) showing at Hr; no dark on the hem row
+    - one 2-px highlight per clump at Hr-1 (its middle), none over the gaps (Hr-2 above a gap is mid tone)
+    - row L-1 (the gap to the lashes): skin shadow only under the clump tips (L/R middle 2, centre 4), base skin elsewhere
+    """
+    H, W = out.shape
+    hair = [palette.index[n] for n in palette.ramps["hair"]]
+    skin = [palette.index[n] for n in palette.ramps["skin"]]
+    dark, mid, hi = hair[0], hair[1], hair[-1]
+    shade, base = skin[0], skin[min(1, len(skin) - 1)]
+    hr = L - 2
+    if hr - 2 < 0 or L >= H:
+        return
+    # fringe span on the hem row: the contiguous hair run over the face (through the face centre), without the plum
+    # outline pixels at its two ends
+    face = set(skin) | {palette.special[k] for k in ("eye", "catchlight", "blush", "mouth") if k in palette.special}
+    fc = [x for x in range(W) if out[L + 1, x] in face]
+    if not fc:
+        return
+    cx = (fc[0] + fc[-1]) // 2
+    if out[hr, cx] not in hair:
+        return
+    a = b = cx
+    while a - 1 >= 0 and out[hr, a - 1] in hair:
+        a -= 1
+    while b + 1 < W and out[hr, b + 1] in hair:
+        b += 1
+    while a < b and out[hr, a] == dark:
+        a += 1
+    while b > a and out[hr, b] == dark:
+        b -= 1
+    if b - a + 1 < 8:
+        return
+    # the centre clump is locked to the eyes (the locked S eye pair), so the notches never slide against them
+    c0 = int(math.floor((eye_span[0] + eye_span[1]) / 2.0 if eye_span else (a + b) / 2.0)) - 1
+    if not (a < c0 - 1 and c0 + 4 < b):
+        return
+    centre = list(range(c0, c0 + 4))
+    gl, gr = c0 - 1, c0 + 4
+    left, right = list(range(a, gl)), list(range(gr + 1, b + 1))
+    if not left or not right:
+        return
+    chg = []
+
+    def put(y, x, v):
+        if 0 <= y < H and 0 <= x < W and out[y, x] != v:
+            out[y, x] = v
+        chg.append((y, x))
+
+    def mid2(cl):
+        if len(cl) < 3:
+            return list(cl)
+        m = (cl[0] + cl[-1]) / 2.0
+        return [int(math.floor(m)), int(math.floor(m)) + 1] if len(cl) % 2 == 0 else [int(m), int(m) + 1]
+    for cl in (left, centre, right):
+        m2 = mid2(cl)
+        for x in cl:
+            for y in (hr - 1, hr):
+                if out[y, x] in hair:
+                    # one highlight per clump: its middle 2 columns at Hr-1 under the model's ring (Hr-2 and up stay as
+                    # shaded), mid tone at the hem
+                    put(y, x, hi if (y == hr - 1 and x in m2) else mid)
+    for g in (gl, gr):
+        if out[hr - 2, g] in hair:
+            put(hr - 2, g, mid)
+        if out[hr - 1, g] in hair:
+            put(hr - 1, g, dark)
+        if out[hr, g] in hair:
+            put(hr, g, shade)
+    tips = set(mid2(left)) | set(centre) | set(mid2(right))
+    for x in range(a, b + 1):
+        if out[L - 1, x] in skin:
+            put(L - 1, x, shade if x in tips else base)
+    stamped.update(chg)
+    apply_face_cels.last_fringe = set(chg)
 
 
 def _open_side(out, cells, palette, stamped):
@@ -542,6 +623,7 @@ def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam
     >= `gap` px nose bridge between the eyes and >= `contour` px skin between each eye and the cheek contour (the
     far eye moves in first, then the near eye moves out). Profile / back views keep the nose-pinned cel."""
     apply_face_cels.last_stamped = set()
+    apply_face_cels.last_fringe = set()
     view, right = face_view(head_world, cam)
     loh = bool(spec.get("lash_over_hair"))
     if view in ("back", "profile"):
@@ -665,6 +747,9 @@ def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam
         _face_hem(out, y0 + (nl if nl is not None else 0), starts[0], starts[1] + len(blocks[1]) - 1, palette, view,
                   far_side, stamped, shadow=bool(spec.get("hem_shadow")), layered=bool(spec.get("hem_shadow")),
                   material=material, back_mat=spec.get("hem_layer_mat"))
+        if view == "front" and spec.get("s_fringe"):
+            _s_fringe(out, y0 + (nl if nl is not None else 0), palette, stamped,
+                      eye_span=(starts[0], starts[1] + len(blocks[1]) - 1))
         if not any("C" in r for r in rows):                 # closed / squint / lowered-lid cel
             for k, b in enumerate(blocks):
                 _open_side(out, [(y0 + j, starts[k] + (i - b[0]), rows[j][i]) for j in range(len(rows)) for i in b],

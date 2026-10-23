@@ -40,3 +40,28 @@ Write-up and AD reasoning: [docs/review/r16_face_bangs.md](../../docs/review/r16
 - Legacy S4_halfup_bow idle, walk and throw are byte-identical.
 - Gemini was skipped because auth expired (OIDC/mTLS).
 - Not committed.
+
+## Round 2 (AD r16 review: the S fringe read as a comb over a headband)
+- **[round2_S_fringe.png](round2_S_fringe.png)**: round 1 vs round 2 S frames (idle f1, walk f1, run f4, throw f3, jump_sc f7) at 8x, plus 1x / 2x. The other boards and GIFs have been regenerated from the round 2 build.
+- **Fix 1-4 as a front-view fringe rule** (`face_eyes.s_fringe`, `pipeline/face.py _s_fringe`). The rule is drawn relative to the pinned hem and the locked S eye pair, so it holds in every S frame of every clip.
+  - Three mid-tone clumps: left | 4-px centre clump (centred on the eyes) | right.
+  - Dark V-notches only in the 2 gaps, one row above the hem, with forehead skin showing in the notch at the hem row. There is no dark on the hem row.
+  - One 2-px highlight per clump at hem-1, and none over the gaps.
+  - The row above the lashes is skin shadow only under the clump tips (at most 4 px); elsewhere it is base skin.
+  - Idle S matches the AD's coordinates exactly: gaps at x21/x26; highlights at x18-19, x23-24, x28-29; shadow at x18-19 and x22-25.
+- **Model merge (fix 5) was tried first.** Three wide front ribbons (centre plus two sides) over one back clump per side were rendered.
+  - At sprite size they still gave a dark centre block and split highlights in S.
+  - They also changed the approved SE/SW fringe.
+  - So the model keeps the round 1 fringe and S uses the rule, which is the fallback the AD allowed.
+  - The hem pin, the 1-row gap to the lashes and the no-lone-pixel rule are unchanged. The lone-pixel cut now makes a second sweep, which catches a pixel orphaned by the first.
+- **Optional cheek narrowing (10 to 8 at y34) was not applied.** The face sits off-centre by a sub-pixel, so the left cheek lost two rows and the left eye ended up against the side lock. It read pinched, not slimmer.
+- **Determinism fix.** With two hair materials (`hair`, `hair_dk`), `_ring_trim` and the pixelrules hair pick iterated a hash-ordered set. Builds therefore varied run to run by a few ponytail and back-of-head pixels.
+  - Both now iterate in sorted order.
+  - Builds are byte-stable across `PYTHONHASHSEED`. I checked throw with two seeds.
+  - The fringe rule's pixels are also exempt from the ring trim.
+- **Checks:**
+  - SE/SW/E/W/N/NE/NW are byte-identical to a deterministic rebuild of round 1 (HEAD) for idle, walk, run, throw, jump_sc, fall and carry_walk. Only S changed.
+  - The S spec scan over all 176 S frames found 0 violations: no dark on the hem row and no shadow run over 4 px.
+  - Flicker scan (run, walk, carry_walk and their r14 copies, S/SE/SW): the per-column gap pattern under the fringe is the same in every frame. In S, the 2 notch columns hold their 2-row notch, and only the outer edge column steps, as in round 1.
+  - Lone face-hair pixels are 0 in run, walk and carry_walk. 3 remain in S, in throw and jump_sc, where the side lock meets the eye corner; the AD accepted the throw case in r15.
+  - QA: 27/27 PASS, no warnings. Legacy S4_halfup_bow idle, walk and throw are byte-identical.

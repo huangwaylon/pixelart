@@ -83,7 +83,7 @@ def apply_rules(idx, pix, palette, rules, face_visible):
                     x += 1
     if "temple_cover" in rules and "hatcuff" in palette.ramps:
         # skin never shows above the hat cuff (temples beside the cuff read as a too-narrow hat)
-        hair_mats = [m for m in set(mat[mat != None].tolist()) if str(m).startswith("hair")]  # noqa: E711
+        hair_mats = sorted(m for m in set(mat[mat != None].tolist()) if str(m).startswith("hair"))  # noqa: E711 (sorted: deterministic, "hair" first)
         hair = _ramp_idx(palette, hair_mats[0]) if hair_mats else None
         for x in range(W):
             rows = np.nonzero(mat[:, x] == "hatcuff")[0]
@@ -101,7 +101,7 @@ def apply_rules(idx, pix, palette, rules, face_visible):
                 if mat[y, x] == "skin" and pix.group[y, x] == head_id and mat[y + 1, x] not in ("skin", None):
                     out[y, x] = skin[0]
     if "backview_skin" in rules and not face_visible:
-        hair_mats = [m for m in set(mat[mat != None].tolist()) if str(m).startswith("hair")]  # noqa: E711
+        hair_mats = sorted(m for m in set(mat[mat != None].tolist()) if str(m).startswith("hair"))  # noqa: E711 (sorted: deterministic, "hair" first)
         hair = _ramp_idx(palette, hair_mats[0]) if hair_mats else None
         skin = _ramp_idx(palette, "skin")
         names = pix.group_names
