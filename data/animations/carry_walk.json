@@ -1,5 +1,6 @@
 {
  "name": "carry_walk",
+ "budget": {"loop_ms": [880, 1040], "engine_speed_u_s": 15, "source": "docs/review/r14_gameplay_timing.md (GD)"},
  "version": 1,
  "frame_size": [
   48,

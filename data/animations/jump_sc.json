@@ -1,5 +1,6 @@
 {
  "name": "jump_sc",
+ "budget": {"max_total_ms": 950, "events": {"takeoff": 130}, "intervals": [{"from": "takeoff", "to": "land", "min": 400, "max": 460}], "source": "docs/review/r14_gameplay_timing.md (GD)"},
  "version": 1,
  "frame_size": [
   64,

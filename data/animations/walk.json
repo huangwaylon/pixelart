@@ -1,5 +1,6 @@
 {
  "name": "walk",
+ "budget": {"loop_ms": [700, 900], "engine_speed_u_s": 21.5, "source": "docs/review/r14_gameplay_timing.md (GD)"},
  "version": 1,
  "loop": true,
  "frame_size": [

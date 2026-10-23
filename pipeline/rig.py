@@ -148,15 +148,37 @@ class Animation:
         self.anim = anim
         self.rig = rig
         rest = anim["rest"]
-        self.poses = [deep_merge(rest, {k: v for k, v in f.items() if k in rest}) for f in anim["frames"]]
+        frames = anim["frames"]
+        validate_frames(frames)
+        self.poses = []
+        for f in frames:
+            own = {k: v for k, v in f.items() if k in rest}
+            if f.get("hold_of") is not None:
+                # r14 hold: reuse a key pose (by frame name or index), optional channel tweaks on top (e.g. tremble)
+                src = frame_index(frames, f["hold_of"])
+                if src >= len(self.poses):
+                    raise ValueError(f'frame {f["name"]}: hold_of {f["hold_of"]!r} must reference an earlier frame')
+                self.poses.append(deep_merge(self.poses[src], own))
+            else:
+                self.poses.append(deep_merge(rest, own))
         self.rest_ch = rig.resolve(rest)
         self.keys = [rig.resolve(p) for p in self.poses]
         self.times = []
         t = 0
-        for f in anim["frames"]:
+        for f in frames:
             self.times.append(t)
             t += f["ms"]
         self.total_ms = t
+        # per-segment shaping (segment i = key i -> next key): None = classic uniform Catmull-Rom (byte-identical path)
+        n = len(frames)
+        self.seg_mode = []
+        for i, f in enumerate(frames):
+            nxt = frames[(i + 1) % n] if (anim.get("loop") or i + 1 < n) else None
+            if nxt is not None and nxt.get("hold_of") is not None and self.keys[(i + 1) % n] == self.keys[i]:
+                self.seg_mode.append("hold")          # body is still through a hold; chains keep simulating
+            else:
+                self.seg_mode.append(f.get("ease"))
+        self.shaped = any(m is not None for m in self.seg_mode)
 
     def channels_at(self, t_ms):
         """Smooth (Catmull-Rom) interpolation between key poses; holds rest before start / after end.
@@ -168,6 +190,8 @@ class Animation:
             t1 = self.times[i + 1] if i + 1 < n else self.total_ms
             u = (t - self.times[i]) / (t1 - self.times[i])
             p0, p1, p2, p3 = (self.keys[(i + k) % n] for k in (-1, 0, 1, 2))
+            if self.shaped and self.seg_mode[i] is not None:
+                return _shaped(self.seg_mode[i], u, p0, p1, p2, p3)
             u2, u3 = u * u, u * u * u
             w = [(-u3 + 2 * u2 - u) / 2, (3 * u3 - 5 * u2 + 2) / 2, (-3 * u3 + 4 * u2 + u) / 2, (u3 - u2) / 2]
             return Rig.blend([p0, p1, p2, p3], w)
@@ -187,9 +211,61 @@ class Animation:
         p0 = keys[max(i - 1, 0)]
         p1, p2 = keys[i], keys[i + 1]
         p3 = keys[min(i + 2, len(keys) - 1)]
+        if self.shaped and i < len(self.seg_mode) and self.seg_mode[i] is not None:
+            return _shaped(self.seg_mode[i], u, p0, p1, p2, p3)
         u2, u3 = u * u, u * u * u
         w = [(-u3 + 2 * u2 - u) / 2, (3 * u3 - 5 * u2 + 2) / 2, (-3 * u3 + 4 * u2 + u) / 2, (u3 - u2) / 2]
         return Rig.blend([p0, p1, p2, p3], w)
+
+
+# ------------------------------------------------------------- r14 timing
+EASES = (None, "linear", "in", "out", "inout", "hold")
+
+
+def frame_index(frames, ref):
+    """Frame reference -> index. Names are preferred (survive retiming); ints are kept for old data."""
+    if isinstance(ref, bool):
+        raise ValueError(f"bad frame reference {ref!r}")
+    if isinstance(ref, int):
+        if not -len(frames) <= ref < len(frames):
+            raise ValueError(f"frame index {ref} out of range (0..{len(frames) - 1})")
+        return ref % len(frames)
+    names = [f["name"] for f in frames]
+    if ref not in names:
+        raise ValueError(f"unknown frame name {ref!r} (frames: {names})")
+    return names.index(ref)
+
+
+def validate_frames(frames):
+    """Fail fast on timing data the sim / exporter can't honour."""
+    names = [f["name"] for f in frames]
+    dup = sorted({x for x in names if names.count(x) > 1})
+    if dup:
+        raise ValueError(f"duplicate frame names {dup} (frame references are by name)")
+    for f in frames:
+        ms = f["ms"]
+        if ms <= 0 or abs(ms / (SIM_DT * 1000) - round(ms / (SIM_DT * 1000))) > 1e-9:
+            raise ValueError(f'frame {f["name"]}: ms={ms} must be a positive multiple of {SIM_DT * 1000:g}')
+        if f.get("ease") not in EASES:
+            raise ValueError(f'frame {f["name"]}: ease {f.get("ease")!r} not in {EASES[1:]}')
+        if f.get("smear") and ms < 30:
+            raise ValueError(f'frame {f["name"]}: smear frames must be >= 30 ms')
+
+
+def _shaped(mode, u, p0, p1, p2, p3):
+    """Cubic Hermite segment p1 -> p2 with Catmull-Rom tangents, shaped per key ("ease" on the segment's start key):
+    linear = straight blend; out = slow out of this key (zero start tangent); in = slow into the next key (zero end
+    tangent); inout = both; hold = stay on p1 (hold_of frames)."""
+    if mode == "hold":
+        return p1
+    if mode == "linear":
+        return Rig.blend([p1, p2], [1 - u, u])
+    m1 = 0.0 if mode in ("out", "inout") else 0.5
+    m2 = 0.0 if mode in ("in", "inout") else 0.5
+    u2, u3 = u * u, u * u * u
+    h00, h10, h01, h11 = 2 * u3 - 3 * u2 + 1, u3 - 2 * u2 + u, -2 * u3 + 3 * u2, u3 - u2
+    # value = h00 p1 + h01 p2 + h10 m1 (p2 - p0) + h11 m2 (p3 - p1)
+    return Rig.blend([p0, p1, p2, p3], [-h10 * m1, h00 - h11 * m2, h01 + h10 * m1, h11 * m2])
 
 
 # ---------------------------------------------------------------- secondary
@@ -231,75 +307,114 @@ class ChainSim:
         ti = 0
         end = max(targets) if targets else 0
         steps = int(round((end + pre) / (SIM_DT * 1000)))
+        last_k = 1
         for step in range(steps + 1):
             t = -pre + step * SIM_DT * 1000
             while ti < len(targets) and abs(targets[ti] - t) < 1e-6:
                 samples[targets[ti]] = {k: v[0].copy() for k, v in state.items()}
                 ti += 1
-            worlds = self.rig.world(self.anim.channels_at(t + SIM_DT * 1000))
-            cols = [(xform_point(worlds[c["bone"]], c["center"]), c["radius"]) for c in self.colliders]
-            body = []
-            if self.body_collide:
-                for bp in body_primitives(self.rig, worlds):
-                    if bp["group"] in self.collide_groups and bp["material"] != "scarf":
-                        M3, tr = bp["M"][:3, :3], bp["M"][:3, 3]
-                        body.append((bp["name"], M3, np.linalg.inv(M3), tr, np.linalg.norm(M3, axis=0).min()))
-            for c in self.chains:
-                cur, prev = state[c["name"]]
-                anchor, rest = self._anchor_and_rest(c, worlds)
-                rest = np.array(rest)
-                acc = np.zeros_like(cur)
-                acc[:, 1] -= c["gravity"]
-                # locomotion: the character moves forward (+Z canonical) but is rendered in place, so moving air
-                # pushes hair/scarf backwards. "trail_wind" (units/s^2) per clip; chains may scale it ("wind" factor)
-                wind = self.anim.anim.get("trail_wind", 0.0) * c.get("wind", 1.0)
-                if wind:
-                    acc[:, 2] -= wind
-                    acc[:, 1] += 0.15 * wind          # slight lift so trailing locks float rather than drag
-                sway = c.get("sway", {}).get(self.anim.anim.get("name", ""))
-                if sway:
-                    # opt-in (HD variant): lateral sway driven by the gait cycle, in the pelvis frame, so long hair
-                    # swings left/right in counter-phase to the hips; the verlet sim adds the lag / follow-through
-                    amp, phase = float(sway[0]), float(sway[1])
-                    cyc = float(sway[2]) if len(sway) > 2 else 1.0           # sway periods per clip loop
-                    w_ = 2 * math.pi * cyc * ((t + SIM_DT * 1000) / self.anim.total_ms) + 2 * math.pi * phase
-                    side = worlds["pelvis"][:3, 0] / np.linalg.norm(worlds["pelvis"][:3, 0])
-                    sv = math.sin(w_)
-                    if len(sway) > 3:                       # shape < 1 flattens the extremes (a held swing)
-                        sv = math.copysign(abs(sv) ** float(sway[3]), sv)
-                    acc += amp * sv * side
-                acc += c["stiffness"] * (rest - cur)
-                nxt = cur + (cur - prev) * (1 - c["damping"]) + acc * SIM_DT * SIM_DT
-                nxt[0] = anchor
-                L = c["seg_len"]
-                for _ in range(6):
-                    for i in range(len(nxt) - 1):
-                        d = nxt[i + 1] - nxt[i]
-                        n = np.linalg.norm(d)
-                        if n < 1e-9:
-                            continue
-                        corr = d * (1 - L / n)
-                        if i == 0:
-                            nxt[i + 1] -= corr
-                        else:
-                            nxt[i] += corr * 0.5
-                            nxt[i + 1] -= corr * 0.5
-                    for i in range(1, len(nxt)):
-                        for cc, r in cols:
-                            rr = r + c.get("thickness", 1.0) * 0.5
-                            v = nxt[i] - cc
-                            dist = np.linalg.norm(v)
-                            if dist < rr and dist > 1e-9:
-                                nxt[i] = cc + v / dist * rr
-                    if body and c.get("collide", True):
-                        self._collide_body(c, nxt, body, anchor)
-                        # the ground is solid too: nothing hangs through the floor (feet are at y=0 when grounded)
-                        floor = worlds["root"][1, 3] + c.get("thickness", 1.0) * 0.5 + 0.4
-                        nxt[1:, 1] = np.maximum(nxt[1:, 1], floor)
-                    if c.get("max_swing"):
-                        self._limit_swing(c, nxt, rest)
-                state[c["name"]] = (nxt, cur)
+            k_sub = self._substeps(t)
+            if k_sub != last_k:
+                # keep the verlet velocity (cur - prev is a per-step displacement) continuous across a dt change
+                for name, (cur, prev) in state.items():
+                    state[name] = (cur, cur - (cur - prev) * (last_k / k_sub))
+                last_k = k_sub
+            for sub in range(k_sub):
+                self._step(state, t + SIM_DT * 1000 * (sub + 1) / k_sub, SIM_DT / k_sub, k_sub)
         return samples
+
+    def _substeps(self, t):
+        """r14: short (< 40 ms) or smear frames move the body a lot per 5 ms step, so the chains would tunnel through
+        it (ponytail whipping through the body). Those are simulated with sim.short_frame_substeps (default 4)
+        substeps (the segment into and out of such a key); all other segments keep the single fixed 5 ms step, so
+        clips without short/smear frames are byte-identical to the pre-r14 sim."""
+        sim = self.rig.char.get("sim", {})
+        forced = self.anim.anim.get("sim_substeps")
+        if forced:
+            return int(forced)
+        frames = self.anim.anim["frames"]
+        T = self.anim.total_ms
+        if self.anim.anim.get("loop"):
+            tt = t % T
+        elif t < 0 or t >= T:
+            return 1
+        else:
+            tt = t
+        i = max(j for j in range(len(frames)) if self.anim.times[j] <= tt + 1e-9)
+        nxt = (i + 1) % len(frames) if self.anim.anim.get("loop") else min(i + 1, len(frames) - 1)
+        # the segment into a short / smear key and the one out of it carry the fast motion
+        for f in (frames[i], frames[nxt]):
+            if f["ms"] < sim.get("short_frame_ms", 40) or f.get("smear"):
+                return int(sim.get("short_frame_substeps", 4))
+        return 1
+
+    def _step(self, state, t_next, dt, k_sub):
+        """Advance every chain to time t_next (ms) by dt seconds. k_sub > 1: damping is rescaled per substep so the
+        decay per unit time matches the single-step sim."""
+        worlds = self.rig.world(self.anim.channels_at(t_next))
+        cols = [(xform_point(worlds[c["bone"]], c["center"]), c["radius"]) for c in self.colliders]
+        body = []
+        if self.body_collide:
+            for bp in body_primitives(self.rig, worlds):
+                if bp["group"] in self.collide_groups and bp["material"] != "scarf":
+                    M3, tr = bp["M"][:3, :3], bp["M"][:3, 3]
+                    body.append((bp["name"], M3, np.linalg.inv(M3), tr, np.linalg.norm(M3, axis=0).min()))
+        for c in self.chains:
+            cur, prev = state[c["name"]]
+            anchor, rest = self._anchor_and_rest(c, worlds)
+            rest = np.array(rest)
+            acc = np.zeros_like(cur)
+            acc[:, 1] -= c["gravity"]
+            # locomotion: the character moves forward (+Z canonical) but is rendered in place, so moving air
+            # pushes hair/scarf backwards. "trail_wind" (units/s^2) per clip; chains may scale it ("wind" factor)
+            wind = self.anim.anim.get("trail_wind", 0.0) * c.get("wind", 1.0)
+            if wind:
+                acc[:, 2] -= wind
+                acc[:, 1] += 0.15 * wind          # slight lift so trailing locks float rather than drag
+            sway = c.get("sway", {}).get(self.anim.anim.get("name", ""))
+            if sway:
+                # opt-in (HD variant): lateral sway driven by the gait cycle, in the pelvis frame, so long hair
+                # swings left/right in counter-phase to the hips; the verlet sim adds the lag / follow-through
+                amp, phase = float(sway[0]), float(sway[1])
+                cyc = float(sway[2]) if len(sway) > 2 else 1.0           # sway periods per clip loop
+                w_ = 2 * math.pi * cyc * (t_next / self.anim.total_ms) + 2 * math.pi * phase
+                side = worlds["pelvis"][:3, 0] / np.linalg.norm(worlds["pelvis"][:3, 0])
+                sv = math.sin(w_)
+                if len(sway) > 3:                       # shape < 1 flattens the extremes (a held swing)
+                    sv = math.copysign(abs(sv) ** float(sway[3]), sv)
+                acc += amp * sv * side
+            acc += c["stiffness"] * (rest - cur)
+            keep = (1 - c["damping"]) if k_sub == 1 else (1 - c["damping"]) ** (1.0 / k_sub)
+            nxt = cur + (cur - prev) * keep + acc * dt * dt
+            nxt[0] = anchor
+            L = c["seg_len"]
+            for _ in range(6):
+                for i in range(len(nxt) - 1):
+                    d = nxt[i + 1] - nxt[i]
+                    n = np.linalg.norm(d)
+                    if n < 1e-9:
+                        continue
+                    corr = d * (1 - L / n)
+                    if i == 0:
+                        nxt[i + 1] -= corr
+                    else:
+                        nxt[i] += corr * 0.5
+                        nxt[i + 1] -= corr * 0.5
+                for i in range(1, len(nxt)):
+                    for cc, r in cols:
+                        rr = r + c.get("thickness", 1.0) * 0.5
+                        v = nxt[i] - cc
+                        dist = np.linalg.norm(v)
+                        if dist < rr and dist > 1e-9:
+                            nxt[i] = cc + v / dist * rr
+                if body and c.get("collide", True):
+                    self._collide_body(c, nxt, body, anchor)
+                    # the ground is solid too: nothing hangs through the floor (feet are at y=0 when grounded)
+                    floor = worlds["root"][1, 3] + c.get("thickness", 1.0) * 0.5 + 0.4
+                    nxt[1:, 1] = np.maximum(nxt[1:, 1], floor)
+                if c.get("max_swing"):
+                    self._limit_swing(c, nxt, rest)
+            state[c["name"]] = (nxt, cur)
 
 
     def _collide_body(self, chain, pts, body, anchor):

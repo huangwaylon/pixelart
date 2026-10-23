@@ -18,7 +18,8 @@ import numpy as np
 from .palette import Palette
 from .frames import Scene, idx_hash, load_override, apply_override
 from . import export as ex
-from .qa import run_qa, qa_markdown
+from .qa import run_qa, qa_markdown, lock_end_ms, timing_budget
+from .rig import frame_index
 from .reference import build_reference, guide_data, grounding_sheet
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -117,20 +118,85 @@ def add_release_smears(scene, palette, props):
             sh = scene.cam.project(worlds["shoulder_R" if b == "hand_R" else "shoulder_L"][:3, 3], scene.pivot)
             hd = scene.cam.project(worlds[b][:3, 3], scene.pivot)
             img = props["front"][d][i]
-            H, W = img.shape
-            steps = 6
-            for t in range(steps + 1):
-                u = 0.35 + 0.65 * t / steps if k == 0 else 0.6 + 0.4 * t / steps   # second frame: shorter tail
-                x = sh[0] + (hd[0] - sh[0]) * u
-                y = sh[1] + (hd[1] - sh[1]) * u - 1.5 * math.sin(math.pi * u)        # slight arc
-                xi, yi = int(math.floor(x)), int(math.floor(y))
-                for dx, dy, c in ((0, 0, core), (1, 0, edge), (0, 1, edge)):
-                    if 0 <= xi + dx < W and 0 <= yi + dy < H and img[yi + dy, xi + dx] < 0:
-                        img[yi + dy, xi + dx] = c
-            if props["layer"][d][i] in (None, "back"):
-                props["layer"][d][i] = "front" if props["layer"][d][i] is None else "split"
-            if "smear" not in props["ids"][i]:
-                props["ids"][i] = props["ids"][i] + ["smear"]
+            u0, u1 = (0.35, 1.0) if k == 0 else (0.6, 1.0)                           # second frame: shorter tail
+            _draw_streak(img, sh, hd, u0, u1, core, edge, arc=1.5)
+            _mark_smear(props, d, i, "front")
+
+
+def _draw_streak(img, a, b, u0, u1, core, edge, arc=0.0, steps=6):
+    """1 px snow streak a -> b over u in [u0, u1] (core + 2 edge px per step), only into empty pixels of `img`."""
+    H, W = img.shape
+    for t in range(steps + 1):
+        u = u0 + (u1 - u0) * t / steps
+        x = a[0] + (b[0] - a[0]) * u
+        y = a[1] + (b[1] - a[1]) * u - arc * math.sin(math.pi * u)        # slight arc
+        xi, yi = int(math.floor(x)), int(math.floor(y))
+        for dx, dy, c in ((0, 0, core), (1, 0, edge), (0, 1, edge)):
+            if 0 <= xi + dx < W and 0 <= yi + dy < H and img[yi + dy, xi + dx] < 0:
+                img[yi + dy, xi + dx] = c
+
+
+def _mark_smear(props, d, i, side):
+    lay = props["layer"][d][i]
+    if lay is None:
+        props["layer"][d][i] = side
+    elif lay != side and lay != "split":
+        props["layer"][d][i] = "split"
+    if "smear" not in props["ids"][i]:
+        props["ids"][i] = props["ids"][i] + ["smear"]
+
+
+def smear_specs(anim):
+    """Frames with a streak FX: "smear": {"streak": bone, ...} (plain "smear": true only relaxes squash / QA)."""
+    return [(i, f["smear"]) for i, f in enumerate(anim["frames"]) if isinstance(f.get("smear"), dict)
+            and f["smear"].get("streak")]
+
+
+def _bone_px(scene, worlds, bone):
+    if bone == "carry":
+        a = scene.cam.project(worlds["hand_L"][:3, 3], scene.pivot)
+        b = scene.cam.project(worlds["hand_R"][:3, 3], scene.pivot)
+        return ((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)
+    return scene.cam.project(worlds[bone][:3, 3], scene.pivot)
+
+
+def add_frame_smears(scene, palette, props):
+    """r14 generalised smear FX (jump spring, carry push, throw step...). Per frame:
+    "smear": {"streak": bone|"carry", "from": bone (optional), "layer": "front"|"back", "tail": 1|2, "stretch": 1.0,
+              "arc": 0.0, "colors": [core, edge]}
+      - with "from": streak from that bone to the streak bone (like the throw release smear), default layer front;
+      - without: motion trail from where the bone was on the previous key (in this frame's sprite space, z_px
+        compensated) towards where it is now, default layer back (behind the body);
+      - tail 2: a shorter trail on the next frame too."""
+    specs = smear_specs(scene.anim_data)
+    if not specs:
+        return
+    n = len(scene.anim.keys)
+    loop = scene.anim_data.get("loop")
+    for i, spec in specs:
+        cols = spec.get("colors", ["snow_3", "snow_1"])
+        core, edge = palette.index[cols[0]], palette.index[cols[1]]
+        side = spec.get("layer", "front" if spec.get("from") else "back")
+        for d in scene.dirs:
+            _, w_cur = scene.primitives(i, d)
+            cur = _bone_px(scene, w_cur, spec["streak"])
+            if spec.get("from"):
+                start = _bone_px(scene, w_cur, spec["from"])
+            else:
+                j = (i - 1) % n if loop else i - 1
+                if j < 0:
+                    continue
+                _, w_prev = scene.primitives(j, d)
+                p = _bone_px(scene, w_prev, spec["streak"])
+                k_ = float(spec.get("stretch", 1.0))          # > 1 lengthens the trail backwards along the motion
+                start = (cur[0] + (p[0] - cur[0]) * k_, cur[1] + (p[1] + scene.z_px(i) - scene.z_px(j) - cur[1]) * k_)
+            for k in range(int(spec.get("tail", 1))):
+                fi = i + k if not loop else (i + k) % n
+                if fi >= n:
+                    break
+                u0, u1 = ((0.35, 1.0) if spec.get("from") else (0.0, 0.8)) if k == 0 else (0.6, 1.0 if spec.get("from") else 0.8)
+                _draw_streak(props[side][d][fi], start, cur, u0, u1, core, edge, arc=float(spec.get("arc", 0.0)))
+                _mark_smear(props, d, fi, side)
 
 
 def anchors_for(scene):
@@ -156,8 +222,7 @@ def write_build(anim_name, scene, palette, base, final, ov_meta, bid, hashes, ou
     durations = [inf["duration_ms"] for inf in infos]
     shadows = [scene.render_shadow(i) for i in range(n)]
     fx = [scene.render_fx(i) for i in range(n)]
-    lock_end = sum(inf["duration_ms"] for inf in infos[:max([i for i, inf in enumerate(infos)
-                                                             if not inf["cancelable"]] + [-1]) + 1])
+    lock_end = lock_end_ms(scene.anim_data["frames"])     # generated from the cancel flags
 
     # --- game deliverables
     ex.save_png(palette.to_rgba(ex.sheet(final, scene.dirs, scene.size)), f"{out_dir}/{anim_name}_sheet.png")
@@ -188,6 +253,14 @@ def write_build(anim_name, scene, palette, base, final, ov_meta, bid, hashes, ou
     }
     if scene.anim_data.get("derived"):
         meta["derivedFrom"] = {"clip": scene.anim_data["derived"]["clip"], "frames": scene.anim_data["derived"]["frames"]}
+        if "source_indices" in scene.anim_data["derived"]:
+            meta["derivedFrom"]["sourceIndices"] = scene.anim_data["derived"]["source_indices"]
+    for pm in meta["props"]:
+        ref = pm.get("spawn_anchor_frame")
+        if isinstance(ref, str):        # r14: by name (survives retiming); the engine also gets the resolved index
+            pm["spawn_anchor_index"] = frame_index(scene.anim_data["frames"], ref)
+        elif isinstance(ref, int):
+            frame_index(scene.anim_data["frames"], ref)       # validates the range
     if props is not None and any("smear" in ids for ids in props["ids"]):
         meta["props"].append({"name": "smear", "ref": "smear", "fx": True})     # declared, engine looks up by ids
     if props is not None:
@@ -287,10 +360,30 @@ def main(argv=None):
         dv = anim["derived"]
         with open(os.path.join(ROOT, "data", "animations", f"{dv['clip']}.json")) as f:
             src = json.load(f)
-        keep = {k: anim[k] for k in ("name", "loop", "derived", "props", "conventions") if k in anim}
+        keep = {k: anim[k] for k in ("name", "loop", "derived", "props", "conventions", "budget") if k in anim}
         anim = dict(src, **keep)
-        a0, a1 = dv["frames"]
+        if "budget" not in keep:
+            anim.pop("budget", None)              # the source clip's budget doesn't apply to the slice
+        # frames: [first, last] inclusive, by frame NAME (r14, survives retiming of the source) or index
+        a0, a1 = (frame_index(src["frames"], r) for r in dv["frames"])
+        if a1 < a0:
+            raise ValueError(f"derived frames {dv['frames']}: last before first")
+        unknown = set(dv.get("overrides", {})) - {f["name"] for f in src["frames"][a0:a1 + 1]}
+        if unknown:
+            raise ValueError(f"derived overrides for frames not in the slice: {sorted(unknown)}")
+        if any(isinstance(r, str) for r in dv["frames"]):
+            anim["derived"] = dict(dv, source_indices=[a0, a1])
         anim["frames"] = [dict(f, **dv.get("overrides", {}).get(f["name"], {})) for f in src["frames"][a0:a1 + 1]]
+        if any(f.get("hold_of") is not None for f in anim["frames"]):
+            # holds inside a slice must point into the slice
+            sl = {f["name"] for f in anim["frames"]}
+            for f in anim["frames"]:
+                h = f.get("hold_of")
+                if h is not None:
+                    hn = h if isinstance(h, str) else src["frames"][h]["name"]
+                    if hn not in sl:
+                        raise ValueError(f"derived frame {f['name']}: hold_of {hn!r} is outside the slice")
+                    f["hold_of"] = hn
         if dv.get("rest_from_first"):
             anim["rest"] = src["rest"]
     if spec:
@@ -311,13 +404,15 @@ def main(argv=None):
     else:
         with open(char_path) as f:
             character = json.load(f)
+    for ln in timing_budget(anim)["errors"]:     # early notice; the same errors fail the QA report (build exit 1)
+        print("  BUDGET", ln)
     scene = Scene(character, anim, palette)
     ov_key = overrides_key(a.anim, a.variant)
     props = None
     if anim.get("props"):
         scene.prop_mode = "separate"            # GD r11: props are their own layers, never baked into the body
     base, final, ov_meta = render_all(scene, a.anim, ov_key)     # renders the body first (depth for the split)
-    if anim.get("props"):
+    if anim.get("props") or smear_specs(anim):
         props = {"front": {}, "back": {}, "layer": {}, "ids": []}
         for d in scene.dirs:
             props["front"][d], props["back"][d], props["layer"][d] = [], [], []
@@ -329,6 +424,7 @@ def main(argv=None):
                 if d == scene.dirs[0]:
                     props["ids"].append(ids)
         add_release_smears(scene, palette, props)
+        add_frame_smears(scene, palette, props)
     tag = a.anim if not a.variant else f"{a.variant}_{a.anim}"
     out_dir = os.path.join(ROOT, "builds", *(["variants"] if a.variant else []), f"{tag}_{bid}")
     if os.path.exists(out_dir):

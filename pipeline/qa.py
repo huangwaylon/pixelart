@@ -26,6 +26,131 @@ def orphan_count(idx, protected=None):
     return int(orphan.sum())
 
 
+def lock_end_ms(frames):
+    """inputLockEnd_ms: the input lock runs to the end of the last non-cancelable frame (0 if all are cancelable)."""
+    last = max([i for i, f in enumerate(frames) if not f.get("cancelable", False)] + [-1])
+    return sum(f["ms"] for f in frames[:last + 1])
+
+
+def _frame_z(anim):
+    rest_z = anim.get("rest", {}).get("z_px", 0)
+    names = [f["name"] for f in anim["frames"]]
+    out = []
+    for f in anim["frames"]:
+        if "z_px" in f:
+            out.append(f["z_px"])
+        elif f.get("hold_of") is not None:
+            h = f["hold_of"]
+            out.append(out[names.index(h) if isinstance(h, str) else h])
+        else:
+            out.append(rest_z)
+    return out
+
+
+def timing_budget(anim):
+    """r14 gameplay timing gate, driven by the clip's "budget" block (GD r14_gameplay_timing.md). All times are ms from
+    the clip start (an event fires at the start of its frame). Keys (all optional):
+      max_total_ms, max_lock_ms, loop_ms [min, max] (cycle length),
+      events {event: deadline_ms}, events_min_pct {event: min % of total},
+      intervals [{"from": event, "to": event, "min": ms, "max": ms}],
+      root_px_end [x, y], root_px_monotonic true, spawn_anchor_last_visible true, min_rise_px_s (cycle_rise_px / cycle),
+      engine_speed_u_s (loops: treadmill foot-slide check in run_qa; retune it with the cycle length), source (note).
+    Always (budget or not): skippable frames must be grounded (z_px == 0)."""
+    errors, m = [], {}
+    frames = anim["frames"]
+    times, t = [], 0
+    for f in frames:
+        times.append(t)
+        t += f["ms"]
+    total = t
+    ev = {}
+    for f, tt in zip(frames, times):
+        for e in f.get("events", []):
+            ev.setdefault(e, tt)
+    zs = _frame_z(anim)
+    air_skip = [f["name"] for f, z in zip(frames, zs) if f.get("skippable") and z > 0]
+    if air_skip:
+        errors.append(f"skippable on airborne frames {air_skip} (GD: only ground holds may be skipped)")
+    b = anim.get("budget")
+    if not b:
+        return {"errors": errors, "metrics": m}
+    lock = lock_end_ms(frames)
+    m.update(total_ms=total, lock_ms=lock, event_ms=ev)
+    if "max_total_ms" in b and total > b["max_total_ms"]:
+        errors.append(f"budget: total {total} ms > max {b['max_total_ms']} ms")
+    if "max_lock_ms" in b and lock > b["max_lock_ms"]:
+        errors.append(f"budget: input lock {lock} ms > max {b['max_lock_ms']} ms (from cancel flags)")
+    if "loop_ms" in b:
+        lo, hi = b["loop_ms"]
+        if not lo <= total <= hi:
+            errors.append(f"budget: cycle {total} ms outside {lo}-{hi} ms")
+    for e, dl in b.get("events", {}).items():
+        if e not in ev:
+            errors.append(f"budget: event {e!r} missing")
+        elif ev[e] > dl:
+            errors.append(f"budget: {e} at {ev[e]} ms > deadline {dl} ms")
+    for e, pct in b.get("events_min_pct", {}).items():
+        if e not in ev:
+            errors.append(f"budget: event {e!r} missing")
+        elif 100.0 * ev[e] / total < pct:
+            errors.append(f"budget: {e} at {100.0 * ev[e] / total:.1f}% < {pct}% of the clip")
+    for iv in b.get("intervals", []):
+        if iv["from"] not in ev or iv["to"] not in ev:
+            errors.append(f"budget: interval {iv['from']}->{iv['to']}: event missing")
+            continue
+        d = ev[iv["to"]] - ev[iv["from"]]
+        m[f"{iv['from']}->{iv['to']}_ms"] = d
+        if d < iv.get("min", -1e9) or d > iv.get("max", 1e9):
+            errors.append(f"budget: {iv['from']}->{iv['to']} {d} ms outside {iv.get('min', '-')}-{iv.get('max', '-')} ms")
+    if "min_rise_px_s" in b:
+        rate = anim.get("cycle_rise_px", 0) * 1000.0 / total
+        m["rise_px_s"] = round(rate, 2)
+        if rate < b["min_rise_px_s"]:
+            errors.append(f"budget: climb rise {rate:.1f} px/s < {b['min_rise_px_s']} px/s")
+    rp = [f.get("root_px", [0, 0]) for f in frames]
+    if b.get("root_px_end") is not None and list(rp[-1]) != list(b["root_px_end"]):
+        errors.append(f"budget: root_px ends at {rp[-1]}, expected {b['root_px_end']}")
+    if b.get("root_px_monotonic"):
+        for k in (0, 1):
+            dif = [rp[i + 1][k] - rp[i][k] for i in range(len(rp) - 1)]
+            if any(x > 0 for x in dif) and any(x < 0 for x in dif):
+                errors.append(f"budget: root_px[{k}] not monotonic {[r[k] for r in rp]}")
+    if b.get("spawn_anchor_last_visible"):
+        from .rig import frame_index
+        for pr in anim.get("props", []):
+            if pr.get("spawn_anchor_frame") is None or pr.get("frames", "all") == "all":
+                continue
+            vis = sorted(frame_index(frames, v) for v in pr["frames"])
+            vis += [i for i, f in enumerate(frames) if f.get("hold_of") is not None
+                    and frame_index(frames, f["hold_of"]) in vis]
+            sa = frame_index(frames, pr["spawn_anchor_frame"])
+            if sa != max(vis):
+                errors.append(f"budget: {pr.get('name')} spawn_anchor_frame {frames[sa]['name']!r} is not the last "
+                              f"frame it is drawn on ({frames[max(vis)]['name']!r})")
+    return {"errors": errors, "metrics": m}
+
+
+def treadmill_slide(scene, speed):
+    """Loops moved by the engine at a constant speed (world u/s): a stance foot (ankle within stance_eps of its lowest
+    point on both keys) must travel back exactly speed * frame_ms between consecutive keys, whatever the (uneven) frame
+    durations are. Returns the worst residual in px (canonical-forward offset x ppu, i.e. the E/W screen worst case)."""
+    lim = scene.anim_data.get("qa", {})
+    eps = lim.get("stance_eps", 0.6)
+    frames = scene.anim_data["frames"]
+    n = len(frames)
+    ws = [scene.rig.world(k, include_height=False) for k in scene.anim.keys]
+    worst = 0.0
+    for side in ("L", "R"):
+        p = np.array([w["ankle_" + side][:3, 3] for w in ws])
+        y0 = p[:, 1].min()
+        for i in range(n if scene.anim_data.get("loop") else n - 1):
+            j = (i + 1) % n
+            if p[i, 1] - y0 < eps and p[j, 1] - y0 < eps:
+                res = abs((p[j, 2] - p[i, 2]) + speed * frames[i]["ms"] / 1000.0) * scene.cam.ppu
+                worst = max(worst, res)
+    return worst
+
+
 def run_qa(scene, final, overrides_meta, palette, release=False):
     errors, warnings, metrics = [], [], {}
     lim = {"max_height_delta_px": 2, "max_orphans": 0, "min_margin_px": 2}
@@ -63,7 +188,26 @@ def run_qa(scene, final, overrides_meta, palette, release=False):
     if slide >= 0.5:
         errors.append(f"foot slide {slide:.2f}px in planted frames (must be < 0.5)")
 
-    # 4. height consistency across directions per frame (silhouette rows)
+    # 3b. r14 treadmill: stance feet vs engine speed, valid for uneven frame durations (budget.engine_speed_u_s)
+    speed = (scene.anim_data.get("budget") or {}).get("engine_speed_u_s")
+    if speed:
+        tm = treadmill_slide(scene, float(speed))
+        metrics["treadmill_slide_px"] = round(tm, 3)
+        if tm > 0.5:
+            errors.append(f"treadmill foot slide {tm:.2f}px vs engine speed {speed} u/s (must be <= 0.5; keep stance "
+                          f"frames uniform or re-solve the feet)")
+
+    # 3c. r14 squash/stretch range: normal keys 0.86-1.15, "smear": true keys 0.84-1.18
+    rng, srng = lim.get("squash_range", [0.86, 1.15]), lim.get("smear_squash_range", [0.84, 1.18])
+    for i, f in enumerate(scene.anim_data["frames"]):
+        sq = scene.anim.poses[i]["squash"]
+        lo, hi = srng if f.get("smear") else rng
+        if not lo <= sq <= hi:
+            (errors if f.get("smear") else warnings).append(
+                f"f{i + 1} {f['name']}: squash {sq} outside {lo}-{hi}{' (smear)' if f.get('smear') else ''}")
+
+    # 4. height consistency across directions per frame (silhouette rows); "smear" frames are exempt
+    smear = {i for i, f in enumerate(scene.anim_data["frames"]) if f.get("smear")}
     worst = (0, None)
     heights = {}
     for i in range(n):
@@ -74,6 +218,8 @@ def run_qa(scene, final, overrides_meta, palette, release=False):
             hs.append(bb[3] - bb[1] + 1 if bb else 0)
         heights[i] = hs
         spread = max(hs) - min(hs)
+        if i in smear:
+            continue
         if spread > worst[0]:
             worst = (spread, i)
     metrics["max_height_delta_px"] = worst[0]
@@ -170,7 +316,11 @@ def run_qa(scene, final, overrides_meta, palette, release=False):
         if sub:
             warnings.append(f"{len(sub)} lod:all HD features < 1 px (use lod ref): {sub[:8]}")
 
-    # 8. timing
+    # 8. timing (+ r14 budget gate: violations are errors -> build exit 1, and the --release gate fails)
+    tb = timing_budget(scene.anim_data)
+    errors += tb["errors"]
+    if tb["metrics"]:
+        metrics["budget"] = tb["metrics"]
     metrics["total_ms"] = scene.anim.total_ms
     air = [scene.anim.times[i] for i in range(n) if scene.anim.poses[i]["z_px"] > 0]
     metrics["airborne_at_ms"] = air[0] if air else None

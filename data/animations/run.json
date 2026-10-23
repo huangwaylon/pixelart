@@ -1,5 +1,6 @@
 {
  "name": "run",
+ "budget": {"loop_ms": [480, 620], "engine_speed_u_s": 60, "source": "docs/review/r14_gameplay_timing.md (GD)"},
  "version": 1,
  "loop": true,
  "frame_size": [

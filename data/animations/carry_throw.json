@@ -1,5 +1,6 @@
 {
  "name": "carry_throw",
+ "budget": {"max_total_ms": 800, "events": {"throw_release": 400}, "spawn_anchor_last_visible": true, "source": "docs/review/r14_gameplay_timing.md (GD)"},
  "version": 1,
  "frame_size": [
   48,

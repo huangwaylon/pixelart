@@ -6,12 +6,31 @@ import os
 import numpy as np
 
 from .mathutil import rot_y, translate, xform_point
-from .rig import Rig, Animation, ChainSim, body_primitives, chain_primitives
+from .rig import Rig, Animation, ChainSim, body_primitives, chain_primitives, frame_index
 from .render import (render_pixels, add_outline, remove_lone_pixels, despeckle, DIRECTION_YAW, Camera,
                      pixel_perfect_outline, selout_outline, regularize_silhouette)
 from .face import apply_face, apply_face_cels
 from .pixelrules import apply_rules, apply_post_outline, pom_cel, angel_ring, ALL_RULES, POST_OUTLINE_RULES
 from .fx import shadow_frame, fx_frames
+
+
+def resolve_holds(anim):
+    """r14 "hold_of" frames inherit the non-pose placement of their source (root_px, per-frame prop placement) unless
+    they set their own; the pose itself is reused in rig.Animation. Returns the clip unchanged when there are no holds."""
+    frames = anim.get("frames", [])
+    if not any(f.get("hold_of") is not None for f in frames):
+        return anim
+    out = []
+    for f in frames:
+        if f.get("hold_of") is not None:
+            src = out[frame_index(frames, f["hold_of"])] if frame_index(frames, f["hold_of"]) < len(out) else None
+            if src is None:
+                raise ValueError(f'frame {f["name"]}: hold_of {f["hold_of"]!r} must reference an earlier frame')
+            f = dict({k: src[k] for k in ("root_px", "prop") if k in src}, **f)
+            if src.get("smear") and "smear" not in f:
+                f["smear"] = True          # holding a smear pose keeps its squash allowance / QA exemption (no FX)
+        out.append(f)
+    return dict(anim, frames=out)
 
 
 def idx_hash(idx):
@@ -22,6 +41,7 @@ class Scene:
     """Everything needed to render one animation; built once per build."""
 
     def __init__(self, character, anim, palette):
+        anim = resolve_holds(anim)
         self.char, self.anim_data, self.palette = character, anim, palette
         self.rig = Rig(character)
         self.anim = Animation(anim, self.rig)
@@ -56,13 +76,31 @@ class Scene:
     def frame_info(self, i):
         f = self.anim_data["frames"][i]
         pose = self.anim.poses[i]
-        return {"index": i, "name": f["name"], "duration_ms": f["ms"], "z_px": self.z_px(i),
+        info = {"index": i, "name": f["name"], "duration_ms": f["ms"], "z_px": self.z_px(i),
                 "phase": f.get("phase", ""), "events": f.get("events", []),
                 "cancelable": bool(f.get("cancelable", False)), "face": pose["face"],
                 "root_px": f.get("root_px", [0, 0]),
-                "props": [pr["name"] for pr in self.anim_data.get("props", []) if pr.get("frames", "all") == "all"
-                          or f["name"] in pr.get("frames", []) or i in pr.get("frames", [])],
+                "props": [pr["name"] for pr in self.anim_data.get("props", []) if self.prop_visible(pr, i)],
                 "planted": bool(pose["plant"])}
+        # r14 opt-in flags: only written when set, so older clips export byte-identical JSON
+        for k in ("skippable", "loop_while_held", "smear"):
+            if f.get(k):
+                info[k] = True
+        if f.get("hold_of") is not None:
+            info["hold_of"] = self.anim_data["frames"][frame_index(self.anim_data["frames"], f["hold_of"])]["name"]
+        return info
+
+    def prop_visible(self, pr, i):
+        """Prop "frames": "all" or a list of frame names / indices; a hold_of frame shows what its source shows."""
+        vis = pr.get("frames", "all")
+        if vis == "all":
+            return True
+        frames = self.anim_data["frames"]
+        idx = {frame_index(frames, v) for v in vis}
+        if i in idx:
+            return True
+        ref = frames[i].get("hold_of")
+        return ref is not None and frame_index(frames, ref) in idx
 
     def z_px(self, i):
         return int(round(self.anim.poses[i]["z_px"] * self.cam.ppu))
@@ -132,11 +170,9 @@ class Scene:
         """Props held by the character (snowball, crate, ...): attached to a bone, visible on listed frames.
         anim "props": [{"name", "bone", "offset", "radii", "rot", "material", "frames": [names or indices]}]"""
         out = []
-        names = [f["name"] for f in self.anim_data["frames"]]
         for pr in self.anim_data.get("props", []):
             # (refs to data/props/*.json are resolved in __init__)
-            vis = pr.get("frames", "all")
-            if vis != "all" and i not in [names.index(v) if isinstance(v, str) else v for v in vis]:
+            if not self.prop_visible(pr, i):
                 continue
             from .mathutil import euler, scale
             if pr["bone"] == "carry":      # virtual bone: midpoint of both hands, oriented like the chest

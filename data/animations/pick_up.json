@@ -1,5 +1,6 @@
 {
  "name": "pick_up",
+ "budget": {"max_total_ms": 1000, "events": {"grab": 350}, "source": "docs/review/r14_gameplay_timing.md (GD)"},
  "version": 1,
  "frame_size": [
   48,

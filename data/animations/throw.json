@@ -1,5 +1,6 @@
 {
  "name": "throw",
+ "budget": {"max_total_ms": 650, "events": {"throw_release": 300}, "source": "docs/review/r14_gameplay_timing.md (GD)"},
  "version": 1,
  "frame_size": [
   48,

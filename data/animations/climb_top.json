@@ -1,5 +1,6 @@
 {
  "name": "climb_top",
+ "budget": {"max_total_ms": 1000, "events_min_pct": {"step_up": 60}, "root_px_end": [0, -30], "root_px_monotonic": true, "source": "docs/review/r14_gameplay_timing.md (GD)"},
  "version": 1,
  "loop": false,
  "frame_size": [

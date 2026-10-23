@@ -1,5 +1,6 @@
 {
  "name": "carry_idle",
+ "budget": {"loop_ms": [1, 4000], "source": "docs/review/r14_gameplay_timing.md (GD)"},
  "version": 1,
  "frame_size": [
   48,

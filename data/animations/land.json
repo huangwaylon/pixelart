@@ -1,5 +1,6 @@
 {
  "name": "land",
- "derived": {"clip": "jump_sc", "frames": [9, 13], "overrides": {"hop": {"cancelable": false}}},
+ "budget": {"max_total_ms": 350, "events": {"land": 0}, "max_lock_ms": 120, "source": "docs/review/r14_gameplay_timing.md (GD)"},
+ "derived": {"clip": "jump_sc", "frames": ["touchdown", "ready"], "overrides": {"hop": {"cancelable": false}}},
  "loop": false
 }

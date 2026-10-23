@@ -1,5 +1,6 @@
 {
  "name": "climb",
+ "budget": {"loop_ms": [1, 1100], "min_rise_px_s": 22, "source": "docs/review/r14_gameplay_timing.md (GD)"},
  "version": 1,
  "loop": true,
  "cycle_rise_px": 24,

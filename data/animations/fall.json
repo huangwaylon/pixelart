@@ -1,5 +1,6 @@
 {
  "name": "fall",
+ "budget": {"loop_ms": [1, 480], "source": "docs/review/r14_gameplay_timing.md (GD)"},
  "version": 1,
  "loop": true,
  "frame_size": [
