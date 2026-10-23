@@ -15,6 +15,6 @@ and a concrete pixel-level fix (what to draw, how many px, which colour role), (
 pixel-perfect curves, orphans), shading, colour, anatomy, consistency across views, and animation principles where relevant."
 out="docs/review/gemini/$name.md"
 { echo "# Gemini 4 Argon critique: $name"; echo; echo "_Context:_ $ctx"; echo; echo "_Images:_ $*"; echo; } > "$out"
-perl -e "alarm 420; exec @ARGV" pi -p --model apple-gemini/gemini-4-argon --no-session --no-context-files --no-tools \
+env -u CLAUDE_TLS_CERT_PATH -u CLAUDE_TLS_KEY_PATH perl -e "alarm 420; exec @ARGV" pi -p --model apple-gemini/gemini-4-argon --no-session --no-context-files --no-tools \
    --append-system-prompt "$sys" $files "$ctx" >> "$out" 2>&1
 echo "wrote $out"
