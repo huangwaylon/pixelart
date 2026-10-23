@@ -399,7 +399,7 @@ def head_off(z, phi, d):
 def build_head():
     K = 30
     zs = [CROWN_L - HEAD_H * (1 - math.cos(math.pi * k / K)) / 2 for k in range(K + 1)]
-    N = 36
+    N = 32
     rows = []
     for i, z in enumerate(zs):
         if i == 0:
@@ -410,11 +410,40 @@ def build_head():
             continue
         rows.append([L(*head_pt(z, 2 * math.pi * j / N)) for j in range(N)])
     head = grid("head", rows, mats=("skin",), sub=2)
+    # toon face normals: transfer from a smooth ellipsoid proxy onto the face front (vertex-group weighted),
+    # so the cel terminator crosses the face as one clean shape (geometry unchanged)
+    vg = head.vertex_groups.new(name="face_normals")
+    for v in head.data.vertices:
+        x, y, z = v.co.x, v.co.y, v.co.z - HC
+        w = smooth((-y - 0.12) / 0.20) * smooth((0.16 - z) / 0.14)
+        if w > 0:
+            vg.add([v.index], w, "REPLACE")
+    pr = []
+    PC, PR = V((0, 0.03, -0.06)), V((0.405, 0.47, 0.52))
+    for i in range(1, 24):
+        th = math.pi * i / 24
+        ring = []
+        for j in range(32):
+            ph = 2 * math.pi * j / 32
+            ring.append(L(PC.x + PR.x * math.sin(th) * math.sin(ph), PC.y - PR.y * math.sin(th) * math.cos(ph),
+                          PC.z + PR.z * math.cos(th)))
+        pr.append(ring)
+    pr = [[L(PC.x, PC.y, PC.z + PR.z)]] + pr + [[L(PC.x, PC.y, PC.z - PR.z)]]
+    proxy = grid("_face_proxy", pr, mats=("skin",), sub=1)
+    proxy.hide_render = True
+    proxy.display_type = "WIRE"
+    dt = head.modifiers.new("face_normals", "DATA_TRANSFER")
+    dt.object = proxy
+    dt.use_loop_data = True
+    dt.data_types_loops = {"CUSTOM_NORMAL"}
+    dt.loop_mapping = "POLYINTERP_NEAREST"
+    dt.vertex_group = "face_normals"
+    dt.mix_factor = 1.0
     # neck
     nk = [L(0, 0.035, -0.28), L(0, 0.035, -0.55), V((0, 0.02, P["sh"] - 0.05))]
     nk = catmull(nk, 4)
     rows = tube_rows(nk, ellipse_prof(lambda f: 0.10, lambda f: 0.11), N=12, up=V((0, 1, 0)))
-    grid("neck", rows, mats=("skin",), cap0=True, cap1=True, sub=2)
+    grid("neck", rows, mats=("skin",), cap0=True, cap1=True, sub=1)
     # nose: a soft low bump (~0.02 protrusion), half-buried in the face
     ys = head_pt(-0.205, 0).y
     rows = []
@@ -432,7 +461,7 @@ def build_head():
             ring.append(L(0.017 * env * math.sin(a), ys + 0.012 - (0.012 + 0.017 * t ** 1.5) * env * max(0.0, ca)
                           + 0.012 * env * max(0.0, -ca), z))
         rows.append(ring)
-    grid("nose", rows, mats=("skin",), cap0=False, cap1=False, sub=2)
+    grid("nose", rows, mats=("skin",), cap0=False, cap1=False, sub=1)
     return head
 
 # ----------------------------------------------------------------------------------------------------------------
@@ -675,14 +704,14 @@ def build_hair(head):
             p += head_normal(z, phi) * whorl_ridge(p, 0.005)
             ring.append(L(*p))
         rows.append(ring)
-    grid("hair_cap", rows, mats=("hair_shadow",), solid=0.02, sub=1, hint=L(0, 0.02, 0))
+    grid("hair_cap", rows, mats=("hair_shadow",), solid=0.0, sub=0, hint=L(0, 0.02, 0))
 
     # --- bangs: ONE continuous shell combed from the ponytail root over a smooth crown dome to a blunt cut.
     #     Panels (centre ~40%) exist only in the bang zone: V notches in the cut + per-panel bulge + notch creases.
     cw = L(*HCEN)
     PROOT = V((0, 1.0, 0.06)).normalized()
     NOTCH = 0.52
-    C, R = 88, 20
+    C, R = 80, 20
     p0, p1 = -math.pi, math.pi
     rows = []
     for i in range(R + 1):
@@ -737,7 +766,7 @@ def build_hair(head):
     bob.modifiers["solidify"].use_even_offset = False
 
     # --- side locks: straight blunt panels from the temple, tapered thickness, cupped to the cheek, split at the tip
-    def lock_volume(name, mat, rows_c, wd, nrm, hw_fn, th_fn, cup, N=16):
+    def lock_volume(name, mat, rows_c, wd, nrm, hw_fn, th_fn, cup, N=12, sub=2):
         rows = []
         n = len(rows_c)
         for k, c in enumerate(rows_c):
@@ -750,7 +779,7 @@ def build_hair(head):
                 w = math.sin(a) * th / 2 * (0.35 + 0.65 * (1 - abs(u) ** 4))
                 ring.append(c + wd * (u * hw) + nrm * (w + cup * (1 - u * u)))
             rows.append(ring)
-        return grid(name, rows, mats=(mat,), cap0=True, cap1=True, sub=2)
+        return grid(name, rows, mats=(mat,), cap0=True, cap1=True, sub=sub)
 
     for s, nm in ((1, "sidelock_L"), (-1, "sidelock_R")):
         cx, cy = 0.448, -0.128
@@ -777,7 +806,7 @@ def build_hair(head):
         parts.append(ob_)
         # soft inner layer (hair_shadow) just behind, slightly wider and shorter
         cs = [L(s * cx, cy, lerp(Z0, Z1 + 0.06, i / 15)) - nrm * 0.026 for i in range(16)]
-        parts.append(lock_volume("sl_in", "hair_shadow", cs, wd, nrm, lambda t: 0.084, lambda t: lerp(0.03, 0.02, t), 0.012))
+        parts.append(lock_volume("sl_in", "hair_shadow", cs, wd, nrm, lambda t: 0.084, lambda t: lerp(0.03, 0.02, t), 0.012, N=8, sub=1))
         join(parts, nm)
 
     # --- back hair: hair_shadow under-layer + 4 crisp overlapping locks with defined edges and slight V tips;
@@ -797,7 +826,7 @@ def build_hair(head):
             xs, yc, ys = back_level(z)
             ring.append(V((xs * u, ys + (yc - ys) * (1 - u * u) - 0.04, z)))
         rows.append(ring)
-    parts.append(grid("hb_under", rows, mats=("hair_shadow",), closed=False, solid=0.022, sub=1,
+    parts.append(grid("hb_under", rows, mats=("hair_shadow",), closed=False, solid=0.022, sub=0,
                       hint=lambda c: V((c.x, 1.0, 0))))
     locks = [  # u centre, u half-width, extra length (+ = shorter), layer lift, material
         (-0.80, 0.27, 0.10, 0.000, "hair"), (0.80, 0.27, 0.10, 0.000, "hair"),
@@ -861,7 +890,7 @@ def build_hair(head):
             PT = [(p.z, p.y, rad(i / (len(path) - 1))) for i, p in enumerate(path)]
         prof = ellipse_prof(lambda f, rs=rs: rad(f) * rs * 1.08 + 0.002, lambda f, rs=rs: rad(f) * rs * 0.92 + 0.002,
                             mod=lambda f, a: 1 + 0.07 * math.cos(3 * a) * smooth(f * 4))
-        rows = tube_rows(path, prof, N=16, up=V((1, 0, 0)), pole1=True)
+        rows = tube_rows(path, prof, N=12, up=V((1, 0, 0)), pole1=True)
         rows[-1] = [path[-1] + (path[-1] - path[-2]).normalized() * 0.03]
         clumps.append(grid("ponytail_%d" % ci, rows, mats=(mat,), cap0=True, sub=1))
     join(clumps, "ponytail")
@@ -996,7 +1025,7 @@ def build_bow(PT):
             a = 2 * math.pi * j / 12
             ring.append(K + V((0.068 * r * math.sin(a), 0.064 * r * -math.cos(a) * (1 if math.cos(a) < 0 else 0.8), z)))
         rows.append(ring)
-    parts.append(grid("bow_knot", rows, mats=("teal_dark",), cap0=True, cap1=True, sub=2))
+    parts.append(grid("bow_knot", rows, mats=("teal_dark",), cap0=True, cap1=True, sub=1))
     # tails: flat swallowtail ribbons lying on the ponytail surface, ending at the shoulder blades
     zend = HC - 1.0
     # walk along the ponytail centreline (handles the backward-running root), tails lie on its upper/back surface
@@ -1031,7 +1060,7 @@ def build_bow(PT):
                     q -= T * (0.06 * (1 - abs(u)))   # swallowtail V notch
                 ring.append(q)
             rows.append(ring)
-        parts.append(grid("bow_tail_%d" % (s > 0), rows, mats=("teal",), closed=False, solid=0.012, sub=2,
+        parts.append(grid("bow_tail_%d" % (s > 0), rows, mats=("teal",), closed=False, solid=0.012, sub=1,
                           hint=lambda c: V((0, 1, 0.3))))
     join(parts, "bow")
 
@@ -1076,7 +1105,7 @@ def coat_front_y(x, z):
 def build_coat():
     tab = resample_table(coat_table(), 4)
     hem, belt = P["hem"], P["belt"]
-    N = 64
+    N = 56
 
     def mod(z, phi, x, y):
         # soft vertical folds on the skirt
@@ -1142,7 +1171,7 @@ def build_coat():
             ring = [V((0.026 * sc * math.cos(2 * math.pi * j / 12), y + dy, z + 0.026 * sc * math.sin(2 * math.pi * j / 12)))
                     for j in range(12)]
             rows.append(ring)
-        bts.append(grid("btn", rows, mats=("gold",), cap0=True, cap1=True, sub=1))
+        bts.append(grid("btn", rows, mats=("gold",), cap0=True, cap1=True, sub=0))
     join(bts, "buttons")
     # back skirt seam (coat_shadow stripe)
     rows = []
@@ -1160,7 +1189,7 @@ def build_scarf():
     for k, (zc, rx, ry, th, hh, tilt, ribs) in enumerate((
             (CHIN - 0.17, 0.285, 0.235, 0.095, 0.105, 0.02, 34),
             (CHIN - 0.06, 0.232, 0.195, 0.085, 0.088, 0.065, 30))):
-        Np, Nr = ribs * 3, 10
+        Np, Nr = ribs * 3, 8
         rows = []
         for i in range(Np):
             th_ = 2 * math.pi * i / Np
@@ -1271,7 +1300,7 @@ def build_arms():
         palm = V((s, 0, 0))
         rows = tube_rows(mp, ellipse_prof(lambda f: mr(f) * 0.82, lambda f: mr(f) * 1.05), N=14, up=palm, pole1=True)
         rows[-1] = [mp[-1] + dm * 0.012]
-        parts = [grid("mit", rows, mats=("teal",), cap0=True, sub=2)]
+        parts = [grid("mit", rows, mats=("teal",), cap0=True, sub=1)]
         # thumb: forward-inward
         tb = m0 + dm * (mlen * 0.30) + V((-s * 0.02, -0.045, 0))
         tdir = (dm * 0.85 + V((-s * 0.15, -0.30, 0))).normalized()
@@ -1279,7 +1308,7 @@ def build_arms():
         rows = tube_rows(tp, ellipse_prof(lambda f: 0.036 * (1 - 0.3 * f), lambda f: 0.034 * (1 - 0.3 * f)), N=10,
                          up=V((0, 0, 1)), pole1=True)
         rows[-1] = [tp[-1] + tdir * 0.025]
-        parts.append(grid("thumb", rows, mats=("teal",), cap0=True, sub=2))
+        parts.append(grid("thumb", rows, mats=("teal",), cap0=True, sub=1))
         ob = join(parts, "mitten_" + side)
         set_pivot(ob, wr)
 
@@ -1403,7 +1432,7 @@ def build_toon():
     skip = ("eye_white", "iris", "iris_dark", "pupil", "catchlight", "lash", "lid_low", "brow", "blush", "mouth",
             "nose_shadow", "hair_sheen", "coat_seam", "hair_cap")
     for ob in ALL:
-        if ob.name in skip:
+        if ob.name in skip or ob.name.startswith("_"):
             continue
         k = len(ob.data.materials)
         ob.data.materials.append(om)
@@ -1452,7 +1481,7 @@ def main():
     hc.empty_display_size = 0.05
     dg = bpy.context.evaluated_depsgraph_get()
     tris = 0
-    for ob in ALL:
+    for ob in [o for o in ALL if not o.name.startswith("_")]:
         ev = ob.evaluated_get(dg)
         me = ev.to_mesh()
         me.calc_loop_triangles()
