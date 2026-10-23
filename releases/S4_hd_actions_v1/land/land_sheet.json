@@ -536,13 +536,17 @@
     }
   },
   "animation": "land",
-  "buildHash": "4551c5de77df",
-  "buildId": "4551c5de77df",
+  "buildHash": "9d6c21666734",
+  "buildId": "9d6c21666734",
   "cameraElevation": 16,
   "cycle_rise_px": 0,
   "derivedFrom": {
     "clip": "jump_sc",
     "frames": [
+      "touchdown",
+      "ready"
+    ],
+    "sourceIndices": [
       9,
       13
     ]

@@ -14,11 +14,12 @@
 - **orphan_pixels_worst**: []
 - **chain_penetrations**: 0
 - **chain_penetrations_by_chain**: {}
-- **jaggies_total**: 60
-- **jaggies_worst**: [('NW_04', 3), ('W_06', 3), ('S_04', 2), ('S_06', 2), ('S_07', 2)]
+- **jaggies_total**: 62
+- **jaggies_worst**: [('E_08', 3), ('NW_04', 3), ('W_06', 3), ('S_04', 2), ('S_06', 2)]
 - **max_colours_per_frame**: 15
 - **colours_used**: 15
 - **overrides**: 0
 - **hd_subpixel_features**: 0
+- **budget**: {'total_ms': 520, 'lock_ms': 410, 'event_ms': {'prop_show': 0, 'throw_release': 270}}
 - **total_ms**: 520
 - **airborne_at_ms**: None

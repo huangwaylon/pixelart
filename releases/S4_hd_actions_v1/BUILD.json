@@ -1,71 +1,71 @@
 {
   "variant": "S4_hd",
-  "revision": "round 4 (AD blocker: E/W/SE/SW ponytail tip; SE arc break)",
-  "git_base": "0c089c6",
-  "note": "built from the working tree on top of this commit (round-4 changes uncommitted at build time)",
+  "revision": "round 5 (AD: run swing-frame ponytail tip; throw E f5 / jump_sc tips)",
+  "git_base": "d010b5d",
+  "note": "built from the working tree on top of this commit (round-5 data + sdf.py sweep by_clip uncommitted at build time)",
   "clips": {
     "carry_idle": {
-      "buildHash": "aedd816ecd43",
+      "buildHash": "bfc94999d330",
       "pipelineVersion": "1.0",
       "paletteId": "frost_r3_oatmeal"
     },
     "carry_throw": {
-      "buildHash": "c9ee5e8eccc7",
+      "buildHash": "6ed842d59d4a",
       "pipelineVersion": "1.0",
       "paletteId": "frost_r3_oatmeal"
     },
     "carry_walk": {
-      "buildHash": "d09b80008dcb",
+      "buildHash": "892218a2012b",
       "pipelineVersion": "1.0",
       "paletteId": "frost_r3_oatmeal"
     },
     "climb": {
-      "buildHash": "b896ebe7cb6c",
+      "buildHash": "9b38f2d9cf1e",
       "pipelineVersion": "1.0",
       "paletteId": "frost_r3_oatmeal"
     },
     "climb_top": {
-      "buildHash": "aacc0e3bf0dd",
+      "buildHash": "a4b877197d06",
       "pipelineVersion": "1.0",
       "paletteId": "frost_r3_oatmeal"
     },
     "fall": {
-      "buildHash": "6567fa8379e8",
+      "buildHash": "2fb0bd605d9e",
       "pipelineVersion": "1.0",
       "paletteId": "frost_r3_oatmeal"
     },
     "idle": {
-      "buildHash": "528f36e487d0",
+      "buildHash": "372f4faf7191",
       "pipelineVersion": "1.0",
       "paletteId": "frost_r3_oatmeal"
     },
     "jump_sc": {
-      "buildHash": "0d9378d55023",
+      "buildHash": "7501b86232dd",
       "pipelineVersion": "1.0",
       "paletteId": "frost_r3_oatmeal"
     },
     "land": {
-      "buildHash": "4551c5de77df",
+      "buildHash": "9d6c21666734",
       "pipelineVersion": "1.0",
       "paletteId": "frost_r3_oatmeal"
     },
     "pick_up": {
-      "buildHash": "372fe97bd9b8",
+      "buildHash": "c0662a986194",
       "pipelineVersion": "1.0",
       "paletteId": "frost_r3_oatmeal"
     },
     "run": {
-      "buildHash": "dc277944b8e3",
+      "buildHash": "44c1359b8651",
       "pipelineVersion": "1.0",
       "paletteId": "frost_r3_oatmeal"
     },
     "throw": {
-      "buildHash": "768cf0fef26a",
+      "buildHash": "34b99732decd",
       "pipelineVersion": "1.0",
       "paletteId": "frost_r3_oatmeal"
     },
     "walk": {
-      "buildHash": "28187737061a",
+      "buildHash": "4523e609b58f",
       "pipelineVersion": "1.0",
       "paletteId": "frost_r3_oatmeal"
     }

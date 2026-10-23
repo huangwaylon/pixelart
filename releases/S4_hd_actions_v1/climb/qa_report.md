@@ -21,5 +21,6 @@
 - **colours_used**: 10
 - **overrides**: 0
 - **hd_subpixel_features**: 0
+- **budget**: {'total_ms': 960, 'lock_ms': 0, 'event_ms': {'grip_R': 0, 'grip_L': 480}, 'rise_px_s': 25.0}
 - **total_ms**: 960
 - **airborne_at_ms**: None

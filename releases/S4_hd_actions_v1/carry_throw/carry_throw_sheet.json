@@ -632,8 +632,8 @@
     }
   },
   "animation": "carry_throw",
-  "buildHash": "c9ee5e8eccc7",
-  "buildId": "c9ee5e8eccc7",
+  "buildHash": "6ed842d59d4a",
+  "buildId": "6ed842d59d4a",
   "cameraElevation": 16,
   "cycle_rise_px": 0,
   "directions": [
@@ -904,7 +904,8 @@
       ],
       "ref": "crate",
       "release_event": "throw_release",
-      "spawn_anchor_frame": "push"
+      "spawn_anchor_frame": "push",
+      "spawn_anchor_index": 1
     },
     {
       "fx": true,

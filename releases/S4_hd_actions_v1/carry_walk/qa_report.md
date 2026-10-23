@@ -8,6 +8,7 @@
 
 ## Metrics
 - **foot_slide_px**: 0.0
+- **treadmill_slide_px**: 0.013
 - **max_height_delta_px**: 2
 - **standing_height_px**: {'S': 35, 'SE': 35, 'E': 35, 'NE': 35, 'N': 34, 'NW': 35, 'W': 35, 'SW': 35}
 - **orphan_pixels_total**: 0
@@ -21,5 +22,6 @@
 - **colours_used**: 15
 - **overrides**: 0
 - **hd_subpixel_features**: 0
+- **budget**: {'total_ms': 960, 'lock_ms': 0, 'event_ms': {'footstep_L': 0, 'footstep_R': 480}}
 - **total_ms**: 960
 - **airborne_at_ms**: None

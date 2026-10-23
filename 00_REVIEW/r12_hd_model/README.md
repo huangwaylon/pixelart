@@ -109,3 +109,14 @@ Not done in round 3: throw E bow colour mix and climb NW strays (deferred to v1.
   - Legacy `_sheet.png` is byte-identical to a fresh HEAD build.
   - `releases/S4_hd_actions_v1` is rebuilt.
 - **Deferred to v1.1:** throw E bow colour mix and climb NW f0 strays.
+
+## Round 5 (AD: run ponytail)
+- **Run swing frames (run E f1/f4/f5, W f5):**
+  - Before: a 0.6 tip radius thinned to a 1-px column that the silhouette pass trimmed, which left a flat 3-px cap.
+  - Fix: run, throw, jump_sc and land now use a fuller tip (radius 0.75, extend 1.5) through the HD-only sweep `by_clip` key. All other clips keep the approved round 4 tip and are byte-identical to round 4.
+  - Run W f5 needed one 6-px override, which erases the dark outline blob under the point.
+  - Tip rows (v1 / r4 / r5): E f1 44/42/45, E f4 42/40/42, E f5 44/42/45, W f5 44/42/43, each ending in a 1-px point.
+  - [r5_01_run_ponytail.png](fixes/r5_01_run_ponytail.png)
+- **throw E f5:** the 4-px cap is now a 2-px shadowed tip.
+- **Unchanged:** jump_sc E/W f2/f10 are still flat, as they are in legacy. They are deferred to v1.1, with the throw E bow colour mix and the climb NW strays.
+- **Checks:** rebuilt on HEAD `d010b5d` (r14 engine). 13/13 QA PASS, 0 warnings. Legacy `_sheet.png` (idle, throw, carry_walk, walk, run) is byte-identical to a fresh HEAD build. `releases/S4_hd_actions_v1` is rebuilt.

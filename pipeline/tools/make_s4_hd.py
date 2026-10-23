@@ -22,6 +22,9 @@ BOW_LOOP = {"R": [3.4, 1.55], "r": 0.5, "w": 2.8, "taper": 0.35, "round": 0.85} 
 BOW_SPRING_GAIN = 0.8
 BOW_MAX_DROP = 0.04
 PONY_TAPER, PONY_TIP_R, PONY_EXTEND = 0.45, 0.6, 4.5
+# round 5 (AD): the run / throw / jump swing frames need a fuller tip radius (a 0.6 tip thins to a 1-px column
+# that the silhouette pass trims, leaving a flat cap); every other clip keeps the approved round-4 tip
+PONY_SWING = {"tip_r": 0.75, "extend": 1.5}
 BOW_TILT, BOW_Y = 26, 11.8
 CROWN_LIFT = -0.42                           # GD4: crown clumps 0.12 closer to the cap (1 px crown bump in run NE)
 HEM_R, HEM_W, HEM_Y = [8.15, 6.8], 1.15, -5.05   # AD2
@@ -144,7 +147,7 @@ def hair_parts():
               # end like the legacy end bead) instead of 3 sub-pixel points that read as a flat cap
               "sweep": {"clumps": 5, "twist": 40, "spread": 0.45, "clump_r": 0.6, "tips": 1, "tip": "sharp", "thickness": 2.3,
                         "taper_len": PONY_TAPER, "side_end": 1.0, "root_len": 0.2, "tip_r": PONY_TIP_R,
-                        "extend": PONY_EXTEND}})
+                        "extend": PONY_EXTEND, "by_clip": {c: dict(PONY_SWING) for c in ("run", "throw", "jump_sc", "land")}}})
     return P
 
 

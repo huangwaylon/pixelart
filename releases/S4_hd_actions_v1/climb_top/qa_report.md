@@ -20,5 +20,6 @@
 - **colours_used**: 10
 - **overrides**: 0
 - **hd_subpixel_features**: 0
+- **budget**: {'total_ms': 720, 'lock_ms': 720, 'event_ms': {'step_up': 450}}
 - **total_ms**: 720
 - **airborne_at_ms**: None

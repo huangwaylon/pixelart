@@ -1,0 +1,75 @@
+{
+ "px": [
+  [
+   33,
+   44,
+   -1
+  ],
+  [
+   34,
+   44,
+   -1
+  ],
+  [
+   32,
+   45,
+   -1
+  ],
+  [
+   33,
+   45,
+   -1
+  ],
+  [
+   34,
+   45,
+   -1
+  ],
+  [
+   33,
+   46,
+   -1
+  ]
+ ],
+ "base_hash": "0201b982cd3ee7f4",
+ "note": "round 5 AD: the swing-frame ponytail tip thins below 1 px and the outline pass leaves a 3x2 dark blob under the 1-px point; erased so the tip ends in the point (x32,y43) with its 1-px outline",
+ "reasons": [
+  {
+   "time": "2026-10-23 09:27",
+   "author": "hd-engineer r13",
+   "pixels": [
+    [
+     33,
+     44,
+     "erase"
+    ],
+    [
+     34,
+     44,
+     "erase"
+    ],
+    [
+     32,
+     45,
+     "erase"
+    ],
+    [
+     33,
+     45,
+     "erase"
+    ],
+    [
+     34,
+     45,
+     "erase"
+    ],
+    [
+     33,
+     46,
+     "erase"
+    ]
+   ],
+   "why": "round 5 AD: the swing-frame ponytail tip thins below 1 px and the outline pass leaves a 3x2 dark blob under the 1-px point; erased so the tip ends in the point (x32,y43) with its 1-px outline"
+  }
+ ]
+}

@@ -2825,7 +2825,25 @@
     "side_end": 1.0,
     "root_len": 0.2,
     "tip_r": 0.6,
-    "extend": 4.5
+    "extend": 4.5,
+    "by_clip": {
+     "run": {
+      "tip_r": 0.75,
+      "extend": 1.5
+     },
+     "throw": {
+      "tip_r": 0.75,
+      "extend": 1.5
+     },
+     "jump_sc": {
+      "tip_r": 0.75,
+      "extend": 1.5
+     },
+     "land": {
+      "tip_r": 0.75,
+      "extend": 1.5
+     }
+    }
    }
   },
   {

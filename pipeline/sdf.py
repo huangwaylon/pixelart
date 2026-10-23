@@ -781,10 +781,13 @@ def _chain_frames(pts, body_c):
     return T, X, Z
 
 
-def _pose_sweep(sp, chain, pts, body_c, face_m, subdiv):
-    """Chain-driven swept clumps along the Catmull-Rom resampled chain (tapered tubes, sharp or forked tips)."""
+def _pose_sweep(sp, chain, pts, body_c, face_m, subdiv, clip=None):
+    """Chain-driven swept clumps along the Catmull-Rom resampled chain (tapered tubes, sharp or forked tips).
+    "by_clip": {clip: {sweep keys}} overrides sweep keys for one clip (e.g. a fuller tip in the run swing)."""
     from .rig import _subdivide
     sw = sp.get("sweep", {})
+    if clip in sw.get("by_clip", {}):
+        sw = dict(sw, **sw["by_clip"][clip])
     widths = chain.get("widths", [1.0])
     pts = np.asarray(pts, float)
     if subdiv > 1 and len(pts) >= 3:
@@ -910,7 +913,7 @@ def pose_parts(char, worlds, chain_pts, body_c, face_m, lod="all", subdiv=1, cli
         pts = chain_pts[c["name"]]
         if c["name"] in sweeps:
             for sp in sweeps[c["name"]]:
-                out += _pose_sweep(sp, c, pts, body_c, face_m, subdiv)
+                out += _pose_sweep(sp, c, pts, body_c, face_m, subdiv, clip)
             tip = c.get("tip")
             if tip:
                 r = tip["radius"]
