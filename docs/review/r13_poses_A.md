@@ -15,3 +15,15 @@ Each pose is built on the approved turnaround: 5.0 heads, the same palette and l
 Passes: 3-4 viewed passes per pose, plus a silhouette check on light, dark and black. All four silhouettes read distinctly.
 
 Open: idle is the closest to the turnaround (by design). A hand-redrawn head tilt could add more life later.
+
+## Round 2 (review 1 poses)
+hands_on_hips was approved and is unchanged. Idle, wave and point now have:
+- **G1 tilt:** one side of the pasted head sits 1 px lower, with the step between the eyes and the mouth. It is a 1-row offset of Artist 3's pixels, not a rotation, and the seam was checked. Wave and point tilt toward the hand; idle tilts toward the free side.
+- **G2 lean:** about 1 px per 8 rows. Wave leans away from the raised arm in an S; point leans in by 3/2/1 px; idle is a 3/2/1 px C.
+- **G3 hem:** lifts 1-2 px on the moving side (under the raised arm, at the back of the lean, and on the free side).
+- **G4 hair:** the curtain ends trail or lift 1-3 px (moved region cells, re-outlined).
+- **Wave:** the forearm tapers to the wrist with an elbow corner at (20,30). The mitten is an open palm with a lighter centre, a heel line and a splayed thumb.
+- **Point:** the figure is 3 px further right, so the index tip is now at x1. The sleeve is tapered (8 to 6 rows) and the fist has a long index and a raised thumb.
+- **Idle:** the free knee turns in 2 px and its heel is up 2 px (sole y140).
+
+Orphans are only catchlights, noses and mouth corners.
