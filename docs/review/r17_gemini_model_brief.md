@@ -118,3 +118,28 @@ waist read separately. The feet are slightly apart and the toes point forward.
 3. Compare it against the current S4_hd. The comparison happens on our side only; Gemini never sees our model.
 4. Send Gemini only its OWN renders for 3-5 self-critique and refinement rounds.
 5. AD verdict per body part.
+
+## Update: user reference images (outside the repo, at /tmp/r17_refs/ref2-5.png; not committed for copyright reasons)
+The user said (verbatim): "look at the face shape and model here, take inspiration from it for the gemini model ...
+doesn't have to be this detailed, but your model should be something like this".
+- **ref2, ref3 (stylised 3D women, front and 3/4 A-pose):** take the FACE from these:
+  - a slim oval-to-heart face with high soft cheekbones;
+  - a narrow jaw tapering to a small, defined chin, and a slim neck;
+  - large almond eyes with a winged upper lash;
+  - a small nose ridge and small full lips;
+  - soft wispy bangs that part slightly and lift off the forehead.
+
+  Also take the body: slim limbs, a defined waist and long tapered legs.
+- **ref4, ref5 (anime cel-shaded toon model, side and front):** take the overall MODEL LANGUAGE from these:
+  - clean anime toon forms;
+  - long straight hair as a few large smooth layered sheets with blunt-cut bangs and side locks;
+  - big anime eyes;
+  - a simple flat-shaded outfit with crisp folds;
+  - slim straight legs and small feet.
+
+  This is the target look, with less detail allowed.
+- **Proportion decision (lead):** about 5.0 heads, to match the APPROVED hand-drawn turnaround. That is taller and slimmer than
+  the brief's earlier 3.2-3.5 heads, and keeps the refs' slim limbs and small waist. The game sprite is squashed from it.
+- **Outfit and colours:** unchanged; our character keeps her winter outfit, bow and ponytail. The refs are only for face,
+  body shape and modelling language.
+- Gemini MAY see these reference images. It still must never see our existing model.
