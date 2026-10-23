@@ -1,0 +1,19 @@
+{
+ "image": "poses_spritesheet.png",
+ "frameSize": [
+  96,
+  160
+ ],
+ "frames": [
+  "idle",
+  "wave",
+  "point",
+  "hands_on_hips",
+  "recoil",
+  "shy",
+  "shiver",
+  "cheer"
+ ],
+ "use": "cut-scene full-body poses",
+ "pivot_hint": "feet at y142"
+}
