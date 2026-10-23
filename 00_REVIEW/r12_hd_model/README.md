@@ -95,5 +95,17 @@ Crops in `fixes/r3_*.png` (v1 legacy | round 2 | round 3). Legacy `_sheet.png` b
 | 9 | 3/4 face | mouth 1 px toward the bridge; `skin_edge_dark` (dark face outline both cheeks); SE stub gone | [r3_09](fixes/r3_09_face_34.png) |
 | 10 | Back ponytail (Anim5) | ponytail is its own group -> plum depth line against the curtain | [r3_10](fixes/r3_10_pony.png) |
 
-Not done: E/SE ponytail flat tip, throw E bow colour mix, climb NW strays (item 10 extras). Release:
+Not done in round 3: throw E bow colour mix and climb NW strays (deferred to v1.1). Release:
 [`releases/S4_hd_actions_v1/`](../../releases/S4_hd_actions_v1/README.md).
+
+## Round 4 (AD blocker)
+- **Ponytail tip (E/W/SE/SW):** the sweep now ends in one tapered point instead of three sub-pixel points. The clumps converge, and the tip runs 4.5 units past the chain end, like the legacy end bead. It now reaches the legacy length and tapers in 2-3 steps to a 1-px point in every frame. Tip row vs v1, across E/W/SE/SW in 11 clips: mean -3.2 px (round 3) -> -0.7 px (round 4).
+  [r4_01_ponytail_tip.png](fixes/r4_01_ponytail_tip.png)
+- **SE rust arc:** 1-2 px clump-line breaks inside the arc are closed (`ring_trim.fill_gaps`), so (23,27) is no longer a gap.
+  [r4_02_se_arc.png](fixes/r4_02_se_arc.png)
+- **No other changes:**
+  - 13/13 QA PASS, 0 warnings.
+  - Heights, penetrations (0), colours (<= 16), and idle/walk flicker match round 3.
+  - Legacy `_sheet.png` is byte-identical to a fresh HEAD build.
+  - `releases/S4_hd_actions_v1` is rebuilt.
+- **Deferred to v1.1:** throw E bow colour mix and climb NW f0 strays.

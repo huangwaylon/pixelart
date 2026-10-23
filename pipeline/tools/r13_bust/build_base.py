@@ -153,7 +153,7 @@ for x in list(range(37, 40)) + list(range(47, 51)) + list(range(58, 61)):
 # =====================================================================================================
 # 4. PONYTAIL (behind, gathered under the knot at the back of the skull), S-taper to the shoulder
 # =====================================================================================================
-PR = rows_tbl([((30, 33), 81), ((34, 37), 82), ((38, 42), 83), ((43, 50), 84), ((51, 56), 83),
+PR = rows_tbl([((22, 29), 86), ((30, 31), 83), ((32, 33), 82), ((34, 37), 82), ((38, 42), 83), ((43, 50), 84), ((51, 56), 83),
                ((57, 60), 82), ((61, 64), 81), ((65, 70), 80)])
 for y, xr in PR.items():
     span(y, HR[y] + 1, xr - 1, "m")
@@ -170,79 +170,69 @@ span(45, 75, 76, "l"); span(46, 75, 75, "l")
 # 5. BOW (binding): knot on the back of the skull x76-81 y22-29, partly behind the ponytail root;
 #    pinched + creased loops, upper rises up-back, lower drops down-back; tip to tip ~41 px, >=3 px inside.
 # =====================================================================================================
-def loop(edges, top, bottom):
-    ys = sorted(edges)
-    for y, (l, r) in edges.items():
-        span(y, l + 1, r - 1, "c")
+# (round 3: the approved turnaround/head_small 3/4 bow at ~1.8x: one near teardrop loop, far loop hidden)
+# half-up gather: the upper hair is pulled back from the crown into the knot
+paint([(9, (71, 76, "K")), (10, (67, 70, "K"), (71, 76, "m"), (77, 77, "K")),
+       (11, (64, 66, "K"), (67, 77, "m"), (78, 78, "K")), (12, (62, 63, "K"), (64, 77, "m"))])
+for y in range(13, 30):
+    for x in range(HR[y] + 1, 78):
+        g[y][x] = "m" if y < 22 else "d"
+    g[y][HR[y]] = "m" if y < 20 else g[y][HR[y]]
+for x, y in [(64, 13), (66, 14), (68, 15), (70, 16), (72, 17), (74, 18), (65, 15), (67, 16), (69, 17), (71, 18),
+             (73, 19), (63, 16), (65, 17), (67, 18), (69, 19), (71, 20), (73, 21)]:
+    g[y][x] = "d"                                  # strands converging on the knot
+span(12, 67, 71, "l"); span(13, 69, 72, "l")
+# near loop: teardrop x78-92, y7-30; rests on the skull/gather, no neck; bottom droops lowest at the back
+LOOP = {8: (82, 88), 9: (81, 89), 10: (80, 90), 11: (79, 91), 12: (78, 91), 13: (78, 92), 14: (78, 92), 15: (78, 92),
+        16: (78, 92), 17: (78, 92), 18: (78, 92), 19: (78, 92), 20: (78, 92), 21: (78, 92), 22: (78, 92), 23: (78, 92),
+        24: (79, 92), 25: (80, 92), 26: (81, 91), 27: (82, 91), 28: (84, 90), 29: (85, 89)}
+span(7, 83, 87, "K")
+for y, (l, r) in LOOP.items():
+    span(y, l + 1, r - 1, "c")
+    g[y][r] = "K"
+    if not 12 <= y <= 21:                          # no K on the knot side
         g[y][l] = "K"
-        g[y][r] = "K"
-    for a, b_ in zip(ys, ys[1:]):                 # close stair gaps so the outline is one connected line
-        (la, ra), (lb, rb) = edges[a], edges[b_]
-        if rb < ra - 1:
-            span(b_, rb, ra - 1, "K")
-        if rb > ra + 1:
-            span(a, ra, rb - 1, "K")
-        if lb > la + 1:
-            span(b_, la + 1, lb, "K")
-        if lb < la - 1:
-            span(a, lb + 1, la, "K")
-    span(top[0], top[1], top[2], "K")
-    span(bottom[0], bottom[1], bottom[2], "K")
-# tails first (they hang from under the knot, behind the loops) - they swing out to the back
-T1 = rows_tbl([((30, 33), 76), ((34, 37), 77), ((38, 41), 78), ((42, 45), 79), ((46, 48), 80), ((49, 50), 81)])
-T2 = rows_tbl([((30, 33), 82), ((34, 37), 83), ((38, 40), 84), ((41, 43), 85), ((44, 45), 86), ((46, 47), 87),
-               ((48, 48), 88)])
-for T, fill, end in ((T2, "KcbK", 49), (T1, "KecbK", 51)):
-    for y, xl in T.items():
-        for i, ch in enumerate(fill):
-            g[y][xl + i] = ch
-    xl = T[end - 1]
-    put(g, xl, end, ("KcKK" if len(fill) == 4 else "KcKbK") + "\n" + ("K__K" if len(fill) == 4 else "K___K"))
-# upper loop (rises up-back)
-UP = {9: (84, 91), 10: (83, 92), 11: (82, 92), 12: (81, 93), 13: (81, 93), 14: (80, 93), 15: (80, 93),
-      16: (80, 92), 17: (80, 91), 18: (80, 90), 19: (80, 88), 20: (80, 86), 21: (80, 84)}
-loop(UP, (8, 86, 90), (22, 80, 82))
-# lower loop (drops down-back)
-LO = {24: (82, 88), 25: (81, 89), 26: (81, 90), 27: (81, 91), 28: (81, 91), 29: (81, 92), 30: (82, 92), 31: (82, 92),
-      32: (83, 92), 33: (83, 92), 34: (83, 92), 35: (84, 92), 36: (84, 92), 37: (84, 92), 38: (84, 91), 39: (85, 91),
-      40: (85, 91), 41: (86, 90), 42: (86, 90), 43: (87, 89)}
-loop(LO, (23, 83, 87), (44, 87, 89))
-# loop shading: lit top-left, one crease each from the pinch, shadowed underside / back rim
-paint([(9, (85, 90, "e")), (10, (84, 89, "e")), (11, (83, 86, "e")), (12, (82, 84, "e")), (13, (82, 83, "e")), (14, (81, 81, "e")), (15, (81, 81, "e"))])
-for x, y in [(81, 20), (82, 19), (83, 18), (84, 17), (85, 17), (86, 16), (87, 16)]:
-    g[y][x] = "b"
-for y in range(13, 22):
-    for x in range(max(UP[y][0] + 1, UP[y][1] - 2), UP[y][1]):
-        g[y][x] = "b"
-paint([(25, (82, 86, "e")), (26, (82, 84, "e")), (27, (82, 83, "e"))])
-for x, y in [(83, 28), (84, 29), (85, 30), (86, 31), (87, 32), (88, 33), (88, 34)]:
-    g[y][x] = "b"
-for y in range(30, 44):
-    for x in range(max(LO[y][0] + 1, LO[y][1] - 2), LO[y][1]):
-        g[y][x] = "b"
-# loop openings: the inside of each loop shows as a dark oval near its outer end (reads as a loop, not a paddle)
-# loop undersides (the fabric turning inward): two-tone below each crease
-for y in range(17, 22):
-    for x in range(UP[y][0] + 1, UP[y][1]):
-        if g[y][x] == "c" and x >= 82 + (21 - y):
+    else:
+        g[y][l] = "c"
+span(30, 86, 88, "K")
+for a, b_ in zip(sorted(LOOP), sorted(LOOP)[1:]):  # close stair gaps in the outline
+    (la, ra), (lb, rb) = LOOP[a], LOOP[b_]
+    if lb > la + 1 and b_ > 21:
+        span(b_, la + 1, lb, "K")
+    if la > lb + 1 and a < 12:
+        span(b_, lb, la - 1, "K")
+    if rb < ra - 1:
+        span(b_, rb, ra - 1, "K")
+# teal_2 on the top arc only; bottom 3 rows in shadow; teal_0 pocket creased to the knot
+paint([(8, (83, 87, "e")), (9, (82, 87, "e")), (10, (82, 85, "e"))])
+for x in range(79, 92):
+    rows = [y for y, (l, r) in LOOP.items() if l < x < r]
+    if rows:
+        for y in sorted(rows)[-3:]:
             g[y][x] = "b"
-for y in range(38, 44):
-    for x in range(LO[y][0] + 1, LO[y][1]):
-        if g[y][x] == "c":
-            g[y][x] = "b"
-# knot (rounded, 6x8), its lower-left tucked behind the ponytail root
-paint([(22, (77, 80, "K")),
-       (23, (76, 76, "K"), (77, 78, "e"), (79, 80, "c"), (81, 81, "K")),
-       (24, (76, 76, "K"), (77, 77, "e"), (78, 80, "c"), (81, 81, "b")),
-       (25, (76, 76, "K"), (77, 78, "c"), (79, 79, "b"), (80, 80, "c"), (81, 81, "b")),
-       (26, (76, 76, "K"), (77, 78, "c"), (79, 79, "b"), (80, 80, "c"), (81, 81, "b")),
-       (27, (76, 76, "K"), (77, 80, "c"), (81, 81, "b")),
-       (28, (76, 76, "K"), (77, 80, "b"), (81, 81, "K")),
-       (29, (77, 80, "K"))])
-# ponytail root over the knot's lower-left corner (hair gathered into the tie)
-paint([(27, (75, 75, "d")), (28, (75, 76, "d")), (29, (75, 76, "d")), (30, (75, 75, "d"))])
-g[26][75] = "P"
-
+for y in range(13, 24):
+    g[y][91] = "b"
+span(19, 80, 83, "b"); span(20, 80, 83, "b"); span(21, 80, 83, "b"); span(22, 80, 83, "b"); span(23, 80, 83, "b")
+span(20, 79, 79, "b")
+# pinched knot 4x10 at x75-78, y12-21: teal_1, a teal_2 glint, teal_0 bottom row; outlined only outside
+for y in range(12, 22):
+    span(y, 75, 78, "c")
+    g[y][74] = "K"
+g[14][76] = "e"
+span(21, 75, 78, "b")
+span(11, 75, 78, "K"); span(22, 74, 77, "K"); g[10][74] = "K"; g[11][74] = "K"
+g[12][78] = g[13][78] = "b"; g[20][78] = "b"
+# one tail: y22-44, tapering 4 -> 3 px and drifting back 3 px, V-cut tip
+TAIL = rows_tbl([((22, 27), (76, 79)), ((28, 33), (77, 80)), ((34, 39), (78, 80)), ((40, 43), (79, 81))])
+for y, (a, b_) in TAIL.items():
+    span(y, a, b_, "c")
+    g[y][a] = "e"
+    g[y][b_] = "b"
+    g[y][a - 1] = "K"
+    g[y][b_ + 1] = "K"
+span(22, 76, 79, "b")
+g[44][78] = "K"; g[44][79] = "c"; g[44][80] = "d"; g[44][81] = "b"; g[44][82] = "K"
+g[45][79] = "K"; g[45][81] = "K"
 # =====================================================================================================
 # 6. COAT: sloped shoulders, armhole seams, armpit wedges, bust crescents (light from upper-left)
 # =====================================================================================================
@@ -299,80 +289,33 @@ paint([(78, (8, 9, "O")), (79, (8, 10, "O")), (80, (9, 10, "O"))])
 # 7. SCARF: 11-12 rows, top dips at the throat, tilted 3/4 (near side lower), overlaps the shoulders,
 #    2 teal_2 ridges per roll, tail 8 px on HER LEFT (viewer's right)
 # =====================================================================================================
-def rng(pairs):
-    d = {}
-    for (a, b), v in pairs:
-        for x in range(a, b + 1):
-            d[x] = v
-    return d
-UTOP = rng([((37, 37), 62), ((38, 38), 61), ((39, 44), 60), ((45, 51), 61), ((52, 60), 60), ((61, 61), 61),
-            ((62, 63), 62)])
-SPLIT = rng([((33, 33), 68), ((34, 34), 67), ((35, 40), 66), ((41, 65), 67), ((66, 66), 68), ((67, 67), 69)])
-LBOT = rng([((33, 33), 70), ((34, 35), 71), ((36, 65), 72), ((66, 66), 71), ((67, 67), 70)])
-# chunky knit: each roll = a lit top edge, body, shadowed underside, and 3 raised ridges (teal_2 crest + teal_0 groove)
-UGROOVE = (44, 52, 59)
-LGROOVE = (39, 48, 57, 64)
-for x in range(33, 68):
-    sp, bot = SPLIT[x], LBOT[x]
-    if x in UTOP:
-        t = UTOP[x]
-        g[t][x] = "K"
-        for y in range(t + 1, sp):
-            g[y][x] = "c"
-        if x < 60:
-            g[t + 1][x] = "e"
-        g[sp - 1][x] = "b" if x >= 40 else "c"
-        g[sp][x] = "b"
-    else:
-        g[sp][x] = "K"
-    for y in range(sp + 1, bot):
-        g[y][x] = "c"
-    if x < 64:
-        g[sp + 1][x] = "e"
-    g[bot - 1][x] = "b"
-    g[bot][x] = "K"
-for gx in UGROOVE:                                # groove leans with the roll's curve; crest lit on its left
-    for y in range(UTOP[gx] + 2, SPLIT[gx] - 1):
-        g[y][gx] = "b"
-    g[UTOP[gx] + 1][gx] = "c"
-    for y in range(UTOP[gx] + 2, SPLIT[gx] - 2):
-        g[y][gx - 1] = "e"
-for gx in LGROOVE:
-    for y in range(SPLIT[gx] + 2, LBOT[gx] - 1):
-        g[y][gx] = "b"
-    g[SPLIT[gx] + 1][gx] = "c"
-    for y in range(SPLIT[gx] + 2, LBOT[gx] - 2):
-        g[y][gx - 1] = "e"
-# rounded ends (outline) + shadowed near ends
-for y in range(62, 66):
-    g[y][36] = "K"
-g[61][37] = "K"
-for y in range(63, 67):
-    g[y][64] = "K"
-g[67][32] = "K"; g[68][32] = "K"; g[69][32] = "K"; g[70][33] = "K"
-g[69][68] = "K"; g[70][68] = "K"; g[71][67] = "K"; g[68][67] = "K"
-for y in range(61, 72):
-    for x in range(58, 68):
-        if g[y][x] in "ec" and x >= (61 if y < 67 else 64):
-            g[y][x] = "b"
+# (round 3: C's chunky roll re-pasted at +10,+5: one 11-row roll, a teal_0 rib every 4 px, teal_2 on the top
+#  2 rows, teal_0 (not K) underneath, rounded corners, near side 1 px higher; 9 px cable tail)
+_, CG = read_grid(C)
+SC = {}
+for cy in range(55, 68):
+    for cx in range(22, 59):
+        ch = CG[cy][cx]
+        if ch in "bce" or (ch == "K" and any(CG[cy + dy][cx + dx] in "bce" for dy in (-1, 0, 1) for dx in (-1, 0, 1)
+                                             if 0 <= cy + dy < 80 and 0 <= cx + dx < 80)):
+            SC[(cx + 10, cy + 5)] = ch
+for (x, y), ch in list(SC.items()):
+    if y >= 71 and ch == "K":
+        SC[(x, y)] = "b"                          # no black row underneath
+for (x, y), ch in sorted(SC.items(), key=lambda t: t[0][1]):
+    yy = y - 1 if x >= 64 else y                  # near side 1 px higher
+    g[yy][x] = ch
+for x in range(64, 70):                           # what the lift uncovers is coat
+    ys = [y for (xx, y) in SC if xx == x]
+    if ys and g[max(ys)][x] in "bceK":
+        g[max(ys)][x] = "o" if max(ys) > 66 else g[max(ys)][x]
 # hair (behind) fills the pockets between the locks and the scarf, so no coat slivers show there
-for y in range(60, 70):
-    for x in list(range(23, 37)) + list(range(63, 77)):
-        if g[y][x] in "oqK." and g[y - 1][x] in "dmPlK" and not (g[y][x] == "K" and y >= 66):
-            if x < 37 and y < SPLIT.get(x, 67) or x >= 63 and y < SPLIT.get(x, 69):
-                g[y][x] = "d"
-# tail (8 px incl. line), drifts 1 px outward every 12 rows
-for y in range(73, 96):
-    x0 = 56 + (y - 73) // 12
-    row = "KeccccbK"
-    for i, ch in enumerate(row):
-        g[y][x0 + i] = ch
-for y in (77, 82, 87, 92):                        # knit ridges across the tail
-    x0 = 56 + (y - 73) // 12
-    span(y, x0 + 1, x0 + 5, "e")
-    g[y][x0 + 6] = "b"
-span(73, 57, 62, "b"); span(72, 56, 63, "K")
-
+for x in list(range(23, 37)) + list(range(63, 77)):
+    for y in range(58, 68):
+        if g[y][x] in "bceK":
+            break
+        if g[y][x] in "oq." and g[y - 1][x] in "dmPlK":
+            g[y][x] = "d"
 # =====================================================================================================
 # 8. PETER PAN COLLAR: two round lobes under the scarf, meeting at the centre front x46; placket + buttons
 # =====================================================================================================
@@ -395,13 +338,21 @@ for y in range(79, 96):
 for y in (82, 83, 90, 91):
     g[y][44] = g[y][45] = "g"
 
+# scarf tail (C's 9 px cable, x55-63), repeated down past the crop
+for y in range(71, 96):
+    cy = 66 + (y - 71) if y <= 84 else 67 + ((y - 85) % 3)
+    for i in range(9):
+        ch = CG[cy][45 + i]
+        g[y][55 + i] = ch if ch in "bce" else "b"
+
 # =====================================================================================================
 # 9. SIDE LOCKS: tapering C-curves, 2 px clumps; far (left) narrower. Tips near y64, over the scarf.
 #    (row, left edge, right edge) of the fill; plum line on both sides and under the tip.
 # =====================================================================================================
-FAR_LOCK = rows_tbl([((26, 30), (27, 32)), ((31, 37), (27, 33)), ((38, 46), (27, 32)), ((47, 54), (27, 31)),
+FAR_LOCK = rows_tbl([((26, 30), (27, 32)), ((31, 37), (27, 33)), ((38, 39), (27, 32)), ((40, 46), (26, 32)),
+                     ((47, 50), (26, 31)), ((51, 54), (27, 31)),
                      ((55, 58), (28, 31)), ((59, 61), (29, 31)), ((62, 63), (30, 31))])
-NEAR_LOCK = rows_tbl([((26, 30), (65, 70)), ((31, 48), (63, 68)), ((49, 54), (63, 68)), ((55, 58), (64, 68)),
+NEAR_LOCK = rows_tbl([((26, 30), (65, 70)), ((31, 39), (63, 68)), ((40, 50), (63, 69)), ((51, 54), (63, 68)), ((55, 58), (64, 68)),
                       ((59, 61), (64, 67)), ((62, 63), (64, 66))])
 for lock, clump in ((FAR_LOCK, 2), (NEAR_LOCK, 3)):
     for y, (a, b) in lock.items():
@@ -412,17 +363,14 @@ for lock, clump in ((FAR_LOCK, 2), (NEAR_LOCK, 3)):
     ys = sorted(lock)
     last = lock[ys[-1]]
     span(ys[-1] + 1, last[0], last[1], "P")
-# clump split lines (start at the root, fade before the tip) + lit dashes
-for x, y in [(29, 32), (29, 33), (29, 34), (29, 35), (29, 36), (29, 37), (29, 38), (29, 39), (29, 40), (29, 41),
-             (29, 42), (30, 43), (30, 44)]:
-    g[y][x] = "d"
-for x, y in [(65, 31), (65, 32), (65, 33), (65, 34), (65, 35), (65, 36), (65, 37), (65, 38), (65, 39), (65, 40),
-             (65, 41), (66, 42), (66, 43), (66, 44)]:
-    g[y][x] = "d"
-for y in range(31, 72):                          # shadow edge on the right side of each lock
+# 2 px clumps: the shadow-side clump of each lock in hair_1 (no 1 px stripes)
+for y in range(31, 72):
     for lock in (FAR_LOCK, NEAR_LOCK):
         if y in lock:
-            g[y][lock[y][1]] = "d"
+            a, b_ = lock[y]
+            for x in range(b_ - 1, b_ + 1):
+                if x > a:
+                    g[y][x] = "d"
 for y, x0, x1 in [(34, 30, 31), (35, 30, 31), (36, 30, 30), (34, 27, 28), (35, 27, 28),
                   (35, 63, 64), (36, 63, 64), (37, 63, 63), (35, 66, 67), (36, 66, 67), (37, 67, 67)]:
     span(y, x0, x1, "l")
@@ -476,12 +424,12 @@ span(31, 54, 59, "d"); g[32][60] = "d"
 # nose: 2 px skin_0 on the shadow side, shifted toward the facing side
 g[45][44] = "v"; g[46][44] = "v"
 # mouth (neutral, 1-2-1) and the signature blush (hatches on a skin_mid patch)
-g[50][42] = "L"; span(51, 43, 44, "L"); g[50][45] = "L"
-put(g, 35, 45, "ttxttx\ntxttxt")
-put(g, 52, 45, "ttxttxt\ntxttxtt")
+span(51, 42, 43, "L"); g[51][44] = "v"          # neutral: flat mouth (review 2)
+span(45, 35, 40, "t"); span(45, 52, 58, "t")    # blush softened to one pale skin_mid row
 
 # ---- cleanup of stray singles (each checked at x12) ----
 g[26][42] = g[26][55] = "s"; g[29][35] = "s"
-g[61][44] = "e"; g[69][65] = "b"; g[73][46] = "o"; g[26][75] = "d"; g[43][86] = "b"; g[45][76] = "m"; g[61][59] = "c"; g[90][56] = "o"
+g[61][44] = "e"; g[69][65] = "b"; g[73][46] = "o"; g[26][75] = "d"; g[45][76] = "m"; g[61][59] = "c"
+g[13][64] = "m"; g[19][73] = "m"; g[21][72] = "d"; g[40][77] = "d"; g[44][80] = "c"
 # ==== END ====
 write(OUT, "# r13 dialogue bust base, round 2 (lead pixel artist). Built from face test C. Hand-authored.", legend, g)

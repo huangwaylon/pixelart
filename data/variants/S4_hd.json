@@ -108,7 +108,8 @@
     "stop_at": [
      "ribbon",
      "hatcuff"
-    ]
+    ],
+    "fill_gaps": 2
    }
   },
   "separate_materials": [
@@ -2817,12 +2818,14 @@
     "twist": 40,
     "spread": 0.45,
     "clump_r": 0.6,
-    "tips": 3,
+    "tips": 1,
     "tip": "sharp",
     "thickness": 2.3,
-    "taper_len": 0.35,
-    "side_end": 0.88,
-    "root_len": 0.2
+    "taper_len": 0.45,
+    "side_end": 1.0,
+    "root_len": 0.2,
+    "tip_r": 0.6,
+    "extend": 4.5
    }
   },
   {

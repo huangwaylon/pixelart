@@ -1,6 +1,6 @@
-# S4_hd actions v1 (HD SDF reference model, r12 round 3)
+# S4_hd actions v1 (HD SDF reference model, r12 round 4)
 
-The in-game hero body on the HD model, approved by the Game Director in the r12 round 2 re-review (`docs/review/r12_hd_review2_GD.md`). It contains round 3 fixes (`docs/review/r12_hd_fixes_round3.md`). `releases/S4_actions_v1` is untouched; it is the rollback.
+The in-game hero body on the HD model. The GD and the animation director approved it, and it includes the round 4 Art Director blocker fix: the E/W/SE/SW ponytail is back to its legacy length and tapers to a 1-px point, and the SE rust arc no longer has a 1-px break. Fix notes: `docs/review/r12_hd_fixes_round3.md`, plus the Round 4 section of `00_REVIEW/r12_hd_model/README.md`. `releases/S4_actions_v1` is untouched; it is the rollback.
 
 ## Contents
 - **13 clips:** idle, walk, run, jump_sc, fall, land, climb, climb_top, pick_up, carry_idle, carry_walk, throw, carry_throw.
@@ -40,6 +40,10 @@ The in-game hero body on the HD model, approved by the Game Director in the r12 
 - At most 16 colours per frame, no semi-alpha.
 - Frame counts, durations, events, cancel windows, root_px / z_px, and the hand_R / hand_L / carry anchors are identical to v1.
 - The shadow and fx strips are byte-identical to v1.
+
+## Deferred to v1.1 (AD, non-blocking)
+- **Throw E bow colour mix:** teal, dark teal and lavender are mixed on the bow in the release frames. These frames are transient.
+- **Climb NW f0 strays:** an unoutlined hand and a cream hem blob. Climb is a low-visibility clip.
 
 ## Rebuild
 ```

@@ -21,6 +21,7 @@ SIDELOCK_FRONT_Z = 0.6                       # was 2.8: profile eye glint (AD1)
 BOW_LOOP = {"R": [3.4, 1.55], "r": 0.5, "w": 2.8, "taper": 0.35, "round": 0.85}  # AD5 + r13 C (puffy)
 BOW_SPRING_GAIN = 0.8
 BOW_MAX_DROP = 0.04
+PONY_TAPER, PONY_TIP_R, PONY_EXTEND = 0.45, 0.6, 4.5
 BOW_TILT, BOW_Y = 26, 11.8
 CROWN_LIFT = -0.42                           # GD4: crown clumps 0.12 closer to the cap (1 px crown bump in run NE)
 HEM_R, HEM_W, HEM_Y = [8.15, 6.8], 1.15, -5.05   # AD2
@@ -139,8 +140,11 @@ def hair_parts():
                             "thickness": 0.75, "taper_len": 0.45}})
     # --- ponytail: 5 twisted sub-clumps swept along the simulated "pony" chain, ending in 3 sharp points
     P.append({"name": "pony_sweep", "chain": "pony", "material": "hair", "group": "head", "lod": "all",
-              "sweep": {"clumps": 5, "twist": 40, "spread": 0.45, "clump_r": 0.6, "tips": 3, "tip": "sharp", "thickness": 2.3,
-                        "taper_len": 0.35, "side_end": 0.88, "root_len": 0.2}})
+              # round 4 (AD blocker): one tapered point at the legacy length (clumps converge; extended past the chain
+              # end like the legacy end bead) instead of 3 sub-pixel points that read as a flat cap
+              "sweep": {"clumps": 5, "twist": 40, "spread": 0.45, "clump_r": 0.6, "tips": 1, "tip": "sharp", "thickness": 2.3,
+                        "taper_len": PONY_TAPER, "side_end": 1.0, "root_len": 0.2, "tip_r": PONY_TIP_R,
+                        "extend": PONY_EXTEND}})
     return P
 
 
@@ -448,7 +452,8 @@ def main():
                    "face_eyes": {"markers": marks[:2], "mouth": marks[2], "gap": 2, "contour": 1,
                                  "gap_front": 3, "mouth_bias": 1},          # round 3: AD4 locked S bridge, AD5 mouth
                    "lineart": {"keep_selout_runs": ["ribbon", "hair"], "skin_edge_dark": True,
-                               "ring_trim": {"margin": 2, "min_run": 3, "stop_at": ["ribbon", "hatcuff"]}},     # round 3 AD1: head rust only
+                               "ring_trim": {"margin": 2, "min_run": 3, "stop_at": ["ribbon", "hatcuff"],
+                                             "fill_gaps": 2}},   # round 3 AD1 head rust only; round 4 no 1-px arc break
                    # anim3: bow loop vs raised teal mitten get a 1 px teal_0 separation (same fill colour)
                    "separate_materials": [["ribbon", "mitten"]],
                    # round 3 (AD2 / anim1): designed bow volume - 2 px teal_2 highlight + 1 teal_0 fold per loop

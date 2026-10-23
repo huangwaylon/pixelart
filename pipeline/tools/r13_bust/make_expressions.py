@@ -229,7 +229,7 @@ BROWS = {
  "angry":       [(30, 36, 37), (31, 37, 39), (32, 39, 42), (32, 52, 55), (31, 55, 58), (30, 58, 60)],
  "embarrassed": [(32, 35, 35), (31, 36, 37), (32, 38, 38), (31, 39, 39), (30, 40, 41),
                  (30, 54, 55), (31, 56, 56), (32, 57, 57), (31, 58, 59), (32, 60, 60)],
- "determined":  [(30, 36, 37), (31, 37, 39), (32, 39, 42), (32, 52, 55), (31, 55, 57), (30, 57, 60)],
+ "determined":  [(30, 36, 39), (31, 37, 41), (32, 40, 42), (32, 52, 55), (31, 54, 58), (30, 57, 60)],
  "worried":     [(32, 35, 37), (31, 38, 39), (30, 40, 41), (31, 42, 42), (31, 53, 53), (30, 54, 55), (31, 56, 57),
                  (32, 58, 60)],
  "content":     [(32, 36, 41), (32, 54, 59)],
@@ -237,10 +237,10 @@ BROWS = {
 
 # ---------- mouths (block, x, y); no lip outlines on open mouths ----------
 MOUTH = {
- "neutral":     (blk("L__L\n_LL_"), 42, 50),
+ "neutral":     (blk("LLv"), 42, 51),
  "smile":       (blk("r____r\n_rrrr_\n__yy__"), 40, 49),
  "laugh":       (blk("LLLLLL\nrrrrrr\nrrrrrr\nryyyyr\n_ryyr_"), 40, 48),
- "surprised":   (blk("_rr_\nrrrr\nryyr\n_rr_"), 42, 48),
+ "surprised":   (blk("_LL_\nLPPL\nLPPL\n_LL_"), 42, 48),
  "sad":         (blk("_LLL_\nL___L"), 41, 50),
  "angry":       (blk("__L__\n_L_L_\nL___L"), 41, 49),
  "embarrassed": (blk("_LL___\nL__L__\n____LL"), 41, 49),
@@ -253,7 +253,7 @@ MOUTH = {
 LIGHT = [(blk("ttxttx\ntxttxt"), 35, 45), (blk("ttxttxt\ntxttxtt"), 52, 45)]
 HEAVY = [(blk("ttxttxt\ntxttxtt\nxttxttt"), 35, 45), (blk("_x_x\nx_x_"), 46, 45),
          (blk("ttxttxttx\ntxttxttxt\nxttxttxtt"), 51, 45)]
-CHEEKS = {"neutral": LIGHT, "smile": LIGHT, "laugh": LIGHT, "content": LIGHT, "embarrassed": HEAVY}
+CHEEKS = {"neutral": [(blk("tttttt"), 35, 45), (blk("ttttttt"), 52, 45)], "smile": LIGHT, "laugh": LIGHT, "content": LIGHT, "embarrassed": HEAVY}
 
 # ---------- FX (block, x, y); '_' = keep ----------
 FX = {
@@ -331,7 +331,7 @@ def patches(g):
 
 
 DESC = {
- "neutral": "open eyes / flat brows / 1-2-1 mouth / signature blush (base face)",
+ "neutral": "open eyes / flat brows / flat mouth / one pale blush row (base face)",
  "smile": "lower lids pushed up / brows raised 1px / 1-3-1 smile / blush",
  "laugh": "closed ^^ / high arch / open D (no lip outline) with crn_2 tongue / blush",
  "surprised": "wide, lash up 1px, 5px irises with pinpoint pupils / floating arcs / small o / shock ticks",

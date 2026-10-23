@@ -14,8 +14,8 @@
 - **orphan_pixels_worst**: []
 - **chain_penetrations**: 0
 - **chain_penetrations_by_chain**: {}
-- **jaggies_total**: 42
-- **jaggies_worst**: [('SE_04', 4), ('W_04', 3), ('S_03', 2), ('S_05', 2), ('S_06', 2)]
+- **jaggies_total**: 50
+- **jaggies_worst**: [('SE_04', 4), ('W_04', 4), ('NW_02', 3), ('S_03', 2), ('S_05', 2)]
 - **max_colours_per_frame**: 15
 - **colours_used**: 15
 - **overrides**: 0

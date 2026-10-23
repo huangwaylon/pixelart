@@ -15,8 +15,8 @@
 - **chain_penetrations**: 0
 - **chain_penetrations_by_chain**: {}
 - **loop_seam_px**: 0.4
-- **jaggies_total**: 59
-- **jaggies_worst**: [('S_01', 2), ('S_02', 2), ('S_03', 2), ('S_04', 2), ('S_05', 2)]
+- **jaggies_total**: 86
+- **jaggies_worst**: [('NE_05', 3), ('NE_07', 3), ('NW_05', 3), ('NW_06', 3), ('W_03', 3)]
 - **max_colours_per_frame**: 15
 - **colours_used**: 15
 - **overrides**: 0

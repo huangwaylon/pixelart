@@ -360,6 +360,26 @@ class Scene:
             hm = (idx == hi) & (np.isin(pix.material, [m]) | np.equal(pix.material, None))
             if not hm.any():
                 continue
+            if spec.get("fill_gaps"):               # close 1-2 px clump-line breaks inside the arc (same row)
+                g = int(spec["fill_gaps"])
+                for y in range(1, H - 1):
+                    row = out[y]
+                    x = 0
+                    while x < W:
+                        if row[x] == hi:
+                            x1 = x + 1
+                            while x1 < W and row[x1] == base and x1 - x - 1 < g + 1:
+                                x1 += 1
+                            n = x1 - x - 1
+                            if 1 <= n <= g and x1 < W and row[x1] == hi and all(
+                                    (out[y - 1, xx] == hi or out[y + 1, xx] == hi) and pix.material[y, xx] == m
+                                    for xx in range(x + 1, x1)):
+                                out[y, x + 1:x1] = hi
+                            x = x1 if x1 > x + 1 else x + 1
+                        else:
+                            x += 1
+                idx = out.copy()
+                hm = (idx == hi) & (np.isin(pix.material, [m]) | np.equal(pix.material, None))
             ext = (idx < 0) | (np.equal(pix.material, None) & (idx != hi))
             k = int(spec.get("margin", 2))
             near = np.zeros_like(ext)

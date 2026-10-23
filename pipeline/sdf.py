@@ -793,6 +793,13 @@ def _pose_sweep(sp, chain, pts, body_c, face_m, subdiv):
     else:
         ws = [widths[min(k, len(widths) - 1)] for k in range(len(pts))]
     ws = np.asarray(ws, float) * sw.get("width_scale", 1.0)
+    if sw.get("extend"):              # opt-in: continue past the last chain point along its tangent (tapered tip length)
+        tq = pts[-1] - pts[-2]
+        tq = tq / max(np.linalg.norm(tq), 1e-9)
+        n_ext = int(sw.get("extend_steps", 2))
+        ext = [pts[-1] + tq * float(sw["extend"]) * (k + 1) / n_ext for k in range(n_ext)]
+        pts = np.vstack([pts] + [e[None] for e in ext])
+        ws = np.concatenate([ws, [ws[-1] * (1 - 0.35 * (k + 1)) for k in range(n_ext)]])
     thick = float(sw.get("thickness", chain.get("thickness", 1.0)))
     ez = np.minimum(thick, ws)
     seglen = np.linalg.norm(np.diff(pts, axis=0), axis=1)
