@@ -2,25 +2,24 @@
 # Hand-authored face patches over bust_base.pix (lead pixel artist).
 extends: bust_base.pix
 patch: 35 30
-_dd_______
-_s___ss___
-s___dddd__
+_dddd_____
+_s________
+s____ddd__
 ___sssss__
 K_________
 s_KKKKKKKK
 patch: 51 30
 ______dddd_
-___s___ss__
+________s__
 _dddd____s_
 __sssss____
 _________KK
 KKKKKKKK__s
+patch: 52 32
+dd
 patch: 35 45
-ssssss
 ssssss
 patch: 52 45
 sssssss
-sssssss
-patch: 41 50
-_s__s
-LL__L
+patch: 41 51
+L__LL

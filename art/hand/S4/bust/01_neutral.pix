@@ -1,3 +1,3 @@
-# r13 dialogue bust: neutral. open eyes / flat brows / 1-2-1 mouth / signature blush (base face)
+# r13 dialogue bust: neutral. open eyes / flat brows / flat mouth / one pale blush row (base face)
 # Hand-authored face patches over bust_base.pix (lead pixel artist).
 extends: bust_base.pix
