@@ -70,3 +70,13 @@ Rule: `render.face_eyes.hem_pin` (`pipeline/face.py` `_face_hem` / `_skin_pocket
 - The SE/SW contact sheets and the 8-dir GIFs are regenerated.
 - 185 px changed in total across the 27 sheets.
 - Rebuilt the 13 base clips and the 14 `*_r14` copies: QA 27/27 PASS, no warnings. Legacy idle, walk and throw are byte-identical.
+
+## Round 4 (AD review 3: SW regression)
+- **SW temple edge:** the hem rule now converts **skin only**, never an outline pixel. A pixel it places on the silhouette edge is drawn in the plum hair-outline colour, never mid-hair.
+  - Every listed pixel is back to the round 2 plum: walk f1/f2/f5, run f8, throw f1/f4 and jump_sc f2/f9.
+  - The same fix also turned about 40 older round-2 mid-hair silhouette pixels on the SW temple into plum.
+  - 5 dark-outline pixels became plum, where the temple is now hair: throw SW f4 (16,33) and pick_up_r14 SW f10 (16,33-35).
+  - The jump_sc SW f2 notch, the mirror of the SE fix, is now closed.
+- **N / back views:** `last_stamped` is reset on every face call. A back view used to inherit the previous frame's stamped pixels, and the frames.py restore then rewrote those pixels (N idle f2-f6, carry_walk f3, jump_sc f12). NE/N/NW are now pixel-identical to round 2.
+- **[round4_sw.png](round4_sw.png):** round 3 vs round 4 crops at 8x.
+- Rebuilt all 27 clips: QA PASS, no warnings. Legacy idle, walk and throw are byte-identical.

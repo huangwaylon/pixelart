@@ -334,6 +334,7 @@ def _lash_over_hair(idx, x, y, hair_ids, skin_ids):
 
 def apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam, lash_over_hair=False):
     apply_face_cels.last_cel = None
+    apply_face_cels.last_stamped = set()          # round 4: never leak the previous frame's stamps (back views)
     view, right = face_view(head_world, cam)
     if view == "back":
         return idx, view
@@ -421,6 +422,9 @@ def _face_hem(out, L, eye_x0, eye_x1, palette, view, far_side, stamped):
     changed = []
 
     def put(y, x, c):
+        if c == hair_c and any(not (0 <= y + a < H and 0 <= x + b < W) or out[y + a, x + b] < 0
+                               for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+            c = hair_ids[0]          # round 4: hair placed on the silhouette edge is the plum hair outline, never mid-hair
         if out[y, x] != c:
             out[y, x] = c
             changed.append((y, x))
@@ -458,8 +462,12 @@ def _face_hem(out, L, eye_x0, eye_x1, palette, view, far_side, stamped):
             for x, step in ((x0, -1), (x1, 1)):
                 for k in (1, 2):
                     xx = x + step * k
+                    # only SKIN is converted (never an outline pixel); a skin pixel on the silhouette edge (touching
+                    # transparency) becomes the plum hair-outline colour, not mid-hair (round 4, SW mirror)
+                    edge = any(not (0 <= yy + a < H and 0 <= xx + b < W) or out[yy + a, xx + b] < 0
+                               for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1)))
                     if 0 <= xx < W and out[yy, xx] in skin_ids:
-                        put(yy, xx, hair_c)
+                        put(yy, xx, hair_ids[0] if edge else hair_c)    # silhouette edge -> the plum hair outline
     # lone hair pixels inside the face (bridge bang tips): >= 3 of 4 neighbours are skin / face ink
     for y in range(max(1, L - 4), min(H - 1, L + 6)):
         for x in range(max(1, x0), min(W - 1, x1 + 1)):
@@ -517,6 +525,7 @@ def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam
     (modelled eye positions on the head, head-bone space), the mouth at the projected mouth marker. Spacing rules:
     >= `gap` px nose bridge between the eyes and >= `contour` px skin between each eye and the cheek contour (the
     far eye moves in first, then the near eye moves out). Profile / back views keep the nose-pinned cel."""
+    apply_face_cels.last_stamped = set()
     view, right = face_view(head_world, cam)
     loh = bool(spec.get("lash_over_hair"))
     if view in ("back", "profile"):
