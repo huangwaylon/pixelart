@@ -143,3 +143,12 @@ doesn't have to be this detailed, but your model should be something like this".
 - **Outfit and colours:** unchanged; our character keeps her winter outfit, bow and ponytail. The refs are only for face,
   body shape and modelling language.
 - Gemini MAY see these reference images. It still must never see our existing model.
+- **ref6, ref7 (hand-painted stylised anime 3D character, a profile and a 3/4 look-back), added by the user as
+  "more good references":**
+  - **Hair:** big glossy sheets with blunt hime bangs; the long hair falls as broad tapering sheets with a few loose
+    thin strands. A high ponytail bursts out in voluminous layered clumps with a scrunchie at the root, a great model for
+    OUR half-up ponytail volume.
+  - **Face:** a small pointed chin, a small nose, a slim neck, and large eyes with a thick upper lash and a wing.
+  - **Body:** slim and petite, with narrow shoulders.
+
+  We take the hair, face and silhouette language, NOT the goth styling or colours.
