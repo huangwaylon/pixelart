@@ -25,4 +25,8 @@
 - **Shy:** the clasp is dropped 2 px, clear of the scarf. The head is re-pasted from the fixed `front_tiltR_embarrassed`.
 - **No auto clean-up.** Sleeve, band and lock outlines now take their lit or dark side from the edge normal, so stair-steps don't flip colour. The remaining strays are fixed pixel by pixel in each script.
 
+## Gemini triage (owner H)
+- **Recoil:** the lower trailing lock is shortened and now ends tucked at y36, so there is one sweep and no second claw.
+- **Shy and shiver:** the hem sags 1 px at the centre (the bottom edge drops to y87 across x37-56) and the corners are rounded by 1 px. Shiver's automatic clean-up is gone too; its strays are now fixed by hand.
+
 **Checks:** 3+ viewed passes each, plus a silhouette pass. 25-29 colours per file. The only orphans are catchlights, the nose, FX and the AD-approved knot highlight.
