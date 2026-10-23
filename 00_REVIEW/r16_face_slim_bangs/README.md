@@ -65,3 +65,27 @@ Write-up and AD reasoning: [docs/review/r16_face_bangs.md](../../docs/review/r16
   - Flicker scan (run, walk, carry_walk and their r14 copies, S/SE/SW): the per-column gap pattern under the fringe is the same in every frame. In S, the 2 notch columns hold their 2-row notch, and only the outer edge column steps, as in round 1.
   - Lone face-hair pixels are 0 in run, walk and carry_walk. 3 remain in S, in throw and jump_sc, where the side lock meets the eye corner; the AD accepted the throw case in r15.
   - QA: 27/27 PASS, no warnings. Legacy S4_halfup_bow idle, walk and throw are byte-identical.
+
+## Round 3 (Gemini r2 critique, checked against the sheets; AD r17 note 1)
+- **[round3.png](round3.png):** round 2 vs round 3 for S / SE / SW / E in idle f1, run f4, throw f1 and jump_sc f7, at 8x plus 1x / 2x.
+- **[round3_G1_dots_vs_band.png](round3_G1_dots_vs_band.png):** the two S highlight treatments at 8x and 1x / 2x.
+- **G2, SE/SW balloon cheek (confirmed).** In SE idle the far contour ran x28, x28, x28, then snapped to x26.
+  - A model jaw change was tried first. Narrowing the jaw doesn't move that edge, because the cranium sphere sets it, and changing the cranium would change every view. So this is a rule: `face_eyes.jaw_taper` (`_jaw_taper`).
+  - Below the eyes, the far contour (or both sides in S) steps in at least 1 px per row, the outline moves in with it, and the new corner pixel is skin shadow.
+  - A silhouette skin pixel that the later outline pass will darken is treated as outline, so SW (lit side) tapers the same way as SE.
+  - SE idle is now 28 / 27 / 26; SW mirrors it.
+  - Far-cheek vertical runs under the eyes, over all 176 frames: SE 0, SW 6. The 6 are carry frames and land_heavy, where the crate or arms sit against the chin.
+- **G5, jump_sc squint chin (confirmed in S).** The rows went 8 / 7 / 3. The same taper rule now gives 8 / 6 / 3 with a centred tip.
+- **G1, S comb at 1x (partly accepted).**
+  - The isolated 2-px highlight dots are replaced by one clump-wide highlight run per clump (`s_fringe: "band"`). At 1x it reads as a continuous sheen with two notches.
+  - The AD's notches, notch skin and tip shadow are unchanged. The spec scan over 176 S frames found no dark on the hem row and no shadow run over 4 px.
+  - Rejected: side locks stepping up toward the temples. That would undo the user's "longer near the sides".
+- **G3, E/W forehead wall.** In profile, the front-most skin pixel of the top forehead row under the lifted fringe is now skin shadow, so the face front curves in under the bang (`profile_brow`).
+- **G4, SW run f4 visor (confirmed).** Where the 3/4 fringe overhangs the far contour, its tip now drops 1 px in the plum hair-outline tone on the lash row, so it arcs down.
+- **AD r17-1, throw f0.** Hem-row skin outside the face columns, under hair, is folded into the clump: x18-19 are now hair.
+- **Checks:**
+  - Flicker scan (run, walk, carry_walk and their r14 copies, S/SE/SW): the per-column gap patterns are identical to round 2, and lone face-hair pixels are 0.
+  - Eye pixels hidden by hair: 0 in idle, walk, run and jump; throw is unchanged at 3 (its pre-existing joyful frames).
+  - QA: 27/27 PASS, no warnings. The jump_sc E f4 ponytail override was re-approved; its pixels are unchanged.
+  - Legacy idle, walk and throw are byte-identical.
+  - Builds are byte-identical across `PYTHONHASHSEED` (walk checked with two seeds).

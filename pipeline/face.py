@@ -471,6 +471,16 @@ def _face_hem(out, L, eye_x0, eye_x1, palette, view, far_side, stamped, shadow=F
                 put(yy, x, skin_c)
             if shadow and out[yy - 1, x] in hair_ids and out[yy, x] in skin_ids:
                 put(yy, x, skin_ids[0])       # r16: the lifted fringe casts a 1-row shadow on the forehead
+    if view == "three_quarter" and layered:
+        # r16 round 3 (Gemini G4): where the fringe overhangs the far contour (hair over transparency on L-1), its tip
+        # drops 1 px in the plum hair-outline tone on the lash row, so it arcs down instead of a flat visor brim
+        far_x = x1 if far_side > 0 else x0
+        for k in range(1, 4):
+            xx = far_x + far_side * k
+            if 0 <= xx < W and 0 <= xx + far_side < W and out[L - 1, xx] in hair_ids and out[L, xx] < 0 \
+                    and out[L - 1, xx + far_side] < 0:
+                put(L, xx, hair_ids[0])
+                break
     if view == "three_quarter":
         # round 3 (AD r15-2 fix 2): the contour can step out above the lash line, leaving a skin pixel beyond the
         # span measured under the lashes -> the temple edge pixels over the lash row are hair, never a 1-px notch
@@ -495,7 +505,7 @@ def _face_hem(out, L, eye_x0, eye_x1, palette, view, far_side, stamped, shadow=F
     stamped.update(changed)
 
 
-def _s_fringe(out, L, palette, stamped, eye_span=None):
+def _s_fringe(out, L, palette, stamped, eye_span=None, band=False):
     """r16 round 2 (AD r16 fixes 1-4, front view): the fringe edge is designed relative to the pinned hem, so it reads
     as 3 wide clumps in every S frame instead of a comb over a headband. Hem row Hr = L-2 (lash row L).
     - clumps: the fringe's hair span on Hr split into Left | gap | Centre (4 px on the span centre) | gap | Right, mid tone
@@ -520,6 +530,12 @@ def _s_fringe(out, L, palette, stamped, eye_span=None):
     cx = (fc[0] + fc[-1]) // 2
     if out[hr, cx] not in hair:
         return
+    chg0 = []
+    for x in range(W):
+        # AD r17-1 (throw f0): hem-row skin outside the face columns, under hair, is the clump's tip (folded in)
+        if (x < fc[0] or x > fc[-1]) and out[hr, x] in skin and out[hr - 1, x] in hair:
+            out[hr, x] = mid
+            chg0.append((hr, x))
     a = b = cx
     while a - 1 >= 0 and out[hr, a - 1] in hair:
         a -= 1
@@ -559,7 +575,8 @@ def _s_fringe(out, L, palette, stamped, eye_span=None):
                 if out[y, x] in hair:
                     # one highlight per clump: its middle 2 columns at Hr-1 under the model's ring (Hr-2 and up stay as
                     # shaded), mid tone at the hem
-                    put(y, x, hi if (y == hr - 1 and x in m2) else mid)
+                    lit = (a < x < b) if band else (x in m2)     # band: one highlight run per clump, clump-wide
+                    put(y, x, hi if (y == hr - 1 and lit) else mid)
     for g in (gl, gr):
         if out[hr - 2, g] in hair:
             put(hr - 2, g, mid)
@@ -571,6 +588,7 @@ def _s_fringe(out, L, palette, stamped, eye_span=None):
     for x in range(a, b + 1):
         if out[L - 1, x] in skin:
             put(L - 1, x, shade if x in tips else base)
+    chg += chg0
     stamped.update(chg)
     apply_face_cels.last_fringe = set(chg)
 
@@ -593,6 +611,80 @@ def _open_side(out, cells, palette, stamped):
                 out[y, x] = skin_c
             if out[y, x] in skin_ids:
                 stamped.add((y, x))        # designed skin: later cleanup passes must not fill it with hair
+
+
+def _jaw_taper(out, L, cx, view, far_side, palette, stamped, start=3, rows=4):
+    """r16 round 3 (Gemini G2/G5): below the eyes the face contour steps in >= 1 px per row toward the chin (no
+    vertical 'balloon cheek' block, no squared chin). Front: both sides; 3/4: the far cheek only (the near jaw sits in
+    the side lock). The first row under the eyes (L+start) is the base; a shifted row's new edge pixel is skin shadow
+    (the jaw corner) and the outline / background moves in with it."""
+    H, W = out.shape
+    skin = [palette.index[n] for n in palette.ramps["skin"]]
+    ink = {palette.special[k] for k in ("eye", "catchlight", "mouth") if k in palette.special}
+    face = set(skin) | ink | ({palette.special["blush"]} if "blush" in palette.special else set())
+    ol = palette.special["outline"]
+    sides = (-1, 1) if view == "front" else ((far_side,) if view == "three_quarter" else ())
+    chg = []
+    for d in sides:
+        prev = None
+        for y in range(L + start, min(H, L + start + rows)):
+            if not (0 <= cx < W) or out[y, cx] not in face:
+                break
+            e = cx
+            while 0 <= e + d < W and out[y, e + d] in face:
+                e += d
+            sil = not (0 <= e + d < W) or out[y, e + d] < 0
+            if sil and e != cx:
+                # a skin pixel on the silhouette becomes the outline later (skin_edge_dark): the face ends 1 px in
+                out[y, e] = ol
+                chg.append((y, e))
+                e -= d
+            if prev is not None:
+                allowed = prev - d
+                k = (e - allowed) * d
+                seg = [allowed + d * j for j in range(1, k + 1)]
+                if k > 0 and (allowed - cx) * d >= 0 and not any(out[y, x] in ink for x in seg):
+                    b1 = out[y, e + d] if 0 <= e + d < W else -1
+                    b2 = out[y, e + 2 * d] if 0 <= e + 2 * d < W else -1
+                    if b1 < 0 or b1 == ol:
+                        new = [ol] + [(-1 if b1 < 0 else b2)] * (k - 1)
+                        tail = [(e + d, b2)] if b1 == ol else []
+                    else:
+                        new = [b1] * k
+                        tail = []
+                    for x, v in list(zip(seg, new)) + tail:
+                        if 0 <= x < W:
+                            out[y, x] = v
+                            chg.append((y, x))
+                    if out[y, allowed] in skin:
+                        out[y, allowed] = skin[0]
+                        chg.append((y, allowed))
+                    e = allowed
+            prev = e
+    stamped.update(chg)
+
+
+def _profile_brow(out, stamped, palette, right):
+    """r16 round 3 (Gemini G3): in profile the forehead under the lifted fringe curves in - the front-most skin pixel
+    of the top skin row under the hair (above the eye) takes the skin shadow, so the face front is not a flat wall."""
+    eye = [(y, x) for (y, x) in stamped if out[y, x] == palette.special["eye"]]
+    if not eye:
+        return
+    skin = [palette.index[n] for n in palette.ramps["skin"]]
+    hair = [palette.index[n] for n in palette.ramps["hair"]]
+    H, W = out.shape
+    L = min(y for y, _ in eye)
+    d = 1 if right else -1
+    xe = max(x for _, x in eye) if right else min(x for _, x in eye)
+    for y in range(max(1, L - 3), L + 1):
+        # front-most skin pixel on this row, ahead of the eye
+        x = xe
+        while 0 <= x + d < W and out[y, x + d] in skin:
+            x += d
+        if out[y, x] in skin and (x - xe) * d > 0 and out[y - 1, x] in hair:
+            out[y, x] = skin[0]
+            stamped.add((y, x))
+            return
 
 
 def _skin_pockets(out, stamped, palette):
@@ -630,6 +722,8 @@ def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam
         r = apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam, lash_over_hair=loh)
         if view == "profile" and spec.get("hem_pin"):
             _skin_pockets(r[0], apply_face_cels.last_stamped, palette)
+            if spec.get("profile_brow"):
+                _profile_brow(r[0], apply_face_cels.last_stamped, palette, right)
             c = apply_face_cels.last_cel
             if c is not None and not any("C" in row for row in c[2]):
                 _open_side(r[0], [(c[1] + j, c[0] + i, ch) for j, row in enumerate(c[2]) for i, ch in enumerate(row)],
@@ -749,7 +843,10 @@ def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam
                   material=material, back_mat=spec.get("hem_layer_mat"))
         if view == "front" and spec.get("s_fringe"):
             _s_fringe(out, y0 + (nl if nl is not None else 0), palette, stamped,
-                      eye_span=(starts[0], starts[1] + len(blocks[1]) - 1))
+                      eye_span=(starts[0], starts[1] + len(blocks[1]) - 1), band=spec["s_fringe"] == "band")
+        if spec.get("jaw_taper"):
+            _jaw_taper(out, y0 + (nl if nl is not None else 0), (starts[0] + starts[1] + len(blocks[1]) - 1) // 2,
+                       view, far_side, palette, stamped)
         if not any("C" in r for r in rows):                 # closed / squint / lowered-lid cel
             for k, b in enumerate(blocks):
                 _open_side(out, [(y0 + j, starts[k] + (i - b[0]), rows[j][i]) for j in range(len(rows)) for i in b],
