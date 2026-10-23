@@ -13,7 +13,10 @@ shapes (params in the part frame = bone @ T(center) @ R(rot) @ S(scale)):
   rcone {a, b, ra, rb, flat, flat_n | flat_c}  (round ends; rb ~0.05 = sharp tip; flat < 1 = thin along flat_n)
   cone  {same, flat-cut ends}                                     tube {pts, r: [...], flat, flat_n | flat_c}
   rbox  {b: half extents, r: rounding}                            torus {R: [Rx, Rz] ring in local xz, r, w, taper}
+  sweep {pts, n, w: [...], t: [...], nrm | flat_n | flat_c, lens, curl, cap0, cap1, vcut, capr, closed}  (r21: smooth
+        swept sheet / ribbon / closed loop, see sweep_from_spec)
   chain sweep: {"chain": name, "sweep": {"clumps", "twist", "spread", "clump_r", "tip": sharp|fork, "tips"}}
+               or {"mode": "ribbon", "strands": [...], "root_to", "extend", ...} (r21, see _pose_ribbons)
 Combination: parts without a blend set are hard-unioned (hard min across parts/materials keeps colour borders
 crisp); smooth-min, subtract and intersect act only inside their own set. Clip planes keep legacy semantics:
 a surface point failing the clip is not drawn (no cap), the ray continues to whatever is behind.
@@ -98,13 +101,187 @@ def _sd_torus(p, P):
     return np.sqrt(e * e + qy * qy) - r
 
 
-DETAIL_MODES = {"none": 0, "pleats": 1, "ridges": 2, "rings": 3, "scallop": 4}
+# ---- r21 (S4_hd2): smooth swept ribbons / sheets ("sweep" kind). Additive: no legacy part uses it.
+SWEEP_CHUNK = 12000
+
+
+def _sweep_pick(X, j, ar):
+    return X[0][j] if X.shape[0] == 1 else X[ar, j]
+
+
+def _sd_sweep_chunk(p, P):
+    """Swept cross-section along a densely sampled centre polyline C (m, S+1, 3). Per sample: thickness axis N,
+    half-width w (along B = T x N), half-thickness t, arclength s (0..1). Section: rounded rectangle (w, t) whose
+    thickness thins toward the edges (lens) and that is cupped about N (curl: sagitta / w). Open ends: blunt cut with
+    rounding capr (fraction of the local thickness); vcut at the far end: > 0 = swallowtail notch (centre shorter by
+    vcut), < 0 = V point (edges shorter by |vcut|). Interior joints use frames lerped along the nearest segment, so
+    a densely sampled smooth curve gives a smooth surface (no joint rings)."""
+    C = P["C"]
+    A, Bp = C[:, :-1], C[:, 1:]
+    BA = Bp - A
+    l2 = (BA * BA).sum(-1)
+    valid = l2 > 1e-12
+    pa = p[:, None, :] - A
+    h = np.clip((pa * BA).sum(-1) / np.maximum(l2, 1e-12), 0.0, 1.0)
+    d2 = ((pa - h[..., None] * BA) ** 2).sum(-1)
+    d2 = np.where(valid, d2, np.inf)
+    j = np.argmin(d2, axis=1)
+    n = len(p)
+    ar = np.arange(n)
+    hj = h[ar, j]
+    a, ba = _sweep_pick(A, j, ar), _sweep_pick(BA, j, ar)
+    T = _sweep_pick(P["T"][:, :-1], j, ar) * (1 - hj)[:, None] + _sweep_pick(P["T"][:, 1:], j, ar) * hj[:, None]
+    T = T / np.maximum(np.sqrt((T * T).sum(-1)), 1e-9)[:, None]      # smooth tangent (continuous across joints)
+    c = a + hj[:, None] * ba
+    N0, N1 = _sweep_pick(P["N"][:, :-1], j, ar), _sweep_pick(P["N"][:, 1:], j, ar)
+    Nv = N0 + hj[:, None] * (N1 - N0)
+    Nv = Nv - (Nv * T).sum(-1)[:, None] * T
+    Nv = Nv / np.maximum(np.sqrt((Nv * Nv).sum(-1)), 1e-9)[:, None]
+    Bv = np.cross(T, Nv)
+
+    def lerp(K):
+        return _sweep_pick(P[K][:, :-1], j, ar) * (1 - hj) + _sweep_pick(P[K][:, 1:], j, ar) * hj
+    w, t, s = lerp("w"), lerp("t"), lerp("s")
+    sc = (lambda K: P[K] if P[K].shape[0] == n else np.broadcast_to(P[K], (n,)))
+    lens, curl, capr = sc("lens"), sc("curl"), sc("capr")
+    cap0, cap1, vcut, closed, Ltot = sc("cap0"), sc("cap1"), sc("vcut"), sc("closed"), sc("L")
+    nseg = sc("nseg").astype(int)
+    r = p - c
+    e = (r * T).sum(-1)
+    u = (r * Bv).sum(-1)
+    v = (r * Nv).sum(-1)
+    w = np.maximum(w, 1e-3)
+    un = np.clip(u / w, -1.0, 1.0)
+    v = v - curl * w * un * un
+    tl = np.maximum(t * (1.0 - lens * un * un), 0.015)
+    rr = np.minimum(w, tl)
+    qx = np.abs(u) - (w - rr)
+    qy = np.abs(v) - (tl - rr)
+    dsec = np.sqrt(np.maximum(qx, 0) ** 2 + np.maximum(qy, 0) ** 2) + np.minimum(np.maximum(qx, qy), 0) - rr
+    # axial excess past the open ends (only on the first / last segment)
+    first = (j == 0) & (hj <= 0.0) & (e < 0)
+    last = (j == nseg - 1) & (hj >= 1.0) & (e > 0)
+    ex = np.where(first & (cap0 > 0), -e, np.where(last & (cap1 > 0), e, -np.inf))
+    # far-end V cut: axial coordinate from the end, end plane shifted by the V profile across the width
+    z_end = (1.0 - s) * Ltot - np.where(last, e, 0.0)        # distance in front of the end plane (>0 inside)
+    absu = np.minimum(np.abs(u) / w, 1.0)
+    shift = np.where(vcut > 0, vcut * (1.0 - absu), -vcut * absu)
+    nrm_v = 1.0 / np.sqrt(1.0 + (np.abs(vcut) / w) ** 2)
+    ev = np.where(np.abs(vcut) > 0, (shift - z_end) * nrm_v, -np.inf)
+    ex = np.where(cap1 > 0, np.maximum(ex, ev), ex)
+    ex = np.where(closed > 0, -np.inf, ex)
+    rc = rr * capr
+    fin = np.isfinite(ex)
+    exf = np.where(fin, ex, 0.0)
+    rnd = (np.sqrt(np.maximum(dsec + rc, 0) ** 2 + np.maximum(exf + rc, 0) ** 2)
+           + np.minimum(np.maximum(dsec + rc, exf + rc), 0) - rc)
+    return np.where(fin, rnd, dsec) * sc("lip")
+
+
+def _sd_sweep(p, P):
+    n = len(p)
+    if n <= SWEEP_CHUNK:
+        return _sd_sweep_chunk(p, P)
+    res = np.empty(n)
+    for k0 in range(0, n, SWEEP_CHUNK):
+        k1 = min(k0 + SWEEP_CHUNK, n)
+        Pk = {k: (v[k0:k1] if v.shape[0] == n and n > 1 else v) for k, v in P.items()}
+        res[k0:k1] = _sd_sweep_chunk(p[k0:k1], Pk)
+    return res
+
+
+def _catmull(ctrl, n, closed=False):
+    """Uniform Catmull-Rom through control points -> n+1 samples (closed: last == first)."""
+    P = np.asarray(ctrl, float)
+    if len(P) == 1:
+        return np.repeat(P, n + 1, 0), np.zeros(n + 1)
+    if closed:
+        Q = np.vstack([P[-1:], P, P[:2]])
+        nsp = len(P)
+    else:
+        Q = np.vstack([2 * P[0] - P[1], P, 2 * P[-1] - P[-2]])
+        nsp = len(P) - 1
+    u = np.linspace(0, nsp, n + 1)
+    i = np.minimum(u.astype(int), nsp - 1)
+    t = (u - i)[:, None]
+    p0, p1, p2, p3 = Q[i], Q[i + 1], Q[i + 2], Q[i + 3]
+    out = 0.5 * ((2 * p1) + (-p0 + p2) * t + (2 * p0 - 5 * p1 + 4 * p2 - p3) * t * t + (-p0 + 3 * p1 - 3 * p2 + p3) * t ** 3)
+    return out, u / nsp
+
+
+def _profile(vals, s):
+    """Profile values at uniform knots over 0..1 -> values at s, Catmull-Rom interpolated (C1: no crease rings where a
+    linear profile would change slope)."""
+    vals = np.atleast_1d(np.asarray(vals, float))
+    if len(vals) == 1:
+        return np.full(len(s), vals[0])
+    if len(vals) == 2:
+        return np.interp(s, [0.0, 1.0], vals)
+    V = np.concatenate([[2 * vals[0] - vals[1]], vals, [2 * vals[-1] - vals[-2]]])
+    u = np.clip(np.asarray(s, float), 0, 1) * (len(vals) - 1)
+    i = np.minimum(u.astype(int), len(vals) - 2)
+    t = u - i
+    p0, p1, p2, p3 = V[i], V[i + 1], V[i + 2], V[i + 3]
+    out = 0.5 * ((2 * p1) + (-p0 + p2) * t + (2 * p0 - 5 * p1 + 4 * p2 - p3) * t * t + (-p0 + 3 * p1 - 3 * p2 + p3) * t ** 3)
+    lo, hi = vals.min(), vals.max()
+    return np.clip(out, lo - 0.25 * (hi - lo), hi + 0.25 * (hi - lo))
+
+
+def sweep_params(C, N, w, t, lens=0.0, curl=0.0, cap0=1, cap1=1, vcut=0.0, capr=0.6, closed=False):
+    """Sampled centre line C (S+1, 3), thickness axes N (S+1, 3), profiles w / t (S+1) -> param dict (batch dim 1)."""
+    C = np.asarray(C, float)
+    seg = np.linalg.norm(np.diff(C, axis=0), axis=1)
+    L = float(seg.sum())
+    s = np.concatenate([[0.0], np.cumsum(seg)]) / max(L, 1e-9)
+    T = np.zeros_like(C)
+    T[1:-1] = C[2:] - C[:-2]
+    T[0], T[-1] = C[1] - C[0], C[-1] - C[-2]
+    if closed:
+        T[0] = T[-1] = C[1] - C[-2]
+    T /= np.maximum(np.linalg.norm(T, axis=1, keepdims=True), 1e-9)
+    N = np.asarray(N, float)
+    N = N - (N * T).sum(1)[:, None] * T
+    N /= np.maximum(np.linalg.norm(N, axis=1, keepdims=True), 1e-9)
+    w, t = np.asarray(w, float), np.asarray(t, float)
+    lip = 1.0 / (1.0 + 1.5 * abs(curl) + 0.6 * abs(lens) + 0.5 * abs(vcut) / max(float(w.min()), 0.3))
+    return {"C": C[None], "T": T[None], "N": N[None], "w": w[None], "t": t[None], "s": s[None], "L": np.array([L]),
+            "nseg": np.array([float(len(C) - 1)]), "lens": np.array([float(lens)]), "curl": np.array([float(curl)]),
+            "cap0": np.array([float(cap0)]), "cap1": np.array([float(cap1)]), "vcut": np.array([float(vcut)]),
+            "capr": np.array([float(capr)]), "closed": np.array([1.0 if closed else 0.0]), "lip": np.array([lip])}
+
+
+def sweep_from_spec(pr):
+    """Static "sweep" part params: {"pts": control points, "n": samples, "w": [...], "t": [...] (profiles over the
+    arclength), "nrm": [per control point] | "flat_n" | "flat_c" (thickness axis), "lens", "curl", "cap0", "cap1",
+    "vcut", "capr", "closed"}."""
+    closed = bool(pr.get("closed"))
+    n = int(pr.get("n", 16))
+    C, uc = _catmull(pr["pts"], n, closed)
+    if "nrm" in pr:
+        Nc = np.asarray(pr["nrm"], float)
+        Nc = np.vstack([Nc, Nc[:1]]) if closed else Nc
+        k = np.linspace(0, 1, len(Nc))
+        N = np.stack([np.interp(uc, k, Nc[:, a]) for a in range(3)], 1)
+    elif "flat_n" in pr:
+        N = np.broadcast_to(np.asarray(pr["flat_n"], float), C.shape).copy()
+    elif "flat_c" in pr:
+        N = C - np.asarray(pr["flat_c"], float)
+    else:
+        N = np.broadcast_to(np.array([0, 0, 1.0]), C.shape).copy()
+    seg = np.linalg.norm(np.diff(C, axis=0), axis=1)
+    s = np.concatenate([[0.0], np.cumsum(seg)]) / max(seg.sum(), 1e-9)
+    return sweep_params(C, N, _profile(pr["w"], s), _profile(pr["t"], s), pr.get("lens", 0.0), pr.get("curl", 0.0),
+                        pr.get("cap0", 1), pr.get("cap1", 1), pr.get("vcut", 0.0), pr.get("capr", 0.6), closed)
+
+
+DETAIL_MODES = {"none": 0, "pleats": 1, "ridges": 2, "rings": 3, "scallop": 4, "folds": 5}
 DETAIL_KEYS = ("dmode", "dn", "ddepth", "dy0", "dy1", "dlip")
 
 
 def _detail(q, d, P):
     """Surface detail as a displacement in the part frame (angle about local y, height = local y).
     pleats: box-pleat folds deepening from y0 down to y1 | ridges: n ribs around y (knit, ribbed cuffs)
+    folds (r21): n soft sinusoidal folds easing in from y0 to y1
     rings: n grooves between y0 and y1 | scallop: n scallops on the edge below y0 (to y1)."""
     mode = P["dmode"]
     if not np.any(mode):
@@ -115,11 +292,13 @@ def _detail(q, d, P):
     span = np.where(np.abs(P["dy0"] - P["dy1"]) > 1e-9, P["dy0"] - P["dy1"], 1.0)
     w = np.clip((P["dy0"] - y) / span, 0.0, 1.0)
     box = np.clip(2.5 * np.cos(n * th), -1.0, 1.0)
-    disp = np.select([mode == 1, mode == 2, mode == 3, mode == 4],
+    disp = np.select([mode == 1, mode == 2, mode == 3, mode == 4, mode == 5],
                      [dep * 0.5 * (1 - box) * w,
                       dep * 0.5 * (1 + np.cos(n * th)),
                       dep * 0.5 * (1 + np.cos(2 * np.pi * n * (P["dy0"] - y) / span)) * (w > 0) * (w < 1),
-                      dep * np.abs(np.sin(n * th / 2)) * w], 0.0)
+                      dep * np.abs(np.sin(n * th / 2)) * w,
+                      # r21 folds: soft rounded (sinusoidal) folds fading in from y0 to y1 (eased), no box edges
+                      dep * 0.5 * (1 - np.cos(n * th)) * (w * w * (3 - 2 * w))], 0.0)
     return (d + disp) * P["dlip"]
 
 
@@ -129,9 +308,12 @@ def _with_detail(f):
     return g
 
 
-SDF = {"seg": _with_detail(_sd_seg), "rbox": _with_detail(_sd_rbox), "torus": _with_detail(_sd_torus)}
+SDF = {"seg": _with_detail(_sd_seg), "rbox": _with_detail(_sd_rbox), "torus": _with_detail(_sd_torus),
+       "sweep": _with_detail(_sd_sweep)}
 PARAM_KEYS = {"seg": ("a", "b", "ra", "rb", "n2", "n2b", "flat", "flatb", "capped") + DETAIL_KEYS,
-              "rbox": ("b", "r") + DETAIL_KEYS, "torus": ("R", "r", "w", "taper", "round") + DETAIL_KEYS}
+              "rbox": ("b", "r") + DETAIL_KEYS, "torus": ("R", "r", "w", "taper", "round") + DETAIL_KEYS,
+              "sweep": ("C", "T", "N", "w", "t", "s", "L", "nseg", "lens", "curl", "cap0", "cap1", "vcut", "capr", "closed",
+                        "lip") + DETAIL_KEYS}
 
 
 def _detail_params(det, size):
@@ -162,10 +344,24 @@ def _local_box(part):
         w = float(P["w"][0]) * (1 + abs(float(P["taper"][0])))
         h = np.array([Rx + r, max(r, w), Rz + r])
         return -h, h
+    if k == "sweep":
+        C = P["C"][0]
+        m = float(max(P["w"][0].max(), P["t"][0].max())) * (1.0 + abs(float(P["curl"][0]))) + 0.05
+        return C.min(0) - m, C.max(0) + m
     raise ValueError(k)
 
 
 # ------------------------------------------------------------------ compiled scene
+def _stack_param(arrs):
+    """Concatenate per-part param arrays; sampled sweep arrays of different lengths are padded by repeating the
+    last sample (zero-length padding segments are ignored by the sweep SDF)."""
+    if arrs[0].ndim < 2 or all(a.shape[1:] == arrs[0].shape[1:] for a in arrs):
+        return np.concatenate(arrs)
+    S = max(a.shape[1] for a in arrs)
+    return np.concatenate([np.concatenate([a, np.repeat(a[:, -1:], S - a.shape[1], 1)], 1) if a.shape[1] < S else a
+                           for a in arrs])
+
+
 class _Compiled:
     def __init__(self, prims):
         self.prims = prims
@@ -226,7 +422,7 @@ class _Compiled:
         self.stack = {}
         for k, ids in self.batch.items():
             if ids:
-                self.stack[k] = {key: np.concatenate([prims[i]["params"][key] for i in ids]) for key in PARAM_KEYS[k]}
+                self.stack[k] = {key: _stack_param([prims[i]["params"][key] for i in ids]) for key in PARAM_KEYS[k]}
                 pos = np.full(n, -1, int)
                 pos[ids] = np.arange(len(ids))
                 self.stack[k]["_pos"] = pos
@@ -750,13 +946,16 @@ def _pose_static(sp, worlds, face_m, lods=("all", "ref")):
         out.append(dict(base, kind="torus", M=F, params={
             "R": _vec(R)[None], "r": np.array([float(pr["r"])]), "w": np.array([float(pr.get("w", pr["r"]))]),
             "taper": np.array([float(pr.get("taper", 0.0))]), "round": np.array([float(pr.get("round", 0.0))])}))
+    elif shape == "sweep":
+        out.append(dict(base, kind="sweep", M=F, params=sweep_from_spec(pr)))
     else:
         raise ValueError(f"unknown shape {shape!r} in part {sp['name']}")
     if det:
         for o in out:
             P = o["params"]
             size = float(np.max(P["ra"])) if o["kind"] == "seg" else (
-                float(np.min(P["R"])) if o["kind"] == "torus" else float(np.min(P["b"])))
+                float(np.min(P["R"])) if o["kind"] == "torus" else (
+                    float(np.max(P["w"])) if o["kind"] == "sweep" else float(np.min(P["b"]))))
             P.update(_detail_params(det, size))
     return out
 
@@ -781,13 +980,15 @@ def _chain_frames(pts, body_c):
     return T, X, Z
 
 
-def _pose_sweep(sp, chain, pts, body_c, face_m, subdiv, clip=None):
+def _pose_sweep(sp, chain, pts, body_c, face_m, subdiv, clip=None, worlds=None):
     """Chain-driven swept clumps along the Catmull-Rom resampled chain (tapered tubes, sharp or forked tips).
     "by_clip": {clip: {sweep keys}} overrides sweep keys for one clip (e.g. a fuller tip in the run swing)."""
     from .rig import _subdivide
     sw = sp.get("sweep", {})
     if clip in sw.get("by_clip", {}):
         sw = dict(sw, **sw["by_clip"][clip])
+    if sw.get("mode") == "ribbon":
+        return _pose_ribbons(sp, sw, chain, pts, body_c, face_m, worlds)
     widths = chain.get("widths", [1.0])
     pts = np.asarray(pts, float)
     if subdiv > 1 and len(pts) >= 3:
@@ -888,6 +1089,48 @@ def _pose_sweep(sp, chain, pts, body_c, face_m, subdiv, clip=None):
     return out
 
 
+def _pose_ribbons(sp, sw, chain, pts, body_c, face_m, worlds=None):
+    """r21 chain sweep "mode": "ribbon": each strand is one smooth swept sheet ("sweep" kind) along the Catmull-Rom
+    resampled chain, offset in the chain frame (X sideways, Z outward from the body):
+      sweep: {"mode": "ribbon", "n": samples, "extend": units past the chain end, "strands": [
+        {"dx": [profile], "dz": [profile], "w": [profile], "t": [profile], "lens", "curl", "vcut", "cap1", "capr",
+         "nz_tilt": [profile] (rotates the thickness axis about the tangent toward X, radians)}]}
+    Profiles are sampled over the arclength 0..1 (root -> tip), in world units.
+    "root_to": [bone, [x, y, z]] prepends a bone-space point (e.g. sheets fanning out from the ponytail root)."""
+    pts = np.asarray(pts, float)
+    if sw.get("root_to") and worlds is not None:
+        b, q = sw["root_to"]
+        m = worlds[b]
+        pts = np.vstack([(m[:3, :3] @ np.asarray(q, float) + m[:3, 3])[None], pts])
+    if sw.get("extend"):
+        tq = pts[-1] - pts[-2]
+        tq = tq / max(np.linalg.norm(tq), 1e-9)
+        pts = np.vstack([pts, pts[-1] + tq * float(sw["extend"])])
+    if sw.get("root_pull"):
+        # pull the first point back along the chain (root tucked under the hair cap / bow knot)
+        t0 = pts[1] - pts[0]
+        t0 = t0 / max(np.linalg.norm(t0), 1e-9)
+        pts = np.vstack([pts[0] - t0 * float(sw["root_pull"]), pts[1:]])
+    n = int(sw.get("n", 24))
+    C, _ = _catmull(pts, n)
+    T, X, Z = _chain_frames(C, body_c)
+    seg = np.linalg.norm(np.diff(C, axis=0), axis=1)
+    s = np.concatenate([[0.0], np.cumsum(seg)]) / max(seg.sum(), 1e-9)
+    base = dict(_base(sp), group=chain.get("group", chain["name"]))
+    base["vote"] = f'{sp["material"]}|{base["group"]}'
+    out = []
+    for k, st in enumerate(sw.get("strands", [{}])):
+        dx, dz = _profile(st.get("dx", [0.0]), s), _profile(st.get("dz", [0.0]), s)
+        Ck = C + dx[:, None] * X + dz[:, None] * Z
+        tilt = _profile(st.get("nz_tilt", [0.0]), s)
+        N = np.cos(tilt)[:, None] * Z + np.sin(tilt)[:, None] * X
+        prm = sweep_params(Ck, N, _profile(st.get("w", [1.0]), s), _profile(st.get("t", [0.5]), s),
+                           st.get("lens", 0.0), st.get("curl", 0.0), st.get("cap0", 1), st.get("cap1", 1),
+                           st.get("vcut", 0.0), st.get("capr", 0.6))
+        out.append(dict(base, name=f'{sp["name"]}_r{k}', kind="sweep", M=face_m, params=prm))
+    return out
+
+
 def _ell_from_legacy(p, M):
     return {"name": p["name"], "material": p["material"], "group": p["group"], "kind": "ell", "M": M, "params": {},
             "set": None, "k": 0.0, "op": "union", "clip_all": p.get("clip_all", []), "clip_any": p.get("clip_any", []),
@@ -913,7 +1156,7 @@ def pose_parts(char, worlds, chain_pts, body_c, face_m, lod="all", subdiv=1, cli
         pts = chain_pts[c["name"]]
         if c["name"] in sweeps:
             for sp in sweeps[c["name"]]:
-                out += _pose_sweep(sp, c, pts, body_c, face_m, subdiv, clip)
+                out += _pose_sweep(sp, c, pts, body_c, face_m, subdiv, clip, worlds=worlds)
             tip = c.get("tip")
             if tip:
                 r = tip["radius"]
@@ -992,7 +1235,9 @@ def feature_px(sp, chains, ppu):
         c = next((c for c in chains if c["name"] == sp["chain"]), None)
         if c is None:
             return None
-        if sw.get("only_fringe") or sw.get("tip") == "fringe":
+        if sw.get("mode") == "ribbon":
+            w = 2 * min(max(st.get("w", [1.0])) for st in sw.get("strands", [{}]))
+        elif sw.get("only_fringe") or sw.get("tip") == "fringe":
             w = 2 * float(sw.get("fringe_r", 0.3))
         elif int(sw.get("clumps", 1)) > 1:
             w = 2 * float(sw.get("clump_r", 0.55)) * max(c.get("widths", [1.0]))
@@ -1008,6 +1253,8 @@ def feature_px(sp, chains, ppu):
         w = 2 * sorted(pr["b"])[1]
     elif sh == "torus":
         w = 2 * max(pr["r"], pr.get("w", pr["r"]))
+    elif sh == "sweep":
+        w = 2 * max(np.atleast_1d(pr["w"]).max(), np.atleast_1d(pr["t"]).max())
     else:
         return None
     if sp.get("scale"):

@@ -25,6 +25,8 @@ def _thickness(p):
         return 2 * max(float(P["ra"][0]), float(P["rb"][0])) * min(float(P["flat"][0]), float(P["flatb"][0]))
     if k == "torus":
         return 2 * float(P["r"][0])
+    if k == "sweep":
+        return 2 * float(np.percentile(P["t"][0], 30))
     return 2 * float(P["b"][0].min())
 
 
@@ -90,7 +92,7 @@ def _march(field, origin, h):
     return T[keep], K[keep]
 
 
-def mesh_parts(parts, scale_h=1.0, open_clips=False):
+def mesh_parts(parts, scale_h=1.0, open_clips=False, split_sets=None):
     """Posed part list -> {material: (triangles, edge keys)}.
     open_clips: renderer clip semantics (sdf.raycast) - surface whose nearest part fails that part's clip planes is
     dropped (open shell, e.g. the hair cap's face opening) instead of meshing the unclipped set (default, legacy)."""
@@ -132,7 +134,60 @@ def mesh_parts(parts, scale_h=1.0, open_clips=False):
                     mk = arg == k
                     ok[mk] = Cs.clip_ok_world(k, cen[mk])
             T, K = T[ok], K[ok]
+        if (open_clips if split_sets is None else split_sets) and len(T) and any(p["material"] != m for p in sub):
+            # r21: a blend set mixing materials is meshed whole for each of its materials; keep only the triangles
+            # whose nearest set member is this material (no coincident duplicate shells / z-fighting in viewers)
+            cen = T.mean(1)
+            _, arg = scene_sdf(sub, cen, Cs)
+            ok = np.array([a >= 0 and sub[a]["material"] == m for a in arg])
+            T, K = T[ok], K[ok]
         out[m] = (T, K)
+    return out
+
+
+def weld(T, K):
+    """Triangles + edge keys -> (vertices (V,3), faces (F,3)): shared marching-tet edge vertices merged."""
+    keys, inv = np.unique(K.ravel(), return_inverse=True)
+    V = np.zeros((len(keys), 3))
+    V[inv] = T.reshape(-1, 3)
+    return V, inv.reshape(-1, 3)
+
+
+def taubin(V, F, iters=12, lam=0.5, mu=-0.53):
+    """Taubin lambda|mu smoothing on the welded mesh: removes the marching-grid facets / terracing without the
+    shrinkage of plain Laplacian smoothing."""
+    e = np.concatenate([F[:, [0, 1]], F[:, [1, 2]], F[:, [2, 0]]])
+    e = np.unique(np.sort(e, 1), axis=0)
+    a, b = np.concatenate([e[:, 0], e[:, 1]]), np.concatenate([e[:, 1], e[:, 0]])
+    deg = np.bincount(a, minlength=len(V)).astype(float)
+    deg = np.maximum(deg, 1)[:, None]
+    V = V.copy()
+    for _ in range(iters):
+        for f in (lam, mu):
+            acc = np.zeros_like(V)
+            np.add.at(acc, a, V[b])
+            V += f * (acc / deg - V)
+    return V
+
+
+def vertex_normals(V, F):
+    fn = np.cross(V[F[:, 1]] - V[F[:, 0]], V[F[:, 2]] - V[F[:, 0]])      # area-weighted
+    vn = np.zeros_like(V)
+    for k in range(3):
+        np.add.at(vn, F[:, k], fn)
+    return vn / np.maximum(np.linalg.norm(vn, axis=1, keepdims=True), 1e-12)
+
+
+def polish(meshes, iters=12):
+    """{material: (T, K)} -> same, welded + Taubin-smoothed (keys kept, so OBJ export re-welds identically)."""
+    out = {}
+    for m, (T, K) in meshes.items():
+        if not len(T):
+            out[m] = (T, K)
+            continue
+        V, F = weld(T, K)
+        V = taubin(V, F, iters)
+        out[m] = (V[F], K)
     return out
 
 
@@ -149,7 +204,8 @@ def write_stl(path, meshes):
     return len(T)
 
 
-def write_obj(path, meshes, palette):
+def write_obj(path, meshes, palette, normals=False):
+    """normals=True (r21 opt-in): per-vertex smooth normals ("vn", f v//vn) so viewers shade the mesh smoothly."""
     base = os.path.splitext(os.path.basename(path))[0]
     lines = [f"mtllib {base}.mtl"]
     mtl = []
@@ -159,9 +215,15 @@ def write_obj(path, meshes, palette):
         verts = np.zeros((len(keys), 3))
         verts[inv] = T.reshape(-1, 3)
         lines += [f"v {x:.3f} {y:.3f} {z:.3f}" for x, y, z in verts]
-        lines += [f"g {m}", f"usemtl {m}"]
         f = inv.reshape(-1, 3) + off
-        lines += [f"f {a} {b} {c}" for a, b, c in f]
+        if normals:
+            vn = vertex_normals(verts, inv.reshape(-1, 3))
+            lines += [f"vn {x:.3f} {y:.3f} {z:.3f}" for x, y, z in vn]
+            lines += [f"g {m}", f"usemtl {m}"]
+            lines += [f"f {a}//{a} {b}//{b} {c}//{c}" for a, b, c in f]
+        else:
+            lines += [f"g {m}", f"usemtl {m}"]
+            lines += [f"f {a} {b} {c}" for a, b, c in f]
         off += len(keys)
         ramp = palette.ramps.get(m)
         rgb = palette.rgb[palette.index[ramp[len(ramp) // 2]]] if ramp else (200, 200, 200)
@@ -179,17 +241,24 @@ def export_poses(scene, palette, out_dir, poses=None):
     zs = [p["z_px"] for p in scene.anim.poses]
     poses = dict(poses or {"rest": n - 1, "apex": int(np.argmax(zs))})
     stats = {}
+    # r21 opt-in (character render.mesh_export): {"polish": true, "max_tris", "smooth_iters"} -> finer grid, open
+    # clip semantics (no capped face opening), welded + Taubin-smoothed shells, OBJ vertex normals
+    mx = scene.char.get("render", {}).get("mesh_export") or {}
+    pol = bool(mx.get("polish"))
+    budget = int(mx.get("max_tris", 420000)) if pol else MAX_TRIS
     for name, i in poses.items():
         parts, _ = scene.primitives(i, "S", lod="ref")
-        s = 1.8                      # first guess for ~100k triangles at S4 scale
+        s = 1.8 if not pol else 0.9  # first guess for ~100k triangles at S4 scale
         for _ in range(4):           # triangle count ~ 1/h^2: rescale the grid to the budget in 1-2 passes
-            meshes = mesh_parts(parts, s)
+            meshes = mesh_parts(parts, s, open_clips=pol)
             tri = sum(len(t) for t, _ in meshes.values())
-            if tri <= MAX_TRIS:
+            if tri <= budget:
                 break
-            s *= max(1.05, (tri / (0.97 * MAX_TRIS)) ** 0.5)
+            s *= max(1.05, (tri / (0.97 * budget)) ** 0.5)
+        if pol:
+            meshes = polish(meshes, int(mx.get("smooth_iters", 12)))
         ntri = write_stl(os.path.join(out_dir, f"model_{name}.stl"), meshes)
-        write_obj(os.path.join(out_dir, f"model_{name}.obj"), meshes, palette)
+        write_obj(os.path.join(out_dir, f"model_{name}.obj"), meshes, palette, normals=pol)
         stats[name] = {"frame": i + 1, "triangles": ntri,
                        "stl_bytes": os.path.getsize(os.path.join(out_dir, f"model_{name}.stl"))}
     return stats
