@@ -251,15 +251,15 @@ MOUTH = {
 
 # ---------- cheeks (block, x, y): hatches (red_2) on a skin_mid patch; never a solid band ----------
 LIGHT = [(blk("ttxttx\ntxttxt"), 35, 45), (blk("ttxttxt\ntxttxtt"), 52, 45)]
-HEAVY = [(blk("ttxttxt\ntxttxtt\nxttxttt"), 35, 45), (blk("_x_x\nx_x_"), 46, 45),
-         (blk("ttxttxttx\ntxttxttxt\nxttxttxtt"), 51, 45)]
+HEAVY = [(blk("___ttxt\nttxtxtt\ntxtxttt\nxtt____"), 35, 45), (blk("_x_x\nx_x_"), 46, 45),
+         (blk("ttxttx___\ntxttxtttx\nxttxtttxt\n______xtt"), 51, 45)]
 CHEEKS = {"neutral": [(blk("tttttt"), 35, 45), (blk("ttttttt"), 52, 45)], "smile": LIGHT, "laugh": LIGHT, "content": LIGHT, "embarrassed": HEAVY}
 
 # ---------- FX (block, x, y); '_' = keep ----------
 FX = {
  "surprised": [(blk("K_\n_K"), 24, 16), (blk("KK"), 20, 21), (blk("_K\nK_"), 21, 26)],
  "sad":       [(blk("_z_\n_z_\n_z_\n_z_\nzWz\nzWz\n_z_"), 57, 43)],
- "angry":     [(blk("_R_R_\nRR_RR\n_____\nRR_RR\n_R_R_"), 56, 18),
+ "angry":     [(blk("_RR_RR_\nRRr_RRr\nRr___Rr\nR_____R\nRR___RR\nRRr_RRr\n_rr__rr"), 55, 16),
                (blk("s\ns\ns\ns\ns"), 62, 44), (blk("P\nP\nP\nP\nP"), 63, 44)],
  "embarrassed": [(blk("__zzz__\n_zWWWz_\nzWWWWWz\nzWWWWzz\n_zzzz__"), 26, 2), (blk("_zz_\nzWWz\nzWzz\n_zz_"), 19, 0),
                  (blk("_zz_\nzWWz\n_zz_"), 35, 0)],
@@ -290,7 +290,7 @@ def compose(name):
             for x in range(x0, x1 + 1):
                 g[y][x] = "s"
     for y in range(45, 48):
-        for x in list(range(35, 42)) + list(range(45, 61)):
+        for x in list(range(35, 42)) + list(range(46, 61)):
             g[y][x] = "s"
     for y in range(48, 53):
         for x in range(40, 50):

@@ -153,8 +153,8 @@ for x in list(range(37, 40)) + list(range(47, 51)) + list(range(58, 61)):
 # =====================================================================================================
 # 4. PONYTAIL (behind, gathered under the knot at the back of the skull), S-taper to the shoulder
 # =====================================================================================================
-PR = rows_tbl([((22, 29), 86), ((30, 31), 83), ((32, 33), 82), ((34, 37), 82), ((38, 42), 83), ((43, 50), 84), ((51, 56), 83),
-               ((57, 60), 82), ((61, 64), 81), ((65, 70), 80)])
+PR = rows_tbl([((22, 29), 86), ((30, 31), 83), ((32, 33), 82), ((34, 37), 82), ((38, 42), 83), ((43, 52), 84), ((53, 58), 83),
+               ((59, 63), 82), ((64, 66), 81), ((67, 70), 80)])
 for y, xr in PR.items():
     span(y, HR[y] + 1, xr - 1, "m")
     g[y][xr] = "K"
@@ -162,6 +162,8 @@ for y, xr in PR.items():
     g[y][xr - 1] = "P"
     if y <= 40:
         g[y][HR[y]] = "P"                          # head edge reads as an inner fold, not a wall
+    else:
+        g[y][HR[y]] = "d"                          # (gemini triage) no K seam inside the hair
 for x, y in [(77, 46), (77, 47), (78, 48), (78, 49), (78, 50), (78, 51), (78, 52), (77, 53), (77, 54)]:
     g[y][x] = "d"
 span(45, 75, 76, "l"); span(46, 75, 75, "l")
@@ -178,9 +180,9 @@ for y in range(13, 30):
     for x in range(HR[y] + 1, 78):
         g[y][x] = "m" if y < 22 else "d"
     g[y][HR[y]] = "m" if y < 20 else g[y][HR[y]]
-for x, y in [(64, 13), (66, 14), (68, 15), (70, 16), (72, 17), (74, 18), (65, 15), (67, 16), (69, 17), (71, 18),
-             (73, 19), (63, 16), (65, 17), (67, 18), (69, 19), (71, 20), (73, 21)]:
-    g[y][x] = "d"                                  # strands converging on the knot
+for t in range(8):                                # one 2 px hair_1 split converging on the knot
+    g[14 + t][65 + t] = "d"
+    g[14 + t][66 + t] = "d"
 span(12, 67, 71, "l"); span(13, 69, 72, "l")
 # near loop x79-93, y6-24: outer end widest, inner end pinched to the knot height (y13-20)
 LOOP = {7: (85, 92), 8: (84, 93), 9: (83, 93), 10: (82, 93), 11: (81, 93), 12: (80, 93), 13: (79, 93), 14: (79, 93),
@@ -254,6 +256,9 @@ RS = rows_tbl([((62, 62), (66, 67)), ((63, 63), (68, 68)), ((64, 64), (69, 69)),
                ((70, 70), (78, 79)), ((71, 71), (80, 81)), ((72, 72), (82, 83)), ((73, 73), (84, 84)),
                ((74, 74), (85, 85)), ((75, 76), (86, 86)), ((77, 79), (87, 87)), ((80, 83), (88, 88)),
                ((84, 88), (89, 89)), ((89, 95), (90, 90))])
+# (gemini triage) far side in 6 px (x8 by y85), near side in 3 px (x87): steeper arms, smooth runs
+LS.update(rows_tbl([((74, 74), (9, 9)), ((75, 75), (8, 8)), ((76, 84), (7, 7)), ((85, 95), (8, 8))]))
+RS.update(rows_tbl([((74, 74), (85, 85)), ((75, 76), (86, 86)), ((77, 95), (87, 87))]))
 for y in range(62, 96):
     a0, a1 = LS[y]
     b0, b1 = RS[y]
@@ -342,9 +347,9 @@ span(73, 46, 46, "O")
 paint([(79, (39, 43, "O")), (78, (49, 55, "O")), (78, (44, 48, "O")), (79, (45, 47, "O")), (80, (40, 42, "O")),
        (79, (50, 54, "O"))])
 for y in range(79, 96):
-    g[y][46] = "q"
+    g[y][44] = "q"
 for y in (82, 83, 90, 91):
-    g[y][44] = g[y][45] = "g"
+    g[y][42] = g[y][43] = "g"
 
 # scarf tail (C's 9 px cable, x55-63), repeated down past the crop
 for y in range(71, 96):
@@ -367,7 +372,7 @@ for lock, clump in ((FAR_LOCK, 2), (NEAR_LOCK, 3)):
         span(y, a, b, "m")
         g[y][a - 1] = "P"
         if g[y][b + 1] not in "sPL" or y > 46:
-            g[y][b + 1] = "P"
+            g[y][b + 1] = "P" if not (lock is NEAR_LOCK and y > 44) else "d"
     ys = sorted(lock)
     last = lock[ys[-1]]
     span(ys[-1] + 1, last[0], last[1], "P")
@@ -376,7 +381,9 @@ for y in range(31, 72):
     for lock in (FAR_LOCK, NEAR_LOCK):
         if y in lock:
             a, b_ = lock[y]
-            for x in range(b_ - 1, b_ + 1):
+            if lock is FAR_LOCK and y > 48:
+                continue                           # far shadow clump ends at y48 (tapered)
+            for x in range(b_ - 1 + (1 if lock is FAR_LOCK and y >= 47 else 0), b_ + 1):
                 if x > a:
                     g[y][x] = "d"
 for y, x0, x1 in [(34, 30, 31), (35, 30, 31), (36, 30, 30), (34, 27, 28), (35, 27, 28),
@@ -430,14 +437,21 @@ put(g, 50, 33, NEAR_EYE)
 span(31, 36, 41, "d"); g[32][35] = "d"
 span(31, 54, 59, "d"); g[32][60] = "d"
 # nose: 2 px skin_0 on the shadow side, shifted toward the facing side
-g[45][44] = "v"; g[46][44] = "v"
+g[45][44] = "v"; g[46][44] = "v"; g[46][45] = "u"
 # mouth (neutral, 1-2-1) and the signature blush (hatches on a skin_mid patch)
 span(51, 42, 43, "L"); g[51][44] = "v"          # neutral: flat mouth (review 2)
 span(45, 35, 40, "t"); span(45, 52, 58, "t")    # blush softened to one pale skin_mid row
 
+# (gemini triage) cast shadow right of the scarf tail and under the roll
+for y in range(73, 96):
+    if g[y][64] in "oq":
+        g[y][64] = "O"
+for x in range(36, 55):
+    if g[73][x] in "oq":
+        g[73][x] = "O"
 # ---- cleanup of stray singles (each checked at x12) ----
 g[26][42] = g[26][55] = "s"; g[29][35] = "s"
 g[61][44] = "e"; g[69][65] = "b"; g[73][46] = "o"; g[45][76] = "m"; g[61][59] = "c"
-g[13][64] = "m"; g[19][73] = "m"; g[21][72] = "d"; g[40][77] = "d"
+g[93][80] = "O"; g[13][64] = "m"; g[19][73] = "m"; g[21][72] = "d"; g[40][77] = "d"
 # ==== END ====
 write(OUT, "# r13 dialogue bust base, round 2 (lead pixel artist). Built from face test C. Hand-authored.", legend, g)
