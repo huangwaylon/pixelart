@@ -152,3 +152,12 @@ doesn't have to be this detailed, but your model should be something like this".
   - **Body:** slim and petite, with narrow shoulders.
 
   We take the hair, face and silhouette language, NOT the goth styling or colours.
+- **ref8 (painted semi-realistic anime portrait) and ref9 (stylised 3D bust sculpt), "more good references":**
+  - **Face construction:** an oval-to-heart face, cheek planes that turn crisply into a narrow jaw, a small defined
+    chin, and a long slender neck with soft collarbones.
+  - **Brows and eyes:** clean shaped brows; large eyes with a thick dark upper lash and an outer wing; a subtle eyelid
+    crease.
+  - **Nose, lips and hair:** a small soft nose with a defined tip, small full lips, and hair as smooth sculpted sheets
+    with a few loose strands.
+  - **Use them for:** surface quality and face planes only. ref8 depicts a real person, so we use it for general
+    style only, never likeness. Our character stays a cute anime heroine with her own design.
