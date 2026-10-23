@@ -100,7 +100,7 @@ LEG = np.array([
 
 def leg_at(z):
     r = interp_row(LEG, z)
-    k = np.interp(z, [0.06, 0.30, 0.45, 0.62, 0.88], [0.97, 0.90, 0.86, 0.82, 0.84])
+    k = np.interp(z, [0.06, 0.12, 0.22, 0.35, 0.45, 0.52, 0.62, 0.88], [0.86, 0.86, 0.90, 0.92, 0.80, 0.83, 0.82, 0.84])
     r[3] *= k; r[4] *= k
     return r
 
@@ -113,7 +113,7 @@ def build_tights(mats, coll):
             r = leg_at(z)
             # inner thigh slightly flatter, calf bulge at back-outside
             def mod(a, z=z):
-                calf = 0.10 * np.exp(-((z - 0.35) / 0.06) ** 2) * np.clip(np.cos(a - np.pi * 0.85), 0, 1) ** 2
+                calf = 0.16 * np.exp(-((z - 0.35) / 0.06) ** 2) * np.clip(np.cos(a - np.pi * 0.85), 0, 1) ** 2
                 return calf
             rg = ring((sx * r[1], r[2], z), (1, 0, 0), (0, -1, 0), r[3], r[4], 24, mod=mod)
             rings.append(rg)
@@ -139,12 +139,13 @@ FOOT = np.array([
     [-0.152, 0.026, 0.045],
     [-0.160, 0.010, 0.036]])
 SHAFT = np.array([
-    [0.300, 0.053, 0.057],
-    [0.260, 0.050, 0.054],
-    [0.210, 0.045, 0.049],
-    [0.160, 0.041, 0.045],
-    [0.120, 0.040, 0.046],
-    [0.090, 0.041, 0.050]])
+    [0.300, 0.0500, 0.0540],
+    [0.265, 0.0460, 0.0500],
+    [0.220, 0.0410, 0.0450],
+    [0.175, 0.0355, 0.0395],
+    [0.135, 0.0330, 0.0385],
+    [0.105, 0.0350, 0.0430],
+    [0.085, 0.0390, 0.0480]])
 
 def build_boots(mats, coll):
     parts = []
@@ -163,18 +164,29 @@ def build_boots(mats, coll):
         for y in ys:
             r = interp_row(FOOT[::-1], y)
             hw, top = r[1], r[2]
-            h = top / 2
+            h = (top - 0.010) / 2
             toe_out = sx * 0.006 * np.clip((0.02 - y) / 0.17, 0, 1)
             a = np.linspace(0, 2 * np.pi, 28, endpoint=False)
             ca, sa = np.cos(a), np.sin(a)
             n = 2.6
             xx = cx + toe_out + hw * np.sign(ca) * np.abs(ca) ** (2 / n)
-            zz = h + h * np.sign(sa) * np.abs(sa) ** (2 / n)
-            zz = np.maximum(zz, 0.0)
+            zz = 0.010 + h + h * np.sign(sa) * np.abs(sa) ** (2 / n)
             rings.append(np.stack([xx, np.full(28, y), zz], 1))
         v, f = loft(rings, True, cap0=True, cap1=True)
         V = np.array(v)
-        parts.append((v, f, [2 if V[list(fc)][:, 2].max() < 0.012 else 0 for fc in f]))
+        parts.append((v, f, 0))
+        # 10 mm sole slab following the foot outline (slightly proud), crisp via support rings
+        ys2 = np.linspace(FOOT[0, 0] + 0.004, FOOT[-1, 0] - 0.004, 18)
+        hw2 = np.array([interp_row(FOOT[::-1], y)[1] for y in ys2]) + 0.0035
+        to2 = sx * 0.006 * np.clip((0.02 - ys2) / 0.17, 0, 1)
+        outline = np.concatenate([np.stack([cx + to2 + hw2, ys2], 1), np.stack([cx + to2 - hw2, ys2], 1)[::-1]])
+        cen = outline.mean(0)
+        srings = []
+        for z, ins in ((0.0, 0.0012), (0.0015, 0.0), (0.0095, 0.0), (0.0112, 0.0012)):
+            o2 = cen + (outline - cen) * (1 - ins / 0.04)
+            srings.append(np.stack([o2[:, 0], o2[:, 1], np.full(len(o2), z)], 1))
+        v, f = loft(srings, True, cap0=True, cap1=True)
+        parts.append((v, f, 2))
         # fur cuff: lumpy torus
         nu, nv = 40, 10
         U = np.linspace(0, 2 * np.pi, nu, endpoint=False)
@@ -182,11 +194,11 @@ def build_boots(mats, coll):
         pts = []
         for u in U:
             for w in Vv:
-                lump = 1 + 0.16 * np.sin(7 * u + 1.7 * sx) * np.cos(3 * w) + 0.10 * np.sin(13 * u + 2 * w + sx) + 0.05 * np.sin(23 * u)
-                rr = 0.0175 * lump; rz = 0.020 * lump
-                R = np.array([0.0565 * np.sin(u), -0.060 * np.cos(u)])
-                rad = norm(np.array([np.sin(u) / 0.0565, -np.cos(u) / 0.060]))
-                p = np.array([cx + R[0] + rad[0] * rr * np.cos(w), 0.014 + R[1] + rad[1] * rr * np.cos(w), 0.302 + rz * np.sin(w)])
+                lump = 1 + 0.20 * np.sin(7 * u + 1.7 * sx) * np.cos(3 * w) + 0.12 * np.sin(13 * u + 2 * w + sx) + 0.06 * np.sin(23 * u)
+                rr = 0.0240 * lump; rz = 0.0265 * lump
+                R = np.array([0.0545 * np.sin(u), -0.0585 * np.cos(u)])
+                rad = norm(np.array([np.sin(u) / 0.0545, -np.cos(u) / 0.0585]))
+                p = np.array([cx + R[0] + rad[0] * rr * np.cos(w), 0.014 + R[1] + rad[1] * rr * np.cos(w), 0.306 + rz * np.sin(w)])
                 pts.append(p)
         Ff = torus_faces(nu, nv)
         parts.append((pts, Ff, 1))
@@ -315,58 +327,57 @@ def build_belt_buttons(mats, coll):
 
 # ------------------------------------------------------------------ scarf
 def build_scarf(mats, coll):
+    """Chunky roll (drape ported from modeller A: front dips, twisted cable ribs) + left tail with fringe."""
     parts = []
-    na, nb = 72, 16
-    A = np.linspace(0, 2 * np.pi, na, endpoint=False)
-    B = np.linspace(0, 2 * np.pi, nb, endpoint=False)
+    C = np.array([0.0, 0.010, 1.266])
+    NP, NS = 64, 14
     pts = []
-    for a in A:
-        c = np.array([0.070 * np.sin(a), 0.012 - 0.066 * np.cos(a), 1.270 - 0.004 * np.cos(a)])
-        radial = norm(np.array([np.sin(a) / 0.074, np.cos(a) / -0.070 * -1, 0.0]))
-        radial = norm(np.array([np.sin(a), -np.cos(a), 0.0]))
-        for b in B:
-            bb = b + 0.16 * np.sin(28 * a)
-            cable = 0.5 + 0.5 * np.cos(5 * bb)
-            knit = 0.0
-            r = 1.0 + 0.09 * cable ** 2 + knit
-            rr, rz = 0.033 * r, 0.032 * r
-            p = c + radial * rr * np.cos(b) + np.array([0, 0, 1.0]) * rz * np.sin(b)
-            pts.append(p)
-    F = []
-    for i in range(na):
-        for j in range(nb):
-            i2, j2 = (i + 1) % na, (j + 1) % nb
-            F.append((i * nb + j, i * nb + j2, i2 * nb + j2, i2 * nb + j))
-    parts.append((pts, F, 0))
-    # tail down HER LEFT (+X) front
-    zs = np.linspace(1.235, 0.975, 16)
-    path = []
+    for i in range(NP):
+        a = 2 * np.pi * i / NP
+        d = np.array([np.sin(a), -np.cos(a), 0.0])
+        R = 0.071 + 0.006 * np.cos(a)
+        P = C + d * R + np.array([0, 0, -0.012 * max(0.0, np.cos(a)) + 0.004 * max(0.0, -np.cos(a))])
+        Tn = np.array([np.cos(a), np.sin(a), 0.0]); Bv = np.cross(Tn, d)
+        for k in range(NS):
+            bb = 2 * np.pi * k / NS
+            ph = bb + a * 7
+            r = 0.034 * (1 + 0.09 * np.cos(4 * ph))
+            pts.append(P + d * (r * 1.05 * np.cos(bb)) + Bv * (r * 0.92 * np.sin(bb)))
+    parts.append((pts, torus_faces(NP, NS), 0))
+    # tail on HER LEFT (+X): follows the coat front, ribbed front face, flat back
+    zs = np.linspace(1.215, 0.94, 7)
+    ctrl = [[0.050, -0.074, 1.252]]
     for z in zs:
-        x = 0.060 + 0.016 * np.clip((1.235 - z) / 0.08, 0, 1)
-        y = coat_front_y(x, z) - 0.0135 if z < 1.205 else 0.012 - 0.070 + 0.0
-        path.append([x, y, z])
-    path = np.array(path)
-    path[0] = [0.050, -0.050, 1.255]
-    path = catmull(path, 30)
-    t = np.linspace(0, 1, len(path))
-    w = np.interp(t, [0, 0.2, 1], [0.030, 0.034, 0.036])
-    th = np.interp(t, [0, 0.2, 1], [0.016, 0.0115, 0.011])
-    def mod(i, a):
-        return 0.05 * np.clip(np.cos(4 * a), 0, 1) * (0.6 + 0.4 * np.cos(40 * t[i] + 2 * np.sin(4 * a)))
-    v, f = tube_along(path, w, th, 24, up_hint=(0, -1, 0), mod=mod, p=3.2)
+        x = 0.068 + 0.012 * np.clip((1.215 - z) / 0.1, 0, 1)
+        ctrl.append([x, coat_front_y(x, z) - 0.016, z])
+    path = resample(catmull(ctrl, 60), 22)
+    T, Nn, B = frames(path, (0, -1, 0))
+    HW, HT, nsx = 0.035, 0.0120, 9
+    rings = []
+    for i, p in enumerate(path):
+        s = i / (len(path) - 1)
+        hw = HW * (0.85 + 0.15 * min(1.0, s / 0.25))
+        rg = []
+        for k in range(nsx):
+            u = -1 + 2 * k / (nsx - 1)
+            th = HT * (1 + 0.28 * np.cos(3 * np.pi * u))
+            rg.append(p + B[i] * (u * hw) + Nn[i] * th)
+        for k in range(nsx):
+            u = 1 - 2 * k / (nsx - 1)
+            rg.append(p + B[i] * (u * hw) - Nn[i] * HT * 0.8)
+        rings.append(np.array(rg))
+    v, f = loft(rings, True, True, True)
     parts.append((v, f, 0))
-    # fringe
-    end = path[-1]
-    for k in range(9):
-        x = end[0] + (k - 4) / 4 * 0.030
-        y0 = end[1] + 0.002 * np.sin(k * 2.1)
-        L = 0.036 + 0.006 * np.sin(k * 1.7)
-        fp = np.array([[x, y0, end[2] + 0.004], [x + 0.002 * np.sin(k), y0 - 0.001, end[2] - L * 0.5], [x + 0.003 * np.sin(k * 3), y0, end[2] - L]])
+    end = path[-1]; Tn = T[-1]
+    for k in range(7):
+        u = -0.84 + 1.68 * k / 6
+        base = end + B[-1] * (u * HW) + Tn * -0.004
+        fp = np.array([base + Tn * (0.012 * j) + B[-1] * (0.0015 * np.sin(j + k)) for j in range(4)])
         fp = catmull(fp, 6)
-        rr = np.linspace(0.0035, 0.0018, 6)
-        v, f = tube_along(fp, rr, rr, 8, up_hint=(0, -1, 0))
-        parts.append((v, f, 1))
-    ob = join_parts('Scarf', parts, [mats['teal'], mats['teal']], coll=coll)
+        rr = np.linspace(0.0050, 0.0020, 6)
+        v, f = tube_along(fp, rr, rr * 0.8, 8, up_hint=(0, -1, 0))
+        parts.append((v, f, 0))
+    ob = join_parts('Scarf', parts, [mats['knit']], coll=coll)
     recalc_normals(ob)
     add_mod(ob, 'SUBSURF', levels=1, render_levels=1)
     return ob
@@ -399,7 +410,7 @@ def build_mittens(mats, coll):
             rings.append(ring(W + d * t, u, v, a, b, 32, mod=lambda ang: 0.04 * np.cos(16 * ang)))
         vv, ff = loft_cyclic(rings)
         parts.append((vv, ff, 1))
-    ob = join_parts('Mittens', parts, [mats['teal'], mats['teal_dark']], coll=coll)
+    ob = join_parts('Mittens', parts, [mats['knit'], mats['teal_dark']], coll=coll)
     recalc_normals(ob)
     add_mod(ob, 'SUBSURF', levels=1, render_levels=2)
     return ob

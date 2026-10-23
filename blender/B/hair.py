@@ -112,14 +112,16 @@ def bang_tip(th):
     a = abs(th)
     base = np.interp(a, [0, 20, 35, 50, 62, 72, 82], [1.4330, 1.4325, 1.4285, 1.4180, 1.4020, 1.3840, 1.3600])
     notch = 0.0
-    for c, d, w in ((-30, 0.010, 6.0), (-3, 0.008, 5.0), (24, 0.011, 6.0)):
+    for c, d, w in ((-30, 0.016, 7.0), (-2, 0.011, 5.5), (25, 0.017, 7.0)):
         notch += d * max(0.0, 1 - abs(th - c) / w) ** 1.3
     return base + notch
 
 def build_bangs(mats, coll):
     parts = []
     def off_back(t, th):
-        lift = 0.0065 + 0.0090 * np.asarray(t) ** 1.6 + 0.006 * (abs(th) / 80) ** 2 * np.asarray(t)
+        t = np.asarray(t)
+        side = (abs(th) / 80) ** 2
+        lift = 0.0065 + (0.0085 * t + 0.0075 * np.sin(np.pi * np.clip(t, 0, 1)) ** 1.2) * (1 - 0.35 * side) + 0.004 * side * t
         return lift
     root = lambda th: 26 + 10 * (abs(th) / 80) ** 2
     G = sheet_patch(-80, 80, root, bang_tip, 38, 16, off_back)
@@ -127,7 +129,8 @@ def build_bangs(mats, coll):
     # front layer clumps with pointed tips (layered over the back layer)
     for c, w, dz in ((-46, 12, -0.004), (-16, 12, -0.005), (10, 11, -0.003), (40, 12, -0.006)):
         def off_f(t, th, c=c):
-            return 0.0085 + 0.0115 * np.asarray(t) ** 1.5 + 0.006 * (abs(th) / 80) ** 2 * np.asarray(t)
+            t = np.asarray(t); side = (abs(th) / 80) ** 2
+            return 0.0090 + (0.0090 * t + 0.0080 * np.sin(np.pi * np.clip(t, 0, 1)) ** 1.2) * (1 - 0.35 * side) + 0.004 * side * t
         tipf = lambda th, c=c, dz=dz, w=w: bang_tip(c) - dz * 0 + dz - 0.006 * (abs(th - c) / w) ** 2 * 0
         Gc = sheet_patch(c - w, c + w, lambda th: 30 + 10 * (abs(th) / 80) ** 2, tipf, 9, 15, off_f,
                          taper=lambda tv: np.clip(1.15 - tv ** 3 * 1.15, 0.02, 1.0))
@@ -140,10 +143,10 @@ def build_bangs(mats, coll):
     HV, HF = [], []
     for j in range(nu):
         th = -74 + 148 * j / (nu - 1)
-        tc = 0.36 + 0.02 * np.sin(np.radians(th) * 2.3) + 0.05 * (abs(th) / 74) ** 2
-        seg = max(0.0, np.sin(j * 0.42 + 0.6)) ** 0.7
-        hw = 0.065 * seg * (1 - (abs(th) / 80) ** 3) + 0.0005
-        for t in (tc - hw, tc + hw * 0.6):
+        tc = 0.27 + 0.03 * (abs(th) / 74) ** 2
+        zig = 0.040 * max(0.0, np.cos(j * 2 * np.pi / 7.0)) ** 6 + 0.006 * np.sin(j * 0.9) ** 2
+        fade = (1 - (abs(th) / 76) ** 4)
+        for t in (tc - 0.012 * fade, tc + (0.009 + zig) * fade):
             k = t * (nv - 1); i0 = int(np.clip(np.floor(k), 0, nv - 2)); a = k - i0
             HV.append(Gh[i0, j] * (1 - a) + Gh[i0 + 1, j] * a)
     for j in range(nu - 1):
@@ -162,11 +165,11 @@ def build_sidelocks(mats, coll):
     for sx in (1, -1):
         p0, _ = surf([48], [sx * 84], 0.004)
         p1, _ = surf([80], [sx * 80], 0.013)
-        ctrl = [p0[0], p1[0], [sx * 0.0845, -0.034, 1.372], [sx * 0.092, -0.044, 1.318], [sx * 0.110, -0.060, 1.262],
-                [sx * 0.121, -0.070, 1.205], [sx * 0.119, -0.068, 1.150]]
+        ctrl = [p0[0], p1[0], [sx * 0.0915, -0.010, 1.372], [sx * 0.102, -0.020, 1.318], [sx * 0.112, -0.050, 1.262],
+                [sx * 0.122, -0.066, 1.205], [sx * 0.120, -0.066, 1.150]]
         path = catmull(ctrl, 34)
         t = np.linspace(0, 1, len(path))
-        w = np.interp(t, [0, 0.25, 0.55, 0.8, 1.0], [0.028, 0.036, 0.031, 0.020, 0.0015])
+        w = np.interp(t, [0, 0.25, 0.55, 0.8, 1.0], [0.026, 0.028, 0.027, 0.019, 0.0012])
         th = np.interp(t, [0, 0.3, 0.8, 1.0], [0.008, 0.0085, 0.006, 0.001])
         Nn = np.tile(norm(np.array([sx * 0.62, -0.78, 0.0])), (len(path), 1))
         cup = np.interp(t, [0, 0.5, 1], [0.002, 0.004, 0.0005])
@@ -189,7 +192,12 @@ def build_sidelocks(mats, coll):
     return ob
 
 # ---------------------------------------------------------------- back hair: broad tapering sheets
+def _smooth(a, b, x):
+    t = np.clip((x - a) / (b - a), 0, 1)
+    return t * t * (3 - 2 * t)
+
 def back_fall(th, ztip, nv, off0):
+    """Surface-follow to the widest point, then fall and fan out over the back (width ~0.34 m)."""
     ph_root = 70.0
     phb = 102.0
     phs = np.linspace(ph_root, phb, 25)
@@ -199,12 +207,14 @@ def back_fall(th, ztip, nv, off0):
     x, y = pb[0], pb[1]
     side = abs(np.sin(np.radians(th)))
     sgn = np.sign(x) if abs(x) > 1e-6 else 0
+    def fan(z):
+        return 1.0 + 0.55 * _smooth(1.32, 1.05, z)
     ctrl = [P[-5], pb,
-            [x * 1.03, max(y, -0.01) + 0.02 * side, pb[2] - 0.075],
-            [x * 0.97 + sgn * 0.004, max(y + 0.01, 0.114 + 0.006 * side), 1.255],
-            [x * 1.02 + sgn * 0.010, max(y, 0.100), 1.130],
-            [x * 1.00 + sgn * 0.014, max(y - 0.01, 0.088), ztip + 0.06],
-            [x * 0.96 + sgn * 0.012, max(y - 0.02, 0.084), ztip]]
+            [x * 1.04, max(y, -0.01) + 0.02 * side, pb[2] - 0.075]]
+    for z in (1.255, 1.13, ztip + 0.06, ztip):
+        yy = max(y + 0.01, 0.116 + 0.008 * side) if z > 1.2 else max(y - 0.012 * (1.25 - z) / 0.25, 0.088 + 0.012 * side)
+        xx = x * fan(z) + sgn * 0.030 * _smooth(1.32, 1.15, z) * side
+        ctrl.append([xx, yy, z])
     tail = catmull(ctrl, 60)
     poly = np.vstack([P[:-5], tail])
     return resample(poly, nv)
@@ -212,18 +222,30 @@ def back_fall(th, ztip, nv, off0):
 def build_back(mats, coll):
     parts = []
     # under-layer (continuous) + overlapping broad sheets with V tips
-    specs = [  # centre theta, half width, tip z, offset
-        (180, 82, 1.060, 0.0075, None),
-        (124, 26, 1.040, 0.0115, 1), (-124, 26, 1.030, 0.0115, 1),
-        (156, 22, 0.985, 0.0140, 1), (-154, 22, 0.995, 0.0140, 1),
-        (180, 16, 0.960, 0.0160, 1),
-        (102, 12, 1.110, 0.0125, 1), (-102, 12, 1.100, 0.0125, 1)]
-    for c, hw, ztip, off, tp in specs:
+    rng = np.random.default_rng(11)
+    specs = [  # centre theta, half width, tip z, offset, taper power, tip shift
+        (180, 84, 1.050, 0.0075, None, 0),
+        (122, 24, 1.035, 0.0112, 0.55, 0.15), (-121, 24, 1.010, 0.0112, 0.75, -0.2),
+        (152, 21, 0.975, 0.0138, 0.65, -0.1), (-153, 22, 0.990, 0.0138, 0.50, 0.25),
+        (180, 15, 0.950, 0.0158, 0.70, 0.1),
+        (103, 13, 1.105, 0.0124, 0.6, 0.3), (-103, 12, 1.080, 0.0124, 0.8, -0.3),
+        (137, 9, 1.000, 0.0150, 0.9, 0.0), (-168, 9, 0.965, 0.0168, 0.6, 0.2)]
+    for c, hw, ztip, off, tp, shift in specs:
         th0, th1 = c - hw, c + hw
         nu = max(7, int(hw / 3.2) | 1)
-        G = sheet_patch(th0, th1, 70, lambda th, z=ztip: z, nu, 22, None,
-                        taper=(lambda tv: np.clip((1 - tv) / 0.30, 0, 1) ** 0.6 * 0.98 + 0.02) if tp else (lambda tv: np.clip((1 - tv) / 0.25, 0, 1) * 0.9 + 0.1),
+        if tp is None:
+            zt = lambda th, z=ztip: z + 0.022 * np.sin(np.radians(th) * 3.7 + 0.5) + 0.014 * np.sin(np.radians(th) * 9.1)
+            taper = lambda tv: np.clip((1 - tv) / 0.25, 0, 1) * 0.9 + 0.1
+        else:
+            zt = lambda th, z=ztip: z
+            taper = lambda tv, p=tp: np.clip((1 - tv) / 0.30, 0, 1) ** p * 0.98 + 0.02
+        G = sheet_patch(th0, th1, 70, zt, nu, 22, None, taper=taper,
                         fall=lambda th, z, nv, off=off: back_fall(th, z, nv, off))
+        if tp is not None and shift:
+            # asymmetric tip: slide the converging tip sideways a little
+            tv = np.linspace(0, 1, G.shape[0])[:, None, None]
+            side = G[:, -1:, :] - G[:, :1, :]
+            G = G + side * shift * 0.5 * _smooth(0.6, 1.0, tv)
         parts.append(patch_obj_parts(G) + (0,))
     ob = join_parts('Hair_Back', parts, [mats['hair']], coll=coll)
     recalc_normals(ob)
@@ -267,6 +289,7 @@ def build_ponytail(mats, coll):
     ob = join_parts('Hair_Ponytail', parts, [mats['hair']], coll=coll)
     recalc_normals(ob)
     add_mod(ob, 'SUBSURF', levels=1, render_levels=2)
+    ob['axis'] = [list(map(float, a)) for a in axis]
     return ob, axis
 
 # ---------------------------------------------------------------- loose thin strands (real Blender curves)
@@ -300,69 +323,60 @@ def build_strands(mats, coll):
 
 # ---------------------------------------------------------------- bow
 def build_bow(mats, coll, axis=None):
+    """Satin bow: perky tilted loops (0.32 m tip to tip) with two crease folds each,
+    a 25 mm pinched knot and 120 mm V-cut tails."""
     G, n = gather_point()
-    C = G + np.array([0, 0.046, 0.026])
+    K = G + np.array([0, 0.046, 0.026])
     parts = []
+    L = 0.148; tilt = np.tan(np.radians(17))
+    NP, NW = 28, 11
     for sx in (1, -1):
-        # puffy loop: ribbon whose width runs along Z, path is a teardrop in the X/Y plane
-        tau = np.linspace(0, 2 * np.pi, 42, endpoint=False)
-        span = 0.138
-        s = (1 - np.cos(tau)) / 2
-        xl = 0.010 + span * s
-        yl = 0.030 * np.sin(tau) * (s ** 0.40) * (1 - 0.15 * s)
-        width = 0.024 + 0.050 * np.clip(np.sin(np.pi * s), 0, 1) ** 0.35
-        pts = []
-        nw = 9
-        for i in range(len(tau)):
-            for j in range(nw):
-                u = (j / (nw - 1)) * 2 - 1
-                # outward normal of loop in XY
-                nrm = norm(np.array([np.cos(tau[i] + np.pi / 2) * 0.2, np.sign(np.sin(tau[i]) + 1e-6), 0.0]))
-                puff = 0.014 * (1 - u * u) * np.sin(np.pi * s[i]) ** 0.7
-                p = np.array([xl[i], yl[i] + np.sign(np.sin(tau[i]) + 1e-9) * puff, u * width[i] / 2])
-                pts.append(p)
-        pts = np.array(pts)
-        # tilt: outer end lifts and sweeps forward
-        ang_z = np.radians(-16); ang_y = np.radians(-12)
-        x, y, z = pts[:, 0], pts[:, 1], pts[:, 2]
-        al = np.radians(38) * np.clip(x / 0.05, 0, 1)
-        y, z = y * np.cos(al) - z * np.sin(al), y * np.sin(al) + z * np.cos(al)
-        z2 = z + x * np.tan(ang_z)
-        y2 = y - 0.42 * x ** 1.3
-        pts = np.stack([sx * x, y2, z2], 1) + C
+        rings = []
+        for i in range(NP):
+            t = 2 * np.pi * i / NP
+            x = L * 0.5 * (1 - np.cos(t))
+            xl = x / L
+            puff = 0.020 * np.sin(t) * (0.5 + 0.5 * np.sin(np.pi * xl) ** 0.6)
+            y = puff * (1.0 if np.sin(t) >= 0 else 0.8)
+            z = tilt * x + 0.006 * np.sin(np.pi * xl)
+            p = K + np.array([sx * (x + 0.012), y, z])
+            hgt = 0.011 + 0.040 * xl ** 1.1 + 0.006 * np.sin(np.pi * xl) ** 2
+            if xl > 0.90:
+                hgt *= max(np.sqrt(max(0.0, 1 - ((xl - 0.90) / 0.13) ** 2)), 0.80)
+            outward = 1.0 if y >= 0 else -1.0
+            rg_ = []
+            for k in range(NW):
+                u = -1 + 2 * k / (NW - 1)
+                bulge = 0.010 * (1 - u * u) * (0.3 + xl)
+                crease = 0.0035 * xl * np.exp(-((abs(u) - 0.42) / 0.10) ** 2)
+                rg_.append(p + np.array([-sx * 0.012 * u * u * xl ** 4, outward * (bulge - crease), u * hgt]))
+            rings.append(rg_)
+        V = np.array(rings).reshape(-1, 3)
         F = []
-        nt = len(tau)
-        for i in range(nt):
-            i2 = (i + 1) % nt
-            for j in range(nw - 1):
-                F.append((i * nw + j, i * nw + j + 1, i2 * nw + j + 1, i2 * nw + j))
-        if sx < 0:
-            F = [tuple(reversed(f)) for f in F]
-        parts.append((pts, F, 0))
-        # tails with V-cut ends
-        tp = np.array([[sx * 0.006, 0.012, -0.006], [sx * 0.030, 0.026, -0.045], [sx * 0.058, 0.026, -0.095], [sx * 0.078, 0.016, -0.140]]) + C
-        tp = catmull(tp, 14)
-        nw = 7
+        for i in range(NP):
+            i2 = (i + 1) % NP
+            for k in range(NW - 1):
+                F.append((i * NW + k, i * NW + k + 1, i2 * NW + k + 1, i2 * NW + k))
+        parts.append((V, F, 0))
+        # 120 mm tails, V-cut ends
+        tp = np.array([[sx * 0.008, 0.006, -0.012], [sx * 0.036, 0.018, -0.052], [sx * 0.060, 0.026, -0.098], [sx * 0.074, 0.030, -0.135]]) + K
+        tp = resample(catmull(tp, 40), 12)
         pts = []
         for i, p in enumerate(tp):
-            t = i / (len(tp) - 1)
-            w = 0.030 + 0.016 * t
-            tan = tp[min(i + 1, len(tp) - 1)] - tp[max(i - 1, 0)]
-            side = norm(np.cross(tan, [0, 1.0, 0]))
-            for j in range(nw):
-                u = (j / (nw - 1)) * 2 - 1
-                q = p + side * u * w / 2 + np.array([0, 1, 0]) * 0.004 * (1 - u * u) * np.sin(np.pi * t)
-                if i == len(tp) - 1:
-                    q = q + norm(tan) * -0.020 * (1 - abs(u)) ** 1.0
-                pts.append(q)
-        F = grid_faces(len(tp), nw, closed=False)
-        parts.append((pts, F, 0))
-    # pinched knot
+            s = i / (len(tp) - 1)
+            w = 0.020 + 0.010 * s
+            T = norm(tp[min(i + 1, 11)] - tp[max(i - 1, 0)])
+            S = norm(np.array([1.0, 0, 0]) - T * T[0])
+            for k in range(7):
+                u = -1 + 2 * k / 6
+                vcut = 0.022 * (1 - abs(u)) if i == len(tp) - 1 else 0.0
+                pts.append(p + S * (u * w) + np.array([0, 0.004 * (1 - u * u), 0]) - T * vcut)
+        parts.append((pts, grid_faces(len(tp), 7, closed=False), 0))
+    # 25 mm pinched knot
     rings = []
-    for k, (dx, rz, ry) in enumerate(((-0.020, 0.010, 0.008), (-0.016, 0.019, 0.014), (-0.008, 0.023, 0.017), (0, 0.024, 0.018),
-                                       (0.008, 0.023, 0.017), (0.016, 0.019, 0.014), (0.020, 0.010, 0.008))):
-        rings.append(ring(C + np.array([dx, 0.010, 0]), (0, 0, 1), (0, 1, 0), rz, ry, 20,
-                          mod=lambda a: 0.06 * np.cos(5 * a)))
+    for dz, sc in ((-0.0125, 0.25), (-0.010, 0.75), (-0.005, 0.95), (0.0, 0.80), (0.005, 0.95), (0.010, 0.75), (0.0125, 0.25)):
+        rings.append(ring(K + np.array([0, 0.004, dz]), (1, 0, 0), (0, 1, 0), 0.0125 * sc, 0.0115 * sc, 20,
+                          mod=lambda a: 0.07 * np.cos(5 * a)))
     v, f = loft(rings, True, True, True)
     parts.append((v, f, 0))
     ob = join_parts('Bow', parts, [mats['teal']], coll=coll)
@@ -370,3 +384,30 @@ def build_bow(mats, coll, axis=None):
     add_mod(ob, 'SOLIDIFY', thickness=0.0035, offset=0.0)
     add_mod(ob, 'SUBSURF', levels=1, render_levels=2)
     return ob
+
+# ---------------------------------------------------------------- smooth-normal proxies
+def hair_proxy(coll):
+    rows = [(1.605, 0.010, 0.010, 0.010), (1.585, 0.055, 0.060, 0.012), (1.55, 0.090, 0.100, 0.014), (1.50, 0.110, 0.122, 0.016),
+            (1.44, 0.118, 0.130, 0.018), (1.38, 0.120, 0.132, 0.022), (1.30, 0.135, 0.130, 0.035), (1.20, 0.160, 0.110, 0.050),
+            (1.10, 0.175, 0.100, 0.055), (0.95, 0.180, 0.095, 0.055), (0.88, 0.180, 0.090, 0.055)]
+    rings = [ring((0, cy, z), (1, 0, 0), (0, -1, 0), rx, ry, 48) for z, rx, ry, cy in rows]
+    v, f = loft(rings, True, True, True)
+    ob = mesh_obj('HairNormalProxy', v, f, mats=[], coll=coll)
+    recalc_normals(ob)
+    add_mod(ob, 'SUBSURF', levels=2, render_levels=2)
+    ob.hide_render = True; ob.hide_viewport = True
+    return ob
+
+def tube_proxy(name, axis, radius, coll):
+    v, f = tube_along(axis, radius, radius, 24, up_hint=(0, 0, 1))
+    ob = mesh_obj(name, v, f, mats=[], coll=coll)
+    recalc_normals(ob)
+    add_mod(ob, 'SUBSURF', levels=1, render_levels=1)
+    ob.hide_render = True; ob.hide_viewport = True
+    return ob
+
+def transfer_normals(ob, proxy, factor=1.0):
+    m = ob.modifiers.new('SmoothNormals', 'DATA_TRANSFER')
+    m.object = proxy; m.use_loop_data = True; m.data_types_loops = {'CUSTOM_NORMAL'}
+    m.loop_mapping = 'POLYINTERP_NEAREST'; m.mix_factor = factor
+    return m

@@ -263,6 +263,7 @@ def toon_mat(name, base, shadow, hi=None, t_shadow=0.32, t_hi=0.93, outline=Fals
         sh = em
         if outline:
             m.use_backface_culling = True
+            m.use_backface_culling_shadow = True
     else:
         dif = nt.nodes.new('ShaderNodeBsdfDiffuse'); dif.location = (-400, 0)
         dif.inputs['Color'].default_value = (1, 1, 1, 1)

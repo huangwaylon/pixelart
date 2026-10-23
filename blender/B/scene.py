@@ -107,3 +107,11 @@ def save_np(a, path):
     img.pixels.foreach_set(a.astype(np.float32).ravel())
     img.filepath_raw = path; img.file_format = 'PNG'; img.save()
     bpy.data.images.remove(img)
+
+def add_outline(ob, mat, t):
+    """Inverted hull as a modifier (deforms with the rig; stripped on export)."""
+    ob.data.materials.append(mat)
+    m = ob.modifiers.new('Outline', 'SOLIDIFY')
+    m.thickness = t; m.offset = 1.0; m.use_flip_normals = True; m.use_rim = False
+    m.material_offset = 64; m.use_quality_normals = True
+    return m

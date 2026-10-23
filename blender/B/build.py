@@ -2,7 +2,7 @@ import sys, bpy, time
 sys.path.insert(0, '/tmp/indep/B/src')
 from common import *
 import numpy as np
-import head, body, hair, scene
+import head, body, hair, scene, rig
 
 t0 = time.time()
 bpy.ops.wm.read_factory_settings(use_empty=True)
@@ -10,19 +10,19 @@ sc = scene.setup_scene()
 
 def C(name):
     c = bpy.data.collections.new(name); sc.collection.children.link(c); return c
-char = C('Character'); lines = C('Outlines')
+char = C('Character'); lines = C('Proxies')
 
 M = dict(
     skin=toon_mat('Skin', '#FCD6B4', '#EBA586', t_shadow=0.12),
-    lip=toon_mat('Lip', '#F2A08C', '#E07F70', t_shadow=0.12),
     lash=toon_mat('Lash', '#20223E', '#20223E', emit_only=True),
     brow=toon_mat('Brow', '#6E3C3A', '#6E3C3A', emit_only=True),
     crease=toon_mat('LidCrease', '#D9937A', '#D9937A', emit_only=True),
-    blush=toon_mat('Blush', '#F48C80', '#F48C80', emit_only=True, alpha=0.28),
+    blush=toon_mat('Blush', '#FAC1A5', '#FAC1A5', emit_only=True),
     mouth=toon_mat('Mouth', '#9A4C46', '#9A4C46', emit_only=True),
     hair=toon_mat('Hair', '#A85A3A', '#6E3C3A', t_shadow=0.30),
-    hair_hi=toon_mat('HairHighlight', '#D08658', '#A85A3A', t_shadow=0.30),
-    teal=toon_mat('Teal', '#2A8C8E', '#1C4C54', hi='#6ACBB6', t_shadow=0.30, t_hi=0.95),
+    hair_hi=toon_mat('HairHighlight', '#C67A4E', '#A85A3A', t_shadow=0.30),
+    teal=toon_mat('TealSatin', '#2A8C8E', '#1C4C54', hi='#6ACBB6', t_shadow=0.30, t_hi=0.975),
+    knit=toon_mat('TealKnit', '#2A8C8E', '#1C4C54', t_shadow=0.30),
     teal_dark=toon_mat('TealDark', '#1C4C54', '#143840', t_shadow=0.30),
     coat=toon_mat('Coat', '#F2E6CE', '#D2BFA4', t_shadow=0.30),
     rust=toon_mat('Rust', '#A85A3A', '#7C3E2C', t_shadow=0.30),
@@ -33,7 +33,8 @@ M = dict(
     fur=toon_mat('Fur', '#F2E6CE', '#D2BFA4', t_shadow=0.30),
     sole=toon_mat('Sole', '#3E2628', '#2E1C1E', t_shadow=0.30),
 )
-outline = toon_mat('Outline', '#3A2630', '#3A2630', outline=True)
+outline = toon_mat('Outline', '#4A2C26', '#4A2C26', outline=True)
+outline_teal = toon_mat('OutlineTeal', '#163C42', '#163C42', outline=True)
 
 objs = {}
 objs['Head'] = head.build_head(M, char)
@@ -51,11 +52,20 @@ objs['Scarf'] = body.build_scarf(M, char)
 objs['Mittens'] = body.build_mittens(M, char)
 objs['Hair_Cap'] = hair.build_cap(M, char)
 objs['Hair_Bangs'] = hair.build_bangs(M, char)
+objs['Hair_Highlight'] = bpy.data.objects['Hair_Highlight']
 objs['Hair_SideLocks'] = hair.build_sidelocks(M, char)
 objs['Hair_Back'] = hair.build_back(M, char)
 objs['Hair_Ponytail'], pt_axis = hair.build_ponytail(M, char)
 objs['Hair_Strands'] = hair.build_strands(M, char)
 objs['Bow'] = hair.build_bow(M, char, pt_axis)
+objs['Brows'] = head.build_brows(M, char, [objs['Hair_Bangs'], objs['Head']])
+hp = hair.hair_proxy(lines)
+for n in ('Hair_Cap', 'Hair_Bangs', 'Hair_Back'):
+    hair.transfer_normals(objs[n], hp)
+import numpy as _np
+_ax = _np.array(objs['Hair_Ponytail']['axis'])
+pp = hair.tube_proxy('PonytailNormalProxy', _ax, _np.interp(_np.linspace(0, 1, len(_ax)), [0, 0.1, 0.4, 0.8, 1], [0.01, 0.035, 0.06, 0.05, 0.03]), lines)
+hair.transfer_normals(objs['Hair_Ponytail'], pp, 0.7)
 
 # shrinkwrap pass: keep coat bodice snug on the torso (vertex group = bodice rows)
 coat = objs['Coat']
@@ -76,13 +86,35 @@ for name, o in objs.items():
     if name in ('Eyes', 'FaceLines', 'Bow') or name.startswith('Hair'):
         o.visible_shadow = False
 
-per = {'Head': 0.0011, 'Hair_Strands': 0.0007, 'Belt': 0.0008, 'Mittens': 0.0012, 'Bow': 0.0013,
-       'Hair_Bangs': 0.0011, 'Hair_SideLocks': 0.0011, 'Boots': 0.0016, 'Scarf': 0.0014}
-ol_src = [o for n, o in objs.items() if n not in ('Eyes', 'FaceLines', 'Body')]
-ols = scene.make_outlines(ol_src, outline, 0.0015, coll=lines, per=per)
-for o in ols:
-    o.visible_shadow = False
-
+per = {'Head': 0.0007, 'Hair_Strands': 0.0004, 'Belt': 0.0005, 'Mittens': 0.0008, 'Bow': 0.0008,
+       'Hair_Bangs': 0.0007, 'Hair_SideLocks': 0.0007, 'Boots': 0.0010, 'Scarf': 0.0009, 'Hair_Highlight': 0.0}
+for n, o in objs.items():
+    if n in ('Eyes', 'FaceLines', 'Body', 'Hair_Highlight', 'Brows'):
+        continue
+    om = scene.add_outline(o, outline_teal if n in ('Bow', 'Scarf', 'Mittens') else outline, per.get(n, 0.0009))
+    if n == 'Head':
+        om.vertex_group = 'outline'
+# apply the coat shrinkwrap pass (bake it into the cage before skinning), drop the torso proxy
+with bpy.context.temp_override(object=coat, active_object=coat):
+    bpy.ops.object.modifier_apply(modifier='Shrinkwrap')
+bpy.data.objects.remove(prx)
+# UVs
+rig.unwrap(objs)
+# rig + weights
+arm, chains = rig.build_armature(objs, char)
+rep = rig.skin_all(objs, arm, chains)
+print('SKIN', rep)
+for pn in ('FaceNormalProxy', 'HairNormalProxy'):
+    rig.parent_to_bone(bpy.data.objects[pn], arm, 'head')
+# ponytail normal proxy follows the ponytail chain
+pp_ = bpy.data.objects['PonytailNormalProxy']
+Vp = np.array([v.co[:] for v in pp_.data.vertices])
+bn_, Wp = rig.chain_weights(Vp, chains['ponytail'][1], chains['ponytail'][0], 'head', 0.06)
+rig.set_weights(pp_, bn_, Wp)
+pp_.parent = arm
+am_ = pp_.modifiers.new('Armature', 'ARMATURE'); am_.object = arm
+with bpy.context.temp_override(object=pp_):
+    bpy.ops.object.modifier_move_to_index(modifier='Armature', index=0)
 bpy.ops.wm.save_as_mainfile(filepath='/tmp/indep/B/out/model.blend', compress=True)
 # stats
 dg = bpy.context.evaluated_depsgraph_get()

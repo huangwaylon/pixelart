@@ -23,7 +23,7 @@ if what in ('all', 'turn'):
 
 if what in ('all', 'face'):
     panels = []
-    for i, ang in enumerate((0, 35)):
+    for i, ang in enumerate((0, 35, 90)):
         p = f'{T}/face_{i}.png'
         scene.render_to(view(ang, z=1.43, ortho=0.36, name='camf'), p, 768, 768)
         panels.append(scene.over_bg(scene.load_np(p)))

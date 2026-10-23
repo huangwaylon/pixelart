@@ -7,7 +7,8 @@ O = np.array([0.0, 0.004, 1.425])   # projection centre
 
 EYE = dict(x_in=0.0185, z_in=1.3995, x_out=0.0635, z_out=1.4105, up=0.0265, lo=0.0150,
            iris_c=0.505, iris_rx=0.262, iris_ry=0.37)
-SOCKET = False
+SOCKET = True
+BROWS = []
 P = dict(nose_z=1.367, mouth_z=1.3395, chin_z=1.303)
 
 # lofted-section profiles: z -> (half width, front y, back y)
@@ -17,12 +18,12 @@ PROF = np.array([
     [1.568,  0.034, -0.026,   0.044],
     [1.556,  0.054, -0.050,   0.070],
     [1.535,  0.071, -0.069,   0.090],
-    [1.510,  0.081, -0.082,   0.104],
-    [1.485,  0.086, -0.0885,  0.112],
-    [1.460,  0.0875,-0.0900,  0.1145],
-    [1.435,  0.0860,-0.0885,  0.1120],
-    [1.415,  0.0815,-0.0855,  0.1060],
-    [1.395,  0.0770,-0.0830,  0.0960],
+    [1.510,  0.081, -0.0790,  0.104],
+    [1.485,  0.086, -0.0835,  0.112],
+    [1.460,  0.0875,-0.0855,  0.1145],
+    [1.435,  0.0860,-0.0850,  0.1120],
+    [1.415,  0.0815,-0.0830,  0.1060],
+    [1.395,  0.0770,-0.0817,  0.0960],
     [1.375,  0.0715,-0.0815,  0.0820],
     [1.358,  0.0640,-0.0795,  0.0620],
     [1.344,  0.0545,-0.0765,  0.0380],
@@ -51,7 +52,8 @@ def _base(p):
     bf = np.maximum(y0 - yf, 1e-4); bb = np.maximum(yb - y0, 1e-4)
     dy = p[..., 1] - y0
     b = np.where(dy < 0, bf, bb)
-    nexp = np.where(dy < 0, 2.0 + 0.5 * np.clip((1.45 - z) / 0.06, 0, 1), 2.0)
+    wedge = np.clip((1.455 - z) / 0.04, 0, 1) * np.clip((z - 1.30) / 0.04, 0, 1)
+    nexp = np.where(dy < 0, 2.0 - 0.40 * wedge, 2.0)
     q = (np.abs(p[..., 0]) / a) ** nexp + (np.abs(dy) / b) ** nexp
     f = (q ** (1.0 / nexp) - 1.0) * np.minimum(a, b)
     f = np.where((z > 1.5745) | (z < 1.2995), np.maximum(f, 0.01), f)
@@ -60,7 +62,7 @@ def _base(p):
         ear = sd_ellipsoid(p, (sx * 0.080, 0.018, 1.400), (0.011, 0.018, 0.026))
         d = smin(d, ear, 0.006)
     neck = sd_capsule(p, (0, 0.018, 1.26), (0, 0.010, 1.39), 0.0272)
-    d = smin(d, neck, 0.016)
+    d = smin(d, neck, 0.009)
     d = np.maximum(d, 1.272 - p[..., 2])
     return d
 
@@ -79,24 +81,34 @@ def _setup_features():
     _feat['ll'] = yb(0, 1.3335)
     _feat['eye'] = yb(0.041, 1.407)
     _feat['chin'] = yb(0, 1.312)
+    _feat['brow'] = yb(0.036, 1.4425)
 
 def head_f(p):
     if not _feat:
         _setup_features()
     d = _base(p)
-    # nose: soft bridge + tiny tip
-    nb = sd_capsule(p, (0, _feat['bridge'] + 0.0032, 1.398), (0, _feat['nose'] + 0.0025, 1.371), 0.0030)
-    nt = sd_ellipsoid(p, (0, _feat['nose'] + 0.0042, P['nose_z']), (0.0050, 0.0068, 0.0055))
-    d = smin(d, smin(nb, nt, 0.006), 0.007)
-    # lips (small + full)
-    ul = sd_ellipsoid(p, (0, _feat['ul'] + 0.0030, 1.3448), (0.0110, 0.0055, 0.0040))
-    ll = sd_ellipsoid(p, (0, _feat['ll'] + 0.0032, 1.3338), (0.0095, 0.0058, 0.0046))
-    d = smin(d, smin(ul, ll, 0.002), 0.004)
-    # chin point
-
-    # shallow almond eye sockets
+    # ---- sculpted midline profile (displacement of the front surface, metres forward)
+    # brow, socket, nose bridge, upturned tip with crisp underside, philtrum, lips, fold, chin shelf
+    z = p[..., 2]; x = p[..., 0]
+    front = np.clip((-0.035 - p[..., 1]) / 0.02, 0, 1)
+    Zk = [1.300, 1.304, 1.309, 1.3155, 1.3215, 1.3250, 1.3290, 1.3345, 1.3390, 1.3425, 1.3460, 1.3500, 1.3545, 1.3585,
+          1.3610, 1.3640, 1.3675, 1.3720, 1.3780, 1.3850, 1.3950, 1.4050, 1.4120]
+    Dk = [0.0000, 0.0030, 0.0050, 0.0050, 0.0020, 0.0000, 0.0014, 0.0040, 0.0012, 0.0042, 0.0050, 0.0026, 0.0015, 0.0026,
+          0.0070, 0.0128, 0.0142, 0.0114, 0.0080, 0.0050, 0.0022, 0.0004, 0.0000]
+    Wk = [0.010, 0.011, 0.0118, 0.0118, 0.0105, 0.0100, 0.0095, 0.0100, 0.0115, 0.0115, 0.0110, 0.0085, 0.0070, 0.0088,
+          0.0090, 0.0074, 0.0064, 0.0054, 0.0048, 0.0044, 0.0042, 0.0042, 0.0042]
+    D = np.interp(z, Zk, Dk, left=0, right=0); W = np.interp(z, Zk, Wk)
+    disp = D * np.exp(-(x / W) ** 2) * front
+    # philtrum: two soft ridges with a dip between them
+    ph = np.clip(1 - np.abs(z - 1.3505) / 0.0045, 0, 1)
+    disp = disp + ph * (0.0005 * np.exp(-((np.abs(x) - 0.0028) / 0.0018) ** 2) - 0.0003 * np.exp(-(x / 0.0015) ** 2)) * front
+    # subtle brow ridge across both brows
+    br = np.exp(-((z - 1.4435) / 0.0065) ** 2) * np.exp(-((np.abs(x) - 0.036) / 0.026) ** 2) * front
+    disp = disp + 0.0016 * br
+    d = d - disp
+    # almond eye sockets (eyes recessed ~5 mm behind the brow plane)
     for sx in (-1, 1):
-        so = sd_ellipsoid(p, (sx * 0.0412, _feat['eye'] + 0.0058, 1.4075), (0.0245, 0.0068, 0.0185))
+        so = sd_ellipsoid(p, (sx * 0.0412, _feat['eye'] + 0.0072, 1.4070), (0.0250, 0.0100, 0.0190))
         d = smax(d, -so, 0.004) if SOCKET else d
     return d
 
@@ -126,10 +138,10 @@ def lid_curves(sx=1):
         return sx * (e['x_in'] + (e['x_out'] - e['x_in']) * s)
     return X, up, lo
 
-def build_head(mats, coll, nrow=42, ncol=54):
-    skin, lip = mats['skin'], mats['lip']
-    phis = _density_samples(nrow, 0.0, 180.0, [100, 132], [1.6, 1.0], [26, 12])
-    thetas = _density_samples(ncol, -180.0, 180.0, [0.0], [1.4], [55.0], wrap=True)
+def build_head(mats, coll, nrow=54, ncol=62):
+    skin = mats['skin']
+    phis = _density_samples(nrow, 0.0, 180.0, [100, 121, 136, 147], [1.3, 1.6, 1.4, 0.8], [24, 6, 6, 5])
+    thetas = _density_samples(ncol, -180.0, 180.0, [0.0, 0.0], [1.2, 3.2], [55.0, 7.0], wrap=True)
     ph = np.radians(phis[1:-1]); th = np.radians(thetas)
     PH, TH = np.meshgrid(ph, th, indexing='ij')
     D = np.stack([np.sin(PH) * np.sin(TH), -np.sin(PH) * np.cos(TH), np.cos(PH)], -1).reshape(-1, 3)
@@ -149,10 +161,43 @@ def build_head(mats, coll, nrow=42, ncol=54):
         c = V[list(f)].mean(0)
         inlip = ((c[0] / 0.0105) ** 2 + ((c[2] - 1.3335) / 0.0042) ** 2) < 1 and c[1] < -0.05
         MI.append(0)
-    ob = mesh_obj('Head', V, F, mats=[skin, lip], mat_idx=MI, coll=coll)
+    ob = mesh_obj('Head', V, F, mats=[skin], coll=coll)
     recalc_normals(ob)
     add_mod(ob, 'SUBSURF', levels=1, render_levels=2)
+    face_normal_transfer(ob, coll)
     return ob
+
+def face_normal_transfer(ob, coll):
+    import bmesh
+    bm = bmesh.new()
+    bmesh.ops.create_uvsphere(bm, u_segments=48, v_segments=32, radius=1.0)
+    for v in bm.verts:
+        v.co.x *= 0.125; v.co.y *= 0.105; v.co.z *= 0.130
+        v.co.y += 0.020; v.co.z += 1.405
+    me = bpy.data.meshes.new('FaceNormalProxy'); bm.to_mesh(me); bm.free(); me.shade_smooth()
+    px = bpy.data.objects.new('FaceNormalProxy', me)
+    bpy.data.collections['Proxies'].objects.link(px)
+    px.hide_render = True; px.hide_viewport = True
+    vg = ob.vertex_groups.new(name='face')
+    for v in ob.data.vertices:
+        x, y, z = v.co
+        w = np.clip((-0.035 - y) / 0.025, 0, 1) * np.clip((1.462 - z) / 0.02, 0, 1) * np.clip((z - 1.300) / 0.012, 0, 1)
+        mid = np.exp(-(x / 0.010) ** 2) * np.clip((1.392 - z) / 0.010, 0, 1)
+        w = w * (1 - 0.95 * mid)
+        if w > 0:
+            vg.add([v.index], float(w), 'REPLACE')
+    og = ob.vertex_groups.new(name='outline')
+    fw = {}
+    for v in ob.data.vertices:
+        w = 1.0
+        for g in v.groups:
+            if g.group == vg.index:
+                w = 1.0 - g.weight
+        og.add([v.index], float(max(w, 0.0)), 'REPLACE')
+    m = ob.modifiers.new('FaceNormals', 'DATA_TRANSFER')
+    m.object = px; m.use_loop_data = True; m.data_types_loops = {'CUSTOM_NORMAL'}
+    m.loop_mapping = 'POLYINTERP_NEAREST'; m.vertex_group = 'face'
+    return px
 
 # ---------------------------------------------------------------- eye texture
 def eye_image(name, sx):
@@ -220,7 +265,7 @@ def build_eyes(mats, coll):
                 x = X(s); z = lo(s) + (up(s) - lo(s)) * t
                 V.append([x, 0, z])
         V = np.array(V)
-        V[:, 1] = front_y(head_f, V[:, 0], V[:, 2]) - 0.0007
+        V[:, 1] = front_y(head_f, V[:, 0], V[:, 2]) - 0.0010
         UV = np.stack([(V[:, 0] - xmin) / (xmax - xmin), (V[:, 2] - zmin) / (zmax - zmin)], 1)
         F = grid_faces(nt, ns, closed=False)
         if sx < 0:
@@ -228,14 +273,14 @@ def build_eyes(mats, coll):
         ob = mesh_obj('Eye_' + tag, V, F, mats=[m], coll=coll, uvs=UV)
         eye_objs.append(ob)
         # ---- upper lash with outer wing (2D strip in x,z then projected)
-        ss = np.r_[np.linspace(-0.03, 1.0, 22), np.linspace(1.04, 1.30, 7)]
+        ss = np.r_[np.linspace(0.05, 1.0, 22), np.linspace(1.04, 1.30, 7)]
         low, upp = [], []
         for s in ss:
             if s <= 1.0:
                 x, z = X(s), up(s) - 0.0009
-                th = 0.0012 + 0.0034 * np.clip(s / 0.75, 0, 1) ** 1.1
+                th = 0.0004 + 0.0042 * np.clip((s - 0.05) / 0.70, 0, 1) ** 0.9
                 ds = 0.01; x2, z2 = X(min(s + ds, 1.0)), up(min(s + ds, 1.0))
-                x1, z1 = X(max(s - ds, -0.03)), up(max(s - ds, -0.03))
+                x1, z1 = X(max(s - ds, 0.05)), up(max(s - ds, 0.05))
             else:
                 k = (s - 1.0) / 0.30
                 x = X(1.0) + sx * 0.0120 * k
@@ -271,12 +316,12 @@ def build_eyes(mats, coll):
         # brow
         bs = np.linspace(0, 1, 16)
         bx = sx * (0.021 + 0.046 * bs)
-        bz = 1.4475 + 0.0050 * np.sin(np.pi * bs ** 0.8) - 0.004 * bs
-        th = 0.0022 * (1 - bs) ** 0.6 + 0.0005
+        bz = 1.4515 + 0.0050 * np.sin(np.pi * bs ** 0.8) - 0.004 * bs
+        th = 0.0029 * (1 - bs) ** 0.6 + 0.0006
         low = np.stack([bx, 0 * bx, bz - th / 2], 1); upp = np.stack([bx, 0 * bx, bz + th / 2], 1)
         LV = np.vstack([low, upp]); LV[:, 1] = front_y(head_f, LV[:, 0], LV[:, 2]) - 0.0009
         n = len(bs)
-        parts_lash.append((LV, [(i, i + 1, n + i + 1, n + i) for i in range(n - 1)], 1))
+        BROWS.append((sx, bx, bz, th))
         # blush
         a = np.linspace(0, 2 * np.pi, 20, endpoint=False)
         bxy = np.stack([sx * 0.047 + 0.0135 * np.cos(a), 0 * a, 1.3725 + 0.0062 * np.sin(a)], 1)
@@ -316,3 +361,32 @@ def build_eyes(mats, coll):
     eye_objs[0].name = 'Eyes'
     add_mod(eye_objs[0], 'SOLIDIFY', thickness=0.0004, offset=1.0)
     return eye_objs[0], face
+
+
+def build_brows(mats, coll, occluders):
+    """Thin brows projected onto whatever is frontmost (bangs or forehead) so they read through the fringe."""
+    from mathutils.bvhtree import BVHTree
+    from mathutils import Vector
+    dg = bpy.context.evaluated_depsgraph_get()
+    trees = []
+    for o in occluders:
+        ev = o.evaluated_get(dg); me = ev.to_mesh()
+        vs = [o.matrix_world @ v.co for v in me.vertices]
+        trees.append(BVHTree.FromPolygons(vs, [tuple(p.vertices) for p in me.polygons]))
+        ev.to_mesh_clear()
+    parts = []
+    for sx, bx, bz, th in BROWS:
+        n = len(bx)
+        pts = np.vstack([np.stack([bx, 0 * bx, bz - th / 2], 1), np.stack([bx, 0 * bx, bz + th / 2], 1)])
+        for k, p in enumerate(pts):
+            best = None
+            for t in trees:
+                hit = t.ray_cast(Vector((p[0], -0.4, p[2])), Vector((0, 1, 0)))
+                if hit[0] is not None and (best is None or hit[0].y < best):
+                    best = hit[0].y
+            pts[k, 1] = (best if best is not None else -0.09) - 0.0006
+        parts.append((pts, [(i, i + 1, n + i + 1, n + i) for i in range(n - 1)], 0))
+    ob = join_parts('Brows', parts, [mats['brow']], coll=coll)
+    add_mod(ob, 'SOLIDIFY', thickness=0.0003, offset=1.0)
+    ob.visible_shadow = False
+    return ob
