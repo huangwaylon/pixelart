@@ -1,0 +1,17 @@
+# r13 head_small three_quarter tiltR expression: determined. Pixel artist 3. Patch over head_three_quarter_tiltR.pix.
+extends: ../head_three_quarter_tiltR.pix
+patch: 8 15
+____uu_________
+____dd____uuu__
+______d____dd__
+__________d____
+____KKK________
+___j_j___KKKKK_
+_____Wn__j_jj__
+___________W_n_
+_______________
+s______________
+_ss____________
+___________r_ss
+_______srr_____
+________ss_____

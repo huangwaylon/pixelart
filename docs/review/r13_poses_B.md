@@ -1,20 +1,22 @@
 # r13 Cut-scene poses B: shy, shiver, recoil, cheer (Pixel Artist 3)
 
 **Files:** `art/hand/S4/poses/{shy,shiver,recoil,cheer}.pix` (96x160).
-**Renders:** `00_REVIEW/r13_anime_pixel/poses/` (`*_x4.png`, `poses_B_x3.png`, `poses_B_silhouette_x2.png`).
+**Renders:** `00_REVIEW/r13_anime_pixel/poses/` (`<pose>.png`, `<pose>_x4.png`, `poses_B_x3.png`, `poses_B_silhouette_x2.png`, `poses_lineup_x3.png` with all 8).
 
-**Construction:**
-- Built on the approved turnaround: front for shy, shiver and cheer; 3/4 for recoil. Body, palette, line rules and landmark rows are unchanged.
-- The arms were taken off with hand-set torso and skirt edges per row, then redrawn: sleeves have a lit `oat_0` edge and an outline shadow edge, with rust cuffs and mittens with thumbs.
-- Faces are the `head_small` expressions pasted at x+26 and only translated, never rotated.
+**Base:** the approved turnaround (front for shy, shiver and cheer; 3/4 for recoil) with the arms taken off and redrawn. Mittens have thumbs. The faces are `head_small` expressions at x+26. Tilts are done by hand-shifting feature bands 1 px; nothing is rotated.
 
-| pose | expression | line of action / weight | gesture | secondary motion |
+| pose | expr | line of action | gesture | secondary |
 |---|---|---|---|---|
-| shy | embarrassed | inward curl: head down 1 px and shifted 1 px | elbows tucked; mittens clasped under the chin | knees in, toes in, free heel up 3 px |
-| shiver | worried | compact vertical: head sunk 2 px into the scarf | hugging herself, forearms crossed, mittens gripping the upper arms | snow_1 jitter echo around the silhouette, shake ticks, breath puff, toes in |
-| recoil | surprised | reverse C: upper body leans back 3/2/1 px, front knee up, foot lifted 14 px | near hand palm-out at the chest; far arm flung back with an open palm | ponytail flicks back in a tapered arc; back hair re-locked |
-| cheer | laugh | Y-line: hop 4 px with a ground shadow, free foot kicked up 4 px | both fists up and out | hair ends flare out; scarf tail flies out to her left |
+| shy | embarrassed | inward curl: head bowed and tilted, torso curls 1-2 px | elbows tucked, mittens clasped under the chin | knees in, pigeon toes, heel up 3, hem +1, curtain swings |
+| shiver (approved) | worried | compact, head sunk 2 px | hugging herself | jitter echo, ticks, breath puff |
+| recoil | surprised | reverse C: head back 4, hips forward 1, front knee up | both palms open at the chest | 2 tapering ponytail locks, hem +2, locks trail |
+| cheer | laugh | Y-line hop, head tilted toward the fist | fists up, 9 px sleeves with shoulders | solid lifted curtains, scarf tail flies, free foot tucked, hem flares |
 
-**Checks:** at least 4 viewed passes per pose, plus a silhouette pass on black. Each file uses 25-29 colours. The only orphans are catchlights, the nose and FX (the snow_1 echo).
+## Round 2 (review 1)
+- **Recoil:** redrawn. The arch and hands are as above. The lifted leg has thigh, knee and boot volume with a pointed toe. The planted boot has a toe. The duplicate ponytail is deleted.
+- **Cheer:** thin strokes replaced by solid locks; the hop now reads.
+- **Shy:** knees in, head tilted down.
+- **Tilted heads:** recoil uses `three_quarter_tiltR_surprised` (tips back), shy `front_tiltR_embarrassed` (bowed), cheer `front_tiltL_laugh`.
+- **Head_small bust-review fix:** the 3/4 bow tail is now hair, with a 2x3 knot, two short tails and a far-loop tip. Recoil uses it.
 
-**Open:** shy and shiver share a compact silhouette and are told apart by arms, FX and expression. A hand-redrawn head tilt for shy would separate them further if the AD wants it.
+**Checks:** 3+ viewed passes each, plus a silhouette pass. 25-29 colours per file. The only orphans are catchlights, the nose and FX.

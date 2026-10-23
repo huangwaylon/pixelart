@@ -1,0 +1,16 @@
+# r13 head_small front tiltR expression: smile. Pixel artist 3. Patch over head_front_tiltR.pix.
+extends: ../head_front_tiltR.pix
+patch: 14 16
+d_______________
+_______________d
+________________
+________________
+________________
+________________
+kkk_____________
+LLLL_________kkk
+ssss________LLLL
+____________ssss
+________________
+______rs__sr____
+_______r__r_____

@@ -1,0 +1,15 @@
+# r13 head_small front tiltL expression: laugh. Pixel artist 3. Patch over head_front_tiltL.pix.
+extends: ../head_front_tiltL.pix
+patch: 13 16
+____________d___d_
+_d___d____________
+____________sssss_
+_sssss______sssssu
+usssss______ssKss_
+_ssKss______sKsKs_
+_sKsKs______KsssK_
+_KsssK_______ssss_
+_ssss________ssss_
+_ssss________tx___
+___x__rrrr____t___
+_______zz_________

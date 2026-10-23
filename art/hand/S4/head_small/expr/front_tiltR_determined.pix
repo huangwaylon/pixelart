@@ -1,0 +1,17 @@
+# r13 head_small front tiltR expression: determined. Pixel artist 3. Patch over head_front_tiltR.pix.
+extends: ../head_front_tiltR.pix
+patch: 14 15
+_uuu____________
+ddd________uuuu_
+____dd____d__ddd
+___________d____
+_KKK____________
+j___________KKK_
+__W_________j___
+______________W_
+________________
+___s____________
+sss_________s___
+ss_________r__ss
+_______srr______
+________ss______

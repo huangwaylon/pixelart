@@ -1,0 +1,14 @@
+# r13 head_small three_quarter tiltL expression: laugh. Pixel artist 3. Patch over head_three_quarter_tiltL.pix.
+extends: ../head_three_quarter_tiltL.pix
+patch: 10 17
+_d__d________
+_______sssss_
+_ssss__ssssss
+sssss__ssKss_
+_ssss__sKsK__
+_sKK___KsssK_
+_KssK__ssss__
+_sss_____sss_
+_ss_____tx___
+___rrrr_t____
+____zz_______
