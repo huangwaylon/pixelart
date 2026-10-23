@@ -171,13 +171,6 @@ span(45, 75, 76, "l"); span(46, 75, 75, "l")
 #    pinched + creased loops, upper rises up-back, lower drops down-back; tip to tip ~41 px, >=3 px inside.
 # =====================================================================================================
 # (round 4, review 3: a ribbon bow - far-loop tip behind the crown, pinched knot, near loop, two short splayed tails)
-# far loop tip peeks up-left behind the crown (drawn first: the hair line overlaps its base at y9-10)
-paint([(4, (69, 71, "K")),
-       (5, (69, 69, "K"), (70, 71, "e"), (72, 72, "c"), (73, 73, "K")),
-       (6, (69, 69, "K"), (70, 72, "c"), (73, 73, "b"), (74, 74, "K")),
-       (7, (70, 70, "K"), (71, 72, "c"), (73, 73, "b"), (74, 74, "K")),
-       (8, (70, 70, "K"), (71, 73, "b"), (74, 74, "K")),
-       (9, (70, 70, "K"))])
 # half-up gather: the upper hair is pulled back from the crown into the knot
 paint([(9, (71, 76, "K")), (10, (67, 70, "K"), (71, 76, "m"), (77, 77, "K")),
        (11, (64, 66, "K"), (67, 77, "m"), (78, 78, "K")), (12, (62, 63, "K"), (64, 77, "m"))])
@@ -239,6 +232,15 @@ span(20, 75, 78, "b")
 g[15][76] = "e"
 span(12, 75, 78, "K"); span(21, 75, 78, "K")
 g[13][75] = "K"; g[20][75] = "K"; g[12][79] = "K"
+# far loop (review 4): a 5x6 wedge behind the knot, opening into the knot's K at x75; hair K covers its left edge
+put(g, 70, 10, """
+__Kcc
+_Kcbb
+Kbbbb
+Kbbbb
+_Kbbb
+__Kbb
+""")
 # =====================================================================================================
 # 6. COAT: sloped shoulders, armhole seams, armpit wedges, bust crescents (light from upper-left)
 # =====================================================================================================

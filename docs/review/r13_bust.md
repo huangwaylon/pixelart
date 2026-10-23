@@ -20,7 +20,7 @@ Up to 25 colours per file. `pixgrid stats` shows only catchlights, the knot glin
 - The long tail is gone. Ponytail hair fills the area.
 - Near loop: x79-93, y6-24, pinched to the knot height. Highlight is on the top arc; there is a pocket and a shadowed underside.
 - Knot: x75-78, y13-20, with outline notches.
-- The far-loop tip peeks behind the crown at x69-74, y4-10.
+- Far loop (review 4): a 5x6 b/c wedge at x70-74, y10-15, opening into the knot at x75. The boxed tip at y4-10 is gone.
 - Two short splayed V-cut tails: near 4 px, y21-33, drifting right; far 3 px, y21-30, drifting left.
 - At 1x it reads as a ribbon bow. The faces did not change, so the round 3 blind tests still apply.
 
