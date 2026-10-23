@@ -26,19 +26,9 @@
    2
   ],
   [
-   34,
-   42,
-   0
-  ],
-  [
    33,
    43,
    2
-  ],
-  [
-   34,
-   43,
-   0
   ],
   [
    33,
@@ -49,9 +39,19 @@
    33,
    45,
    2
+  ],
+  [
+   34,
+   42,
+   0
+  ],
+  [
+   34,
+   43,
+   0
   ]
  ],
- "base_hash": "89de92a149be75b3",
+ "base_hash": "5e508810964c1a51",
  "note": "round 6 AD: the round-5 fuller run tip fills this frame's hollow point into a 3x2 black blob; the round-4 tip pixels (outlined 1-px point) are restored",
  "reasons": [
   {
@@ -110,6 +110,26 @@
     ]
    ],
    "why": "round 6 AD: the round-5 fuller run tip fills this frame's hollow point into a 3x2 black blob; the round-4 tip pixels (outlined 1-px point) are restored"
+  },
+  {
+   "time": "2026-10-23 10:53",
+   "author": "r15 face team",
+   "pixels": [
+    [
+     "approved"
+    ]
+   ],
+   "why": "r15 rebase: base changed only in face/bangs/side-lock pixels; the ponytail-tip pixels this override fixes and their 3-px neighbourhood are identical to the approved v1 frame, so the round-6 AD fix stands unchanged"
+  },
+  {
+   "time": "2026-10-23 11:03",
+   "author": "r15 face team",
+   "pixels": [
+    [
+     "approved"
+    ]
+   ],
+   "why": "r15 rebase (final bangs): base changed only in face/bangs/side-lock pixels; the ponytail-tip pixels this override fixes and their 3-px neighbourhood are identical to the approved v1 frame, so the round-6 AD fix stands unchanged"
   }
  ]
 }

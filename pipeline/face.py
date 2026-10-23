@@ -320,7 +320,19 @@ def face_view(head_world, cam):
     return "back", ang > 0
 
 
-def apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam):
+def _lash_row(rows):
+    """First cel row holding eye ink (the lash line)."""
+    return next((j for j, r in enumerate(rows) if any(c in "EC" for c in r)), None)
+
+
+def _lash_over_hair(idx, x, y, hair_ids, skin_ids):
+    """r15 (HD opt-in, render.face_eyes.lash_over_hair): a bang tip that dips onto the lash line is trimmed there -
+    the lash pixel is drawn over hair when the face continues directly below it (bangs end above the lash line)."""
+    H = idx.shape[0]
+    return idx[y, x] in hair_ids and y + 1 < H and idx[y + 1, x] in skin_ids
+
+
+def apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam, lash_over_hair=False):
     view, right = face_view(head_world, cam)
     if view == "back":
         return idx, view
@@ -364,12 +376,15 @@ def apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam
     out = idx.copy()
     H, W = out.shape
     stamped = set()
+    lj = _lash_row(rows) if lash_over_hair else None
+    hair_ids = [palette.index[n] for n in palette.ramps.get("hair", [])]
     for j, row in enumerate(rows):
         for i, ch in enumerate(row):
             if ch == ".":
                 continue
             x, y = x0 + i, y0 + j
-            if 0 <= x < W and 0 <= y < H and out[y, x] in skin_ids:      # only ever paint on visible skin
+            if 0 <= x < W and 0 <= y < H and (out[y, x] in skin_ids or (               # only ever paint on visible skin
+                    j == lj and ch in "EC" and _lash_over_hair(idx, x, y, hair_ids, skin_ids))):
                 out[y, x] = colors[ch]
                 stamped.add((y, x))
     apply_face_cels.last_stamped = stamped        # designed pixels -> QA treats them as deliberate
@@ -383,8 +398,9 @@ def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam
     >= `gap` px nose bridge between the eyes and >= `contour` px skin between each eye and the cheek contour (the
     far eye moves in first, then the near eye moves out). Profile / back views keep the nose-pinned cel."""
     view, right = face_view(head_world, cam)
+    loh = bool(spec.get("lash_over_hair"))
     if view in ("back", "profile"):
-        return apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam)
+        return apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam, lash_over_hair=loh)
     vs = cels["views"].get(view, {})
     cel = vs.get(expression)
     if cel is None and expression == "blink" and vs.get("neutral"):
@@ -405,7 +421,7 @@ def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam
         else:
             blocks.append([c])
     if len(blocks) != 2:
-        return apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam)
+        return apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam, lash_over_hair=loh)
     # projected markers, sorted screen-left -> right, with facing (front-ness) per eye
     c0 = xform_point(head_world, face["center"])
     mk = []
@@ -420,6 +436,8 @@ def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam
     gap, contour = int(spec.get("gap", 2)), int(spec.get("contour", 1))
     starts = [int(math.floor(e[0][0])) - (len(b) - 1) // 2 for e, b in zip(mk, blocks)]
     far = 0 if mk[0][1] < mk[1][1] else 1
+    # r15: the far eye may ask for a wider cheek than the near eye ("contour_far", default = contour)
+    need = {far: int(spec.get("contour_far", contour)), 1 - far: contour}
     rowy = ey - oy + max(0, min(oy + 1, len(rows) - 1))        # middle eye row on screen
 
     def skin_out(k):
@@ -443,15 +461,15 @@ def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam
     for _ in range(0 if (view == "front" and gf is not None) else 4):
         g = starts[1] - (starts[0] + len(blocks[0]))
         if g < gap:                                             # nose bridge first: push the eyes apart
-            k = 1 - far if skin_out(1 - far) > contour else far
+            k = 1 - far if skin_out(1 - far) > need[1 - far] else far
             starts[k] += -1 if k == 0 else 1
             continue
         moved = False
         for k in (far, 1 - far):
-            if skin_out(k) < contour:
+            if skin_out(k) < need[k]:
                 if g <= gap:                                    # make room: the other eye steps outward first
                     o = 1 - k
-                    if skin_out(o) <= (0 if o != far else contour):   # the near eye may meet the hairline
+                    if skin_out(o) <= (0 if o != far else need[far]):   # the near eye may meet the hairline
                         continue
                     starts[o] += -1 if o == 0 else 1
                 starts[k] += 1 if k == 0 else -1               # move in, never closing the bridge below `gap`
@@ -467,6 +485,8 @@ def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam
     mp = cam.project(xform_point(head_world, spec["mouth"]), pivot) if spec.get("mouth") else None
     out = idx.copy()
     stamped = set()
+    lj = _lash_row(rows) if spec.get("lash_over_hair") else None
+    hair_ids = [palette.index[n] for n in palette.ramps.get("hair", [])]
     y0 = ey - oy
     for j, row in enumerate(rows):
         for i, ch in enumerate(row):
@@ -481,7 +501,8 @@ def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam
                 k = 0 if abs(i - blocks[0][len(blocks[0]) // 2]) <= abs(i - blocks[1][len(blocks[1]) // 2]) else 1
                 x = starts[k] + (i - blocks[k][0])
             y = y0 + j
-            if 0 <= x < W and 0 <= y < H and out[y, x] in skin_ids:
+            if 0 <= x < W and 0 <= y < H and (out[y, x] in skin_ids or (
+                    j == lj and ch in "EC" and _lash_over_hair(idx, x, y, hair_ids, skin_ids))):
                 out[y, x] = colors[ch]
                 stamped.add((y, x))
     apply_face_cels.last_stamped = stamped

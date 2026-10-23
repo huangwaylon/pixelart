@@ -34,6 +34,29 @@ BELT_CLIP = [[0, 0, 1, -0.6]]                # anim1: no belt behind the hips (i
 PALM_B, MCUFF_R = [1.45, 1.6, 1.2], [1.25, 1.2]
 RING = {"ring_w": 0.14}                      # AD3: bang/crown rust highlight arc (legacy hair_style ring_w 0.12)
 
+# ---- r15 (user: "bangs longer, esp. at the sides, gentle slope; forehead/temples too exposed, looks bald" and
+# "SE far eye still too close"): docs/review/r15_face_bangs.md
+# hime bangs: name, root x, tip x, tip y, out (tip y was C 9.5 / L1 8.3 / L2 8.1 / L3 8.0)
+# r15: every bang ~0.5-0.8 longer, the outer ones most (slope down toward the temples); fuller tips (0.05 -> 0.3) so the
+# extra length reaches the pixel grid instead of thinning to a sub-pixel point. Centre bang stays shortest (hime notch).
+BANGS = [("bang_L3", 4.9, 5.8, 7.2, 0.42), ("bang_L2", 3.1, 3.55, 7.6, 0.5), ("bang_L1", 0.75, 1.55, 7.9, 0.55)]
+BANG_C_TIP = 8.6
+BANG_R = [1.3, 1.1, 0.3]     # root / mid / tip radius of the 6 side bangs
+BANG_MID_Y = 10.6
+# (name, root [x, y], mid [x, y], tip [x, y], radii, out): temple bangs sloping from the crown into the side locks;
+# kept behind the profile eye (x >= 7.7) so E/W keep every eye pixel
+TEMPLE_BANGS = [("bang_T", (6.8, 12.2), (7.7, 9.4), (8.0, 7.2), (1.2, 1.05, 0.2), 0.3)]
+SIDELOCK_BACK_Z = 0.4
+SIDELOCK_DZ = -1.6     # both side-lock clumps moved back along -z (near-side face width in 3/4)
+FACE_CELS = "kawaii_hd"      # None = inherit kawaii_v2; "kawaii_hd" = r15 3/4 far eye (same height as the near eye)
+CONTOUR_FAR = 2       # far-eye cheek px in 3/4 (None = same as contour)
+LASH_OVER_HAIR = True  # a bang tip dipping onto the lash line (head bob / pitch) is trimmed there, never the lash
+MOUTH_BIAS = 3         # 3/4 mouth pull toward the nose bridge (px)
+# hair_cap front clip plane [nx, ny, nz, d] (unit-cap coords, keep where n.p >= d); None = legacy [0, 0, -1, -0.22].
+# r15: tilted so the cap ends further back only low on the side of the head (cheek / eye rows: +1 px near-side face in
+# 3/4: z_n <= 0.02 at the eye row) while the temple above stays covered (z_n <= 0.22 at y_n 0.18, legacy)
+CAP_FRONT_CUT = [0, 0.49, -1, -0.133]
+
 
 def r3(v):
     return [round(float(x), 3) for x in v]
@@ -109,26 +132,31 @@ def hair_parts():
         P.append(part(f"whorl_{k}", "tube", {"pts": [r3(p0), r3(p1), r3(p2)], "r": [0.5, 0.4, 0.04], "flat": 0.5,
                                              "flat_c": r3(CAP_C)}, lod="ref"))
     # --- hime bangs: 7 points along a straight line; the centre pair splits apart, a short back bang fills the V
-    bangs = [  # name, root x, tip x, tip y, out
-        ("bang_L3", 4.9, 5.7, 8.0, 0.42), ("bang_L2", 3.1, 3.55, 8.1, 0.5), ("bang_L1", 0.75, 1.55, 8.3, 0.55),
-        ("bang_R1", -0.75, -1.55, 8.3, 0.55), ("bang_R2", -3.1, -3.55, 8.1, 0.5), ("bang_R3", -4.9, -5.7, 8.0, 0.42),
-    ]
+    bangs = BANGS + [(n.replace("_L", "_R"), -xr, -xt, yt, o) for n, xr, xt, yt, o in reversed(BANGS)]
     for name, xr, xt, yt, out in bangs:
         root = [xr, 12.9, cap_z(xr, 12.9, out=-0.35)]
-        xm, ym = (xr * 0.4 + xt * 0.6), 10.6
+        xm, ym = (xr * 0.4 + xt * 0.6), BANG_MID_Y
         mid = [xm, ym, head_z(xm, ym, out + 0.15)]
         tip = [xt, yt, head_z(xt, yt, out)]
-        P.append(part(name, "tube", {"pts": [r3(root), r3(mid), r3(tip)], "r": [1.3, 1.05, 0.05], "flat": 0.42,
+        P.append(part(name, "tube", {"pts": [r3(root), r3(mid), r3(tip)], "r": list(BANG_R), "flat": 0.42,
                                      "flat_c": r3(HEAD_C)}))
     root = [0, 13.1, cap_z(0, 13.1, out=-0.45)]
     mid = [0, 11.0, head_z(0, 11.0, 0.35)]
-    tip = [0, 9.5, head_z(0, 9.5, 0.3)]
+    tip = [0, BANG_C_TIP, head_z(0, BANG_C_TIP, 0.3)]
     P.append(part("bang_C", "tube", {"pts": [r3(root), r3(mid), r3(tip)], "r": [1.15, 0.9, 0.05], "flat": 0.42,
                                      "flat_c": r3(HEAD_C)}))
+    # r15: temple bangs - the outer fringe slopes down past the brow and tucks into the side locks
+    for name, (xr, yr), (xm, ym), (xt, yt), rr, out in TEMPLE_BANGS:
+        for sg, s in ((1, "L"), (-1, "R")):
+            pts = [[sg * xr, yr, cap_z(xr, yr, out=-0.35)], [sg * xm, ym, head_z(xm, ym, out + 0.1)],
+                   [sg * xt, yt, head_z(xt, yt, out)]]
+            P.append(part(f"{name}_{s}", "tube", {"pts": [r3(p) for p in pts], "r": list(rr), "flat": 0.42,
+                                                  "flat_c": r3(HEAD_C)}))
     # --- flat-cut hime side locks: 2 clumps per side, cut straight across at the jaw (cone = flat ends)
     for sg, s in ((1, "L"), (-1, "R")):
         # r12 round 2 (AD1): the front clump sits 0.8 further back than M1 so the profile eye + glint stay on skin
-        for nm, z, ybot, dx in (("front", SIDELOCK_FRONT_Z, -0.9, 0.0), ("back", 0.4, -0.2, 0.55)):
+        for nm, z, ybot, dx in (("front", SIDELOCK_FRONT_Z + SIDELOCK_DZ, -0.9, 0.0),
+                                ("back", SIDELOCK_BACK_Z + SIDELOCK_DZ, -0.2, 0.55)):
             pts = [[sg * (7.3 + dx), 10.2, z - 0.2], [sg * (8.35 + dx), 4.6, z + 0.1], [sg * (7.95 + dx), ybot, z + 0.4]]
             P.append(part(f"sidelock_{s}_{nm}", "tube", {"pts": [r3(p) for p in pts], "r": [1.5, 1.85, 1.65],
                                                           "flat": 0.5, "flat_c": r3(HEAD_C), "cut_end": True}))
@@ -447,13 +475,18 @@ def main():
                          "skirt_coat", "hem", "belt", "collar", "scarf_wrap1", "scarf_wrap2", "scarf_knot"]
                         + [f"{n}_{s}" for s in "LR" for n in ("uparm", "forearm", "cuff", "mitten", "thumb", "thigh",
                                                               "shin", "boot", "bootcuff")],
-        "part_overrides": {"hair_cap": {"blend": {"set": "cap", "k": 0.0}, "vote": "hair|head"},
+        "part_overrides": {"hair_cap": {"blend": {"set": "cap", "k": 0.0}, "vote": "hair|head",
+                                        **({"clip_any": [list(CAP_FRONT_CUT), [0, 1, 0, 0.32]]}
+                                           if CAP_FRONT_CUT is not None else {})},
                            "hair_back": {"vote": "hair|head"},
                            **{n: {"blend": {"set": "torso", "k": 0.8}} for n in ("bodice", "waist", "hips_coat")}},
         "render": {"hair_style": dict(RING),
                    # r13 B: sprite face eyes at their own projected modelled eye positions (perspective)
                    "face_eyes": {"markers": marks[:2], "mouth": marks[2], "gap": 2, "contour": 1,
-                                 "gap_front": 3, "mouth_bias": 1},          # round 3: AD4 locked S bridge, AD5 mouth
+                                 "gap_front": 3, "mouth_bias": MOUTH_BIAS,   # round 3: AD4 locked S bridge, AD5 mouth
+                                 **({"contour_far": CONTOUR_FAR} if CONTOUR_FAR is not None else {}),
+                                 **({"lash_over_hair": True} if LASH_OVER_HAIR else {})},
+                   **({"face_cels": FACE_CELS} if FACE_CELS else {}),
                    "lineart": {"keep_selout_runs": ["ribbon", "hair"], "skin_edge_dark": True,
                                "ring_trim": {"margin": 2, "min_run": 3, "stop_at": ["ribbon", "hatcuff"],
                                              "fill_gaps": 2}},   # round 3 AD1 head rust only; round 4 no 1-px arc break

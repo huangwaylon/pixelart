@@ -1,0 +1,186 @@
+{
+ "name": "kawaii_hd",
+ "notes": "S4_hd sprite face (r15), forked from kawaii_v2 so legacy variants keep their cels. front / profile unchanged. three_quarter (r15 user feedback 'SE far eye too close / weird'): the far eye is the SAME HEIGHT as the near eye (2x3, narrower not shorter) with a 1-px catchlight on its inner (light-side) column, matching the near eye's light; no outward lash wing (foreshortened) and no blush. profile: same cels as kawaii_v2 but drawn 1 row lower (origin row 0): the camera looks down 16 deg, so the front-view eyes sit lower than the nose-tip anchor; the old profile eye sat ~1 px above the S/SE eye line and the longer r15 bangs covered its lash. Placement (pipeline/face.py apply_face_eyes, render.face_eyes): 2-px nose bridge, >= 2 px far cheek (contour_far), mouth pulled under the bridge (mouth_bias). Face designer r10. Coords relative to the anchor pixel (face front on the eye line). front: cols -4..4, rows -1..+2 (bangs cover row -2 in pitched frames); 3/4 and profile drawn facing screen-right (mirrored for left views). 3/4 (r13 perspective fix): near eye lash -6..-4, iris -5..-4; 2px nose-bridge gap at -3..-2; far eye 2x2 at -1..0 with >= 2 skin px of far cheek beyond it, mouth at -1 (no lash or catchlight, at least 1 skin px to the edge). profile: eye column -2, catchlight -3 (back), nose -1. Shape family: ^ joyful, > < squint, lowered-lid determined.",
+ "views": {
+  "front": {
+   "neutral": {
+    "origin": [
+     4,
+     1
+    ],
+    "rows": [
+     "EEE...EEE",
+     ".CE...CE.",
+     ".EE...EE.",
+     ".BB...BB."
+    ]
+   },
+   "smile": {
+    "origin": [
+     4,
+     1
+    ],
+    "rows": [
+     "EEE...EEE",
+     ".CE...CE.",
+     ".EE...EE.",
+     ".BB.M.BB."
+    ]
+   },
+   "determined": {
+    "origin": [
+     4,
+     1
+    ],
+    "rows": [
+     ".........",
+     "EEE...EEE",
+     ".EE...EE.",
+     "....M...."
+    ]
+   },
+   "joyful": {
+    "origin": [
+     4,
+     1
+    ],
+    "rows": [
+     ".E.....E.",
+     "E.E...E.E",
+     "BB.MMM.BB",
+     "....M...."
+    ]
+   },
+   "squint": {
+    "origin": [
+     4,
+     1
+    ],
+    "rows": [
+     "EE.....EE",
+     "..E...E..",
+     "EE.....EE",
+     ".BB.M.BB."
+    ]
+   }
+  },
+  "three_quarter": {
+   "neutral": {
+    "origin": [
+     6,
+     1
+    ],
+    "rows": [
+     "EEE..EE.",
+     ".CE..CE.",
+     ".EE..EE.",
+     ".BB....."
+    ]
+   },
+   "smile": {
+    "origin": [
+     6,
+     1
+    ],
+    "rows": [
+     "EEE..EE.",
+     ".CE..CE.",
+     ".EE..EE.",
+     ".BB..M.."
+    ]
+   },
+   "determined": {
+    "origin": [
+     6,
+     1
+    ],
+    "rows": [
+     "........",
+     "EEE..EE.",
+     ".EE..EE.",
+     ".....M.."
+    ]
+   },
+   "joyful": {
+    "origin": [
+     6,
+     1
+    ],
+    "rows": [
+     ".E....E.",
+     "E.E..E..",
+     ".BB..M..",
+     ".....M.."
+    ]
+   },
+   "squint": {
+    "origin": [
+     6,
+     1
+    ],
+    "rows": [
+     "EE....E.",
+     "..E..E..",
+     "EE....E.",
+     ".BB..M.."
+    ]
+   }
+  },
+  "profile": {
+   "neutral": {
+    "origin": [
+     4,
+     0
+    ],
+    "rows": [
+     ".EE..",
+     ".CE..",
+     "..E.."
+    ]
+   },
+   "smile": {
+    "origin": [
+     4,
+     0
+    ],
+    "rows": [
+     ".EE..",
+     ".CE..",
+     "..E.."
+    ]
+   },
+   "determined": {
+    "origin": [
+     4,
+     0
+    ],
+    "rows": [
+     ".....",
+     ".EE..",
+     "..E.."
+    ]
+   },
+   "joyful": {
+    "origin": [
+     4,
+     0
+    ],
+    "rows": [
+     "..E..",
+     ".E..."
+    ]
+   },
+   "squint": {
+    "origin": [
+     4,
+     0
+    ],
+    "rows": [
+     ".E...",
+     "..E..",
+     ".E..."
+    ]
+   }
+  }
+ }
+}
