@@ -1,5 +1,5 @@
 {
- "name": "walk_r14",
+ "name": "walk",
  "budget": {
   "loop_ms": [
    700,
@@ -245,7 +245,8 @@
     "ankle": -13.77,
     "spread": -3
    },
-   "cancelable": true
+   "cancelable": true,
+   "ease": "inout"
   },
   {
    "name": "contact_R",
@@ -416,7 +417,8 @@
     "ankle": -6.67,
     "spread": -3
    },
-   "cancelable": true
+   "cancelable": true,
+   "ease": "inout"
   }
  ],
  "trail_wind": 300,

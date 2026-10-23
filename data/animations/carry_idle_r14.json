@@ -1,5 +1,5 @@
 {
- "name": "carry_idle_r14",
+ "name": "carry_idle",
  "budget": {
   "loop_ms": [
    1,
@@ -147,8 +147,8 @@
    "name": "low",
    "ms": 320,
    "face": "determined",
-   "pelvis_drop": 1.1,
-   "squash": 0.97,
+   "pelvis_drop": 1.3,
+   "squash": 0.96,
    "arm_L": {
     "raise": 176,
     "spread": 38,

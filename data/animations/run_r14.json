@@ -1,5 +1,5 @@
 {
- "name": "run_r14",
+ "name": "run",
  "budget": {
   "loop_ms": [
    480,
@@ -245,7 +245,8 @@
     "ankle": -2.3,
     "spread": -2
    },
-   "cancelable": true
+   "cancelable": true,
+   "ease": "inout"
   },
   {
    "name": "contact_R",
@@ -416,7 +417,8 @@
     "ankle": 11.01,
     "spread": -2
    },
-   "cancelable": true
+   "cancelable": true,
+   "ease": "inout"
   }
  ],
  "trail_wind": 1000,

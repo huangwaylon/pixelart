@@ -1,5 +1,5 @@
 {
- "name": "climb_top_r14",
+ "name": "climb_top",
  "budget": {
   "max_total_ms": 1000,
   "events_min_pct": {
@@ -216,6 +216,10 @@
    "phase": "pull",
    "face": "determined",
    "hold_of": "press",
+   "root_px": [
+    0,
+    -11
+   ],
    "squash": 0.93,
    "spine": {
     "tilt": 24

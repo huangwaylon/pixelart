@@ -1,5 +1,5 @@
 {
- "name": "carry_walk_r14",
+ "name": "carry_walk",
  "budget": {
   "loop_ms": [
    880,
@@ -240,7 +240,8 @@
     "spread": 38,
     "elbow": 11
    },
-   "cancelable": true
+   "cancelable": true,
+   "ease": "inout"
   },
   {
    "name": "contact_R",
@@ -407,7 +408,8 @@
     "spread": 38,
     "elbow": 11
    },
-   "cancelable": true
+   "cancelable": true,
+   "ease": "inout"
   }
  ],
  "props": [

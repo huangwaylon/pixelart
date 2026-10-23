@@ -1,5 +1,5 @@
 {
- "name": "climb_r14",
+ "name": "climb",
  "budget": {
   "loop_ms": [
    1,
@@ -134,8 +134,8 @@
    "phase": "pull",
    "face": "determined",
    "cancelable": true,
-   "pelvis_drop": 0.6,
-   "squash": 0.99,
+   "pelvis_drop": 0.8,
+   "squash": 0.98,
    "plant": false,
    "spine": {
     "tilt": 8,
@@ -307,8 +307,8 @@
    "phase": "pull",
    "face": "determined",
    "cancelable": true,
-   "pelvis_drop": 0.6,
-   "squash": 0.99,
+   "pelvis_drop": 0.8,
+   "squash": 0.98,
    "plant": false,
    "spine": {
     "tilt": 8,

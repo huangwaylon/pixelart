@@ -1,0 +1,561 @@
+{
+  "anchors": {
+    "carry": {
+      "N": [
+        [
+          24.0,
+          31.5
+        ],
+        [
+          24.0,
+          34.3
+        ],
+        [
+          24.2,
+          36.5
+        ],
+        [
+          24.2,
+          36.8
+        ],
+        [
+          23.5,
+          40.9
+        ],
+        [
+          23.7,
+          43.3
+        ],
+        [
+          24.1,
+          43.9
+        ],
+        [
+          24.1,
+          46.3
+        ],
+        [
+          24.0,
+          45.6
+        ]
+      ],
+      "NE": [
+        [
+          25.4,
+          31.6
+        ],
+        [
+          25.1,
+          34.4
+        ],
+        [
+          28.4,
+          37.0
+        ],
+        [
+          28.5,
+          37.3
+        ],
+        [
+          27.7,
+          41.2
+        ],
+        [
+          26.6,
+          43.6
+        ],
+        [
+          26.5,
+          44.2
+        ],
+        [
+          26.1,
+          46.6
+        ],
+        [
+          24.7,
+          45.7
+        ]
+      ],
+      "NW": [
+        [
+          22.6,
+          31.6
+        ],
+        [
+          22.9,
+          34.4
+        ],
+        [
+          19.9,
+          36.9
+        ],
+        [
+          19.7,
+          37.3
+        ],
+        [
+          19.7,
+          41.4
+        ],
+        [
+          20.9,
+          43.7
+        ],
+        [
+          21.7,
+          44.1
+        ],
+        [
+          22.0,
+          46.5
+        ],
+        [
+          23.3,
+          45.7
+        ]
+      ]
+    },
+    "hand_L": {
+      "N": [
+        [
+          14.0,
+          31.5
+        ],
+        [
+          16.2,
+          34.3
+        ],
+        [
+          14.5,
+          36.2
+        ],
+        [
+          14.4,
+          36.5
+        ],
+        [
+          14.5,
+          40.7
+        ],
+        [
+          15.1,
+          43.2
+        ],
+        [
+          16.4,
+          44.4
+        ],
+        [
+          17.1,
+          46.5
+        ],
+        [
+          18.2,
+          45.6
+        ]
+      ],
+      "NE": [
+        [
+          18.3,
+          29.7
+        ],
+        [
+          19.7,
+          32.9
+        ],
+        [
+          21.6,
+          34.8
+        ],
+        [
+          21.7,
+          35.1
+        ],
+        [
+          20.6,
+          39.3
+        ],
+        [
+          20.1,
+          41.8
+        ],
+        [
+          20.8,
+          43.2
+        ],
+        [
+          21.1,
+          45.4
+        ],
+        [
+          20.6,
+          44.5
+        ]
+      ],
+      "NW": [
+        [
+          15.6,
+          33.6
+        ],
+        [
+          17.4,
+          35.9
+        ],
+        [
+          13.0,
+          38.5
+        ],
+        [
+          12.7,
+          38.9
+        ],
+        [
+          13.9,
+          43.0
+        ],
+        [
+          15.4,
+          45.2
+        ],
+        [
+          16.5,
+          46.1
+        ],
+        [
+          17.2,
+          48.1
+        ],
+        [
+          19.2,
+          46.8
+        ]
+      ]
+    },
+    "hand_R": {
+      "N": [
+        [
+          34.0,
+          31.5
+        ],
+        [
+          31.8,
+          34.3
+        ],
+        [
+          33.9,
+          36.8
+        ],
+        [
+          34.0,
+          37.1
+        ],
+        [
+          32.6,
+          41.0
+        ],
+        [
+          32.3,
+          43.3
+        ],
+        [
+          31.9,
+          43.3
+        ],
+        [
+          31.0,
+          46.1
+        ],
+        [
+          29.8,
+          45.6
+        ]
+      ],
+      "NE": [
+        [
+          32.4,
+          33.6
+        ],
+        [
+          30.6,
+          35.9
+        ],
+        [
+          35.2,
+          39.2
+        ],
+        [
+          35.4,
+          39.5
+        ],
+        [
+          34.7,
+          43.2
+        ],
+        [
+          33.2,
+          45.3
+        ],
+        [
+          32.3,
+          45.1
+        ],
+        [
+          31.1,
+          47.8
+        ],
+        [
+          28.8,
+          46.8
+        ]
+      ],
+      "NW": [
+        [
+          29.7,
+          29.7
+        ],
+        [
+          28.3,
+          32.9
+        ],
+        [
+          26.8,
+          35.4
+        ],
+        [
+          26.7,
+          35.6
+        ],
+        [
+          25.4,
+          39.9
+        ],
+        [
+          26.5,
+          42.1
+        ],
+        [
+          26.8,
+          42.1
+        ],
+        [
+          26.8,
+          45.0
+        ],
+        [
+          27.4,
+          44.5
+        ]
+      ]
+    }
+  },
+  "animation": "climb_top_r14",
+  "buildHash": "ac9e204aa222",
+  "buildId": "ac9e204aa222",
+  "cameraElevation": 16,
+  "cycle_rise_px": 0,
+  "directions": [
+    "N",
+    "NE",
+    "NW"
+  ],
+  "engine_notes": "",
+  "frameSize": [
+    48,
+    64
+  ],
+  "frames": [
+    {
+      "cancelable": false,
+      "duration_ms": 140,
+      "events": [],
+      "face": "determined",
+      "index": 0,
+      "name": "hang",
+      "phase": "grab",
+      "props": [],
+      "root_px": [
+        0,
+        0
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 80,
+      "events": [],
+      "face": "determined",
+      "index": 1,
+      "name": "elbows",
+      "phase": "pull",
+      "props": [],
+      "root_px": [
+        0,
+        -5
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 110,
+      "events": [],
+      "face": "determined",
+      "index": 2,
+      "name": "press",
+      "phase": "pull",
+      "props": [],
+      "root_px": [
+        0,
+        -11
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 60,
+      "events": [],
+      "face": "determined",
+      "hold_of": "press",
+      "index": 3,
+      "name": "press_strain",
+      "phase": "pull",
+      "props": [],
+      "root_px": [
+        0,
+        -11
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 70,
+      "events": [],
+      "face": "determined",
+      "index": 4,
+      "name": "knee_up",
+      "phase": "mantle",
+      "props": [],
+      "root_px": [
+        0,
+        -18
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 60,
+      "events": [],
+      "face": "smile",
+      "index": 5,
+      "name": "roll_over",
+      "phase": "mantle",
+      "props": [],
+      "root_px": [
+        0,
+        -24
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 90,
+      "events": [
+        "step_up"
+      ],
+      "face": "smile",
+      "index": 6,
+      "name": "step_up",
+      "phase": "mantle",
+      "props": [],
+      "root_px": [
+        0,
+        -28
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 120,
+      "events": [],
+      "face": "smile",
+      "index": 7,
+      "name": "rise",
+      "phase": "recover",
+      "props": [],
+      "root_px": [
+        0,
+        -30
+      ],
+      "z_px": 0
+    },
+    {
+      "cancelable": false,
+      "duration_ms": 130,
+      "events": [],
+      "face": "joyful",
+      "index": 8,
+      "name": "stand",
+      "phase": "recover",
+      "props": [],
+      "root_px": [
+        0,
+        -30
+      ],
+      "z_px": 0
+    }
+  ],
+  "image": "climb_top_r14_sheet.png",
+  "inputLockEnd_ms": 860,
+  "layers": {
+    "fxBack": "climb_top_r14_fx_back.png",
+    "fxFront": "climb_top_r14_fx_front.png",
+    "note": "shadow/fx strips are direction-independent, same frame size & pivot; draw shadow+fxBack under the character, fxFront over it; offset only the character by z_px",
+    "shadow": "climb_top_r14_shadow.png"
+  },
+  "layout": "rows=directions, cols=frames, no padding",
+  "loop": false,
+  "palette": [
+    "#241628",
+    "#4A2448",
+    "#6E3C3A",
+    "#A85A3A",
+    "#D07C74",
+    "#EBA586",
+    "#FCD6B4",
+    "#20223E",
+    "#2F3A6C",
+    "#4E609C",
+    "#45435E",
+    "#9C8EB2",
+    "#D2BFA4",
+    "#F2E6CE",
+    "#8E2C4A",
+    "#BA4A58",
+    "#DC3A40",
+    "#F06A58",
+    "#9C5C2E",
+    "#E2A434",
+    "#FAD872",
+    "#EC7032",
+    "#1C4C54",
+    "#2A8C8E",
+    "#6ACBB6",
+    "#3C6248",
+    "#6E8C5A",
+    "#6E5A92",
+    "#6A7AA8",
+    "#A8C0E0",
+    "#DFEAF6",
+    "#FFFFFF"
+  ],
+  "paletteId": "frost_r3_oatmeal",
+  "pipelineVersion": "1.0",
+  "pivot": [
+    24,
+    57
+  ],
+  "props": [],
+  "rise_weights": null,
+  "root_px_mode": "cumulative offset from clip start",
+  "totalMs": 860
+}
