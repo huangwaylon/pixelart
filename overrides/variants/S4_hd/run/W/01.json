@@ -51,7 +51,7 @@
    0
   ]
  ],
- "base_hash": "5e508810964c1a51",
+ "base_hash": "21f3bc354d52e8df",
  "note": "round 6 AD: the round-5 fuller run tip fills this frame's hollow point into a 3x2 black blob; the round-4 tip pixels (outlined 1-px point) are restored",
  "reasons": [
   {
@@ -130,6 +130,16 @@
     ]
    ],
    "why": "r15 rebase (final bangs): base changed only in face/bangs/side-lock pixels; the ponytail-tip pixels this override fixes and their 3-px neighbourhood are identical to the approved v1 frame, so the round-6 AD fix stands unchanged"
+  },
+  {
+   "time": "2026-10-23 12:28",
+   "author": "r16 face team",
+   "pixels": [
+    [
+     "approved"
+    ]
+   ],
+   "why": "r16 rebase (slimmer face + layered bangs): base changed only in face/fringe pixels; the ponytail-tip pixels this override fixes and their 3-px neighbourhood are identical to the approved frame, so the round-6 AD fix stands unchanged"
   }
  ]
 }

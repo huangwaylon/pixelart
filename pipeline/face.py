@@ -394,7 +394,8 @@ def apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam
     return out, view
 
 
-def _face_hem(out, L, eye_x0, eye_x1, palette, view, far_side, stamped):
+def _face_hem(out, L, eye_x0, eye_x1, palette, view, far_side, stamped, shadow=False, layered=False, material=None,
+              back_mat=None):
     """r15 round 2 (HD opt-in, render.face_eyes.hem_pin): the bang hem is drawn relative to the eye line so it can't
     strobe with the head bob. L = the cel's lash row (blink: the open-eye lash row, so a blink never moves the hem). Per face column: rows <= L-2 are hair wherever hair sits within 4 rows above, row L-1 is skin
     (exactly 1 skin row over the lashes / closed-eye arches). Slope: the outermost front column on each side
@@ -420,9 +421,20 @@ def _face_hem(out, L, eye_x0, eye_x1, palette, view, far_side, stamped):
     while x1 + 1 < W and out[row, x1 + 1] in face:
         x1 += 1
     changed = []
+    if back_mat and material is not None:
+        # r16: the back fringe layer (dark clumps between the front clumps) is designed, not shading - its visible
+        # pixels over the face span are the dark hair tone and survive the despeckle passes
+        dark = hair_ids[0]
+        for y in range(max(0, L - 6), L - 1):
+            for x in range(x0, x1 + 1):
+                if material[y, x] == back_mat and out[y, x] in hair_ids and out[y, x] != dark:
+                    out[y, x] = dark
+                    changed.append((y, x))
+                elif material[y, x] == back_mat and out[y, x] == dark:
+                    changed.append((y, x))
 
     def put(y, x, c):
-        if c == hair_c and any(not (0 <= y + a < H and 0 <= x + b < W) or out[y + a, x + b] < 0
+        if c in (hair_c, hair_ids[0]) and c != out[y, x] and any(not (0 <= y + a < H and 0 <= x + b < W) or out[y + a, x + b] < 0
                                for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1))):
             c = hair_ids[0]          # round 4: hair placed on the silhouette edge is the plum hair outline, never mid-hair
         if out[y, x] != c:
@@ -449,12 +461,16 @@ def _face_hem(out, L, eye_x0, eye_x1, palette, view, far_side, stamped):
             far_col = (x1 - x) if far_side > 0 else (x - x0)
             if far_col <= 1 or outer == 0:
                 bottom = L - 1
+        # fill with the clump's own tone (r16: a dark back-layer clump stays dark), never the rust highlight
+        fill = out[hy, x] if (layered and out[hy, x] in hair_ids[:2]) else hair_c
         for yy in range(hy + 1, bottom + 1):
             if out[yy, x] in skin_ids:
-                put(yy, x, hair_c)
+                put(yy, x, fill)
         for yy in range(bottom + 1, L):
             if out[yy, x] in hair_ids:
                 put(yy, x, skin_c)
+            if shadow and out[yy - 1, x] in hair_ids and out[yy, x] in skin_ids:
+                put(yy, x, skin_ids[0])       # r16: the lifted fringe casts a 1-row shadow on the forehead
     if view == "three_quarter":
         # round 3 (AD r15-2 fix 2): the contour can step out above the lash line, leaving a skin pixel beyond the
         # span measured under the lashes -> the temple edge pixels over the lash row are hair, never a 1-px notch
@@ -647,7 +663,8 @@ def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam
         nl = _lash_row(vs["neutral"]["rows"]) if (expression == "blink" and vs.get("neutral")) else _lash_row(rows)
         far_side = 1 if far == 1 else -1                 # far eye on screen-right (+1) or screen-left (-1)
         _face_hem(out, y0 + (nl if nl is not None else 0), starts[0], starts[1] + len(blocks[1]) - 1, palette, view,
-                  far_side, stamped)
+                  far_side, stamped, shadow=bool(spec.get("hem_shadow")), layered=bool(spec.get("hem_shadow")),
+                  material=material, back_mat=spec.get("hem_layer_mat"))
         if not any("C" in r for r in rows):                 # closed / squint / lowered-lid cel
             for k, b in enumerate(blocks):
                 _open_side(out, [(y0 + j, starts[k] + (i - b[0]), rows[j][i]) for j in range(len(rows)) for i in b],

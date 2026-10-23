@@ -105,6 +105,39 @@ def part(name, shape, params, material="hair", group="head", lod="all", **kw):
     return d
 
 
+# ---- r16 (user: "bangs more voluminous, come off the forehead more, layered, dynamic"): two-layer fringe shell.
+# Front clumps (material hair: mid tone + the rust ring highlight) over back clumps (material hair_back: the dark
+# tone, ramp_overrides) that show in the gaps; the shell stands off the forehead (out) and every tip curls / flicks
+# (last point offset sideways + forward), staggered lengths, the outermost longest (r15 slope kept).
+LAYERED_BANGS = True
+# (name, root x, tip x, tip y, out, flick x (+ = away from the centre), flick z, radii root/mid/bend/tip)
+BANGS_FRONT = [("bangF_L1", 1.4, 2.0, 8.3, 0.75, 0.3, 0.3, (1.3, 1.15, 0.8, 0.15)),
+               ("bangF_L2", 4.6, 5.7, 7.5, 0.7, 0.5, 0.3, (1.3, 1.15, 0.8, 0.15))]
+BANGS_BACK = [("bangB_C", 0.0, 0.0, 7.9, 0.45, 0.0, 0.0, (1.0, 0.9, 0.7, 0.3)),
+              ("bangB_L1", 3.1, 3.85, 7.4, 0.45, 0.2, 0.1, (1.0, 0.9, 0.7, 0.3))]
+BACK_ROOT_Y = 11.2     # back clumps start under the cap: only their tips show (keeps the front highlight ring whole)
+BACK_MAT = "hair_dk"     # dark-tone material for the back layer (ramp in main(); "hair*" so every hair pass applies)
+HEM_SHADOW = True      # r16: the gap row under the fringe is skin shadow (the shell casts it)
+
+
+def layered_bangs():
+    P = []
+    for layer, mat, ry in ((BANGS_BACK, BACK_MAT, BACK_ROOT_Y), (BANGS_FRONT, "hair", 12.9)):
+        for name, xr, xt, yt, out, fx, fz, rr in layer:
+            for sg, s in (((1, "L"), (-1, "R")) if xr or xt else ((1, ""),)):
+                nm = name if not s else name.replace("_L", f"_{s}")
+                X, Xt = sg * xr, sg * xt
+                root = [X, ry, cap_z(xr, ry, out=-0.35)]
+                xm, ym = (xr * 0.45 + xt * 0.55), min(10.5, (ry + yt) / 2 + 0.6)
+                mid = [sg * xm, ym, head_z(xm, ym, out + 0.2)]
+                yb = yt + 1.0
+                bend = [Xt, yb, head_z(xt, yb, out + 0.1)]
+                tip = [sg * (xt + fx), yt, head_z(xt, yt, out) + fz]
+                P.append(part(nm, "tube", {"pts": [r3(root), r3(mid), r3(bend), r3(tip)], "r": list(rr), "flat": 0.5,
+                                           "flat_c": r3(HEAD_C)}, material=mat))
+    return P
+
+
 def hair_parts():
     P = []
     # --- 12 crown clumps: hairline / sides sweep back over the cap and converge on the bow knot
@@ -135,7 +168,10 @@ def hair_parts():
         P.append(part(f"whorl_{k}", "tube", {"pts": [r3(p0), r3(p1), r3(p2)], "r": [0.5, 0.4, 0.04], "flat": 0.5,
                                              "flat_c": r3(CAP_C)}, lod="ref"))
     # --- hime bangs: 7 points along a straight line; the centre pair splits apart, a short back bang fills the V
-    bangs = BANGS + [(n.replace("_L", "_R"), -xr, -xt, yt, o) for n, xr, xt, yt, o in reversed(BANGS)]
+    if LAYERED_BANGS:
+        P += layered_bangs()
+    bangs = [] if LAYERED_BANGS else (
+        BANGS + [(n.replace("_L", "_R"), -xr, -xt, yt, o) for n, xr, xt, yt, o in reversed(BANGS)])
     for name, xr, xt, yt, out in bangs:
         root = [xr, 12.9, cap_z(xr, 12.9, out=-0.35)]
         xm, ym = (xr * 0.4 + xt * 0.6), BANG_MID_Y
@@ -146,8 +182,9 @@ def hair_parts():
     root = [0, 13.1, cap_z(0, 13.1, out=-0.45)]
     mid = [0, 11.0, head_z(0, 11.0, 0.35)]
     tip = [0, BANG_C_TIP, head_z(0, BANG_C_TIP, 0.3)]
-    P.append(part("bang_C", "tube", {"pts": [r3(root), r3(mid), r3(tip)], "r": [1.15, 0.9, 0.05], "flat": 0.42,
-                                     "flat_c": r3(HEAD_C)}))
+    if not LAYERED_BANGS:
+      P.append(part("bang_C", "tube", {"pts": [r3(root), r3(mid), r3(tip)], "r": [1.15, 0.9, 0.05], "flat": 0.42,
+                                       "flat_c": r3(HEAD_C)}))
     # r15: temple bangs - the outer fringe slopes down past the brow and tucks into the side locks
     for name, (xr, yr), (xm, ym), (xt, yt), rr, out in TEMPLE_BANGS:
         for sg, s in ((1, "L"), (-1, "R")):
@@ -193,22 +230,37 @@ SWAY_PONY = {"walk": [1500, 0.0, 1, 0.4], "carry_walk": [1000, 0.0, 1], "run": [
 FACE_SET = {"set": "face", "k": 1.6}
 
 
+# r13 head (the r15 face), kept for reference.  r16 (user: "face a bit too fat ... more realistic, pointy, curved
+# face"): docs/review/r16_face_bangs.md
+HEAD_R15 = {"cranium": ([0, 7.6, 0.45], [8.2, 7.6, 7.6]), "jaw": ([0, 3.9, 1.7], [6.5, 4.4, 6.35]),
+            "chin": ([0, 3.2, 3.9], [0, 0.15, 5.7], 3.0, 1.05), "cheek": ([4.2, 4.3, 4.4], [2.2, 2.0, 1.9], 28), "k": 1.6}
+# r16 (mockup FB "V-taper +1 row", AD pick): same cranium (eye rows keep their width), a narrower jaw (6.5 -> 5.5) set
+# lower and the chin pulled 1.55 further down to a sharper point (rb 1.05 -> 0.65): S rows under the eyes 10-8-5-2,
+# 3/4 8-8-6-1 (1-px chin), profile chin 1 px forward-down; tighter face blend (k 1.6 -> 1.5) shows the cheek-chin curve
+HEAD = {"cranium": ([0, 7.6, 0.45], [8.2, 7.6, 7.6]), "jaw": ([0, 3.2, 2.0], [5.5, 4.6, 6.0]),
+        "chin": ([0, 2.8, 4.1], [0, -1.4, 5.8], 2.7, 0.65), "cheek": ([4.2, 4.6, 4.4], [2.2, 1.9, 1.9], 28), "k": 1.5}
+
+
 def head_parts():
-    """Rounder cranium, cheeks narrowing to a soft pointed chin, a slight cheekbone plane, a jaw line visible in 3/4
-    and profile. Replaces the legacy head sphere (which stays as the sim / QA collider)."""
-    P = [{"name": "cranium", "bone": "head", "shape": "ellipsoid", "center": [0, 7.6, 0.45], "radii": [8.2, 7.6, 7.6],
-          "material": "skin", "group": "head", "blend": dict(FACE_SET), "lod": "all"},
+    """Cranium, jaw narrowing to a soft pointed chin, a slight cheekbone plane, a jaw line visible in 3/4 and profile.
+    Replaces the legacy head sphere (which stays as the sim / QA collider)."""
+    fs = {"set": "face", "k": HEAD["k"]}
+    (cc, cr), (jc, jr) = HEAD["cranium"], HEAD["jaw"]
+    ca, cb, cra, crb = HEAD["chin"]
+    P = [{"name": "cranium", "bone": "head", "shape": "ellipsoid", "center": list(cc), "radii": list(cr),
+          "material": "skin", "group": "head", "blend": dict(fs), "lod": "all"},
          # lower face: narrower than the cranium (jaw taper), pushed forward
-         {"name": "jaw", "bone": "head", "shape": "ellipsoid", "center": [0, 3.9, 1.7], "radii": [6.5, 4.4, 6.35],
-          "material": "skin", "group": "head", "blend": dict(FACE_SET), "lod": "all"},
+         {"name": "jaw", "bone": "head", "shape": "ellipsoid", "center": list(jc), "radii": list(jr),
+          "material": "skin", "group": "head", "blend": dict(fs), "lod": "all"},
          # chin: soft point, forward and down
-         P_("chin", "head", "rcone", {"a": [0, 3.2, 3.9], "b": [0, 0.15, 5.7], "ra": 3.0, "rb": 1.05}, "skin", "head",
-            blend=dict(FACE_SET))]
+         P_("chin", "head", "rcone", {"a": list(ca), "b": list(cb), "ra": cra, "rb": crb}, "skin", "head",
+            blend=dict(fs))]
+    kc, kr, krot = HEAD["cheek"]
     for sg, s in ((1, "L"), (-1, "R")):
         # cheekbone plane: a flattened pad under each eye that squares the cheek in 3/4
-        P.append({"name": f"cheek_{s}", "bone": "head", "shape": "ellipsoid", "center": [sg * 4.2, 4.3, 4.4],
-                  "radii": [2.2, 2.0, 1.9], "rot": [0, sg * 28, 0], "material": "skin", "group": "head",
-                  "blend": dict(FACE_SET), "lod": "all"})
+        P.append({"name": f"cheek_{s}", "bone": "head", "shape": "ellipsoid", "center": [sg * kc[0], kc[1], kc[2]],
+                  "radii": list(kr), "rot": [0, sg * krot, 0], "material": "skin", "group": "head",
+                  "blend": dict(fs), "lod": "all"})
     return P
 
 
@@ -489,9 +541,12 @@ def main():
                                  "gap_front": 3, "mouth_bias": MOUTH_BIAS,   # round 3: AD4 locked S bridge, AD5 mouth
                                  **({"contour_far": CONTOUR_FAR} if CONTOUR_FAR is not None else {}),
                                  **({"lash_over_hair": True} if LASH_OVER_HAIR else {}),
-                                 **({"hem_pin": True} if HEM_PIN else {})},
+                                 **({"hem_pin": True} if HEM_PIN else {}),
+                                 **({"hem_shadow": True} if HEM_SHADOW else {}),
+                                 **({"hem_layer_mat": BACK_MAT} if LAYERED_BANGS else {})},
                    **({"face_cels": FACE_CELS} if FACE_CELS else {}),
-                   "lineart": {"keep_selout_runs": ["ribbon", "hair"], "skin_edge_dark": True,
+                   "lineart": {"keep_selout_runs": ["ribbon", "hair"] + ([BACK_MAT] if LAYERED_BANGS else []),
+                               "skin_edge_dark": True,
                                "ring_trim": {"margin": 2, "min_run": 3, "stop_at": ["ribbon", "hatcuff"],
                                              "fill_gaps": 2}},   # round 3 AD1 head rust only; round 4 no 1-px arc break
                    # anim3: bow loop vs raised teal mitten get a 1 px teal_0 separation (same fill colour)
@@ -502,6 +557,8 @@ def main():
                    # anim2 (round 2) + anim3 (round 3): hold 1-frame crown, bow and scarf-tail flicker in the idle loops
                    "temporal_hold": {"clips": ["idle", "carry_idle"], "rows": 30,
                                      "colors": ["outline", "plum_0", "hair_1", "hair_2", "teal_0", "teal_1", "teal_2", "mauve", "oat_1"]}},
+        **({"ramp_overrides": {BACK_MAT: ["plum_0", "plum_0", "hair_1"]},
+            "material_bands": {BACK_MAT: [-0.3, 0.999]}} if LAYERED_BANGS else {}),
         "add_chains": pony_chain(),
         "hd_chains": tail_chains() + curtain_chains() + loop_chains(),
         "parts": head_parts() + eye_ref_parts(marks) + hair_parts() + bow_parts() + coat_parts() + scarf_parts()

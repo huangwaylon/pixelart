@@ -31,7 +31,7 @@
    -1
   ]
  ],
- "base_hash": "c8d6a3b55d9b701d",
+ "base_hash": "06020a0bc67d42f1",
  "note": "round 5 AD: the swing-frame ponytail tip thins below 1 px and the outline pass leaves a 3x2 dark blob under the 1-px point; erased so the tip ends in the point (x32,y43) with its 1-px outline",
  "reasons": [
   {
@@ -90,6 +90,16 @@
     ]
    ],
    "why": "r15 rebase (final bangs): base changed only in face/bangs/side-lock pixels; the ponytail-tip pixels this override fixes and their 3-px neighbourhood are identical to the approved v1 frame, so the round-6 AD fix stands unchanged"
+  },
+  {
+   "time": "2026-10-23 12:28",
+   "author": "r16 face team",
+   "pixels": [
+    [
+     "approved"
+    ]
+   ],
+   "why": "r16 rebase (slimmer face + layered bangs): base changed only in face/fringe pixels; the ponytail-tip pixels this override fixes and their 3-px neighbourhood are identical to the approved frame, so the round-6 AD fix stands unchanged"
   }
  ]
 }

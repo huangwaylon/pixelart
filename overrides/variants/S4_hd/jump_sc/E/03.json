@@ -41,7 +41,7 @@
    0
   ]
  ],
- "base_hash": "31f1a29864865c78",
+ "base_hash": "94a2b09949c1e9ac",
  "note": "round 6 AD: the round-5 fuller jump tip flattens this 'rise' frame into a KKK cap at y40; the round-4 tapered point to y42 is restored",
  "reasons": [
   {
@@ -100,6 +100,16 @@
     ]
    ],
    "why": "r15 rebase: base changed only in face/bangs/side-lock pixels; the ponytail-tip pixels this override fixes and their 3-px neighbourhood are identical to the approved v1 frame, so the round-6 AD fix stands unchanged"
+  },
+  {
+   "time": "2026-10-23 12:28",
+   "author": "r16 face team",
+   "pixels": [
+    [
+     "approved"
+    ]
+   ],
+   "why": "r16 rebase (slimmer face + layered bangs): base changed only in face/fringe pixels; the ponytail-tip pixels this override fixes and their 3-px neighbourhood are identical to the approved frame, so the round-6 AD fix stands unchanged"
   }
  ]
 }
