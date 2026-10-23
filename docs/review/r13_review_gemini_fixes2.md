@@ -15,3 +15,5 @@ The hem bottom-right is open: y85 x56-58 `ddd`, y86 x56 `d` with nothing at x57,
 - y87 x56 -> `K`.
 
 Also: pre-existing hole at recoil (63,79) `.`. Fill it with `O`.
+
+**Follow-up (lead verification):** shy (57,85) (58,85) (56,86) (56,87) = K #241628; recoil (63,79) = O #D2BFA4, as specified. All 8 poses APPROVED.
