@@ -1,0 +1,248 @@
+{
+ "name": "fall_r14",
+ "budget": {
+  "loop_ms": [
+   1,
+   480
+  ],
+  "source": "docs/review/r14_gameplay_timing.md (GD)"
+ },
+ "version": 1,
+ "loop": true,
+ "frame_size": [
+  48,
+  64
+ ],
+ "pivot": [
+  24,
+  57
+ ],
+ "directions": [
+  "S",
+  "SE",
+  "E",
+  "NE",
+  "N",
+  "NW",
+  "W",
+  "SW"
+ ],
+ "conventions": "Degrees. spine/head tilt + = forward/down. arm raise + = forward/up from hanging (180 = overhead), - = back; spread + = out to the side; elbow + = bend. leg hip + = thigh forward, knee + = bend, ankle + = toes down. plant=true solves legs with IK so feet stay pinned. z_px = engine vertical offset in screen px. squash < 1 squashes, > 1 stretches (volume preserved). fall: loop; engine owns z_px (sprite z stays 0); plant=false on every frame.",
+ "rest": {
+  "z_px": 0,
+  "pelvis_drop": 0,
+  "squash": 1.0,
+  "plant": true,
+  "face": "neutral",
+  "spine": {
+   "tilt": 0,
+   "turn": 0,
+   "lean": 0
+  },
+  "head": {
+   "tilt": 0,
+   "turn": 0,
+   "roll": 0
+  },
+  "arm_L": {
+   "raise": 0,
+   "spread": 12,
+   "elbow": 10
+  },
+  "arm_R": {
+   "raise": 0,
+   "spread": 12,
+   "elbow": 10
+  },
+  "leg_L": {
+   "hip": 0,
+   "knee": 0,
+   "ankle": 0,
+   "spread": 0
+  },
+  "leg_R": {
+   "hip": 0,
+   "knee": 0,
+   "ankle": 0,
+   "spread": 0
+  }
+ },
+ "engine_notes": "jump_sc -> fall handoff: jump_sc moves the sprite with per-frame z_px, fall leaves height to the engine. On handoff the runtime must add the current jump z_px to world height (up to 11 px) or the sprite pops.",
+ "qa": {
+  "max_height_delta_px": 3,
+  "max_orphans": 0,
+  "min_margin_px": 2,
+  "lead_in_ms": 40,
+  "max_loop_seam_px": 1.0
+ },
+ "frames": [
+  {
+   "name": "flap_up",
+   "ms": 60,
+   "phase": "air",
+   "face": "smile",
+   "plant": false,
+   "squash": 1.02,
+   "spine": {
+    "tilt": -2,
+    "turn": 0,
+    "lean": 2
+   },
+   "head": {
+    "tilt": 12,
+    "turn": 0,
+    "roll": -4
+   },
+   "arm_L": {
+    "raise": 50,
+    "spread": 82,
+    "elbow": 20
+   },
+   "arm_R": {
+    "raise": 105,
+    "spread": 40,
+    "elbow": 20
+   },
+   "leg_L": {
+    "hip": 50,
+    "knee": 84,
+    "ankle": 18,
+    "spread": -4
+   },
+   "leg_R": {
+    "hip": 30,
+    "knee": 104,
+    "ankle": 24,
+    "spread": -6
+   },
+   "cancelable": true,
+   "ease": "linear"
+  },
+  {
+   "name": "flap_top",
+   "ms": 110,
+   "phase": "air",
+   "face": "smile",
+   "plant": false,
+   "squash": 1.05,
+   "spine": {
+    "tilt": -3,
+    "turn": 0,
+    "lean": 0
+   },
+   "head": {
+    "tilt": 9,
+    "turn": 0,
+    "roll": -1
+   },
+   "arm_L": {
+    "raise": 5,
+    "spread": 124,
+    "elbow": 14
+   },
+   "arm_R": {
+    "raise": 50,
+    "spread": 82,
+    "elbow": 20
+   },
+   "leg_L": {
+    "hip": 46,
+    "knee": 96,
+    "ankle": 18,
+    "spread": -5
+   },
+   "leg_R": {
+    "hip": 34,
+    "knee": 100,
+    "ankle": 22,
+    "spread": -5
+   },
+   "cancelable": true,
+   "ease": "inout"
+  },
+  {
+   "name": "flap_down",
+   "ms": 60,
+   "phase": "air",
+   "face": "smile",
+   "plant": false,
+   "squash": 1.01,
+   "spine": {
+    "tilt": -2,
+    "turn": 0,
+    "lean": -2
+   },
+   "head": {
+    "tilt": 12,
+    "turn": 0,
+    "roll": 4
+   },
+   "arm_L": {
+    "raise": 50,
+    "spread": 82,
+    "elbow": 24
+   },
+   "arm_R": {
+    "raise": 5,
+    "spread": 124,
+    "elbow": 14
+   },
+   "leg_L": {
+    "hip": 44,
+    "knee": 92,
+    "ankle": 20,
+    "spread": -6
+   },
+   "leg_R": {
+    "hip": 38,
+    "knee": 96,
+    "ankle": 22,
+    "spread": -4
+   },
+   "cancelable": true,
+   "ease": "linear"
+  },
+  {
+   "name": "flap_low",
+   "ms": 110,
+   "phase": "air",
+   "face": "smile",
+   "plant": false,
+   "squash": 0.98,
+   "spine": {
+    "tilt": -1,
+    "turn": 0,
+    "lean": 0
+   },
+   "head": {
+    "tilt": 15,
+    "turn": 0,
+    "roll": 1
+   },
+   "arm_L": {
+    "raise": 105,
+    "spread": 40,
+    "elbow": 20
+   },
+   "arm_R": {
+    "raise": 50,
+    "spread": 82,
+    "elbow": 24
+   },
+   "leg_L": {
+    "hip": 46,
+    "knee": 88,
+    "ankle": 18,
+    "spread": -5
+   },
+   "leg_R": {
+    "hip": 34,
+    "knee": 110,
+    "ankle": 22,
+    "spread": -5
+   },
+   "cancelable": true,
+   "ease": "inout"
+  }
+ ]
+}

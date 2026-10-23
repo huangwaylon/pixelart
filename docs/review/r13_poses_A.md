@@ -43,3 +43,9 @@ Orphans are only catchlights, noses and mouth corners.
 - Re-synced the 09:18 `head_three_quarter.pix` (3/4 bow fix) into the turnaround three_quarter view and point.
 - Checked the neck seams at x4: chin, neck shadow and the scarf top join cleanly in all four.
 - Re-rendered the poses, turnaround, guides, both silhouette checks and the 8-pose lineup. Remaining orphans are catchlights, noses and mouth corners from the head files.
+
+## Round 5 (review 3 poses)
+- Idle, wave and hands_on_hips are approved.
+- Point: the sleeve is now 9 rows at the shoulder and 8 at the wrist (7 rows of fill), with the cuff matched to the wrist (10 rows). A dark `#241628` top outline runs along the sleeve and cuff.
+- Idle: re-pasted `expr/front_tiltR_smile` after Artist 3's lash-corner fix in `head_front_tiltR` (09:31). A check script confirms 0 pixel mismatches; (59,20) is now `u`.
+- Re-rendered the poses, the silhouette check and the 8-pose lineup.

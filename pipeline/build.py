@@ -58,6 +58,14 @@ def input_files(anim, variant=None):
     spec = load_variant(variant) if variant else None
     char_path, pal_path = variant_inputs(spec)
     files = [p for p in (char_path, pal_path) if p] + [os.path.join(ROOT, "data", "animations", f"{anim}.json")]
+    # derived clips (e.g. land_r14 <- jump_sc_r14): the source clip is an input too
+    seen = {anim}
+    while True:
+        src = json.load(open(files[-1])).get("derived", {}).get("clip") if os.path.exists(files[-1]) else None
+        if not src or src in seen:
+            break
+        seen.add(src)
+        files.append(os.path.join(ROOT, "data", "animations", f"{src}.json"))
     if variant:
         files += sorted(glob.glob(os.path.join(ROOT, "data", "variants", "*.json")))
     files += sorted(glob.glob(os.path.join(ROOT, "pipeline", "*.py")))

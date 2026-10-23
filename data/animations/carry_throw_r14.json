@@ -1,0 +1,378 @@
+{
+ "name": "carry_throw_r14",
+ "budget": {
+  "max_total_ms": 800,
+  "events": {
+   "throw_release": 400
+  },
+  "spawn_anchor_last_visible": true,
+  "source": "docs/review/r14_gameplay_timing.md (GD)"
+ },
+ "version": 1,
+ "frame_size": [
+  48,
+  64
+ ],
+ "pivot": [
+  24,
+  57
+ ],
+ "directions": [
+  "S",
+  "SE",
+  "E",
+  "NE",
+  "N",
+  "NW",
+  "W",
+  "SW"
+ ],
+ "conventions": "Degrees. spine/head tilt + = forward/down. arm raise + = forward/up from hanging (180 = overhead), - = back; spread + = out to the side; elbow + = bend. leg hip + = thigh forward, knee + = bend, ankle + = toes down. plant=true solves legs with IK so feet stay pinned. z_px = engine vertical offset in screen px. squash < 1 squashes, > 1 stretches (volume preserved). carry_throw: two-handed overhead push throw of the carried crate; crate prop copied from carry_idle.json (WP C spec); step with leg_L on f3-f5 (FK).",
+ "preroll_ms": 1200,
+ "rest": {
+  "z_px": 0,
+  "pelvis_drop": 0,
+  "squash": 1.0,
+  "plant": true,
+  "face": "neutral",
+  "spine": {
+   "tilt": 0,
+   "turn": 0,
+   "lean": 0
+  },
+  "head": {
+   "tilt": 0,
+   "turn": 0,
+   "roll": 0
+  },
+  "arm_L": {
+   "raise": 0,
+   "spread": 12,
+   "elbow": 10
+  },
+  "arm_R": {
+   "raise": 0,
+   "spread": 12,
+   "elbow": 10
+  },
+  "leg_L": {
+   "hip": 0,
+   "knee": 0,
+   "ankle": 0,
+   "spread": 0
+  },
+  "leg_R": {
+   "hip": 0,
+   "knee": 0,
+   "ankle": 0,
+   "spread": 0
+  }
+ },
+ "engine_notes": "throw_release fires on 'release' (index 3, 290 ms); the crate is drawn on dip+push and hidden from 'release'. Spawn the projectile at anchors.carry[dir][push] (prop.spawn_anchor_frame = push) so it leaves exactly where the held crate was last drawn.",
+ "qa": {
+  "max_height_delta_px": 3,
+  "max_orphans": 0,
+  "min_margin_px": 2,
+  "lead_in_ms": 40
+ },
+ "props": [
+  {
+   "ref": "crate",
+   "name": "crate",
+   "frames": [
+    "dip",
+    "dip_hold",
+    "push"
+   ],
+   "release_event": "throw_release",
+   "spawn_anchor_frame": "push"
+  }
+ ],
+ "frames": [
+  {
+   "name": "dip",
+   "ms": 160,
+   "phase": "anticipation",
+   "face": "determined",
+   "spine": {
+    "tilt": -5,
+    "turn": 0,
+    "lean": 0
+   },
+   "head": {
+    "tilt": -8,
+    "turn": 0,
+    "roll": 4
+   },
+   "arm_L": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 12
+   },
+   "arm_R": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 12
+   },
+   "leg_L": {
+    "hip": 0,
+    "knee": 0,
+    "ankle": 0,
+    "spread": -6
+   },
+   "leg_R": {
+    "hip": 0,
+    "knee": 0,
+    "ankle": 0,
+    "spread": -6
+   },
+   "pelvis_drop": 3.2,
+   "squash": 0.94,
+   "ease": "in"
+  },
+  {
+   "name": "dip_hold",
+   "ms": 90,
+   "hold_of": "dip",
+   "face": "squint",
+   "pelvis_drop": 4.0,
+   "squash": 0.9,
+   "head": {
+    "tilt": -10,
+    "turn": 0,
+    "roll": 5
+   },
+   "arm_L": {
+    "raise": 178,
+    "spread": 38,
+    "elbow": 16
+   },
+   "arm_R": {
+    "raise": 178,
+    "spread": 38,
+    "elbow": 16
+   }
+  },
+  {
+   "name": "push",
+   "ms": 40,
+   "phase": "action",
+   "face": "determined",
+   "spine": {
+    "tilt": 6,
+    "turn": 0,
+    "lean": 0
+   },
+   "head": {
+    "tilt": -6,
+    "turn": 0,
+    "roll": -2
+   },
+   "arm_L": {
+    "raise": 152,
+    "spread": 36,
+    "elbow": 8
+   },
+   "arm_R": {
+    "raise": 152,
+    "spread": 36,
+    "elbow": 8
+   },
+   "leg_L": {
+    "hip": 0,
+    "knee": 0,
+    "ankle": 0,
+    "spread": -6
+   },
+   "leg_R": {
+    "hip": 0,
+    "knee": 0,
+    "ankle": 0,
+    "spread": -6
+   },
+   "pelvis_drop": 0.0,
+   "squash": 1.1,
+   "prop": {
+    "hide": [
+     "rope"
+    ],
+    "offset": [
+     0,
+     16.0,
+     1.2
+    ]
+   },
+   "smear": {
+    "streak": "carry",
+    "tail": 1
+   }
+  },
+  {
+   "name": "release",
+   "ms": 100,
+   "phase": "action",
+   "face": "joyful",
+   "spine": {
+    "tilt": 6,
+    "turn": 0,
+    "lean": 0
+   },
+   "head": {
+    "tilt": -8,
+    "turn": 0,
+    "roll": -4
+   },
+   "arm_L": {
+    "raise": 140,
+    "spread": 32,
+    "elbow": 0
+   },
+   "arm_R": {
+    "raise": 140,
+    "spread": 32,
+    "elbow": 0
+   },
+   "plant": false,
+   "leg_L": {
+    "hip": 30,
+    "knee": 22,
+    "ankle": 0,
+    "spread": -4
+   },
+   "leg_R": {
+    "hip": -18,
+    "knee": 14,
+    "ankle": 22,
+    "spread": -4
+   },
+   "pelvis_drop": 1.0,
+   "events": [
+    "throw_release"
+   ],
+   "ease": "out"
+  },
+  {
+   "name": "follow",
+   "ms": 130,
+   "phase": "action",
+   "face": "joyful",
+   "spine": {
+    "tilt": 22,
+    "turn": 0,
+    "lean": 3
+   },
+   "head": {
+    "tilt": -6,
+    "turn": 0,
+    "roll": -6
+   },
+   "arm_L": {
+    "raise": 108,
+    "spread": 40,
+    "elbow": 12
+   },
+   "arm_R": {
+    "raise": 108,
+    "spread": 38,
+    "elbow": 14
+   },
+   "plant": false,
+   "leg_L": {
+    "hip": 28,
+    "knee": 22,
+    "ankle": 0,
+    "spread": -4
+   },
+   "leg_R": {
+    "hip": -16,
+    "knee": 14,
+    "ankle": 20,
+    "spread": -4
+   },
+   "pelvis_drop": 1.8,
+   "squash": 0.96
+  },
+  {
+   "name": "recover",
+   "ms": 100,
+   "phase": "recovery",
+   "face": "smile",
+   "spine": {
+    "tilt": 6,
+    "turn": 0,
+    "lean": 0
+   },
+   "head": {
+    "tilt": -2,
+    "turn": 0,
+    "roll": 6
+   },
+   "arm_L": {
+    "raise": 36,
+    "spread": 26,
+    "elbow": 30
+   },
+   "arm_R": {
+    "raise": 38,
+    "spread": 24,
+    "elbow": 30
+   },
+   "plant": false,
+   "leg_L": {
+    "hip": 12,
+    "knee": 10,
+    "ankle": 6,
+    "spread": -4
+   },
+   "leg_R": {
+    "hip": -6,
+    "knee": 6,
+    "ankle": 8,
+    "spread": -4
+   },
+   "pelvis_drop": 0.4,
+   "cancelable": true,
+   "ease": "out"
+  },
+  {
+   "name": "ready",
+   "ms": 100,
+   "phase": "recovery",
+   "face": "smile",
+   "spine": {
+    "tilt": 2,
+    "turn": 0,
+    "lean": 0
+   },
+   "head": {
+    "tilt": 0,
+    "turn": 0,
+    "roll": 4
+   },
+   "arm_L": {
+    "raise": 6,
+    "spread": 14,
+    "elbow": 16
+   },
+   "arm_R": {
+    "raise": 6,
+    "spread": 14,
+    "elbow": 16
+   },
+   "leg_L": {
+    "hip": 0,
+    "knee": 0,
+    "ankle": 0,
+    "spread": -6
+   },
+   "leg_R": {
+    "hip": 0,
+    "knee": 0,
+    "ankle": 0,
+    "spread": -6
+   },
+   "cancelable": true,
+   "skippable": true
+  }
+ ]
+}

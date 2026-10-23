@@ -1,0 +1,19 @@
+{
+ "name": "land_r14",
+ "budget": {
+  "max_total_ms": 350,
+  "events": {
+   "land": 0
+  },
+  "max_lock_ms": 120,
+  "source": "docs/review/r14_gameplay_timing.md (GD)"
+ },
+ "derived": {
+  "clip": "jump_sc_r14",
+  "frames": [
+   "touchdown",
+   "ready"
+  ]
+ },
+ "loop": false
+}

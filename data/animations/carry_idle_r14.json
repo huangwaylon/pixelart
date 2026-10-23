@@ -1,0 +1,223 @@
+{
+ "name": "carry_idle_r14",
+ "budget": {
+  "loop_ms": [
+   1,
+   4000
+  ],
+  "source": "docs/review/r14_gameplay_timing.md (GD)"
+ },
+ "version": 1,
+ "frame_size": [
+  48,
+  64
+ ],
+ "pivot": [
+  24,
+  57
+ ],
+ "directions": [
+  "S",
+  "SE",
+  "E",
+  "NE",
+  "N",
+  "NW",
+  "W",
+  "SW"
+ ],
+ "conventions": "Degrees. spine/head tilt + = forward/down. arm raise + = forward/up from hanging (180 = overhead), - = back; spread + = out to the side; elbow + = bend. leg hip + = thigh forward, knee + = bend, ankle + = toes down. plant=true solves legs with IK so feet stay pinned. z_px = engine vertical offset in screen px. squash < 1 squashes, > 1 stretches (volume preserved).",
+ "loop": true,
+ "rest": {
+  "z_px": 0,
+  "pelvis_drop": 0,
+  "squash": 1.0,
+  "plant": true,
+  "face": "neutral",
+  "spine": {
+   "tilt": 0,
+   "turn": 0,
+   "lean": 0
+  },
+  "head": {
+   "tilt": 0,
+   "turn": 0,
+   "roll": 0
+  },
+  "arm_L": {
+   "raise": 0,
+   "spread": 12,
+   "elbow": 10
+  },
+  "arm_R": {
+   "raise": 0,
+   "spread": 12,
+   "elbow": 10
+  },
+  "leg_L": {
+   "hip": 0,
+   "knee": 0,
+   "ankle": 0,
+   "spread": 0
+  },
+  "leg_R": {
+   "hip": 0,
+   "knee": 0,
+   "ankle": 0,
+   "spread": 0
+  }
+ },
+ "qa": {
+  "max_height_delta_px": 3,
+  "max_orphans": 0,
+  "min_margin_px": 2,
+  "lead_in_ms": 40
+ },
+ "frames": [
+  {
+   "name": "up",
+   "ms": 300,
+   "face": "smile",
+   "pelvis_drop": 0.0,
+   "squash": 1.0,
+   "arm_L": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 10
+   },
+   "arm_R": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 10
+   },
+   "leg_L": {
+    "spread": -4
+   },
+   "leg_R": {
+    "spread": -4
+   },
+   "spine": {
+    "tilt": -2,
+    "lean": 0,
+    "turn": 0
+   },
+   "head": {
+    "tilt": -2,
+    "roll": 2,
+    "turn": 0
+   },
+   "cancelable": true,
+   "ease": "out"
+  },
+  {
+   "name": "sink",
+   "ms": 160,
+   "face": "smile",
+   "pelvis_drop": 0.7,
+   "squash": 0.98,
+   "arm_L": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 13
+   },
+   "arm_R": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 13
+   },
+   "leg_L": {
+    "spread": -4
+   },
+   "leg_R": {
+    "spread": -4
+   },
+   "spine": {
+    "tilt": -1,
+    "lean": 1.0,
+    "turn": 0
+   },
+   "head": {
+    "tilt": 0,
+    "roll": 3,
+    "turn": 0
+   },
+   "cancelable": true
+  },
+  {
+   "name": "low",
+   "ms": 320,
+   "face": "determined",
+   "pelvis_drop": 1.1,
+   "squash": 0.97,
+   "arm_L": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 15
+   },
+   "arm_R": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 15
+   },
+   "leg_L": {
+    "spread": -4
+   },
+   "leg_R": {
+    "spread": -4
+   },
+   "spine": {
+    "tilt": 0,
+    "lean": 0,
+    "turn": 0
+   },
+   "head": {
+    "tilt": 1,
+    "roll": 2,
+    "turn": 0
+   },
+   "cancelable": true,
+   "ease": "out"
+  },
+  {
+   "name": "rise",
+   "ms": 180,
+   "face": "smile",
+   "pelvis_drop": 0.4,
+   "squash": 0.99,
+   "arm_L": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 12
+   },
+   "arm_R": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 12
+   },
+   "leg_L": {
+    "spread": -4
+   },
+   "leg_R": {
+    "spread": -4
+   },
+   "spine": {
+    "tilt": -2,
+    "lean": -1.0,
+    "turn": 0
+   },
+   "head": {
+    "tilt": -1,
+    "roll": 1,
+    "turn": 0
+   },
+   "cancelable": true
+  }
+ ],
+ "props": [
+  {
+   "ref": "crate",
+   "name": "crate",
+   "frames": "all"
+  }
+ ]
+}

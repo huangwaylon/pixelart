@@ -1,0 +1,522 @@
+{
+ "name": "pick_up_r14",
+ "budget": {
+  "max_total_ms": 1000,
+  "events": {
+   "grab": 350
+  },
+  "source": "docs/review/r14_gameplay_timing.md (GD)"
+ },
+ "version": 1,
+ "frame_size": [
+  48,
+  64
+ ],
+ "pivot": [
+  24,
+  57
+ ],
+ "directions": [
+  "S",
+  "SE",
+  "E",
+  "NE",
+  "N",
+  "NW",
+  "W",
+  "SW"
+ ],
+ "conventions": "Degrees. spine/head tilt + = forward/down. arm raise + = forward/up from hanging (180 = overhead), - = back; spread + = out to the side; elbow + = bend. leg hip + = thigh forward, knee + = bend, ankle + = toes down. plant=true solves legs with IK so feet stay pinned. z_px = engine vertical offset in screen px. squash < 1 squashes, > 1 stretches (volume preserved).",
+ "rest": {
+  "z_px": 0,
+  "pelvis_drop": 0,
+  "squash": 1.0,
+  "plant": true,
+  "face": "neutral",
+  "spine": {
+   "tilt": 0,
+   "turn": 0,
+   "lean": 0
+  },
+  "head": {
+   "tilt": 0,
+   "turn": 0,
+   "roll": 0
+  },
+  "arm_L": {
+   "raise": 0,
+   "spread": 12,
+   "elbow": 10
+  },
+  "arm_R": {
+   "raise": 0,
+   "spread": 12,
+   "elbow": 10
+  },
+  "leg_L": {
+   "hip": 0,
+   "knee": 0,
+   "ankle": 0,
+   "spread": 0
+  },
+  "leg_R": {
+   "hip": 0,
+   "knee": 0,
+   "ankle": 0,
+   "spread": 0
+  }
+ },
+ "qa": {
+  "max_height_delta_px": 3,
+  "max_orphans": 0,
+  "min_margin_px": 2,
+  "lead_in_ms": 40
+ },
+ "frames": [
+  {
+   "name": "eye_dip",
+   "ms": 90,
+   "face": "neutral",
+   "pelvis_drop": 1.6,
+   "squash": 0.98,
+   "spine": {
+    "tilt": 8,
+    "lean": 0,
+    "turn": 0
+   },
+   "head": {
+    "tilt": 12,
+    "roll": 3,
+    "turn": 0
+   },
+   "leg_L": {
+    "spread": -5
+   },
+   "leg_R": {
+    "spread": -5
+   },
+   "arm_L": {
+    "raise": 22,
+    "spread": 22,
+    "elbow": 34
+   },
+   "arm_R": {
+    "raise": 20,
+    "spread": 22,
+    "elbow": 36
+   },
+   "ease": "out"
+  },
+  {
+   "name": "squat_reach",
+   "ms": 120,
+   "face": "determined",
+   "pelvis_drop": 7.5,
+   "squash": 0.96,
+   "spine": {
+    "tilt": 30.0,
+    "lean": 0,
+    "turn": 0
+   },
+   "head": {
+    "tilt": -14,
+    "roll": 4,
+    "turn": 0
+   },
+   "leg_L": {
+    "spread": -3.2
+   },
+   "leg_R": {
+    "spread": -3.2
+   },
+   "arm_L": {
+    "raise": 56.0,
+    "spread": 20.8,
+    "elbow": 2.2
+   },
+   "arm_R": {
+    "raise": 56.0,
+    "spread": 20.8,
+    "elbow": 2.2
+   }
+  },
+  {
+   "name": "grab",
+   "ms": 110,
+   "face": "determined",
+   "pelvis_drop": 7.5,
+   "squash": 0.94,
+   "spine": {
+    "tilt": 30.0,
+    "lean": 0,
+    "turn": 0
+   },
+   "head": {
+    "tilt": -16,
+    "roll": 2,
+    "turn": 0
+   },
+   "leg_L": {
+    "spread": -3.2
+   },
+   "leg_R": {
+    "spread": -3.2
+   },
+   "arm_L": {
+    "raise": 55.8,
+    "spread": 18.0,
+    "elbow": 3.0
+   },
+   "arm_R": {
+    "raise": 55.8,
+    "spread": 18.0,
+    "elbow": 3.0
+   },
+   "events": [
+    "grab"
+   ],
+   "prop": {
+    "offset": [
+     0.0,
+     -1.991,
+     7.427
+    ],
+    "rot": [
+     -29.0,
+     0.0,
+     0.0
+    ],
+    "hide": [
+     "rope"
+    ]
+   }
+  },
+  {
+   "name": "heave",
+   "ms": 140,
+   "face": "squint",
+   "pelvis_drop": 5.2,
+   "squash": 0.94,
+   "spine": {
+    "tilt": 18,
+    "lean": 0,
+    "turn": 0
+   },
+   "head": {
+    "tilt": -10,
+    "roll": -2,
+    "turn": 0
+   },
+   "leg_L": {
+    "spread": -4
+   },
+   "leg_R": {
+    "spread": -4
+   },
+   "arm_L": {
+    "raise": 47.0,
+    "spread": 16.2,
+    "elbow": 14.0
+   },
+   "arm_R": {
+    "raise": 47.0,
+    "spread": 16.2,
+    "elbow": 14.0
+   },
+   "prop": {
+    "offset": [
+     0.0,
+     0.38,
+     4.744
+    ],
+    "rot": [
+     -21.84,
+     0.0,
+     0.0
+    ],
+    "hide": [
+     "rope"
+    ]
+   },
+   "ease": "in"
+  },
+  {
+   "name": "heave_strain",
+   "ms": 60,
+   "hold_of": "heave",
+   "face": "squint",
+   "pelvis_drop": 5.6,
+   "squash": 0.94,
+   "spine": {
+    "tilt": 20,
+    "lean": 0,
+    "turn": 0
+   },
+   "head": {
+    "tilt": -12,
+    "roll": -3,
+    "turn": 0
+   },
+   "arm_L": {
+    "raise": 47.0,
+    "spread": 16.2,
+    "elbow": 19.0
+   },
+   "arm_R": {
+    "raise": 47.0,
+    "spread": 16.2,
+    "elbow": 19.0
+   }
+  },
+  {
+   "name": "clean",
+   "ms": 50,
+   "face": "determined",
+   "pelvis_drop": 0.8,
+   "squash": 1.01,
+   "spine": {
+    "tilt": -5,
+    "lean": 0,
+    "turn": 0
+   },
+   "head": {
+    "tilt": -6,
+    "roll": -3,
+    "turn": 0
+   },
+   "leg_L": {
+    "spread": -4
+   },
+   "leg_R": {
+    "spread": -4
+   },
+   "arm_L": {
+    "raise": 43.8,
+    "spread": 23.2,
+    "elbow": 57.5
+   },
+   "arm_R": {
+    "raise": 43.8,
+    "spread": 23.2,
+    "elbow": 57.5
+   },
+   "prop": {
+    "offset": [
+     0.0,
+     0.694,
+     2.738
+    ],
+    "rot": [
+     0.07,
+     0.0,
+     0.0
+    ],
+    "hide": [
+     "rope"
+    ]
+   }
+  },
+  {
+   "name": "drive",
+   "ms": 40,
+   "face": "squint",
+   "pelvis_drop": 1.6,
+   "squash": 0.96,
+   "spine": {
+    "tilt": -4,
+    "lean": 0,
+    "turn": 0
+   },
+   "head": {
+    "tilt": -8,
+    "roll": -2,
+    "turn": 0
+   },
+   "leg_L": {
+    "spread": -4
+   },
+   "leg_R": {
+    "spread": -4
+   },
+   "arm_L": {
+    "raise": 100,
+    "spread": 24,
+    "elbow": 60
+   },
+   "arm_R": {
+    "raise": 100,
+    "spread": 24,
+    "elbow": 60
+   },
+   "prop": {
+    "offset": [
+     0.0,
+     -1.749,
+     6.365
+    ],
+    "rot": [
+     -0.25,
+     0.0,
+     0.0
+    ],
+    "hide": [
+     "rope"
+    ]
+   }
+  },
+  {
+   "name": "press",
+   "ms": 60,
+   "face": "determined",
+   "pelvis_drop": 0.2,
+   "squash": 1.05,
+   "spine": {
+    "tilt": -6,
+    "lean": 0,
+    "turn": 0
+   },
+   "head": {
+    "tilt": -8,
+    "roll": -2,
+    "turn": 0
+   },
+   "leg_L": {
+    "spread": -4
+   },
+   "leg_R": {
+    "spread": -4
+   },
+   "arm_L": {
+    "raise": 158,
+    "spread": 40,
+    "elbow": 36
+   },
+   "arm_R": {
+    "raise": 158,
+    "spread": 40,
+    "elbow": 36
+   }
+  },
+  {
+   "name": "lockout",
+   "ms": 140,
+   "face": "joyful",
+   "pelvis_drop": 0.0,
+   "squash": 1.05,
+   "spine": {
+    "tilt": -3,
+    "lean": 0,
+    "turn": 0
+   },
+   "head": {
+    "tilt": -4,
+    "roll": 4,
+    "turn": 0
+   },
+   "leg_L": {
+    "spread": -4
+   },
+   "leg_R": {
+    "spread": -4
+   },
+   "arm_L": {
+    "raise": 178,
+    "spread": 37,
+    "elbow": 5
+   },
+   "arm_R": {
+    "raise": 178,
+    "spread": 37,
+    "elbow": 5
+   },
+   "skippable": true,
+   "ease": "out"
+  },
+  {
+   "name": "overshoot",
+   "ms": 70,
+   "face": "determined",
+   "pelvis_drop": 1.7,
+   "squash": 0.955,
+   "arm_L": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 19
+   },
+   "arm_R": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 19
+   },
+   "leg_L": {
+    "spread": -4
+   },
+   "leg_R": {
+    "spread": -4
+   },
+   "spine": {
+    "tilt": 0,
+    "lean": 0,
+    "turn": 0
+   },
+   "head": {
+    "tilt": 3,
+    "roll": 2,
+    "turn": 0
+   },
+   "cancelable": true
+  },
+  {
+   "name": "settle",
+   "ms": 60,
+   "face": "determined",
+   "pelvis_drop": 1.1,
+   "squash": 0.97,
+   "arm_L": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 15
+   },
+   "arm_R": {
+    "raise": 176,
+    "spread": 38,
+    "elbow": 15
+   },
+   "leg_L": {
+    "spread": -4
+   },
+   "leg_R": {
+    "spread": -4
+   },
+   "spine": {
+    "tilt": 0,
+    "lean": 0,
+    "turn": 0
+   },
+   "head": {
+    "tilt": 1,
+    "roll": 2,
+    "turn": 0
+   },
+   "cancelable": true
+  }
+ ],
+ "props": [
+  {
+   "ref": "crate",
+   "name": "crate",
+   "frames": [
+    "grab",
+    "heave",
+    "heave_strain",
+    "clean",
+    "drive",
+    "press",
+    "lockout",
+    "overshoot",
+    "settle"
+   ]
+  }
+ ],
+ "engine_notes": "pick_up ends on carry_idle's 'low' pose (settle == low): continue with carry_idle at frame index 3 ('rise'); starting at index 2 ('low') is also seamless but holds the pose 200 ms longer. World crate spot before 'grab': centre 13.4 u (10.1 px) in front of the pivot, on the ground. Per-frame frame.prop {offset, rot, hide} needs the frames.py hook in docs/review/r11_wpC.md."
+}
