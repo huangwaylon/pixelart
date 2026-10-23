@@ -34,3 +34,12 @@ Orphans are only catchlights, noses and mouth corners.
 - Wave: deleted the loose outline pixels at x65-68, y57-60. The arm outline stays.
 - Point: the figure is shifted 2 px further right (x offset +5). The smirk came from the tilt seam and is gone with the revert. The back-hair trail that opened gaps behind the lock is removed, so the ponytail swing alone carries the secondary motion.
 - Re-synced the 3/4 bow fix (head_three_quarter 09:13, 3x6 knot) into the turnaround three_quarter and point.
+
+## Round 4 (tilted heads)
+- Swapped in Artist 3's hand-drawn tilts, pasted exactly at x+26 and translated with each pose's lean:
+  - idle: `expr/front_tiltR_smile` (tilts to the free side);
+  - wave: `expr/front_tiltL_laugh` (toward the hand);
+  - point: `expr/three_quarter_tiltL_determined` (toward the hand).
+- Re-synced the 09:18 `head_three_quarter.pix` (3/4 bow fix) into the turnaround three_quarter view and point.
+- Checked the neck seams at x4: chin, neck shadow and the scarf top join cleanly in all four.
+- Re-rendered the poses, turnaround, guides, both silhouette checks and the 8-pose lineup. Remaining orphans are catchlights, noses and mouth corners from the head files.
