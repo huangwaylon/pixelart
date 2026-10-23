@@ -1,19 +1,14 @@
-# r21 round 4: self-critique vs canon (c1-c10) and the design bible
+# r21 round 7 (polish): AD r6 notes
 
-## Changes since r3
-- **Side locks:** turned to face front (normal 0.52, 0.85), moved in against the cheek and jaw, cupped toward the face.
-- **Side and back sheets:** fused into one layered mass (smooth union k 1.0-1.1 with the dome). In the side view they no longer read as a plank stack.
-- **Outer fringe panels:** widened to cover the dome's temple corner.
-- **Hem fold depth:** reduced (no holes at the skirt bottom). **Scarf fringe:** 9 finer strands.
-- **Bow:**
-  - The crease is now a soft fold along the outer face of the upper band (it was a piercing dot).
-  - The inner membrane is shortened, so it no longer pokes through the outer end.
-  - In the run clip it stays seated at the knot in every sampled frame, E and NE views.
+## Done
+- **Crescent closed.**
+  - **Root cause:** the side lock was smooth-unioned into the hair dome's blend set. Near the face opening a lock hit was attributed to the dome, then culled by the dome's face-opening clip plane, so no surface was drawn.
+  - **Fix:** the side locks are now hard-unioned. A new under-layer sheet hugs the skull just outside the face silhouette from temple to jaw.
+  - The same bug had been eating the fringe-lock tips (the "drippy" tips). The fringe locks now melt only into each other (own set) and are hard-unioned with the dome, so they are full chunky locks with clean rounded tips.
+  - Checked in S / SE / SW hi-res and in the sprites: no gap.
+- **Bow:** loop long axis tilted down (up -6 deg, which reads about 0-5 deg up through the 16 deg camera) and scaled 1.2, so the round puffy wings sit horizontally past the head in the front view (c2). The S sprite shows 1-2 px wing tips on both sides. Backward sweep and seating are unchanged.
 
 ## Remaining, ranked
-1. **Side locks** in the front close-up still read slightly as brackets: the lit inner edge reads as a gap against the cheek. In the 48x64 sprite they now hang to the collarbone on both sides of the face, which is a small silhouette change from S4_hd.
-2. **Fringe** is a clean 3-panel hime cut, but the panels still read slightly flat and visor-like up close. A little more convexity, or a softer root where they leave the dome, would help.
-3. **Bow in the S sprite:** the wings are 2-3 px wedges at the crown corners. They read as horizontal wings in SE/SW/N, and in S only as small wedges. The canon c7 front shows larger wings.
-4. **Back view below the bow:** the swallowtail tails (dark teal) cross the ponytail root and read as a busy dark V at sprite scale in N.
-5. **Coat:** the waist pinch and soft folds are subtle at 48x64 (by design: it keeps the old silhouette). The sleeve puff barely shows.
-6. **Exported mesh:** about 260k triangles after polish. The hem band bottom still has small marching-tet spikes.
+1. **Bow in the S sprite:** still small (1-2 px past the head). SE / SW / N read well. A bigger front read would need longer wings or a higher seat, which conflicts with "seated at the ponytail root".
+2. **Fringe roots:** show as distinct ridges where they leave the dome (hard union). It is fine in the sprites, but up close the hairline reads slightly "planted".
+3. **Hi-res lock sheets:** small marching / tracing noise on thin sheet edges (side view near the ear). The exported mesh shows some surface wobble on thin parts (hair sheets, bow) after smoothing.

@@ -32,7 +32,8 @@ from pipeline.tools import make_s4_hd as H  # noqa: E402
 r3, unit, on_ell, slerp, head_z = H.r3, H.unit, H.on_ell, H.slerp, H.head_z
 HEAD_C = H.HEAD_C
 # hair cap: the S4_hd cap, 0.45 taller (the crown clumps it replaces stood ~0.5 proud of it: same crown height)
-CAP_C, CAP_R = np.array([0, 7.5, 0.0]), np.array([9.0, 9.1, 8.8])
+# r5 (lead: "give the hair volume off the skull"): 0.3 fuller at the sides / back
+CAP_C, CAP_R = np.array([0, 7.5, 0.0]), np.array([9.3, 9.1, 9.05])
 
 
 def cap_z(x, y, sign=1, out=0.0):
@@ -66,9 +67,9 @@ def sweep(name, pts, w, t, material="hair", group="head", n=16, lod="all", bone=
 # user r21: "the sharp face looks off" -> standard 3D anime base-mesh (VRoid-like) construction: a soft rounded oval,
 # full smooth cheeks curving continuously into a SMALL ROUNDED chin (no point, no crease), soft jaw line, a slightly flat
 # face front plane. Same cranium as S4_hd (eye rows keep their width).
-HEAD2 = {"cranium": ([0, 7.6, 0.45], [8.2, 7.6, 7.6]), "jaw": ([0, 3.7, 1.75], [6.05, 4.8, 6.05]),
-         "chin": ([0, 1.35, 4.35], [2.55, 2.05, 2.35]), "cheek": ([4.25, 4.35, 4.15], [2.45, 2.2, 2.2], 22),
-         "front": ([0, 5.4, 4.2], [5.0, 4.4, 2.5]), "k": 1.8}
+HEAD2 = {"cranium": ([0, 7.6, 0.45], [8.2, 7.6, 7.6]), "jaw": ([0, 3.8, 1.6], [6.4, 4.9, 6.0]),
+         "chin": ([0, 1.45, 4.1], [3.0, 2.1, 2.5]), "cheek": ([3.7, 4.4, 4.0], [2.3, 2.0, 2.2], 22),
+         "front": ([0, 5.4, 3.7], [5.0, 4.4, 2.5]), "k": 2.4}
 
 
 def head_parts():
@@ -118,17 +119,30 @@ CROWN_END = (180, 20)
 # 0.3-0.5 off the forehead. (name, x root, x tip, y tip, half-width profile root..tip, lift)
 FRINGE = [("fringe_C", 0.0, 0.0, 8.35, (2.75, 2.85, 2.85, 2.7), 0.42),
           ("fringe_L", 4.1, 4.85, 7.95, (2.3, 2.35, 2.35, 2.25), 0.4)]
+# r5 (lead, picks/04 + 12): the fringe is a thick curved shell of chunky overlapping locks with soft rounded tips and
+# small gaps, grouped as 3 panels (centre 3 locks, sides 2) with 2 notches; the cut edge curls IN to the forehead.
+# (name, x root, x tip, y tip, half-width root..tip, lift)
+FRINGE_LOCKS = [("lockC0", 0.0, 0.0, 8.4, (1.35, 1.32, 1.25, 1.08), 0.5),
+                ("lockC1_L", 1.6, 1.7, 8.3, (1.3, 1.28, 1.2, 1.02), 0.48),
+                ("lockS0_L", 3.85, 4.05, 8.05, (1.3, 1.26, 1.18, 1.0), 0.46),
+                ("lockS1_L", 5.25, 5.6, 7.85, (1.3, 1.25, 1.15, 0.98), 0.42)]
+LOCK_T = (0.62, 0.68, 0.58, 0.4)
 FRINGE_T = (0.55, 0.52, 0.42, 0.3)
 FRINGE_BACK = [("fringeB_L", 2.75, 2.95, 8.1, (0.9, 0.95, 0.9, 0.8), -0.05)]   # dark layer behind the 2 notches
 # side locks (AD r1-2): start under the fringe at the temple, run straight down close to the cheek / jaw, cupped toward
 # the face, blunt cut at the collarbone
-SIDELOCK = {"pts": [(7.3, 11.3, 1.0), (7.95, 7.0, 1.55), (7.05, 3.0, 1.8), (6.35, -2.1, 1.9)],
-            "w": (1.3, 1.6, 1.7, 1.6), "t": (0.5, 0.58, 0.6, 0.55), "nrm": (0.52, 0.85), "curl": 0.3}
+# r5 (lead, picks/27): broad flat ribbons ~1.6x wider, cupped toward the cheek, soft rounded ends
+SIDELOCK = {"pts": [(7.1, 11.4, 0.5), (7.75, 7.0, 0.75), (7.3, 3.0, 1.0), (6.8, -2.1, 1.1)],
+            "w": (1.8, 2.2, 2.3, 2.1), "t": (0.5, 0.6, 0.62, 0.5), "nrm": (0.55, 0.83), "curl": 0.38}
+# r6 (AD r5-1): the broad ribbon is turned so its inner edge hugs the cheek / jaw (cupped back into it) and its outer
+# edge stays inside the hair mass above; root tucked under the fringe at the temple
 # side sheets behind the locks (AD r1-3): replace the legacy hair_back ball; layered, lens section, soft V tips
-SIDE_SHEETS = [("sideA", [(6.9, 11.6, -3.0), (8.55, 6.5, -3.4), (8.2, 2.0, -3.5), (7.6, -1.0, -3.3)],
-                (1.2, 2.2, 2.35, 2.1), -0.5),
-               ("sideB", [(5.2, 11.4, -6.6), (6.95, 6.0, -6.9), (6.6, 1.4, -6.8), (6.0, -0.8, -6.4)],
-                (1.2, 2.2, 2.35, 2.1), -0.5)]
+# r6 (AD r5-3): the outline tapers inward toward the tips, staggered lengths (outer sheets shortest -> soft V)
+SIDE_SHEETS = [("sideA", [(6.9, 11.6, -3.0), (8.55, 6.5, -3.4), (7.9, 2.4, -3.5), (6.9, 0.4, -3.3)],
+                (1.2, 2.2, 2.2, 1.7), -0.5),
+               ("sideB", [(5.2, 11.4, -6.6), (6.95, 6.0, -6.9), (6.3, 1.4, -6.8), (5.4, -0.6, -6.4)],
+                (1.2, 2.2, 2.25, 1.8), -0.5)]
+CURTAIN_TRIM = (0.84, 0.93, 1.0, 0.93, 0.84)
 
 
 def crown_sheets():
@@ -149,20 +163,25 @@ def crown_sheets():
 
 def fringe_parts():
     P = []
-    for layer, mat, rootY in ((FRINGE_BACK, BACK_MAT, 11.6), (FRINGE, "hair", 13.8)):
-        for name, xr, xt, yt, wp, out in layer:
-            for sg, s in (((1, "L"), (-1, "R")) if xr or xt else ((1, ""),)):
-                nm = name if not s else name.replace("_L", f"_{s}")
-                ys = [rootY, 11.6, 9.9, yt]
-                xs = [xr, xr * 0.7 + xt * 0.3, xr * 0.3 + xt * 0.7, xt]
-                outs = [-0.9, out + 0.15, out + 0.12, out]
-                pts = []
-                for x, y, o in zip(xs, ys, outs):
-                    z = cap_z(x, y, out=o) if o < 0 and y > 11 else head_z(x, y, o)
-                    pts.append([sg * x, y, z])
-                t = FRINGE_T if mat == "hair" else 0.28
-                P.append(sweep(nm, pts, w=wp, t=t, material=mat, n=24, flat_c=HEAD_C, lens=0.45, curl=0.24,
-                               cap1=1, capr=1.0, blend={"set": "cap", "k": 0.55}))
+    for name, xr, xt, yt, wp, out in FRINGE_BACK:
+        for sg, s in ((1, "L"), (-1, "R")):
+            pts = []
+            for x, y, o in zip([xr, xr * 0.7 + xt * 0.3, xr * 0.3 + xt * 0.7, xt], [11.6, 11.0, 9.9, yt],
+                               [-0.9, out + 0.15, out + 0.12, out]):
+                pts.append([sg * x, y, cap_z(x, y, out=o) if o < 0 and y > 11 else head_z(x, y, o)])
+            P.append(sweep(name.replace("_L", f"_{s}"), pts, w=wp, t=0.28, material=BACK_MAT, n=20, flat_c=HEAD_C,
+                           lens=0.45, curl=0.24, cap1=1, capr=1.0))
+    for name, xr, xt, yt, wp, out in FRINGE_LOCKS:
+        for sg, s in (((1, "L"), (-1, "R")) if xr or xt else ((1, ""),)):
+            nm = name if not s else name.replace("_L", f"_{s}")
+            xs = [xr, xr * 0.75 + xt * 0.25, xr * 0.4 + xt * 0.6, xt * 0.97, xt]
+            ys = [13.9, 11.8, 10.2, yt + 0.55, yt]
+            outs = [-1.0, out + 0.25, out + 0.2, out + 0.05, out - 0.32]       # thick shell, tip curls in
+            pts = [[sg * x, y, cap_z(x, y, out=o) if o < 0 and y > 11 else head_z(x, y, o)] for x, y, o in zip(xs, ys, outs)]
+            # own smooth set (locks melt into each other), hard-unioned with the dome: in the dome's set a lock tip
+            # attributed to the cap would be culled by the face-opening clip
+            P.append(sweep(nm, pts, w=wp, t=LOCK_T, material="hair", n=24, flat_c=HEAD_C, lens=0.5, curl=0.18,
+                           cap1=1, capr=1.0, blend={"set": "fringe", "k": 0.5}))
     return P
 
 
@@ -170,9 +189,17 @@ def sidelock_parts():
     P = []
     nx, nz = SIDELOCK["nrm"]
     for sg, s in ((1, "L"), (-1, "R")):
+        # r7 (AD r6-1): an under-layer hugging the skull just outside the face silhouette, temple to jaw, so no
+        # background ever shows between cheek and lock
+        ul = [[sg * x, y, z] for x, y, z in ((7.6, 11.0, -0.2), (8.25, 7.0, 0.2), (7.5, 4.0, 0.7), (6.3, 1.0, 1.2),
+                                              (5.9, -1.2, 1.3))]
+        P.append(sweep(f"underlock_{s}", ul, w=(1.6, 2.0, 2.0, 1.8, 1.5), t=0.4, n=16, nrm=[[sg, 0.0, 0.0]] * 5,
+                       lens=0.3, curl=0.2, cap1=1, capr=1.0))
         pts = [[sg * x, y, z] for x, y, z in SIDELOCK["pts"]]
         P.append(sweep(f"sidelock2_{s}", pts, w=SIDELOCK["w"], t=SIDELOCK["t"], n=18, nrm=[[sg * nx, 0.0, nz]] * 4,
-                       lens=0.45, curl=SIDELOCK["curl"], cap1=1, capr=1.0, blend={"set": "cap", "k": 0.4}))
+                       lens=0.45, curl=SIDELOCK["curl"], cap1=1, capr=1.0))
+        # (no smooth union with the dome: inside the dome's set a lock hit attributed to the cap would be culled by
+        # the cap's face-opening clip plane -> the r6 crescent gap)
         for name, ctrl, w, vc in SIDE_SHEETS:
             pts = [[sg * x, y, z] for x, y, z in ctrl]
             P.append(sweep(f"{name}_{s}", pts, w=w, t=(0.5, 0.58, 0.55, 0.42), n=18, flat_c=[0, 5.0, -2.5],
@@ -195,9 +222,10 @@ def hair_chain_parts():
     P = []
     for k in range(5):
         dz = CURTAIN["dz"][k % 2]
-        st = {"dz": [dz], "w": list(CURTAIN["w"]), "t": list(CURTAIN["t"]), "lens": CURTAIN["lens"],
-              "curl": CURTAIN["curl"], "vcut": CURTAIN["vcut"], "cap1": 1, "capr": 1.0}
         x = -4.8 + 2.4 * k
+        st = {"dz": [dz], "w": list(CURTAIN["w"]), "t": list(CURTAIN["t"]), "lens": CURTAIN["lens"],
+              "curl": CURTAIN["curl"], "vcut": CURTAIN["vcut"], "cap1": 1, "capr": 1.0,
+              "dx": [0.0, 0.0, -0.06 * x, -0.2 * x], "trim": CURTAIN_TRIM[k]}
         # AD r1-3: the back sheets fan out from the ponytail root (prepended bone-space root under the knot)
         P.append({"name": f"curtain_{k}_sheet", "chain": f"curtain_{k}", "material": "hair", "group": "head",
                   "lod": "all", "blend": {"set": "cap", "k": 1.0},
@@ -227,10 +255,14 @@ KNOT = np.array([0.0, 9.75, -8.95])
 # AD r1-5: wide flat satin RIBBON folded into each loop: a thin lens-section band (width ~1.5x the r1 tube diameter)
 # around a teardrop, the loop plane rolled about the wing axis so the broad ribbon face shows from behind / in front as
 # a puffy pillow with a dark inner opening; pinched into a chunky knot. Wide horizontal wings, swept back.
-BOW = {"up_deg": 5.0, "back_deg": 22.0, "roll_deg": 72.0, "root": 0.7, "dy": 0.0,
+# r5 (lead): puffier loops that wrap with the head curvature (no back sweep, bent forward along their length) and
+# bigger wings past the head in front view
+# r6 (AD r5-2): swept back 38 deg and bent around the head; the outer end is a rounded puffy fold (ribbon width
+# narrows into the fold -> round wing tip, no square "ticket" end); roll 55 so edge-on it is a slim teardrop
+BOW = {"up_deg": -6.0, "back_deg": 38.0, "bend": 0.03, "scale": 1.2, "roll_deg": 55.0, "root": 0.7, "dy": 0.0,
        "outline": [(0.5, 0.0), (2.1, 0.8), (4.4, 1.45), (6.9, 1.75), (8.9, 1.4), (9.8, 0.35), (9.4, -0.75),
                    (7.5, -1.4), (4.8, -1.3), (2.3, -0.75)],
-       "w": (0.55, 1.15, 1.7, 2.05, 2.2, 2.05, 1.7, 1.15, 0.55), "t": (0.45, 0.52, 0.6, 0.64, 0.6, 0.52, 0.45),
+       "w": (0.55, 1.2, 1.75, 1.95, 1.35, 1.95, 1.75, 1.2, 0.55), "t": (0.6, 0.72, 0.85, 0.95, 0.85, 0.72, 0.6),
        "lens": 0.6, "curl": 0.35}
 
 
@@ -251,7 +283,9 @@ def bow_parts():
     P = []
     for sg, s in ((-1, "L"), (1, "R")):
         o, ex, ey, ez = loop_frame(sg)
-        L = lambda x, y, z=0.0: o + x * ex + y * ey + z * ez
+        k_, b_ = BOW["scale"], BOW["bend"]
+        fwd = np.array([0.0, 0.0, 1.0])
+        L = lambda x, y, z=0.0: o + k_ * (x * ex + y * ey + z * ez) + fwd * b_ * (k_ * x) ** 2
         fol = {"chain": f"bow_spring_{s}", "gain": H.BOW_SPRING_GAIN, "gain_by_clip": {"idle": 0.0, "carry_idle": 0.0},
                "max_drop": H.BOW_MAX_DROP, "drop_frame": "world"}
         grp = f"bow_spring_{s}"
@@ -261,7 +295,7 @@ def bow_parts():
                        flat_c=cen, lens=BOW["lens"], curl=BOW["curl"], follow=fol, blend={"set": f"loop_{s}", "k": 0.5}))
         # dark inner opening: a membrane deep inside the loop
         P.append(sweep(f"bow_hollow_{s}", [L(1.0, 0.0, -0.4), L(4.6, 0.1, -0.5), L(8.2, 0.15, -0.4)],
-                       w=(0.3, 1.0, 1.1, 0.5), t=0.14, material="ribbon_in", group=grp, n=10, flat_n=ey, cap1=1,
+                       w=(0.25, 0.75, 0.8, 0.4), t=0.1, material="ribbon_in", group=grp, n=10, flat_n=ey, cap1=1,
                        capr=0.9, follow=fol))
         # one soft crease: a shallow fold line along the outer face of the upper ribbon band (refs)
         cr = []

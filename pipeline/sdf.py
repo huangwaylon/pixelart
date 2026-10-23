@@ -152,7 +152,7 @@ def _sd_sweep_chunk(p, P):
     v = (r * Nv).sum(-1)
     w = np.maximum(w, 1e-3)
     un = np.clip(u / w, -1.0, 1.0)
-    v = v - curl * w * un * un
+    v = v + curl * w * un * un         # curl > 0: the edges bend toward -N (a sheet wraps around what N points away from)
     tl = np.maximum(t * (1.0 - lens * un * un), 0.015)
     rr = np.minimum(w, tl)
     qx = np.abs(u) - (w - rr)
@@ -1124,7 +1124,15 @@ def _pose_ribbons(sp, sw, chain, pts, body_c, face_m, worlds=None):
         Ck = C + dx[:, None] * X + dz[:, None] * Z
         tilt = _profile(st.get("nz_tilt", [0.0]), s)
         N = np.cos(tilt)[:, None] * Z + np.sin(tilt)[:, None] * X
-        prm = sweep_params(Ck, N, _profile(st.get("w", [1.0]), s), _profile(st.get("t", [0.5]), s),
+        ws_, ts_ = _profile(st.get("w", [1.0]), s), _profile(st.get("t", [0.5]), s)
+        if st.get("trim", 1.0) < 1.0:
+            # shorter visible sheet on the same chain (staggered lengths): keep the samples up to s <= trim, with the
+            # w / t profiles re-mapped onto the kept length
+            keep = max(int(np.searchsorted(s, float(st["trim"]))), 3)
+            Ck, N = Ck[:keep + 1], N[:keep + 1]
+            sk = s[:keep + 1] / max(s[keep], 1e-9)
+            ws_, ts_ = _profile(st.get("w", [1.0]), sk), _profile(st.get("t", [0.5]), sk)
+        prm = sweep_params(Ck, N, ws_, ts_,
                            st.get("lens", 0.0), st.get("curl", 0.0), st.get("cap0", 1), st.get("cap1", 1),
                            st.get("vcut", 0.0), st.get("capr", 0.6))
         out.append(dict(base, name=f'{sp["name"]}_r{k}', kind="sweep", M=face_m, params=prm))

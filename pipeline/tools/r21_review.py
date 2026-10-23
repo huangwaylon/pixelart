@@ -236,3 +236,23 @@ def zoom(variant, d, ppu, focus, off, size=(500, 500), path="/tmp/r21_zoom.png",
     im = Image.new("RGBA", (W, H), BG + (255,))
     im.alpha_composite(Image.fromarray(rgba))
     im.convert("RGB").save(path)
+
+
+def face_only(variant, path, ppu=22, size=(360, 360)):
+    """Skin-only head renders (front / 3/4 / side) to judge the face construction without hair."""
+    sc, pal = scene(variant)
+    ims = []
+    for d in ("S", "SE", "E"):
+        prims, worlds = sc.primitives(0, d, lod="ref")
+        prims = [q for q in prims if q["material"] in ("skin", "pants") and q["group"] == "head"]
+        p = worlds["head"][:3, :3] @ np.array([0, 5.0, 1.0]) + worlds["head"][:3, 3]
+        W, H = size
+        piv = (W / 2 - ppu * float(p @ sc.cam.right), H / 2 + ppu * float(p @ sc.cam.up))
+        rgba, _, _ = render_smooth(prims, pal, (W, H), piv, ppu, cam=sc.cam, tracer=sc.tracer)
+        im = Image.new("RGBA", (W, H), BG + (255,))
+        im.alpha_composite(Image.fromarray(rgba))
+        ims.append(im.convert("RGB"))
+    out = Image.new("RGB", (size[0] * 3, size[1]))
+    for k, im in enumerate(ims):
+        out.paste(im, (k * size[0], 0))
+    out.save(path)
