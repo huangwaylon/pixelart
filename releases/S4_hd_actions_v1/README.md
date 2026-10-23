@@ -1,5 +1,7 @@
 # S4_hd actions v1 (HD SDF reference model, r12 round 6)
 
+**STATUS: APPROVED.** AD, animation director and GD all signed off (docs/review/r12_hd_review6_AD.md, r12_hd_review3_anim.md, r12_hd_review2_GD.md).
+
 The in-game hero body on the HD model. The GD and the animation director approved it, and it includes the round 4 Art Director blocker fix: the E/W/SE/SW ponytail is back to its legacy length and tapers to a 1-px point, and the SE rust arc no longer has a 1-px break. Round 5 extends the same taper to the run swing frames (run E f1/f4/f5, W f5) and to the throw and jump/land tips. Fix notes: `docs/review/r12_hd_fixes_round3.md`, plus the Round 4 section of `00_REVIEW/r12_hd_model/README.md`. `releases/S4_actions_v1` is untouched; it is the rollback.
 
 ## Contents
