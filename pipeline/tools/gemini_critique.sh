@@ -3,6 +3,7 @@
 #   pipeline/tools/gemini_critique.sh <name> "<context/question>" img1.png [img2.png ...]
 # Writes docs/review/gemini/<name>.md
 set -e
+pipeline/tools/gemini_auth.sh || exit 1
 name="$1"; ctx="$2"; shift 2
 files=""
 for f in "$@"; do files="$files @$f"; done
