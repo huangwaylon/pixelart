@@ -27,3 +27,10 @@ hands_on_hips was approved and is unchanged. Idle, wave and point now have:
 - **Idle:** the free knee turns in 2 px and its heel is up 2 px (sole y140).
 
 Orphans are only catchlights, noses and mouth corners.
+
+## Round 3 (review 2 poses)
+- Reverted the 1-row head-offset tilt: all heads are again exact `head_small` pastes. Hand-drawn tilted heads from Artist 3 will be swapped in when they land (idle tilts to the free side; wave and point tilt toward the hand).
+- Idle: filled the hole at (59,57) and merged the strand-tip thorn (x66-68, y53-57) into a 2 px lock.
+- Wave: deleted the loose outline pixels at x65-68, y57-60. The arm outline stays.
+- Point: the figure is shifted 2 px further right (x offset +5). The smirk came from the tilt seam and is gone with the revert. The back-hair trail that opened gaps behind the lock is removed, so the ponytail swing alone carries the secondary motion.
+- Re-synced the 3/4 bow fix (head_three_quarter 09:13, 3x6 knot) into the turnaround three_quarter and point.
