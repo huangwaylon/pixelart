@@ -1,0 +1,34 @@
+{
+ "idle: S4_hd (current)": {
+  "jaggies_per_frame": 1.5,
+  "colours": 15,
+  "opaque_px_per_frame": 493.1
+ },
+ "idle: Blender B, true proportions": {
+  "jaggies_per_frame": 0.8,
+  "colours": 14,
+  "opaque_px_per_frame": 254.0
+ },
+ "idle: Blender B, chibi retarget": {
+  "jaggies_per_frame": 0.6,
+  "colours": 17,
+  "opaque_px_per_frame": 421.2
+ },
+ "walk: S4_hd (current)": {
+  "jaggies_per_frame": 1.4,
+  "colours": 16,
+  "opaque_px_per_frame": 491.4
+ },
+ "walk: Blender B, true proportions": {
+  "jaggies_per_frame": 1.4,
+  "colours": 17,
+  "opaque_px_per_frame": 272.2
+ },
+ "walk: Blender B, chibi retarget": {
+  "jaggies_per_frame": 2.5,
+  "colours": 17,
+  "opaque_px_per_frame": 492.2
+ },
+ "eye spacing px, true (S4_hd 5.3)": 1.74,
+ "eye spacing px, chibi (S4_hd 5.3)": 4.01
+}
