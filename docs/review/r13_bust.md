@@ -1,4 +1,4 @@
-# r13 dialogue busts, round 3 (lead pixel artist)
+# r13 dialogue busts, rounds 3-4 (lead pixel artist)
 
 Sources: `art/hand/S4/bust/` (`bust_base.pix` + 10 `extends`/`patch` files). Hand-typed runs: `pipeline/tools/r13_bust/`. Outputs: `00_REVIEW/r13_anime_pixel/bust/` (sheets x3/x1, `*_x6`, spritesheet + JSON, `compare_C_vs_base_x3.png`).
 
@@ -15,6 +15,14 @@ Sources: `art/hand/S4/bust/` (`bust_base.pix` + 10 `extends`/`patch` files). Han
 5. **Side locks:** the outer edge bows out 1 px at y40-50, and the 1 px stripes are merged into 2 px clumps.
 
 Up to 25 colours per file. `pixgrid stats` shows only catchlights, the knot glint, the AD-specified neutral mouth pixel and FX.
+
+## Round 4 (review 3, bow only)
+- The long tail is gone. Ponytail hair fills the area.
+- Near loop: x79-93, y6-24, pinched to the knot height. Highlight is on the top arc; there is a pocket and a shadowed underside.
+- Knot: x75-78, y13-20, with outline notches.
+- The far-loop tip peeks behind the crown at x69-74, y4-10.
+- Two short splayed V-cut tails: near 4 px, y21-33, drifting right; far 3 px, y21-30, drifting left.
+- At 1x it reads as a ribbon bow. The faces did not change, so the round 3 blind tests still apply.
 
 ## Blind tests (fresh agents, unlabeled 1x+2x)
 | Round | Score | Confidence | Change after |

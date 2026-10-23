@@ -170,7 +170,14 @@ span(45, 75, 76, "l"); span(46, 75, 75, "l")
 # 5. BOW (binding): knot on the back of the skull x76-81 y22-29, partly behind the ponytail root;
 #    pinched + creased loops, upper rises up-back, lower drops down-back; tip to tip ~41 px, >=3 px inside.
 # =====================================================================================================
-# (round 3: the approved turnaround/head_small 3/4 bow at ~1.8x: one near teardrop loop, far loop hidden)
+# (round 4, review 3: a ribbon bow - far-loop tip behind the crown, pinched knot, near loop, two short splayed tails)
+# far loop tip peeks up-left behind the crown (drawn first: the hair line overlaps its base at y9-10)
+paint([(4, (69, 71, "K")),
+       (5, (69, 69, "K"), (70, 71, "e"), (72, 72, "c"), (73, 73, "K")),
+       (6, (69, 69, "K"), (70, 72, "c"), (73, 73, "b"), (74, 74, "K")),
+       (7, (70, 70, "K"), (71, 72, "c"), (73, 73, "b"), (74, 74, "K")),
+       (8, (70, 70, "K"), (71, 73, "b"), (74, 74, "K")),
+       (9, (70, 70, "K"))])
 # half-up gather: the upper hair is pulled back from the crown into the knot
 paint([(9, (71, 76, "K")), (10, (67, 70, "K"), (71, 76, "m"), (77, 77, "K")),
        (11, (64, 66, "K"), (67, 77, "m"), (78, 78, "K")), (12, (62, 63, "K"), (64, 77, "m"))])
@@ -182,57 +189,56 @@ for x, y in [(64, 13), (66, 14), (68, 15), (70, 16), (72, 17), (74, 18), (65, 15
              (73, 19), (63, 16), (65, 17), (67, 18), (69, 19), (71, 20), (73, 21)]:
     g[y][x] = "d"                                  # strands converging on the knot
 span(12, 67, 71, "l"); span(13, 69, 72, "l")
-# near loop: teardrop x78-92, y7-30; rests on the skull/gather, no neck; bottom droops lowest at the back
-LOOP = {8: (82, 88), 9: (81, 89), 10: (80, 90), 11: (79, 91), 12: (78, 91), 13: (78, 92), 14: (78, 92), 15: (78, 92),
-        16: (78, 92), 17: (78, 92), 18: (78, 92), 19: (78, 92), 20: (78, 92), 21: (78, 92), 22: (78, 92), 23: (78, 92),
-        24: (79, 92), 25: (80, 92), 26: (81, 91), 27: (82, 91), 28: (84, 90), 29: (85, 89)}
-span(7, 83, 87, "K")
+# near loop x79-93, y6-24: outer end widest, inner end pinched to the knot height (y13-20)
+LOOP = {7: (85, 92), 8: (84, 93), 9: (83, 93), 10: (82, 93), 11: (81, 93), 12: (80, 93), 13: (79, 93), 14: (79, 93),
+        15: (79, 93), 16: (79, 93), 17: (79, 93), 18: (79, 93), 19: (79, 93), 20: (79, 93), 21: (80, 93), 22: (82, 93),
+        23: (84, 92)}
+span(6, 86, 91, "K")
 for y, (l, r) in LOOP.items():
     span(y, l + 1, r - 1, "c")
     g[y][r] = "K"
-    if not 12 <= y <= 21:                          # no K on the knot side
-        g[y][l] = "K"
-    else:
-        g[y][l] = "c"
-span(30, 86, 88, "K")
-for a, b_ in zip(sorted(LOOP), sorted(LOOP)[1:]):  # close stair gaps in the outline
+    g[y][l] = "c" if 13 <= y <= 20 else "K"
+for a, b_ in zip(sorted(LOOP), sorted(LOOP)[1:]):
     (la, ra), (lb, rb) = LOOP[a], LOOP[b_]
-    if lb > la + 1 and b_ > 21:
+    if lb > la + 1:
         span(b_, la + 1, lb, "K")
-    if la > lb + 1 and a < 12:
-        span(b_, lb, la - 1, "K")
-    if rb < ra - 1:
-        span(b_, rb, ra - 1, "K")
-# teal_2 on the top arc only; bottom 3 rows in shadow; teal_0 pocket creased to the knot
-paint([(8, (83, 87, "e")), (9, (82, 87, "e")), (10, (82, 85, "e"))])
-for x in range(79, 92):
-    rows = [y for y, (l, r) in LOOP.items() if l < x < r]
-    if rows:
-        for y in sorted(rows)[-3:]:
-            g[y][x] = "b"
-for y in range(13, 24):
-    g[y][91] = "b"
-span(19, 80, 83, "b"); span(20, 80, 83, "b"); span(21, 80, 83, "b"); span(22, 80, 83, "b"); span(23, 80, 83, "b")
-span(20, 79, 79, "b")
-# pinched knot 4x10 at x75-78, y12-21: teal_1, a teal_2 glint, teal_0 bottom row; outlined only outside
-for y in range(12, 22):
+span(24, 85, 91, "K")
+g[7][93] = "."
+paint([(7, (86, 90, "e")), (8, (84, 90, "e")), (9, (84, 89, "e"))])
+for y in (22, 23):
+    for x in range(LOOP[y][0] + 1, LOOP[y][1]):
+        g[y][x] = "b"
+for y in range(15, 20):
+    span(y, 80, 83, "b")
+g[15][83] = g[19][83] = "c"          # pocket rounds off toward the outer end
+for y in range(10, 22):
+    g[y][92] = "b"
+# near tail: 4 px, from y21 drifting +1 px every 3 rows, V-cut tip at y33
+for y in range(21, 34):
+    x0 = 78 + (y - 21) // 3
+    w = 4 if y < 33 else 3
+    for k, ch in enumerate("eccb"[:w] if w == 4 else "ccb"):
+        g[y][x0 + k] = ch
+    g[y][x0 - 1] = "K"
+    g[y][x0 + w] = "K"
+g[33][83] = "d"; g[34][82] = "K"; g[34][84] = "K"; g[34][83] = "d"
+# far tail: 3 px, drifting -1 px every 3 rows to x71-73 by y30, V-cut at (72,30)
+for y in range(21, 31):
+    x0 = 74 - (y - 21) // 3
+    for k, ch in enumerate("cbb"):
+        g[y][x0 + k] = ch
+    g[y][x0 - 1] = "K"
+    if g[y][x0 + 3] not in "ceb":
+        g[y][x0 + 3] = "K"
+g[30][72] = "d"
+# pinched knot x75-78, y13-20 (outline notches at the inner corners)
+for y in range(13, 21):
     span(y, 75, 78, "c")
     g[y][74] = "K"
-g[14][76] = "e"
-span(21, 75, 78, "b")
-span(11, 75, 78, "K"); span(22, 74, 77, "K"); g[10][74] = "K"; g[11][74] = "K"
-g[12][78] = g[13][78] = "b"; g[20][78] = "b"
-# one tail: y22-44, tapering 4 -> 3 px and drifting back 3 px, V-cut tip
-TAIL = rows_tbl([((22, 27), (76, 79)), ((28, 33), (77, 80)), ((34, 39), (78, 80)), ((40, 43), (79, 81))])
-for y, (a, b_) in TAIL.items():
-    span(y, a, b_, "c")
-    g[y][a] = "e"
-    g[y][b_] = "b"
-    g[y][a - 1] = "K"
-    g[y][b_ + 1] = "K"
-span(22, 76, 79, "b")
-g[44][78] = "K"; g[44][79] = "c"; g[44][80] = "d"; g[44][81] = "b"; g[44][82] = "K"
-g[45][79] = "K"; g[45][81] = "K"
+span(20, 75, 78, "b")
+g[15][76] = "e"
+span(12, 75, 78, "K"); span(21, 75, 78, "K")
+g[13][75] = "K"; g[20][75] = "K"; g[12][79] = "K"
 # =====================================================================================================
 # 6. COAT: sloped shoulders, armhole seams, armpit wedges, bust crescents (light from upper-left)
 # =====================================================================================================
@@ -429,7 +435,7 @@ span(45, 35, 40, "t"); span(45, 52, 58, "t")    # blush softened to one pale ski
 
 # ---- cleanup of stray singles (each checked at x12) ----
 g[26][42] = g[26][55] = "s"; g[29][35] = "s"
-g[61][44] = "e"; g[69][65] = "b"; g[73][46] = "o"; g[26][75] = "d"; g[45][76] = "m"; g[61][59] = "c"
-g[13][64] = "m"; g[19][73] = "m"; g[21][72] = "d"; g[40][77] = "d"; g[44][80] = "c"
+g[61][44] = "e"; g[69][65] = "b"; g[73][46] = "o"; g[45][76] = "m"; g[61][59] = "c"
+g[13][64] = "m"; g[19][73] = "m"; g[21][72] = "d"; g[40][77] = "d"
 # ==== END ====
 write(OUT, "# r13 dialogue bust base, round 2 (lead pixel artist). Built from face test C. Hand-authored.", legend, g)
