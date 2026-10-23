@@ -19,7 +19,7 @@ Faces are copied pixel-for-pixel (eyes, brows, nose, mouth, blush, jaw) from Pix
 | bust / waist (20 px) / belt | 46-49 / 52-58 / 59-61 |
 | elbow / ponytail point | 58 / 60 |
 | cuff / mittens | 71-73 / 74-81 |
-| hem (sides / centre) | 85 / 88 |
+| hem (sides / 1 px centre sag; corners rounded) | 85 / 86 |
 | knee | 100-111 |
 | boot cuff (flared) | 119-122 |
 | sole (free foot 1 px up) | 142 (141) |
@@ -73,3 +73,8 @@ Faces are copied pixel-for-pixel (eyes, brows, nose, mouth, blush, jaw) from Pix
 - **Re-sync:** Artist 3's front, 3/4 and side files (08:45) and back file (08:36) are copied at offset x+26. A check script confirms 0 pixel mismatches against `head_small` in all four views. The orphan cleanup now skips the copied head rows, so their pixels (for example the side nose `v`) stay exact.
 - **Side neck/collar:** the scarf top now starts at x40 on y32 and x38 on y33. The neck's front edge sits on the collar under the steeper jaw, with no notch.
 - **Checks:** re-rendered, including the guides and silhouette check. The only orphans outside catchlights and noses come from Artist 3's files: back (35,16) and 3/4 (60,9).
+
+## Round 7 (Gemini triage, T items)
+- **T1/T2 hem:** in all 4 views and the 4 A poses (idle, wave, point, hands_on_hips), the hem bottom is y85 with a 1 px centre sag to y86 over 20 px. The outer corner columns are rounded up 1 px, and the 3 px trim follows the line. The hem is now drawn after the legs, so it sits in front of them (before, the legs had cut the centre flat). The pose hem lifts are kept.
+- **T3 back:** the 5-point sawtooth is replaced by the bible's blunt slight-V at the approved curtain width (x34-61, sides y66, centre y68, rounded corners). The ponytail gets a `plum_0` edge to a defined tip at y62, with a `hair_1` cast shadow on the curtain.
+- Re-rendered the turnaround, guides (hem centre is now y86), silhouettes, poses and lineup.

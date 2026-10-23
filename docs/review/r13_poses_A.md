@@ -49,3 +49,6 @@ Orphans are only catchlights, noses and mouth corners.
 - Point: the sleeve is now 9 rows at the shoulder and 8 at the wrist (7 rows of fill), with the cuff matched to the wrist (10 rows). A dark `#241628` top outline runs along the sleeve and cuff.
 - Idle: re-pasted `expr/front_tiltR_smile` after Artist 3's lash-corner fix in `head_front_tiltR` (09:31). A check script confirms 0 pixel mismatches; (59,20) is now `u`.
 - Re-rendered the poses, the silhouette check and the 8-pose lineup.
+
+## Round 6 (Gemini triage T2)
+- Hem fix applied to idle, wave, point and hands_on_hips: bottom y85, 1 px centre sag, rounded corners, trim in front of the legs. Each pose keeps its hem lift.
