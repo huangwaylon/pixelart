@@ -19,4 +19,10 @@
 - **Tilted heads:** recoil uses `three_quarter_tiltR_surprised` (tips back), shy `front_tiltR_embarrassed` (bowed), cheer `front_tiltL_laugh`.
 - **Head_small bust-review fix:** the 3/4 bow tail is now hair, with a 2x3 knot, two short tails and a far-loop tip. Recoil uses it.
 
-**Checks:** 3+ viewed passes each, plus a silhouette pass. 25-29 colours per file. The only orphans are catchlights, the nose and FX.
+## Round 4 (review 3)
+- **Recoil:** the ponytail is ONE tapered lock from the nape (64,20), arcing back and down to (84,34), with nothing above y16. The planted-boot heel outline (x52-53, y135-140) and the cuff edge (x30-31, y44-48) are restored.
+- **Cheer:** fists moved 2 px out, with a 1 px gap from the bows. The lifted locks moved out and are trimmed to a 1 px gap from the sleeves. The scarf tip is outlined. Cuff outlines are back.
+- **Shy:** the clasp is dropped 2 px, clear of the scarf. The head is re-pasted from the fixed `front_tiltR_embarrassed`.
+- **No auto clean-up.** Sleeve, band and lock outlines now take their lit or dark side from the edge normal, so stair-steps don't flip colour. The remaining strays are fixed pixel by pixel in each script.
+
+**Checks:** 3+ viewed passes each, plus a silhouette pass. 25-29 colours per file. The only orphans are catchlights, the nose, FX and the AD-approved knot highlight.

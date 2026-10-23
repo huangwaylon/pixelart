@@ -31,7 +31,7 @@ This is candidate C's face as a ~27 px head. **The canvas is now 44x40, so paste
 - The jaw is steeper: y28 x17-18, y29 x15-16, y30 x13-14. The neck below is `u` (x15-18, y30-31), and the old jaw block is cleared.
 - There are no side expressions.
 
-**Tilts:** `head_{front,three_quarter}_tilt{L,R}.pix` turn the whole head by hand: the crown peak moves 1 px toward the high side, the low-side bow drops 2 px and the high side rises 1 px, the low eye steps down 1 px, the mouth and chin shift 1 px low, and the side hair drops or lifts 1 px. Anchor and neck seam are unchanged. Overlays in `expr/<view>_tilt<L|R>_{smile,laugh,determined,embarrassed,surprised}.pix`; sheet `tilts_x4.png`. The 3/4 bow tail is now hair, with a 2x3 knot, two 2 px tails, and the far loop as a 2x3 block at x31-32, y12-14.
+**Tilts:** `head_{front,three_quarter}_tilt{L,R}.pix` turn the whole head by hand: the crown peak moves 1 px toward the high side, the low-side bow drops 2 px and the high side rises 1 px, the low eye steps down 1 px, the mouth and chin shift 1 px low, and the side hair drops or lifts 1 px. Anchor and neck seam are unchanged. Overlays in `expr/<view>_tilt<L|R>_{smile,laugh,determined,embarrassed,surprised}.pix`; sheet `tilts_x4.png`. Poses review 3 fixes: in the embarrassed tilts the mid-face blush pair is removed and the right eye's sclera is back to 1 px; the tiltR lash corner at (30,20) is now `u`. The 3/4 bow tail is now hair, with a 2x3 knot, two 2 px tails, and the far loop as a 2x3 block at x31-32, y12-14.
 
 **3/4:** far eye 4 px (3 px iris), near eye 5 px, 2 px nose-bridge gap.
 
