@@ -333,6 +333,7 @@ def _lash_over_hair(idx, x, y, hair_ids, skin_ids):
 
 
 def apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam, lash_over_hair=False):
+    apply_face_cels.last_cel = None
     view, right = face_view(head_world, cam)
     if view == "back":
         return idx, view
@@ -388,6 +389,7 @@ def apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam
                 out[y, x] = colors[ch]
                 stamped.add((y, x))
     apply_face_cels.last_stamped = stamped        # designed pixels -> QA treats them as deliberate
+    apply_face_cels.last_cel = (x0, y0, rows)
     return out, view
 
 
@@ -449,6 +451,15 @@ def _face_hem(out, L, eye_x0, eye_x1, palette, view, far_side, stamped):
         for yy in range(bottom + 1, L):
             if out[yy, x] in hair_ids:
                 put(yy, x, skin_c)
+    if view == "three_quarter":
+        # round 3 (AD r15-2 fix 2): the contour can step out above the lash line, leaving a skin pixel beyond the
+        # span measured under the lashes -> the temple edge pixels over the lash row are hair, never a 1-px notch
+        for yy in (L - 2, L - 1):
+            for x, step in ((x0, -1), (x1, 1)):
+                for k in (1, 2):
+                    xx = x + step * k
+                    if 0 <= xx < W and out[yy, xx] in skin_ids:
+                        put(yy, xx, hair_c)
     # lone hair pixels inside the face (bridge bang tips): >= 3 of 4 neighbours are skin / face ink
     for y in range(max(1, L - 4), min(H - 1, L + 6)):
         for x in range(max(1, x0), min(W - 1, x1 + 1)):
@@ -457,6 +468,26 @@ def _face_hem(out, L, eye_x0, eye_x1, palette, view, far_side, stamped):
                 if n >= 3:
                     put(y, x, skin_c)
     stamped.update(changed)
+
+
+def _open_side(out, cells, palette, stamped):
+    """r15 round 3 (AD r15-2 fix 1): closed / squint eyes (cels without a catchlight) keep skin on their open side -
+    every '.' cell inside an eye's ink box that is covered by hair becomes skin. cells: [(y, x, ch)] of one eye."""
+    ink = [(y, x) for y, x, ch in cells if ch in "EC"]
+    if not ink:
+        return
+    hair_ids = [palette.index[n] for n in palette.ramps.get("hair", [])]
+    skin_ids = [palette.index[n] for n in palette.ramps["skin"]]
+    skin_c = palette.index[palette.ramps["skin"][min(1, len(palette.ramps["skin"]) - 1)]]
+    ya, yb = min(y for y, _ in ink), max(y for y, _ in ink)
+    xa, xb = min(x for _, x in ink), max(x for _, x in ink)
+    H, W = out.shape
+    for y, x, ch in cells:
+        if ch == "." and ya <= y <= yb and xa <= x <= xb and 0 <= y < H and 0 <= x < W:
+            if out[y, x] in hair_ids:
+                out[y, x] = skin_c
+            if out[y, x] in skin_ids:
+                stamped.add((y, x))        # designed skin: later cleanup passes must not fill it with hair
 
 
 def _skin_pockets(out, stamped, palette):
@@ -492,6 +523,10 @@ def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam
         r = apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam, lash_over_hair=loh)
         if view == "profile" and spec.get("hem_pin"):
             _skin_pockets(r[0], apply_face_cels.last_stamped, palette)
+            c = apply_face_cels.last_cel
+            if c is not None and not any("C" in row for row in c[2]):
+                _open_side(r[0], [(c[1] + j, c[0] + i, ch) for j, row in enumerate(c[2]) for i, ch in enumerate(row)],
+                           palette, apply_face_cels.last_stamped)
         return r
     vs = cels["views"].get(view, {})
     cel = vs.get(expression)
@@ -604,5 +639,9 @@ def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam
         far_side = 1 if far == 1 else -1                 # far eye on screen-right (+1) or screen-left (-1)
         _face_hem(out, y0 + (nl if nl is not None else 0), starts[0], starts[1] + len(blocks[1]) - 1, palette, view,
                   far_side, stamped)
+        if not any("C" in r for r in rows):                 # closed / squint / lowered-lid cel
+            for k, b in enumerate(blocks):
+                _open_side(out, [(y0 + j, starts[k] + (i - b[0]), rows[j][i]) for j in range(len(rows)) for i in b],
+                           palette, stamped)
     apply_face_cels.last_stamped = stamped
     return out, view

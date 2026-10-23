@@ -57,3 +57,16 @@ Rule: `render.face_eyes.hem_pin` (`pipeline/face.py` `_face_hem` / `_skin_pocket
 - **[before_after_round2.png](before_after_round2.png)**: round 1 vs round 2 for S, SE, E, SW and W in idle, run, throw, jump and walk.
 - The other boards and GIFs in this folder have been regenerated from the round 2 build.
 - Rebuilt: 13 base clips and all 14 `*_r14` copies. QA: 27/27 PASS with no warnings. Legacy S4_halfup_bow is byte-identical: idle, walk and throw were compared.
+
+## Round 3 (AD review 2: two rule-level fixes)
+- **Closed and squint eyes keep skin on their open side.** This covers every view, including profile, for any cel without a catchlight (squint, joyful, determined, blink).
+  - Each '.' cell inside an eye's ink box is skin. If hair covers it, the hair is replaced with skin.
+  - The face pass marks these pixels as designed, so despeckle can't merge them back into the hair.
+  - Fixes S jump_sc f10 (27-28, 37), where hair had filled the `<`.
+- **3/4 temple edge.** On the 2 rows above the lash line, skin pixels just past the face edge are now hair, part of the hem-pin rule.
+  - The 1-px far-contour notch is gone in SE walk f1/f5/f6, run f4, jump_sc f2 and throw f1, and in the SW mirrors.
+  - That notch count across SE/SW in walk, run, jump_sc, throw, carry_walk and idle went from 10 to 0. Two hits remain in idle f6, but that's the blink frame, where the check reads the wrong lash row.
+- **[round3_fixes.png](round3_fixes.png):** round 2 vs round 3 crops at 8x.
+- The SE/SW contact sheets and the 8-dir GIFs are regenerated.
+- 185 px changed in total across the 27 sheets.
+- Rebuilt the 13 base clips and the 14 `*_r14` copies: QA 27/27 PASS, no warnings. Legacy idle, walk and throw are byte-identical.

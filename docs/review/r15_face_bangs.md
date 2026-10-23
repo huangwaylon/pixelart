@@ -29,4 +29,5 @@ New `face_eyes.hem_pin` rule: the hem is drawn from the lash line, with exactly 
 - Slope: the outer S columns reach the lash row; in 3/4 the far-temple columns reach the row above it.
 - Lone face-hair pixels cut (SE/SW: 34 to 0); closed arches keep 1 px of skin above.
 - E/W skin pockets filled.
+- Round 3: closed and squint eyes keep skin on their open side; the 3/4 temple edge over the lashes is always hair.
 - 27/27 builds pass QA; legacy byte-identical.

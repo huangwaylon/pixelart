@@ -329,6 +329,11 @@ class Scene:
                 face_ink = np.isin(idx, [self.palette.special[k] for k in ("eye", "catchlight") if k in self.palette.special])
                 grown = face_ink & np.isin(pre_ds, list(skin_ids))
                 idx[grown] = pre_ds[grown]
+                if rnd["face_eyes"].get("hem_pin"):
+                    # r15 round 3: pixels set by the face pass (hem, open-side skin of closed eyes) are designed;
+                    # despeckle must not merge e.g. the 2-px skin notch inside a '<' squint eye back into the hair
+                    for (yy, xx) in getattr(apply_face_cels, "last_stamped", set()):
+                        idx[yy, xx] = pre_ds[yy, xx]
             if la.get("keep_selout_runs"):
                 idx = _restore_outline_runs(idx, pre_ds, pix.material, la["keep_selout_runs"], self.palette)
             # skin pixels touching eye/lash pixels are designed face spacing, not orphans
