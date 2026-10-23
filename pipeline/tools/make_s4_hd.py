@@ -117,6 +117,10 @@ BANGS_BACK = [("bangB_C", 0.0, 0.0, 7.9, 0.45, 0.0, 0.0, (1.0, 0.9, 0.7, 0.3)),
               ("bangB_L1", 3.1, 3.85, 7.4, 0.45, 0.2, 0.1, (1.0, 0.9, 0.7, 0.3))]
 BACK_ROOT_Y = 11.2     # back clumps start under the cap: only their tips show (keeps the front highlight ring whole)
 BACK_MAT = "hair_dk"     # dark-tone material for the back layer (ramp in main(); "hair*" so every hair pass applies)
+JAW_TAPER = True       # r16 round 3: contour steps in >= 1 px/row under the eyes (pipeline/face.py _jaw_taper)
+# r16 round 2: designed 3-clump S fringe edge (pipeline/face.py _s_fringe); round 3 (Gemini G1): "band" = one
+# clump-wide highlight run per clump instead of 2-px dots (reads as a continuous sheen at 1x; notches/shadow unchanged)
+S_FRINGE = True   # AD r16 review 3: per-clump dots (band shimmers in motion; kept, switched off)
 HEM_SHADOW = True      # r16: the gap row under the fringe is skin shadow (the shell casts it)
 
 
@@ -543,7 +547,9 @@ def main():
                                  **({"lash_over_hair": True} if LASH_OVER_HAIR else {}),
                                  **({"hem_pin": True} if HEM_PIN else {}),
                                  **({"hem_shadow": True} if HEM_SHADOW else {}),
-                                 **({"hem_layer_mat": BACK_MAT} if LAYERED_BANGS else {})},
+                                 **({"hem_layer_mat": BACK_MAT} if LAYERED_BANGS else {}),
+                                 **({"s_fringe": S_FRINGE} if S_FRINGE else {}),
+                                 **({"jaw_taper": True, "profile_brow": True} if JAW_TAPER else {})},
                    **({"face_cels": FACE_CELS} if FACE_CELS else {}),
                    "lineart": {"keep_selout_runs": ["ribbon", "hair"] + ([BACK_MAT] if LAYERED_BANGS else []),
                                "skin_edge_dark": True,

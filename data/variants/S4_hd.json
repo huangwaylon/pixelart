@@ -113,7 +113,10 @@
    "lash_over_hair": true,
    "hem_pin": true,
    "hem_shadow": true,
-   "hem_layer_mat": "hair_dk"
+   "hem_layer_mat": "hair_dk",
+   "s_fringe": true,
+   "jaw_taper": true,
+   "profile_brow": true
   },
   "face_cels": "kawaii_hd",
   "lineart": {
