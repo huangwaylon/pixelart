@@ -1,20 +1,11 @@
-# r15 - SE far eye and longer bangs (face team + AD)
+# r15 - SE far eye and longer bangs
 
 ## 1. SE far eye
-**Cause:** at 45 degrees the far-eye marker lands on the cheek contour, so the spacing rule shoved both eyes toward the near hair. The far eye ended up a 2x2 block 1 px from the outline.
+**Cause:** at 45 degrees the far-eye marker lands on the cheek contour, so both eyes got shoved toward the near hair.
 
-**Mockups** (pixel edits on v1 frames, `options_x10.png`):
-- A: near side 1 px wider, far eye 2x3
-- B: A plus a far-eye catchlight
-- C: 1x3 far eye
-- D: A plus an outer lash
-- E: 2x3 far eye, no widening
+**Mockups** (`options_x10.png`): A wider near side + 2x3 far eye; B = A + catchlight; C 1x3; D = A + outer lash; E 2x3, no widening.
 
-**AD:**
-- C reads as a slit.
-- E is still jammed against the contour.
-- D makes the far eye heavier than the near eye.
-- A keeps rule 1 (no far catchlight), made for 2x2 eyes, and still looks dead.
+**AD:** C reads as a slit, E is still jammed, D is heavier than the near eye, and A still looks dead.
 - **B wins:** the catchlight sits on the light side like the near eye's, so the gaze stays consistent. No lash wing keeps it "far".
 
 **Implemented:**
@@ -24,16 +15,18 @@
 - Side locks back 1.6 and a tilted hair-cap cut: near cheek +1 px, temple still covered.
 
 ## 2. Bangs
-- Tips lowered: centre 9.5 to 8.6, L1-L3 to 7.9/7.6/7.2. The outer bangs are longest, giving the gentle slope, and the hime notch stays.
+- Tips lowered (centre 9.5 to 8.6, L1-L3 to 7.9/7.6/7.2); the outer bangs are longest and the hime notch stays.
 - New temple bangs reach y 7.2 and blend into the side locks.
-- Tip radius goes from 0.05 to 0.3, so the extra length survives at sprite size.
-- In S the hair ends 1 row above the lashes everywhere (the temples showed 2-3 rows before).
+- Fuller tips (radius 0.05 to 0.3).
 
 **Profile:**
-- The E/W eye cel moves 1 row lower, onto the S/SE eye line (it sat high because of the 16-degree camera).
+- The E/W eye cel moves 1 row lower, onto the S/SE eye line.
 - New `lash_over_hair` rule: if a bang tip lands on the lash row while the head bobs, the lash wins.
 
-**Checks:**
-- Hair now hides 0 eye pixels in idle, walk, run, jump and fall.
-- QA passes on all 18 builds.
-- S4_halfup_bow is byte-identical.
+## Round 2 (AD 1-5, anim)
+New `face_eyes.hem_pin` rule: the hem is drawn from the lash line, with exactly 1 skin row in S/SE/SW.
+- No bob strobe: the run S gap is a steady 1 (it flipped 1/0 in round 1).
+- Slope: the outer S columns reach the lash row; in 3/4 the far-temple columns reach the row above it.
+- Lone face-hair pixels cut (SE/SW: 34 to 0); closed arches keep 1 px of skin above.
+- E/W skin pockets filled.
+- 27/27 builds pass QA; legacy byte-identical.

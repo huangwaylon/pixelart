@@ -391,6 +391,95 @@ def apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam
     return out, view
 
 
+def _face_hem(out, L, eye_x0, eye_x1, palette, view, far_side, stamped):
+    """r15 round 2 (HD opt-in, render.face_eyes.hem_pin): the bang hem is drawn relative to the eye line so it can't
+    strobe with the head bob. L = the cel's lash row (blink: the open-eye lash row, so a blink never moves the hem). Per face column: rows <= L-2 are hair wherever hair sits within 4 rows above, row L-1 is skin
+    (exactly 1 skin row over the lashes / closed-eye arches). Slope: the outermost front column on each side
+    hangs to the lash row L; in 3/4 the 2 far-temple columns and the outermost near column hang to L-1.
+    Then (AD r15-1) lone hair pixels inside the face with >= 3 skin/eye 4-neighbours become skin."""
+    H, W = out.shape
+    skin_ids = [palette.index[n] for n in palette.ramps["skin"]]
+    hair_ids = [palette.index[n] for n in palette.ramps.get("hair", [])]
+    ink = [palette.special[k] for k in ("eye", "catchlight", "blush", "mouth") if k in palette.special]
+    skin_c = skin_ids[min(1, len(skin_ids) - 1)]
+    hair_c = palette.index[palette.ramps["hair"][1]] if len(palette.ramps.get("hair", [])) > 1 else hair_ids[0]
+    face = set(skin_ids) | set(ink)
+    if not (2 <= L < H - 2):
+        return
+    # face span: contiguous columns of skin/face ink on the row under the lash line, through the eyes
+    row = L + 1
+    cx = (eye_x0 + eye_x1) // 2
+    if not (0 <= cx < W) or out[row, cx] not in face:
+        return
+    x0 = x1 = cx
+    while x0 - 1 >= 0 and out[row, x0 - 1] in face:
+        x0 -= 1
+    while x1 + 1 < W and out[row, x1 + 1] in face:
+        x1 += 1
+    changed = []
+
+    def put(y, x, c):
+        if out[y, x] != c:
+            out[y, x] = c
+            changed.append((y, x))
+    for x in range(x0, x1 + 1):
+        # lowest hair pixel above the gap row (skin in between is the forehead strip to fill)
+        hy, y = None, L - 1
+        while y >= max(0, L - 5):
+            v = out[y, x]
+            if v in hair_ids:
+                hy = y
+                break
+            if v not in face:
+                break
+            y -= 1
+        if hy is None:
+            continue
+        outer = min(x - x0, x1 - x)                 # 0 = outermost face column on its side
+        bottom = L - 2
+        if view == "front" and outer == 0 and out[L, x] in skin_ids:
+            bottom = L
+        elif view == "three_quarter":
+            far_col = (x1 - x) if far_side > 0 else (x - x0)
+            if far_col <= 1 or outer == 0:
+                bottom = L - 1
+        for yy in range(hy + 1, bottom + 1):
+            if out[yy, x] in skin_ids:
+                put(yy, x, hair_c)
+        for yy in range(bottom + 1, L):
+            if out[yy, x] in hair_ids:
+                put(yy, x, skin_c)
+    # lone hair pixels inside the face (bridge bang tips): >= 3 of 4 neighbours are skin / face ink
+    for y in range(max(1, L - 4), min(H - 1, L + 6)):
+        for x in range(max(1, x0), min(W - 1, x1 + 1)):
+            if out[y, x] in hair_ids:
+                n = sum(out[y + a, x + b] in face for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+                if n >= 3:
+                    put(y, x, skin_c)
+    stamped.update(changed)
+
+
+def _skin_pockets(out, stamped, palette):
+    """r15 round 2 (profile, AD r15-5): a skin pixel above the eye boxed in by hair (>= 3 hair 4-neighbours) is
+    hair - no 1-px skin pocket between the bangs and the profile eye."""
+    eyes = [(y, x) for (y, x) in stamped if out[y, x] in (palette.special["eye"], palette.special.get("catchlight"))]
+    if not eyes:
+        return
+    skin_ids = [palette.index[n] for n in palette.ramps["skin"]]
+    hair_ids = [palette.index[n] for n in palette.ramps.get("hair", [])]
+    hair_c = palette.index[palette.ramps["hair"][1]]
+    L = min(y for y, _ in eyes)
+    xa, xb = min(x for _, x in eyes) - 3, max(x for _, x in eyes) + 3
+    H, W = out.shape
+    for y in range(max(1, L - 4), L):
+        for x in range(max(1, xa), min(W - 1, xb + 1)):
+            if out[y, x] in skin_ids:
+                n = sum(out[y + a, x + b] in hair_ids for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+                if n >= 3:
+                    out[y, x] = hair_c
+                    stamped.add((y, x))
+
+
 def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam, spec, material=None):
     """Opt-in per-eye face cels (render.face_eyes, HD model): the view's cel is split into its eye blocks (columns
     holding E/C, with the blush under them) and the mouth; each eye block is placed at its OWN projected eye marker
@@ -400,7 +489,10 @@ def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam
     view, right = face_view(head_world, cam)
     loh = bool(spec.get("lash_over_hair"))
     if view in ("back", "profile"):
-        return apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam, lash_over_hair=loh)
+        r = apply_face_cels(idx, palette, head_world, face, cels, expression, pivot, cam, lash_over_hair=loh)
+        if view == "profile" and spec.get("hem_pin"):
+            _skin_pockets(r[0], apply_face_cels.last_stamped, palette)
+        return r
     vs = cels["views"].get(view, {})
     cel = vs.get(expression)
     if cel is None and expression == "blink" and vs.get("neutral"):
@@ -505,5 +597,12 @@ def apply_face_eyes(idx, palette, head_world, face, cels, expression, pivot, cam
                     j == lj and ch in "EC" and _lash_over_hair(idx, x, y, hair_ids, skin_ids))):
                 out[y, x] = colors[ch]
                 stamped.add((y, x))
+    if spec.get("hem_pin"):
+        # the expression's own lash line (determined: lowered lid -> the bangs meet it, AD r15-3); blink keeps the
+        # open-eye line so a 1-frame blink never moves the hem
+        nl = _lash_row(vs["neutral"]["rows"]) if (expression == "blink" and vs.get("neutral")) else _lash_row(rows)
+        far_side = 1 if far == 1 else -1                 # far eye on screen-right (+1) or screen-left (-1)
+        _face_hem(out, y0 + (nl if nl is not None else 0), starts[0], starts[1] + len(blocks[1]) - 1, palette, view,
+                  far_side, stamped)
     apply_face_cels.last_stamped = stamped
     return out, view

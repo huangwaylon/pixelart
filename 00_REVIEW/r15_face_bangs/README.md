@@ -33,10 +33,27 @@ Write-up with the art-director discussion: [docs/review/r15_face_bangs.md](../..
 - **Profile (E/W)**: the eye is 1 row lower, matching the S/SE eye line. This keeps it clear of the longer bangs.
 
 ## Status
-- All 13 clips and the r14 copies of idle, walk, run, jump_sc and throw are rebuilt, and **QA passes**.
+- (round 1) 13 clips + 5 r14 copies rebuilt; see Round 2 below for the current build.
 - Overrides:
   - Three ponytail-tip overrides were re-approved. Their pixels are unchanged.
   - The carry_idle NW temple override was dropped because the temple bangs now produce that edge.
 - Legacy S4_halfup_bow is byte-identical: the idle, walk and throw sheets were compared.
 - `releases/` is untouched.
 - Nothing is committed.
+
+## Round 2 (AD fixes 1-5 + anim fix)
+Rule: `render.face_eyes.hem_pin` (`pipeline/face.py` `_face_hem` / `_skin_pockets`). It works per frame, with no hand edits.
+- **Anim / AD2 (flicker):** the bang hem is now drawn from the lash line, with exactly 1 skin row over the lashes in S/SE/SW, so the head bob no longer opens and closes the gap.
+  - Gap per face column in run S, frames 1-8:
+    - round 1: `1211..` / `1100..` / `1111..` / `0110..` (flips every frame)
+    - round 2: `0011111111100` in every frame
+  - walk, carry_walk and the r14 copies are steady too.
+  - See **[run_flicker_strip.png](run_flicker_strip.png)** and **[run_flicker_S_SE.gif](run_flicker_S_SE.gif)**.
+- **AD1:** lone hair pixels inside the face (3+ skin/eye neighbours) are cut. SE/SW count over walk, run, carry_walk, throw and jump: 34 to 0.
+- **AD2/AD3 slope:** in S the outermost face column on each side hangs to the lash row. In SE/SW the 2 far-temple columns and the outermost near column hang to the row above the lash. The forehead in throw f0-f3 is down to 1 row: determined frames pin to their lowered lid, and blinks keep the open-eye line.
+- **AD4:** closed-eye arches always keep 1 px of skin above them.
+- **AD5:** the 1-px skin pockets above the E/W eye are filled. Run went from 8 to 0, and all clips are now 0.
+- AD conditions kept: the far catchlight stays on the near eye's side and appears only on the 2x3 open eye (determined, squint and joyful have none).
+- **[before_after_round2.png](before_after_round2.png)**: round 1 vs round 2 for S, SE, E, SW and W in idle, run, throw, jump and walk.
+- The other boards and GIFs in this folder have been regenerated from the round 2 build.
+- Rebuilt: 13 base clips and all 14 `*_r14` copies. QA: 27/27 PASS with no warnings. Legacy S4_halfup_bow is byte-identical: idle, walk and throw were compared.

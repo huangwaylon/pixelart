@@ -50,6 +50,9 @@ SIDELOCK_BACK_Z = 0.4
 SIDELOCK_DZ = -1.6     # both side-lock clumps moved back along -z (near-side face width in 3/4)
 FACE_CELS = "kawaii_hd"      # None = inherit kawaii_v2; "kawaii_hd" = r15 3/4 far eye (same height as the near eye)
 CONTOUR_FAR = 2       # far-eye cheek px in 3/4 (None = same as contour)
+# round 2 (AD r15-1..5, anim): bang hem pinned to the eye line - exactly 1 skin row over the lashes in S/SE/SW, outer
+# columns hang lower (slope), lone face hair pixels cut, profile skin pockets filled (pipeline/face.py _face_hem)
+HEM_PIN = True
 LASH_OVER_HAIR = True  # a bang tip dipping onto the lash line (head bob / pitch) is trimmed there, never the lash
 MOUTH_BIAS = 3         # 3/4 mouth pull toward the nose bridge (px)
 # hair_cap front clip plane [nx, ny, nz, d] (unit-cap coords, keep where n.p >= d); None = legacy [0, 0, -1, -0.22].
@@ -485,7 +488,8 @@ def main():
                    "face_eyes": {"markers": marks[:2], "mouth": marks[2], "gap": 2, "contour": 1,
                                  "gap_front": 3, "mouth_bias": MOUTH_BIAS,   # round 3: AD4 locked S bridge, AD5 mouth
                                  **({"contour_far": CONTOUR_FAR} if CONTOUR_FAR is not None else {}),
-                                 **({"lash_over_hair": True} if LASH_OVER_HAIR else {})},
+                                 **({"lash_over_hair": True} if LASH_OVER_HAIR else {}),
+                                 **({"hem_pin": True} if HEM_PIN else {})},
                    **({"face_cels": FACE_CELS} if FACE_CELS else {}),
                    "lineart": {"keep_selout_runs": ["ribbon", "hair"], "skin_edge_dark": True,
                                "ring_trim": {"margin": 2, "min_run": 3, "stop_at": ["ribbon", "hatcuff"],

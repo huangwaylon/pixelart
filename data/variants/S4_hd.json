@@ -110,7 +110,8 @@
    "gap_front": 3,
    "mouth_bias": 3,
    "contour_far": 2,
-   "lash_over_hair": true
+   "lash_over_hair": true,
+   "hem_pin": true
   },
   "face_cels": "kawaii_hd",
   "lineart": {
