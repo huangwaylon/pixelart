@@ -118,7 +118,7 @@ def main():
     # unseen / K-only vertices: nearest-neighbour fill from voted ones
     from scipy.spatial import cKDTree
     seen = Vt.sum(1) > 0.05; t_ = cKDTree(verts[seen]); _, ii = t_.query(verts[~seen]); vote[~seen] = vote[seen][ii]
-    np.savez_compressed(os.path.join(H, 'work', 'head_hull.npz'), V=verts, F=faces, N=normals, mat=vote, reproj=json.dumps(rep), vox=VOX, dil=DIL)
+    np.savez_compressed(os.path.join(H, 'work', 'head_hull.npz'), V=verts, F=faces, N=normals, mat=vote, reproj=json.dumps(rep), vox=VOX, dil=DIL, keep=keep, lo=lo)
     W = Image.new('RGB', (280 * len(tiles), 240))
     for i, t in enumerate(tiles): W.paste(t, (280 * i, 0))
     W.save(os.path.join(H, 'qa', 'head_hull_reproj.png')); print('mats', {c: int((vote == c).sum()) for c in ('hair', 'skin', 'bow', 'eyes')}, len(verts), len(faces))

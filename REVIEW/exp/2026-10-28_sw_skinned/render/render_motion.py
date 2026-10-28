@@ -72,15 +72,64 @@ def _texnodes(N, L):
     im.interpolation = "Closest"; im.extension = "EXTEND"; uvn = N.new("ShaderNodeUVMap"); uvn.uv_map = "pj_" + TEXV; L.new(uvn.outputs[0], im.inputs[0])
     pm = N.new("ShaderNodeAttribute"); pm.attribute_type = "GEOMETRY"; pm.attribute_name = "pm_" + TEXV
     return im, pm
+# ---- round 5: 3D face textures (UV face_uv, mask fmask), switched per frame from M's face/blink/mouth keys
+FACE_DIRS = [os.path.join(EXP, "face", "tex3d"), os.path.join(EXP, "rig", "face_tex")]
+HASFACE = "face_uv" in body.data.uv_layers and "fmask" in body.data.attributes
+def face_tex(fr, col=False):
+    """first existing texture of: <face>_<blink>_<mouth>, <face>_<blink>, <face>_<mouth>, <face>, neutral_<blink>, neutral
+    (blink >= .75 -> 'blink', >= .25 -> 'half'; mouth 'open' -> 'open'); col=True looks for the *_col.png preview colours first"""
+    f_ = str(fr.get("face", "neutral")); bl = fr.get("blink", 0) or 0
+    try: bl = float(bl)
+    except Exception: bl = 1.0 if str(bl) in ("closed", "blink") else 0.5 if str(bl) == "half" else 0.0
+    b_ = "blink" if bl >= 0.75 else "half" if bl >= 0.25 else ""; m_ = "open" if str(fr.get("mouth", "")) == "open" else ""
+    names = [n for n in ("_".join(x for x in (f_, b_, m_) if x), "_".join(x for x in (f_, b_) if x), "_".join(x for x in (f_, m_) if x), f_,
+                         "_".join(x for x in ("neutral", b_) if x), "neutral")]
+    for n in names:
+        for d_ in FACE_DIRS:
+            for sfx in (("_col", "") if col else ("",)):
+                pth = os.path.join(d_, n + sfx + ".png")
+                if os.path.exists(pth): return pth
+    return None
+_FIMG = {}
+def _img(pth):
+    if pth not in _FIMG:
+        im = bpy.data.images.load(pth, check_existing=True); im.colorspace_settings.name = "sRGB"; _FIMG[pth] = im
+    return _FIMG[pth]
+def _facenodes(N, L, col):
+    im = N.new("ShaderNodeTexImage"); im.name = "FACE_COL" if col else "FACE_MAT"; im.interpolation = "Closest"; im.extension = "CLIP"
+    uvn = N.new("ShaderNodeUVMap"); uvn.uv_map = "face_uv"; L.new(uvn.outputs[0], im.inputs[0])
+    fm = N.new("ShaderNodeAttribute"); fm.attribute_type = "GEOMETRY"; fm.attribute_name = "fmask"
+    mul = N.new("ShaderNodeMath"); mul.operation = "MULTIPLY"; L.new(fm.outputs["Fac"], mul.inputs[0]); L.new(im.outputs["Alpha"], mul.inputs[1])
+    return im, mul
+def set_face(fr):
+    if not HASFACE: return None
+    pm, pc = face_tex(fr), face_tex(fr, col=True)
+    for m in bpy.data.materials:
+        if not m.use_nodes: continue
+        for nd_ in m.node_tree.nodes:
+            if nd_.name == "FACE_MAT" and pm: nd_.image = _img(pm)
+            if nd_.name == "FACE_COL" and (pc or pm): nd_.image = _img(pc or pm)
+    return os.path.basename(pm) if pm else None
 def mk(kind):
     nm = "rm_" + kind + "_" + str(TEXV)
     if nm in bpy.data.materials: return bpy.data.materials[nm]
     m = bpy.data.materials.new(nm); m.use_nodes = True; nt = m.node_tree; N = nt.nodes; L = nt.links
     for n in list(N): N.remove(n)
     out = N.new("ShaderNodeOutputMaterial")
+    if kind == "guide":  # round 5: matid flat colours incl. the face texture mats (EEVEE emission, 1 sample = exact colours)
+        at = N.new("ShaderNodeAttribute"); at.attribute_name = "Color"; em = N.new("ShaderNodeEmission")
+        if HASFACE:
+            im, mul = _facenodes(N, L, False); mx = N.new("ShaderNodeMix"); mx.data_type = "RGBA"
+            L.new(mul.outputs[0], mx.inputs[0]); L.new(at.outputs["Color"], mx.inputs[6]); L.new(im.outputs["Color"], mx.inputs[7]); L.new(mx.outputs[2], em.inputs[0])
+        else: L.new(at.outputs["Color"], em.inputs[0])
+        L.new(em.outputs[0], out.inputs[0]); return m
     if kind == "pv":
         at = N.new("ShaderNodeAttribute"); at.attribute_name = "PV" if "PV" in body.data.color_attributes else "Color"; df = N.new("ShaderNodeBsdfPrincipled")
-        L.new(at.outputs["Color"], df.inputs["Base Color"]); df.inputs["Roughness"].default_value = 0.8
+        df.inputs["Roughness"].default_value = 0.8
+        if HASFACE:
+            im, mul = _facenodes(N, L, True); mx = N.new("ShaderNodeMix"); mx.data_type = "RGBA"
+            L.new(mul.outputs[0], mx.inputs[0]); L.new(at.outputs["Color"], mx.inputs[6]); L.new(im.outputs["Color"], mx.inputs[7]); L.new(mx.outputs[2], df.inputs["Base Color"])
+        else: L.new(at.outputs["Color"], df.inputs["Base Color"])
         if TEXV:  # head shows the projected master pixels (flat), body smooth-shaded
             im, pm = _texnodes(N, L); em = N.new("ShaderNodeEmission"); L.new(im.outputs["Color"], em.inputs[0]); mx = N.new("ShaderNodeMixShader")
             L.new(pm.outputs["Fac"], mx.inputs[0]); L.new(df.outputs[0], mx.inputs[1]); L.new(em.outputs[0], mx.inputs[2]); L.new(mx.outputs[0], out.inputs[0])
@@ -100,15 +149,16 @@ def mk(kind):
         ma = N.new("ShaderNodeMath"); ma.operation = "MULTIPLY_ADD"; ma.inputs[1].default_value = 0.25 / K; ma.inputs[2].default_value = -2.0
         L.new(sp.outputs["Z"], ma.inputs[0]); L.new(ma.outputs[0], em.inputs[0])
     return m
+CUR = {"fr": {}}
 def set_mat(kind):
-    body.data.materials.clear(); body.data.materials.append(mk(kind))
+    body.data.materials.clear(); body.data.materials.append(mk(kind)); set_face(CUR["fr"])
 def rpass(path, kind):
     """passes: guide (matid flat, AA off) | lid (limb IDs flat: L leg red, R leg green, L arm blue, R arm yellow; .L = her left) |
     tex (projected master head pixels, alpha = head-group mask) | lum | dep | pv (preview)"""
     sc.view_settings.view_transform = "Standard"; sc.view_settings.look = "None"; sc.view_settings.exposure = 0; sc.view_settings.gamma = 1
     sc.render.image_settings.color_depth = "8"; sc.render.image_settings.color_mode = "RGBA"
     cas = body.data.color_attributes
-    if kind in ("guide", "lid"):
+    if kind == "lid" or (kind == "guide" and not HASFACE):
         cas.active_color = cas["LID" if kind == "lid" else "Color"]
         sc.render.engine = "BLENDER_WORKBENCH"; sh = sc.display.shading; sh.light = "FLAT"; sh.color_type = "VERTEX"
         sh.show_object_outline = False; sh.show_cavity = False; sc.display.render_aa = "OFF"
@@ -117,8 +167,8 @@ def rpass(path, kind):
     sc.render.engine = "BLENDER_EEVEE"; sc.eevee.taa_render_samples = 16 if kind != "pv" else 8; set_mat(kind)
     if kind == "pv":
         sc.world.color = (0.32, 0.32, 0.34); sun.data.energy = 3.0
-    elif kind == "tex":
-        sc.world.color = (0, 0, 0); sc.eevee.taa_render_samples = 1  # 1 sample: no AA, exact master colours
+    elif kind in ("tex", "guide"):
+        sc.world.color = (0, 0, 0); sc.eevee.taa_render_samples = 1  # 1 sample: no AA, exact colours
     else:
         sc.world.color = (0, 0, 0); sc.view_settings.view_transform = "Raw"; sc.render.image_settings.color_depth = "16"
     sc.render.filepath = path; bpy.ops.render.render(write_still=True)
@@ -173,9 +223,9 @@ if not PREVIEW: rpass(stem + "_rest_guide.png", "guide")
 info = {"action": act, "view": VIEW, "cell_1x": CELL, "pivot_1x": PIV, "ppu_h2": PPU, "m_per_h2": K, "scale": SC, "preview": PREVIEW, "yaw": YAW, "tex": TEXV,
         "rest": rest_meta, "rest_face": face_meta(), "out_dxdy": [_OUT.get("dx", 0), _OUT.get("dy", 0)], "frames": []}
 for i in idxs:
-    fr = frames[i]; apply(fr)
+    fr = frames[i]; apply(fr); CUR["fr"] = fr; ftex = set_face(fr)
     for k in kinds: rpass(f"{stem}_f{i:02d}_{k}.png", k)
-    info["frames"].append({"i": i, "t": fr.get("t", i), "ms": tim[i] if i < len(tim) else tim[-1], "pts": meta(), "face": face_meta()})
+    info["frames"].append({"i": i, "t": fr.get("t", i), "ms": tim[i] if i < len(tim) else tim[-1], "pts": meta(), "face": face_meta(), "face_tex": ftex})
 json.dump(info, open(stem + ".json", "w"), indent=0)
 print(f"RENDERED {len(idxs)} frames x {kinds} in {time.time() - t0:.1f}s", flush=True)
 if not NOPOST:

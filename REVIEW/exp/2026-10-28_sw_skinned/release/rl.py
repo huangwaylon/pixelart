@@ -73,7 +73,7 @@ RIG_IN = lambda: [f'{EXP}/rig/rig.blend', f'{EXP}/rig/align.json', f'{EXP}/rig/f
 FACE_IN = lambda: [*g('face/*.py'), f'{EXP}/face/parts.json', f'{EXP}/face/calib.json', *g('face/tex/*')]
 CODE_IN = lambda: [*g('render/pixel_chain.py'), *g('render/r_tex_head.py'), *g('render/gifio.py'), *g('render/gifcheck.py'),
                    *g('face/face_layer.py'), *g('face/face_lib.py'), f'{ROOT}/REVIEW/exp/2026-10-28_sw_hires3d/scripts/hx.py',
-                   *g('release/*.py'), *g('release/*.sh'), f'{REL}/actions.json']
+                   f'{REL}/actions.json']  # release code itself is not an input (FORCE=1 rebuilds the same id)
 
 
 def motion_for(act, V, acts):
@@ -83,7 +83,8 @@ def motion_for(act, V, acts):
 
 
 def pass_hash(act, V, acts):
-    return hfiles(RIG_IN() + [motion_for(act, V, acts)]) + f'_{act}_{V}'
+    r5 = pipeline() == 'r5'  # r5: R's render may read F's 3D face textures -> they are pass inputs too
+    return hfiles(RIG_IN() + (FACE_IN() if r5 else []) + [motion_for(act, V, acts)]) + f'_{act}_{V}' + ('_r5' if r5 else '')
 
 
 def face_hash(act, V, acts):
@@ -93,7 +94,7 @@ def face_hash(act, V, acts):
 def plan():
     acts, dirs = config()
     allin = RIG_IN() + FACE_IN() + CODE_IN() + [motion_for(a, V, acts) for a in acts for V in dirs]
-    h = hashlib.sha1((hfiles(allin) + ' '.join(acts) + ' ' + ' '.join(dirs)).encode()).hexdigest()[:7]
+    h = hashlib.sha1((hfiles(allin) + pipeline() + ' '.join(acts) + ' ' + ' '.join(dirs)).encode()).hexdigest()[:7]
     bid = datetime.date.today().strftime('%Y%m%d') + '_' + h
     return bid, acts, dirs
 
@@ -116,6 +117,7 @@ def clip(bid, act, V):
     acts, _ = config(); mot = motion_for(act, V, acts); loop = acts[act]['loop']
     W = f'{OUTR}/{bid}/work/{act}/{V}'; os.makedirs(W, exist_ok=True); log = f'{W}/clip.log'; open(log, 'w').close()
     st = {'act': act, 'view': V, 'loop': loop, 'motion': os.path.relpath(mot, EXP), 'errors': [], 't0': time.time()}
+    shutil.copy(mot, f'{W}/motion.json')  # snapshot: the posture gates measure exactly what was rendered
     an = json.load(open(mot)).get('action') or os.path.splitext(os.path.basename(mot))[0]  # file names follow the motion's 'action'
     stem = f'{an}_{V}'; st['stem'] = stem
     # 1. R's passes + P's part pass (cached by rig/motion/renderer hash)
@@ -127,6 +129,7 @@ def clip(bid, act, V):
         if os.path.exists(f'{C}/{stem}.json') and glob.glob(f'{C}/parts/*_part.png'): open(f'{C}/DONE', 'w').close()
         else: st['errors'].append('R render / P parts failed (see clip.log)'); return done(W, st)
     st['passes'] = os.path.relpath(C, REL)
+    if pipeline() == 'r5': return clip_r5(W, C, st, mot, V, stem, log)
     # 2. F's faceless head pass + anchors, full and preview (cached)
     F = f'{CACHE}/f_{face_hash(act, V, acts)}'
     if not os.path.exists(f'{F}/DONE'):
@@ -165,6 +168,30 @@ def clip(bid, act, V):
         st['preview'] = preview(W, F, an, V, loop, os.path.exists(f'{F}/DONE'))
     except Exception as e:  # noqa: BLE001
         st['errors'].append(f'preview failed: {e!r}'[:300])
+    return done(W, st)
+
+
+def pipeline():
+    """'r4' = projected master head + F's 2D face layer; 'r5' = one pipeline (3D head/face from R+F rendered by R, P's chain with no
+    head special case, R's own --preview).  release/actions.json "pipeline", env PIPE overrides."""
+    return os.environ.get('PIPE') or json.load(open(f'{REL}/actions.json')).get('pipeline', 'r4')
+
+
+def clip_r5(W, C, st, mot, V, stem, log):
+    if not glob.glob(f'{C}/pv/*_pv.png'):
+        blender(f'{EXP}/render/render_motion.py', mot, V, f'{C}/pv', log, ['--preview', '--no-post'])
+    for p in glob.glob(f'{C}/*'):
+        d = f'{W}/{os.path.basename(p)}'
+        if os.path.basename(p) in ('DONE', 'pv') or os.path.lexists(d): continue
+        os.symlink(p, d)
+    r = run([PY, f'{EXP}/render/pixel_chain.py', f'{W}/{stem}.json'], log)
+    if not glob.glob(f'{W}/{stem}_px/f*.txt'):
+        st['errors'].append('P pixel_chain failed (see clip.log): ' + (r.stderr.strip().splitlines() or ['?'])[-1][:200]); return done(W, st)
+    m = re.search(r'LIMB_AUDIT \S+ (.*)', r.stdout); st['limb_line'] = m.group(1)[:300] if m else None
+    copy_px(W, stem[:-len(V) - 1], V); st['face_layer'] = 'ok (3D face, r5: no face layer)'; st['pipeline'] = 'r5'
+    od = f'{W}/pv_final'; os.makedirs(od, exist_ok=True); pv = sorted(glob.glob(f'{C}/pv/{stem}_f??_pv.png'))
+    for p in pv: shutil.copy(p, f"{od}/{re.search(r'_(f\d\d)_pv', p).group(1)}.png")
+    st['preview'] = f'ok (R preview, {len(pv)} frames)' if pv else 'missing'
     return done(W, st)
 
 
@@ -211,8 +238,12 @@ def preview(W, F, act, V, loop, face_ok):
     pd = f'{F}/pv'; info = json.load(open(f'{pd}/{act}_{V}.json')); SC = info['scale']
     od = f'{W}/pv_final'; os.makedirs(od, exist_ok=True)
     if face_ok:
-        fj = f'{F}/{act}_{V}_face.json'; d = json.load(open(fj)); DX, DY = d['align']['dx'], d['align']['dy']
-        Cp = FLY.plan_clip(fj, act, loop)
+        try:
+            fj = f'{F}/{act}_{V}_face.json'; d = json.load(open(fj)); DX, DY = d['align']['dx'], d['align']['dy']
+            Cp = FLY.plan_clip(fj, act, loop)
+            pl = Cp['plan'][0]; FLY.zone_box(Cp['parts'], pl['G'])  # raises when the view has no face parts
+        except ValueError:  # no face parts in this view (N = back of the head, by F's design)
+            face_ok = False
     for k, fr in enumerate(info['frames']):
         i = fr['i']; im = Image.open(f'{pd}/{act}_{V}_f{i:02d}_pv.png').convert('RGBA'); a = np.array(im)
         if face_ok:
@@ -340,6 +371,32 @@ def masters_board(B):
     label_row(tiles, labs, 20, gap=6, title='m96 masters (on-model reference), 3x').save(f'{B}/masters_ref.png')
 
 
+# ------------------------------------------------------------------ A/B boards (round 4 baseline vs this build)
+def ab(bid, base, views=('S', 'SE', 'E', 'NE', 'N')):
+    """out/<bid>/ab/ab_<act>.png: per view two rows (A = baseline, B = this build) at 3x, plus ab_heads_<act>.png = head close-ups at 6x"""
+    B = f'{OUTR}/{bid}'; A_ = f'{OUTR}/{base}'; od = f'{B}/ab'; os.makedirs(od, exist_ok=True); made = []
+    man = json.load(open(f'{B}/manifest.json'))
+    for act in man['actions']:
+        rows = []
+        for V in views:
+            for tag, D in (('A r4', A_), ('B now', B)):
+                fs = sorted(glob.glob(f'{D}/work/{act}/{V}/final/f??_rgba.png'))
+                if fs: rows.append((f'{tag} {V}', [Image.open(p).convert('RGBA') for p in fs]))
+        if not rows: continue
+        n = max(len(r[1]) for r in rows); bb = bbox_union([im for _, r in rows for im in r], 2)
+        cw, ch = bb[2] - bb[0], bb[3] - bb[1]
+        hb = (bb[0], bb[1], bb[2], bb[1] + int(ch * 0.42))  # head band (top 42 % of the union box)
+        for name, box, S in (('ab', bb, 3), ('ab_heads', hb, 6)):
+            w, h = box[2] - box[0], box[3] - box[1]; L = 110
+            c = Image.new('RGB', (L + n * (w * S + 4), 26 + len(rows) * (h * S + 4)), (60, 60, 64)); d = ImageDraw.Draw(c)
+            d.text((4, 4), f'{act}: A = round-4 baseline {base} (projected face) | B = {bid}', fill=(255, 255, 210), font=font(15))
+            for r, (lab, ims) in enumerate(rows):
+                y = 26 + r * (h * S + 4); d.text((6, y + h * S // 2 - 9), lab, fill=(255, 220, 160) if lab.startswith('A') else (170, 255, 170), font=font(17))
+                for k, im in enumerate(ims[:n]): c.paste(on_bg(im.crop(box)).resize((w * S, h * S), Image.NEAREST), (L + k * (w * S + 4), y))
+            c.save(f'{od}/{name}_{act}.png'); made.append(f'{od}/{name}_{act}.png')
+    print('AB', len(made)); return made
+
+
 # ------------------------------------------------------------------ gates
 def gates(bid):
     import gifcheck
@@ -359,7 +416,15 @@ def gates(bid):
             lj = f"{W}/{st.get('stem', act + '_' + V)}_limbs.json"; la = json.load(open(lj))['summary'] if os.path.exists(lj) else None
             gc = gifcheck.check(f'{B}/{act}/{V}.gif', oneshot=('.gif',) if not loop else ('\0',))
             hubp = hub.gif_check(f'{B}/{act}/{V}.gif')
-            rows.append({'act': act, 'view': V, 'loop': loop, 'px': {k: px.get(k) for k in ('boil', 'shade_swap', 'flicker', 'feet_range', 'seam_ratio',
+            try:
+                import rl_gates5 as G5
+                bg = G5.bangs(W, st.get('stem', f'{act}_{V}'), json.load(open(f"{W}/{st.get('stem', act + '_' + V)}.json")))
+                bv = [b['skin_px'] for b in bg if b['skin_px'] is not None]
+                bangs = {'max': max(bv) if bv else None, 'frames_bad': sum(1 for x in bv if x > 0), 'frames': len(bg),
+                         'src': sorted({b.get('src') for b in bg if b.get('src')}), 'worst': max(bg, key=lambda b: b['skin_px'] or 0)}
+            except Exception as e:  # noqa: BLE001
+                bangs = {'error': repr(e)[:200]}
+            rows.append({'act': act, 'view': V, 'loop': loop, 'bangs': bangs, 'px': {k: px.get(k) for k in ('boil', 'shade_swap', 'flicker', 'feet_range', 'seam_ratio',
                          'articulation_per_s', 'motion_px', 'flags', 'n_frames', 'cycle_ms')}, 'limbs': la, 'gif': gc, 'hub_gif': hubp,
                          'errors': st.get('errors', []), 'face_layer': st.get('face_layer'), 'preview': st.get('preview')})
     for act in acts:  # clips that were planned but did not produce frames
@@ -377,9 +442,38 @@ def gates(bid):
         c = gifcheck.check(p, oneshot=('.gif',) if one else ('\0',))
         allg.append({'path': os.path.relpath(p, B), 'flags': c['flags'], 'hub': hub.gif_check(p), 'min_ms': c['min_ms'], 'frames': c['frames'],
                      'seam': c['seam_ratio'], 'disposal': c['disposal'], 'loop': c['loop']})
-    json.dump({'clips': rows, 'gifs': allg}, open(f'{B}/gates.json', 'w'), indent=1)
-    write_gates_md(bid, rows, allg)
+    posture = posture_gates(B, man, acts)
+    json.dump({'clips': rows, 'gifs': allg, 'posture': posture}, open(f'{B}/gates.json', 'w'), indent=1)
+    write_gates_md(bid, rows, allg, posture)
     return rows, allg
+
+
+def posture_gates(B, man, acts):
+    """M's measured torso/head pitch (Blender, on the build's motion snapshot) + head-forward from the E projection"""
+    import rl_gates5 as G5
+    acts_ = [a for a in man['actions'] if 'E' in man['actions'][a]['dirs'] or os.path.exists(f'{B}/work/{a}/E/clip.json')]
+    snap = {a: f'{B}/work/{a}/E/motion.json' for a in acts_ if os.path.exists(f'{B}/work/{a}/E/motion.json')}
+    pz = G5.pose(snap, f'{B}/work/gates/pose.json') if snap else {}
+    if '_error' in pz: return {'_error': pz['_error']}
+    out = {}
+    for a in acts_:
+        W = f'{B}/work/{a}/E'; stem = json.load(open(f'{W}/clip.json')).get('stem', f'{a}_E')
+        info = json.load(open(f'{W}/{stem}.json')) if os.path.exists(f'{W}/{stem}.json') else None
+        hf = G5.head_forward_px(info) if info else None; tpx = G5.torso_px_pitch(info) if info else None
+        rows = pz.get(a) or []
+        if rows:
+            tp = [r['torso_pitch'] for r in rows]; hp = [r['head_pitch'] for r in rows]; hm = min(r['head_fwd_mm'] for r in rows); src = 'blender'
+        else:  # no motion snapshot (builds before the round-5 gates): projected E-view torso + R's camera-axis head pitch (+ = chin down)
+            tp = tpx or [0]; hp = [f['face']['_head']['pitch'] for f in info['frames'] if f.get('face') and '_head' in f['face']] or [0] if info else [0]
+            hm = None; src = 'E projection (no motion snapshot)'
+        gated = a in G5.POSE_GATED
+        out[a] = {'motion': os.path.relpath(snap[a], B) if a in snap else '(not archived)', 'src': src,
+                  'torso': [min(tp), float(np.mean(tp)), max(tp)], 'head': [min(hp), max(hp)],
+                  'head_fwd_mm_min': hm, 'head_fwd_px': hf, 'torso_px': tpx,
+                  'torso_ok': (min(tp) >= 0) if gated else None,
+                  'head_ok': (min(hp) >= G5.HEAD_PITCH[0] and max(hp) <= G5.HEAD_PITCH[1]) if gated else None,
+                  'fwd_ok': (min(hf) >= 0) if hf else None, 'frames': rows}
+    return out
 
 
 def _f(v, k=3): return '-' if v is None else (f'{v:.{k}f}' if isinstance(v, float) else str(v))
@@ -393,18 +487,19 @@ def clip_verdict(r):
     out['seam'] = None if (not r['loop'] or p.get('seam_ratio') is None) else p['seam_ratio'] <= GATE['seam']
     out['limbs'] = None if r['limbs'] is None else r['limbs']['pass']
     out['gif'] = not r['gif']['flags'] and not r['hub_gif']
+    b = (r.get('bangs') or {}).get('max'); out['bangs'] = None if b is None else b == 0
     return out
 
 
-def write_gates_md(bid, rows, allg):
+def write_gates_md(bid, rows, allg, posture=None):
     def pf(v): return 'n/a' if v is None else ('PASS' if v else '**FAIL**')
     L = [f'# GATES — build {bid}', '',
          f"Gates (reported, not blocking): pxeval seq on the final 1x frames (P chain + F face) — boil ≤ {GATE['boil']}, shade_swap ≤ {GATE['shade_swap']}, "
          f"feet_range ≤ {GATE['feet']} px (loops only; in SE/E/NE and the other off-axis views a real stride projects ~5–7 px lower at 30° elevation, so "
          f"FEET there is partly perspective, P notes), seam_ratio ≤ {GATE['seam']} (loops); P's limb audit (VANISHED/SPLIT/THIN/DETACHED, failed frames / frames); "
          'GIF = render/gifcheck.py (loop=0, ≥20 ms, disposal/ghosting, seam, dup frames) + REVIEW/build.py gif_check on the per-direction 4x GIF.', '',
-         '| clip | boil | shade_swap | feet px | seam | limb audit | GIF | other pxeval flags | notes |', '|---|---|---|---|---|---|---|---|---|']
-    tot = {k: [0, 0] for k in ('boil', 'shade', 'feet', 'seam', 'limbs', 'gif')}
+         '| clip | boil | shade_swap | feet px | seam | limb audit | GIF | bangs (skin px above brow, max / bad frames) | other pxeval flags | notes |', '|---|---|---|---|---|---|---|---|---|---|']
+    tot = {k: [0, 0] for k in ('boil', 'shade', 'feet', 'seam', 'limbs', 'gif', 'bangs')}
     for r in rows:
         v = clip_verdict(r); p = r['px']
         for k, x in v.items():
@@ -417,14 +512,35 @@ def write_gates_md(bid, rows, allg):
         other = ' '.join(x for x in (p.get('flags') or []) if x not in ('BOILING', 'SHADE_SWAP', 'FEET_JITTER', 'SEAM'))
         gt = 'PASS' if v['gif'] else '**FAIL** ' + ' '.join(r['gif']['flags'] + r['hub_gif'])
         notes = '; '.join(r['errors']) or ('' if str(r.get('face_layer', '')).startswith('ok') else f"face: {r.get('face_layer')}")
+        bgd = r.get('bangs') or {}
+        bt = 'n/a' if bgd.get('max') is None else f"{bgd['max']} / {bgd['frames_bad']}/{bgd['frames']} {pf(bgd['max'] == 0)}"
         L.append(f"| {r['act']} {r['view']} | {_f(p.get('boil'))} {pf(v['boil'])} | {_f(p.get('shade_swap'))} {pf(v['shade'])} | {ft} | "
-                 f"{_f(p.get('seam_ratio'), 2)} {pf(v['seam'])} | {lt} | {gt} | {other} | {notes} |")
-    L += ['', '**Totals (pass / gated clips):** ' + ', '.join(f'{k} {a}/{b}' for k, (a, b) in tot.items()), '']
+                 f"{_f(p.get('seam_ratio'), 2)} {pf(v['seam'])} | {lt} | {gt} | {bt} | {other} | {notes} |")
+    pt = {'torso': [0, 0], 'head': [0, 0], 'head_fwd': [0, 0]}
+    if posture and '_error' not in posture:
+        L += ['', '## Posture gates (E profile; round 5 B + addendum)', '',
+              'torso pitch = pelvis->neck base vs vertical, **+ = forward** (gate idle/walk: every frame >= 0); head pitch = head bone vs vertical, '
+              '**+ = chin down** (gate idle/walk: -3..+8 = level to slightly down); both measured in Blender on the motion (release/rl_pose.py, '
+              'same pose application as render_motion.py). head forward = E-view head centre x - neck base x (1x px, her front = +x), gate every frame of '
+              'every action >= 0. torso(px) = the same angle from the E projection (cross-check).', '',
+              '| action (E motion) | torso pitch min / mean / max | torso (px) min | head pitch min / max | head fwd px min | head fwd mm min | torso gate | head gate | head-forward gate |',
+              '|---|---|---|---|---|---|---|---|---|']
+        for a, q in posture.items():
+            for k, kk in (('torso', 'torso_ok'), ('head', 'head_ok'), ('head_fwd', 'fwd_ok')):
+                if q[kk] is not None: pt[k][0] += int(q[kk]); pt[k][1] += 1
+            hfm = min(q['head_fwd_px']) if q['head_fwd_px'] else None; tpm = min(q['torso_px']) if q['torso_px'] else None
+            L.append(f"| {a} ({q['src']}) | {q['torso'][0]:+.1f} / {q['torso'][1]:+.1f} / {q['torso'][2]:+.1f}° | {_f(tpm, 1)}° | "
+                     f"{q['head'][0]:+.1f} / {q['head'][1]:+.1f}° | {_f(hfm, 1)} | {_f(q['head_fwd_mm_min'], 0)} | {pf(q['torso_ok'])} | {pf(q['head_ok'])} | {pf(q['fwd_ok'])} |")
+        L += ['', 'Per-frame values: gates.json -> posture.<act>.frames.']
+    elif posture:
+        L += ['', f"Posture gates failed to run: {posture['_error'][:300]}"]
+    L += ['', '**Totals (pass / gated clips):** ' + ', '.join(f'{k} {a}/{b}' for k, (a, b) in tot.items())
+          + ('; posture (actions): ' + ', '.join(f'{k} {a}/{b}' for k, (a, b) in pt.items()) if posture else ''), '']
     bad = [g for g in allg if g['flags'] or g['hub']]
     L += [f'## All GIFs in the build: {len(allg)} checked, {len(bad)} flagged', '']
     L += [f"- {g['path']}: {' '.join(g['flags'] + g['hub'])}" for g in bad] or ['- none flagged (loop=0, min frame ≥ 20 ms, disposal 2 full frames, seam ok).']
     open(f'{OUTR}/{bid}/GATES.md', 'w').write('\n'.join(L) + '\n')
-    s = ', '.join(f'{k} {a}/{b}' for k, (a, b) in tot.items())
+    s = ', '.join(f'{k} {a}/{b}' for k, (a, b) in tot.items()) + ('; ' + ', '.join(f'{k} {a}/{b}' for k, (a, b) in pt.items()) if posture else '')
     open(f'{OUTR}/{bid}/work/gates/summary.txt', 'w').write(s)
     print('GATES', s, flush=True)
 
@@ -471,3 +587,4 @@ if __name__ == '__main__':
     elif a[0] == 'assemble': assemble(a[1])
     elif a[0] == 'gates': sys.exit(0 if gates(a[1])[0] else 2)
     elif a[0] == 'hub': hub(a[1])
+    elif a[0] == 'ab': ab(a[1], a[2])

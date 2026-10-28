@@ -83,14 +83,16 @@ DZ = 0.044
 # ROUND 2: the head is the visual hull of the m96 master head stamps (rig/head_hull.py, already in the rig's master-aligned frame);
 # bow, bun and ribbon tails are part of the hull (master silhouettes) -> the H2 head/bun/bow parts are retired.
 for n_ in ("head", "bun", "bow"): bpy.data.objects.remove(imp.pop(n_))
-_hh = np.load(os.path.join(os.path.dirname(os.path.abspath(OUT)), "head_hull.npz"), allow_pickle=True)
-_me = bpy.data.meshes.new("head"); _me.from_pydata([tuple(v) for v in _hh["V"]], [], [tuple(int(i) for i in f) for f in _hh["F"]]); _me.validate()
+# ROUND 5: real 3D head (rig/build_head3d.py): SKULL (face/jaw + cranium; scalp in hair colour) is fused into the body union; the HAIR
+# shell (bob, full fringe, crown, back hair, bun, bow + ribbons) stays a separate attached shell so the spring chains can move it freely.
+_h3 = np.load(os.path.join(os.path.dirname(os.path.abspath(OUT)), "head3d.npz"), allow_pickle=True); HEAD_FWD = float(_h3["head_fwd"])
+_me = bpy.data.meshes.new("head"); _me.from_pydata([tuple(v) for v in _h3["SV"]], [], [tuple(int(i) for i in f) for f in _h3["SF"]]); _me.validate()
 _ca = _me.color_attributes.new("Color", "BYTE_COLOR", "POINT")
-for i, m_ in enumerate(_hh["mat"]): _ca.data[i].color_srgb = [x / 255 for x in MATS[str(m_)]] + [1]
+for i, m_ in enumerate(_h3["SL"]): _ca.data[i].color_srgb = [x / 255 for x in MATS["skin" if str(m_) == "skin" else "hair"]] + [1]
 _bm = bmesh.new(); _bm.from_mesh(_me); bmesh.ops.recalc_face_normals(_bm, faces=_bm.faces); _bm.to_mesh(_me); _bm.free()
 imp["head"] = bpy.data.objects.new("head", _me); bpy.context.scene.collection.objects.link(imp["head"])
-HMAT = np.array([str(m_) for m_ in _hh["mat"]])
-HV = np.array([v.co[:] for v in imp["head"].data.vertices])
+HSV = np.array(_h3["HV"], float); HSF = np.array(_h3["HF"], int); HSL = np.array([str(m_) for m_ in _h3["HL"]])
+HMAT = HSL; HV = HSV  # bone anchors (fringe, back hair, bow, bun) come from the hair shell
 def back_y(x0, z0, w=0.03):
     m = (np.abs(HV[:, 0] - x0) < w) & (np.abs(HV[:, 2] - z0) < 0.015); return float(HV[m, 1].max()) if m.any() else 0.2
 def side_x(sx, y0, z0, w=0.03):
@@ -99,7 +101,7 @@ def side_x(sx, y0, z0, w=0.03):
 tor = [(0.93, .135, .100, 0), (1.00, .140, .100, 0), (1.10, .146, .104, 0), (1.17, .156, .108, -.004), (1.215, .160, .104, -.004),
        (1.255, .146, .090, -.002), (1.285, .112, .076, 0), (1.305, .070, .060, .004)]
 loft("torso", [{"c": [0, y, z + DZ], "ra": rx, "rb": ry} for z, rx, ry, y in tor], [1, 0, 0], n=64, p=2.4)
-loft("neck", [{"c": [0, .006, 1.26 + DZ], "ra": .047, "rb": .045}, {"c": [0, .012, 1.47 + DZ], "ra": .046, "rb": .044}], [1, 0, 0], n=40)
+loft("neck", [{"c": [0, .004, 1.26 + DZ], "ra": .047, "rb": .045}, {"c": [0, .004 - HEAD_FWD, 1.47 + DZ], "ra": .046, "rb": .044}], [1, 0, 0], n=40)  # r5: neck angles forward from the chest
 G["obi"] = (0.957 + DZ, 1.052 + DZ)
 loft("obi", [{"c": [0, 0, z], "ra": .150, "rb": .112} for z in G["obi"]], [1, 0, 0], n=64, p=2.6)
 G["hem"] = 0.767
@@ -152,11 +154,12 @@ G["sock_top"] = 0.622; G["sock_band"] = 0.026; G["boot_top"] = 0.196
 for side, sx in (("L", 1), ("R", -1)):
     zs = [1.60, 1.47, 1.38, 1.30]; rr_ = [(.030, .034), (.026, .030), (.020, .024), (.010, .013)]
     xs = [0.5 * sum(max(side_x(q_, -0.095, 1.60 + DZ) - 0.035, 0.19) for q_ in (1, -1)), 0.226, 0.232, 0.232]  # mirror-symmetric (H2 head is not)
-    lk = [([sx * x, -.10, z + DZ], ra, rb) for x, z, (ra, rb) in zip(xs, zs, rr_)]
+    lk = [([sx * x, -.075 - HEAD_FWD, z + DZ], ra, rb) for x, z, (ra, rb) in zip(xs, zs, rr_)]
     loft("lock_" + side, [{"c": c, "ra": ra, "rb": rb} for c, ra, rb in lk], [1, 0, 0], n=24, cap1="round")
     G["lock." + side] = [c for c, _, _ in lk]
 # bow (knot + lobes) and bun bone anchors from the hull's master-coloured regions
-BW = HV[HMAT == "bow"]; BK = BW[BW[:, 1] > 0.08]  # the bow sits on the BACK of the head (N/NE/E masters); lobes spread sideways
+_hh2 = np.load(os.path.join(os.path.dirname(os.path.abspath(OUT)), "head_hull.npz"), allow_pickle=True)
+BW = _hh2["V"][_hh2["mat"].astype(str) == "bow"] - np.array([0, HEAD_FWD, 0]); BK = BW[BW[:, 1] > 0.08]  # the bow sits on the BACK of the head (N/NE/E masters); lobes spread sideways
 zs_ = np.arange(1.82, 1.98, 0.02); wd_ = [np.abs(BK[np.abs(BK[:, 2] - z_) < 0.01, 0]).max() if (np.abs(BK[:, 2] - z_) < 0.01).sum() > 5 else 0 for z_ in zs_]
 zw = float(zs_[int(np.argmax(wd_))]); band = BK[np.abs(BK[:, 2] - zw) < 0.08]
 kq = band[np.abs(band[:, 0]) < 0.04]; kn = kq[np.argsort(-kq[:, 1])[: max(10, len(kq) // 4)]].mean(0); kn[0] = 0.0
@@ -231,6 +234,28 @@ def mat_of(n, fi, p):
         return "dress"
     return "dress"
 fmat = [mat_of(flab[i], ffid[i], FC[i]) for i in range(len(FB))]
+# ---- round 5: modelled bow (knot + 2 lobes + 2 ribbon tails) as part of the separate hair group (deformed by bow_knot / bow.* / hair_back.*)
+_kn = np.array(G["bow_knot"]); _kn[1] = back_y(0.0, _kn[2]) + 0.012; G["bow_knot"] = _kn.tolist(); BOWO = []
+BOWO.append(loft("bow_knot_m", [{"c": [0, _kn[1] - 0.025, _kn[2]], "ra": .036, "rb": .040}, {"c": [0, _kn[1] + 0.025, _kn[2]], "ra": .034, "rb": .038}], [1, 0, 0], n=28, cap0="round", cap1="round"))
+for side, sx in (("L", 1), ("R", -1)):
+    p0 = _kn + np.array([sx * 0.03, 0.0, 0.0]); p2 = np.array([sx * 0.200, _kn[1] - 0.025, _kn[2] + 0.045]); p1 = (p0 + p2) / 2 + np.array([0, 0.012, 0.012])
+    G["bow"][side] = [p0.tolist(), p1.tolist(), p2.tolist()]
+    BOWO.append(loft("bow_lobe_" + side, [{"c": p0.tolist(), "ra": .024, "rb": .034}, {"c": p1.tolist(), "ra": .030, "rb": .066}, {"c": p2.tolist(), "ra": .022, "rb": .060}],
+                     [0, 1, 0], n=32, cap1="round", p=2.2))
+    zz = [_kn[2] - .03, _kn[2] - .16, _kn[2] - .29]; xs_ = [sx * .025, sx * .048, sx * .066]
+    rb_ = [[x, back_y(x, z) + .014, z] for x, z in zip(xs_, zz)]
+    BOWO.append(loft("bow_ribbon_" + side, [{"c": c, "ra": .022 + .003 * i, "rb": .008} for i, c in enumerate(rb_)], [1, 0, 0], n=16))
+G["bow_zcut"] = float(_kn[2] - 0.06)
+for o_ in BOWO:
+    bm_ = bmesh.new(); bm_.from_mesh(o_.data); bmesh.ops.triangulate(bm_, faces=bm_.faces); bm_.to_mesh(o_.data); bm_.free()
+    Mv = np.array([v.co[:] for v in o_.data.vertices]); Mf = np.array([tuple(p.vertices) for p in o_.data.polygons])
+    HSF = np.vstack([HSF, Mf + len(HSV)]); HSV = np.vstack([HSV, Mv]); HSL = np.concatenate([HSL, np.array(["bow"] * len(Mv))])
+# ---- append the separate hair shell (round 5)
+from collections import Counter as _Ct
+o_ = len(VB); VB = np.vstack([VB, HSV]); FB = FB + [tuple(int(i) + o_ for i in f) for f in HSF]
+fmat = fmat + [_Ct([HSL[i] for i in f]).most_common(1)[0][0] for f in HSF]
+vlab = np.concatenate([vlab.astype(str), np.array(["hair_shell"] * len(HSV))]); flab = np.concatenate([flab.astype(str), np.array(["hair_shell"] * len(HSF))])
+G["head_fwd"] = HEAD_FWD
 np.savez_compressed(OUT, V=VB, F=np.array(FB, dtype=object), fmat=np.array(fmat), vlab=vlab.astype(str), flab=flab.astype(str), G=json.dumps(G),
                     head_v=HV, head_mat=HMAT)
 print("BODY", len(VB), len(FB), {m: fmat.count(m) for m in MN}, flush=True)

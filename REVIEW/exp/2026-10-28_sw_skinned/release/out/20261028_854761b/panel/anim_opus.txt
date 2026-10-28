@@ -1,0 +1,17 @@
+SCORE: 5/10
+
+Key poses/appeal 5 · Timing/spacing 6 · Bounce/weight 6 · Secondary motion 5 · Posture (no slouch) 3 · Face acting 5
+
+(a) **Head jutted back: yes.** In E/W profile the head sits behind the spine line in almost every action. Worst frames: idle E f05–f11 (chin up, skull behind the shoulders), walk E f02–f04, dash E f03–f04, jump E f05–f07. This matches the head-forward gate failing on every action (−2 to −7 px). In SE/SW the head reads tipped back in walk f03–f05.
+
+(b) **Balding / thin bangs: yes.** In S/SW the fringe is a few thin separate clumps with skin showing between them and above the brows. The hairline is high, like a widow's peak (walk S all frames, idle S f06–f07, jump S f05–f07). In E/W, tan highlight pixels on the crown read as scalp patches (idle E f04–f06, dash E f00–f02). The temple bangs are sparse in profile.
+
+(c) **Leans back: yes.** Idle E/W (−5 to −7°) and walk E (−3°) have the chest pushed out, pelvis forward and head tilted up. The jump apex (E f05–f07, −12°) and the dash wind-up (E f01–f02, −16°) arch back too far as well.
+
+ISSUES:
+1. [M] idle/walk E,W,NE,NW all frames: torso pitch is −3 to −7° (leaning back) and the head is behind the neck -> pitch the spine +2 to +4° forward, put the neck +6° forward, keep the head level, and fail the build if head-forward < +1 px.
+2. [R] all actions S,SW,SE,E,W: thin fringe with skin gaps, high hairline, crown highlights read as scalp -> make the bangs one solid mass down to the brows, overlap the clumps, extend the hair cap 2–3 px lower, and remove the skin-tone highlights from the hair ramp.
+3. [F] idle E f06–f10, dash E f03–f04, hurt W f01–f02: mouth/nose pixels stick out past the head silhouette (snout look) -> clamp face parts inside the projected head hull and re-anchor the profile mouth to the cheek.
+4. [M] hurt S/N/SW f01–f03: symmetric T-pose arm flail reads as cheering, not being hit -> make it asymmetric: arms flung back, shoulders up, torso curled away, hold 2 frames.
+5. [P] run S f00/f04/f06, run N f01/f05: the back leg vanishes behind the skirt, leaving a one-leg silhouette -> force a 1–2 px sliver of the back leg plus its boot outline, and keep the gap between the legs.
+6. [M] walk/run all directions: skirt hem and sleeves barely lag and the bow/side-locks are stiff -> add spring follow-through 1–2 frames behind the hips (skirt flare on the passing pose, bow bounce on contact), with the hem offset ≥2 px at peak.

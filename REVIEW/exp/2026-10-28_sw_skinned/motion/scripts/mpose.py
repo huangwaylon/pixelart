@@ -18,6 +18,10 @@ def slerp_m(A, B, t):
     r = R.from_matrix(np.stack([A, B])); return Slerp([0, 1], r)([t]).as_matrix()[0]
 
 
+HEAD_PITCH_MIN = -2.0   # deg (+ = chin down)
+NECK_FWD = 4.0         # deg, natural forward neck angle
+
+
 class Poser:
     def __init__(self, sk):
         self.sk = sk; s = sk
@@ -58,8 +62,14 @@ class Poser:
     def solve(self, spec):
         sk = self.sk; r = {}
         ly = spec.get("lean_yaw", 0.0)
-        Wp = self.W(spec.get("pelvis", (0, 0, 0)), ly); Wc = self.W(spec.get("chest", (0, 0, 0)), ly); Wh = self.W(spec.get("head", (0, 0, 0)))
+        hy, hp, hr = spec.get("head", (0, 0, 0)); hp = max(hp, HEAD_PITCH_MIN)   # R5: never chin-up / head tipped back
+        Wp = self.W(spec.get("pelvis", (0, 0, 0)), ly); Wc = self.W(spec.get("chest", (0, 0, 0)), ly); Wh = self.W((hy, hp, hr))
         Ws = slerp_m(Wp, Wc, spec.get("spine_mix", 0.5)); Wn = slerp_m(Wc, Wh, spec.get("neck_mix", 0.45))
+        # R5: the neck angles naturally forward (the head keeps its own world orientation); more if the chest leans back,
+        # so the skull centre always sits over / ahead of the neck base in profile
+        cp = math.degrees(math.atan2(float(np.dot(Wc @ UP, FWD)), float(np.dot(Wc @ UP, UP))))
+        nf = spec.get("neck_fwd", NECK_FWD) + max(0.0, -cp) * 0.9
+        Wn = axang(self.PITCH, nf) @ Wn
         r["pelvis"] = Wp; r["spine"] = Wp.T @ Ws; r["chest"] = Ws.T @ Wc; r["neck"] = Wc.T @ Wn; r["head"] = Wn.T @ Wh
         for side in "LR":
             out = self.side_vec(side)

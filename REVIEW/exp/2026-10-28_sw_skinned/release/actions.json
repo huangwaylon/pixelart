@@ -8,5 +8,6 @@
   "dash": {"motion": "motion/dash.json", "loop": null},
   "hurt": {"motion": "motion/hurt.json", "loop": null}
  },
- "dirs": "auto"
+ "dirs": "auto",
+ "pipeline": "r5"
 }

@@ -1,0 +1,102 @@
+{
+ "_doc": "R round 5: matid colours (sRGB, exact) for the guide pass. Body/hair mats = hx.MATS (unchanged); the face mats appear only through the face textures (rig/face_tex or F's face/tex3d). 'skin' is the face base. P: treat them as ordinary materials (suggested ramps: eye_white W, iris h/g/L, lash K, mouth m/R, blush k). Round 5: F's extra mats added (iris_top, iris_low, brow, mouth_in, nose; F's suggested ramps: lash KKK, iris_top hhh, iris ggg, iris_low LLL, eye_white WWW, brow ggg, mouth mmm, mouth_in RRR, blush kkk, nose SSS).",
+ "mats": {
+  "eye_white": [
+   236,
+   236,
+   246
+  ],
+  "iris": [
+   88,
+   64,
+   120
+  ],
+  "lash": [
+   24,
+   16,
+   32
+  ],
+  "mouth": [
+   190,
+   80,
+   90
+  ],
+  "blush": [
+   235,
+   140,
+   150
+  ],
+  "iris_top": [
+   0,
+   128,
+   255
+  ],
+  "iris_low": [
+   128,
+   255,
+   0
+  ],
+  "brow": [
+   255,
+   128,
+   0
+  ],
+  "mouth_in": [
+   255,
+   0,
+   128
+  ],
+  "nose": [
+   0,
+   255,
+   255
+  ]
+ },
+ "base": {
+  "hair": [
+   61,
+   50,
+   53
+  ],
+  "dress": [
+   192,
+   59,
+   61
+  ],
+  "skin": [
+   248,
+   218,
+   194
+  ],
+  "sleeve": [
+   142,
+   34,
+   44
+  ],
+  "socks": [
+   38,
+   42,
+   71
+  ],
+  "boots": [
+   42,
+   34,
+   42
+  ],
+  "bow": [
+   232,
+   96,
+   79
+  ],
+  "obi": [
+   69,
+   56,
+   73
+  ],
+  "eyes": [
+   85,
+   128,
+   162
+  ]
+ }
+}

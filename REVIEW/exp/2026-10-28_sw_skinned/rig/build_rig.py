@@ -28,6 +28,10 @@ for it in range(int(os.environ.get("HEADMAJ", "1"))):
         for c in range(3): np.add.at(vv[:, j], FA_[sel, c], 1)
     fv = vv[FA_[headf]].sum(1); fv[:, 2] *= 1.6  # keep the eyes from eroding
     fmat[headf] = np.array(HM, dtype=object)[fv.argmax(1)]
+# round 5: face zone on the skull (front-facing, z 1.38..1.80, |x| < 0.23) -> skin + face texture (forehead under the fringe included)
+_P3 = V[np.array([f[:3] for f in FC])]; _nr = np.cross(_P3[:, 1] - _P3[:, 0], _P3[:, 2] - _P3[:, 0]); _nr /= np.linalg.norm(_nr, axis=1, keepdims=True) + 1e-12
+_cz = _P3.mean(1); FZ = (flab == "head") & (_cz[:, 2] > 1.36) & (_cz[:, 2] < 1.80) & (np.abs(_cz[:, 0]) < 0.235) & (_nr[:, 1] < -0.05) & (_cz[:, 1] < -0.04)  # F: all front skin, chin up to under the fringe
+fmat[FZ] = "skin"; fmat[(flab == "head") & ~FZ & (fmat == "skin") & ((_cz[:, 2] > 1.70) | (np.abs(_cz[:, 0]) > 0.215))] = "hair"  # scalp/temple outside the face = hair colour
 # per-vertex material (majority of incident faces) -> used for hair masks
 vm_votes = {}
 vmat = np.empty(nv, dtype=object)
@@ -35,7 +39,7 @@ for fi, f in enumerate(FC):
     for v in f: vmat[v] = fmat[fi]  # last wins; refined below for hair
 bowv = np.zeros(nv, bool)
 for fi, f in enumerate(FC):
-    if fmat[fi] == "bow" and flab[fi] == "head": bowv[list(f)] = True
+    if fmat[fi] == "bow" and flab[fi] in ("head", "hair_shell"): bowv[list(f)] = True
 hairv = np.zeros(nv, bool)
 for fi, f in enumerate(FC):
     if fmat[fi] == "hair":
@@ -48,8 +52,9 @@ bone("root", [0, 0, 0], [0, -0.2, 0], None, UP)
 bone("pelvis", [0, 0, 0.90], [0, 0, 1.00], "root")
 bone("spine", [0, 0, 1.00], [0, 0, 1.12], "pelvis")
 bone("chest", [0, 0, 1.12], [0, 0, 1.30], "spine")
-bone("neck", [0, .008, 1.30], [0, .012, 1.43], "chest")
-bone("head", [0, .012, 1.43], [0, .012, 1.85], "neck")
+HF = float(G.get("head_fwd", 0.0))  # round 5: head forward over the neck (neck angles forward from the chest)
+bone("neck", [0, .006, 1.30], [0, .006 - 0.8 * HF, 1.43], "chest")
+bone("head", [0, .006 - 0.8 * HF, 1.43], [0, .006 - 1.2 * HF, 1.85], "neck")
 for s, sx in (("L", 1), ("R", -1)):
     L_ = G["leg." + s]
     bone(f"thigh.{s}", L_["hip"], L_["knee"], "pelvis"); bone(f"shin.{s}", L_["knee"], L_["ankle"], f"thigh.{s}")
@@ -71,13 +76,13 @@ for s, sx in (("L", 1), ("R", -1)):
     bone(f"sleeve.{s}.1", El + 0.02 * B2, mid + 0.03 * B2 - 0.02 * A2, f"forearm.{s}")
     bone(f"sleeve.{s}.2", mid + 0.03 * B2 - 0.02 * A2, cc + 0.06 * B2 - 0.06 * A2, f"sleeve.{s}.1")
 # hair chains from the head mesh
-HC = np.array([0, .01, 1.62 + DZ])
+HC = np.array([0, .01 - HF, 1.62 + DZ])
 HMAT_ = d["head_mat"].astype(str) if "head_mat" in d else np.array(["hair"] * len(HV))
 def col_pts(x0, cond, w=0.025):
     m = (np.abs(HV[:, 0] - x0) < w) & cond & (HMAT_ == "hair"); return HV[m]  # hair-coloured hull only (no bow ribbons / face)
 FR = {}
 for nm, x0 in (("L", .13), ("C", 0.0), ("R", -.13)):
-    P_ = col_pts(x0, HV[:, 1] < -0.12)
+    P_ = col_pts(x0, HV[:, 1] < -0.06 - HF)
     P_ = P_[P_[:, 2] > 1.60 + DZ]; zb = float(np.percentile(P_[:, 2], 2)); zt = 1.80 + DZ  # fringe ends at the brows (not the side hair)
     def yf(z):
         q = P_[np.abs(P_[:, 2] - z) < 0.015]; return float(q[:, 1].min()) + 0.03 if len(q) else -0.2
@@ -195,7 +200,11 @@ for i, n in enumerate(SKA):
     W[idx, BI[f"skirt.{n}.1"]] += pan[i] * tot * (1 - w2) * keep; W[idx, BI[f"skirt.{n}.2"]] += pan[i] * tot * w2 * keep
 for s in "LR": W[idx, BI[f"thigh.{s}"]] += legw[s] / np.maximum(1, leg)
 # head part: head + hair chains (hair material only)
-idx = np.nonzero(np.isin(L, ["head"]))[0]; P = V[idx]; hv = hairv[idx]
+# round 5: SKULL (fused, face + cranium/scalp) = rigid head, blending to the neck under the chin
+idx = np.nonzero(L == "head")[0]; P = V[idx]
+addw(idx, ["neck", "head"], chain_w(P, ["neck", "head"], [([0, -HF, 1.44], UP)], [0.03]))
+# HAIR SHELL (separate, attached): head + hair chains (bangs, sides, back, bun, bow, ribbons)
+idx = np.nonzero(L == "hair_shell")[0]; P = V[idx]; hv = hairv[idx]
 ph = np.degrees(np.arctan2(P[:, 0], -(P[:, 1] - HC[1])))  # 0 front, +90 her left (+X)
 def win(c, wd): dd = (ph - c + 180) % 360 - 180; return np.maximum(0, np.cos(np.clip(np.radians(dd) * 90 / wd, -np.pi / 2, np.pi / 2)))
 wfront = {nm: win(c, 38) for nm, c in (("L", 34), ("C", 0), ("R", -34))}; sf = sum(wfront.values()) + 1e-9
@@ -314,15 +323,11 @@ cenH = (cen.reshape(-1, 3) * np.array([-1, -1, 1.0])) / K; nrmH = nrm.reshape(-1
 lv = np.zeros(len(me.loops), int); me.loops.foreach_get("vertex_index", lv)
 bvh = BVHTree.FromPolygons([Vector(v) for v in V], FC)
 headgrp = np.isin(np.array(flab).astype(str), ["head", "lock_L", "lock_R"])
-for view in AZC:
-    proj, dv = camH2(view); uvl = me.uv_layers.new(name="pj_" + view)
-    cr = proj(V[lv]); uv = np.stack([cr[:, 0] / 128.0, 1 - cr[:, 1] / 128.0], 1); uvl.data.foreach_set("uv", uv.ravel())
-    pm = np.zeros(nf, np.float32); D = Vector(dv)
-    for fi in np.nonzero(headgrp & ((nrmH @ dv) > -0.05))[0]:
-        hit = bvh.ray_cast(Vector(cenH[fi]) + D * 0.006, D, 2.0)
-        if hit[0] is None or hit[3] < 0.008: pm[fi] = 1.0
-    at = me.attributes.new("pm_" + view, "FLOAT", "FACE"); at.data.foreach_set("value", pm)
-    print("proj", view, int(pm.sum()), "of", int(headgrp.sum()), "head-group faces visible", flush=True)
+# round 5: no master-pixel projection. FACE UV for F's textures: front-orthographic planar map of the head (H2 frame):
+#   u = 0.5 + x / 0.44 (her left = image right), v = (z - 1.38) / 0.44; mask attribute fmask = 1 on the front-facing skull faces of the face zone
+uvf = me.uv_layers.new(name="face_uv"); VL = V[lv]; uvf.data.foreach_set("uv", np.stack([0.5 + VL[:, 0] / 0.44, (VL[:, 2] - 1.38) / 0.44], 1).ravel())
+fmk = me.attributes.new("fmask", "FLOAT", "FACE"); fmk.data.foreach_set("value", FZ.astype(np.float32))
+print("face zone faces", int(FZ.sum()), flush=True)
 LIDC = {"leg_L": (255, 0, 0), "boot_L": (255, 0, 0), "foot_L": (255, 0, 0), "leg_R": (0, 255, 0), "boot_R": (0, 255, 0), "foot_R": (0, 255, 0),
         "arm_L": (0, 0, 255), "sleeve_L": (0, 0, 255), "hand_L": (0, 0, 255), "arm_R": (255, 255, 0), "sleeve_R": (255, 255, 0), "hand_R": (255, 255, 0)}
 cl = me.color_attributes.new("LID", "BYTE_COLOR", "CORNER"); lc = np.zeros((len(me.loops), 4), np.float32); lc[:, 3] = 1
@@ -376,8 +381,8 @@ for n_ in MV["S"]:
     A_ = np.concatenate(rows); b_ = np.concatenate(rhs)
     if len(rows) == 1:  # S only (brows): depth from the matching eye
         pe = FA2.get(n_.replace("brow", "eye"))
-        y0 = pe["p"][1] if pe else -0.2; A_ = np.vstack([A_, [0, 1, 0]]); b_ = np.append(b_, y0)
-    P_ = np.linalg.lstsq(A_, b_, rcond=None)[0]
+        y0 = (pe["p"][1] + HF) if pe else -0.2; A_ = np.vstack([A_, [0, 1, 0]]); b_ = np.append(b_, y0)
+    P_ = np.linalg.lstsq(A_, b_, rcond=None)[0] + np.array([0, -HF, 0])  # masters place the head; round 5 moves it forward by HF
     nr_ = bvh.find_nearest(Vector(P_)); nn_ = np.array(nr_[1][:]); nn_ = nn_ / np.linalg.norm(nn_)
     nn_ = 0.5 * nn_ + 0.5 * np.array([0, -1.0, 0]); nn_ /= np.linalg.norm(nn_)  # face normal: half surface normal, half head-forward (hull normals are coarse)
     FA2[n_] = {"p": P_, "n": nn_, "surf": np.array(nr_[0][:])}
@@ -403,7 +408,7 @@ for n_, a_ in FA2.items():
     pw = Vector(Fw(a_["p"])); nw = Vector(Fw(a_["n"]) / K).normalized()
     e.parent = ao; e.parent_type = "BONE"; e.parent_bone = "head"
     e.matrix_world = Matrix.Translation(pw) @ nw.to_track_quat("Z", "Y").to_matrix().to_4x4()
-    FAJ[n_] = {"rest": [round(x, 5) for x in pw], "normal": [round(x, 5) for x in nw], "surf_depth_m": round(float(np.linalg.norm(a_["surf"] - a_["p"]) * K), 4), "surf": [round(x, 5) for x in Fw(a_["surf"])]}
+    FAJ[n_] = {"uv": [round(0.5 + float(a_["p"][0]) / 0.44, 4), round((float(a_["p"][2]) - 1.38) / 0.44, 4)], "rest": [round(x, 5) for x in pw], "normal": [round(x, 5) for x in nw], "surf_depth_m": round(float(np.linalg.norm(a_["surf"] - a_["p"]) * K), 4), "surf": [round(x, 5) for x in Fw(a_["surf"])]}
 ao["face_anchors"] = json.dumps(FAJ)
 json.dump({"_doc": "R round 3: face anchors on the head (contract frame, metres, rest). Empties face.<name> in rig.blend are parented to the head bone; render_motion.py exports them per frame (info frames[i].face). Back-projected from the S master anchors (v2/m96/heads/anchor.json), mirror-symmetrised; check = reprojection error vs the SE/E master anchors in px.",
            "anchors": FAJ, "check_px": chk}, open(os.path.join(os.path.dirname(os.path.abspath(BLEND)), "face_anchors.json"), "w"), indent=1)

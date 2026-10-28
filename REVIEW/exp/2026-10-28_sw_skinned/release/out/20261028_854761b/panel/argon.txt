@@ -1,0 +1,18 @@
+SCORE: 5/10
+SCORE AD: 5/10
+SCORE ANIM: 5/10
+SCORE GAME: 5/10
+SUB-SCORES: on_model: 5/10, pose_stance: 4/10, animation: 5/10, pixel_quality: 5/10, faces: 6/10, completeness: 5/10
+
+EXPLICIT ANSWERS:
+(a) HEAD JUTTED BACK: Yes. In `idle` E/W/NE/NW f00–f11 and `walk` E/W f03–f05, the head sits behind the vertical line of the spine/neck while the chest thrusts forward, creating an unnatural S-curve neck.
+(b) BALDING / THIN BANGS: Yes. In `walk`/`idle` S f00–f07, `hurt` S/SE/SW f01–f03, and `jump` S/SE/SW f04–f07, the bangs separate or ride too high on the forehead sphere, exposing large skin wedges up toward the crown.
+(c) STANCE LEANS BACK: Yes. Across `idle` E/NE/NW/W f00–f11 and `walk` E/W f00–f07, the pelvis pushes forward and the upper torso/head tip backward (-6° to -12°) instead of a natural 0–4° forward athletic poise.
+
+ISSUES:
+[OWNER R] walk/idle/jump/hurt E/W/NE/NW all frames: Head anchor and upper spine are offset behind the hip/chest line causing a swaybacked, head-jutted-back posture -> shift head bone 3–4 px forward in local Z and pitch spine1 +6° forward in rest/base poses.
+[OWNER R] walk/idle/jump/hurt S/SE/SW all frames: Front bangs mesh is too short and splits into gaps when the head tilts back (`hurt` f01–f03, `jump` f04–f07), reading as a receding hairline -> lower bangs geometry 3 px toward eyebrows and add an underlying dark hair cap over the upper forehead.
+[OWNER P] run/dash all sheets: `run` is missing E and W rows (only 6 directions), and `dash` is missing NE, NW, and W rows (only 5 directions) -> export all 8 directional rows for every action sheet.
+[OWNER R] run SE/NE/NW/SW f00–f07 & dash E/SE/SW f03–f07: Skirt mesh collapses tightly between the thighs or clips through upper legs, losing the m96 flared bell silhouette -> widen skirt bone flare weights and add leg-skirt collision repulsion.
+[OWNER M] dash S/N f03–f09 & hurt S/SE/SW f01–f03: Arms T-pose symmetrically straight out to the sides like a scarecrow rather than an agile swordswoman dash or recoil -> pose one arm leading/guarding across the torso and stagger shoulder heights.
+[OWNER P] walk/run S/SE/SW f01–f06: Pixelated legs turn into thin 2–3 px jagged sticks and lose the red sock-top band and boot cuff distinction present in m96 -> thicken calf/boot proxy meshes and enforce colour-indexed bands for the sock-top and boot rim.

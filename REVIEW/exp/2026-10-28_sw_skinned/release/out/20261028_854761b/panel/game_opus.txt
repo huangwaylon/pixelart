@@ -1,0 +1,21 @@
+SCORE: 4/10
+
+- 1x readability: 5
+- Direction consistency: 4
+- Action clarity: 6
+- Timing/feel: 6
+- Ship-readiness: 3
+
+**(a) Head jutted back: Yes, in profile and 3/4 views.** In idle E all 12 frames, idle W f00–f11 and walk E f03–f07, the skull and hair mass sit well behind the neck. The face sits roughly above the collar instead of in front of the spine line. NE/NW idle look the same. Jump E/W f05–f07 tip the head back further. Hurt E/W f01–f03 is meant to whip back, so that one is fine.
+
+**(b) Balding / thin bangs: Yes, in S, SE and SW.** In idle S and walk S (all frames), the hair is a thin cap under the bow with a wide band of forehead skin. Run S f02/f06 look almost bald on top. SE/SW idle and run show skin between the fringe clumps, which matches the gate (24–30 px above the brow). E, W and the back views are fine.
+
+**(c) Leaning back: Yes.** In idle E/W/NE/NW the head sits behind the feet, so she tips back instead of 0–4° forward. Walk SE f00–f02 and dash E f01–f02 lean back the same way.
+
+ISSUES:
+1. [R] run E, W and dash NE, NW, W: these rows are missing from the sheets, so the 8-direction set is incomplete -> render and export all 8 rows for every clip before review.
+2. [R] idle/walk E, W, NE, NW, all frames: head sits behind the spine line -> move the neck/head pivot forward 2–3 px, head over the chest, and re-anchor the face.
+3. [R/F] all actions S, SE, SW, all frames: high hairline, skin showing between bangs -> extend the fringe mesh down to the brow line and add 2 more bang clumps; F checks that the brows sit under the hair.
+4. [M] idle E, W, NE, NW and walk SE f00–f02: torso leans back -> pitch the spine 3° forward and level the head; put the center of mass over the mid-foot.
+5. [P] run SE, SW f01–f05 and jump S f04–f09: legs are 1-px sticks that split or detach at 1x -> set a 2-px minimum leg width, close the knee/sock-band joints, and fix the limb-audit frames.
+6. [P/M] run NE, NW (boil 0.117) and shade_swap failing on every clip: the dress shading flickers and the SE/SW walk dress turns into a blob -> lock the shade bands to normals with hysteresis, and in M narrow the sleeve flare at 3/4 views so the arms read.

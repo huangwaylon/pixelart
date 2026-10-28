@@ -222,6 +222,39 @@ Coordination contract: `CONTRACT.md`. This experiment has two roles: R (rigger: 
 - Inner thigh radius at the hem .064 (outer .074), centres ±.092: a leg gap of about 3 px under the hem.
 - Board: `rig/qa/r4_walk_run_SE.png`.
 
+### Round 5 (R): real 3D head + face textures, no projection (rig r8b)
+**Process.** `build_head3d.py` (pixtools) → `build_mesh.py` → `build_rig.py`.
+
+**Skull.**
+- The cranium is an ellipsoid (centre 0, 0, 1.665; radii .226/.200/.228, H2 units).
+- The face is added as hull voxels below FTOP 1.772, within |x| < .205 and in front of y .06. It covers skin-class voxels and the front slab y < −.045.
+- The forehead is clipped to y ≥ y_clip(z), which eases back into the cranium.
+- The cranium is labelled scalp (hair colour).
+
+**Hair shell.**
+- It is the hull minus the skull, the cheek curtain (|x| ≥ .205, y < −.045) and the visor (hull in front of the fringe layer).
+- The fringe is a layer 0.04 thick on the forehead. Clump width .047. Tips at 1.772/1.786; notches +.026.
+- Marching cubes with σ 1.2. The hair stays a separate shell, so the springs move it freely.
+- The bow (knot, lobes, ribbons) is lofted onto the hair group.
+
+**Head forward.** The head is moved +0.025 units toward the front; the neck tilts about 9°.
+
+**Face.**
+- UV `face_uv` is a front planar map; `fmask` marks the front skull faces.
+- Expression textures are switched per frame from M's keys. Search order: `face/tex3d` (F), then `rig/face_tex` (R placeholders from `make_face_placeholder.py`).
+- The guide pass is EEVEE emission with exact colours. Face mats are listed in `rig/face_mats.json`.
+
+**Face anchors.** They are triangulated as in round 3, shifted forward, and carry `uv`.
+
+**QA: `rig/qa/r5_head_QA.png`.**
+- Fringe bottom in S is at about master row 47–48 (F's target 46.5).
+- No scalp is visible in any of the 8 directions.
+- The face shows in profile (E about 7 px wide; master about 9).
+
+**Known issues.**
+- The hair surface is lumpy (voxel source), so the cel bands blotch.
+- In E/NE the bow lobes read as red "horns" edge-on.
+
 ### Known issues / next
 - **Placeholder head.** The H2 head has a ragged hair/skin boundary and blob eyes. Use `--stamp` for now. The proper fix is heads96 layers that turn with the head.
 - **SE body yaw.** The master SE is drawn more frontal than a true 45° camera. `--yaw=-15` approximates this (not the default).
@@ -796,3 +829,85 @@ Critiques are in `face/crit/{opus,argon}_r{1,2}.txt`.
   - Bug found: R's `occ_m` of 0.0002 m hid the W eye during the idle turn, so occlusion now requires occ_m > 1 cm.
 - **`focused`, final:** a 2-row lower lid, the V brow moved 1 row down so its inner end joins the lash, a short set mouth and no blush. Scores: Argon 8, Opus 6 (it is still close to determined at 1x in SE/SW, where the near brow meets the hair).
 - NE/NW cheek-sliver flicker is routed to R and P (head silhouette and pixel step).
+
+### P rounds 3–5 (limb gate, shapes, GIF writer, smears, 8 directions, one-pipeline head)
+
+**CLI (stable; the integrator calls these):**
+```
+render/p_run.sh "<motions>" "<views>" [chain flags]   # OUTD=p5 (default) | NORENDER=1 = chain only; motions = motion/<n>.json or motion/variants/<n>.json
+render/pixel_chain.py <clip>/<act>_<V>.json [--no-temporal --no-protect --no-sep]   # also the post stage of R's render_motion.py
+render/p_audit.py [out_dir]     # limb-audit gate table (exit 1 on any failing frame) -> <out_dir>/limb_audit.md
+render/gifcheck.py [paths] [--json f] [--oneshot jump,dash,hurt]   # GIF gate (exit 1 on any flag)
+render/gifio.py                 # write_gif(path, frames, ms, bg, scale): the experiment's GIF writer
+render/p2_eval.py               # pxeval table; env POUT=p5 ACTS=".." VIEWS=".."
+```
+Outputs per clip: `<act>_<V>_px/fNN.{png,txt,json}`, `_4x.gif`, `_sheet.png`, `_px.json` (includes `limb_audit`), and `_limbs.json` (per frame and per limb).
+
+**Round 3**
+- **Limb audit gate** (`limb_audit` in `pixel_chain.py`, aggregated by `p_audit.py`). Per frame it checks each of leg.L/R, arm.L/R (sleeve tube + bag) and hand.L/R:
+  - VANISHED: visible in 3D but no sprite pixels.
+  - SPLIT: more 8-connected pieces than the visible 3D limb has. Interior lines of the same limb don't count as splits.
+  - THIN: a fill pixel outside a 2×2 core plus a 1 px fringe.
+  - DETACHED: a piece more than 1 px of outline away from the rest of the figure.
+- **Fixes added to pass it:**
+  - Arms get the 2 px guarantee too (`PROTECT_ARMS`).
+  - Hi-res slivers under 1.5 px are not protected.
+  - Limb crumbs smaller than `SPECK` = 6 px are relabelled.
+  - A final width repair turns limb slivers into outline, only while the limb keeps a core.
+  - The tex head could overwrite a hand in front of the face; it was then limited to cells that are head in the part pass.
+- **Shape fixes** (`shape_fixes`, on labels, before the outline):
+  - A-line skirt: the flare below the hip is capped at `ALINE` = 0.6 px per row and side. Only the outer edge that is open to the background is shaved.
+  - Median-smoothed hem line (no stair-step corners).
+  - Skin band capped at `SKINMAX` = 3 rows under the hem.
+  - Convex boot-toe corners are shaved, keeping the sole row and ≥ 3 px width.
+  - The remaining 1x "tent" is mostly sleeve bags plus spring-flared skirt panels. R narrowed the hem in r7; M was asked to cap the side panels.
+- **GIF writer `gifio.py`:**
+  - loop=0;
+  - every frame ≥ 20 ms;
+  - delays quantised to GIF centiseconds with error diffusion, so the cycle time is kept (Pillow had been truncating 105 → 100 ms, so every walk ran 5% fast);
+  - full opaque frames with disposal 2 and optimize off, so no ghosting;
+  - one global exact palette;
+  - identical neighbours merged, and a duplicated first frame at the seam folded in.
+- **`gifcheck.py`** flags NO_LOOP, SHORT_FRAME, GHOST_RISK, GHOSTING, SEAM (last → first > 1.5 × the largest in-cycle change, or a duplicated seam frame; one-shots skipped) and DUP_FRAMES.
+  - When first run it flagged 4 of 208 experiment GIFs (M's comparison GIFs with 10 ms frames). Now: **1212 GIFs, 0 flags**.
+- F's face layer was integrated (`apply_face`, anchors via `face/f_render.py`) for the round-3/4 build `out/p3`: 6 actions × 8 views. It was **retired in round 5** (see below). `out/p3` stays as the projected-face A/B baseline.
+
+**Round 4**
+- **Smear frames** for M's dash. Smear frames are those whose motion `key` contains SMEAR, or that have `"smear": true`. Following ANIM_DIRECTION §4.3:
+  - Smear 1: two flat afterimages of the last pre-smear pose, 6 and 12 px back along the screen travel direction (computed from her forward vector through the game camera, per view).
+  - Smear 2: one afterimage at 8 px.
+  - 3–4 one-pixel speed lines (8–14 px) from the trailing edge.
+  - Locked-palette stand-ins: near afterimage k, far afterimage m, streaks W/k. Solid, no outline, never drawn over the body. The stretched body itself is M's pose.
+- **8 directions:**
+  - far leg = her left for SE/E/NE and her right for SW/W/NW;
+  - align.json is used for every view, with mirrored masters as the fallback for W/SW/NW;
+  - all 8 views were rendered through the chain (`out/p3`, 6 actions × 8; audit and GIF gates run).
+
+**Round 5 (owner: "pixelate the face like the rest of the body, don't special case it")**
+- **Removed** from `pixel_chain.py`: the tex head, texel-phase sampling, head hold, part hold, `--stamp` and the face_layer call. The hair|skin interior line now applies to any part, not just the head.
+- **Face materials are ordinary materials.** They come from R's `rig/face_mats.json` (eye_white, iris, lash, mouth, blush, plus F's iris_top/iris_low, brow, mouth_in, nose), with F's ramps. Any new matid without a ramp gets its nearest palette colour.
+- **Thin-feature protection now covers the face:**
+  - iris/eyes get the 2×2 core;
+  - lash/brow/mouth/nose/eye_white get presence via the skeleton;
+  - several pieces are allowed (two eyes);
+  - thin-feature pixels are exempt from spike and orphan cleaning.
+  - Synthetic test: a 1.6 × 1.1 px iris, a 0.4 px lash line and a 0.5 px mouth all survive. Without protection the iris and mouth vanish.
+- **Bug found and fixed:** the round-5 removal had also cut the outline block. While it was missing, a leg with no outline became a separate component, and `main_comp` deleted it (jump S f04 "VANISHED"). The limb gate caught it.
+
+**Gates on `out/p5`** (R's 23:16 rig with the WIP 3D face, M's round-3/4 motion; SE/E/S × walk/run/idle/jump/dash/hurt):
+- GIF check: 18/18 pass.
+- Limb audit: 11 of 18 clips pass. The failures are SPLIT/DETACHED on legs in S views (jump S 5/16, dash S 3/13, idle S 3/12, hurt S 3/9), plus run SE f00, dash SE f04/f05 and hurt S. None of the frames is VANISHED.
+- pxeval:
+
+  | clip | boil | shade_swap |
+  |---|---|---|
+  | walk SE / S | **.020 / .016** | .026 / .030 |
+  | idle SE / E / S | **.017 / .014 / .017** | .019 / .016 / .020 |
+  | dash SE / E / S | .042 / .072 / .023 | .017–.019 |
+  | run, jump, hurt | .03–.15 | – |
+
+  Without the projected head, shade_swap dropped about .01 (walk SE .038 → .026), as predicted in round 2. It still sits just above the .015 gate everywhere except hurt SE/S, where it is .015. Boil still fails on run/jump/hurt (limb motion > 2 px per frame).
+- **The face at 1x:** the eyes, iris and mouth now come out of the standard chain in S and SE.
+- **Open:**
+  - Re-tune after R's final round-5 head (rig.blend changed again at 23:46) and F's textures. Iris contrast is the remaining issue: purple iris → g reads brown.
+  - The S-view leg splits: overlapping tucked legs and a K line across the thigh. The audit flags them; they are not fixed.

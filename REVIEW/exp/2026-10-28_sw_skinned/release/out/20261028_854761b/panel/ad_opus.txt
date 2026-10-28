@@ -1,0 +1,17 @@
+SCORE: 4/10
+
+On-model 4 · Outline/cleanliness 5 · Shading/form 3 · Silhouette 4 · Face 5
+
+(a) **Head jutted back: yes, in the side and three-quarter views.** The hair mass sits well behind the neck line, so the skull reads as hanging back. Clearest in idle E f00–f11, walk E f02–f05 and W f04–f07, idle NE/NW, and dash E f00–f02. S and N are fine.
+
+(b) **Balding / thin bangs: partly.** In S the fringe is a thin strip under the bow band with a tall forehead (walk S all frames, idle S f00/f06). In NE/NW, vertical lines of skin-coloured pixels show through the side locks (walk NE f00–f07, run NE f02–f07, idle NW, hurt NW). That reads as scalp gaps.
+
+(c) **Lean back: slight.** Idle E/W and NE/NW push the chest up and tip the head back about 3–6°, with the hips pushed back. Jump E/W f06–f07 and hurt E f02–f03 arch backwards, which is acceptable for those moments. Walk and run lean forward correctly.
+
+ISSUES:
+1. [OWNER R] all actions, E/W/NE/NW, all frames: back hair volume extends far behind the neck, so the head looks jutted back → shrink the back-hair shell about 30% and pull it toward the neck; move the head pivot forward so the chin is over the sternum.
+2. [OWNER P] all actions, NE/NW/N, most frames: blotchy dark-red patches on the dress and stray light pixels; the sleeves merge into a sweater-like blob → use a 3-tone ramp per material with no patches under 2 px, and outline the sleeves separately from the torso.
+3. [OWNER R] all actions, all directions: the outfit reads as an oversized poncho, missing the master's distinct bell sleeves, cinched obi waist and flared A-line skirt → narrow the torso, tighten the waist at the obi, and widen the skirt hem relative to the waist.
+4. [OWNER R/P] walk/run/idle, NE/NW, f00–f07: skin pixels show through the side locks, and the S fringe is too short → make the side locks opaque with an inner shadow, and extend the bangs 2–3 px down to the brows.
+5. [OWNER F] dash E f03–f05, idle E f06–f09, hurt W f01–f03, run SW f01–f06: the profile face breaks into dark smears and the open mouths become toothy blobs → use hand-made profile mouth and eye sprites, and limit open-mouth shapes to a maximum of 3×2 px.
+6. [OWNER M] idle E/W/NE/NW, all frames: hips pushed back and chest up gives a backward-leaning S-curve → set the spine 2° forward and keep the head level, with the pelvis under the ribcage.

@@ -15,7 +15,7 @@ GROUPS = {
     "hair_back": dict(f=1.9, z=0.70, gw=0.20, cd=1.4, follow=0.0, gain=0.8, mx=28),
     "bun": dict(f=3.6, z=0.30, gw=0.00, cd=0.2, follow=0.0, gain=3.0, mx=16),
     "bow": dict(f=3.4, z=0.50, gw=0.08, cd=0.8, follow=0.15, gain=0.8, mx=24),
-    "sleeve":     dict(f=2.3, z=0.34, gw=0.45, cd=1.6, follow=0.15, gain=0.6, mx=25),
+    "sleeve":     dict(f=2.3, z=0.34, gw=0.55, cd=1.6, follow=0.15, gain=0.45, mx=22),
     "skirt":      dict(f=2.8, z=0.3, gw=0.12, cd=1.4, follow=0.15, gain=1.7, mx=34),
     "obi_tail":   dict(f=2.0, z=0.22, gw=0.50, cd=1.5, follow=0.8, gain=1.5, mx=40),
 }
@@ -192,14 +192,14 @@ class ChainSim:
     SKIRT_RAD_CAP = 15.0
     SKIRT_RAD_CAP_FB = 26.0
 
-    def skirt_radial_cap(self, b0, b, Dp, d):
+    def skirt_radial_cap(self, b0, b, Dp, d, extra=0.0):
         sk = self.sk; d0 = nrm(Dp @ self.rest_seg[b])
         r0 = sk.head0[b0] - sk.head0["pelvis"]; r0[2] = 0.0; r = nrm(Dp @ nrm(r0))
         rp = r - np.dot(r, d0) * d0
         if np.linalg.norm(rp) < 1e-6: return d
         rp = nrm(rp); q = np.cross(d0, rp)
         a_, b_, c_ = float(np.dot(d, d0)), float(np.dot(d, rp)), float(np.dot(d, q))
-        cap = math.radians(self.SKIRT_RAD_CAP_FB if b0.split(".")[1] in ("F", "B") else self.SKIRT_RAD_CAP)
+        cap = math.radians((self.SKIRT_RAD_CAP_FB if b0.split(".")[1] in ("F", "B") else self.SKIRT_RAD_CAP) + extra)
         phi = math.atan2(b_, a_)
         if phi <= cap: return d
         m = math.hypot(a_, b_); a_, b_ = m * math.cos(cap), m * math.sin(cap)
@@ -224,6 +224,10 @@ class ChainSim:
                 if g == "skirt": d_f = self.skirt_radial_cap(ch[0], b, D[anc], d_f)
                 y.append(y[-1] + d_f * self.lens[b])
             y = np.array(y); self.collide(g, ch, y, H, T)
+            if g == "skirt":   # the thigh collision may push a panel out a little past the cap (no leg poke-through), never more than +5 deg
+                for i, b in enumerate(ch):
+                    d = self.skirt_radial_cap(ch[0], b, D[anc], nrm(y[i + 1] - y[i]), extra=5.0)
+                    y[i + 1:] += (y[i] + d * self.lens[b]) - y[i + 1]
             for i, b in enumerate(ch):
                 pred = Dp @ self.rest_seg[b]; Db = min_rot(pred, y[i + 1] - y[i]) @ Dp
                 r[b] = Dp.T @ Db; Dp = Db

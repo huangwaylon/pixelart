@@ -154,6 +154,26 @@ it in R's status log, and M will then omit it.
   - **Red collar over the chin**: the head stamps included the kimono collar, which became hull geometry and moved with the head. It is removed from the head
     masks (dress-red pixels below the mouth row) and the hull is rebuilt; no red over the chin in walk/run SE now (rig/qa/r4_walk_run_SE.png).
 
+- 01:10 R: **ROUND 5 rig (r8b) landed: real 3D head, no projection.** (M: please re-bake; I: re-render.)
+  - **No projection or stamp:** the `tex` pass is gone (render_motion skips it: there are no pj_ UVs). rig/tex/ stays only as the archived A/B baseline.
+  - **3D head (rig/build_head3d.py):** the m96 visual hull is now just the silhouette reference.
+    - SKULL = fitted cranium + face/cheeks/jaw, with a natural forehead sloping into the cranium. It is fused into the body.
+      Scalp = hair colour, so no skin shows between clumps or at the parting.
+    - HAIR = a separate attached shell (bob, crown, back hair, bun) + a **full fringe lying on the forehead**: thick, even clumps 2.5 px wide.
+      Tips are at about master row 47 in S (measured 47-48; F asked for 46.5), with notches where the brows peek through.
+      The master's bang overhang ("visor") and the side-hair curtain in front of the cheeks are removed, so the profile face shows in E/W.
+    - Side locks frame the face to the chin. The **bow is modelled** (knot + 2 lobes + 2 ribbon tails) on bow_knot/bow.*/hair_back.*.
+  - **Face (with F):** UV `face_uv` = front planar (u = 0.5 + x/0.44 her left = image right, v = (z - 1.38)/0.44, H2 units) on the skull.
+    `fmask` = all front skin from the chin up to under the fringe (F's request). F's face/tex3d/ textures are live:
+    `<face>[_blink|_half][_open].png` (matid-coded, alpha 0 = base skin) + `_col.png` for the preview. They are switched **per frame inside the render** from M's
+    `face`/`blink`/`mouth` keys (render_motion.face_tex(); the chosen file is written to info frames[i].face_tex). My placeholders (rig/face_tex/) are only a fallback.
+  - **guide pass** is now EEVEE emission at 1 sample (exact colours): vertex matid colours + face texture mats. **P:** the matids are hx.MATS + rig/face_mats.json
+    "mats" (eye_white, iris, lash, mouth, blush + F's iris_top, iris_low, brow, mouth_in, nose); treat them as ordinary materials. The `lid` pass is unchanged.
+  - **Stance / head:** the spine is vertical and natural (no arch). The neck angles about 9 deg forward from the chest. The head bone and mesh sit forward of the
+    neck (E-profile gate: head centre y +0.015 m >= neck base y -0.005 m). rest_skeleton.json: neck/head and all hair/bow/bun bones changed.
+  - QA: rig/qa/r5_head_QA.png (8-dir rest at 4x + 1x; SE/S/E head tilt +-15, nod, turn 20, bangs/side/back/bun/bow at the spring limits, blink;
+    R's QA chain = r1 chain + face mats as ordinary materials).
+
 ## Status log (M)
 - (M writes here)
 - 2026-10-28 11:50 M: started. Building `motion/scripts/` (FK + analytic 2-bone leg IK + spring sim + own capsule preview). Until `rig/rest_skeleton.json` exists I use a stand-in `motion/standin_skeleton.json` (H2 armature joints rotated to face +Y, so .L = -X, plus guessed secondary chains). Assumptions about R's file: armature object at identity, `roll` = EditBone.roll in radians, bone rest matrix = Blender vec_roll_to_mat3(tail-head, roll); `rot` = pose rotation_quaternion with L = B^-1 * r * B. I will NOT scale pelvis (Blender inherit_scale would shrink the legs); scale only on spine/chest/head, small (0.96..1.04).
@@ -245,6 +265,16 @@ Lead diagnosis (from render/out/walk/walk_SE_px_hs + walk_SE_px, at 4x):
   **Requests -> M:** 12-frame walk/run or holds on the passing poses, and quantised head turn/tilt (hold >= 2 frames), which removes the tex-head
   resample swaps (~.01). **-> R:** in walk SE f04/f05 the forward sole reaches row 128.6, so it is clipped at the cell bottom with dy=1.
   FEET_JITTER in SE/E is real 30-degree perspective of the stride (~7 px), not jitter.
+- 23:55 P (rounds 3-5): **CLI for I (stable):** `render/p_run.sh "<motions>" "<views>"` (OUTD=p5, NORENDER=1), `render/pixel_chain.py <json>`,
+  gates `render/p_audit.py <out>` (limb audit, exit 1 on any failing frame) and `render/gifcheck.py <paths>` (exit 1 on any flag),
+  writer `render/gifio.py write_gif()`.
+  Round 5: every head/face special case is out of the chain (tex, head hold, stamp, face_layer). Face matids come from rig/face_mats.json as ordinary
+  materials, with thin-feature protection on iris/lash/brow/mouth. Round 4: dash smear frames (key contains SMEAR) get afterimages + speed lines;
+  all 8 views run through the chain. Round 3: limb gate, A-line/hem/skin-band/toe shape fixes, GIF writer (1212 experiment GIFs, 0 flags).
+  out/p5 (R's 23:16 rig): GIF 18/18 pass, limb audit 11/18 clips pass (S-view leg SPLIT/DETACHED, no VANISHED);
+  walk SE boil .020 / shade_swap .026, idle .014-.017 / .016-.020.
+  **R:** S-view tucked legs get a K line across the thigh, so the audit reads split legs; the purple iris maps to palette g (brown).
+  If iris should read blue/dark, add a ramp in face_mats.json `ramps`. I'll re-run p_run.sh on your final r8 + F's textures.
 
 ## ROUND 2 addendum: posing direction (owner, 2026-10-28)
 > "I want more elegant posing during the different actions. Not slouched, needs to be confident, feminine."
@@ -450,3 +480,40 @@ Goal: one consistent, gated set of animations the owner can review, in **all 8 d
   any of the 8 directions, including during head tilt and spring motion. The side locks frame the face down to about the chin.
   - Hair volume overlaps the skull fully, so there's no skin showing through between the clumps or at the parting.
   - QA: 8-direction rest + head tilt ±15° + spring swing sheet, at 1x and 4x.
+- 23:45 F (ROUND 5): **face = hi-res textures on R's 3D head, pixelized by the standard chain.** The 2D face_layer is retired (kept in face/ as the
+  A/B baseline only). Agreement proposal for R + P (I adopt everything R already built in r8):
+  - **UV:** R's `face_uv` + `fmask` (rig/build_head3d.py, planar front map) as is. I calibrate my layout on it: a UV-coded texture rendered
+    through render_motion.py at rest S (face/f3d/f3d_fit.py -> face/f3d/uvfit.json, cubic fit, rms 2 / 20 texels). So R may re-sculpt and re-map
+    freely; after any face_uv change I re-run the fit (2 min). **R: please keep fmask = all front skin from the chin up to under the fringe.**
+  - **Textures:** `face/tex3d/<face>[_blink|_half][_open].png` (matid-coded RGBA, alpha 0 = base skin) + `<name>_col.png` (palette colours for pv),
+    1024 x 1024 sRGB, exactly R's `face_tex()` lookup. Written by `face/f3d/f3d_lib.py` for 17 expressions x {open, half, blink} x {mouth default, open},
+    plus alias copies of M's names (joy, cheerful, pain/pained, land, dash, blink_closed/blink_half). Switching = R's set_face() per frame. Done, live now.
+  - **Materials** (ordinary chain materials; colours sRGB exact). R's rig/face_mats.json names and colours: eye_white, iris, lash (lash + pupil), mouth, blush.
+    **F adds** (R: please put them in face_mats.json "mats"): iris_top (0,128,255), iris_low (128,255,0), brow (255,128,0), mouth_in (255,0,128),
+    nose (0,255,255). **P: suggested flat ramps:** lash KKK, iris_top hhh, iris ggg, iris_low LLL, eye_white WWW, brow ggg (m96 brows are g, not K),
+    mouth mmm, mouth_in RRR, blush kkk, nose SSS. Thin-feature class for lash/brow/mouth/iris_top/iris_low. Please read rig/face_mats.json (R's file);
+    your pixel_chain.py currently defaults to rig/matids.json with other names/colours (lash_brow (20,12,16), iris (60,96,170), ...). Until you switch,
+    face/f3d/f3d_chain.py registers them in memory for my tests (your code unchanged).
+  - **Hairline / brows (R, important):** the design puts brows on m96 S rows 46.5-48.5, lash row 50 and iris 51-53 (master coords; the output sprite
+    is lifted by lift_px). Measured on r8 at rest (first non-hair row under the fringe, master coords): **S fringe bottom ~ row 52 across cols 56-71,
+    SE ~ row 50.5**. That covers the brows and the upper half of the eyes, and the pixel chain then keeps only a K line under the bangs.
+    **Request:** fringe tips at row 46.5 +-0.7 in S (just above the brow line, with 1 px gaps where the brows peek), i.e. about 5 rows (~8.5 cm in head
+    height) shorter at the centre. Side locks stay long. Keep the clumps thick and even so it doesn't look balding.
+  - **P:** shape_fixes() crashes on a 1-frame rest render (pixel_chain.py:253, empty `sk[yh]`); my tests use SHAPE=0.
+- 23:50 I: **round-4 baseline archived** = release/out/20261028_854761b (symlink release/out/r4_baseline; projected face + F face layer; 6 actions x 8 dirs).
+  GATES.md now has the **round-5 gates**:
+  - posture (E profile): torso pitch, head pitch, and head-forward = head centre x - neck base x per frame. Blender on the build's motion snapshot
+    (release/rl_pose.py, same pose application as render_motion.py) plus R's E-view pts.
+  - bangs = 1x skin cells above the brow/eye line with hair above them in the same column, from R's matid x P's part pass, in all 8 dirs.
+  Baseline numbers: head-forward FAILS on every action (E min -2 to -7 px); idle torso -5..-7 deg and walk -3 deg (leaning back); bangs clean in 23/43 clips
+  (S/SE/SW up to 16-30 skin px above the brow). Panel 4-5/10 (PANEL.md); all four critics independently report jutted-back head, lean-back and balding bangs.
+  Next build switches release/actions.json to `"pipeline": "r5"`: no F face pass, P chain only, R's own --preview. Then an A/B vs the baseline.
+
+# ROUND 5 proposals (I: panel on the round-4 baseline, release/out/20261028_854761b/PANEL.md)
+1. [R+M] Head forward over the neck: move the head/neck pivot ~2-4 px forward in the rest pose (R) and drop the head pitch-up and backward offset (M). Gate: E head-forward >= 0 every frame (now 0/6 actions).
+2. [M] Stance: idle/walk spine 2-4 deg forward, head level, pelvis under the ribcage. Less arch on the dash wind-up (-16 deg) and the jump apex (-12 deg).
+3. [R(+F)] Bangs: a full fringe to the brows, overlapping clumps and a dark cap under them. No skin between the clumps in S/SE/SW or through the side locks in NE/NW (gate: bangs 23/43).
+4. [P] shape_fixes crash (empty skeleton row) drops run E/W and dash NE/NW/W.
+5. [M] hurt/dash: replace the symmetric T arms with asymmetric guard/recoil arms and shoulders up.
+6. [P] Legs 2 px minimum in run/jump at 1x; keep the sock-top band and boot rim (limbs 25/43).
+7. [P/R] Dress and sleeve blob: separate the sleeves from the torso, a 3-tone ramp with no sub-2-px patches (shade_swap 1/43); narrower waist and hem flare (R).

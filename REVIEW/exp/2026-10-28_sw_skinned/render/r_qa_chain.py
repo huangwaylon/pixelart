@@ -12,6 +12,24 @@ sys.path.insert(0, '/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-
 import hx  # noqa: E402
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from r_tex_head import tex_head  # noqa: E402
+# round 5: face materials from the 3D face textures are ordinary materials (rig/face_mats.json)
+import json as _j
+_FM = _j.load(open('/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/rig/face_mats.json'))['mats']
+for _k, _v in _FM.items(): hx.MATS[_k] = tuple(_v)
+hx.MN = list(hx.MATS); hx.MC = np.array([hx.MATS[k] for k in hx.MN], float)
+hx.RAMP.update({'eye_white': 'WWW', 'iris': 'ggg', 'lash': 'KKK', 'mouth': 'mmm', 'blush': 'kkk', 'iris_top': 'hhh', 'iris_low': 'LLL', 'brow': 'ggg', 'mouth_in': 'RRR', 'nose': 'SSS'})
+hx.ALLOW.update({'eye_white': 'W', 'iris': 'g', 'lash': 'K', 'mouth': 'm', 'blush': 'k', 'iris_top': 'h', 'iris_low': 'L', 'brow': 'g', 'mouth_in': 'R', 'nose': 'S'})
+def _edges_hi(F, w=6, dthr=0.035):
+    from scipy import ndimage as nd
+    al = F['alpha']; dep = F['dep'][..., 0]
+    sil = al & ~nd.binary_erosion(al, iterations=w)
+    dl = nd.grey_dilation(np.where(al, -dep, -9), size=(3, 3)); dd = al & (dep - (-dl) > dthr)
+    grp = {'hair': 0, 'boots': 5, 'dress': 1, 'sleeve': 1, 'bow': 2, 'skin': 3, 'obi': 4, 'socks': 5, 'eyes': 6, 'eye_white': 6, 'iris': 6, 'lash': 6, 'mouth': 6, 'blush': 3, 'iris_top': 6, 'iris_low': 6, 'brow': 6, 'mouth_in': 6, 'nose': 3}
+    Gm = np.array([grp[n] for n in hx.MN] + [-1])[F['mid']]
+    mb = al & ((Gm != np.roll(Gm, 1, 0)) | (Gm != np.roll(Gm, 1, 1))) & (Gm != 6) & (np.roll(Gm, 1, 0) != 6) & (np.roll(Gm, 1, 1) != 6)
+    inner = nd.binary_dilation(dd | mb, iterations=max(1, w // 2 - 1)) & al
+    return sil | inner
+hx.edges_hi = _edges_hi
 P, N, OFF = 8, 128, 256
 BG = (110, 110, 110)
 DTHR = float(os.environ.get('DTHR', '0.025'))

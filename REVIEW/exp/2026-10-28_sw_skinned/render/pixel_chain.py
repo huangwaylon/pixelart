@@ -1,4 +1,5 @@
-"""pixel_chain.py STEM.json [--stamp] [--no-temporal] [--no-protect] [--no-sep]   (pixtools venv)   -- P's round-2 pixel step.
+"""pixel_chain.py STEM.json [--no-temporal] [--no-protect] [--no-sep]   (pixtools venv)   -- P's pixel step (round 5: one rule set for
+the whole figure; no head/face special cases: no tex projection, no stamp, no face layer, no head hold).
 Called by R's render_motion.py (post stage) or directly.  Inputs per frame (192 cell at 8x): <stem>_fNN_{guide,lum,dep}.png from R, plus the
 part-ID pass <dir>/parts/<stem>_fNN_part.png (render/p_parts.py; rendered automatically through Blender if missing).
 
@@ -17,7 +18,8 @@ Material/ID-driven downscale (replaces E2 k-centroid -> palette lock -> fix):
     (.3/.7), on the label (keep previous unless beaten by 25 %) and on shade bands (margin HYS); cells whose hi-res block did not change
     copy the previous output; isolated 1-frame shade flips (a==c!=b within one material class) are removed.  Loops are run twice so f0
     sees the end of the cycle.
-Outputs (as before): <stem>_px/fNN.{txt,png,json}, <stem>_4x.gif (mid-grey), <stem>_sheet.png, <stem>_px.json; --stamp also *_hs."""
+Outputs: <stem>_px/fNN.{txt,png,json}, <stem>_4x.gif (mid-grey, render/gifio.py), <stem>_sheet.png, <stem>_px.json (+limb_audit),
+<stem>_limbs.json (per-frame limb audit: VANISHED / SPLIT / THIN / DETACHED per leg, arm, hand)."""
 import sys, os, json, subprocess, numpy as np
 from PIL import Image, ImageDraw
 from scipy import ndimage as nd
@@ -34,8 +36,6 @@ DTHR = float(os.environ.get('DTHR', '0.03'))     # depth step for overlap lines 
 HYS = float(os.environ.get('HYS', '0.08'))
 RPTOL = float(os.environ.get('RPTOL', '0.02'))  # rest-space match tolerance (mesh units ~ m)
 LOCK = float(os.environ.get('LOCK', '0.12'))  # surface-lock lum tolerance (0 = off)
-HOLDT = float(os.environ.get('HOLDT', '0.3'))  # head hold threshold (fraction of head cells that differ)
-TEX = os.environ.get('TEX', '1') == '1'  # use R's projected master head pass when present
 FAMB = float(os.environ.get('FAMB', '0.2'))    # fill hysteresis half-band around .5 coverage
 LKEEP = float(os.environ.get('LKEEP', '0.75'))  # keep the previous label if its score >= LKEEP x best
 OBILINE = os.environ.get('OBILINE', '0') == '1'  # K line on the far side of obi|dress edges (master has them)
@@ -49,11 +49,25 @@ RIM = os.environ.get('RIM', 'g')  # near-leg rim tone along the leg|leg separati
 SMOOTH = os.environ.get('SMOOTH', '1') == '1'
 HOLE = int(os.environ.get('HOLE', '4'))  # enclosed background holes up to this many px are filled
 MINRUN = int(os.environ.get('MINRUN', '3'))
-HOLD = float(os.environ.get('HOLD', '0.15'))  # part-hold mismatch threshold (0 = off)
 LSIG = float(os.environ.get('LSIG', '10'))  # hi-res lum smoothing inside a segment (8 = 1 sprite px)       # shade-band hysteresis margin (lum units)
 SHEEN = float(os.environ.get('SHEEN', '0.42'))   # sock lit-stripe lum threshold
 MAST = hx.SW + 'v2/m96/masters/EC0_{}_96.txt'
-MN = hx.MN; NM = len(MN); MI = {n: i for i, n in enumerate(MN)}
+# materials: hx (hires3d) base 9 + round-5 face materials as ORDINARY materials (same vote, ramps, protection, lines as any other).
+# R's guide colours for the new matids: rig/matids.json {"name": [r,g,b], ...} overrides/extends these defaults.
+MATS = dict(hx.MATS)
+MATS.update({'eye_white': (236, 236, 246), 'iris': (88, 64, 120), 'lash': (24, 16, 32), 'mouth': (190, 80, 90), 'blush': (235, 140, 150)})
+_mj = os.path.join(EXP, 'rig', 'face_mats.json')  # R round 5 (exact sRGB guide colours); re-read on every run
+if os.path.exists(_mj):
+    _d = json.load(open(_mj)); MATS.update({k: tuple(v) for k, v in {**_d.get('base', {}), **_d.get('mats', {})}.items()})
+MN = list(MATS); NM = len(MN); MI = {n: i for i, n in enumerate(MN)}; MCOL = np.array([MATS[k] for k in MN], float)
+RAMP = dict(hx.RAMP); RAMP.update({'eye_white': 'WWW', 'iris': 'ggg', 'lash': 'KKK', 'mouth': 'mmm', 'blush': 'kkk', 'iris_top': 'hhh', 'iris_low': 'LLL',
+             'brow': 'ggg', 'mouth_in': 'RRR', 'nose': 'SSS'})  # F's suggested ramps (rig/face_mats.json _doc)
+if os.path.exists(_mj): RAMP.update({k: v for k, v in json.load(open(_mj)).get('ramps', {}).items()})
+for _n in MN:  # any new matid without a ramp: its nearest locked-palette colour, flat
+    if _n not in RAMP:
+        _k = hx.KEYS[int(((np.array(hx.RGB, float) - np.array(MATS[_n], float)) ** 2).sum(1).argmin())]; RAMP[_n] = _k * 3
+BIAS = dict(hx.BIAS)
+THINF = {'iris': 2, 'eyes': 2, 'eye_white': 1, 'lash': 1, 'mouth': 1, 'iris_top': 1, 'iris_low': 1, 'brow': 1, 'mouth_in': 1, 'nose': 1}  # thin features: min width (1 = presence only, 2 = 2x2 core)
 PARTS = ["torso", "head", "skirt", "leg.L", "leg.R", "arm.L", "arm.R", "sleeve.L", "sleeve.R"]; NP = len(PARTS); PI = {p: i for i, p in enumerate(PARTS)}
 PCOL = np.array([((i + 1) * 25, 255 - (i + 1) * 25, (i * 67) % 256) for i in range(NP)], float) / 255
 PCOL = np.where(PCOL <= 0.0031308, PCOL * 12.92, 1.055 * PCOL ** (1 / 2.4) - 0.055) * 255  # the byte attribute is read as linear -> sRGB out
@@ -62,7 +76,6 @@ BODY = {'torso': 0, 'skirt': 0, 'head': 1, 'leg.L': 2, 'leg.R': 3, 'arm.L': 4, '
 SEG_M = np.arange(NS) // NP; SEG_P = np.arange(NS) % NP
 LEG = (PI['leg.L'], PI['leg.R'])
 CROSS = nd.generate_binary_structure(2, 1)
-HOLD_GROUPS = [[PI[g] for g in grp.split('+')] for grp in os.environ.get('HOLDG', 'head').split(',') if grp]
 
 
 def seg(m, p): return m * NP + p
@@ -94,7 +107,7 @@ def load(stem, i, dx, dy, pdir):
     st = f'{stem}_f{i:02d}_'
     g = crop(hx.rd16(st + 'guide.png'), dx, dy); al = g[..., 3] > 0.5
     F = {'alpha': al, 'lum': crop(hx.rd16(st + 'lum.png'), dx, dy)[..., 0], 'dep': crop(hx.rd16(st + 'dep.png'), dx, dy)[..., 0]}
-    mid = nearest(g[..., :3] * 255, hx.MC); mid[~al] = -1; F['mid'] = mid
+    mid = nearest(g[..., :3] * 255, MCOL); mid[~al] = -1; F['mid'] = mid
     pp = os.path.join(pdir, os.path.basename(stem) + f'_f{i:02d}_part.png')
     bj = os.path.join(pdir, 'bones.json')
     if os.path.exists(pp) and os.path.exists(bj):
@@ -115,9 +128,6 @@ def load(stem, i, dx, dy, pdir):
         w = hx.cells(al.astype(float)).sum((2, 3))
         F['rpos'] = np.stack([hx.cells(rp[..., k] * al).sum((2, 3)) for k in range(3)], -1) / np.maximum(w, 1)[..., None]
         F['rpos_ok'] = w > 0
-    tp = f'{stem}_f{i:02d}_tex.png'
-    if os.path.exists(tp) and TEX:
-        F['tex'] = crop(hx.rd16(tp), dx, dy)
     # skirt cloth weighted to the thighs (hem ring) is skirt, not leg: leg = skin band, sock band, socks, boots only
     part[np.isin(part, LEG) & np.isin(mid, [MI['dress'], MI['sleeve'], MI['obi']])] = PI['skirt']
     part[~al] = -1; F['part'] = part
@@ -190,6 +200,8 @@ def limb_masks(F):
     out = {}
     for q in LEG: out[q] = F['part'] == q
     for s, q in (('L', PI['arm.L']), ('R', PI['arm.R'])): out[100 + q] = (F['part'] == q) & (F['mid'] == MI['skin'])
+    for m, w in THINF.items():  # thin features (eyes, iris, lashes/brows, mouth): any part, ordinary material rule
+        if m in MI: out[300 + MI[m]] = F['mid'] == MI[m]
     if PROTECT_ARMS:
         for s in 'LR':  # arm = upper arm / forearm cloth + sleeve bag (not the hand)
             q = PI['arm.' + s]; out[200 + q] = np.isin(F['part'], [q, PI['sleeve.' + s]]) & (F['mid'] != MI['skin']) & (F['mid'] >= 0)
@@ -201,6 +213,7 @@ ARMQ = {PI['arm.L']: PI['sleeve.L'], PI['arm.R']: PI['sleeve.R']}
 
 def limb_of_seg(k):
     p = SEG_P[k]; m = SEG_M[k]
+    if MN[m] in THINF: return 300 + m
     if p in LEG: return p
     if p in (PI['arm.L'], PI['arm.R']) and m == MI['skin']: return 100 + p
     if PROTECT_ARMS:
@@ -210,6 +223,7 @@ def limb_of_seg(k):
 
 
 def limb_cells(lab, q):
+    if q >= 300: return (lab >= 0) & (SEG_M[np.maximum(lab, 0)] == q - 300)
     if q < 100: return (lab >= 0) & np.isin(SEG_P[np.maximum(lab, 0)], [q])
     if q >= 200: return (lab >= 0) & np.isin(SEG_P[np.maximum(lab, 0)], [q - 200, ARMQ[q - 200]]) & (SEG_M[np.maximum(lab, 0)] != MI['skin'])
     return (lab >= 0) & (SEG_P[np.maximum(lab, 0)] == q - 100) & (SEG_M[np.maximum(lab, 0)] == MI['skin'])
@@ -224,33 +238,6 @@ def LIMBQ():
 
 
 KEYS = hx.KEYS; PALRGB = np.array(hx.RGB, float)
-
-
-def tex_cells(tex):
-    """R's projected master head: find the texel phase (master pixels are ~8x8 hi-res blocks), roll it onto the sprite grid, then the
-    per-cell mode of the exact palette colours (coverage >= .5).  Returns (mask, char grid)."""
-    al = tex[..., 3] > 0.5; rgb = tex[..., :3] * 255
-    pid = nearest(rgb, PALRGB); pid[~al] = -1
-    ph = []
-    for ax in (1, 0):
-        a = np.moveaxis(pid, ax, 1); ch = (a[:, 1:] != a[:, :-1]) & (a[:, 1:] >= 0) & (a[:, :-1] >= 0)
-        pos = (np.nonzero(ch)[1] + 1) % P; hst = np.bincount(pos, minlength=P); ph.append(int(hst.argmax()) if hst.sum() > 50 else 0)
-    phx, phy = ph
-    phx = phx - P if phx > P // 2 else phx; phy = phy - P if phy > P // 2 else phy
-    pid = np.roll(np.roll(pid, -phy, 0), -phx, 1)
-    m = pid >= 0; key = CI[m] * len(KEYS) + pid[m]
-    cnt = np.bincount(key, minlength=N * N * len(KEYS)).reshape(N, N, len(KEYS))
-    cov = cnt.sum(-1) / (P * P); T = cov >= 0.5
-    g = np.array(KEYS)[cnt.argmax(-1)]; g[~T] = '.'
-    return T, g
-
-
-def mat_major(F, T):
-    c = hx.cells(F['mid']).reshape(N, N, P * P); out = np.full((N, N), MI['hair'])
-    for y, x in zip(*np.nonzero(T)):
-        v = c[y, x][c[y, x] >= 0]
-        if len(v): out[y, x] = np.bincount(v).argmax()
-    return out
 
 
 # ------------------------------------------------------------------ round 3 shape fixes (on the label grid, before the outline)
@@ -268,7 +255,7 @@ def shape_fixes(lab, locked):
     if len(rows) > 3:
         # 1. A-line: below the hip row (HIPF of the skirt height) the skirt may widen by at most ALINE px per row and side; only the
         #    outer flare that is open to the background is shaved (never a hole inside the figure, never a sleeve/arm/leg cell)
-        yh = rows[0] + int(HIPF * (rows[-1] - rows[0]))
+        yh = rows[0] + int(HIPF * (rows[-1] - rows[0])); yh = rows[rows >= yh][0]  # skirt rows can be non-contiguous
         xs = np.nonzero(sk[yh])[0]; el, er = float(xs.min()), float(xs.max())
         for y in rows[rows > yh]:
             xs = np.nonzero(sk[y])[0]
@@ -379,42 +366,13 @@ def frame(F, prev, opt):
         keep = ok & (psc >= LKEEP * sc.max(-1)) & (psc > 0)
         lab = np.where(keep, pl, lab)
     lab = np.where(fill, lab, -1)
-    # ---- projected master head (R's tex pass): texel-phase aligned, per-cell mode of exact master colours
-    T = np.zeros((N, N), bool); texg = None
-    if 'tex' in F:
-        T, texg = tex_cells(F['tex'])
-        T &= pcov[..., PI['head']] >= 0.5  # the tex pass may not be occluded by a hand/arm in front of the face: the part pass is
-        texg = np.where(T, texg, '.')
-        headp = (lab >= 0) & (SEG_P[np.maximum(lab, 0)] == PI['head'])
-        lab[headp & ~T] = -1
-        hm = mat_major(F, T)
-        lab[T] = seg(1, PI['head']) * 0 + hm[T] * NP + PI['head']
-        fill = lab >= 0
-    # ---- part hold: a rigid-ish group (head incl. hair/bow) whose sprite-level shape differs from the integer-shifted previous frame by
-    # less than HOLD of its area keeps the previous shape + bands (motion below ~1 px is held, not redrawn)
-    held = np.zeros((N, N), bool); held_band = None
-    if prev is not None and opt['temporal'] and HOLD > 0:
-        for gp in HOLD_GROUPS:
-            cur = (lab >= 0) & np.isin(SEG_P[np.maximum(lab, 0)], gp)
-            pg = (prev['lab'] >= 0) & np.isin(SEG_P[np.maximum(prev['lab'], 0)], gp)
-            if not cur.any() or not pg.any(): continue
-            s_ = best_shift(pg, pcov[..., gp].sum(-1), r=4)
-            wl = np.roll(np.roll(prev['lab'], s_[0], 0), s_[1], 1); wb = np.roll(np.roll(prev['band'], s_[0], 0), s_[1], 1)
-            wg = np.roll(np.roll(pg, s_[0], 0), s_[1], 1)
-            U = cur | wg; mis = ((wl != lab) & U).sum() / max(1, U.sum())
-            if mis < HOLD:
-                # held region = the shifted previous group; cells the group left take the current non-group label
-                lab = np.where(wg, wl, np.where(cur, -1 if False else lab, lab))
-                lab[cur & ~wg] = np.where(np.isin(SEG_P[np.maximum(wl[cur & ~wg], 0)], gp), -1, wl[cur & ~wg])
-                held |= wg; held_band = wb if held_band is None else np.where(wg, wb, held_band)
-        fill = lab >= 0
     locked = np.zeros((N, N), bool)
     # ---- limb protection
     if opt['protect']:
         LM = limb_masks(F); skc = {}
         for q, mk in LM.items():
             ml, mn = nd.label(mk)  # hi-res slivers under ~1.5 sprite px are not limbs to protect
-            if mn: mk = np.isin(ml, [k for k in range(1, mn + 1) if (ml == k).sum() >= 1.5 * P * P])
+            if mn: mk = np.isin(ml, [k for k in range(1, mn + 1) if (ml == k).sum() >= (0.35 if q >= 300 else 1.5) * P * P])
             if mk.sum() < 20: continue
             sk = skeletonize(mk); skc[q] = hx.cells(sk.astype(float)).sum((2, 3)) > 0
         # skeleton cells: nearest limb wins
@@ -428,6 +386,7 @@ def frame(F, prev, opt):
             locked |= set_
         for _ in range(2):
             for q in skc:
+                if q >= 300 and THINF[MN[q - 300]] < 2: continue  # presence-only thin feature (lashes, brows, mouth)
                 ss = limb_segs(q); R = limb_cells(lab, q)
                 if not R.any(): continue
                 qc = cnt[..., ss].sum(-1); bestq = np.array(ss)[cnt[..., ss].argmax(-1)]
@@ -450,6 +409,7 @@ def frame(F, prev, opt):
         fill = lab >= 0
         # stray limb crumbs: extra sprite pieces of a limb (< SPECK px) away from its main piece -> neighbour majority (non-limb)
         for q in skc:
+            if q >= 300: continue  # thin features may legitimately be several pieces (two eyes)
             R = limb_cells(lab, q); rl, rn = nd.label(R, np.ones((3, 3)))
             if rn <= 1: continue
             sz = nd.sum(R, rl, range(1, rn + 1)); main = 1 + int(np.argmax(sz))
@@ -462,7 +422,7 @@ def frame(F, prev, opt):
     lab = np.where(fill, lab, -1)
     # ---- silhouette clean: 1 px notches filled, 1 px spikes removed (limbs exempt)
     islimb = np.zeros((N, N), bool)
-    for q in LIMBQ(): islimb |= limb_cells(lab, q)
+    for q in LIMBQ() + [300 + MI[m] for m in THINF if m in MI]: islimb |= limb_cells(lab, q)
     for _ in range(2):
         f = lab >= 0; pf = np.pad(f, 1); n4 = pf[:-2, 1:-1].astype(int) + pf[2:, 1:-1] + pf[1:-1, :-2] + pf[1:-1, 2:]
         notch = ~f & (n4 >= 3)
@@ -513,13 +473,13 @@ def frame(F, prev, opt):
             far = both & (ldep > Dn)
             legs = np.isin(B_, [2, 3]) & np.isin(Bn, [2, 3]) & (B_ != Bn)
             armb = (np.isin(B_, [4, 5]) | np.isin(Bn, [4, 5])) & (B_ != Bn) & (ldep - Dn > DTHR)
-            headm = (B_ == 1) & (Bn == 1) & ((np.isin(M_, list(hairg)) & (Mn == MI['skin'])) | ((M_ == MI['skin']) & np.isin(Mn, list(hairg))))
+            # material lines (any part): hair/bow over skin (fringe, side locks over cheeks/shoulders)
+            headm = (np.isin(M_, list(hairg)) & (Mn == MI['skin'])) | ((M_ == MI['skin']) & np.isin(Mn, list(hairg)))
             hand = ((M_ == MI['skin']) & np.isin(P_, [PI['arm.L'], PI['arm.R']]) & np.isin(Mn, [MI['sleeve'], MI['dress']])) | \
                    ((Mn == MI['skin']) & np.isin(Pn, [PI['arm.L'], PI['arm.R']]) & np.isin(M_, [MI['sleeve'], MI['dress']]))
-            if texg is not None: headm = headm & False
             obil = OBILINE & (((M_ == MI['obi']) & np.isin(Mn, [MI['dress'], MI['sleeve']])) | ((Mn == MI['obi']) & np.isin(M_, [MI['dress'], MI['sleeve']])))
             headm = headm | obil
-            for y, x in zip(*np.nonzero(far & (legs | armb | headm | hand) & ~(T & nb(T)))):
+            for y, x in zip(*np.nonzero(far & (legs | armb | headm | hand))):
                 cand.append(((y, x), ((y + dy) % N, (x + dx) % N)))
         LQ = {}
         for q in LIMBQ(): LQ[q] = limb_cells(lab, q)
@@ -563,13 +523,12 @@ def frame(F, prev, opt):
             line &= ~drop[lc]
     # ---- shading
     lum = np.take_along_axis(S['lum'], np.maximum(lab, 0)[..., None], -1)[..., 0]
-    bias = np.array([hx.BIAS.get(n, 1.0) for n in MN])[np.maximum(M_, 0)]; l = lum * bias
+    bias = np.array([BIAS.get(n, 1.0) for n in MN])[np.maximum(M_, 0)]; l = lum * bias
     band = np.where(l < hx.T1, 0, np.where(l > hx.T2, 2, 1))
     if W is not None:
         pb = W['band']; same = (W['lab'] == lab) & fill & (pb >= 0)
         hold = same & (((pb == 0) & (l < hx.T1 + HYS)) | ((pb == 2) & (l > hx.T2 - HYS)) | ((pb == 1) & (l >= hx.T1 - HYS) & (l <= hx.T2 + HYS)))
         band = np.where(hold, pb, band)
-    if held_band is not None: band = np.where(held & fill, held_band, band)
     band = np.where(fill, band, -1)
     # near / far leg
     # far leg is fixed per view (no shade swap when the legs pass): her left leg is the far one when the camera is on her right side
@@ -577,7 +536,7 @@ def frame(F, prev, opt):
     g = np.full((N, N), '.', dtype='<U1')
     for j, n in enumerate(MN):
         for b in range(3):
-            g[fill & (M_ == j) & (band == b)] = hx.RAMP[n][b]
+            g[fill & (M_ == j) & (band == b)] = RAMP[n][b]
     isleg = np.isin(P_, LEG)
     # legs: skin band (s, S on the hem row), red sock-top band (always >= 1 row between skin and sock), socks D + lit d stripe and a d rim
     # along the far leg (near leg only), boots ramp; the far leg is one step darker (S, R, D, boots down one band)
@@ -625,20 +584,6 @@ def frame(F, prev, opt):
         okc = v & (plb == lab) & (pgc != 'K') & (np.abs(plc - l) < LOCK)
         okc &= cls(pgc) == cls(g)
         g[okc] = pgc[okc]
-    if texg is not None:
-        g[T] = texg[T]
-        # head hold: the master head pixels are kept from the previous frame (integer-shifted) unless the projection changed > HOLDT
-        if prev is not None and opt['temporal'] and prev.get('T') is not None and prev['T'].any() and HOLDT > 0:
-            best = (-1, (0, 0))
-            for dy in range(-3, 4):
-                for dx in range(-3, 4):
-                    pT = np.roll(np.roll(prev['T'], dy, 0), dx, 1); pg = np.roll(np.roll(prev['g'], dy, 0), dx, 1)
-                    U = T | pT; eq = ((pg == g) & T & pT).sum() / max(1, U.sum())
-                    if eq > best[0]: best = (eq, (dy, dx))
-            eq, (dy, dx) = best
-            if 1 - eq < HOLDT:
-                pT = np.roll(np.roll(prev['T'], dy, 0), dx, 1); pg = np.roll(np.roll(prev['g'], dy, 0), dx, 1)
-                keep = pT & T; g[keep] = pg[keep]
     # ---- outline outside the fill, pixel-perfect (not where the fill edge is already K, e.g. the master head's own outline)
     f = fill; pf = np.pad(f, 1)
     ring = ~f & (pf[:-2, 1:-1] | pf[2:, 1:-1] | pf[1:-1, :-2] | pf[1:-1, 2:])
@@ -656,16 +601,15 @@ def frame(F, prev, opt):
     # as long as the limb keeps a core (it can't vanish this way)
     for q in LIMBQ():
         Lq = limb_cells(lab, q) & (g != 'K') & (g != '.')
-        if texg is not None: Lq &= ~T
         if not Lq.any(): continue
         core = nd.binary_opening(np.pad(Lq, 1), np.ones((2, 2)))[1:-1, 1:-1]
         if not core.any(): continue
         thin = Lq & ~nd.binary_dilation(core, CROSS)
         g[thin] = 'K'
     g0 = g; g = hx.Z.clean_orphans(g, keep='WKd')
-    if texg is not None: g[T] = g0[T]
+    thinm = fill & np.isin(M_, [MI[m] for m in THINF if m in MI]); g[thinm] = g0[thinm]
     bmask = np.where(fill, dom_b, -1)
-    st = {'lcell': l, 'T': T if texg is not None else None, 'rpos': F.get('rpos'), 'rpos_ok': F.get('rpos_ok'), 'dom_b': dom_b, 'line': line, 'lab': lab, 'band': band, 'fill': fill, 'bmask': bmask, 'g': g, 'mid': F['mid'], 'part': F['part'], 'lum': F['lum'],
+    st = {'lcell': l, 'rpos': F.get('rpos'), 'rpos_ok': F.get('rpos_ok'), 'dom_b': dom_b, 'line': line, 'lab': lab, 'band': band, 'fill': fill, 'bmask': bmask, 'g': g, 'mid': F['mid'], 'part': F['part'], 'lum': F['lum'],
           'farleg': farleg}
     return g, st
 
@@ -696,11 +640,6 @@ def kill_flips(G, loop):
     return G
 
 
-def head_clear(mg_grid, neck_row):
-    rows = np.arange(N)[:, None] < neck_row + 1
-    return np.isin(mg_grid, [MI[k] for k in ('hair', 'skin', 'eyes', 'bow')]) & rows
-
-
 def run(stem, info, opt):
     view = info['view']; frs = info['frames']; pdir = os.path.join(os.path.dirname(stem), 'parts')
     ensure_parts(stem, info, pdir)
@@ -716,7 +655,6 @@ def run(stem, info, opt):
         out[i], sts[i] = g, st; prev = st
     if opt['temporal']: out = kill_flips(out, loop)
     out = [hx.main_comp(hx.drop_bare_k(g)) for g in out]
-    if opt.get('face'): out = apply_face(out, info, stem, loop)
     if opt.get('smear', True):
         out, smk = apply_smear(out, info)
         if smk: print('SMEAR frames', [f"f{info['frames'][k]['i']:02d}" for k in smk], 'travel', np.round(travel_dir(info), 2).tolist())
@@ -797,27 +735,6 @@ def is_loop(info):
     return len(info['frames']) > 2 and info.get('loop', True) and not str(info['action']).startswith(('jump', 'dash', 'hurt'))
 
 
-def apply_face(G, info, stem, loop):
-    """F's face layer (face/face_layer.py): pixel face parts on the 3D head anchors, per frame, after the chain.  Anchors + faceless head
-    pass come from face/f_render.py rendered into <clip dir>/face/ (p3_run.sh) or F's face/out/<act>/."""
-    fd = os.path.join(EXP, 'face')
-    if not os.path.exists(os.path.join(fd, 'face_layer.py')): print('WARN no face layer'); return G
-    if fd not in sys.path: sys.path.insert(0, fd)
-    from face_layer import face_layer
-    act, V = info['action'], info['view']
-    cand = [os.path.join(os.path.dirname(stem), 'face'), os.path.join(fd, 'out', act)]
-    fdir = next((c for c in cand if os.path.exists(os.path.join(c, f'{act}_{V}_face.json'))), None)
-    if fdir is None: print('WARN face anchors missing for', act, V, '-> run face/f_render.py (p3_run.sh does)'); return G
-    out = []
-    for f, g in zip(info['frames'], G):
-        try:
-            out.append(np.asarray(face_layer({'action': act, 'view': V, 'i': f['i'], 'face_dir': fdir, 'loop': loop}, g.copy(), {'rface': f.get('face')})))
-        except Exception as e:  # never lose a frame to the face step
-            print('WARN face_layer failed', act, V, f['i'], repr(e)[:200]); out.append(g)
-    print('FACE', act, V, 'from', os.path.relpath(fdir, EXP))
-    return out
-
-
 # ------------------------------------------------------------------ limb audit (round 3 gate)
 LIMBS = {'leg.L': ([PI['leg.L']], None), 'leg.R': ([PI['leg.R']], None),
          'arm.L': ([PI['arm.L'], PI['sleeve.L']], None), 'arm.R': ([PI['arm.R'], PI['sleeve.R']], None),
@@ -829,7 +746,6 @@ def limb_audit(g, st, F):
     THIN (fill pixels outside a 2x2 core + 1 px fringe), DETACHED (a piece not touching the rest of the figure through <= 1 px of outline).
     Limb pixels = final non-outline pixels whose segment belongs to the limb."""
     lab = st['lab']; opaque = g != '.'; fillg = opaque & (g != 'K') & (lab >= 0)
-    if st.get('T') is not None: fillg &= ~st['T']  # cells drawn from the head texture are head, whatever the vote said
     P_ = np.where(fillg, SEG_P[np.maximum(lab, 0)], -1); M_ = np.where(fillg, SEG_M[np.maximum(lab, 0)], -1)
     out = {}
     for name, (parts, mat) in LIMBS.items():
@@ -867,26 +783,17 @@ def main():
     if info['preview']:
         sys.argv = [sys.argv[0]] + sys.argv[1:]; import importlib.util as iu
         spec = iu.spec_from_file_location('r1', os.path.join(HERE, 'pixel_chain_r1.py')); m = iu.module_from_spec(spec); spec.loader.exec_module(m); m.main(); return
-    opt = {'temporal': '--no-temporal' not in sys.argv, 'protect': '--no-protect' not in sys.argv, 'sep': '--no-sep' not in sys.argv,
-           'face': '--no-face' not in sys.argv and os.environ.get('FACE', '1') == '1'}
-    stamp = '--stamp' in sys.argv; view = info['view']; frs = info['frames']; durs = [int(f['ms']) for f in frs]
+    opt = {'temporal': '--no-temporal' not in sys.argv, 'protect': '--no-protect' not in sys.argv, 'sep': '--no-sep' not in sys.argv}
+    view = info['view']; frs = info['frames']; durs = [int(f['ms']) for f in frs]
     G, sts, sh, aud = run(stem, info, opt)
     od = stem + '_px'; os.makedirs(od, exist_ok=True)
     ims, ims_h, grids_h = [], [], []
-    if stamp:
-        t, x0s, y0s = hx.stamp_of(view); R = info['rest']['head']; os.makedirs(od + '_hs', exist_ok=True)
     for f, g, st in zip(frs, G, sts):
         i = f['i']; hx.save(g, f'{od}/f{i:02d}', view); ims.append(hx.render(g, 4, BG))
-        if stamp:
-            H = f['pts']['head']; x0 = x0s + int(round(H[0] - R[0])); y0 = y0s + int(round(H[1] - R[1]))
-            nk = int(round(f['pts']['neck'][1] - 32 + sh['dy']))
-            mg = np.where(st['lab'] >= 0, SEG_M[np.maximum(st['lab'], 0)], -1)
-            g2 = g.copy(); g2[head_clear(mg, nk)] = '.'; g2 = hx.paste(g2, t, x0, y0); g2 = hx.main_comp(hx.Z.clean_orphans(g2, keep='WKd'))
-            hx.save(g2, f'{od}_hs/f{i:02d}', view); grids_h.append(g2); ims_h.append(hx.render(g2, 4, BG))
     ar = audit_report(aud, frs); json.dump({'summary': ar, 'per_frame': aud}, open(f'{stem}_limbs.json', 'w'), indent=0)
     print('LIMB_AUDIT', os.path.basename(stem), 'PASS' if ar['pass'] else f"FAIL {ar['failed_frames']}/{ar['frames']} frames", json.dumps(ar['fails'])[:400])
     res = {'limb_audit': ar, 'align': sh, 'chain': 'P2', 'opt': opt, 'farleg': [PARTS[s['farleg']] if s['farleg'] is not None else None for s in sts]}
-    for tag, I_, G_ in (('', ims, G), ('_hs', ims_h, grids_h)):
+    for tag, I_, G_ in (('', ims, G),):
         if not I_: continue
         gif(I_, durs, f'{stem}{tag}_4x.gif'); sheet(I_, f'{stem}{tag}_sheet.png', [f"f{f['i']:02d}" for f in frs], cols=min(8, len(I_)))
         res['band_churn' + tag] = hx.band_churn(G_) if len(G_) > 1 else None
