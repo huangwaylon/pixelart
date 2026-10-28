@@ -59,13 +59,17 @@ The generated 3D meshes are collected in `../reference/3d/`.
 
 ## Environment
 - `swordswoman/.venv` (gitignored): Python 3.13 with numpy, pillow and scipy.
-- `swordswoman/.scratch` is a symlink to `../.models/` (gitignored, about 85 GB). It holds the
-  weights, venvs and checkouts for Hunyuan3D-2mini (`hunyuan`), Hunyuan3D-Omni and 2.1 (`hy_omni`),
-  Pixal3D (`pixal3d`), TRELLIS (`trellis`), PartCrafter (`parts`), PixelOE (`pixelize`), and the
-  CMU, Bandai and LaFAN1 mocap data (`mocap`). All of it can be re-downloaded.
+- `swordswoman/.scratch` is a symlink to `../.models/` (gitignored, about 41 GB). It holds the
+  weights, venvs and checkouts for Hunyuan3D-Omni and 2.1 (`hy_omni`), PartCrafter (`parts`) and
+  PixelOE (`pixelize`), plus the CMU, Bandai and LaFAN1 mocap data (`mocap`). All of it can be
+  re-downloaded.
+- Removed on 2026-10-28: Pixal3D, TRELLIS, and Hunyuan3D-2mini/2mv (weights, venv and raw outputs).
+  The 2mv mesh that was used is still kept in `v2/hy3d/best`. Without the 2mv generator,
+  `v2/parts/scripts/run_mv_parts.py` no longer runs.
 - Scripts that need it:
   - the PixelOE venv: `v2/pixelize`, `v2/m96/tools`
-  - the Hunyuan venv (for trimesh): `v2/g96/scripts`, `v2/hy3d/scripts/make_rig.sh`
+  - the Omni venv (for trimesh): `v2/g96/scripts`, `v2/hy3d/scripts/make_rig.sh`, `v2/prop/tools/solveF.py`.
+    These used the old Hunyuan venv. Rig H2 was verified to rebuild byte-for-byte on the Omni venv.
   - mocap data: `v2/mocap`, `v2/throw`, `v2/unarmed`
 - External tools: Blender at `/Applications/Blender.app`, `tools/gemini.py` (Floodgate), and the
   `claude-as` zsh function for Opus critics.

@@ -19,12 +19,6 @@ work/
 swordswoman/.scratch
 swordswoman/.venv/
 # bulky generated meshes / frame dumps / iterations: kept on disk, not in git
-reference/3d/pixal3d/r1/
-reference/3d/pixal3d/r2/
-reference/3d/pixal3d/smoke/
-reference/3d/pixal3d/mv_frontback/
-reference/3d/trellis/out/
-swordswoman/model/ai_ref/pixal3d/
 swordswoman/v2/hy3d/out/
 swordswoman/v2/hy3d/frames_*/
 swordswoman/v2/REVIEW/3d/
@@ -72,4 +66,5 @@ swordswoman/v2/pixelize/D/
 swordswoman/v2/hy3d/crit/
 swordswoman/v2/hy3d/rp/
 swordswoman/v2/m96/old_offsetbow/
-swordswoman/v2/g96/work*/
+swordswoman/v2/g96/work*/*
+!swordswoman/v2/g96/work*/*.json

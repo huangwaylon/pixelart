@@ -6,7 +6,7 @@
 | **Swordswoman** (merged from `../test`) | `swordswoman/` | 96 px masters in `swordswoman/v2/m96/` (animation still in progress). See `swordswoman/README.md`. |
 | 3D generative-model reference (Hunyuan3D etc.) | `reference/3d/` | `reference/3d/best/raw_mvD4_s5.glb` (Hunyuan3D-2mv) |
 
-Model weights and venvs are in `.models/` (gitignored, about 85 GB).
+Model weights and venvs are in `.models/` (gitignored, about 41 GB; Hunyuan3D-Omni is the only 3D generator still installed).
 
 ---
 

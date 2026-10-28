@@ -1,14 +1,0 @@
-2026-10-23 21:25:46,271 - hy3dgen.shapgen - INFO - Try to load model from local path: /Users/waylonhuang/Documents/other/pixelart/.models/hunyuan/weights/tencent/Hunyuan3D-2mini/hunyuan3d-dit-v2-mini-turbo
-2026-10-23 21:25:46,273 - hy3dgen.shapgen - INFO - Loading model from /Users/waylonhuang/Documents/other/pixelart/.models/hunyuan/weights/tencent/Hunyuan3D-2mini/hunyuan3d-dit-v2-mini-turbo/model.fp16.safetensors
-2026-10-23 21:25:58,415 - hy3dgen.shapgen - INFO - Try to load model from local path: /Users/waylonhuang/Documents/other/pixelart/.models/hunyuan/weights/tencent/Hunyuan3D-2mini/hunyuan3d-vae-v2-mini-turbo
-2026-10-23 21:25:58,419 - hy3dgen.shapgen - INFO - Loading model from /Users/waylonhuang/Documents/other/pixelart/.models/hunyuan/weights/tencent/Hunyuan3D-2mini/hunyuan3d-vae-v2-mini-turbo/model.fp16.safetensors
-PointCrossAttentionEncoder INFO: pc_sharpedge_size is given, using pc_size=5120, pc_sharpedge_size=5120
-PointCrossAttentionEncoder INFO: pc_sharpedge_size is given, using pc_size=5120, pc_sharpedge_size=5120
-load 12.9s on mps
-Diffusion Sampling::   0%|          | 0/5 [00:00<?, ?it/s]Diffusion Sampling::  20%|██        | 1/5 [00:00<00:00,  4.11it/s]Diffusion Sampling::  60%|██████    | 3/5 [00:00<00:00,  7.17it/s]Diffusion Sampling::  80%|████████  | 4/5 [00:00<00:00,  6.24it/s]Diffusion Sampling:: 100%|██████████| 5/5 [00:00<00:00,  5.77it/s]Diffusion Sampling:: 100%|██████████| 5/5 [00:00<00:00,  5.89it/s]
-2026-10-23 21:26:00,485 - hy3dgen.shapgen - INFO - FlashVDMVolumeDecoding Resolution: [95, 190, 380]
-FlashVDM Volume Decoding:   0%|          | 0/64 [00:00<?, ?it/s]FlashVDM Volume Decoding: 100%|██████████| 64/64 [00:00<00:00, 2984.81it/s]
-/Users/waylonhuang/Documents/other/pixelart/.models/hunyuan/src/hy3dgen/shapegen/models/autoencoders/volume_decoders.py:81: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/python_variable_indexing.cpp:362.)
-  sliced = padded[slice_dims]
-gen 3.1s
-verts 355170 faces 710392 watertight True bounds [[-0.5826630592346191, -1.0037175416946411, -0.5227413177490234], [0.5491999983787537, 0.9768375754356384, 0.5074682235717773]]

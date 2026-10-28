@@ -1,6 +1,6 @@
 # iterate PROPORTIONS_F multipliers so m3.py (design 2D-equivalent front measures) hits the template means
 import json, subprocess, copy, sys
-R = '/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/'; PY = '/Users/waylonhuang/Documents/other/pixelart/.models/hunyuan/venv/bin/python'
+R = '/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/'; PY = '/Users/waylonhuang/Documents/other/pixelart/.models/hy_omni/venv/bin/python'
 E = json.load(open(R + 'design/PROPORTIONS_E.json')); T = json.load(open(R + 'prop/template.json'))
 tg = dict(heads=T['derived']['heads_tall']['mean'], sh=T['derived']['shoulder_over_headw']['mean'], waist=T['derived']['waist_over_headw']['mean'],
           hem=T['derived']['hip_over_headw']['mean'], legs=round(1 - T['rows']['hem']['mean'], 3), neck=T['derived']['neck_gap_chin_to_shoulder']['mean'])

@@ -1,0 +1,94 @@
+{
+ "spec": {
+  "head": {
+   "scale": 0.98,
+   "wx": 1.0,
+   "fringe": 0.24,
+   "wz": 0.98,
+   "sq": 0.12
+  },
+  "neck": {
+   "extra": 0.2,
+   "r": 0.0457
+  },
+  "torso": {
+   "width": 1.22,
+   "depth": 1.05,
+   "height": 1.19,
+   "waist": 0.6,
+   "sh": 1.35,
+   "waist_zk": 1.0,
+   "sq": 0.65
+  },
+  "skirt": {
+   "width": 0.78,
+   "depth": 0.85,
+   "height": 1.2,
+   "flare": 1.26,
+   "flarez": 1.05
+  },
+  "arms": {
+   "length": 1.3229,
+   "thickness": 0.9566,
+   "shoulder_x": 0.97,
+   "dy": 0.06,
+   "flare": 1.5,
+   "flarez": 1.75
+  },
+  "legs": {
+   "length": 2.3634,
+   "thickness": 1.0,
+   "thigh": 1.36,
+   "shin": 0.91,
+   "spread": 1.0,
+   "prof": [
+    0.21,
+    0.22,
+    0.13,
+    0.175
+   ],
+   "straight": 1.0,
+   "ytop": -0.05,
+   "sock": 0.96
+  },
+  "hands": {
+   "scale": 0.5
+  },
+  "boots": {
+   "scale": 1.0,
+   "top": 0.31,
+   "sx": 0.8,
+   "sz": 1.6,
+   "fwd": 0,
+   "centre": 1.0,
+   "toe": 0.6,
+   "ankle": 0.21,
+   "ramp": -0.08
+  },
+  "eyes": {
+   "dy": 0.1,
+   "scale": 0.85
+  },
+  "bow": {
+   "dz": -0.15,
+   "dy": -0.01,
+   "scale": 0.6
+  },
+  "bun": {
+   "dz": 0.08,
+   "dy": 0.0,
+   "scale": 1.15
+  }
+ },
+ "env": {
+  "PPU": "26.304"
+ },
+ "pose": {
+  "abd": 0.0,
+  "cheat": 37.0,
+  "abd_se": -16.0,
+  "flex_se": -50.0,
+  "flex_se_r": 20,
+  "abd_se_r": -20
+ }
+}

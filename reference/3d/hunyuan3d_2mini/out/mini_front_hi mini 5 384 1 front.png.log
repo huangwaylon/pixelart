@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "/Users/waylonhuang/Documents/other/pixelart/.models/hunyuan/scripts/run_shape.py", line 3, in <module>
-    src, wdir, idir, out, kind = sys.argv[1:6]
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^
-ValueError: not enough values to unpack (expected 5, got 4)

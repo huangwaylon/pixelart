@@ -5,7 +5,7 @@
 import sys, os, json, subprocess, shutil
 R = "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/"; HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE); import meas96 as M
-PY = "/Users/waylonhuang/Documents/other/pixelart/.models/hunyuan/venv/bin/python"; BL = "/Applications/Blender.app/Contents/MacOS/Blender"
+PY = "/Users/waylonhuang/Documents/other/pixelart/.models/hy_omni/venv/bin/python"; BL = "/Applications/Blender.app/Contents/MacOS/Blender"
 def run(st, out, views, keep=False, parts_only=False):
     os.makedirs(out, exist_ok=True); pd = os.path.join(out, "parts"); sj = os.path.join(out, "spec.json"); json.dump(st["spec"], open(sj, "w"))
     r = subprocess.run([PY, "-I", os.path.join(HERE, "repro_h.py"), sj, R + "hy3d/partsAB4f", R + "hy3d/best/skel.txt", pd], capture_output=True, text=True)

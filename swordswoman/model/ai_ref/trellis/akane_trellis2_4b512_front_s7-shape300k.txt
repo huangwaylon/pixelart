@@ -1,6 +1,0 @@
-Date: 2026-10-23. Tool: TRELLIS.2-4B, 512 pipeline, run locally on an M5 Max (MPS) through shivampkumar/trellis-mac (Metal deps rebuilt in C++20).
-Input: .scratch/hunyuan/inputs/front.png, the same RGBA front crop used for Hunyuan mini_front (from concept/chibi_turnaround_v6.png, isnet-anime matte).
-Settings: seed 7, 12/12 steps (default), shape only (texture flow model not downloaded, network throttled), no hole filling (cumesh skipped).
-Postprocessing: merge vertices, then fast_simplification from 2.0M to 300k faces, then rotated to Y-up. Not watertight, about 50k fragments, speckled surface noise.
-Timing: 30 s generation (ss 9.7, shape 5.5, decode 14.0) plus 28 s load; peak footprint 11.8 GB.
-Notes: carved eyes and face, fingers, corset lacing, thin ribbons and collar as real thin sheets, separate katana with guard. Reference only, MIT weights; the DINOv3 encoder is under the DINOv3 License.
