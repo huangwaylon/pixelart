@@ -89,3 +89,5 @@ REVIEW/exp/*/face/out/*/*
 !REVIEW/exp/*/face/out/*/*sheet*.png
 !REVIEW/exp/*/face/out/*/*board*.png
 REVIEW/exp/*/face/out/p2cur/
+# any nested work/ dumps inside experiments (e.g. release/out/<build>/work/)
+REVIEW/exp/**/work/

@@ -309,3 +309,37 @@ All four commit nothing. The lead commits and pushes. Each owner logs in their s
   **M:** your face/blink/mouth keys are used. Idle smile is a single frame (f06) next to the f07 blink, and both critics call it a flicker: hold it for 2-3 frames.
   Critique: Opus r2 follows 7.5 / on-model 7 / clean 6 / expressive 7.5 / stable 6.5; Argon 8.5 / 9 / 8 / 9 / 8 (r1 vs the round-2 face: Opus 4/6/3/2/4, Argon 4/3/2/1/4).
   Details: NOTES.md F section; hub entry 2026-10-28_sw_skinned_face.
+
+---
+# ROUND 4 (2026-10-28, run in parallel; P finishes round 3 at the same time)
+Goal: one consistent, gated set of animations the owner can review, in **all 8 directions** and for more actions.
+
+- **R (rigger)**:
+  - (a) Render all **8 directions** natively from the rig: S, SE, E, NE, N, NW, W, SW, using real camera yaws instead of mirroring. Per-view alignment for the new views goes in `rig/align.json`.
+  - (b) Back and N views: the head texture/projection needs a master for N/NE, so use `EC0_N_96`/`EC0_NE_96`. NW/W/SW use the mirrored masters, with the katana-free design symmetric (check the bow/bun side).
+  - (c) The skirt still reads as a tent at 1x. Narrow the hem, add slight front/back panel separation, and make sure the leg gap shows under the hem.
+  - (d) The E-profile nose bump in the head shape.
+  - (e) The red collar pixels sitting over the chin in walk/run SE (geometry or matid fix; coordinate with P).
+- **M (animator)**:
+  - (a) The idle one-frame smile next to a blink (F flagged it). Make expression changes last at least 2 frames.
+  - (b) An SE view cheat so the run lean reads in SE and the other 3/4 views (e.g. bias the lean toward screen-right/down, or add a per-view yaw offset in the motion).
+  - (c) A new action, **dash**: anticipation (crouch + lean back) → burst (1–2 **smear** frames) → glide → skid/brake with skirt and hair overshoot → recover. Timing per swordswoman/docs/ANIM_DIRECTION.md. Smear frames are authored in motion as stretched poses; P renders the smear look.
+  - (d) A new action, **hurt**: a snap back with head whip + hold + recover (PMD-style 2/8 ticks).
+  - Expression cues for both. Variants are optional.
+- **F (face)**:
+  - (a) Critic nits: angled brows clearing the fringe, a cleaner effort mouth, far-eye lashes off the cheek outline (walk SE f03–f05).
+  - (b) Faces for NE/N (partial or none) and the mirrored W/SW/NW views.
+  - (c) New expressions for dash (focused/determined) and hurt (pained ><, wince, tears optional).
+- **P (pixel)**: finish round 3 (limb audit gate, skirt shapes, face_layer integration, GIF writer). Then add **smear rendering** for M's smear frames (a stretched silhouette with motion-blur pixel streaks in the palette, 1–2 frames) and the 8-direction support.
+- **I (integrator, new)** owns `release/`.
+  - One end-to-end script `release/make_all.sh` that re-renders every action × 8 directions on the latest rig, motion, face and pixel chain. It runs the gates and produces the review set:
+    - gates: pxeval seq (boil, shade_swap), P's limb audit, GIF check (loop, ≥20 ms, seam)
+    - per action: an 8-direction GIF (4x), per-direction GIFs, a 1x strip and a contact sheet
+    - smooth-preview GIFs
+    - a gate report table
+  - Run a critic panel (Opus + Argon; the AD/animation director/game director roles from the repo's review style).
+  - Update one pinned hub entry, "Swordswoman current build", that always points to the latest gated set.
+  - Re-run as other owners land changes, watching their status logs.
+
+## Status log (I)
+- (I writes here)
