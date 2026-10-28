@@ -34,7 +34,7 @@ RAMPS = {'lash': 'KKK', 'iris_top': 'hhh', 'iris': 'ggg', 'iris_low': 'LLL', 'ey
 MATS = {m: (tuple(_FM.get(m, F_ADD.get(m, _DEF.get(m)))) if m in _FM else tuple(F_ADD.get(m, _DEF.get(m))), RAMPS[m]) for m in RAMPS}
 PV = {m: r[0] for m, r in RAMPS.items()}
 # feature size knobs (sprite px), tuned by rendering + pixelizing (f3d_iter)
-K = dict(closed=float(os.environ.get('F3D_CLOSED', '1.7')), lash=float(os.environ.get('F3D_LASH', '1.3')), brow=float(os.environ.get('F3D_BROW', '1.3')), mouth=float(os.environ.get('F3D_MOUTH', '1.4')),
+K = dict(closed=float(os.environ.get('F3D_CLOSED', '1.8')), lash=float(os.environ.get('F3D_LASH', '1.5')), brow=float(os.environ.get('F3D_BROW', '1.5')), mouth=float(os.environ.get('F3D_MOUTH', '1.5')),
          iris_rx=float(os.environ.get('F3D_IRX', '2.25')), iris_ry=float(os.environ.get('F3D_IRY', '2.2')),
          catch=float(os.environ.get('F3D_CATCH', '1.3')), blush=float(os.environ.get('F3D_BLUSH', '1.0')))
 
@@ -62,7 +62,7 @@ class Canvas:
     def __init__(self, size=None):
         self.im = Image.new('RGBA', size or (TEXN, TEXN), (0, 0, 0, 0)); self.d = ImageDraw.Draw(self.im)
 
-    def col(self, m): return MATS[m][0] + (255,)
+    def col(self, m): return (0, 0, 0, 0) if m == 'skin_clear' else MATS[m][0] + (255,)
 
     def ellipse(self, m, c, rx, ry):
         x, y = to_px(*c); self.d.ellipse([x - rx * SX, y - ry * SY, x + rx * SX, y + ry * SY], fill=self.col(m))
@@ -112,12 +112,43 @@ def iris(cv, cx, cy, rx, ry, clip_top=None, clip_bot=None):
     cv.im.alpha_composite(lay)
 
 
+GRID = os.environ.get('F3D_GRID', '1') == '1'
+
+
+def rbox(cv, m, c0, r0, c1, r1, cut=0.35):
+    """box in design px with cut corners (an octagon): crisp, whole-pixel sized features"""
+    cv.poly(m, [(c0 + cut, r0), (c1 - cut, r0), (c1, r0 + cut), (c1, r1 - cut), (c1 - cut, r1), (c0 + cut, r1), (c0, r1 - cut), (c0, r0 + cut)])
+
+
+def eye_grid(cv, side, state, mx, ic):
+    """ROUND 6 pixel-aware open eye: every part is >= 1 sprite px and sits on the S rest pixel grid (iris cols ic-2..ic+2, rows 51..54 = the m96
+    iris block), solid dark lash band 1.5 px, 1x2 px catchlight + 1x1.5 px pupil, so the standard chain's per-cell vote returns whole pixels"""
+    dy = {'open': 0.0, 'focused': 0.0, 'surprised': -0.8, 'half': 1.0}[state]
+    top = 51.0 + (-0.6 if state == 'surprised' else 0)
+    rbox(cv, 'iris', ic - 2.0, top, ic + 2.0, 54.0, 0.45)
+    rbox(cv, 'iris_top', ic - 2.0, top, ic + 2.0, 52.0, 0.45)
+    rbox(cv, 'iris_low', ic - 1.0, 53.0, ic + 1.0, 54.0, 0.3)
+    rbox(cv, 'lash', ic - 0.05, 51.4, ic + 1.3, 53.2, 0.2)                # pupil 1.35 x 1.8 px (right of the catchlight in both eyes)
+    rbox(cv, 'eye_white', ic - 1.4, top - 0.1, ic + 0.0, top + 2.2, 0.25)  # catchlight 1.4 x 2.3 px (wins its 1x2 cells at fractional offsets)
+    if state == 'half':   # lid over the iris top
+        cv.poly('skin_clear', [(mx(55.5), 50.0), (mx(61.8), 50.0), (mx(61.8), 51.0 + dy), (mx(55.5), 51.0 + dy)])
+    # upper lash: a solid band 1.5 px (rows 49.85..51.35 at rest) over cols 57..61, thick outer corner down to row 52.4, soft inner end, wing up-out
+    t0, t1 = 49.85 + dy, 51.35 + dy
+    cv.poly('lash', [(mx(56.2), t0 + 0.35), (mx(57.0), t0), (mx(60.6), t0 + 0.05), (mx(61.4), t0 + 0.6), (mx(61.6), t1), (mx(60.6), t1 - 0.1),
+                      (mx(57.4), t1), (mx(57.2), t1 + 1.05), (mx(55.8), t1 + 1.05), (mx(55.7), t0 + 1.0)])
+    cv.stroke('lash', [(mx(56.3), t0 + 0.5), (mx(55.0), t0 - 0.55)], 1.3, taper=(1.15, 0.85))   # cat-eye wing
+    if state == 'focused':   # raised lower lid: a 1.2 px band under the iris
+        cv.poly('lash', [(mx(57.0), 54.0), (mx(61.0), 54.0), (mx(60.6), 55.2), (mx(57.4), 55.2)])
+
+
 def eye(cv, side, state):
     """side 'L' (screen-left, outer corner on the left) | 'R'; state: open, focused, surprised, half, closed, joy, effort, pain"""
     s = 1 if side == 'L' else -1
     mx = lambda c: c if side == 'L' else 2 * CX - c   # mirror the lid geometry about the face centre
     ic = 59.0 if side == 'L' else 69.0                  # iris centre column (left / right eye)
     W = K['lash']
+    if GRID and state in ('open', 'focused', 'surprised', 'half'):
+        eye_grid(cv, side, state, mx, ic); return
     if state in ('open', 'focused', 'surprised', 'half'):
         lift = {'open': 0.0, 'focused': 0.0, 'surprised': -0.9, 'half': 1.0}[state]
         iy = 52.55 + (-0.25 if state == 'surprised' else 0)

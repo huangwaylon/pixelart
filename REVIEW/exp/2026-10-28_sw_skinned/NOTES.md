@@ -1000,3 +1000,14 @@ Re-baked against R's r8b skeleton (neck, head and hair/bow/bun bones moved forwa
   - Applied afterwards: bigger eyes, thicker lash and closed strokes, a wider mouth.
   - Open, for R/P: E geometry, skin shading band, bangs/side locks framing the face.
 - **Tools:** `f3d_expr.sh "<views>" [motion]` renders and pixelizes into `face/f3d/out/<act>_nocut/board_expr_*.png`. `f3d_cut.py` is a test stand-in that cuts the fringe at the agreed hairline (used before R's r8 bangs).
+
+**Round 5 follow-up (skin dark band):**
+- The dark threshold is now set per material (`T1M`): skin is .10, all other materials stay at .22. It applies to all skin (face, hands, thighs), not as a head case.
+- R's `ramps` in `rig/face_mats.json` are used.
+- Head dark-skin share on r8e (`render/p_skinshare.py`), old → new:
+
+  | | rest S | rest SE | rest E | walk SE | walk E |
+  |---|---|---|---|---|---|
+  | share | .157 → .033 | .052 → .000 | .092 → .009 | .041 → .006 | .092 → .008 |
+
+  Masters are .00–.02.

@@ -13,7 +13,7 @@ from scipy.spatial import cKDTree
 from skimage import measure
 H = os.path.dirname(os.path.abspath(__file__))
 HEAD_FWD = float(os.environ.get('HEAD_FWD', '0.025'))
-SIG = float(os.environ.get('SIG', '1.2'))  # surface smoothing (voxels)  # H2 units toward her front (-Y)
+SIG = float(os.environ.get('SIG', '1.6'))  # surface smoothing (voxels)  # H2 units toward her front (-Y)
 d = np.load(os.path.join(H, 'work', 'head_hull.npz'), allow_pickle=True)
 keep = d['keep']; lo = d['lo']; VOX = float(d['vox']); HV = d['V']; HM = d['mat'].astype(str)
 n = np.array(keep.shape); xs = [lo[i] + VOX * (np.arange(n[i]) + 0.5) for i in range(3)]
@@ -35,14 +35,15 @@ face = nd.binary_opening(face, iterations=1)
 # r8e (F): anime FACE PLANE. Front profile yf(z) = the old face's midline front (incl. the nose blob) + a slight lip bump; across x the front
 # wraps back as a superellipse  y = yf(z) + D (|x|/W)^P  (flat between the eyes, turning ~35 deg at the eyes and ~55 deg at the cheeks), so
 # the profile views see the outer eye, cheek and mouth on surfaces that face partly sideways while S/SE keep a frontal face.
-FW, FD, FP = 0.218, 0.20, float(os.environ.get("FACEP", "3.2"))
+FW, FD, FP = 0.218, 0.20, float(os.environ.get("FACEP", "2.9"))  # r9: outer eye ~10 deg more toward the side (F)
 mid = face & (np.abs(fx_) < 0.02); yf = np.where(mid, fy_, 9.0).min((0, 1))  # per z
 zs1 = xs[2]; ok = yf < 1.0; yf = np.interp(zs1, zs1[ok], yf[ok]) if ok.any() else np.full_like(zs1, -0.22)
 yf = yf - 0.006 * np.exp(-((zs1 - 1.462) / 0.012) ** 2)  # lip bump
 zlow = np.where(face, fz_, 9.0).min((1,))  # per (x, z)->x: chin line per x column
 zlo_x = zlow.min(1); okx = zlo_x < 9; zlo_x = np.interp(xs[0], xs[0][okx], zlo_x[okx]) if okx.any() else np.full_like(xs[0], 1.40)
 yfront = yf[None, None, :] + FD * (np.abs(fx_) / FW) ** FP
-face = (np.abs(fx_) < FW) & (fz_ < FTOP) & (fz_ >= zlo_x[:, None, None]) & (fy_ >= yfront) & (fy_ < 0.06) & (fy_ >= ycl - 0.01)
+FTOPX = FTOP - 0.115 * np.clip(np.abs(fx_) / 0.20, 0, 1) ** 2  # r9: hairline curves down over the temples (frames the face like the S master)
+face = (np.abs(fx_) < FW) & (fz_ < FTOPX) & (fz_ >= zlo_x[:, None, None]) & (fy_ >= yfront) & (fy_ < 0.06) & (fy_ >= ycl - 0.01)
 skull = (ell & keep) | face
 skull = nd.binary_closing(skull, iterations=2) & (keep | ell | face)
 # ---------------- hair shell
@@ -54,15 +55,22 @@ sy = np.where(skull, fy, 9.0).min(1)  # (nx, nz)
 syF = sy[:, None, :]
 CW = 0.047  # clump width (H2 units) ~ 2.5 px
 ph = (fx / CW) % 1.0; tri = np.abs(ph - 0.5) * 2  # 0 at clump centre, 1 at the notch
-k = np.floor(fx / CW).astype(int); tipz = np.where(k % 2 == 0, 1.772, 1.786) + 0.026 * tri ** 2.2  # r5b (F: S fringe bottom = master row 46.5): tips 1.772/1.786, notches ~1.80 so the brows peek through
+k = np.floor(fx / CW).astype(int); tipz = np.where(k % 2 == 0, 1.772, 1.786) + 0.026 * tri ** 2.2 - 0.115 * np.clip(np.abs(fx) / 0.20, 0, 1) ** 2  # r9: side clumps reach down over the temples  # r5b (F: S fringe bottom = master row 46.5): tips 1.772/1.786, notches ~1.80 so the brows peek through
 thick = 0.040 * np.clip((fz - tipz) / 0.05, 0.6, 1.0)  # thick, even clumps lying on the forehead (no visor), thinner toward the tips
-front = (fy <= syF + 0.02) & (np.abs(fx) < 0.215) & (syF < 1.0)
+front = (fy <= syF + 0.02) & (np.abs(fx) < 0.240) & (syF < 1.0)
 fr = front & (fz >= tipz) & (fz <= 1.94) & (fy >= syF - thick)  # the fringe lies on the forehead (no visor out to the hull front)
 visor = front & (fz > 1.60) & (fz < 1.95) & (fy < syF - thick)  # hull volume in front of the fringe layer (master bang overhang) -> removed
 facecut = (np.abs(fx_) < FW) & (fz_ < FTOP) & (fz_ > 1.34) & (fy_ < yfront) & (fy_ < 0.0)  # hull volume in front of the new face plane -> empty
 hair = keep & ~skull & ~curtain & ~visor & ~facecut & ~(front & (fz < tipz) & (fz > 1.60))
 hair = hair | (fr & ~skull)
-hair = nd.binary_closing(hair, iterations=1) & ~nd.binary_erosion(skull, iterations=1)
+# r9: ROUND bob mass (lead: blocky/spiky; N read as a pointed hood). A rounded crown cap over the cranium, everything outside a rounded outer
+# shell trimmed (except a round bun sphere on the top-back), then a morphological open/close to drop spikes.
+cap = ((((G - C) / (R + 0.055)) ** 2).sum(-1) <= 1.0) & (fz > 1.60) & (fy > -0.05) & ~((fy < -0.02) & (fz < FTOPX))  # top/back/sides only (no visor), never over the face
+BUNC = np.array([0.0, 0.085, 1.935]); bun = (((G - BUNC) / np.array([0.075, 0.072, 0.068])) ** 2).sum(-1) <= 1.0
+outer = ((((G - C) / (R + np.array([0.075, 0.075, 0.07]))) ** 2).sum(-1) <= 1.0) | (fz < 1.62)
+hair = (((hair | cap) & outer) | bun) & ~((fy < -0.02) & (fz < FTOPX) & (fz > 1.36) & ~fr)  # keep the face/cheek front clear (only fringe clumps may cross)
+hair = nd.binary_opening(hair, iterations=1) | (fr & ~skull) | bun
+hair = nd.binary_closing(hair, iterations=2) & ~nd.binary_erosion(skull, iterations=1)
 # r8d: profile balance (owner: "head looks jutted back"). Compress the back-of-head hair depth (incl. the bun overhang) toward the head:
 # y' = Y0 + (y - Y0) * BACKK for y > Y0, resampled on the voxel grid. Front views keep their silhouette (x/z untouched); the fringe is in front.
 Y0 = 0.06; BACKK = float(os.environ.get("BACKK", "0.62"))
@@ -88,4 +96,4 @@ skl = np.where(face, 'skin', 'scalp')  # the whole face region is skin; cranium 
 SV, SF, SL = mesh(skull, skl)
 HVv, HFf, HL = mesh(hair, hcls)
 print('skull', len(SV), {c: int((SL == c).sum()) for c in ('skin', 'scalp')}, 'hair', len(HVv), {c: int((HL == c).sum()) for c in ('hair', 'bow')})
-np.savez_compressed(os.path.join(H, 'work', 'head3d.npz'), SV=SV, SF=SF, SL=SL, HV=HVv, HF=HFf, HL=HL, head_fwd=HEAD_FWD, C=C - np.array([0, HEAD_FWD, 0]), R=R)
+np.savez_compressed(os.path.join(H, 'work', 'head3d.npz'), SV=SV, SF=SF, SL=SL, HV=HVv, HF=HFf, HL=HL, head_fwd=HEAD_FWD, bun_c=BUNC - np.array([0, HEAD_FWD, 0]), C=C - np.array([0, HEAD_FWD, 0]), R=R)

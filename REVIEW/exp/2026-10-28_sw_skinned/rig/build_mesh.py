@@ -159,8 +159,8 @@ G["sock_top"] = 0.622; G["sock_band"] = 0.026; G["boot_top"] = 0.196
 # ------------------------------------------------------------------ hair locks (front side locks to the shoulder), bow (knot + 2 lobes) + ribbon tails
 for side, sx in (("L", 1), ("R", -1)):
     zs = [1.60, 1.47, 1.38, 1.30]; rr_ = [(.030, .034), (.026, .030), (.020, .024), (.010, .013)]
-    xs = [0.5 * sum(max(side_x(q_, -0.095, 1.60 + DZ) - 0.035, 0.19) for q_ in (1, -1)), 0.226, 0.232, 0.232]  # mirror-symmetric (H2 head is not)
-    lk = [([sx * x, -.030 - HEAD_FWD, z + DZ], ra, rb) for x, z, (ra, rb) in zip(xs, zs, rr_)]  # r8c: locks behind the cheek line
+    xs = [0.215, 0.243, 0.250, 0.250]  # r9: locks outside the cheek, framing it (SE: no lock across the face)
+    lk = [([sx * x, -.005 - HEAD_FWD, z + DZ], ra, rb) for x, z, (ra, rb) in zip(xs, zs, rr_)]  # r9: locks behind the cheek line
     loft("lock_" + side, [{"c": c, "ra": ra, "rb": rb} for c, ra, rb in lk], [1, 0, 0], n=24, cap1="round")
     G["lock." + side] = [c for c, _, _ in lk]
 # bow (knot + lobes) and bun bone anchors from the hull's master-coloured regions
@@ -179,6 +179,7 @@ G["bow_zcut"] = float(zw - 0.085)  # bow-coloured hull below this = ribbon tails
 HR = HV[HMAT == "hair"]; zt = HR[:, 2].max(); cand = HR[(HR[:, 2] > zt - 0.12) & (HR[:, 1] > 0.04)]
 bc = cand[np.argsort(-(cand[:, 1] * 0.6 + cand[:, 2]))[: max(20, len(cand) // 8)]].mean(0) if len(cand) else np.array([0, .15, zt - .05])
 bc[0] = 0.0; G["bun"] = {"c": (bc - np.array([0, 0.03, 0.03])).tolist(), "r": 0.075}
+if "bun_c" in _h3: G["bun"] = {"c": np.array(_h3["bun_c"], float).tolist(), "r": 0.08}  # r9: explicit round bun
 G["DZ"] = DZ
 # ------------------------------------------------------------------ union by voxel remesh
 parts = {o.name: o for o in bpy.context.scene.objects if o.type == "MESH"}
@@ -241,8 +242,8 @@ def mat_of(n, fi, p):
     return "dress"
 fmat = [mat_of(flab[i], ffid[i], FC[i]) for i in range(len(FB))]
 # ---- round 5: modelled bow (knot + 2 lobes + 2 ribbon tails) as part of the separate hair group (deformed by bow_knot / bow.* / hair_back.*)
-_kn = np.array(G["bow_knot"]); _kn[1] = back_y(0.0, _kn[2]) + 0.012; G["bow_knot"] = _kn.tolist(); BOWO = []
-BOWO.append(loft("bow_knot_m", [{"c": [0, _kn[1] - 0.025, _kn[2]], "ra": .036, "rb": .040}, {"c": [0, _kn[1] + 0.025, _kn[2]], "ra": .034, "rb": .038}], [1, 0, 0], n=28, cap0="round", cap1="round"))
+_kn = np.array(G["bow_knot"]); _kn[2] += 0.04; _kn[1] = back_y(0.0, _kn[2]) + 0.012; G["bow_knot"] = _kn.tolist(); BOWO = []  # r9: bow seated higher at the back-top (N master)
+BOWO.append(loft("bow_knot_m", [{"c": [0, _kn[1] - 0.03, _kn[2]], "ra": .046, "rb": .050}, {"c": [0, _kn[1] + 0.03, _kn[2]], "ra": .044, "rb": .048}], [1, 0, 0], n=28, cap0="round", cap1="round"))
 for side, sx in (("L", 1), ("R", -1)):
     p0 = _kn + np.array([sx * 0.03, 0.0, 0.0]); p2 = np.array([sx * 0.185, _kn[1] + 0.055, _kn[2] - 0.005]); p1 = (p0 + p2) / 2 + np.array([0, 0.03, 0.025])  # r8c: lobes angle back, tips level (read as a bow edge-on)
     G["bow"][side] = [p0.tolist(), p1.tolist(), p2.tolist()]

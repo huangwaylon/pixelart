@@ -315,6 +315,11 @@ Lead diagnosis (from render/out/walk/walk_SE_px_hs + walk_SE_px, at 4x):
   walk SE boil .020 / shade_swap .026, idle .014-.017 / .016-.020.
   **R:** S-view tucked legs get a K line across the thigh, so the audit reads split legs; the purple iris maps to palette g (brown).
   If iris should read blue/dark, add a ramp in face_mats.json `ramps`. I'll re-run p_run.sh on your final r8 + F's textures.
+- 03:10 P: **skin dark band** (R 02:40): pixel_chain.py now has a per-material dark threshold `T1M`, with skin at .10 (env SKIN_T1; other
+  materials .22). This is one global skin rule for face, hands and thighs, not a head case. R's explicit `ramps` in rig/face_mats.json are used
+  (iris hgg, iris_low gLL, ...). Dark-skin (S) share of head skin cells on r8e, measured with render/p_skinshare.py (passes in render/out/p5skin):
+  S/SE/E rest .157/.052/.092 -> **.033/.000/.009**; walk SE .041 (max .069) -> **.006 (.023)**; walk E .092 (.142) -> **.008 (.029)**.
+  Masters: S .020, SE .013, E .000. All skin: .05-.09 (the thigh band under the hem keeps S).
 
 ## ROUND 2 addendum: posing direction (owner, 2026-10-28)
 > "I want more elegant posing during the different actions. Not slouched, needs to be confident, feminine."
@@ -596,3 +601,52 @@ Goal: one consistent, gated set of animations the owner can review, in **all 8 d
   **R, SE side lock:** in walk SE f03-f06 a side lock strand runs down over her far cheek/jaw (a dark vertical streak in the guide, a K/h column at 1x),
   and at rest a strand crosses the near eye's upper-left. That is hair geometry in front of the skin, so textures can't cover it.
   Please keep the side locks behind the cheek outline in SE (or weight them so they don't swing across the face).
+- 09:10 F (ROUND 6 #1, pixel-aware face textures): face/tex3d regenerated (re-fit on R's 08:17 head).
+  - **Grid eyes** (f3d_lib.eye_grid, default): every part of an open eye is >= 1 sprite px and sits on the S rest pixel grid of the m96 eye block
+    (iris 4 x 3 px, iris_top 1 row, iris_low 2 x 1, pupil 1.35 x 1.8, catchlight 1.4 x 2.3, solid lash band 1.5 px + thick outer corner + 1.3 px wing).
+    Closed-eye lines 1.8 px, brows 1.5 px, mouth lines 1.5 px: no stroke under 1.5 px. Sizes come from the calib footprint (S ~47 texels per sprite px).
+  - **Palette-exact:** every face material maps to ONE palette entry (flat ramps lash K, iris_top h, iris g, iris_low L, eye_white W, brow g, mouth m,
+    mouth_in R, blush k, nose S). The _col.png preview textures use the exact palette RGB. No gradients or AA in the matid textures (Closest sampling).
+  - **P, orphan rule for ALL materials (proposal):** after the vote, an 8-connected component of one material < 2 px becomes the neighbour majority,
+    EXCEPT (a) a component that touches a different thin-feature material of the same part group (catchlight W touching iris/lash, pupil K in iris)
+    and (b) thin features with THINF >= 1 (keep 1 px only if 4-connected to its own material within 2 px). Then a 1x1 catchlight or pupil survives inside an eye,
+    while stray speckle (iris px on skin, blush crumbs) goes. This replaces any face special case.
+  - **Measured on R's 08:17 head (rest, first non-hair row under the fringe, master rows):** S cols 54-74 = 51.6 50.6 49.8 49.0 48.8 48.8 48.9 49.5 50.2 51.2 52.1.
+    So the fringe now covers the S lash row (50) at the outer eyes, and the lash merges into the fringe K line. SE fringe at the near eye is 54.0/54.1
+    (cols 58-60), which covers the whole SE near eye. **R:** please keep the fringe bottom <= row 48.5 over the eye columns (S cols 55-61 / 66-72,
+    SE near eye cols 61-67) and wrap the temples OUTSIDE the eye corners (the round-6 temple wrap is good outside cols 55/72).
+  - **R/P, skin band:** the whole S face skin is the dark S band at 1x (rest), so the eyes lose contrast. The masters are s. Lowering the skin ramp's
+    dark threshold or raising the skin bias (global, as R suggested at 02:40) is the biggest single readability win for the face now.
+  - Tests: face/f3d/out/rest_nocut/board_expr_rest.png (S/SE/E), fexpr_nocut/board_expr_fexpr.png (S/SE expressions), walk_nocut/board_expr_walk.png (walk SE).
+
+---
+# ROUND 7: ILLUSTRATION-TEXTURED 3D HEAD (owner decision, 2026-10-29)
+> "The face/head is much much worse than before, it regressed severely." The owner chose: **illustration-textured 3D head**.
+
+Why: the hand-made 3D face textures and sculpted hair read as mush at 96 px (panel: on-model 7→3, 1x readability 6→3–4).
+The approved masters came from **pixelizing the hi-res Gemini illustrations** (E2), so we apply that same source in 3D.
+
+- **Head = 3D geometry + hi-res illustration texture** (NOT pixel-art projection). The source is `swordswoman/v2/hair/turnE_final/`
+  (front / iso_SE_fixed / side / iso_NE / back etc.; check `v2/pixelize/tools/pzlib.py` for the view mapping). Project per view
+  from a camera matched to the illustration's view, then blend the projections by surface-normal/view angle into one UV texture
+  (or keep per-view textures and pick or blend by camera yaw). The hair and head silhouettes are refit to the illustration
+  outlines per view (silhouette IoU ≥ .9 at rest per view), so the texture lands on the right geometry.
+- **Lighting:** the illustration already carries its shading, so render the head texture mostly unlit (emission), with at most a
+  mild key-light modulation, so the face stays light like the illustration. The body keeps its cel shading. Match the skin tone
+  where the head meets the neck.
+- **Expressions:** F makes expression variants **as illustrations in the same style** (Gemini image edit with the turnE
+  illustration as reference: blink, smile, joyful ^^, determined, focused, effort, surprised, squint, hurt, wince; open/closed mouth),
+  aligned to the base illustration pixel-for-pixel outside the face, so only the face region swaps. Expressions switch per frame
+  in-render from M's keys.
+- **Pixelization:** P's standard chain, the same chain as the body, with no head special case. If E2 k-centroid (the winning
+  illustration method) handles the textured head better than the material vote, use it as a **global** colour-region rule for
+  textured materials.
+- **Owners:**
+  - **R:** projection camera fits per view, the blended texture, a silhouette refit of the hair/head (bangs as in the
+    illustration, which fixes the temples and the balding look; full fringe), and unlit head material.
+  - **F:** expression illustrations + alignment.
+  - **P:** chain support for textured materials (no special case), the skin dark-band fix, and the orphan rule.
+  - **M:** unchanged (round-6 arm/idle/feet tasks).
+  - **I:** (a) a **hybrid "current best" build** now: round-5 body/motion/stance + round-4 head (projected master + face parts),
+    if feasible on the current rig; else pin both builds side by side. (b) Rebuild + gates + A/B (r4 head vs r7 head) when R, F and P land.
+- The round-5/6 sculpted head and hand-made face textures are archived as the rejected baseline.

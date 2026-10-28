@@ -45,6 +45,7 @@ SHAPE = os.environ.get('SHAPE', '1') == '1'  # round 3 shape fixes (A-line skirt
 HIPF = float(os.environ.get('HIPF', '0.35'))  # A-line envelope starts at this fraction of the skirt height (hip)
 ALINE = float(os.environ.get('ALINE', '0.6'))  # skirt widening per row and side (px)
 SKINMAX = int(os.environ.get('SKINMAX', '3'))  # max skin-band rows under the hem
+ORPHAN = os.environ.get('ORPHAN', '1') == '1'  # round 6 orphan rule for every material
 RIM = os.environ.get('RIM', 'g')  # near-leg rim tone along the leg|leg separation (d = sock sheen; g = boot light, stronger)
 SMOOTH = os.environ.get('SMOOTH', '1') == '1'
 HOLE = int(os.environ.get('HOLE', '4'))  # enclosed background holes up to this many px are filled
@@ -657,6 +658,7 @@ def run(stem, info, opt):
         if opt['temporal']: g = reuse_unchanged(g, st, prev); st['g'] = g
         out[i], sts[i] = g, st; prev = st
     if opt['temporal']: out = kill_flips(out, loop)
+    if ORPHAN: out = [orphan_rule(g, st) for g, st in zip(out, sts)]
     out = [hx.main_comp(hx.drop_bare_k(g)) for g in out]
     if opt.get('smear', True):
         out, smk = apply_smear(out, info)
@@ -681,7 +683,7 @@ def travel_dir(info):
 
 def motion_frames(info):
     act = info['action']
-    for m in (f'{EXP}/motion/{act}.json', f'{EXP}/motion/variants/{act}.json'):
+    for m in (f'{EXP}/motion/{act}.json', f'{EXP}/motion/view/{act}.json', f'{EXP}/motion/variants/{act}.json'):
         if os.path.exists(m): return json.load(open(m))['frames']
     return []
 
@@ -732,6 +734,29 @@ def apply_smear(G, info):
         else:
             base = k
     return G, sm
+
+
+def orphan_rule(g, st):
+    """round 6, every material (faces included): a fill pixel with no same-colour 8-neighbour is an orphan.  A shade speck (a same-material
+    neighbour exists) takes the most common same-material neighbour colour; a lone pixel of another material takes the 4-neighbour majority,
+    unless its material is a designed thin feature (THINF presence-only: nose/mouth dot, lash, catchlight) - those are features, not specks."""
+    g = g.copy(); lab = st['lab']; M_ = _mat(lab); H, W = g.shape
+    for _ in range(2):
+        pg = np.pad(g, 1, constant_values='.'); pm = np.pad(M_, 1, constant_values=-1)
+        nb = [(dy, dx) for dy in (-1, 0, 1) for dx in (-1, 0, 1) if dy or dx]
+        same = sum((pg[1 + dy:1 + dy + H, 1 + dx:1 + dx + W] == g).astype(int) for dy, dx in nb)
+        cand = (g != '.') & (g != 'K') & (same == 0) & (lab >= 0)
+        if not cand.any(): break
+        out = g.copy()
+        for y, x in zip(*np.nonzero(cand)):
+            m = M_[y, x]
+            cs = [pg[1 + y + dy, 1 + x + dx] for dy, dx in nb if pm[1 + y + dy, 1 + x + dx] == m and pg[1 + y + dy, 1 + x + dx] not in '.K']
+            if cs: out[y, x] = max(set(cs), key=cs.count); continue
+            if MN[m] in THINF and THINF[MN[m]] < 2: continue
+            c4 = [pg[1 + y + dy, 1 + x + dx] for dy, dx in ((-1, 0), (1, 0), (0, -1), (0, 1)) if pg[1 + y + dy, 1 + x + dx] not in '.K']
+            if c4: out[y, x] = max(set(c4), key=c4.count)
+        g = out
+    return g
 
 
 def is_loop(info):

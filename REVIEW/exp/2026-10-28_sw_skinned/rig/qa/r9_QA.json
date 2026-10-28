@@ -1,0 +1,16 @@
+{
+ "before r8e_S_skin_above_brow": 24,
+ "after r9_S_skin_above_brow": 2,
+ "before r8e_SE_skin_above_brow": 0,
+ "after r9_SE_skin_above_brow": 0,
+ "after r9_SW_skin_above_brow": 0,
+ "before r8e_E_skin_above_brow": 0,
+ "after r9_E_skin_above_brow": 0,
+ "after r9_N_skin_above_brow": null,
+ "walk_SE_skin_above_brow": [
+  0,
+  0,
+  0,
+  0
+ ]
+}

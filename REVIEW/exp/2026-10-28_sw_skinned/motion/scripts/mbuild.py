@@ -39,9 +39,9 @@ SPRING = {  # per-action overrides of msim.GROUPS. Rule: natural freq < ~0.4 x s
     "run": {"hair_front": dict(f=2.6, z=0.45, gain=0.5), "bow": dict(f=2.3, gain=0.35), "bun": dict(f=2.5, z=0.4), "hair_side": dict(gain=0.5), "hair_back": dict(gain=0.5), "sleeve": dict(gain=0.4), "skirt": dict(gain=1.6)},
     "idle": {"bow": dict(f=1.6, z=0.5, gain=1.4), "bun": dict(f=1.8, z=0.5), "hair_side": dict(f=1.5, z=0.55), "hair_back": dict(f=1.4, z=0.55),
              "hair_front": dict(f=2.0, z=0.5, gain=0.4), "skirt": dict(f=1.8, z=0.5, gain=1.5), "sleeve": dict(f=1.5, z=0.5)},
-    "dash": {"hair_side": dict(f=1.8, z=0.4, cd=3.0), "hair_back": dict(f=1.6, z=0.45, cd=3.0), "bow": dict(f=2.4, z=0.3, cd=2.5, gain=1.0),
+    "dash": {"hair_side": dict(f=1.5, z=0.3, cd=3.0), "hair_back": dict(f=1.6, z=0.45, cd=3.0), "bow": dict(f=1.8, z=0.2, cd=2.5, gain=1.0),
              "bun": dict(f=2.6, z=0.3), "skirt": dict(f=2.2, z=0.3, cd=3.0, gain=2.0), "sleeve": dict(f=1.8, z=0.35, cd=3.0, gain=0.8, mx=30), "hair_front": dict(cd=1.5)},
-    "hurt": {"hair_side": dict(f=1.8, z=0.4), "hair_back": dict(f=1.7, z=0.4), "bow": dict(f=2.4, z=0.3, gain=1.0), "bun": dict(f=2.6, z=0.3),
+    "hurt": {"hair_side": dict(f=1.5, z=0.3), "hair_back": dict(f=1.7, z=0.4), "bow": dict(f=1.8, z=0.2, gain=1.0), "bun": dict(f=2.6, z=0.3),
              "skirt": dict(f=2.2, z=0.35), "sleeve": dict(f=1.8, z=0.35, mx=30), "hair_front": dict(cd=0.5, gain=0.5)},
     "jump": {"hair_side": dict(f=1.7, z=0.35, cd=5.0), "hair_back": dict(f=1.6, z=0.35, cd=5.0), "bow": dict(f=2.2, z=0.25, cd=4.0),
              "bun": dict(f=2.5, cd=2.0), "skirt": dict(f=2.2, cd=5.0), "sleeve": dict(f=1.8, mx=35, cd=5.0), "hair_front": dict(cd=3.0)},
@@ -56,8 +56,9 @@ GAIT_SNAPPY = {
     "walk": {3: [0.0, 0.22, 0.55], 4: [0.0, 0.17, 0.45, 0.75], 5: [0.0, 0.14, 0.30, 0.50, 0.75], 6: [0.0, 0.12, 0.24, 0.42, 0.56, 0.78]},
     "run":  {3: [0.0, 0.22, 0.62], 4: [0.0, 0.214, 0.5, 0.714], 5: [0.0, 0.16, 0.36, 0.56, 0.76]},
 }
-IDLE_PH = {"holds": {8: [0, .12, .26, .34, .5, .62, .76, .84], 12: [0, .125, .25, .283, .333, .40, .5, .625, .75, .783, .833, .9],
-                     16: [0, .08, .16, .23, .27, .31, .36, .42, .5, .58, .66, .73, .77, .81, .86, .92]}}
+IDLE_PH = {"holds": {8: [0.0, 0.1375, 0.2625, 0.3667, 0.5, 0.6375, 0.7625, 0.8667],
+                     12: [0.0, 0.1125, 0.2167, 0.2667, 0.3208, 0.3833, 0.5, 0.6125, 0.7167, 0.7667, 0.8208, 0.8833],
+                     16: [0.0, 0.0792, 0.15, 0.2125, 0.2583, 0.3, 0.3458, 0.4125, 0.5, 0.5792, 0.65, 0.7125, 0.7583, 0.8, 0.8458, 0.9125]}}   # R6: smoother rhythm, longest/shortest frame <= ~2.5x (was 300 next to 79 ms)
 
 
 def gait_times(action, n, feel, T):
@@ -260,6 +261,13 @@ def build(action, tune=None, var=None):
     if not A["loop"]: out["timing_ms"][-1] = 250
     if var.get("name"): out["action"] = var["name"]; out["variant"] = {k: v for k, v in var.items()}
     trav = specs[-1].get("travel", 0.0)
+    # R6: per-frame root motion (cumulative game travel, metres along her front) so the integrator can move the sprite and
+    # judge foot plants (run S "feet drift" is the in-place treadmill: the planted foot slides back at travel speed by design)
+    acc_m = 0.0
+    for k, fr in enumerate(out["frames"]):
+        fr["root_motion_m"] = round(acc_m, 4)
+        i0 = int(round((t0 + times[k]) / dt)); i1 = min(len(specs) - 1, int(round((t0 + times[k] + out["timing_ms"][k] / 1000) / dt)))
+        acc_m += float(sum(specs[i].get("travel", 0.0) for i in range(i0, i1)) * dt)
     out["travel_m_per_s"] = round(trav, 4)
     out["notes"] = (f"M {time.strftime('%Y-%m-%d %H:%M')}: skeleton={os.path.relpath(sk.path, EXP)}; cycle {T:.3f}s; in place (root.loc = bob/sway only). "
                     f"Game travel speed {trav:.3f} m/s = {trav * 67.88 * out["timing_ms"][0] / 1000:.2f} px/frame at 1x (67.88 px/m, R camera) for planted feet to hold still. "
