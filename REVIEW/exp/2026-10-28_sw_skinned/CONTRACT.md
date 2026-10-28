@@ -186,6 +186,14 @@ Lead diagnosis (from render/out/walk/walk_SE_px_hs + walk_SE_px, at 4x):
   matid colours = hx.MATS or tell me the new ones here, (b) add `"yaw"` to the `<stem>.json` info so my part pass matches non-default yaws.
   End-to-end: `render/p2_run.sh "<acts>" "<views>"` -> render/out/p2/<act>/ (renders passes + parts together, so a rig/motion update can't
   desync them). render_motion.py's post stage calls the new chain unchanged (it auto-renders the part pass if missing).
+- 21:00 P: **P2 pixel chain done** on r5 + M's 18:35 bake, walk/run/idle/jump x SE/E/S -> render/out/p2/<act>/ (boards, cmp GIFs, 1x strips),
+  pxeval render/out/p2/pxeval/table.md, NOTES.md (P section). Uses R's `tex` head (texel-phase aligned) + rig/align.json; my own part/rest-position
+  passes (render/p_parts.py) instead of `lid` (finer: per bone + skirt/sleeve/head, plus exact surface correspondence for temporal locking).
+  Opus 6.5 vs r1 4.5, Argon 7.2 vs 3.4: legs never vanish, thighs connected. Gates: boil passes on walk SE/S and idle; shade_swap fails everywhere.
+  74 % of the swaps are on surfaces moving > 2.5 px/frame, and the dark palette keys sit within dE 12 of each other.
+  **Requests -> M:** 12-frame walk/run or holds on the passing poses, and quantised head turn/tilt (hold >= 2 frames), which removes the tex-head
+  resample swaps (~.01). **-> R:** in walk SE f04/f05 the forward sole reaches row 128.6, so it is clipped at the cell bottom with dy=1.
+  FEET_JITTER in SE/E is real 30-degree perspective of the stride (~7 px), not jitter.
 
 ## ROUND 2 addendum: posing direction (owner, 2026-10-28)
 > "I want more elegant posing during the different actions. Not slouched, needs to be confident, feminine."
@@ -206,3 +214,43 @@ This applies to M (poses and keys), with R (rest pose) and P (readability) suppo
   - **Run:** light and springy, upright, arms bent at about 90° with an elegant swing.
   - **Jump:** a graceful arc, with the body arched or extended at the apex, toes pointed, knees together on the tuck, and a soft land with a settle.
 - **Silhouette check.** Each key pose must read as confident and feminine at 1x (96 px). M includes a key-pose silhouette sheet (solid fill) per action for review.
+
+---
+# ROUND 3 (2026-10-28, owner feedback on round 2)
+> "The faces are all messed up. The faces need to follow the head's movements. Make sure to follow the 3D model as reference.
+> The faces need to be more expressive depending on the action." · "Make sure the GIFs run and loop smoothly." · "Test different
+> timings and lengths for the animation depending on the action. We want more expression, bouncy, liveliness." · "Check limbs." ·
+> "Run E smooth preview: the run posture is very stiff and awkward. Maybe more leaning forward and more natural movement."
+
+Owners and tasks:
+- **F (face artist, new)** owns `face/`.
+  - **Face system on 3D head anchors.** This is the proven snowpeak approach (`pipeline/face.py`: hand-designed pixel decals on 3D head anchors). Eyes, brows, mouth and blush are pixel parts drawn to the m96 face spec (`swordswoman/v2/m96/FACE_SPEC.md`, `eye_spec.json`, stamps in `v2/m96/heads/`). They are placed per frame from the 3D head's projected face anchors (R provides them) and follow head yaw, pitch and roll: spacing compresses with yaw, the far eye narrows, and the parts shift with tilt.
+  - **Expression library** keyed by name: neutral, smile, joyful, determined, effort, surprised, blink, half-blink, squint (land), wink (optional), mouth open/closed variants.
+  - **Works in both outputs:** the pixel frames, and the smooth preview, where the face is shown as textured decals or a composite.
+  - **Coordination:** the projected-texture face is replaced. R masks the face region out of the projection, and F hands P a `face_layer` call.
+- **M (animator)** owns `motion/`.
+  - **Run rework (E preview called stiff/awkward):** a confident forward lean of about 12–18° from the ankles and hips with the chest still lifted and the head up looking ahead. This is not a slouch; it overrides the earlier "under 8°". Natural mechanics: knee drive, heel kick-back, a flight phase, arms pumping from the shoulder with elbows at about 90°, counter-rotation, bounce.
+  - **Timing/length variants per action**, rendered side by side for the owner to pick:
+    - walk: 6 / 8 / 10 / 12 frames
+    - run: 6 / 8 / 10
+    - idle: 8 / 12 / 16 with different holds
+    - jump: short vs long anticipation and hang
+    Each variant gets at least two timing feels, such as snappy holds vs even.
+  - **Expression track:** a per-frame `"face": "<expression>"` key, plus `"blink"` cues, chosen per action beat (run = determined/effort, jump = joyful at the apex and squint on the land, walk = smile, idle = neutral with blinks and an occasional smile).
+  - **Fixes:** remove the forward head in the idle settle and the jump fall. Act on P's requests: holds on the passing poses, and head turns held at least 2 frames.
+  - **Comparison GIFs:** every frame at least 20 ms (browsers clamp shorter frames to 100 ms). Merge or resample instead of emitting 10 ms frames.
+- **P (pixel engineer)** owns `render/pixel_chain.py` and the post-process.
+  - **Limb audit** per frame: each limb (both arms, hands and legs) is one connected component, at least 2 px wide, and attached to the body, never floating or detached. Make it a gate and a report.
+  - **Shape fixes:** the skirt is A-line rather than a tent, the hem has no stair-step corners, the skin band holds a stable size, and boot toes are rounded.
+  - **Integration:** F's face layer.
+  - **GIF writer:** loop=0, all frames at least 20 ms, a seamless loop seam (last→first diff in line with in-cycle diffs), and the right disposal, with no ghosting.
+- **R (rigger)** owns `rig/`.
+  - **Face anchors:** empties or bones on the head for `eye.L`, `eye.R`, `brow.L/R`, `mouth` and `cheek.L/R`, written per frame (projected 2D at 1x plus depth and facing) into the render info.
+  - **Masking:** take the face region out of the master projection (F supplies the face).
+  - **Cell clipping:** fix the sole being clipped at the cell bottom (walk SE f04/f05).
+  - **Skirt:** an A-line skirt shape that's less tent-like.
+
+All four commit nothing. The lead commits and pushes. Each owner logs in their status section below.
+
+## Status log (F)
+- (F writes here)

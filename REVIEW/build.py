@@ -26,6 +26,7 @@ Entry schema (only id, date, project, status and title are required):
 import html, json, os, glob
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+GIF_PROBLEMS = []
 STATUS = {  # colour, sort order
     'winner': ('#3fb950', 0), 'approved': ('#3fb950', 1), 'promising': ('#58a6ff', 2), 'needs-review': ('#d29922', 3),
     'running': ('#a371f7', 4), 'inconclusive': ('#8b949e', 5), 'rejected': ('#f85149', 6)}
@@ -73,6 +74,29 @@ def esc(s):
     return html.escape(str(s))
 
 
+def gif_check(path):
+    """Return a list of playback problems for a GIF (stdlib-only parser): no infinite loop, frames < 20 ms
+    (browsers clamp those to 100 ms, so timing plays wrong), or a single frame."""
+    try:
+        b = open(path, 'rb').read()
+    except OSError:
+        return []
+    loop = b'NETSCAPE2.0' in b
+    delays, i = [], b.find(b'\x21\xf9\x04')
+    while i != -1:
+        delays.append(10 * int.from_bytes(b[i + 4:i + 6], 'little'))
+        i = b.find(b'\x21\xf9\x04', i + 8)
+    probs = []
+    if not loop:
+        probs.append('does not loop')
+    if len(delays) < 2:
+        probs.append('single frame')
+    short = sorted({d for d in delays if d < 20})
+    if short:
+        probs.append(f'frames of {short} ms play at 100 ms in browsers')
+    return probs
+
+
 def card(e, pinned=False):
     col = STATUS.get(e['status'], ('#888', 9))[0]
     out = [f'<div class="card{" pinned" if pinned else ""}" data-project="{esc(e["project"])}" data-status="{esc(e["status"])}" id="{esc(e["id"])}">',
@@ -89,6 +113,11 @@ def card(e, pinned=False):
         for m in e['media']:
             missing = not os.path.exists(os.path.join(HERE, m['src']))
             cap = esc(m.get('caption', '')) + (' <b style="color:#f85149">[missing file]</b>' if missing else '')
+            if not missing and m['src'].lower().endswith('.gif'):
+                probs = gif_check(os.path.join(HERE, m['src']))
+                if probs:
+                    GIF_PROBLEMS.append((e['id'], m['src'], probs))
+                    cap += f' <b style="color:#f85149">[GIF: {esc("; ".join(probs))}]</b>'
             out.append(f'<figure class="{"wide" if m.get("wide") else ""}"><img loading="lazy" src="{esc(m["src"])}"><figcaption>{cap}</figcaption></figure>')
         out.append('</div>')
     if e.get('links'):
@@ -119,6 +148,8 @@ def main():
     parts.append(f'</main><div id="zoom"><img></div><script>{JS}</script>')
     open(os.path.join(HERE, 'index.html'), 'w').write('\n'.join(parts))
     print(f'wrote REVIEW/index.html: {len(entries)} entries, {sum(1 for e in entries if e.get("pinned"))} pinned')
+    for eid, src, probs in GIF_PROBLEMS:
+        print(f'  GIF problem [{eid}] {src}: {"; ".join(probs)}')
 
 
 if __name__ == '__main__':
