@@ -9,5 +9,5 @@
   "hurt": {"motion": "motion/hurt.json", "loop": null}
  },
  "dirs": "auto",
- "pipeline": "r5"
+ "pipeline": "hybrid"
 }

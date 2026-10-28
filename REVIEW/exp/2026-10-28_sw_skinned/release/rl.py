@@ -68,7 +68,7 @@ def hfiles(paths):
 def g(pat): return sorted(glob.glob(f'{EXP}/{pat}'))
 
 
-RIG_IN = lambda: [f'{EXP}/rig/rig.blend', f'{EXP}/rig/align.json', f'{EXP}/rig/face_anchors.json', *g('rig/tex/*.png'),
+RIG_IN = lambda: [BLEND(), f'{EXP}/rig/align.json', f'{EXP}/rig/face_anchors.json', *g('rig/tex/*.png'),
                   f'{EXP}/render/render_motion.py', f'{EXP}/render/p_parts.py']
 FACE_IN = lambda: [*g('face/*.py'), f'{EXP}/face/parts.json', f'{EXP}/face/calib.json', *g('face/tex/*')]
 CODE_IN = lambda: [*g('render/pixel_chain.py'), *g('render/r_tex_head.py'), *g('render/gifio.py'), *g('render/gifcheck.py'),
@@ -110,7 +110,7 @@ def run(cmd, log, env=None):
 
 def blender(script, mot, V, out, log, extra=()):
     os.makedirs(out, exist_ok=True)
-    return run([BL, '-b', f'{EXP}/rig/rig.blend', '-P', script, '--', mot, V, out, *extra], log)
+    return run([BL, '-b', BLEND(), '-P', script, '--', mot, V, out, *extra], log)
 
 
 def clip(bid, act, V):
@@ -171,6 +171,11 @@ def clip(bid, act, V):
     return done(W, st)
 
 
+def BLEND():
+    """hybrid (round 7a) = R's archived r7 rig (projection UVs pj_<V>, hull head) under M's latest motion (body bones identical to r8b)"""
+    return f'{EXP}/rig/work/rig_r7.blend' if pipeline() == 'hybrid' else f'{EXP}/rig/rig.blend'
+
+
 def pipeline():
     """'r4' = projected master head + F's 2D face layer; 'r5' = one pipeline (3D head/face from R+F rendered by R, P's chain with no
     head special case, R's own --preview).  release/actions.json "pipeline", env PIPE overrides."""
@@ -223,6 +228,10 @@ def apply_face(W, F, act, V, loop):
     n = 0
     for k, fr in enumerate(info['frames']):
         i = fr['i']; gg = hx.read_grid(f'{W}/{act}_{V}_px/f{i:02d}.txt')
+        if pipeline() == 'hybrid':  # round-4 head: R's projected master head pass (r_tex_head.tex_head, R's helper) over P's current chain
+            import r_tex_head
+            dx, dy = info.get('out_dxdy', [0, 0]); tp = f'{W}/{act}_{V}_f{i:02d}_tex.png'
+            if os.path.exists(tp): gg = r_tex_head.tex_head(FLY.load_ftex(tp, dx, dy), gg)
         fi = {'action': act, 'view': V, 'i': i, 'face_dir': F, 'loop': loop, 'rface': fr.get('face') or None}
         g2 = FLY.face_layer(fi, gg, {'rface': fr.get('face') or None})
         n += int((np.asarray(g2) != gg).sum()); save_final(np.asarray(g2), f'{W}/final/f{i:02d}', V)

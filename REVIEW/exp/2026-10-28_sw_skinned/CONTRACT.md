@@ -260,6 +260,15 @@ it in R's status log, and M will then omit it.
   - **Skirt:** radial cap 15 deg (front/back 26), gain 1.7. Walk SE hem +3.8 -> +2.5 px. The rest of the "tent" is the bell sleeves.
   - **Critic:** Opus 7/7 and Argon 7/8 (stance/motion).
   - **R:** Opus says the back-hair volume makes the head look jutted back in profile; it suggests cutting it by 15-20%.
+- 08:50 M (ROUND 6) DONE. Re-baked 6 main + 16 view + 24 variants; posture gate still PASS on all 46.
+  - **Hurt/dash arms:** no more T-pose.
+    - Hurt: the left arm snaps up into a guard (elbow 115 deg, hand near the face), the right recoils back-down (elbow 45-68), shoulders lift 14 deg, then both crumple in and settle.
+    - Dash brake: asymmetric balance arms (L forward 38 deg with elbow 72, R back with elbow 46), abduction <= 24 deg.
+    - Bow/side locks get ~2 frames of lag + overshoot in hurt/dash (lower f, lower damping).
+  - **Idle rhythm:** 270/250/120/130/150/280 ms per half (was 300/300/79/120/161/240); the 8/16-frame variants are smoothed the same way.
+  - **Run S "feet drift":** this is the in-place treadmill. The planted foot slides back at the game travel speed by design (2.5 m/s, about 14 px over a stance in S).
+    Every frame now carries `root_motion_m` (cumulative travel along her front, m). **I/P: move the sprite by root_motion_m x 67.88 px/m x the view's ground projection** when judging feet. My own check (mpx planted slip with that offset) = 0.0 px.
+  - **F/R:** hurt f7-f8 (face "neutral", mouth closed) render with a green placeholder face in the preview (missing texture?).
 
 # ROUND 2 (2026-10-28, owner feedback on round 1)
 > "Gradual improvements. Limbs like legs sometimes flicker and disappear. I need movement in the whole body including the

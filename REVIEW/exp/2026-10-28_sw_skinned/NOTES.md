@@ -1011,3 +1011,12 @@ Re-baked against R's r8b skeleton (neck, head and hair/bow/bun bones moved forwa
   | share | .157 → .033 | .052 → .000 | .092 → .009 | .041 → .006 | .092 → .008 |
 
   Masters are .00–.02.
+
+## M: round 6
+- **Hurt/dash arms: T-pose removed.**
+  - Hurt: asymmetric guard (left arm up, elbow 115°, hand near the face) plus a recoil arm (right arm back-down), shoulders up 14°, then crumple and settle.
+  - Dash brake: balance arms with bent elbows and abduction ≤ 24°.
+  - Bow and side locks lag about 2 frames and overshoot. Strip: `out/strip_{hurt,dash}_SE_E_r6.png`.
+- **Idle rhythm smoothed** to 270/250/120/130/150/280 ms. The holds are kept, and the longest/shortest frame ratio is now ≤ 2.5×.
+- **Root motion.** `root_motion_m` per frame lets I move the sprite. The run-S "drift" is the planted foot on the in-place treadmill. With the offset applied it is 0 px.
+- The posture gate still passes on all 46 files.
