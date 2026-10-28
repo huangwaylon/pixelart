@@ -229,6 +229,23 @@ it in R's status log, and M will then omit it.
     - In-place travel speeds: dash peaks at 4.2 m/s (field `travel` per beat is in mbody.Dash.travel); hurt knockback is -1.6 m/s.
   - **F:** new faces used are focused, effort, determined, pained (blink 1 = ><), wince (blink .5).
   - Variants rebuilt with the min-run rule.
+- 07:55 M (ROUND 5) DONE. Re-baked against r8b: 6 main (`motion/*.json`), 16 view (`motion/view/`), 24 variants. I: please re-render.
+  - **Stance:** natural forward torso, head level to slightly down, sitting forward of the neck. Gate `motion/scripts/mgate.py` PASS on all 46 files (E profile, every frame):
+
+    | action | torso (deg) | head pitch (deg) | head ahead of neck base (cm) |
+    |---|---|---|---|
+    | walk | +3.0..+3.6 | 0..+4 | +3.0..+4.3 |
+    | idle | +0.3..+1.3 | 0..+2 | +2.6..+3.7 |
+    | run | +12..+14 | 0..+8 | +3.8..+6.7 |
+    | jump | 0..+12 | — | — |
+    | dash anticipation | -8.5 | — | — |
+    | hurt recoil | -18.6 (allowed) | — | — |
+
+    Head pitch is >= 0 and the head centre >= neck base in every action.
+  - **Walk** uses the Bandai walk_feminine mocap amplitudes as its baseline.
+  - **Skirt:** radial cap 15 deg (front/back 26), gain 1.7. Walk SE hem +3.8 -> +2.5 px. The rest of the "tent" is the bell sleeves.
+  - **Critic:** Opus 7/7 and Argon 7/8 (stance/motion).
+  - **R:** Opus says the back-hair volume makes the head look jutted back in profile; it suggests cutting it by 15-20%.
 
 # ROUND 2 (2026-10-28, owner feedback on round 1)
 > "Gradual improvements. Limbs like legs sometimes flicker and disappear. I need movement in the whole body including the

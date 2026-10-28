@@ -1,0 +1,6 @@
+walk max outward deg (all / sides): 20.0 / 20.0 | hem width vs rest px (SE 1x) max: 2.5 per frame: [
+run max outward deg (all / sides): 24.7 / 20.0 | hem width vs rest px (SE 1x) max: 4.6 per frame: [n
+idle max outward deg (all / sides): 18.8 / 18.8 | hem width vs rest px (SE 1x) max: 2.6 per frame: [
+jump max outward deg (all / sides): 29.8 / 20.0 | hem width vs rest px (SE 1x) max: 3.1 per frame: [
+dash max outward deg (all / sides): 26.1 / 20.0 | hem width vs rest px (SE 1x) max: 5.4 per frame: [
+hurt max outward deg (all / sides): 22.1 / 20.0 | hem width vs rest px (SE 1x) max: 3.6 per frame: [

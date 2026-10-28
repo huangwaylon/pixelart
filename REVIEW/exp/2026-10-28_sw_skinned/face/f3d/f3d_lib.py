@@ -219,7 +219,7 @@ def face_key(expr, blink=None, mouth_=None):
 # and foreshortens to nothing (P: "no face in E").  The side of the head (texture u < SIDE_U, mirrored for W) carries the m96 E-profile
 # eye/brow/blush, placed by INVERSE warping through the E calibration (out/calR/rest_E: texel -> E sprite px), so they land on the E master
 # position and size.  In S that strip is the cheek edge under the side locks; in SE it extends the near eye's outer corner (the 3D "wrap" cheat).
-SIDE_U = int(os.environ.get('F3D_SIDEU', '72')); E_OFF = 16   # E master profile eye x0 72 = S left eye x0 56 + 16
+SIDE_U = int(os.environ.get('F3D_SIDEU', '200')); E_OFF = 16   # E master profile eye x0 72 = S left eye x0 56 + 16
 _SIDE = None
 
 
@@ -236,6 +236,17 @@ def _side_map():
         keep = u < SIDE_U + 24
         gu, gv = np.meshgrid(np.arange(SIDE_U) + .5, np.arange(TEXN) + .5)
         cx = griddata((u[keep], v[keep]), sx[keep], (gu, gv), method='linear'); cy = griddata((u[keep], v[keep]), sy[keep], (gu, gv), method='linear')
+        # texels seen by the S or SE camera at rest are left to the front design (the side features would show as a 3rd eye there)
+        vis = np.zeros((TEXN, TEXN), bool)
+        for V in ('S', 'SE'):
+            q = os.path.join(HERE, 'out', 'calR', f'rest_{V}_f00_guide.png')
+            if not os.path.exists(q): continue
+            b = np.array(Image.open(q).convert('RGBA')).astype(float); mm = (b[..., 3] > 250) & (np.abs(b[..., 2] - 77) <= 2)
+            vis[np.clip((b[mm][:, 1] / 255 * TEXN).astype(int), 0, TEXN - 1), np.clip((b[mm][:, 0] / 255 * TEXN).astype(int), 0, TEXN - 1)] = True
+        from scipy import ndimage as nd_
+        vis = nd_.binary_dilation(vis, iterations=int(os.environ.get('F3D_VISDIL', '10')))
+        hid = ~vis[:, :SIDE_U] & ~vis[:, ::-1][:, :SIDE_U]
+        cx[~hid] = np.nan; cy[~hid] = np.nan
         _SIDE = (cx, cy)
     return _SIDE
 
@@ -280,7 +291,7 @@ def draw(key):
         for c in (56.6, 71.4): cv.poly('eye_white', [(c - 0.45, 54.2), (c + 0.45, 54.2), (c + 0.5, 56.2), (c - 0.5, 56.2)])
     mouth(cv, ex['mouth'])
     mid = cv.im
-    if os.environ.get('F3D_SIDE', '1') == '1':
+    if os.environ.get('F3D_SIDE', '0') == '1':   # off: on r8 the E-master eye region is also seen by the SE camera (would be a 3rd eye there)
         sl = side_layer(ex, eL)
         if sl is not None: sl.alpha_composite(mid); mid = sl   # front (S design) features win where they overlap
     a = np.array(mid); pv = np.zeros_like(a)

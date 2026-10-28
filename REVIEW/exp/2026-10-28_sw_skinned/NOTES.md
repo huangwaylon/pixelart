@@ -918,3 +918,60 @@ Outputs per clip: `<act>_<V>_px/fNN.{png,txt,json}`, `_4x.gif`, `_sheet.png`, `_
 - **Open:**
   - Re-tune after R's final round-5 head (rig.blend changed again at 23:46) and F's textures. Iris contrast is the remaining issue: purple iris → g reads brown.
   - The S-view leg splits: overlapping tucked legs and a K line across the thigh. The audit flags them; they are not fixed.
+
+## M: round 5 (owner: "leaning back too much… natural, human, feminine stance"; "head unnaturally jutted back") + the skirt cap
+
+Re-baked against R's r8b skeleton (neck, head and hair/bow/bun bones moved forward): 6 main files, 16 view files and 24 variants.
+
+**Stance (replaces the round-2 "chest lifted / chin up")**
+- **Torso.** The pelvis→neck line is 3–4° forward in the walk and 0.3–1.3° forward in the idle. Before, it was −2.3 to −2.9° (walk) and −4.4 to −6.8° (idle), i.e. leaning back.
+  - Idle centre of mass sits over the mid-foot (−1 … +1 cm), helped by a pelvis offset of +2.2 cm forward.
+  - Shoulders are relaxed (no retraction).
+- **Head.** Pitch is level to slightly down everywhere: `HEAD_PITCH_MIN = 0` in `mpose`.
+  - The neck angles naturally forward: `NECK_FWD = 4°` on top of R's 9° rest neck, plus 0.9× any chest lean-back, so the skull never falls behind the neck.
+  - Hurt's head whip is now roll + yaw (14° / 16°) instead of chin-up.
+- **Walk baseline from mocap.** Bandai `walk_feminine_001/002`, measured with `v2/mocap/scripts/mc.py`:
+  - pelvis yaw ±8°, hip drop ±8°, sway 0.06 L, bob 0.046–0.062 L, wrist swing ±20°, cycle 1.2–1.33 s
+  - The mocap torso line (Hips→Neck joints) is −1 … −3.6°. That comes from the skeleton's thoracic curve, so we follow the owner's +0–4° target on our rig line instead.
+  - Applied to the walk: pelvis yaw ±8, hip roll ±7, sway 3.4 cm. The chibi cycle stays 0.84 s (lightly stylised bounce).
+- **Other actions.**
+  - Idle: subtle contrapposto (pelvis roll ±12°, chest counter ±6.5°, free knee inward, heel up).
+  - Run: keeps its 12–14° lean, with the head at 0–8° (down).
+  - Jump: the apex arch is removed (torso 0 … +12°).
+  - **Dash:** anticipation lean-back is cut from 22° to **8.5°** plus a crouch.
+  - Hurt: the recoil back (−19°) is allowed (not a standing frame).
+- **Gate** (`scripts/mgate.py`, E profile, every frame; `out/gate_r5_main.txt`):
+  - torso ≥ 0 on idle, walk and standing frames (stand, settle, end, recover, weight, transfer)
+  - head pitch −3 … +10°
+  - head centre ≥ neck base
+  - **PASS for all 46 files.**
+
+  | action | torso (°) | head pitch (°) | head ahead of neck base (cm) |
+  |---|---|---|---|
+  | walk | +3.0 … +3.6 | 0 … +4.1 | +3.0 … +4.3 |
+  | idle | +0.3 … +1.3 | 0 … +2.2 | +2.6 … +3.7 |
+  | run | +12.3 … +14.2 | 0 … +8.0 | +3.8 … +6.7 |
+  | jump | 0 … +12.0 | 0 … +7.9 | +2.6 … +5.7 |
+  | dash | −8.5 (anticipation/brake) … +26 (burst) | 0 … +5.4 | +3.0 … +5.6 |
+  | hurt | −18.6 (recoil) … +7.1 | 0 … +4.0 | +2.9 … +5.5 |
+
+- **Critic (one round, `crit/r12_stance_*`, boards `crit/r5_board_<act>.png` with per-frame t/h/o labels):** Opus STANCE 7 / MOTION 7, Argon STANCE 7 / MOTION 8.
+  - Applied after that round: no chin-up on contact frames, walk torso +2° and arm swing biased forward, run head +2° down, idle contrapposto stronger, no jump arch, dash trailing elbow bent.
+  - Left for R: Opus says the big back-hair mass still makes the head *look* jutted back in profile, and suggests cutting the back-hair volume by 15–20%.
+
+**Skirt cap (R: the walk SE "tent" came from the panels swinging outward)**
+- `msim.skirt_radial_cap`: the outward (radial) swing vs the pelvis-carried rest is capped at **15°** for side and diagonal panels and 26° for front/back panels. Thigh collision may add up to 5° more, so the legs never poke through.
+- Skirt gain 2.2 → 1.7. Tangential swing, lag, bounce, the thigh drive and the dash brake overshoot are all kept.
+- Measured (`scripts/mskirt.py`, `out/skirt_r5.txt`), hem width vs rest at SE 1x, before → after:
+
+  | action | hem width | max outward angle |
+  |---|---|---|
+  | walk | +3.8 → **+2.5 px** | 31 → 20° |
+  | idle | +3.6 → 2.6 px | — |
+  | run | +8.7 → 4.6 px | — |
+  | dash | +10.1 → 5.4 px | — |
+
+- Sil sheets before/after: `out/sil_skirtcap_{walk,run,idle}_SE.png`.
+- **The remaining wide SE silhouette in walk f3–f6 is the bell sleeves, not the skirt.** The silhouette width at the hip–hem band is 37–41 px in f3–f6 against 21 px in the other frames.
+  - Arms closer (abduction −20°), back-swing inward (26°) and sleeve gain .45 / hang .55 cut it by 4 px (41 → 37).
+  - Making the arm swing smaller doesn't help further.

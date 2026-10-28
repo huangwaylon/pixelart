@@ -20,7 +20,12 @@ for V in sys.argv[2:]:
     tl = [mt]; gl = [Image.new('RGB', mt.size, (36, 36, 40))]
     M = json.load(open(f'{EXP}/face/f3d/fexpr.json'))['frames'] if act == 'fexpr' else None
     for f in info['frames']:
-        i = f['i']; g = hx.read_grid(f'{st}_px/f{i:02d}.txt'); c = g[y0:y0 + 26, x0:x0 + 30]
+        i = f['i']; g = hx.read_grid(f'{st}_px/f{i:02d}.txt')
+        fa = f.get('face') or {}
+        if 'mouth' in fa and 'px' in fa['mouth']:   # follow the head: crop around R's projected face anchors
+            ex_ = [fa[k]['px'] for k in ('eye.L', 'eye.R', 'mouth') if k in fa and 'px' in fa[k]]
+            x0 = int(round(np.mean([p[0] for p in ex_]))) - 15; y0 = int(round(np.mean([p[1] for p in ex_]))) - 14
+        c = g[y0:y0 + 26, x0:x0 + 30]
         t = hx.render(c, 6, BG).convert('RGB'); t.paste(hx.render(c, 1, BG), (t.width - 32, t.height - 28))
         lab = os.path.basename(f.get('face_tex') or '?').replace('.png', '')
         ImageDraw.Draw(t).text((3, 2), lab, fill=(255, 255, 150)); tl.append(t)
