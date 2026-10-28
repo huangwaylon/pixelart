@@ -3,7 +3,7 @@
 Date: 2026-10-24. Machine: M5 Max, 64 GB unified memory, macOS 27, no NVIDIA GPU.
 This builds on `docs/hunyuan3d_research.md` and `docs/trellis_and_hunyuan_studio.md`. Hunyuan3D-2mini (MPS) and TRELLIS.2-4B 512 (trellis-mac, MPS) already run here.
 
-This is a desk survey only. Nothing was installed and no weights were downloaded. Raw API and README dumps are in `.scratch/sota_survey/data/`.
+This is a desk survey only. Nothing was installed and no weights were downloaded. Raw API and README dumps are in `../reference/3d/sota_survey/data/`.
 
 How sources are marked:
 - **[V]** means verified this session from a primary source: a GitHub README, LICENSE or API record, a Hugging Face model API record or card, or a Hugging Face Papers abstract (the arXiv mirror).

@@ -1,7 +1,7 @@
 # Tencent Hunyuan3D versions - what differs, what runs on our Mac
 
 Compiled 2026-10-26. Sources: local READMEs/licences in `.scratch/hunyuan/readmes/`, site/API probes in
-`.scratch/hunyuan_studio/` (global_strings.txt, tcloud_docs.txt), fork READMEs in `.scratch/hy_omni/`, plus
+`../reference/3d/hunyuan_studio_research/` (global_strings.txt, tcloud_docs.txt), fork READMEs in `.scratch/hy_omni/`, plus
 WebFetch of the GitHub repos for 2 / 2.1 / Omni and the HF cards for 2mv / 2mini.
 **Blocked:** `https://3d-models.hunyuan.tencent.com/` (proxy refused the connection), so cloud-version facts come from
 the earlier site-bundle and Tencent Cloud doc probes. Allowlists were not edited.

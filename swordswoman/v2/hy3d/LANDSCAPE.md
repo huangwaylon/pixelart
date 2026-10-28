@@ -2,7 +2,7 @@
 
 Research strand. The goal is one clean, simple, consistent 3D reference built from `v2/design/turn/{front,left,back,right}.png`,
 plus posed variants for animation keys. Already rejected: TRELLIS / TRELLIS.2 and Pixal3D.
-See `HUNYUAN_VERSIONS.md` for per-version Hunyuan details. Raw scrape data is in `.scratch/landscape/`.
+See `HUNYUAN_VERSIONS.md` for per-version Hunyuan details. Raw scrape data is in `archive/scratch/landscape/`.
 No accounts were created, nothing was uploaded and nothing was paid for.
 
 ---
@@ -24,7 +24,7 @@ No accounts were created, nothing was uploaded and nothing was paid for.
 - Credits: "Insufficient credit. Get 200 free credits or purchase a plan", "Free usage: {remain}/{total}" (a daily free quota; Reddit users report "like 20 models every day"), subscriptions, extra credit packs.
 - The ToS forbids "any automated ... method ... to extract data or Output from the Services". **Do not browser-automate Studio; use the API.**
 
-3d.hunyuan.tencent.com (CN) never rendered (navigation timeout). It needs a CN phone/WeChat login (earlier probe screenshot `.scratch/hunyuan_studio/04_cn_login_dialog.png`).
+3d.hunyuan.tencent.com (CN) never rendered (navigation timeout). It needs a CN phone/WeChat login (earlier probe screenshot `../reference/3d/hunyuan_studio_research/04_cn_login_dialog.png`).
 
 ### Tencent Cloud API (ai3d.tencentcloudapi.com, version 2025-05-13; docs updated 2026-05)
 | Action | What it does | Credits |

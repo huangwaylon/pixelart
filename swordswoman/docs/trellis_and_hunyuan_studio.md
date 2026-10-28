@@ -179,7 +179,7 @@ cd $S/trellis/out && $S/trellis/trellis-mac/.venv/bin/python -I $S/trellis_scrip
 - `curl` to Tencent domains is blocked by the ACC proxy, but the chrome-devtools browser reaches them, so **no allowlist edits were made**.
 - I did not log in or accept any agreement.
 - Sources: live pages, the public `GET /api/3d/config`, the sites' JS bundles (UI strings and the export-format logic), the ToS pages, and the Tencent Cloud docs.
-- Screenshots and raw dumps are in `.scratch/hunyuan_studio/`.
+- Screenshots and raw dumps are in `../reference/3d/hunyuan_studio_research/`.
 
 ### B.1 Three front doors
 
@@ -261,7 +261,7 @@ cd $S/trellis/out && $S/trellis/trellis-mac/.venv/bin/python -I $S/trellis_scrip
 1. Open **https://hy3d.tencent.ai**.
 2. Enter your email, tick the ToS / AUP / Privacy box, solve the captcha, and type the emailed code.
 3. Claim the **200 free credits**.
-4. Upload from `.scratch/hunyuan_studio/upload/`. These are our rembg crops flattened onto white at 1024²; the RGBA originals are in `.scratch/hunyuan/inputs/`.
+4. Upload from `../reference/3d/hunyuan_studio_research/upload/`. These are our rembg crops flattened onto white at 1024²; the RGBA originals are in `.scratch/hunyuan/inputs/`.
    - **Run A (main reference):** `akane_front_white.png`, single image, model **V3.1**, face count **500k**, **PBR off** (or on, for a colour hint), style Universal. Download **GLB + OBJ**.
    - **Run B (low-poly):** the same image, model **V3.0** (LowPoly is not on 3.1), **Smart Topology / low-poly** on, **Quadrilaterals**. Download **OBJ + FBX** (quad results have no GLB). If Studio is enabled, you can instead put Run A through **Retopology at medium (18k), Quadrilaterals**.
    - **Optional multi-view:** front + `akane_back_white.png` only. Skip `akane_left_white.png`: the bun is clipped there and the sword is sheathed.
