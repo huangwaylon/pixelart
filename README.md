@@ -41,7 +41,7 @@ covers what worked, what didn't, the recommended pipeline, what hasn't been trie
 | `swordswoman/` | the second project, with its own `archive/` for dead ends | yes (bulk files ignored) |
 | `archive/` | snowpeak dead ends: H1 releases, old boards, r18 Blender sources, START_HERE | yes |
 | `builds/` `out/` `work/` | generated output and scratch | no |
-| `.venv/` `.models/` | snowpeak venv; weights and venvs (`hy_omni parts pixelize mocap`, about 41 GB) | no |
+| `.venv/` `.models/` | snowpeak venv; weights and venvs (`hy_omni pixtools pixel-art-fixer mocap`, about 36 GB) | no |
 
 ## Conventions
 - New directories use lowercase snake_case. Review rounds are named `rNN_topic`. Variant IDs keep their case (`S4_hd2`).

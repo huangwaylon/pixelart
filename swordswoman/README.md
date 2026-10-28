@@ -68,14 +68,15 @@ The generated 3D meshes are collected in `../reference/3d/`.
 ## Environment
 - `swordswoman/.venv` (gitignored): Python 3.13 with numpy, pillow and scipy.
 - `swordswoman/.scratch` is a symlink to `../.models/` (gitignored, about 41 GB). It holds the
-  weights, venvs and checkouts for Hunyuan3D-Omni and 2.1 (`hy_omni`), PartCrafter (`parts`) and
-  PixelOE (`pixelize`), plus the CMU, Bandai and LaFAN1 mocap data (`mocap`). All of it can be
+  weights, venvs and checkouts for Hunyuan3D-Omni and 2.1 (`hy_omni`), the shared pixel-tools venv
+  (`pixtools`: numpy, scipy, opencv, pillow, scikit-image), Retro Diffusion's pixel-art-fixer
+  (`pixel-art-fixer`), plus the CMU, Bandai and LaFAN1 mocap data (`mocap`). All of it can be
   re-downloaded.
 - Removed on 2026-10-28: Pixal3D, TRELLIS, and Hunyuan3D-2mini/2mv (weights, venv and raw outputs).
   The 2mv mesh that was used is still kept in `v2/hy3d/best`. Without the 2mv generator,
   `v2/parts/scripts/run_mv_parts.py` no longer runs.
 - Scripts that need it:
-  - the PixelOE venv: `v2/pixelize`, `v2/m96/tools`
+  - the pixtools venv: `v2/pixelize`, `v2/m96/tools` (moved off the PixelOE venv on 2026-10-28)
   - the Omni venv (for trimesh): `v2/g96/scripts`, `v2/hy3d/scripts/make_rig.sh`, `v2/prop/tools/solveF.py`.
     These used the old Hunyuan venv. Rig H2 was verified to rebuild byte-for-byte on the Omni venv.
   - mocap data: `v2/mocap`, `v2/throw`, `v2/unarmed`
@@ -83,7 +84,9 @@ The generated 3D meshes are collected in `../reference/3d/`.
   `claude-as` zsh function for Opus critics.
 - Absolute paths were rewritten during the merge: `…/other/test` became `…/other/pixelart/swordswoman`,
   and `…/test/.scratch` became `…/pixelart/.models`.
-- PixelOE is not bit-deterministic. Two runs of the same input differ by a few pixels.
+- `pz.py` is not bit-deterministic. Two runs of the same input differ by a few pixels in the png/txt; the json is stable.
+- Removed on 2026-10-28: PartCrafter (it lost the parts test) and PixelOE (it lost the pixelize bake-off).
+  `pz.py` methods B and E1, which call the PixelOE library, no longer run. The winning E2 doesn't need it.
 
 ## What's in git
 Code, notes, critiques, masters, rigs, the chosen meshes and the research are committed.

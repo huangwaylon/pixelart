@@ -7,7 +7,7 @@ R = '/Users/waylonhuang/Documents/other/pixelart/swordswoman/'; M96 = R + 'v2/m9
 sys.path.insert(0, R + 'v2/pixelize/tools'); sys.path.insert(0, M96 + 'tools'); sys.path.insert(0, R + 'v2/qc'); sys.path.insert(0, R + 'v2/anim_cut/tools')
 import pzlib as Z, eyes as EY, colorcheck as CC
 import qc_gate as QC
-PY = R + '.scratch/pixelize/pixeloe/venv/bin/python'
+PY = R + '.scratch/pixtools/venv/bin/python'
 TG = json.load(open(M96 + 'geom_targets.json')); PAL = CC.load(R + 'v2/pixelize/palette.json')
 NAMES = ['crown', 'eye', 'chin', 'shoulder', 'waist', 'obi_bot', 'hem', 'sock_top', 'boot_top']
 

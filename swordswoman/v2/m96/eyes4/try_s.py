@@ -20,7 +20,7 @@ for j, r in enumerate(rows):
         if c == 'K' or not (67 <= xr <= 70 and y in IRIS): g[y][xr] = c if c != '.' else 's'
 open(od + '/EC0_S_96.txt', 'w').write('\n'.join(''.join(r) for r in g) + '\n'); shutil.copy(src + '.json', od + '/EC0_S_96.json')
 tmp = od + '/m.json'
-subprocess.run([R + '.scratch/pixelize/pixeloe/venv/bin/python', '-I', R + 'v2/pixelize/tools/metrics.py', od + '/EC0_S_96', '--json', tmp], capture_output=True, cwd=R)
+subprocess.run([R + '.scratch/pixtools/venv/bin/python', '-I', R + 'v2/pixelize/tools/metrics.py', od + '/EC0_S_96', '--json', tmp], capture_output=True, cwd=R)
 r = json.load(open(tmp)); r = r[0] if isinstance(r, list) else r.get('EC0_S_96', r)
 print(name, 'face_ssim %.3f eye_f1 %.3f' % (r['face_ssim'], r['eye_f1']))
 for y in range(49, 54): print('  ', ''.join(g[y][53:75]))

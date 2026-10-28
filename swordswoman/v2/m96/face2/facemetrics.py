@@ -31,7 +31,7 @@ def contour(g, v):
             if xs and Rr is not None: d.append(abs(max(xs) + 1 - Rr))
     return round(sum(d) / len(d), 3), len(d)
 def fssim(d):
-    py = R + '.scratch/pixelize/pixeloe/venv/bin/python'; tmp = '/tmp/fm_%d.json' % os.getpid()
+    py = R + '.scratch/pixtools/venv/bin/python'; tmp = '/tmp/fm_%d.json' % os.getpid()
     subprocess.run([py, '-I', R + 'v2/pixelize/tools/metrics.py'] + [f'{d}/EC0_{v}_96' for v in ('S', 'SE', 'E')] + ['--json', tmp], capture_output=True, cwd=R)
     r = json.load(open(tmp)); os.remove(tmp)
     get = lambda k: r[k] if isinstance(r, dict) else next(x for x in r if x.get('name') == k)

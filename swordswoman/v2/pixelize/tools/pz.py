@@ -1,7 +1,7 @@
 """pz.py METHOD VIEW H [--src illus.png] [--out DIR] [--pal palette.json] [--tag T]
 Methods: A (palette-locked majority, v2/final ds.py), B (PixelOE contrast + outline expansion), C0 (k-centroid),
 C (k-centroid, bilateral prefilter, line-aware), D (Gemini grid-snap; needs --gem image), EB/EC (B/C + cleanup).
-Writes OUT/<M>_<VIEW>_<H>.{txt,png,json}.  Run with .scratch/pixelize/pixeloe/venv/bin/python -I."""
+Writes OUT/<M>_<VIEW>_<H>.{txt,png,json}.  Run with .scratch/pixtools/venv/bin/python -I."""
 import sys, os, argparse, numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import pzlib as Z

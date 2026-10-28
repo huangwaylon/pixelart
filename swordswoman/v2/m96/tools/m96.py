@@ -35,7 +35,7 @@ def metrics(stem):
     return r
 
 def runmetrics(stems):
-    py = ROOT + '.scratch/pixelize/pixeloe/venv/bin/python'
+    py = ROOT + '.scratch/pixtools/venv/bin/python'
     tmp = f'/tmp/m96_met_{os.getpid()}.json'
     subprocess.run([py, '-I', ROOT + 'v2/pixelize/tools/metrics.py', *stems, '--json', tmp], capture_output=True, cwd=ROOT)
     r = json.load(open(tmp)); os.remove(tmp); return r

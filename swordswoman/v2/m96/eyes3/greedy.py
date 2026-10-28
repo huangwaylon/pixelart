@@ -5,7 +5,7 @@ shutil.copy(f'{src}/EC0_{V}_96.json', f'{tmp}/EC0_{V}_96.json')
 g = [list(l.rstrip('\n')) for l in open(f'{src}/EC0_{V}_96.txt') if l.strip()]
 def score(g):
     open(f'{tmp}/EC0_{V}_96.txt', 'w').write('\n'.join(''.join(r) for r in g) + '\n')
-    subprocess.run([R + '.scratch/pixelize/pixeloe/venv/bin/python', '-I', R + 'v2/pixelize/tools/metrics.py', f'{tmp}/EC0_{V}_96', '--json', tmp + '/m.json'], capture_output=True, cwd=R)
+    subprocess.run([R + '.scratch/pixtools/venv/bin/python', '-I', R + 'v2/pixelize/tools/metrics.py', f'{tmp}/EC0_{V}_96', '--json', tmp + '/m.json'], capture_output=True, cwd=R)
     return json.load(open(tmp + '/m.json'))[0]['face_ssim']
 base = score(g); print('base', round(base, 4))
 cells = [(x, y) for y in range(49, 55) for x in (list(range(55, 62)) + list(range(66, 73)) if V == 'S' else range(70, 78))]

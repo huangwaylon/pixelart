@@ -1,7 +1,7 @@
 #!/bin/zsh
 # try.sh VIEW CROPFILE X0 Y0 : paste crop into work/EC0_VIEW_96 (PROTECT env = protected boxes) -> temp; fidelity gate vs master0,
 # eye-spec check (eyecheck.py), compare png (ref | work | yours) at CROPFILE_cmp.png
-R=/Users/waylonhuang/Documents/other/pixelart/swordswoman; PY=$R/.scratch/pixelize/pixeloe/venv/bin/python; M=$R/v2/m96
+R=/Users/waylonhuang/Documents/other/pixelart/swordswoman; PY=$R/.scratch/pixtools/venv/bin/python; M=$R/v2/m96
 v=$1; f=$2; x0=$3; y0=$4; T=/tmp/m96try_$$_$RANDOM; mkdir -p $T
 $PY -I $M/tools/paste.py $M/work/EC0_${v}_96 $f $x0 $y0 $T/EC0_${v}_96 >/dev/null && cp $M/work/EC0_${v}_96.json $T/
 echo "GATE vs the ORIGINAL auto sprite (cumulative, info):"; $PY -I $M/tools/m96.py gate $T $v | cut -c1-120

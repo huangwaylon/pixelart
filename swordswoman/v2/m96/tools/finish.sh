@@ -1,6 +1,6 @@
 #!/bin/zsh
 # finish.sh SRC_DIR OUT_DIR : re-runnable finishing pass on polished masters: eye isolation (eyeiso.py) + cleanup.py, then gates
-R=/Users/waylonhuang/Documents/other/pixelart/swordswoman; PY=$R/.scratch/pixelize/pixeloe/venv/bin/python; M=$R/v2/m96
+R=/Users/waylonhuang/Documents/other/pixelart/swordswoman; PY=$R/.scratch/pixtools/venv/bin/python; M=$R/v2/m96
 S=$1; O=$2; mkdir -p $O; cp $S/EC0_*_96.{txt,json} $O/
 for v in S SE E; do python3 $M/tools/eyeiso.py $O/EC0_${v}_96 $v; done
 for v in S SE E NE N; do $PY -I $M/tools/cleanup.py $O/EC0_${v}_96 $v; done
