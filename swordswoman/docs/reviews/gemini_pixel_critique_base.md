@@ -1,6 +1,6 @@
 # Gemini pixel critique: base idle f00, all 8 directions
 
-Model: Gemini (tools/gemini.py ask), 2026-10-24. Inputs: refs/1.png, concept/chibi_iso_v5.png, reviews/gemini_pixel_critique_base_input.png (pixel/base/idle/<DIR>/f00.png, crop x41-87 y44-120 of the 128 cell, 6x nearest-neighbour, order S SE E NE / N NW W SW). Base = renders/model_round_6 snapshot.
+Model: Gemini (tools/gemini.py ask), 2026-10-24. Inputs: refs/1.png, concept/chibi_iso_v5.png, docs/reviews/gemini_pixel_critique_base_input.png (pixel/base/idle/<DIR>/f00.png, crop x41-87 y44-120 of the 128 cell, 6x nearest-neighbour, order S SE E NE / N NW W SW). Base = renders/model_round_6 snapshot.
 
 **AD verification notes (not Gemini).** Each point was checked against palette-code dumps of the base frames. See docs/pixel_cleanup_guide.md section 6 for what was accepted and what was rejected. Rejected in short: a centred bow (the bible places it on her right side of the bun; rejected in model rounds 3 and 5 too); "the sword is on the wrong side in E/NE" (the 3D render is handedness-correct, left hand, never mirrored); white sclera / 2x2 eyes (no sclera colour in the locked palette, and the bible eye is 4 px tall); "illegal purple" (the bible allows <=3 px purple at the right upper-arm lace). Confirmed: flat h0 hair masses, missing hilt/hand, blob guard, irregular blade stair, eye glint/far-eye errors, ribbon vs skin value merge, dark r1 skirts in NW/W, clubbed feet, ragged hems, stray 1 px pixels.
 

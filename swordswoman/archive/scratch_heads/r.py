@@ -8,4 +8,4 @@ for v in ['S','SE','E','NE','N']:
     fc.fill(g); fc.save(g,X+'_prev',(1,8)); ims.append(Image.open(X+'_prev_8x.png'))
 W=sum(i.width for i in ims)+8*4; im=Image.new('RGB',(W,max(i.height for i in ims)),(90,90,90)); x=0
 for i in ims: im.paste(i,(x,0)); x+=i.width+8
-im.save('/Users/waylonhuang/Documents/other/pixelart/swordswoman/.scratch_heads/all.png')
+im.save('/Users/waylonhuang/Documents/other/pixelart/swordswoman/archive/scratch_heads/all.png')

@@ -8,8 +8,8 @@ Owner: Art Director (pixel). Status: **v1, 2026-10-24.** This is the rulebook ev
 3. Gemini critiques, which are input only. Section 6 lists the points we rejected.
 
 **Sources digested:**
-- `reviews/gemini_feedback_model_rounds.md` (rounds 1-5)
-- `reviews/gemini_pixel_critique_base.md`, a fresh per-direction critique of the base idle f00
+- `docs/reviews/gemini_feedback_model_rounds.md` (rounds 1-5)
+- `docs/reviews/gemini_pixel_critique_base.md`, a fresh per-direction critique of the base idle f00
 - `.scratch/ai_pixel_test/gemini_opinion.txt` and `compare_sheet.png`
 - the design bible and palette
 - the earlier hand-cleanup project's `docs/DECISIONS.md` and `docs/review/pixel/H1_*.md` (`~/Documents/other/pixelart`)
