@@ -4206,16 +4206,18 @@
 60,
 80
 ],
-"notes": "M 2026-10-28 22:21: skeleton=rig/rest_skeleton.json; cycle 0.560s; in place (root.loc = bob/sway only). Game travel speed 2.500 m/s = 10.18 px/frame at 1x (67.88 px/m, R camera) for planted feet to hold still. Secondary chains spring-baked (motion/scripts/msim.py). t = source frame at 24 fps (may be fractional).",
+"notes": "M 2026-10-28 22:24: skeleton=rig/rest_skeleton.json; cycle 0.560s; in place (root.loc = bob/sway only). Game travel speed 2.500 m/s = 10.18 px/frame at 1x (67.88 px/m, R camera) for planted feet to hold still. Secondary chains spring-baked (motion/scripts/msim.py). t = source frame at 24 fps (may be fractional).",
 "variant": {
 "name": "run_S",
-"lean_yaw": 0.0
+"lean_yaw": 0.0,
+"lean_gain": 1.0
 },
 "travel_m_per_s": 2.5,
 "cycle_s": 0.56,
 "seam_mm": 0.05,
 "view_cheat": {
 "view": "S",
-"lean_yaw_deg": 0.0
+"lean_yaw_deg": 0.0,
+"lean_gain": 1.0
 }
 }

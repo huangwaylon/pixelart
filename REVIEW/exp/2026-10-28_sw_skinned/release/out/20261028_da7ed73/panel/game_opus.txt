@@ -1,0 +1,15 @@
+SCORE: 4/10
+
+- 1x readability: 5. The silhouette, red/black colour blocking and bow read fine. The dress turns into a mottled red blob, though, and the arms disappear into the sleeves.
+- Direction consistency: 4. The E hair mass is about 20% bigger than in S. In S the bow reads as a red beanie. The ground line drifts in run S (10 px).
+- Action clarity: 5. Dash smears and the walk/run split read well. Hurt S looks like cheering and dash S mid-frames look like a T-pose, so both read as "arms up" like jump.
+- Timing/feel: 5. Walk and idle cadence feel good. Jump (16 frames) and dash (13 frames) drag in recovery. Run is a hop with no visible contact.
+- Ship-readiness: 2. Run E is missing, shade-swap fails 16/17 clips, and the limb audit fails 13/17.
+
+ISSUES:
+1. [P] run E all frames: the clip was never built (`pixel_chain` hits a zero-size array, so some frame's mask is empty) -> find the frame with the empty mask in clip.log, guard the bbox/min against empty input, fix the cause (camera/crop missing the body), rebuild and re-gate.
+2. [M] run S/SE f00–f07: one shin hangs in a long stick far below the body, the planted foot never reads, and arms stay tucked, so it looks like hopping. Feet drift 9–10 px -> add clear contact/passing keys with the foot planted, shorten the trailing leg, swing the arms out of the sleeves, and pin the ground contact.
+3. [P] all clips, kimono/sleeves: shade-swap fails 16/17. Dither and dark patches flicker frame to frame, so the dress reads as noise -> lock shade bands to body-space normals with hysteresis, use 2–3 flat tones for the dress, and push the sleeve edge and arm with a darker outline.
+4. [M] hurt S/SE f01–f05 and dash S f07–f09: arms flung out in a T reads as celebrating or stretching, not getting hit or dashing -> hurt: hunch the torso back, tuck the elbows in, add a 1-frame white flash and a 2–3 px knockback. Dash: keep the arms swept back along the travel line.
+5. [R] S/SE heads in all clips: the bow in S reads as a red cap because the bun and loops are hidden. E hair volume is too big and swells during idle E f05–f08 -> enlarge the bow loops and offset them above the crown in S, clamp the hair spring scale, and match head bbox size across directions.
+6. [P/R] jump S f02–f04 and f10–f13, dash S f03–f06, hurt S f01–f03: limbs detached, split or thin (7/16 frames in jump S) -> add a minimum 2 px limb-width dilation and connectivity repair before outlining, and check that the knees/elbows aren't being clipped by the skirt and sleeve meshes.

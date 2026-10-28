@@ -198,7 +198,12 @@ def build(action, tune=None, var=None):
         tclip = lambda t: max(0.0, t - t0)
     specs = [gen.spec(tclip(t)) for t in tt]
     if var.get("lean_yaw"):
-        for sp in specs: sp["lean_yaw"] = var["lean_yaw"]
+        lg = var.get("lean_gain", 1.0)
+        for sp in specs:
+            sp["lean_yaw"] = var["lean_yaw"]
+            if lg != 1.0:   # 3/4-view cheat: a bit more lean so it survives foreshortening
+                for part in ("pelvis", "chest"):
+                    y_, p_, r_ = sp[part]; sp[part] = (y_, p_ * lg, r_)
     trv = np.array([sp.get("travel", 0.0) for sp in specs]); facc = np.gradient(trv, dt) if action in ("dash", "hurt") else np.zeros_like(trv)
     facc_k = {"dash": 1.0, "hurt": 0.5}.get(action, 0.0)
     # pass 1: neck-base path -> head lag spring

@@ -1,0 +1,18 @@
+SCORE: 5/10
+
+- Key poses/appeal: 5
+- Timing/spacing: 5
+- Bounce/weight: 4
+- Secondary motion: 4
+- Posture (no slouch): 6
+- Face acting: 5
+
+ISSUES:
+1. [M] hurt S/SE/E f01–f03: the hit reaction throws the head back and flings both arms wide in a T/V shape. It reads as a cheer or a stretch, not a hit, and E f02 pushes the head behind the torso so the neck looks broken. -> Recoil inward: chest caves, shoulders rise, arms fold in toward the body, head snaps 15–20° and no further, knees dip on f01. Save the arm overshoot for f04–f05.
+2. [P] walk/idle S+SE all frames: the bell sleeves and torso merge into one solid red cape shape. The arms disappear and the hands show as floating pink dots (walk S f00/f01, idle S). -> Add a darker inner-sleeve value and a 1-px interior outline between sleeve and torso. Keep the wrist connected to the hand and keep the sleeve opening readable.
+3. [M] walk S/SE f00–f07: legs stay almost straight with little foot lift and almost no up-down body bob, and the arms barely swing. The walk looks stiff, not bouncy. -> Bend the passing-leg knee about 35°. Lowest point on contact, highest on passing, 2–3 px of travel. Arm swing ±25°. Add a 1–2 frame lag on the bun, bow and side locks.
+4. [F/R] idle E f05–f10, hurt E f03–f06, dash E f03–f07: the profile side lock and dark hair pixels lie across the cheek and jaw. At this size they read as a beard or moustache and cover the mouth. -> Mask the side lock behind the face plane in profile, or move it to the back of the jaw. Draw the profile mouth and blush after the hair.
+5. [M] dash S/SE f08–f10 and jump S f06–f09: the arms snap out straight to the sides. It looks mechanical and not elegant. -> Use asymmetric arcs: lead arm forward and bent, trail arm back with the sleeve trailing. Keep the elbows soft and lift the wrists for a confident, feminine line.
+6. [M/P] jump all directions f04–f08, run S f00/f04: the legs lock together into one stick, the skirt hangs flat at the top of the jump, and on run S f00 the plant leg shrinks to a 1-px stem. -> Tuck one knee at the top of the jump and trail the other leg. Flare the skirt hem 2–3 px on the way up and let it settle late on landing. Give the planted run leg a minimum width of 3 px. Deepen the landing squash (f10–f12) to 2–3 px.
+
+Also noted: there is no E row in the run sheet, so run E is missing from this build or wasn't exported.

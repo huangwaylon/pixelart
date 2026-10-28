@@ -28,7 +28,7 @@ def head_box(fs, V, act):
         xs = [f['pts']['head'][0] - 32 + al['dx'] - 3 for f in inf['frames']]; ys = [f['pts']['head'][1] - 32 + al['dy'] + 10 for f in inf['frames']]
     else:
         xs = [f['anchors'][k0]['xy'][0] for f in d['frames']]; ys = [f['anchors'][k0]['xy'][1] for f in d['frames']]
-    cx = int(round(sum(xs) / len(xs))) + {'SE': 6, 'S': 8, 'E': 0}.get(V, 4); cy = int(round(sum(ys) / len(ys)))
+    cx = int(round(sum(xs) / len(xs))) + {'SE': 6, 'S': 8, 'E': 0, 'NE': -12, 'NW': 12, 'SW': -6, 'W': 0}.get(V, 4); cy = int(round(sum(ys) / len(ys)))
     return cx - 22, cy - 26, cx + 22, cy + 16
 
 

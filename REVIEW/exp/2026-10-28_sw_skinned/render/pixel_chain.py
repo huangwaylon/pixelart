@@ -147,7 +147,9 @@ def align(stem, view):
     aj = f'{EXP}/rig/align.json'  # R's fixed per-view alignment (same rule, also used for the head texture projection)
     if os.path.exists(aj) and view in json.load(open(aj)): v = json.load(open(aj))[view]; return {'dx': int(v['dx']), 'dy': int(v['dy'])}
     g = hx.rd16(f'{stem}_rest_guide.png')[OFF:OFF + N * P, OFF:OFF + N * P]; a = hx.cells((g[..., 3] > 0.5).astype(float)).mean((2, 3)) > 0.5
-    m = hx.read_grid(MAST.format(view)) != '.'
+    MIRV = {'W': 'E', 'SW': 'SE', 'NW': 'NE'}  # views without a master: the mirrored opposite master (feet rule is mirror-safe)
+    m = hx.read_grid(MAST.format(MIRV.get(view, view))) != '.'
+    if view in MIRV: m = m[:, ::-1]
     yb, xc = feet(a); mb, mc = feet(m); return {'dx': int(round(mc - xc)), 'dy': int(mb - yb)}
 
 
@@ -715,8 +717,80 @@ def run(stem, info, opt):
     if opt['temporal']: out = kill_flips(out, loop)
     out = [hx.main_comp(hx.drop_bare_k(g)) for g in out]
     if opt.get('face'): out = apply_face(out, info, stem, loop)
+    if opt.get('smear', True):
+        out, smk = apply_smear(out, info)
+        if smk: print('SMEAR frames', [f"f{info['frames'][k]['i']:02d}" for k in smk], 'travel', np.round(travel_dir(info), 2).tolist())
     aud = [limb_audit(g, st, F) for g, st, F in zip(out, sts, Fs)]
     return out, sts, sh, aud
+
+
+# ------------------------------------------------------------------ round 4: smear frames (dash burst)
+AZV = {"SE": (1, 1), "E": (1, 0), "S": (0, 1), "SW": (-1, 1), "NE": (1, -1), "N": (0, -1), "W": (-1, 0), "NW": (-1, -1)}
+SMEAR_NEAR, SMEAR_FAR, STREAK = 'k', 'm', ('W', 'k')  # locked-palette stand-ins for ANIM_DIRECTION pink_1 / pink_0 / steel_2+pink_0
+
+
+def travel_dir(info):
+    """screen direction (x right, y down) of her forward (+Y, turned by the view yaw) through the game camera (30 deg elevation)"""
+    ax, ay = AZV.get(info['view'], (0, 1)); c = np.array([ax, ay, 0.0]); c /= np.linalg.norm(c)
+    el = np.radians(30); cam = np.array([c[0] * np.cos(el), c[1] * np.cos(el), np.sin(el)]); d = -cam / np.linalg.norm(cam)
+    right = np.cross(d, [0, 0, 1.0]); right /= np.linalg.norm(right); up = np.cross(right, d)
+    yaw = np.radians(float(info.get('yaw') or 0)); F = np.array([-np.sin(yaw), np.cos(yaw), 0.0])
+    return np.array([F @ right, -(F @ up)])
+
+
+def motion_frames(info):
+    act = info['action']
+    for m in (f'{EXP}/motion/{act}.json', f'{EXP}/motion/variants/{act}.json'):
+        if os.path.exists(m): return json.load(open(m))['frames']
+    return []
+
+
+def smear_frames(info):
+    """motion frames whose 'key' contains SMEAR (M's dash burst) or that carry "smear": true"""
+    mf = motion_frames(info); out = []
+    for k, f in enumerate(info['frames']):
+        m = mf[f['i']] if f['i'] < len(mf) else {}
+        if 'smear' in str(m.get('key', '')).lower() or m.get('smear') or f.get('smear'): out.append(k)
+    return out
+
+
+def apply_smear(G, info):
+    """ANIM_DIRECTION 4.3 dash travel, palette-locked: smear 1 = 2 flat afterimages of the last pre-smear pose 6/12 px back along the
+    travel (near k, far m) + 3-4 speed lines (1 px, 8-14 px, W/k alternating) from the trailing edge; smear 2 = 1 afterimage at 8 px (m)
+    + speed lines.  Solid, hard-edged, no outline, never over the body (the stretched body itself is M's stretched pose)."""
+    sm = smear_frames(info)
+    if not sm: return G, []
+    v = travel_dir(info); L = float(np.hypot(*v)); u = v / max(L, 1e-6); sc = max(L, 0.35)
+    G = [g.copy() for g in G]
+    base = None
+    for k in range(len(G)):
+        if k in sm:
+            order = sm.index(k)
+            src = G[base] if base is not None else G[k]
+            sil = src != '.'
+            ghosts = [(6, SMEAR_NEAR), (12, SMEAR_FAR)] if order == 0 else [(8, SMEAR_FAR)]
+            g = G[k]
+            for dist, ch in ghosts[::-1]:
+                dy, dx = int(round(-u[1] * dist * sc)), int(round(-u[0] * dist * sc))
+                gm = np.roll(np.roll(sil, dy, 0), dx, 1)
+                g[gm & (g == '.')] = ch
+            # speed lines from the trailing edge: 3-4 rows spread over the body height
+            body = G[k] != '.'
+            ys = np.nonzero(body.any(1))[0]
+            if len(ys):
+                rows = np.linspace(ys.min() + 0.2 * (ys.max() - ys.min()), ys.min() + 0.85 * (ys.max() - ys.min()), 4 if order == 0 else 3).astype(int)
+                for n, y in enumerate(rows):
+                    xs = np.nonzero(body[y])[0]
+                    if not len(xs): continue
+                    x0 = xs.min() if u[0] > 0 else xs.max()  # trailing edge (opposite the travel)
+                    ln = 14 - 3 * n if order == 0 else 10 - 2 * n
+                    for t in range(2, 2 + ln):
+                        yy, xx = int(round(y - u[1] * t * 0.5)), int(round(x0 - np.sign(u[0] or 1) * t))
+                        if 0 <= yy < N and 0 <= xx < N and g[yy, xx] == '.': g[yy, xx] = STREAK[n % 2]
+            G[k] = g
+        else:
+            base = k
+    return G, sm
 
 
 def is_loop(info):

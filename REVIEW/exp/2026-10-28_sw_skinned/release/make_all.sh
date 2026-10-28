@@ -15,8 +15,9 @@ if [ -f $B/GATES.md ] && [ -z "$FORCE" ]; then echo "build $BID already complete
   mkdir -p $B/work; t0=$(date +%s)
   print -l $CLIPS | xargs -P ${JOBS:-6} -I{} zsh -c 'c={}; '"$PY $R/rl.py"' clip '"$BID"' ${c%%:*} ${c##*:}' 2>&1 | grep -E "^CLIP|Traceback|Error" | tee $B/work/clips.txt
   $PY $R/rl.py assemble $BID 2>&1 | grep -v Warn
-  $PY $R/rl.py gates $BID 2>&1 | grep -v Warn | tail -3
+  $PY $R/rl.py gates $BID > $B/work/gates.log 2>&1; rc=$?; grep -v Warn $B/work/gates.log | tail -3
   echo "built in $(( $(date +%s) - t0 )) s"
+  if [ $rc -ne 0 ]; then echo "NO CLIPS BUILT for $BID - latest/hub left unchanged"; rm -f $B/GATES.md; exit 1; fi
 fi
 ln -sfn $BID $R/out/latest
 [ -n "$PANEL" ] && zsh $R/panel.sh $BID

@@ -1,0 +1,17 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Face critique, round 3**
+
+**Scores**
+1. **Brows clear of fringe: 7.** The 1 px skin gap holds on every sheet tile. In run SE f02–f04 the near brow's inner end still touches the fringe tips at 1×, so the brow reads as part of the hair.
+2. **Effort mouth clean: 6.** The teeth are a 2–3 px pure-white block with no dark rim, so at 1× they look like a floating highlight, not a gritted slit.
+3. **Far eye clear of cheek outline: 8.** Walk SE f03–f05 now keep the gap. In f05 the eye still sits right at the edge of the cheek silhouette.
+4. **Focused reads determined: 4.** It's almost the same as neutral/half_blink: lowered lids, nearly flat brows. It reads sleepy or bored, not driven.
+5. **Hurt/wince read pained: 6.** Wince works. Hurt's >< eyes are too close to joyful and squint. The hurt_tear tears are white rectangles that read as glints, not tears.
+6. **NE partial face: 5.** The idea is right, but the skin slivers change shape every frame (the "Y" in f08, finger-like spikes in f03–f05). It flickers at 1×.
+7. **Mirrored SW matches SE: 4.** Most frames differ only at the iris, as expected. But f05 differs across the whole face, and f00–f01 have a column of differences along the cheek outline.
+
+**Top 3 problems and fixes**
+1. **SW f05 doesn't match the mirror, and f00/f01 cheek edges drift.** The likely cause is anchor x-positions at exactly .5 rounding the same way in both directions, plus a yaw-threshold switch firing on one side only. Fix: round x in the canonical SE frame, then mirror. Or build SW by flipping the SE face layer and re-stamping only the catchlight.
+2. **Focused is too weak.** Make the brows angle down 2 px toward the nose (inner end lower), tighten the upper lid by 1 px, and use a short flat mouth with a dark 1 px corner.
+3. **NE slivers and hurt tears.** Freeze the NE lash and blush to 2–3 fixed sprites chosen by yaw bucket instead of rasterising them per frame. Change the tears to a light blue (about #9fd8f0) 1×2 drop with a darker bottom pixel. Give the hurt mouth a downturned wobble so it can't be read as joyful.

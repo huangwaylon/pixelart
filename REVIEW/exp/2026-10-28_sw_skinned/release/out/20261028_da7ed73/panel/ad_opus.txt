@@ -1,0 +1,15 @@
+SCORE: 5/10
+
+- On-model: 4
+- Outline/cleanliness: 5
+- Shading/form: 4
+- Silhouette: 5
+- Face: 5
+
+ISSUES:
+1. [F] idle E f05–f10, jump E f06–f07, dash E f03–f07: the eyes and brows disappear as the head turns, leaving a blank profile, and a dark side-lock strand runs down over the cheek and mouth like a beard. -> Keep the near eye drawn at every yaw from about 60° to 90° using the profile eye part. Draw the side lock behind the face mask, or clip it to the edge of the face silhouette.
+2. [P] all actions, E rows mostly: the hair is a noisy mass of 1-px jaggies and mid-tone speckles, and the bun and bow get lost in it. The masters use clean 2–3-tone hair clusters. -> Quantize the hair to 3 tones with a minimum cluster size of 2 px. Remove orphan pixels before outlining. Keep the bow on top so its red reads as a clear shape.
+3. [R] S/SE in all actions: the bow is squashed into a flat red cap on top of the head, the side locks render as stray dark squiggles by the neck, and the boots blend into the socks. The masters have a large bow, defined side locks and brown boots. -> Scale the bow mesh up about 1.5x and tilt it toward the camera. Give the side locks real volume. Add a separate boot material that maps to brown.
+4. [P] idle S/SE f00–f11: the hand on the obi turns into a white and grey blob shaped like a gun. The obi is a flat lavender rectangle with no wrap. -> Give the hand skin colour with a red sleeve cuff and layer it over the obi. Add a 2-tone shadow along the bottom of the obi and a dark band for the obi's wrap.
+5. [M/R] hurt S/SE f01–f03, run S f00/f04: in hurt the head floats on a stretched neck stick, apart from the body. In run one leg collapses to a 1–2 px stick, or almost disappears behind the other. -> Clamp neck stretch to 0 and drive the hurt recoil through spine bend. Set a minimum projected leg width of 3 px and add a small sideways spread to the run cycle in S view.
+6. [P] all actions: the dress reads as a boxy poncho. The sleeves merge into the torso, the red shading is blotchy, and the skirt flare and leg gap from the masters are missing. Dash smears are solid pink blobs and the speed lines float loose. -> Put a 1-px dark outline between sleeve and torso and use cel shading with 3 reds lit from the top-left. Cut the skirt hem into an A-line. Draw smears as 1–2 coloured afterimages at reduced opacity, and attach the speed lines to the silhouette.

@@ -13,7 +13,7 @@ AZ = {"SE": (1, 1), "E": (1, 0), "S": (0, 1), "SW": (-1, 1), "NE": (1, -1), "N":
 ALIGN = json.load(open(os.path.join(EXP, "rig", "align.json")))
 
 
-def lean_yaw_for(view, sk, cap=35.0):
+def lean_yaw_for(view, sk, cap=55.0):
     yaw = float(ALIGN.get(view, {}).get("yaw", 0.0))
     c = nrm(np.array([AZ[view][0], AZ[view][1], 0.0]))
     c = axang(UP, -yaw) @ c                         # camera direction in the rig's own frame (rig turned by yaw)
@@ -36,7 +36,7 @@ if __name__ == "__main__":
     for act in sys.argv[1].split(","):
         for v in AZ:
             ly = lean_yaw_for(v, sk)
-            p = mbuild.build(act, var=dict(name=f"{act}_{v}", lean_yaw=ly))
-            m = json.load(open(p)); m["action"] = f"{act}_{v}"; m["view_cheat"] = {"view": v, "lean_yaw_deg": ly}
+            p = mbuild.build(act, var=dict(name=f"{act}_{v}", lean_yaw=ly, lean_gain=1.3 if ly else 1.0))
+            m = json.load(open(p)); m["action"] = f"{act}_{v}"; m["view_cheat"] = {"view": v, "lean_yaw_deg": ly, "lean_gain": 1.3 if ly else 1.0}
             out = os.path.join(EXP, "motion", "view", f"{act}_{v}.json"); json.dump(m, open(out, "w"), indent=0); os.remove(p)
             print(act, v, "lean_yaw", round(ly, 1), out)

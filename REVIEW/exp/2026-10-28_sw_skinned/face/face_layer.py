@@ -39,6 +39,11 @@ DEFAULT_MAP = {
     'walk': [('passing R', 'smile', 'closed'), ('', 'smile', None)],
     'run':  [('push-off', 'effort', None), ('flight', 'determined', None), ('', 'determined', None)],
     'idle': [('blink', 'neutral', 'closed'), ('look', 'smile', None), ('settle R', 'smile', 'half'), ('', 'neutral', None)],
+    'dash': [('anticip', 'focused', None), ('crouch', 'focused', None), ('burst', 'effort', None), ('smear', 'effort', None),
+             ('glide', 'focused', None), ('skid', 'surprised', None), ('brake', 'surprised', None), ('recover', 'smile', None),
+             ('', 'focused', None)],
+    'hurt': [('hit', 'hurt', None), ('snap', 'hurt', None), ('whip', 'wince', None), ('hold', 'wince', None), ('recover', 'determined', None),
+             ('', 'hurt', None)],
     'jump': [('stand', 'neutral', None), ('anticipation', 'determined', None), ('crouch', 'determined', None), ('launch', 'effort', None),
              ('take-off', 'joyful', None), ('rise', 'joyful', None), ('apex', 'joyful', None), ('fall (reach)', 'smile_open', None),
              ('fall', 'surprised', None), ('land', 'squint', None), ('squash', 'squint', None), ('recover', 'smile_open', None),
@@ -237,6 +242,7 @@ def face_cells(V, parts, G, R, kinds, ex):
         if kinds.get('eye.' + idx) == 'hidden': continue
         bx, by = parts[k]['origin']; rx, ry = R[k]; bx += G[0] + rx; by += G[1] + ry
         kind = parts[k]['kind']
+        if ex['blush'] is None: continue
         bt = FL.blush_tmpl(kind, ex['blush'])
         if parts[k].get('mirror'): bt = [r[::-1] for r in bt]
         sh = 1 if kinds.get('eye.' + idx) == 'far3' else 0
@@ -256,8 +262,14 @@ def face_cells(V, parts, G, R, kinds, ex):
 
 def zone_box(parts, G, pad=2):
     xs, ys = [], []
-    for k, a in parts.items():
-        x, y = a['origin']; xs += [x - 2, x + 7]; ys += [y - 1, y + 6]
+    for k, a in parts.items():   # mirror-symmetric margins (W/SW/NW boxes = mirrored E/SE/NE boxes)
+        x, y = a['origin']
+        if k.startswith(('eye.', 'brow.')): w = FL.kind_w(a['kind'])
+        elif k == 'mouth': w = 4
+        elif k.startswith('cheek.'): w = len(FL.ET.blush_tmpl(a['kind'], 'neutral')[0])
+        elif k == 'nose': w = max(p[0] for p in a['px']) + 1
+        else: w = 1
+        xs += [x - 1, x + w + 1]; ys += [y - 1, y + 6]
     return max(0, min(xs) + G[0] - pad), max(0, min(ys) + G[1] - pad), min(N, max(xs) + G[0] + pad), min(N, max(ys) + G[1] + pad)
 
 
@@ -287,6 +299,18 @@ def draw(g, gn, T, V, parts, pl):
         if b0:
             best = min((bad(k * step), k) for k in (0, 1, 2))[1] * step
             if best: cells = [(x + best, y, c, l, ee) if ee == e else (x, y, c, l, ee) for x, y, c, l, ee in cells]
+    # round 4: far eye off the cheek outline -- if the outward neighbours of the far eye's outer ink column are dark (outline / side-lock
+    # K/h) on >= 2 iris rows, slide that eye 1 px inward so a skin column separates lash and cheek outline (walk SE f03-f05)
+    for e in sorted({c[4] for c in cells if c[4] >= 0}):
+        kind = pl['kinds'].get(f'eye.{e}', '')
+        if kind not in ('far', 'far3', 'far_left', 'far3_left'): continue
+        d_ = 1 if kind in ('far', 'far3') else -1
+        ink = [(x, y) for x, y, c, l, ee in cells if ee == e and l == 'eye']
+        if not ink: continue
+        ox = max(x for x, y in ink) if d_ > 0 else min(x for x, y in ink)
+        ys_ = sorted({y for x, y in ink})[1:4]
+        dark = sum(1 for y in ys_ if 0 <= ox + d_ < N and g[y, ox + d_] in 'KhHm')
+        if dark >= 2: cells = [(x - d_, y, c, l, ee) if ee == e else (x, y, c, l, ee) for x, y, c, l, ee in cells]
     sk = lambda c: c in 'sSk'
     for x, y, c, layer, _e in cells:          # window first (hair over the brow cols -> skin, never on the edge)
         if layer == 'window' and 0 <= x < N and 0 <= y < N and g[y, x] in 'HhgLmK' and not _edge(g, x, y) and gn[y, x] != '.':
@@ -342,9 +366,12 @@ def face_layer(frame_info, pixel_frame, passes=None):
             best = min(((n, (v['px'][0] - x) ** 2 + (v['px'][1] - y) ** 2) for n, v in rf.items() if n.startswith('eye') and 'px' in v), key=lambda t: t[1], default=None)
             if best and best[1] < 16 and rf[best[0]].get('occ_m') is not None and not rf[best[0]].get('visible', True): kinds[k] = 'hidden'
         pl['kinds'] = kinds
-    ft = passes.get('ftex', tp)
-    tex = load_ftex(ft, d['align']['dx'], d['align']['dy']) if isinstance(ft, str) else ft
-    T, gn = tex_cells(tex)
+    if passes.get('ftex_cells') is not None:   # precomputed (T, chars) of the faceless head
+        T, gn = passes['ftex_cells']
+    else:
+        ft = passes.get('ftex', tp)
+        tex = load_ftex(ft, d['align']['dx'], d['align']['dy']) if isinstance(ft, str) else ft
+        T, gn = tex_cells(tex)
     g = np.array([list(r) for r in pixel_frame]) if not isinstance(pixel_frame, np.ndarray) else pixel_frame
     out = draw(g, gn, T, C['view'], C['parts'], pl)
     return out if isinstance(pixel_frame, np.ndarray) else [''.join(r) for r in out]

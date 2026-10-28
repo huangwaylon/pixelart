@@ -19,7 +19,7 @@ ROOT = '/Users/waylonhuang/Documents/other/pixelart'
 REL = f'{EXP}/release'; OUTR = f'{REL}/out'; CACHE = f'{REL}/work/cache'
 BL = '/Applications/Blender.app/Contents/MacOS/Blender'
 PY = f'{ROOT}/.models/pixtools/venv/bin/python'
-sys.path.insert(0, f'{EXP}/render'); sys.path.insert(0, f'{EXP}/face')
+sys.path.insert(0, f'{EXP}/render'); sys.path.insert(0, f'{EXP}/face'); sys.path.insert(0, f'{ROOT}/REVIEW/exp/2026-10-28_sw_hires3d/scripts')
 ORDER = ['S', 'SE', 'E', 'NE', 'N', 'NW', 'W', 'SW']
 BG = (128, 128, 128)
 GATE = {'boil': 0.02, 'shade_swap': 0.015, 'feet': 2, 'seam': 1.5}
@@ -129,24 +129,33 @@ def clip(bid, act, V):
         if os.path.exists(f'{F}/{stem}_face.json') and glob.glob(f'{F}/pv/*_pv.png'): open(f'{F}/DONE', 'w').close()
         else: st['errors'].append('F face render failed (see clip.log); frames ship without the face layer')
     st['face'] = os.path.relpath(F, REL)
-    # 3. P's pixel chain on symlinked passes (outputs land in the build work dir)
+    # 3. P's pixel chain on symlinked passes (outputs land in the build work dir).  Since P's round-3 chain applies F's face layer itself
+    #    (pixel_chain.apply_face reads <clip dir>/face/, as P's p3_run.sh), the face cache is linked there; FACE=0 if it is missing.
     for p in glob.glob(f'{C}/*'):
         d = f'{W}/{os.path.basename(p)}'
         if os.path.basename(p) == 'DONE' or os.path.lexists(d): continue
         os.symlink(p, d)
-    r = run([PY, f'{EXP}/render/pixel_chain.py', f'{W}/{stem}.json'], log)
-    if not glob.glob(f'{W}/{stem}_px/f*.txt'):
-        st['errors'].append('P pixel_chain failed (see clip.log)'); return done(W, st)
-    m = re.search(r'LIMB_AUDIT \S+ (.*)', r.stdout); st['limb_line'] = m.group(1)[:300] if m else None
-    # 4. F's face layer + face-composited preview
     face_ok = os.path.exists(f'{F}/DONE')
+    if face_ok and not os.path.lexists(f'{W}/face'): os.symlink(F, f'{W}/face')
+    p_face = 'def apply_face' in open(f'{EXP}/render/pixel_chain.py').read()
+    r = run([PY, f'{EXP}/render/pixel_chain.py', f'{W}/{stem}.json'], log, env=None if face_ok else {'FACE': '0'})
+    if not glob.glob(f'{W}/{stem}_px/f*.txt'):
+        st['errors'].append('P pixel_chain failed (see clip.log): ' + (r.stderr.strip().splitlines() or ['?'])[-1][:200]); return done(W, st)
+    m = re.search(r'LIMB_AUDIT \S+ (.*)', r.stdout); st['limb_line'] = m.group(1)[:300] if m else None
+    # 4. face: inside P's chain (current) or F's face_layer called here (fallback for a chain without it)
+    fw = [l for l in r.stdout.splitlines() if 'WARN' in l and 'face' in l.lower()]
+    if p_face and face_ok:
+        copy_px(W, act, V); st['face_layer'] = 'ok (in P chain)' if not fw else 'P chain WARN: ' + ' | '.join(fw)[:300]
+        if fw: face_ok = False
+    elif face_ok:
+        try:
+            st['face_layer'] = apply_face(W, F, act, V, loop)
+        except Exception as e:  # noqa: BLE001
+            st['errors'].append(f'F face_layer failed: {e!r}'[:300]); st['face_layer'] = 'failed'; face_ok = False; copy_px(W, act, V)
+    else:
+        copy_px(W, act, V); st['face_layer'] = 'skipped (no face pass)'
     try:
-        st['face_layer'] = apply_face(W, F, act, V, loop) if face_ok else 'skipped'
-    except Exception as e:  # noqa: BLE001
-        st['errors'].append(f'F face_layer failed: {e!r}'[:300]); st['face_layer'] = 'failed'; face_ok = False
-    if not face_ok: copy_noface(W, act, V)
-    try:
-        st['preview'] = preview(W, F, act, V, loop, face_ok)
+        st['preview'] = preview(W, F, act, V, loop, os.path.exists(f'{F}/DONE'))
     except Exception as e:  # noqa: BLE001
         st['errors'].append(f'preview failed: {e!r}'[:300])
     return done(W, st)
@@ -158,7 +167,7 @@ def done(W, st):
     return st
 
 
-def copy_noface(W, act, V):
+def copy_px(W, act, V):
     import hx
     os.makedirs(f'{W}/final', exist_ok=True)
     for t in sorted(glob.glob(f'{W}/{act}_{V}_px/f*.txt')):
@@ -345,6 +354,13 @@ def gates(bid):
             rows.append({'act': act, 'view': V, 'loop': loop, 'px': {k: px.get(k) for k in ('boil', 'shade_swap', 'flicker', 'feet_range', 'seam_ratio',
                          'articulation_per_s', 'motion_px', 'flags', 'n_frames', 'cycle_ms')}, 'limbs': la, 'gif': gc, 'hub_gif': hubp,
                          'errors': st.get('errors', []), 'face_layer': st.get('face_layer'), 'preview': st.get('preview')})
+    for act in acts:  # clips that were planned but did not produce frames
+        for V in dirs:
+            cj = f'{B}/work/{act}/{V}/clip.json'
+            if os.path.exists(cj) and not any(r['act'] == act and r['view'] == V for r in rows):
+                st = json.load(open(cj))
+                rows.append({'act': act, 'view': V, 'loop': acts[act]['loop'], 'px': {}, 'limbs': None, 'gif': {'flags': ['NOT_BUILT']}, 'hub_gif': [],
+                             'errors': st.get('errors', []), 'face_layer': st.get('face_layer'), 'preview': st.get('preview')})
     # every GIF of the build (8-dir rows, previews) through both checkers
     allg = []
     for p in sorted(glob.glob(f'{B}/**/*.gif', recursive=True)):
@@ -444,5 +460,5 @@ if __name__ == '__main__':
         bid, acts, dirs = plan(); print(bid, ' '.join(f'{x}:{V}' for x in acts for V in dirs))
     elif a[0] == 'clip': clip(a[1], a[2], a[3])
     elif a[0] == 'assemble': assemble(a[1])
-    elif a[0] == 'gates': gates(a[1])
+    elif a[0] == 'gates': sys.exit(0 if gates(a[1])[0] else 2)
     elif a[0] == 'hub': hub(a[1])

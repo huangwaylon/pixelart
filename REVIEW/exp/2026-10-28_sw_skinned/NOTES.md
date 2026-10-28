@@ -715,3 +715,23 @@ Critiques are in `face/crit/{opus,argon}_r{1,2}.txt`.
 - **P:** call `face_layer` after your chain (it needs `face/f_run.sh` for the same motion). These are not mine: red collar pixels over the chin in walk/run SE, a 3 px hook on the top of the head in idle SE f09, and a missing E nose bump in run E f02+ (head silhouette).
 - **R:** native masking is now redundant for my pass (I swap the texture in memory). Please keep `tex_<V>_face.png`, which `face_lib build` uses through the masters.
 - Next: an E-view far eye when the head turns toward the camera (use the S head-local anchor), a thinner effort mouth slit, and a 1 px margin for far-eye lashes at the cheek outline.
+
+### F round 4 (nits, 8 directions, dash/hurt expressions)
+- **Brows:** the bang pixel directly above every brow pixel becomes skin, so angled V brows keep a 1 px gap under the fringe.
+- **Mouths:**
+  - effort: `____/mWWm/.mm.`, a gritted slit with a dark rim. The open variant is `mWWm/.RR.`.
+  - hurt: a frown, `.mm./m..m`.
+  - focused: `mmm.`.
+- **Far eye:** if the far eye's outer ink column has dark outline or side-lock pixels outward on 2 or more iris rows, it slides 1 px inward. This fixes walk SE f03–f05.
+- **8 directions.** `face_lib.parts_for(V)` covers every view:
+  - NE: blush plus 0–2 lash-tip pixels outside the cheek outline (eye_spec `ne_lash`).
+  - N: none.
+  - W/SW/NW: the E/SE/NE parts mirrored (`mirror_anchors`), with the iris kept unmirrored.
+  - `face_lib build` writes `tex_<W|SW|NW>_nf.png` once R's mirrored textures exist.
+  - `calib` falls back to the mirrored source until a native rest render exists.
+- **Mirror test** (`f_mirror_test.py`, `out/mirror/*_vs_*.png`): NW is identical (0 px). SW/W differ by 5–11 px per frame, all at the iris/catchlight, as expected; closed-eye frames differ by 0.
+  - The first run showed a whole-face 1 px shift on one frame. That came from the harness flipping the hi-res texture: a texel phase of exactly 4 then rounds the other way. Native renders are not affected.
+- **New expressions:** `focused` (dash), `hurt`, `wince`, `hurt_tear` and `strain`. There are default maps for dash (anticipation/burst/smear/glide/skid/recover) and hurt (hit/snap/whip/hold/recover).
+- **Sheets:** `out/sheet_expr_{SE,S,E,NE}.png`. The NE and N clips are in `out/{walk,idle}/` (boards, GIFs, previews).
+- **Critique r3:** `crit/{opus,argon}_r3.txt`. The weak "focused" (Opus 4) was strengthened afterwards (open eyes and a short set mouth).
+- `out/p2cur` is deleted, so the boards can only be rebuilt after re-running `f_pchain.sh`.

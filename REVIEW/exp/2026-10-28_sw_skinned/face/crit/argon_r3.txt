@@ -1,0 +1,13 @@
+### Scores (1–10)
+1. **Brows clear of fringe:** **8/10** – The 1px skin buffer holds well across most of `run_SE` and `walk_SE`, though brow tips still touch the center bang tip in `run_SE` f00/f03.
+2. **Effort mouth clean:** **9/10** – The 2px white teeth slit with dark corners reads sharply as gritted teeth on both master sheets and in motion (`run_SE`).
+3. **Far eye clear of cheek outline:** **7/10** – Pulling the eye 1px inward saved the sclera/iris from merging with the cheek line in `walk_SE` f03–f05, but the outer lash tip still collides with protruding hair/cheek pixels, creating a chunky dark cluster.
+4. **Dash 'focused' reads focused/determined:** **9/10** – Strong, stoic dash mouth; pairs cleanly with the lowered brow and upper-lid clip.
+5. **Hurt/wince read pained:** **9/10** – The `><` chevrons, asymmetrical wince eye, and bright 2px tear drops read immediately at 1x/2x scale.
+6. **NE partial face correct/acceptable:** **7/10** – Blush and lash tip work well conceptually, but the vertical dark hair/neck line splits the tiny skin sliver, making the cheek look detached in f00–f05.
+7. **Mirrored SW path matches SE:** **4/10** – Fails parity. Beyond the expected iris/catchlight shift, every frame has stray diffs along the bangs/sidelocks, and **f05** suffers a massive 1px anchor shift across the entire face.
+
+### Top 3 Remaining Problems & Fixes
+1. **SW Mirror Path Desync (especially f05):** `walk_SW_vs_SE` f05 shifts the entire face layer, and all frames leak fringe/sidelock diffs. **Fix:** Floor/round 3D head anchor coordinates identically after mirroring (fix off-by-one center pivot rounding in f05) and ensure hair-masking uses symmetrical bounds.
+2. **Far-Cheek Silhouette Noise (`walk_SE` f03–f05):** In the base head (`round 2`), dark pixels protrude 1–2px outside the cheek outline, colliding with the far eyelash. **Fix:** Clean those stray outer hair pixels from the P2 head texture and clip the far lash by 1px when `turn >= far`.
+3. **NE Cheek Sliver Split (`idle_NE` f00–f05):** A vertical dark line cuts right through the 3px skin area. **Fix:** Paint over that interior dark column with skin/blush tone so the cheek reads as one continuous surface.

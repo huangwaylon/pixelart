@@ -24,9 +24,10 @@ INK_EYE = set('KhgLW')
 SMILE_CLOSED = ['____', 'm..m', '.mm.']          # closed smile: corners on the mouth row, centre 1 row lower (never touches the nose)
 MOUTH_FLAT = ['____', 'mmmm', '____']
 MOUTH_SMALL_O = ['____', '.RR.', '.RR.']
-MOUTH_GRIT = ['____', 'mWWm', '____']           # round 4: effort = a flat dark slit with 2 px of teeth (the spec's m__m read as a pout)
+MOUTH_GRIT = ['____', 'mWWm', '.mm.']           # round 4: effort = a flat dark slit with 2 px of teeth (the spec's m__m read as a pout)
 MOUTH_GRIT_OPEN = ['____', 'mWWm', '.RR.']      # effort with the mouth open (M's mouth: open) -- 4x2 max, no red lips ring
-MOUTH_HURT = ['____', 'mmmm', '_RR_']           # spec pain mouth (grimace)
+MOUTH_HURT = ['____', '.mm.', 'm..m']           # downturned frown (round-4 crit: the spec grimace read close to joyful)
+MOUTH_FOCUS = ['____', 'mmm.', '____']          # short set mouth, off-centre
 EXPR = {
     #  name          eye (eye_spec expr)  brow          mouth (eye_spec expr or template)   blush
     'neutral':    dict(eye='neutral',    brow='neutral',    mouth='neutral',      blush='neutral'),
@@ -37,7 +38,7 @@ EXPR = {
     'effort':     dict(eye='blink_half', brow='effort',     mouth=MOUTH_GRIT,     blush='neutral'),   # narrowed, focused eyes (not shut while running)
     'strain':     dict(eye='effort',     brow='effort',     mouth=MOUTH_GRIT,     blush='neutral'),
     # round 4: dash + hurt
-    'focused':    dict(eye='blink_half', brow='determined', mouth=MOUTH_FLAT,     blush='neutral'),   # dash: narrowed eyes, V brows, set mouth
+    'focused':    dict(eye='determined', brow='determined', mouth=MOUTH_FOCUS,    blush=None),   # dash: open eyes under steep V brows, set mouth, no blush
     'hurt':       dict(eye='pain',       brow='pain',       mouth=MOUTH_HURT,     blush='neutral'),   # pained > <, brows tilted up to the centre
     'wince':      dict(eye='pain',       brow='pain',       mouth=MOUTH_GRIT,     blush='neutral', eye1='blink_half'),   # one eye shut, one squinting
     'hurt_tear':  dict(eye='pain',       brow='pain',       mouth=MOUTH_HURT,     blush='neutral', tear=True),   # spec effort: eyes squeezed shut

@@ -21,7 +21,7 @@ def strip(act, V, S=6):
         ys, xs = np.nonzero(g[:70] != '.'); return xs.min(), ys.min()
     tiles = [[], [], []]
     for k, f in enumerate(fs):
-        g = G[k]; fr = d['frames'][k]; ex = fr['anchors']['eye.0']['xy']
+        g = G[k]; fr = d['frames'][k]; ex = fr['anchors']['eye.0']['xy'] if 'eye.0' in fr['anchors'] else [fr['anchors']['cheek.0']['xy'][0] - 12, fr['anchors']['cheek.0']['xy'][1] - 5]
         x0, y0 = int(ex[0]) - 18, int(ex[1]) - 24; x1, y1 = x0 + 36, y0 + 34
         t = hx.render(g[max(0, y0):y1, max(0, x0):x1], S, BG).convert('RGB'); pl = C['plan'][k]
         ImageDraw.Draw(t).text((3, 2), f"f{fr['i']:02d} {pl['expr']}" + (f" b{pl['blink']}" if pl['blink'] else '') + (f" {pl['mouth']}" if pl.get('mouth') else ''), fill=(255, 255, 150))

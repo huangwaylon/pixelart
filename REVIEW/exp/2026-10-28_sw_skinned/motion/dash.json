@@ -2086,6 +2086,21 @@
 "face": "effort",
 "blink": 0.0,
 "mouth": "closed",
+"smear": {
+"strength": 1.0,
+"dir_world": [
+0.0,
+1.0,
+0.0
+],
+"parts": [
+"body",
+"arms",
+"legs",
+"hair",
+"skirt"
+]
+},
 "scale": {
 "chest": [
 0.94,
@@ -2610,6 +2625,21 @@
 "face": "effort",
 "blink": 0.0,
 "mouth": "closed",
+"smear": {
+"strength": 0.6,
+"dir_world": [
+0.0,
+1.0,
+0.0
+],
+"parts": [
+"body",
+"arms",
+"legs",
+"hair",
+"skirt"
+]
+},
 "scale": {
 "chest": [
 0.955,
@@ -6831,6 +6861,6 @@
 140,
 250
 ],
-"notes": "M 2026-10-28 22:19: skeleton=rig/rest_skeleton.json; cycle 1.200s; in place (root.loc = bob/sway only). Game travel speed -0.026 m/s = -0.09 px/frame at 1x (67.88 px/m, R camera) for planted feet to hold still. Secondary chains spring-baked (motion/scripts/msim.py). t = source frame at 24 fps (may be fractional).",
+"notes": "M 2026-10-28 22:29: skeleton=rig/rest_skeleton.json; cycle 1.200s; in place (root.loc = bob/sway only). Game travel speed -0.026 m/s = -0.09 px/frame at 1x (67.88 px/m, R camera) for planted feet to hold still. Secondary chains spring-baked (motion/scripts/msim.py). t = source frame at 24 fps (may be fractional).",
 "travel_m_per_s": -0.0263
 }

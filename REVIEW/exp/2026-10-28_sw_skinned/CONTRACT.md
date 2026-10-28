@@ -355,3 +355,26 @@ Goal: one consistent, gated set of animations the owner can review, in **all 8 d
 
 ## Status log (I)
 - (I writes here)
+- 22:35 I: started; **release/make_all.sh** works (one command: R render_motion.py --no-post + P p_parts.py + F f_render.py (full + --preview), cached by
+  input hash in release/work/cache/ -> P pixel_chain.py (its built-in face_layer reads <clip>/face/, as p3_run.sh) -> F-style face composite on the
+  preview -> release/out/<build_id>/ {<act>/<V>.gif 4x, <act>_8dir.gif, *_strip1x.png, <act>_sheet.png, previews} + GATES.md; release/out/latest).
+  Env: DIRS="SE E S" (default = every view in rig/align.json), ACTS=..., JOBS=9, PANEL=1. Default motion per action = motion/<act>.json
+  (release/actions.json; M: tell me here if a variant becomes the default). First build 20261028_da7ed73 (6 actions x SE/E/S, 142 s):
+  boil 5/17, shade_swap 1/17, limbs 4/17, GIF 17/18.
+  **P:** run E crashes in pixel_chain.shape_fixes (line ~270: `xs = np.nonzero(sk[yh])[0]; xs.min()` on an empty row -> ValueError), log in
+  release/out/20261028_da7ed73/work/run/E/clip.log. **P:** limb audit fails jump S 7/16 (DETACHED/SPLIT/THIN), dash S 5/13, hurt S 3/9.
+- 23:30 F (ROUND 4): done. (a) **Nits:** angled brows now keep a 1 px skin gap under the fringe (the bang px above each brow px -> skin).
+  Effort mouth = a dark slit with 2 px of teeth (`mWWm/.mm.`); open = `mWWm/.RR.`, so the red-lips shout is gone. A far eye whose outer ink
+  touches dark outline/side-lock px on >= 2 iris rows slides 1 px inward (walk SE f03-f05 now has a skin column before the cheek outline).
+  (b) **8 directions:** `face/parts.json` has S SE E NE N W SW NW. NE/NW = blush + lash tip past the cheek outline (count per expression,
+  eye_spec ne_lash). N = no face (face_layer returns the frame unchanged). W/SW/NW = E/SE/NE parts mirrored (x -> 128 - x, front_left<->front_right,
+  far->far_left, mirrored mouth/blush/nose; the catchlight stays top-left per spec). Turn rules work in SW like SE.
+  Mirror test `face/f_mirror_test.py` (mirrored inputs vs the mirrored SE/E/NE result): NW 0 px; SW/W 5-11 px per frame = only the unmirrored iris/catchlight.
+  **R:** when native W/SW/NW land (tex_<V>.png + align.json entries), run `python face/face_lib.py build` (it erases the face from your tex_<V>.png)
+  and then `NOPV=1 zsh face/f_run.sh rest "W SW NW"; python face/face_lib.py calib` (until then calib = mirrored E/SE/NE). Then f_run.sh works natively.
+  (c) **New expressions:** `focused` (alias dash: open eyes, steep V brows, short set mouth, no blush), `hurt` (pain alias: > < eyes,
+  brows tilted up to the centre, downturned frown), `wince` (one eye > shut, the other squinting, gritted teeth), `hurt_tear` (+ 2 px W tears;
+  the palette has no blue). `strain` = the spec's squeezed-shut effort. Default maps exist for M's `dash`/`hurt` key names. M's face keys win.
+  Critique r3 (face/crit/{opus,argon}_r3.txt): brows 7/8, effort mouth 6/9, far eye 8/7, focused 4/9 (since strengthened), hurt 6/9, NE 5/7.
+  The mirror 4/4 came from a test-harness texel-phase artefact, now fixed: NW 0 px, SW iris only.
+  face/out/p2cur deleted (~600 MB). Not mine: the NE cheek sliver flickers (dark strand line through it), from the tex/head silhouette (R/P).

@@ -1,0 +1,17 @@
+SCORE: 5/10
+SCORE AD: 5/10
+SCORE ANIM: 5/10
+SCORE GAME: 6/10
+Rig/Geometry: 5/10
+Motion/Posing: 5/10
+Pixel Conversion: 5/10
+Face Placement/Expression: 5/10
+Direction Coverage/Consistency: 4/10
+
+ISSUES:
+[OWNER R] run E f00-f07: Entire E direction row is missing from the run sprite and smooth-preview sheets -> Render and export the E profile row for run to match all other actions.
+[OWNER R] hurt S,SE,E f01-f03: Head tilts backward so far that the neck stretches thin and detaches from the collar/torso in pixel output -> Clamp backward neck/head pitch in the rig or raise collar geometry to bridge the gap.
+[OWNER R] run S,SE f01-f07 & dash S,SE,E f03-f08: Thighs clip through the front skirt hem during high-knee poses, exposing skin/bloomers and breaking the flared dress silhouette -> Add skirt-bone collision/driver linked to thigh lift and widen skirt flare.
+[OWNER F] idle E f05-f08 & hurt S,SE f01-f03: 2D pixel face anchor drifts off the 3D head mesh during extreme head tilts, causing eyes/mouth to clip into bangs or chin outline -> Recalibrate 3D head anchor offset and apply perspective foreshortening to face parts on pitch/yaw.
+[OWNER M] jump S,SE,E f04-f10 & hurt S,SE,E f01-f04: Arms flail out horizontally in stiff T-pose/cheerleader shapes and feet stay glued together in jump apex -> Pose jump with asymmetric knee tuck and tucked elbows; pose hurt with guarded inward arms instead of wide T-arms.
+[OWNER P] walk,idle,jump,dash S,SE,E all frames: Back hair bun, ribbon tails, and side locks break into disconnected floating 1-2px islands with noisy silhouette flicker -> Thicken hair/ribbon proxy meshes or apply morphological closing before outlining in the pixel shader.
