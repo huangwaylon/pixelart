@@ -1,0 +1,75 @@
+{
+ "spec": {
+  "head": {
+   "scale": 0.84,
+   "wx": 1.15,
+   "fringe": 0.12
+  },
+  "neck": {
+   "extra": 0.2,
+   "r": 0.0337
+  },
+  "torso": {
+   "width": 1.12,
+   "depth": 1.2,
+   "height": 1.15,
+   "waist": 0.6,
+   "sh": 1.15,
+   "waist_zk": 1.0,
+   "sq": 0.65
+  },
+  "skirt": {
+   "width": 0.91,
+   "depth": 1.25,
+   "height": 0.93,
+   "flare": 1.18
+  },
+  "arms": {
+   "length": 1.4029,
+   "thickness": 0.9066,
+   "shoulder_x": 1.0,
+   "dy": 0.14,
+   "flare": 1.0
+  },
+  "legs": {
+   "length": 2.3634,
+   "thickness": 1.0,
+   "thigh": 1.15,
+   "shin": 1.1,
+   "spread": 1.6,
+   "prof": [
+    0.285,
+    0.3525,
+    0.245,
+    0.3
+   ],
+   "straight": 1.0,
+   "ytop": -0.05,
+   "sock": 0.55
+  },
+  "hands": {
+   "scale": 0.85
+  },
+  "boots": {
+   "scale": 1.0,
+   "top": 0.39,
+   "sx": 1.2,
+   "sz": 1.0,
+   "fwd": 0,
+   "centre": 1.0,
+   "toe": 0.0,
+   "ankle": 0.15
+  },
+  "eyes": {
+   "dy": 0.05,
+   "scale": 1.0
+  }
+ },
+ "env": {
+  "FIG_PX": "48.5"
+ },
+ "pose": {
+  "abd": 15,
+  "cheat": 45
+ }
+}

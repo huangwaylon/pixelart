@@ -1,0 +1,94 @@
+{
+ "name": "akane_v2_simple",
+ "note": "20 colours. Each entry: char -> [hex, role]. '.' = transparent. Simplified from docs/palette.json: hair darkened (STYLE_TARGET: hair must read dark), obi uses dark ramp, shoes = outline + dark. | r2: hair/red/skin/obi resampled from the best Gemini pixel sprite (gem/g48s_a), red desaturated slightly, hair cool near-black. | r3: iris resampled from Gemini masters (muted blue).",
+ "colors": {
+  "#": [
+   "#1a1220",
+   "outline / darkest (shared: shoes, hair deepest, obi deepest)"
+  ],
+  "1": [
+   "#d89a90",
+   "skin shadow / mouth"
+  ],
+  "2": [
+   "#f8dac2",
+   "skin base"
+  ],
+  "3": [
+   "#fff0e4",
+   "skin light"
+  ],
+  "h": [
+   "#281c26",
+   "hair shadow"
+  ],
+  "H": [
+   "#3c3236",
+   "hair base"
+  ],
+  "j": [
+   "#695453",
+   "hair sheen"
+  ],
+  "r": [
+   "#4a1640",
+   "red deepest (underside, violet shift)"
+  ],
+  "R": [
+   "#84263e",
+   "red shadow"
+  ],
+  "E": [
+   "#c03a3c",
+   "red base"
+  ],
+  "e": [
+   "#e8604f",
+   "red light"
+  ],
+  "D": [
+   "#2c202c",
+   "obi / shoe shadow"
+  ],
+  "d": [
+   "#44374a",
+   "obi / shoe base"
+  ],
+  "m": [
+   "#5f6678",
+   "steel dark / blade spine"
+  ],
+  "n": [
+   "#a8b0c0",
+   "steel base"
+  ],
+  "w": [
+   "#eef0f5",
+   "steel glint / eye glint"
+  ],
+  "i": [
+   "#2a395a",
+   "iris dark"
+  ],
+  "I": [
+   "#5580a2",
+   "iris light"
+  ],
+  "p": [
+   "#f49ab0",
+   "blush"
+  ],
+  "k": [
+   "#8a5a3a",
+   "katana hilt wrap / tsuba (warm brown)"
+  ],
+  "u": [
+   "#d8cbbd",
+   "dust light (VFX only)"
+  ],
+  "U": [
+   "#a99888",
+   "dust shadow (VFX only)"
+  ]
+ }
+}

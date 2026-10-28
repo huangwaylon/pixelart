@@ -4,14 +4,15 @@ __pycache__/
 *.pyc
 .DS_Store
 
-# reproducible build outputs (regenerate with python -m pipeline.build); boards + releases are kept
-builds/
-out/*
-!out/boards/
+# reproducible build outputs (regenerate with python -m pipeline.build); releases are kept. Root-anchored on purpose.
+/builds/
+/out/
+/work/
 **/pixelreview/
-out/.DS_Store
-.DS_Store
-work/
+# swordswoman per-strand scratch dirs (previously caught by the unanchored `work/`); g96 work JSON stays tracked
+swordswoman/**/work/
+!swordswoman/v2/g96/work/
+swordswoman/archive/scratch/
 
 # ---- merged from ../test (swordswoman project) ----
 # model weights, venvs, checkouts and caches (re-downloadable; see swordswoman/README.md)

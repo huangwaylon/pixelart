@@ -1,8 +1,0 @@
-{"extends": "H1v2_B_final", "name": "C1_twintails", "label": "C1 - twin tails + cream earmuffs + long scarf",
- "palette": "cw_charcoal",
- "outfit": {"hair": "twintails", "hat": "earmuffs", "bangs": "points", "accessory": null, "ahoge": false, "scarf": "long", "scarf_tails": 1},
- "face": {"eyes": "kawaii", "eye_pitch": -12},
- "render": {"ppu": 0.75, "lineart": {"smooth": 0.7, "line_min_run": 3, "pixel_perfect": true, "selout": true,
-            "no_face_lines": true, "angel_ring": true}},
- "ramp_overrides": {"hat": ["mauve", "oat_1", "oat_2"], "coat": ["ink", "char_1", "lav_1"]},
- "anim_patch": {}}

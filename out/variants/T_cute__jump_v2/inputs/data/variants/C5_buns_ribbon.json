@@ -1,9 +1,0 @@
-{"extends": "H1v2_B_final", "name": "C5_buns_ribbon", "label": "C5 - odango buns + rose ribbons, no hat, short scarf",
- "palette": "cw_lavender",
- "outfit": {"hair": "buns", "hat": "none", "bangs": "points", "accessory": null, "ahoge": false,
-            "scarf": "long", "scarf_tails": 1, "scarf_len": 1.5, "hair_color": "espresso"},
- "face": {"eyes": "kawaii", "eye_pitch": -12},
- "ramp_overrides": {"scarf": ["crn_1", "crn_2", "red_2"], "ribbon": ["crn_1", "crn_2", "red_2"], "mitten": ["crn_1", "crn_2"]},
- "render": {"ppu": 0.75, "lineart": {"smooth": 0.7, "line_min_run": 3, "pixel_perfect": true, "selout": true,
-            "no_face_lines": true, "angel_ring": true}},
- "anim_patch": {}}
