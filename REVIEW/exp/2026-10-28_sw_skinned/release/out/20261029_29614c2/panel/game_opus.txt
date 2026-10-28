@@ -1,0 +1,21 @@
+SCORE: 4/10
+
+- 1x readability: 4. The silhouette and colours read. Faces are smudges at 1x, the N head looks like a pointed hood, and the NE/NW pink cheek reads as a big ear.
+- Direction consistency: 4. The S/SE/SW face views and the profile/back views look like different head designs. The profiles look narrower and shorter.
+- Action clarity: 5. Run, jump and walk read. Hurt (S/N f01–f03, arms flung up and out) reads as a flex or cheer. Dash S/N f08–f09 is a T-pose.
+- Timing/feel: 4. Idle mixes 300 ms holds with 79 ms frames, which looks like a hiccup, not breathing. Walk frame times are uneven (71/118/126/105 ms). Run S feet drift 10 px.
+- Ship-readiness: 3.
+
+(a) Head jutted back: yes, in the profiles. In idle E f00–f03 and f11, and idle W f05–f08, the hair mass sits well behind the spine line, with the face only a thin strip in front. Walk E f00–f02 shows the same. S/N are fine.
+
+(b) Balding / high hairline: yes. In every S/SE/SW frame (walk S f00–f07, idle S/SE all 12, run S, jump S/SE) the forehead skin runs high and the bangs are thin dark wisps with gaps. N/NE/NW/E/W show no scalp.
+
+(c) Lean back: mostly no. Torsos sit roughly upright. Idle W f05–f06 and idle E f04–f05 tip slightly back, mainly because the heavy back-hair shifts the visual centre of mass back.
+
+ISSUES:
+1. [R/F] S SE SW all actions, all frames: high hairline, skin showing between fringe clumps -> extend the bangs mesh down to the brow line and close the clump gaps; fail the build if any skin pixel shows above the brow.
+2. [R] E W NE NW idle f00–f11, walk f00–f07: head mass sits behind the neck and the face is a sliver -> move the skull/bun forward so the face is about 40% of the head width, and shrink the back-hair volume.
+3. [R] N all actions: conical, hood-shaped head -> round off the crown and widen the bob's sides so the bob silhouette matches the front view.
+4. [R/P] walk SE f02, run SE/SW 1–2 of 8, jump S f05–f08: legs detached or split -> raise the leg minimum width to 2 px, add a hip-to-thigh bridge, and re-run the limb audit.
+5. [M] hurt S/N f01–f03, dash S/N f08–f09: poses misread (flex, T-pose) -> hurt: crumple the torso back with the arms in tight and the head snapped back; dash: lean forward 15–20° with the sleeves trailing behind.
+6. [M/P] idle all directions, run S: jerky timing and feet drift -> use even 160–200 ms idle frames on a sine breath; lock the planted-foot pixel so it drifts at most 2 px.

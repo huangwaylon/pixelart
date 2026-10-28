@@ -1,0 +1,27 @@
+SCORE: 4/10
+SCORE A: 5/10
+
+Sub-scores (B): key poses/appeal 4 · timing/spacing 6 · bounce/weight 5 · secondary motion 4 · posture (no slouch) 6 · face acting 3
+
+A/B (A vs B):
+- face follows head: 6 vs 7
+- face on-model: 7 vs 3
+- face expressive: 6 vs 5
+- face readable at 1x: 7 vs 3
+- stance natural (not leaning back): 6 vs 7
+- head position (not jutted back): 4 vs 5
+- bangs full (not balding): 6 vs 3
+
+VERDICT: B is mixed and worse overall. The head now sits better and the face turns with it. But the pixelized 3D face texture turns to mush, with jaggy eye fragments and stray dark pixels. The 3/4 and profile views show a big bare skin wedge where the bangs should be.
+
+(a) Head jutted back: mostly fixed in walk and run. It still reads as set back in idle E f04–f07, idle NE f05, hurt E f01–f03 and NE f02, and dash E/W f00–f02. In those frames the huge hair mass sits behind the neck line, so the head looks parked on the back of the spine.
+(b) Balding / thin bangs: yes. In SE, E, NE, NW and W across every action (for example walk E f00–f07, idle SE f07, run NE all frames), a large flat skin area runs from brow to crown with no fringe clumps. That reads as a high hairline or bald forehead. Front-on S is fine.
+(c) Leaning back: no in walk and idle. Hurt f01–f03 tips back (intended recoil). Dash S/SE f04–f06 has the chest arched back while the legs push forward.
+
+ISSUES:
+1. [R] all actions, SE/E/NE/NW/W, all frames: the bangs end at the brow line and leave a bare forehead and temple wedge in 3/4 and profile → extend the fringe and side-lock mesh forward and down over the forehead, wrapping the bangs to the temple, so hair covers the area in front of the ear in profile.
+2. [F/P] all actions, S/SE/SW, all frames: the 3D face texture breaks up into speckled eyes with stray dark pixels on the cheeks and jaw (idle S f06–f07, SE f07) → snap the face to the master palette with no dithering, add an eye/brow line pass after downscale, and remove isolated pixels inside the face area.
+3. [R] idle/hurt/dash E/NE/W, f00–f07: the bun and back-hair mass pulls the head silhouette behind the spine → shrink the back-hair volume by about 15% and move the bun up and forward.
+4. [M] walk/idle all directions: the bow, skirt and sleeves barely lag; the hair moves as one rigid helmet → add spring follow-through to the bow and side locks, about 2 frames of lag with overshoot.
+5. [M] dash S/SE f03–f08: arms flung wide with the chest back looks flailing, not a confident lunge → pitch the torso forward 15–20° and sweep the arms back.
+6. [P] run NE/NW f00–f05, jump E/W f06–f08: sleeves and legs merge into red blobs and the shin outline breaks → add an inner outline wherever a sleeve overlaps the body, and enforce minimum leg width.

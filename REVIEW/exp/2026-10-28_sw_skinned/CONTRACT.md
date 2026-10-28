@@ -549,6 +549,11 @@ Goal: one consistent, gated set of animations the owner can review, in **all 8 d
   (S/SE/SW up to 16-30 skin px above the brow). Panel 4-5/10 (PANEL.md); all four critics independently report jutted-back head, lean-back and balding bangs.
   Next build switches release/actions.json to `"pipeline": "r5"`: no F face pass, P chain only, R's own --preview. Then an A/B vs the baseline.
 
+- 08:20 I: **round-5 build 20261029_29614c2** (release/out/latest) on R r8b + F tex3d + M 07:55 bake + P chain (no head special cases), 6 actions x 8 dirs,
+  `"pipeline": "r5"` in release/actions.json (R's own --preview, no F face pass). 0 build errors (the shape_fixes crash is gone).
+  Gates: posture **torso 2/2, head pitch 2/2, head-forward 6/6** (round 4: 0/2, 0/2, 0/6); bangs 28/48 (all 20 failures are S/SE/SW temple/forehead
+  wedges, 84-164 px); limbs 34/48; boil 11/48; shade_swap 0/48; GIF 48/48 + 108/108 build GIFs clean. Panel (one Opus pass, 3 roles, A/B folded in):
+  B 4/4/4 vs A 5/5. Stance and head-follow improved; the 3D face is mush at 96 px (on-model 7->3). PANEL.md; ROUND 6 proposals below. Hub entry updated.
 # ROUND 5 proposals (I: panel on the round-4 baseline, release/out/20261028_854761b/PANEL.md)
 1. [R+M] Head forward over the neck: move the head/neck pivot ~2-4 px forward in the rest pose (R) and drop the head pitch-up and backward offset (M). Gate: E head-forward >= 0 every frame (now 0/6 actions).
 2. [M] Stance: idle/walk spine 2-4 deg forward, head level, pelvis under the ribcage. Less arch on the dash wind-up (-16 deg) and the jump apex (-12 deg).
@@ -573,3 +578,13 @@ Goal: one consistent, gated set of animations the owner can review, in **all 8 d
   (3) The skin under the face reads as the dark band S at 1x (light from above/behind the fringe?), so the face looks redder than m96. Lighting or skin ramp (R/P).
   **M:** none. Your face/blink/mouth keys drive the textures as is.
   The 2D face_layer (face/face_layer.py) is retired and kept only as the A/B baseline.
+
+# ROUND 6 proposals (I: panel on round-5 build 20261029_29614c2 vs round-4 baseline 20261028_854761b; release/out/20261029_29614c2/PANEL.md)
+1. [F+P] The face must survive pixelization: palette-exact face textures without speckle, bigger higher-contrast eyes (dark lash/pupil mass + catchlight),
+   and a general thin-feature/no-orphan rule in P's chain. Add a profile eye, brow and mouth for E/W. Target: readable at 1x >= the round-4 baseline (now 3-4 vs 6-7).
+2. [R] Wrap the fringe and side locks over the temples: no skin wedge in S/SE/SW. Gate: bangs 0 skin px above the brow (now 28/48).
+3. [R] Profile head mass: back hair and bun about 15% smaller and moved forward/up, so the face is about 40% of the head width in E/W (the gate passes, but it still reads as set back).
+4. [R] N/NE/NW: a round crown (not a hood), the bun on top, the bow back up. Make the S/SE bow one connected shape with a knot.
+5. [M] Hurt/dash: replace the T/flex arms (hurt S/N f01-03, dash S/N f08-09) with crumple/guard and a forward lean with trailing sleeves. Add 2 frames of lag + overshoot on the bow and side locks.
+6. [P] Limbs 34/48: split/detached legs in run SE/SW, jump S/SW, dash S/SW, hurt S; hurt NE VANISHED 2/9. Add a sleeve|body inner outline in run NE/NW.
+7. [M/P] Idle timing hiccup (300 ms holds next to 79 ms frames); run S feet drift 10 px; shade_swap 0/48 and run E/W/NE/NW boil .13-.15.

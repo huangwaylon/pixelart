@@ -67,6 +67,8 @@ for _n in MN:  # any new matid without a ramp: its nearest locked-palette colour
     if _n not in RAMP:
         _k = hx.KEYS[int(((np.array(hx.RGB, float) - np.array(MATS[_n], float)) ** 2).sum(1).argmin())]; RAMP[_n] = _k * 3
 BIAS = dict(hx.BIAS)
+# dark-band (shadow) lum threshold per material; default hx.T1 = .22.  Skin is lower so skin (face, hands, thighs) sits mostly in s like the masters
+T1M = {'skin': float(os.environ.get('SKIN_T1', '0.10'))}
 THINF = {'iris': 2, 'eyes': 2, 'eye_white': 1, 'lash': 1, 'mouth': 1, 'iris_top': 1, 'iris_low': 1, 'brow': 1, 'mouth_in': 1, 'nose': 1}  # thin features: min width (1 = presence only, 2 = 2x2 core)
 PARTS = ["torso", "head", "skirt", "leg.L", "leg.R", "arm.L", "arm.R", "sleeve.L", "sleeve.R"]; NP = len(PARTS); PI = {p: i for i, p in enumerate(PARTS)}
 PCOL = np.array([((i + 1) * 25, 255 - (i + 1) * 25, (i * 67) % 256) for i in range(NP)], float) / 255
@@ -524,10 +526,11 @@ def frame(F, prev, opt):
     # ---- shading
     lum = np.take_along_axis(S['lum'], np.maximum(lab, 0)[..., None], -1)[..., 0]
     bias = np.array([BIAS.get(n, 1.0) for n in MN])[np.maximum(M_, 0)]; l = lum * bias
-    band = np.where(l < hx.T1, 0, np.where(l > hx.T2, 2, 1))
+    t1 = np.array([T1M.get(n, hx.T1) for n in MN])[np.maximum(M_, 0)]  # per-material dark threshold (global per material, any part)
+    band = np.where(l < t1, 0, np.where(l > hx.T2, 2, 1))
     if W is not None:
         pb = W['band']; same = (W['lab'] == lab) & fill & (pb >= 0)
-        hold = same & (((pb == 0) & (l < hx.T1 + HYS)) | ((pb == 2) & (l > hx.T2 - HYS)) | ((pb == 1) & (l >= hx.T1 - HYS) & (l <= hx.T2 + HYS)))
+        hold = same & (((pb == 0) & (l < t1 + HYS)) | ((pb == 2) & (l > hx.T2 - HYS)) | ((pb == 1) & (l >= t1 - HYS) & (l <= hx.T2 + HYS)))
         band = np.where(hold, pb, band)
     band = np.where(fill, band, -1)
     # near / far leg

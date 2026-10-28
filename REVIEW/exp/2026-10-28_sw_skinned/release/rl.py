@@ -556,6 +556,8 @@ def hub(bid):
         if a.get('8dir_pv'): media.append({'src': f"{rel}/{a['8dir_pv']}", 'caption': f'{act}: smooth preview with face', 'wide': True})
     for act, a in man['actions'].items():
         media.append({'src': f"{rel}/{a['sheet']}", 'caption': f'{act}: contact sheet (3x) — rows = directions', 'wide': True})
+    for nm, cap in (('ab_heads_idle', 'A/B idle heads 6x: round-4 projected face (A) vs this build (B)'), ('ab_walk', 'A/B walk 3x: A round 4 vs B this build')):
+        if os.path.exists(f'{B}/ab/{nm}.png'): media.append({'src': f'{rel}/ab/{nm}.png', 'caption': cap, 'wide': True})
     worst = []
     for r in G['clips']:
         v = clip_verdict(r); fails = [k for k, x in v.items() if x is False]

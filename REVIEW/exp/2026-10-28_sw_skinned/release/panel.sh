@@ -34,14 +34,22 @@ if [ -n "$BASE" ]; then
   /Users/waylonhuang/Documents/other/pixelart/.models/pixtools/venv/bin/python $EXP/release/rl.py ab $1 $BASE >/dev/null 2>&1
   for a in $ACTS; do [ -f $B/ab/ab_heads_$a.png ] && ABS+=($B/ab/ab_heads_$a.png); done; for a in idle walk; do [ -f $B/ab/ab_$a.png ] && ABS+=($B/ab/ab_$a.png); done
   AB="You are the review panel lead doing an A/B between two builds of the same sprite. $CTX Each board shows per direction two rows: 'A r4' = round-4 baseline where the face was projected master pixel art + 2D decals, and 'B now' = the new build where the head, hair and face are true 3D geometry/texture pixelized by the same chain as the body; the ab_heads boards are head close-ups at 6x, ab_<act> are full figures at 3x. The owner asked for: faces that follow the head, stay on-model (m96 masters, first image) and are expressive; a natural human feminine stance that does NOT lean back; the head NOT jutted back; longer full bangs with no balding look. Measured posture of B: $POST . Answer in <= 400 words. First line exactly 'SCORE: N/10' for B, second line 'SCORE A: N/10' for A. Then a table A vs B (1-10) for: face follows head, face on-model, face expressive, face readable at 1x, stance natural (not leaning back), head position (not jutted back), bangs full (not balding). Then 'VERDICT:' one line (is B better, worse, or mixed, and why). Then 'ISSUES:' the 6 most important remaining problems in B, each as '[OWNER R|M|P|F] action direction frames: problem -> concrete fix'."
-  opus "$AB" $P/ab_opus.txt $MASTER $ABS &
+  [ -z "$LEAN" ] && opus "$AB" $P/ab_opus.txt $MASTER $ABS &
 fi
-opus "$AD" $P/ad_opus.txt $MASTER $SHEETS &
-opus "$AN" $P/anim_opus.txt $SHEETS $PVS &
-opus "$GD" $P/game_opus.txt $STRIPS $SHEETS &
-argon &
+if [ -n "$LEAN" ] && [ -n "$BASE" ]; then  # LEAN=1: one Opus pass in 3 roles, the A/B folded into the AD + animation roles, no Argon
+  ABQ="ALSO an A/B: the ab_* boards show per direction 'A r4' = round-4 baseline (projected master face pixels + 2D face decals) vs 'B now' = this build (true 3D head, hair and face textures pixelized by the same chain as the body); ab_heads = head close-ups 6x, ab_<act> = full figure 3x. Put 'SCORE A: N/10' (the baseline A on your criteria) as the SECOND line. After the sub-scores add 'A/B:' with A vs B 1-10 for: face follows head, face on-model, face expressive, face readable at 1x, stance natural (not leaning back), head position (not jutted back), bangs full (not balding); then 'VERDICT:' one line (B better / worse / mixed and why)."
+  HB=(); FB=(); for f in $ABS; do case $f in *ab_heads_*) HB+=($f);; *) FB+=($f);; esac; done
+  opus "$AD $ABQ" $P/ad_opus.txt $MASTER $HB $SHEETS &
+  opus "$AN $ABQ" $P/anim_opus.txt $FB $SHEETS $PVS &
+  opus "$GD" $P/game_opus.txt $STRIPS $SHEETS &
+else
+  opus "$AD" $P/ad_opus.txt $MASTER $SHEETS &
+  opus "$AN" $P/anim_opus.txt $SHEETS $PVS &
+  opus "$GD" $P/game_opus.txt $STRIPS $SHEETS &
+  argon &
+fi
 wait
-for f in $(ls $P/ab_opus.txt 2>/dev/null) $P/ad_opus.txt $P/anim_opus.txt $P/game_opus.txt $P/argon.txt; do echo "$(basename $f): $(grep -m1 SCORE $f) ($(wc -c < $f) bytes)"; done
+for f in $(ls $P/ab_opus.txt 2>/dev/null) $P/ad_opus.txt $P/anim_opus.txt $P/game_opus.txt $(ls $P/argon.txt 2>/dev/null); do echo "$(basename $f): $(grep -m1 SCORE $f) ($(wc -c < $f) bytes)"; done
 python3 - $B <<'EOF'
 import json, re, sys, os
 B = sys.argv[1]; P = B + '/panel'; sc = {}
@@ -50,7 +58,7 @@ for k, f in (('Opus A/B', 'ab_opus'), ('Opus AD', 'ad_opus'), ('Opus anim', 'ani
     m = re.search(r'SCORE:\s*([\d.]+)\s*/\s*10', t)
     if m: sc[k] = f'{m.group(1)}/10'
     m = re.search(r'SCORE A:\s*([\d.]+)\s*/\s*10', t)
-    if m: sc['Opus A/B baseline'] = f'{m.group(1)}/10'
+    if m: sc[k + ' (r4 baseline)'] = f'{m.group(1)}/10'
 json.dump(sc, open(f'{B}/panel_scores.json', 'w')); print(sc)
 EOF
 echo PANEL_RAW_DONE

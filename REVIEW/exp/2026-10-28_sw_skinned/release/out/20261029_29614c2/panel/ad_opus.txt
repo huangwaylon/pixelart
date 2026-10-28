@@ -1,0 +1,27 @@
+SCORE: 4/10
+SCORE A: 5/10
+
+On-model 3 · Outline/cleanliness 5 · Shading/form 4 · Silhouette 4 · Face 3
+
+(a) Head jutted back: only partly. In E/W/NE/NW (walk f00–f07, idle f00–f11) the skull and hair mass sit well behind the neck, and the face is a thin sliver at the front edge. It reads as a backward-heavy head, not a neck kink. S, SE and SW are fine.
+(b) Balding: no. B's bangs are a solid dark helmet with no scalp showing in any direction. The opposite problem now: they come down to the eyes in S and cover half the face. A shows more forehead and a lighter hairline band in S.
+(c) Lean back: mostly no. The torso is upright in all directions. Idle E/W f00–f03 show a slight 1–2° backward tilt of the chest. Jump f06–f07 arch back on purpose.
+
+ISSUES:
+[R] all N, NE, NW: head is a pointed onion/teardrop and the bow has slid to mid-head as a flat band. The master has a round head with the bun on top and the bow up high -> round off the crown, restore the bun volume, and move the bow anchor back up.
+[F] E/W all frames: the profile face is just one white eye pixel on a skin strip, with no brow, mouth or blush -> add a profile eye (2×3), brow, mouth tick and blush, and widen the face plane 2–3 px.
+[F] S/SE/SW all actions: eyes are muddy grey blobs and the skin has scattered brown speckle noise. Faces are less readable at 1x than A -> snap the face texture to the master palette, kill the speckle, and keep the pupil and highlight contrast.
+[R] S/SE/SW: the bow reads as two separate red "mouse-ear" puffs, and the side locks have merged into a jagged cheek outline -> one connected bow with a knot, and clear side locks hanging below the jaw.
+[R] all directions: the head is too big and too far back. In profile the hair mass is about 1.5× the master -> scale the back hair down about 15% and move the pivot forward over the neck.
+[P] SE walk/idle all frames: the nose/lip bump makes a ragged profile edge with stray 1-px skin notches -> smooth the cheek contour and delete orphan pixels at the silhouette.
+
+A/B (A vs B):
+- Face follows head: A 6 / B 8
+- Face on-model: A 7 / B 3
+- Face expressive: A 6 / B 5 (B has closed, X and open-mouth faces, but they're crude)
+- Face readable at 1x: A 6 / B 4
+- Stance natural: A 5 / B 6
+- Head position: A 5 / B 5
+- Bangs full: A 6 / B 8 (too heavy)
+
+VERDICT: B is worse overall, though mixed. The 3D head tracks correctly and the bangs are full, but the face, bow and N-view head shape have drifted badly off-model and the faces are muddier and less readable than A's.
