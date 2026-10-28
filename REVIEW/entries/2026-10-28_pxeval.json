@@ -1,0 +1,27 @@
+{
+ "id": "2026-10-28_pxeval",
+ "date": "2026-10-28",
+ "project": "both",
+ "kind": "result",
+ "status": "promising",
+ "title": "pxeval: shared deterministic still + motion evaluator (boil, shade-swap, articulation, fidelity vs illustration)",
+ "question": "Can deterministic pixel and motion metrics replace the noisy LLM critic scores as the first filter, and give the three running experiments one comparable number set?",
+ "method": "pipeline/tools/pxeval.py (numpy/scipy/pillow; byte-identical under the pixtools, pixel-art-fixer and swordswoman venvs). still = metrics.py port (ssim_b, dE, sil, face_ssim...) + vs-master + cleanliness (off-palette, qa.py orphans, render.py jaggies, outline coverage/gaps, L-corners). seq = motion-compensated change maps: boil (noisy redraw on a region that is rigid across t-1..t+1), shade_swap, articulation/s (non-rigid motion), silhouette and feet jitter, loop seam. board and gif helpers. Back-test: pipeline/tools/pxeval_backtest.py.",
+ "result": "Still: equal to swordswoman metrics.py on 15 sprites x 15 keys (max diff 5e-5, which is rounding). top1 vs illustration ssim_b .943-.966, dE 7.2-9.6. The accepted m96 masters score ssim_b .75-.89 vs the raw illustration but .92-.96 vs their geo/ source, so fidelity for new work should be measured against the masters. metrics_top.json is stale (top1 was regenerated today). Motion: boil puts the rejected pilot walk at .031 and every shipped snowpeak walk/run/idle (24 clips) at .017 or below; shade_swap .030 vs .013 or below. The pilot idle is not boiling but STIFF: 0.10 articulation/s, one rigid 1 px block shift, 2 exact holds (lively walks are 0.5 /s or more). 64 px mocap/unarmed 3D-guide pixels boil at .06-.18.",
+ "verdict": "Use as the pre-filter before any LLM critic. Gates: boil <= .02 and shade_swap <= .015 fail; articulation < 0.15/s and feet_range > 2 warn. Provisional: calibrated on one shipped project and one rejected pilot. Re-calibrate on the first owner-verdicted clips.",
+ "scores": {"boil pilot walk": ".031", "boil snowpeak max": ".017", "artic/s pilot idle": "0.10", "metrics.py match": "15x15"},
+ "media": [
+  {"src": "exp/2026-10-28_pxeval/plot_boil_vs_articulation.png", "caption": "boil vs articulation/s per clip, with the proposed gates"},
+  {"src": "exp/2026-10-28_pxeval/viz/pilot_walk_SE_1x.png", "caption": "pilot walk SE change map: cyan = explained by motion, red = unexplained, magenta = boil", "wide": true},
+  {"src": "exp/2026-10-28_pxeval/viz/snowpeak_walk_SE.png", "caption": "snowpeak walk SE change map (shipped, boil .010)", "wide": true},
+  {"src": "exp/2026-10-28_pxeval/viz/pilot_idle_SE_1x.png", "caption": "pilot idle SE: rigid 1 px block shifts and holds (STIFF)", "wide": true},
+  {"src": "exp/2026-10-28_pxeval/board_still.png", "caption": "area-downsampled illustration | top1 | m96 master per view", "wide": true},
+  {"src": "exp/2026-10-28_pxeval/board_pilot_vs_snowpeak.png", "caption": "pilot vs snowpeak board (pxeval board)", "wide": true}
+ ],
+ "links": [
+  {"href": "exp/2026-10-28_pxeval/NOTES.md", "label": "NOTES (usage, definitions, thresholds)"},
+  {"href": "exp/2026-10-28_pxeval/tables.md", "label": "full back-test tables"},
+  {"href": "../pipeline/tools/pxeval.py", "label": "pxeval.py"}
+ ],
+ "next": "Run seq/still on every clip from the hires3d, snowpeak_hires and gemini_fixer experiments. Collect owner verdicts and re-fit the gates. Add --mask from the rig guides to measure static_changed. Arc metrics for tracked props (sword tip) once guides export keypoints."
+}

@@ -1,0 +1,51 @@
+{
+ "id": "2026-10-28_sw_gemini_fixer_poses",
+ "date": "2026-10-28",
+ "project": "swordswoman",
+ "kind": "experiment",
+ "status": "promising",
+ "title": "Key poses: Gemini pixel pose + fixer (b) vs Gemini illustration pose -> E2 (c)",
+ "question": "Can Gemini make on-model key poses (walk/run/jump/throw, rig H guides, SE) at the master's scale: directly as pixel art (b), or as an HD illustration then E2 pixelize (c, the untried 'key-pose illustration -> E2' idea)?",
+ "method": "(b) refs illustration + m96 master x8 + guide -> fixer fix_sq -> lock2. (c) refs illustration + guide -> pz.py EC0 SE <h> --src. 2 samples per pose per route. Scale by head size (hair bbox = master 35 px, 'hn') or by rig guide height ('gh'). Identity = palette/material L1 and head ratio vs the master. Argon + Opus critics.",
+ "result": "(c): all 8 illustrations on-model with good pose adherence. Head ratio at rig scale 1.17 +- 0.10 (consistently ~15% big), orphans 1.2%, E2 fidelity to its own source ssim_b .96-.98. (b): 2/8 came back as 3-figure sheets in a different chibi style. Head ratio 1.01 +- 0.22 (0.71-1.40), cleaner clusters (orphans 0.6%), palette closest to the master. Neither route is usable after only light cleanup.",
+ "verdict": "Critics split: Opus says c (mean 5.0 vs 4.75; c's errors are local, b's are structural: hairstyle, eye style and proportions change per pose), Argon says b (cleaner blocks). Recommend (c) + head-matched scale + dark-cluster/outline cleanup + m96 head stamp.",
+ "scores": {
+  "Opus b": "6/5/4/4",
+  "Opus c": "4/6/5/5",
+  "Argon b": "5/5/4/6",
+  "Argon c": "4/4/5/6",
+  "head ratio b": "1.01±.22",
+  "head ratio c": "1.17±.10",
+  "b off-model": "2/8"
+ },
+ "media": [
+  {
+   "src": "exp/2026-10-28_sw_gemini_fixer/boards/b4_consistency_hn.png",
+   "caption": "consistency: master + walk/run/jump/throw keys, (b) and (c), 4x and 1x, head-matched scale"
+  },
+  {
+   "src": "exp/2026-10-28_sw_gemini_fixer/boards/b3_poses_hn.png",
+   "caption": "all samples per pose: guide | b raw | b lock 4x (x2) | c raw illustration | c E2 4x (x2)",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_gemini_fixer/boards/b4_consistency_gh.png",
+   "caption": "same keys at rig (guide-height) scale: Gemini's heads come out too big"
+  }
+ ],
+ "links": [
+  {
+   "href": "exp/2026-10-28_sw_gemini_fixer/NOTES.md",
+   "label": "NOTES.md"
+  },
+  {
+   "href": "exp/2026-10-28_sw_gemini_fixer/crit/opus_poses.txt",
+   "label": "Opus poses"
+  },
+  {
+   "href": "exp/2026-10-28_sw_gemini_fixer/crit/argon_poses.txt",
+   "label": "Argon poses"
+  }
+ ],
+ "next": "Render rig H2 frames (v2/g96/scripts/frames_H2.py), make a full 6-frame walk via (c), and measure boiling between adjacent keys. Add the dark-cluster cleanup pass."
+}

@@ -1,0 +1,31 @@
+{
+ "id": "2026-10-28_snowpeak_hires",
+ "date": "2026-10-28",
+ "project": "snowpeak",
+ "kind": "experiment",
+ "status": "rejected",
+ "title": "Snowpeak: render 3D at 4x/8x, then pixelate + shipped fix chain (S4_hd2, S4_hd)",
+ "question": "Is pixel art better if we render the same model/pose/camera at high resolution, downscale with k-centroid, RD pixel-fixer, majority vote or area average, and then run the fix pass, instead of using the native sprite-resolution pass?",
+ "method": "The hi-res tracer fires the same rays as render_pixels(ss=k) and keeps a buffer per sample (k=4,8): depth, normal, lambert, material, group, band, smooth and flat RGB. An edge pass marks depth breaks and normal creases. Each method resolves to a 48x64 PixelFrame. A runtime swap of frames.render_pixels then runs the whole shipped fix chain on each one (face cels, pixelrules, sel-out outline, ring trim, bow shine, orphans, temporal_hold). Coverage: S4_hd2 idle/walk/run x 8 dirs x 8 frames; S4_hd idle/walk (run S/SE/E). Scripts in exp/2026-10-28_snowpeak_hires/scripts.",
+ "result": "Native re-render = shipped (0 px diff). Orphans are 0 for every method and height deltas are unchanged. S4_hd2 idle, native vs best hi-res (KC, k=8): jaggies 0.55 vs 0.92 per frame, coat islands 0.06 vs 0.33 per frame, ABA boil 3.38 vs 2.98. Walk: jaggies 1.00 vs 1.53, ABA 53.2 vs 53.9. The pixel-fixer is worst (walk ABA 58.4; idle diff vs native 21%). k=4 and k=8 give near-identical results.",
+ "verdict": "Rejected. Argon: N 6, KC 6 (same), VM 5.5, KCE 4.5, PF 3.5. Opus: N 6, KC 6 (same), VM 5, KCE 5, PF 3. Both critics: high-res fixes none of the six known problems (coat slab, mitten islands, stub legs, blob hands, small S bow, fringe ridges). These come from the model and design, not from sampling. Normal-buffer interior lines come out broken dashes that boil.",
+ "scores": {"Argon N/KC/PF": "6 / 6 / 3.5", "Opus N/KC/PF": "6 / 6 / 3", "jaggies/f N vs KC (idle)": "0.55 vs 0.92", "idle boil N vs KC": "3.38 vs 2.98"},
+ "media": [
+  {"src": "exp/2026-10-28_snowpeak_hires/boards/00_key_S4_hd2_idle_8dir_4x.png", "caption": "S4_hd2 idle 8 dirs, rows: native | VM | KC | PF | KCE (hi-res 8x, all through the shipped fix chain)", "wide": true},
+  {"src": "exp/2026-10-28_snowpeak_hires/boards/01_S4_hd2_walk_SE_strip_4x.png", "caption": "walk SE: native | KC | PF | KCE", "wide": true},
+  {"src": "exp/2026-10-28_snowpeak_hires/boards/02_S4_hd2_hires_buffers.png", "caption": "8x buffers: smooth, bands, material id, normal, depth, edges", "wide": true},
+  {"src": "exp/2026-10-28_snowpeak_hires/boards/S4_hd2__idle__k8__methods_4x.png", "caption": "all 9 methods, S/SE/E", "wide": true},
+  {"src": "exp/2026-10-28_snowpeak_hires/boards/00_key_S4_hd_idle_8dir_4x.png", "caption": "S4_hd comparison", "wide": true},
+  {"src": "exp/2026-10-28_snowpeak_hires/boards/00_key_S4_hd2_idle_8dir_1x.png", "caption": "1x"},
+  {"src": "exp/2026-10-28_snowpeak_hires/boards/03_S4_hd2_walk_8dir_top_native_bottom_KC.gif", "caption": "walk 8 dirs: top native, bottom KC"},
+  {"src": "exp/2026-10-28_snowpeak_hires/boards/03_S4_hd2_idle_8dir_top_native_bottom_KC.gif", "caption": "idle 8 dirs: top native, bottom KC"},
+  {"src": "exp/2026-10-28_snowpeak_hires/boards/S4_hd2__idle__k8__raw_4x.png", "caption": "RAW resolves before the fix chain"}
+ ],
+ "links": [
+  {"href": "exp/2026-10-28_snowpeak_hires/NOTES.md", "label": "notes"},
+  {"href": "exp/2026-10-28_snowpeak_hires/metrics.md", "label": "metrics"},
+  {"href": "exp/2026-10-28_snowpeak_hires/critique/gemini_argon.md", "label": "Argon critique"},
+  {"href": "exp/2026-10-28_snowpeak_hires/critique/opus.md", "label": "Opus critique"}
+ ],
+ "next": "Keep the native pass. Put effort into the model: keep the mitten off the coat front (or add a rule against foreign islands inside the coat), a 2-tone coat with a fold line, r13 re-proportioning, a per-direction bow/fringe part library. Cheap carry-over to test: majority-band vote inside the native ss=3 pass (idle boil -9 to -12%)."
+}

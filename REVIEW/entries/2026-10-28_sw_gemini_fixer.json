@@ -1,0 +1,52 @@
+{
+ "id": "2026-10-28_sw_gemini_fixer",
+ "date": "2026-10-28",
+ "project": "swordswoman",
+ "kind": "experiment",
+ "status": "inconclusive",
+ "title": "Gemini 'pixel art' + Retro Diffusion pixel-art-fixer: grid recovery, 96 px SE sprite",
+ "question": "Does pixel-art-fixer (grid recovery, 1 cell = 1 px) plus the E2 palette lock rescue Gemini pixel-art outputs, old (26 images) and new (SE illustration -> 'true pixel art ~96 px')?",
+ "method": "fixlib.fix_sq = fixer detect + square-grid check by round-trip error; figure crop; native -> 96 px (nearest <12%, else k-centroid x8); pz.finish palette lock (palette.json) + lock2 (obi recovery, per-material lightness match). metrics.py (pixtools venv), s3_identity.py, Argon + Opus A/B vs the m96 master. Scripts in exp/2026-10-28_sw_gemini_fixer/scripts.",
+ "result": "Fixer is exact on its fast path (8.00/5.12/10.24 px), but 15/26 baseline images went to arbitration, which usually mis-detects step_x by 2-12%. The square check won on 14/26 (round-trip error 7-10 -> ~2 on 8 px grids). Gemini never draws at the requested size: 82-347 art px figures on 3-14 px grids (scale to 96 = 0.28-1.17). The old outputs stay off-model (ssim_b .13-.26). New a1b (fixer, x0.38, lock) gives ssim_b .93 / dE 10.7 vs the illustration, against the master's .81 / 16.4 (master vs its warped geo src: .92 / 11.1). Passing the master as a reference (a2) hurt it: .74 / 18.2.",
+ "verdict": "Grid tool: keep (always via fix_sq). As a master replacement: no. Both critics pick the master (face at 1x; dark seam noise, eye blobs). Port a1b's red sock tops, crossed collar and visible bun by hand if wanted.",
+ "scores": {
+  "Opus master": "7/6/7",
+  "Opus a1b": "7/5/6",
+  "Argon master": "6/6/7",
+  "Argon a1b": "5/3/3",
+  "ssim_b a1b": ".93",
+  "dE a1b": "10.7",
+  "square-fix": "14/26"
+ },
+ "media": [
+  {
+   "src": "exp/2026-10-28_sw_gemini_fixer/boards/b2_SE.png",
+   "caption": "(a) SE: illustration | master 4x/1x | a1, a1b, a2, a2b: raw Gemini | fixer->96->lock 4x | 1x",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_gemini_fixer/boards/b1_baseline_key.png",
+   "caption": "baseline: existing Gemini outputs, raw | fixer native | lock native | 96 lock 3x | 1x"
+  },
+  {
+   "src": "exp/2026-10-28_sw_gemini_fixer/boards/b1_baseline_all.png",
+   "caption": "baseline, all 26 images",
+   "wide": true
+  }
+ ],
+ "links": [
+  {
+   "href": "exp/2026-10-28_sw_gemini_fixer/NOTES.md",
+   "label": "NOTES.md (prompts, numbers, critiques)"
+  },
+  {
+   "href": "exp/2026-10-28_sw_gemini_fixer/crit/opus_SE.txt",
+   "label": "Opus SE"
+  },
+  {
+   "href": "exp/2026-10-28_sw_gemini_fixer/crit/argon_SE.txt",
+   "label": "Argon SE"
+  }
+ ],
+ "next": "Use the fixer (fix_sq) on pixel-native generator output (Retro Diffusion / PixelLab) if those are approved. Do not use Gemini as the pixel artist."
+}

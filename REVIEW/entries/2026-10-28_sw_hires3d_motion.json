@@ -1,0 +1,66 @@
+{
+ "id": "2026-10-28_sw_hires3d_motion",
+ "date": "2026-10-28",
+ "project": "swordswoman",
+ "kind": "experiment",
+ "status": "rejected",
+ "title": "Hi-res 3D → celo/k-centroid frames as a low-boil animation underlay (walk, run, idle)",
+ "question": "Is the same method run over consecutive frames (walk_SE/E/S 8 frames, run_SE 8, idle_SE 11) consistent enough to drive animation with less boiling than the hand-redrawn animate96 pilot?",
+ "method": "Every method from the hires3d entry over each clip. band_churn = share of same-colour-class cells whose shade band changes between frames (computed from the sprites alone, so the pilot is measured the same way). Static-cell flicker uses render-unchanged 8×8 blocks. tlock.py pastes the previous output back on static cells.",
+ "result": "walk_SE band_churn: celo_kc .17, matv .17, cel_kc .20, shade_kc .31, pilot .30. idle_SE: celo_kc .084, pilot .128. Render-static cells are only 5–57 per walk transition (<2 % of the figure), so paste-back takes flicker to .005 but barely moves churn (.365 → .357). The head stamp raises churn to .34–.37 because the rigid stamp snaps 1 px and doesn't turn.",
+ "verdict": "OWNER (2026-10-28): 'body parts are not connected, the animation and poses look stiff and unnatural, the joints look off and unnatural. Need more dynamic movement, more movement details across the whole body, bouncing parts.' Root cause: the rigid-parts rig (H2) plus barely exaggerated mocap. Follow-up: skinned connected rig + authored whole-body motion + springs (2026-10-28_sw_skinned). Earlier team verdict: Promising as an underlay only. Opus rates 3D walk consistency 7 vs the pilot's ~4, but design fidelity 3.5 vs ~7. Argon: consistency 4.5, fidelity 2.5. Best chain: celo → k-centroid (or matv) → rig-material palette lock → fix. The off-model rig and the oversized stride must be fixed before this is worth feeding into masked edit-mode redraws.",
+ "scores": {
+  "Opus walk consistency": "7 (pilot ~4)",
+  "Opus walk fidelity": "3.5",
+  "Argon consistency": "4.5",
+  "churn walk_SE": ".17 vs pilot .30",
+  "churn idle_SE": ".084 vs pilot .128"
+ },
+ "media": [
+  {
+   "src": "exp/2026-10-28_sw_hires3d/gifs/grid_walk_SE.gif",
+   "caption": "walk SE: shade_kc_hs | cel_kc_hs | celo_poe_hs | matv_hs | celo_kc (raw rig head), 3x",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_hires3d/gifs/walk_SE_celo_kc_hs_4x.gif",
+   "caption": "walk SE, best chain celo_kc_hs, 4x"
+  },
+  {
+   "src": "exp/2026-10-28_sw_hires3d/gifs/grid_idle_SE.gif",
+   "caption": "idle SE",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_hires3d/gifs/grid_run_SE.gif",
+   "caption": "run SE",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_hires3d/gifs/grid_walk_E.gif",
+   "caption": "walk E",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_hires3d/boards/strip_walk_SE.png",
+   "caption": "walk SE frames by method",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_hires3d/boards/strip_idle_SE.png",
+   "caption": "idle SE frames by method",
+   "wide": true
+  }
+ ],
+ "links": [
+  {
+   "href": "exp/2026-10-28_sw_hires3d/NOTES.md",
+   "label": "NOTES.md"
+  },
+  {
+   "href": "exp/2026-10-28_sw_hires3d/out/temporal.txt",
+   "label": "temporal numbers"
+  }
+ ],
+ "next": "After the rig fixes, run celo_kc over frames_M walk and use it as the underlay and moved-region mask for masked edit-mode redraws. Replace the rigid head stamp with heads96 layers that tilt and turn. Halve the walk stride."
+}

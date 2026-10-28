@@ -1,0 +1,55 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I judged only the locked 4x and 1x panels, using crops enlarged with nearest-neighbour scaling. **None of the four candidates beats the master.** a1b comes closest and gets a few details more faithful, but every candidate adds dark streaks across the body and has a weaker face at 1x.
+
+## Scores (master is the anchor)
+
+| | Identity | Pixel quality | Face at 1x |
+|---|---|---|---|
+| **master** | 7 | 6 | 7 |
+| a1 | 6 | 5 | 5 |
+| a1b | 7 | 5 | 6 |
+| a2 | 5 | 4.5 | 4 |
+| a2b | 5.5 | 5 | 4.5 |
+
+## Master (reference)
+- **Strengths:** The face turns toward the viewer, close to the illustration. Two big eyes, blush and a mouth all read at 1x. The body is flat and clean, and the sleeves have a good silhouette.
+- **Weaknesses:** The hair is noisy, with salt-and-pepper highlights and jaggy bangs. There's no crossed kimono collar, just a red blob at the neck. The bun is hidden behind the bow. The boots are small and the socks have no red tops.
+
+## a1: worse than the master
+- **Pixel quality, worse:** The hair is less noisy. But dark seam pixels smear down the left torso and skirt, and stray white pixels appear in two places.
+- **Fidelity, mixed:** Better: crossed collar, red sock tops, bigger shaded boots, cleaner obi. Worse: the head is turned so far that the left eye is mostly lost under a dark bang, which kills the cute frontal face.
+- **Three pixel problems:**
+  1. A dark diagonal hair bang cuts across the left side of the face and hides the second eye. At 1x the face reads as one eye plus a smudge.
+  2. There are white orphan pixels at the ear (left of the head) and at the jaw/neck on the right.
+  3. A broken dark vertical streak runs from under the left sleeve through the skirt. It reads as dirt, not a fold.
+
+## a1b: closest, but still worse overall
+- **Pixel quality, slightly worse:** The top of the hair is a cleaner, flatter mass than the master's. The bun and bow read better. The body has the same seam noise as a1.
+- **Fidelity, roughly equal:** Better: the bun is visible, plus red sock tops, boots and collar. Worse: the eyes are half-lidded, so she looks sullen rather than smiling.
+- **Three pixel problems:**
+  1. A jagged dark seam runs down the left torso and skirt, in a staircase with gaps.
+  2. There's a white orphan pixel at the jaw, right of the chin. The neck shadow is a muddy brown block.
+  3. The front boot merges into the black sock with no clear ankle break. The right sleeve cuff has a messy dark notch.
+
+## a2: clearly worse
+- **Pixel quality, worse:** The outline is fine, but the face is broken and there's a hard black block on the leg.
+- **Fidelity, worse:** The head is almost in profile, and long hair hangs in front of the shoulder, which reads less like a bob. The figure is taller and narrower than the chibi proportions. The bow is good, and the collar and sock tops are present.
+- **Three pixel problems:**
+  1. A dark line from the hair crosses the cheek. The eyes are heavy-lidded smudges, and at 1x they read as closed or sleepy.
+  2. A big brown neck shadow fills the area under the chin.
+  3. A solid black band sits mid-calf on the front leg, with a stair-step at the boot top.
+
+## a2b: worse
+- **Pixel quality, worse:** It's slightly cleaner than a2, but it has the same faults.
+- **Fidelity, worse:** The face is in profile with a scowl. The obi is tilted and pinched. The bow is good.
+- **Three pixel problems:**
+  1. One eye plus a squint stroke gives an angry expression that doesn't match the illustration.
+  2. A hard black band runs across the shin of the front leg, and the boots are stacked and blurred together.
+  3. There's dark seam noise on the left torso, and the obi's lower edge steps raggedly.
+
+## Takeaways
+- The candidates are better in a few places: red sock tops, larger shaded boots, a visible crossed collar, a cleaner obi, and in a1b a visible bun.
+- Those details could be hand-ported onto the master. None of these outputs should replace it, because the face and body noise problems are worse than what the master has now.
+
+BEST=master

@@ -69,3 +69,9 @@ swordswoman/v2/hy3d/rp/
 swordswoman/v2/m96/old_offsetbow/
 swordswoman/v2/g96/work*/*
 !swordswoman/v2/g96/work*/*.json
+# review-hub experiment intermediates (kept on disk only; boards, gifs, notes, scripts, entries are committed)
+REVIEW/exp/*/big/
+REVIEW/exp/*/frames/
+REVIEW/exp/*/tmp/
+REVIEW/exp/*/work/
+REVIEW/exp/*/out/

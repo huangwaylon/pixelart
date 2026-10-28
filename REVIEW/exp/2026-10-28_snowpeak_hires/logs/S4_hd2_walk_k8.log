@@ -1,0 +1,25 @@
+/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_snowpeak_hires/scripts/hrlib.py:164: RuntimeWarning: invalid value encountered in subtract
+  dep |= both & (qG != G) & (qt - t > depth_gap)
+/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_snowpeak_hires/scripts/hrlib.py:166: RuntimeWarning: invalid value encountered in subtract
+  cre |= both & (qG == G) & (np.abs(qt - t) < depth_gap) & (dotn < cosT) & (lam <= ql)
+/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_snowpeak_hires/scripts/hrlib.py:168: RuntimeWarning: invalid value encountered in subtract
+  mat |= both & (qM != M) & (np.abs(qt - t) <= depth_gap) & (M < qM)
+  traced S (45s)
+  traced SE (85s)
+  traced E (125s)
+  traced NE (184s)
+  traced N (233s)
+  traced NW (281s)
+  traced W (325s)
+  traced SW (367s)
+  pixfix {"in": "/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_snowpeak_hires/big/_pf_in_S4_hd2__walk__k8.png", "out": "/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sno (512, 384, 4)
+  fixed N (450s)
+  fixed V (452s)
+  fixed VM (453s)
+  fixed KC (455s)
+  fixed KS (456s)
+  fixed AA (458s)
+  fixed PF (459s)
+  fixed VME (461s)
+  fixed KCE (462s)
+done S4_hd2__walk__k8 in 463s

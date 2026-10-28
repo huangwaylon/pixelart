@@ -1,0 +1,46 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Verdict up front:** neither row is ready to use as keys after only light cleanup. Row (c) is the better basis, but only by a small margin. Row (b) has cleaner pixels, while row (c) stays closer to the master's look. Drift away from the model costs more to fix by hand than noise does.
+
+## 1. On-model check vs master
+The master has: a bow at upper-left with tails, a bun behind the bow, a wavy, chunky bob with side locks, large eyes with lashes and blush, very wide bell sleeves, a lavender obi, thigh-highs with a skin gap, brown boots, and a head about 1/3 of the figure.
+
+**Row (b): Gemini pixel art + fixer**
+- **walk_0:** The near eye is a closed line, so it reads as a wink or blink. The bow is smaller and the bun is hidden. The hair hangs longer and straighter down the back, without the master's wavy chunks. The collar is a crossed V instead of the master's rounded neck. The sleeves are noticeably narrower. Proportions are close.
+- **run_1:** The hair becomes Gemini's stock style: straight bob, flat bangs, smooth with no strand texture. The bun is barely visible. The eye is larger and simpler with no lashes. The legs are clearly too long, so the figure is lankier than the master (head reads at about 1/3.6). Bow, sleeves and obi are fine.
+- **jump_1:** The eyes are small round dots, a different style from the master's. The proportions turn chibi (big head, short body). The left hand is greyish-brown, which is off-palette for skin. The skirt is covered in dark-red blotches. The tucked legs merge into the skirt hem. The sleeves are OK.
+- **throw_1:** The torso is crushed, the obi is a tiny sliver and the kimono hardly shows. The back arm and sleeve are a dark smear. The face is in profile with a low eye and no blush. The bow is barely visible behind the head. The proportions are chibi again, so the figure is shorter than the master.
+- **Across the row:** The proportions swing from lanky (run) to chibi (jump, throw). The hairstyle changes from pose to pose. In the guide board, the raw Gemini output varies a lot: 3-up sheets, a much brighter red, and different scales (the throw_0 fixer output came out at h124 vs h69). The method is not reliably controllable.
+
+**Row (c): Gemini illustration + E2 pixelizer**
+- **walk_0:** The near eye is a solid black blob that reads as an eyepatch or a hole, and there is no mouth. This is the worst face on the board. The arms are spread wide in a T, which is a weak walk pose (this comes from the Gemini illustration). Hair texture, bow, bun, sleeves and obi all match the master well.
+- **run_1:** The best match of all 8 poses: wavy hair with strand highlights, bow with a tail, bun, wide sleeves, obi, and red stocking bands like the master. The eyes are slightly too dark and heavy.
+- **jump_0:** The hair is noisy, with many single-pixel strands. The back hand is a mitten-shaped blob. Dark clutter fills the skirt. The head is a little large. The face and blush are close to the master.
+- **throw_1:** The back sleeve is a dark smear, the same failure as b_throw. The obi is mostly hidden. The skirt reads shorter than the master's. Hair, bow and profile eye are on-model.
+- **Across the row:** Hair, bow and sleeve shapes stay consistent, because the same pixelizer made the master. Proportions vary less than in row (b), though heads run slightly large.
+
+**Palette:** Both rows are palette-locked, so the colours themselves match. The differences are in how the colours are used: (b) has blotchy dark red and an off-colour hand, while (c) has eyes that are too dark and noisy dark pixels in the hair.
+
+## 2. Pixel quality vs master
+- **(b):** Cleaner and flatter colour areas, a consistent 1-px dark outline, and less noise. At 1x the silhouettes read well for walk and run, but jump and throw turn into mush in the skirt, legs and back arm.
+- **(c):** Rendering matches the master: the same hair clusters and the same style of anti-aliasing. But there are more stray outline pixels, jagged steps on sleeve edges, and sharp single-pixel tips at the hands. The walk eye blob is very noticeable even at 1x. Run reads well at 1x. Jump is busy.
+
+## 3. Scores (keys usable after light cleanup; master = 10)
+
+| Pose | (b) | (c) |
+|---|---|---|
+| walk | 6 | 4 |
+| run | 5 | 6 |
+| jump | 4 | 5 |
+| throw | 4 | 5 |
+| **mean** | **4.75** | **5.0** |
+
+Every key needs more than light cleanup. In both rows the throw back-arm needs a repaint.
+
+## 4. Which row
+**Row (c)**, by a small margin:
+- **Consistency:** Its errors are local and easy to fix: a repainted eye, removed stray pixels, a redrawn back arm. Row (b)'s errors are structural: a different hairstyle, a different eye style, and proportions that swing per pose. Fixing those means redrawing, not cleaning up.
+- **Control:** The illustration inputs came out on-model every time, and E2 is deterministic. The raw Gemini pixel art in (b) was inconsistent from sample to sample.
+- **Fix for (c)'s weak spot:** Add a post-pass that limits clusters of the darkest colour and removes stray outline pixels. That targets the eye blobs and noisy hair, which are (c)'s main problems.
+
+BETTER_ROW=c

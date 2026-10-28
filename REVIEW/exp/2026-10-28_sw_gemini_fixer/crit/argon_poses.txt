@@ -1,0 +1,51 @@
+### 1. On-Model Consistency vs. Master
+
+**Row (b): Gemini Pixel Art + Fixer**
+*   **b_walk_0:** **Deviations:** Head-to-body ratio shrinks slightly (overall height drops noticeably vs. master); eye rendering shifts to flat vertical slits without the master's white sclera/highlight cluster; obi widens; kimono collar gains a dark inner wrap not in the master.
+*   **b_run_1:** **Deviations:** Eyes become solid dark blocks lacking highlights; obi thickens; sleeves lose their bell drape and taper tightly to the wrists; boots lose their distinct cuff separation from the stockings.
+*   **b_jump_1:** **Deviations:** Pose breaks the rig guide (arms raised in a symmetric "Y" cheer instead of the asymmetric jump); kimono top mutates into a cross-wrap jacket with dark trim; eyes retain highlights here, differing from walk/run.
+*   **b_throw_1:** **Deviations:** Note: Image 1 shows `b_throw_1` is identical to `c_throw_1` (likely a board compilation error, as Image 2 shows a different raw `b_throw_1` pixel sprite). Evaluating the sprite shown on the board: proportions are compressed due to the deep crouch, hair bun is obscured, and only one eye is visible, which matches the master's style moderately well.
+
+**Row (c): Gemini Illustration + E2**
+*   **c_walk_0:** **Deviations:** Right eye dissolves into a dark shadow mass; hair silhouette becomes ragged and wider than the master's clean bob; sleeves flare into jagged triangles rather than rounded drapes.
+*   **c_run_1:** **Deviations:** Hair volume inflates significantly with stray flyaway locks breaking the clean bob silhouette; facial features blur into noisy skin/brown clusters; kimono skirt flares into a ruffled shape rather than the master's tunic cut.
+*   **c_jump_0:** **Deviations:** Follows the rig guide much better than (b), though the torso twists more toward the camera; eye clusters are muddy but retain the two-tone structure; sleeves lose volume on the raised left arm.
+*   **c_throw_1:** **Deviations:** (Same sprite as `b_throw_1` on Image 1). Proportions compress appropriately for the lunge; rear bow and bun merge into a single dark-red mass; sleeve cuff widens cleanly on the thrusting arm.
+
+---
+
+### 2. Pixel Quality vs. Master (Clusters, Outlines, Noise, 1x Readability)
+
+*   **Master (Anchor):** Clean external dark-brown outlines, deliberate internal shading clusters, distinct eye highlights, and sharp readability at 1x.
+*   **Row (b):** 
+    *   *Clusters & Outlines:* Outlines are thicker and heavier (often pure black/darkest brown) with frequent double-pixel staircases ("jaggies") along the limbs and hem. Shading is flat and banded compared to the master's soft clusters.
+    *   *Noise & 1x Readability:* Low noise—colors are locked into solid, clean flats. At 1x, silhouettes read very clearly, though the faces look blank/beady due to the missing eye highlights in walk and run.
+*   **Row (c):**
+    *   *Clusters & Outlines:* E2 matches the master's softer outline color and cluster style, but struggles with the dynamic angles. It introduces orphan pixels, fragmented hair tips, and jagged single-pixel protrusions along the sleeves and skirt.
+    *   *Noise & 1x Readability:* High internal noise on the faces (`c_walk_0`, `c_run_1`), where anti-aliased illustration lines downsampled into muddy brown patches over the eyes. At 1x, the body silhouettes feel lively, but the faces read as blurry smudges.
+
+---
+
+### 3. Animation Key Usability Scores (1–10 Scale)
+
+*   **Master:** **7/10** (Anchor baseline: clean static standing sprite).
+*   **Row (b):**
+    *   `b_walk_0`: **5/10** — Clean pixel grid makes it easy to edit, but requires redrawing the face/eyes and scaling up the body to match master height.
+    *   `b_run_1`: **5/10** — Good leg stride and clean clusters, but needs face reconstruction and sleeve reshaping.
+    *   `b_jump_1`: **4/10** — Cleanest face in row (b), but the pose ignores the rig's arm placement, requiring a full upper-body redraw to fit the animation arc.
+    *   `b_throw_1`: **6/10** — Strongest pose on the board; readable silhouette, good weight, and minimal facial cleanup needed.
+*   **Row (c):**
+    *   `c_walk_0`: **4/10** — Good limb placement matching the guide, but the destroyed eye cluster and ragged hair outline require heavy pixel-by-pixel repair.
+    *   `c_run_1`: **4/10** — Dynamic motion, but off-model windblown hair and noisy facial clusters take too much time to clean up.
+    *   `c_jump_0`: **5/10** — Accurately captures the 3D rig guide pose; requires moderate cleanup on the face and jagged sleeve edges.
+    *   `c_throw_1`: **6/10** — (Identical to `b_throw_1` in Image 1; if judging `E2 h69` from Image 2, it remains a **6/10** for strong pose fidelity and intact eye rendering).
+
+---
+
+### 4. Verdict: Better Basis for Animation Keys
+
+**Row (b)** is the better practical basis for production animation keys, despite its stiffer poses and eye simplifications. 
+
+In a pixel-art production pipeline, fixing noisy, fragmented clusters and orphan pixels across an entire sprite (Row c's E2 output on angled illustrations) takes significantly more labor than stamping the master's head/eyes onto a clean, well-clustered body (Row b). Row (b) provides contiguous color blocks, clean limb separation, and stable hair silhouettes that an artist can quickly splice and paint over. Row (c) preserves pose adherence to the 3D rig slightly better (especially in the jump), but the downsampler creates muddy facial artifacts and ragged hair outlines whenever the illustration deviates from a flat front-facing view.
+
+BETTER_ROW=b

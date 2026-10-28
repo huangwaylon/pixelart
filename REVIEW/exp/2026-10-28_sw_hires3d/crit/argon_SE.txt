@@ -1,0 +1,71 @@
+Here is the art direction review. I am not going to sugarcoat this: **every single 3D-pipeline candidate is a catastrophic downgrade from the `m96 master`**, and the core problem is not the downscaler—it is the 3D model, rigging, and posing before a single pixel filter is even run.
+
+---
+
+### Part 1: Global 3D Rig & Model Failures (Applies to ALL 3D Candidates)
+Before looking at individual downscalers, the 3D asset itself completely violates the illustration’s design sheet:
+1. **Proportions & Silhouette Destruction:** The illustration and `m96 master` have a compact, soft, slightly chibi-adjacent silhouette with a relaxed, wide-draping kimono top. The 3D model has an elongated, hyper-pinched wasp waist, flared "tutu" skirt geometry, and gangly, overly long legs. 
+2. **The Pose & Neck Seam:** The 3D rig is stuck in a stiff, awkward semi-T-pose with arms jutting out horizontally. Worse, pasting the `_hs` (head stamp) onto the 3D body creates a grotesque **giraffe-neck disconnection**. The head floats high above the collar with a thick, awkward flesh-colored cylinder bridging the gap, whereas in the `m96 master` the chin tucks naturally right into the collar/shoulders.
+3. **Collar & Chest Exposure:** The illustration has a modest, closed kimono wrap. The 3D model has a wide, scooped V-neck exposing a large triangular blotch of chest skin.
+
+---
+
+### Part 2: Rest-Pose Board A/B Breakdown (Image 1)
+
+* **`m96 master` (Baseline = 7/10):** Faithful to the illustration’s proportions and weight. Good readable belt (obi), cohesive silhouette, grounded feet. (Minor critique: the tunic shading is a bit too flat/pillow-shaded compared to the illustration's crisp folds, and the left hand is a bit nubby, but it reads as professional pixel art).
+* **`shade_kc_hs` (Worse — 1.5/10):** 
+  * *Concrete problems:* The `obi` (grey belt) is completely missing/transparent, leaving a literal **2-pixel gap of background grey** cutting her torso in half. Smooth 3D gradients get quantized by k-centroid into muddy, banding blotches on the skirt and chest. The boots have vertical highlight noise that looks like torn stockings.
+* **`shade_area_hs` (Worse — 1.5/10):** 
+  * *Concrete problems:* Same severed-waist bug (missing belt geometry). Area downscaling introduces muddy anti-aliasing along the inner thighs and sleeves, plus blurry, indistinct shading across the red cloth.
+* **`cel_kc_hs` (Worse — 2.5/10):** 
+  * *Concrete problems:* The belt geometry is still missing (torso pinched to a 3px red wasp-waist). Because `cel` lacks 3D outlines, the outer silhouette relies on post-outline or dark shading, leaving jagged, broken steps along the bottom hem of the skirt and the lower edge of the extended left sleeve.
+* **`cel_poe_hs` (Worse — 3/10):** 
+  * *Concrete problems:* Belt finally appears, fixing the severed torso, and PixelOE sharpens the contrast. However, the shading on the skirt forms a harsh, triangular dark blotch on the screen-left hip, and the screen-right hand is reduced to an unreadable 2-pixel fleshclaw.
+* **`celo_kc_hs` (Worse — 2.5/10):** 
+  * *Concrete problems:* Missing belt again. The `celo` (3D outline) fights with the downscaler, creating double-thick, clumped black pixels in the armpits, crotch, and boot tops, while the screen-left hand disappears entirely into a flat stump.
+* **`celo_poe_hs` (Worse — 3.5/10):** 
+  * *Concrete problems:* Better edge retention on the belt and sleeves, but `poe` exaggerates the 3D outline into heavy, jagged black stair-stepping (jaggies) along the top of the extended screen-right arm and the bottom of the skirt.
+* **`celo_paf_hs` (Worse — 3/10):** 
+  * *Concrete problems:* `paf` (pixel-art-fixer) tries to clean lines but ends up creating blocky, orthogonal stair-steps on the sleeves and eats away the fingers on the screen-left hand. The thighs have awkward vertical black line noise dividing the skin.
+* **`matv_hs` (Worse — 3.5/10):** 
+  * *Concrete problems:* Material vote keeps color zones cleaner (the grey belt is crisp, no muddy intermediate colors), making it the cleanest mechanically. Still ruined by the 3D rig’s giraffe neck, jutting arms, and weird dark pixel clusters at the knees.
+* **`flat_kc_hs` (Worse — 3/10):** 
+  * *Concrete problems:* Removes the bad 3D lighting blotches, proving that flat colors fit the `m96 master` torso better. However, without internal lines, the flared 3D sleeves and skirt look like flat paper cutouts with jagged outer contours.
+
+---
+
+### Part 3: Walk Cycle Evaluation (Image 2 vs. Image 3)
+
+**1. Consistency & Boiling (Image 2):**
+* **What works:** Because it is driven by a 3D rig, the macro-motion (leg swing arc, torso rotation) is mechanically smooth across the 8 frames.
+* **What breaks (Severe Boiling):** The downscalers do not preserve sub-pixel topology frame-to-frame. 
+  * **Hands & Sleeves:** Watch the extended front arm across cols 1–8—the hand flickers from 3 fingers, to a 1px dot, to completely vanishing inside the black outline. 
+  * **Skirt Hem & Belt:** The 1px black outline under the skirt and around the grey belt pops in and out of existence every frame, creating heavy "pixel crawl" (outline boiling).
+  * **Legs/Boots:** In cols 3, 7, and 8 (passing poses), the overlapping legs merge into a thick mass of black outline pixels, losing which leg is in front.
+  * **Row 6 (`celo_kc` without head stamp):** Shows why the raw 3D head is unusable—the face boils into a terrifying, melting mask with uneven, flickering eye sockets.
+  * **The `_hs` Pasted Head Problem:** In rows 1–5, pasting a 100% static 2D head onto a rotating, bobbing 3D torso makes her look like a lifeless paper cutout pinned to a moving mannequin. In cols 1, 5, and 6, the neck detaches or shifts off-center from the collar.
+
+**2. Comparison with the Hand-Redrawn Pilot (Image 3):**
+* Looking at Image 3: the left figure in each pair is your raw 3D blockout (which has cloth-clipping bugs, like the white thigh tearing through the red skirt in `f02`, `f03`, `f04`), and the **right figure is the hand-redrawn pilot based on the `m96 master`**.
+* The right-side hand-drawn pilot in Image 3 **destroys the automated Image 2 sheets in visual quality**, *except* for one major flaw: in Image 3 (`f00` to `f05`), the hand-drawn character’s upper body and arms are completely frozen/pasted from the idle pose while only her legs move (a rigid "riverdance" walk). 
+* However, visually, the hand-drawn pilot maintains consistent volume, proper tucked chin, cute proportions, and clean 1px outlines without boiling.
+
+---
+
+### Part 4: Scores & Final Verdict
+
+* **Best Candidate Still:** **3.5 / 10** (`matv_hs` / `celo_poe_hs` — where `m96 master` = 7/10). Completely unshippable as-is due to the 3D rig's broken anatomy, giraffe neck, and T-pose arms.
+* **Walk Consistency (3D Pipeline):** **4.5 / 10**. Good macro-arcs, but sub-pixel outline boiling on the sleeves, belt, and hands requires manual cleanup on every single frame anyway.
+* **Walk Fidelity to Design (3D Pipeline):** **2.5 / 10**. Looks like a different character wearing a flared cheerleader skirt and a V-neck top with a dislocated neck.
+
+#### Best Style + Downscaler Combination:
+**`matv_hs` (Material Vote)** or **`cel_poe_hs` (Cel + PixelOE)**. 
+* *Why:* `shade` introduces gradients that turn into dirty banding in pixel art. `celo` (3D outlines) creates double-thick, clumpy black noise when downscaled. You want **un-outlined Cel or Material IDs** downscaled cleanly (`matv` or `poe`), and then you should apply a clean 2D 1-pixel outer outline pass *after* downscaling.
+
+#### Does Hi-Res 3D -> Pixelize Beat Pixelizing the Illustration?
+**Hell no.** Pixelizing the 2D illustration + hand-polishing (`m96 master`) wins by a landslide because the 2D illustration actually has good art direction, appealing proportions, and proper clothing drape. 
+
+**Director's Mandate to Fix the Pipeline:**
+If you want to use 3D to drive animation, **stop using the 3D render as final pixels.** 
+1. Fix the 3D model first: thicken the waist to match the `m96 master`, lower the head so the chin sits on the collar, close the V-neck, and make the skirt hang straight down instead of flaring out like a tutu.
+2. Render the 3D walk using `matv` (Material Vote) to get clean flat color blocks, and use it **strictly as an underdrawing/rotoscope guide** (like the left side of Image 3, but swing the arms naturally along the sides instead of holding them out in a Zombie walk) to hand-pixel/clean up using the `m96 master` palette and proportions.

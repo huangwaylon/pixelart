@@ -1,0 +1,61 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+# Swordswoman hi-res 3D boards: director's review
+
+## Stills compared with the m96 master and the illustration
+
+**Problems every 3D candidate shares (SE view):**
+- **Arms:** The rig is in a T/A-pose. The sleeves stick straight out from the body like wings. The illustration and master both have relaxed arms with the sleeves hanging. This is the single biggest silhouette break.
+- **Sash:** The master has a wide lavender sash, about 3px. The candidates show a thin grey stripe at 1–2px: it almost disappears in shade_kc and is a speck in flat_kc.
+- **Skirt and legs:** The candidates have a short bell skirt over a band of bare thigh, so the legs look much longer than the master's. The red band at the top of the stockings is gone.
+- **Boots:** Small dark-brown blobs with no readable cuff.
+- **Head stamp seam:** The pasted head sits on a neck that is too thin. The collar V doesn't line up with the stamp.
+
+**Problems in the E view:**
+- **Torso:** It is pinched into an hourglass with a chest bump and a ruffle-like flare at the waist. The master has a straight kimono body.
+- **Sash:** Missing entirely.
+- **Thigh gap:** Where the skirt meets the stockings, the outline makes a skin-coloured "Ƨ" shape. It happens in every method and reads as a glitch.
+
+**Downscaler by downscaler:**
+- **shade_area:** Muddy. The thighs and skirt shading break into noise.
+- **shade_kc:** No outline, so the arms melt into the background.
+- **matv:** Speckled mid-red noise on the skirt and sleeves.
+- **flat_kc:** Cleanest colour areas, but there's a pink skin square on the chest and no form shading.
+- **celo_paf:** Softens the outline and the sleeve ends go blurry.
+- **celo_kc and celo_poe:** The most readable. The outlined sleeves and skirt hold up and the sash at least shows. kc gives slightly crisper clusters than poe.
+
+## Walk and idle strips
+
+**Consistency:** Good. Body shapes, palette and outline weight barely change from frame to frame, and the idle is very stable. There's much less shimmer than in the pilot.
+
+**Design problems in the walk:**
+- **Stride:** Far too big. In frames 0–1 and 5 the back foot kicks up to knee height, which reads as a run.
+- **Skirt:** Flips up and shows bare thigh on most frames.
+- **Arms:** The sleeves stay out sideways for the whole cycle.
+- **Hip twist:** The torso rotates noticeably through frames 2–4.
+- **Head:** The stamp is static, so it slides on the neck instead of bobbing and turning with the body.
+- **Underlying head:** The raw celo_kc row shows the rig's real head is a placeholder (bun, dash eyes). Without the stamp there is no face.
+
+**Pilot walk, by comparison:** It matches the design far better: sleeves down, wide sash, cuffed boots, proportions like the master. But it boils. The hair outline, the sash shape and the skirt hem all redraw from frame to frame.
+
+## Scores
+
+- **Best still:** celo_kc_hs **4.5** (master = 7). celo_poe_hs 4, cel_kc_hs 4, flat_kc_hs 3.5, matv/paf/area 3.
+- **Walk consistency:** 3D **7/10**, pilot about 4/10.
+- **Walk design fidelity:** 3D **3.5/10**, pilot about 7/10.
+
+**Best combination:** celo (cel + outline) rendered, then k-centroid downscale, with the m96 head stamp.
+
+## Verdict
+
+**For stills, rendering the 3D rig at hi-res and pixelizing it does not beat pixelizing the illustration.** The master wins clearly on sleeves, sash, skirt length and boots. These come from how the rig is built (rest pose, sash geometry, skirt length, torso shape), not from the downscaler. Swapping downscalers won't close the gap.
+
+**For animation, 3D does give a steadier base than the pilot.** It's worth keeping as a motion underlay, but only after rig fixes:
+1. Rest pose with arms down and sleeves hanging.
+2. Sash geometry made wider and lavender.
+3. Skirt lengthened, and the bare thigh band closed with the red stocking band.
+4. Torso cinch removed.
+5. Stride roughly halved, with a lower foot lift.
+6. Head stamp shifted per frame to follow the bob.
+
+Then paint over the result by hand at 96px against the master palette. Don't ship the raw renders.

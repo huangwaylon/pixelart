@@ -1,0 +1,25 @@
+{
+ "id": "2026-10-28_sw_hires3d",
+ "date": "2026-10-28",
+ "project": "swordswoman",
+ "kind": "experiment",
+ "status": "rejected",
+ "title": "Hi-res 3D (rig H2 at 8x) → pixelize + fix, as a replacement for the illustration-based masters",
+ "question": "Does rendering the calibrated 3D rig at 8x (1024 px per 128 cell), then downscaling (E2 k-centroid / area / pixel-art-fixer / PixelOE / material vote) and fixing (rig-material palette lock, outline, orphans, head stamp), give better 96 px pixel art than the m96 masters?",
+ "method": "Blender 5.2: mrender.py (rig H2 + springs) exec'd with an 8x resolution and extra lum/normal/depth passes. Styles: shade (existing toon), cel (locked-palette 3-band ramps from smoothed lum), celo (cel + hi-res depth/material lines), flat matid. 5 downscalers × 4 styles, each also with the m96 head stamp. Scored with metrics.py against the illustration and directly against the master. Scripts in exp/2026-10-28_sw_hires3d/scripts.",
+ "result": "Every 3D candidate loses to the master in every view. SE ssim_b .38–.39 vs .67, sil .62 vs .83. E .64–.68 vs .76. S .75 vs .85. Downscaler choice moves ssim_b by ≤ .03 and style by ≤ .05. Without the head stamp the face is unusable (face_ssim ≤ .2). Best still: celo_kc_hs (Opus 4.5) or matv_hs (Argon 3.5); master = 7.",
+ "verdict": "Rejected for stills. The gap is structural (T-pose sleeves, thin or missing obi, bell skirt with a bare thigh band, waist cinch, placeholder face), so no downscaler can close it. PixelOE and pixel-art-fixer add nothing over k-centroid on a known grid. See the hires3d motion entry for the animation side.",
+ "scores": {"Opus best still": "4.5 (master 7)", "Argon best still": "3.5 (master 7)", "ssim_b SE": ".39 vs .67", "sil SE": ".62 vs .83"},
+ "media": [
+  {"src": "exp/2026-10-28_sw_hires3d/boards/rest_SE_hs.png", "caption": "SE rest: illustration | m96 master | 3D candidates with the head stamp (4x, then 1x row)", "wide": true},
+  {"src": "exp/2026-10-28_sw_hires3d/boards/rest_E_hs.png", "caption": "E rest", "wide": true},
+  {"src": "exp/2026-10-28_sw_hires3d/boards/rest_S_hs.png", "caption": "S rest", "wide": true},
+  {"src": "exp/2026-10-28_sw_hires3d/boards/rest_SE_all_raw.png", "caption": "SE rest, all 14 raw methods (rig face, no stamp)", "wide": true}
+ ],
+ "links": [
+  {"href": "exp/2026-10-28_sw_hires3d/NOTES.md", "label": "NOTES.md"},
+  {"href": "exp/2026-10-28_sw_hires3d/crit/opus.txt", "label": "Opus critique"},
+  {"href": "exp/2026-10-28_sw_hires3d/crit/argon_SE.txt", "label": "Argon critique"}
+ ],
+ "next": "Keep the m96 masters as the look. To use 3D as an animation underlay, fix rig H2 first: arms-down rest, a wide lavender obi part, a longer straight skirt with the red stocking band, no waist cinch."
+}

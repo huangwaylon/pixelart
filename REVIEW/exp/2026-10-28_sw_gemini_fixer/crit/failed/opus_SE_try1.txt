@@ -1,0 +1,26 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+❌ Proxy startup failed during: In-process proxy server initialization
+
+Error details: In-process proxy server startup failed: No available ports found after 50 random attempts and sequential fallback
+  Attempted Port: 0
+  Host: localhost
+
+
+For additional help, please report an issue at:
+https://github.pie.apple.com/AI-for-Devs-Community/AppleClaudeCode/issues
+
+System Information:
+- @apple/claude-code: 1.15.0
+- @anthropic-ai/claude-code: 2.1.293
+- Platform: darwin
+- Architecture: arm64
+- Working directory: /Users/waylonhuang/Documents/other/pixelart/swordswoman
+
+🐛 If this problem persists, gather logs and report the issue by running:
+   claude report-issue
+
+   It prints filing links — file a Radar (preferred) against MLS | Apple Claude Code,
+   or open a GitHub issue if you don't have Radar access.
+
+

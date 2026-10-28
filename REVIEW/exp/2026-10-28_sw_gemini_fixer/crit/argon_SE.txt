@@ -1,0 +1,47 @@
+### Evaluation Summary
+
+All four new locked candidates are **worse** than the approved `m96 master`. While the raw Gemini outputs capture the illustration's proportions well, the downscaling and grid-recovery process destroys the pixel clusters, introduces severe jaggies, and ruins facial readability at 1x. The master remains superior in pixel cleanliness and facial expression.
+
+---
+
+### Scores (1–10 Scale)
+
+*   **m96 master (Anchor):** Identity: **6** | Pixel Quality: **6** | Face at 1x: **7**
+*   **a1 (locked):** Identity: **5** | Pixel Quality: **4** | Face at 1x: **3**
+*   **a1b (locked):** Identity: **5** | Pixel Quality: **3** | Face at 1x: **3**
+*   **a2 (locked):** Identity: **6** | Pixel Quality: **4** | Face at 1x: **4**
+*   **a2b (locked):** Identity: **6** | Pixel Quality: **5** | Face at 1x: **4**
+
+---
+
+### Candidate Breakdown (Locked 4x/1x vs. Master)
+
+#### **a1 (fixer->96 lock)**
+*   **A/B vs. Master:** **Worse.** Pixel art is noisy with broken outlines. Though the body proportions slightly closer match the illustration's 3/4 turn, the loss of facial features makes it unusable.
+*   **3 Concrete Pixel Problems:**
+    1.  **Face/Eyes:** The eyes are reduced to muddy dark blobs with no sclera or highlight, making the 1x face look blank and hollow.
+    2.  **Kimono Sleeves:** Severe jagged double-pixels and stray dark outline pixels along the lower edges of both sleeves.
+    3.  **Boots/Legs:** The outline between the two boots merges awkwardly with stray orphan pixels around the ankles.
+
+#### **a1b (fixer->96 lock)**
+*   **A/B vs. Master:** **Worse.** The downscale from 254px caused heavy aliasing. It is less faithful due to distorted facial placement and ragged silhouette edges.
+*   **3 Concrete Pixel Problems:**
+    1.  **Face:** The viewer's right eye is sliding off the side of the face cluster, and a stray white pixel sits awkwardly on the cheek.
+    2.  **Right Hand (viewer's right):** The hand cluster is completely mangled by black outline pixels, losing the finger shape seen in the master.
+    3.  **Skirt Hem:** Jagged, uneven stepping along the bottom edge of the kimono with poor shading clusters above the thighs.
+
+#### **a2 (fixer->96 lock)**
+*   **A/B vs. Master:** **Worse.** Starting closer to the target resolution (112px) preserved better overall proportions and kimono folds than `a1`/`a1b`, making body identity slightly more faithful to the illustration than the stiff master. However, the pixel quality and face are still much worse than the master.
+*   **3 Concrete Pixel Problems:**
+    1.  **Eyes:** Asymmetrical rendering; the viewer's left eye is a muddy horizontal line while the right eye is a vertical smudge, unreadable at 1x.
+    2.  **Hair Highlights:** The lighter brown highlight clusters on the crown are broken into noisy single-pixel confetti.
+    3.  **Obi/Waist:** Rough, blocky stair-stepping on the dark outlines where the kimono overlaps the grey obi.
+
+#### **a2b (fixer->96 lock)**
+*   **A/B vs. Master:** **Worse.** This is the cleanest of the new candidates because the 106px raw input required minimal downscaling, preserving faithful hair volume and outfit proportions. Still, the automated grid lock mangles the delicate facial clusters compared to the hand-cleaned appearance of the master.
+*   **3 Concrete Pixel Problems:**
+    1.  **Face/Eyes:** The viewer's left eye merges into the hair bang outline, creating a heavy dark patch at 1x.
+    2.  **Collar/Neck:** Broken, disconnected dark pixels where the kimono collar meets the neck, losing the clean V-shape.
+    3.  **Socks/Knees:** Banding and noisy stray red/dark pixels right at the boundary between the skirt hem, skin, and black stockings.
+
+BEST=master
