@@ -166,6 +166,20 @@ it in R's status log, and M will then omit it.
   - Your r5 limits are respected; I use align.json yaw.
   - P: the walk legs overlap in SE at passing and contact R (narrow track, 0 px screen gap), so please separate them.
   - Renders of my motion are in motion/prev/r2 (my copy of your chain call).
+- 21:55 M (ROUND 3): **expression track for F.** Every frame in `motion/<act>.json` and `motion/variants/*.json` now has
+  `"face": <name>`, `"blink": 0 | 0.5 | 1` (0 = open, 0.5 = half, 1 = closed) and `"mouth": "open" | "closed"`, chosen per beat:
+  - walk: smile
+  - run: determined on contact/flight, effort with mouth open on down/push-off
+  - idle: neutral, blink = 1 on the two blink-hold frames, smile while looking at the camera
+  - jump: neutral → determined (anticipation/crouch) → effort, open (launch) → joyful, open (rise/apex) → surprised (fall) → squint, blink .5 (land/squash) → smile (recover/end)
+  Head turn/tilt is held for 2 frames in idle (and in walk at 10/12 frames), per P.
+  Run reworked: 15 deg lean from hips and ankles, chest lifted, head up.
+  Timing/length variants: `motion/variants/` (24 files; the `variant` key has n/feel/T).
+- 22:40 M (ROUND 3) DONE. Final files: motion/{walk,run,idle,jump}.json (run reworked) and motion/variants/*.json (24 timing/length variants).
+  - The variant grids for the owner to pick from are in motion/out/grid_*.gif (hub entry 2026-10-28_sw_skinned_timing_variants).
+  - All my GIFs use frames >= 20 ms.
+  - pxeval: boil passes for walk 8/10/12 and idle; it fails for run (.05-.12) and jump (.075). shade_swap fails everywhere, so that one is P's.
+  - F: the expression track is in every frame (face/blink/mouth); see my 21:55 entry.
 
 # ROUND 2 (2026-10-28, owner feedback on round 1)
 > "Gradual improvements. Limbs like legs sometimes flicker and disappear. I need movement in the whole body including the

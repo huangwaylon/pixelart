@@ -50,27 +50,29 @@ def sheet(cells, labels, title, scale_rows):
     return B
 
 
-def run(act):
+def run(act, A_TAG="r1cmp", B_TAG="r2", A_DIR="round1", out_tag="ab2", a_lab="ROUND 1", b_lab="ROUND 2"):
     m = json.load(open(os.path.join(M, f"{act}.json")))
     lab = [f"f{k} {m['timing_ms'][k]}ms {fr.get('key', '')}" for k, fr in enumerate(m["frames"])]
-    new = frames(act, "r2"); bb = bbox(new)
+    new = frames(act, B_TAG); bb = bbox(new)
     crop = [im.crop(bb) for im in new]
     # silhouettes: 1x row + 4x row
     S = sheet([[sil(c) for c in crop], [sil(c) for c in crop]], [lab, lab], f"{act} SE key-pose silhouettes (solid fill): row 1 = 1x, row 2 = 4x", [1, 4])
-    S.save(os.path.join(M, "out", f"sil_{act}_SE.png"))
+    S.save(os.path.join(M, "out", f"sil_{act}_SE_{B_TAG}.png"))
     st = sheet([[on_bg(c) for c in crop], [on_bg(c) for c in crop]], [lab, lab], f"{act} SE round 2 pixel frames: row 1 = 1x (actual size), row 2 = 4x", [1, 4])
-    st.save(os.path.join(M, "out", f"strip_{act}_SE_r2.png"))
-    old = frames(act, "r1cmp")
+    st.save(os.path.join(M, "out", f"strip_{act}_SE_{B_TAG}.png"))
+    old = frames(act, A_TAG)
     if old:
-        m1 = json.load(open(os.path.join(M, "round1", f"{act}.json")))
+        m1 = json.load(open(os.path.join(M, A_DIR, f"{act}.json")))
         lab1 = [f"A f{k} {m1['timing_ms'][k]}ms {fr.get('key', '')}" for k, fr in enumerate(m1["frames"])]
         labB = ["B " + l for l in lab]
         bb2 = bbox(old + new); oc = [on_bg(im.crop(bb2)) for im in old]; nc = [on_bg(im.crop(bb2)) for im in new]
         ab = sheet([oc, oc, nc, nc], [lab1, lab1, labB, labB],
-                   f"{act} SE  A = ROUND 1 (owner: 'gradual improvement, stiff, legs flicker, head/hair frozen')  B = ROUND 2.  Rows: A 4x, A 1x, B 4x, B 1x", [4, 1, 4, 1])
-        ab.save(os.path.join(M, "crit", f"ab2_{act}.png"))
+                   f"{act} SE  A = {a_lab}  B = {b_lab}.  Rows: A 4x, A 1x, B 4x, B 1x", [4, 1, 4, 1])
+        ab.save(os.path.join(M, "crit", f"{out_tag}_{act}.png"))
     print(act, "sheets done")
 
 
 if __name__ == "__main__":
-    for a in sys.argv[1].split(","): run(a)
+    for a in sys.argv[1].split(","):
+        if len(sys.argv) > 2 and sys.argv[2] == "r3": run(a, "r2", "r3", "round2", "ab3", "ROUND 2", "ROUND 3")
+        else: run(a)

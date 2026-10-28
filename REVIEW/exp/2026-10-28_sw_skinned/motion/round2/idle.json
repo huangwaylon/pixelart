@@ -1,0 +1,56 @@
+{
+"action": "idle",
+"_doc": "LABELS ONLY: round-2 motion data was overwritten by the round-3 bake; round-2 pixel renders are in motion/prev/r2/",
+"frames": [
+{
+"key": "weight L (hold)"
+},
+{
+"key": "weight L blink-hold"
+},
+{
+"key": "transfer"
+},
+{
+"key": "transfer"
+},
+{
+"key": "transfer"
+},
+{
+"key": "settle R"
+},
+{
+"key": "weight R look"
+},
+{
+"key": "weight R blink-hold"
+},
+{
+"key": "transfer"
+},
+{
+"key": "transfer"
+},
+{
+"key": "transfer"
+},
+{
+"key": "settle L"
+}
+],
+"timing_ms": [
+300,
+300,
+80,
+120,
+160,
+240,
+300,
+300,
+80,
+120,
+160,
+240
+]
+}

@@ -1,0 +1,41 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I looked at all 8 images and zoomed into the jump strip. Scores are previous round → NEW.
+
+| | Prev | NEW |
+|---|---|---|
+| (a) Face follows head | 4 | 6 |
+| (b) On-model vs m96 | 6 | 7 |
+| (b2) Clean | 3 | 7 |
+| (c) Expressiveness per action | 2 | 6 |
+| (d) Temporal stability | 4 | 7* |
+
+*I scored stability from still frames only. To properly judge 1px jitter between parts, check a looping GIF with onion-skin.
+
+**Overall:** the NEW face is clearly better. The smears and broken half-eyes are gone, and the 12-expression sheet itself is good. The parts move with the head's position, but the face stays almost front-facing when the head turns or tilts, so it reads as "pasted on" rather than "following the 3D model."
+
+**Top 5 pixel-level problems:**
+
+1. **The face doesn't turn with the head.**
+   - Where: walk SE f04–f07, idle SE f06–f07, idle S f06–f07.
+   - Problem: the gap between the eyes stays the same width. The far eye sits on or past the cheek outline and breaks the silhouette at the right edge.
+   - Fix: narrow the far eye by 1–2px and the gap by 1px as the head turns away. Use the `far3` variant earlier. Clip the face parts to the skin mask, inset 1px from the outline.
+
+2. **Too many closed eyes in jump.**
+   - Where: f03–f07 and f10–f12, so 8 of 16 frames.
+   - Problem: effort (`><`), joyful (`^^`) and squint all read the same, so she looks eyes-shut for the whole jump.
+   - Fix: make effort open eyes with lowered brows and gritted teeth. Keep joyful `^^` for the top of the arc only (f06–f07). Cut squint to one frame (f11).
+
+3. **Run effort looks sleepy, not straining.**
+   - Where: run SE f01, f02, f05, f06; run E f01, f02, f05, f06.
+   - Problem: flat closed lines and a tiny mouth.
+   - Fix: use angled brows meeting at the nose, a 1px squeeze line under each eye, and a 3px-wide open grit mouth. In the E profile, add a 1px mouth notch on the jaw line.
+
+4. **Crumbs over the face.**
+   - Where: walk SE f06–f07 and run SE f05–f06 (red collar pixels over chin and mouth), idle S f11 (stray dark pixel at lower left), idle SE f09 (pixel above the bow), run SE f03 (dark hair pixels between the brows).
+   - Fix: layer order should be face parts, then hair fringe, with the collar below the chin. Delete isolated pixels with a connectivity cleanup pass.
+
+5. **The idle smile and blink are lost.**
+   - Where: idle SE and idle S.
+   - Problem: the smile appears only on f06 and is immediately followed by a blink on f07. The f01 blink in idle SE is an oversized squiggle that doesn't match the `blink` part.
+   - Fix: hold the smile for 2–3 frames (f05–f07), move the blink to f09, and use the sheet's `blink` part at the eye's normal width.

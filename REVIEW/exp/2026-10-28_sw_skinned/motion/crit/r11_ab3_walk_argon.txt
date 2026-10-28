@@ -1,0 +1,20 @@
+SCORE A: 5.5/10, SCORE B: 6.5/10
+
+**B Breakdown:**
+- Whole-body motion & head: 7/10
+- Secondary readable at 1x: 6/10
+- Timing/holds: 7/10
+- Elegance/confidence/femininity: 6.5/10
+- No slouch: 7.5/10
+- Legs/contacts readability: 5.5/10
+- Appeal: 6.5/10
+
+**Critique:**
+B fixes A’s forward neck-slouch by lifting the chest and head (especially f2–f3) and improves timing with snappy 71ms contacts and fuller 118–126ms down/passing cushioned phases. However, torso/sleeve rotation creates a sudden silhouette width jump from f2 (narrow) to f3 (wide cape-like flare), and the leg silhouettes cross/merge during the R-step (f4–f5).
+
+**Top 5 Remaining Problems in B (at 1x):**
+1. **f0–f1 (Torso/Sleeves):** Silhouette is too narrow/tube-like compared to f3–f5; flare the back-left sleeve out 2px W and front-right sleeve 1px E to smooth the f2→f3 width pop.
+2. **f4–f5 (Legs/Feet):** Legs cross and merge into a single dark column in silhouette; shift the back (left) leg 2px W to create a 1px negative-space gap or clear step-off read.
+3. **f3 (Head/Chin):** Chin lifts ~10° too high, looking slightly stiff/tilted back; rotate head down 5–8° (drop chin 1px S) while keeping chest lifted.
+4. **f1 & f5 (Bow/Bun secondary):** Follow-through barely registers at 1x; delay and flare bow tips 1–2px N/NW on down frames (f1, f5) for clearer overlap.
+5. **f2 & f6 (Passing Foot):** Lifted foot blocks into the standing shin; point the toe 15° downward and shift heel 1px W/NW for a daintier feminine silhouette.

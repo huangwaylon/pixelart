@@ -1,0 +1,21 @@
+SCORE A: 5/10, SCORE B: 5/10
+
+**B scores (1–10)**
+- Whole-body motion incl. head: 5. The weight shift reads, but it comes mostly from the whole body turning (yaw), not from the hips.
+- Secondary readable at 1x: 5. The bun and bow move. Skirt and sleeve flare are visible at 4x but mostly lost at 1x.
+- Timing/holds: 4
+- Elegance/confidence/femininity: 5
+- No slouch: 5
+- Legs/contacts readability: 4
+- Appeal: 5
+
+**Top 5 problems in B**
+1. **f2–f8, whole body:** the body turns about 20–25° toward the camera and back. An idle should stay in one facing. Cap the turn at ±5° and get the shift from the pelvis instead: hip moves about 2 px sideways, with a matching opposite shoulder tilt of 1 px.
+2. **f0, f1, f11, legs:** the knees and ankles cross into an X silhouette, which breaks the "never crossing" rule. Keep a gap of at least 1 px between the legs. Push the free knee out 1–2 px and point its toe forward-out.
+3. **f2, f8 (79 ms) and f3, f9 (120 ms), timing:** the weight transfer happens in about 200 ms, so it pops instead of flowing. Slow it to 400–500 ms with ease-in/out, or add an in-between. Shorten the 300 ms holds to make room.
+4. **f4–f11, front arm:** the arm sticks straight out with a stiff pointing hand that juts 3–4 px from the sleeve. Bring the forearm in 2–3 px so it rests soft against the skirt, with the wrist bent.
+5. **f0–f3, posture:** the head pokes forward and the upper back rounds, so the chest sits behind the head line. Pull the head back 1–2 px, lift the chest 1 px, and bring the shoulders down.
+
+**Smaller issues**
+- Stray hair pixels come loose on the f9 crown (a 2 px spike) and around the face in f4, f6 and f7. Clean these up.
+- The bow flips shape between f5 and f6.

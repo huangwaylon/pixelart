@@ -1,0 +1,17 @@
+SCORE A: 5/10, SCORE B: 6/10
+
+**B Breakdown (1-10):**
+* **Whole-body motion incl. head:** 6 (Clearer weight shift, though head pitches back too far)
+* **Secondary readable at 1x:** 5 (Noisy, detached pixels on hair/bow break silhouette)
+* **Timing/holds:** 7 (Good 300ms holds and snappy transfers)
+* **Elegance/confidence/femininity:** 6 (Better contrapposto, but head tilt reads snooty/awkward rather than poised)
+* **No slouch:** 7 (Chest is lifted, spine arched)
+* **Legs/contacts readability:** 6 (f0-f2 legs merge; f5-f9 stances are too wide/parallel)
+* **Appeal:** 6 (Improved silhouette, held back by rig artifacts)
+
+**Top 5 Remaining Problems in B:**
+1. **f9 (Hair/Bun + Bow):** Severe 1px-thin hook artifact protruding off the top of the head, plus ratty detached side-lock tendrils. Clean up silhouette/rig deformation by pulling stray tendrils inward 2-3px at 1x.
+2. **f0–f2 (Legs/Boots):** Left and right boots overlap into a single thick column (violating "never-crossing", silhouette reads as one leg). Shift back (screen-left) leg 2px screen-left to create a 1px negative-space gap.
+3. **f3–f7 (Head Pitch):** Chin tilts upward too aggressively, flattening the back of the skull/neck line. Pitch head down 8–10° (drop chin 1–2px at 1x) for graceful poise rather than looking at the ceiling.
+4. **f5–f9 (Feet/Stance):** Weight-R stance becomes a wide, stiff A-frame with parallel feet. Bring screen-left (unweighted) foot 1–2px closer to the standing leg and relax the knee/heel for true contrapposto.
+5. **f11 to f0 Loop (Skirt/Torso):** Abrupt 2px pop in skirt width and torso lean between f11 settle and f0 hold. Ease f11 1px closer to f0.

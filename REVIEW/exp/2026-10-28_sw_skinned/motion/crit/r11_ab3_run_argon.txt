@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 6/10
+
+**B Breakdown (1-10):**
+* **Whole-body motion (incl. head):** 6/10 (Better vertical bounce than A, but forward lean is inconsistent between L/R halves).
+* **Secondary motion (1x readability):** 5/10 (Bow/bun bounce is 1px, too subtle; bell sleeves clip/blob into torso rather than trailing cleanly).
+* **Timing/holds:** 7/10 (60/80ms breakdown gives good snappy impact on downs).
+* **Elegance/confidence/femininity:** 5/10 (f5–f6 wide knees and low torso feel heavy/masculine rather than light and poised).
+* **No slouch:** 5/10 (f1, f5, f6 collapse the chest/neck forward into a hunched turtle posture).
+* **Legs/contacts readability:** 6/10 (Clearer flight in f3/f7, but f2 legs tangle and f6 is bow-legged).
+* **Appeal:** 6/10 (Cute silhouette, held back by posture breaks in the second half).
+
+**Top 5 Remaining Problems in B (at 1x):**
+1. **f5 & f6 Torso/Head (Slouch):** Head drops too low and forward into the shoulders. Raise head/chest +2px UP and rotate torso -5° upright to keep a proud chest.
+2. **f6 Legs (Masculine gap):** Front R knee splays out too wide, creating an awkward bow-legged silhouette. Pull R knee/shin 2px LEFT (inward) for a narrow, feminine track.
+3. **f3 & f7 Airborne Feet (Unpointed toes):** Trailing back feet (L in f3, R in f7) have flat/flexed ankles. Rotate feet +25° to point toes downward/back by 1–2px.
+4. **f2 & f6 Bell Sleeves (Silhouette blobbing):** Arms pump into the body mass, destroying sleeve readability. Pull back-swinging elbow/sleeve 2px LEFT (back) to break the rear silhouette.
+5. **f2 & f6 Hair Bow/Bun (Dead secondary):** Needs delayed follow-through on push-off; flare bow tips +1–2px UP/LEFT.

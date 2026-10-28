@@ -1,0 +1,13 @@
+relative part changes per frame transition (eye spacing / eye-mouth / eye-row) and whole-face moves
+walk SE: 2/8 relative changes, 8/8 global moves
+walk E: 2/8 relative changes, 7/8 global moves
+walk S: 5/8 relative changes, 8/8 global moves
+run SE: 6/8 relative changes, 7/8 global moves
+run E: 3/8 relative changes, 8/8 global moves
+run S: 6/8 relative changes, 8/8 global moves
+idle SE: 7/12 relative changes, 10/12 global moves
+idle E: 3/12 relative changes, 9/12 global moves
+idle S: 7/12 relative changes, 10/12 global moves
+jump SE: 1/15 relative changes, 15/15 global moves
+jump E: 2/15 relative changes, 15/15 global moves
+jump S: 8/15 relative changes, 13/15 global moves

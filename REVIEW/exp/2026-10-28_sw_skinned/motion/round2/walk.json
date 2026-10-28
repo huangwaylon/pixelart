@@ -1,0 +1,40 @@
+{
+"action": "walk",
+"_doc": "LABELS ONLY: round-2 motion data was overwritten by the round-3 bake; round-2 pixel renders are in motion/prev/r2/",
+"frames": [
+{
+"key": "contact L"
+},
+{
+"key": "down L"
+},
+{
+"key": "passing L"
+},
+{
+"key": "up L"
+},
+{
+"key": "contact R"
+},
+{
+"key": "down R"
+},
+{
+"key": "passing R"
+},
+{
+"key": "up R"
+}
+],
+"timing_ms": [
+90,
+120,
+90,
+120,
+90,
+120,
+90,
+120
+]
+}

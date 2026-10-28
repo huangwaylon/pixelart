@@ -1,0 +1,2 @@
+walk opus: SCORE A: 4/10, SCORE B: 5/10 (    1856 bytes)
+walk argon: SCORE A: 5.5/10, SCORE B: 6.5/10 (    1523 bytes)

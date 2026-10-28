@@ -1,0 +1,24 @@
+**Scores (Round 2 NEW Face Layer):**
+* **(a) Face follows head:** 8.5/10 — Yaw/roll tracking and far-eye cheek tucking work well; minor pitch lag at jump apex.
+* **(b) On-model vs m96:** 9.0/10 — Stamped pixel parts preserve the m96 aesthetic far better than baked textures.
+* **(b2) Cleanliness:** 8.0/10 — Crisp overall, though brow/bangs collisions and profile mouth placement create local noise.
+* **(c) Expressiveness:** 9.0/10 — Strong action beats (jump arc: effort → joyful → surprised → squint; run: determined/effort cycle).
+* **(d) Temporal stability:** 8.0/10 — Wide dead-band stops the round-1 swimming, leaving only a few 1px quantization pops.
+
+**Top 4 Pixel-Level Problems & Fixes:**
+
+1. **Profile Mouth/Blush Clipping (`run_E` f00–f07):** 
+   * *Problem:* In pure East profile, the mouth and blush sit too low/forward, colliding with the jaw/chin outline (`f01`, `f02`, `f05`) and creating a jagged double-outline on the muzzle.
+   * *Fix:* For E/W views, shift the mouth anchor 1px up and 1px back (inward from the muzzle edge), or switch to a 1–2px side-notch mouth sprite.
+
+2. **2px Roll Step Breaks Brow/Lids (`idle_S` f06–f09, `idle_SE` f06–f09):** 
+   * *Problem:* When eye rows differ by 1–2px during head tilt, the closed blink lids (`f07`) and smile eyes (`f06`) stair-step awkwardly, and the raised eye's brow merges into the dark bangs line.
+   * *Fix:* Limit closed-lid vertical offset to 1px max on blinks, or use a tilted 2px-wide lid sprite; enforce a 1px skin-tone buffer below bangs or let bangs occlude the brow cleanly.
+
+3. **Far-Eye Cheek Pinch (`walk_SE` f03–f05, `run_SE` f04):** 
+   * *Problem:* As the head yaws away, the far eye slides into the dark cheek contour, losing its white sclera pixel and reading as a thick dark smudge on the silhouette edge.
+   * *Fix:* Trigger the `turn away: far3` narrowed eye variant 1px earlier before the eye touches the cheek outline, keeping 1px of skin or sclera separation.
+
+4. **Jump Apex Pitch Compression (`jump_S` f05–f08, `jump_SE` f05–f07):** 
+   * *Problem:* On `joyful`/`surprised` frames, the mouth sits 1px away from the bottom chin outline, making the face look slid-down rather than tilted up.
+   * *Fix:* Shift the mouth/eye-pair group 1px up during upward head pitch at jump apex (`f05–f08`).

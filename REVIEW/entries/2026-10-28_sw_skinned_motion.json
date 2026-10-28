@@ -4,99 +4,79 @@
  "project": "swordswoman",
  "kind": "experiment",
  "status": "needs-review",
- "title": "Skinned rig: whole-body motion + spring secondary, ROUND 2 (pixel-aware amplitude, elegant posing)",
+ "title": "Skinned rig: whole-body motion + spring secondary, ROUND 3 (run rework, expression track; timing variants in a separate entry)",
  "question": "Does authored whole-body motion (pelvis bob/sway/rotation, counter-rotating chest, overlapping arms, IK-planted feet with heel-to-toe roll, lagging head, squash and stretch) with spring-simulated hair, bun, bow, sleeves and skirt fix the owner's verdict on the H2 animations ('stiff and unnatural, joints off, need more dynamic movement and bouncing parts')?",
  "method": "Motion files in the CONTRACT format (motion/<act>.json, 24 fps source, sprite frames with timing_ms) baked by motion/scripts/mbuild.py: analytic 2-bone leg IK on a treadmill foot track (no slide at travel_m_per_s); compass-gait pelvis height for the walk (DOWN lowest, UP highest); phase-lag overlap from shoulder to hand; head lag spring; damped particle chains for every secondary chain (gravity hang, travel drag, cone limits, head/thigh/torso collision, skirt panels driven by the thighs, settled loops with seam <= 0.4 mm). Rendered with R's render_motion.py (--preview for the boards; full pixel chain + head stamp for the GIFs). 7 critique rounds (Opus + Argon) on numbered SE/E frame grids + onion skins, then A/B against the old rejected frames. pxeval seq on the SE pixel frames.",
- "result": "ROUND 2 (on R's r5 rig with the master-textured animatable head, P's chain, no stamp): every motion ≥1 px at 1x or held (walk pelvis bob 3.1 px, head roll/nod ±7/±3°, bangs 2.3, side locks 5.8, back hair 7, bun 2.7, bow 4.3, skirt 4.7 px p-p); snappier holds (walk 90/120/90/120 ms, run 60/80/60/80); upright posture, chest lifted, soft close arms, idle contrapposto with a hand at the obi, arched jump apex with pointed toes. Found and fixed: spring output clamp was saturated (chains flapped between limits) and chain-curl feedback made long hair flail. pxeval walk boil .022→.016 (BOILING flag gone), run .087→.057. Round 1 (kept below): walk/run/idle/jump vs the H2 frames 4→5 Opus.",
- "verdict": "Needs owner review. A/B round1→round2 (1x+4x strips): walk 4→5 Opus / 4→6 Argon, run 4→5 / 4→6, idle 4→5 / 4→6, jump 5→5 / 4→6; Argon elegance 6, no-slouch 6-8; Opus elegance 4 and still sees a forward head in idle/jump. Target 7 not reached. Open: legs overlap at passing in SE with the narrow track (P separates), sleeves flare on one half of the SE walk, bun capped at 16°.",
+ "result": "ROUND 3: run reworked (15 deg lean from hips/ankles with the chest lifted and head up, heel kick then knee drive, flight, 90 deg arm pump, counter-rotation, 4 px bob); per-frame expression track (face/blink/mouth) for F; idle/jump forward head removed; head turns held 2 frames (P); passing-pose hold. A/B r2->r3: run 4->5 Opus / 4->6 Argon, walk 4->5 / 5.5->6.5, idle 5->5 / 5->6, jump 5->5 / 5.5->6 (faces blank pending F). Earlier: ROUND 2 every motion >= 1 px at 1x (walk pelvis 3.1 px, tips >= 2 px); ROUND 1 vs H2 4->5.",
+ "verdict": "Needs owner review: the run lean is clear in the E preview; in SE it points at the camera, so critics read it as 'no lean'. Next: the owner picks the timing variants, F adds faces, and a possible SE view cheat for the lean. Target 7 not reached (5-6.5).",
  "scores": {
-  "A/B r1→r2 walk (Opus/Argon)": "4→5 / 4→6",
-  "run": "4→5 / 4→6",
-  "idle": "4→5 / 4→6",
-  "jump": "5→5 / 4→6",
-  "Argon elegance / no-slouch": "6 / 6-8",
-  "walk pelvis bob": "3.1 px",
-  "walk head roll/nod": "15°/6° p-p",
-  "tips ≥2 px": "yes (jump bun 1.9)",
-  "walk boil": ".022→.016",
-  "round-1 A/B vs H2": "4→5"
+  "A/B r2->r3 run (Opus/Argon)": "4->5 / 4->6",
+  "walk": "4->5 / 5.5->6.5",
+  "idle": "5->5 / 5->6",
+  "jump": "5->5 / 5.5->6",
+  "walk boil": ".017 (pass)",
+  "run boil": ".076 (fail)"
  },
  "media": [
   {
-   "src": "exp/2026-10-28_sw_skinned/motion/out/cmp2_walk_SE_r1_vs_r2.gif",
-   "caption": "walk SE: ROUND 1 | ROUND 2 (P pixel chain, animatable master head), 4x"
+   "src": "exp/2026-10-28_sw_skinned/motion/out/run_E_preview.gif",
+   "caption": "ROUND 3 run, E smooth preview (reworked lean and mechanics)"
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/motion/out/cmp2_run_SE_r1_vs_r2.gif",
-   "caption": "run SE: ROUND 1 | ROUND 2"
+   "src": "exp/2026-10-28_sw_skinned/motion/out/cmp3_run_SE_r2_vs_r3.gif",
+   "caption": "run SE: ROUND 2 | ROUND 3 (pixel chain; faces blank pending F)"
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/motion/out/cmp2_idle_SE_r1_vs_r2.gif",
-   "caption": "idle SE: ROUND 1 | ROUND 2"
+   "src": "exp/2026-10-28_sw_skinned/motion/out/cmp3_walk_SE_r2_vs_r3.gif",
+   "caption": "walk SE: ROUND 2 | ROUND 3"
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/motion/out/cmp2_jump_SE_r1_vs_r2.gif",
-   "caption": "jump SE: ROUND 1 | ROUND 2"
+   "src": "exp/2026-10-28_sw_skinned/motion/out/cmp3_idle_SE_r2_vs_r3.gif",
+   "caption": "idle SE: ROUND 2 | ROUND 3"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/cmp3_jump_SE_r2_vs_r3.gif",
+   "caption": "jump SE: ROUND 2 | ROUND 3"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/run_SE_preview.gif",
+   "caption": "run SE smooth preview"
   },
   {
    "src": "exp/2026-10-28_sw_skinned/motion/out/walk_E_preview.gif",
-   "caption": "walk E smooth preview (round 2)"
-  },
-  {
-   "src": "exp/2026-10-28_sw_skinned/motion/out/run_E_preview.gif",
-   "caption": "run E smooth preview"
-  },
-  {
-   "src": "exp/2026-10-28_sw_skinned/motion/out/idle_SE_preview.gif",
-   "caption": "idle SE smooth preview"
+   "caption": "walk E smooth preview"
   },
   {
    "src": "exp/2026-10-28_sw_skinned/motion/out/jump_E_preview.gif",
    "caption": "jump E smooth preview"
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/motion/crit/ab2_walk.png",
-   "caption": "walk A/B frame strips: round 1 (4x, 1x) vs round 2 (4x, 1x)",
+   "src": "exp/2026-10-28_sw_skinned/motion/crit/ab3_run.png",
+   "caption": "run frame strips: round 2 (4x, 1x) vs round 3",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/motion/crit/ab2_run.png",
-   "caption": "run A/B frame strips",
+   "src": "exp/2026-10-28_sw_skinned/motion/crit/ab3_walk.png",
+   "caption": "walk frame strips r2 vs r3",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/motion/crit/ab2_idle.png",
-   "caption": "idle A/B frame strips",
+   "src": "exp/2026-10-28_sw_skinned/motion/out/sil_run_SE_r3.png",
+   "caption": "run key-pose silhouettes 1x/4x",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/motion/crit/ab2_jump.png",
-   "caption": "jump A/B frame strips",
-   "wide": true
-  },
-  {
-   "src": "exp/2026-10-28_sw_skinned/motion/out/sil_walk_SE.png",
-   "caption": "walk key-pose silhouettes 1x / 4x",
-   "wide": true
-  },
-  {
-   "src": "exp/2026-10-28_sw_skinned/motion/out/sil_run_SE.png",
-   "caption": "run silhouettes",
-   "wide": true
-  },
-  {
-   "src": "exp/2026-10-28_sw_skinned/motion/out/sil_idle_SE.png",
-   "caption": "idle silhouettes",
-   "wide": true
-  },
-  {
-   "src": "exp/2026-10-28_sw_skinned/motion/out/sil_jump_SE.png",
+   "src": "exp/2026-10-28_sw_skinned/motion/out/sil_jump_SE_r3.png",
    "caption": "jump silhouettes",
    "wide": true
   },
   {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/cmp2_walk_SE_r1_vs_r2.gif",
+   "caption": "round 1 | round 2 walk (20 ms ticks)"
+  },
+  {
    "src": "exp/2026-10-28_sw_skinned/motion/out/cmp_walk_SE_old_vs_new.gif",
-   "caption": "round 1: H2 rigid rig vs round-1 motion (walk)"
+   "caption": "H2 | round 1 walk"
   }
  ],
  "links": [
@@ -107,7 +87,11 @@
   {
    "href": "exp/2026-10-28_sw_skinned/CONTRACT.md",
    "label": "contract + status logs"
+  },
+  {
+   "href": "exp/2026-10-28_sw_skinned/motion/out/pxeval3_table.txt",
+   "label": "pxeval round 3"
   }
  ],
- "next": "Owner review of cmp2_*.gif. Then: fix the residual forward head in the idle settle and the jump fall, add an SE-specific chest-twist/arm cheat, and render E/S pixel versions."
+ "next": "Owner picks timing variants (see the timing-variants entry); F faces; SE lean cheat if wanted."
 }

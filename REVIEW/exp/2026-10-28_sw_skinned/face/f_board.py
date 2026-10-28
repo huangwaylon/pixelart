@@ -37,7 +37,8 @@ def clip(act, V):
     for f in fs:
         i = int(f[1:3]); g0 = hx.read_grid(f'{pd}/{f}')
         fi = {'action': act, 'view': V, 'i': i}
-        g1 = FLY.face_layer(fi, g0, {}); hx.save(g1, f'{fd}/{f[:-4]}', V)
+        rf = next((f_.get('face') for f_ in info['frames'] if f_['i'] == i), None)
+        g1 = FLY.face_layer(fi, g0, {'rface': rf} if rf else {}); hx.save(g1, f'{fd}/{f[:-4]}', V)
         C, pl, fr = FLY.frame_meta(fi)
         a = hx.render(g0[y0:y1, x0:x1], S, BG); cl = hx.render(g1[y0:y1, x0:x1], S, BG); b = hx.render(g1[y0:y1, x0:x1], S, BG).convert('RGB'); dr = ImageDraw.Draw(b)
         for k, an in fr['anchors'].items():
@@ -45,7 +46,7 @@ def clip(act, V):
             col = {'e': (0, 255, 255), 'b': (255, 0, 255), 'm': (255, 255, 0), 'c': (255, 120, 0), 'n': (0, 255, 0)}[k[0]]
             dr.rectangle([ax - 1, ay - 1, ax + 1, ay + 1], fill=col)
         h = pl['head']
-        dr.text((3, 2), f"f{i:02d} {pl['expr']}{'/' + str(pl['blink']) if pl['blink'] else ''}", fill=(255, 255, 160))
+        dr.text((3, 2), f"f{i:02d} {pl['expr']}{' b' + str(pl['blink']) if pl['blink'] else ''}{' ' + pl['mouth'] if pl.get('mouth') else ''}", fill=(255, 255, 160))
         dr.text((3, (y1 - y0) * S - 24), f"yaw{h['dyaw']:+.0f} roll{h['roll']:+.0f} pit{h['pitch']:+.0f}", fill=(255, 255, 160))
         dr.text((3, (y1 - y0) * S - 12), ' '.join(f"{k[0]}{k[-1]}:{v}" for k, v in pl['kinds'].items()), fill=(200, 255, 200))
         rows[0].append(a); rows[1].append(cl); rows[2].append(b)

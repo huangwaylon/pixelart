@@ -1,0 +1,72 @@
+{
+"action": "jump",
+"_doc": "LABELS ONLY: round-2 motion data was overwritten by the round-3 bake; round-2 pixel renders are in motion/prev/r2/",
+"frames": [
+{
+"key": "stand"
+},
+{
+"key": "anticipation"
+},
+{
+"key": "crouch (hold)"
+},
+{
+"key": "launch"
+},
+{
+"key": "take-off stretch"
+},
+{
+"key": "rise"
+},
+{
+"key": "rise (slowing)"
+},
+{
+"key": "apex (hang)"
+},
+{
+"key": "fall"
+},
+{
+"key": "fall (reach)"
+},
+{
+"key": "land contact (toes)"
+},
+{
+"key": "land absorb"
+},
+{
+"key": "squash (deepest)"
+},
+{
+"key": "recover overshoot (toes)"
+},
+{
+"key": "settle dip"
+},
+{
+"key": "end"
+}
+],
+"timing_ms": [
+100,
+80,
+70,
+50,
+60,
+80,
+80,
+120,
+60,
+40,
+35,
+75,
+100,
+80,
+110,
+250
+]
+}

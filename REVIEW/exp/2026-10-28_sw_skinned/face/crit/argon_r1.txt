@@ -1,0 +1,22 @@
+### Scores (NEW vs. Previous)
+
+* **(a) Face follows head:** **7.5/10** (vs. **4/10**) — Anchor positions track head bobbing and turning well, though strong head tilts (e.g., `idle_S` f06–f11) lack rotation/vertical offset between left and right eyes, making the face look level while the head tilts.
+* **(b) On-model vs. m96 master:** **8.5/10** (vs. **3/10**) — Hand-designed stamps preserve the master eye shapes, highlights, and mouth geometry infinitely better than the melted texture projection.
+* **(b2) Cleanliness:** **7.5/10** (vs. **2/10**) — Eyes and mouths are crisp and readable, though underlying head/hair silhouettes and jawlines still suffer from 3D rasterization artifacts.
+* **(c) Expressiveness per action:** **9/10** (vs. **1/10**) — Huge upgrade. The narrative arc in `jump_SE` (determined → effort → joyful → surprised → squint → smile), effort straining in `run`, and blinks in `idle` add immense life.
+* **(d) Temporal stability:** **6.5/10** (vs. **4/10**) — Stamp shapes are stable, but independent rounding of 3D anchors causes 1px relative spacing jitter between eyes, brows, and mouth across adjacent frames.
+
+---
+
+### Top 5 Pixel-Level Problems & Fixes
+
+1. **`run_E` (f00, f01, f02, f05) — Jawline/Mouth Detachment:** 
+   The bottom-right chin outline breaks open, leaving floating dark pixels and detached skin pixels around the mouth. **Fix:** Manually close the 1px dark jawline border and mask any face-layer pixels extending past the profile silhouette.
+2. **`idle_S` (f04–f11) — Missing Roll on Head Tilt & Clipped Hair:** 
+   As the head tilts right, the eyes remain on the exact same horizontal row (`Y`), fighting the 3D head's roll. Also, the right hair outline is sheared off in steep vertical steps. **Fix:** Offset the screen-right eye 1px lower than the left eye during tilt frames (`f06–f10`), and round out the right hair silhouette.
+3. **`walk_SE` & `jump_SE` (f04–f07) — Far-Eye Protrusion & Stray Crumbs:** 
+   In `walk_SE` (f04, f05, f07), 2–3px clusters of dark hair/outline float detached to the right of the far eye. In `jump_SE` (f05–f07), the far `joyful` eye arch pokes outside the head silhouette into the raised arm. **Fix:** Trim floating hair crumbs and clip/shift the far eye 1px inward so the cheek outline contains it.
+4. **`walk_SE` (f00–f07) — Intra-Face Anchor Jitter:** 
+   Because left/right eyes and mouth snap to the grid independently, the horizontal gap between the eyes and vertical eye-to-mouth distance fluctuates by 1px frame-to-frame (e.g., mouth drops 1px in `f03`, shifts left in `f06`). **Fix:** Lock the face parts into a single composite stamp per yaw/pitch angle and snap it to one master head-center anchor.
+5. **`idle_SE` (f09) — Rogue Top-Of-Head Artifact:** 
+   A 3px hook of dark pixels protrudes upward from the top hair outline. **Fix:** Erase the stray pixels to restore a clean 1px dark contour.

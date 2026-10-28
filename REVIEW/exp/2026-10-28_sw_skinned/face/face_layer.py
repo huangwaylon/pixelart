@@ -48,11 +48,11 @@ DEFAULT_MAP = {
 
 def expr_for(act, fr):
     """per-frame expression: the motion file's 'face' / 'blink' keys win; else the action's default map on the frame 'key'"""
-    if fr.get('face'): return fr['face'], fr.get('blink')
+    if fr.get('face'): return fr['face'], fr.get('blink'), fr.get('mouth')
     key = (fr.get('key') or '')
     for sub, e, b in DEFAULT_MAP.get(act, [('', 'neutral', None)]):
-        if sub in key: return e, (fr.get('blink') or b)
-    return 'neutral', fr.get('blink')
+        if sub in key: return e, (fr.get('blink') or b), fr.get('mouth')
+    return 'neutral', fr.get('blink'), fr.get('mouth')
 
 
 # ---------------------------------------------------------------- faceless head pass -> (mask, chars)
@@ -101,26 +101,39 @@ def plan_clip(fj, act, loop=True):
     d = json.load(open(fj)); V = d['view']; parts = json.load(open(os.path.join(HERE, 'parts.json')))[V]
     rest = d['anchors_rest']; frs = d['frames']; n = len(frs)
     order = (list(range(n)) if loop and n > 2 else []) + list(range(n))
-    out = [None] * n; Gp = [None, None]; Rp = {}; kp = {}
+    out = [None] * n; Gp = [None, None]; Rp = {}; kp = {}; RRp = {}
     for t in order:
         f = frs[t]; A = f['anchors']; hd = f['head']
         o = {k: (A[k]['xy'][0] - rest[k][0], A[k]['xy'][1] - rest[k][1]) for k in A}
         core = [k for k in o if k.startswith('eye.') or k == 'mouth']
         g = (sum(o[k][0] for k in core) / len(core), sum(o[k][1] for k in core) / len(core))
         G = (_hround(g[0], Gp[0], HYS_G), _hround(g[1], Gp[1], HYS_G)); Gp = list(G)
-        R = {}
+        R = {}; RR = {}
+        # eye.0 against the face offset; every other part RELATIVE to eye.0 with a wider dead band, so the face's internal
+        # spacing only changes when the 3D projection really moved it by ~1 px (yaw spacing, pitch eye-mouth, roll)
+        px, py = Rp.get('eye.0', (None, None))
+        R['eye.0'] = (_hround(o['eye.0'][0] - G[0], px, HYS_R), _hround(o['eye.0'][1] - G[1], py, HYS_R))
+        b0 = R['eye.0']
         for k in o:
-            px, py = Rp.get(k, (None, None))
-            R[k] = (_hround(o[k][0] - G[0], px, HYS_R), _hround(o[k][1] - G[1], py, HYS_R))
-            R[k] = (max(-2, min(2, R[k][0])), max(-2, min(2, R[k][1])))
+            if k == 'eye.0': continue
+            px, py = RRp.get(k, (None, None)); hb = HYS_R + (0.13 if k.startswith('eye.') else 0.25)
+            rel = (_hround(o[k][0] - G[0] - b0[0], px, hb), _hround(o[k][1] - G[1] - b0[1], py, hb))
+            RR[k] = rel; R[k] = (b0[0] + rel[0], b0[1] + rel[1])
+        for k in R: R[k] = (max(-2, min(2, R[k][0])), max(-2, min(2, R[k][1])))
         # eyes share a row unless the head is visibly rolled; the row difference keeps the roll's sign
         if 'eye.1' in R:
             (x0, y0), (x1, y1) = R['eye.0'], R['eye.1']
             if abs(hd['roll']) < ROLL_SPLIT:
                 ym = int(math.floor((o['eye.0'][1] + o['eye.1'][1]) / 2 - G[1] + 0.5)); y0 = y1 = ym
-            elif abs(y0 - y1) > 1:
-                y1 = y0 + (1 if y1 > y0 else -1)
+            else:
+                lim = 2 if abs(hd['roll']) >= 10 else 1
+                if abs(y0 - y1) > lim: y1 = y0 + (lim if y1 > y0 else -lim)
             R['eye.0'], R['eye.1'] = (x0, y0), (x1, y1)
+        # face proportions: mouth/nose stay within 1 px (y) of the eye-pair mean and 1 px (x) of the eye-pair centre
+        ey = [R[k] for k in R if k.startswith('eye.')]; emx = sum(e[0] for e in ey) / len(ey); emy = sum(e[1] for e in ey) / len(ey)
+        for k in ('mouth', 'nose'):
+            if k in R:
+                R[k] = (int(max(math.floor(emx - 1), min(math.ceil(emx + 1), R[k][0]))), int(max(math.floor(emy - 1), min(math.ceil(emy + 1), R[k][1]))))
         # brows ride on their eye; cheeks within 1 px of their eye in x and of the mouth in y; nose between
         for k in list(R):
             if k.startswith('brow.'): R[k] = R['eye.' + k.split('.')[1]]
@@ -130,7 +143,7 @@ def plan_clip(fj, act, loop=True):
                 R[k] = (max(e[0] - 1, min(e[0] + 1, R[k][0])), max(min(e[1], m[1]) - 1, min(max(e[1], m[1]) + 1, R[k][1])))
         if 'nose' in R and 'mouth' in R:
             m = R['mouth']; R['nose'] = (max(m[0] - 1, min(m[0] + 1, R['nose'][0])), max(m[1] - 1, min(m[1] + 1, R['nose'][1])))
-        Rp = dict(R)
+        Rp = dict(R); RRp = dict(RR)
         # foreshortening: eye kinds from the head turn (dyaw + = toward the camera) with hysteresis
         kinds = {}
         for k, a in parts.items():
@@ -149,9 +162,9 @@ def plan_clip(fj, act, loop=True):
                 if base == 'front_left' and far_left: kind = 'far_left'
             if A[k]['facing'] < 0.12: kind = 'hidden'
             kinds[k] = kind; kp[k] = kind
-        e, b = expr_for(act, f)
+        e, b, mo = expr_for(act, f)
         off = d.get('tex_off', [0, 0]); Gd = (G[0] + int(off[0]), G[1] + int(off[1]))   # part origins are master coords
-        out[t] = {'G': Gd, 'R': R, 'kinds': kinds, 'expr': e, 'blink': b, 'g_cont': g, 'head': hd}
+        out[t] = {'G': Gd, 'R': R, 'kinds': kinds, 'expr': e, 'blink': b, 'mouth': mo, 'g_cont': g, 'head': hd}
     res = {'view': V, 'json': d, 'parts': parts, 'plan': out}
     _CACHE[fj] = res
     return res
@@ -184,26 +197,26 @@ def face_cells(V, parts, G, R, kinds, ex):
             for i, c in enumerate(r):
                 if c == '_': continue
                 if c == '.':
-                    if 1 <= j <= 4 and ink and min(ink) < i < max(ink): out.append((x0 + i, y0 + j, 's', 'eyebg'))
+                    if 1 <= j <= 4 and ink and min(ink) < i < max(ink): out.append((x0 + i, y0 + j, 's', 'eyebg', n_))
                     continue
-                out.append((x0 + i, y0 + j, 'W' if c == '@' else c, 'eye'))
+                out.append((x0 + i, y0 + j, 'W' if c == '@' else c, 'eye', n_))
         for dx, dy, c in FL.wing_tmpl(kind, ee):
-            out.append((x0 + dx, y0 + dy, c, 'wing'))
+            out.append((x0 + dx, y0 + dy, c, 'wing', n_))
         bt = FL.brow_tmpl(kind, ex['brow'])
         top = min([j for j, r in enumerate(bt) if 'h' in r] or [0])
         for j, r in enumerate(bt):
             for i, c in enumerate(r):
-                if c != '.': out.append((x0 + i, y0 - 3 + j, FL.SPEC['brow'].get('char', 'g'), 'brow'))
+                if c != '.': out.append((x0 + i, y0 - 3 + j, FL.SPEC['brow'].get('char', 'g'), 'brow', n_))
         w = len(bt[0])
         for i in (range(-1, 4) if w <= 4 else range(0, 6)):
             for j in range(top - 1, 3):
-                out.append((x0 + i, y0 - 3 + j, 's', 'window'))
+                out.append((x0 + i, y0 - 3 + j, 's', 'window', n_))
     if 'mouth' in parts:
         mx, my = parts['mouth']['origin']; rx, ry = R['mouth']; mx += G[0] + rx; my += G[1] + ry
         for j, r in enumerate(FL.mouth_tmpl(ex['mouth'])):
             for i, c in enumerate(r):
                 if c == '_': continue
-                out.append((mx + i, my + j, 's' if c == '.' else c, 'skin'))
+                out.append((mx + i, my + j, 's' if c == '.' else c, 'skin', -1))
     for k in sorted(parts):
         if not k.startswith('cheek.'): continue
         idx = k.split('.')[1]
@@ -213,10 +226,10 @@ def face_cells(V, parts, G, R, kinds, ex):
         if kinds.get('eye.' + idx) == 'far3': kind = 'far'
         for j, r in enumerate(FL.blush_tmpl(kind, ex['blush'])):
             for i, c in enumerate(r):
-                if c == 'k': out.append((bx + i + (1 if kinds.get('eye.' + idx) == 'far3' else 0), by + j, 'k', 'blush'))
+                if c == 'k': out.append((bx + i + (1 if kinds.get('eye.' + idx) == 'far3' else 0), by + j, 'k', 'blush', -1))
     if 'nose' in parts and V != 'E':
         nx, ny = parts['nose']['origin']; rx, ry = R['nose']; nx += G[0] + rx; ny += G[1] + ry
-        for dx, dy, c in parts['nose']['px']: out.append((nx + dx, ny + dy, c, 'skin'))
+        for dx, dy, c in parts['nose']['px']: out.append((nx + dx, ny + dy, c, 'skin', -1))
     return out
 
 
@@ -230,7 +243,7 @@ def zone_box(parts, G, pad=2):
 def draw(g, gn, T, V, parts, pl):
     """g: frame chars (modified copy returned), gn/T: faceless head chars/mask for this frame"""
     g = np.array(g, dtype='<U1').copy()
-    ex = FL.resolve(pl['expr'], pl['blink'])
+    ex = FL.resolve(pl['expr'], pl['blink'], pl.get('mouth'))
     x0, y0, x1, y1 = zone_box(parts, pl['G'])
     # 1. face zone <- faceless head (drops the baked/smeared face + texture crumbs)
     Z = np.zeros((N, N), bool); Z[y0:y1, x0:x1] = True; Z &= T & (g != '.')
@@ -241,12 +254,24 @@ def draw(g, gn, T, V, parts, pl):
             nb = g[y - 1:y + 2, x - 1:x + 2].ravel()
             if sum(c in 'sS' for c in nb) >= 6: g[y, x] = 's'
     cells = face_cells(V, parts, pl['G'], pl['R'], pl['kinds'], ex)
+    # keep every eye inside the face: if eye ink lands on the silhouette edge / off the head, slide that eye (+ brow, wing) toward the
+    # face centre by the smallest shift (<= 2 px) that fits (far eye at the cheek outline when the head turns)
+    mcx = np.mean([x for x, y, c, l, e in cells if l == 'skin'] or [N / 2])
+    for e in sorted({c[4] for c in cells if c[4] >= 0}):
+        ink = [(x, y) for x, y, c, l, ee in cells if ee == e and l == 'eye']
+        if not ink: continue
+        ex_ = np.mean([x for x, y in ink]); step = 1 if mcx > ex_ else -1
+        bad = lambda dx: sum(1 for x, y in ink if not (0 <= x + dx < N and 0 <= y < N) or _edge(g, x + dx, y) or not T[y, x + dx])
+        b0 = bad(0)
+        if b0:
+            best = min((bad(k * step), k) for k in (0, 1, 2))[1] * step
+            if best: cells = [(x + best, y, c, l, ee) if ee == e else (x, y, c, l, ee) for x, y, c, l, ee in cells]
     sk = lambda c: c in 'sSk'
-    for x, y, c, layer in cells:          # window first (hair over the brow cols -> skin, never on the edge)
+    for x, y, c, layer, _e in cells:          # window first (hair over the brow cols -> skin, never on the edge)
         if layer == 'window' and 0 <= x < N and 0 <= y < N and g[y, x] in 'HhgLmK' and not _edge(g, x, y) and gn[y, x] != '.':
             # only cut where the cell is near skin (a bang tip), not deep inside the fringe
             if sum(ch in 'sS' for ch in g[y - 1:y + 2, x - 1:x + 2].ravel()) >= 3: g[y, x] = 's'
-    for x, y, c, layer in cells:
+    for x, y, c, layer, _e in cells:
         if not (0 <= x < N and 0 <= y < N): continue
         b = g[y, x]
         if layer in ('eye', 'eyebg'):
@@ -261,7 +286,7 @@ def draw(g, gn, T, V, parts, pl):
         elif layer == 'blush':
             if b in 'sS' and not _edge(g, x, y): g[y, x] = c
     # orphan guard: single brow/blush px -> skin
-    for x, y, c, layer in cells:
+    for x, y, c, layer, _e in cells:
         if layer in ('brow', 'blush') and 0 < x < N - 1 and 0 < y < N - 1 and g[y, x] == c:
             nb = g[y - 1:y + 2, x - 1:x + 2].ravel()
             if (nb == c).sum() <= 1: g[y, x] = 's'
@@ -280,7 +305,16 @@ def face_layer(frame_info, pixel_frame, passes=None):
     loop = frame_info.get('loop', frame_info['action'] != 'jump')
     C = plan_clip(fj, frame_info['action'], loop)
     d = C['json']; idx = [f['i'] for f in d['frames']].index(int(frame_info['i'])); pl = dict(C['plan'][idx])
-    if frame_info.get('expr'): pl['expr'] = frame_info['expr']; pl['blink'] = frame_info.get('blink')
+    if frame_info.get('expr'): pl['expr'] = frame_info['expr']; pl['blink'] = frame_info.get('blink'); pl['mouth'] = frame_info.get('mouth')
+    rf = passes.get('rface') or frame_info.get('rface')     # R's per-frame anchors (render info frames[i].face): body/arm/hand occlusion
+    if rf:
+        fa = d['frames'][idx]['anchors']; kinds = dict(pl['kinds'])
+        for k in kinds:
+            if k not in fa: continue
+            x, y = fa[k]['xy']
+            best = min(((n, (v['px'][0] - x) ** 2 + (v['px'][1] - y) ** 2) for n, v in rf.items() if n.startswith('eye') and 'px' in v), key=lambda t: t[1], default=None)
+            if best and best[1] < 16 and rf[best[0]].get('occ_m') is not None and not rf[best[0]].get('visible', True): kinds[k] = 'hidden'
+        pl['kinds'] = kinds
     ft = passes.get('ftex', tp)
     tex = load_ftex(ft, d['align']['dx'], d['align']['dy']) if isinstance(ft, str) else ft
     T, gn = tex_cells(tex)

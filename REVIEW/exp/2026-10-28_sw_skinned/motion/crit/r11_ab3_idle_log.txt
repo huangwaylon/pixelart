@@ -1,0 +1,2 @@
+idle opus: SCORE A: 5/10, SCORE B: 5/10 (    1737 bytes)
+idle argon: SCORE A: 5/10, SCORE B: 6/10 (    1671 bytes)

@@ -1,0 +1,40 @@
+{
+"action": "run",
+"_doc": "LABELS ONLY: round-2 motion data was overwritten by the round-3 bake; round-2 pixel renders are in motion/prev/r2/",
+"frames": [
+{
+"key": "contact L"
+},
+{
+"key": "down L"
+},
+{
+"key": "push-off L"
+},
+{
+"key": "flight"
+},
+{
+"key": "contact R"
+},
+{
+"key": "down R"
+},
+{
+"key": "push-off R"
+},
+{
+"key": "flight"
+}
+],
+"timing_ms": [
+60,
+80,
+60,
+80,
+60,
+80,
+60,
+80
+]
+}

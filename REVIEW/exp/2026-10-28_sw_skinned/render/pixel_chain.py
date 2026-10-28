@@ -577,6 +577,16 @@ def frame(F, prev, opt):
         L = ((Nn & Ee) | (Ee & Ss) | (Ss & Ww) | (Ww & Nn)) & ~(Nn & Ss) & ~(Ee & Ww)
         rm = ring & k & ~n4f & L
         g[rm] = '.'; k = g == 'K'; ring &= ~rm
+    # limb width repair: limb fill pixels outside a 2x2 core + 1 px fringe (1 px slivers between lines, staircase tips) become outline,
+    # as long as the limb keeps a core (it can't vanish this way)
+    for q in LIMBQ():
+        Lq = limb_cells(lab, q) & (g != 'K') & (g != '.')
+        if not Lq.any(): continue
+        core = nd.binary_opening(np.pad(Lq, 1), np.ones((2, 2)))[1:-1, 1:-1]
+        if not core.any(): continue
+        thin = Lq & ~nd.binary_dilation(core, CROSS)
+        if texg is not None: thin &= ~T
+        g[thin] = 'K'
     g0 = g; g = hx.Z.clean_orphans(g, keep='WKd')
     if texg is not None: g[T] = g0[T]
     bmask = np.where(fill, dom_b, -1)
@@ -646,6 +656,7 @@ def limb_audit(g, st, F):
     THIN (fill pixels outside a 2x2 core + 1 px fringe), DETACHED (a piece not touching the rest of the figure through <= 1 px of outline).
     Limb pixels = final non-outline pixels whose segment belongs to the limb."""
     lab = st['lab']; opaque = g != '.'; fillg = opaque & (g != 'K') & (lab >= 0)
+    if st.get('T') is not None: fillg &= ~st['T']  # cells drawn from the head texture are head, whatever the vote said
     P_ = np.where(fillg, SEG_P[np.maximum(lab, 0)], -1); M_ = np.where(fillg, SEG_M[np.maximum(lab, 0)], -1)
     out = {}
     for name, (parts, mat) in LIMBS.items():

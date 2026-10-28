@@ -1,0 +1,19 @@
+SCORE A: 5/10, SCORE B: 5/10
+
+B is almost the same motion as A. The A-line skirt and the cleaner sole contacts help, but the arc and the apex pose still don't fit the "graceful, arched, feminine" direction.
+
+**B scores**
+- Whole-body motion incl. head: 6
+- Secondary motion readable at 1x: 4. The bow and bun barely lag. The skirt flares about 1 px only at f10–f12.
+- Timing/holds: 6. The f2 crouch hold and the f7 hang are well placed, but f3→f4 gives the launch only 50 ms.
+- Elegance/confidence/femininity: 3
+- No slouch: 5
+- Legs/contacts readability: 6
+- Appeal: 5
+
+**Top 5 problems in B**
+1. **f5–f7, arms:** Both hands sit on or behind the head, so it reads as "clutching head" or panic, not grace. In the silhouette the arms merge into the hair mass. Open the arms up and out, about 30–40° from vertical, so they clear the head outline by ≥2 px. Soft wrists.
+2. **f7 apex, spine:** The chest folds forward (about 10° hunch) and the knees tuck up together. Arch the back about 10–15°, lift the chest and chin about 1 px, and trail one leg with the toe pointed.
+3. **f10–f13, leading arm:** The arm sticks straight out horizontally like a plank for 4 frames. Drop it to about 30–45° below horizontal, bend the elbow, and let it settle 1–2 px per frame instead of freezing.
+4. **f11–f12, squash:** It is too shallow. The body drops only about 2 px at 1x, so the landing feels weightless-stiff. Go to 3–4 px with a knee bend, and widen the hips and skirt by 1 px.
+5. **f4–f9, secondary motion:** The bow, bun and sleeves move rigidly with the head. Add 1–2 px of drag: the bow and hair point down on the rise and up on the fall, and the sleeves trail the arms by one frame. Pointed toes are missing on f5–f9.

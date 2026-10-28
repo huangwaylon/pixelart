@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 5/10
+
+**B scores**
+- Whole-body motion incl. head: 5. The up/down bob is there, but at 1x it's only about 1 px. The head nods forward on the down frames instead of staying up.
+- Secondary (hair, bow, bun, skirt, sleeves) at 1x: 4. The skirt flares a little at f3. The bow, bun and sleeve flutter move 1 px or less, so they read as noise, not follow-through.
+- Timing/holds: 6. The 60/80 ms rhythm is fine. The flight frames don't actually rise, so they don't feel airborne.
+- Elegance/confidence/femininity: 4. The sleeves swallow the arms. There's no visible 90° pump and no soft wrist, just red blobs at the hips.
+- No slouch: 4. f5 and f6 still hunch: the head drops and the chest folds.
+- Legs/contacts readability: 5. The heel kick reads at f0 and f7. At f2 and f5 the socks merge into one dark column.
+- Appeal: 5.
+
+**Top 5 problems in B**
+1. **No lean (all frames):** the 15° lean doesn't show; the torso is almost vertical and looks slightly back at f0/f1. Tip the hips-to-head line about 10° forward (head about 2 px ahead of the pelvis at 1x).
+2. **Slouch at f5/f6 (head and chest):** the head drops about 2 px and pitches forward. Keep the head up and drop the pelvis 1 px instead.
+3. **Flight at f3/f7 (whole body):** there's no lift. Raise the body 1–2 px above f2/f6 and point the trailing toe.
+4. **Arms (all frames):** open the sleeves away from the torso 2–3 px so the forearm swing reads. Pump forward and up at f2/f6, and show the opposite arm going back.
+5. **Legs merge at f2/f5:** the socks overlap. Spread the knee drive about 2 px forward and keep 1 px of background showing between the legs.

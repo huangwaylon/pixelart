@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 5/10
+
+**B sub-scores**
+- Whole-body motion incl. head: 6. The bob reads and the head rises at f3. But from f6 to f7 the head tips back into a chin-up "looking at the sky" angle.
+- Secondary readable at 1x: 5. The bow and bun move. The skirt and sleeves don't swing; they jump between a narrow column and a wide bell.
+- Timing/holds: 5. The 71 ms contacts are too short to register as weight landing, while the 126 ms passing frames drag.
+- Elegance/confidence/femininity: 4.
+- No slouch: 5. f0, f1 and f7 lean the torso back, so she reads swaybacked rather than upright.
+- Legs/contacts readability: 5.
+- Appeal: 5.
+
+**Top 5 problems in B**
+1. **The left and right halves don't match (f0–f1 vs f4–f5).** In f0–f1 the arms are pinned behind the hips and the skirt is narrow. In f4–f5 the sleeves flare out about 6–8 px on each side and the skirt becomes a wide bell. That makes the cycle lurch. Mirror the poses and cap the change in sleeve and skirt width at 2 px between neighbouring frames.
+2. **Arms tucked behind the back (f0, f1, f7).** The hands sit at the rear hip, which reads as stiff. Bring them forward 2–3 px, close to the thighs, with soft wrists and about 10° of opposite swing.
+3. **Leaning back (f6–f7, and f0).** The head and chest sit about 2 px behind the hips. Tip the head forward 8–10° and bring the chest 1–2 px forward over the hips so she reads upright and confident.
+4. **Legs merge into one column (f3–f5).** At 1x you can't tell the legs or feet apart, and they look crossed. Keep 1–2 px of gap at the ankles and show the trailing foot pointed, raised 1 px.
+5. **No hip sway, and the bounce is weak.** The pelvis doesn't shift sideways at all. Add a 1 px sideways hip shift toward the standing leg, lower the down frames (f1, f5) 1 px more, and hold the contacts at about 100 ms.

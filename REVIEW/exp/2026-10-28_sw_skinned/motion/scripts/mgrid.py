@@ -34,7 +34,7 @@ def grid(act, kind="px", cols=None, out=None):
             b = im.getchannel("A").getbbox()
             if b: bb = b if bb is None else (min(bb[0], b[0]), min(bb[1], b[1]), max(bb[2], b[2]), max(bb[3], b[3]))
     pad = 3; bb = (bb[0] - pad, bb[1] - pad, bb[2] + pad, bb[3] + pad)
-    S = 3 if kind == "px" else 1
+    S = 3 if kind == "px" else 2
     cw, ch = (bb[2] - bb[0]) * S, (bb[3] - bb[1]) * S
     cols = cols or (2 if act != "jump" else 2); rows = (len(names) + cols - 1) // cols
     loops = [m.get("loop", True) for m, _ in data]

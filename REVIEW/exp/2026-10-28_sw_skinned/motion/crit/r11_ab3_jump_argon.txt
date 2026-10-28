@@ -1,0 +1,20 @@
+SCORE A: 5.5/10, SCORE B: 6/10
+
+**B Breakdown:**
+- Whole-body motion incl. head: 6/10
+- Secondary readable at 1x: 4.5/10
+- Timing/holds: 6.5/10
+- Elegance/confidence/femininity: 5.5/10
+- No slouch: 7/10
+- Legs/contacts readability: 6.5/10
+- Appeal: 6/10
+
+**Critique:** 
+B improves upper-body posture and apex spine arch (f6–f7) over A, adding ambitious sleeve follow-through. However, the procedural rig creates severe cloth clipping/glitches at 1x, and rigid forward arm extension on descent breaks the graceful, feminine brief.
+
+**Top 5 Remaining Problems in B:**
+1. **f8–f9 (Left sleeve):** Procedural cloth splits into a detached, thin red tendril/ribbon hanging off the arm (reads like a stray pixel artifact at 1x). Manual cleanup or rig constraint needed: pull trailing sleeve mesh 3–4 px (1x) inward toward the forearm silhouette.
+2. **f7 (Left sleeve/torso):** Bell sleeve inflates into a blocky triangular wing merging with the torso, destroying the feminine silhouette (see Image 2, f7). Rotate sleeve bone down 25° and tuck 2 px (1x) closer to the ribs.
+3. **f9–f11 (Left arm):** Arm juts out stiffly at 90° like a zombie/traffic cop, violating "soft close arms with soft wrists." Bend elbow 30°, drop hand 3 px (1x) lower, and angle wrist down 20° for a graceful landing counterbalance.
+4. **f4 (Arms/head):** Take-off stretch arms clamp onto the ears, creating a monolithic pillar silhouette (Image 2, f4). Open elbows outward by 1–2 px (1x) to preserve head/neck negative space.
+5. **f12 (Torso/knees):** Deepest landing squash is too upright and stiff—barely 1 px vertical drop from f11. Drop pelvis 1–2 px (1x) lower and tilt chest forward 10° to absorb impact before the f13 overshoot.

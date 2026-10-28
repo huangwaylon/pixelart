@@ -38,11 +38,11 @@ def main(act, V):
             if blk.size and (blk[..., 3] > 0).all(): blk[..., :3] = RGB[g1[y, x]]
         # blush/eye clears: preview already faceless
         out = Image.new('RGBA', im.size, BGC + (255,)); out.alpha_composite(Image.fromarray(a))
-        ims.append(out.convert('RGB'))
+        ims.append(out.convert('RGB').resize((im.width * 2, im.height * 2), Image.NEAREST))
         rp = f'{r2}/{act}_{V}_f{i:02d}_pv.png'
-        c = Image.new('RGB', (im.width * 2, im.height), BGC)
+        c = Image.new('RGB', (im.width * 3, im.height * 2), BGC)
         if os.path.exists(rp):
-            o = Image.new('RGBA', im.size, BGC + (255,)); o.alpha_composite(Image.open(rp).convert('RGBA')); c.paste(o.convert('RGB'), (0, 0))
+            o = Image.new('RGBA', im.size, BGC + (255,)); o.alpha_composite(Image.open(rp).convert('RGBA')); c.paste(o.convert('RGB'), (0, im.height // 2))
         c.paste(ims[-1], (im.width, 0)); dr = ImageDraw.Draw(c)
         dr.text((4, 4), 'R preview (projected master face)', fill=(230, 230, 120)); dr.text((im.width + 4, 4), f'F face layer: {pl["expr"]}' + (f'/{pl["blink"]}' if pl['blink'] else ''), fill=(230, 230, 120))
         cmp_.append(c); durs.append(max(20, int(info['frames'][k]['ms'])))
@@ -52,7 +52,7 @@ def main(act, V):
     # head-crop sheet (face close-up at 2x preview res, x2)
     hb = [int((np.mean([f['anchors']['eye.0']['xy'][0] for f in d['frames']]) + 32 - DX) * SC), int((np.mean([f['anchors']['eye.0']['xy'][1] for f in d['frames']]) + 32 - DY) * SC)]
     cw = 46 * SC
-    tiles = [im.crop((hb[0] - cw // 2 + 4 * SC, hb[1] - 28 * SC, hb[0] + cw // 2 + 4 * SC, hb[1] + 18 * SC)).resize((cw * 2, 46 * SC * 2), Image.NEAREST) for im in ims]
+    tiles = [im.crop(tuple(2 * v for v in (hb[0] - cw // 2 + 4 * SC, hb[1] - 28 * SC, hb[0] + cw // 2 + 4 * SC, hb[1] + 18 * SC))) for im in ims]
     S = Image.new('RGB', (sum(t.width for t in tiles), tiles[0].height), BGC); x = 0
     for t in tiles: S.paste(t, (x, 0)); x += t.width
     S.save(f'{od}/sheet_preview_face_{act}_{V}.png')

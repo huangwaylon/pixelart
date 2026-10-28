@@ -31,7 +31,8 @@ EXPR = {
     'smile_open': dict(eye='cheerful',   brow='cheerful',   mouth='cheerful',     blush='cheerful'),
     'joyful':     dict(eye='joy',        brow='joy',        mouth='joy',          blush='joy'),
     'determined': dict(eye='determined', brow='determined', mouth=MOUTH_FLAT,     blush='neutral'),
-    'effort':     dict(eye='effort',     brow='effort',     mouth='effort',       blush='neutral'),
+    'effort':     dict(eye='blink_half', brow='effort',     mouth='effort',       blush='neutral'),   # narrowed, focused eyes (not shut while running)
+    'strain':     dict(eye='effort',     brow='effort',     mouth='effort',       blush='neutral'),   # spec effort: eyes squeezed shut
     'shout':      dict(eye='shout',      brow='shout',      mouth='shout',        blush='neutral'),
     'surprised':  dict(eye='surprised',  brow='surprised',  mouth=MOUTH_SMALL_O,  blush='neutral'),
     'squint':     dict(eye='pain',       brow='effort',     mouth=MOUTH_FLAT,     blush='neutral'),   # landing: > < eyes
@@ -44,11 +45,19 @@ ALIASES = {'joy': 'joyful', 'cheerful': 'smile_open', 'blink_closed': 'blink', '
 CLOSED_EYES = {'joy', 'effort', 'pain', 'blink_closed'}
 
 
-def resolve(expr, blink=None):
+MOUTH_OPEN = {'neutral': 'cheerful', 'smile': 'cheerful', 'smile_open': 'cheerful', 'joyful': 'joy', 'determined': ['____', 'mmmm', '.RR.'],
+              'effort': 'shout', 'shout': 'shout', 'surprised': MOUTH_SMALL_O, 'squint': ['____', 'mmmm', '.RR.'], 'wink': 'cheerful',
+              'blink': 'neutral', 'half_blink': 'neutral'}
+MOUTH_CLOSED = {'smile_open': SMILE_CLOSED, 'joyful': SMILE_CLOSED, 'shout': MOUTH_FLAT, 'surprised': ['____', '.mm.', '____'], 'wink': SMILE_CLOSED}
+
+
+def resolve(expr, blink=None, mouth=None):
     """expression name (+ optional blink cue 'closed'|'half') -> part dict; a blink overrides only the eyes of an open-eye expression"""
     e = ALIASES.get(expr, expr); d = dict(EXPR.get(e, EXPR['neutral'])); d['name'] = e
     if isinstance(blink, (int, float)) and not isinstance(blink, bool):   # M's numeric lid cue: 0 open, .5 half, 1 closed
         blink = 'closed' if blink >= 0.75 else ('half' if blink >= 0.25 else None)
+    if mouth == 'open': d['mouth'] = MOUTH_OPEN.get(e, d['mouth'])
+    elif mouth == 'closed': d['mouth'] = MOUTH_CLOSED.get(e, d['mouth'])
     b = {'closed': 'blink_closed', 'blink': 'blink_closed', True: 'blink_closed', 'half': 'blink_half', 'half_blink': 'blink_half'}.get(blink)
     if b and d['eye'] not in CLOSED_EYES:
         if not (b == 'blink_half' and d['eye'] == 'blink_closed'): d['eye'] = b

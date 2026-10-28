@@ -574,3 +574,56 @@ clean, stable, readable 96 px frames on the locked palette (`v2/pixelize/palette
 - Lock the height of the skin wedge to 2–3 rows.
 - Head hold keyed to the motion (needs M's holds).
 - Re-run `render/p2_run.sh` when M posts the final round-2 motion.
+
+## M: round 3 (owner: run "very stiff and awkward, more leaning forward"; "test different timings and lengths"; "more expression"; "GIFs loop smoothly")
+
+**Result (A/B round 2 → round 3, `crit/r11_ab3_*`):**
+
+| action | Opus | Argon |
+|---|---|---|
+| run | 4 → 5 | 4 → 6 |
+| walk | 4 → 5 | 5.5 → 6.5 |
+| idle | 5 → 5 | 5 → 6 |
+| jump | 5 → 5 | 5.5 → 6 |
+
+- The face region is blank in these renders: R masked it, and F adds the faces.
+- **The lean reads in E but not in SE.** The run lean (15°) is clear in the E preview, which is the one the owner criticised (`out/run_E_preview.gif`, `out/grid_run_pv_E.gif`). In the SE game view a forward lean points mostly toward the camera, so Opus reads it as "no lean" or a head drop. If SE has to show it, the next step is a view cheat: a screen-space lean in SE.
+
+**Changes**
+- **Run rework (`mbody.RUN`).**
+  - Confident lean: chest 15° and pelvis 14° (straight back, from the hips). The foot track sits 5 cm behind the hips, so the lean also comes from the ankles. Head held up looking ahead (−7°). Arm pump measured from world vertical.
+  - Heel kick-back first (u .18: foot 22 cm up, 8 cm back), then knee drive (30 cm up, 17 cm forward), then the foot reaches under the hips. Toes pointed −75° in the kick.
+  - 30% stance, so there is a real flight phase. Elbows 90 ± 7°, swing −44/+52°, close (−12°). Counter-rotation: hips ±9°, chest ±12°.
+  - Bob 4 px with chest squash 6%.
+- **Timing and length variants.** 24 files in `motion/variants/`, made by `scripts/mvariants.py` via `mbuild.build(act, var=…)`. Frames are sampled phase-correctly, so a hold is a real pose hold and the feet still never slip.
+
+  | action | frame counts | feels | cycle |
+  |---|---|---|---|
+  | walk | 6 / 8 / 10 / 12 | **s**nappy (samples on the key poses, passing held per P) / **e**ven | 0.84 s |
+  | run | 6 / 8 / 10 | snappy / even | 0.56 s |
+  | idle | 8 / 12 / 16 | **h**olds / even | 2.4 s |
+  | jump | anticipation (crouch hold) ×0.5 / ×2.5 crossed with apex hang ×0.6 / ×1.8 | — | one-shot |
+
+  - Jump time warp: the springs run in real time over a warped key timeline.
+  - The cycle stays the same within an action, so the comparison grids loop seamlessly.
+  - **Grid GIFs** (labelled A, B, …, with frame number, ms and key per cell): `out/grid_<act>_px.gif` (P pixel chain 3x), `out/grid_<act>_pv_SE.gif`, plus `grid_{walk,run}_pv_E.gif`. They use 20 ms ticks, so every GIF frame is ≥ 20 ms, and the loop equals the cycle. Jump cells are padded with an end hold.
+- **Expression track** for F, on every frame of every file: `face`, `blink` (0 / .5 / 1) and `mouth`.
+  - walk: smile
+  - run: determined, then effort with mouth open on down/push-off
+  - idle: neutral, blinks on the 2 hold frames, smile when looking at the camera
+  - jump: neutral → determined → effort → joyful at the apex → surprised on the fall → squint on the landing → smile
+- **Posing fixes.**
+  - The idle settles and the jump landing no longer nod forward. The head stays pitched up 3–10° in every frame (measured from FK).
+  - **Head turn/tilt is held for 2 frames** (`head_hold`): idle always, walk at 10/12 frames. This is P's request, to stop the tex-head resample swaps.
+  - Walk snappy timing holds the passing pose (71 / 118 / **126** / 105 ms).
+- **GIF timing.** All comparison GIFs are re-written on 20 ms ticks: `out/cmp_*` (H2 vs round 1), `cmp2_*` (round 1 vs round 2), `cmp3_*` (round 2 vs round 3). Minimum frame times: grids 20 ms, cmp 20–100 ms, R previews 30–70 ms, P pixel GIFs 40–80 ms. (Round 2's motion JSONs were overwritten by this bake. Their pixel renders are kept in `prev/r2/`, and `motion/round2/` has labels only.)
+
+**pxeval gates** (P chain, SE; `out/pxeval3_table.txt`)
+
+| gate | walk 8 / 10 / 12 | walk 6 | run | idle | jump |
+|---|---|---|---|---|---|
+| boil ≤ .02 | **pass** (.005–.018) | fail (.033) | fail (.05–.12; fewer frames boil more: 6 frames .12, 10 frames .05) | **pass** (.009–.016) | fail (.073–.076) |
+
+- **shade_swap ≤ .015 fails everywhere** (.018–.041). That is P's chain on fast surfaces.
+- **FEET_JITTER** comes from the SE stride perspective, as P found.
+- Takeaway: more frames per cycle means less boil. The 10/12-frame walk and the 16-frame idle are the cleanest.

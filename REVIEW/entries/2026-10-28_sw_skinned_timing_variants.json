@@ -1,0 +1,70 @@
+{
+ "id": "2026-10-28_sw_skinned_timing_variants",
+ "date": "2026-10-28",
+ "project": "swordswoman",
+ "kind": "experiment",
+ "status": "needs-review",
+ "title": "Pick the timing/length: walk 6/8/10/12, run 6/8/10, idle 8/12/16 (snappy holds vs even), jump anticipation/hang short vs long",
+ "question": "Owner: 'test different timings and lengths for the animation depending on the action; we want more expression, bouncy, liveliness'. Which frame count and timing feel per action?",
+ "method": "24 motion variants (motion/variants/, scripts/mvariants.py): the same round-3 motion sampled phase-correctly at different frame counts; 'snappy' puts samples on key poses so display times become holds (walk holds the passing pose), 'even' is uniform. Jump: crouch hold x0.5/x2.5 and apex hang x0.6/x1.8 (time-warped keys, springs in real time). Each rendered through R's renderer + P's pixel chain (SE) and as smooth previews (SE, E). Labelled grid GIFs on 20 ms ticks (every frame >= 20 ms, loop = cycle).",
+ "result": "pxeval boil (gate .02): walk 8/10/12 .005-.018 pass, walk 6 .033; idle all pass (.009-.016); run .05 (10 fr) to .12 (6 fr); jump ~.075. More frames = less boil. shade_swap fails everywhere (P's chain).",
+ "verdict": "Owner to pick one cell per action (letters in each grid). M's suggestion: walk 10 snappy or 8 snappy, run 8 snappy (10 for smoothness), idle 12 holds, jump long anticipation + long hang.",
+ "scores": {
+  "walk boil 6/8/10/12 (snappy)": ".033/.018/.010/.007",
+  "run boil 6/8/10 (snappy)": ".112/.076/.056",
+  "idle boil 8/12/16 (holds)": ".010/.013/.011"
+ },
+ "media": [
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/grid_walk_px.gif",
+   "caption": "walk variants, pixel chain 3x (A-H: frames x feel)"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/grid_run_px.gif",
+   "caption": "run variants, pixel chain 3x"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/grid_idle_px.gif",
+   "caption": "idle variants, pixel chain 3x"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/grid_jump_px.gif",
+   "caption": "jump variants (anticipation x hang), pixel chain 3x"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/grid_run_pv_E.gif",
+   "caption": "run variants, smooth preview E (the view the owner called stiff)"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/grid_walk_pv_E.gif",
+   "caption": "walk variants, smooth preview E"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/grid_walk_pv_SE.gif",
+   "caption": "walk variants, smooth preview SE"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/grid_run_pv_SE.gif",
+   "caption": "run variants, smooth preview SE"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/grid_idle_pv_SE.gif",
+   "caption": "idle variants, smooth preview SE"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/grid_jump_pv_SE.gif",
+   "caption": "jump variants, smooth preview SE"
+  }
+ ],
+ "links": [
+  {
+   "href": "exp/2026-10-28_sw_skinned/NOTES.md",
+   "label": "NOTES (M round 3)"
+  },
+  {
+   "href": "exp/2026-10-28_sw_skinned/motion/out/pxeval3_table.txt",
+   "label": "pxeval per variant"
+  }
+ ],
+ "next": "Owner picks; M promotes the picked variants to motion/<act>.json; F adds faces from the expression track."
+}
