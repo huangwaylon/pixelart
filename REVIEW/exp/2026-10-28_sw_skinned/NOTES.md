@@ -255,6 +255,13 @@ Coordination contract: `CONTRACT.md`. This experiment has two roles: R (rigger: 
 - The hair surface is lumpy (voxel source), so the cel bands blotch.
 - In E/NE the bow lobes read as red "horns" edge-on.
 
+- **r8c (round-5 follow-up).**
+  - Profile: curtain cut y > −0.02 / |x| ≥ .19, face slab y < −0.02, locks at y −0.03, fmask normal_y < 0.35.
+  - Bow lobes: deep, angled back, level tips.
+  - Hair shell: Taubin smoothing.
+  - face_mats.json: explicit `ramps`.
+  - QA: `rig/qa/r5c_head_QA.png` (S/SE/E/NE only, per the cost note).
+
 ### Known issues / next
 - **Placeholder head.** The H2 head has a ragged hair/skin boundary and blob eyes. Use `--stamp` for now. The proper fix is heads96 layers that turn with the head.
 - **SE body yaw.** The master SE is drawn more frontal than a true 45° camera. `--yaw=-15` approximates this (not the default).

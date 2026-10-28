@@ -29,8 +29,8 @@ fz_ = G[..., 2]; fy_ = G[..., 1]; fx_ = G[..., 0]
 # forehead profile: the hull front above the eyes is the master's bang overhang, not skin -> clip the face to a natural forehead that slopes
 # back into the cranium (y_clip -0.228 up to the eyes, easing to the ellipsoid front at z 1.76)
 FTOP = 1.772; ycl = np.where(fz_ < 1.62, -0.228, -0.228 + np.clip((fz_ - 1.62) / 0.14, 0, 1) * 0.055)
-face = keep & (fz_ < FTOP) & (fy_ < 0.06) & (np.isin(cls, ['skin', 'eyes']) | (fy_ < -0.045)) & (np.abs(fx_) < 0.205) & (fy_ >= ycl)
-curtain = keep & (np.abs(fx_) >= 0.205) & (fy_ < -0.045) & (fz_ < FTOP) & (fz_ > 1.36)  # removed: hair in front of the cheek line
+face = keep & (fz_ < FTOP) & (fy_ < 0.06) & (np.isin(cls, ['skin', 'eyes']) | (fy_ < -0.02)) & (np.abs(fx_) < 0.205) & (fy_ >= ycl)
+curtain = keep & (np.abs(fx_) >= 0.190) & (fy_ < -0.02) & (fz_ < FTOP) & (fz_ > 1.36)  # r8c: side hair starts behind the cheek line (profile face reads)  # removed: hair in front of the cheek line
 face = nd.binary_opening(face, iterations=1)
 skull = (ell & keep) | face
 skull = nd.binary_closing(skull, iterations=2) & (keep | ell)

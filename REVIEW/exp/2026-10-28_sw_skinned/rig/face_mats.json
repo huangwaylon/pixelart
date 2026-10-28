@@ -1,5 +1,5 @@
 {
- "_doc": "R round 5: matid colours (sRGB, exact) for the guide pass. Body/hair mats = hx.MATS (unchanged); the face mats appear only through the face textures (rig/face_tex or F's face/tex3d). 'skin' is the face base. P: treat them as ordinary materials (suggested ramps: eye_white W, iris h/g/L, lash K, mouth m/R, blush k). Round 5: F's extra mats added (iris_top, iris_low, brow, mouth_in, nose; F's suggested ramps: lash KKK, iris_top hhh, iris ggg, iris_low LLL, eye_white WWW, brow ggg, mouth mmm, mouth_in RRR, blush kkk, nose SSS).",
+ "_doc": "R round 5: matid colours (sRGB, exact) for the guide pass. Body/hair mats = hx.MATS (unchanged); the face mats appear only through the face textures (rig/face_tex or F's face/tex3d). 'skin' is the face base. P: treat them as ordinary materials (suggested ramps: eye_white W, iris h/g/L, lash K, mouth m/R, blush k). Round 5: F's extra mats added (iris_top, iris_low, brow, mouth_in, nose; F's suggested ramps: lash KKK, iris_top hhh, iris ggg, iris_low LLL, eye_white WWW, brow ggg, mouth mmm, mouth_in RRR, blush kkk, nose SSS). Round 5b: 'ramps' = explicit palette ramp (dark, base, light) per face mat. The m96 iris is brown-grey by design (h top, g mid, L low light); use these keys, not the hair/skin ramps.",
  "mats": {
   "eye_white": [
    236,
@@ -98,5 +98,17 @@
    128,
    162
   ]
+ },
+ "ramps": {
+  "eye_white": "WWW",
+  "iris_top": "hhh",
+  "iris": "hgg",
+  "iris_low": "gLL",
+  "lash": "KKK",
+  "brow": "ggg",
+  "mouth": "mmm",
+  "mouth_in": "RRR",
+  "blush": "kkk",
+  "nose": "SSS"
  }
 }

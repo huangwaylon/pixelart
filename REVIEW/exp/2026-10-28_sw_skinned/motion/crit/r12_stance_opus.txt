@@ -1,0 +1,10 @@
+STANCE: 7/10
+MOTION: 7/10
+
+- **Walk:** Mostly fixed. The torso is t+1 to +2 and the head sits forward (o 2–4). Remaining problems: in f0/f4 (contact) the chin tips up (h−2); raise it about 3° to reach h+1. In the profile row the arms swing mostly behind the body, which pushes the chest forward and makes her read as leaning back. Bring the forward arm swing about 10° further in front of the hip.
+- **Idle:** Upright (t 0 to +1) and the head is fine. The contrapposto is hard to see in the SE view: the knees look locked and the hips level. Add about 3–4° of pelvis roll toward the weight leg, bend the free knee about 8–10°, and tilt the shoulders about 2° the opposite way.
+- **Run:** OK. The lean is t+12 to +14. Minor: in f0/f4 the chin is up (h−2); make it h 0 to +2.
+- **Jump:** In f5–f7 (rise and apex) the torso leans back t−4/−5, and the profile shows an arched back at the apex. Bring it to t 0 to +2. The rest is OK.
+- **Dash:** OK. Anticipation is t−8, the burst is t+26, and the brake is t−8. In f3/f4 (SE) the trailing arm is flung straight back, which looks stiff; bend the elbow about 30°.
+- **Hurt:** OK. The recoil back (t−19) is allowed and the recovery is clean.
+- **All actions:** The head measures about 3 cm forward, but in profile the big mass of hair behind the skull still makes the head look jutted back. Cut the back-hair volume by about 15–20% or move it about 1 cm forward.

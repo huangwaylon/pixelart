@@ -30,7 +30,7 @@ for it in range(int(os.environ.get("HEADMAJ", "1"))):
     fmat[headf] = np.array(HM, dtype=object)[fv.argmax(1)]
 # round 5: face zone on the skull (front-facing, z 1.38..1.80, |x| < 0.23) -> skin + face texture (forehead under the fringe included)
 _P3 = V[np.array([f[:3] for f in FC])]; _nr = np.cross(_P3[:, 1] - _P3[:, 0], _P3[:, 2] - _P3[:, 0]); _nr /= np.linalg.norm(_nr, axis=1, keepdims=True) + 1e-12
-_cz = _P3.mean(1); FZ = (flab == "head") & (_cz[:, 2] > 1.36) & (_cz[:, 2] < 1.80) & (np.abs(_cz[:, 0]) < 0.235) & (_nr[:, 1] < -0.05) & (_cz[:, 1] < -0.04)  # F: all front skin, chin up to under the fringe
+_cz = _P3.mean(1); FZ = (flab == "head") & (_cz[:, 2] > 1.36) & (_cz[:, 2] < 1.80) & (np.abs(_cz[:, 0]) < 0.235) & (_nr[:, 1] < 0.35) & (_cz[:, 1] < 0.0 - float(G.get("head_fwd", 0.0)))  # F: all front skin + the cheek sides (profile views)
 fmat[FZ] = "skin"; fmat[(flab == "head") & ~FZ & (fmat == "skin") & ((_cz[:, 2] > 1.70) | (np.abs(_cz[:, 0]) > 0.215))] = "hair"  # scalp/temple outside the face = hair colour
 # per-vertex material (majority of incident faces) -> used for hair masks
 vm_votes = {}

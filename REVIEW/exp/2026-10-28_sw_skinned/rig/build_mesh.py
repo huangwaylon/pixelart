@@ -92,6 +92,12 @@ for i, m_ in enumerate(_h3["SL"]): _ca.data[i].color_srgb = [x / 255 for x in MA
 _bm = bmesh.new(); _bm.from_mesh(_me); bmesh.ops.recalc_face_normals(_bm, faces=_bm.faces); _bm.to_mesh(_me); _bm.free()
 imp["head"] = bpy.data.objects.new("head", _me); bpy.context.scene.collection.objects.link(imp["head"])
 HSV = np.array(_h3["HV"], float); HSF = np.array(_h3["HF"], int); HSL = np.array([str(m_) for m_ in _h3["HL"]])
+# r8c: Taubin-smooth the hair shell (the voxel surface was lumpy -> blotchy cel bands); volume-preserving lambda/mu
+_E = np.concatenate([HSF[:, [0, 1]], HSF[:, [1, 2]], HSF[:, [2, 0]]]); _deg = np.bincount(_E.ravel(), minlength=len(HSV)).astype(float)
+for _it in range(int(os.environ.get("HAIRSMOOTH", "14"))):
+    for _lam in (0.55, -0.58):
+        _acc = np.zeros_like(HSV); np.add.at(_acc, _E[:, 0], HSV[_E[:, 1]]); np.add.at(_acc, _E[:, 1], HSV[_E[:, 0]])
+        HSV = HSV + _lam * (_acc / np.maximum(_deg, 1)[:, None] - HSV)
 HMAT = HSL; HV = HSV  # bone anchors (fringe, back hair, bow, bun) come from the hair shell
 def back_y(x0, z0, w=0.03):
     m = (np.abs(HV[:, 0] - x0) < w) & (np.abs(HV[:, 2] - z0) < 0.015); return float(HV[m, 1].max()) if m.any() else 0.2
@@ -154,7 +160,7 @@ G["sock_top"] = 0.622; G["sock_band"] = 0.026; G["boot_top"] = 0.196
 for side, sx in (("L", 1), ("R", -1)):
     zs = [1.60, 1.47, 1.38, 1.30]; rr_ = [(.030, .034), (.026, .030), (.020, .024), (.010, .013)]
     xs = [0.5 * sum(max(side_x(q_, -0.095, 1.60 + DZ) - 0.035, 0.19) for q_ in (1, -1)), 0.226, 0.232, 0.232]  # mirror-symmetric (H2 head is not)
-    lk = [([sx * x, -.075 - HEAD_FWD, z + DZ], ra, rb) for x, z, (ra, rb) in zip(xs, zs, rr_)]
+    lk = [([sx * x, -.030 - HEAD_FWD, z + DZ], ra, rb) for x, z, (ra, rb) in zip(xs, zs, rr_)]  # r8c: locks behind the cheek line
     loft("lock_" + side, [{"c": c, "ra": ra, "rb": rb} for c, ra, rb in lk], [1, 0, 0], n=24, cap1="round")
     G["lock." + side] = [c for c, _, _ in lk]
 # bow (knot + lobes) and bun bone anchors from the hull's master-coloured regions
@@ -238,9 +244,9 @@ fmat = [mat_of(flab[i], ffid[i], FC[i]) for i in range(len(FB))]
 _kn = np.array(G["bow_knot"]); _kn[1] = back_y(0.0, _kn[2]) + 0.012; G["bow_knot"] = _kn.tolist(); BOWO = []
 BOWO.append(loft("bow_knot_m", [{"c": [0, _kn[1] - 0.025, _kn[2]], "ra": .036, "rb": .040}, {"c": [0, _kn[1] + 0.025, _kn[2]], "ra": .034, "rb": .038}], [1, 0, 0], n=28, cap0="round", cap1="round"))
 for side, sx in (("L", 1), ("R", -1)):
-    p0 = _kn + np.array([sx * 0.03, 0.0, 0.0]); p2 = np.array([sx * 0.200, _kn[1] - 0.025, _kn[2] + 0.045]); p1 = (p0 + p2) / 2 + np.array([0, 0.012, 0.012])
+    p0 = _kn + np.array([sx * 0.03, 0.0, 0.0]); p2 = np.array([sx * 0.185, _kn[1] + 0.055, _kn[2] - 0.005]); p1 = (p0 + p2) / 2 + np.array([0, 0.03, 0.025])  # r8c: lobes angle back, tips level (read as a bow edge-on)
     G["bow"][side] = [p0.tolist(), p1.tolist(), p2.tolist()]
-    BOWO.append(loft("bow_lobe_" + side, [{"c": p0.tolist(), "ra": .024, "rb": .034}, {"c": p1.tolist(), "ra": .030, "rb": .066}, {"c": p2.tolist(), "ra": .022, "rb": .060}],
+    BOWO.append(loft("bow_lobe_" + side, [{"c": p0.tolist(), "ra": .036, "rb": .036}, {"c": p1.tolist(), "ra": .058, "rb": .064}, {"c": p2.tolist(), "ra": .046, "rb": .056}],
                      [0, 1, 0], n=32, cap1="round", p=2.2))
     zz = [_kn[2] - .03, _kn[2] - .16, _kn[2] - .29]; xs_ = [sx * .025, sx * .048, sx * .066]
     rb_ = [[x, back_y(x, z) + .014, z] for x, z in zip(xs_, zz)]

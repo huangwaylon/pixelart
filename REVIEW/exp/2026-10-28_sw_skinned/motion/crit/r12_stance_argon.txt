@@ -1,0 +1,9 @@
+STANCE: 7/10
+MOTION: 8/10
+
+- **walk**: f0, f4 head pitch is tilted up (`h-2`); pitch chin down +2 to +3 deg so the head stays level on contact. Torso pitch (`t+1` to `t+2`) could use +2 deg more forward lean (`t+3` to `t+4`) to completely kill the stiff, backward-leaning feel.
+- **idle**: Torso and head pitch (`t+0..+1`, `h+0..+2`, `o+2.6..+3.8`) hit the target, but in SE view both hands stay symmetrically cupped at the belly across all 12 frames—relax the arms down to the sides and add subtle hip/shoulder contrapposto tilt for a natural feminine stance.
+- **run**: f0, f1, f4, f5 head pitches up (`h-2`) with a high torso (`t+12..+14`), making the chin jut out; pitch head down +3 to +4 deg (`h+1..+2`) to align with the forward drive.
+- **jump**: f5–f7 (rise/apex) torso leans back (`t-4` to `t-5`) with chin up (`h-2`); reduce backward arch by +4 deg forward (`t+0`) and level the head (+2 deg down).
+- **dash**: OK (anticipation lean-back `t-8` and brake `t-8` are well-controlled; burst lean `t+26` reads well).
+- **hurt**: OK (recoil `t-19` and recovery back to `t+0..+1, h+1` work well).

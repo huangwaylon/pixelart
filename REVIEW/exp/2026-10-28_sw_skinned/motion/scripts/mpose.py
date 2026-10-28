@@ -18,7 +18,7 @@ def slerp_m(A, B, t):
     r = R.from_matrix(np.stack([A, B])); return Slerp([0, 1], r)([t]).as_matrix()[0]
 
 
-HEAD_PITCH_MIN = -2.0   # deg (+ = chin down)
+HEAD_PITCH_MIN = 0.0   # deg (+ = chin down)
 NECK_FWD = 4.0         # deg, natural forward neck angle
 
 

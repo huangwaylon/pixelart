@@ -59,8 +59,8 @@ SX, SY = abs(_j[0]), abs(_j[1])   # texels per sprite px (x, y) at the face cent
 
 
 class Canvas:
-    def __init__(self):
-        self.im = Image.new('RGBA', (TEXN, TEXN), (0, 0, 0, 0)); self.d = ImageDraw.Draw(self.im)
+    def __init__(self, size=None):
+        self.im = Image.new('RGBA', size or (TEXN, TEXN), (0, 0, 0, 0)); self.d = ImageDraw.Draw(self.im)
 
     def col(self, m): return MATS[m][0] + (255,)
 
@@ -158,10 +158,10 @@ BROW_OF = {'neutral': 'neutral', 'blink_half': 'neutral', 'blink_closed': 'neutr
            'determined': 'determined', 'effort': 'determined', 'shout': 'determined', 'focused': 'focused', 'pain': 'pain', 'embarrassed': 'embarrassed'}
 
 
-def brows(cv, kind):
+def brows(cv, kind, only=None):
     pts = BROWS[BROW_OF.get(kind, 'neutral')]
     dy = float(os.environ.get('F3D_BROWDY', '0.6'))   # brows a little under the fringe edge (the chain's hair|face line sits on the edge)
-    for side in 'LR':
+    for side in (only or 'LR'):
         p = [(x, y + dy) for x, y in pts] if side == 'L' else [(2 * CX - x, y + dy) for x, y in pts]
         cv.stroke('brow', p, K['brow'], taper=(0.9, 1.1))
 
@@ -214,6 +214,56 @@ def face_key(expr, blink=None, mouth_=None):
     return k + (f'+b{blink}' if blink in ('half', 'closed') else '') + (f'+m{mouth_}' if mouth_ in ('open', 'closed') else '')
 
 
+# ---------------------------------------------------------------- profile (E / W) side features
+# The masters draw the profile eye/brow/blush much further round the head than the S design: in E the S-design eye sits at the front corner
+# and foreshortens to nothing (P: "no face in E").  The side of the head (texture u < SIDE_U, mirrored for W) carries the m96 E-profile
+# eye/brow/blush, placed by INVERSE warping through the E calibration (out/calR/rest_E: texel -> E sprite px), so they land on the E master
+# position and size.  In S that strip is the cheek edge under the side locks; in SE it extends the near eye's outer corner (the 3D "wrap" cheat).
+SIDE_U = int(os.environ.get('F3D_SIDEU', '72')); E_OFF = 16   # E master profile eye x0 72 = S left eye x0 56 + 16
+_SIDE = None
+
+
+def _side_map():
+    global _SIDE
+    if _SIDE is None:
+        p = os.path.join(HERE, 'out', 'calR', 'rest_E_f00_guide.png')
+        if not os.path.exists(p): _SIDE = False; return _SIDE
+        al = json.load(open(os.path.join(EXP, 'rig', 'align.json')))['E']; lift = (al['dx'] - al.get('reg_dx', al['dx']), al['dy'] - al.get('reg_dy', al['dy']))
+        a = np.array(Image.open(p).convert('RGBA')).astype(float); m = (a[..., 3] > 250) & (np.abs(a[..., 2] - 77) <= 2); ys, xs = np.nonzero(m)
+        sx = (xs + .5) / 8 - 32 + al['dx'] - lift[0]; sy = (ys + .5) / 8 - 32 + al['dy'] - lift[1]
+        u = a[ys, xs, 0] / 255 * TEXN; v = a[ys, xs, 1] / 255 * TEXN
+        from scipy.interpolate import griddata
+        keep = u < SIDE_U + 24
+        gu, gv = np.meshgrid(np.arange(SIDE_U) + .5, np.arange(TEXN) + .5)
+        cx = griddata((u[keep], v[keep]), sx[keep], (gu, gv), method='linear'); cy = griddata((u[keep], v[keep]), sy[keep], (gu, gv), method='linear')
+        _SIDE = (cx, cy)
+    return _SIDE
+
+
+def side_layer(ex, eL):
+    """RGBA texture layer with the E-profile eye/brow/blush for the left side (u < SIDE_U) and its mirror (right side)"""
+    sm = _side_map()
+    if not sm: return None
+    global to_px, SX, SY
+    S0 = 16; ox, oy = 50.0, 42.0
+    keep = (to_px, SX, SY)
+    to_px = lambda c, r: ((c - ox) * S0, (r - oy) * S0); SX = SY = S0
+    try:
+        cv = Canvas((20 * S0, 20 * S0))
+        if ex['blush'] is not None: cv.ellipse('blush', (57.6, 56.0), 1.6 * K['blush'], 0.95 * K['blush'])   # E blush (72,55) front patch, E_OFF-shifted
+        brows(cv, ex['brow'], only='L')
+        eye(cv, 'L', eL)
+    finally:
+        to_px, SX, SY = keep
+    R = np.array(cv.im); cx, cy = sm
+    gx = ((cx - E_OFF) - ox) * S0; gy = (cy - oy) * S0
+    ok = np.isfinite(gx) & np.isfinite(gy) & (gx >= 0) & (gy >= 0) & (gx < R.shape[1]) & (gy < R.shape[0])
+    lay = np.zeros((TEXN, TEXN, 4), np.uint8)
+    sub = np.zeros((TEXN, SIDE_U, 4), np.uint8); sub[ok] = R[gy[ok].astype(int), gx[ok].astype(int)]
+    lay[:, :SIDE_U] = sub; lay[:, TEXN - SIDE_U:] = np.maximum(lay[:, TEXN - SIDE_U:], sub[:, ::-1])
+    return Image.fromarray(lay)
+
+
 def draw(key):
     """key -> (mid RGBA, pv RGBA) images"""
     parts = key.split('+'); e = parts[0]; b = next((p[1:] for p in parts if p.startswith('b')), None); mo = next((p[1:] for p in parts if p.startswith('m')), None)
@@ -230,6 +280,9 @@ def draw(key):
         for c in (56.6, 71.4): cv.poly('eye_white', [(c - 0.45, 54.2), (c + 0.45, 54.2), (c + 0.5, 56.2), (c - 0.5, 56.2)])
     mouth(cv, ex['mouth'])
     mid = cv.im
+    if os.environ.get('F3D_SIDE', '1') == '1':
+        sl = side_layer(ex, eL)
+        if sl is not None: sl.alpha_composite(mid); mid = sl   # front (S design) features win where they overlap
     a = np.array(mid); pv = np.zeros_like(a)
     sys.path.insert(0, '/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_hires3d/scripts')
     import hx

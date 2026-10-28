@@ -155,10 +155,10 @@ WALK = dict(
     swing_pitch=[(0, -40.0), (0.3, -45.0), (0.65, -18.0), (1.0, 18.0)], swing_toe=[(0, 0.0), (0.2, -25.0), (0.65, -15.0), (1.0, 18.0)],
     bob=[(0.0, -0.35), (0.214, -1.0, "flat"), (0.5, 0.2), (0.714, 1.0, "flat"), (0.9, 0.35)], bob_amp=0.026,
     # R5: natural feminine gait from mocap (Bandai walk_feminine_001: pelvis yaw +-8, hip drop +-8, sway .06 L, bob .046 L), torso 2-3 deg forward, head level
-    sway=0.034, sway_ph=0.27, pel_yaw=8.0, pel_yaw_ph=0.02, pel_roll=7.0, pel_roll_ph=0.2, pel_pitch=3.0, pel_pitch_bob=1.0,
-    ch_yaw=5.0, ch_yaw_ph=0.06, ch_roll=3.5, lean=2.5, ch_pitch_bob=1.0, ch_bob_lag=0.08,
+    sway=0.034, sway_ph=0.27, pel_yaw=8.0, pel_yaw_ph=0.02, pel_roll=7.0, pel_roll_ph=0.2, pel_pitch=4.0, pel_pitch_bob=1.0,
+    ch_yaw=5.0, ch_yaw_ph=0.06, ch_roll=3.5, lean=4.5, ch_pitch_bob=1.0, ch_bob_lag=0.08,
     hd_yaw=3.0, hd_roll=-6.0, hd_pitch=1.0, hd_pitch_bob=2.0, hd_bob_lag=0.25,
-    arm_swing=[(0.0, -20.0), (0.5, 26.0)], arm_amp_ref=26.0, lag_upper=0.04, lag_fore=0.0, lag_hand=0.13,
+    arm_swing=[(0.0, -16.0), (0.5, 30.0)], arm_amp_ref=30.0, lag_upper=0.04, lag_fore=0.0, lag_hand=0.13,
     elbow0=22.0, elbow_amp=26.0, elbow_bob=4.0, wrist0=10.0, wrist_amp=22.0, abd0=-20.0, abd_amp=0.0, cross=22.0, cross_back=26.0, elbow_in=12.0,
     sh_elev=3.0, sh_bob=-1.5, sh_fwd=4.0, sh_elev0=-1.0, sh_fwd0=0.0,
     sq_chest=0.03, sq_head=0.01, sq_lag=0.04,
@@ -176,7 +176,7 @@ RUN = dict(
     bob=[(0.0, 0.3), (0.214, -1.0, "flat"), (0.5, 0.6), (0.714, 1.0, "flat"), (0.9, 0.65)], bob_amp=0.032,
     sway=0.014, sway_ph=0.2, pel_yaw=9.0, pel_yaw_ph=0.0, pel_roll=4.0, pel_roll_ph=0.12, pel_pitch=14.0, pel_pitch_bob=2.0,
     ch_yaw=12.0, ch_yaw_ph=0.03, ch_roll=3.0, lean=15.0, ch_pitch_bob=3.0, ch_bob_lag=0.08,
-    hd_yaw=-5.0, hd_roll=-5.0, hd_pitch=1.0, hd_pitch_bob=2.0, hd_bob_lag=0.25,
+    hd_yaw=-5.0, hd_roll=-5.0, hd_pitch=3.0, hd_pitch_bob=2.0, hd_bob_lag=0.25,
     arm_swing=[(0.0, -44.0), (0.5, 52.0)], arm_amp_ref=52.0, lag_upper=0.02, lag_fore=0.0, lag_hand=0.12,
     elbow0=90.0, elbow_amp=14.0, elbow_bob=6.0, wrist0=12.0, wrist_amp=18.0, abd0=-12.0, abd_amp=0.0, cross=22.0, cross_back=14.0, elbow_in=14.0,
     sh_elev=6.0, sh_bob=-3.0, sh_fwd=10.0, sh_elev0=-1.0, sh_fwd0=0.0,
@@ -221,8 +221,8 @@ class Idle:
         z = float(okey([(0, 0.005), (0.05, 0.0), (0.22, 0.0, "flat"), (0.29, -0.010), (0.335, -0.016, "flat"), (0.40, 0.007), (0.47, 0.0, "flat"),
                         (0.72, 0.0, "flat"), (0.79, -0.010), (0.835, -0.016, "flat"), (0.90, 0.007), (0.97, 0.0, "flat"), (1.0, 0.005)], x))
         root = [-0.085 * w, 0.022, self.zbase - 0.008 + z + 0.006 * br]   # R5: centre of mass over the mid-foot/balls
-        pel = (-3.0 * w, 3.0, 9.0 * w)                      # stance hip up/out: tilt down toward the free side
-        chest = (2.0 * w_l, 2.0 - 1.5 * br, -5.0 * w_l)   # R5: natural, slightly forward torso (breath lifts it a touch)     # R2: chest lifted; contrapposto counter-tilt; lifts more on the inhale
+        pel = (-3.0 * w, 3.0, 12.0 * w)                      # stance hip up/out: tilt down toward the free side
+        chest = (2.0 * w_l, 2.0 - 1.5 * br, -6.5 * w_l)   # R5: natural, slightly forward torso (breath lifts it a touch)     # R2: chest lifted; contrapposto counter-tilt; lifts more on the inhale
         look = float(okey([(0, 0), (0.22, 0.0, "flat"), (0.28, -4.0), (0.34, -9.0), (0.40, -15.0), (0.47, -20.0), (0.55, -17.0, "flat"), (0.74, -17.0, "flat"), (0.82, -6.0), (0.88, 2.0), (0.94, 0.0), (1.0, 0)], x))
         nod = float(okey([(0, 0), (0.30, 0.0), (0.36, -2.0), (0.46, -4.0), (0.55, 0.0), (0.8, -1.0), (0.9, -3.0), (1.0, 0)], x))   # R3: no forward nod in the settles
         head = (look, 1.5 + 0.6 * nod - 0.8 * br_l, 8.0 * self.w(t - 0.18) - 1.5 * w_l)   # chin slightly up; tilt toward the free hip, lags the body
@@ -274,7 +274,7 @@ class Jump:
         po = self.po; T0, T1 = self.T0, self.T1
         z = self.pel_z(t)
         root = [0.0, -0.02 * float(okey([(0, 0), (0.14, 1), (0.26, 1), (0.30, 0)], t)), self.zbase + z]
-        lean = float(okey([(0, 1), (0.14, 10.0), (0.22, 11.0, "flat"), (0.26, 3.0), (0.30, -4.0), (0.40, -5.0), (0.46, -6.0), (0.52, -5.0), (0.60, -2.0), (0.66, 1.0), (0.74, 3.0), (0.82, 7.0, "flat"), (0.95, -1.0), (1.03, 4.0), (1.14, 2.0), (1.2, 2.0)], t))   # R5: arch kept small
+        lean = float(okey([(0, 1), (0.14, 10.0), (0.22, 11.0, "flat"), (0.26, 3.0), (0.30, -1.0), (0.40, 1.0), (0.46, 1.5), (0.52, 1.0), (0.60, 1.0), (0.66, 1.5), (0.74, 3.0), (0.82, 7.0, "flat"), (0.95, -1.0), (1.03, 4.0), (1.14, 2.0), (1.2, 2.0)], t))   # R5: arch kept small
         hd = float(okey([(0, 1), (0.14, 4.0), (0.22, 3.0), (0.30, -1.0), (0.40, -2.0), (0.52, -2.0), (0.66, 1.0), (0.74, 2.0), (0.84, 5.0), (0.95, 0.0), (1.03, 2.0), (1.11, 1.0), (1.2, 1.0)], t))   # R5: level head
         spec = dict(root=root, pelvis=(0, 4 + 1.1 * max(lean, 0) + 0.9 * min(lean, 0), 0), chest=(0, lean, 0), head=(0, hd, 0), spine_mix=0.6)   # hips hinge, chest stays open
         sw = float(okey([(0, 2), (0.14, -50.0), (0.22, -58.0, "flat"), (0.26, 50.0), (0.30, 172.0), (0.36, 170.0), (0.44, 150.0), (0.52, 130.0),
@@ -361,7 +361,7 @@ class Dash(_OneShot):
         # arms: cocked back on the anticipation, swept back on the burst (graceful trail), out for balance on the brake
         sw = K([(0, 2), (0.08, -25.0), (0.16, -30.0), (0.20, -72.0), (0.24, -66.0), (0.29, -48.0), (0.45, -20.0), (0.53, 35.0), (0.62, 20.0), (0.74, 4.0), (1.0, 2.0)], t)
         abd = K([(0, -12), (0.16, -6.0), (0.20, 10.0), (0.29, 16.0), (0.45, 25.0), (0.53, 48.0), (0.62, 30.0), (0.74, -4.0), (1.0, -12.0)], t)
-        el = K([(0, 18), (0.16, 50.0), (0.20, 15.0), (0.29, 20.0), (0.45, 25.0), (0.53, 30.0), (0.62, 35.0), (0.74, 22.0), (1.0, 18.0)], t)
+        el = K([(0, 18), (0.16, 50.0), (0.20, 40.0), (0.29, 35.0), (0.45, 25.0), (0.53, 30.0), (0.62, 35.0), (0.74, 22.0), (1.0, 18.0)], t)
         wr = K([(0, 10), (0.16, 25.0), (0.20, -20.0), (0.29, -15.0), (0.45, 5.0), (0.53, -10.0), (0.62, 25.0), (0.74, 10.0), (1.0, 10.0)], t)
         arm = {sd: dict(swing=sw + (8 if sd == "R" else -8) * K([(0, 0), (0.2, 1), (0.6, 0.5), (1, 0)], t), abd=abd, elbow=el, wrist=wr, wrist_out=-10,
                         cross=0.0) for sd in "LR"}

@@ -174,6 +174,15 @@ it in R's status log, and M will then omit it.
   - QA: rig/qa/r5_head_QA.png (8-dir rest at 4x + 1x; SE/S/E head tilt +-15, nod, turn 20, bangs/side/back/bun/bow at the spring limits, blink;
     R's QA chain = r1 chain + face mats as ordinary materials).
 
+- 01:55 R: **rig r8c (round-5 follow-up)** (I: re-render; M: the bone changes are tiny (locks, bow lobes), a re-bake is optional; F: please re-run the UV fit, the fmask is wider).
+  - **Profile faces:** the side bob now starts behind the cheek line (curtain cut at y > -0.02 for |x| >= 0.19) and the face slab reaches y < -0.02. Side locks
+    moved back to y -0.03 (behind the cheek). `fmask` now also covers the cheek sides (normal_y < 0.35), so F's eye, cheek and nose land in profile.
+    E rest shows the eye, cheek and nose (rig/qa/r5c_head_QA.png, S/SE/E/NE + head poses vs the masters).
+  - **Bow:** the lobes have volume (0.07-0.12 deep) and angle back with level tips, so they read as a bow knot edge-on instead of red horns.
+  - **Hair surface:** the hair shell is Taubin-smoothed (14 x lambda/mu, volume kept) on top of the sigma 1.2 voxel surface, which gives fewer lumps and calmer cel bands.
+  - **Iris ramp:** rig/face_mats.json now has "ramps" (dark/base/light per face mat): iris_top hhh, iris hgg, iris_low gLL, eye_white WWW, lash KKK, brow ggg,
+    mouth mmm, mouth_in RRR, blush kkk, nose SSS. The m96 iris is brown-grey (h/g/L) by design, so P should use these keys and not the hair/skin ramps.
+
 ## Status log (M)
 - (M writes here)
 - 2026-10-28 11:50 M: started. Building `motion/scripts/` (FK + analytic 2-bone leg IK + spring sim + own capsule preview). Until `rig/rest_skeleton.json` exists I use a stand-in `motion/standin_skeleton.json` (H2 armature joints rotated to face +Y, so .L = -X, plus guessed secondary chains). Assumptions about R's file: armature object at identity, `roll` = EditBone.roll in radians, bone rest matrix = Blender vec_roll_to_mat3(tail-head, roll); `rot` = pose rotation_quaternion with L = B^-1 * r * B. I will NOT scale pelvis (Blender inherit_scale would shrink the legs); scale only on spine/chest/head, small (0.96..1.04).
