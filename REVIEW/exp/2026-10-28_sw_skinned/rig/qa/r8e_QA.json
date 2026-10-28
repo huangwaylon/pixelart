@@ -1,0 +1,74 @@
+{
+ "master_S_dark": 0.025,
+ "before_S": {
+  "centre_minus_neck_front_px": 0.0,
+  "face_dark_share": 0.074
+ },
+ "after_S": {
+  "centre_minus_neck_front_px": 0.0,
+  "face_dark_share": 0.141
+ },
+ "master_SE_dark": 0.016,
+ "before_SE": {
+  "centre_minus_neck_front_px": -2.32,
+  "face_dark_share": 0.027
+ },
+ "after_SE": {
+  "centre_minus_neck_front_px": -1.82,
+  "face_dark_share": 0.026
+ },
+ "master_E_dark": 0.0,
+ "before_E": {
+  "centre_minus_neck_front_px": -2.68,
+  "face_dark_share": 0.115
+ },
+ "after_E": {
+  "centre_minus_neck_front_px": -0.68,
+  "face_dark_share": 0.08
+ },
+ "master_W_dark": 0.0,
+ "before_W": {
+  "centre_minus_neck_front_px": -2.68,
+  "face_dark_share": 0.0
+ },
+ "after_W": {
+  "centre_minus_neck_front_px": -0.68,
+  "face_dark_share": 0.0
+ },
+ "walk_SE": [
+  [
+   -2.58,
+   0.029
+  ],
+  [
+   1.06,
+   0.014
+  ],
+  [
+   -0.67,
+   0.0
+  ],
+  [
+   -3.05,
+   0.053
+  ]
+ ],
+ "walk_E": [
+  [
+   -0.09,
+   0.119
+  ],
+  [
+   0.7,
+   0.088
+  ],
+  [
+   -0.09,
+   0.073
+  ],
+  [
+   0.7,
+   0.125
+  ]
+ ]
+}

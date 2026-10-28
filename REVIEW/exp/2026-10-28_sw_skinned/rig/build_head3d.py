@@ -32,8 +32,19 @@ FTOP = 1.772; ycl = np.where(fz_ < 1.62, -0.228, -0.228 + np.clip((fz_ - 1.62) /
 face = keep & (fz_ < FTOP) & (fy_ < 0.06) & (np.isin(cls, ['skin', 'eyes']) | (fy_ < -0.02)) & (np.abs(fx_) < 0.205) & (fy_ >= ycl)
 curtain = keep & (np.abs(fx_) >= 0.190) & (fy_ < -0.02) & (fz_ < FTOP) & (fz_ > 1.36)  # r8c: side hair starts behind the cheek line (profile face reads)  # removed: hair in front of the cheek line
 face = nd.binary_opening(face, iterations=1)
+# r8e (F): anime FACE PLANE. Front profile yf(z) = the old face's midline front (incl. the nose blob) + a slight lip bump; across x the front
+# wraps back as a superellipse  y = yf(z) + D (|x|/W)^P  (flat between the eyes, turning ~35 deg at the eyes and ~55 deg at the cheeks), so
+# the profile views see the outer eye, cheek and mouth on surfaces that face partly sideways while S/SE keep a frontal face.
+FW, FD, FP = 0.218, 0.20, float(os.environ.get("FACEP", "3.2"))
+mid = face & (np.abs(fx_) < 0.02); yf = np.where(mid, fy_, 9.0).min((0, 1))  # per z
+zs1 = xs[2]; ok = yf < 1.0; yf = np.interp(zs1, zs1[ok], yf[ok]) if ok.any() else np.full_like(zs1, -0.22)
+yf = yf - 0.006 * np.exp(-((zs1 - 1.462) / 0.012) ** 2)  # lip bump
+zlow = np.where(face, fz_, 9.0).min((1,))  # per (x, z)->x: chin line per x column
+zlo_x = zlow.min(1); okx = zlo_x < 9; zlo_x = np.interp(xs[0], xs[0][okx], zlo_x[okx]) if okx.any() else np.full_like(xs[0], 1.40)
+yfront = yf[None, None, :] + FD * (np.abs(fx_) / FW) ** FP
+face = (np.abs(fx_) < FW) & (fz_ < FTOP) & (fz_ >= zlo_x[:, None, None]) & (fy_ >= yfront) & (fy_ < 0.06) & (fy_ >= ycl - 0.01)
 skull = (ell & keep) | face
-skull = nd.binary_closing(skull, iterations=2) & (keep | ell)
+skull = nd.binary_closing(skull, iterations=2) & (keep | ell | face)
 # ---------------- hair shell
 hair = keep & ~skull
 # full fringe layer over the forehead: in front of the skull, |x| < 0.205, from the hairline down to the brow line, clumped tips
@@ -48,7 +59,8 @@ thick = 0.040 * np.clip((fz - tipz) / 0.05, 0.6, 1.0)  # thick, even clumps lyin
 front = (fy <= syF + 0.02) & (np.abs(fx) < 0.215) & (syF < 1.0)
 fr = front & (fz >= tipz) & (fz <= 1.94) & (fy >= syF - thick)  # the fringe lies on the forehead (no visor out to the hull front)
 visor = front & (fz > 1.60) & (fz < 1.95) & (fy < syF - thick)  # hull volume in front of the fringe layer (master bang overhang) -> removed
-hair = keep & ~skull & ~curtain & ~visor & ~(front & (fz < tipz) & (fz > 1.60))
+facecut = (np.abs(fx_) < FW) & (fz_ < FTOP) & (fz_ > 1.34) & (fy_ < yfront) & (fy_ < 0.0)  # hull volume in front of the new face plane -> empty
+hair = keep & ~skull & ~curtain & ~visor & ~facecut & ~(front & (fz < tipz) & (fz > 1.60))
 hair = hair | (fr & ~skull)
 hair = nd.binary_closing(hair, iterations=1) & ~nd.binary_erosion(skull, iterations=1)
 # r8d: profile balance (owner: "head looks jutted back"). Compress the back-of-head hair depth (incl. the bun overhang) toward the head:

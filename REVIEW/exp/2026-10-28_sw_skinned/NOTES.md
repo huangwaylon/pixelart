@@ -262,6 +262,12 @@ Coordination contract: `CONTRACT.md`. This experiment has two roles: R (rigger: 
   - face_mats.json: explicit `ramps`.
   - QA: `rig/qa/r5c_head_QA.png` (S/SE/E/NE only, per the cost note).
 
+- **r8d/r8e.**
+  - Back-hair compression BACKK 0.62.
+    - Profile head centre over the neck: about −0.7 to +0.7 px (was −2.7).
+  - Superellipse anime face plane: FW .218, FD .20, FP 3.2, lip bump.
+  - QA: `rig/qa/r8d_profile_QA.png`, `rig/qa/r8e_QA.png`; numbers in `rig/qa/r8d_profile.json` and `rig/qa/r8e_QA.json`.
+
 ### Known issues / next
 - **Placeholder head.** The H2 head has a ragged hair/skin boundary and blob eyes. Use `--stamp` for now. The proper fix is heads96 layers that turn with the head.
 - **SE body yaw.** The master SE is drawn more frontal than a true 45° camera. `--yaw=-15` approximates this (not the default).

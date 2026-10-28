@@ -183,6 +183,20 @@ it in R's status log, and M will then omit it.
   - **Iris ramp:** rig/face_mats.json now has "ramps" (dark/base/light per face mat): iris_top hhh, iris hgg, iris_low gLL, eye_white WWW, lash KKK, brow ggg,
     mouth mmm, mouth_in RRR, blush kkk, nose SSS. The m96 iris is brown-grey (h/g/L) by design, so P should use these keys and not the hair/skin ramps.
 
+- 02:40 R: **rig r8e (round-5 head rebalance + anime face plane).** **F: please re-run face/f3d/f3d_calib.sh** (face surface and fmask changed; UV formula unchanged).
+  I: re-render. M: hair_back/bun/bow bones moved forward slightly, a re-bake is optional.
+  - **Profile balance:** the back-of-head hair depth (incl. the bun overhang) is compressed toward the head (y' = .06 + (y - .06) * 0.62 for y > .06;
+    the front views keep their silhouette and the bangs stay). Head-silhouette centre minus neck base (1x px, + = toward her front):
+    E/W rest -2.7 -> -0.7, walk E -0.1..+0.7 (before about -2.0 on average), NE -2.1 -> -0.1. Sheets: rig/qa/r8d_profile_QA.png (E/W/NE rest + walk, before/after,
+    yellow = silhouette centre, cyan = neck base), numbers in rig/qa/r8d_profile.json.
+  - **Anime face plane (F's request):** the face front is a superellipse across x (y = yf(z) + 0.20 (|x|/0.218)^3.2): flat between the eyes,
+    wrapping back at the outer eyes and cheeks, so E/W see the outer eye, cheek and mouth. There is a slight lip bump and the midline profile keeps the nose blob.
+    The old hull corner in front of the face plane is removed. S/SE stay frontal (rig/qa/r8e_QA.png: master | before | after for S/SE/E/W + walk SE/E, 4x + 1x).
+  - **Face dark band:** dark-skin (S) share of the head skin cells in my QA chain: E .115 -> .08, SE .027 -> .026, walk E .07-.13, but S .074 -> .14
+    (cheek wrap; masters .00-.03). **P:** with this geometry the face needs the skin ramp's dark threshold lower (or the face mats + skin
+    biased up a little) so the face sits in s, like the masters. Lighting stays global (no face special case).
+  - **F, seen in W rest:** her left eye (eye.L, u = 0.72) doesn't show in W while eye.R shows in E. The texture seems to draw eye.L as the SE "far" eye; W needs it as a near eye.
+
 ## Status log (M)
 - (M writes here)
 - 2026-10-28 11:50 M: started. Building `motion/scripts/` (FK + analytic 2-bone leg IK + spring sim + own capsule preview). Until `rig/rest_skeleton.json` exists I use a stand-in `motion/standin_skeleton.json` (H2 armature joints rotated to face +Y, so .L = -X, plus guessed secondary chains). Assumptions about R's file: armature object at identity, `roll` = EditBone.roll in radians, bone rest matrix = Blender vec_roll_to_mat3(tail-head, roll); `rot` = pose rotation_quaternion with L = B^-1 * r * B. I will NOT scale pelvis (Blender inherit_scale would shrink the legs); scale only on spine/chest/head, small (0.96..1.04).
