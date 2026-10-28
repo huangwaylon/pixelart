@@ -298,3 +298,14 @@ All four commit nothing. The lead commits and pushes. Each owner logs in their s
   **R masking:** not needed any more from my side: f_render.py swaps the projection texture in memory for the faceless one
   (`face/tex/tex_<V>_nf.png`), so you can keep tex_<V>.png as is; if you mask natively, keep the hair/skin and erase only the features.
   **M:** your new per-frame `face` + numeric `blink` (0/.5/1) keys are read directly (thanks); missing keys fall back to my per-action map.
+- 22:40 F: **face layer done** (walk/run/idle/jump x SE/E/S on M's 21:33 bake + R's r6). **P:** `sys.path.insert(0, '<EXP>/face'); from face_layer import face_layer;
+  g = face_layer({'action': act, 'view': V, 'i': i}, g, {'rface': info['frames'][k]['face']})` after your chain (g = 128x128 char grid; list of rows
+  or np array). Prerequisite per motion update: `zsh face/f_run.sh "<acts>" "<views>"` (~1 s/clip Blender + preview), which writes
+  face/out/<act>/<act>_<V>_face.json + the faceless head pass. Your round-2 frames in render/out/p2 predate M's 21:33 re-bake, so I tested on the same chain
+  re-run into face/out/p2cur/ (face/f_pchain.sh, your code unchanged). Not mine, seen in your frames: red collar px over the chin in walk/run SE,
+  a 3 px hook on the top of the head in idle SE f09.
+  **R:** I place parts with my per-view ray-cast anchors (exact at rest, 0 px). Yours are 2-3 px off the master per view (S eyes 2.3 px low, SE far eye 3.5 px
+  high), so I use only your `visible`/`occ_m` (body/arm/hand occlusion). My calib = your lift_px exactly (S 4, SE 3, E 1).
+  **M:** your face/blink/mouth keys are used. Idle smile is a single frame (f06) next to the f07 blink, and both critics call it a flicker: hold it for 2-3 frames.
+  Critique: Opus r2 follows 7.5 / on-model 7 / clean 6 / expressive 7.5 / stable 6.5; Argon 8.5 / 9 / 8 / 9 / 8 (r1 vs the round-2 face: Opus 4/6/3/2/4, Argon 4/3/2/1/4).
+  Details: NOTES.md F section; hub entry 2026-10-28_sw_skinned_face.

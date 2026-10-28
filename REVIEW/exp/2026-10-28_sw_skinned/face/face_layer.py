@@ -126,7 +126,8 @@ def plan_clip(fj, act, loop=True):
             if abs(hd['roll']) < ROLL_SPLIT:
                 ym = int(math.floor((o['eye.0'][1] + o['eye.1'][1]) / 2 - G[1] + 0.5)); y0 = y1 = ym
             else:
-                lim = 2 if abs(hd['roll']) >= 10 else 1
+                ex_ = FL.resolve(*expr_for(act, f))
+                lim = 2 if abs(hd['roll']) >= 10 and ex_['eye'] not in FL.CLOSED_EYES | {'blink_half', 'pain'} else 1
                 if abs(y0 - y1) > lim: y1 = y0 + (lim if y1 > y0 else -lim)
             R['eye.0'], R['eye.1'] = (x0, y0), (x1, y1)
         # face proportions: mouth/nose stay within 1 px (y) of the eye-pair mean and 1 px (x) of the eye-pair centre
@@ -213,7 +214,11 @@ def face_cells(V, parts, G, R, kinds, ex):
                 out.append((x0 + i, y0 - 3 + j, 's', 'window', n_))
     if 'mouth' in parts:
         mx, my = parts['mouth']['origin']; rx, ry = R['mouth']; mx += G[0] + rx; my += G[1] + ry
-        for j, r in enumerate(FL.mouth_tmpl(ex['mouth'])):
+        mt = FL.mouth_tmpl(ex['mouth'])
+        if V in ('E', 'W'):   # profile: 3 px mouth set 1 px back from the muzzle edge (a 4 px mouth touched the jaw outline)
+            mt = [r[:3] if V == 'E' else r[1:] for r in mt]; mx += -1 if V == 'E' else 1
+            mt = [r if any(c not in '._' for c in r) else r for r in mt]
+        for j, r in enumerate(mt):
             for i, c in enumerate(r):
                 if c == '_': continue
                 out.append((mx + i, my + j, 's' if c == '.' else c, 'skin', -1))

@@ -1,2 +1,20 @@
 (eval):1: can't change option: zle
 (eval):1: can't change option: zle
+**Round 2 scores for the NEW face-layer row (out of 10)**
+
+| | Score | Notes |
+|---|---|---|
+| (a) Face follows head | **7.5** | The eye pair and mouth now stay on the 3D anchors through head bob and roll (walk SE, idle S f04–f09). The face no longer smears or slides off like the round-2 baked texture. |
+| (b) On-model vs m96 | **7** | Eye shape, lashes and blush match m96. Brows are thicker and darker than the master, and the E profile has lost the master's nose and lip bump. |
+| (b2) Clean | **6** | Brow strokes run into the fringe, there are stray pixels, and the mouth shapes are muddy. |
+| (c) Expressiveness per action | **7.5** | The jump arc reads well: determined, then effort, then joyful ^^, surprised "o", squint >< on landing, then smile. Run effort is readable but comes across as grumpy rather than straining. |
+| (d) Temporal stability | **6.5** | Placement is steady. The problem is expression changes that last only one frame. |
+
+**Top 4 remaining problems**
+
+1. **Single-frame expression pops in idle.** In idle S and idle SE, f06 is a smile sitting between neutral f05 and a blink at f07, so it reads as a flicker. Fix: hold any non-neutral expression for at least 3 frames, never put it next to a blink, or drop it from idle entirely.
+2. **Brows merge with the fringe.** Run SE f02, f05 and f06, and run E f05 and f06: the V-brow strokes are 2 px thick and touch the dark hair, so the forehead reads as a dark smudge. Fix: use 1 px brows in the dark-skin shade, not the outline colour, and keep a 1 px skin gap above the eye lashes.
+3. **Mouth shapes.** Effort is an open trapezoid or wavy squiggle (run SE f01, f02, f06; jump S f02–f03) and reads as a pout. Shout on the expression sheet has heavy red lips. Fix: make effort a flat 3–4 px dark slit with 1 px of teeth or gap, cap the open mouth at 3×2, and use the existing mouth-shadow colour instead of saturated red.
+4. **Profile and far-eye edge contact.** In run E f01–f07 the mouth line touches the silhouette edge and there is no nose bump. In walk SE f03–f04 the far eye's lashes fuse with the cheek outline. Fix: per direction, reserve a 1 px skin margin inside the outline. For the E view, stamp m96's nose and lip contour pixels as their own face part, attached to the mouth anchor.
+
+There's also a small one: jump S f06–f07 has a dark band at the bottom of the frame, which is probably the strip's crop box. Check that the frame bounds are fixed.

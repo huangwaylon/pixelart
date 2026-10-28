@@ -1,0 +1,96 @@
+{
+ "id": "2026-10-28_sw_skinned_face",
+ "date": "2026-10-28",
+ "project": "swordswoman",
+ "kind": "experiment",
+ "status": "needs-review",
+ "title": "Skinned rig round 3: face as m96 pixel parts on 3D head anchors (follows head, per-action expressions)",
+ "question": "Owner: 'the faces are all messed up, need to follow the head's movements, follow the 3D model, more expressive depending on the action.' Can hand-designed m96 face parts placed per frame on projected 3D head anchors replace the baked/projected face?",
+ "method": "face/face_lib.py: the approved m96 eye/brow/mouth/blush/nose templates (eye_spec.json via eyetmpl.py) plus 12 named expressions (neutral, smile, smile_open, joyful, determined, effort, surprised, squint, wink, blink, half_blink, shout) and a narrowed far eye. face/f_render.py (Blender, wraps R's render_motion.py): a faceless head pass, and the m96 anchor pixels ray-cast onto the rest head, kept in head-bone space, re-posed and projected every frame. face/face_layer.py (P's call): the face zone is re-taken from the faceless head; one integer face offset with hysteresis; per-part relative residuals with dead bands; eye-row split on roll; far eye far->far3->hidden or opened by yaw; eyes slide inside the outline; brows/mouth/blush only on skin. Expressions come from M's per-frame face/blink/mouth keys. The preview gets a half-pixel face composite. Run with face/f_run.sh.",
+ "result": "Works on walk/run/idle/jump x SE/E/S (M's 21:33 bake, R's r6). The anchors reproduce the master at rest exactly (0 px); calibration = R's lift_px (S 4, SE 3, E 1 px). Relative part changes per frame: walk/jump SE/E 1-2 of 8-15; S/idle/run SE 5-7 (real roll/yaw). Every GIF is loop=0 with frames >= 20 ms.",
+ "verdict": "Both critics: a clear fix for the smeared face. The face follows the head and the jump reads as a story. Remaining: one-frame idle smile (M), brow/fringe contact on V-brows, a muddy effort mouth, far-eye lashes touching the cheek outline in walk SE f03-f05, and the E-profile nose missing in run E (head geometry).",
+ "scores": {
+  "Opus r2": "follows 7.5 / on-model 7 / clean 6 / expressive 7.5 / stable 6.5 (r1 vs round-2 face: 4/6/3/2/4)",
+  "Argon r2": "8.5 / 9 / 8 / 9 / 8 (round-2 face 4/3/2/1/4)"
+ },
+ "media": [
+  {
+   "src": "exp/2026-10-28_sw_skinned/face/out/jump/cmp_face_jump_SE_4x.gif",
+   "caption": "jump SE: P2 chain (faceless head now) | F face layer, 4x"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/face/out/run/cmp_face_run_E_4x.gif",
+   "caption": "run E: determined/effort"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/face/out/idle/cmp_face_idle_S_4x.gif",
+   "caption": "idle S: neutral, blinks, smile on the look (head turn 19 deg)"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/face/out/walk/cmp_face_walk_SE_4x.gif",
+   "caption": "walk SE: smile"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/face/out/idle/cmp_preview_face_idle_SE.gif",
+   "caption": "smooth preview: R's projected-face preview | F face composite following the head (idle SE)"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/face/out/run/cmp_preview_face_run_E.gif",
+   "caption": "smooth preview run E"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/face/crit/strip_jump_SE.png",
+   "caption": "m96 master | round 2 baked face | round 3 F face (labels = expression) | body 2x",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/face/crit/strip_idle_SE.png",
+   "caption": "idle SE strip",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/face/crit/strip_idle_S.png",
+   "caption": "idle S strip (roll + turn)",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/face/out/sheet_expr_SE.png",
+   "caption": "expression library SE (+ far-eye turn variants)",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/face/out/sheet_expr_S.png",
+   "caption": "expression library S",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/face/out/sheet_expr_E.png",
+   "caption": "expression library E",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/face/out/walk/board_face_walk_SE.png",
+   "caption": "walk SE board: P2 | F | F + projected 3D anchors | body",
+   "wide": true
+  }
+ ],
+ "links": [
+  {
+   "href": "exp/2026-10-28_sw_skinned/NOTES.md",
+   "label": "NOTES (F section)"
+  },
+  {
+   "href": "exp/2026-10-28_sw_skinned/CONTRACT.md",
+   "label": "contract"
+  },
+  {
+   "href": "exp/2026-10-28_sw_skinned/face/crit/opus_r2.txt",
+   "label": "Opus r2"
+  },
+  {
+   "href": "exp/2026-10-28_sw_skinned/face/crit/argon_r2.txt",
+   "label": "Argon r2"
+  }
+ ],
+ "next": "P integrates face_layer in pixel_chain; M holds the idle smile for 2-3 frames; E far eye on toward-camera turns; thinner effort mouth slit; 1 px lash margin at the cheek outline."
+}

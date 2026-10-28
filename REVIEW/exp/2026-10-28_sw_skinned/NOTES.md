@@ -627,3 +627,74 @@ clean, stable, readable 96 px frames on the locked palette (`v2/pixelize/palette
 - **shade_swap ≤ .015 fails everywhere** (.018–.041). That is P's chain on fast surfaces.
 - **FEET_JITTER** comes from the SE stride perspective, as P found.
 - Takeaway: more frames per cycle means less boil. The 10/12-frame walk and the 16-frame idle are the cleanest.
+
+## F: face artist (round 3)
+
+**Goal.** The owner said: *"the faces are all messed up. the faces need to follow the head's movements ... follow the 3d model as reference ... more expressive depending on the action."*
+In round 2 the face was baked into R's projected head texture, so it smeared whenever the head turned or tilted, and hair and blush texels fell onto the eyes (idle f06–f09).
+The round-3 face is hand-designed pixel parts placed per frame on the 3D head's projected anchors. This is the snowpeak `pipeline/face.py` idea, with the approved m96 face as the parts.
+
+**Verdict.**
+
+| critic | round 1 | round 2 |
+|---|---|---|
+| Opus (a / b / b2 / c / d) | follows 6, on-model 7, clean 7, expressive 6, stable 7 (previous round: 4 / 6 / 3 / 2 / 4) | 7.5 / 7 / 6 / 7.5 / 6.5 |
+| Argon | 7.5 / 8.5 / 7.5 / 9 / 6.5 (previous round: 4 / 3 / 2 / 1 / 4) | 8.5 / 9 / 8 / 9 / 8 |
+
+Critiques are in `face/crit/{opus,argon}_r{1,2}.txt`.
+
+### Files (all under `face/`)
+- **`face_lib.py`**: the part library. It reads `v2/m96/eye_spec.json` through `v2/m96/tools/eyetmpl.py`, so eyes, brows, mouths, blush and nose are pixel-identical to the m96 masters and stamps.
+  - Named expressions (`EXPR`): neutral, smile (closed `m..m/.mm.`), smile_open, joyful, determined, effort, strain, shout, surprised (small "o"), squint (land, `> <`), wink, blink and half_blink.
+  - Effort keeps narrowed, open eyes. The critics read squeezed-shut eyes during a run as "eyes shut all jump". The spec's squeezed eyes are kept as `strain`.
+  - Overlays: blink cues (M's numeric 0/.5/1) and M's `mouth: open|closed`.
+  - A 3 px foreshortened far eye (`far3`).
+  - `build` writes faceless textures `tex/tex_<V>_nf.png`: the master with the features erased. `calib` writes `calib.json`.
+- **`f_render.py`** (Blender). It wraps R's `render_motion.py`, as P's `p_parts.py` does, and leaves R's files untouched.
+  - It swaps the projection texture in memory for the faceless one and renders the `tex` pass (8x) or the `--preview` frames.
+  - It ray-casts each m96 anchor pixel onto the rest head and stores it in the head bone's rest frame. Per frame it re-poses the anchors with the head-bone matrix and projects them.
+  - Output: `out/<act>/<act>_<V>_face.json`, with per-anchor xy, depth and facing, plus head yaw/pitch/roll.
+- **`face_layer.py`**: **P's call** `face_layer(frame_info, pixel_frame, passes) -> pixel_frame`, plus a CLI `apply <frame_dir> <act> <view> <out_dir>`.
+- `f_run.sh "<acts>" "<views>"`: end to end. Use `NORENDER=1` to re-place without Blender and `NOPV=1` to skip previews.
+- `f_preview.py`: face composite on the smooth preview.
+- `f_board.py`: boards, GIFs and expression sheets.
+- `f_critstrip.py`: critique strips.
+- `f_pchain.sh`: P's unchanged chain re-run on the current motion into `out/p2cur/`. My test frames live there because M re-baked at 21:33 and the frames in `render/out/p2` no longer match the poses. You can delete it (≈600 MB).
+
+### Method
+1. **Anchors (3D).** For each view, the anchor.json eye iris centres, brows, mouth, blush and nose are ray-cast at rest from the view camera onto the head. Each is kept as a point in head-bone space (`anchors_head_local_m`; S: eyes ±0.074 m, mouth 0.039 m up the bone).
+   - Per frame: p = H_head(frame) · H_head(rest)⁻¹ · p₀, then the camera projection gives 128-cell xy, depth and facing.
+   - At rest these points reproduce the master exactly, error 0 px. R's `rig/face_anchors.json` points are mirror-symmetrised triangulations that sit 2–3 px off the master per view (S eyes 2.3 px low, SE far eye 3.5 px high). So I place parts with mine and use R's `visible`/`occ_m` only for body, arm and hand occlusion.
+   - **Calibration.** The rig head renders above the master by S 4, SE 3 and E 1 px. That is exactly R's new `lift_px`. `calib.json` measures it from the rest render: match .94/.94/.99.
+2. **Face zone.** Head cells inside the face bbox are re-taken from the faceless head pass, so no baked or smeared eyes remain. One-pixel hair crumbs on face skin become skin.
+3. **Placement without jitter.**
+   - The whole face moves by one integer offset with hysteresis (±0.68 px).
+   - eye.0 gets a residual. Every other part is placed relative to eye.0 with a wider dead band (0.85–0.97 px). Mouth and nose stay within 1 px of the eye pair.
+   - Eyes share one row unless the roll is at least 5°. The row difference is up to 2 px for a roll of 10° or more, and 1 px for closed eyes.
+   - Measured: relative part changes per transition are 1–2 of 8 to 15 on walk SE/E and jump SE/E, and 5–7 of 8 to 12 on S/idle/run SE, which are real roll and yaw changes. See `out/jitter.txt`.
+4. **Foreshortening and turns.**
+   - SE far eye: `far` → `far3` (dyaw < −11°) → hidden (< −24°). When the head turns toward the camera (> 13°, as in the idle look), the far eye opens to the full `front_right` eye.
+   - S view: on a turn of 12° or more, the far eye becomes the 3/4 `far` eye.
+   - Any eye whose ink would land on the silhouette slides up to 2 px toward the face centre.
+   - In profile (E), the mouth is 3 px wide and set 1 px back from the muzzle edge.
+5. **Occlusion.** Brows, mouth, blush and nose are drawn only on skin, so bangs may cover the brows. Eyes always win over hair, and nothing is drawn on the outline edge. The brow window cuts hair to skin only at bang tips.
+6. **Expressions.** These come from M's per-frame `face`/`blink`/`mouth` keys. If those are missing, `DEFAULT_MAP` maps the motion `key` names.
+   - walk: smile.
+   - run: determined/effort.
+   - idle: neutral with blinks and a smile on the look.
+   - jump: determined → effort → joyful → surprised → squint → smile.
+7. **Preview.** It is rendered with the faceless head. The same face cells are composited as 2×2 blocks at the projected anchors, with the face offset at half-pixel precision, so the face glides with the head. GIFs are 2x the preview size.
+
+### Outputs
+- `out/<act>/cmp_face_<act>_<V>_4x.gif`: round-2 chain (now faceless) | F.
+- `<act>_<V>_face_4x.gif` and `board_face_<act>_<V>.png`: P2 | F | F + anchors | body.
+- `cmp_preview_face_<act>_<V>.gif` and `sheet_preview_face_*`.
+- `out/sheet_expr_{SE,S,E}.png`: 12 expressions plus turn variants against the master.
+- `crit/strip_<act>_<V>.png`: master | round 2 baked | F | 2x body.
+- All GIFs use loop=0 and frames of at least 20 ms (48 files checked).
+
+### Open / for others
+- **M:** the idle smile lasts a single frame (f06) and sits next to the f07 blink. Both critics read it as a flicker, so hold it for 2–3 frames or move the blink. Jump squint lasts 3 frames, which is OK.
+- **P:** call `face_layer` after your chain (it needs `face/f_run.sh` for the same motion). These are not mine: red collar pixels over the chin in walk/run SE, a 3 px hook on the top of the head in idle SE f09, and a missing E nose bump in run E f02+ (head silhouette).
+- **R:** native masking is now redundant for my pass (I swap the texture in memory). Please keep `tex_<V>_face.png`, which `face_lib build` uses through the masters.
+- Next: an E-view far eye when the head turns toward the camera (use the S head-local anchor), a thinner effort mouth slit, and a 1 px margin for far-eye lashes at the cheek outline.

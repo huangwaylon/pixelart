@@ -311,6 +311,8 @@ def frame(F, prev, opt):
     T = np.zeros((N, N), bool); texg = None
     if 'tex' in F:
         T, texg = tex_cells(F['tex'])
+        T &= pcov[..., PI['head']] >= 0.5  # the tex pass may not be occluded by a hand/arm in front of the face: the part pass is
+        texg = np.where(T, texg, '.')
         headp = (lab >= 0) & (SEG_P[np.maximum(lab, 0)] == PI['head'])
         lab[headp & ~T] = -1
         hm = mat_major(F, T)
@@ -663,8 +665,8 @@ def limb_audit(g, st, F):
         L = np.isin(P_, parts) & ((M_ == mat) if mat is not None else True)
         hi = np.isin(F['part'], parts) & ((F['mid'] == mat) if mat is not None else True)
         hia = hi.sum() / (P * P)  # visible area in sprite px
-        hl, hn = nd.label(nd.binary_closing(hi, np.ones((5, 5))), np.ones((3, 3)))
-        hcomp = int(sum(1 for k in range(1, hn + 1) if (hl == k).sum() >= 2 * P * P)) if hn else 0
+        hl, hn = nd.label(hi, np.ones((3, 3)))  # visible pieces in 3D (a limb crossing behind another one is legitimately 2 pieces)
+        hcomp = int(sum(1 for k in range(1, hn + 1) if (hl == k).sum() >= P * P)) if hn else 0
         Lc = L | (st['line'] & nd.binary_dilation(L, CROSS) & (g == 'K'))  # an interior line drawn inside the limb does not split it
         sl, sn = nd.label(Lc, np.ones((3, 3)))
         core = nd.binary_opening(np.pad(L, 1), np.ones((2, 2)))[1:-1, 1:-1]
