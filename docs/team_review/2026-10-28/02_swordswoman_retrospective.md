@@ -60,7 +60,7 @@ Date: 2026-10-28. Scope: everything in `pixelart/swordswoman/`. I read the notes
 | mastersF | 8.5 ship | 6.5 | n/a | rejected |
 | m96 | 7.2 | 6 | n/a | **accepted** (detail notes only) |
 
-- **High scores did not predict acceptance.** The one base the user accepted scored lower than three he rejected. The critics judged each sprite on its own. The user judges it against the illustration.
+- **High scores did not predict acceptance.** The one base the user accepted scored lower than three the user rejected. The critics judged each sprite on its own. The user judges it against the illustration.
 - **Measured fidelity was the best predictor.** Metrics against the illustration (ssim_b, face_ssim, dE, silhouette) plus side-by-side illustration | sprite sheets lined up with the user.
 - **Argon inflates.** It typically scores 1–3 points above Opus, gives "READY/ship" freely, and sometimes misreads (Opus's "outline not black" claim, `style/`, was false too).
 - **Opus is more conservative and catches structure** ("legs never swap", walk motion 3), but it also passed the 64 px masters at 8–8.5.

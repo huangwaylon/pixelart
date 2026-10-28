@@ -2,9 +2,9 @@
 
 A chibi swordswoman: red bow, dark bob with bangs and a bun, red short kimono-dress, black obi.
 The goal is lively pixel sprites with a solid 3D reference. This was a separate project from
-the snowpeak pipeline at the repo root, and was merged into this repo on 2026-10-28. The folder
-layout inside `swordswoman/` is unchanged from `test/`, because the scripts reference each other
-by path (`v2/...`, `hybrid/...`, `.scratch/...`).
+the snowpeak pipeline at the repo root, and was merged into this repo on 2026-10-28. Run scripts from
+`swordswoman/`. Live strands stay under `v2/`, and dead ends are in `archive/` (see the strand table).
+Team retrospective: `../docs/team_review/2026-10-28/02_swordswoman_retrospective.md`.
 
 ## What worked best (start here)
 The pipeline that won, from `v2/BRIEF.md` onward:
@@ -29,19 +29,27 @@ The pipeline that won, from `v2/BRIEF.md` onward:
 ## Status when merged: animation not finished
 - `v2/animate96/`: pilot (idle_SE, walk_SE). It passes the QC gate, but motion scored only 3–5.
 - `v2/motion/`: whole-body motion with springs on hair, skirt and ribbons. Stopped mid-round 3
-  (walk scored Opus 7; the Argon score was never written). See `MECHANICS.md`.
+  (walk scored **Argon** 7; the Opus critique file holds only a shell error, so there is no Opus score.
+  The motion scores rate the 3D preview, not pixels). See `MECHANICS.md`.
 - `v2/heads96/`: layered head poses. Its second batch of rerun jobs was still in flight.
 - `v2/g96/`: H2 rig calibration to the masters, with no clips rendered yet.
+
+## Strand status
+| Status | Strands |
+|---|---|
+| **live** | `v2/m96`, `pixelize`, `hy3d`, `g96`, `fx96`, `qc`, `animate96`, `motion`, `heads96`, `prop`, `mocap`, `throw`, `unarmed`, `REVIEW`, `_lead`, `tools`, `BRIEF.md` |
+| **support**: dead or superseded, but live code reads it, so leave it in place | `v2/final`, `hair`, `anim_cut`, `face`, `face2`, `design`, `pose`, `style`, `parts`, `rigcal`, `masters`, `heads`, `anim_redraw`, `fx`, `pixel` (`v2/pixel/palette.json` is a live input of `anim_cut/tools/cm.py`) |
+| **archived** | `archive/v1/` (concept, model, pixel, hybrid, renders, tools/hybrid, tools/pixel), `archive/v2/` (pixel_E, animate, mastersF, anim), `archive/scratch_heads/`, `archive/scratch/` (gitignored, old `.scratch` outputs). The v1 scripts use cwd-relative paths, so run them from `archive/v1/` if ever needed. |
 
 ## Dead ends (kept for history)
 | Where | Why it was dropped |
 |---|---|
-| `concept/`, `model/`, `renders/`, `pixel/` (v1) | Cleaning hand-rigged Blender renders into sprites stayed noisy and lifeless. Judges topped out at about 6.4. |
-| `hybrid/` S1, S2, S4, S6 | Boxy bodies, mush or drift. Merged into S3. |
-| `hybrid/` S3, S5 | No judge passed them. The user rejected everything up to this point, which led to the `v2/BRIEF.md` restart. |
-| `v2/pixel`, `pixel_E`, `anim`, `anim_redraw` | 48 px Gemini redraws went off-model (scores 4.5–5.5). |
+| `archive/v1/{concept,model,renders,pixel}` | Cleaning hand-rigged Blender renders into sprites stayed noisy and lifeless. Judges topped out at about 6.4. |
+| `archive/v1/hybrid/` S1, S2, S4, S6 | Boxy bodies, mush or drift. Merged into S3. |
+| `archive/v1/hybrid/` S3, S5 | No judge passed them. The user rejected everything up to this point, which led to the `v2/BRIEF.md` restart. |
+| `v2/pixel`, `archive/v2/{pixel_E,anim}`, `v2/anim_redraw` | 48 px Gemini redraws went off-model (scores 4.5–5.5). |
 | `v2/anim_cut` | 48 px cutout clips were superseded. Its tools (`ff_redraw`, `lint_style`, `colorcheck`) are still used. |
-| `v2/masters`, `mastersF`, `final` (64 px) | 64 px didn't represent the source art. `final` was stopped for the size bake-off. |
+| `v2/masters`, `archive/v2/mastersF`, `v2/final` (64 px) | 64 px didn't represent the source art. `final` was stopped for the size bake-off. |
 | `v2/pixelize` methods A/B/D, 48/64 px | Worse face and eyes. Gemini also ignores the requested size. |
 | PartCrafter (`v2/parts/C`) | Splits by material, not by joint. |
 | Pixal3D single-view, Hunyuan3D 2.1 | Invented a ponytail. |
@@ -53,7 +61,7 @@ Overall review hub: `v2/REVIEW/index.html`. Each strand has its own `v2/<strand>
 ## Research
 `docs/`: `hunyuan3d_research.md`, `sota_image_to_3d_2026.md`, `trellis_and_hunyuan_studio.md`,
 `pixal3d_experiment.md`, `pixel_art_best_practices.md`, `pixel_cleanup_guide.md`,
-`pixelart_project_study.md`, `design_bible.md`, palettes.
+`pixelart_project_study.md`, `design_bible.md`, palettes, and `docs/reviews/` (v1 Gemini critiques).
 `docs/ANIM_DIRECTION.md` (timing principles) and `docs/STYLE_TARGET.md` are still referenced by v2.
 The generated 3D meshes are collected in `../reference/3d/`.
 

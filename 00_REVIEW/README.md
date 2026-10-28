@@ -1,4 +1,26 @@
-# 00_REVIEW: what to look at (newest first)
+# 00_REVIEW: snowpeak review rounds (newest first)
+
+Team retrospective across all rounds: `../docs/team_review/2026-10-28/01_snowpeak_retrospective.md`.
+
+| Round | Topic | Status |
+|---|---|---|
+| `r21_s4_hd2/` | S4_hd2: smoother rebuilt bangs, side locks, bow, coat, mittens | **current**. Only idle, walk and run built. Open issues: the bow is small in the S view, fringe roots show ridges, thin sheets are noisy. |
+| `r20_blender_base/` | from-scratch Blender base model (Claude and Gemini tracks) | stopped. Helmet hair, V-shaped jaw, tube coat; direction changed to refining S4_hd. |
+| `r19_blender_sprites/` | r18 model B baked to sprites | dead end. The 6.5-head design doesn't fit 48x64. S4_hd kept. |
+| `r18_blender_model/` | independent Blender models A/B | dead end (still needed fixes) |
+| `r17_gemini_model/` | Gemini-authored SDF model | dead end ("hideous") |
+| `r16_face_slim_bangs/` | slimmer face, S fringe dots, 3/4 jaw taper | approved, folded into S4_hd variants |
+| `r15_face_bangs/`, `r15_model_gemini/` | face and bangs pass; Gemini critique of our model | folded in; advice only |
+| `r14_retime/` | `*_r14` clip retimes | approved, not yet in a release |
+| `r13_anime_pixel/` | hand-pixel busts, turnaround, poses (`art/hand/S4`) | **approved canon** |
+| `r13_sprite_face/` | sprite face pass | superseded by r15 |
+| `r12_hd_model/` | HD SDF model (S4_hd) | basis of the hero release |
+| `r12_illustration/` | vector illustration | rejected ("the illustrations look terrible") |
+| `r11_actions/` | 13-clip action set | approved, now `releases/S4_actions_v1` and then `S4_hd_actions_v1` |
+| `r10_*` | concept art, outline study, S4 jump, semi-chibi candidates | superseded (r10 notes below) |
+
+---
+
 
 ## r10 (2026-10-22)
 | Folder | What | Open first |
