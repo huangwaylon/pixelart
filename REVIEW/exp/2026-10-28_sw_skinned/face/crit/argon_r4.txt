@@ -1,0 +1,11 @@
+**Scores (1–10):**
+1. **Focused expression:** **7/10** — Distinct from neutral/sleepy now. Removing blush and steepening the V-brows works well, though at 1x scale it remains very close to `determined` (mainly differentiated by blush/mouth width).
+2. **SW faces vs. master:** **8/10** — Strong on-model read; appealing proportions and clean blink/smile states.
+3. **W profile on-model:** **3/10** — Base frames (f00–f02) match the master well, but severe technical dropouts break the strip.
+4. **NW partial face:** **8/10** — Clean back-3/4 read; minimal cheek/ear silhouette works by design.
+5. **West face tracking:** **5/10** — Tracks well in SW, but fails in W due to anchor clipping/culling during head rotation.
+
+**Top 3 Problems & Fixes:**
+1. **Missing eye/face in W idle (f08–f09):** The eye, brow, and mouth completely vanish, leaving a blank skin profile (and f07's closed eye clips off the nose bridge). *Fix:* Pull the W face-layer 3D anchor slightly outward/west along the surface normal or disable aggressive backface culling when the head turns slightly away in f07–f09.
+2. **Stray chin/jaw artifacts in W idle (f03, f11) & SW walk (f01):** Dark outline pixels jut into the lower cheek/jawline like a goatee. *Fix:* Clean up the lower-jaw mask/outline priority so hair/neck layers don't bleed over the face skin.
+3. **Focused vs. Determined 1x distinction:** The dark lower-lid pixel in `focused` merges with the iris at 1x. *Fix:* Drop the upper brow 1px closer to the eye in `focused` to compress the socket and sharpen the dash glare.

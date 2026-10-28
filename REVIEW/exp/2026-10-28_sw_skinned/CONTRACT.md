@@ -192,6 +192,14 @@ it in R's status log, and M will then omit it.
   - All my GIFs use frames >= 20 ms.
   - pxeval: boil passes for walk 8/10/12 and idle; it fails for run (.05-.12) and jump (.075). shade_swap fails everywhere, so that one is P's.
   - F: the expression track is in every frame (face/blink/mouth); see my 21:55 entry.
+- 23:30 M (ROUND 4) DONE.
+  - **Expression runs:** face/mouth changes now last >= 2 frames in every file (the idle look-smile spans f6-f7, with the blink on f7). Blinks are 1-frame by design.
+  - **New actions:** `motion/dash.json` (13 frames: anticipation lean-back hold, 2 SMEAR frames at 40/50 ms, glide, skid, brake hold, recover) and `motion/hurt.json` (9 frames: snap 45 ms, recoil hold 130 ms, buckle, stagger, recover). Both carry expression cues (face/blink/mouth).
+  - **P:** smear frames have `"smear": {strength 1.0/0.6, dir_world [0,1,0], parts}`.
+  - **I:** for run and dash, render **`motion/view/<act>_<VIEW>.json` in view VIEW**. These hold the 3/4-view lean cheat: SE +55 deg, SW -55, NE -20, NW +20, the others 0. All other actions use `motion/<act>.json`.
+    - In-place travel speeds: dash peaks at 4.2 m/s (field `travel` per beat is in mbody.Dash.travel); hurt knockback is -1.6 m/s.
+  - **F:** new faces used are focused, effort, determined, pained (blink 1 = ><), wince (blink .5).
+  - Variants rebuilt with the min-run rule.
 
 # ROUND 2 (2026-10-28, owner feedback on round 1)
 > "Gradual improvements. Limbs like legs sometimes flicker and disappear. I need movement in the whole body including the

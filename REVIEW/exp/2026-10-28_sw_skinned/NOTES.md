@@ -735,3 +735,60 @@ Critiques are in `face/crit/{opus,argon}_r{1,2}.txt`.
 - **Sheets:** `out/sheet_expr_{SE,S,E,NE}.png`. The NE and N clips are in `out/{walk,idle}/` (boards, GIFs, previews).
 - **Critique r3:** `crit/{opus,argon}_r3.txt`. The weak "focused" (Opus 4) was strengthened afterwards (open eyes and a short set mouth).
 - `out/p2cur` is deleted, so the boards can only be rebuilt after re-running `f_pchain.sh`.
+
+## M: round 4 (expression runs, 3/4-view lean cheat, new dash and hurt)
+
+- **(a) Expressions last at least 2 frames.**
+  - `mbuild.min_runs()` merges any 1-frame `face`/`mouth` run into its longer neighbour. It runs cyclically on loops. Blinks stay free: they are 1-frame events by design.
+  - In the idle, the look-at-camera smile now spans both R-hold frames (f6 smile, f7 smile with a blink), so there is no lone smile next to the blink.
+  - All main, variant and view files are rebuilt. Every face/mouth run is now at least 2 frames.
+- **(b) Per-view lean cheat (`scripts/mview.py`) → `motion/view/<act>_<VIEW>.json`** for run and dash, 8 views each.
+  - In the 3/4 views the forward lean points at the camera. So the lean axis is turned toward the side the character travels on screen (`lean_yaw`, cap 55°), and the lean is ×1.3.
+  - Values: SE +55°, SW −55°, NE −20°, NW +20° (they use R's per-view yaws). E/W/S/N are 0°, so those files equal the main file.
+  - Result: in SE the torso visibly tips toward screen-right, with the head several px ahead of the hips (`out/run_SE_lean_cheat.png`, `out/run_SE_preview_leancheat.gif`).
+  - **I: render `motion/view/<act>_<V>.json` for run/dash in view V.** Other actions use `motion/<act>.json`.
+- **(c) dash** (`mbody.Dash`, `motion/dash.json`, one-shot, 13 frames, in place: the game moves the sprite at `travel` up to 4.2 m/s). Timing follows ANIM_DIRECTION (smear 40 ms, holds 90–140 ms):
+
+  | frame | ms | beat |
+  |---|---|---|
+  | f0 | 50 | stand |
+  | f1 | 40 | anticipation |
+  | f2 | 110 | anticipation hold: crouch with chest leaning back 22°, weight on the back foot, arms cocked |
+  | f3 | 40 | **SMEAR 1**: stretched along travel, lean 30°, legs split 36 cm, arms swept back −72°, chest stretch +12% |
+  | f4 | 50 | **SMEAR 2** |
+  | f5–f6 | 80 + 80 | glide: skimming, stretched |
+  | f7 | 80 | skid contact: front heel plants with toes up 22°, torso pitches back |
+  | f8 | 90 | brake hold: deepest point, −7.5 cm, squash −7%, arms out for balance |
+  | f9 | 120 | overshoot |
+  | f10 | 120 | recover |
+  | f11 | 140 | settle |
+  | f12 | 250 | end |
+
+  - The spring sim gets the in-place frame's acceleration (new `frame_acc` in `msim.step`). Hair, bow, skirt and sleeves stream back on the burst and **whip forward past rest on the brake**, then settle.
+  - Smear frames carry `"smear": {"strength", "dir_world", "parts"}` for P's smear look.
+  - Faces: focused → effort (smears) → focused (glide) → determined, mouth open (skid/brake) → smile (recover/end).
+- **(d) hurt** (`mbody.Hurt`, `motion/hurt.json`, one-shot, 9 frames, PMD-style snap and hold):
+
+  | frame | ms | beat |
+  |---|---|---|
+  | f0 | 45 | stand |
+  | f1 | 45 | **HIT snap**: the head whips back first, −26° and rolled 9°, shoulders back, hips forward, arms fly up and out |
+  | f2 | 130 | recoil hold (8 ticks) |
+  | f3 | 80 | recoil: steps back |
+  | f4 | 120 | buckle: knees give, the head drops **late** |
+  | f5 | 140 | stagger: caught on the back foot, arms out |
+  | f6 | 160 | recover: the head comes back last |
+  | f7 | 180 | settle |
+  | f8 | 250 | end |
+
+  - Knockback is fed to the springs at reduced drag, so the hair flies up and sideways and not across the face.
+  - The head stays within R's ±20° look limit (roll range 30°, i.e. ±15°).
+  - Faces: pained with blink 1 (squeezed >< eyes), mouth open (hit/recoil) → wince with blink .5 (buckle/stagger) → neutral.
+- 1x amplitudes (`mpx`, SE):
+
+  | action | pelvis bob | head-top bob | tips |
+  |---|---|---|---|
+  | dash | 4.1 px | 7.2 px | 3–15 px |
+  | hurt | 2.5 px | 4.7 px | 3–15 px |
+
+- **Files:** `out/strip_{dash,hurt}_E_SE.png` (numbered frames with key and face), `out/{dash,hurt}_{SE,E,S}_preview.gif`, `out/dash_SE_preview_leancheat.gif`.

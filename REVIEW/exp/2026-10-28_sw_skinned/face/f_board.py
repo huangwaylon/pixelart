@@ -79,11 +79,15 @@ def sheet(V):
     rest = f'{EXP}/face/out/rest/rest_{V}_f00_tex.png'
     d = json.load(open(f'{EXP}/face/out/rest/rest_{V}_face.json'))
     T, gn = FLY.tex_cells(FLY.load_ftex(rest, d['align']['dx'], d['align']['dy']))
-    m = hx.read_grid(f'{FL.M96}masters/EC0_{V}_96.txt')
+    src = FL.MIRROR.get(V)
+    m = hx.read_grid(f'{FL.M96}masters/EC0_{src or V}_96.txt')
+    if src: m = m[:, ::-1].copy()
     parts = json.load(open(f'{HERE}/parts.json'))[V]
     off = d.get('tex_off', [0, 0]); G = (int(off[0]), int(off[1])); R = {k: (0, 0) for k in parts}
     m = np.roll(np.roll(m, G[1], 0), G[0], 1); kinds = {k: a['kind'] for k, a in parts.items() if k.startswith('eye.')}
-    a = FL.ANC[V]; bx0, by0, bx1, by1 = a['stamp']; bx0 += G[0]; bx1 += G[0]; by0 += G[1]; by1 += G[1]
+    a = FL.ANC[src or V]; bx0, by0, bx1, by1 = a['stamp']
+    if src: bx0, bx1 = 128 - bx1, 128 - bx0
+    bx0 += G[0]; bx1 += G[0]; by0 += G[1]; by1 += G[1]
     names = list(FL.EXPR); S = 6; tiles = []
     base = np.where(T, gn, m)
     for e in names:

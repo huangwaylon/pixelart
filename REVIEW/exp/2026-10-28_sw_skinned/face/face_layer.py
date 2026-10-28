@@ -364,7 +364,7 @@ def face_layer(frame_info, pixel_frame, passes=None):
             if k not in fa: continue
             x, y = fa[k]['xy']
             best = min(((n, (v['px'][0] - x) ** 2 + (v['px'][1] - y) ** 2) for n, v in rf.items() if n.startswith('eye') and 'px' in v), key=lambda t: t[1], default=None)
-            if best and best[1] < 16 and rf[best[0]].get('occ_m') is not None and not rf[best[0]].get('visible', True): kinds[k] = 'hidden'
+            if best and best[1] < 16 and (rf[best[0]].get('occ_m') or 0) > 0.01 and not rf[best[0]].get('visible', True): kinds[k] = 'hidden'
         pl['kinds'] = kinds
     if passes.get('ftex_cells') is not None:   # precomputed (T, chars) of the faceless head
         T, gn = passes['ftex_cells']

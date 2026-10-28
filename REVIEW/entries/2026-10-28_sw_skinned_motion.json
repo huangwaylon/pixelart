@@ -4,10 +4,10 @@
  "project": "swordswoman",
  "kind": "experiment",
  "status": "needs-review",
- "title": "Skinned rig: whole-body motion + spring secondary, ROUND 3 (run rework, expression track; timing variants in a separate entry)",
+ "title": "Skinned rig: motion ROUND 4 (new dash + hurt, 3/4-view lean cheat, expression track >= 2 frames)",
  "question": "Does authored whole-body motion (pelvis bob/sway/rotation, counter-rotating chest, overlapping arms, IK-planted feet with heel-to-toe roll, lagging head, squash and stretch) with spring-simulated hair, bun, bow, sleeves and skirt fix the owner's verdict on the H2 animations ('stiff and unnatural, joints off, need more dynamic movement and bouncing parts')?",
  "method": "Motion files in the CONTRACT format (motion/<act>.json, 24 fps source, sprite frames with timing_ms) baked by motion/scripts/mbuild.py: analytic 2-bone leg IK on a treadmill foot track (no slide at travel_m_per_s); compass-gait pelvis height for the walk (DOWN lowest, UP highest); phase-lag overlap from shoulder to hand; head lag spring; damped particle chains for every secondary chain (gravity hang, travel drag, cone limits, head/thigh/torso collision, skirt panels driven by the thighs, settled loops with seam <= 0.4 mm). Rendered with R's render_motion.py (--preview for the boards; full pixel chain + head stamp for the GIFs). 7 critique rounds (Opus + Argon) on numbered SE/E frame grids + onion skins, then A/B against the old rejected frames. pxeval seq on the SE pixel frames.",
- "result": "ROUND 3: run reworked (15 deg lean from hips/ankles with the chest lifted and head up, heel kick then knee drive, flight, 90 deg arm pump, counter-rotation, 4 px bob); per-frame expression track (face/blink/mouth) for F; idle/jump forward head removed; head turns held 2 frames (P); passing-pose hold. A/B r2->r3: run 4->5 Opus / 4->6 Argon, walk 4->5 / 5.5->6.5, idle 5->5 / 5->6, jump 5->5 / 5.5->6 (faces blank pending F). Earlier: ROUND 2 every motion >= 1 px at 1x (walk pelvis 3.1 px, tips >= 2 px); ROUND 1 vs H2 4->5.",
+ "result": "ROUND 4: dash (13 fr: lean-back anticipation hold, 2 smear frames 40/50 ms, glide, skid, brake with hair/skirt whip-forward overshoot via frame-acceleration springs, recover) and hurt (9 fr: 45 ms snap with head whip, 130 ms recoil hold, buckle, stagger, recover) with face cues; per-view lean cheat for run/dash (SE +55 deg lean axis, x1.3) so the lean reads in 3/4 views; expression changes >= 2 frames everywhere. ROUND 3: run reworked (15 deg lean from hips/ankles with the chest lifted and head up, heel kick then knee drive, flight, 90 deg arm pump, counter-rotation, 4 px bob); per-frame expression track (face/blink/mouth) for F; idle/jump forward head removed; head turns held 2 frames (P); passing-pose hold. A/B r2->r3: run 4->5 Opus / 4->6 Argon, walk 4->5 / 5.5->6.5, idle 5->5 / 5->6, jump 5->5 / 5.5->6 (faces blank pending F). Earlier: ROUND 2 every motion >= 1 px at 1x (walk pelvis 3.1 px, tips >= 2 px); ROUND 1 vs H2 4->5.",
  "verdict": "Needs owner review: the run lean is clear in the E preview; in SE it points at the camera, so critics read it as 'no lean'. Next: the owner picks the timing variants, F adds faces, and a possible SE view cheat for the lean. Target 7 not reached (5-6.5).",
  "scores": {
   "A/B r2->r3 run (Opus/Argon)": "4->5 / 4->6",
@@ -18,6 +18,41 @@
   "run boil": ".076 (fail)"
  },
  "media": [
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/dash_E_preview.gif",
+   "caption": "NEW dash, E smooth preview"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/dash_SE_preview_leancheat.gif",
+   "caption": "dash SE with the 3/4 lean cheat"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/hurt_E_preview.gif",
+   "caption": "NEW hurt, E smooth preview"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/hurt_SE_preview.gif",
+   "caption": "hurt SE"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/run_SE_preview_leancheat.gif",
+   "caption": "run SE with the lean cheat (reads as leaning toward screen-right)"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/strip_dash_E_SE.png",
+   "caption": "dash frames (E, SE) with key + face cue",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/strip_hurt_E_SE.png",
+   "caption": "hurt frames (E, SE) with key + face cue",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/run_SE_lean_cheat.png",
+   "caption": "run SE: plain lean vs lean cheat",
+   "wide": true
+  },
   {
    "src": "exp/2026-10-28_sw_skinned/motion/out/run_E_preview.gif",
    "caption": "ROUND 3 run, E smooth preview (reworked lean and mechanics)"
@@ -93,5 +128,5 @@
    "label": "pxeval round 3"
   }
  ],
- "next": "Owner picks timing variants (see the timing-variants entry); F faces; SE lean cheat if wanted."
+ "next": "I renders dash/hurt in 8 directions (run/dash from motion/view/); P smear look; critic pass on dash/hurt."
 }

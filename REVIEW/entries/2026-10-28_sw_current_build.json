@@ -8,9 +8,14 @@
  "title": "Swordswoman current build (20261028_da7ed73)",
  "question": "The latest gated review set: every action x direction on the current rig (R), motion (M), pixel chain (P) and face layer (F).",
  "method": "release/make_all.sh (I): R render_motion.py --no-post + P p_parts.py -> P pixel_chain.py -> F face_layer; F faceless preview + face composite. Actions walk, run, idle, jump, dash, hurt; directions S SE E. Gates: pxeval seq, P limb audit, gifcheck. Build 20261028_da7ed73 (2026-10-28 22:28).",
- "result": "Gates pass/total: boil 5/17, shade 1/17, feet 3/8, seam 8/8, limbs 4/17, gif 17/17. Failing clips: walk S: shade/feet; walk SE: shade/feet/limbs; walk E: boil/shade/feet; run S: boil/shade/feet/limbs; run SE: boil/shade/feet/limbs; idle S: shade/limbs; idle SE: shade; idle E: shade/limbs; jump S: boil/shade/limbs; jump SE: boil/shade/limbs; jump E: boil/shade/limbs; dash S: boil/shade/limbs; dash SE: boil/shade/limbs; dash E: boil/shade/limbs; hurt S: boil/limbs; hurt SE: boil/shade; hurt E: boil/shade/limbs. Full table: exp/.../release/out/20261028_da7ed73/GATES.md",
- "verdict": "Critic panel pending.",
- "scores": {},
+ "result": "Gates pass/total: boil 5/17, shade 1/17, feet 3/8, seam 8/8, limbs 4/17, gif 17/18. Failing clips: walk S: shade/feet; walk SE: shade/feet/limbs; walk E: boil/shade/feet; run S: boil/shade/feet/limbs; run SE: boil/shade/feet/limbs; idle S: shade/limbs; idle SE: shade; idle E: shade/limbs; jump S: boil/shade/limbs; jump SE: boil/shade/limbs; jump E: boil/shade/limbs; dash S: boil/shade/limbs; dash SE: boil/shade/limbs; dash E: boil/shade/limbs; hurt S: boil/limbs; hurt SE: boil/shade; hurt E: boil/shade/limbs; run E: gif. Full table: exp/.../release/out/20261028_da7ed73/GATES.md",
+ "verdict": "Early build (SE/E/S): all four critics score it 4-5/10. The consistent complaints are: hurt and dash arms flung into a T shape, so the hit reads as cheering (M); the dress and sleeves merge into a mottled red blob with arms lost, plus shade-swap flicker (P); in E, side-lock hair crosses the cheek like a beard and the near eye drops out on turns (F/R); the S bow reads as a flat red cap (R); the run legs collapse to 1-px sticks; run E is missing because of a P crash.",
+ "scores": {
+  "Opus AD": "5/10",
+  "Opus anim": "5/10",
+  "Opus game": "4/10",
+  "Argon": "5/10"
+ },
  "media": [
   {
    "src": "exp/2026-10-28_sw_skinned/release/out/20261028_da7ed73/walk/walk_8dir.gif",

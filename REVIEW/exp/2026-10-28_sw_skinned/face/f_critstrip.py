@@ -21,7 +21,7 @@ def strip(act, V, S=6):
         ys, xs = np.nonzero(g[:70] != '.'); return xs.min(), ys.min()
     tiles = [[], [], []]
     for k, f in enumerate(fs):
-        g = G[k]; fr = d['frames'][k]; ex = fr['anchors']['eye.0']['xy'] if 'eye.0' in fr['anchors'] else [fr['anchors']['cheek.0']['xy'][0] - 12, fr['anchors']['cheek.0']['xy'][1] - 5]
+        g = G[k]; fr = d['frames'][k]; ex = fr['anchors']['eye.0']['xy'] if 'eye.0' in fr['anchors'] else [fr['anchors']['cheek.0']['xy'][0] + (12 if V == 'NW' else -12), fr['anchors']['cheek.0']['xy'][1] - 5]
         x0, y0 = int(ex[0]) - 18, int(ex[1]) - 24; x1, y1 = x0 + 36, y0 + 34
         t = hx.render(g[max(0, y0):y1, max(0, x0):x1], S, BG).convert('RGB'); pl = C['plan'][k]
         ImageDraw.Draw(t).text((3, 2), f"f{fr['i']:02d} {pl['expr']}" + (f" b{pl['blink']}" if pl['blink'] else '') + (f" {pl['mouth']}" if pl.get('mouth') else ''), fill=(255, 255, 150))
@@ -32,12 +32,14 @@ def strip(act, V, S=6):
             cx, cy = int(np.median(xs)), int(ys.min())
             tiles[0].append(hx.render(go[max(0, cy - 2):max(0, cy - 2) + 34, cx - 16:cx + 20], S, BG).convert('RGB'))
         tiles[2].append(hx.render(g[16:120, 16:112], 2, BG).convert('RGB'))
-    m = hx.read_grid(f'{FLY.FL.M96}masters/EC0_{V}_96.txt'); a = FLY.FL.ANC[V]
-    mt = hx.render(m[a['stamp'][1]:a['stamp'][1] + 34, a['stamp'][0]:a['stamp'][0] + 36], S, BG).convert('RGB')
+    src = FLY.FL.MIRROR.get(V); m = hx.read_grid(f'{FLY.FL.M96}masters/EC0_{src or V}_96.txt'); a = FLY.FL.ANC[src or V]
+    sx0 = a['stamp'][0] if not src else 128 - a['stamp'][2]
+    if src: m = m[:, ::-1]
+    mt = hx.render(m[a['stamp'][1]:a['stamp'][1] + 34, sx0:sx0 + 36], S, BG).convert('RGB')
     labs = ['round 2 (P2, projected master face baked in the head texture)', 'round 3 F face layer (parts on 3D head anchors)', 'F 2x']
     W = mt.width + max(sum(t.width for t in r) for r in tiles if r) + 8; H = sum(max([t.height for t in r] or [0]) + 14 for r in tiles)
     B = Image.new('RGB', (W, H), (36, 36, 40)); dr = ImageDraw.Draw(B); y = 0
-    B.paste(mt, (0, 14)); dr.text((2, 2), f'm96 master {V}', fill=(150, 220, 255))
+    B.paste(mt, (0, 14)); dr.text((2, 2), f'm96 master {V}' + (' (flipped)' if src else ''), fill=(150, 220, 255))
     for lab, r in zip(labs, tiles):
         if not r: continue
         dr.text((mt.width + 8, y + 1), f'{act} {V}: {lab}', fill=(230, 230, 120)); y += 14; x = mt.width + 8

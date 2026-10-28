@@ -1,0 +1,15 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Round 4 face scores**
+
+1. **Focused reads as focused and distinct: 6/10.** It no longer looks sleepy. But at 1x it is almost a copy of determined. The only clear differences are the missing blush and a shorter mouth. The raised lower lid barely shows, especially in SE and E.
+2. **SW faces on-model vs flipped master: 7/10.** The eye spacing, lashes and mouth match the master well. Two flaws: the eyes sit about 1px low in walk f04–f06, and the red collar cuts into the chin in walk f02 and idle f06–f07.
+3. **W profile face on-model: 5/10.** Frames f00–f05 work. In f07–f09 the face disappears and leaves a bare skin profile. In f11 the open mouth leaves a notch in the jaw.
+4. **NW partial face acceptable: 6/10.** The blush can't be seen. The "lash tip" shows as broken salmon-coloured bars that read as noise, not as a lash.
+5. **Face follows the head on west views: 6/10.** It tracks well in SW, but drops out in the W turn frames.
+
+**Top 3 fixes**
+
+1. **W face dropout:** keep the eye and mouth visible until the head is turned more than about 100° from the camera. Fade the eye to a lash tick, don't cut it off. Fill the f11 jaw notch.
+2. **Focused vs determined:** make the lower lid 2px thick and cover the bottom third of the iris. Narrow the eyes by 1px. Lower the brow's inner end by 1 more px so it touches the lid. Together these give a squint that determined doesn't have.
+3. **NW:** replace the salmon bars with a single dark lash pixel and a 2px blush placed on the cheek edge.

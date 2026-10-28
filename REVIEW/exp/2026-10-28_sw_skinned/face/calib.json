@@ -12,7 +12,7 @@
  "E": {
   "dx": 0,
   "dy": -1,
-  "match": 0.989
+  "match": 0.988
  },
  "NE": {
   "dx": 0,
@@ -22,24 +22,21 @@
  "N": {
   "dx": 0,
   "dy": -2,
-  "match": 0.997
+  "match": 0.999
  },
  "W": {
   "dx": 0,
   "dy": -1,
-  "match": null,
-  "from": "E"
+  "match": 0.988
  },
  "SW": {
   "dx": 0,
   "dy": -3,
-  "match": null,
-  "from": "SE"
+  "match": 0.935
  },
  "NW": {
   "dx": 0,
   "dy": -2,
-  "match": null,
-  "from": "NE"
+  "match": 0.996
  }
 }

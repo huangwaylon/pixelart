@@ -38,7 +38,7 @@ EXPR = {
     'effort':     dict(eye='blink_half', brow='effort',     mouth=MOUTH_GRIT,     blush='neutral'),   # narrowed, focused eyes (not shut while running)
     'strain':     dict(eye='effort',     brow='effort',     mouth=MOUTH_GRIT,     blush='neutral'),
     # round 4: dash + hurt
-    'focused':    dict(eye='determined', brow='determined', mouth=MOUTH_FOCUS,    blush=None),   # dash: open eyes under steep V brows, set mouth, no blush
+    'focused':    dict(eye='focused',    brow='determined', mouth=MOUTH_FOCUS,    blush=None),   # dash: open eyes under steep V brows, set mouth, no blush
     'hurt':       dict(eye='pain',       brow='pain',       mouth=MOUTH_HURT,     blush='neutral'),   # pained > <, brows tilted up to the centre
     'wince':      dict(eye='pain',       brow='pain',       mouth=MOUTH_GRIT,     blush='neutral', eye1='blink_half'),   # one eye shut, one squinting
     'hurt_tear':  dict(eye='pain',       brow='pain',       mouth=MOUTH_HURT,     blush='neutral', tear=True),   # spec effort: eyes squeezed shut
@@ -78,6 +78,9 @@ def resolve(expr, blink=None, mouth=None):
 # ---------------------------------------------------------------- part templates
 def eye_tmpl(kind, e):
     """6-row eye block (gap row + lash + 3 iris + empty) for kind front_left|front_right|far|far3|profile|far_left"""
+    if e == 'focused':   # round 4 dash: the open eye with a raised LOWER lid (iris bottom L -> K line) = a narrowed, intent glare (not sleepy)
+        t = eye_tmpl(kind, 'neutral')   # + round-4 crit: a 2-row lower lid (iris sides g -> h on the row above) so it reads at 1x
+        return [r.replace('L', 'K') if j == 4 else (r.replace('g', 'h') if j == 3 else r) for j, r in enumerate(t)]
     if kind == 'far3':   # foreshortened far eye: the far block without its inner contour column (3 wide)
         return [r[1:] for r in ET.kind_tmpl('far', e)]
     if kind == 'far3_left':
@@ -86,6 +89,7 @@ def eye_tmpl(kind, e):
 
 
 def wing_tmpl(kind, e):
+    if e == 'focused': e = 'neutral'
     if kind == 'far3': return [(dx - 1, dy, c) for dx, dy, c in ET.wing_px('far', e) if dx >= 1]
     if kind == 'far3_left': return [(dx, dy, c) for dx, dy, c in ET.wing_px('far_left', e) if dx <= 2]
     return ET.wing_px(kind, e)

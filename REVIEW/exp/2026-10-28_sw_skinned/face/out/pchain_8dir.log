@@ -1,0 +1,45 @@
+RENDERED 8 frames x ['guide', 'lum', 'dep', 'tex', 'lid'] in 5.3s
+PARTS_DONE /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/p2cur/walk/parts
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/p2cur/walk/walk_SW_4x.gif {'dx': -2, 'dy': -2}
+RENDERED 8 frames x ['guide', 'lum', 'dep', 'tex', 'lid'] in 4.4s
+PARTS_DONE /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/p2cur/walk/parts
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/p2cur/walk/walk_W_4x.gif {'dx': -4, 'dy': 1}
+RENDERED 8 frames x ['guide', 'lum', 'dep', 'tex', 'lid'] in 4.5s
+PARTS_DONE /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/p2cur/walk/parts
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/p2cur/walk/walk_NW_4x.gif {'dx': -1, 'dy': 0}
+RENDERED 12 frames x ['guide', 'lum', 'dep', 'tex', 'lid'] in 6.8s
+PARTS_DONE /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/p2cur/idle/parts
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/p2cur/idle/idle_SW_4x.gif {'dx': -2, 'dy': -2}
+RENDERED 12 frames x ['guide', 'lum', 'dep', 'tex', 'lid'] in 6.5s
+PARTS_DONE /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/p2cur/idle/parts
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/p2cur/idle/idle_W_4x.gif {'dx': -4, 'dy': 1}
+RENDERED 12 frames x ['guide', 'lum', 'dep', 'tex', 'lid'] in 6.8s
+PARTS_DONE /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/p2cur/idle/parts
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/p2cur/idle/idle_NW_4x.gif {'dx': -1, 'dy': 0}
+PCHAIN_DONE
+FACE_DONE /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/walk
+FACE_DONE /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/walk/pv
+board walk SW
+preview walk SW
+FACE_DONE /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/walk
+FACE_DONE /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/walk/pv
+board walk W
+preview walk W
+FACE_DONE /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/walk
+FACE_DONE /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/walk/pv
+board walk NW
+preview walk NW
+FACE_DONE /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/idle
+FACE_DONE /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/idle/pv
+board idle SW
+preview idle SW
+FACE_DONE /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/idle
+FACE_DONE /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/idle/pv
+board idle W
+preview idle W
+FACE_DONE /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/idle
+FACE_DONE /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/out/idle/pv
+board idle NW
+preview idle NW
+F_DONE
+ALL
