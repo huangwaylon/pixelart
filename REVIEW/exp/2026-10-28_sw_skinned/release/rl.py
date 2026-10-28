@@ -76,17 +76,23 @@ CODE_IN = lambda: [*g('render/pixel_chain.py'), *g('render/r_tex_head.py'), *g('
                    *g('release/*.py'), *g('release/*.sh'), f'{REL}/actions.json']
 
 
+def motion_for(act, V, acts):
+    """M (round 4): run/dash ship a per-view file with the 3/4-view lean cheat, motion/view/<act>_<V>.json; else the action's motion file"""
+    pv = f'{EXP}/motion/view/{act}_{V}.json'
+    return pv if (acts[act].get('per_view', True) and os.path.exists(pv)) else acts[act]['motion']
+
+
 def pass_hash(act, V, acts):
-    return hfiles(RIG_IN() + [acts[act]['motion']]) + f'_{act}_{V}'
+    return hfiles(RIG_IN() + [motion_for(act, V, acts)]) + f'_{act}_{V}'
 
 
 def face_hash(act, V, acts):
-    return hfiles(RIG_IN() + FACE_IN() + [acts[act]['motion']]) + f'_{act}_{V}'
+    return hfiles(RIG_IN() + FACE_IN() + [motion_for(act, V, acts)]) + f'_{act}_{V}'
 
 
 def plan():
     acts, dirs = config()
-    allin = RIG_IN() + FACE_IN() + CODE_IN() + [a['motion'] for a in acts.values()]
+    allin = RIG_IN() + FACE_IN() + CODE_IN() + [motion_for(a, V, acts) for a in acts for V in dirs]
     h = hashlib.sha1((hfiles(allin) + ' '.join(acts) + ' ' + ' '.join(dirs)).encode()).hexdigest()[:7]
     bid = datetime.date.today().strftime('%Y%m%d') + '_' + h
     return bid, acts, dirs
@@ -107,10 +113,11 @@ def blender(script, mot, V, out, log, extra=()):
 
 
 def clip(bid, act, V):
-    acts, _ = config(); mot = acts[act]['motion']; loop = acts[act]['loop']
+    acts, _ = config(); mot = motion_for(act, V, acts); loop = acts[act]['loop']
     W = f'{OUTR}/{bid}/work/{act}/{V}'; os.makedirs(W, exist_ok=True); log = f'{W}/clip.log'; open(log, 'w').close()
     st = {'act': act, 'view': V, 'loop': loop, 'motion': os.path.relpath(mot, EXP), 'errors': [], 't0': time.time()}
-    stem = f'{act}_{V}'
+    an = json.load(open(mot)).get('action') or os.path.splitext(os.path.basename(mot))[0]  # file names follow the motion's 'action'
+    stem = f'{an}_{V}'; st['stem'] = stem
     # 1. R's passes + P's part pass (cached by rig/motion/renderer hash)
     C = f'{CACHE}/p_{pass_hash(act, V, acts)}'
     if not os.path.exists(f'{C}/DONE'):
@@ -145,17 +152,17 @@ def clip(bid, act, V):
     # 4. face: inside P's chain (current) or F's face_layer called here (fallback for a chain without it)
     fw = [l for l in r.stdout.splitlines() if 'WARN' in l and 'face' in l.lower()]
     if p_face and face_ok:
-        copy_px(W, act, V); st['face_layer'] = 'ok (in P chain)' if not fw else 'P chain WARN: ' + ' | '.join(fw)[:300]
+        copy_px(W, an, V); st['face_layer'] = 'ok (in P chain)' if not fw else 'P chain WARN: ' + ' | '.join(fw)[:300]
         if fw: face_ok = False
     elif face_ok:
         try:
-            st['face_layer'] = apply_face(W, F, act, V, loop)
+            st['face_layer'] = apply_face(W, F, an, V, loop)
         except Exception as e:  # noqa: BLE001
-            st['errors'].append(f'F face_layer failed: {e!r}'[:300]); st['face_layer'] = 'failed'; face_ok = False; copy_px(W, act, V)
+            st['errors'].append(f'F face_layer failed: {e!r}'[:300]); st['face_layer'] = 'failed'; face_ok = False; copy_px(W, an, V)
     else:
-        copy_px(W, act, V); st['face_layer'] = 'skipped (no face pass)'
+        copy_px(W, an, V); st['face_layer'] = 'skipped (no face pass)'
     try:
-        st['preview'] = preview(W, F, act, V, loop, os.path.exists(f'{F}/DONE'))
+        st['preview'] = preview(W, F, an, V, loop, os.path.exists(f'{F}/DONE'))
     except Exception as e:  # noqa: BLE001
         st['errors'].append(f'preview failed: {e!r}'[:300])
     return done(W, st)
@@ -265,7 +272,8 @@ def assemble(bid):
             fs = sorted(glob.glob(f'{W}/final/f??_rgba.png'))
             if not fs: continue
             fr[V] = [Image.open(p).convert('RGBA') for p in fs]
-            info = json.load(open(f'{W}/{act}_{V}.json')); ms = [int(f['ms']) for f in info['frames']]
+            stem = json.load(open(f'{W}/clip.json')).get('stem', f'{act}_{V}')
+            info = json.load(open(f'{W}/{stem}.json')); ms = [int(f['ms']) for f in info['frames']]
             pf = sorted(glob.glob(f'{W}/pv_final/f??.png'))
             if pf: pv[V] = [Image.open(p).convert('RGBA') for p in pf]
         if not fr: continue
@@ -348,8 +356,8 @@ def gates(bid):
             r = subprocess.run(cmd, capture_output=True, text=True, cwd=ROOT)
             try: px = json.loads(r.stdout)
             except Exception: px = {'error': r.stderr[-300:]}
-            lj = f'{W}/{act}_{V}_limbs.json'; la = json.load(open(lj))['summary'] if os.path.exists(lj) else None
-            gc = gifcheck.check(f'{B}/{act}/{V}.gif', oneshot=tuple(x for x in acts if not acts[x]['loop']) or ('jump',))
+            lj = f"{W}/{st.get('stem', act + '_' + V)}_limbs.json"; la = json.load(open(lj))['summary'] if os.path.exists(lj) else None
+            gc = gifcheck.check(f'{B}/{act}/{V}.gif', oneshot=('.gif',) if not loop else ('\0',))
             hubp = hub.gif_check(f'{B}/{act}/{V}.gif')
             rows.append({'act': act, 'view': V, 'loop': loop, 'px': {k: px.get(k) for k in ('boil', 'shade_swap', 'flicker', 'feet_range', 'seam_ratio',
                          'articulation_per_s', 'motion_px', 'flags', 'n_frames', 'cycle_ms')}, 'limbs': la, 'gif': gc, 'hub_gif': hubp,
@@ -365,7 +373,8 @@ def gates(bid):
     allg = []
     for p in sorted(glob.glob(f'{B}/**/*.gif', recursive=True)):
         if '/work/' in p: continue
-        c = gifcheck.check(p, oneshot=tuple(x for x in acts if not acts[x]['loop']) or ('jump',))
+        aa = os.path.relpath(p, B).split('/')[0]; one = aa in acts and not acts[aa]['loop']
+        c = gifcheck.check(p, oneshot=('.gif',) if one else ('\0',))
         allg.append({'path': os.path.relpath(p, B), 'flags': c['flags'], 'hub': hub.gif_check(p), 'min_ms': c['min_ms'], 'frames': c['frames'],
                      'seam': c['seam_ratio'], 'disposal': c['disposal'], 'loop': c['loop']})
     json.dump({'clips': rows, 'gifs': allg}, open(f'{B}/gates.json', 'w'), indent=1)

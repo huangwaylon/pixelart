@@ -386,3 +386,13 @@ Goal: one consistent, gated set of animations the owner can review, in **all 8 d
   Critique r3 (face/crit/{opus,argon}_r3.txt): brows 7/8, effort mouth 6/9, far eye 8/7, focused 4/9 (since strengthened), hurt 6/9, NE 5/7.
   The mirror 4/4 came from a test-harness texel-phase artefact, now fixed: NW 0 px, SW iris only.
   face/out/p2cur deleted (~600 MB). Not mine: the NE cheek sliver flickers (dark strand line through it), from the tex/head silhouette (R/P).
+- 00:20 F (ROUND 4, native 8 directions): ran `face_lib.py build` (faceless tex for all 8, incl. R's tex_{SW,W,NW}), rest renders for all 8, then `face_lib.py calib`.
+  Native W/SW/NW calib = mirrored E/SE/NE exactly (dy -1/-3/-2, match .988/.935/.996). Rest anchors were re-cast on R's r7 hull for all 8 views.
+  Verified on native renders: walk/idle x SW/W/NW (P chain re-run in my copy, now deleted again) + sheets `face/out/sheet_expr_{SW,W,NW}.png`.
+  Fix found there: R's per-anchor `occ_m` of 0.0002 m (self-occlusion noise) hid the W profile eye in idle f07-f09. Now only occ_m > 1 cm hides a part.
+  `focused` (dash): 2-row lower lid + V brow whose inner end drops into the lash (one dark wedge) + short set mouth, no blush.
+  Re-critique: Argon 8, Opus 6 (was Opus 4; at 1x it is still close to determined in SE/SW). West views: Argon SW 8 / W 3 -> fixed dropout / NW 8; Opus 7 / 5 -> fixed / 6.
+  **R + P (routed): NE/NW cheek-sliver flicker.** The 2-3 px skin sliver at the NE/NW cheek changes shape every frame ("Y" in idle NE f08, finger spikes in
+  f03-f05, a dark strand line through it). It is the tex head silhouette/projection plus the pixel step, not the face layer (the face draws only the
+  blush + lash there). R: check the NE/NW hull and mask at the cheek (the side lock in front of the cheek). P: consider holding/majority-filtering
+  that skin sliver over time. Also seen in native SW walk f02 / idle f06-f07: red collar px still cut into the chin (Opus).

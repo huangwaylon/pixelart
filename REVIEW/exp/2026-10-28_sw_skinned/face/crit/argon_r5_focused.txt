@@ -1,0 +1,5 @@
+**Score: 5/10**
+
+At 8x, removing the blush and shortening the mouth separates `focused` from `determined`, though the 2-row dark lower lid reads more like taller, wide-eyed surprise/staring than intent focus. At 1x, `focused` and `determined` are nearly indistinguishable because the brow shapes and upper eye lines are identical.
+
+**Concrete Fix:** Lower the inner brow pixels by 1 row (overlapping the top of the eye) to narrow the eyes into a fierce, unmistakable squint at 1x.

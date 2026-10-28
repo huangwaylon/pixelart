@@ -7,13 +7,15 @@
  "title": "Skinned rig face: m96 pixel parts on 3D head anchors (round 3 + round 4: 8 directions, dash/hurt, critic nits)",
  "question": "Owner: 'the faces are all messed up, need to follow the head's movements, follow the 3D model, more expressive depending on the action.' Can hand-designed m96 face parts placed per frame on projected 3D head anchors replace the baked/projected face?",
  "method": "face/face_lib.py: the approved m96 eye/brow/mouth/blush/nose templates (eye_spec.json via eyetmpl.py) plus 12 named expressions (neutral, smile, smile_open, joyful, determined, effort, surprised, squint, wink, blink, half_blink, shout) and a narrowed far eye. face/f_render.py (Blender, wraps R's render_motion.py): a faceless head pass, and the m96 anchor pixels ray-cast onto the rest head, kept in head-bone space, re-posed and projected every frame. face/face_layer.py (P's call): the face zone is re-taken from the faceless head; one integer face offset with hysteresis; per-part relative residuals with dead bands; eye-row split on roll; far eye far->far3->hidden or opened by yaw; eyes slide inside the outline; brows/mouth/blush only on skin. Expressions come from M's per-frame face/blink/mouth keys. The preview gets a half-pixel face composite. Run with face/f_run.sh.",
- "result": "Works on walk/run/idle/jump x SE/E/S (M's 21:33 bake, R's r6). The anchors reproduce the master at rest exactly (0 px); calibration = R's lift_px (S 4, SE 3, E 1 px). Relative part changes per frame: walk/jump SE/E 1-2 of 8-15; S/idle/run SE 5-7 (real roll/yaw). Every GIF is loop=0 with frames >= 20 ms. Round 4: brows gap the fringe, gritted-teeth effort mouth, far eye off the cheek outline. Faces in all 8 directions: NE/NW partial (blush + lash tip), N none, W/SW/NW mirrored (mirror test: NW 0 px, SW only the iris/catchlight). New expressions: focused (dash), hurt, wince, hurt_tear, strain.",
+ "result": "Works on walk/run/idle/jump x SE/E/S (M's 21:33 bake, R's r6). The anchors reproduce the master at rest exactly (0 px); calibration = R's lift_px (S 4, SE 3, E 1 px). Relative part changes per frame: walk/jump SE/E 1-2 of 8-15; S/idle/run SE 5-7 (real roll/yaw). Every GIF is loop=0 with frames >= 20 ms. Round 4: brows gap the fringe, gritted-teeth effort mouth, far eye off the cheek outline. Faces in all 8 directions: NE/NW partial (blush + lash tip), N none, W/SW/NW mirrored (mirror test: NW 0 px, SW only the iris/catchlight). New expressions: focused (dash), hurt, wince, hurt_tear, strain. Native 8 directions (R r7): calib W/SW/NW = mirrored E/SE/NE exactly; verified on native SW/W/NW renders (fixed a W profile eye dropout caused by sub-cm occlusion noise). Dash \"focused\": 2-row lower lid + brow-into-lash wedge.",
  "verdict": "Both critics: a clear fix for the smeared face. The face follows the head and the jump reads as a story. Remaining: one-frame idle smile (M), brow/fringe contact on V-brows, a muddy effort mouth, far-eye lashes touching the cheek outline in walk SE f03-f05, and the E-profile nose missing in run E (head geometry).",
  "scores": {
   "Opus r2": "follows 7.5 / on-model 7 / clean 6 / expressive 7.5 / stable 6.5 (r1 vs round-2 face: 4/6/3/2/4)",
   "Argon r2": "8.5 / 9 / 8 / 9 / 8 (round-2 face 4/3/2/1/4)",
   "Opus r3": "brows 7, effort mouth 6, far eye 8, focused 4 (since strengthened), hurt 6, NE 5",
-  "Argon r3": "brows 8, effort mouth 9, far eye 7, focused 9, hurt 9, NE 7"
+  "Argon r3": "brows 8, effort mouth 9, far eye 7, focused 9, hurt 9, NE 7",
+  "focused (final)": "Argon 8, Opus 6 (was 4)",
+  "west views": "Argon SW 8 / NW 8; Opus SW 7 / NW 6 (W dropout since fixed)"
  },
  "media": [
   {
@@ -88,6 +90,26 @@
   {
    "src": "exp/2026-10-28_sw_skinned/face/out/idle/cmp_face_idle_NE_4x.gif",
    "caption": "idle NE"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/face/crit/strip_idle_SW.png",
+   "caption": "native SW idle: flipped master | face per frame",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/face/crit/strip_idle_W.png",
+   "caption": "native W idle (profile eye kept through the turn)",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/face/crit/focused_r4.png",
+   "caption": "dash 'focused' vs neutral / determined / effort (SE S E SW)",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/face/out/sheet_expr_SW.png",
+   "caption": "expression library SW (native)",
+   "wide": true
   }
  ],
  "links": [
@@ -114,6 +136,14 @@
   {
    "href": "exp/2026-10-28_sw_skinned/face/crit/argon_r3.txt",
    "label": "Argon r3"
+  },
+  {
+   "href": "exp/2026-10-28_sw_skinned/face/crit/opus_r4.txt",
+   "label": "Opus r4"
+  },
+  {
+   "href": "exp/2026-10-28_sw_skinned/face/crit/argon_r6_focused.txt",
+   "label": "Argon focused"
   }
  ],
  "next": "Native W/SW/NW once R ships them (face_lib build + calib); NE cheek sliver flicker (R/P); P integrates face_layer."

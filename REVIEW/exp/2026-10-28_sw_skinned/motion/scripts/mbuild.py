@@ -40,7 +40,7 @@ SPRING = {  # per-action overrides of msim.GROUPS. Rule: natural freq < ~0.4 x s
     "idle": {"bow": dict(f=1.6, z=0.5, gain=1.4), "bun": dict(f=1.8, z=0.5), "hair_side": dict(f=1.5, z=0.55), "hair_back": dict(f=1.4, z=0.55),
              "hair_front": dict(f=2.0, z=0.5, gain=0.4), "skirt": dict(f=1.8, z=0.5, gain=1.5), "sleeve": dict(f=1.5, z=0.5)},
     "dash": {"hair_side": dict(f=1.8, z=0.4, cd=3.0), "hair_back": dict(f=1.6, z=0.45, cd=3.0), "bow": dict(f=2.4, z=0.3, cd=2.5, gain=1.0),
-             "bun": dict(f=2.6, z=0.3), "skirt": dict(f=2.2, z=0.3, cd=3.0, gain=2.4), "sleeve": dict(f=1.8, z=0.35, cd=3.0, gain=0.8, mx=30), "hair_front": dict(cd=1.5)},
+             "bun": dict(f=2.6, z=0.3), "skirt": dict(f=2.2, z=0.3, cd=3.0, gain=2.0), "sleeve": dict(f=1.8, z=0.35, cd=3.0, gain=0.8, mx=30), "hair_front": dict(cd=1.5)},
     "hurt": {"hair_side": dict(f=1.8, z=0.4), "hair_back": dict(f=1.7, z=0.4), "bow": dict(f=2.4, z=0.3, gain=1.0), "bun": dict(f=2.6, z=0.3),
              "skirt": dict(f=2.2, z=0.35), "sleeve": dict(f=1.8, z=0.35, mx=30), "hair_front": dict(cd=0.5, gain=0.5)},
     "jump": {"hair_side": dict(f=1.7, z=0.35, cd=5.0), "hair_back": dict(f=1.6, z=0.35, cd=5.0), "bow": dict(f=2.2, z=0.25, cd=4.0),

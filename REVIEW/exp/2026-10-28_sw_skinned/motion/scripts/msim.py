@@ -16,7 +16,7 @@ GROUPS = {
     "bun": dict(f=3.6, z=0.30, gw=0.00, cd=0.2, follow=0.0, gain=3.0, mx=16),
     "bow": dict(f=3.4, z=0.50, gw=0.08, cd=0.8, follow=0.15, gain=0.8, mx=24),
     "sleeve":     dict(f=2.3, z=0.34, gw=0.45, cd=1.6, follow=0.15, gain=0.6, mx=25),
-    "skirt":      dict(f=2.8, z=0.3, gw=0.12, cd=1.4, follow=0.15, gain=2.2, mx=34),
+    "skirt":      dict(f=2.8, z=0.3, gw=0.12, cd=1.4, follow=0.15, gain=1.7, mx=34),
     "obi_tail":   dict(f=2.0, z=0.22, gw=0.50, cd=1.5, follow=0.8, gain=1.5, mx=40),
 }
 COLL = {  # radii in metres for the R rig (~1.55 m); clamped to 0.97 x rest distance per particle
@@ -186,6 +186,25 @@ class ChainSim:
                     n = nrm(x[i + 1] - q) if d > 1e-9 else nrm(np.cross(B - A, UP))
                     x[i + 1] = q + n * r
 
+    # ROUND 4 follow-up (R: the walk SE "tent" is the panels swinging OUTWARD): cap the outward (radial) swing of each skirt panel
+    # relative to its pelvis-carried rest direction. Side/diagonal panels <= SKIRT_RAD_CAP; front/back panels get more room
+    # (SKIRT_RAD_CAP_FB) because the thigh drive legitimately pushes them forward/back. Tangential swing, lag and bounce are kept.
+    SKIRT_RAD_CAP = 15.0
+    SKIRT_RAD_CAP_FB = 26.0
+
+    def skirt_radial_cap(self, b0, b, Dp, d):
+        sk = self.sk; d0 = nrm(Dp @ self.rest_seg[b])
+        r0 = sk.head0[b0] - sk.head0["pelvis"]; r0[2] = 0.0; r = nrm(Dp @ nrm(r0))
+        rp = r - np.dot(r, d0) * d0
+        if np.linalg.norm(rp) < 1e-6: return d
+        rp = nrm(rp); q = np.cross(d0, rp)
+        a_, b_, c_ = float(np.dot(d, d0)), float(np.dot(d, rp)), float(np.dot(d, q))
+        cap = math.radians(self.SKIRT_RAD_CAP_FB if b0.split(".")[1] in ("F", "B") else self.SKIRT_RAD_CAP)
+        phi = math.atan2(b_, a_)
+        if phi <= cap: return d
+        m = math.hypot(a_, b_); a_, b_ = m * math.cos(cap), m * math.sin(cap)
+        return nrm(a_ * d0 + b_ * rp + c_ * q)
+
     def output(self, D, H, T):
         """bone relative rotations for every chain bone from the particles (with per-group gain exaggeration)."""
         sk = self.sk; r = {}; pts = {}; self.curD = D
@@ -202,6 +221,7 @@ class ChainSim:
                 if ang > 0.8 * mx: SAT[g][0] += 1
                 if ang > 1e-9: rv *= mx * math.tanh(ang / mx) / ang   # soft limit: keeps bouncing near the cap instead of pinning
                 d_f = Rot.from_rotvec(rv).apply(d_t)
+                if g == "skirt": d_f = self.skirt_radial_cap(ch[0], b, D[anc], d_f)
                 y.append(y[-1] + d_f * self.lens[b])
             y = np.array(y); self.collide(g, ch, y, H, T)
             for i, b in enumerate(ch):

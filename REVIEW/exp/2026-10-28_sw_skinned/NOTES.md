@@ -792,3 +792,7 @@ Critiques are in `face/crit/{opus,argon}_r{1,2}.txt`.
   | hurt | 2.5 px | 4.7 px | 3–15 px |
 
 - **Files:** `out/strip_{dash,hurt}_E_SE.png` (numbered frames with key and face), `out/{dash,hurt}_{SE,E,S}_preview.gif`, `out/dash_SE_preview_leancheat.gif`.
+- **Native 8 directions (R r7):** after `face_lib build`, the rest renders and `calib`, the native W/SW/NW offsets equal the mirrored E/SE/NE ones exactly. Verified on native SW/W/NW walk/idle.
+  - Bug found: R's `occ_m` of 0.0002 m hid the W eye during the idle turn, so occlusion now requires occ_m > 1 cm.
+- **`focused`, final:** a 2-row lower lid, the V brow moved 1 row down so its inner end joins the lash, a short set mouth and no blush. Scores: Argon 8, Opus 6 (it is still close to determined at 1x in SE/SW, where the near brow meets the hair).
+- NE/NW cheek-sliver flicker is routed to R and P (head silhouette and pixel step).

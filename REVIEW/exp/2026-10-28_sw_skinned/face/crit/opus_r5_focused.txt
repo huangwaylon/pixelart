@@ -1,0 +1,7 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Score: 5/10**
+
+At 8x, focused does read as intent. The heavy lower lid and the lack of blush tighten the face, and the S and SW tiles look the most driven. It is too close to determined, though. Both have the same V brows and the same short flat mouth, so the only real differences are the blush and one lid row. At 1x the insets look nearly identical, and in E the two are hard to tell apart.
+
+**Fix:** Drop the inner end of each brow by 1px so it touches the upper lash line. That joins the brow and eye into one dark wedge, which still reads at 1x.

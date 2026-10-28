@@ -38,7 +38,7 @@ EXPR = {
     'effort':     dict(eye='blink_half', brow='effort',     mouth=MOUTH_GRIT,     blush='neutral'),   # narrowed, focused eyes (not shut while running)
     'strain':     dict(eye='effort',     brow='effort',     mouth=MOUTH_GRIT,     blush='neutral'),
     # round 4: dash + hurt
-    'focused':    dict(eye='focused',    brow='determined', mouth=MOUTH_FOCUS,    blush=None),   # dash: open eyes under steep V brows, set mouth, no blush
+    'focused':    dict(eye='focused',    brow='focused',    mouth=MOUTH_FOCUS,    blush=None),   # dash: open eyes under steep V brows, set mouth, no blush
     'hurt':       dict(eye='pain',       brow='pain',       mouth=MOUTH_HURT,     blush='neutral'),   # pained > <, brows tilted up to the centre
     'wince':      dict(eye='pain',       brow='pain',       mouth=MOUTH_GRIT,     blush='neutral', eye1='blink_half'),   # one eye shut, one squinting
     'hurt_tear':  dict(eye='pain',       brow='pain',       mouth=MOUTH_HURT,     blush='neutral', tear=True),   # spec effort: eyes squeezed shut
@@ -96,6 +96,8 @@ def wing_tmpl(kind, e):
 
 
 def brow_tmpl(kind, e):
+    if e == 'focused':   # round-4 crit (Opus + Argon): the V brow 1 row lower, the inner end touching the lash cap = one dark wedge at 1x
+        t = brow_tmpl(kind, 'determined'); return ['.' * len(t[0])] + t
     if kind == 'far3': return [r[1:] for r in ET.brow_tmpl('far', e)]
     if kind == 'far3_left': return [r[:-1] for r in ET.brow_tmpl('far_left', e)]
     return ET.brow_tmpl(kind, e)

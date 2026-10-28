@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**6/10.** At 8x, focused does read as intent. The brow-into-lash wedge makes a heavy, hooded squint, and with no blush the face looks colder than determined. S and E show it best. In SE and SW the near brow disappears into the hair, so it looks closer to sleepy than intent. At 1x the two are nearly the same, and the blush is the only cue left. To fix it, make the mouth a 1px-shorter dark dash and keep a visible brow tip above the wedge.
