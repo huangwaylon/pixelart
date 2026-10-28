@@ -396,3 +396,57 @@ Goal: one consistent, gated set of animations the owner can review, in **all 8 d
   f03-f05, a dark strand line through it). It is the tex head silhouette/projection plus the pixel step, not the face layer (the face draws only the
   blush + lash there). R: check the NE/NW hull and mask at the cheek (the side lock in front of the cheek). P: consider holding/majority-filtering
   that skin sliver over time. Also seen in native SW walk f02 / idle f06-f07: red collar px still cut into the chin (Opus).
+- 22:55 I: rebuilt on R r7 (8 dirs) + M round 4 (dash/hurt, and **motion/view/<act>_<V>.json used automatically for run/dash**) + F round 4:
+  build 20261028_854761b = 6 actions x 8 dirs (48 clips, 6 min). Gates: boil 13/43, shade_swap 1/43, limbs 25/43, GIF 43/48 (the 5 missing are below).
+  **P: the shape_fixes crash now hits 5 clips**: run E, run W, dash NE, dash NW, dash W (render/pixel_chain.py ~l.270 `xs.min()` on an empty skeleton
+  row). Logs: release/out/20261028_854761b/work/<act>/<V>/clip.log. Re-run one clip: `release/rl.py clip <id> run E`. The N views have no face, by F's design.
+
+---
+# ROUND 5: DIRECTION CHANGE (owner, 2026-10-28)
+> "Stop projecting the pixel art face onto the 3D mesh. Start with the 3D reference and then pixelate it like the rest of the
+> body. Don't special case it." · "All the poses seem to be leaning back too much. They need to take on a more natural, human,
+> feminine pose / stance."
+
+## A. One pipeline for the whole figure, head included
+- **No projection of master pixels**: no `tex` head pass, no stamp, no 2D face decal layer, and no head-specific holds in the pixel chain.
+  The m96 masters and the turnE illustrations become **modelling reference only**.
+- **R** owns the 3D head:
+  - Sculpt the hair as 3D geometry: bob with bangs, side locks, bun and bow, matching the reference silhouettes per view, with clumps and tips that the existing spring chains deform.
+  - Give the head a proper anime face on the mesh: UV-mapped high-res face textures (eyes, iris + catchlight, lashes, brows, mouth, blush) supplied by F, or modelled eye/brow geometry where that reads better.
+  - Use flat palette materials plus shading bands, like the body. Matid entries are added for eye-white, iris, lash/brow, mouth and blush so the chain handles them as **ordinary materials**.
+- **F** owns the face *textures/shapes*:
+  - High-res (e.g. 1024² UV) anime face art in the m96 style (FACE_SPEC.md and eye_spec.json are the design reference, not a pixel source).
+  - One texture set per expression (neutral, smile, joyful, determined, focused, effort, surprised, blink, half-blink, squint, hurt, wince), or shape keys where geometry is better.
+  - Expressions are switched per frame by M's `face`/`blink`/`mouth` keys **inside the 3D render**.
+  - Contrast and sizes are tuned so the eyes survive pixelization at 96 px through the *standard* chain. Iterate by rendering and pixelizing, never by pixel-painting the result.
+  - The 2D `face_layer` is retired. Keep it only as an archived comparison.
+- **P**:
+  - Remove every head or face special case from `pixel_chain.py` (head hold, stamp, tex, face_layer).
+  - Any rule must apply to all materials, e.g. thin-feature protection now also protects eyes and brows as thin features.
+  - Re-tune so the face reads at 1x from the 3D render alone.
+- **I**: rebuild with this pipeline. The previous projected-face build stays in the archive as the A/B baseline.
+
+## B. Natural, human, feminine stance (replaces the round-2 "chest lifted, shoulders back, chin up" notes, which made poses lean back)
+- **M**:
+  - **Profile check (E view):** the torso line (pelvis→neck) is 0–4° *forward* of vertical in standing poses, and the centre of mass sits over the mid-foot / balls of the feet. No backward lean in any standing, idle or walk frame.
+  - **Head:** level, with pitch about 0° (±3°). Tilts are small and come from roll, not from tipping the chin up.
+  - **Shoulders:** relaxed and natural, not pinned back. The neck sits naturally forward of the spine line, as in humans.
+  - **Idle:** subtle contrapposto, with the hip shifted over the weight leg, the knee of the free leg softly bent, and arms hanging relaxed with a slight bend.
+  - **Walk:** natural human gait with gentle hip sway. Use mocap (CMU/LaFAN1 female walks in `/Users/waylonhuang/Documents/other/pixelart/.models/mocap`) as the **baseline** for natural posture and timing, then stylise lightly for chibi bounce.
+  - **Run:** keep the forward lean.
+  - **Dash:** reduce the backward anticipation lean (22° is too much; use about 8–10° plus a crouch).
+  - **Measured check:** M reports measured torso pitch and head pitch per frame (E view) in NOTES and gates them: torso pitch ≥ 0° (forward) for idle/walk/standing frames.
+- **R**: re-check that the rest pose spine and neck are natural, not arched back.
+
+## ROUND 5 addendum (owner, 2026-10-28)
+> "The head looks unnaturally jutted back, fix that." · "Give her longer, more consistent bangs, she looks like she's balding."
+- **Head position (R + M).** The head sits *forward* over the neck as in a natural human/chibi build: the skull centre is slightly
+  ahead of the neck base in profile, and the neck angles forward from the chest.
+  - R fixes the rest head/neck placement in `rig/` (the head bone and mesh shouldn't sit behind the spine line).
+  - M removes any backward head offset or pitch-up in every action. Head pitch is about 0° (level) to slightly down.
+  - Gate (E profile, every frame): head centre x ≥ neck-base x (toward her front).
+- **Bangs (R, with F for the hairline).** A full, *longer*, consistent fringe: thick bangs that cover the forehead down to about the brow line
+  (eyebrows may peek through gaps), in even, chunky anime clumps across the whole front. No visible scalp or high hairline from
+  any of the 8 directions, including during head tilt and spring motion. The side locks frame the face down to about the chin.
+  - Hair volume overlaps the skull fully, so there's no skin showing through between the clumps or at the parting.
+  - QA: 8-direction rest + head tilt ±15° + spring swing sheet, at 1x and 4x.
