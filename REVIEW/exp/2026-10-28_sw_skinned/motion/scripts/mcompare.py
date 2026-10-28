@@ -23,11 +23,11 @@ def main(act, new_gif, out, col=1):
             if t < d: return i
             t -= d
         return len(seq) - 1
-    L = 2 * max(sum(d for _, d in old), sum(d for _, d in new)); ev = []
-    for t in range(0, L, 10):
-        k = (at(old, t), at(new, t))
-        if ev and ev[-1][0] == k: ev[-1][1] += 10
-        else: ev.append([k, 10])
+    L = 2 * max(sum(d for _, d in old), sum(d for _, d in new)); L = int(round(L / 20.0)) * 20; ev = []
+    for t in range(0, L, 20):
+        k = (at(old, t + 10), at(new, t + 10))
+        if ev and ev[-1][0] == k: ev[-1][1] += 20
+        else: ev.append([k, 20])
     W = old[0][0].width + new[0][0].width + 8; imgs = []
     for (i, j), d in ev:
         c = Image.new("RGB", (W, H + 18), (110, 110, 110)); c.paste(old[i][0], (0, 18)); c.paste(new[j][0], (old[0][0].width + 8, 18))
@@ -75,11 +75,11 @@ def sbs(ga, gb, out, la="ROUND 1", lb="ROUND 2"):
             if t < d: return i
             t -= d
         return len(seq) - 1
-    L = 2 * max(sum(d for _, d in A), sum(d for _, d in Bf)); ev = []
-    for t in range(0, L, 10):
-        k = (at(A, t), at(Bf, t))
-        if ev and ev[-1][0] == k: ev[-1][1] += 10
-        else: ev.append([k, 10])
+    L = 2 * max(sum(d for _, d in A), sum(d for _, d in Bf)); L = int(round(L / 20.0)) * 20; ev = []
+    for t in range(0, L, 20):   # 20 ms ticks: every GIF frame >= 20 ms (browsers clamp shorter ones to 100 ms)
+        k = (at(A, t + 10), at(Bf, t + 10))
+        if ev and ev[-1][0] == k: ev[-1][1] += 20
+        else: ev.append([k, 20])
     W = A[0][0].width + Bf[0][0].width + 8; ims = []
     for (i, j), d in ev:
         c = Image.new("RGB", (W, H + 18), (110, 110, 110)); c.paste(A[i][0], (0, 18)); c.paste(Bf[j][0], (A[0][0].width + 8, 18))

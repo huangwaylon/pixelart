@@ -125,6 +125,23 @@ it in R's status log, and M will then omit it.
   are in render/out/r2/<act>/. Round 1 vs round 2 side-by-sides: render/out/r2/compare_<act>_SE.gif and compare_walk_{E,S}.gif (they include P's
   chain column when render/out/p2 exists). When M posts the final round-2 motion, re-run `render/r2_all.sh` then `render/r2_compare.py <act> <view>`.
 
+- 19:40 R: **ROUND 3 rig (r6)**: rig.blend, rest_skeleton.json (bones unchanged vs r5), align.json, rig/tex/, rig/face_anchors.json.
+  - **Face anchors (for F).** There are 7 anchors: eye.L/R, brow.L/R, mouth, cheek.L/R (.L = her left). Each is triangulated from the m96 master anchors
+    (anchor.json) in S+SE+E (reprojection error <= 1 px, except that the SE far eye/cheek sit 3 px higher than the master draws them; the master
+    draws both eyes on one row) and mirror-symmetrised. Each one is an empty `face.<name>` parented to the head bone in rig.blend, and the rest data is in rig/face_anchors.json.
+    **render_motion.py writes them per frame** into `<stem>.json` -> `frames[i].face` (+ `rest_face`):
+    `{name: {px: [x, y] = 1x coords in the 128 game cell INCLUDING the output placement dx/dy (= the pixel frame), px192, depth_m, facing
+    (normal . toward camera), occ_m, visible}, _head: {yaw, pitch, roll (deg vs rest, camera axes: yaw + = face turns toward screen right,
+    pitch + = chin down, roll + = top tilts toward screen left), centre_px}}`. `visible` = facing > 0.05 and not occluded by body/arms/hands
+    (head self-occlusion is left to facing). QA overlay: rig/qa/r3_anchors_SE.png (green = visible, red = hidden).
+  - **Face masked out of the projection**: rig/tex/tex_<V>.png have the eye blocks (incl. brows), the mouth block and the blush cleared to
+    skin `s`. Bangs, side hair, the head outline and the nose stay. Masks: rig/tex/face_mask_<V>.png; unmasked: tex_<V>_face.png. The `tex` pass now shows a blank face.
+  - **Sole clipping fixed via placement (P please note):** rig/align.json `dx/dy` are now the OUTPUT placement, lifted vs the master
+    registration (`reg_dx/reg_dy`, used only for the hull/projection) by `lift_px`: S 4, SE 3, E 1, NE 2, N 2. New extents on the 18:35 bake:
+    walk SE lowest row 124 (was 128.8), run S <= 127.8. The jump apex then reaches the cell top in S/SE (bow tip, <= 1 px).
+    For jumps I recommend exporting root height as a per-frame offset instead of moving it inside the cell.
+  - **Skirt:** an A-line (flares over the hips, then the sides run nearly straight to a 0.192 hem; was a straight 0.141 -> 0.205 cone). The skirt bones follow the new shape.
+
 ## Status log (M)
 - (M writes here)
 - 2026-10-28 11:50 M: started. Building `motion/scripts/` (FK + analytic 2-bone leg IK + spring sim + own capsule preview). Until `rig/rest_skeleton.json` exists I use a stand-in `motion/standin_skeleton.json` (H2 armature joints rotated to face +Y, so .L = -X, plus guessed secondary chains). Assumptions about R's file: armature object at identity, `roll` = EditBone.roll in radians, bone rest matrix = Blender vec_roll_to_mat3(tail-head, roll); `rot` = pose rotation_quaternion with L = B^-1 * r * B. I will NOT scale pelvis (Blender inherit_scale would shrink the legs); scale only on spine/chest/head, small (0.96..1.04).
@@ -254,3 +271,16 @@ All four commit nothing. The lead commits and pushes. Each owner logs in their s
 
 ## Status log (F)
 - (F writes here)
+- 21:45 F: started. Face = m96 template parts (eye_spec.json via v2/m96/tools/eyetmpl.py) placed per frame on 3D head anchors. Files in `face/`:
+  `face_lib.py` (part library + named expressions + faceless textures `face/tex/tex_<V>_nf.png`), `f_render.py` (Blender: faceless head pass
+  + per-frame anchors, wraps render_motion.py like p_parts.py; R's files untouched), `face_layer.py` (P's call), `f_run.sh "<acts>" "<views>"`.
+  **Anchors I use until R's export exists (R: please reuse or tell me yours):** each m96 anchor pixel (anchor.json eye iris centres, brow,
+  mouth, blush, nose; + `face/calib.json` offset, see below) is ray-cast from the view camera onto the REST head at identity pose, stored in the
+  head bone's rest frame (`anchors_head_local_m` in `face/out/<act>/<act>_<V>_face.json`; S: eye.L/R = (+-0.074, 0.125, 0.170) m
+  (x = bone X, y = along the head bone, z = front), mouth (0, 0.039, 0.184), cheeks (+-0.074, 0.05, 0.16), brows (+-0.074, 0.225, 0.213)),
+  re-posed with the head bone matrix per frame and projected -> 128-cell xy + depth + facing + head yaw/pitch/roll.
+  **R, finding:** at rest the rig head renders 3-4 px ABOVE the master (tex pass vs EC0 masters: S dy -4, SE -3, E -1; match .94/.95/.99).
+  align.json fits the feet, the rig is taller. I compensate (face/calib.json); the 3D anchor positions above already include it.
+  **R masking:** not needed any more from my side: f_render.py swaps the projection texture in memory for the faceless one
+  (`face/tex/tex_<V>_nf.png`), so you can keep tex_<V>.png as is; if you mask natively, keep the hair/skin and erase only the features.
+  **M:** your new per-frame `face` + numeric `blink` (0/.5/1) keys are read directly (thanks); missing keys fall back to my per-action map.

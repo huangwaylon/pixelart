@@ -14,8 +14,9 @@ for a, b in zip(A, B):
     for k, (x, lbl) in enumerate(((a, 'round-1 chain'), (b, 'P2'))):
         bg = Image.new('RGBA', x.size, BG + (255,)); bg.alpha_composite(x)
         im.paste(bg.crop(CR).resize((w, h), Image.NEAREST), (k * (w + 8), 16)); d.text((k * (w + 8) + 4, 2), lbl, fill=(230, 230, 120))
-    out.append(im.convert('RGB').quantize(colors=255, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE))
-out[0].save(f'{EXP}render/out/p2/{act}/cmp_{act}_{view}_4x.gif', save_all=True, append_images=out[1:], duration=ms, loop=0, disposal=1)
+    out.append(im.convert('RGB'))
+sys.path.insert(0, EXP + 'render'); from gifio import write_gif
+write_gif(f'{EXP}render/out/p2/{act}/cmp_{act}_{view}_4x.gif', out, ms)
 st = Image.new('RGBA', (128 * len(B), 128), (0, 0, 0, 0))
 for i, b in enumerate(B): st.alpha_composite(b, (128 * i, 0))
 st.save(f'{EXP}render/out/p2/{act}/{act}_{view}_strip1x.png'); print('gif', act, view, len(B))

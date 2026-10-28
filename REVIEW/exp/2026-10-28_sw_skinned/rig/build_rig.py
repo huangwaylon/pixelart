@@ -102,7 +102,7 @@ for s in "LR":
 SKA = {"F": 0, "FL": 45, "L": 90, "BL": 135, "B": 180, "BR": 225, "R": 270, "FR": 315}
 ztopS = 0.975 + DZ; hem = G["hem"]
 def skr(z):  # skirt ellipse radii at z (build_mesh sk)
-    zs = [hem, .82 + DZ, .88 + DZ, .94 + DZ, .975 + DZ]; rx = [.205, .188, .170, .151, .141]; ry = [.163, .146, .127, .110, .101]
+    zs = [hem, .80 + DZ, .84 + DZ, .90 + DZ, .95 + DZ, .975 + DZ]; rx = [.192, .189, .184, .176, .162, .143]; ry = [.150, .146, .140, .131, .118, .103]
     return np.interp(z, zs, rx), np.interp(z, zs, ry)
 for n, ph in SKA.items():
     dv = np.array([math.sin(math.radians(ph)), -math.cos(math.radians(ph))])
@@ -306,7 +306,7 @@ def camH2(view):
     r = np.cross(f, [0, 0, 1.0]); r /= np.linalg.norm(r); u = np.cross(r, f)
     ps = np.radians(AL[view].get("yaw", 0.0)); Rz = np.array([[np.cos(ps), -np.sin(ps), 0], [np.sin(ps), np.cos(ps), 0], [0, 0, 1]]); a_ = AL[view]
     def proj(P):
-        Q = P @ Rz.T; return np.stack([96 + 52.608 * (Q @ r) - 32 + a_["dx"], 152 - 52.608 * (Q @ u) - 32 + a_["dy"]], -1)
+        Q = P @ Rz.T; return np.stack([96 + 52.608 * (Q @ r) - 32 + a_.get("reg_dx", a_["dx"]), 152 - 52.608 * (Q @ u) - 32 + a_.get("reg_dy", a_["dy"])], -1)
     return proj, Rz.T @ (-f)
 nf = len(me.polygons); cen = np.zeros(nf * 3); nrm = np.zeros(nf * 3)
 me.polygons.foreach_get("center", cen); me.polygons.foreach_get("normal", nrm)
@@ -339,6 +339,74 @@ for j, n in enumerate(BN):
 md = bo.modifiers.new("arm", "ARMATURE"); md.object = ao; md.use_deform_preserve_volume = os.environ.get("DQS", "1") == "1"
 for p in ao.pose.bones: p.rotation_mode = "QUATERNION"
 ao["mat_names"] = MN; ao["units_per_h2"] = K
+# ---------------- round 3: FACE ANCHORS (for F): back-project the S master face anchors (v2/m96/heads/anchor.json) onto the head surface
+# (ray from the S camera through the master pixel centre, first hit on the rest mesh), check them against the SE/E master anchors,
+# and create empties "face.<name>" parented to the head bone (they follow the head; render_motion exports them per frame).
+ANC = json.load(open("/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/anchor.json"))["views"]
+def m2d(view):  # master 2D anchors (centres, master cell px) per view; her right eye = screen-left in S/SE
+    a_ = ANC[view]; e = a_.get("eyes", []); out = {}
+    if view == "S":
+        r_, l_ = sorted(e, key=lambda q: q["x0"])
+        out.update({"eye.R": (r_["x0"] + 3.0, r_["y0"] + 3.5), "eye.L": (l_["x0"] + 3.0, l_["y0"] + 3.5),
+                    "brow.R": (r_["x0"] + 3.0, r_["y0"] - 1.5), "brow.L": (l_["x0"] + 3.0, l_["y0"] - 1.5)})
+        bl = sorted(a_["blush"], key=lambda q: q[0]); out["cheek.R"] = (bl[0][0] + 2.0, bl[0][1] + 1.0); out["cheek.L"] = (bl[1][0] + 2.0, bl[1][1] + 1.0)
+    elif view == "SE":
+        nr, fr = sorted(e, key=lambda q: q["x0"]); out.update({"eye.R": (nr["x0"] + 3.0, nr["y0"] + 3.5), "eye.L": (fr["x0"] + 2.0, fr["y0"] + 3.5)})
+        bl = sorted(a_["blush"], key=lambda q: q[0]); out["cheek.R"] = (bl[0][0] + 2.0, bl[0][1] + 1.0); out["cheek.L"] = (bl[1][0] + 1.5, bl[1][1] + 1.0)
+    elif view == "E" and e:
+        out["eye.R"] = (e[0]["x0"] + 3.0, e[0]["y0"] + 3.5)
+        if a_.get("blush"): out["cheek.R"] = (a_["blush"][0][0] + 2.0, a_["blush"][0][1] + 1.0)
+    if a_.get("mouth"): out["mouth"] = (a_["mouth"][0] + 2.0, a_["mouth"][1] + 1.5)
+    return out
+def cam_ray(view, col, row):
+    ax, ay = AZC[view]; c = np.array([-ax, -ay, 0.0]); c /= np.linalg.norm(c); el = np.radians(30)
+    loc = np.array([c[0] * np.cos(el), c[1] * np.cos(el), np.sin(el)]); f = -loc / np.linalg.norm(loc)
+    r = np.cross(f, [0, 0, 1.0]); r /= np.linalg.norm(r); u = np.cross(r, f); a_ = AL[view]
+    ps = np.radians(a_.get("yaw", 0.0)); Rz = np.array([[np.cos(ps), -np.sin(ps), 0], [np.sin(ps), np.cos(ps), 0], [0, 0, 1]])
+    qa = (col - 96 + 32 - a_.get("reg_dx", a_["dx"])) / 52.608; qb = (152 - 32 + a_.get("reg_dy", a_["dy"]) - row) / 52.608
+    o = qa * r + qb * u - 3.0 * f; return Rz.T @ o, Rz.T @ f
+FA2 = {}
+def affine(view):
+    proj, _ = camH2(view); c0 = proj(np.zeros((1, 3)))[0]; Mx = np.stack([proj(np.eye(3)[i][None])[0] - c0 for i in range(3)], 1); return Mx, c0  # 2x3, 2
+AFF = {v: affine(v) for v in ("S", "SE", "E")}; MV = {v: m2d(v) for v in ("S", "SE", "E")}
+for n_ in MV["S"]:
+    rows, rhs = [], []
+    for v in ("S", "SE", "E"):
+        if n_ in MV[v]: Mx, c0 = AFF[v]; rows.append(Mx); rhs.append(np.array(MV[v][n_]) - c0)
+    A_ = np.concatenate(rows); b_ = np.concatenate(rhs)
+    if len(rows) == 1:  # S only (brows): depth from the matching eye
+        pe = FA2.get(n_.replace("brow", "eye"))
+        y0 = pe["p"][1] if pe else -0.2; A_ = np.vstack([A_, [0, 1, 0]]); b_ = np.append(b_, y0)
+    P_ = np.linalg.lstsq(A_, b_, rcond=None)[0]
+    nr_ = bvh.find_nearest(Vector(P_)); nn_ = np.array(nr_[1][:]); nn_ = nn_ / np.linalg.norm(nn_)
+    nn_ = 0.5 * nn_ + 0.5 * np.array([0, -1.0, 0]); nn_ /= np.linalg.norm(nn_)  # face normal: half surface normal, half head-forward (hull normals are coarse)
+    FA2[n_] = {"p": P_, "n": nn_, "surf": np.array(nr_[0][:])}
+for n_ in [k for k in FA2 if k.startswith("brow")]:  # brows after eyes (depth)
+    pass
+for s in "LR":  # mirror-symmetrise the L/R pairs
+    for b_ in ("eye", "brow", "cheek"):
+        a1, a2 = FA2.get(f"{b_}.L"), FA2.get(f"{b_}.R")
+        if a1 and a2:
+            pm = (a1["p"] + a2["p"] * np.array([-1, 1, 1])) / 2; nm_ = (a1["n"] + a2["n"] * np.array([-1, 1, 1])) / 2
+            a1["p"], a2["p"] = pm, pm * np.array([-1, 1, 1]); a1["n"], a2["n"] = nm_, nm_ * np.array([-1, 1, 1])
+            sm = (a1["surf"] + a2["surf"] * np.array([-1, 1, 1])) / 2; a1["surf"], a2["surf"] = sm, sm * np.array([-1, 1, 1])
+FA2["mouth"]["p"][0] = 0.0
+chk = {}
+for view in ("SE", "E"):
+    proj, _ = camH2(view); M2 = m2d(view)
+    for n_, (cx, cy) in M2.items():
+        if n_ in FA2: q_ = proj(FA2[n_]["p"][None])[0]; chk[f"{view}:{n_}"] = [round(float(q_[0] - cx), 2), round(float(q_[1] - cy), 2)]
+print("face anchor reprojection error vs master anchors (px):", chk, flush=True)
+hb_ = ao.data.bones["head"]; FAJ = {}
+for n_, a_ in FA2.items():
+    e = bpy.data.objects.new("face." + n_, None); e.empty_display_type = "SPHERE"; e.empty_display_size = 0.01; sc.collection.objects.link(e)
+    pw = Vector(Fw(a_["p"])); nw = Vector(Fw(a_["n"]) / K).normalized()
+    e.parent = ao; e.parent_type = "BONE"; e.parent_bone = "head"
+    e.matrix_world = Matrix.Translation(pw) @ nw.to_track_quat("Z", "Y").to_matrix().to_4x4()
+    FAJ[n_] = {"rest": [round(x, 5) for x in pw], "normal": [round(x, 5) for x in nw], "surf_depth_m": round(float(np.linalg.norm(a_["surf"] - a_["p"]) * K), 4), "surf": [round(x, 5) for x in Fw(a_["surf"])]}
+ao["face_anchors"] = json.dumps(FAJ)
+json.dump({"_doc": "R round 3: face anchors on the head (contract frame, metres, rest). Empties face.<name> in rig.blend are parented to the head bone; render_motion.py exports them per frame (info frames[i].face). Back-projected from the S master anchors (v2/m96/heads/anchor.json), mirror-symmetrised; check = reprojection error vs the SE/E master anchors in px.",
+           "anchors": FAJ, "check_px": chk}, open(os.path.join(os.path.dirname(os.path.abspath(BLEND)), "face_anchors.json"), "w"), indent=1)
 bpy.ops.wm.save_as_mainfile(filepath=BLEND)
 # rest_skeleton.json (world rest space == armature space, armature object at identity)
 out = {}

@@ -40,25 +40,106 @@ SPRING = {  # per-action overrides of msim.GROUPS. Rule: natural freq < ~0.4 x s
 BASE_GROUPS = {k: dict(v) for k, v in msim.GROUPS.items()}
 
 
-def build(action, tune=None):
+# ---------------------------------------------------------------- round 3: frame counts / timing feels / expression track
+# half-cycle phase lists for gaits (contact = 0). "snappy" puts the samples on the key poses so the display times become holds
+# (phase-correct: a longer gap = the pose is held, then the motion jumps); "even" = uniform.
+GAIT_SNAPPY = {
+    "walk": {3: [0.0, 0.22, 0.55], 4: [0.0, 0.17, 0.45, 0.75], 5: [0.0, 0.14, 0.30, 0.50, 0.75], 6: [0.0, 0.12, 0.24, 0.42, 0.56, 0.78]},
+    "run":  {3: [0.0, 0.22, 0.62], 4: [0.0, 0.214, 0.5, 0.714], 5: [0.0, 0.16, 0.36, 0.56, 0.76]},
+}
+IDLE_PH = {"holds": {8: [0, .12, .26, .34, .5, .62, .76, .84], 12: [0, .125, .25, .283, .333, .40, .5, .625, .75, .783, .833, .9],
+                     16: [0, .08, .16, .23, .27, .31, .36, .42, .5, .58, .66, .73, .77, .81, .86, .92]}}
+
+
+def gait_times(action, n, feel, T):
+    h = n // 2
+    ph = GAIT_SNAPPY[action].get(h) if feel == "snappy" else None
+    if ph is None: ph = [k / h for k in range(h)]
+    return [p * T / 2 for p in ph] + [(0.5 + p / 2) * T for p in ph]
+
+
+def gait_key(action, p):
+    """pose name for a cycle phase p (L contact at 0)"""
+    side = "L" if p < 0.5 else "R"; h = (2 * p) % 1.0
+    names = {"walk": [(0.0, "contact"), (0.1, "down"), (0.36, "passing"), (0.62, "up")],
+             "run": [(0.0, "contact"), (0.1, "down"), (0.38, "push-off"), (0.6, "flight")]}[action]
+    nm = [n for x, n in names if h >= x - 1e-6][-1]
+    return f"{nm} {side}" if nm != "flight" else "flight"
+
+
+def expression(action, key, k, n):
+    """per-frame expression track for F (face artist): face name, blink (0 open, 0.5 half, 1 closed), mouth"""
+    if action == "walk":
+        return {"face": "smile", "blink": 0.0, "mouth": "closed"}
+    if action == "run":
+        eff = key.startswith("down") or key.startswith("push-off")
+        return {"face": "effort" if eff else "determined", "blink": 0.0, "mouth": "open" if eff else "closed"}
+    if action == "idle":
+        f = {"face": "neutral", "blink": 0.0, "mouth": "closed"}
+        if "blink" in key: f["blink"] = 1.0
+        if "look" in key or "blink-hold R" in key: f["face"] = "smile"
+        return f
+    # jump beats
+    J = {"stand": ("neutral", "closed"), "anticipation": ("determined", "closed"), "crouch": ("determined", "closed"),
+         "launch": ("effort", "open"), "take-off": ("effort", "open"), "rise": ("joyful", "open"), "apex": ("joyful", "open"),
+         "fall": ("surprised", "open"), "land": ("squint", "closed"), "squash": ("squint", "closed"), "recover": ("smile", "open"),
+         "settle": ("smile", "closed"), "end": ("smile", "closed")}
+    for kk, (fc, mo) in J.items():
+        if key.startswith(kk): return {"face": fc, "blink": 0.5 if fc == "squint" else 0.0, "mouth": mo}
+    return {"face": "neutral", "blink": 0.0, "mouth": "closed"}
+
+
+IDLE_KEYS = [(0.0, "weight L (hold)"), (0.10, "weight L blink-hold"), (0.22, "transfer"), (0.38, "settle R"), (0.47, "weight R look"),
+             (0.60, "weight R blink-hold"), (0.72, "transfer"), (0.88, "settle L")]
+
+
+def jump_warp(antic=1.0, hang=1.0):
+    """real-time duration factors for the crouch hold [.14,.22] and the apex [.44,.60] of the jump timeline -> (tau(real), real(tau), length)"""
+    seg = [(0.0, 0.14, 1.0), (0.14, 0.22, antic), (0.22, 0.44, 1.0), (0.44, 0.60, hang), (0.60, 1.40, 1.0)]
+    R0 = [0.0]
+    for a, b, f in seg: R0.append(R0[-1] + (b - a) * f)
+    def real(tau):
+        for (a, b, f), r0 in zip(seg, R0):
+            if tau <= b: return r0 + (min(max(tau, a), b) - a) * f
+        return R0[-1]
+    def tau(rt):
+        for (a, b, f), r0, r1 in zip(seg, R0, R0[1:]):
+            if rt <= r1: return a + (rt - r0) / f
+        return 1.40
+    return tau, real, R0[-1]
+
+
+def build(action, tune=None, var=None):
+    """var (round 3): dict(name, n, feel, T, antic, hang, head_hold) -> motion/variants/<name>.json"""
+    var = var or {}
     msim.GROUPS.clear(); msim.GROUPS.update({k: dict(v) for k, v in BASE_GROUPS.items()})
     for g, o in SPRING.get(action, {}).items(): msim.GROUPS[g].update(o)
     sk = Skel(); po = Poser(sk)
-    A = ACTIONS[action]
+    A = dict(ACTIONS[action]); pre = 6; warp = None
     if action in ("walk", "run"):
         P = dict(getattr(mbody, action.upper())); P.update(tune or {})
+        if var.get("T"): P["T"] = var["T"]
         gen = mbody.Gait(P, po)
         if P.get("geo"): gen.build_geo()
         else: mbody.auto_base(gen)
         T = P["T"]
-        times = [(k + P.get("frame_off", 0.0)) * T / A["n"] for k in range(A["n"])]
-        if P.get("frame_ms"):   # uneven display times (holds on key poses), sampled phase-correctly
-            ms = list(P["frame_ms"]) * 2; sc = T * 1000 / sum(ms); times = [0.0]
-            for d in ms[:-1]: times.append(times[-1] + d * sc / 1000); pre = 6
+        n = var.get("n", A["n"]); feel = var.get("feel", "snappy" if P.get("frame_ms") else "even")
+        times = gait_times(action, n, feel, T)
+        times = [t + P.get("frame_off", 0.0) * T / n for t in times]
+        keys = [gait_key(action, (t / T) % 1.0) for t in times]
     elif action == "idle":
-        gen = mbody.Idle(po); T = gen.T; times = A["times"]; pre = 2
+        T = var.get("T", 2.4); gen = mbody.Idle(po, T=T); n = var.get("n", 12); feel = var.get("feel", "holds")
+        xs = IDLE_PH["holds"][n] if feel == "holds" else [k / n for k in range(n)]
+        times = [x * T for x in xs]; pre = 2
+        keys = [[nm for x0, nm in IDLE_KEYS if x >= x0 - 1e-6][-1] for x in xs]
     else:
-        gen = mbody.Jump(po); T = 1.40; times = A["times"]; pre = 0
+        tau, real, L = jump_warp(var.get("antic", 1.0), var.get("hang", 1.0))
+        gen0 = mbody.Jump(po)
+        class _G:   # time-warped jump: springs see real time
+            def spec(self, t): return gen0.spec(tau(t))
+        gen = _G(); T = L; pre = 0
+        times = [real(t) for t in A["times"]]; keys = A["keys"]; warp = (tau, real)
+    A["keys"] = keys
     dt = 1.0 / 400
     # time grid: preroll cycles then the output cycle; one-shots get a 1.2 s still preroll
     if A["loop"]:
@@ -101,25 +182,33 @@ def build(action, tune=None):
         print(f"loop seam: max chain point change vs previous cycle = {perr * 1000:.1f} mm")
     # write
     out = dict(action=action, fps=24, loop=A["loop"], frames=[], timing_ms=[], notes="")
+    hold = var.get("head_hold", action == "idle")
     for k, (r, root, sc, rc, pts) in enumerate(frames):
         bones = {}
         allr = dict(r); allr.update(rc)
+        if hold and k % 2 == 1:   # head turn/tilt held >= 2 frames (P: avoids tex-head resample swaps); body and springs keep moving
+            for hb in ("neck", "head"): allr[hb] = frames[k - 1][0][hb]
         for n in sk.order:
             if n == "root": continue
             bones[n] = {"rot": sk.local_quat(n, allr.get(n, np.eye(3)))}
         fr = {"t": round(times[k] * 24, 3), "key": A["keys"][k], "root": {"loc": [round(float(v), 5) for v in root]}, "bones": bones}
+        fr.update(expression(action, A["keys"][k], k, len(frames)))
         if sc: fr["scale"] = {b: [round(float(x), 4) for x in v] for b, v in sc.items()}
         out["frames"].append(fr)
     tl = list(times) + ([times[0] + T] if A["loop"] else [times[-1] + 0.25])
     out["timing_ms"] = [int(round((tl[k + 1] - tl[k]) * 1000)) for k in range(len(times))]
     if not A["loop"]: out["timing_ms"][-1] = 250
+    if var.get("name"): out["action"] = var["name"]; out["variant"] = {k: v for k, v in var.items()}
     trav = specs[-1].get("travel", 0.0)
     out["travel_m_per_s"] = round(trav, 4)
     out["notes"] = (f"M {time.strftime('%Y-%m-%d %H:%M')}: skeleton={os.path.relpath(sk.path, EXP)}; cycle {T:.3f}s; in place (root.loc = bob/sway only). "
                     f"Game travel speed {trav:.3f} m/s = {trav * 67.88 * out["timing_ms"][0] / 1000:.2f} px/frame at 1x (67.88 px/m, R camera) for planted feet to hold still. "
                     "Secondary chains spring-baked (motion/scripts/msim.py). t = source frame at 24 fps (may be fractional).")
     if A["loop"]: out["cycle_s"] = T; out["seam_mm"] = round(perr * 1000, 2) if perr is not None else None
-    path = os.path.join(MOT, f"{action}.json")
+    if var.get("name"):
+        os.makedirs(os.path.join(MOT, "variants"), exist_ok=True); path = os.path.join(MOT, "variants", f"{var['name']}.json")
+    else:
+        path = os.path.join(MOT, f"{action}.json")
     json.dump(out, open(path, "w"), indent=0)
     return path
 

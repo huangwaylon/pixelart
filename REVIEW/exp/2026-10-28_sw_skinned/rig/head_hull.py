@@ -26,7 +26,7 @@ def cam(view, yaw):
     a = AL[view]
     def proj(P):
         Q = P @ Rz.T
-        return np.stack([96 + PPU * (Q @ r) - 32 + a['dx'], 152 - PPU * (Q @ u) - 32 + a['dy']], -1)
+        return np.stack([96 + PPU * (Q @ r) - 32 + a.get('reg_dx', a['dx']), 152 - PPU * (Q @ u) - 32 + a.get('reg_dy', a['dy'])], -1)
     return proj, Rz.T @ (-f)  # direction toward the camera in the model frame
 
 

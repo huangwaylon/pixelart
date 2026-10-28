@@ -164,21 +164,22 @@ WALK = dict(
 )
 
 RUN = dict(
-    # ROUND 2: light, springy, upright (lean from hips/ankles <= 8 deg), arms ~90 deg with an elegant swing
-    T=0.56, frame_ms=[60, 80, 60, 80], frame_off=0.0, arm_lean_comp=0.7, sf=0.30, a=0.20, track=0.45, toe_out=4.0, foot_y=0.0,
-    strike_pitch=10.0, flat_at=0.2, heel_rise=0.38, lift_pitch=-55.0,
-    strike_vel=0.4, lift_vel=0.5,
-    swing_dz=[(0, 0), (0.15, 0.17), (0.4, 0.28), (0.62, 0.28), (0.85, 0.10), (1.0, 0.0)], swing_dy=[(0, 0), (0.15, -0.06), (0.62, 0.14), (0.85, 0.09), (1.0, 0.0)],
-    swing_pitch=[(0, -55.0), (0.3, -65.0), (0.7, -20.0), (1.0, 10.0)], swing_toe=[(0, 0.0), (0.25, -40.0), (0.7, -15.0), (1.0, 10.0)],
-    # half cycle: contact 0, DOWN .214 (held 80 ms), push-off .5, FLIGHT .714 (held 80 ms)
-    bob=[(0.0, 0.3), (0.214, -1.0, "flat"), (0.5, 0.6), (0.714, 1.0, "flat"), (0.9, 0.65)], bob_amp=0.03,
-    sway=0.012, sway_ph=0.2, pel_yaw=6.0, pel_yaw_ph=0.0, pel_roll=4.0, pel_roll_ph=0.12, pel_pitch=7.0, pel_pitch_bob=1.5,
-    ch_yaw=7.0, ch_yaw_ph=0.03, ch_roll=3.0, lean=8.0, ch_pitch_bob=2.0, ch_bob_lag=0.08,
-    hd_yaw=-4.0, hd_roll=-5.0, hd_pitch=-7.0, hd_pitch_bob=2.0, hd_bob_lag=0.25,
-    arm_swing=[(0.0, -40.0), (0.5, 48.0)], arm_amp_ref=48.0, lag_upper=0.03, lag_fore=0.0, lag_hand=0.12,
-    elbow0=88.0, elbow_amp=12.0, elbow_bob=4.0, wrist0=14.0, wrist_amp=18.0, abd0=-15.0, abd_amp=0.0, cross=20.0, cross_back=16.0, elbow_in=18.0,
-    sh_elev=5.0, sh_bob=-2.5, sh_fwd=6.0, sh_elev0=-2.0, sh_fwd0=-4.0,
-    sq_chest=0.05, sq_head=0.025, sq_lag=0.05, knee_out=0.0,
+    # ROUND 3 (owner: E preview "very stiff and awkward, more leaning forward, more natural"): confident 12-18 deg lean from the
+    # ankles/hips with a straight back, chest lifted, head up looking ahead; knee drive, heel kick-back, flight, 90 deg arm pump, bounce
+    T=0.56, frame_ms=[60, 80, 60, 80], frame_off=0.0, arm_lean_comp=0.85, sf=0.30, a=0.21, track=0.55, toe_out=4.0, foot_y=-0.05,
+    strike_pitch=8.0, flat_at=0.2, heel_rise=0.36, lift_pitch=-58.0,
+    strike_vel=0.4, lift_vel=0.4,
+    # heel kicks up behind first (u .2), then the knee drives forward and up (u .5-.65), then the foot reaches down under the hips
+    swing_dz=[(0, 0), (0.18, 0.22), (0.42, 0.30), (0.62, 0.30), (0.85, 0.10), (1.0, 0.0)], swing_dy=[(0, 0), (0.18, -0.08), (0.62, 0.17), (0.85, 0.10), (1.0, 0.0)],
+    swing_pitch=[(0, -58.0), (0.25, -75.0), (0.65, -25.0), (1.0, 8.0)], swing_toe=[(0, 0.0), (0.25, -40.0), (0.7, -15.0), (1.0, 8.0)],
+    bob=[(0.0, 0.3), (0.214, -1.0, "flat"), (0.5, 0.6), (0.714, 1.0, "flat"), (0.9, 0.65)], bob_amp=0.032,
+    sway=0.014, sway_ph=0.2, pel_yaw=9.0, pel_yaw_ph=0.0, pel_roll=4.0, pel_roll_ph=0.12, pel_pitch=14.0, pel_pitch_bob=2.0,
+    ch_yaw=12.0, ch_yaw_ph=0.03, ch_roll=3.0, lean=15.0, ch_pitch_bob=3.0, ch_bob_lag=0.08,
+    hd_yaw=-5.0, hd_roll=-5.0, hd_pitch=-7.0, hd_pitch_bob=2.0, hd_bob_lag=0.25,
+    arm_swing=[(0.0, -44.0), (0.5, 52.0)], arm_amp_ref=52.0, lag_upper=0.02, lag_fore=0.0, lag_hand=0.12,
+    elbow0=90.0, elbow_amp=14.0, elbow_bob=6.0, wrist0=12.0, wrist_amp=18.0, abd0=-12.0, abd_amp=0.0, cross=22.0, cross_back=14.0, elbow_in=14.0,
+    sh_elev=6.0, sh_bob=-3.0, sh_fwd=10.0, sh_elev0=-2.0, sh_fwd0=-3.0,
+    sq_chest=0.06, sq_head=0.03, sq_lag=0.05, knee_out=0.0,
 )
 
 
@@ -222,7 +223,7 @@ class Idle:
         pel = (-3.0 * w, 1.0, 11.0 * w)                      # stance hip up/out: tilt down toward the free side
         chest = (2.0 * w_l, -6.0 - 4.0 * br, -6.0 * w_l)     # R2: chest lifted; contrapposto counter-tilt; lifts more on the inhale
         look = float(okey([(0, 0), (0.22, 0.0, "flat"), (0.28, -4.0), (0.34, -9.0), (0.40, -15.0), (0.47, -20.0), (0.55, -17.0, "flat"), (0.74, -17.0, "flat"), (0.82, -6.0), (0.88, 2.0), (0.94, 0.0), (1.0, 0)], x))
-        nod = float(okey([(0, 0), (0.30, 0.0), (0.36, 6.0), (0.46, -3.0), (0.55, 0.0), (0.8, 2.0), (0.9, -1.5), (1.0, 0)], x))
+        nod = float(okey([(0, 0), (0.30, 0.0), (0.36, -2.0), (0.46, -4.0), (0.55, 0.0), (0.8, -1.0), (0.9, -3.0), (1.0, 0)], x))   # R3: no forward nod in the settles
         head = (look, -7.0 + 0.6 * nod - 2.0 * br_l, 8.0 * self.w(t - 0.18) - 1.5 * w_l)   # chin slightly up; tilt toward the free hip, lags the body
         arm, sh = {}, {}
         for sd, sg in (("L", 1.0), ("R", -1.0)):
@@ -274,7 +275,7 @@ class Jump:
         root = [0.0, -0.02 * float(okey([(0, 0), (0.14, 1), (0.26, 1), (0.30, 0)], t)), self.zbase + z]
         lean = float(okey([(0, -4), (0.14, 10.0), (0.22, 11.0, "flat"), (0.26, 2.0), (0.30, -10.0), (0.40, -12.0), (0.46, -13.0), (0.52, -12.0), (0.60, -6.0), (0.66, 0.0),
                            (0.74, 2.0), (0.82, 6.0, "flat"), (0.95, -8.0), (1.03, 6.0), (1.14, 2.0), (1.2, 2.0)], t))
-        hd = float(okey([(0, -6), (0.14, 0.0), (0.22, -1.0), (0.30, -14.0), (0.40, -12.0), (0.52, -12.0), (0.66, -4.0), (0.74, -2.0), (0.84, 2.0),
+        hd = float(okey([(0, -6), (0.14, 0.0), (0.22, -1.0), (0.30, -14.0), (0.40, -12.0), (0.52, -12.0), (0.66, -6.0), (0.74, -5.0), (0.84, -3.0),
                          (0.95, -10.0), (1.03, -5.0), (1.11, -6.0), (1.2, -6.0)], t))
         spec = dict(root=root, pelvis=(0, 4 + 1.1 * max(lean, 0) + 0.9 * min(lean, 0), 0), chest=(0, lean, 0), head=(0, hd, 0), spine_mix=0.6)   # hips hinge, chest stays open
         sw = float(okey([(0, 2), (0.14, -50.0), (0.22, -58.0, "flat"), (0.26, 50.0), (0.30, 172.0), (0.36, 170.0), (0.44, 150.0), (0.52, 130.0),

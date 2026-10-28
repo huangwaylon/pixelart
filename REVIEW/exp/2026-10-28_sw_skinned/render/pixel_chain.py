@@ -23,6 +23,7 @@ from PIL import Image, ImageDraw
 from scipy import ndimage as nd
 from skimage.morphology import skeletonize
 sys.path.insert(0, '/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_hires3d/scripts')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import hx  # noqa: E402
 HERE = os.path.dirname(os.path.abspath(__file__)); EXP = os.path.dirname(HERE)
 P, N, OFF = 8, 128, 256
@@ -38,7 +39,9 @@ TEX = os.environ.get('TEX', '1') == '1'  # use R's projected master head pass wh
 FAMB = float(os.environ.get('FAMB', '0.2'))    # fill hysteresis half-band around .5 coverage
 LKEEP = float(os.environ.get('LKEEP', '0.75'))  # keep the previous label if its score >= LKEEP x best
 OBILINE = os.environ.get('OBILINE', '0') == '1'  # K line on the far side of obi|dress edges (master has them)
-RIM = os.environ.get('RIM', 'd')  # near-leg rim tone along the leg|leg separation (d = sock sheen; g = boot light, stronger)
+PROTECT_ARMS = os.environ.get('PROTECT_ARMS', '1') == '1'  # round 3: arms (sleeve tube + bag) get the 2 px guarantee too
+SPECK = int(os.environ.get('SPECK', '6'))  # limb crumbs smaller than this, detached from the limb's main piece, are relabelled
+RIM = os.environ.get('RIM', 'g')  # near-leg rim tone along the leg|leg separation (d = sock sheen; g = boot light, stronger)
 SMOOTH = os.environ.get('SMOOTH', '1') == '1'
 HOLE = int(os.environ.get('HOLE', '4'))  # enclosed background holes up to this many px are filled
 MINRUN = int(os.environ.get('MINRUN', '3'))
@@ -63,8 +66,8 @@ def seg(m, p): return m * NP + p
 
 # ------------------------------------------------------------------ io
 def gif(ims, durs, path):
-    pal = [im.convert('RGB').quantize(colors=255, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE) for im in ims]
-    pal[0].save(path, save_all=True, append_images=pal[1:], duration=durs, loop=0, disposal=1)
+    from gifio import write_gif  # shared experiment GIF writer: loop=0, >= 20 ms, 10 ms-quantised with error diffusion, disposal 2, global palette
+    write_gif(path, ims, durs)
 
 
 def sheet(ims, path, labels=None, cols=None):
@@ -181,23 +184,37 @@ def limb_masks(F):
     out = {}
     for q in LEG: out[q] = F['part'] == q
     for s, q in (('L', PI['arm.L']), ('R', PI['arm.R'])): out[100 + q] = (F['part'] == q) & (F['mid'] == MI['skin'])
+    if PROTECT_ARMS:
+        for s in 'LR':  # arm = upper arm / forearm cloth + sleeve bag (not the hand)
+            q = PI['arm.' + s]; out[200 + q] = np.isin(F['part'], [q, PI['sleeve.' + s]]) & (F['mid'] != MI['skin']) & (F['mid'] >= 0)
     return out
+
+
+ARMQ = {PI['arm.L']: PI['sleeve.L'], PI['arm.R']: PI['sleeve.R']}
 
 
 def limb_of_seg(k):
     p = SEG_P[k]; m = SEG_M[k]
     if p in LEG: return p
     if p in (PI['arm.L'], PI['arm.R']) and m == MI['skin']: return 100 + p
+    if PROTECT_ARMS:
+        for a_, sl_ in ARMQ.items():
+            if p in (a_, sl_): return 200 + a_
     return None
 
 
 def limb_cells(lab, q):
     if q < 100: return (lab >= 0) & np.isin(SEG_P[np.maximum(lab, 0)], [q])
+    if q >= 200: return (lab >= 0) & np.isin(SEG_P[np.maximum(lab, 0)], [q - 200, ARMQ[q - 200]]) & (SEG_M[np.maximum(lab, 0)] != MI['skin'])
     return (lab >= 0) & (SEG_P[np.maximum(lab, 0)] == q - 100) & (SEG_M[np.maximum(lab, 0)] == MI['skin'])
 
 
 def limb_segs(q):
     return [k for k in range(NS) if limb_of_seg(k) == q]
+
+
+def LIMBQ():
+    return [*LEG, 100 + PI['arm.L'], 100 + PI['arm.R']] + ([200 + PI['arm.L'], 200 + PI['arm.R']] if PROTECT_ARMS else [])
 
 
 KEYS = hx.KEYS; PALRGB = np.array(hx.RGB, float)
@@ -311,7 +328,6 @@ def frame(F, prev, opt):
             wl = np.roll(np.roll(prev['lab'], s_[0], 0), s_[1], 1); wb = np.roll(np.roll(prev['band'], s_[0], 0), s_[1], 1)
             wg = np.roll(np.roll(pg, s_[0], 0), s_[1], 1)
             U = cur | wg; mis = ((wl != lab) & U).sum() / max(1, U.sum())
-            if os.environ.get("PDBG"): print("hold", gp, s_, round(float(mis), 3))
             if mis < HOLD:
                 # held region = the shifted previous group; cells the group left take the current non-group label
                 lab = np.where(wg, wl, np.where(cur, -1 if False else lab, lab))
@@ -323,6 +339,8 @@ def frame(F, prev, opt):
     if opt['protect']:
         LM = limb_masks(F); skc = {}
         for q, mk in LM.items():
+            ml, mn = nd.label(mk)  # hi-res slivers under ~1.5 sprite px are not limbs to protect
+            if mn: mk = np.isin(ml, [k for k in range(1, mn + 1) if (ml == k).sum() >= 1.5 * P * P])
             if mk.sum() < 20: continue
             sk = skeletonize(mk); skc[q] = hx.cells(sk.astype(float)).sum((2, 3)) > 0
         # skeleton cells: nearest limb wins
@@ -356,10 +374,21 @@ def frame(F, prev, opt):
                             lab[c] = bestq[c] if qc[c] > 0 else lab[y, x]
                     R = limb_cells(lab, q)
         fill = lab >= 0
+        # stray limb crumbs: extra sprite pieces of a limb (< SPECK px) away from its main piece -> neighbour majority (non-limb)
+        for q in skc:
+            R = limb_cells(lab, q); rl, rn = nd.label(R, np.ones((3, 3)))
+            if rn <= 1: continue
+            sz = nd.sum(R, rl, range(1, rn + 1)); main = 1 + int(np.argmax(sz))
+            for k in range(1, rn + 1):
+                if k == main or sz[k - 1] >= SPECK: continue
+                cm = rl == k; ring = nd.binary_dilation(cm, np.ones((3, 3))) & ~cm & ~R
+                v = lab[ring][lab[ring] >= 0]
+                lab[cm] = np.bincount(v).argmax() if len(v) else -1
+        fill = lab >= 0
     lab = np.where(fill, lab, -1)
     # ---- silhouette clean: 1 px notches filled, 1 px spikes removed (limbs exempt)
     islimb = np.zeros((N, N), bool)
-    for q in (*LEG, 100 + PI['arm.L'], 100 + PI['arm.R']): islimb |= limb_cells(lab, q)
+    for q in LIMBQ(): islimb |= limb_cells(lab, q)
     for _ in range(2):
         f = lab >= 0; pf = np.pad(f, 1); n4 = pf[:-2, 1:-1].astype(int) + pf[2:, 1:-1] + pf[1:-1, :-2] + pf[1:-1, 2:]
         notch = ~f & (n4 >= 3)
@@ -418,7 +447,7 @@ def frame(F, prev, opt):
             for y, x in zip(*np.nonzero(far & (legs | armb | headm | hand) & ~(T & nb(T)))):
                 cand.append(((y, x), ((y + dy) % N, (x + dx) % N)))
         LQ = {}
-        for q in (*LEG, 100 + PI['arm.L'], 100 + PI['arm.R']): LQ[q] = limb_cells(lab, q)
+        for q in LIMBQ(): LQ[q] = limb_cells(lab, q)
         def limb_at(c):
             for q, R in LQ.items():
                 if R[c]: return q
@@ -602,7 +631,51 @@ def run(stem, info, opt):
         out[i], sts[i] = g, st; prev = st
     if opt['temporal']: out = kill_flips(out, loop)
     out = [hx.main_comp(hx.drop_bare_k(g)) for g in out]
-    return out, sts, sh
+    aud = [limb_audit(g, st, F) for g, st, F in zip(out, sts, Fs)]
+    return out, sts, sh, aud
+
+
+# ------------------------------------------------------------------ limb audit (round 3 gate)
+LIMBS = {'leg.L': ([PI['leg.L']], None), 'leg.R': ([PI['leg.R']], None),
+         'arm.L': ([PI['arm.L'], PI['sleeve.L']], None), 'arm.R': ([PI['arm.R'], PI['sleeve.R']], None),
+         'hand.L': ([PI['arm.L']], MI['skin']), 'hand.R': ([PI['arm.R']], MI['skin'])}
+
+
+def limb_audit(g, st, F):
+    """per limb: VANISHED (visible in 3D, no sprite pixels), SPLIT (more 8-connected sprite pieces than the visible hi-res limb has),
+    THIN (fill pixels outside a 2x2 core + 1 px fringe), DETACHED (a piece not touching the rest of the figure through <= 1 px of outline).
+    Limb pixels = final non-outline pixels whose segment belongs to the limb."""
+    lab = st['lab']; opaque = g != '.'; fillg = opaque & (g != 'K') & (lab >= 0)
+    P_ = np.where(fillg, SEG_P[np.maximum(lab, 0)], -1); M_ = np.where(fillg, SEG_M[np.maximum(lab, 0)], -1)
+    out = {}
+    for name, (parts, mat) in LIMBS.items():
+        L = np.isin(P_, parts) & ((M_ == mat) if mat is not None else True)
+        hi = np.isin(F['part'], parts) & ((F['mid'] == mat) if mat is not None else True)
+        hia = hi.sum() / (P * P)  # visible area in sprite px
+        hl, hn = nd.label(nd.binary_closing(hi, np.ones((5, 5))), np.ones((3, 3)))
+        hcomp = int(sum(1 for k in range(1, hn + 1) if (hl == k).sum() >= 2 * P * P)) if hn else 0
+        Lc = L | (st['line'] & nd.binary_dilation(L, CROSS) & (g == 'K'))  # an interior line drawn inside the limb does not split it
+        sl, sn = nd.label(Lc, np.ones((3, 3)))
+        core = nd.binary_opening(np.pad(L, 1), np.ones((2, 2)))[1:-1, 1:-1]
+        thin = int((L & ~nd.binary_dilation(core, CROSS)).sum())
+        det = 0
+        rest = opaque & ~L
+        for k in range(1, sn + 1):
+            c = (sl == k) & L
+            if not (nd.binary_dilation(c, np.ones((3, 3)), iterations=2) & rest & (g != 'K')).any(): det += 1
+        fl = []
+        if hia >= 2 and L.sum() == 0: fl.append('VANISHED')
+        if sn > max(1, hcomp): fl.append('SPLIT')
+        if thin: fl.append('THIN')
+        if det: fl.append('DETACHED')
+        out[name] = {'px': int(L.sum()), 'hi_px': round(float(hia), 1), 'pieces': int(sn), 'hi_pieces': hcomp, 'thin': thin, 'detached': det, 'flags': fl}
+    return out
+
+
+def audit_report(aud, frs):
+    bad = {f"f{f['i']:02d}": {k: v['flags'] for k, v in a.items() if v['flags']} for f, a in zip(frs, aud)}
+    bad = {k: v for k, v in bad.items() if v}
+    return {'frames': len(aud), 'failed_frames': len(bad), 'fails': bad, 'pass': not bad}
 
 
 def main():
@@ -612,7 +685,7 @@ def main():
         spec = iu.spec_from_file_location('r1', os.path.join(HERE, 'pixel_chain_r1.py')); m = iu.module_from_spec(spec); spec.loader.exec_module(m); m.main(); return
     opt = {'temporal': '--no-temporal' not in sys.argv, 'protect': '--no-protect' not in sys.argv, 'sep': '--no-sep' not in sys.argv}
     stamp = '--stamp' in sys.argv; view = info['view']; frs = info['frames']; durs = [int(f['ms']) for f in frs]
-    G, sts, sh = run(stem, info, opt)
+    G, sts, sh, aud = run(stem, info, opt)
     od = stem + '_px'; os.makedirs(od, exist_ok=True)
     ims, ims_h, grids_h = [], [], []
     if stamp:
@@ -625,7 +698,9 @@ def main():
             mg = np.where(st['lab'] >= 0, SEG_M[np.maximum(st['lab'], 0)], -1)
             g2 = g.copy(); g2[head_clear(mg, nk)] = '.'; g2 = hx.paste(g2, t, x0, y0); g2 = hx.main_comp(hx.Z.clean_orphans(g2, keep='WKd'))
             hx.save(g2, f'{od}_hs/f{i:02d}', view); grids_h.append(g2); ims_h.append(hx.render(g2, 4, BG))
-    res = {'align': sh, 'chain': 'P2', 'opt': opt, 'farleg': [PARTS[s['farleg']] if s['farleg'] is not None else None for s in sts]}
+    ar = audit_report(aud, frs); json.dump({'summary': ar, 'per_frame': aud}, open(f'{stem}_limbs.json', 'w'), indent=0)
+    print('LIMB_AUDIT', os.path.basename(stem), 'PASS' if ar['pass'] else f"FAIL {ar['failed_frames']}/{ar['frames']} frames", json.dumps(ar['fails'])[:400])
+    res = {'limb_audit': ar, 'align': sh, 'chain': 'P2', 'opt': opt, 'farleg': [PARTS[s['farleg']] if s['farleg'] is not None else None for s in sts]}
     for tag, I_, G_ in (('', ims, G), ('_hs', ims_h, grids_h)):
         if not I_: continue
         gif(I_, durs, f'{stem}{tag}_4x.gif'); sheet(I_, f'{stem}{tag}_sheet.png', [f"f{f['i']:02d}" for f in frs], cols=min(8, len(I_)))

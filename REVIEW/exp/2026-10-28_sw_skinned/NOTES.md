@@ -182,6 +182,29 @@ Coordination contract: `CONTRACT.md`. This experiment has two roles: R (rigger: 
 - `render/r2_all.sh` renders 8× passes, previews and the R QA chain into `render/out/r2/<act>/`.
 - `render/r2_compare.py` builds `render/out/r2/compare_<act>_<view>.gif`: round 1 (stamp) | round 2 R QA | round 2 P chain | preview.
 
+### Round 3 (R): face anchors, face-masked projection, cell clipping, A-line skirt (rig r6)
+**Face anchors.**
+- `build_rig.py` triangulates 7 anchors (eye.L/R, brow.L/R, mouth, cheek.L/R) by linear least squares through the affine game cameras S, SE and E. The 2D input is the m96 master anchors (`anchor.json`: eye centre = x0+3, y0+3.5; brow = y0−1.5; mouth = block centre; cheek = blush centre). Brows take their eye's depth.
+- Pairs are mirror-symmetrised. Reprojection error is ≤ 1 px, except the SE far eye and cheek (master draws them 3 px lower than perspective).
+- Normal = ½ hull normal + ½ head-forward.
+- Each anchor is an empty `face.*` on the head bone; the data is in `rig/face_anchors.json`.
+- Per frame, `render_motion.py` exports for each anchor:
+  - `px`: game-cell 1× coordinates, with the output dx/dy
+  - `px192`, `depth_m`, `facing`
+  - `occ_m`: ray against the deformed non-head mesh
+  - `visible`
+  - `_head` yaw/pitch/roll in camera axes. Checked: stress head_turn_L20 → yaw +24, R20 → −27, nod up → pitch −19.
+- QA: `rig/qa/r3_anchors_SE.png`.
+
+**Face masked out of the projection.** `make_tex.py` clears the eye, brow, mouth and blush boxes to skin `s`. It keeps bangs (any hair component reaching outside the boxes), the outline and the nose. Pixels cleared: S 187, SE 160, E 89, NE 6. Masks: `rig/tex/face_mask_<V>.png`.
+
+**Cell clipping.**
+- `align.json` splits master registration (`reg_*`: hull, projection) from output placement (`dx`, `dy`), lifted by `lift_px`: S 4, SE 3, E 1, NE 2, N 2.
+- Lowest rows after the fix: walk SE 124 (was 128.8), run S 127.8 (was 131.8).
+- Remaining risk: the jump apex touches the cell top.
+
+**Skirt.** A-line: rx .143 waist → .162/.176 over the hips → .184/.189 → .192 hem (was a cone .141 → .205), with depth to match.
+
 ### Known issues / next
 - **Placeholder head.** The H2 head has a ragged hair/skin boundary and blob eyes. Use `--stamp` for now. The proper fix is heads96 layers that turn with the head.
 - **SE body yaw.** The master SE is drawn more frontal than a true 45° camera. `--yaw=-15` approximates this (not the default).
@@ -464,3 +487,90 @@ The rest of the flags (SHADE_SWAP, FEET_JITTER) come from the chain, which is P'
 - The bell sleeves still flare wide on one half of the SE walk.
 - Bun motion is at the 16° limit, about 2–3 px.
 - The run hair_back swings about 12 px. That is lively, maybe too much.
+
+## P: pixel engineer (round 2)
+
+**Goal.** The owner said: *"limbs like legs sometimes flicker and disappear ... I still see disconnected parts like legs, thighs"*. Make the 3D→pixel step produce
+clean, stable, readable 96 px frames on the locked palette (`v2/pixelize/palette.json`), with the m96 masters as the reference look.
+
+**Verdict.** Both critics say P2 fixes the two failures the owner named: legs no longer vanish, and the thighs stay attached to the skirt.
+- Opus: 6.5/10 for P2 vs 4.5 for round 1 as shipped. Argon: 7.2 vs 3.4 (round 2 critique, `crit/p2/*_r2.txt`). Round 1 critique: 6 vs 4 and 6.0 vs 4.8.
+- **The pxeval gates are not met**, except boil on walk SE/S and idle:
+  - boil fell in 9 of 12 clips;
+  - shade_swap still fails everywhere (best: idle S .017);
+  - FEET_JITTER is mostly geometric (explained below).
+
+### Files (all under `render/`)
+- **`pixel_chain.py`** (I own this now). It is called unchanged by R's `render_motion.py` post stage. Round 1 is kept as `pixel_chain_r1.py`, which `--preview` still uses.
+- **`p_parts.py`**: my extra Blender passes. It runs R's `render_motion.py` with `KINDS=guide` after swapping in my own vertex-colour attribute, so camera, pose, yaw and alignment are identical. R's guide pass reads the attribute named `Color`, so the names are swapped in memory only; the rig file is never saved.
+  - `*_part.png`: per-face dominant deform bone, plus `bones.json` (bone → part group). The groups are torso, head, skirt, leg.L/R, arm.L/R and sleeve.L/R.
+  - `*_rpos.png`: rest-pose surface position, plus `rpos.json`. This gives exact surface correspondence between frames.
+- **`p2_run.sh "<acts>" "<views>"`**: end to end into `out/p2/<act>/`. It renders R's passes (`--no-post`) and my parts together, so a rig or motion update can't desync them. It then runs the P2 chain, and the round-1 chain on the same passes into `out/p2/r1/<act>/` as a fair baseline.
+- `p2_board.py`: comparison boards (master | r1 shipped | r1 chain | P2) at 4x/6x plus 1x strips.
+- `p2_gifs.py`: `cmp_<act>_<view>_4x.gif` (r1 chain | P2) and a 1x strip.
+- `p2_eval.py`: pxeval seq on every clip → `out/p2/pxeval/*.json` + `table.md`.
+
+### Method (P2 chain, all knobs are env vars)
+1. **Vote by material and part, not by colour clustering.** Each hi-res pixel's segment is its matid material × its part from the bone pass. Each 8×8 block gets the segment with the best coverage, weighted 1.25 for limbs and 1.3 for the nearest depth. k-centroid and palette snapping are gone; colours come straight from the ramp of the chosen material.
+   - Skirt cloth weighted to the thigh bones (the hem ring) is reassigned to the skirt. The leg part is only skin band, sock band, socks and boots, so there are no leg lines inside the skirt.
+2. **Outline outside the fill.** The fill is the silhouette eroded by `ERODE` = 6 hi-res px (legs `ERODE_LEG` = 9, which makes them slimmer). The 1 px K outline is the 4-dilation of the fill, made pixel-perfect (L corners removed). Thin parts are no longer eaten by their own outline.
+3. **Limb protection (legs and hands).** Cells on the hi-res skeleton are forced to the limb, with the nearest limb winning. Every limb pixel must then sit in a 2×2 block of that limb, grown toward the block with the most hi-res coverage. So legs keep ≥ 2 px of fill and can't vanish.
+4. **Silhouette cleaning.** 1 px spikes and notches are fixed, a 3×3 majority pass runs on the skirt, torso and sleeves, and enclosed holes of ≤ 4 px are filled (they had made dotted K rings in the arm/body slits). Limbs and the head are exempt.
+5. **Overlap separation.** leg.L | leg.R overlaps, and arm or sleeve over the body (depth step > `DTHR` .03), get a 1 px K line on the **far** side. Two exceptions:
+   - If that would thin the far limb below 2 px, the near limb carries the line.
+   - If neither side has room, the line is replaced by a lit edge.
+
+   Interior lines shorter than 3 px are dropped (r10 rule). Leg|leg lines are always kept.
+6. **Form on dark materials.**
+   - Socks are D, with a lit `d` stripe on the near leg and a **`g` rim along the leg|leg line**. Opus asked for a lighter value; `d` was invisible at 1x.
+   - A red sock-top row (E) is guaranteed between skin and sock.
+   - The skin band is `s`, with `S` on the hem row.
+   - The skirt uses two values only (E/R, no flickering `e` clusters).
+   - The far leg is one step darker (S / R / boots down one band). It is fixed per view (her left leg in SE/E), so it doesn't swap when the legs pass.
+   - I did not use sel-out on the socks: with this palette the sock's dark tone *is* D, which would erase the leg edge. The masters use K everywhere.
+7. **Head = R's `tex` pass.** It is the projected master: I find the texel phase, roll it onto the sprite grid, and take the per-cell mode of the exact palette colours. There is no double outline where the master's own K is already the edge. Orphan cleaning skips the head.
+8. **Temporal stability.**
+   - Every cell finds the previous cell showing the same rest-pose surface point (same bone, k-d tree on `rpos`).
+   - Hysteresis is applied on fill coverage (.3/.7), on the label (the previous label is kept unless beaten by 25%) and on shade bands (margin `HYS` .08). Shades are surface-locked (`LOCK` .12).
+   - The head is held when < 30% of it changes.
+   - Unchanged hi-res blocks reuse the previous output.
+   - Isolated one-frame shade flips (a = c ≠ b within one material class) are removed.
+   - Loops run twice, so f0 sees the end of the cycle.
+
+### pxeval seq (same passes, current rig r5 + M's 18:35 motion; r1 = round-1 chain with the rig head, P2 = new chain with the tex head)
+| clip | boil r1 → P2 | shade_swap r1 → P2 | feet_range | articulation/s | flags P2 |
+|---|---|---|---|---|---|
+| walk SE | .021 → **.016** | .029 → .038 | 5 → 5 | 3.35 → 2.78 | SHADE_SWAP FEET_JITTER |
+| walk E | .054 → .046 | .034 → .038 | 4 → 4 | 3.43 → 2.76 | BOILING SHADE_SWAP FEET_JITTER |
+| walk S | .023 → **.015** | .036 → .027 | 9 → **2** | 3.00 → 2.51 | SHADE_SWAP |
+| run SE / E / S | .072/.142/.030 → .060/.133/.035 | .034/.032/.055 → .040/.043/.038 | 8/15/6 → 8/7/6 | ~5.1 → ~4.4 | all |
+| idle SE / E / S | .011 → **.007/.008/.006** | .025/.027/.027 → .027/.026/**.017** | 2/2/2 → 2/1/2 | ~1.2 → ~1.0 | SHADE_SWAP |
+| jump SE / E / S | .077/.083/.117 → .082/.070/.094 | .035/.032/.038 → .044/.046/.028 | ~31 (root motion) | ~3.4 → ~2.9 | n/a for feet |
+
+- **Round 1 as shipped** (old rig and motion, head stamp, walk SE): boil .056, shade_swap .047, feet 8.
+- **P2 with the rig head instead of tex**, for a like-for-like chain comparison: walk SE .018/.024, idle SE/E/S .009/.016, .009/.018, .007/.020.
+  So the chain itself lowers both numbers. The projected master head adds about .01 of shade_swap: its fine h/H/K hair texels are resampled whenever the head turns or tilts.
+- No clip is FROZEN or STIFF. articulation/s stays at 2.5–4.5 for walk/run and about 1 for idle. The drop of about 15% against r1 is noise that is no longer counted as articulation.
+
+### Why the gates still fail (measured, for the lead)
+- **shade_swap is mostly fast motion on near-colour dark materials.** 74% of walk SE shade swaps sit on surfaces moving > 2.5 px/frame (via the `rpos` correspondence; pxeval's matcher only explains ±2 px shifts).
+  - K/D/h/H/d are all within ΔE 12 of each other, so any edge on a fast-swinging leg counts as a "shade swap".
+  - On slow surfaces P2 is .0116 vs r1 .016.
+  - The gate (snowpeak, lighter palette, more frames per cycle) can't be reached at 8 frames per walk/run cycle without in-betweens or holds. **M:** 12-frame walk/run, or holds on the passing poses. **R/M:** quantise the head turn/tilt (hold the head pose for ≥ 2 frames) to remove the tex-head swaps.
+- **run/jump boil is limb motion over 2 px/frame on uniform dark patches**, which pxeval reads as "rigid". The flags agree with the r1 chain; in-betweens would fix this as well.
+- **FEET_JITTER in SE/E is real perspective, not jitter.** At 30° elevation the forward foot of a 0.22 m stride projects about 7 px lower. In walk SE f04/f05 the sole reaches hi-res row 128.6, so it is **clipped by 1 row at the cell bottom** with the align.json dy=1. **R:** consider dy=0 for SE walk/run, or a taller cell. walk S (no depth stride) is 2 px, which passes.
+
+### Critiques (`crit/p2/`)
+- Round 1 (`opus_r1`, `argon_r1`):
+  - Opus 6 vs 4: "fixes the two failures the owner rejected".
+  - Remaining issues it named: the legs merge into a "trunk" at the passing pose, blotchy skin under the hem, hem flicker, an inconsistent sock-top band, and toe spurs.
+  - Fixes: slimmer legs, the near-leg rim, a guaranteed sock-top row, a 2-value skirt, hem smoothing, and pelvis-weighted thigh skin set to S.
+- Round 2 (`opus_r2`, `argon_r2`):
+  - Opus 6.5 vs 4.5 (thigh connection 8 vs 3). Argon 7.2 vs 3.4.
+  - Still open: the passing-pose legs (the `g` rim was added after this round), the skirt reads as a wide tent with stair-stepped hem corners, the skin wedge under the hem changes size each frame (R's fuller thighs show under the flared skirt), squared boot toes, and blush blocks or hair pixels over the face in idle f06–f09 (from the tex head).
+
+### Next
+- Toe-tip template (2 px taper) and hem curvature smoothing.
+- Lock the height of the skin wedge to 2–3 rows.
+- Head hold keyed to the motion (needs M's holds).
+- Re-run `render/p2_run.sh` when M posts the final round-2 motion.

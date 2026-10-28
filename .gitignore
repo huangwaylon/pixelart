@@ -80,3 +80,12 @@ REVIEW/exp/*/render/out/*/*
 !REVIEW/exp/*/render/out/*/*.gif
 !REVIEW/exp/*/render/out/*/*_sheet.png
 REVIEW/exp/*/motion/prev/
+# Blender backups and per-frame dumps under experiments (keep GIFs, sheets/boards, notes, scripts)
+*.blend1
+REVIEW/exp/*/rig/work/
+REVIEW/exp/*/rig/qa/*/
+REVIEW/exp/*/face/out/*/*
+!REVIEW/exp/*/face/out/*/*.gif
+!REVIEW/exp/*/face/out/*/*sheet*.png
+!REVIEW/exp/*/face/out/*/*board*.png
+REVIEW/exp/*/face/out/p2cur/

@@ -1,0 +1,93 @@
+{
+ "id": "2026-10-28_sw_skinned_pixel",
+ "date": "2026-10-28",
+ "project": "swordswoman",
+ "kind": "experiment",
+ "status": "needs-review",
+ "title": "P2 pixel chain (P): material/ID-driven downscale with limb protection, overlap separation and temporal locking for the skinned rig",
+ "question": "Owner, round 1: 'limbs like legs sometimes flicker and disappear ... I still see disconnected parts like legs, thighs.' Can the 3D->pixel step keep legs from vanishing, separate overlapping legs, connect the thighs to the skirt (skin band + red sock top), and stay frame-to-frame stable (pxeval boil <= .02, shade_swap <= .015, no FEET_JITTER)?",
+ "method": "render/pixel_chain.py (replaces E2 k-centroid -> palette lock -> fix): per-cell vote over matid x part (part = dominant deform bone from my extra pass render/p_parts.py, run through R's render_motion.py), outline drawn outside an eroded fill, legs/hands guaranteed >= 2 px (skeleton cells + 2x2 growth), 1 px far-side K line between leg.L|leg.R and arm|body overlaps (near side if the far limb would thin), 2-value skirt, red sock-top row guaranteed, near-leg d stripe + g rim, far leg one step darker; head from R's projected-master tex pass (texel-phase aligned). Temporal: exact surface correspondence from a rest-position pass -> hysteresis on fill/label/band, surface-locked shades, head hold, 1-frame flip removal, loops run twice. render/p2_run.sh runs passes + parts + chain + a round-1-chain baseline on the same passes.",
+ "result": "pxeval (same passes; round-1 chain -> P2): walk SE boil .021->.016, shade_swap .029->.038 (P2 rig-head variant .024); walk S boil .023->.015, swap .036->.027, feet 9->2; idle SE/E/S boil .011->.007/.008/.006, swap .025-.027->.027/.026/.017; run and jump still boil .03-.13 (limb motion > 2 px/frame). Round 1 as shipped (walk SE, stamp): boil .056, swap .047. No FROZEN/STIFF (articulation 2.5-4.5/s walk/run, ~1/s idle). 74% of walk SE shade swaps sit on surfaces moving > 2.5 px/frame (dark keys K/D/h/H/d all within dE 12); the tex head adds ~.01 swap when the head rotates. FEET_JITTER in SE/E is real 30-degree stride perspective (~7 px); the SE walk forward sole clips 1 row at the cell bottom.",
+ "verdict": "Opus 6.5 vs 4.5 and Argon 7.2 vs 3.4 (P2 vs round 1 shipped): legs never vanish and the thighs are connected (Opus thigh connection 8 vs 3). Not at the gates yet: shade_swap fails everywhere and boil fails on run/jump/walk E. Further gains need in-betweens or holds (M) and a quantised head turn (R/M). Still open: passing-pose legs (g rim added after the last critique), tent-like skirt hem with stair-stepped corners, a skin wedge that changes size, square boot toes.",
+ "scores": {
+  "Opus P2 vs r1 shipped": "6.5 / 4.5",
+  "Argon P2 vs r1 shipped": "7.2 / 3.4",
+  "walk SE boil r1->P2": ".021 -> .016",
+  "walk SE shade_swap r1->P2": ".029 -> .038",
+  "idle S boil/swap P2": ".006 / .017"
+ },
+ "media": [
+  {
+   "src": "exp/2026-10-28_sw_skinned/render/out/p2/walk/cmp_walk_SE_4x.gif",
+   "caption": "walk SE: round-1 chain | P2 (4x, mid-grey)"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/render/out/p2/run/cmp_run_SE_4x.gif",
+   "caption": "run SE: round-1 chain | P2"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/render/out/p2/idle/cmp_idle_SE_4x.gif",
+   "caption": "idle SE: round-1 chain | P2"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/render/out/p2/jump/cmp_jump_SE_4x.gif",
+   "caption": "jump SE: round-1 chain | P2"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/render/out/p2/walk/cmp_walk_E_4x.gif",
+   "caption": "walk E"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/render/out/p2/walk/cmp_walk_S_4x.gif",
+   "caption": "walk S"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/render/out/p2/walk/board_legs_walk_SE.png",
+   "caption": "walk SE legs at 6x: master | r1 shipped | r1 chain on the new rig | P2, plus 1x strips",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/render/out/p2/walk/board_walk_SE.png",
+   "caption": "walk SE full figure at 4x + 1x",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/render/out/p2/run/board_run_SE.png",
+   "caption": "run SE at 4x + 1x",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/render/out/p2/idle/board_idle_SE.png",
+   "caption": "idle SE at 4x + 1x",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/render/out/p2/walk/board_walk_E.png",
+   "caption": "walk E at 4x + 1x",
+   "wide": true
+  }
+ ],
+ "links": [
+  {
+   "href": "exp/2026-10-28_sw_skinned/NOTES.md",
+   "label": "NOTES (P section)"
+  },
+  {
+   "href": "exp/2026-10-28_sw_skinned/render/out/p2/pxeval/table.md",
+   "label": "pxeval table"
+  },
+  {
+   "href": "exp/2026-10-28_sw_skinned/crit/p2/opus_r2.txt",
+   "label": "Opus r2"
+  },
+  {
+   "href": "exp/2026-10-28_sw_skinned/crit/p2/argon_r2.txt",
+   "label": "Argon r2"
+  },
+  {
+   "href": "exp/2026-10-28_sw_skinned/CONTRACT.md",
+   "label": "contract"
+  }
+ ],
+ "next": "Toe-tip taper and hem curvature; lock the skin-wedge height; re-run p2_run.sh on M's final round-2 motion; ask M for 12-frame walk/run or passing-pose holds and a quantised head turn."
+}

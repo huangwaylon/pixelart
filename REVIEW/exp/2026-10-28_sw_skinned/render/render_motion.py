@@ -129,6 +129,41 @@ def meta():
     m = {"head": px((W_("head", "head") + W_("head", "tail")) / 2), "neck": px(W_("neck", "head")), "pelvis": px(W_("pelvis", "head"))}
     for s in "LR": m["foot." + s] = px(W_("toe." + s, "head")); m["hand." + s] = px(W_("hand." + s, "head"))
     return m
+# ---- round 3: face anchors (empties face.* parented to the head bone; rest data in ao["face_anchors"] / rig/face_anchors.json)
+FAJ = json.loads(ao.get("face_anchors", "{}")); _NHF = None; _OUT = _AL.get(VIEW, {"dx": 0, "dy": 0})
+_FAS = json.load(open(os.path.join(EXP, "rig", "face_anchors.json")))["anchors"] if os.path.exists(os.path.join(EXP, "rig", "face_anchors.json")) else {}
+def face_meta():
+    """per anchor: px192 (192-cell 1x, float), px (128 game cell 1x incl. the output placement dx/dy of rig/align.json = the pixel frame coords),
+    depth_m (distance from the camera plane), facing (anchor normal . toward-camera, -1..1), visible (facing > 0.05 and the surface point is
+    not occluded by the deformed mesh); head: rotation from rest in CAMERA axes (deg): pitch (+ = chin down / nod toward camera-bottom),
+    yaw (+ = face turns toward screen right), roll (+ = top tilts toward screen left, CCW on screen)"""
+    if not FAJ: return {}
+    from mathutils.bvhtree import BVHTree
+    global _NHF
+    dg = bpy.context.evaluated_depsgraph_get(); be = body.evaluated_get(dg); me_ = be.data
+    if _NHF is None:  # occluders = everything except the head group (the visual-hull head over-estimates the face -> self-hits are not real)
+        pmA = [me_.attributes.get("pm_" + v_) for v_ in ("S", "SE", "E", "NE", "N")]; fl_ = [0.0] * len(me_.polygons); hg = [0.0] * len(me_.polygons)
+        for at_ in pmA:
+            if at_: at_.data.foreach_get("value", fl_); hg = [max(x, y) for x, y in zip(hg, fl_)]
+        _NHF = [tuple(p_.vertices) for p_, h_ in zip(me_.polygons, hg) if h_ < 0.5]
+    vs_ = [be.matrix_world @ v_.co for v_ in me_.vertices]; bvh = BVHTree.FromPolygons(vs_, _NHF)
+    Mh = (ao.matrix_world @ pbs["head"].matrix) @ (ao.matrix_world @ REST["head"]).inverted(); R3 = Mh.to_3x3()
+    Ci = cam.matrix_world.inverted(); tocam = cam.matrix_world.to_3x3().col[2].normalized(); out = {}
+    for n, a in FAJ.items():
+        pw = Mh @ Vector(a["rest"]); nw = (R3 @ Vector(a["normal"])).normalized(); fac = float(nw.dot(tocam))
+        sw = Mh @ Vector(_FAS[n]["surf"]) if n in _FAS and "surf" in _FAS[n] else pw; vis = fac > 0.05
+        hit = bvh.ray_cast(sw + tocam * 0.006, tocam, 5.0); occ = None if hit[0] is None else round(hit[3], 4)
+        vis = vis and (occ is None or occ < 0.01)  # facing handles head self-occlusion (turns); occluders = body, arms, hands, hair locks below the head
+        q = px(pw); out[n] = {"px192": q, "px": [round(q[0] - 32 + _OUT["dx"], 3), round(q[1] - 32 + _OUT["dy"], 3)],
+                             "depth_m": round(-(Ci @ pw).z, 4), "facing": round(fac, 3), "occ_m": occ, "visible": bool(vis)}
+    Ct = cam.matrix_world.to_3x3().transposed(); R0 = (ao.matrix_world @ REST["head"]).to_3x3()
+    f0 = Ct @ (R0 @ Vector((0, 0, 1))); f1 = Ct @ (R3 @ R0 @ Vector((0, 0, 1))); u0 = Ct @ (R0 @ Vector((0, 1, 0))); u1 = Ct @ (R3 @ R0 @ Vector((0, 1, 0)))
+    wrap = lambda d: (d + 180) % 360 - 180
+    yaw = wrap(math.degrees(math.atan2(f1.x, f1.z) - math.atan2(f0.x, f0.z))); pitch = math.degrees(math.asin(max(-1, min(1, -f1.y))) - math.asin(max(-1, min(1, -f0.y))))
+    roll = wrap(math.degrees(math.atan2(-u1.x, u1.y) - math.atan2(-u0.x, u0.y)))
+    out["_head"] = {"pitch": round(pitch, 2), "yaw": round(yaw, 2), "roll": round(roll, 2),
+                    "centre_px": [round(c, 3) for c in [px((W_("head", "head") + W_("head", "tail")) / 2)[0] - 32 + _OUT["dx"], px((W_("head", "head") + W_("head", "tail")) / 2)[1] - 32 + _OUT["dy"]]]}
+    return out
 # ------------------------------------------------------------------ render
 kinds = ["pv"] if PREVIEW else os.environ.get("KINDS", "guide,lum,dep,tex,lid").split(",")
 stem = os.path.join(OUT, f"{act}_{VIEW}")
@@ -136,11 +171,11 @@ t0 = time.time()
 apply({"bones": {}}); rest_meta = meta()
 if not PREVIEW: rpass(stem + "_rest_guide.png", "guide")
 info = {"action": act, "view": VIEW, "cell_1x": CELL, "pivot_1x": PIV, "ppu_h2": PPU, "m_per_h2": K, "scale": SC, "preview": PREVIEW, "yaw": YAW, "tex": TEXV,
-        "rest": rest_meta, "frames": []}
+        "rest": rest_meta, "rest_face": face_meta(), "out_dxdy": [_OUT.get("dx", 0), _OUT.get("dy", 0)], "frames": []}
 for i in idxs:
     fr = frames[i]; apply(fr)
     for k in kinds: rpass(f"{stem}_f{i:02d}_{k}.png", k)
-    info["frames"].append({"i": i, "t": fr.get("t", i), "ms": tim[i] if i < len(tim) else tim[-1], "pts": meta()})
+    info["frames"].append({"i": i, "t": fr.get("t", i), "ms": tim[i] if i < len(tim) else tim[-1], "pts": meta(), "face": face_meta()})
 json.dump(info, open(stem + ".json", "w"), indent=0)
 print(f"RENDERED {len(idxs)} frames x {kinds} in {time.time() - t0:.1f}s", flush=True)
 if not NOPOST:

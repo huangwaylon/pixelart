@@ -1,28 +1,43 @@
 {
- "_doc": "R: fixed per-view alignment of the rig render to the m96 master cell (integer sprite-px shift dx,dy applied to the 128-cell crop; feet rule, rest pose) and the per-view yaw cheat used by render_motion.py. Used by head_hull.py (texture projection) and the pixel chain.",
+ "_doc": "R: per view: reg_dx/reg_dy = registration of the rig render to the m96 master cell (feet rule, rest pose), used for the head hull and texture projection; dx/dy = OUTPUT placement of the sprite in the 128 cell (= reg shifted up by lift_px so stepping soles are not clipped at the cell bottom, round 3); yaw = per-view rig turn (view cheat) used by render_motion.py. The pixel chain uses dx/dy.",
  "S": {
   "dx": 0,
-  "dy": 3,
-  "yaw": 0.0
+  "dy": -1,
+  "yaw": 0.0,
+  "reg_dx": 0,
+  "reg_dy": 3,
+  "lift_px": 4
  },
  "SE": {
   "dx": 2,
-  "dy": 1,
-  "yaw": -10.0
+  "dy": -2,
+  "yaw": -10.0,
+  "reg_dx": 2,
+  "reg_dy": 1,
+  "lift_px": 3
  },
  "E": {
   "dx": 4,
-  "dy": 2,
-  "yaw": 0.0
+  "dy": 1,
+  "yaw": 0.0,
+  "reg_dx": 4,
+  "reg_dy": 2,
+  "lift_px": 1
  },
  "NE": {
   "dx": 1,
-  "dy": 2,
-  "yaw": -25.0
+  "dy": 0,
+  "yaw": -25.0,
+  "reg_dx": 1,
+  "reg_dy": 2,
+  "lift_px": 2
  },
  "N": {
   "dx": 0,
-  "dy": 4,
-  "yaw": 0.0
+  "dy": 2,
+  "yaw": 0.0,
+  "reg_dx": 0,
+  "reg_dy": 4,
+  "lift_px": 2
  }
 }
