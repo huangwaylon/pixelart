@@ -43,7 +43,7 @@ Keep her identity and drop the clutter.
   - Isometric 3/4 top-down: camera elevation about 30°.
   - Priority directions: **SE** (front 3/4) and **E** (side).
   - Then all 8: S, SE, E, NE, N, plus SW, W and NW, mirrored where the design allows. The katana hand flips when mirrored, which is acceptable.
-- Frame timing comes from `hybrid/ANIM_DIRECTION.md` §1. Its principles are good; the execution was not. In short:
+- Frame timing comes from `docs/ANIM_DIRECTION.md` §1. Its principles are good; the execution was not. In short:
   - idle: 4–6 f, slow bob
   - walk: 8 f at about 100 ms
   - run: 6–8 f at about 70 ms

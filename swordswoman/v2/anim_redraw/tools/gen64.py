@@ -14,7 +14,7 @@ ap.add_argument('--tag', default='a'); ap.add_argument('--extra', default='')
 ap.add_argument('--master', default=A + '/m48/SE.png'); ap.add_argument('--hints', default=A + '/tools/hints48.json')
 ap.add_argument('--guide', default=None); ap.add_argument('--mine', action='store_true', help='use work48/<act>/guide mannequin keys'); ap.add_argument('--sword', action='store_true')
 a = ap.parse_args()
-gd = f'{ROOT}/v2/anim/guides/{a.guide or a.action + "_SE"}'
+gd = f'{ROOT}/archive/v2/anim/guides/{a.guide or a.action + "_SE"}'
 meta = json.load(open(gd + '/frames.json'))
 W = f'{A}/work48/{a.action}'; cd = W + '/cand'; os.makedirs(cd, exist_ok=True)
 hints = json.load(open(a.hints)).get(a.action, {}) if os.path.exists(a.hints) else {}

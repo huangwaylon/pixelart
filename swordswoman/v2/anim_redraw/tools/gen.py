@@ -16,7 +16,7 @@ ap.add_argument('--hints', default=ROOT + '/v2/anim_redraw/tools/hints.json'); a
 ap.add_argument('--extra', default=''); ap.add_argument('--body_h', type=int, default=82); ap.add_argument('--workers', type=int, default=6)
 ap.add_argument('--guide', default=None, help='guide folder name override')
 a = ap.parse_args()
-gd = f'{ROOT}/v2/anim/guides/{a.guide or a.action + "_" + a.dir}'
+gd = f'{ROOT}/archive/v2/anim/guides/{a.guide or a.action + "_" + a.dir}'
 meta = json.load(open(gd + '/frames.json'))
 out = f'{ROOT}/v2/anim_redraw/work/{a.action}_{a.dir}'; cd = out + '/cand'; os.makedirs(cd, exist_ok=True)
 frames = [int(v) for v in a.frames.split(',')] if a.frames else list(range(len(meta['frames'])))
@@ -35,7 +35,7 @@ def bbox(arr):
 def aligned_guide(i):
     g = Image.open(f'{gd}/f{i:02d}_shade4x.png').convert('RGBA')
     g0 = np.array(Image.open(f'{gd}/f00_shade4x.png').convert('RGBA')) if a.action != 'slash' else np.array(g)
-    ref = f'{ROOT}/v2/anim/guides/idle_{a.dir}/f00_shade4x.png'
+    ref = f'{ROOT}/archive/v2/anim/guides/idle_{a.dir}/f00_shade4x.png'
     g0 = np.array(Image.open(ref).convert('RGBA'))           # scale from the idle rest pose for every action
     y0, y1, _, _ = bbox(g0)
     k = a.body_h / ((y1 - y0 + 1) / 4.0) * S / 4.0

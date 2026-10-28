@@ -5,7 +5,7 @@ import json, sys, os
 ROOT = '/Users/waylonhuang/Documents/other/pixelart/swordswoman'
 act, v = sys.argv[1], sys.argv[2]
 W = f'{ROOT}/v2/anim_redraw/work/{act}_SE'
-meta = json.load(open(f'{ROOT}/v2/anim/guides/{act}_SE/frames.json'))['frames']
+meta = json.load(open(f'{ROOT}/archive/v2/anim/guides/{act}_SE/frames.json'))['frames']
 tag = sys.argv[sys.argv.index('--tag') + 1] if '--tag' in sys.argv else ''
 sel = json.load(open(f'{W}/sel{tag}.json')) if os.path.exists(f'{W}/sel{tag}.json') else {}
 TILT = {'squash': 'squash', 'forward': 'lean', 'back': 'neutral', 'neutral': 'neutral'}

@@ -222,7 +222,7 @@ def guide_lift(gd, i, scale):
 def main():
     plan = json.load(open(sys.argv[1]))
     act, d = plan['action'], plan.get('dir', 'SE')
-    gd = f"{ROOT}/v2/anim/guides/{plan.get('guide', act + '_' + d)}"
+    gd = f"{ROOT}/archive/v2/anim/guides/{plan.get('guide', act + '_' + d)}"
     meta = json.load(open(gd + '/frames.json')); mf = meta['frames']
     out = plan['out']; os.makedirs(out, exist_ok=True)
     master = load(plan.get('master', MASTER))

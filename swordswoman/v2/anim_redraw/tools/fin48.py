@@ -482,9 +482,9 @@ def main():
     if mine:
         mf = json.load(open(f'{W}/guide/frames.json'))['frames']
     else:
-        gd = f"{ROOT}/v2/anim/guides/{plan.get('guide', act + '_SE')}"
+        gd = f"{ROOT}/archive/v2/anim/guides/{plan.get('guide', act + '_SE')}"
         mf = json.load(open(gd + '/frames.json'))['frames']
-        idle = guide_info(f'{ROOT}/v2/anim/guides/idle_SE', 0)
+        idle = guide_info(f'{ROOT}/archive/v2/anim/guides/idle_SE', 0)
     M = to_grid(MASTER)
     m_obi = np.nonzero(isin(M, 'dD')[38 + PT:46 + PT])[1].mean()
     frames, durs, hist, log = [], [], [], []

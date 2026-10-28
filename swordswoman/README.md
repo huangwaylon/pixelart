@@ -54,7 +54,7 @@ Overall review hub: `v2/REVIEW/index.html`. Each strand has its own `v2/<strand>
 `docs/`: `hunyuan3d_research.md`, `sota_image_to_3d_2026.md`, `trellis_and_hunyuan_studio.md`,
 `pixal3d_experiment.md`, `pixel_art_best_practices.md`, `pixel_cleanup_guide.md`,
 `pixelart_project_study.md`, `design_bible.md`, palettes.
-`hybrid/ANIM_DIRECTION.md` (timing principles) and `hybrid/STYLE_TARGET.md` are still referenced by v2.
+`docs/ANIM_DIRECTION.md` (timing principles) and `docs/STYLE_TARGET.md` are still referenced by v2.
 The generated 3D meshes are collected in `../reference/3d/`.
 
 ## Environment
