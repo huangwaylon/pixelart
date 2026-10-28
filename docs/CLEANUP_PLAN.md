@@ -1,3 +1,5 @@
+> **Status 2026-10-28:** the repo-structure parts of this plan are superseded by `docs/team_review/2026-10-28/04_reorg_plan.md`. The data/variant/dead-module pruning (sections 1.3-1.6) was never executed and is still a valid separate proposal.
+
 # Repo cleanup + reorg plan (Phase 1: inventory and plan only)
 
 Status: PLAN. Nothing has been moved or deleted yet. Written 2026-10-23 against HEAD `5051432`.

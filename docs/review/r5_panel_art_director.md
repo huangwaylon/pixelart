@@ -20,4 +20,4 @@
 ## 5. Palette changes (applied)
 - `red_2` changed from #F7845E to **#F06A58**. The old salmon had nearly the same value as `skin_1` and the copper hair.
 - `material_bands`: `hat [-0.45,0.94]`, `hatcuff [-0.5]`, `hair [-0.35,0.55]`.
-- I regenerated the `cw_*` files with `make_r3_palettes.py` and rebuilt all 21 variants. The only QA errors are the existing height-delta ones. `out/boards/*` is stale and needs regenerating.
+- I regenerated the `cw_*` files with `make_r3_palettes.py` and rebuilt all 21 variants. The only QA errors are the existing height-delta ones. `archive/snowpeak/boards_r04_r10/*` is stale and needs regenerating.

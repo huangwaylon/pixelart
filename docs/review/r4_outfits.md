@@ -1,6 +1,6 @@
 # r4 Costume & Colour: outfit study on A_chibi
 
-Board: `out/boards/outfits_keys.png`. Variants: `data/variants/O1..O6_*.json` (all `extends: A_chibi`). 4 iterations each, rebuilt after the lead's fix.
+Board: `archive/snowpeak/boards_r04_r10/outfits_keys.png`. Variants: `data/variants/O1..O6_*.json` (all `extends: A_chibi`). 4 iterations each, rebuilt after the lead's fix.
 
 **Hat choice:** all six use `beanie_tall`. After the fix, the plain `beanie` still shows skin on top of the dome: the head top (hc+0.95hr) is above the dome top (hc+0.91hr). `beanie_slouch` shows a forehead strip between the dome and the cuff from S/SE.
 

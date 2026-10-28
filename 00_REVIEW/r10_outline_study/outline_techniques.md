@@ -36,7 +36,7 @@
 **Japanese モダンドット絵**: the mainstream (Pixiv, mobile/gacha) is bright chunky chibi with a dark coloured outline (often one deep plum/brown) plus sel-out highlights. A second current, lineless chunky 横スクロール, belongs to the high-res end. At ~40px the first is the safer model.
 
 ## 4. Recommendation for Snowpeak
-These notes come from viewing our renders at 1x on snow and navy (`out/boards/8_outline_styles_keys.png`, `out/variants/OL_*__jump_sc/preview/distance_test.png`):
+These notes come from viewing our renders at 1x on snow and navy (`archive/snowpeak/boards_r04_r10/8_outline_styles_keys.png`, `out/variants/OL_*__jump_sc/preview/distance_test.png`):
 - **dark**: strongest on snow. On navy, the hair and boot outline merges with the background and the silhouette shrinks ~1px.
 - **none / colored**: nearly identical at 1x. The oat coat and lavender shadow go soft against the pale snow.
 - **selout**: the best on both. Shadow-side darks anchor the figure on snow, and the lit fills hold the edge on navy.

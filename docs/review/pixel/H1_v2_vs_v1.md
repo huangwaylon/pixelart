@@ -134,7 +134,7 @@ Accepted as-is:
 **NOT SIGNED: one ship blocker.**
 
 What is right:
-- releases/H1_v2_3 is pixel-identical to the composite I approved in Round 4 (0 px difference).
+- archive/snowpeak/releases/H1_v2_3 is pixel-identical to the composite I approved in Round 4 (0 px difference).
 - QA PASS, 0 stale overrides, 100 hand px.
 - Faces, cuff, coat (no lav_1), pom and ground rows all meet the locked rules.
 

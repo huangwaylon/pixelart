@@ -1,6 +1,6 @@
 # H1_B_final jump: AD cross-check sign-off
 
-**Verdict: SIGNED OFF, after the AD-xcheck overrides.** releases/H1_v1 predates them and must be re-cut (I did not build).
+**Verdict: SIGNED OFF, after the AD-xcheck overrides.** archive/snowpeak/releases/H1_v1 predates them and must be re-cut (I did not build).
 
 ## AD fixes (174 px, logged)
 - Hat-cuff mauve to oat_1 in squash frames: S f8/11, SE f2, E f2/8/9, NE f4, W f2/8/9, SW f2 (44). Only S f2 had been fixed.

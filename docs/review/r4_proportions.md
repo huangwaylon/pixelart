@@ -1,6 +1,6 @@
 # r4 Character Designer: Proportion study (cw_charcoal)
 
-Board: `out/boards/proportions_keys.png` (built with `--cell-h 312`, so every variant shows at x3). Shared outfit: bob, beanie with `pom_size` 1.5, parka, long scarf, pants, snow boots. Heads = standing height / skull height. QA margin and orphan checks pass on all five. Only height-delta errors are left.
+Board: `archive/snowpeak/boards_r04_r10/proportions_keys.png` (built with `--cell-h 312`, so every variant shows at x3). Shared outfit: bob, beanie with `pom_size` 1.5, parka, long scarf, pants, snow boots. Heads = standing height / skull height. QA margin and orphan checks pass on all five. Only height-delta errors are left.
 
 **A · Chibi (~2.6 heads, 46 px).** Balanced baseline. Head 9.4 and leg 8.6 set it apart from B. Strengths: 2x3 eyes, pants read above the boots, feet planted in all directions. Weaknesses: hat and hair are the same value in greyscale, so only the cuff separates them. Pivot moved to y55 because the launch toes clipped.
 

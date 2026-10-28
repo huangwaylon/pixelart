@@ -1,7 +1,7 @@
 # r10 Face designer: kawaii_v2 face model sheet
 
 File: `data/faces/kawaii_v2.json`. Test variant: `F_test` (S4 + kawaii_v2), jump_sc, QA PASS.
-Boards: `out/boards/r10_face_sheet.png`, `r10_face_strip.png`, `r10_face_strip_8dir.png`.
+Boards: `archive/snowpeak/boards_r04_r10/r10_face_sheet.png`, `r10_face_strip.png`, `r10_face_strip_8dir.png`.
 E eye, C catchlight, B blush, M mouth.
 
 ```
