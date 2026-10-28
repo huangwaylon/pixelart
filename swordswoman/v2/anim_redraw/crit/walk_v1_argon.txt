@@ -1,0 +1,13 @@
+SCORE 4/10
+
+1. **Inconsistent Torso Volume**: Frame 0's dress/torso is 4px wider than frames 1-2, causing a severe horizontal pop at the loop point.
+2. **Broken Loop / Leg Mechanics**: Frame 0 has feet planted together (idle pose), breaking the continuous 8-frame stride flow from Frame 7.
+3. **Sword Shimmer & Length**: The katana blade changes length (12px on Frame 0 vs 8px on Frame 3) and shifts angle erratically instead of following a smooth arc.
+4. **Chest/Collar Flicker**: Skin-colored chest pixels appear in Frames 0, 2, 3, 4, 6, 7 but vanish completely in Frames 1 and 5.
+5. **Robotic Head/Hair**: The head, hair, and bow are static copy-pastes translated by 1px vertically; zero secondary motion or overlap on the bow ribbons or side-locks.
+6. **Jaggy Leg Silhouettes**: Frames 3 and 4 have awkward, blocky leg shapes (Frame 3 looks bow-legged; Frame 4's front foot twists at a broken angle).
+
+**Top 3 Fixes:**
+1. **Standardize Torso & Collar**: Lock the dress width and collar skin pixels across all 8 frames (use Frame 4's torso as the base template).
+2. **Fix the Walk Cycle Poses**: Replace Frame 0 with a proper contact/stride pose that transitions smoothly from Frame 7 into Frame 1, and clean up the leg silhouettes on Frames 3-4.
+3. **Add Secondary Motion**: Animate a 1-2px delayed bounce on the hair bow and side-locks, and lock the katana's pixel length while giving it a smooth, subtle figure-8 or up-down follow-through.

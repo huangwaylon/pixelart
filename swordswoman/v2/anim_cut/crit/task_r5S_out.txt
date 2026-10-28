@@ -1,0 +1,21 @@
+Restored session: Mon 26 Oct 2026 10:45:59 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I redrew all 44 arm parts, rebuilt every action, and the katana still sits in the hand in every run and slash frame I checked.
+
+**Files**
+- **Backup:** the original arm parts are in `parts/se_preR5/`.
+- **Parts:** all 44 files `parts/se/armN*.txt` and `armF*.txt` are rewritten. Each is now a smaller tapered bell sleeve, roughly 2px smaller than before.
+- **Hands:** each hand is a 2x2 skin cluster with a `#` outline, coming out of a dark `r` cuff. Near hands are `22/21` and far hands are `21/11`.
+- **Colours:** the near arm uses e/E/R and the far arm R/r with a little E.
+- **Test:** `actions/test_arms5.json` (30 frames, with and without katana); I did 2 rounds of fixes.
+- **Rebuild:** I rebuilt idle_walk, run_jump, dash and slash.
+
+**Anchors**
+- `; pivot` is still the shoulder and `; anchor hand` is the top-left skin pixel of the hand.
+- The shoulder-to-hand distance is the same as before or 1px shorter.
+- The raised poses (`armN_up`, `armF_up`) are 2–3px shorter, so the katana in those frames moves slightly.
+- The iw4 copies keep the same pivot offsets relative to their base pose as before.
+
+Saving session...completed.

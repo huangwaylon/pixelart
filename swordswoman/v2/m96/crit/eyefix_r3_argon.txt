@@ -1,0 +1,4 @@
+a=8, b=8, c=7, d=8
+
+1. **Unify the upper arch across expressions (S & SE views):** In `surprised`, the 2px-wide darkest-brown peak shifts 1px outward compared to `neutral`/`cheerful`/`determined`, making the inner top corner look blocky/stepped instead of smoothly arched. Keep the 2px peak centered directly over the iris in `surprised` as well.
+2. **Clean up outer lash wing/hair merge in `SE surprised` & `E` views:** In `SE surprised` (near eye), the outer lash drops down into a heavy 2px vertical block—trim the lower outer dark pixel so the wing flicks up cleanly. In `E` view, replace the mid-brown anti-aliasing pixel above the outer lash tip with skin tone so the 1px dark wing reads crisply against the side hair.

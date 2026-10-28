@@ -1,0 +1,20 @@
+**A (PMD-40) — Score: 5/10**
+1. **Scale Violation:** At 38px tall, she towers over PMD refs (Meloetta 23px, Gallade 29px). *Fix:* Shrink total height to 28–30px; reduce head height by 4px and torso by 4px.
+2. **Flat Hair:** Massive 12×8px single-shade dark block lacks PMD’s high-contrast speculars. *Fix:* Add a curved 2px-wide lighter-grey highlight band across the crown and 1px dark-grey shade under the ribbon.
+3. **Boxy Jaw:** A 4px vertical drop and 5px flat bottom make the face square. *Fix:* Step the cheek inward diagonally (2px, then 1px) like BW OW NPC.
+4. **pillow-Shaded Kimono:** Shade hugs the interior outline uniformly. *Fix:* Shift dark-red shadow exclusively to the bottom-right folds and directly beneath the obi.
+
+**C (Hybrid-48) — Score: 4.5/10**
+1. **Helmet Hair:** Straight 9px vertical side-locks read as rigid blocks. *Fix:* Break the silhouette by stepping the outer black line inward 1px near the chin and adding a 2px loose strand.
+2. **Low-Contrast Shading:** Hair highlight and kimono shadow values are too close to base tones, reading flat at 1×. *Fix:* Boost hair highlight luminance by +20% and shift kimono shadow toward dark purple-red (like Lyra’s skirt).
+3. **Banding on Legs:** Parallel vertical skin/outline columns look stiff. *Fix:* Stagger the back leg 1px higher and shade it entirely with the darker skin tone for depth.
+4. **Tangents:** Sword hilt merges into the right sleeve outline. *Fix:* Drop the hand/hilt 2px lower to clearly separate the silhouette from the kimono cuff.
+
+**B (BW-battle-72) — Score: 5.5/10**
+1. **Dull Hair Speculars:** BW battle sprites (Hilda/Lyra) use crisp, high-contrast hair shine. *Fix:* Paint a jagged, broken 1–2px bright-grey highlight arc across the bangs.
+2. **Banding on Obi/Skirt:** Horizontal shadow bands run parallel to the obi’s black lines. *Fix:* Carve triangular diagonal fold shadows radiating from the waist knot.
+3. **Blunt Hair Tips:** Bottom hair edge is a flat horizontal line. *Fix:* Cut 2–3 V-shaped notches (2×3px) into the hair ends to form distinct locks.
+4. **45° Sword Jaggies:** The blade’s strict 1:1 pixel staircase looks stiff. *Fix:* Taper the blade tip and use 2:1 pixel steps with inner grey anti-aliasing.
+
+**Best for 8-Direction Action: A (scaled to ~32px)**
+72px (B) requires massive animation overhead across 8 directions and 6 action states, and its wide stance breaks top-down collision boxes. C’s elongated cylindrical torso looks stiff when rotating. **A’s compact ~1:1.5 head-to-body ratio** naturally fits top-down perspective, keeps directional turnaround silhouettes consistent, and allows snappy 3–4 frame slashes/dashes where the 1px-thick sword remains readable.

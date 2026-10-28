@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I widened the left hand to a 2px skin palm with an S shadow and a 1px thumb (row 12 is now `KssS`), and closed the sleeve hem into one clean K step across row 13 (`KKKKK`). It passes the gate with no '!': ssim_b −0.000, dE +0.039, sil −0.000, O3 down from 2 to 1. Making the hand one row longer broke the dE/ssim budget, so the hand is still smaller than the 3x4 mitten you asked for.

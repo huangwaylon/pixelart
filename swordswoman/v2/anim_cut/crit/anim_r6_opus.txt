@@ -1,0 +1,36 @@
+Restored session: Mon 26 Oct 2026 11:33:53 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I looked at all six sheets. Coordinates are approximate, in 64×64 cell space with the origin at top-left.
+
+SCORE idle: 6
+1. **F5 top / F12 top2:** the bow rises with the head on the same frame, so there's no lag. Hold the bow 1px low on F5/F12 and let it catch up on F6/F0.
+2. **The katana is rigid at the same angle in all 13 frames.** It reads as pasted on. Rotate the blade tip 1px down on the sink frames (F1, F2, F7, F8) and 1px up on the top frames.
+3. **Too many frames with no change.** F3 settle (90ms) and F9 half2 (60ms) are nearly duplicates of their neighbours. Cut them and stretch F0 and F6 to 320ms so the breath reads as a pulse.
+
+SCORE walk: 5
+1. **F3 up / F7 up2:** the sword-arm sleeve floats loose from the torso near (10–18, 44). Pull it +3px right so it overlaps the shoulder.
+2. **There's no vertical bob.** The head stays at about y8 in every frame. Drop the head and torso 2px on F1 and F5 (down) and raise them 1px on F3 and F7 (up). The hem should trail by one frame.
+3. **F2 / F6 pass:** the legs show as pale stubs with no outline separating them. Add a dark outline and tuck the back foot 2px higher.
+
+SCORE run: 5
+1. **No forward lean.** The torso is upright. Tilt the head and torso forward 2–3px at the top, most on F1 and F4 (push).
+2. **F0 contact:** the bow becomes a thin flat wing that isn't on-model compared with F1–F5. Keep its shape and only shift it 1–2px back.
+3. **The timing is mushy.** Change it to 70/50/90ms and squash the body 1px on contact frames so each footfall reads.
+
+SCORE jump: 6
+1. **F7 land: the face has no eyes. This breaks her identity.** Restore the eyes, squinted shut is fine.
+2. **F3–F5:** the ground shadow disappears, then reappears as a long bar on F6. Keep the shadow on every frame and shrink it as height increases.
+3. **F4 apex:** the hem flares out horizontally like a plate. Let it droop 2px instead. Also extend F5 hang to 140ms.
+
+SCORE dash: 5
+1. **F1–F2:** the afterimage is a rectangular maroon block of checker dither. Replace it with a 1–2 frame silhouette ghost at 50% palette.
+2. **F5 settle → F6 rest:** the sword hand snaps from vertical-front to the right side, a pose pop. Add an in-between or keep it on one side.
+3. **F4 brake:** the head is about 2px larger than in the other frames. Rescale it to match.
+
+SCORE slash: 6
+1. **F5 smear:** the crescent starts at the top-left near (20, 4), detached from the hand. Its root has to sit at the hilt and taper outward. Its thickness is also too uniform; it should go about 4px down to 1px.
+2. **F7–F8 hitstop:** the blade angle changes from F6. Hitstop must freeze the F6 pose plus a ±1px shake.
+3. **F10 recover:** the sword disappears. Keep the blade visible. F11 settle also pops the bow up, so lag it one frame later.
+
+Saving session...completed.

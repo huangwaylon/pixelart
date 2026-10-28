@@ -1,0 +1,5 @@
+1) **Natural unarmed motion: 6/10** — No weapon grip remains, and the flinching hands in frames 1–2 work well, but frame 3 reads like a forward martial-arts lunge rather than a backward knockback/stagger, with floating detached shoulders in the S view.
+2) **Cheerful trainer feel: 8/10** — The expressive cartoon recoil and quick bounce back to an upright, composed stance in frame 4 fit a lighthearted trainer vibe nicely.
+3) **Readable at 1x: 7/10** — The overall body silhouettes are very clear at 1x, though the eyes and glasses muddle into a dark horizontal band and the red sleeves blend into the torso in the E view.
+
+**Single most important fix:** Rework frame 3 from a wide forward lunge into a true backward stumble or hunched recoil, while closing the gap between the floating arms and torso in the S view.

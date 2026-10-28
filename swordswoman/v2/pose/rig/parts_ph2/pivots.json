@@ -1,0 +1,149 @@
+{
+ "arm_L": {
+  "bone": "upper_arm.L",
+  "parent": "chest",
+  "pivot": [
+   0.3372,
+   0.6695,
+   0.0379
+  ],
+  "faces": 31280,
+  "watertight": true
+ },
+ "arm_R": {
+  "bone": "upper_arm.R",
+  "parent": "chest",
+  "pivot": [
+   -0.3372,
+   0.6695,
+   0.0379
+  ],
+  "faces": 31280,
+  "watertight": true
+ },
+ "bow": {
+  "bone": "head",
+  "parent": "neck",
+  "pivot": [
+   0.0,
+   0.8901,
+   0.0076
+  ],
+  "faces": 3840,
+  "watertight": true
+ },
+ "bun": {
+  "bone": "head",
+  "parent": "neck",
+  "pivot": [
+   0.0,
+   0.8901,
+   0.0076
+  ],
+  "faces": 1280,
+  "watertight": true
+ },
+ "head": {
+  "bone": "head",
+  "parent": "neck",
+  "pivot": [
+   0.0,
+   0.8901,
+   0.0076
+  ],
+  "faces": 30000,
+  "watertight": true
+ },
+ "leg_L": {
+  "bone": "thigh.L",
+  "parent": "hips",
+  "pivot": [
+   0.1203,
+   0.2505,
+   0.0324
+  ],
+  "faces": 30000,
+  "watertight": true
+ },
+ "leg_R": {
+  "bone": "thigh.R",
+  "parent": "hips",
+  "pivot": [
+   -0.1203,
+   0.2505,
+   0.0324
+  ],
+  "faces": 30000,
+  "watertight": true
+ },
+ "skirt": {
+  "bone": "skirt",
+  "parent": "hips",
+  "pivot": [
+   0.0,
+   0.4491,
+   -0.0035
+  ],
+  "faces": 30000,
+  "watertight": true
+ },
+ "torso": {
+  "bone": "chest",
+  "parent": "spine",
+  "pivot": [
+   0.0,
+   0.4405,
+   0.0104
+  ],
+  "faces": 12288,
+  "watertight": true
+ },
+ "_reproportion": {
+  "spec": {
+   "_doc": "placeholder in TARGET form (lead r4 numbers); explicit multipliers are the solver's start values",
+   "torso": {
+    "width": 0.92,
+    "depth": 0.9,
+    "height": 1.05,
+    "waist": 1.3117
+   },
+   "skirt": {
+    "width": 0.85,
+    "depth": 0.88
+   },
+   "arms": {
+    "length": 1.45,
+    "thickness": 0.85,
+    "shoulder_x": 1.4463
+   },
+   "legs": {
+    "length": 2.5035,
+    "thickness": 0.85
+   },
+   "hands": {
+    "scale": 0.85
+   },
+   "boots": {
+    "scale": 0.85
+   },
+   "head": {
+    "scale": 1.1706
+   },
+   "neck": {
+    "extra": 0.053
+   }
+  },
+  "src": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/hy3d/partsAB4f",
+  "d_leg": 0.751,
+  "d_torso": 0.0179,
+  "measure": {
+   "heads_tall": 3.22,
+   "shoulder_over_headw": 0.7,
+   "waist_over_headw": 0.5,
+   "legs_frac_of_height": 0.419,
+   "neck_gap": 0.05,
+   "head_h": 0.927,
+   "total_h": 2.986
+  }
+ }
+}

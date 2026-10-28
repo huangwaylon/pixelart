@@ -1,0 +1,34 @@
+**(1) Expressions at 1x (Official = 9)**
+* **Neutral (7/10):** Readable, passive. *Problem:* Flat 2px horizontal mouth lacks spark; 2x4 eyes are 1px too short for this scale.
+* **Determined (6/10):** Weak. *Problem:* Only inner brow drops 1px, colliding with bangs. Mouth identical to neutral.
+* **Shout (5/10):** Confused. *Problem:* Mouth (dark top row, pink bottom row) reads as sticking tongue out, not yelling.
+* **Effort (4/10):** Noisy. *Problem:* 3px-wide white teeth row + dark outline crams the lower face; reads as villainous snarl/buckteeth.
+* **Joy (8/10):** Clear. *Problem:* `^ ^` eyes are only 1px thick; needs 2px outer lash weight (like Meloetta ref).
+* **Smile (5/10):** Unreadable at 1x. *Problem:* 1px mouth corner lift blends into cheek shadow; looks identical to Neutral.
+* **Surprised (6/10):** Uncanny. *Problem:* Dropping top lash exposes white sclera above iris—looks sleepy/stoned, not shocked.
+* **Pain (7/10):** Clear `> <`. *Problem:* 3px wavy mouth is mushy at 1x.
+* **Blink_hal (7/10):** Good, reads slightly smug.
+* **Blink_clo (8/10):** Solid.
+* **Squash (7/10):** Good impact, brow merges slightly with bangs.
+
+**(2) Pokemon Grammar**
+**6/10.** Off-style. Official sprites at this scale (Lyra, Dawn, BattleGirl) use 1-2px minimalist mouths (skin-shadow or dark red) and tall 2x5/3x5 eyes. Your mouths are over-rendered (outlines + teeth + tongue) and use pure black, stealing focus from the eyes.
+
+**(3) Personality**
+**6.5/10.** Spirited in Joy/Pain, but Neutral/Smile are too doll-like, and Effort/Shout look aggressive/feral rather than heroic.
+
+**(4) Views**
+* **S (6.5/10):** Symmetrical pillowing; chin is too pointy (1px bottom) for wide mouths.
+* **SE (7.5/10):** Best view (especially C_r4). Far eye needs 1px horizontal compression (currently same 2px width as near eye).
+* **E (6/10):** Eye sits 1px too far forward, merging into nose/face outline. Mouths aren't notched into the profile silhouette.
+* **NE/N (8/10):** Clean. N-view squash/effort needs 1px vertical hair compression to match front views.
+
+**(5) Top 6 Concrete Pixel Fixes**
+1. **Shout/Joy Mouths:** Replace black-outlined mouths with a borderless 2x2 or 3x2 shape: top row dark-red, bottom row pink/red.
+2. **Effort Mouth:** Delete white teeth. Use a 3x1 dark-shadow grit line, or a 2x1 asymmetrical smirk.
+3. **Confident Neutral/Smile:** Give Neutral a 2px mouth with the far corner raised 1px (smirk). Make Smile a 2x1 open happy mouth (pink pixels).
+4. **Surprised Eyes:** Keep the dark top lash; shrink the blue iris to 1x2 surrounded by white sclera below/beside it, and raise the lash 1px into the bangs.
+5. **E-Profile Placement:** Shift E-view eye 1px left (inward) so 1px of skin separates eye from face outline. Cut 1px skin out of the jawline for open mouths.
+6. **SE Foreshortening:** Narrow the far (left) eye to 1px wide (1px white glint top, 1px blue bottom) to sell the 3/4 turn like the Hilda/Rosa refs.
+
+**Overall Score: 6.5 / 10**

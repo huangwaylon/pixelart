@@ -1,0 +1,12 @@
+Restored session: Mon 26 Oct 2026 10:58:26 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I redrew the head as a rounder chibi dome and rebuilt all 8 head variants from it. The run, slash and dash sheets show no neck gaps, and the bow and bun stay attached. There were 3 review passes.
+
+**Files:** `parts/se/head.txt`, plus `head_blink`, `head_iw4_blink`, `head_iw4_half`, `head_lean`, `head_shout`, `head_sq` and `head_st`. Originals are in `parts/se_preR5/`; bow and bun are unchanged. The test action is `actions/test_head5.json`.
+
+**Anchors:** the canvas is now 23×21, one column wider so the hair can flare at the jaw. Pivot (neck) is (14,19), bow (14,1), bun (3,4). `head_sq` is pivot/bow (15,18)/(15,1); `head_st` is (13,20)/(13,1).
+
+`head_lean` moves the features 1px down, as the old one did, not right — shifting right would push the far eye into the outline.
+
+Saving session...completed.

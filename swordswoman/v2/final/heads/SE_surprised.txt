@@ -1,0 +1,23 @@
+; origin 20 12
+; view SE
+....................
+........KK..........
+....KKKKeeK.........
+...KgHHKReeK........
+...KgHHKREEKKKKK....
+...KhhKRRKggggggKK..
+..KKKKRRhggggHHHHHK.
+.KeeEERKhhhhhhhhhhK.
+.KEEERRKHHHHHHHHHHHK
+.KEEERKhLLLHHHHHHHHK
+..KEKEKhHHHLLLLHHHHK
+..KEKEKhHHHHHHHSSShK
+..KEKEKhHhHHhHSssshK
+..KEKEKhHhHHhKsKKshK
+..KEKEKhshhKKhsWhshK
+.KEKKEKhshKWKhsWKKhK
+.KEKKEKhshsgLgsgLshK
+KEKKEKKhhhsssssssshK
+.K.KEKKhhKssssKsshhK
+....K.KhhhKsssKKhhK.
+.......KhhhKSSSKhhK.

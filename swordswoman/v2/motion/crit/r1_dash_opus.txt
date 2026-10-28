@@ -1,0 +1,17 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+OVERALL: 5
+
+- Natural: 5
+- Whole-body: 4
+- Fluid: 4
+- Appealing: 5
+- Secondary motion convincing: 4
+- Readable at 1x: 6
+
+The new body poses are almost the same as the old ones. Most of the change is in the ribbon tails, which read as stiff red sticks rather than cloth. The back hair and side locks barely move. The skid has no forward overshoot, and the recover snaps straight up with no settle.
+
+**Top 3 fixes:**
+1. **Antic and burst, whole body.** In antic, drop the pelvis about 3 px at 1x and lean the torso back about 10°, with the head counter-tilted. In burst, lean the torso forward about 25° so head, pelvis and back foot form one diagonal.
+2. **Ribbons and back hair, smear → skid → recover.** Smear: curve the tails into an S (base still, tips trailing about 2 frames behind), not straight lines. Skid: swing the tails and back-hair mass forward past vertical by about 20–30°, with side locks forward about 2 px. Recover: let them drop back past rest, about 10° behind.
+3. **Recover, body.** Don't go straight to standing. Keep about 1 px of knee bend and a slight forward lean, with the skirt hem lagging about 1 px. Settle to neutral on the next idle frame.

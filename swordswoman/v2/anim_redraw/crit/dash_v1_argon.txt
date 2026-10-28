@@ -1,0 +1,13 @@
+SCORE 5.5/10
+
+1. **f1–f2 (Direction/Feet/FX)**: Designed for SE (front 3/4), yet she dashes strictly horizontally (E) with horizontal speed lines and flat side-view leg splits.
+2. **f1–f2 (Head/Hair/Bow)**: Zero secondary motion or tilt—the head, hair, and bow are copy-pasted upright from idle, killing the forward momentum and energy.
+3. **f1–f2 (Afterimage FX)**: The red silhouette trail uses noisy checkerboard dithering that clashes with the clean pixel style and visually reads like a blood splatter.
+4. **f0 (Anticipation Pose)**: Barely squats (only ~1px lower than f5 idle) with an upright torso, failing to coil up energy before an explosive burst.
+5. **f3 (Skid Pose)**: Instantaneously snaps upright from f2's extreme lunge without torso lean-back or braking friction, making the stop feel weightless.
+6. **f1–f2 (Legs/Skirt)**: The 180-degree leg split stretches her legs to nearly double their f5 idle length, breaking chibi proportions.
+
+**Top 3 Fixes:**
+1. **Align to SE Axis (f1–f3)**: Angle the dash trajectory, foot placement (back-left to front-right), afterimage offset, and speed lines along a ~25–30° SE diagonal.
+2. **Add Secondary Drag & Tilt (f0–f3)**: Crunch the torso/head down-back in f0; tilt the head forward with trailing bow ribbons/hair in f1–f2; lean the torso back to brake in f3.
+3. **Clean the Trail FX (f1–f2)**: Replace the noisy red dithering with 1–2 solid, flat-colored ghost silhouettes (using a cool/desaturated shade or semi-transparent sprite pass) to avoid reading as gore.

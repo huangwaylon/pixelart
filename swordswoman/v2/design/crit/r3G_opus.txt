@@ -1,0 +1,26 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Scores**
+- A. Cross-view consistency: **6**
+- B. 48px readability: **6**
+- C. Iso correctness: **4**
+- D. Katana clarity: **6**
+- E. Fitness as final reference: **5**
+
+**Top 5 remaining problems**
+
+1. **iso_SE and iso_E look drawn at eye level, not 30°.** You can't see the top of the head or the bun, the legs are full length, and the feet sit level. The 3D renders show the crown and a shortened lower body. Next to iso_S, these two views look like they come from a different camera.
+
+2. **iso_S head is still too big.** At 48px it's clearly wider than every other view; the 3D S render keeps the head about the same width as in the other views. The skirt also flares out wider than the 3D, so the body looks like a squat bell instead of a figure seen from above.
+
+3. **The bow falls apart in iso_NE and iso_N at 48px.** In NE it shows as two separate red blobs with stray dark pixels at the bun. In N it reads as a red "X" over the head. It needs a cleaner silhouette: one center knot and two solid loops.
+
+4. **The body is one red mass in the back and side views.** In left, right, back, iso_NE and iso_N at 40/48px, the sleeves, arms and skirt all merge into the same red. Only the obi breaks it up. The arms need a darker shade or an outline step to separate them.
+
+5. **Katana:**
+   - At 40px the blade's diagonal stair-steps into a dashed or serrated light/dark pattern.
+   - The hilt and guard almost disappear into the hand.
+   - In iso_SE_k the blade angle crosses in front of the legs, which doesn't match the down-and-out angle in front_k.
+   - There are no katana probes for iso_S, iso_NE or iso_N, and those views are where the blade overlaps the body.
+
+Saving session...completed.

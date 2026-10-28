@@ -1,0 +1,8 @@
+QC GATE clip: PASS  (7 items, 0 failing; palette pixelize/palette.json)
+PASS idle_SE_c00
+PASS idle_SE_c01
+PASS idle_SE_c02
+PASS idle_SE_c03
+PASS idle_SE_c04
+PASS idle_SE_c05
+PASS idle_SE_continuity

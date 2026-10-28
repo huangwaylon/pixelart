@@ -1,0 +1,15 @@
+**S_r5: 8.5/10** — Not ready.
+1. **Bun missing:** Add a 1–2px dark hair/outline crown peek behind the bow's center knot (above cyan line) so the bun registers in front view.
+2. **Skirt silhouette:** The lower skirt edges are completely vertical. Flare the bottom hem outward by 1px on both left and right to match `SE_anchor`’s A-line silhouette.
+
+**E_r5: 8/10** — Not ready.
+1. **Skull/face flatness:** The forehead-to-nose line is a rigid 6px vertical wall. Recess the top 2px of the forehead/bangs 1px left to curve into the round dome.
+2. **Back leg occlusion:** The rear leg/boot is completely hidden, making the stance look 1-legged. Offset the far leg/boot 1–2px right (forward) in dark shadow tone.
+
+**NE_r5: 7.5/10** — Not ready.
+1. **Missing obi knot:** `N_r5` establishes a back obi knot, which is absent here. Add the dark grey knot cluster to the right-center of the sash.
+2. **Skirt flare:** The skirt is a vertical cylinder. Flare the bottom hem 1px outward on both sides above the leg line.
+
+**N_r5: 9/10** — Ready (after minor tweaks).
+1. **Bun size:** The bun is too small (4x4px) compared to E/SE. Expand the bun silhouette 1px left and right so it reads clearly around the bow knot.
+2. **Skirt hem:** Reduce the abrupt 2px horizontal flare spike at the bottom-left/right hem to a smoother 1px diagonal step.

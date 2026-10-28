@@ -1,0 +1,21 @@
+Restored session: Mon 26 Oct 2026 11:04:49 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I reworked walk and tidied idle, building and checking the sheets five times. I haven't run the critics, so there are no new scores yet.
+
+**Walk:**
+- **Legs:** 8 new leg poses. Contact has a wide stride with the back foot on its toe, 1px higher on screen. Pass lifts the knee and raises the foot 3–4px. Up pushes off the toe.
+- **Bob:** about 3px head bob (low on down, high on up) with torso squash, plus a 1px forward lean.
+- **Arms:** the near arm swings against the near leg. The far arm is a darker copy (no red highlight, shadow-tone hand).
+- **Katana:** kat_10 at z1, trailing low; the tip stays inside the cell and clear of the skirt.
+
+**Idle:** now two breaths with a blink only on the second, so it doesn't blink every cycle.
+
+**New files:** `parts/se/legs_iw5_{c,d,p,u}{1,2}.txt` (generator `work/iw5/legs.py`), `armN_iw5_b1.txt`, `armF_iw5_{f2,f1,,b1,b2}.txt`. The NOTES.md entry lists the sheet paths.
+
+**Weaknesses:**
+- The forward arm swing is small with the katana (larger in `_ns`) so the blade never crosses behind the skirt.
+- The blade only moves with the hand; it doesn't rotate.
+- The pass2 legs still overlap a little.
+
+Saving session...completed.

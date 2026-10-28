@@ -1,0 +1,21 @@
+Restored session: Mon 26 Oct 2026 13:13:22 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+Viewed at sheet resolution only. PIL isn't installed, so I couldn't zoom in, and the pixel positions below are approximate.
+
+**Overall:** the drawing quality is decent, but it doesn't read as an idle. The breathing bob is buried under parts that jump between frames, so it plays as a jittery rig, not slow breathing. Keys 0, 3 and 6 are readable. Frames 1, 2, 7 and 8 have no real squash, only a drop with a wider torso. The dress hem never moves, so the overlap target is missed.
+
+**Problem 1 – The katana swings around (frames 1→2, 7→8, 9).** The blade angle jumps from about 40° in f0 to nearly flat in f2, f8 and f9: over 20° of rotation in a breathing loop. Because the blade is rotated in-engine, it turns into a jagged staircase line with uneven outline width. In f2 and f9 the hilt also drifts off the hand by about 1–2px.
+**Fix:** lock the sword to the hand bone and limit it to ±1px of translation with no rotation. If it has to tilt, hand-draw 2 angle variants with a clean 1px dark outline and a highlight line. Never resample-rotate it.
+
+**Problem 2 – The bow changes shape between frames (whole loop, worst at f2, f3, f8, f12).** The silhouette swaps between a tall upright bow (f0, f6), a wide flattened bow (f2, f8) and a tilted one (f3, f9). In f12 it sits about 4px higher and smaller on the head. That hurts identity consistency, and it isn't overlap. Real overlap means the same shape trailing 1 frame behind the head.
+**Fix:** use one bow sprite plus 2 hand-made deform frames (squash about 1px flatter, stretch about 1px taller). Delay them 1 frame behind the head bob and keep the anchor fixed on the hair.
+
+**Problem 3 – The body pops on the low frames and the loop seam (f2, f8, f12→f0).** In f2 and f8 the head slides about 3px right and down relative to the torso. The sleeves widen and the left arm jumps, and the cutout seams at the shoulder and sleeve show broken dark outline pixels. In f12 the body is visibly narrower and taller, so the loop snaps when it wraps to f0. Meanwhile the hem stays rigid in every frame.
+**Fix:** cap the vertical bob at 1–2px, with the head moving 1px after the torso. Squash the torso only, by 1px wider and 1px shorter, and repair the outline pixels at the joints after compositing. Give the hem a 1px flare one frame after the low frame. Make f12 match f0's proportions. Also stretch the blink across f9 and f10 (80ms+100ms) and drop the angry-brow half-lid in f10.
+
+SCORE idle: 4
+
+Saving session...completed.

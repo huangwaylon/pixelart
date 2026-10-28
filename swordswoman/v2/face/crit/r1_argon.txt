@@ -1,0 +1,34 @@
+**(1) Expression Readability at 1x (Official = 9)**
+* **Neutral (7/10):** Readable, but 1px dark mouth dot reads passive, not confident.
+* **Determine (7.5/10):** Inner brow drop works, but mouth dot lacks tension (needs 2px smirk/grit).
+* **Shout (5.5/10):** 3x3 diamond mouth with 1px pink center reads like a pacifier or sticking tongue out.
+* **Effort (5/10):** White teeth row + pink corners blurs at 1x into a messy mustache; eyes look sleepy, not strained.
+* **Joy (8.5/10):** Clean `^ ^` eyes, very readable.
+* **Smile (6.5/10):** V-mouth with pink fill looks like a tiny open beak rather than a closed confident smile.
+* **Surprised (6.5/10):** Eyes lose upper lash and touch bangs, reading as rolling eyes up rather than wide shock.
+* **Pain (8/10):** `> <` eyes read well; grit mouth has the same noisy pixel cluster as Effort.
+* **Blink_hal (7/10):** Reads slightly cross-eyed in SE due to blue iris placement under flat lid.
+* **Blink_clo (8.5/10):** Clean, solid read.
+* **Squash (7.5/10):** Nice 1px vertical compression on head/bow, though wide dark mouth looks mildly frog-like.
+
+**(2) Pokemon-like Grammar?**
+**7/10.** S-view eyes capture Gen 4/5 well, but SE fails Pokemon perspective: both eyes are identical width (3px). Official sprites (see Dawn/Hilda/Lass refs) compress the far eye to 2px wide. Mouths overuse 4-pixel diamond outlines around 1px fills, creating un-Pokemon-like pixel noise at 1x.
+
+**(3) Spirited/Confident Personality?**
+**6.5/10.** Comes through in Determine and Joy, but Neutral, Smile, and Shout lack sharp, energetic geometry.
+
+**(4) Views**
+* **S (8/10):** Strong symmetry, clear silhouette.
+* **SE (6.5/10):** Far (right) eye is too wide (3px) and sits too close to the cheek outline, flattening the 3/4 turn.
+* **E (7/10):** Clean profile, but mouth changes don't break the jawline silhouette enough to read at 1x.
+* **NE/N (8.5/10):** Solid back volume; NE needs 1px more cheek protrusion.
+
+**(5) Top 6 Concrete Pixel Fixes**
+1. **SE Far Eye (All cols):** Narrow screen-right eye from 3px to 2px wide (1px white sclera + 1px iris/lash column) to match official 3/4 foreshortening.
+2. **Shout Mouth (S/SE):** Replace 3x3 diamond with a 3w x 2h rectangle: top row dark red/brown, bottom row 2px pink tongue + 1px dark corner.
+3. **Effort/Pain Mouth:** Replace 3-color teeth cluster with a clean 3w x 1h horizontal line (1px dark, 2px white teeth) or simple 2px dark grit.
+4. **Neutral/Determine Mouth (SE):** Shift mouth 1px left and add 1px upper-left shaded skin corner to create an asymmetrical confident smirk.
+5. **Surprised Eyes:** Keep 1px dark upper lash below bangs; shrink iris height by 1px and add 1px white sclera *below* iris to read as wide-eyed shock.
+6. **E Profile Mouths (Shout/Joy):** Cut 1px *into* the jawline outline with background/mouth color so open mouths break the profile silhouette.
+
+**Overall Score: 7.2 / 10**

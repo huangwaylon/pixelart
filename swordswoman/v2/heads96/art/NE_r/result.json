@@ -1,0 +1,27 @@
+{
+ "logs": [
+  {
+   "attempt": 0,
+   "sec": 51,
+   "fixes": []
+  }
+ ],
+ "out": {
+  "lagL": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/NE/artist/r_lagL.txt",
+   "lint": []
+  },
+  "lagR": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/NE/artist/r_lagR.txt",
+   "lint": []
+  },
+  "lift": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/NE/artist/r_lift.txt",
+   "lint": []
+  },
+  "drop": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/NE/artist/r_drop.txt",
+   "lint": []
+  }
+ }
+}

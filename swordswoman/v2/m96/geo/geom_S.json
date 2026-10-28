@@ -1,0 +1,88 @@
+{
+ "view": "S",
+ "src0": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/hair/turnE_final/iso_S.png",
+ "it": [
+  {
+   "L": {
+    "crown": 30,
+    "eye": 52,
+    "chin": 64,
+    "shoulder": 65,
+    "waist": 74,
+    "obi_bot": 78,
+    "hem": 89,
+    "sock_top": 90,
+    "boot_top": 114
+   },
+   "head_w": 26,
+   "head_h": 35,
+   "maxerr": 2
+  },
+  {
+   "L": {
+    "crown": 30,
+    "eye": 50,
+    "chin": 63,
+    "shoulder": 64,
+    "waist": 74,
+    "obi_bot": 78,
+    "hem": 90,
+    "sock_top": 91,
+    "boot_top": 114
+   },
+   "head_w": 27,
+   "head_h": 34,
+   "maxerr": 1
+  },
+  {
+   "L": {
+    "crown": 30,
+    "eye": 50,
+    "chin": 63,
+    "shoulder": 64,
+    "waist": 74,
+    "obi_bot": 78,
+    "hem": 90,
+    "sock_top": 91,
+    "boot_top": 114
+   },
+   "head_w": 27,
+   "head_h": 34,
+   "maxerr": 1
+  },
+  {
+   "L": {
+    "crown": 30,
+    "eye": 50,
+    "chin": 63,
+    "shoulder": 64,
+    "waist": 74,
+    "obi_bot": 78,
+    "hem": 90,
+    "sock_top": 91,
+    "boot_top": 114
+   },
+   "head_w": 28,
+   "head_h": 34,
+   "maxerr": 0
+  }
+ ],
+ "H": 96,
+ "final": {
+  "L": {
+   "crown": 30,
+   "eye": 50,
+   "chin": 63,
+   "shoulder": 64,
+   "waist": 74,
+   "obi_bot": 78,
+   "hem": 90,
+   "sock_top": 91,
+   "boot_top": 114
+  },
+  "head_w": 28,
+  "head_h": 34,
+  "x0": 50,
+  "x1": 77
+ }
+}

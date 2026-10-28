@@ -1,0 +1,17 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Scores**
+
+- **A Proportions: 7/10.** The figure is about 3.5 heads with legs at about 42% of height, so the height targets are met. The neck is only a sliver. The side views show a bust and full hips, and the thighs are heavy, so the body reads older and less slim than a Sugimori trainer.
+- **B Face/hair: 6/10.** The eyes sit low, are narrow and angled, and have a strong upper lash. The chin is softly pointed. The brows are almost entirely hidden by the bangs. The bob is flicked at the front, but from the back and iso_N it's a round helmet.
+- **C Consistency: 4/10.** Sleeves are long and bell-shaped in front, iso_S and iso_SE, but elbow-length in left, right, back, iso_NE and iso_N. Hair length changes: jaw-length with flicks in front, nape-length in back and iso_E. The bow changes size. iso_N is broken: the head is oversized and the bun pattern is odd. The boots match across views.
+- **D Style/cel: 7/10.** The flat cel shading is clean. The lines are thicker and more modern-anime than Sugimori's.
+- **E Katana: 5/10.** Front and iso_SE work. In iso_E the hilt is horizontal while the blade angles down from the guard, so the sword is physically broken.
+
+**Fixes**
+
+1. Pick one sleeve length (wrist bell sleeves) and use it in every view.
+2. Regenerate iso_N at the correct head scale, with the bob tapered at the nape and the same length as the front.
+3. Flatten the chest and hips and slim the thighs, and lengthen the neck slightly.
+4. Lighten the bangs so the brows show, and use a thinner Sugimori-style line.
+5. Fix the iso_E katana so the hilt and blade form one straight line, angled down and forward.

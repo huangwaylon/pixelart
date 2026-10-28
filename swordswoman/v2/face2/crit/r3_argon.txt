@@ -1,0 +1,24 @@
+**(1) Scores (/10: Sprite | Portrait)**
+* **Cute:** 8.5 | 8.0
+* **Anime/Japanese:** 8.5 | 8.5
+* **Big eyes read at 1x:** 8.0 | 9.0
+* **Intentional:** 8.0 | 8.5
+* **Consistent across views:** 8.5 | N/A
+
+**(2) Weak Expressions at 1x**
+* **Sprite `surprised` (S, SE):** The 3x4 solid white sclera block + tiny 1x2 dark pupil lacks a dark upper lash/eyelid line; at 1x it reads like blank zombie/robot eyes rather than shock.
+* **Sprite `effort` (S, SE):** The 3-px vertical dark mouth center on the bottom chin edge merges with the jaw outline at 1x, reading like a goatee/cleft chin instead of gritted teeth.
+* **Portrait `effort`:** Open eyes with a flat horizontal lid + white teeth rectangle looks sleepy/awkward rather than strained.
+* **Portrait `neutral` & `determined`:** The 1-px dark pixel directly beneath the outer corner of each eye still reads as a tired eye-bag/mole at 1x.
+
+**(3) Profile (E) & 3/4 (SE) Check**
+* **E (Profile):** **Yes, a real anime profile.** Forehead-to-nose step, 1-px nose protrusion, lip notch, and recessed eye placement work well.
+* **SE (3/4):** **Yes.** The 3x5 near eye vs. 2x5 far eye compression and far-cheek bulge read clearly as 3/4.
+
+**(4) Top 6 Concrete Pixel Edits**
+1. **Sprite S & SE `surprised`:** Add a 3-px dark lash line (`#1a141b`) across the top row of the white sclera so the eyes stay anchored to the face.
+2. **Sprite S `effort`:** Replace the 3-px dark vertical mouth center with 2-px off-white/pink (`n`/`r`) for clenched teeth, keeping dark corners.
+3. **Portraits (`neutral`, `cheerful`, `determined`, `effort`, `blink_half`):** Remove the single dark brown pixel at the bottom-outer corner under each eye (replace with skin tone).
+4. **Sprite E `surprised`:** Change the 2x4 white sclera block to 2x3 with a 2-px dark top lash.
+5. **Portrait `effort`:** Replace open eyes with angled `><` wince lines (differentiated from `pain` by furrowed brows and clenched white teeth).
+6. **Portrait `embarrassed`:** Simplify the 5-px `w` mouth to a 4-px asymmetric squiggle (2px down, 2px up) for cleaner 1x readability.

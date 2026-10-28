@@ -1,0 +1,12 @@
+sway S w
+sway SE r
+sway E B
+sway E t
+tilt NE L
+sway NE w
+sway N t
+tilt N R
+sway NE B
+sway NE t
+sway N w
+sway SE w

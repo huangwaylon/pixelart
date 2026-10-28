@@ -1,0 +1,12 @@
+
+=== bni_requests try 0
+I wrote `ff/walk_SE/f00.txt` (64×64) and it now passes the lint. The head stamp is pasted unchanged, the legs are staggered for the step with the far foot on row 60, and the katana trails up-left.
+
+The first run failed on lint errors that come from the C_r3 master itself, fixed with small recolours:
+- **Bow:** one outline pixel moved to remove a 1-3-1 jaggy.
+- **Chin, hem, sleeve cuffs:** inner black pixels recoloured to non-black tones.
+- **Boots:** toe highlights widened to 2px so they aren't orphans.
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+
+Saving session...completed.

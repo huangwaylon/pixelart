@@ -1,0 +1,12 @@
+; pivot 7 8
+; anchor neck 7 0
+; anchor shL 1 1
+; anchor shR 12 1
+.#EEEe12EEER#.
+#eEEEEe2eEERR#
+#eEEEEEeREEER#
+#EEEEEEERREER#
+#EEEEEEEEEREER#
+#ddddddddddddD#
+#ddddddddddddD#
+#DDDDDDDDDDDDD#

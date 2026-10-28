@@ -1,0 +1,40 @@
+{
+  "_doc": "FACE2 (unarmed, no sword): action/key -> expression. Sprite char maps: v2/face2/out/sprite/<VIEW>_<expr>.txt (VIEW S,SE,E,NE; N = N_neutral for every key; W/SW/NW = mirrored E/SE/NE face stamps). Portraits: v2/face2/portrait/P_<expr>.txt. Grammar: v2/face2/FACE_GUIDE2.md; stamps: v2/face2/tools/kit.py. 'hold' = keep the previous frame's face.",
+  "expressions": ["neutral", "cheerful", "determined", "shout", "effort", "joy", "surprised", "pain", "blink_half", "blink_closed", "embarrassed"],
+  "default": "neutral",
+  "idle": {
+    "frames": ["neutral", "neutral", "neutral", "neutral", "neutral", "neutral"],
+    "blink": {"every_ms": [2800, 4200], "sequence": [["blink_half", 60], ["blink_closed", 90], ["blink_half", 60]], "rule": "insert on an idle loop boundary, never on a bob extreme; double-blink 1 in 5"},
+    "variant_cheerful": {"use": "every 3rd-4th idle loop, after a win, when an NPC talks to her", "frames": ["cheerful", "cheerful", "cheerful", "cheerful", "cheerful", "cheerful"]},
+    "variant_embarrassed": {"use": "story/emote only (praised, tripped)", "frames": ["embarrassed"]}
+  },
+  "walk": {"all": "neutral", "blink": "allowed, idle timing"},
+  "run": {"all": "determined", "note": "no blink during run; contact frames may use cheerful for a carefree run cycle variant"},
+  "jump": {"anticipation_crouch": "determined", "launch": "effort", "rise": "determined", "apex": "neutral", "fall": "surprised", "land_contact": "blink_closed", "recover": "neutral"},
+  "dash": {"anticipation": "determined", "smear_1": "effort", "smear_2": "effort", "skid": "determined", "recover": "neutral"},
+  "attack_throw": {
+    "_note": "the attack is now a THROW (no sword)",
+    "anticipation": "determined",
+    "windup": "determined",
+    "release": "shout",
+    "release_heavy": "effort",
+    "follow_through": "shout",
+    "recover": "neutral",
+    "settle_confident": "cheerful"
+  },
+  "attack": {"alias_of": "attack_throw"},
+  "hurt": {"hit": "pain", "knockback": "pain", "recover": "blink_closed", "after": "determined"},
+  "victory": {"all": "joy", "end_hold": "cheerful"},
+  "surprised": {"use": "item pickup, enemy appears, being startled; 2-3 frames then neutral"},
+  "portrait_slots": {
+    "_note": "PMD emotion slot -> FACE2 portrait",
+    "Normal": "neutral", "Happy": "cheerful", "Joyous": "joy", "Determined": "determined", "Shouting": "shout", "Angry": "shout",
+    "Pain": "pain", "Surprised": "surprised", "Stunned": "surprised", "Inspired": "effort", "Worried": "embarrassed", "Sad": "blink_half", "Teary": "embarrassed", "Sigh": "blink_closed"
+  },
+  "timing_rules": [
+    "Face changes land ON the key pose frame (one-frame lead allowed on shout so the open mouth is there at release).",
+    "Hold shout through the release/hit-stop; return to neutral on recover, cheerful on settle so she reads confident, not exhausted.",
+    "Blink never overlaps shout/effort/pain/joy (they already change the eyes).",
+    "NE shows the expression only through the lash tip (open eyes) and the cheek blush; N never changes."
+  ]
+}

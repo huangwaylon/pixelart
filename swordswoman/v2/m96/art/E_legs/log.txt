@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I cleaned up the legs crop and it passed the gate on the first try with no '!': it fills the solid black block above the boot with sock D, adds a d sheen line down the sock, and makes a single K cuff line between sock and boot. On the boot, I removed the stray h pixel and the interior K specks and gave it an h shadow edge with one g glint. The gap in the bottom outline is closed and the silhouette and feet row are unchanged (delta: ssim_b −0.000, dE −0.014, sil −0.001).

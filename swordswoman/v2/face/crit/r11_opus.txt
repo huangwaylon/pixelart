@@ -1,0 +1,38 @@
+Restored session: Mon 26 Oct 2026 18:31:25 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Scores are 1–10; an official sprite would be a 9. Pixel coordinates are (col,row) in the S char-maps.
+
+**(1) Readability at 1x, per expression**
+- **Neutral, 6:** The smirk is a 1px `r` at (11,13) above an `rrr` at (8–10,14). At 1x it reads as a stain and a dash, not a smile. The glints are mirrored (`KWiK` / `KiWK`), so the eyes look cross-eyed.
+- **Determined, 6:** The brow slant works, but the lid and brow merge into one 4px dark bar.
+- **Shout, 4:** The mouth `rKKKr` is 5 wide by 1 tall, so it reads as a grimace or frown, not an open yell. Row 10 `KsKKKsKKKsK` is broken-up noise.
+- **Effort, 6:** The clenched teeth read. The brows are mushy.
+- **Joy, 5:** The ^^ eyes are fine, but the mouth `rKKKr` is identical to shout.
+- **Smile, 6:** It is too close to neutral.
+- **Surprised, 7:** `WKW` with the open `rKKr` mouth is the best of the set.
+- **Pain, 7:** The >< eyes read.
+- **Blink half / closed, 7 / 7.**
+- **Squash, 3:** It is the same as blink closed.
+
+**(2) Is it intentional and Pokemon-like? 5.** The lashes are flat 4px slabs with no wing tick. Glint placement isn't consistent with a single light source. Mouths are all 1px-tall lines. Lyra, Hilda and Rosa in your refs use 2-wide eyes with a lash wing out to the side, one glint on the same side in both eyes, and mouths with a light interior.
+
+**(3) Does it carry the spirited/confident personality? 5.** The smirk and brows are the right idea, but at 1x she reads as calm and polite.
+
+**(4) Per view**
+- **S, 6:** Glint mirroring and the line-only mouths.
+- **SE, 6:** The far eye `KWK` is the same width as the near eye. It should be narrower (2px).
+- **E, 4:** The mouth is a single `r` sitting on the outline, so it vanishes. The eye has no lash wing pointing forward.
+- **NE/N, 5:** NE is the same as N. NE needs a 1–2px cheek/blush sliver past the hair on the right.
+
+**(5) Top 6 fixes**
+1. **Shout mouth:** make it 3w×3h: `K` rim, a dark `r` interior, and a 1px lighter tongue at the bottom centre. Drop it one row so it doesn't sit flush against the eyes.
+2. **Joy mouth:** an open D shape, 3w×2h: top row `KKK`, bottom row `rer`. It must differ from shout.
+3. **Glints:** put the `W` at top-left in both eyes in every view.
+4. **Lash:** add 1px dark `K` diagonally up and out at the outer corner of each eye. In E, put it on the front corner.
+5. **Neutral smirk:** replace the dot plus dash with a 3px diagonal `r` rising to the right (one row up at the right end), or 2px flat plus 1px up.
+6. **Squash:** use `>` `<` squint eyes, and puff the cheeks with 1px skin added at the jaw edge on each side, so it differs from blink closed. Also make the SE far eye 2px wide.
+
+**Criteria:** readable at 1x **5.5**, intentionally designed **5**, Pokemon-like **5**, carries personality **5**. **Overall: 5/10.**
+
+Saving session...completed.

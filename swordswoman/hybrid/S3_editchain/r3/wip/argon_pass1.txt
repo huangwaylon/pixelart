@@ -1,0 +1,39 @@
+**SCORES**
+* **Appeal:** 6.5/10 (Tall, stiff proportions; misses the round, top-heavy chibi head-to-body ratio of the concept art).
+* **Cross-Direction Consistency:** 4.0/10 (Handedness flips across directions; weapon teleports between hands).
+* **Walk Motion Expressiveness:** 4.5/10 (4 frames cannot represent a full two-step cycle without foot-swapping; torso and sword are frozen).
+* **Pixel Cleanliness:** 6.0/10 (Unoutlined pink ribbons and single-pixel white blade wash out on the 1x grass/dirt thumbnails; jagged hems).
+
+---
+
+**TOP 6 PIXEL-LEVEL DEFECTS**
+
+1. **Handedness / Weapon Flip**
+   * **Frame & Area:** `Image 3 (Concept)` vs `Image 2 (turn_S, SE, E, NE, N, NW, W, SW)` — Sword & hands.
+   * **Defect:** Concept holds the katana in the character's **right** hand. `turn_S, SE, E, NE, N, NW` hold it in the **left** hand, then `turn_W` and `turn_SW` lazily horizontal-flip the sprites, swapping the sword back to the **right** hand and flipping the asymmetrical skirt slit and belt buckles.
+   * **Concrete Fix:** Rebuild all 8 directions with strict anatomical consistency—keep the sword in the right hand (screen-left in `turn_S`), and redraw `W` and `SW` instead of mirroring `E` and `SE`.
+
+2. **Half-Cycle Walk Loop / Static Prop**
+   * **Frame & Area:** `Image 1 (walk_SE_k0–k3)` — Legs and katana blade.
+   * **Defect:** This 4-frame sequence only animates **one** step (half a walk cycle); looping `k3` back to `k0` causes the left and right legs to instantaneously swap positions. Meanwhile, the katana blade is copy-pasted at a locked 45° diagonal with zero secondary motion.
+   * **Concrete Fix:** Either double to an 8-frame cycle (4 frames per leg) or make `k0/k2` opposite contacts and `k1/k3` passing poses. Offset the sword tip vertically by 1–2px lagging the body bounce.
+
+3. **Unoutlined Blade & Ribbons Vanish at 1x**
+   * **Frame & Area:** `All frames` — Katana blade and pink neck-ribbons (see 1x grass/dirt thumbnails).
+   * **Defect:** The 1px unoutlined white/grey diagonal line for the blade and the unoutlined pastel pink ribbons lose contrast against bright dirt/grass and look like stray pixel noise.
+   * **Concrete Fix:** Give the blade a dark steel/black 1px top/bottom outline (2–3px total width) and add a dark maroon/brown 1px outer edge to the pink ribbons so they read on bright tiles.
+
+4. **Asymmetrical Bun & Bow Teleportation**
+   * **Frame & Area:** `Image 2 (turn_S, turn_N)` vs `turn_SE, turn_SW` — Top of head / hair bun.
+   * **Defect:** In `turn_S` and `turn_N`, the hair bun is dead-center with the bow split behind it. In `turn_SE`, the bun jumps to screen-left; in `turn_SW`, it jumps to screen-right.
+   * **Concrete Fix:** Center the hair bun consistently on the crown axis across all 8 views, with the red bow sitting directly in front of the bun (matching the concept).
+
+5. **Static Corset & Collar Brick**
+   * **Frame & Area:** `Image 1 (walk_SE_k0–k3)` — Brown corset, silver buckles, and red cowl collar.
+   * **Defect:** The entire upper torso block (collar + corset) is a static copy-paste that merely shifts up/down 1–2px with zero pelvic twist, arm swing overlap, or cloth follow-through.
+   * **Concrete Fix:** Shift the belt buckles 1px horizontally between contact poses (`k0` vs `k2`) to sell hip rotation, and delay the top edge of the red cowl by 1 frame on the down/up poses (`k1`, `k3`).
+
+6. **Jagged Skirt Hem & Crushed Leg Silhouette**
+   * **Frame & Area:** `Image 1 (walk_SE_k1, walk_SE_k3)` — Lower skirt hem and calves.
+   * **Defect:** In `walk_SE_k1`, the front foot merges into the black outline of the skirt hem, creating a noisy 1px stair-step cluster where the leg disappears. In `walk_SE_k3`, the dark inner-skirt shadow bands against the calf outline.
+   * **Concrete Fix:** Raise the front skirt slit by 2px to expose clear skin-tone pixels on the thigh/calf (matching the concept's high slit), and clean the hem outline into smooth 2:1 pixel steps.

@@ -1,0 +1,30 @@
+{
+ "size": [
+  17,
+  17
+ ],
+ "facing": "E",
+ "attach": "hand",
+ "pivot": [
+  8,
+  8
+ ],
+ "ms": [
+  40,
+  60,
+  60
+ ],
+ "cell_offset": [
+  110,
+  70
+ ],
+ "layer": "over",
+ "mirror": "flip x for W-facing: x -> w-1-x, pivot_x -> w-1-pivot_x, negate dx of offsets/velocity, cell_offset_x -> 127-x (symmetric, flip is a no-op; the 1 px diagonal glints swap sides, fine)",
+ "cell": "128x128 cell, 96 px figure, feet pivot (64,124), ground row 124; throw-pose release hand = s48 throw_E frames.json (hy3d/frames_G) frame 3 'release' hand.R x2 -> (111,69), used as (110,70); this is NOT the idle hand (~(81,84)); stride hand (frame 2) ~(63,66); cell_offset = release hand",
+ "play_on": "release frame, with throw_trail",
+ "frames": [
+  "f0 radius 8: 3x3 w core, 1 px w arms with 3 px y tips, y shoulders + 4 diagonal 1 px y dots at (6,6)(10,6)(6,10)(10,10)",
+  "f1 radius 5 (arms 2 px shorter): w cross with y shoulders/tips + 4 deliberate 1 px diagonal glints (y/w)",
+  "f2 radius 2: w dot in a y plus + 2 drifting 1 px y glints"
+ ]
+}

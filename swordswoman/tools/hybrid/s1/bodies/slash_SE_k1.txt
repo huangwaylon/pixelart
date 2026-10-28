@@ -1,0 +1,46 @@
+# slash_SE_k1 SMEAR (50 ms): lunge, head on the guide (67,72) -> stamp 59,50, torso leans FORWARD 2 px; blade-arc smear along the tip path from the k0 tip (up-left, behind) round the front and under her to the blade (steel_2 core, pink_1 -> pink_0 edge, 7 px at the lead, tapering to the tail) + 2 pink_0 echoes of the arms/cuff along the arc (multiple-limb smear); skirt, tail, sleeve and ribbons stretched flat behind, bow lags up-left, speed lines
+fx: none
+from: turn_SE -2 4
+stamp: 59 50
+bow: -1 -1
+expr: frown
+clear: 53,85,59,97
+shear: 80 91 5
+clear: 30,92,120,112
+patch: 41 92
+________________KRRRRRRRRRRRRRRK____
+____________KKKKRdRRRRRRRRRRRRRRK___
+_________KKKRRRRRRddRRRRRRRRRRRRRK__
+______KKKRRRRRRRRKddKRRRRRRRRRRRRRK_
+___KKKRRRRRRRRRRRKdKRRRRRRRRRRRRRRK_
+__KvrrrrRRRRRRRKK_KvrrrrrrrrrrrRRRK_
+____KKvvvvvvvKK____KKvvvvvvvvvKKrK__
+______KKKKKKK_______KKKKKKKKKKKKK___
+limb: s 2 60,98 58,101 55,103 behind
+limb: d 2 54,103 54,104 behind
+limb: s 2 70,99 76,101 77,103 behind
+limb: d 2 77,103 79,104 behind
+limb: R 3 63,86 70,89
+patch: 67 88
+KKK__
+KRRK_
+KRRRK
+KvvvK
+_KKK_
+top: 71 88
+_KKKK_
+KssssK
+KmsssK
+_KKKK_
+sword: 75,90 99,97
+opb: stamp 49,84 ________KKKKK/_____KKKRRRRK/__KKKRRRRRRrK/_KRRRRRRRrrK_/KRRRRRrrrrK__/_KvvvvvvKK___/__KKKKKK_____
+opb: curve 62,84 52,81 40,85 p
+opb: curve 62,83 52,80 40,84 P
+opb: curve 40,85 35,87 30,85 p
+opb: curve 40,84 35,86 30,84 P
+opb: curve 63,87 53,89 44,94 p
+opb: curve 63,86 53,88 44,93 P
+op: echo 67,87 76,92 -10,-6 2 tone=p
+op: smear 66,92 34,15 200 12 7 tones=w,P,p taper=lead
+op: smear 66,92 34,15 238 200 3 tones=P,p taper=tail
+opb: speed 50,78 -1,0 3 7 3 p

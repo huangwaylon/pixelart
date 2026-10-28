@@ -1,0 +1,21 @@
+Restored session: Mon 26 Oct 2026 12:31:39 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Frame indices match the sheet labels. I looked at the full sheet, plus a nearest-neighbor 3× zoom of frames 6–8.
+
+**What works:** The timing is solid: 30ms swingA → 40ms smear → 40ms impact, then 110ms of hitstop and a 330ms recover tail. The impact spark in 7–9 is clean and fades nicely. Identity, palette and outlines stay consistent from frame to frame. The SE lunge in 6–10 is a readable silhouette.
+
+**Problems, most important first:**
+
+1. **Frame 6 SMEAR: the arc is broken and doesn't taper.** The arc is a flat 2–3px white ribbon. The head and bow cut it in two, so it reads as two separate crescents: a thin stroke at upper-left and a thick band on the right. Its left end is a blunt square cap, and the far end doesn't fully run into the blade tip. **Fix:** Draw one continuous crescent in front of the head layer. It should go from 1px at the tail (upper-left) to 5–6px at the blade tip, with a 2-tone fill (white core, pale blue-grey #b8c4d8 trailing edge). Cut the tail end at an angle in 1-px steps, and add 1–2 broken-off fragments at the tail.
+
+2. **Frames 0–13 overall: it's stiff like a cutout rig, with no squash & stretch or overlap.** The head, hair mass and bow are the same pixels in every frame, only shifted. The torso never squashes in coil (4) or stretches in swingA (5) and smear (6). The hair and bow don't lag in follow (10) or settle (12). **Fix:** In frame 4, squash the torso 1–2px shorter and wider and tilt the head 1px down/back. In frames 5–6, stretch the torso 2px taller and lean it forward. In frames 7–8, push the hair tips and bow tails 2–3px back (NW) in drag. In frames 10–11, add overshoot past neutral, then let it settle by 12.
+
+3. **Frames 6–11: the back leg and sword arm look like rig sticks.** The extended left leg is a 1-px skin-tone line with jaggy steps (roughly x 190–240, y 300–330 in the zoom) and no outline. The sword arm is a shapeless red blob merging into the torso, and the hands sit on top of the chest with no separation. **Fix:** Redraw the back leg 2px thick with a dark outline and a clean 2:1 slope. Give the forearm its own dark outline against the dress, and add a 1px shadow gap between the hands and the torso. Frames 6 and 7 also have nearly identical bodies. Push the impact frame further, about 2px lower and more forward, so the contact actually lands.
+
+Sub-scores: timing 7, keys 6, S&S/overlap 3, smear 4, pixel quality 6, identity 8.
+
+SCORE slash: 5
+
+Saving session...completed.

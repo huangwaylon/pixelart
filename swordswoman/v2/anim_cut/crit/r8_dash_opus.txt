@@ -1,0 +1,28 @@
+Restored session: Mon 26 Oct 2026 12:31:39 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**dash_SE review**
+
+The sequence is readable, but it doesn't hold together as a dash yet. The two burst frames rely on a flat-colour ghost of the body instead of actually moving or stretching her. Frames 5–6 also change her proportions, which breaks identity consistency.
+
+**Top 3 problems**
+
+1. **Frames 1–2, afterimage and speed lines.** The ghost is a full-size, flat salmon (F1) or maroon (F2) copy of her outline sitting behind the body. It has no taper and stair-stepped bottom edges (F2 around x600–660, y200–235). It reads as a second character, not motion. The speed lines are two loose, evenly spaced white bars (F1 x288–330, y130/175; F2 x608–635, y150) floating away from the body.
+   **Fix:** Replace the ghost with 2–3 trailing slivers that shrink and fade from body width to 1px over about 20px, using a 2-step ramp of the dress colours. Attach 3–4 speed lines of different lengths to her back edge, with tapered tails. Stretch her body forward 2–3px horizontally in F1 and lean the head forward so the burst comes from her, not from the effect.
+
+2. **Frames 5–6, scale and proportion pop.** At settle she jumps about 25px taller. Her legs get longer and turn into straight sticks, the skirt changes from a flared A-line to a short bell, and the katana shrinks to a stub about 40px long (it's about 90px in F0–F4). She looks like a different, older sprite.
+   **Fix:** Keep the F0–F4 rig scale and blade length. Use F5 as a recovery squash: knees bent, 2px lower, head 1px wider. Then rise to rest in F6 with the same leg length as F0.
+
+3. **Frames 3–4, the skid and brake are almost the same pose, and the dust is noisy.** F4 only moves her about 10px and stands her up a little. There's no counter-lean and no follow-through from the hair, bow or sleeves. The dust puffs (F3 x235–265, y485–500; F4 x495–540, y490–500; F5 x770–810, y505) are scattered single-pixel orphans.
+   **Fix:** In F4, lean the torso back about 10°, plant the front heel, and drag the hair and bow 2–3px forward (overlap past the stop). Redraw the dust as 2–3 solid clumps with outlines and a light/mid/dark ramp, getting smaller frame to frame, with no isolated pixels.
+
+**Secondary issues**
+- The F0 wind-up is weak: barely a crouch and no backward lean. Push the hips down 3px and lean the head back.
+- The head never squashes or stretches anywhere in the sequence.
+- Line work, palette and face are clean and consistent within F0–F4. That's the strongest part.
+
+**Scores:** timing 5, poses 4, effects 3, consistency 4, pixel quality 6.
+
+SCORE dash: 4
+
+Saving session...completed.

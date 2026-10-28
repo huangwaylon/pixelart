@@ -1,0 +1,70 @@
+{
+ "name": "akane_pokemon_v3",
+ "note": "16 opaque colours (4bpp-style budget: 15 + katana guard). Calibrated on BW/HGSS battle + PMD refs: pure-black outline, warm skin shadow, hue-shifted red (to violet), 3-tone hair with sheen.",
+ "colors": {
+  "K": [
+   "#000000",
+   "outline (all materials), pupils, lash line"
+  ],
+  "W": [
+   "#f8f8f8",
+   "eye white, glint, blade edge highlight"
+  ],
+  "s": [
+   "#f8d0b8",
+   "skin base"
+  ],
+  "S": [
+   "#d89878",
+   "skin shadow, mouth"
+  ],
+  "L": [
+   "#847078",
+   "hair sheen arc (also boot toe highlight)"
+  ],
+  "H": [
+   "#403038",
+   "hair base"
+  ],
+  "h": [
+   "#241c24",
+   "hair shadow, obi/boot shadow, inner lines in dark areas"
+  ],
+  "e": [
+   "#f87068",
+   "red light (bow top, shoulders)"
+  ],
+  "E": [
+   "#d03848",
+   "red base"
+  ],
+  "R": [
+   "#982840",
+   "red shadow"
+  ],
+  "r": [
+   "#581838",
+   "red deepest, inner lines on red, sleeve inside"
+  ],
+  "d": [
+   "#4c4460",
+   "obi and boots base"
+  ],
+  "I": [
+   "#3868b8",
+   "iris (lower half only)"
+  ],
+  "i": [
+   "#1c2c58",
+   "iris dark (most of the iris, under the lash)"
+  ],
+  "n": [
+   "#a8b0c8",
+   "blade"
+  ],
+  "k": [
+   "#b07838",
+   "katana guard"
+  ]
+ }
+}

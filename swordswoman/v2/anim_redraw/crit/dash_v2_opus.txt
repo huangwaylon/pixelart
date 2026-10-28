@@ -1,0 +1,18 @@
+Restored session: Mon 26 Oct 2026 11:00:36 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 5.5/10.** The burst reads, but the frames on either side of it don't support it.
+
+- **Burst (F1–F2):** This is the strongest part. The lunge is long and low, the speed lines are clean, and two frames at 45ms gives a good snap. But the afterimage is flat, blocky red slabs with stair-step edges, so it looks like a paint smear rather than a ghost of her. Trace her real silhouette, use 2 stepped-alpha tones, and taper it.
+- **View breaks:** F1–F2 switch to a pure side profile moving due east, while F0 and F3–F5 are SE 3/4. Angle the dash down-right and keep her torso 3/4.
+- **Anticipation (F0):** She barely crouches. Drop the hips 2–3px more, lean back against the dash, and pull the sword in tight. At 120ms it currently reads as "standing" more than "loading".
+- **Skid (F3):** This loses all the impact. She pops back upright at once, with no backward lean, no heel dig and no squash. Lean her back about 15°, plant the front foot, bend the knees and trail the hair and ribbon forward. The dust puff is good, but the white skid line under it floats away from her foot.
+- **Sword:** The angle and grip jump around: back-left in F3, down-left in F4, down-right in F5, and the hand side changes between frames. Pick one hold for the recovery and ease into it.
+- **Proportions:** In F5 she looks taller and narrower than in F0, with longer legs and a smaller skirt, and the head size drifts by about 1px. Lock the head and torso templates.
+- **Grounding:** Her feet slide between F3, F4 and F5, and the baseline isn't pinned. The F4 dust ring is a dotted orphan floating to the side; either fill it in or join it to the F3 puff.
+- **Overlap:** The hair and ribbon barely react. They should stream back in F1–F2, whip forward in F3 and settle in F4–F5. This is the cheapest way to add bounce.
+- **Cleanliness:** The shading is flat and mostly fine with no pillow shading, but the red cloth colours change between frames. Lock the palette.
+- **Timing:** Make the recovery bouncier: shorten F4 to about 70ms and add an overshoot frame (slight bob up) before F5.
+
+Saving session...completed.

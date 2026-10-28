@@ -1,0 +1,8 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+a=7, b=6, c=7, d=6
+
+The lid tops now arch clearly in S and SE, and they hold up in blink_half and surprised. Joy barely changed, which is fine. At 1x the eyes still read as fairly boxy.
+
+1. **Wing near the hair.** On the eye next to the side hair (SE near eye, every E view), the outer wing pixel touches the dark hair and disappears into it. Move the wing in by 1px, or drop it 1px lower, so one skin pixel separates it from the hair. That way it reads as one crisp flick up and out.
+2. **Inner end and thickness.** In S/SE neutral, cheerful and surprised, a lone dark pixel hangs diagonally under the inner end of the arch. Remove it so the line tapers. Then make the outer half a consistent 2px thick in every view. In E it is only 1px.

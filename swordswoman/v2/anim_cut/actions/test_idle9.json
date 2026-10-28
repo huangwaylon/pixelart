@@ -1,0 +1,461 @@
+{
+ "name": "test_idle9",
+ "partdir": "parts/se",
+ "cell": [
+  64,
+  64
+ ],
+ "ground": [
+  32,
+  60
+ ],
+ "rig": {
+  "legs": {
+   "part": "legs",
+   "at": "root",
+   "z": 1
+  },
+  "skirt": {
+   "part": "skirt",
+   "at": "legs.hip",
+   "z": 3
+  },
+  "torso": {
+   "part": "torso",
+   "at": "skirt.waist",
+   "off": [
+    0,
+    0
+   ],
+   "z": 4
+  },
+  "armF": {
+   "part": "armF",
+   "at": "torso.shR",
+   "z": 2
+  },
+  "armN": {
+   "part": "armN",
+   "at": "torso.shL",
+   "z": 6
+  },
+  "head": {
+   "part": "head",
+   "at": "torso.neck",
+   "z": 7
+  },
+  "bun": {
+   "part": "bun",
+   "at": "head.bun",
+   "z": 0
+  },
+  "bow": {
+   "part": "bow",
+   "at": "head.bow",
+   "z": 8
+  },
+  "kat": {
+   "part": "kat_13",
+   "at": "armN.hand",
+   "z": 5
+  }
+ },
+ "frames": [
+  {
+   "ms": 160,
+   "label": "top st2/skirt_top",
+   "set": {
+    "legs": {
+     "part": "idle9_legs_st"
+    },
+    "head": {
+     "part": "idle9_head_hd",
+     "off": [
+      0,
+      0
+     ]
+    },
+    "bow": {
+     "part": "bow_iw4_dn"
+    },
+    "skirt": {
+     "part": "idle9_skirt_top"
+    },
+    "torso": {
+     "part": "idle9_torso_st2"
+    },
+    "armN": {
+     "part": "idle9_armN_up"
+    },
+    "armF": {
+     "part": "idle9_armF_up"
+    },
+    "kat": {
+     "part": "kat_10",
+     "at": "armN.hand",
+     "z": 1
+    }
+   },
+   "root": [
+    0,
+    0
+   ]
+  },
+  {
+   "ms": 80,
+   "label": "fall skirt_up/hu",
+   "set": {
+    "legs": {
+     "part": "idle9_legs_m"
+    },
+    "head": {
+     "part": "idle9_head_hu",
+     "off": [
+      0,
+      0
+     ]
+    },
+    "bow": {
+     "part": "bow"
+    },
+    "skirt": {
+     "part": "idle9_skirt_up"
+    },
+    "torso": {
+     "part": "torso_iw_st"
+    },
+    "armN": {
+     "part": "idle9_armN_up"
+    },
+    "armF": {
+     "part": "idle9_armF_up"
+    },
+    "kat": {
+     "part": "kat_09",
+     "at": "armN.hand",
+     "z": 1
+    }
+   },
+   "root": [
+    0,
+    0
+   ]
+  },
+  {
+   "ms": 80,
+   "label": "low sq2/legs_lo",
+   "set": {
+    "legs": {
+     "part": "idle9_legs_lo"
+    },
+    "head": {
+     "part": "idle9_head_hu",
+     "off": [
+      1,
+      0
+     ]
+    },
+    "bow": {
+     "part": "bow_iw4_up"
+    },
+    "skirt": {
+     "part": "skirt_sq"
+    },
+    "torso": {
+     "part": "idle9_torso_sq2"
+    },
+    "armN": {
+     "part": "idle9_armN"
+    },
+    "armF": {
+     "part": "idle9_armF_up"
+    },
+    "kat": {
+     "part": "kat_09",
+     "at": "armN.hand",
+     "z": 1
+    }
+   },
+   "root": [
+    0,
+    0
+   ]
+  },
+  {
+   "ms": 200,
+   "label": "hold sq1/bell/dn",
+   "set": {
+    "legs": {
+     "part": "idle9_legs_lo"
+    },
+    "head": {
+     "part": "idle9_head_hd",
+     "off": [
+      1,
+      1
+     ]
+    },
+    "bow": {
+     "part": "bow_up"
+    },
+    "skirt": {
+     "part": "idle9_skirt_bell"
+    },
+    "torso": {
+     "part": "idle9_torso_sq1"
+    },
+    "armN": {
+     "part": "idle9_armN_dn"
+    },
+    "armF": {
+     "part": "idle9_armF_dn"
+    },
+    "kat": {
+     "part": "kat_10",
+     "at": "armN.hand",
+     "z": 1
+    }
+   },
+   "root": [
+    0,
+    0
+   ]
+  },
+  {
+   "ms": 120,
+   "label": "rise ln/long",
+   "set": {
+    "legs": {
+     "part": "idle9_legs_m"
+    },
+    "head": {
+     "part": "idle9_head_hd",
+     "off": [
+      0,
+      1
+     ]
+    },
+    "bow": {
+     "part": "bow"
+    },
+    "skirt": {
+     "part": "idle9_skirt_long"
+    },
+    "torso": {
+     "part": "idle9_torso_ln"
+    },
+    "armN": {
+     "part": "idle9_armN_dn"
+    },
+    "armF": {
+     "part": "idle9_armF_dn"
+    },
+    "kat": {
+     "part": "kat_10",
+     "at": "armN.hand",
+     "z": 1
+    }
+   },
+   "root": [
+    0,
+    0
+   ]
+  },
+  {
+   "ms": 120,
+   "label": "rise2",
+   "set": {
+    "legs": {
+     "part": "idle9_legs_st"
+    },
+    "head": {
+     "part": "idle9_head_hd",
+     "off": [
+      0,
+      0
+     ]
+    },
+    "bow": {
+     "part": "idle9_bow_dn"
+    },
+    "skirt": {
+     "part": "skirt_iw6_nar"
+    },
+    "torso": {
+     "part": "torso_iw_st"
+    },
+    "armN": {
+     "part": "idle9_armN"
+    },
+    "armF": {
+     "part": "armF_iw4"
+    },
+    "kat": {
+     "part": "kat_10",
+     "at": "armN.hand",
+     "z": 1
+    }
+   },
+   "root": [
+    0,
+    0
+   ]
+  },
+  {
+   "ms": 200,
+   "label": "blink_hd",
+   "set": {
+    "legs": {
+     "part": "idle9_legs_lo"
+    },
+    "head": {
+     "part": "idle9_blink_hd",
+     "off": [
+      1,
+      1
+     ]
+    },
+    "bow": {
+     "part": "bow_up"
+    },
+    "skirt": {
+     "part": "idle9_skirt_bell"
+    },
+    "torso": {
+     "part": "idle9_torso_sq1"
+    },
+    "armN": {
+     "part": "idle9_armN_dn"
+    },
+    "armF": {
+     "part": "idle9_armF_dn"
+    },
+    "kat": {
+     "part": "kat_10",
+     "at": "armN.hand",
+     "z": 1
+    }
+   },
+   "root": [
+    0,
+    0
+   ]
+  },
+  {
+   "ms": 120,
+   "label": "half_hd",
+   "set": {
+    "legs": {
+     "part": "idle9_legs_m"
+    },
+    "head": {
+     "part": "idle9_half_hd",
+     "off": [
+      0,
+      1
+     ]
+    },
+    "bow": {
+     "part": "bow"
+    },
+    "skirt": {
+     "part": "idle9_skirt_long"
+    },
+    "torso": {
+     "part": "idle9_torso_ln"
+    },
+    "armN": {
+     "part": "idle9_armN_dn"
+    },
+    "armF": {
+     "part": "idle9_armF_dn"
+    },
+    "kat": {
+     "part": "kat_10",
+     "at": "armN.hand",
+     "z": 1
+    }
+   },
+   "root": [
+    0,
+    0
+   ]
+  },
+  {
+   "ms": 80,
+   "label": "ns arm up",
+   "set": {
+    "legs": {
+     "part": "idle9_legs_m"
+    },
+    "head": {
+     "part": "idle9_head_hu",
+     "off": [
+      0,
+      0
+     ]
+    },
+    "bow": {
+     "part": "bow"
+    },
+    "skirt": {
+     "part": "idle9_skirt_up"
+    },
+    "torso": {
+     "part": "torso_iw_st"
+    },
+    "armN": {
+     "part": "idle9_armN_ns_up"
+    },
+    "armF": {
+     "part": "idle9_armF_up"
+    }
+   },
+   "root": [
+    0,
+    0
+   ],
+   "hide": [
+    "kat"
+   ]
+  },
+  {
+   "ms": 200,
+   "label": "ns arm dn",
+   "set": {
+    "legs": {
+     "part": "idle9_legs_lo"
+    },
+    "head": {
+     "part": "idle9_head_hd",
+     "off": [
+      1,
+      1
+     ]
+    },
+    "bow": {
+     "part": "bow_up"
+    },
+    "skirt": {
+     "part": "idle9_skirt_bell"
+    },
+    "torso": {
+     "part": "idle9_torso_sq1"
+    },
+    "armN": {
+     "part": "idle9_armN_ns_dn"
+    },
+    "armF": {
+     "part": "idle9_armF_dn"
+    }
+   },
+   "root": [
+    0,
+    0
+   ],
+   "hide": [
+    "kat"
+   ]
+  }
+ ]
+}

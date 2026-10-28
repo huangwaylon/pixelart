@@ -1,0 +1,35 @@
+**Criteria Scores (1-10):**
+Readable at 1x: **6** | Intentionally designed: **5** | Pokemon-like: **5** | Carries personality: **6** | **Overall: 5.5/10**
+
+**(1) Expressions (1x Readability & Pixel Problems):**
+*   **Neutral (6/10):** S-view mouth is a 2px dark line; looks somber, not confident.
+*   **Determine (6/10):** Inner brow pixels touch eyes, merging with dark bangs into a heavy unibrow.
+*   **Shout (4/10):** 1px pink tongue surrounded by dark outline reads as lipstick/ pacifier, not an open shout.
+*   **Effort (4/10):** 3x2 white teeth block with dark border looks like buckteeth or a pacifier.
+*   **Joy (7/10):** `^` eyes work, but mouth suffers the same "lipstick" outline issue as Shout.
+*   **Smile (6/10):** S-view 3px mouth is too wide/froggy; SE smirk is decent.
+*   **Surprised (5/10):** Eyes don't widen (still 3px tall); 2x2 dark mouth looks like a soul patch.
+*   **Pain (6/10):** `><` eyes work, but the `w` zigzag mouth is noisy at 1x.
+*   **Blink_hal (5/10):** Reads as drugged/sleepy; flat eyelid lacks lash definition.
+*   **Blink_clo (7/10):** Clean, but flat 3px eye lines look lifeless compared to curved Pokemon arcs.
+*   **Squash (6/10):** Good 1px head compression, but mouth blends into chin shadow.
+
+**(2) Design & Pokemon-likeness:**
+Fails Gen4/5 standards. Official sprites (Dawn/Rosa/Hilda) use **vertical 1x3 or 2x3 eyes** with a 1px white glint, 1px dark lash, and 1px colored iris, plus **borderless 1-2px mouths**. Yours uses chunky 3x3 eyes and heavy dark outlines around mouths/teeth, making faces look muddy and Western-indie rather than crisp Game Freak pixel art.
+
+**(3) Personality:**
+C_r4 SE captures "spirited/confident" much better than the new grid. The new S-view looks blank/doll-like because the heavy dark bangs crush the brow area, hiding expression.
+
+**(4) Views:**
+*   **S (5/10):** Weakest. Symmetrical mouths look like facial hair/lipstick; jaw is too narrow/pointy.
+*   **SE (7/10):** Best angle, though C_r4 SE is superior (wider cheek, clearer eye spacing).
+*   **E (6/10):** Mouths sit 1px too far back instead of breaking/sitting on the profile edge.
+*   **NE/N (8/10):** Clean, though NE misses a 1px cheek/lash protrusion for personality.
+
+**(5) Top 6 Concrete Pixel Edits:**
+1.  **Raise Bangs 1px (S/SE/E):** Shift the bottom row of fringe up 1px to expose skin above the eyes so angled brows (Determine/Surprised) read clearly against skin, not hair.
+2.  **Shout/Joy Mouths:** Delete the dark bottom/side outlines. Make a borderless 2x2 or 3x2 mouth: top row dark-red/brown, bottom row pink tongue (like Meloetta/Rosa).
+3.  **Effort Mouth:** Replace the outlined white block with a 3x1 horizontal white-teeth line, capped only by 1px dark corners or a 1px dark top line.
+4.  **Neutral/Smile Mouths:** Reduce S-view neutral mouth to a single 1px dark-red/shadow-skin dot (or 2px asymmetric smirk) instead of a dark black line.
+5.  **Surprised:** Shrink iris/glint by 1px to show white sclera underneath; change mouth to a 1x2 vertical dark-red oval.
+6.  **E-View Mouths:** Shift mouth pixels 1px right to sit directly on the jaw outline (carving into the silhouette on Shout/Joy).

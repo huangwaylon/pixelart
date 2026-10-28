@@ -1,0 +1,12 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Scores:** final_quality 6/10 · master_consistency 7/10 · motion 5/10 · readability_1x 7/10 · no_boiling 4/10
+
+The locked head and face hold up well. The problems are in the lower body: the legs are redrawn every frame instead of shifted, and at 1x the 1px bob mostly gets lost under the noise in the legs.
+
+**Fixes:**
+1. **f02–f04 legs/socks:** the outline is jagged and the knee and calf have stray pixels that change from frame to frame. Copy the f00 legs and offset them by 1px; don't redraw them.
+2. **f02–f03 sock tops / skin gap:** the band of skin above the socks gets taller and the sock tops jump lower. Keep the sock-top row fixed relative to the boots so only the torso drops.
+3. **f01–f05 skirt hem and sleeves:** the hem shape and the cuff outlines change on every frame. Lock them to master and move them only with the bob.
+4. **f02 left hand / f04 right hand:** the hands shift sideways for no reason. Keep the arms still, or give them a deliberate 1px sway that follows the weight shift.
+5. **f00 vs master, bow and right hair strand:** small differences. Paste the bow and hair cluster from master.

@@ -1,0 +1,15 @@
+; pivot 6 8
+; anchor neck 7 0
+; anchor shL 1 3
+; anchor shR 13 2
+; anchor waist 6 8
+..........###.
+.#EEEEE222EEE#
+.#EEEEEE22EEE#
+.#EEEEEEE2EER#
+#EEEEEEEEEER#.
+#EEEEEEEEEER#.
+#EdDEddddddD#.
+#ddddddddddD#.
+#ddddDDDDDDD#.
+#DDDD.........

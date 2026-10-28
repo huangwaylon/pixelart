@@ -1,0 +1,36 @@
+Restored session: Mon 26 Oct 2026 12:14:23 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+These notes come from looking at the six sheets. I haven't measured anything in pixels, so treat every coordinate as an estimate in 64-px cell space. No files were modified.
+
+SCORE idle: 5
+1. **F0/F4/F5 (rest/top/rest2), whole body:** the bob is about 1px, so it reads as a still image. Make the sink/low frames 2px lower, widen the hem 1px on each side and shorten the torso 1px.
+2. **Bow (y≈4–12), every frame:** it moves rigidly with the head. Make it lag one frame behind the head, and add a 1px tail droop on F2/F8.
+3. **Timing:** holding 320ms on F0 and F5, plus 200ms on F10 going back into F0, makes the loop stall. Cut both rests to 200ms. On F7, keep the cheek outline the same as the open-eye frames; right now it fattens.
+
+SCORE walk: 6
+1. **F1/F5 (down):** the torso barely drops. Lower it 2px and keep the head 1px late.
+2. **Katana (x≈10–35):** the blade angle stays almost the same across all 8 frames. Swing the tip ±3px against the leg cycle.
+3. **Hem/hair:** no overlapping action. On the pass frames (F2/F6), shift the hem trailing edge 1–2px opposite the direction of travel.
+
+SCORE run: 6
+1. **F3/F7 (air), blade:** it snaps from about 35° to near-vertical. That's a rotation pop. Keep it within 15° of the contact angle.
+2. **Torso:** too upright for a run. Tilt the head and chest 2–3px forward on all frames.
+3. **Air frames:** the body rises about 3px, but the bow and hair rise with it. Hold them 2px low on F3/F7 and let them catch up on F0/F4.
+
+SCORE jump: 6
+1. **F1 (crouch):** only about 2px of squash. Use 4–5px down and 2px wider, and stretch it to 140ms.
+2. **F6 (fall), 80ms:** too short, and it has no stretch. Make it 110ms, stretch it 2px tall, and raise the bow 2px.
+3. **F7→F8:** the land and recover poses are nearly identical. Put a deeper squash on F7, or cut F8.
+
+SCORE dash: 5
+1. **F1–F2 (burst), afterimages:** these are blocky solid red slabs that bury the silhouette. Use 2 ghosts at 50% value, each 1px thinner, and start them behind the hips.
+2. **F4→F5, blade:** it shortens by about 6px, a foreshortening pop. Keep the length consistent.
+3. **F3 (skid):** the backward lean is too weak. Tilt the torso 3px back and plant the heel lower.
+
+SCORE slash: 5
+1. **F6 (smear):** it's a filled white leaf, not a crescent. Draw a 2–3px-thick arc starting at the hand that tapers to 1px across about 90°. The body also jumps about 8px right between F5 and F6, so fix the root offset.
+2. **F8–F9 (hit-stop):** the blade changes pose during the stop. Freeze the F7 pose and only shake ±1px horizontally.
+3. **F13 (rest) vs F0:** the root is about 10px further right, so the loop pops. Ease back over F11–F12 or re-anchor the root. F5's 30ms smear hook is too small to read; make it 50ms or merge it into F6.
+
+Saving session...completed.

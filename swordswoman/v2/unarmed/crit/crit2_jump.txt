@@ -1,0 +1,5 @@
+1) **Natural unarmed motion: 6/10** — During the airborne frames (4–5), her elbows stay tucked with fists held right in front of her chest like a boxer's guard or two-handed hilt grip, rather than swinging freely.
+2) **Cheerful trainer feel: 7/10** — The deep crouch (frame 2) and landing absorption (frame 7) have great, bouncy cartoon weight, though the tight mid-air arm posture dulls the carefree energy.
+3) **Readable at 1x: 7/10** — The vertical arc and squash/stretch read very well at 1x, but because the arms stay hugged against the red torso in frames 4–5, they blend into the body mass and lose silhouette clarity.
+
+**Most important fix:** Swing her arms outward and upward away from her torso at the jump apex (frames 4–5) to break the guarded/weapon-holding posture and open up the 1x silhouette.

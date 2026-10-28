@@ -1,0 +1,26 @@
+**SCORES & DEFECTS**
+
+*   **S (9.5/10):** None.
+*   **E (8.5/10):**
+    1. Back hair bun sits 2px higher than in SE_anchor.
+    2. Bow lacks the back loop visible in SE_anchor, reading as a single mass.
+*   **NE (8.5/10):**
+    1. Back hair bun omitted; silhouette should show it protruding on the upper-left skull.
+*   **N (9/10):**
+    1. Bow top sits 1px below the yellow guide.
+*   **S_k_r2 (8.5/10):**
+    1. Blade lacks foreshortening; matches profile length instead of compressing for the 30° camera.
+    2. Pommel/grip extends too far inward across the skirt.
+*   **E_k_r2 (9/10):**
+    1. Guard is 1px wide, blending into the skin-toned hand pixels.
+*   **NE_k_r2 (8.5/10):**
+    1. Blade length is identical to E_k_r2; needs 1–2px foreshortening for the 3/4 angle.
+    2. Missing back hair bun on upper-left skull.
+*   **N_k_r2 (9/10):**
+    1. Bow sits 1px below yellow guide.
+
+**HEAD-SIZE CONSISTENCY**
+**Pass.** Vertical height (cyan to green) is locked across S, E, NE, N with 0px drift. Horizontal width is 18px (S/N), 17px (NE), and 16px (E—acceptable profile compression, within 1px of target).
+
+**VERDICT**
+**READY AS FINAL MASTERS** (Conditional: patch the missing hair bun on NE/NE_k and shorten S_k/NE_k blades by 2px during the animation pass).

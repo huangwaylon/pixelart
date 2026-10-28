@@ -1,0 +1,25 @@
+**S (front): 6/10**
+1. The bow is too tall. Its knot pokes above the yellow line, about 2px at 1x. Flatten the knot to 1px above the wings and lower the whole bow 1px so the dome shows between the wings.
+2. The temple steps (head rows 4–9, both sides) are uneven 1-2-1 stairs. Redo them as a clean 3-2-1-1 arc so the hair bulges past the temples.
+3. The hair is one tone. Add a 2–3px lighter band across the crown under the bow. Also drop the 1px dark seam between bangs and face to a 1px lighter edge on the cheek tips only.
+
+**E (right profile): 5/10**
+1. The bun at the back of the head is a flat rectangle and reads as a cap brim. Round it into a 5×4 ball with its corners cut, sitting 1px lower.
+2. The face edge is one straight vertical line. Add a 1px nose bump at eye height plus 1px, and pull the chin in 1px so it's soft.
+3. The forward sleeve is a solid block with no hand. Put a 2×2 mitten below the cuff and break the sleeve outline from the skirt with 1px of the darker red.
+
+**NE (3/4 back): 6/10**
+1. The skin pixels at the right edge of the head (cheek and ear, around rows 13–20) read as orphans. Merge them into one 2px-wide cheek strip with an outline, or cut them.
+2. No bun is visible. Add a 3–4px bump at the upper-left back of the skull, under the bow.
+3. The hair is flat and single-tone. Add a 2-tone crown highlight and 1–2px scallops at the nape so the bottom edge isn't a straight line.
+
+**N (back): 5/10**
+1. The bow wings tilt upward and read as horns or cat ears. Make them horizontal or angle them slightly down, matching the S silhouette.
+2. The bottom of the hair is a hard horizontal line, so the head reads as a helmet. Cut 1px notches every 3–4px for nape tips.
+3. The legs read as too long and the boots too small. Raise the hem 1px, or add 1px to boot height and widen the boots 1px each, to match the boots on S.
+
+**Shared issues**
+- None of the new views has a 2-tone hair highlight, but the anchor does.
+- The outline is uniform black everywhere. Use selective outlining: switch to dark red where the outline meets red cloth.
+
+**Head size:** consistent across views. The skull top sits about 1–2px below cyan on every view and the chin within 1px of green. Width is about 22–23px at 1x. E is roughly 1px wider (the bun adds to it), which is within tolerance. N's bun pushes its silhouette up about 3px; that's fine as long as the bow line matches S.

@@ -1,0 +1,15 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+All parts are written and shown in `actions/test_vars.json` (18 labelled frames). I went through three compose-and-review passes; base parts are untouched.
+
+- **parts/se/:** `head_sq`, `head_st`, `torso_sq`, `skirt_sq`, `skirt_up`, `skirt_swL`, `skirt_swR`, `skirt_back`, `bow_up`, `bow_dn`, `bow_back`
+- **parts/common/:** `dust1`, `dust2`, `dust3`, `land_puff`, `spd1`
+
+**Anchors:**
+- Heads keep the chin pivot and the `bow`/`bun` anchors. Squash is 14,18; stretch is 12,20.
+- `torso_sq` moves `waist` and the pivot to 6,6; `neck`/`shL`/`shR` are unchanged.
+- Skirts keep pivot `x,0` and `waist` `x,-1`, re-centred for the extra width.
+- Bow pivots stay on the knot bottom.
+- FX pivots sit at bottom centre (place with `"at":"ground"`); `spd1`'s is its centre, about [-24,-20].
+
+**Weak spots:** `bow_dn` reads a bit lumpy, and `skirt_back`'s trailing tip sits low because the near sleeve covers the upper hem.

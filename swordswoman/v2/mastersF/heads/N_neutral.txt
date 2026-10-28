@@ -1,0 +1,24 @@
+; origin 22 9
+; view N
+.......KKK........
+......KHHhK.......
+KKK.KKKHHhK.......
+KeeKeeKHhhKKK.....
+KeerEEKhhhHHHKK...
+.KRrRRKHLLLHHHhK..
+.KRrRHHLLHHHHhhhK.
+.KrhrHHHHHHHHHhK..
+..KhHHHHHHHHHHhhK.
+..KHhHHHHHHHHHHhhK
+..KHHhhhhhhhhhhHhK
+..KHLHHHHHHHHHHHhK
+..KHLHhHHHHHhHHHhK
+..KHHHhHHHHHhHHhhK
+..KHHHhHHhHHhHHhhK
+..KHHHhHHhHHhHhhhK
+..KHHHhHHhHHhHhhhK
+...KHHHHHhHHHHhhK.
+...KHHHHHhHHHHhhK.
+....KHHHhSShHHhK..
+....KeHHHhHHhhRK..
+....KeHhhHhhHhRK..

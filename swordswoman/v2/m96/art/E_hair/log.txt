@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I opened up the bow tips (E/R where the doubled K's were at row 3) and made the upper ribbon tail red through the hair edge instead of a dark `h` pixel. I also swapped the stray `g` speck on the top outline for H and added R shading down the lower ribbon tail. Lint matches the unedited crop and dE is slightly better (8.753 vs 8.767), but the gate still shows '!' on ssim_b, dE and face_ssim, and so does the unedited crop: the "no '!'" target isn't reachable because the face_ssim drop comes from the protected face.

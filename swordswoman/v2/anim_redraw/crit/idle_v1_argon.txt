@@ -1,0 +1,13 @@
+SCORE 5.5/10
+
+1. **Robotic Elevator Motion (Frames 0–6, Head/Torso):** You just marquee-selected the upper body and dragged it down 1px per frame (0→1→2) and back up (4→5→6) with zero squash, stretch, or sub-pixel easing.
+2. **Rigid Secondary Elements (Frames 0–6, Hair/Bow/Sleeves):** The top bow, side hair locks, and kimono sleeves are 100% locked to the head/torso grid; there is zero overlapping action or follow-through to sell a "bouncy, energetic" feel.
+3. **Sword/Arm Shimmer & Lack of Arc (Frames 2–4, Katana/Hands):** The katana shifts down by 1px at Frame 2 and stays static through Frame 4; instead of pivoting naturally from the shoulder/elbow, the blade steps linearly and loses its crisp highlight alignment.
+4. **Chest/Neck Popping (Frames 1–4, Collar/Cleavage):** As the head drops 2px into the torso, the exposed skin of the neck/chest gets awkwardly crushed into a noisy 2px vertical slit in Frames 2–4 without clean anti-aliasing or cloth overlap.
+5. **Robotic Blink (Frame 3, Eyes):** The blink happens exactly on the lowest crouch frame (Frame 3) as a single 110ms binary swap with no half-lid transition, making it feel mechanical and tied to the vertical bounce rather than organic.
+6. **Stiff Lower Body (Frames 0–6, Skirt/Legs):** While the feet are properly pinned, the skirt hem and knees barely react to the torso dropping 2px, making her look like she's telescoping into her own waist.
+
+**Top 3 Fixes:**
+1. **Add 1-Frame Lag (Overlap) to Bow, Hair, and Sword:** Delay the downward drop and upward return of the red bow, hair tips, sleeves, and katana tip by 1 frame relative to the torso to instantly create lively, bouncy energy.
+2. **Sub-pixel & Bend the Knees/Skirt:** On the low frames (2–4), drop the skirt hem by 1px and shift the knee highlights 1px down/outward so the legs actually absorb the weight of the breathing bounce.
+3. **Decouple and Soften the Blink:** Move the closed eyes to Frame 0 or 6 (or add a half-closed lid on Frame 4 as she rises) so the blink doesn't mechanically coincide with the exact bottom of the bounce.

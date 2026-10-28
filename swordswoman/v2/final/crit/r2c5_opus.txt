@@ -1,0 +1,10 @@
+**Score: 5.5/10 — FIX**
+
+1. **[ILLUS] All views, sleeves (rows ~30–36):** the sleeves are short horizontal stubs, so the arms read as a T-pose. The illustrations have wide kimono sleeves that hang down to hip level, with the hands coming out below them. Redraw them as long, hanging, flared sleeves.
+2. **[ILLUS] S, SE, N hem (rows ~34–37):** the skirt is a straight box. The illustrations show a flared, curved hem. Widen it by 1–2px per side and give the bottom edge a curve with a darker underside.
+3. **[ILLUS] S, SE, N hair (rows 6–20):** the hair is a square helmet. Add tapered side locks that reach the shoulders, wispy split bangs, and the inward-curling bob ends. The large flat dark mass needs 2–3 tone clusters and a sheen band.
+4. **[ILLUS] SE legs/boots (rows 40–50):** one leg is bent mid-step. The illustration stands straight with the feet slightly apart, so straighten it.
+5. **E boots (rows 42–49):** the back boot sticks out backward as a detached wedge. Tuck it behind the front leg. The torso is also too thin, so add the chest line from the illustration.
+6. **S/SE/E faces at 1x:** the eyes are muddy brown blocks. They need a dark lash line on top, a grey-brown iris, a 1px highlight, brows, and a 1px mouth instead of the pink blob.
+7. **All legs:** add thigh→knee→calf taper with a light/shadow split. The flat parallel columns have jaggies at the inner edges.
+8. **Head size:** S is ~19px wide but E/N are ~17px. Bring them within 1px of each other.

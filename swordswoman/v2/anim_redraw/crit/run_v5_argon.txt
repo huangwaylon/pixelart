@@ -1,0 +1,11 @@
+SCORE 4.5/10
+1. **f1**: The trailing katana completely disappears (only a 2px grey nub remains by her front hand), breaking object permanence.
+2. **f2–f4, f6**: Katana detaches from her waist/hand and clips straight through her legs and boots; in f5 it pokes right into the dust puff.
+3. **f0–f7**: Zero secondary motion on the hair bun and red bow—they are copy-pasted static blocks that make the bounce feel robotic.
+4. **f2–f3, f6–f7**: Horizontal speed lines only turn on during the airborne frames and vanish on contact/down frames, creating a cheap blinking strobe.
+5. **f3, f7**: Airborne leg silhouettes (especially f3 where legs and sword tangle into a blob) are muddy and lack clear front/back depth contrast.
+6. **f1, f5**: Dust puff spawns behind her in empty space instead of under the planted foot, and doesn't translate backward relative to the ground across frames.
+**Top 3 Fixes:**
+- **Anchor the katana:** Pin the hilt consistently to her hip/left hand on a dedicated layer behind the body across all 8 frames so it never vanishes (f1) or clips the ankles (f2–f6).
+- **Add overlap/drag to the head:** Offset the bow flaps and hair bun by 1–2px (lagging upward on down-frames f1/f5, squashing down on airborne frames f2/f6).
+- **Fix FX logic:** Remove the blinking speed lines; spawn the dust puff at the heel on contact (f0/f4), expand and slide it backward on (f1/f5), and dissipate it by (f2/f6).

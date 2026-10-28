@@ -1,0 +1,6 @@
+Restored session: Mon 26 Oct 2026 10:33:09 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+
+Saving session...completed.

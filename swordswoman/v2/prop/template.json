@@ -1,0 +1,435 @@
+{
+ "_doc": "Section template from official Pokemon female battle sprites (front 3/4, standing). Rows: fraction of figure height H from crown (top of skull/hair mass, hats/buns/bows excluded) to sole (0..1). Widths: fraction of H. Measured by eye on char-map dumps, +-1 px (~0.015 H). Source: prop/tools/landmarks.py",
+ "refs": {
+  "Hilda BW": {
+   "file": "style/refs/battle/hilda-bw.png",
+   "H_px": 67,
+   "rows": {
+    "crown": 0.0,
+    "eye": 0.194,
+    "chin": 0.284,
+    "shoulder": 0.313,
+    "armpit": 0.358,
+    "waist": 0.463,
+    "hip": 0.537,
+    "crotch": 0.567,
+    "hem": 0.582,
+    "knee": 0.701,
+    "ankle": 0.821,
+    "sole": 1.0
+   },
+   "widths": {
+    "head": 0.269,
+    "neck": 0.075,
+    "shoulder": 0.209,
+    "waist": 0.164,
+    "hip": 0.269,
+    "thigh": 0.104,
+    "calf": 0.09,
+    "foot": 0.119
+   }
+  },
+  "Rosa B2W2": {
+   "file": "style/refs/battle/rosa-bw.png",
+   "H_px": 64,
+   "rows": {
+    "crown": 0.0,
+    "eye": 0.203,
+    "chin": 0.312,
+    "shoulder": 0.328,
+    "armpit": 0.391,
+    "waist": 0.469,
+    "hip": 0.547,
+    "crotch": 0.578,
+    "hem": 0.578,
+    "knee": 0.734,
+    "ankle": 0.812,
+    "sole": 1.0
+   },
+   "widths": {
+    "head": 0.344,
+    "neck": 0.062,
+    "shoulder": 0.25,
+    "waist": 0.172,
+    "hip": 0.234,
+    "thigh": 0.094,
+    "calf": 0.078,
+    "foot": 0.125
+   }
+  },
+  "Lyra HGSS": {
+   "file": "style/refs/battle/lyra.png",
+   "H_px": 62,
+   "rows": {
+    "crown": 0.0,
+    "eye": 0.185,
+    "chin": 0.274,
+    "shoulder": 0.323,
+    "armpit": 0.387,
+    "waist": 0.435,
+    "hip": 0.5,
+    "crotch": 0.548,
+    "hem": 0.548,
+    "knee": 0.694,
+    "ankle": 0.871,
+    "sole": 1.0
+   },
+   "widths": {
+    "head": 0.29,
+    "neck": 0.048,
+    "shoulder": 0.226,
+    "waist": 0.129,
+    "hip": 0.21,
+    "thigh": 0.081,
+    "calf": 0.081,
+    "foot": 0.097
+   }
+  },
+  "Dawn DPPt": {
+   "file": "style/refs/battle/dawn.png",
+   "H_px": 62,
+   "rows": {
+    "crown": 0.0,
+    "eye": 0.177,
+    "chin": 0.29,
+    "shoulder": 0.306,
+    "armpit": 0.371,
+    "waist": 0.403,
+    "hip": 0.532,
+    "crotch": 0.597,
+    "hem": 0.597,
+    "knee": 0.726,
+    "ankle": 0.887,
+    "sole": 1.0
+   },
+   "widths": {
+    "head": 0.323,
+    "neck": 0.065,
+    "shoulder": 0.21,
+    "waist": 0.145,
+    "hip": 0.274,
+    "thigh": 0.097,
+    "calf": 0.097,
+    "foot": 0.113
+   }
+  }
+ },
+ "rows": {
+  "crown": {
+   "mean": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "eye": {
+   "mean": 0.19,
+   "min": 0.177,
+   "max": 0.203
+  },
+  "chin": {
+   "mean": 0.29,
+   "min": 0.274,
+   "max": 0.312
+  },
+  "shoulder": {
+   "mean": 0.318,
+   "min": 0.306,
+   "max": 0.328
+  },
+  "armpit": {
+   "mean": 0.377,
+   "min": 0.358,
+   "max": 0.391
+  },
+  "waist": {
+   "mean": 0.442,
+   "min": 0.403,
+   "max": 0.469
+  },
+  "hip": {
+   "mean": 0.529,
+   "min": 0.5,
+   "max": 0.547
+  },
+  "crotch": {
+   "mean": 0.572,
+   "min": 0.548,
+   "max": 0.597
+  },
+  "hem": {
+   "mean": 0.576,
+   "min": 0.548,
+   "max": 0.597
+  },
+  "knee": {
+   "mean": 0.714,
+   "min": 0.694,
+   "max": 0.734
+  },
+  "ankle": {
+   "mean": 0.848,
+   "min": 0.812,
+   "max": 0.887
+  },
+  "sole": {
+   "mean": 1.0,
+   "min": 1.0,
+   "max": 1.0
+  }
+ },
+ "widths": {
+  "head": {
+   "mean": 0.306,
+   "min": 0.269,
+   "max": 0.344
+  },
+  "neck": {
+   "mean": 0.062,
+   "min": 0.048,
+   "max": 0.075
+  },
+  "shoulder": {
+   "mean": 0.224,
+   "min": 0.209,
+   "max": 0.25
+  },
+  "waist": {
+   "mean": 0.152,
+   "min": 0.129,
+   "max": 0.172
+  },
+  "hip": {
+   "mean": 0.247,
+   "min": 0.21,
+   "max": 0.274
+  },
+  "thigh": {
+   "mean": 0.094,
+   "min": 0.081,
+   "max": 0.104
+  },
+  "calf": {
+   "mean": 0.086,
+   "min": 0.078,
+   "max": 0.097
+  },
+  "foot": {
+   "mean": 0.113,
+   "min": 0.097,
+   "max": 0.125
+  }
+ },
+ "derived": {
+  "heads_tall": {
+   "mean": 3.456,
+   "min": 3.205,
+   "max": 3.65
+  },
+  "legs_crotch_to_sole": {
+   "mean": 0.428,
+   "min": 0.403,
+   "max": 0.452
+  },
+  "neck_gap_chin_to_shoulder": {
+   "mean": 0.028,
+   "min": 0.016,
+   "max": 0.049
+  },
+  "shoulder_over_headw": {
+   "mean": 0.733,
+   "min": 0.65,
+   "max": 0.779
+  },
+  "waist_over_headw": {
+   "mean": 0.501,
+   "min": 0.445,
+   "max": 0.61
+  },
+  "hip_over_headw": {
+   "mean": 0.813,
+   "min": 0.68,
+   "max": 1.0
+  },
+  "eye_down_head": {
+   "mean": 0.655,
+   "min": 0.61,
+   "max": 0.683
+  },
+  "head_h_frac_of_H": {
+   "mean": 0.29,
+   "min": 0.274,
+   "max": 0.312
+  },
+  "head_w_frac_of_H": {
+   "mean": 0.306,
+   "min": 0.269,
+   "max": 0.344
+  },
+  "head_w_over_head_h": {
+   "mean": 1.055,
+   "min": 0.947,
+   "max": 1.114
+  },
+  "head_w_over_shoulder": {
+   "mean": 1.371,
+   "min": 1.283,
+   "max": 1.538
+  },
+  "head_h_over_legs": {
+   "mean": 0.68,
+   "min": 0.606,
+   "max": 0.739
+  },
+  "head_w_over_hip": {
+   "mean": 1.257,
+   "min": 1.0,
+   "max": 1.47
+  }
+ },
+ "px48": {
+  "_doc": "template mean (and range) in px for a 48 px figure (crown row 14, sole line 62 in a 64 cell)",
+  "rows": {
+   "crown": [
+    14.0,
+    14.0,
+    14.0
+   ],
+   "eye": [
+    23.1,
+    22.5,
+    23.7
+   ],
+   "chin": [
+    27.9,
+    27.2,
+    29.0
+   ],
+   "shoulder": [
+    29.3,
+    28.7,
+    29.7
+   ],
+   "armpit": [
+    32.1,
+    31.2,
+    32.8
+   ],
+   "waist": [
+    35.2,
+    33.3,
+    36.5
+   ],
+   "hip": [
+    39.4,
+    38.0,
+    40.3
+   ],
+   "crotch": [
+    41.5,
+    40.3,
+    42.7
+   ],
+   "hem": [
+    41.6,
+    40.3,
+    42.7
+   ],
+   "knee": [
+    48.3,
+    47.3,
+    49.2
+   ],
+   "ankle": [
+    54.7,
+    53.0,
+    56.6
+   ],
+   "sole": [
+    62.0,
+    62.0,
+    62.0
+   ]
+  },
+  "widths": {
+   "head": [
+    14.7,
+    12.9,
+    16.5
+   ],
+   "neck": [
+    3.0,
+    2.3,
+    3.6
+   ],
+   "shoulder": [
+    10.8,
+    10.0,
+    12.0
+   ],
+   "waist": [
+    7.3,
+    6.2,
+    8.3
+   ],
+   "hip": [
+    11.9,
+    10.1,
+    13.2
+   ],
+   "thigh": [
+    4.5,
+    3.9,
+    5.0
+   ],
+   "calf": [
+    4.1,
+    3.7,
+    4.7
+   ],
+   "foot": [
+    5.4,
+    4.7,
+    6.0
+   ]
+  }
+ },
+ "head_latitude": {
+  "_doc": "Head size range of the real refs (crown excl. hats/buns/bows to chin; width = hair mass). The new anime head (HAIR/FACE strands) may use any size inside this range; large eyes -> use the upper end. Body sections stay fixed. At the max, the chin line moves down and the neck/shoulder must follow (shoulder line max 0.33 H).",
+  "head_h_frac": {
+   "mean": 0.29,
+   "min": 0.274,
+   "max": 0.312
+  },
+  "head_w_frac": {
+   "mean": 0.306,
+   "min": 0.269,
+   "max": 0.344
+  },
+  "px48_head_h": [
+   13.2,
+   13.9,
+   15.0
+  ],
+  "px48_head_w": [
+   12.9,
+   14.7,
+   16.5
+  ],
+  "blockout_head_px": {
+   "h": 14,
+   "w": 15
+  },
+  "latitude_from_blockout_px": {
+   "h": "+1.5 / -1.3",
+   "w": "+2.0 / -2.6"
+  },
+  "upper_end_recommendation_px48": {
+   "head_h": 15,
+   "head_w": 16,
+   "heads_tall": 3.2,
+   "chin_line_row": 29,
+   "shoulder_line_row": 30,
+   "note": "heads_tall then 3.2 (Rosa-like, the biggest-headed ref). Eye line (centre) range 0.18-0.20 H = rows 22.5-23.7 for refs with small eyes; big anime eyes may extend 1-2 rows lower but keep eye centre <= 0.66 of head height down."
+  }
+ },
+ "tolerance": "blockout check: value within [min, max] widened by 0.5 px of a 48 px figure (pixel quantisation)"
+}

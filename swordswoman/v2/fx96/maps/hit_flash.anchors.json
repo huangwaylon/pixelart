@@ -1,0 +1,28 @@
+{
+ "size": [
+  25,
+  25
+ ],
+ "facing": "E",
+ "attach": "hit_point",
+ "pivot": [
+  12,
+  12
+ ],
+ "ms": [
+  40,
+  30
+ ],
+ "cell_offset": [
+  63,
+  76
+ ],
+ "cell": "128x128 cell, 96 px figure, feet pivot (64,124), faces SE; head top ~(64,29) (bow x60-66 y29-33), head ~x50-80 y29-60, chest ~y70-80; default hit_point = target body_centre (63,76) (torso centre on the obi; r2, was (64,88) on the skirt)",
+ "layer": "over",
+ "mirror": "symmetric (no flip needed)",
+ "note": "hard 8-point star, 8-fold symmetric, 3 values w/y/f, no outline. f0 on the hit-stop frame (pair with fxlib.whiteflash() on the target sprite), f1 = burst dispersing; then hit_spark. gen work/B/make_r2.py",
+ "frames": [
+  "f0 40 ms: 9x9 w octagon core, y diamond r8, 4 main arms to r12 (y, 2 px f tips), 4 1 px y diagonals to r7",
+  "f1 30 ms (added in r2): core shrinks to 5x5, diamond r6, main arms pull in to r10 (f tips), diagonals extend to r10 with f tip"
+ ]
+}

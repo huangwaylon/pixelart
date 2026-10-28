@@ -1,0 +1,4 @@
+**Scores:** Natural: 7/10 | Readable at 1x: 4/10 | Energetic: 8/10 | Trainer Feel: 6/10
+
+1. **Frames 5–9 (Follow-through to Landing):** Because she throws directly North (up-screen), the airborne orb, release sparkle, and landing pop all overlap her dark hair/torso silhouette—cheat the throw trajectory 15–20° left or higher on the Y-axis so the ball and VFX clearly separate from her body in negative space.
+2. **Frame 4 (Release) & Frame 6 (Follow2):** In Frame 4, extend the throwing arm/smear out past her head silhouette so the launch doesn't look cramped; in Frame 6, make the pose distinct from Frame 7 (e.g., deeper torso follow-through before rising) so the 100ms frame isn't a near-duplicate hold.

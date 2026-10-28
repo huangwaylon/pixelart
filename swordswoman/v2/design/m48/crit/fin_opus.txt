@@ -1,0 +1,23 @@
+**Scores**
+
+| Sprite | Score | Real defects |
+|---|---|---|
+| SE_anchor | 5 | 1. The boxy head doesn't match the domed skulls on the other four, so SE will pop when she rotates. 2. Its palette and line weight are older (brighter red, fussier kimono folds). |
+| S | 8 | 1. The bow sits squashed flat on the skull, with no gap or overlap to show depth. |
+| E | 7 | 1. The near hand is an unreadable lump on the skirt front. 2. Bun and bow stack into one dark-red mass at 1x. |
+| NE | 8 | 1. The ear is a lone 1px nub and reads as noise at 1x. |
+| N | 8 | 1. The dark bun knob between bow and skull merges with the hair at 1x. |
+| S_k | 7 | 1. The blade's diagonal steps unevenly, so it reads as a dashed line, not a continuous 2px blade. 2. The guard is barely visible. |
+| E_k | 5 | 1. Wrong hand: she faces east, so her right side faces away from us. The blade should be partly hidden behind her, but it's drawn across the front of the skirt. 2. Same blade stepping problem as S_k. |
+| NE_k | 7 | 1. Blade stepping. 2. The grip is fully hidden, so the blade seems to come out of her hip. |
+| N_k | 6 | 1. The blade angle is identical to NE_k, so it looks copy-pasted; N should hang closer to vertical. 2. Blade stepping. |
+
+**Head size:** S, E, NE and N sit on the cyan, green and yellow guides within 1px, and the skulls are about 22px wide. SE_anchor matches on height but its head shape breaks the set.
+
+**Verdict: not ready as final masters.**
+- **Ready:** S, NE and N no-katana.
+- **Blocking:**
+  1. Redraw SE to the domed skull, or the set has no matching SE frame.
+  2. Fix E_k so the blade is held on the far side and partly hidden behind her.
+  3. Redraw all katana blades with a consistent stair-step line.
+  4. Re-angle the N_k blade.

@@ -1,0 +1,15 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+## Hairstyle ranking for the kimono trainer girl
+
+1. **A, twin tails + twin bows.** Cute, girly and very anime. It has the strongest 48px shape: two big tails and two red bows read clearly even at 1x.
+2. **D, odango buns + short tails.** Very cute and anime (Sailor Moon style). The two buns make a distinctive head shape at 1x, and it's the most unusual of the options.
+3. **C, hime cut + back bow.** Looks the most Japanese and suits the kimono best. But at 48px the silhouette is just a dark rectangle; only the bow makes it read.
+4. **H, low pigtails.** Cute, and the wide tails read well in the probe. It's too close to Lyra, the Pokémon heroine, though.
+5. **E, half-up + big bow.** Feminine, but the wavy hair turns into a dark blob in the probe. It also looks a lot like Reimu from Touhou.
+6. **G, high ponytail.** Sporty rather than cute. The ponytail only shows in 3/4 view, so the front sprite looks plain.
+7. **B, side ponytail.** The lopsided shape turns to mush at 48px, and the bow sinks into the hair.
+8. **F, fluffy bob + braids.** Charming as an illustration, but the braids disappear in the sprite and it reads as a boyish round head.
+
+**Top 2: A and D.**

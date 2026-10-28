@@ -1,0 +1,25 @@
+; origin 20 8
+; view SE
+; expr surprised
+.....KKK...........
+....KHLHK...KKKKK..
+....KLHHK.KKeeeeK..
+.KK.KHhhhKEEEEEeK..
+KeeKKhrRrrEEEEERK..
+KeEeKrRRrrREEERRK..
+KEEEerRRrrrRRRRRK..
+KERRRrrrrhhrrrrhK..
+KRrrrhhHLLHHHHhhhK.
+.KrHLLHhHHHhHHhHHhK
+.KHHHHHhhHhShHhShHK
+..KHHHHhhhSsShSsShK
+..KHHHHhsKKKsssKKhK
+..KHHHHhKWKWsssKWKK
+..KHhHHhssissssisSK
+..KHhHHhsssssssssSK
+..KHhHhhsssssssssSK
+..KhHhHhssssrKsssK.
+..KhHhhhssssrrsSK..
+...KhHhhhsssssSK...
+...KhKhhhsssSSK....
+....K.KhhhsSSK.....

@@ -1,0 +1,31 @@
+Restored session: Mon 26 Oct 2026 12:28:43 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+The idle loop is too stiff to ship. It reads as one cutout sliding up and down by 1–2 px rather than a breathing character, and the brief asked for lively and bouncy. Identity and palette stay consistent across all 11 frames, and the blink is in the right place and timed right (f7 closed, f8 half, 100 ms each). (I couldn't zoom in because PIL isn't installed, so I judged the sheet at its native size.)
+
+**1. Nothing overlaps (f0–f10, bow and hem).** The bow, hair and skirt hem all move exactly with the torso, so the loop feels like a puppet.
+- **Fix:** delay the bow by 1 frame and the hem by 2 frames. On the low frames (f2, f7/f8), let the bow wings droop by 1 px. On the top frames (f4, f10), lift the wing tips by 1 px.
+- Make the hem flare 1 px wider at the low frames and narrow back at the top frames.
+- Add 1 px of shoulder rise on the inhale (f3 → f4).
+
+**2. No squash and stretch; the body only translates (f1–f2 vs f4, f10).** The head and torso keep the same pixel shape and just move vertically. The feet are planted, so the frames read as a sprite sliding, not a body breathing.
+- **Fix:** on f2 and f7 ("low"), squash the torso 1 px: belt drops 1 px, body widens by 1 px on each side, and the head sinks into the collar by 1 px.
+- On f4 and f10 ("top"), stretch 1 px taller and narrow the waist by 1 px.
+- Keep the feet and the shadow pixel-locked.
+
+**3. Katana and left arm are a rigid, jaggy blob (screen-left, around 15–60 px into each frame, 180–210 px down).**
+- The blade is a stair-stepped light line with uneven steps (2-1-2-1) and no dark edge where it crosses the gray background.
+- The hand fuses into the sleeve with no outline between them.
+- The blade doesn't move at all while the body bobs, which proves it's a pasted layer.
+- **Fix:** redraw the blade as a clean 1:2 diagonal with a 1 px dark edge on its lower side and a single highlight pixel. Draw a dark line between the hand and the sleeve so they separate. Tilt the tip down 1 px on the low frames so it follows the breath.
+
+**Minor issues**
+- The outer outline on the screen-left side of the hair has a double-step jaggy, about 40–48 px down from the top of each frame.
+- In f7, the blush and mouth shift about 1 px relative to the face. Lock them to the head layer.
+- f0 and f5 are near-duplicates at 220 ms each, which makes the loop drag. Cut one of them, or shift it 1 px.
+
+Overall: 5/10. It's clean and on-model, but stiff, not polished enough to ship, and not energetic.
+
+SCORE idle: 5
+
+Saving session...completed.

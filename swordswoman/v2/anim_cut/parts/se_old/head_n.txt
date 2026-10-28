@@ -1,0 +1,23 @@
+; pivot 11 21
+; anchor bow 7 1
+........######........
+......##HHHHHH##......
+....##HHHjjjjHHH##....
+...#HHHjjHHHHHHHHH#...
+..#HHHjHHHHHHHHHHHH#..
+..#HHjHHHHHHHHHHHHh#..
+.#HHHHHHHHHHHHHHHHHh#.
+.#HHHHHHHHHHHHHHHHHh#.
+#hHHHHHHHHHHHHHHHHHHh#
+#hHHHHHHHHHHhHHHhHHHh#
+#hHHHHHHHhHhHHHhHHHhh#
+#hHHHHHHh2HHh22Hh2HHh#
+#hHHHHHh2###222##22Hh#
+#hHHHHHh2iwi222wi22hh#
+#hHHHHHh2iIi222iI22hh#
+#hHHHHhh2III222II22hh#
+#hHHHhhh2pp22122p22hh#
+#hhHhhhh22222222221h#.
+.#hhhhh#1222222221#h#.
+..##hh#.#11111111#.#..
+....##...########.....

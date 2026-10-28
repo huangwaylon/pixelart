@@ -1,0 +1,29 @@
+**1. Expression Breakdown (1x Readability & Score /10):**
+* **Neutral (6):** Reads passive. 2px flat mouth lacks confidence; boxy face shape.
+* **Determined (6):** 1px brow shift barely registers vs Neutral at 1x.
+* **Shout (4):** Mouth reads like dark lipstick, not an open cavity. Eyes too calm.
+* **Effort (5):** Half-lids read sleepy/bored rather than strained. 
+* **Joy (7):** Readable, but lacks head tilt; blush is noisy 1px checker.
+* **Smile (5):** Half-lids make her look smug/High, not genuinely happy.
+* **Surprised (5):** 2x2 mouth dot is tiny; sclera shrinks too little to shock.
+* **Pain (7):** `><` reads well, but jagged mouth is noisy at 1x.
+* **Worried (5):** Tiny 2x2 mouth reads as a mole/pucker, not distress.
+* **Inspired (6):** Sparkles lost on dark hair/bg; eyes need bigger glints.
+* **Teary (6):** Cyan tear pixels blend directly into blue irises at 1x.
+* **Blink (7):** Clean, though reads slightly flat without head motion.
+
+**2. PMD Style & Intention:**
+Not yet PMD-grade. You are "sticker-swapping" facial features onto a locked, static head. Official PMD portraits shift head angles, squash/stretch cheeks, and move hair per emotion. Your outlines are pure black (`#000000`) and harsh; PMD uses soft dark-colored outlines with internal anti-aliasing. Eyes are rigid rectangles; mouths lack clear dark interiors + pink tongue contrast.
+
+**3. Personality:**
+Reads stoic and stiff, not "spirited/confident." Her massive helmet-like hair dominates the 40x40 canvas, leaving a cramped face box that stifles big, spirited expressions.
+
+**4. Top 6 Concrete Pixel Fixes:**
+1. **Unfreeze the base:** Shift head/hair up 1–2px for *Joy/Inspired/Shout*, down 1px for *Worried/Pain/Teary*.
+2. **Fix open mouths (*Shout/Surprised/Inspired*):** Widen by 2px; use dark maroon outline, dark interior top, bright pink tongue bottom.
+3. **Soften outlines:** Replace pure black interior lines with dark brown/maroon; add 1px anti-aliasing at jawline corners.
+4. **Separate tears (*Teary*):** Use pure white 2x2 droplets extending 1px *outside* the eye outline onto the cheek.
+5. **Fix *Smile* eyes:** Remove sleepy half-lids; use full eyes with raised lower lids (happy squint) or bold `^ ^` arcs.
+6. **Add PMD backgrounds:** Add colored emotion backdrops; floating effect marks vanish against empty space.
+
+**Overall: 5.5/10**

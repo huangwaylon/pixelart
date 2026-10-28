@@ -1,0 +1,16 @@
+Restored session: Mon 26 Oct 2026 11:36:22 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 5.5/10.** The bounce reads, but the leg work, the sword and the face consistency aren't shippable yet.
+
+- **Bounce and timing (good):** The crouch in frames 1 and 5 and the airborne frames 2 and 6 give a real vertical bounce, and the 50ms passing frames snap nicely. But the 80ms holds on the crouch frames make the low point feel stuck. Try 70/60/50/60 so the push-off drives the cycle.
+- **Legs (main problem):** In frames 1 and 5 the near and far legs merge into one dark blob under the skirt, so you can't read which foot is planted. Frames 0 and 4 are nearly mirror copies with no clear swap of which leg leads. Push the far-leg value darker and keep a 1px gap between the legs.
+- **Feet aren't grounded:** The contact foot slides about 2–3px between the contact and crouch frames (0→1, 4→5). Pin the planted foot's x across those frames.
+- **Face and head:** In frame 6 the eyes almost vanish under the bangs, so she pops "blank" for one frame. The bun and bow change shape and size between frames 2/3 and 6/7. Lock the head as one reused cel and just offset it.
+- **Katana:** The angle holds, but the hilt jumps around her hand and the blade length visibly changes (look at frames 2 and 6). In frame 6 it overlaps the trailing foot and creates a tangent. Attach it at a fixed hand pivot and keep the length constant.
+- **Arms:** The swinging front arm is a stubby mitten with no follow-through, and there are no smears even on the fast 50ms frames. Add a 1–2 frame arm smear and a little sleeve or skirt overshoot on landing.
+- **Palette and pixels:** The red skirt switches between 2-tone and 3-tone shading from frame to frame. There are lone stray pixels at the hem and shoe edges in frames 3 and 7, and the torso outline shimmers even where the shape doesn't change.
+- **FX:** The speed lines just slide along evenly. Make them stretch or flash on the push-off frames (1 and 5) and add a small dust puff on contact.
+- **1x readability:** The silhouette holds at 1x, but the sword and legs turn into noise there. That's another reason to simplify the leg shapes before polishing anything else.
+
+Saving session...completed.

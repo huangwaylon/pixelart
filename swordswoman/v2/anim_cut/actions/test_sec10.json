@@ -1,0 +1,240 @@
+{
+ "name": "test_sec10",
+ "partdir": "parts/se",
+ "cell": [
+  64,
+  64
+ ],
+ "ground": [
+  32,
+  60
+ ],
+ "rig": {
+  "legs": {
+   "part": "legs",
+   "at": "root",
+   "z": 1
+  },
+  "skirt": {
+   "part": "skirt",
+   "at": "legs.hip",
+   "z": 3
+  },
+  "torso": {
+   "part": "torso",
+   "at": "skirt.waist",
+   "off": [
+    0,
+    0
+   ],
+   "z": 4
+  },
+  "armF": {
+   "part": "armF",
+   "at": "torso.shR",
+   "z": 2
+  },
+  "armN": {
+   "part": "armN",
+   "at": "torso.shL",
+   "z": 6
+  },
+  "head": {
+   "part": "head",
+   "at": "torso.neck",
+   "z": 7
+  },
+  "bun": {
+   "part": "bun",
+   "at": "head.bun",
+   "z": 0
+  },
+  "bow": {
+   "part": "bow",
+   "at": "head.bow",
+   "z": 8
+  }
+ },
+ "frames": [
+  {
+   "ms": 300,
+   "label": "h",
+   "set": {
+    "head": {
+     "part": "head"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "h_hf",
+   "set": {
+    "head": {
+     "part": "head_hf"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "h_hu",
+   "set": {
+    "head": {
+     "part": "head_hu"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "h_hd",
+   "set": {
+    "head": {
+     "part": "head_hd"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "h_hb",
+   "set": {
+    "head": {
+     "part": "head_hb"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "h_blink",
+   "set": {
+    "head": {
+     "part": "head_blink"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "h_blink_hf",
+   "set": {
+    "head": {
+     "part": "head_blink_hf"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "h_blink_hu",
+   "set": {
+    "head": {
+     "part": "head_blink_hu"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "h_blink_hd",
+   "set": {
+    "head": {
+     "part": "head_blink_hd"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "h_blink_hb",
+   "set": {
+    "head": {
+     "part": "head_blink_hb"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "h_lean",
+   "set": {
+    "head": {
+     "part": "head_lean"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "h_lean_hf",
+   "set": {
+    "head": {
+     "part": "head_lean_hf"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "h_lean_hu",
+   "set": {
+    "head": {
+     "part": "head_lean_hu"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "h_lean_hd",
+   "set": {
+    "head": {
+     "part": "head_lean_hd"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "h_lean_hb",
+   "set": {
+    "head": {
+     "part": "head_lean_hb"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "bow",
+   "set": {
+    "bow": {
+     "part": "bow"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "bow_sqz",
+   "set": {
+    "bow": {
+     "part": "bow_sqz"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "bow_str",
+   "set": {
+    "bow": {
+     "part": "bow_str"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "bow_tl",
+   "set": {
+    "bow": {
+     "part": "bow_tl"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "bow_tr",
+   "set": {
+    "bow": {
+     "part": "bow_tr"
+    }
+   }
+  }
+ ]
+}

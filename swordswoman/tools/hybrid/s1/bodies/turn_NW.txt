@@ -1,0 +1,13 @@
+# turn_NW = turn_NE body mirrored, re-lit. NW shows back + LEFT side: the sword hand is the near one (screen left).
+mirror_cx2: 128
+from: turn_NE
+mirror
+fx: none
+kat: katana_idle_2to1 41 87 m
+top: 52 91
+_KKK_
+KsssK
+KmssK
+_KKK_
+op: curve 65,80 69,85 67,90 P
+op: curve 67,90 66,93 68,95 p

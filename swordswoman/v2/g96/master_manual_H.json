@@ -1,0 +1,33 @@
+{
+ "_note": "manual master sections for the CENTRED-BOW masters (pixelize/top1 13:10), rows of the 128 cell (0 = top): eye = vertical centre of the eye drawing (lash..iris bottom), chin = first row below the face skin, knee = crease / outline bump row (none visible in NE/N), bowcut = red pixels above this row are the hair bow (excluded with the knot from the crown). Read from EC0_<V>_96.txt by the G96 strand. crown (auto, rig and master alike) = first row whose silhouette run outside the dilated bow/knot is >= 50% of the head width.",
+ "S": {
+  "eye": 53.0,
+  "chin": 61,
+  "knee": 104,
+  "bowcut": 45
+ },
+ "SE": {
+  "eye": 54.5,
+  "chin": 62,
+  "knee": 103,
+  "bowcut": 56
+ },
+ "E": {
+  "eye": 51.5,
+  "chin": 59,
+  "knee": 103,
+  "bowcut": 60
+ },
+ "NE": {
+  "eye": null,
+  "chin": null,
+  "knee": null,
+  "bowcut": 63
+ },
+ "N": {
+  "eye": null,
+  "chin": null,
+  "knee": null,
+  "bowcut": 58
+ }
+}

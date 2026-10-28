@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I fixed the notch in the left boot and the doubled K outline on the right boot, so both boots now step the same way and mirror each other. I also added an h cuff line under an H band to separate boot from sock, toned the boots to h with small H highlights, added a d sheen line down each sock, and swapped the light sole for h. Feet stay on the same bottom row. The gate shows no '!' (dE 7.136, +0.012 over the original sprite; ssim_b 0.966). Lint went from S4:7 to S4:6 against crop.txt, but R1:5 and O3:1 are unchanged, and I didn't track down where those remaining flags are. This crop has no skin band above the socks, so there was nothing to do there.

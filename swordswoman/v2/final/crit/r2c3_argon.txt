@@ -1,0 +1,10 @@
+**Score: 6.5/10 — Verdict: FIX**
+
+Strong palette consistency, clean hair clusters/sheen, and readable 1x faces, but several silhouettes violate the binding illustrations.
+
+1. **[ILLUS] S & SE Bangs & Side Locks (head rows):** Replace flat horizontal fringe with the illustration’s side-parted, diagonally swept bangs. Extend front side-locks down past the chin onto the collar/shoulders (especially SE/E/NE).
+2. **[ILLUS] SE Bow & Bun Placement (head top/left):** The bow is split across the head. Move the bun onto the top-left crown and attach the hanging ribbon directly behind the left ear/hair—not floating off the far-left edge.
+3. **[ILLUS] All Views — Hem & Waist Flare (torso bottom):** The tunic looks like a swimsuit/leotard with a V-crotch dip, merging with the sleeves. Separate the flared A-line skirt hem from the sleeves and give it a continuous, curved horizontal bottom edge across the upper thighs.
+4. **[ILLUS] S & SE Collar (neck/chest):** Add the lighter red V-neck lapel/overlap trim clearly visible in the illustrations.
+5. **SE Legs (lower body):** Fix the jagged 1px stair-step skin/outline notches on the inner thighs and knees; smooth the taper.
+6. **[ILLUS] NE Sleeve (right arm):** Flare the bell sleeve downward; shorten the protruding cuff spike.

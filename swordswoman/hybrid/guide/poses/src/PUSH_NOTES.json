@@ -1,0 +1,13 @@
+{
+ "notes": [
+  "p2 slash: coil blade lateral to her right, tip up 24 deg (-0.90,-0.15,0.40): measured >= 21 px screen length in all 8 dirs (was 2-12 px in SE); smear cog -4 px; follow-through blade raised to waist height (0.62,0.62,-0.30); swing samples 6 -> 10 per segment (smooth arc)",
+  "slash: coil cog -3.6 px (was -2.5), chest -44 (was -34), blade cocked back-RIGHT at shoulder height, tip slightly up, clear of the huge head in every view (was vertical in front of the face); impact lunge wider (feet 0.90 apart, was 0.78), cog -4.2 px; follow-through blade to her left-back and down, chest +44; ribbons/sleeves amplitudes +20-30 %",
+  "p2 idle: cog -3.0..+0.6 px (3.6 px knee/hem travel); chest x2.2, shoulder x1.8, head x1.4, bun/skirt tail x1.8, sleeves x1.6, sword tip x2.5 with a lagging figure-8; ribbon sway 0.16 -> 0.24; turn = this idle f1",
+  "p2 walk: cog -1.2/-4.2/-1/+1.7 px (5.9 px range); stride x1.3, foot lift x1.6; sword-arm swing x1.7; katana az -45 / de 34 (forward-out of the left hip, readable in E)",
+  "walk: cog track -1/-3.4/-1/+1.2 px (5.6 px range, was 3.4); free-arm swing x1.35; katana az -27 / de 42 (forward of the left hip) so it is not hidden in E/W",
+  "p2 run: katana az ~80 / de ~45 (trails back-left and DOWN: screen length >= 12 px in every dir, 18 SE, 32 E; separate from the ribbons in E); hips/chest twist x1.4; heel kick x1.35; swing-foot smear sweeps from 2 frames back",
+  "run: cog -1/-4.4/-1/+2.2 px (6.6 px range, was 5.4); squash/stretch 0.93/1.06 (was 0.95/1.04); katana az +20 (pure back trail) so the blade breaks the silhouette behind her in SE/E (was hidden behind her)",
+  "jump: crouch cog -6.1 px / squash 0.82 (was -4.7 / 0.90), rise stretch 1.09, land -6.8 px / 0.80; crouch katana to her left-low so it shows in SE"
+ ],
+ "slash_samples": 25
+}

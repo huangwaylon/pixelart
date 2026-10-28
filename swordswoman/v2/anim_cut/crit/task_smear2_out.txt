@@ -1,0 +1,12 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt both smear parts and the slash. In the smear frame there's now a filled crescent that runs from the coil blade tip, over her head and down the front. It grows from 1px at the start to 6px at the lower end. Its leading edge is a white line along the blade's position, running from the grip to where the f03 blade tip lands. The blade is hidden in that frame. I checked the contact sheets and a 3x frame strip over 5 rounds. The arc covers about 200°, not the critic's 120–160°, because starting at the coil tip forces it.
+
+**Files:**
+- `parts/common/smear_slash.txt`
+- `parts/common/smear_slash2.txt`: two 1–3px Y/y segments; lint flags 2 single-pixel y's.
+- `actions_src/dash_slash.py`: only slash frames 2 and 3 changed.
+- `actions/test_smear_r2.json`, plus its sheet
+- `work/smear_r2/gen.py` and `run.sh` (the generator)
+
+**Anchors:** both parts are full 64×64 grids with `; pivot 32 60`, placed at ground with off [0,0] and z 4.5.

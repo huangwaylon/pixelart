@@ -1,0 +1,13 @@
+SCORE 5.5/10
+
+1. Head/Hair Stiffness: The entire head, hair block, and bow are copy-pasted vertically across F0–F7 without a single pixel of secondary motion, squash, or hair/ribbon drag.
+2. Katana & Leg Tangling: In F0, F2, F4, and F6, the trailing sword sits on the exact same angle and silhouette line as the extended back leg, creating a muddy, unreadable visual merge at 1x scale.
+3. Missing Hand: In F6, the screen-right (front) skin-toned hand disappears completely into a dark outline blob at the end of the sleeve.
+4. Broken Leg Anatomy: F5’s passing legs collapse into a tangled cluster of dark outlines and stray skin pixels; F0 and F4's back legs connect too high near the hip/skirt hem, looking dislocated.
+5. Torso & Obi Shimmer: The dark sash (obi) and chest area shift erratically between F0–F3 and F4–F7 (e.g., obi vanishes in F0/F2, becomes thick in F4–F7), causing heavy pixel crawl.
+6. Static FX & Rigid Prop: The background speed lines barely drift and feel pasted-on, while the katana stays locked at a robotic angle with zero lag or bounce relative to the hip.
+
+Top 3 Fixes:
+1. Separate the Silhouette: Drop or raise the katana angle by 15–20 degrees so it clearly separates from the back leg line, and give its tip a 1–2px vertical lag behind the hip's bounce.
+2. Add Secondary Motion: Animate a 1–2px delayed flap on the bow tails and bottom hair corners on the down-beats (F1, F5) and up-beats (F2, F6) to break the rigid copy-pasted head.
+3. Clean Up Anatomy & Consistency: Redraw F6's missing front hand, untangle F5's overlapping legs by clearly separating the dark far leg behind the bright near leg, and lock the obi thickness across all 8 frames.

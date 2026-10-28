@@ -1,0 +1,15 @@
+Here are the 3 most important concrete problems in the `run_SE` cycle:
+
+1. **Severe clipping and tangent destruction on the katana (Frame 4, lower-left region):**
+   * **Problem:** During `contact2`, the katana swings forward and directly overlaps the raised back leg and shoe. The blade gets swallowed by the skirt and leg, leaving only a tiny, jagged, unidentifiable white-and-black stub protruding below the back foot. It completely breaks the silhouette and reads like a rendering glitch or a spur on her shoe.
+   * **Exact Fix:** In Frame 4, angle the sword arm slightly further back (closer to Frame 3's angle) or rotate the wrist outward so the katana blade runs cleanly in front of or above the raised shin/foot, keeping at least 60% of the straight blade profile unobstructed.
+
+2. **Cutout-rotation jaggies and width distortion on the katana blade (Frames 0, 1, 2, 5, 6, 7, lower-left weapon region):**
+   * **Problem:** Because this is a rotated cutout sprite without hand-cleanup, the katana blade suffers from severe nearest-neighbor rotation artifacts. In Frames 0, 1, and 7, the blade outline stair-steps unevenly (alternating 1px, 3px, 2px runs) and the white interior breaks into disconnected 1px islands. In Frames 2, 5, and 6, the 45-degree angle causes the blade to bloat to double thickness with double-thick internal black pixels.
+   * **Exact Fix:** Manually redraw the blade on a clean pixel grid per frame: use a strict 1-pixel diagonal step (`1:1` ratio) for Frames 2, 3, 5, and 6 with a uniform 1px white core, and a strict `2:1` step (~26.5°) for Frames 0, 1, and 7, eliminating all internal black "mixels" and uneven outline clusters.
+
+3. **Zero secondary motion / overlap on the head, hair, and bow (All frames 0–7, upper body/head region):**
+   * **Problem:** The entire head, heavy side-locks of hair, and large top bow are a single static sprite pasted at exact vertical offsets. There is zero follow-through, drag, or squash-and-stretch in response to the violent vertical bob (which moves 6+ pixels up and down). This makes the animation feel robotic and instantly exposes the cheap cutout rig.
+   * **Exact Fix:** Add 1–2 pixels of delayed overlap to the bow ribbons and hair bottom corners: in the `down` frames (Frames 1 and 5), flare the bottom hair tips outward by 1px and flatten the bow loops down by 1px (squash/late drag); in the `push`/`air` frames (Frames 2, 3, 6, 7), droop the bow tips and hair ends down by 1px to trail the upward momentum.
+
+SCORE run: 5

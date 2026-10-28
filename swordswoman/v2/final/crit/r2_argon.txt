@@ -1,0 +1,17 @@
+Here is the pixel-actionable review per prompt requirements:
+
+**1. Illustration Match (Shapes & Proportions)**
+* **All views (Sleeves/Arms):** Sleeves are drawn straight down against the torso instead of flaring outward in an A-pose like the references (especially S, SE, N). **Fix:** Angle the lower sleeves and hands outward by 2–3px on each side in S and N, and flare the cuffs into wider bell shapes.
+* **S (Bow & Bangs):** The long red ribbon tail hanging down the right side (her left) is too short/tucked into the hair. **Fix:** Extend the red ribbon tail 3–4px down past her ear/cheek silhouette. Part the bangs slightly left-of-center to show more forehead on the screen-left side.
+* **SE (Hair/Ribbon):** The hanging red ribbon on the screen-left is a stiff vertical block. **Fix:** Curve the bottom of the ribbon tail 1–2px outward/left and separate it slightly from the hair mass.
+* **E (Profile Face & Sideburn):** The nose/mouth area has a dark pixel inside the jaw creating an open-mouth/beard look, and the long front side-lock is missing. **Fix:** Replace the dark pixel under the nose with skin/shadow tone for a clean closed profile; extend a dark hair lock 4px down in front of the ear over the cheek/neck.
+* **NE (Obi & Skirt):** The grey obi is missing on the right side of the waist, and the skirt hem is flat instead of flared. **Fix:** Extend the grey obi 2px right to wrap around the waist; flare the right skirt hem out by 1–2px.
+
+**2. Colour Consistency**
+* **10/10:** Excellent adherence to the locked 16-colour palette across all 5 views.
+
+**3. Pixel Cleanliness**
+* **SE & E (Faces):** Remove the single dark orphan/stray pixels on the lower cheek/jawline that clutter 1x readability.
+* **S & N (Legs):** The 1px black outline between the thighs makes the legs look overly stick-thin compared to the reference. Replace the inner thigh black line with dark skin shadow or widen thighs by 1px outward.
+
+**Score:** 7.5/10 — **FIX**

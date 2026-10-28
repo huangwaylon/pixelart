@@ -1,0 +1,30 @@
+{
+ "size": [
+  41,
+  32
+ ],
+ "facing": "E",
+ "attach": "feet",
+ "pivot": [
+  20,
+  27
+ ],
+ "ms": [
+  50,
+  80
+ ],
+ "cell_offset": [
+  66,
+  124
+ ],
+ "layer": "behind",
+ "mirror": "symmetric about the pivot column; no flip needed",
+ "note": "ground-anchored at the take-off point (pivot = boot centre cell x66 on the sole row 124). A flat perspective U: the bottom run sits 1-3 rows below the soles (runs 15/3/2/1/1 per side), the sides rise 16 px beside the boots (cell x50/82, 8 px clear) and flare 3 px outward at the tips (an upward rush). Stroke tapers 3 px (w,w inside, u outer rim) along the bottom -> 2 px (w,u) up the lower sides -> 1 px u tips. f1: risen 6 px, max 2 px thick, cut by rows into 3 pieces (bottom rows 28-31, side 18-25, tip 8-15 before the rise).",
+ "ground_y": 27,
+ "figure_rise_px": [
+  10,
+  24
+ ],
+ "symmetric": true,
+ "cell": "128x128 cell, 96 px figure EC0_SE_96, feet pivot (64,124), faces SE; body centre (63,76) (chest ~y70-80); ground_y = cell row 124 (sole row)"
+}

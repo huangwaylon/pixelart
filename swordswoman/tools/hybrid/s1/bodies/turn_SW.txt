@@ -1,0 +1,16 @@
+# turn_SW = turn_SE body mirrored, re-lit. SW shows front + LEFT side: the sword (left) hand is the near one, on
+# screen right, in front of the body side; the far (right) arm sits behind on screen left.
+mirror_cx2: 132
+from: turn_SE
+mirror
+fx: none
+kat: katana_idle_2to1 66 87
+top: 69 90
+_KKK_
+KsssK
+KmssK
+_KKK_
+opb: stamp 70,90 RRK____/RRRK___/RRRK___/rRRRK__/rRRRK__/rrRRRK_/rrRRRK_/vrrRRK_/KvrrRRK/_KvvrRK/__KKvvK/_____KK
+opb: stamp 50,81 __KssK_____/_KmmsK_____/_KrRRCK____/KrRRRCK____/KrRRRRCK___/KrRRRRRCK__/KrRRRRRRRK_/KrrRRRRRRK_/KvvvvvvvvK_/_KKKKKKKK__
+opb: curve 72,80 78,84 76,89 P
+opb: curve 76,89 74,93 78,96 p

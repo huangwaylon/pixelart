@@ -1,0 +1,26 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+## Base sprite critique, r1: **4.5/10**
+
+It's clean and has some appeal, but it's a front-view sprite with a bun added, not an SE 3/4 view. Coordinates below are approximate sprite pixels, origin at the top-left of the sprite's bounding box (worked out from the 8x view).
+
+**Scores**
+- Silhouette at 1x: 5. It reads as a big dark box head on a red box with no gesture.
+- 3/4 read: 2. The face, bangs, bow, collar and obi are all mirror-symmetric.
+- Outline: 6. It's a clean single line, but the steps are uneven.
+- Shading: 4. Mild pillow shading and the light direction isn't consistent.
+- Clusters: 6
+- Proportions/appeal: 6
+
+**Fixes, highest priority first**
+
+1. **Turn the face to SE.** Shift both eyes about 2px right (they sit near x 8–16 now, centred on the head). Make the near eye (left on screen) 1px wider than the far one. Move the nose and mouth to about x 14. Drop the far blush or cut it to 1px. Pull the far cheek outline (right side, y 18–24) in by 1–2px so the jaw tapers toward the facing side.
+2. **Make the bangs and bob asymmetric.** The bang edge is a flat horizontal bar at y ≈ 15. Step it so the near side is longer and the far side short, showing more forehead and a sliver of temple. The near side of the bob should fall lower and wider, and the far side should hug the cheek. Both bob sides are dead-vertical columns right now; break each with one 2-1-1 step so they curve in at the chin.
+3. **Rotate the bow.** It's a frontal butterfly. Shrink the far loop by about 30% and offset the knot to x ≈ 12. Fix the uneven 1-2-1-3 steps on the loop tops.
+4. **Collar and obi perspective.** Move the V-collar's meeting point right of centre to about x 13. Tilt the obi 1px down toward the near side, or bow it slightly, and add a 1px knot or edge at the back-left.
+5. **Sleeves.** These are boxy lumps stuck to the torso. Give each a hanging rectangular drape with a 2–3px drop below the wrist and a dark inner-sleeve cluster. The far sleeve should be partly hidden behind the torso. Keep a 1px gap between sleeve and body, which also makes the cut for the rig cleaner.
+6. **Legs and boots.** The legs are about 4px of pale stubs and I couldn't see any boots. Add 3–4px dark boots and offset the feet so the near foot sits lower and points SE.
+7. **Shading.** Commit to one light from the top-left. Remove the rim-light on the sleeve tops and the even highlight on every red mass. Put core shadow under the bangs, under the obi and on the far side of the skirt, and add a 1px hem shadow.
+8. **Hem.** It's nearly straight. Flare it with a 1px outward step at each corner and give it a slight perspective tilt.
+
+Fix 1 and 2 before anything else, since everything else in the 3/4 read depends on the head turning.

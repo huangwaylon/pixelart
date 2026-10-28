@@ -1,0 +1,25 @@
+**(1) Scores (/10: Sprite | Portrait)**
+* **Cute:** 7.5 | 8.0
+* **Anime/Japanese:** 8.0 | 8.5
+* **Big eyes read at 1x:** 8.5 | 9.0
+* **Intentional:** 8.0 | 8.5
+* **Consistent across views:** 8.5 | 9.0
+
+**(2) Weak Expressions at 1x (Concrete Pixel Problems)**
+* **Sprite `neutral` vs `cheerful` (S/SE):** Barely distinguishable at 1x. A 1px mouth dot vs. 2px bar with faint blush doesn't change the silhouette; `cheerful` needs an open smile (`D` shape) or higher eye-shine.
+* **Sprite `effort` (S/SE):** The 2px vertical white teeth bar + dark corners reads like vampire fangs or drool at 1x.
+* **Sprite `embarrassed` (S):** White cross-sparkles inside the 3x5 blue iris turn the eye into noisy grey-blue static at 1x, losing the pupil.
+* **Portrait `neutral`:** The 3px `u`-shaped mouth (`1px-down-1px`) looks identical to a tiny nose shadow; `cheerful`'s flat mouth looks less happy than `neutral`.
+* **Portrait `shout`:** Dark outline completely rings the mouth; at 1x it reads like a dark goatee/pacifier.
+
+**(3) Profile (E) & 3/4 (SE) Check**
+* **SE (3/4):** **Yes, solid 3/4.** The 2px far eye vs 3px near eye and shifted mouth/blush read accurately.
+* **E (Profile):** **Almost, but has a protrusion flaw.** The nose bump, lip notch, ear, and wedge eye are great, *but* the upper lash tip shares the exact same X-column as the nose tip, creating a flat vertical forehead-to-nose wall at 1x.
+
+**(4) Top 6 Concrete Pixel Edits**
+1. **E (All open-eye cells):** Recess the eye/lash 1px left (inward) so the nose tip protrudes 1px past the lash line.
+2. **Sprite `embarrassed` (S/SE):** Replace noisy cross-sparkles inside the iris with normal 3x5 eyes + 1px white tear droplet at the outer bottom corner, plus diagonal blush (`k`).
+3. **Sprite `effort` (S/SE):** Replace the vertical 2px white tooth bar with a horizontal 3x1 white teeth line clamped by dark lip pixels above/below.
+4. **Portrait `neutral` & `cheerful`:** Swap mouths—give `neutral` a flat 2px `r` line; give `cheerful` a 3x2 open pink/red smile (`r` top, `k` bottom).
+5. **Portrait `shout`:** Remove the top and bottom black outline rows of the mouth; use dark red (`r`) so it reads as lips, not a beard.
+6. **Portrait (All):** Drop the inner bang tips 1–2px lower between the eyebrows for true anime framing (forehead is currently a flat horizontal curtain).

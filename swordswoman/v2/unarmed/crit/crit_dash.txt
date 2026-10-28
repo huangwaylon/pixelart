@@ -1,0 +1,5 @@
+1) **Natural unarmed motion: 6/10** — The swept-back arms in frames 2–3 still read strongly like a ninja/anime combat dash, and frame 4's recovery pose looks like a martial-arts guard or sheath-grip stance.
+2) **Cheerful trainer feel: 5/10** — The severe forward lean and stoic expression feel too intense and stealthy rather than an energetic, upbeat trainer sprint.
+3) **Readable at 1x: 6/10** — The overall body arc reads well, but the red sleeves merge entirely into the red dress/torso in frames 2–4, making the arms vanish.
+
+**Most important fix:** Pump the arms naturally (one forward, one back) with slightly higher torso posture instead of sweeping both arms behind the back, which instantly fixes the combat vibe and separates the arms from the torso at 1x.

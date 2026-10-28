@@ -1,0 +1,28 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Pixel-art bake-off verdict (board.png, zoomed 3× on the heads)**
+
+**(1) Methods overall**
+1. **B PixelOE: 7/10.** Clearest eyes and blush, crisp outline, the bow reads well. Hair is noisy.
+2. **E1 PixelOE+face: 6.5/10.** Same body as B. The face pass adds blush and skin tones but makes the eyes muddier.
+3. **E2 k-centroid+face: 6.5/10.** Cleanest flat hair and clothing, best "pixel-art" look, but the eyes are soft and smeared.
+4. **C k-centroid: 6/10.** Clean, but at 80px the front-view eyes collapse to slits and there's no blush.
+5. **D Gemini+snap: 5/10.** The 96px front face is the best on the board (it has a mouth and good contour), but it goes off-model: the black stockings become bare legs with white knees, the outfit changes, and the views are inconsistent.
+6. **A majority: 4.5/10.** Blocky, flat face, eyes lose their shape, and the hair colours band.
+
+**(2) Sizes:** 96 > 80 >> 64. At 64px the face can't hold eyes.
+
+**(3) Face scores (80px / 96px)**
+- A: 4 / 5.5
+- B: 6 / 7
+- C: 4 / 5.5
+- D: 4.5 / 7.5 (head only)
+- E1: 5.5 / 6.5
+- E2: 4.5 / 6
+
+**(4) Top 3 combinations:** B@96, E1@96, E2@96. D@96 would be worth considering only as a face/head reference, never for the body.
+
+**(5) Main defects of B@96**
+- **Hair noise:** lots of single-pixel dark specks and dithering, and the source's clean highlight band is lost. It needs a cleanup pass that merges small clusters.
+- **Face is incomplete:** no mouth or nose, and the eyes are harsh black-and-white instead of the source's brown irises. The front-view left and right eyes also come out as different shapes.
+- **Thin details break up:** the ribbon tail and hair strands become dashed fragments, and there are stray outline pixels and jaggies around the hair silhouette and the collar.

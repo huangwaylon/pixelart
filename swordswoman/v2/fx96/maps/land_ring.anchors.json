@@ -1,0 +1,68 @@
+{
+ "size": [
+  63,
+  19
+ ],
+ "facing": "E",
+ "attach": "feet",
+ "pivot": [
+  31,
+  8
+ ],
+ "ms": [
+  60,
+  80,
+  100
+ ],
+ "cell_offset": [
+  66,
+  124
+ ],
+ "layer": "behind",
+ "layer_split": {
+  "behind_rows": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "over_rows": [
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18
+  ],
+  "why": "back arc passes behind the boots, centre row + front arc in front"
+ },
+ "mirror": "symmetric; no flip needed",
+ "note": "pivot = ellipse centre = ground point (cell 66,124 = boot centre on the sole row). 1 px ring with hand-picked even side runs (f0 15/4/3/2/1, f1 19/6/4/3/2/2/1, f2 19/6/5/3/3/2/1 + 3-row ends); back (upper) arc p, front arc w, centre-row ends and the outer 3-4 px of the front arc u. f0/f1: front run doubled (2 px w) and the next run underlined with u for perspective weight. f2: 4 dashes (back-left/right p, front-left/right w->u), gaps at top centre, bottom centre and both ends. Canvas bottom reaches cell row 134: do not clip effects to the cell.",
+ "ground_y": 8,
+ "width_px": [
+  35,
+  55,
+  61
+ ],
+ "height_px": [
+  9,
+  13,
+  17
+ ],
+ "front_edge_px": [
+  2,
+  2,
+  1
+ ],
+ "symmetric": true,
+ "cell": "128x128 cell, 96 px figure EC0_SE_96, feet pivot (64,124), faces SE; body centre (63,76) (chest ~y70-80); ground_y = cell row 124 (sole row)"
+}

@@ -1,0 +1,5 @@
+1) **7/10** — Mostly natural unarmed recoil, though the wide lunge in frame 3 and tucked elbows in frames 2–3 slightly resemble a combat brace/guard stance.
+2) **7/10** — Cute chibi silhouette and outfit, though the neutral face and heavy combat-style footing make it feel more like a brawler taking a hit than a lively trainer.
+3) **8/10** — The body lean, leg stances, and initial arm flail read clearly at 1x, except in frames 2–3 where the red sleeves blend completely into the red tunic.
+
+**Most important fix:** Move the arms outward away from the red torso in frames 2 and 3 (e.g., hands up near the head or out for balance) so the silhouettes don't merge at 1x and it breaks the guarded fighter look.

@@ -1,0 +1,1225 @@
+{
+ "version": "fx96 r1 (2026-10-27)",
+ "palette": "palette.json",
+ "format": "char-map txt: '# frame N MSms' blocks, '.' transparent; PNGs are 1x RGBA",
+ "conventions": {
+  "coords": "pixels from the top-left of the effect frame; pivot sits on the attach point",
+  "facing": "all drawn facing E; for W flip x (pivot_x -> w-1-pivot_x, negate dx of offsets/arc_*, cell_offset_x -> 127-x)",
+  "cell": "96 px figure in a 128x128 cell (v2/pixelize/top1), feet pivot (64,124) = soles/ground row 124; cell_offset = where the pivot goes in that cell for the reference pose (SE master EC0_SE_96)",
+  "from_48": "redrawn at 2x with 1 px detail from v2/fx (48 px); old cell_offset (x,y) ~ new (64+2(x-32), 124+2(y-62))"
+ },
+ "functions": {
+  "afterimage": "tools/fxlib.py afterimage(rgba, light=a, dark=A, alpha in {1,.75,.5,.25}, mode 2tone|1tone, rim=1): flat ghost of any frame",
+  "afterimage_trail": "tools/fxlib.py afterimage_trail(rgba, step=10, n=3, dx=-1, alphas=(.75,.5,.25)): 3 ghosts 10 px apart (96 px scale) behind the motion, returns (canvas, origin_x); live frame on top, speed lines behind",
+  "whiteflash": "tools/fxlib.py whiteflash(rgba): 1-frame damage flash, all opaque px -> w #f8f8f8, near-black outline (K/X) kept"
+ },
+ "throw": {
+  "effects": [
+   "throw_orb",
+   "throw_trail",
+   "throw_sparkle",
+   "throw_pop"
+  ],
+  "note": "THROW group (v2/throw): orb held in hand.R until the release key, then spawned at frames.json ball.spawn_px with ball.vel_dir_px (v2/hy3d/frames_mocap/throw_<dir>/s48 (x2 for 96 px until an s96 exists)/frames.json); throw_trail + throw_sparkle on the release key at the hand (E-drawn; flip x for W; other views: rotate/skip per frames.json); orb spins (throw_orb loop) in flight; throw_pop at the landing point (game code).",
+  "sequence": [
+   {
+    "key": "release",
+    "fx": [
+     "throw_trail",
+     "throw_sparkle"
+    ],
+    "attach": "hand"
+   },
+   {
+    "key": "release..",
+    "fx": [
+     "throw_orb"
+    ],
+    "attach": "ball"
+   },
+   {
+    "event": "land",
+    "fx": [
+     "throw_pop"
+    ],
+    "attach": "ball_land"
+   }
+  ],
+  "source": "hand-pixelled by Opus (fx/work/throw/), char-maps in maps/"
+ },
+ "effects": {
+  "throw_orb": {
+   "size": [
+    13,
+    13
+   ],
+   "facing": "E",
+   "attach": "ball",
+   "pivot": [
+    6,
+    6
+   ],
+   "ms": [
+    60,
+    60,
+    60,
+    60
+   ],
+   "cell_offset": [
+    110,
+    70
+   ],
+   "layer": "over",
+   "mirror": "flip x for W-facing: x -> w-1-x, pivot_x -> w-1-pivot_x, negate dx of offsets/velocity, cell_offset_x -> 127-x (spin then runs backwards, acceptable)",
+   "loop": true,
+   "cell": "128x128 cell, 96 px figure, feet pivot (64,124), ground row 124; throw-pose release hand = s48 throw_E frames.json (hy3d/frames_G) frame 3 'release' hand.R x2 -> (111,69), used as (110,70); this is NOT the idle hand (~(81,84)); stride hand (frame 2) ~(63,66); cell_offset = orb at the release hand",
+   "spawn": "spawn at the release hand (110,70) on the release frame, then move by flight_per_unit",
+   "flight_per_unit": [
+    50,
+    -10
+   ],
+   "outline": "K 1 px all round (13 px circle: runs 5/2/1x2/5 per octant)",
+   "note": "red top r with fixed 3 px w highlight top-left and x shade crescent right; 2-row j band (rows 6-7 mid, rows 5-6 at the edges: bows down 1 px so the equator reads as seen from above); white bottom w with v down both the left edge and the lower-right crescent; button = 3x2 w/v face in a full j ring (pokes 1 px above/below the band), foreshortened 2x2 at the sides; it travels L->R while highlight/shading stay fixed",
+   "frames": [
+    "png/throw_orb_f0.png",
+    "png/throw_orb_f1.png",
+    "png/throw_orb_f2.png",
+    "png/throw_orb_f3.png"
+   ],
+   "group": "throw",
+   "map": "maps/throw_orb.txt",
+   "gif": "gif/throw_orb.gif",
+   "strip": "png/throw_orb_strip.png",
+   "atlas": "atlas.png",
+   "atlas_rects": [
+    [
+     0,
+     0,
+     13,
+     13
+    ],
+    [
+     14,
+     0,
+     13,
+     13
+    ],
+    [
+     28,
+     0,
+     13,
+     13
+    ],
+    [
+     42,
+     0,
+     13,
+     13
+    ]
+   ]
+  },
+  "throw_trail": {
+   "size": [
+    52,
+    28
+   ],
+   "facing": "E",
+   "attach": "hand",
+   "pivot": [
+    49,
+    24
+   ],
+   "ms": [
+    40,
+    60
+   ],
+   "cell_offset": [
+    110,
+    70
+   ],
+   "layer": "over",
+   "mirror": "flip x for W-facing: x -> w-1-x, pivot_x -> w-1-pivot_x, negate dx of offsets/velocity, cell_offset_x -> 127-x",
+   "cell": "128x128 cell, 96 px figure, feet pivot (64,124), ground row 124; throw-pose release hand = s48 throw_E frames.json (hy3d/frames_G) frame 3 'release' hand.R x2 -> (111,69), used as (110,70); this is NOT the idle hand (~(81,84)); stride hand (frame 2) ~(63,66); cell_offset = release hand; canvas at cell (61,46)-(112,73)",
+   "play_on": "release frame only",
+   "arc_start": [
+    -49,
+    -10
+   ],
+   "arc_top": [
+    -26,
+    -22
+   ],
+   "arc_end": [
+    0,
+    0
+   ],
+   "arc_note": "[dx,dy] from pivot; pivot = the rounded tip at the release hand (trail start for the orb); arc_start = 1 px tail tip behind the head (~stride hand), arc_top = apex above the head",
+   "max_thickness_px": 10,
+   "note": "circular arc (outer edge centre (23.75,30.96) r 28.5); thickness: 1 px n tail for the first ~12 px, smoothstep up to 10 px at 70% of the arc, cos taper to a rounded 2 px tip at the hand; along: n -> p -> w with slanted colour boundaries; across: 1 px n inner rim, 1 px p, w body",
+   "frames": [
+    "png/throw_trail_f0.png",
+    "png/throw_trail_f1.png"
+   ],
+   "group": "throw",
+   "map": "maps/throw_trail.txt",
+   "gif": "gif/throw_trail.gif",
+   "strip": "png/throw_trail_strip.png",
+   "atlas": "atlas.png",
+   "atlas_rects": [
+    [
+     0,
+     14,
+     52,
+     28
+    ],
+    [
+     53,
+     14,
+     52,
+     28
+    ]
+   ]
+  },
+  "throw_sparkle": {
+   "size": [
+    17,
+    17
+   ],
+   "facing": "E",
+   "attach": "hand",
+   "pivot": [
+    8,
+    8
+   ],
+   "ms": [
+    40,
+    60,
+    60
+   ],
+   "cell_offset": [
+    110,
+    70
+   ],
+   "layer": "over",
+   "mirror": "flip x for W-facing: x -> w-1-x, pivot_x -> w-1-pivot_x, negate dx of offsets/velocity, cell_offset_x -> 127-x (symmetric, flip is a no-op; the 1 px diagonal glints swap sides, fine)",
+   "cell": "128x128 cell, 96 px figure, feet pivot (64,124), ground row 124; throw-pose release hand = s48 throw_E frames.json (hy3d/frames_G) frame 3 'release' hand.R x2 -> (111,69), used as (110,70); this is NOT the idle hand (~(81,84)); stride hand (frame 2) ~(63,66); cell_offset = release hand",
+   "play_on": "release frame, with throw_trail",
+   "frames": [
+    "png/throw_sparkle_f0.png",
+    "png/throw_sparkle_f1.png",
+    "png/throw_sparkle_f2.png"
+   ],
+   "group": "throw",
+   "map": "maps/throw_sparkle.txt",
+   "gif": "gif/throw_sparkle.gif",
+   "strip": "png/throw_sparkle_strip.png",
+   "atlas": "atlas.png",
+   "atlas_rects": [
+    [
+     0,
+     43,
+     17,
+     17
+    ],
+    [
+     18,
+     43,
+     17,
+     17
+    ],
+    [
+     36,
+     43,
+     17,
+     17
+    ]
+   ]
+  },
+  "throw_pop": {
+   "size": [
+    36,
+    36
+   ],
+   "facing": "E",
+   "attach": "ball_land",
+   "pivot": [
+    17,
+    24
+   ],
+   "ms": [
+    40,
+    60,
+    80,
+    80
+   ],
+   "cell_offset": [
+    100,
+    118
+   ],
+   "layer": "over",
+   "mirror": "flip x for W-facing: x -> w-1-x, pivot_x -> w-1-pivot_x, negate dx of offsets/velocity, cell_offset_x -> 127-x (f0/f1 ring symmetric)",
+   "cell": "128x128 cell, 96 px figure, feet pivot (64,124), ground row 124; throw-pose release hand = s48 throw_E frames.json (hy3d/frames_G) frame 3 'release' hand.R x2 -> (111,69), used as (110,70); this is NOT the idle hand (~(81,84)); stride hand (frame 2) ~(63,66); cell_offset (100,118) = EXAMPLE landing spot on the floor ~36 px in front of her (clear of the legs); game code uses the real landing point of the orb",
+   "burst_centre": [
+    17.5,
+    17.5
+   ],
+   "burst_note": "burst centre = orb centre, 6.5 px above the ground pivot (orb radius)",
+   "radius_px": [
+    14,
+    13,
+    18,
+    18
+   ],
+   "play_after": "throw_orb (hide the orb on f0)",
+   "frames": [
+    "png/throw_pop_f0.png",
+    "png/throw_pop_f1.png",
+    "png/throw_pop_f2.png",
+    "png/throw_pop_f3.png"
+   ],
+   "group": "throw",
+   "map": "maps/throw_pop.txt",
+   "gif": "gif/throw_pop.gif",
+   "strip": "png/throw_pop_strip.png",
+   "atlas": "atlas.png",
+   "atlas_rects": [
+    [
+     0,
+     61,
+     36,
+     36
+    ],
+    [
+     37,
+     61,
+     36,
+     36
+    ],
+    [
+     74,
+     61,
+     36,
+     36
+    ],
+    [
+     111,
+     61,
+     36,
+     36
+    ]
+   ]
+  },
+  "hit_spark": {
+   "size": [
+    30,
+    30
+   ],
+   "facing": "E",
+   "attach": "hit_point",
+   "pivot": [
+    14,
+    14
+   ],
+   "ms": [
+    40,
+    60,
+    80
+   ],
+   "cell_offset": [
+    63,
+    76
+   ],
+   "cell": "128x128 cell, 96 px figure, feet pivot (64,124), faces SE; head top ~(64,29) (bow x60-66 y29-33), head ~x50-80 y29-60, chest ~y70-80; default hit_point = target body_centre (63,76) (torso centre on the obi; r2, was (64,88) on the skirt)",
+   "layer": "over",
+   "mirror": "flip x for W-facing: x -> 29-x, pivot_x -> 15, cell_offset_x -> 127-x",
+   "core_px": "2x2 centre at (14..15,14..15); pivot = upper-left of it; 4-fold rotationally symmetric about (14.5,14.5)",
+   "radius_px": [
+    15,
+    15,
+    14
+   ],
+   "frames": [
+    "png/hit_spark_f0.png",
+    "png/hit_spark_f1.png",
+    "png/hit_spark_f2.png"
+   ],
+   "play_after": "hit_flash",
+   "note": "r2: single 1 px core/rim/rays (no doubled bands), ring broken into angular arcs, ~20% smaller (36 -> 30). same timing. gen work/B/make_r2.py",
+   "group": "impact",
+   "map": "maps/hit_spark.txt",
+   "gif": "gif/hit_spark.gif",
+   "strip": "png/hit_spark_strip.png",
+   "atlas": "atlas.png",
+   "atlas_rects": [
+    [
+     0,
+     98,
+     30,
+     30
+    ],
+    [
+     31,
+     98,
+     30,
+     30
+    ],
+    [
+     62,
+     98,
+     30,
+     30
+    ]
+   ]
+  },
+  "hit_flash": {
+   "size": [
+    25,
+    25
+   ],
+   "facing": "E",
+   "attach": "hit_point",
+   "pivot": [
+    12,
+    12
+   ],
+   "ms": [
+    40,
+    30
+   ],
+   "cell_offset": [
+    63,
+    76
+   ],
+   "cell": "128x128 cell, 96 px figure, feet pivot (64,124), faces SE; head top ~(64,29) (bow x60-66 y29-33), head ~x50-80 y29-60, chest ~y70-80; default hit_point = target body_centre (63,76) (torso centre on the obi; r2, was (64,88) on the skirt)",
+   "layer": "over",
+   "mirror": "symmetric (no flip needed)",
+   "note": "hard 8-point star, 8-fold symmetric, 3 values w/y/f, no outline. f0 on the hit-stop frame (pair with fxlib.whiteflash() on the target sprite), f1 = burst dispersing; then hit_spark. gen work/B/make_r2.py",
+   "frames": [
+    "png/hit_flash_f0.png",
+    "png/hit_flash_f1.png"
+   ],
+   "group": "impact",
+   "map": "maps/hit_flash.txt",
+   "gif": "gif/hit_flash.gif",
+   "strip": "png/hit_flash_strip.png",
+   "atlas": "atlas.png",
+   "atlas_rects": [
+    [
+     0,
+     129,
+     25,
+     25
+    ],
+    [
+     26,
+     129,
+     25,
+     25
+    ]
+   ]
+  },
+  "speed_lines_long": {
+   "size": [
+    49,
+    42
+   ],
+   "facing": "E",
+   "attach": "body_centre",
+   "pivot": [
+    54,
+    24
+   ],
+   "ms": [
+    40,
+    40
+   ],
+   "cell_offset": [
+    63,
+    76
+   ],
+   "offset_from_body_centre": [
+    -54,
+    -24
+   ],
+   "layer": "behind",
+   "mirror": "flip x for W-facing (pivot -> [w-1-54,24] = [-6,24])",
+   "note": "6 streaks, all 1 px tall, lengths 12-46, uneven spacing (gaps 16/4/6/10/5) clustered at chest (68-78) and hip (88-93) plus one high line at the shoulders; w head ~30%, p ~35%, n tail with a 1 px break. f0 heads end 2 px inside the back K edge; f1 shifted back 3-6 px and re-lengthed. Pivot outside the canvas (canvas top-left = cell (9,52)).",
+   "line_rows_cell": [
+    52,
+    68,
+    72,
+    78,
+    88,
+    93
+   ],
+   "head_end_x_cell": [
+    [
+     52,
+     57,
+     55,
+     53,
+     48,
+     49
+    ],
+    [
+     47,
+     54,
+     49,
+     49,
+     42,
+     46
+    ]
+   ],
+   "lengths": [
+    [
+     18,
+     34,
+     46,
+     24,
+     40,
+     14
+    ],
+    [
+     14,
+     40,
+     30,
+     32,
+     26,
+     20
+    ]
+   ],
+   "shift_back_px": [
+    [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     5,
+     3,
+     6,
+     4,
+     6,
+     3
+    ]
+   ],
+   "with_afterimage": "with afterimage_trail(step=10, n=3): add [-30,0] to cell_offset so the heads meet the oldest ghost; draw the lines behind the ghosts and clip them to outside the ghost/figure alpha (demo work/dash_test.png)",
+   "cell": "128x128 cell, 96 px figure EC0_SE_96, feet pivot (64,124), faces SE; body centre (63,76) (chest ~y70-80); ground_y = cell row 124 (sole row)",
+   "group": "dash",
+   "map": "maps/speed_lines_long.txt",
+   "gif": "gif/speed_lines_long.gif",
+   "frames": [
+    "png/speed_lines_long_f0.png",
+    "png/speed_lines_long_f1.png"
+   ],
+   "strip": "png/speed_lines_long_strip.png",
+   "atlas": "atlas.png",
+   "atlas_rects": [
+    [
+     0,
+     155,
+     49,
+     42
+    ],
+    [
+     50,
+     155,
+     49,
+     42
+    ]
+   ]
+  },
+  "speed_lines_short": {
+   "size": [
+    26,
+    24
+   ],
+   "facing": "E",
+   "attach": "body_centre",
+   "pivot": [
+    32,
+    7
+   ],
+   "ms": [
+    40,
+    40
+   ],
+   "cell_offset": [
+    63,
+    76
+   ],
+   "offset_from_body_centre": [
+    -32,
+    -7
+   ],
+   "layer": "behind",
+   "mirror": "flip x for W-facing (pivot -> [w-1-32,7] = [-7,7])",
+   "note": "5 short streaks, all 1 px tall, lengths 8-22, clustered at chest (69-79) and hip (88-92); same colour split as the long set, no afterimage-hue pixels. f1 shifted back 3-5 px. Pivot outside the canvas (canvas top-left = cell (31,69)).",
+   "line_rows_cell": [
+    69,
+    73,
+    79,
+    88,
+    92
+   ],
+   "head_end_x_cell": [
+    [
+     56,
+     55,
+     52,
+     48,
+     49
+    ],
+    [
+     52,
+     52,
+     47,
+     44,
+     46
+    ]
+   ],
+   "lengths": [
+    [
+     14,
+     22,
+     10,
+     18,
+     8
+    ],
+    [
+     10,
+     16,
+     14,
+     12,
+     10
+    ]
+   ],
+   "shift_back_px": [
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     4,
+     3,
+     5,
+     4,
+     3
+    ]
+   ],
+   "with_afterimage": "with afterimage_trail(step=10, n=3): add [-30,0] to cell_offset so the heads meet the oldest ghost; draw the lines behind the ghosts and clip them to outside the ghost/figure alpha (demo work/dash_test.png)",
+   "cell": "128x128 cell, 96 px figure EC0_SE_96, feet pivot (64,124), faces SE; body centre (63,76) (chest ~y70-80); ground_y = cell row 124 (sole row)",
+   "group": "dash",
+   "map": "maps/speed_lines_short.txt",
+   "gif": "gif/speed_lines_short.gif",
+   "frames": [
+    "png/speed_lines_short_f0.png",
+    "png/speed_lines_short_f1.png"
+   ],
+   "strip": "png/speed_lines_short_strip.png",
+   "atlas": "atlas.png",
+   "atlas_rects": [
+    [
+     0,
+     198,
+     26,
+     24
+    ],
+    [
+     27,
+     198,
+     26,
+     24
+    ]
+   ]
+  },
+  "dust_step": {
+   "size": [
+    28,
+    28
+   ],
+   "facing": "E",
+   "attach": "feet",
+   "pivot": [
+    22,
+    27
+   ],
+   "ms": [
+    80,
+    100,
+    120
+   ],
+   "cell_offset": [
+    58,
+    124
+   ],
+   "cell": "128x128 cell, 96 px figure, feet pivot (64,124), faces SE; back boot x58-64 sole row 124 (back heel x58), front boot x66-74; ground_y = cell row 124; pivot = ground point",
+   "layer": "over",
+   "mirror": "flip x: x -> 27-x, pivot -> [5,27]; re-run work/gen_dust2.py with mirrored lobes so the U sel-out rim stays top-left (do not flip pixels)",
+   "ground_y": 27,
+   "heel_x": 22,
+   "puff_px": [
+    [
+     [
+      12,
+      11
+     ],
+     [
+      9,
+      9
+     ],
+     [
+      6,
+      6
+     ]
+    ],
+    [
+     [
+      13,
+      13
+     ],
+     [
+      10,
+      10
+     ],
+     [
+      7,
+      7
+     ]
+    ],
+    [
+     [
+      10,
+      10
+     ],
+     [
+      8,
+      8
+     ],
+     [
+      5,
+      5
+     ],
+     [
+      3,
+      3
+     ]
+    ]
+   ],
+   "lift_px": [
+    0,
+    2,
+    14
+   ],
+   "note": "r2: one billowing mass per frame, lobes graded 12/9/6 px from the heel outward and rising up/back; flat G base on ground row 27 (f0,f1); only short t creases at lobe notches; sel-out outline U on lit top-left, G bottom/right. f2 detached, lifted 14 px + fleck. work/gen_dust2.py.",
+   "group": "dust",
+   "map": "maps/dust_step.txt",
+   "gif": "gif/dust_step.gif",
+   "frames": [
+    "png/dust_step_f0.png",
+    "png/dust_step_f1.png",
+    "png/dust_step_f2.png"
+   ],
+   "strip": "png/dust_step_strip.png",
+   "atlas": "atlas.png",
+   "atlas_rects": [
+    [
+     0,
+     223,
+     28,
+     28
+    ],
+    [
+     29,
+     223,
+     28,
+     28
+    ],
+    [
+     58,
+     223,
+     28,
+     28
+    ]
+   ]
+  },
+  "dust_land": {
+   "size": [
+    68,
+    20
+   ],
+   "facing": "E",
+   "attach": "feet",
+   "pivot": [
+    34,
+    19
+   ],
+   "ms": [
+    60,
+    80,
+    100,
+    120
+   ],
+   "cell_offset": [
+    66,
+    124
+   ],
+   "cell": "128x128 cell, 96 px figure, feet pivot (64,124), faces SE; back boot x58-64 sole row 124 (back heel x58), front boot x66-74; ground_y = cell row 124; pivot = ground point",
+   "layer": "over",
+   "mirror": "symmetric; no flip needed (geometry mirrored, light top-left on both sides)",
+   "ground_y": 19,
+   "centre_x": 34,
+   "width_px": [
+    32,
+    48,
+    60,
+    62
+   ],
+   "lift_px": [
+    0,
+    0,
+    2,
+    6
+   ],
+   "puffs_per_side": [
+    2,
+    4,
+    4,
+    4
+   ],
+   "note": "r2: pivot x34 = first column right of centre line. Each side one billow: big lobe at the feet -> 9/6 px lobes outward, outer lobes lifted 2 px on later frames; flat G base on row 19 (f0-f2), f3 floats; U sel-out rim top-left, G bottom/right. work/gen_dust2.py.",
+   "group": "dust",
+   "map": "maps/dust_land.txt",
+   "gif": "gif/dust_land.gif",
+   "frames": [
+    "png/dust_land_f0.png",
+    "png/dust_land_f1.png",
+    "png/dust_land_f2.png",
+    "png/dust_land_f3.png"
+   ],
+   "strip": "png/dust_land_strip.png",
+   "atlas": "atlas.png",
+   "atlas_rects": [
+    [
+     0,
+     252,
+     68,
+     20
+    ],
+    [
+     69,
+     252,
+     68,
+     20
+    ],
+    [
+     138,
+     252,
+     68,
+     20
+    ],
+    [
+     207,
+     252,
+     68,
+     20
+    ]
+   ]
+  },
+  "dust_skid": {
+   "size": [
+    54,
+    22
+   ],
+   "facing": "E",
+   "attach": "feet",
+   "pivot": [
+    53,
+    21
+   ],
+   "ms": [
+    70,
+    70,
+    90
+   ],
+   "cell_offset": [
+    60,
+    124
+   ],
+   "cell": "128x128 cell, 96 px figure, feet pivot (64,124), faces SE; back boot x58-64 sole row 124 (back heel x58), front boot x66-74; ground_y = cell row 124; pivot = ground point",
+   "layer": "behind",
+   "mirror": "flip x: x -> 53-x, pivot -> [0,21]; re-run work/gen_dust2.py mirrored so the U rim stays top-left",
+   "ground_y": 21,
+   "trail": "left (behind, -x)",
+   "length_px": [
+    46,
+    54,
+    49
+   ],
+   "lift_px": [
+    [
+     0
+    ],
+    [
+     0
+    ],
+    [
+     0,
+     7,
+     12
+    ]
+   ],
+   "note": "r2: low streaky smear (merged ellipses + horizontal t streaks), tallest at the heel (pivot, cell 60,124), tapering/shrinking toward the back with a flat G base; f2 heel mass stays, tail breaks into lifted wisps. work/gen_dust2.py.",
+   "group": "dust",
+   "map": "maps/dust_skid.txt",
+   "gif": "gif/dust_skid.gif",
+   "frames": [
+    "png/dust_skid_f0.png",
+    "png/dust_skid_f1.png",
+    "png/dust_skid_f2.png"
+   ],
+   "strip": "png/dust_skid_strip.png",
+   "atlas": "atlas.png",
+   "atlas_rects": [
+    [
+     0,
+     273,
+     54,
+     22
+    ],
+    [
+     55,
+     273,
+     54,
+     22
+    ],
+    [
+     110,
+     273,
+     54,
+     22
+    ]
+   ]
+  },
+  "jump_whoosh": {
+   "size": [
+    41,
+    32
+   ],
+   "facing": "E",
+   "attach": "feet",
+   "pivot": [
+    20,
+    27
+   ],
+   "ms": [
+    50,
+    80
+   ],
+   "cell_offset": [
+    66,
+    124
+   ],
+   "layer": "behind",
+   "mirror": "symmetric about the pivot column; no flip needed",
+   "note": "ground-anchored at the take-off point (pivot = boot centre cell x66 on the sole row 124). A flat perspective U: the bottom run sits 1-3 rows below the soles (runs 15/3/2/1/1 per side), the sides rise 16 px beside the boots (cell x50/82, 8 px clear) and flare 3 px outward at the tips (an upward rush). Stroke tapers 3 px (w,w inside, u outer rim) along the bottom -> 2 px (w,u) up the lower sides -> 1 px u tips. f1: risen 6 px, max 2 px thick, cut by rows into 3 pieces (bottom rows 28-31, side 18-25, tip 8-15 before the rise).",
+   "ground_y": 27,
+   "figure_rise_px": [
+    10,
+    24
+   ],
+   "symmetric": true,
+   "cell": "128x128 cell, 96 px figure EC0_SE_96, feet pivot (64,124), faces SE; body centre (63,76) (chest ~y70-80); ground_y = cell row 124 (sole row)",
+   "group": "jump",
+   "map": "maps/jump_whoosh.txt",
+   "gif": "gif/jump_whoosh.gif",
+   "frames": [
+    "png/jump_whoosh_f0.png",
+    "png/jump_whoosh_f1.png"
+   ],
+   "strip": "png/jump_whoosh_strip.png",
+   "atlas": "atlas.png",
+   "atlas_rects": [
+    [
+     0,
+     296,
+     41,
+     32
+    ],
+    [
+     42,
+     296,
+     41,
+     32
+    ]
+   ]
+  },
+  "land_ring": {
+   "size": [
+    63,
+    19
+   ],
+   "facing": "E",
+   "attach": "feet",
+   "pivot": [
+    31,
+    8
+   ],
+   "ms": [
+    60,
+    80,
+    100
+   ],
+   "cell_offset": [
+    66,
+    124
+   ],
+   "layer": "behind",
+   "layer_split": {
+    "behind_rows": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "over_rows": [
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18
+    ],
+    "why": "back arc passes behind the boots, centre row + front arc in front"
+   },
+   "mirror": "symmetric; no flip needed",
+   "note": "pivot = ellipse centre = ground point (cell 66,124 = boot centre on the sole row). 1 px ring with hand-picked even side runs (f0 15/4/3/2/1, f1 19/6/4/3/2/2/1, f2 19/6/5/3/3/2/1 + 3-row ends); back (upper) arc p, front arc w, centre-row ends and the outer 3-4 px of the front arc u. f0/f1: front run doubled (2 px w) and the next run underlined with u for perspective weight. f2: 4 dashes (back-left/right p, front-left/right w->u), gaps at top centre, bottom centre and both ends. Canvas bottom reaches cell row 134: do not clip effects to the cell.",
+   "ground_y": 8,
+   "width_px": [
+    35,
+    55,
+    61
+   ],
+   "height_px": [
+    9,
+    13,
+    17
+   ],
+   "front_edge_px": [
+    2,
+    2,
+    1
+   ],
+   "symmetric": true,
+   "cell": "128x128 cell, 96 px figure EC0_SE_96, feet pivot (64,124), faces SE; body centre (63,76) (chest ~y70-80); ground_y = cell row 124 (sole row)",
+   "group": "jump",
+   "map": "maps/land_ring.txt",
+   "gif": "gif/land_ring.gif",
+   "frames": [
+    "png/land_ring_f0.png",
+    "png/land_ring_f1.png",
+    "png/land_ring_f2.png"
+   ],
+   "strip": "png/land_ring_strip.png",
+   "atlas": "atlas.png",
+   "atlas_rects": [
+    [
+     0,
+     329,
+     63,
+     19
+    ],
+    [
+     64,
+     329,
+     63,
+     19
+    ],
+    [
+     128,
+     329,
+     63,
+     19
+    ]
+   ]
+  },
+  "hurt_star": {
+   "size": [
+    70,
+    30
+   ],
+   "facing": "E",
+   "attach": "head_top",
+   "pivot": [
+    35,
+    29
+   ],
+   "ms": [
+    60,
+    120
+   ],
+   "cell_offset": [
+    64,
+    29
+   ],
+   "cell": "128x128 cell, 96 px figure, feet pivot (64,124), faces SE; head top ~(64,29) (bow x60-66 y29-33), head ~x50-80 y29-60, chest ~y70-80; default hit_point = target body_centre (64,88) (old (32,44) mapped); canvas top-left sits at cell (29,0)",
+   "layer": "over",
+   "mirror": "flip x: x -> 69-x, pivot -> [34,29] (stars swap sides, fine)",
+   "orbit": {
+    "centre": [
+     35,
+     16
+    ],
+    "semi_axes": [
+     22,
+     3
+    ],
+    "angles_deg": [
+     [
+      90,
+      210,
+      330
+     ],
+     [
+      150,
+      270,
+      30
+     ]
+    ],
+    "star_size_by_slot": [
+     [
+      "front 15 (centre)",
+      "mid 11 (left)",
+      "back 7 (right)"
+     ],
+     [
+      "front 15 (left)",
+      "back 7 (centre top)",
+      "mid 11 (right)"
+     ]
+    ],
+    "note": "flattened, lowered orbit; depth from size; front star bottoms at canvas row 25 = cell y25, 4 px above the head top / bow (y29)"
+   },
+   "star_px": {
+    "front": "15 px 5-point star (17x17 with K)",
+    "mid": "11 px 5-point star (13x13 with K)",
+    "back": "7 px 4-point sparkle (9x9 with K)"
+   },
+   "shading": "3-tone: y fill, f on the lower-right third of each star (pixels with dx+dy >= ~R/3 from centre), 2 px w dot top-left (1 px on the back sparkle); every star K outlined",
+   "loop": "cycle f0,f1 for dizzy (reads as a 60 deg orbit step)",
+   "note": "r2: f lower-right volume + w dot; width kept ~2x old. gen work/B/make_r2.py",
+   "group": "hurt",
+   "map": "maps/hurt_star.txt",
+   "gif": "gif/hurt_star.gif",
+   "frames": [
+    "png/hurt_star_f0.png",
+    "png/hurt_star_f1.png"
+   ],
+   "strip": "png/hurt_star_strip.png",
+   "atlas": "atlas.png",
+   "atlas_rects": [
+    [
+     0,
+     349,
+     70,
+     30
+    ],
+    [
+     71,
+     349,
+     70,
+     30
+    ]
+   ]
+  },
+  "sweat_drop": {
+   "size": [
+    11,
+    24
+   ],
+   "facing": "E",
+   "attach": "head_side",
+   "pivot": [
+    5,
+    0
+   ],
+   "ms": [
+    120,
+    120,
+    200
+   ],
+   "offset_from_head_top": [
+    20,
+    7
+   ],
+   "head_top_in_cell": [
+    64,
+    29
+   ],
+   "head_width": 30,
+   "cell_offset": [
+    84,
+    36
+   ],
+   "cell": "128x128 cell, 96 px figure, feet pivot (64,124), faces SE; head top ~(64,29) (bow x60-66 y29-33), head ~x50-80 y29-60, chest ~y70-80; default hit_point = target body_centre (64,88) (old (32,44) mapped); pivot = drop tip on f0; drop body just outside the front (right) hair outline (x~79 at y45)",
+   "layer": "over",
+   "mirror": "flip x: x -> 10-x, pivot -> [5,0], offset_from_head_top -> [-20,7], cell_offset -> [44,36]",
+   "slide_px": [
+    0,
+    2,
+    4
+   ],
+   "elongate_px": [
+    0,
+    0,
+    3
+   ],
+   "frames": [
+    "png/sweat_drop_f0.png",
+    "png/sweat_drop_f1.png",
+    "png/sweat_drop_f2.png"
+   ],
+   "note": "r2: teardrop not cone (belly swells, round bottom). gen work/B/make_r2.py",
+   "group": "hurt",
+   "map": "maps/sweat_drop.txt",
+   "gif": "gif/sweat_drop.gif",
+   "strip": "png/sweat_drop_strip.png",
+   "atlas": "atlas.png",
+   "atlas_rects": [
+    [
+     0,
+     380,
+     11,
+     24
+    ],
+    [
+     12,
+     380,
+     11,
+     24
+    ],
+    [
+     24,
+     380,
+     11,
+     24
+    ]
+   ]
+  }
+ }
+}

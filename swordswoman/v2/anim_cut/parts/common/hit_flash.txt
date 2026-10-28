@@ -1,0 +1,8 @@
+; pivot 3 3
+...y...
+.y.x.y.
+..yxy..
+yxxxxxy
+..yxy..
+.y.x.y.
+...y...

@@ -1,0 +1,38 @@
+Restored session: Mon 26 Oct 2026 10:30:40 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+# Round 3 review: SE 3/4 chibi swordswoman
+
+Coordinates below are in 64px cell space (0,0 is top-left).
+
+### Idle: 5/10
+1. **f3 "low2"**: the blink changes the face. The head narrows about 1px, the bow redraws smaller and sits about 2px lower, and the eyes read as a different character. Keep the f2 head sprite and swap only the eyes.
+2. **Katana (~x8–20, y44–58)**: it stays at exactly the same angle in all 6 frames. Rotate it ±1px at the tip in step with the sink.
+3. **Weak squash and stretch**: the body barely sinks 1px and the bow doesn't lag at all. Make f2 and f3 1 row shorter and 1px wider, and drop the bow 1px one frame after the body moves (lag it into f4). The hem flick at f5 (x~58, y48) is a stray lump, so delete it.
+
+### Walk: 4/10
+1. f2/f3 and f6/f7 are almost identical, so you can't tell which leg is leading. Give the legs different shapes and colors on each side.
+2. The arms don't swing. The sleeve blobs (x30–44, y36–48) are static. Swing them ±2px, opposite to the legs.
+3. **f1 and f5 "down"** only drop about 1px. Drop them 2px and lift the "up" frames 1px. The bow should trail by one frame.
+
+### Run: 5/10
+1. **The sword jumps between frames**: about 30° low-left at f0, then nearly vertical at f2 and f5. Lock the angle within ±10°.
+2. **The front arm (x50–60, y34)** sticks straight out like a rod in every frame. Pump it.
+3. **No stretch on "air" frames (f2, f5)**: lift the body 2px and stretch it 1px taller. Shorten "push" (70ms) to 60ms to match the rest.
+
+### Jump: 5/10
+1. **The katana is drawn in every frame** even though this is the no-katana set. Remove it, or fix the label.
+2. **f4 apex**: the blade snaps to straight vertical. Also, f2 launch isn't stretched. Make it 2–3px taller and 1px narrower, and have the bow trail down at f2–f3.
+3. **f0 antic at 60ms is too short** to read. Use 100ms. Hold apex/hang longer (90 to 120ms), and add a 1-frame overshoot at f9.
+
+### Dash: 5/10
+1. **The afterimages in f1–f2** are a blocky red checker dither, not silhouettes. Use 2 solid ghosts, one flat color each, offset −6px and −12px, and cut the stray speed lines.
+2. **f3 skid**: the head turns to profile, the hair outline changes shape and the sword flips. That breaks identity. Stay in 3/4 and lean back 2px.
+3. **f5 and f6 are near-duplicates.** Merge them, or make one an overshoot by −1px.
+
+### Slash: 5/10
+1. **f4 SMEAR**: it's a 1–2px uniform orange line that starts at the tip and clips the cell at top-left. Replace it with a filled crescent rooted at the hands: about 6px thick mid-arc, tapering to 1px, inside the cell.
+2. **The two hit-stop frames (f6–f7)** shift the pose and the sparks. Freeze the body and only shake it ±1px horizontally. Hold for 80ms total.
+3. **f8 "follow"**: the blade goes back to its rest angle with no follow-through past the impact. Carry it 20–30° further down-right and settle over f9–f10.
+
+Saving session...completed.

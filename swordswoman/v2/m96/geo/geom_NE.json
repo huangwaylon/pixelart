@@ -1,0 +1,72 @@
+{
+ "view": "NE",
+ "src0": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/hair/turnE_final/iso_NE.png",
+ "it": [
+  {
+   "L": {
+    "crown": 30,
+    "eye": null,
+    "chin": 56,
+    "shoulder": 62,
+    "waist": 73,
+    "obi_bot": 78,
+    "hem": 93,
+    "sock_top": 94,
+    "boot_top": 113
+   },
+   "head_w": 32,
+   "head_h": 27,
+   "maxerr": 7
+  },
+  {
+   "L": {
+    "crown": 30,
+    "eye": null,
+    "chin": 63,
+    "shoulder": 65,
+    "waist": 73,
+    "obi_bot": 78,
+    "hem": 90,
+    "sock_top": 91,
+    "boot_top": 114
+   },
+   "head_w": 33,
+   "head_h": 34,
+   "maxerr": 1
+  },
+  {
+   "L": {
+    "crown": 30,
+    "eye": null,
+    "chin": 63,
+    "shoulder": 64,
+    "waist": 74,
+    "obi_bot": 78,
+    "hem": 90,
+    "sock_top": 91,
+    "boot_top": 114
+   },
+   "head_w": 33,
+   "head_h": 34,
+   "maxerr": 0
+  }
+ ],
+ "H": 98,
+ "final": {
+  "L": {
+   "crown": 30,
+   "eye": null,
+   "chin": 63,
+   "shoulder": 64,
+   "waist": 74,
+   "obi_bot": 78,
+   "hem": 90,
+   "sock_top": 91,
+   "boot_top": 114
+  },
+  "head_w": 33,
+  "head_h": 34,
+  "x0": 48,
+  "x1": 80
+ }
+}

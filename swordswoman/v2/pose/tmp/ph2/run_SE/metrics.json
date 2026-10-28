@@ -1,0 +1,474 @@
+{
+"frames": [
+{
+"area": 468,
+"neg": 124,
+"neg_frac": 0.265,
+"blade_vis": 39,
+"blade_all": 45,
+"blade_hidden": 6,
+"blade_over_body": 6,
+"ground_gap": 0.0,
+"foot_px": 2,
+"h": 41,
+"bottom": 59,
+"w": 39,
+"clip": 0,
+"blade_len": 24.5,
+"tilt": -5.8,
+"bend_px": 7.0,
+"shape": "C",
+"name": "contact",
+"ms": 80,
+"air": false,
+"delta": 0.731
+},
+{
+"area": 509,
+"neg": 140,
+"neg_frac": 0.275,
+"blade_vis": 34,
+"blade_all": 42,
+"blade_hidden": 8,
+"blade_over_body": 1,
+"ground_gap": -0.0,
+"foot_px": 1,
+"h": 44,
+"bottom": 59,
+"w": 41,
+"clip": 0,
+"blade_len": 24.2,
+"tilt": 15.4,
+"bend_px": 2.2,
+"shape": "C",
+"delta": 0.52,
+"name": "push",
+"ms": 70,
+"air": false
+},
+{
+"area": 526,
+"neg": 158,
+"neg_frac": 0.3,
+"blade_vis": 34,
+"blade_all": 40,
+"blade_hidden": 6,
+"blade_over_body": 0,
+"ground_gap": 11.6,
+"foot_px": 2,
+"h": 43,
+"bottom": 49,
+"w": 42,
+"clip": 0,
+"blade_len": 24.1,
+"tilt": 17.7,
+"bend_px": 0.7,
+"shape": "I",
+"delta": 0.616,
+"name": "air",
+"ms": 70,
+"air": true
+},
+{
+"area": 485,
+"neg": 137,
+"neg_frac": 0.282,
+"blade_vis": 43,
+"blade_all": 47,
+"blade_hidden": 4,
+"blade_over_body": 6,
+"ground_gap": -0.0,
+"foot_px": 3,
+"h": 42,
+"bottom": 60,
+"w": 39,
+"clip": 0,
+"blade_len": 24.5,
+"tilt": -0.5,
+"bend_px": 5.4,
+"shape": "C",
+"delta": 0.736,
+"name": "contact2",
+"ms": 80,
+"air": false
+},
+{
+"area": 513,
+"neg": 151,
+"neg_frac": 0.294,
+"blade_vis": 40,
+"blade_all": 46,
+"blade_hidden": 6,
+"blade_over_body": 1,
+"ground_gap": 0.0,
+"foot_px": 3,
+"h": 44,
+"bottom": 60,
+"w": 40,
+"clip": 0,
+"blade_len": 24.2,
+"tilt": 19.1,
+"bend_px": 0.9,
+"shape": "I",
+"delta": 0.492,
+"name": "push2",
+"ms": 70,
+"air": false
+},
+{
+"area": 517,
+"neg": 146,
+"neg_frac": 0.282,
+"blade_vis": 37,
+"blade_all": 44,
+"blade_hidden": 7,
+"blade_over_body": 1,
+"ground_gap": 11.0,
+"foot_px": 2,
+"h": 42,
+"bottom": 48,
+"w": 38,
+"clip": 0,
+"blade_len": 24.1,
+"tilt": 17.0,
+"bend_px": 0.6,
+"shape": "I",
+"delta": 0.636,
+"name": "air2",
+"ms": 70,
+"air": true
+}
+],
+"pts": [
+{
+"head_top": [
+56.6,
+44.19
+],
+"head": [
+55.07,
+49.03
+],
+"neck": [
+53.55,
+53.87
+],
+"chest": [
+51.16,
+58.19
+],
+"hips": [
+51.05,
+58.41
+],
+"foot.R": [
+34.82,
+67.08
+],
+"knee.R": [
+47.13,
+66.65
+],
+"hand.R": [
+45.37,
+59.15
+],
+"foot.L": [
+59.75,
+75.14
+],
+"knee.L": [
+56.69,
+64.83
+],
+"hand.L": [
+54.22,
+56.86
+],
+"zmin_px": 0.0,
+"blade_pommel": [
+47.9,
+56.91
+],
+"blade_tip": [
+24.78,
+65.0
+]
+},
+{
+"head_top": [
+58.15,
+40.85
+],
+"head": [
+56.32,
+45.95
+],
+"neck": [
+54.5,
+51.06
+],
+"chest": [
+51.84,
+55.59
+],
+"hips": [
+51.71,
+55.82
+],
+"foot.R": [
+53.62,
+70.08
+],
+"knee.R": [
+56.92,
+59.06
+],
+"hand.R": [
+46.25,
+56.3
+],
+"foot.L": [
+48.67,
+75.19
+],
+"knee.L": [
+52.11,
+64.14
+],
+"hand.L": [
+56.94,
+56.51
+],
+"zmin_px": -0.0,
+"blade_pommel": [
+48.77,
+54.0
+],
+"blade_tip": [
+26.16,
+62.72
+]
+},
+{
+"head_top": [
+58.38,
+31.43
+],
+"head": [
+56.66,
+37.01
+],
+"neck": [
+54.94,
+42.59
+],
+"chest": [
+52.41,
+47.88
+],
+"hips": [
+52.3,
+48.14
+],
+"foot.R": [
+57.11,
+64.85
+],
+"knee.R": [
+57.01,
+52.85
+],
+"hand.R": [
+46.6,
+48.02
+],
+"foot.L": [
+39.62,
+60.92
+],
+"knee.L": [
+50.66,
+56.75
+],
+"hand.L": [
+61.5,
+47.26
+],
+"zmin_px": 11.6,
+"blade_pommel": [
+49.27,
+46.01
+],
+"blade_tip": [
+26.32,
+53.24
+]
+},
+{
+"head_top": [
+56.33,
+44.4
+],
+"head": [
+54.99,
+49.27
+],
+"neck": [
+53.66,
+54.15
+],
+"chest": [
+51.16,
+58.48
+],
+"hips": [
+51.05,
+58.7
+],
+"foot.R": [
+56.61,
+76.43
+],
+"knee.R": [
+53.55,
+66.12
+],
+"hand.R": [
+45.79,
+59.81
+],
+"foot.L": [
+37.97,
+66.38
+],
+"knee.L": [
+50.28,
+65.95
+],
+"hand.L": [
+59.49,
+57.97
+],
+"zmin_px": -0.0,
+"blade_pommel": [
+48.24,
+57.49
+],
+"blade_tip": [
+25.12,
+65.58
+]
+},
+{
+"head_top": [
+57.92,
+41.52
+],
+"head": [
+56.3,
+46.67
+],
+"neck": [
+54.68,
+51.81
+],
+"chest": [
+51.84,
+56.36
+],
+"hips": [
+51.71,
+56.59
+],
+"foot.R": [
+45.65,
+76.86
+],
+"knee.R": [
+49.1,
+65.81
+],
+"hand.R": [
+46.75,
+57.61
+],
+"foot.L": [
+56.64,
+69.96
+],
+"knee.L": [
+59.93,
+58.94
+],
+"hand.L": [
+56.78,
+56.72
+],
+"zmin_px": 0.0,
+"blade_pommel": [
+49.18,
+55.18
+],
+"blade_tip": [
+26.57,
+63.89
+]
+},
+{
+"head_top": [
+58.03,
+31.33
+],
+"head": [
+56.57,
+36.95
+],
+"neck": [
+55.1,
+42.57
+],
+"chest": [
+52.42,
+47.87
+],
+"hips": [
+52.3,
+48.14
+],
+"foot.R": [
+36.68,
+61.74
+],
+"knee.R": [
+47.73,
+57.57
+],
+"hand.R": [
+47.1,
+48.6
+],
+"foot.L": [
+60.05,
+64.03
+],
+"knee.L": [
+59.95,
+52.03
+],
+"hand.L": [
+55.28,
+45.29
+],
+"zmin_px": 11.03,
+"blade_pommel": [
+49.71,
+46.42
+],
+"blade_tip": [
+26.76,
+53.65
+]
+}
+]
+}

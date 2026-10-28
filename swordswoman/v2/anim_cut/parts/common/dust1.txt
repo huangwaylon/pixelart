@@ -1,0 +1,5 @@
+; pivot 2 3
+.uu..
+uuuU.
+uUUUo
+.ooo.

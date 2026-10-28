@@ -1,0 +1,1 @@
+{"jobs":[{"id":"up","view":"E","pose":{"scr":{"upper_arm.R":[92,0]},"blade_scr":[0,0],"katana":1}},{"id":"fw","view":"E","pose":{"scr":{"upper_arm.R":[0,0]},"blade_scr":[90,0],"katana":1}},{"id":"dn","view":"E","pose":{"scr":{"upper_arm.R":[-90,0]},"blade_scr":[0,0],"katana":1}}]}

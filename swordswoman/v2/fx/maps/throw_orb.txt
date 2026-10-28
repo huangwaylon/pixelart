@@ -1,0 +1,33 @@
+# throw_orb 48px 7x7 4f spin loop; work/throw/make.py
+# frame 0 60ms
+..KKK..
+.KrrrK.
+KrWrrRK
+KkkWkkK
+KWWWwwK
+.KwwwK.
+..KKK..
+# frame 1 60ms
+..KKK..
+.KrrrK.
+KrWrrRK
+KkkkWkK
+KWWWwwK
+.KwwwK.
+..KKK..
+# frame 2 60ms
+..KKK..
+.KrrrK.
+KrWrrRK
+KkkkkkK
+KWWWwwK
+.KwwwK.
+..KKK..
+# frame 3 60ms
+..KKK..
+.KrrrK.
+KrWrrRK
+KkWkkkK
+KWWWwwK
+.KwwwK.
+..KKK..

@@ -1,0 +1,42 @@
+{
+ "size": [
+  26,
+  14
+ ],
+ "facing": "E",
+ "attach": "hand",
+ "pivot": [
+  23,
+  12
+ ],
+ "ms": [
+  40,
+  60
+ ],
+ "cell_offset": [
+  55,
+  35
+ ],
+ "cell": "64x64 C_r3 cell, 48 px figure, feet pivot (32,62); throw pose E view: hand at stride (cocked behind the head) ~(32,33), at release ~(55,35), head centre ~(40,31); cell_offset = release hand; canvas at cell (32,23)-(57,36)",
+ "layer": "over",
+ "mirror": "flip x for W-facing: x -> w-1-x, pivot_x -> w-1-pivot_x, negate dx of offsets/velocity, cell_offset_x -> 63-x",
+ "play_on": "release frame only",
+ "arc_start": [
+  -23,
+  -6
+ ],
+ "arc_top": [
+  -11,
+  -11
+ ],
+ "arc_end": [
+  0,
+  0
+ ],
+ "arc_note": "[dx,dy] from pivot; arc_start = thin tail tip behind the head (~stride hand), arc_top = apex above the head, arc_end = thick head at the release hand",
+ "max_thickness_px": 5,
+ "frames": [
+  "f0 overhand smear: 2 px n tail (behind the head) -> p -> W band growing to 4-5 px with 1 px p inner rim, rounded end at the hand",
+  "f1 tail gone, 2-3 px npW / pW remnant from the apex down to the hand"
+ ]
+}

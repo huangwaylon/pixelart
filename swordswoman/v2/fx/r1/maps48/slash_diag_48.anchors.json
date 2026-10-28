@@ -1,0 +1,37 @@
+{
+ "size": [
+  32,
+  35
+ ],
+ "facing": "E",
+ "attach": "hand",
+ "pivot": [
+  17,
+  25
+ ],
+ "arc_start": [
+  -16,
+  -21
+ ],
+ "arc_end": [
+  7,
+  8
+ ],
+ "arc_centre": [
+  -5,
+  -5
+ ],
+ "cell_offset": [
+  41,
+  45
+ ],
+ "ms": [
+  40,
+  60,
+  60
+ ],
+ "flip_W": "mirror x: pivot_x -> size_w-1-pivot_x, negate dx of arc_* and cell_offset_x -> 63-x",
+ "layer": "over_character",
+ "max_thickness_px": 9,
+ "note": "pivot = blade hilt (hand) on the smear frame; arc_* relative to pivot; cell_offset = pivot in 64x64 cell (feet 32,62)"
+}

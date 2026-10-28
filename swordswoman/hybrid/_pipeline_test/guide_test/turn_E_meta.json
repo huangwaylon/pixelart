@@ -1,0 +1,36 @@
+{
+ "input": "renders/model_round_9/iso_E.png",
+ "bg": "alpha",
+ "src_size": [
+  512,
+  512
+ ],
+ "src_body": [
+  195,
+  425
+ ],
+ "fit": "iou",
+ "scale": 0.25541,
+ "offset": [
+  52,
+  48
+ ],
+ "downsample": "box",
+ "quant": "material",
+ "outline": "auto",
+ "clean": {
+  "orphans": 38,
+  "notches": 9,
+  "spurs": 0,
+  "doubles": 8
+ },
+ "guide": "renders/model_round_9/iso_E_64",
+ "iou": 0.8672,
+ "iou_body": 0.8761,
+ "height": 65,
+ "body_height": 61,
+ "baseline": 107,
+ "feet_cx": 66.16666666666667,
+ "colours": 18,
+ "opaque": 947
+}

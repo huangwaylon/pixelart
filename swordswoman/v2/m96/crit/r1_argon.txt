@@ -1,0 +1,13 @@
+**(1) Illustration Match:** Proportions, bow/ribbon silhouettes, sock lengths, and thigh skin bands match well. However, kimono sleeves/skirts puff out too roundly at the hems instead of flaring sharply.
+**(2) Face at 1x:** Fails the "cute/bright" read. Heavy flat upper lash lines, grey under-eye pixels, and placement of the white pixel at the outer edge make the eyes look half-closed, exhausted, or side-glancing. In **S**, a stray dark pixel above the right eye looks like a mole.
+**(3) Cleanliness:** Outlines have 2px-thick/jagged steps on sleeves and hair. Hands reduce to 1–2px nubs (**S/N**). **SE** hair highlights are noisy/banded.
+**(4) Colour:** Very consistent across all views; strict ramp control on kimono, obi, skin, and boots.
+
+**Scores:** S: 6.5 | SE: 6.0 | E: 7.0 | NE: 7.5 | N: 7.5 — **Overall: 6.8/10**
+
+**Top 5 Fixes:**
+1. **S/SE/E Eyes:** Arch the upper lash line up by 1px, move the white catchlight inside the iris (top-left), and replace grey under-eye pixels with skin tone to remove the tired look.
+2. **S Forehead:** Remove the stray dark pixel above the viewer's left eye (brow area) and clean the muddy anti-aliasing in the bangs part.
+3. **S/N/SE Sleeves:** Straighten the outer sleeve outlines into clean diagonal steps and widen the hand clusters by 1–2px.
+4. **SE Hair:** Consolidate fragmented highlight pixels on the crown into 2 clean curved bands matching the reference.
+5. **NE/N/S Skirt:** Flatten the bulbous side silhouettes of the skirt below the obi into straighter A-line flares.

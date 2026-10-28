@@ -1,0 +1,14 @@
+**Scores:**
+*   **A (Cross-view consistency):** 6/10
+*   **B (48px readability):** 7/10
+*   **C (Iso correctness vs 3D renders):** 4/10
+*   **D (Katana clarity):** 6/10
+*   **E (Fitness as final reference):** 5/10
+
+**Top 5 Remaining Problems:**
+
+1.  **`iso_S` (Camera Pitch):** Still drawn at ~55–60° elevation instead of 30°. Compared to the `r3G_mat` 3D authority, the head still occludes too much torso, the obi is overly curved, and the legs/boots are heavily foreshortened and tiny.
+2.  **`iso_E` & `iso_N` (Zero Elevation):** Both are virtually identical to the orthographic `right` and `back` views (0° pitch). Compared to the 3D renders, they lack top-down crown visibility, downward-curving hemlines/obis, and proper vertical torso compression.
+3.  **`iso_NE` & `iso_N` (Bow/Bun Occlusion):** From a 30° top-down rear angle, the crown of the head rises *above* the back-mounted bow (as proven by `r3G_mat`). Your drawings place the bow/bun at the exact orthographic height, failing to show the top of the skull above the ribbon.
+4.  **`D_turn_k_pal` (`front_k`, `back_k`, `iso_SE_k` at 48px):** The 1px dark underside edge of the katana is jagged and broken (alternating 1px and 2px steps), creating severe staircase aliasing and losing the clean 2px steel + 1px shadow read.
+5.  **`r3G_sheet_k` (Missing Iso Angles):** The final katana reference omits `iso_S`, `iso_NE`, and `iso_N`. An 8-direction isometric game sprite reference is incomplete without weapon-holding poses for all isometric facings.

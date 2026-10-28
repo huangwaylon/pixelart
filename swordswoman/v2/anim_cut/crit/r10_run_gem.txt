@@ -1,0 +1,22 @@
+### 3 Most Important Concrete Problems
+
+1. **Rotational Jaggies on Katana (Frames 2, 5, 6 - Lower Left Region)**
+   * **Problem:** Automated sprite rotation creates staircase artifacts, broken outlines, and inconsistent blade thickness.
+   * **Fix:** Hand-pixel the blade at fixed 1-to-1 or 2-to-1 pixel slopes to maintain a uniform 1px dark outline and solid white/grey core.
+
+2. **Rigid Head/Hair and Missing Overlap (Frames 0–7 - Upper Body Region)**
+   * **Problem:** The head, hair, and bow translate vertically as a static block without secondary motion, making the run feel stiff.
+   * **Fix:** Offset the bow and lower hair tips by 1–2 pixels vertically: squash the bow down on `down` frames (1, 5) and drag the hair tips down on `push/air` frames (2, 3, 6, 7).
+
+3. **Leg Depth Ambiguity (Frames 0 vs 4, 2 vs 6 - Lower Body Region)**
+   * **Problem:** Both halves of the cycle use identical brightness for the front and back legs, flattening the stride and making left/right alternation hard to read.
+   * **Fix:** Darken the skin and boot palette of the background (left) leg by one shade across all frames to clearly separate the stride planes.
+
+---
+
+### Evaluation Summary
+* **Animation & Energy:** 6/10 — Good vertical bob and airborne timing, but the cutout rig feels stiff due to the lack of secondary motion in the hair, bow, and skirt.
+* **Readability & Poses:** 5/10 — Key poses are present, though the silhouette overlaps poorly in `down` frames and leg alternation lacks depth cues.
+* **Pixel Quality:** 5/10 — Clean base sprites are undermined by raw rotational artifacts on the sword and minor outline doubles where cutout limbs intersect the torso.
+
+SCORE run: 5.5

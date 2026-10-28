@@ -1,0 +1,22 @@
+{
+  "name": "crimson_ronin_v1",
+  "outline": "#1a1220",
+  "ramps": {
+    "skin":    ["#c9776f", "#f0b49c", "#fde3d2"],
+    "hair":    ["#33201c", "#57372e", "#80574a"],
+    "red":     ["#4a1640", "#92203f", "#d8343e", "#f5705a"],
+    "leather": ["#33201c", "#5e3a28", "#8f5e3c"],
+    "dark":    ["#1a1220", "#3a3046"],
+    "steel":   ["#5f6678", "#a8b0c0", "#eef0f5"],
+    "eye":     ["#2c3f9e", "#5f8ee8"],
+    "pink":    ["#f49ab0"],
+    "purple":  ["#9b45c9"]
+  },
+  "notes": {
+    "shared": "hair[0]==leather[0]; outline==dark[0]; steel[2] doubles as eye glint / specular",
+    "unique_colors": 21,
+    "red_hue_shift": "violet (#4a1640) in deepest shadow/underside -> crimson -> base -> warm coral highlight",
+    "pink": "scarf ribbons + blush (blush may also use skin[0] on 1px)",
+    "purple": "upper-arm lace ribbon accent only"
+  }
+}

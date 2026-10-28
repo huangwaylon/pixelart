@@ -1,0 +1,4 @@
+**Scores:** Natural: 8/10 | Readable at 1x: 6/10 | Energetic: 7/10 | Pokemon-trainer feel: 6/10
+
+1. **Frames 5–7 (Follow-throughs & Recover):** The orb moves way too slowly and stays glued to her body, looking like a dribble rather than a pitch; push the orb 6–10px further down-right per frame so it clears her silhouette by Frame 6 and reaches the Frame 8 pop naturally.
+2. **Frame 3 (Stride) & Frame 5 (Follow):** Exaggerate the silhouettes for 1x readability—reconnect the detached throwing arm in Frame 3 and push the orb further back, and extend her throwing arm forward/down in Frame 5 into a classic trainer point instead of hiding it against her torso.

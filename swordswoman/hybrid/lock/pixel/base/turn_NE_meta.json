@@ -1,0 +1,34 @@
+{
+ "input": "hybrid/lock/turn/turn_NE.png",
+ "bg": "flood",
+ "src_size": [
+  256,
+  512
+ ],
+ "src_body": [
+  76,
+  448
+ ],
+ "fit": "none",
+ "scale": 0.16086,
+ "offset": [
+  48,
+  45
+ ],
+ "downsample": "box",
+ "quant": "material",
+ "outline": "auto",
+ "clean": {
+  "orphans": 41,
+  "notches": 6,
+  "spurs": 0,
+  "doubles": 3
+ },
+ "guide": null,
+ "height": 60,
+ "body_height": 60,
+ "baseline": 104,
+ "feet_cx": 63.5,
+ "colours": 14,
+ "opaque": 1039
+}

@@ -1,0 +1,84 @@
+{
+ "size": [
+  26,
+  24
+ ],
+ "facing": "E",
+ "attach": "body_centre",
+ "pivot": [
+  32,
+  7
+ ],
+ "ms": [
+  40,
+  40
+ ],
+ "cell_offset": [
+  63,
+  76
+ ],
+ "offset_from_body_centre": [
+  -32,
+  -7
+ ],
+ "layer": "behind",
+ "mirror": "flip x for W-facing (pivot -> [w-1-32,7] = [-7,7])",
+ "note": "5 short streaks, all 1 px tall, lengths 8-22, clustered at chest (69-79) and hip (88-92); same colour split as the long set, no afterimage-hue pixels. f1 shifted back 3-5 px. Pivot outside the canvas (canvas top-left = cell (31,69)).",
+ "line_rows_cell": [
+  69,
+  73,
+  79,
+  88,
+  92
+ ],
+ "head_end_x_cell": [
+  [
+   56,
+   55,
+   52,
+   48,
+   49
+  ],
+  [
+   52,
+   52,
+   47,
+   44,
+   46
+  ]
+ ],
+ "lengths": [
+  [
+   14,
+   22,
+   10,
+   18,
+   8
+  ],
+  [
+   10,
+   16,
+   14,
+   12,
+   10
+  ]
+ ],
+ "shift_back_px": [
+  [
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  [
+   4,
+   3,
+   5,
+   4,
+   3
+  ]
+ ],
+ "with_afterimage": "with afterimage_trail(step=10, n=3): add [-30,0] to cell_offset so the heads meet the oldest ghost; draw the lines behind the ghosts and clip them to outside the ghost/figure alpha (demo work/dash_test.png)",
+ "cell": "128x128 cell, 96 px figure EC0_SE_96, feet pivot (64,124), faces SE; body centre (63,76) (chest ~y70-80); ground_y = cell row 124 (sole row)"
+}

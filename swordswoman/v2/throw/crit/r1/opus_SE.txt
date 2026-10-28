@@ -1,0 +1,4 @@
+**5/10.** The poses read in order at 1x and the follow-through lunge has energy, but the orb doesn't feel thrown. Release is weak too, so it reads as a toss rather than a trainer's "Go!" throw.
+
+1. **follow → follow2 → recover, plus flight and landing:** the orb hangs about 10–15 px in front of her hand for around 400 ms and then pops right at her feet. Have it leave her hand at release, move about 8+ px per frame along an arc heading SE, and land well away from her (or leave the frame). The follow poses should play with the orb already gone.
+2. **stride and release:** stride is an upright, small cock, and release barely changes the silhouette. Give stride a high leg lift with the orb raised behind her head. At release, lean her torso forward over a planted front foot so there's a big silhouette change between the two frames that drives the smear.

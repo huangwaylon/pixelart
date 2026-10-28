@@ -1,0 +1,22 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I checked the 3x close-up and the pixel `.txt` files, which give exact rows. Scores and fixes are below.
+
+1. **Sections:** They match. Crown, eye, chin, shoulder, waist, hem, knee and sole all sit on the template lines. Our legs are straight and parallel, but that's a pose choice, not a section error.
+2. **Quality:** It's cute and clean, close to PMD/HGSS level. What holds it back: the hair is a flat solid mass, the 3/4 bodies are frontal, and the legs are stiff.
+3. **Hair at 1x:** The bow reads as a red accent. Half-up only reads in N, from its tie line. In S, the knot stacked above the bow reads as a topknot.
+4. **Consistency:** Mostly one character. But the knot height changes from view to view, and SE/NE use frontal bodies.
+
+**Top fixes:**
+1. **S:** the knot (rows 6–9) is about 4px higher than in SE/NE/N (row 11). Drop it 3–4px and tuck it beside the bow.
+2. **E:** the knot starts at row 8. Lower it 2–3px to match.
+3. **NE:** there's no half-up tie line. Add a 6px dark `h` band at row 20, like N.
+4. **SE/NE:** the torso, arms and legs are copied from the front. Narrow the far shoulder by 1px, move the far arm and leg 1px inward, and make the near leg 1px wider.
+5. **E:** the back of the hem (row 41, cols 26–30) is a solid 5px black run. Change it to `KRRrK` and put 1px of red under it.
+6. **E:** the leg pinches at the knee (row 48 is 4px wide, thigh is 6). Keep the knee at 5px and add a 1px calf bulge at rows 49–51.
+7. **S:** each shin jumps 1px outward at row 51. Spread that over rows 48–51 so the legs don't look bowed.
+8. **NE/N:** the back hair (rows 17–28) is a flat `H` block. Add 2–3 vertical `h` strand lines, 4–6px long, and a 1px `L` shine.
+
+**Score: 7/10**
+
+VERDICT: FIX

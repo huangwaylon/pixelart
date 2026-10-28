@@ -1,0 +1,16 @@
+Restored session: Mon 26 Oct 2026 10:48:15 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+SCORE: 5/10. It's a clean, grounded loop, but it's stiff. It reads as a head-bob on a statue, not a lively idle.
+
+- **What works:** feet are locked (rows 52 and below don't change in any frame). The palette stays at 16 colours throughout. There's no shimmer in static areas, and the silhouette reads well at 1x.
+- **Wasted frame:** f6 is pixel-identical to f0. Together they make a 560ms dead hold at the loop seam. Either cut f6 or make it a real overshoot (+1px above rest).
+- **Amplitude too small:** the whole cycle moves only 2px, in single 1px steps (rows 10→11→12→12→11→11→10). At 48px that's too little to feel "bouncy". Go to 3px down, a 1px overshoot up, and ease the timing: hang at the top, drop fast.
+- **Only the top half moves:** the head and torso shift as one block. Nothing squashes. The shoulders don't settle after the head, and the ribbon and hair bun don't trail behind it. Drag the ribbon tails 1 frame late and widen the torso by 1px at the bottom of the bob.
+- **Sword:** it's mostly locked to the body. f4→f5 moves only the hands and sword (rows 38–44, about 93px) with no body motion, so it reads as a twitch. Make the blade float 1 frame behind the chest, or lock it to the hands.
+- **Blink:** the eyes are fully closed for 110ms in f3 (a 13px change), with no half-closed frame either side, so it pops. Add a 60ms half-lid frame before and after, and lower the brows 1px on the closed frame.
+- **Pixel cleanliness:** the blade highlight has stair-steps of uneven length. The single near-white pixels along the edge flicker as the blade shifts, so give it a consistent 2:1 line.
+- **Timing:** 360/180/240/110/160/160/200 is basically even beats. Give it an accent, e.g. 400 hold, 100/100 drop, 220 settle, blink, 140/140 rise, 80 overshoot.
+- **FX:** none needed for an idle, but a 1px glint travelling along the blade on the rise would add life cheaply.
+
+Saving session...completed.

@@ -1,0 +1,3 @@
+{"_doc": "M96 cross-view geometry targets (sprite rows in the 128 cell; qc_gate parts() definitions). crown->sole is normalised per view (pz H chosen per view), the rest by a piecewise-linear vertical warp of the illustration; head width by a horizontal head-band scale. E (profile) width is view-specific (no target). eye = lash row (top of the eye blob).",
+ "rows": {"crown": 30, "eye": 50, "chin": 63, "shoulder": 64, "waist": 74, "obi_bot": 78, "hem": 90, "sock_top": 91, "boot_top": 114, "sole": 124},
+ "head_w": {"S": 28, "N": 29, "SE": 33, "NE": 33}}

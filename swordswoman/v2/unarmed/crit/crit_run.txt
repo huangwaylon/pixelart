@@ -1,0 +1,5 @@
+1) **8/10** – Completely unarmed look with zero weapon-carry artifacts, though the arms stay a bit stiff and straight rather than bending naturally at the elbows.
+2) **7/10** – Bouncy, energetic stride fits a lively trainer well, but the neutral facial expression and rigid torso hold back the cheerfulness.
+3) **7/10** – Overall silhouette and leg cycle read clearly at 1x, though the red sleeves blend right into the red dress and back bow during mid-stride frames.
+
+**Most important fix:** Bend the elbows during the arm swing and add a slight value/hue contrast between the sleeves and skirt so the arms pop clearly against the torso at 1x scale.

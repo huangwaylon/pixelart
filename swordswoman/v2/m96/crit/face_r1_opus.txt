@@ -1,0 +1,17 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+**Nose and brows:** Both now show up in S, SE and E. The brows sit as thin dark arcs above the eyes. In S and SE neutral, though, they nearly merge with the dark edge of the bangs, so at 1x they read as a heavier bang line rather than brows. The E profile nose bump works well. The S/SE 2px shadow nose is only a faint smudge. It's acceptable, but SE is barely visible. All views follow the same rules.
+
+**Match to the illustration:** The illustration has large brown eyes with highlights and a soft smile. The sprite eyes are still narrow dark slits, which makes the face look sterner than the target.
+
+**1x readability:** Pain is clearly distinct. Cheerful and determined are almost the same as neutral at 1x, because only the mouth or a 1px brow tilt changes.
+
+**Body:** The hands, the SE bow separation and the thigh skin band all read well now.
+
+**Scores:** brows 6/10, nose 7/10, consistency 8/10, 1x readability 5/10, overall 7/10.
+
+**Top 3 fixes:**
+1. **S/SE eyes:** Make each eye one row taller with a mid-brown iris and a 1px white highlight in the upper corner. This brings the sprite closer to the illustration.
+2. **S/SE brows:** Leave a 1px skin gap between the bangs and the brow. For determined, drop the inner end of each brow by 2px so it reads as a clear V.
+3. **Cheerful, all face views:** Turn the eyes into ^ arcs, widen the smile to 3–4px with upturned corners, and add a 1px blush pixel under each eye.

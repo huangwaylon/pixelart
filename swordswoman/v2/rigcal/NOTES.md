@@ -1,0 +1,51 @@
+# RIG-CAL strand notes
+- 23:08 started (fresh); reading context
+- step0: rigcal/scripts/repro_g.py = copy of hy3d/scripts/reproportion.py, to be extended (thigh/shin split, leg widths, boot top/size, neck stub, head width)
+- step1: measurement loop scripts/cal.py SPEC OUT [views] (repro_g -> render_cal.py (throw render_jobs + bow/bun group 10) FIG_EXCL=bow,bun HEADS_SE=1.0 pose {} -> codes -> verify-style sections at 1x and 4x, residuals vs blockout). Rig F spec (work/spec_F.json) SE 1x: eye +3.5 chin +3 shoulder +2 knee -4 ankle -4, w: shoulder -3 hip -3 neck -2 thigh +3 (legs merge) foot -3; S: shoulder -5, thigh/calf -2, foot -3; E: hip -6 hem +2
+- step1b: cal.py measures with HIDE=bow,bun (bow occluded the hair crown 2 rows; template crown excludes bow/bun). Calib pose = arms down: upper_arm.R [0,-20,0] / .L [0,20,0] (rest {} has arms abducted). repro_g keys added: legs.thigh/shin (length about the knee), legs.thigh_w/shin_w, boots.top/sx/sz/dz (clean boot line recolour), neck.r (skin neck cylinder on torso), head.wx/wz, arms.dy. Optimiser scripts/opt.py (FD Jacobian + damped GN on 4x subpixel residuals, S/SE/E, parallel renders).
+- step2a: GN on pixel sections fails (measures discontinuous: shoulder/waist/knee rows jump 2-4 px per step). Analysis: S figure 2 px shorter than SE when legs spread (near foot lower in SE; fit is SE-based) -> keep spread modest. Blockouts imply a 3D body: torso 8w x 7d, skirt 12w x 14d (E bustle), round legs 5, shin 4w x 5d. Added legs.thigh_d/shin_d (z). Switching to manual tuning + greedy pattern search.
+- step2b: manual tuning G2..G11 (work/spec_G*.json): straight parallel legs on an absolute profile (legs.prof [thigh_x,thigh_z,shin_x,shin_z] glb, legs.straight, ytop), boots.top/ankle/centre/sx, fringe lift (head.fringe) + eyes.dy, square shoulders (torso.sh, torso.sq), torso.waist_zk, skirt.flare; calib: FIG_PX=50 (1x coverage loses ~1px of the 48), arms abd 15, SE legs cheat -35 (existing rig_lib 'cheat' key: hips yaw to camera; without it the two legs merge into one 9-11px column in SE). G10: 9 fails left (S foot, SE shoulder/waist/knee/ankle, E hip/ankle). Next: scripts/search.py greedy pattern search (score = 10*fails + excess + 0.05*4x cost).
+- step2c: search round 1 (work/srch1, 12 rounds, 6 min): 12 -> 4 fails; + legs.prof thigh depth 0.36 (E knee needs thigh deeper than shin) -> 3 fails, all SE: armpit-3 / wshoulder-3 (neck+back hair split the SE shoulder rows), wfoot-3 (only the near toe tip on the bottom row). Search round 2 adds boots.toe/dz.
+- step2d: srch2 local optimum; SE leg cheat 35->45 (legs face camera in SE calib) fixes SE foot -> 2 fails left (SE armpit-3, SE wshoulder-3: true 45deg camera puts the near shoulder ~1.6 px lower than the far one and the neck/back hair split the shoulder rows; geometric, not fixable by part sizes). Tried torso lowering, nape trim (reverted), arm dy/abd: worse. FINAL calib state = work/final_state.json (spec + FIG_PX 50 + abd 15 + SE cheat 45). Without the SE cheat (true camera) SE legs merge: wthigh+7 wcalf+7 knee-3 ankle-2 foot-3.
+- step3 RIG G built: v2/hy3d/rigs/G/{parts/ (glbs, pivots.json, skel.txt, spec_solved.json), rig_parts.blend (throw/scripts/rig_lib.py MOCAP=1 ELBOW=1: elbow split kept), rest_S/SE/E, PROPORTIONS_G.json, calib_state.json}. Check: v2/rigcal/scripts/check.py -> v2/rigcal/check_{S,SE,E,NE,N,SE_true}.png + residuals.txt/json. Fails: S 0, SE 2 (armpit-3, wshoulder-3), E 0; NE 9 / N 2 (checks, true camera); SE_true 9 (legs merge).
+RIG G READY
+- step4: frames driver rigcal/scripts/frames_G.py (act_G.json from poses_mocap.json idle/walk/run/jump/dash/hurt + poses_throw.json throw, katana 0; overhead skipped = sword chop with crescent smears, slash dropped). throwpost.py got FR_ROOT/GIF_OUT env overrides.
+- frames idle_SE: 6 frames (2s)
+- frames idle_S: 6 frames (2s)
+- frames idle_E: 6 frames (2s)
+- frames idle_NE: 6 frames (2s)
+- frames idle_N: 6 frames (2s)
+- frames walk_S: 6 frames (2s)
+- frames walk_SE: 6 frames (2s)
+- frames walk_E: 6 frames (2s)
+- frames walk_NE: 6 frames (2s)
+- frames walk_N: 6 frames (2s)
+- frames run_S: 6 frames (2s)
+- frames run_SE: 6 frames (2s)
+- frames run_E: 6 frames (2s)
+- frames run_NE: 6 frames (2s)
+- frames run_N: 6 frames (2s)
+- frames jump_S: 8 frames (2s)
+- frames jump_SE: 8 frames (2s)
+- frames jump_E: 8 frames (2s)
+- frames jump_NE: 8 frames (2s)
+- frames jump_N: 8 frames (2s)
+- frames dash_S: 5 frames (2s)
+- frames dash_SE: 5 frames (2s)
+- frames dash_E: 5 frames (2s)
+- frames dash_NE: 5 frames (2s)
+- frames dash_N: 5 frames (2s)
+- frames hurt_S: 4 frames (2s)
+- frames hurt_SE: 4 frames (2s)
+- frames hurt_E: 4 frames (2s)
+- frames hurt_NE: 4 frames (2s)
+- frames hurt_N: 4 frames (2s)
+- frames throw_S: 8 frames (2s)
+- frames throw_SE: 8 frames (2s)
+- frames throw_E: 8 frames (2s)
+- frames throw_NE: 8 frames (2s)
+- frames throw_N: 8 frames (2s)
+- step4 done: 35 clips (idle walk run jump dash hurt throw x S SE E NE N) -> v2/hy3d/frames_G/<act>_<dir>/s48/ (frames_mocap format + frames.json 'fit' field; throw has the ball block via throwpost.py FR_ROOT/GIF_OUT); GIFs v2/rigcal/gifs/<act>_<dir>.gif (+ throw_<v>_strip.png). Render env: PARTS=hy3d/rigs/G/parts FIG_EXCL=bow,bun FIG_PX=50 HEADS_SE=1.0 ELBOW=1 CHEAT=0 (true SE/NE camera). Re-run: .venv/bin/python -I v2/rigcal/scripts/frames_G.py [ACTS] [VIEWS] (skips done clips; delete a clip dir to redo).
+- Argon sanity check of check_SE.png: vertical sections 0-1 px; armpit/wshoulder -3 from the true 3/4 torso (as flagged); hair shape differs (head region is the HAIR strand's); chin/shoulder labels overlap (cosmetic).
+- cleanup: temp render dirs removed; kept work/*.json specs, logs, act_G.json.
+FRAMES G READY

@@ -1,0 +1,9 @@
+OVERALL: 7
+
+**Scores:** Natural: 7 | Whole-body: 8 | Fluid: 7 | Appealing: 7 | Secondary motion: 6 | Readable at 1x: 7
+
+**Top 3 Concrete Fixes:**
+
+1. **Ribbon Clipping/Visibility (All frames, especially E view):** The new ribbon hang makes the tails tuck directly into the hair mass. In the E view, the red bow/tails almost completely vanish compared to the OLD row. Push the bow base and ribbon tails outward/backward by 2–3 native pixels so they break the dark hair silhouette clearly at 1x.
+2. **Knee Pop on Weight Shift (`cross` & `cross2`):** In SE view, both knees bend inward simultaneously, creating an awkward knock-kneed silhouette. Keep the departing leg straighter (push knee outward 1–2px) as weight transfers to the receiving leg.
+3. **Arm Stiffness (`shift` to `hold_L`):** The arms stay locked in an identical A-pose throughout the weight transfer. Add 1–2px of delayed inward/outward pendulum swing to the forearms/hands on `land_L` and `land_R`.

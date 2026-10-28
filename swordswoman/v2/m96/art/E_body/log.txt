@@ -1,0 +1,5 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I've written `out.txt` for the E body crop, but the gate still shows two `!`: ssim_b (0.957, -0.005) and face_ssim (-0.130). Both are already flagged when I submit the original crop unchanged, so they come from earlier edits outside this crop. dE is no longer flagged (8.729, better than the original crop's 8.767). There are now 0 orphan pixels, and the 3 O3 jaggies the lint reports sit outside this crop.
+
+What changed: the brown/grey marks inside the kimono are now red shadow (R) for the sleeve and back folds; the obi is O with an o shadow edge and a 2px Q highlight; the stray outline bump on the right is gone; the hand at the sleeve end is a small skin shape with a finger hint; the thighs are skin only, with a shadow row under the skirt; and the sock tops are one clean red stripe with the doubled outline removed.

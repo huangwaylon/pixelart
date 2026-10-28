@@ -1,0 +1,101 @@
+{
+ "arm_L": {
+  "bone": "upper_arm.L",
+  "parent": "chest",
+  "pivot": [
+   0.2534,
+   -0.0924,
+   0.0379
+  ],
+  "faces": 31280,
+  "watertight": true
+ },
+ "arm_R": {
+  "bone": "upper_arm.R",
+  "parent": "chest",
+  "pivot": [
+   -0.2534,
+   -0.0924,
+   0.0379
+  ],
+  "faces": 31280,
+  "watertight": true
+ },
+ "bow": {
+  "bone": "head",
+  "parent": "neck",
+  "pivot": [
+   0.0,
+   0.0682,
+   0.0076
+  ],
+  "faces": 3840,
+  "watertight": true
+ },
+ "bun": {
+  "bone": "head",
+  "parent": "neck",
+  "pivot": [
+   0.0,
+   0.0682,
+   0.0076
+  ],
+  "faces": 1280,
+  "watertight": true
+ },
+ "head": {
+  "bone": "head",
+  "parent": "neck",
+  "pivot": [
+   0.0,
+   0.0682,
+   0.0076
+  ],
+  "faces": 30000,
+  "watertight": true
+ },
+ "leg_L": {
+  "bone": "thigh.L",
+  "parent": "hips",
+  "pivot": [
+   0.1203,
+   -0.5005,
+   0.0324
+  ],
+  "faces": 30000,
+  "watertight": true
+ },
+ "leg_R": {
+  "bone": "thigh.R",
+  "parent": "hips",
+  "pivot": [
+   -0.1203,
+   -0.5005,
+   0.0324
+  ],
+  "faces": 30000,
+  "watertight": true
+ },
+ "skirt": {
+  "bone": "skirt",
+  "parent": "hips",
+  "pivot": [
+   0.0,
+   -0.3019,
+   -0.0035
+  ],
+  "faces": 30000,
+  "watertight": true
+ },
+ "torso": {
+  "bone": "chest",
+  "parent": "spine",
+  "pivot": [
+   0.0,
+   -0.3105,
+   0.0104
+  ],
+  "faces": 12288,
+  "watertight": true
+ }
+}

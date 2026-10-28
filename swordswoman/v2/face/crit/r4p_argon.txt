@@ -1,0 +1,26 @@
+**(1) Per-Expression Audit (1x Readability | Score | Pixel Flaw)**
+*   **Neutral:** Yes | 6.5 | Brow merges with bangs; hair silhouette still boxy/helmet-like.
+*   **Determined:** Yes | 6.5 | Furrowed brow blends into dark hair; mouth lacks tension.
+*   **Shout:** Weak | 5.0 | Eyes too static/relaxed; white teeth line looks like a moustache at 1x; uses anger vein instead of PMD radial BG.
+*   **Effort:** Weak | 5.5 | Reads as confused/constipated; 2-tooth block is noisy.
+*   **Joy:** Yes | 7.5 | Best read, but head/shoulders completely static (compare Meloetta’s raised arms/tilt).
+*   **Smile:** Fair | 6.0 | Almost identical to Neutral at 1x; add closed happy eyes or cheek blush.
+*   **Surprised:** Yes | 6.5 | Needs dynamic shock BG; small dark 'o' mouth reads as a mole at 1x.
+*   **Pain:** Yes | 7.0 | `><` eyes work, but blocky gritted teeth muddy the 1x read.
+*   **Worried:** Fair | 6.0 | Sad brows merge into bangs, losing the silhouette of the expression.
+*   **Inspired:** Weak | 5.5 | Reads as generic happy; eyes need larger, starry highlights.
+*   **Teary:** Weak | 5.5 | 1px white/cyan tears vanish against pale skin at 1x; use larger blue droplets.
+*   **Blink:** Yes | 6.5 | Fine for animation, but doesn't match the "Stunned" slot below it.
+
+**(2) PMD Style:** Closer, but uses *paper-doll* facial swapping. Real PMD shifts head tilt, shoulders, and hair per emotion, using pure blacks only for focal points, not heavy interior outlines.
+
+**(3) Personality:** Reads polite/stoic, not spirited. Needs asymmetrical smirks and bolder acting.
+
+**(4) Top 5 Fixes:**
+1. **Break the base:** Shift head/shoulders by 1–3px for Shout, Joy, Pain, Surprised.
+2. **Brows:** Separate eyebrows from bangs by 1px of skin, or overlap hair with a lighter outline.
+3. **Teeth:** Remove 1px black interior outlines around teeth; use solid white/pink.
+4. **Hair:** Break the vertical outer walls of the bob with 2–3px stray locks.
+5. **Tears/Sparkles:** Enlarge tear droplets to 2x3px cyan clusters with dark outlines.
+
+**Overall: 6.2 / 10**

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Akane Pixel Override Editor</title>
+<link rel="stylesheet" href="/editor/editor.css">
+</head>
+<body>
+<header>
+  <h1>Akane Pixel Override Editor</h1>
+  <select id="anim-select" title="Animation"></select>
+  <span id="buildinfo"></span>
+  <span class="spacer"></span>
+  <input id="reason" placeholder="reason for this edit (required to save)" style="width:280px">
+  <input id="author" placeholder="author" value="artist" style="width:90px">
+  <button id="btn-save" title="Ctrl+S">Save overrides</button>
+  <button id="btn-build" title="px.py apply + lint">Apply + lint</button>
+  <span id="status"></span>
+</header>
+<main>
+  <aside id="left">
+    <section>
+      <h2>Tools</h2>
+      <div id="tools">
+        <button data-tool="pencil" class="on" title="B">Pencil <kbd>B</kbd></button>
+        <button data-tool="erase" title="E">Erase (clear) <kbd>E</kbd></button>
+        <button data-tool="fill" title="G">Fill <kbd>G</kbd></button>
+        <button data-tool="pick" title="I">Picker <kbd>I</kbd></button>
+        <button data-tool="revert" title="R">Revert px to base <kbd>R</kbd></button>
+      </div>
+    </section>
+    <section>
+      <h2>Palette <small>(locked, docs/palette.json)</small></h2>
+      <div id="palette"></div>
+      <div id="cur-color"></div>
+    </section>
+    <section>
+      <h2>View</h2>
+      <label><input type="checkbox" id="opt-grid" checked> Pixel grid</label>
+      <label><input type="checkbox" id="opt-onion"> Onion skin <kbd>O</kbd></label>
+      <label><input type="checkbox" id="opt-ovl" checked> Highlight overrides</label>
+      <label><input type="checkbox" id="opt-flags"> Lint flags <kbd>L</kbd></label>
+      <label><input type="checkbox" id="opt-base"> Show base only <kbd>H</kbd></label>
+      <label><input type="checkbox" id="opt-src"> Source render underlay <kbd>U</kbd></label>
+      <label>Zoom <input type="range" id="opt-zoom" min="4" max="20" value="10"></label>
+    </section>
+    <section>
+      <h2>Keys</h2>
+      <p class="hint">Left/Right frame, Up/Down direction, Space play, Ctrl+Z / Ctrl+Shift+Z undo/redo, Alt+click picker. Frames are 0-based (fNN).</p>
+    </section>
+  </aside>
+
+  <section id="center">
+    <div id="frame-title"></div>
+    <div id="cursor"></div>
+    <div id="canvas-wrap"><canvas id="edit"></canvas></div>
+    <div id="frames"></div>
+  </section>
+
+  <aside id="right">
+    <section>
+      <h2>Direction</h2>
+      <div id="compass"></div>
+    </section>
+    <section>
+      <h2>Preview</h2>
+      <canvas id="preview"></canvas>
+      <div class="row">
+        <button id="btn-play">Play</button>
+        <select id="opt-speed"><option value="1">1x</option><option value="0.5">0.5x</option><option value="0.25">0.25x</option></select>
+        <label><input type="checkbox" id="opt-all"> 8-dir</label>
+      </div>
+    </section>
+    <section>
+      <h2>Overrides on this frame</h2>
+      <pre id="frame-info"></pre>
+    </section>
+    <section>
+      <h2>Feedback</h2>
+      <textarea id="fb-note" placeholder="Note for this direction/frame (pixel/feedback/<anim>.jsonl)"></textarea>
+      <div class="row"><input id="fb-author" placeholder="role / name" value="art director"><button id="btn-fb">Add note</button></div>
+      <div id="fb-list"></div>
+    </section>
+    <section>
+      <h2>Lint</h2>
+      <div id="qa"></div>
+    </section>
+  </aside>
+</main>
+<script src="/editor/editor.js"></script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+{
+ "name": "test_vars",
+ "partdir": "parts/se",
+ "cell": [
+  64,
+  64
+ ],
+ "ground": [
+  32,
+  60
+ ],
+ "rig": {
+  "legs": {
+   "part": "legs",
+   "at": "root",
+   "z": 1
+  },
+  "skirt": {
+   "part": "skirt",
+   "at": "legs.hip",
+   "z": 3
+  },
+  "torso": {
+   "part": "torso",
+   "at": "skirt.waist",
+   "off": [
+    0,
+    0
+   ],
+   "z": 4
+  },
+  "armF": {
+   "part": "armF",
+   "at": "torso.shR",
+   "z": 2
+  },
+  "armN": {
+   "part": "armN",
+   "at": "torso.shL",
+   "z": 6
+  },
+  "head": {
+   "part": "head",
+   "at": "torso.neck",
+   "z": 7
+  },
+  "bun": {
+   "part": "bun",
+   "at": "head.bun",
+   "z": 0
+  },
+  "bow": {
+   "part": "bow",
+   "at": "head.bow",
+   "z": 8
+  }
+ },
+ "frames": [
+  {
+   "ms": 400,
+   "label": "base"
+  },
+  {
+   "ms": 400,
+   "label": "head_sq",
+   "set": {
+    "head": {
+     "part": "head_sq"
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "head_st",
+   "set": {
+    "head": {
+     "part": "head_st"
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "torso_sq",
+   "set": {
+    "torso": {
+     "part": "torso_sq"
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "skirt_sq",
+   "set": {
+    "skirt": {
+     "part": "skirt_sq"
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "sq_all",
+   "set": {
+    "head": {
+     "part": "head_sq"
+    },
+    "torso": {
+     "part": "torso_sq"
+    },
+    "skirt": {
+     "part": "skirt_sq"
+    },
+    "bow": {
+     "part": "bow_up"
+    }
+   },
+   "fx": [
+    {
+     "part": "land_puff",
+     "at": "ground",
+     "off": [
+      0,
+      0
+     ],
+     "z": 9
+    }
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "bow_up",
+   "set": {
+    "bow": {
+     "part": "bow_up"
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "bow_dn",
+   "set": {
+    "bow": {
+     "part": "bow_dn"
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "bow_back",
+   "set": {
+    "bow": {
+     "part": "bow_back"
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "skirt_up",
+   "set": {
+    "skirt": {
+     "part": "skirt_up"
+    }
+   },
+   "root": [
+    0,
+    -6
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "skirt_swL",
+   "set": {
+    "skirt": {
+     "part": "skirt_swL"
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "skirt_swR",
+   "set": {
+    "skirt": {
+     "part": "skirt_swR"
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "skirt_back",
+   "set": {
+    "skirt": {
+     "part": "skirt_back"
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "dash",
+   "set": {
+    "skirt": {
+     "part": "skirt_back"
+    },
+    "bow": {
+     "part": "bow_back"
+    }
+   },
+   "fx": [
+    {
+     "part": "spd1",
+     "at": "ground",
+     "off": [
+      -24,
+      -20
+     ],
+     "z": 0
+    }
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "dust1",
+   "fx": [
+    {
+     "part": "dust1",
+     "at": "ground",
+     "off": [
+      -9,
+      0
+     ],
+     "z": 9
+    }
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "dust2",
+   "fx": [
+    {
+     "part": "dust2",
+     "at": "ground",
+     "off": [
+      -10,
+      0
+     ],
+     "z": 9
+    }
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "dust3",
+   "fx": [
+    {
+     "part": "dust3",
+     "at": "ground",
+     "off": [
+      -11,
+      0
+     ],
+     "z": 9
+    }
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "land_puff",
+   "fx": [
+    {
+     "part": "land_puff",
+     "at": "ground",
+     "off": [
+      0,
+      0
+     ],
+     "z": 9
+    }
+   ]
+  }
+ ]
+}

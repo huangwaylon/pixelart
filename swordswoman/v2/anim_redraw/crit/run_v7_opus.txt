@@ -1,0 +1,14 @@
+Restored session: Mon 26 Oct 2026 11:08:48 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 4/10**
+
+1. **Proportions jump between frames.** Frames 2, 3, 6 and 7 have a head and bow about 10–15% bigger than frames 0, 1, 4 and 5. In motion this reads as the sprite pulsing in size, not as bounce. Pick one head template, lock it to one pixel size, and get the bounce from vertical offset only.
+2. **The katana jumps around.** It sits hip-high and angled in frames 0 and 4, flat and centred in frames 1 and 5, then drops low and diagonal in 2, 3, 6 and 7. That changes its pivot and length every frame. Pin the hilt to the hip, keep the blade the same length, and let it trail by only 1–2 pixels of rotation lag.
+3. **The legs don't read as a stride.** In frames 1 and 5 the legs are bunched under the skirt, and in frames 3 and 7 they merge into one dark mass. There's no clear contact, down, passing and up sequence. The stride needs a real reach in frames 0 and 4, and the back leg should be a value step darker.
+4. **No real smears or FX.** The speed lines are the same three static dashes in every frame, so they just flicker in place. Scroll them leftward, vary their length, and drop one on the down frames. Add a 1-frame blade-glint smear on the fast frames (2 and 6).
+5. **Noise.** Frame 5 has a brown/tan blob at the hands and crotch area, which is either an orphan cluster or a mangled hilt. The fists in frames 2, 3, 6 and 7 are dark-red mitten blobs with no form. The hair outline thickens and thins between frames, which makes static areas shimmer.
+6. **Timing is fine on paper.** The 55 ms passing frames are a good idea. But because the poses change size, the snap reads as popping, not as impact. Add a 1-pixel squash on contact (frames 0 and 4), stretch on the up frames, and keep the feet pinned.
+7. **Silhouette at 1x:** the bow, head and red body read well. The legs and sword turn to mush. Fix items 1–3 before polishing anything else.
+
+Saving session...completed.

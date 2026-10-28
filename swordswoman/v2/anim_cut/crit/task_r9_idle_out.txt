@@ -1,0 +1,16 @@
+Restored session: Mon 26 Oct 2026 12:32:48 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt idle_SE and idle_SE_ns (actions_src/idle.py) as a bouncy loop: two passes of a six-beat breath (top/fall/low/hold/rise/rise2), with the blink on the second. qc reports no FAIL; I've built and reviewed it 5 times, but no critic has scored it yet.
+
+**What changed:**
+- Hips drop 2px and the torso squashes/stretches ±2px; the head travels 6px and leans 2px forward.
+- Bow (shape only, offset 0), hem, hair and sleeves (3px) lag one beat.
+- Blade only uses clean kat_09/10, one step per beat.
+- `_ns` gets relaxed hands.
+
+**New parts:** `parts/se/idle9_*`; test action is `actions/test_idle9.json`.
+
+**Weak spots:** blade swing is small (kat_11 lies along the shin), hair lag is subtle, and the hold pose almost hides the chest.
+
+Saving session...completed.

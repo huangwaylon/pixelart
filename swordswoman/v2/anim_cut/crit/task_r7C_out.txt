@@ -1,0 +1,16 @@
+Restored session: Mon 26 Oct 2026 12:00:29 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Dash and slash are rebuilt (`tools/build.py dash slash`): no QC FAILs, and I checked all three sheets (dash, dash_ns, slash) over 3 passes.
+
+**Dash:** the lunge legs are new, with a long far leg reaching back and the near knee forward, so legs now read under a new skirt whose hem flares back. Afterimages are two solid flat 2-tone silhouettes with outline only on the edge: dark hair over a coral body, then crimson further back, spaced further apart.
+
+**Slash:** impact uses new taller lunge legs (3px drop instead of 6) and a flared, stepped hem. Smears regenerated from the new grip geometry; the floating tail behind the head is gone.
+
+**Both:** one bow shape throughout, moved only by offsets.
+
+**New parts:** `parts/se/{slash9_legs_lunge,slash9_skirt_lunge,dash9_legs_lunge,dash9_skirt_lean}`, `parts/common/{fx_slash9_sm1-3,fx_dash9_ghostA-C}`. Scripts are in `work/r9/`.
+
+**Still weak:** in the burst the head hides most of the forward-tilted torso, and settle and rest look alike.
+
+Saving session...completed.

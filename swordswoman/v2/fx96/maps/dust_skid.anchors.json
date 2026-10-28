@@ -1,0 +1,45 @@
+{
+ "size": [
+  54,
+  22
+ ],
+ "facing": "E",
+ "attach": "feet",
+ "pivot": [
+  53,
+  21
+ ],
+ "ms": [
+  70,
+  70,
+  90
+ ],
+ "cell_offset": [
+  60,
+  124
+ ],
+ "cell": "128x128 cell, 96 px figure, feet pivot (64,124), faces SE; back boot x58-64 sole row 124 (back heel x58), front boot x66-74; ground_y = cell row 124; pivot = ground point",
+ "layer": "behind",
+ "mirror": "flip x: x -> 53-x, pivot -> [0,21]; re-run work/gen_dust2.py mirrored so the U rim stays top-left",
+ "ground_y": 21,
+ "trail": "left (behind, -x)",
+ "length_px": [
+  46,
+  54,
+  49
+ ],
+ "lift_px": [
+  [
+   0
+  ],
+  [
+   0
+  ],
+  [
+   0,
+   7,
+   12
+  ]
+ ],
+ "note": "r2: low streaky smear (merged ellipses + horizontal t streaks), tallest at the heel (pivot, cell 60,124), tapering/shrinking toward the back with a flat G base; f2 heel mass stays, tail breaks into lifted wisps. work/gen_dust2.py."
+}

@@ -1,0 +1,13 @@
+Restored session: Mon 26 Oct 2026 12:00:05 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt run_SE and jump_SE and their _ns versions. All four builds pass QC, and the blade tip stays above the floor in every frame.
+
+- **Run:** now 8 frames (contact, down, push, air ×2), with both feet off the ground on the air frames. New torso is tilted about 15° with a slanted obi, and the head sits 2px forward. The skirt hem flares with the stride, the head bobs 5px, and the blade changes half a step per frame. The sword arm swings back and forth but never crosses her body.
+- **Jump:** the blade now stays on her left side the whole jump, trailing behind her arm.
+
+**New parts:** legs_run8_{c,d,p,a}{1,2}, torso_run8(_sq), skirt_run8_{a,d,p,air}. Generator script: work/rj8/legs.py.
+
+**Weak spots:** legs still small at 1x, far arm hidden on two run frames, flat-ish blade on jump settle.
+
+Saving session...completed.

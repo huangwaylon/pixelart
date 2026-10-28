@@ -1,0 +1,31 @@
+{
+ "size": [
+  20,
+  7
+ ],
+ "facing": "E",
+ "attach": "feet",
+ "pivot": [
+  19,
+  6
+ ],
+ "ms": [
+  70,
+  70,
+  90
+ ],
+ "cell_offset": [
+  16,
+  37
+ ],
+ "cell": "40x40 cell of the 32 px figure (A_r3, feet ~20,37, back heel ~16,37, front toe ~24,36); ground_y = cell row 37 (shoe-sole row); pivot = ground point",
+ "layer": "behind",
+ "ground_y": 6,
+ "trail": "left (behind, -x)",
+ "length_px": [
+  16,
+  19,
+  18
+ ],
+ "note": "pivot = heel end of the trail (back heel, cell 16,37). Ground streak (3 rows g/u/g) + 2-3 puffs lifted 1-2 px, back puff curls highest; f2 streak breaks into two 4x3 ground puffs + 2 lifted puffs. flip_W: x->19-x, pivot->[0,6], cell_offset [24,37]."
+}

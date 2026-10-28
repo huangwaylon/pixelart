@@ -1,0 +1,13 @@
+{"name": "test_features",
+ "note": "rig feature test: squash/stretch, secondary chains, blade smear, limb trail",
+ "frames": [
+  {"base": "pose_sword_ready", "root": {"stretch": 0.82}, "bones": {"head": {"stretch": 0.9}}},
+  {"base": "pose_attack_slash_mid", "root": {"stretch": 1.12},
+   "bones": {"bow_loop.L": {"rot_add": [30, 0, 0]}, "bow_loop.R": {"rot_add": [30, 0, 0]},
+             "sleeve_cuff.L": {"rot_add": [0, 0, 35]}, "hair_lock.R": {"rot_add": [25, 0, 0]},
+             "bun": {"stretch": 1.2}},
+   "smears": [{"kind": "blade", "from": "prev", "steps": 10, "inner": 0.3},
+              {"kind": "trail", "from": "prev", "bone": "hand.L", "t": 1.0, "radius": 0.07}]},
+  {"base": "pose_attack_slash_mid", "root": {"loc": [0, -0.15, 0], "yaw_deg": 10},
+   "bones": {"spine": {"rot_arm": [0, 0, 1, -15]}}}
+ ]}

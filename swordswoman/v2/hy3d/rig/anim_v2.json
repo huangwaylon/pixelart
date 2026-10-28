@@ -1,0 +1,583 @@
+{
+ "_doc": "anim.json v2 (after motion crit m1) (round 4): frames per STYLE_GUIDE \u00a78 (ms). key = keys_parts.json key ('~' = mirrored legs/torso for the second half of a cycle), mix = [keyA, keyB, t], set = overrides ('+name' = additive). drag = forward drag for bow/skirt lag. Secondary (bow/bun/skirt 1-frame lag) is computed by anim_parts.py. absz=1: airborne, root height = lift (no auto-ground). sy = stretch along travel. smear=1: solid arc guide from previous blade to current.",
+ "_secondary": {
+  "bow_vel": 110,
+  "bow_sz": 1.4,
+  "skirt_vel": 120,
+  "skirt_len": 1.6,
+  "skirt_flare": 1.4,
+  "lag_gain": 1.35
+ },
+ "idle": {
+  "loop": true,
+  "frames": [
+   {
+    "name": "up",
+    "ms": 200,
+    "mix": [
+     "idle_up",
+     "idle_down",
+     0.0
+    ],
+    "set": {
+     "blade_side": 34
+    }
+   },
+   {
+    "name": "settle",
+    "ms": 150,
+    "mix": [
+     "idle_up",
+     "idle_down",
+     0.45
+    ],
+    "set": {
+     "+head": [
+      4,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "name": "down",
+    "ms": 150,
+    "mix": [
+     "idle_up",
+     "idle_down",
+     0.85
+    ],
+    "set": {
+     "+head": [
+      8,
+      0,
+      0
+     ],
+     "+blade": -4
+    }
+   },
+   {
+    "name": "down_hold",
+    "ms": 300,
+    "mix": [
+     "idle_up",
+     "idle_down",
+     1.0
+    ],
+    "set": {
+     "+head": [
+      6,
+      0,
+      0
+     ],
+     "+blade": -6
+    }
+   },
+   {
+    "name": "rise",
+    "ms": 150,
+    "mix": [
+     "idle_up",
+     "idle_down",
+     0.5
+    ],
+    "set": {
+     "+head": [
+      -2,
+      0,
+      0
+     ],
+     "+sq": -0.02
+    }
+   },
+   {
+    "name": "up2",
+    "ms": 150,
+    "mix": [
+     "idle_up",
+     "idle_down",
+     0.1
+    ],
+    "set": {
+     "+head": [
+      -4,
+      0,
+      0
+     ],
+     "+sq": -0.03,
+     "+blade": 4
+    }
+   }
+  ]
+ },
+ "walk": {
+  "loop": true,
+  "drag": 0.015,
+  "frames": [
+   {
+    "name": "contact_R",
+    "ms": 100,
+    "key": "walk_contact",
+    "set": {
+     "+blade": -8,
+     "+sq": 0.02
+    }
+   },
+   {
+    "name": "down_R",
+    "ms": 100,
+    "mix": [
+     "walk_contact",
+     "walk_passing",
+     0.3
+    ],
+    "set": {
+     "+sq": 0.09,
+     "lift": 0,
+     "+thigh.R": [
+      -8,
+      0,
+      0
+     ],
+     "+shin.R": [
+      18,
+      0,
+      0
+     ],
+     "+blade": -4
+    }
+   },
+   {
+    "name": "pass_R",
+    "ms": 100,
+    "key": "walk_passing",
+    "set": {
+     "lift": 0.04,
+     "+sq": -0.04,
+     "+blade": 6
+    }
+   },
+   {
+    "name": "contact_L",
+    "ms": 100,
+    "key": "~walk_contact",
+    "set": {
+     "+blade": 8,
+     "+sq": 0.02
+    }
+   },
+   {
+    "name": "down_L",
+    "ms": 100,
+    "mix": [
+     "~walk_contact",
+     "~walk_passing",
+     0.3
+    ],
+    "set": {
+     "+sq": 0.09,
+     "lift": 0,
+     "+thigh.L": [
+      -8,
+      0,
+      0
+     ],
+     "+shin.L": [
+      18,
+      0,
+      0
+     ],
+     "+blade": 4
+    }
+   },
+   {
+    "name": "pass_L",
+    "ms": 100,
+    "key": "~walk_passing",
+    "set": {
+     "lift": 0.04,
+     "+sq": -0.04,
+     "+blade": -6
+    }
+   }
+  ]
+ },
+ "run": {
+  "loop": true,
+  "drag": 0.04,
+  "frames": [
+   {
+    "name": "reach_R",
+    "ms": 80,
+    "key": "run_reach",
+    "set": {
+     "+lean": 12,
+     "+head": [
+      4,
+      0,
+      0
+     ],
+     "+blade": -8
+    }
+   },
+   {
+    "name": "push_R",
+    "ms": 70,
+    "key": "run_push",
+    "set": {
+     "+lean": 12,
+     "+head": [
+      4,
+      0,
+      0
+     ],
+     "+sq": 0.05,
+     "+blade": 0
+    }
+   },
+   {
+    "name": "air_R",
+    "ms": 70,
+    "key": "run_air",
+    "set": {
+     "+lean": 12,
+     "+head": [
+      4,
+      0,
+      0
+     ],
+     "absz": 1,
+     "lift": 0.16,
+     "+sq": -0.05,
+     "+thigh.L": [
+      20,
+      0,
+      0
+     ],
+     "+blade": 8
+    }
+   },
+   {
+    "name": "reach_L",
+    "ms": 80,
+    "key": "~run_reach",
+    "set": {
+     "+lean": 12,
+     "+head": [
+      4,
+      0,
+      0
+     ],
+     "+blade": 8
+    }
+   },
+   {
+    "name": "push_L",
+    "ms": 70,
+    "key": "~run_push",
+    "set": {
+     "+lean": 12,
+     "+head": [
+      4,
+      0,
+      0
+     ],
+     "+sq": 0.05
+    }
+   },
+   {
+    "name": "air_L",
+    "ms": 70,
+    "key": "~run_air",
+    "set": {
+     "+lean": 12,
+     "+head": [
+      4,
+      0,
+      0
+     ],
+     "absz": 1,
+     "lift": 0.16,
+     "+sq": -0.05,
+     "+thigh.R": [
+      20,
+      0,
+      0
+     ],
+     "+blade": -8
+    }
+   }
+  ]
+ },
+ "jump": {
+  "frames": [
+   {
+    "name": "antic",
+    "ms": 120,
+    "mix": [
+     "idle_up",
+     "jump_crouch",
+     0.55
+    ]
+   },
+   {
+    "name": "crouch",
+    "ms": 80,
+    "key": "jump_crouch",
+    "set": {
+     "+sq": 0.04
+    }
+   },
+   {
+    "name": "launch",
+    "ms": 50,
+    "key": "jump_launch",
+    "set": {
+     "sq": -0.27,
+     "upper_arm.R": [
+      -150,
+      30,
+      0
+     ],
+     "upper_arm.L": [
+      -150,
+      -30,
+      0
+     ],
+     "blade": 265,
+     "blade_side": 20,
+     "lift": 0.1
+    }
+   },
+   {
+    "name": "rise",
+    "ms": 80,
+    "mix": [
+     "jump_launch",
+     "jump_apex",
+     0.45
+    ],
+    "set": {
+     "absz": 1,
+     "lift": 0.46,
+     "sq": -0.1
+    }
+   },
+   {
+    "name": "apex",
+    "ms": 160,
+    "key": "jump_apex",
+    "set": {
+     "absz": 1,
+     "lift": 0.58,
+     "+head": [
+      -8,
+      0,
+      0
+     ],
+     "skirt_flare": 1.12
+    }
+   },
+   {
+    "name": "fall",
+    "ms": 80,
+    "key": "jump_fall",
+    "set": {
+     "absz": 1,
+     "lift": 0.36,
+     "sq": -0.08
+    }
+   },
+   {
+    "name": "land",
+    "ms": 100,
+    "key": "jump_land",
+    "set": {
+     "sq": 0.31,
+     "+head": [
+      12,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "name": "recover",
+    "ms": 120,
+    "mix": [
+     "jump_land",
+     "idle_up",
+     0.65
+    ],
+    "set": {
+     "blade": 95,
+     "blade_side": 30
+    }
+   }
+  ]
+ },
+ "dash": {
+  "frames": [
+   {
+    "name": "antic",
+    "ms": 100,
+    "key": "dash_crouch",
+    "set": {
+     "+lean": -12,
+     "+spine": [
+      -8,
+      0,
+      0
+     ],
+     "+sq": 0.05
+    }
+   },
+   {
+    "name": "smear1",
+    "ms": 40,
+    "key": "dash_burst",
+    "set": {
+     "+lean": 8,
+     "sy": 1.28,
+     "sq": -0.02,
+     "+fwd": 0.08
+    },
+    "drag": 0.1
+   },
+   {
+    "name": "smear2",
+    "ms": 40,
+    "key": "dash_burst",
+    "set": {
+     "sy": 1.1,
+     "+fwd": 0.2,
+     "+lean": 2
+    },
+    "drag": 0.14
+   },
+   {
+    "name": "skid",
+    "ms": 120,
+    "key": "dash_skid",
+    "set": {
+     "+spine": [
+      -8,
+      0,
+      0
+     ],
+     "+sq": 0.03
+    },
+    "drag": -0.06
+   },
+   {
+    "name": "recover",
+    "ms": 120,
+    "mix": [
+     "dash_skid",
+     "idle_up",
+     0.6
+    ],
+    "set": {
+     "blade": 40,
+     "blade_side": 40
+    }
+   }
+  ]
+ },
+ "slash": {
+  "frames": [
+   {
+    "name": "antic",
+    "ms": 160,
+    "mix": [
+     "idle_up",
+     "slash_coil",
+     0.45
+    ],
+    "set": {
+     "blade_side": 45
+    }
+   },
+   {
+    "name": "windup",
+    "ms": 80,
+    "key": "slash_coil",
+    "set": {
+     "+sq": 0.04,
+     "blade": 250,
+     "blade_side": 30,
+     "+spine": [
+      0,
+      0,
+      -15
+     ],
+     "upper_arm.R": [
+      -165,
+      45,
+      0
+     ]
+    }
+   },
+   {
+    "name": "smear_arc",
+    "ms": 40,
+    "mix": [
+     "slash_coil",
+     "slash_impact",
+     0.55
+    ],
+    "set": {
+     "blade": 330,
+     "blade_side": 10,
+     "+sq": -0.06,
+     "+lean": 10,
+     "+fwd": 0.05
+    },
+    "smear": 1,
+    "drag": 0.06
+   },
+   {
+    "name": "impact_hold",
+    "ms": 120,
+    "key": "slash_impact",
+    "set": {
+     "+lean": 5,
+     "+sq": 0.05
+    },
+    "smear": 1
+   },
+   {
+    "name": "follow",
+    "ms": 80,
+    "mix": [
+     "slash_impact",
+     "slash_recover",
+     0.5
+    ],
+    "set": {
+     "blade": 62,
+     "blade_side": 15,
+     "+lean": 3
+    }
+   },
+   {
+    "name": "recover",
+    "ms": 120,
+    "key": "slash_recover",
+    "set": {
+     "lift": 0.02,
+     "+sq": -0.03
+    }
+   },
+   {
+    "name": "settle",
+    "ms": 100,
+    "mix": [
+     "slash_recover",
+     "idle_up",
+     0.85
+    ]
+   }
+  ]
+ }
+}

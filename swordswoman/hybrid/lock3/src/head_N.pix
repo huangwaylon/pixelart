@@ -1,0 +1,30 @@
+# lock3 head N (Claude hand-typed). Loops joined through a 3x3 knot + band over the bun.
+size: 24 27
+grid:
+..KKK....KKKKKK....KKK..
+.KoooK..KhHHHhhK..KoooK.
+KooooKKKhHJJhhhhKKKooooK
+KoooooKhHJhhhhhhhKoooooK
+.KoooooKhhkkkhhhKoooooK.
+..KoooookkkkkkkoooooK...
+...KooooKhkkkhhKooooK...
+...KKKKKKhhkhhhKKKKKK...
+...KhhKKhhhhhhhhKKhhhK..
+..KHHHhhhhHHhhhhhhhhhhK.
+..KHJJHHHHHhhhhhhhhhhhK.
+.KHJHHHHHHhhhHhhhhhhhhK.
+.KHJHHHHhhhhHHhhhHhhhhK.
+.KHHHHhhhhhHHhhhhHhhhhK.
+.KHHHhhhhhHHhhhhHHhhhhK.
+.KHHhhhhhHHhhhhhHhhhhhK.
+.KHhhhhhhHhhhhhHHhhhHhK.
+.KHhhhhhHHhhhhhHhhhhHhK.
+.KhhhhhhHhhhhhHhhhhhHhK.
+..KhhhhHhhhhhhHhhhhhhK..
+..KhhhhHhhhhhhhhhhhhhK..
+...KhhhhhhhhhhhhhhhhK...
+...KhhhhhhhhhhhhhhhhK...
+....KhhhhhhhhhhhhhhK....
+....KhhKhhhhhhhhKhhK....
+....KhK.KKhhhhKK.KhK....
+.....K.....KK.....K.....

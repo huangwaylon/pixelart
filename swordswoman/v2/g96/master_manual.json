@@ -1,0 +1,33 @@
+{
+ "_note": "manual master sections for the POLISHED masters v2/m96/masters/EC0_<V>_96.txt (final, 2026-10-27 recal; old reads for rig H in master_manual_H.json). Rows of the 128 cell (0 = top): eye = vertical centre of the eye drawing (lash row .. iris bottom row incl., h dome cap excluded), chin = first row below the face skin (neck shadow row), knee = S/SE first row of the sock knee highlight 'd', E knee joint between the back notch (rows 102-103) and the front bump (104-105) = 103 (none visible in NE/N), bowcut = red pixels above this row are the hair bow/ribbons (excluded with the knot from the crown). Red pixels in rows >= 93 = sock cuff band -> sock class (meas96.master). crown (auto, rig and master alike) = first row whose silhouette run outside the dilated bow/knot is >= 50% of the head width.",
+ "S": {
+  "eye": 52.0,
+  "chin": 61,
+  "knee": 103,
+  "bowcut": 50
+ },
+ "SE": {
+  "eye": 53.0,
+  "chin": 61,
+  "knee": 101,
+  "bowcut": 51
+ },
+ "E": {
+  "eye": 52.0,
+  "chin": 61,
+  "knee": 103,
+  "bowcut": 63
+ },
+ "NE": {
+  "eye": null,
+  "chin": null,
+  "knee": null,
+  "bowcut": 64
+ },
+ "N": {
+  "eye": null,
+  "chin": null,
+  "knee": null,
+  "bowcut": 64
+ }
+}

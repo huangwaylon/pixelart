@@ -1,0 +1,28 @@
+{
+ "act": "walk",
+ "dir": "SE",
+ "cell": [
+  64,
+  64
+ ],
+ "pivot": [
+  32,
+  61
+ ],
+ "frames": [
+  {
+   "i": 0,
+   "key": "walk_contact",
+   "ms": 120,
+   "air": false,
+   "src": "../hy3d/keys_parts/walk_SE/f00_matid.png"
+  },
+  {
+   "i": 1,
+   "key": "walk_passing",
+   "ms": 120,
+   "air": false,
+   "src": "../hy3d/keys_parts/walk_SE/f01_matid.png"
+  }
+ ]
+}

@@ -1,0 +1,4 @@
+**Score: 5/10.** The poses are readable at 1x and the release frame has some energy (the smear arc and deep lunge work), but the orb's path doesn't make sense and the cocked-arm moment is weak. It looks more like a baseball pitch than a trainer's "Go!" throw.
+
+1. **Orb still in hand after release (follow, follow2, recover):** a red-white orb is still at her hip in all three frames, so it reads as if she never let go. Hide the hand-held orb from release onward, and open her throwing hand or point it at the target.
+2. **Windup/stride doesn't load the throw:** the orb sits low by her hip and her elbow isn't raised. Lift the orb above and behind her head with the elbow high, and lean her torso back slightly so the snap into release reads (that's the trainer-throw silhouette). In the mid-flight frame the orb also overlaps her feet; move it 10+ px further down-screen so it's clear of her body.

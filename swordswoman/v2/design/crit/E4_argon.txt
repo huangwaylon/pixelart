@@ -1,0 +1,14 @@
+**Scores**
+* **A Proportions/Gracefulness (8.5/10):** Hits the 3.42-head and waist/shoulder targets dead-on, completely solving the "fat/awkward" issue. Slight deduction: calves/ankles and forearms lack the dramatic Sugimori taper (thin wrists/ankles flaring into boots/hands).
+* **B Face (7.5/10):** Clean, appealing, and low-set, but reads more generic modern anime than Sugimori. Eyes are too wide/horizontal (Sugimori uses taller, more vertical/triangular irises), jaw is a bit wide, and the furrowed brows + smirk read slightly smug rather than a true neutral.
+* **C Stance (7.0/10):** Orthos are clean. However, the `hero` pose is nearly identical to `front` (just one arm bent)—it lacks the dynamic torso twist, hip tilt, and asymmetric leg weight of the Gen 4/5 battle refs.
+* **D View Consistency (8.0/10):** Very solid height and volume lock. Minor errors: kimono wrap reverses in `iso_SE` and `iso_E` (right-over-left; kimono must always be left-over-right), and bow ribbons sprout from the bottom in `iso_N`.
+* **E 44–48px Sprite Guide Suitability (8.5/10):** Strong, chunky color blocks and a clear silhouette. Sword/scabbard is missing, though, and thin sleeve/hem lines will vanish at 48px.
+
+**Prioritised Fixes**
+1. **Fix kimono wrap:** Correct `iso_SE` and `iso_E` so the viewer's left lapel overlaps the right (left-over-right is mandatory for living wearers).
+2. **Sugimori-fy the face:** Narrow the lower jaw, make the eyes taller/more vertical with larger pupils, and relax the inner eyebrows for a true neutral expression.
+3. **Taper the limbs:** Pinch the wrists and ankles narrower so the forearms and calves flow more gracefully into the hands and boots.
+4. **Push the `hero` pose:** Add a contrapposto hip tilt, wider A-stance, and clear silhouette asymmetry to match Hilda/Dawn's battle energy.
+5. **Add the weapon:** Include the sword/scabbard on the hip/obi across all views so it can be properly budgeted into the 48px sprite.
+6. **Fix back bow geometry:** Make the `iso_N` bow loops and tails match the clean knot structure of `back`.

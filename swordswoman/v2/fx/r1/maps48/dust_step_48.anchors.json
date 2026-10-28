@@ -1,0 +1,21 @@
+{
+ "size": [
+  14,
+  7
+ ],
+ "facing": "E",
+ "attach": "feet",
+ "pivot": [
+  11,
+  6
+ ],
+ "ground_y": 6,
+ "heel_x": 6,
+ "layer": "over_character",
+ "note": "pivot = ground under feet (cell 32,62); puffs centred just behind the back heel (cell x~27); flip_W: x->13-x",
+ "ms": [
+  80,
+  100,
+  120
+ ]
+}

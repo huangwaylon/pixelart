@@ -1,0 +1,13 @@
+SCORE 5/10
+
+1. **Inconsistent leg mechanics (f2-3 vs f6-7):** f2-3 show a proper high passing lift and wide stride, while f6-7 show tiny, stiff, unbent shuffling legs. The two halves of the walk cycle don't match at all.
+2. **Dead, stiff head/hair/bow (f0-7):** The giant chibi head and red bow are completely frozen and copy-pasted across all 8 frames with zero overlap, secondary bounce, or hair sway.
+3. **Sword angle & length popping (f0-1 vs f2-3):** The katana shifts abruptly from a steep, long 2:1/1:1 jaggy diagonal in f0-1 to a shorter, flatter 2:1 line in f2-3 instead of smoothly bobbing in an arc.
+4. **Chest/collar pixel shimmer (f0-7):** The skin-tone chest cutout changes size and shape erratically every frame (wide in f0, tiny in f1, shifting right in f3), creating severe pixel crawl.
+5. **Muddy torso & arm silhouettes (f1, f3, f5, f6):** The front and back arms lack clear swing arcs, merging into an unreadable red/black blob with the kimono sleeves and obi.
+6. **Stiff, robotic timing (f0-7):** Nearly uniform frame durations (90–110ms) make the bounce feel floaty and mechanical rather than snappy and energetic.
+
+**Top 3 Fixes:**
+1. **Unify leg strides (f5-7):** Rebuild the second step (f5-7) to mirror the clear passing knee lift (like f2) and wide contact stride (like f3/f0), ensuring the grounded foot slides back at a constant pixel speed.
+2. **Add secondary bounce to bow/hair (f1, f2, f5, f6):** Squash/flare the bow ribbons down by 1px on the low impact frames (f1, f5) and trail them downward on the rising high points (f3, f7).
+3. **Clean the sword & torso (f0-7):** Lock the katana to a consistent 2:1 pixel angle (bobbing vertically 1-2px with the hand), stabilize the chest skin pixels, and swing the front hand clearly across the silhouette.

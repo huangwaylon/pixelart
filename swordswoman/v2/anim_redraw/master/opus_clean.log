@@ -1,0 +1,9 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I've redrawn the whole sprite to Level D2 and saved it as `master/SE_clean_grid.txt` (128 lines × 128 chars) and `master/SE_clean.png`; size, 3/4 facing and position match the original.
+
+1. **Hair:** flat H with three h shadow shapes: under the bun/knot, the back of the head, and under the bangs beside the face. There is one 3px j sheen. The bangs are blunt with three skin slits between clumps, and nothing is speckled.
+2. **Face:** both eyes sit on the same rows (66–70), each with a # lash line, i on top, I below and one w glint. The near eye is 4 wide and the far one 3 wide for the 3/4 view. The mouth is 2px of 1, there's no blush, and the transparent holes in the old face are filled.
+3. **Bow and outline:** the bow is two flat E loops plus an R knot and R folds next to the knot. The outline is 1px and continuous with even step lengths; the remaining outline L-corners (lint counts 55) are only where internal lines meet the outline.
+4. **Body:** simple V neck, sleeves E with one R plane each (light from the left), a flat d obi with a D edge, a clean curved hem, legs 2 with a 1 shadow band, and d/D boots. The stray I near the boot is gone.
+5. **Checks:** the katana is fully deleted and her right hand is now a small closed mitten fist. Lint shows no off-palette colours, and its only two orphan flags are the intended eye glints. I reviewed it three times with zooms; the last pass caught and fixed a transparent gap under the right bow loop (row 39). The builder script is `/tmp/sebuild/build.py` if you want to tweak it.

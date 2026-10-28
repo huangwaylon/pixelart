@@ -1,0 +1,20 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 6/10.** The skull shape is a clear improvement on the old helmet head. Identity has slipped, mainly the eyes and the E-view bow.
+
+1. **Skull roundness (7/10):** The crown is domed and the hair bulges past the temples. The front chin is small and soft. But the SE mass runs too far back-left, so it reads as a sideways mushroom or ball and the 3/4 turn starts to look like profile. The lower-left of the hair is cut nearly flat above the neck, which gives a square back-bottom.
+2. **Eyes (5/10):** The eyes are low but too small. They're about 3px of blue with no white highlight, against the old master's big, glossy, highlighted eyes. The face is too small inside the hair mass, so the head reads as "hair blob with a face", not chibi.
+3. **Bangs, bob, bun:** The blunt bangs shelf is there. The bob on the face side (right) is a thin strand that stops at the chin; the ref drops it below the jaw to frame the face. The bun shows in all 9 tiles. Good.
+4. **Bow:** On SE the bow is strong, with clear left/right loops and a knot. On E it collapses into a red V or flame shape and doesn't read as a bow. Its shape also changes between E variants; squash is different again.
+5. **E profile:** The back-of-skull bulge is good. The eye reads as a "ʒ" squiggle (neutral and lookup), and the brow plus eye in lean looks like a "?". Use the ref's simple almond with a lash line.
+6. **Consistency:** SE blink seems to be missing the far eye; check that both eyes close. SE squash flattens the bow band and the crown together, so it reads as a flat top. Ease the crown and keep the bow loops up.
+7. **Cleanliness:** There are uneven stair-steps (1-2-1-3) on the lower-left hair outline in SE lean, neutral and lookup. There are doubled dark outline pixels where the bun meets the skull, and lone blush pixels on the cheek edges. At 1x the sheet is readable, but the face disappears.
+
+**Fixes, highest priority first:**
+- Bring back the big highlighted eyes from the old master.
+- Pull the SE back-mass in by 2–3px and round off its bottom.
+- Lengthen the bob on the face side.
+- Redraw the E bow as two loops, the same in every E variant.
+- Clean up the stair-steps in the outlines.
+
+Saving session...completed.

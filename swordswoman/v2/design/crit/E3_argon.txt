@@ -1,0 +1,20 @@
+**Critique:**
+*   **Graceful/Trainer Read:** Much improved, but still misses the Gen 4/5 battle-sprite mark. Your references (Lyra, Dawn, Hilda) are 4.5–5.5 heads tall with dynamic S-curves and chunky footwear. At 3.14 heads, she reads as a cute overworld chibi/toddler, not an agile battle trainer. The "hero" pose is just the front turnaround with one bent arm—needs a full contrapposto battle stance.
+*   **Proportions:** Nothing is fat, and the waist/hem flare is clean. However, the head is still too wide/heavy for a graceful read, and the boots are too small and dainty (Gen 4/5 uses oversized shoes to anchor spindly legs). In the pixel probes, her legs become 1px sticks.
+*   **Face:** Sharper, but still generic anime. Sugimori eyes are taller, narrower triangles/pills with prominent white sclera and bold upper lash lines. 
+*   **Views & Iso:** `iso_SE` and `iso_NE` successfully show the 30° downward camera tilt (curved obi, visible top of head). However, `iso_S`, `iso_E`, and `iso_N` look nearly identical to the flat ortho views—only the feet shifted. 
+*   **Pixels:** The auto-outline devours the skinny legs, turning them into black/flesh noise. The dark-grey obi and dark-brown hair merge with the black outlines.
+
+**Scores:**
+*   **A (Graceful/Trainer read):** 6/10
+*   **B (Proportions):** 6.5/10
+*   **C (Face):** 6/10
+*   **D (View consistency):** 7/10
+*   **E (Pixel readability):** 5/10
+
+**Top 5 Concrete Fixes:**
+1.  **Scale Head Down ~15–20%:** Push toward 3.8–4.0 heads tall so she reads as a pre-teen trainer rather than a chibi doll.
+2.  **True Iso Tilt on S/E/N:** Tilt the head forward (show more crown/bow, less neck) and curve the obi/hem downward on `iso_S`, `iso_E`, and `iso_N` to match `iso_SE`.
+3.  **Dynamic Hero Pose:** Redraw `hero` from scratch—twist torso, angle hips, widen stance, and add a Pokéball or sweeping arm gesture (like Dawn/Rosa).
+4.  **Chunkier Boots & Socks:** Enlarge boots by 25% and add white/contrasting socks or cuffs to break up the leg line and prevent 1px stick-legs.
+5.  **Pixel Palette Contrast & Sel-Out:** Lighten the obi (try gold, white, or bright teal) so it pops at 40px, and instruct the pixel artist to use dark-red/brown selective outlining (sel-out) on the legs instead of pure black.

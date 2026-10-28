@@ -1,0 +1,17 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+OVERALL: 5
+
+- Natural: 5
+- Whole-body: 5
+- Fluid: 5
+- Appealing: 5
+- Secondary motion convincing: 4
+- Readable at 1x: 6
+
+The body poses are almost the same as the OLD row. The impact still reads as a rigid tilt, not a whip through the spine. The settle frame never gets back to neutral: it is still 7.5 px back on x, with a 15.7° nod and 10.8° tilt, so she looks stuck in a droop.
+
+Top 3 fixes:
+1. **Hit, hair/hem/bow:** The springs barely move here (hair 2.4°, hem about 1°, bow 6°). Fling the side locks and back hair 15–20° forward, toward the attacker, and lift the hem 8–10°. The overlap should start on the hit frame, not the stagger frame.
+2. **Recoil, head and chest:** The head nod drops from 15.9° to 4.3°, so the head stops instead of carrying through. Push the head back 10–12° past the chest and arch the chest about 8° more. Hold the chin up until stagger.
+3. **E view, ribbon tails:** In every frame they stick out as a stiff straight spike, like an antenna. Make them hang down by gravity, make them bend like rope, and lag them 2–3 px behind the head. Also ease the settle nod and tilt down under 5°.

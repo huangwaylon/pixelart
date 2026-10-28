@@ -1,0 +1,53 @@
+Here is the harsh animation critique for Round 5. While timing and ground shadows have improved, cutout stiffness, rigid weapon attachment, and weak smear arcs are holding these back from feeling fluid and energetic.
+
+### **IDLE**
+1. **Frames 0–11 (Katana + Right Hand):** The katana blade is completely welded to the torso/hand angle and translates vertically 1:1 with the body without a single pixel of rotational lag. In **Frames 2, 3, 8, and 9 (`low`/`settle`)**, as the body squashes down, the tip of the sword (bottom-left region, around `x:4–14, y:44–56`) hits an invisible floor level and just shifts down with the torso. Rotate the blade 1–2px flatter (tip up by +2px in Y) on `low`/`settle` frames to show wrist relaxation and follow-through.
+2. **Frames 1–4 & 7–10 (Hair Side-Locks & Back Hair):** The dark brown hair mass is a completely static block that moves vertically as a rigid cutout with the head. On **Frames 2 & 8 (`low`)**, flare the bottom-left hair pixels (`x:14–18, y:32–36`) outward to the left by 1px and compress the vertical height by 1px; on **Frames 1 & 7 (`sink`)**, keep the hair locks 1px higher to show drag.
+3. **Frame 3 (`settle`, 90ms) vs Frame 2 (`low`, 200ms):** The pose change between Frame 2 and Frame 3 is almost imperceptible (only the top bow tips drop by 1px), making the 290ms combined hold feel like a dead freeze at the bottom of the breathing cycle. Drop the head 1px lower relative to the shoulders in **Frame 3** (overlapping head settle) and reduce **Frame 2** from `200ms` to `140ms`.
+
+SCORE idle: 7
+
+---
+
+### **WALK**
+1. **Frames 0–7 (Katana Blade):** Throughout the entire 8-frame cycle, the katana is locked at the exact same 45° diagonal angle. Even when the right arm swings slightly, the blade looks like a static prop glued to the sprite. Add rotational overlap: on **Frames 1 & 5 (`down`)**, lag the blade tip upward by 2–3px; on **Frames 2 & 6 (`pass`)**, dip the tip down by 2px as the weight settles.
+2. **Frames 0, 3, 4, 7 (Skirt Bottom Hem):** On the wide stride frames (`contact` and `up`), the bottom of the red dress (`y:42–46`) is a dead-flat horizontal line across 16+ pixels, making her torso look like a wooden cylinder sitting on stick legs. Curve the front (right) edge of the hem upward by 1–2px over the raised knee in **Frames 3 & 7 (`up`)**, and flare the back-left corner out by 1–2px on **Frames 0 & 4 (`contact`)**.
+3. **Frames 0–3 vs 4–7 (Head & Torso Facing):** There is zero counter-rotation between the shoulders/belt and the hips between the two steps. On **Frames 4 & 5 (`contact2`/`down2`)**, when the left (front) leg is forward and right (back) arm is forward, shift the belt knot/V-neck collar 1px to the right (`+1px X`) and show 1px more of the back shoulder to sell 3/4 torso twist.
+
+SCORE walk: 7
+
+---
+
+### **RUN**
+1. **Frames 0–5 (Head + Torso + Katana Silhouette):** The upper body is a completely frozen statue across all 6 frames—only translating 1–2px in Y while the legs cycle underneath. The katana blade (`x:4–22, y:38–56`), head, and left fist do not animate or rotate at all relative to the torso. Pump the front (left) fist up +2px in Y and in +1px in X on **Frames 1 & 4 (`push`)**, and swing the katana angle back/up by 3–4px at the tip on **Frames 2 & 5 (`air`)**.
+2. **Frames 0–5 (Uniform Timing):** Every single frame is set to a flat `60ms`, making the run feel mechanical and weightless. A run needs punchy push-offs and slight hang time: change **Frames 1 & 4 (`push`)** to `45ms` and **Frames 2 & 5 (`air`)** to `75ms`.
+3. **Frames 0 & 3 (`contact` / `contact2`, Skirt & Bow):** On impact with the ground, there is zero squash on the torso/dress. Compress the torso/skirt vertically by 1px and flare the skirt hem outward by +1px on both left and right sides in **Frames 0 & 3**, and snap the bow tails downward by 2px on **Frames 1 & 4 (`push`)** for delayed whip.
+
+SCORE run: 6
+
+---
+
+### **JUMP**
+1. **Frame 3 (`rise`, Smear Arc):** The white motion trail (`x:22–46, y:8–28`) is a thin, uniform 1–2px grey/white noodle loop that arches *over the top of her head* from behind while the sword itself is held vertically on the far left (`x:22, y:12–28`). It looks like a jump-rope, not a sword swing smear, because the sword came from the bottom-right in Frame 2 (`x:32–46, y:20–32`). Delete the overhead loop and draw a proper tapering crescent sweeping from the **bottom-right (`x:44, y:26`) up across the chest to the top-left (`x:22, y:12`)**.
+2. **Frames 9, 10, 11 (`rebound` → `settle` → `rest`, Katana Hand Swap):** In **Frames 7–10**, she holds the sword behind/beside her on the left side of the sprite (`x:10–26, y:40–58`), then in **Frame 11 (`rest`)** it teleports across her body to point down-right (`x:34–48, y:44–58`) with no transition frame. Use **Frame 10 (`settle`)** as an in-between where the blade crosses vertically/diagonally in front of the skirt (`x:28–36`) so it doesn't pop.
+3. **Frames 4 & 5 (`apex` 120ms, `hang` 120ms):** These two frames hold at the top of the jump for 240ms combined, and the character pose + Y-position are 99% identical (only the bow tips shift 1px). Drop the whole character by **+2px in Y on Frame 5 (`hang`)**, tilt the sword tip up 2px higher to lag behind the downward start, and flare the skirt hem up by 1px as air resistance catches it.
+
+SCORE jump: 6
+
+---
+
+### **DASH**
+1. **Frames 1 & 2 (`burst` / `burst2`, Afterimage Clones):** The red silhouette trails behind her (`x:10–30, y:10–48`) are fully opaque, dark-outlined solid red copies with 3 horizontal white pixel sticks glued to the left edge. Because they share the exact same dark outline color (`#201520`) as the main character, the silhouette merges into a giant red blob. Remove the dark outlines from the afterimages, dither or drop their value/saturation toward the background grey, and integrate the speed lines into the trail silhouette.
+2. **Frames 1 & 2 (`burst` / `burst2`, Torso Lean):** During a high-speed burst (`40ms`/`50ms`), her head and torso are completely upright (90° vertical), looking like a normal slow jog pose with red clones pasted behind her. Shear/tilt the torso and head forward by **+2 to +3px to the right** relative to the hips, flatten the bow completely horizontally (`y:12–15`), and stretch the horizontal stride width by 2–3px.
+3. **Frames 5 & 6 (`settle` → `rest`, Katana Pop):** Just like in the jump, the sword is pointing down-left behind her in **Frame 5 (`x:22–28, y:44–56`)** and teleports across her legs to point down-right in **Frame 6 (`x:38–46, y:44–58`)**. Swing the blade forward during **Frame 4 (`brake`)** and **Frame 5 (`settle`)** as a counterbalance to her skid so it lands naturally in front by Frame 6.
+
+SCORE dash: 6
+
+---
+
+### **SLASH**
+1. **Frame 5 (`SMEAR`, 40ms):** The slash smear (`x:10–52, y:10–38`) has two major issues: first, the trailing tail at the top-left (`x:10–26, y:10–14`) is a disconnected, thin 2px grey ribbon floating in the air; second, the swing stops dead at a horizontal position (`y:36`, pointing straight right) while **Frame 6 (`impact`)** has the blade down at the bottom-right (`x:44–56, y:36–52`). Extend the thick white crescent smear all the way down to the impact point (`x:52, y:48`) in **Frame 5**, and taper the top-left tail cleanly into a 1px point behind her head.
+2. **Frames 0–4 (Windup Torso Twist):** From `ready` to `coil`, she lifts her right arm up and back (`x:14, y:12–28` in Frame 4), while her left arm points straight right (`x:42, y:28`), stretching her chest wide open—yet her torso/dress/collar stay locked in the exact same 3/4 view with zero rotation. On **Frames 3 & 4 (`wind`/`coil`)**, shift the V-neck collar and belt center 2px to the left (`-2px X`) and pull the left hand back toward her chest (`x:36, y:28`) to coil the shoulders before unleashing the swing in Frame 5.
+3. **Frames 5, 6, 7 (`SMEAR` → `impact` → `hitstop`, Lower Body Lunge):** During the actual strike, her feet (`x:20–36, y:40–46`) barely move and her torso stays upright. On **Frame 5 (`SMEAR`) and Frame 6 (`impact`)**, drop her hip/pelvis line down by **+2px in Y** (deep lunge stance), slide the front (right-side) foot forward by **+3px in X (`x:39`)**, and shift her head/torso +2px to the right on **Frame 6** to put body weight behind the blade.
+
+SCORE slash: 6

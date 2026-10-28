@@ -1,0 +1,17 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 4/10.** The cycle doesn't hold together yet as a run.
+
+1. **Legs may not alternate.** F0 and F4 are nearly the same pose, and so are F1 and F5. If the near and far legs really don't swap, it reads as a 4-frame skip played twice, not an 8-frame run. Check it, and mirror the leg layering on F4–F7 if it's a duplicate.
+2. **F0 and F4 aren't run contacts.** They're low, wide fencing lunges with both feet planted flat. The bounce becomes a jolt from crouch to leap. Raise the hips about 3px, put the lead heel down, and keep the back foot pushing off.
+3. **Body size changes frame to frame.** The F3/F7 torso is wider and more upright, and the head-to-body ratio drifts by about 2–3px. That's a Gemini consistency problem: redraw the torsos onto one height and width template.
+4. **The character slides inside the cell.** The body's center moves about 4–6px sideways (F3 and F7 sit right, F0 and F4 sit left). Pin the body's center on x and let only y bob.
+5. **The katana floats.** The grip doesn't line up with the hand in F2, F3, F6 and F7, and the blade angle stays fixed while the arm swings. Attach it to the hand's pivot point and rotate it about 5–10° with the arm.
+6. **The FX are noise.** At 1x, the dust is a single tiny "+" and the speed lines are 3px dashes, so both read as stray pixels. Use a 2–3 frame puff that grows and fades, and longer tapered lines only on the push-off frames.
+7. **The timing is backwards.** The passing frames (F2, F6) hold longest at 80ms, but they should be the quickest. Put 80–90ms on contact and down, and 50–60ms on passing.
+8. **The arms don't pump.** The front fist barely moves. Push it forward and back more and add a smear on F1 and F5.
+9. **Cleanup:** the bow's pixels flicker between frames even though the head is stamped, the dress shading changes from frame to frame, and the feet have jagged single-pixel stair-steps.
+
+The head and the palette are solid. Fix 1–4 before polishing anything else.
+
+Saving session...completed.

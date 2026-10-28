@@ -1,0 +1,8 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+a=6, b=6, c=7, d=6
+
+I judged from the thumbnails only, so single-pixel calls are approximate.
+
+1. **Flat tops.** In S and SE, the top lash reads as a flat dark bar with square ends rather than a ⌒. Move the inner-corner end pixel down one row, and put the 2-px peak right over the iris. Surprised and blink_half need the same step-down at both ends.
+2. **Wing and stray pixels.** The mid-tone pixels above the outer corner look loose, like light dithering. Replace them with one solid diagonal wing pixel that touches the lash end. In SE and E, that wing merges into the dark side hair. End it one row lower, or leave a 1-px skin gap so it reads as a lash.

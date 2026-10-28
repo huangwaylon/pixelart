@@ -1,0 +1,35 @@
+**Summary Scores (1-10):**
+* **Readable at 1x:** 5/10 | **Intentionally designed:** 5/10 | **Pokemon-like:** 4/10 | **Carries personality:** 5/10 | **Overall:** 5/10
+
+**(1) Expressions (Score & 1x Pixel Problem):**
+* **Neutral (5/10):** 2x2 eyes lack verticality; 1px white highlight + 2px blue reads sleepy/flat, not confident.
+* **Determine (6/10):** Slanted brow works, but 1px dark mouth is too timid.
+* **Shout (4/10):** Red mouth interior touches chin outline, reading as a sticking-out tongue or bloody chin.
+* **Effort (3/10):** Half-lidded eyes + white/pink mouth reads sleepy/drunk, not physical strain.
+* **Joy (7/10):** `^ ^` eyes work, but wide red mouth looks like lipstick.
+* **Smile (5/10):** Identical to neutral at 1x; 1px mouth shift + blush vanishes.
+* **Surprised (6/10):** Vertical 1x2 dark pupils work, but lacks an 'O' mouth (1px dot is too weak).
+* **Pain (7/10):** `> <` eyes read well; wavy mouth is noisy (needs 4px grit-teeth box).
+* **Blink_hal (4/10):** Reads identically to Effort/Smile.
+* **Blink_clo (7/10):** Clean, but sits 1px too low.
+* **Squash (6/10):** Good brow compression, but mouth is muddy.
+
+**(2) Design & Pokemon-likeness:**
+Fails Gen 4/5 grammar. Look at Rosa/Dawn/Lyra refs: eyes are **3-4px tall** (vertical columns of highlight + iris + dark base) with clean 1-2px mouths. Yours are horizontal 2x2 blocks cramped under heavy bangs, leaving the face bottom-heavy with oversized mouths.
+
+**(3) Personality:**
+Reads stoic/sleepy rather than spirited. Flat horizontal upper lashes kill her energy.
+
+**(4) Views:**
+* **S (5/10):** Symmetric 3px mouth + 2px chin outline looks blocky/masculine.
+* **SE (6/10):** Best angle, but far eye merges into hair outline. (Note: `C_r4 SE` has much better cheek/face volume).
+* **E (5/10):** Profile eye sits 1px too far back; nose/mouth silhouette is flat.
+* **NE/N (7/10):** Clean, though NE misses a 1px cheek/lash protrusion.
+
+**(5) Top 6 Concrete Pixel Fixes:**
+1. **Raise bangs 1px & make eyes 3px tall (Neutral/Smile/Surprised):** Top row = dark lash + 1px white glint; middle = 1x2 iris; bottom = skin/blush.
+2. **Shout mouth:** Change to a 3w x 3h `D`-shape: 1px dark top row, 2px pink tongue bottom, keeping 1px skin above the chin outline.
+3. **Effort mouth:** Replace pink with a 3w x 1h white clenched-teeth bar flanked by 1px dark corners.
+4. **Confident Neutral/Smile:** Shift mouth 1px toward the camera cheek for a crooked smirk; add 1px outer-lash wing.
+5. **Surprised mouth:** Make a 2w x 2h dark hollow square.
+6. **E Profile eye:** Move eye 1px right (closer to nose bridge) with a 2px dark lash overhang.

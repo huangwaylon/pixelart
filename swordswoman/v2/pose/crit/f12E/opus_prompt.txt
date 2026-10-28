@@ -1,0 +1,17 @@
+You are a senior game animator directing POSES for an isometric pixel-art action game (Pokemon Mystery Dungeon / Hyper Light Drifter / CrossCode scale). Character: chibi swordswoman (big round dark bob + red bow, red short kimono dress, katana in her RIGHT hand). Final sprites are ~48 px tall in a 64x64 cell, viewed ONLY from fixed isometric cameras (orthographic, 30 deg elevation). These images are flat material-ID renders of a 3D rig posed for ONE camera: the poses are the hidden guide for hand-drawn pixel art, so judge POSE, SILHOUETTE and MOTION, not rendering/shading/face detail. Each sheet: top row = 1x matid + 1x silhouette at TRUE game size; middle = 3x matid; bottom = 3x silhouette. Frame names + ms are labelled.
+Goals set by the user: poses must be easily readable at 1x, energetic and dynamic, authored for this exact camera (strides and swing arcs laid out across the screen, torso/head turned toward the camera, limbs spread for negative space, blade fully visible and never crossing the torso/head). Strong line of action, asymmetry, squash/stretch, anticipation opposite the action, overshoot/follow-through, airborne run frames, low dash lunge, full-body twist + wide-arc slash, deep crouch + full stretch jump.
+Calibrate "energetic" per action: an idle is a calm breathing loop (PMD uses a 1-3 px bob; judge whether it is alive, weighted and readable, not whether it is explosive); a walk is a relaxed 6-frame stride (judge clear contact/pass alternation, weight and bob). Judge the 1x row by what you can actually resolve; do not guess pixel distances you cannot measure.
+
+VIEW: E (side view, she faces screen RIGHT; sword arm near side). Round 17. Sheets (in order): idle, walk, run, jump, dash, slash, overhead slash, hurt. Last round averaged ~7 per action; this round applies round-16 pushes: overhead antic blade low behind (no forward guard), raise hands further back behind the head (E: blade tilted back off the head, chest arched), follow tip lower; walk contact2 differs from contact (front foot near vs far), pass blade tip up; hurt recoil head up/back with the free arm up-right; E idle back foot under the hips, E walk down strides shorter.
+For EACH action give: (a) score 0-10 "readable + energetic at 1x" (be strict: 7 = shippable guide, 9 = Street Fighter III level), (b) the weakest frame by index and why in silhouette terms, (c) the 1-2 most important concrete pose pushes in SCREEN terms (px at 1x, directions). Under 400 words total. End with one line per action: "ACTION: score".
+
+Images to Read (in this order):
+/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/pose/out_f12/idle_E/crit.png
+/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/pose/out_f12/walk_E/crit.png
+/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/pose/out_f12/run_E/crit.png
+/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/pose/out_f12/jump_E/crit.png
+/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/pose/out_f12/dash_E/crit.png
+/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/pose/out_f12/slash_E/crit.png
+/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/pose/out_f12/overhead_E/crit.png
+/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/pose/out_f12/hurt_E/crit.png
+Do not run any commands other than Read on these images; do not write files.

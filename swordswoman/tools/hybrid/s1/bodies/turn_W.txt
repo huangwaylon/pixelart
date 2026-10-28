@@ -1,0 +1,14 @@
+# turn_W = turn_E body mirrored (W/NW/SW head stamps are mirrors of E/NE/SE), re-lit top-left by autoshade.
+# W shows her LEFT side, so the sword moves to the NEAR (front) hand: katana_down in front of the cuff.
+mirror_cx2: 123
+from: turn_E
+mirror
+fx: none
+kat: katana_down 56 88
+top: 58 91
+_KKK_
+KsssK
+KmssK
+_KKK_
+opb: curve 66,80 72,85 69,91 P
+opb: curve 69,91 67,95 72,98 p

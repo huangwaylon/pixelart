@@ -1,0 +1,14 @@
+# frame 0 40ms
+......y......
+.y...yWy...y.
+..yy.yWy.yy..
+..yWyyWyyWy..
+...yWWWWWy...
+.yyyWWWWWyyy.
+yWWWWWWWWWWWy
+.yyyWWWWWyyy.
+...yWWWWWy...
+..yWyyWyyWy..
+..yy.yWy.yy..
+.y...yWy...y.
+......y......

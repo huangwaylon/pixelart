@@ -1,0 +1,18 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+OVERALL: 6
+
+- Natural: 6
+- Whole-body: 7
+- Fluid: 6
+- Appealing: 6
+- Secondary motion convincing: 4
+- Readable at 1x: 6
+
+The new version is clearly better than the old one: the coil reads as real anticipation, the stride and lunge carry the weight forward, and the hips lead the shoulders. The secondary motion is the weak spot. Hair and skirt barely lag. The ribbon tails only appear at release, as straight, stiff 1 px lines.
+
+**Top 3 fixes**
+
+1. **Release and follow (both views): the head turns too far.** In SE the face is lost and the throwing arm is hidden behind the head. Limit the head turn to about 45° toward the target. Extend the throwing arm fully forward and down so its hand clears the head silhouette by 4–6 px at 1x.
+2. **Ribbon tails and hair, all frames.** Keep the tails visible in every frame. Curve them, and have them trail 1–2 frames behind the head. Swing them about 40° opposite the throw at release, overshoot past rest in follow2, and settle by the settle frame. The back hair and side locks should trail by 2–3 px at release.
+3. **Windup (E view): the front leg reads as a kick.** It is lifted horizontal, at hip height. Drop it to about 45° thigh angle with the knee bent. In settle, add a 1–2 px hip dip-and-rise and a skirt-hem overshoot so it doesn't look the same as recover.

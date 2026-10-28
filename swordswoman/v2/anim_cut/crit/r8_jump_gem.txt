@@ -1,0 +1,25 @@
+### Critique Summary
+The jump arc and basic timing are functional, but the animation suffers from rigid cutout syndrome. The head and hair remain completely static throughout the jump, lacking necessary secondary motion and overlap. Additionally, the rotated katana sprite produces noticeable pixel jaggies, and the extreme poses lack sufficient deformation.
+
+### 3 Most Important Concrete Problems
+
+1. **Lack of Secondary Motion/Overlap (Frames 2–8, Head/Bow/Hair Region)**
+   * **Problem:** The entire head, hair, and ribbon assembly is a single static block that translates vertically without reacting to gravity or velocity.
+   * **Fix:** Add 1–2 pixels of vertical squash/drag to the ribbon loops and hair tips during the launch/rise (Frames 2–3), flare the hair/ribbon upward by 2 pixels during the fall (Frame 6), and squash the bow downward on landing (Frame 7).
+
+2. **Rotated Sprite Jaggies (Frames 1, 2, 6, 7, 8, Katana Blade Region)**
+   * **Problem:** The sword blade appears algorithmically rotated, creating uneven staircase steps (e.g., 3px-1px-2px steps on Frame 2) and broken dark outlines.
+   * **Fix:** Manually clean the blade linework in each frame to enforce uniform 2:1 or 1:1 pixel steps, ensuring a consistent 1px dark outline without double-thick corners.
+
+3. **Weak Squash & Stretch Deformation (Frames 1, 2, 7, Torso/Skirt Region)**
+   * **Problem:** The crouch (Frame 1) and land (Frame 7) rely merely on sliding the leg sprites up into the skirt rather than deforming the body mass, making the impact feel stiff.
+   * **Fix:** Widen the skirt hem horizontally by 2 pixels on each side and compress the torso height by 1–2 pixels on Frames 1 and 7. On Frame 2 (launch), narrow the skirt width by 2 pixels to emphasize vertical stretch.
+
+### Dimension Scores
+* **Poses & Silhouette:** 5/10
+* **Squash, Stretch & Overlap:** 4/10
+* **Timing & Spacing:** 6/10
+* **Pixel Cleanliness:** 5/10
+* **Identity & Consistency:** 6/10
+
+SCORE jump: 5

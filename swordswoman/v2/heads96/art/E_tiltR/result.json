@@ -1,0 +1,23 @@
+{
+ "logs": [
+  {
+   "attempt": 0,
+   "sec": 96,
+   "fixes": [
+    "_: S4 floating pixels (no neighbours) at [(15, 2)]: remove or connect",
+    "_: O1 16 edge pixels are not K outline (draft had 6): [(26, 31), (35, 31), (26, 32), (34, 32), (26, 33), (26, 34), (33, 34), (26, 35), (26, 36), (26, 37)]; every edge pixel facing empty space is K"
+   ]
+  },
+  {
+   "attempt": 1,
+   "sec": 39,
+   "fixes": []
+  }
+ ],
+ "out": {
+  "_": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/E/artist/base_tiltR.txt",
+   "lint": []
+  }
+ }
+}

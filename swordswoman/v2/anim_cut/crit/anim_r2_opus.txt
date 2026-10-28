@@ -1,0 +1,37 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+# Round 2 animation review: chibi swordswoman, SE 3/4 view
+
+All coordinates are cell-local (64×64). Nothing passes yet. The biggest issues across the set are pose popping, dead secondary motion, and the katana not staying consistent from frame to frame.
+
+**Idle: 4/10**
+1. **F0–F5, whole body:** frames 1–4 move only 1px or less, so it reads as a still image with noise. Sink the body 2px in F2–F3, squash the torso 1px wider, and lift 1px above rest in F5.
+2. **Bow (~y4–12):** it moves rigidly with the head. Delay it by one frame: 1px down on F2–F3, 1px up on F5.
+3. **Katana (~x2–14, y44–62):** it sticks out the bottom-left past the feet and gets clipped. Hold it consistently at the hip. Also trim F0 from 300ms to 200ms; the hold is dead air.
+
+**Walk: 4.5/10**
+1. **Legs, F0/F2/F4/F6 (y48–60):** contact and pass frames barely differ. Spread the feet 6–8px on contact, and put the passing foot under the body 2px raised.
+2. **Head bob:** the up frames (F3/F7) should be 2px higher than the down frames (F1/F5); right now it is about 1px. The bow should trail the head by one frame.
+3. **Katana:** the blade stays at one rigid diagonal through the legs. Swing it 1–2px opposite to the arm swing.
+
+**Run: 3.5/10**
+1. **Katana pops:** it is diagonal in F0/F1/F4 and horizontal in F2/F3/F5, and the horizontal blade sticks out about 20px past the cell like a lance. Pick one trailing angle and keep it.
+2. **No forward lean:** tilt the head and torso about 3px toward SE. F0 and F1 have identical torsos.
+3. **Air frames (F2/F5):** the body needs a 2px rise and the hem needs a 2px upward flutter. 80ms is too long for these; use 60ms.
+
+**Jump: 5/10**
+1. **Shoes on F6/F7 (y56–60):** they turn cream/white, which breaks identity. Restore the dark shoe palette.
+2. **F4–F5, arms:** they are a stiff T-pose. Angle them up 30° on F4 and flail them on F5. Stretch F2 vertically 2px.
+3. **Land (F6):** there is too little squash. Make it 3px shorter and 4px wider, and drop the hem and bow 2px late on F7. The shadow should shrink during the air frames.
+
+**Dash: 5/10**
+1. **Speed lines on F1/F2:** they are blocky rectangles that cover the head. Cut them to 1px tapered streaks, keep them at x0–20 behind the body, and fade them on F2.
+2. **Katana on F1/F2:** it points backward and is clipped. Tuck it along the body.
+3. **F3–F5:** the cream shoe returns (identity break again). The 120ms settle needs the bow to overshoot by 2px.
+
+**Slash: 6/10**
+1. **F2 smear:** the arc covers about 300°, its root at the upper left (~x8,y10) is not attached to the hand, and its tip overshoots the cell. Limit it to about 150°: start at the hand and taper from 4px to 1px at the blade tip.
+2. **Impact/hit-stop:** F3 is 60ms and F4 is 70ms, which is too similar. Use 40ms for impact and 100–120ms for the freeze. The F3 sparks float detached at ~x58,y30; anchor them to the blade tip.
+3. **F4/F5:** these are nearly identical. On F5, follow through with the blade 4px further down-right and lag the bow and hem 2px.
+
+Saving session...completed.

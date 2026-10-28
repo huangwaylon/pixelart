@@ -1,0 +1,30 @@
+{
+ "size": [
+  32,
+  12
+ ],
+ "facing": "E",
+ "attach": "feet",
+ "pivot": [
+  16,
+  5
+ ],
+ "ground_y": 5,
+ "layer": "split: rows y<5 behind_character, rows y>=5 over_character (or all behind; feet cover only the centre)",
+ "width_per_frame": [
+  14,
+  24,
+  30
+ ],
+ "height_per_frame": [
+  5,
+  8,
+  10
+ ],
+ "note": "30deg ground ellipse h~w/3; far arc p, front arc u with n underside; f2 broken into p/n dashes",
+ "ms": [
+  60,
+  80,
+  100
+ ]
+}

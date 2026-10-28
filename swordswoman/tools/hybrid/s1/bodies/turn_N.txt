@@ -1,0 +1,47 @@
+# turn_N body, hand-typed half grid (mirrored about the stamp centre x=65.5): back view. Tall collar funnel behind
+# the neck, bare shoulders, bell sleeves, corset belt with centre buckle, long coat with petal hem, heels.
+# Sword in the LEFT hand on screen left (katana_down stamp), scarf ribbons over the back.
+fx: none
+kat: katana_down 50 85
+origin: 50 74
+halfgrid:
+.......KRRRRRRRR
+.......KRRRRRRRR
+........KRRRRRRR
+......KK.KRRRRRR
+.....KssKKRRRRRR
+....KssssKRRRRRR
+....KCRRKLLLLLLL
+...KCRRRKlllllll
+...KRRRRKllllllT
+..KRRRRRKlllllll
+..KRRRRRKKKKKKKK
+..KRRRRRKRRRRRRR
+..KvvvvvKRRRRRRR
+...KKsKKRRRRRRRR
+....KsK.KRRRRRRR
+....KKK.KRRRRRRR
+.......KRRRRRRRR
+.......KRRRRRRRR
+......KRRRRRRRRR
+......KRRRRRRRRR
+......KRRRRRRRRR
+.....KRRRRRRRRRR
+.....KRRRRRRRRRR
+.....KRRRRRRRRRR
+....KRRRRRRRRRRR
+....KRRRRRRRRRRR
+.....KvRRRRRRRRR
+......KvvRRRRRvv
+.......KKvvvKKKK
+.........KKdK...
+.........KdKK...
+top: 53 87
+_KKK_
+KsssK
+KmssK
+_KKK_
+op: curve 61,78 58,84 60,89 P
+op: curve 60,89 61,92 59,94 p
+op: curve 70,78 73,84 71,89 P
+op: curve 71,89 70,92 72,94 p

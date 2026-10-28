@@ -1,0 +1,12 @@
+SE_r attempts 1 secs [49] lint left {'lagL': 0, 'lagR': 0, 'lift': 0, 'drop': 0}
+NE_tiltL attempts 2 secs [67, 25] lint left {'_': 0}
+E_B attempts 1 secs [97] lint left {'lagL': 0, 'lagR': 0, 'lift': 0, 'drop': 0}
+E_t attempts 2 secs [69, 30] lint left {'lagR': 0, 'drop': 0, 'lagL': 0, 'lift': 0}
+S_w attempts 2 secs [104, 40] lint left {'lagL': 0, 'lagR': 0, 'lift': 0, 'drop': 1}
+NE_w attempts 2 secs [197, 132] lint left {'lagL': 0, 'lift': 0, 'lagR': 1, 'drop': 1}
+ALLDONE
+N_tiltR attempts 1 secs [24] lint left {'_': 0}
+N_t attempts 2 secs [36, 37] lint left {'lift': 0, 'drop': 0, 'lagL': 0, 'lagR': 0}
+N_w attempts 2 secs [66, 76] lint left {'lift': 1, 'lagL': 1, 'lagR': 1, 'drop': 2}
+NE_t attempts 2 secs [62, 98] lint left {'lift': 0, 'drop': 0, 'lagL': 1, 'lagR': 1}
+NE_B attempts 2 secs [193, 194] lint left {}

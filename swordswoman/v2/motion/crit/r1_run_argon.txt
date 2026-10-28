@@ -1,0 +1,7 @@
+OVERALL: 6
+Natural: 6 | Whole-body: 6 | Fluid: 7 | Appealing: 6 | Secondary: 5 | Readable at 1x: 7
+
+Top 3 concrete fixes:
+1. **Neck / Head Pitch (`push`, `air`, `push2`, `air2`):** The head pitches up too severely during drive/flight, creating a creepy "giraffe neck" gap and looking at the sky. Pitch head down 15° and translate it down/forward by 2–3px at 1x to maintain a forward-focused run line.
+2. **Back Leg Push-off (`push`, `push2` in SE view):** The pushing leg bends and lifts prematurely, losing ground drive and looking like a trot. Keep the back toe planted (or 1px off ground) with a straighter knee (extend back/down 4px at 1x) to sell propulsion before `air`.
+3. **Ribbon Tails & Bow Lag (`down`, `down2` vs `air`, `air2`):** Secondary hair/ribbons feel stiff and pinned down. On `down`/`down2`, flare ribbon tails and side locks *up/back* 3–4px (lagging as head drops); on `air`/`air2`, fold them *down* against the head/neck as the body rises.

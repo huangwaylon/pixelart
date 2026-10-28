@@ -1,0 +1,33 @@
+# lock3 head S (Claude hand-typed). o = bow loop mask, k = knot mask (shaded by tools/hybrid/h4/lock3.py)
+size: 24 30
+grid:
+...KKK....KKKK....KKK...
+..KoooKK.KhHHhK.KKoooK..
+..KoooooKhHJhhhKoooooK..
+.KoooooooKhhhhKoooooooK.
+..KoooooookkkkoooooooK..
+...KoooooookkkkooooooK..
+....KoooooKkkKoooooK....
+.....KKoooKkkKoooKK.....
+.....KhKKKKKKKKKKhK.....
+....KhHHHHHHhhhhhhhK....
+...KhHJJJJHHHHhhhhhhK...
+..KhHJJHHHHHHHhhhhhhhK..
+..KHJJHHHHHHhhHHhhhhhK..
+.KhHJHHHHHhhhHHhhhhhhhK.
+.KhHHHHHhhhhHHhhhhHhhhK.
+.KhHHHHhhhhHHhhhhHHhhhK.
+.KhHHHhhhhHHhhhhhHhhhhK.
+.KhHHhhhhHHhhhhhHHhhhhK.
+.KhHhhhhhHhhhhhhHhhhhhK.
+.KhhhhhhHhhmhhhHhmhhhhK.
+.KhhhKhmshsmsshsmsKhhhK.
+.KhhhsKKKKssssKKKKshhhK.
+..KhhseweesssseweeshhK..
+..KhhSeEEesssseEEeshhK..
+..KhhssEEssssssEEsshhK..
+..KhhsppssssssssppshhK..
+...KhssssssmmsssssshK...
+......KmssssssssmK......
+........KmssssmK........
+..........KKKK..........

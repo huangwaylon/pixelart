@@ -1,0 +1,26 @@
+Restored session: Mon 26 Oct 2026 12:10:01 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I've redrawn both neutrals in place and regenerated every variant from them. I checked each pass with preview.py and `heads/png/sheet.png` next to the old master preview, four passes in all. The 6/10 r2 versions are still in `heads/r2/`.
+
+What changed against your six points:
+1. **Eyes:** the r2 eyes were already the master's pixels. They looked small because the head had grown. They're still pixel-exact, glints included. The face now takes up about half the head: a skin brow row under the bangs, plus a longer tapered chin.
+2. **Lookup:** I removed one hair row above the bangs, so the bangs, brows, eyes and chin all move up 1px together. The glints stay and there's no white sclera. The crown, anchors and pivot don't move.
+3. **SE crown:** the bow sits higher, so the hair dome now shows between the loops and the knot, and there's no trench or doubled outline. The bun is lower and tucked behind the left loop, as in the master.
+4. **SE bottom:** the chin narrows over its last rows (11, 9, 6 then 2 px wide). The bob ends are blunt (6px on the left, 3px on the right) and hang one row below the chin. The bangs end in one straight row, and the lower-left outline steps are now even.
+5. **E profile:** the back of the skull is now egg-shaped (vertical wall at most 5 rows), with a 2px nose bump, a mouth notch and a soft chin. The bow is redrawn as one connected side-view ribbon: dark far loop behind, bright knot and near loop in front. The bun sits just behind it.
+6. **Consistency:** lean moves the whole head 1px forward and down, and tilts the crown 1px further forward. Bow and bun stay locked to the crown in every variant; in squash the squashed bow and bun are 1px lower.
+
+**Still weak:**
+- The brows ('33') now sit on skin instead of on hair, so they're much fainter than the master's at 1x. I chose that to get the straight bangs edge the critics asked for.
+- E squash has a 1px nose.
+- The linter still flags "orphans", but I checked them: they're glints, the mouth, the hair highlight and diagonal outline steps, all intentional.
+
+**Summary:**
+1. Files: `heads/se/` has `head_{neutral,lean,lookup,squash,blink}.txt`, `bow.txt`, `bow_squash.txt`, `bun.txt`, `bun_squash.txt`; `heads/e/` has the same minus blink.
+2. Tools: the neutrals are hand-drawn, and the new `tools/r3_build.py` generates the variants. The new `tools/show.py` prints the composed maps with rulers. `NOTES.md` has an r3 section.
+3. SE: 25×21, pivot (14,19), bow (13,2), bun (3,1). Lean has pivot (13,18), bow (14,2), bun (4,1). Lookup and blink keep the neutral anchors. Squash is 27×19 with pivot (16,17), bow (15,2), bun (4,1).
+4. E: 22×21, pivot (15,19), bow (13,2), bun (4,-1). Lean has pivot (14,18), bow (14,2), bun (5,-1). Lookup keeps the neutral anchors. Squash is 24×19 with pivot (17,17), bow (14,2), bun (5,-1).
+5. Parts: SE bow is 17×8, pivot (8,7); its squash is 19×7, pivot (9,6). E bow is 13×7, pivot (5,6); its squash is 13×6, pivot (4,5). Buns are 7×7, pivot (3,3); `bun_squash` is 7×6, pivot (3,2). Head pivot is the neck under the chin, the bow anchor is the bottom of the knot, and the bun is drawn behind the head.
+
+Saving session...completed.

@@ -1,0 +1,5 @@
+**Score: 6/10.** The release frame is the strongest: the arm is high, the smear reads, and the sparkle lands on the beat. The orb flight, its ground shadow and the landing pop make the result clear at 1x. Ready and windup read as a trainer pose. It loses points because the body hardly loads before the throw or carries through after it, so at 1x it plays as "arm flicks, girl stands" rather than a baseball-style throw.
+
+**Fix 1: follow (140ms hold) and follow2.** She is fully upright with her arm hanging, so the long hold reads as idle. Pitch the torso about 20–30° toward NE. Sweep the throwing arm down and across her body to the opposite hip. Put her weight on the front leg with the back heel lifted, and let the hair bow and skirt trail.
+
+**Fix 2: windup and stride.** Her feet stay together, so there's no visible stride. In windup, lift the front knee clearly and drop the orb hand low and back. In stride, plant the front foot a wide 6–8 px forward and lower her about 1–2 px. That builds the compression that makes the release snap.

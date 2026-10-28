@@ -1,0 +1,16 @@
+Restored session: Mon 26 Oct 2026 11:16:59 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I made all three head stamps (neutral, up and squash) and checked each in the preview over four renders. A script confirmed the face rows 27–35 and the bow are pixel-identical to the old head, every character is from the palette, and there are no orphan pixels.
+
+- **Neutral:** I made the bun smaller (6×5, at rows 14–18) and gave it a 1px notch below so it still reads as a bump. The left side now curves out to column 3, one step at a time, and there's a 1px peak of skull between the bun and the bow. Under the bow's right half I swapped the flat 6px outline for hair, so the skull curves up under it. Overall width is unchanged at 25px; the skull alone is 1px wider.
+- **Up:** the dark row stays at the top of each eye with its glint, the light iris moves up a row, and the bottom row becomes white (`w`) so the iris sits high. I raised the brows by extending the skin gap in the bangs up to row 26. The mouth is unchanged.
+- **Squash:** 25 rows, starting at row 11. I removed the duplicate hair row 21 and repeated column 32 (between the eyes), so it's exactly 1px wider. The bow moves down 1px, the chin is still on row 35, and the eyes are 1px further apart.
+
+Three trade-offs you should know about:
+1. **Right edge:** there's still a 9px straight run at column 40 (rows 22–30). Rows 27–30 are locked, so shortening it would make the hair narrower than the face.
+2. **Squash knot:** repeating column 32 also makes the bow's centre knot 2px wide.
+3. **Up eyes:** at full zoom the white bottom row reads a bit heavy. If it's too strong, swapping it for skin light (`3`) would be softer.
+
+Saving session...completed.

@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I recoloured the grey/brown specks in the kimono and sleeve to R folds, cleaned the obi edge to a solid o shadow row, turned the skin-line `mm` at the skirt hem into an R shadow, and gave the thigh band an S shadow row in place of the grey `dddd`, though one R pixel still sits at the left hem edge there. I also added a 2px skin hand with a K outline at the sleeve end, which removes the orphan speck. It passes the gate: ssim_b −0.001, sil −0.001, S4 down to 0, O1/O3 not higher, but dE is +0.060, exactly at the limit.

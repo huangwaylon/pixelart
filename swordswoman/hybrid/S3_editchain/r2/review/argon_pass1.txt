@@ -1,0 +1,43 @@
+### Scores (0–10)
+
+* **illustration_appeal: 5/10** — The target illustration relies on a top-heavy chibi ratio (~1:2.2 head-to-body), big expressive eyes, and clean geometric shapes. The sprites stretch her into a taller, stiffer ~1:3 ratio with a boxy face, losing the rounded cheek volume and soft appeal of the concept.
+* **cross_direction_consistency: 6/10** — The turnaround cheats via horizontal flipping (`turn_NW`, `turn_W`, `turn_SW` are mirrored from `NE`, `E`, `SE` with the sword manually pasted onto the other side). Because the corset wrap and skirt split are asymmetrical, flipping them breaks the costume construction across directions.
+* **motion_expressiveness: 5/10** — The head and upper torso are copy-pasted completely static across the entire `walk_SE` and `slash_SE` cycles. There is zero head bob, torso twist, or shoulder rotation during the slash. The smear effects (`slash_SE_k1`, `dash_SE_f1`) are tacked onto rigid poses rather than driving the body mechanics.
+* **pixel_cleanliness: 6/10** — Significant jagged diagonal lines on the katana blades, stray single-pixel noise on the skirt hems, and banding on the hair bun shading. The red palette lacks hue-shifting—shadows drop toward muddy brown/black instead of deep crimson/burgundy.
+* **design_fidelity: 5/10** — **Major continuity error:** In the target illustration, she holds the katana in her **RIGHT hand** (viewer's left). In your sprite sheet, she holds it in her **LEFT hand** (viewer's right) in the top-left pixelization, `turn_S`, `turn_SE`, `turn_E`, and `walk_SE`, then randomly switches to her **RIGHT hand** in `turn_SW`! Additionally, the signature bare shoulder slit is missing in most frames, the high funnel collar is flattened, and the gold corset buckles are absent.
+
+---
+
+### Top 8 Concrete Defects & Pixel-Level Fixes
+
+1. **`turn_S`, `turn_SE`, `walk_SE` (All) — Handedness Flip vs. Concept & `turn_SW`**
+   * **Defect:** The prompt and sprites put the sword in her left hand, directly contradicting the target concept art (where it is in her right hand) and contradicting `turn_SW` (where it suddenly teleports to her right hand).
+   * **Pixel Fix:** Commit to one hand across all 8 directions. To match `turn_S` (left hand), edit `turn_SW` by erasing the blade on the viewer's right, moving the hilt and blade to emerge from behind her left hip on the viewer's left (x-offset -12px), and redrawing her right hand empty.
+
+2. **`walk_SE_k0` through `walk_SE_k3` — Copy-Pasted Static Head/Torso**
+   * **Defect:** From the waist up, all 4 walk frames are 100% identical down to the pixel. The pink neck ribbons don't even move, making her look like a turret gliding on moving legs.
+   * **Pixel Fix:** On passing frames `walk_SE_k1` and `walk_SE_k3`, shift the entire head and upper torso group down by 1px to create weight, and shift the tips of the pink ribbons up by 1–2px with a 1px outward flare to create secondary motion lag.
+
+3. **`slash_SE_k0` to `slash_SE_k2` — Zero Torso Rotation on Sword Swing**
+   * **Defect:** During a heavy horizontal slash, her head, eyes, and chest stay locked facing SE with zero twist. The sword teleports from right to left while her shoulders remain stationary.
+   * **Pixel Fix:** In `slash_SE_k0` (coil), shift the chest/corset pixels 1px toward the viewer's left and bring the right shoulder forward. In `slash_SE_k1` and `k2`, shift the head 1px forward (down-right) and rotate the corset seam 2px toward the viewer's right to sell the follow-through.
+
+4. **`jump_E_apex` — "Pencil" Stretching & Broken Silhouette**
+   * **Defect:** The torso and skirt are stretched vertically into a 10px-wide rigid column with vertical motion lines underneath, completely losing the bell-sleeve and flared-skirt silhouette.
+   * **Pixel Fix:** Compress the torso vertically by 2px. Flare the back skirt tail out to the left by 3–4px and drop the front bell sleeve down-right by 2px so the cloth drags against the upward momentum.
+
+5. **`dash_SE_f1` — Rigid Horizontal Speed Lines**
+   * **Defect:** The trailing smear is made of ruler-straight, 1px-thick horizontal pink and red bars spaced evenly apart. It looks like a scanline glitch rather than motion blur.
+   * **Pixel Fix:** Group the trail into 2–3 tapered wedges matching the major color masses (one brown/red wedge for the hair/bow, one pink wedge for the ribbon, one crimson wedge for the cloak). Taper them to 1px points on the left and connect them to the silhouette on the right.
+
+6. **`turn_S`, `turn_SE` — Missing Bare Shoulder Cutouts & Corset Buckles**
+   * **Defect:** A key appeal point of the concept is the detached bell sleeve showing bare skin at the shoulders, plus the two gold buckles down the center of the brown corset. Both are missing, turning her outfit into a solid red robe.
+   * **Pixel Fix:** In `turn_S` and `turn_SE`, replace the 2x2 red shoulder pixels just below the collar edge with the skin-tone palette (`#F5D0C5`), bordered below by 1px of dark brown trim. Add two 1x1 light-gold pixels (`#E6C665`) vertically spaced 2px apart down the center line of the brown corset.
+
+7. **`turn_S`, `turn_SE`, `walk_SE_k0` — Jagged Blade Anti-Aliasing ("Jaggies")**
+   * **Defect:** The katana blade uses inconsistent step lengths (e.g., 1px-2px-1px-3px steps) along its diagonal, making the weapon look bent and serrated.
+   * **Pixel Fix:** Redraw the blade in `turn_S` and `turn_SE` using a strict 2:1 or 1:1 pixel stepping ratio. Keep the bright white/light-grey edge strictly 1px wide on the upper-right side of the blade, backed by 1px of mid-greysteel on the lower-left side.
+
+8. **`slash_SE_k2` — Misaligned Sword Impact vs. Body Mechanics**
+   * **Defect:** `slash_SE_k1` shows a wide horizontal arc sweeping from left to right, so at impact (`k2`), the blade should be fully extended to the right/front. Instead, in `k2` the blade points straight right while in `k3` (follow-through) it drops *back* down to the SE angle, reversing the arc's momentum.
+   * **Pixel Fix:** Swap the blade angles of `k2` and `k3`, or adjust `k2` so the blade points SE (matching the end of the `k1` smear arc) and have `k3` pull the blade further across the body to the viewer's left/SW as a true follow-through.

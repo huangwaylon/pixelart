@@ -1,0 +1,112 @@
+{
+ "_doc": "Level G proportions, RIG-CAL strand 2026-10-26: rig F re-solved so the rig rendered at rest through the GAME cameras (ortho, 30 deg elevation, 48 px figure) matches the 2D template/blockouts (v2/prop/blockout/<V>.txt, sections by v2/prop/tools/verify.py method) within +-1 px in S, SE and E. Multipliers relative to AB4 parts v2/hy3d/partsAB4f (as PROPORTIONS_F.json) plus RIGCAL keys implemented by v2/rigcal/scripts/repro_g.py (superset of hy3d/scripts/reproportion.py). Apply: <hunyuan venv python> -I v2/rigcal/scripts/repro_g.py PROPORTIONS_G.json v2/hy3d/partsAB4f v2/hy3d/best/skel.txt OUT/parts ; blend: MOCAP=1 ELBOW=1 Blender -b --factory-startup -P v2/throw/scripts/rig_lib.py -- OUT/parts OUT/parts/skel.txt rest_keys.json OUT rest SE,E,S",
+ "source": "v2/prop/blockout/*.txt (template v2/prop/template.json); solver v2/rigcal/scripts (cal.py measure loop, search.py greedy pattern search, check.py)",
+ "keys_rigcal": {
+  "head.wx": "head (+bow/bun) x/z width multiplier",
+  "head.fringe": "lift the front hairline (input head units) -> eyes can sit higher",
+  "eyes.dy": "eye-ID move up",
+  "neck.r": "skin neck cylinder (radius) on the torso, visible 1-2 px neck",
+  "torso.sh / torso.sq": "square shoulders (x ramp / lift of the outer shoulder slope)",
+  "torso.waist_zk": "obi taper also in depth",
+  "skirt.flare": "A-line hem flare",
+  "arms.dy": "raise shoulder joints to the shoulder line",
+  "legs.thigh / legs.shin": "segment length multipliers about the knee (on top of legs.length)",
+  "legs.prof": "absolute leg profile [thigh_x, thigh_z, shin_x, shin_z] glb units",
+  "legs.straight / ytop": "parallel vertical legs",
+  "boots.top": "clean boot line height above the sole (recolour)",
+  "boots.sx/sz/centre/ankle": "foot size / centred under the leg / profile stops at the ankle"
+ },
+ "calibration_convention": {
+  "fit": "render_jobs FIG_EXCL=bow,bun FIG_PX=50: 50 px vertex extent (hair crown -> sole, SE rest pose {}) = 48 px measured by the verify method at 1x (coverage>0.5 loses ~1 px top+bottom); soles row 61",
+  "crown": "measured with bow+bun hidden (HIDE=bow,bun), as template.json excludes them",
+  "HEADS_SE": 1.0,
+  "pose": {
+   "upper_arm.R": [
+    0,
+    -15,
+    0
+   ],
+   "upper_arm.L": [
+    0,
+    15,
+    0
+   ]
+  },
+  "SE_leg_cheat": -45,
+  "SE_note": "the 2D SE masters draw both legs side by side (front-ish legs); the SE calibration render therefore uses rig_lib's existing per-pose 'cheat' (hips yaw toward the camera) of -45 to measure per-leg sizes. With the true 45 deg camera the two legs overlap into one column (see residuals SE_true)."
+ },
+ "residuals": [
+  "rig G - blockout (1x px, prop/tools/verify section method; rows absolute in the 64 cell, sole line 62; widths px). '!' = |r|>1, '-' = not checked in that view, '?' = not found",
+  "calib: pose {} + upper_arm abd 15, FIG_EXCL=bow,bun FIG_PX=50 (measured crown->sole 48 in SE), HIDE=bow,bun for the crown, HEADS_SE=1.0, SE calib pose legs cheat -45 (SE_true = no cheat)",
+  "view           H   crown    sole     eye    chinshoulder  armpit   waist     hip     hem    knee   ankle   whead   wneckwshoulder  wwaist    whip  wthigh   wcalf   wfoot  fails",
+  "S             +0      -1      -1      +0      -1      -1      +0      -1      +1      +1      +1      -1      +1      -1      +0      +0      +0      +0      +0      +0  0",
+  "SE            +0      -1      -1      +0      -1      -1     -3!      -1      +1      +1      +1      -1      +1      -1     -3!      +0      +0      +0      +1      -1  2",
+  "E             +1      +0      +1      -1      -1      -1       -      -1      -1      +0      -1      +1      +1      -1       -       -       -       -      +0       -  0",
+  "NE            +0      +0      +0       -      -1     -2!       ?      -1      +0      +1      +1     -2!     +2!     -2!     -8!      +0     +2!     +6!     +5!      -1  9",
+  "N             -1      +0      -1       -      +0      +0      +0      -1      -1      +1      +1     -2!      +1      +0      +0      +0      +0      +0      +0     -3!  2",
+  "SE_true      +2!      -1      +1      +0      -1      -1     -3!      -1      +0      +1     -3!     -2!      +1      -1     -3!      +0     +2!     +7!     +7!     -3!  9"
+ ],
+ "unarmed": "no katana (katana 0 in every pose)",
+ "head": {
+  "scale": 0.84,
+  "wx": 1.15,
+  "fringe": 0.12
+ },
+ "neck": {
+  "extra": 0.2,
+  "r": 0.0337
+ },
+ "torso": {
+  "width": 1.12,
+  "depth": 1.2,
+  "height": 1.15,
+  "waist": 0.6,
+  "sh": 1.15,
+  "waist_zk": 1.0,
+  "sq": 0.65
+ },
+ "skirt": {
+  "width": 0.91,
+  "depth": 1.25,
+  "height": 0.93,
+  "flare": 1.18
+ },
+ "arms": {
+  "length": 1.4029,
+  "thickness": 0.9066,
+  "shoulder_x": 1.0,
+  "dy": 0.14
+ },
+ "legs": {
+  "length": 2.3634,
+  "thickness": 1.0,
+  "thigh": 1.15,
+  "shin": 1.1,
+  "spread": 1.6,
+  "prof": [
+   0.285,
+   0.3525,
+   0.245,
+   0.3
+  ],
+  "straight": 1.0,
+  "ytop": -0.05
+ },
+ "hands": {
+  "scale": 0.85
+ },
+ "boots": {
+  "scale": 1.0,
+  "top": 0.39,
+  "sx": 1.2,
+  "sz": 1.0,
+  "fwd": 0,
+  "centre": 1.0,
+  "toe": 0.0,
+  "ankle": 0.15
+ },
+ "eyes": {
+  "dy": 0.05,
+  "scale": 1.0
+ }
+}

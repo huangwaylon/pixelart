@@ -1,0 +1,11 @@
+SCORE 5.5/10
+1. **Stiff "stamped" head & hair (F0–F8):** The head/bow/hair silhouette is copy-pasted across all 9 frames with zero tilt, squash/stretch, or secondary overlap on the bow/bangs during launch (F1), apex (F3), or landing impact (F6).
+2. **Broken sword arc & teleporting (F0–F4):** The sword teleports from pointing left (F0) to completely hidden (F1), to high-left (F2), to low-left (F3), to behind-back (F4) without any smear or coherent wrist rotation.
+3. **Jaggy diagonal blade outlines (F2, F3, F7, F8):** The sword blade has severe staircase jaggies and inconsistent thickness when angled diagonally compared to the clean horizontal blade in F0/F6.
+4. **Weak squash & stretch on torso/limbs (F1, F5, F6):** Launch (F1) and fall (F5) lack vertical elongation; the dress and torso remain blocky, and F6 landing squash merely deletes the legs rather than compressing the torso/head downward.
+5. **Robotic symmetric dust FX (F1, F2, F6, F7):** The dust puffs are mirrored pixel-for-pixel left-to-right and expand into unnatural hollow square rings (F2, F7) instead of dissipating organically.
+6. **Sub-pixel shimmer & orphan speed lines (F5, F7, F8):** In F5, the white vertical speed lines touch the hair outline, reading as stray noise/horns at 1x; in F7–F8 recovery, the dress hem and belt shift erratically by 1px.
+**Top 3 Fixes:**
+1. **Add secondary motion & head tilt:** Tilt the head/eyes up by 1–2px on launch/rise (F1–F2), flap the hair/bow upward during fall (F4–F5), and squash the head/bow down by 2px on landing (F6) for real weight.
+2. **Unify the sword arc:** Keep the sword in a single readable trailing arc (e.g., held low-back/left throughout the jump, rising slightly at apex F3–F4, slamming down on F6) and clean up diagonal blade pixel steps (2:1 ratios).
+3. **Fix FX & stretch silhouettes:** Asymmetrize and fade the dust clouds, stretch the torso/skirt vertically by 2–3px on F1/F5, and detach F5's speed lines from the character outline.

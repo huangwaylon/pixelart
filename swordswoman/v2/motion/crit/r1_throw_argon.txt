@@ -1,0 +1,15 @@
+OVERALL: 7
+
+**Scores:**
+* Natural: 7
+* Whole-body: 8
+* Fluid: 7
+* Appealing: 7
+* Secondary motion convincing: 6
+* Readable at 1x: 6
+
+**Top 3 Concrete Fixes:**
+
+1. **`release` through `follow2` (SE & E) – Whole Body & Right Arm:** The character lunges off the right edge of the canvas, clipping her head and throwing arm completely. Shift the root/pelvis 8–10px left (in-place foot slide) so the throwing hand and head remain 100% inside the frame to preserve the silhouette at 1x.
+2. **`stride` (SE & E) – Right Shoulder/Arm:** The throwing arm detaches from the torso, leaving a 3–4px empty gap. Translate the upper arm 4px inward/upward into the shoulder socket, or bridge it with the collar/sleeve geometry.
+3. **`release` & `follow` (SE & E) – Ribbon Tails:** The 1px strands look stiff and brittle. Thicken them to 2px clusters and bend the tips downward by 20–30 degrees in `follow` to create a smooth S-curve wave instead of straight needles.

@@ -1,0 +1,39 @@
+Restored session: Mon 26 Oct 2026 18:22:42 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Overall: 4.5/10.** By criterion: readable at 1x **5**, intentionally designed **4**, Pokemon-like **4**, carries personality **4**.
+
+**(1) Readability per expression, scored at 1x**
+- **neutral 6:** The two rows of solid black on top of each eye (`KKKK` ×2) take over the eye. The 2px blue iris sits low, so she looks sleepy, not confident.
+- **determined 5:** Same as neutral, just one row darker. There's no V of the brows.
+- **shout 4:** The mouth is a flat `KKKKK` with `eee` under it on the chin row. It reads as a frown with a tongue hanging out, and the tongue is the same colour as the blush.
+- **effort 4:** It can't be told apart from determined.
+- **joy 5:** The arc eyes work. The mouth is the exact same `KKKKK/eee` stamp as shout.
+- **smile 6:** It works, but it's too close to joy.
+- **surprised 7:** The best one. The white rings and small `KK` "o" mouth read clearly.
+- **pain 6:** The ><-eyes read. The zigzag `r` mouth is mush at 1x.
+- **blink_half 6:** Readable.
+- **blink_closed 6:** Readable.
+- **squash 3:** It's identical to blink_closed, with no cheek bulge or wince.
+
+**(2) Is it designed and Pokemon-like?** Partly. The eyes are blocks, not designed shapes. There's no outer lash flick, no white glint pixel and no defined brow. The mouths are all reused 1–3px `r` strips or the same 5px slab. Lyra, Hilda and BattleGirl get a lash wing and a glint from about 2×3px.
+
+**(3) Personality:** Weak. The low iris and heavy lid read as tired. There's no smirk asymmetry, so she doesn't come across as confident.
+
+**(4) Per view**
+- **S 5:** The eye blocks are too heavy, and joy and shout look the same.
+- **SE 5:** The far eye is cramped and the mouth sits too low, near the chin.
+- **E 4:** The eye is a 3px dark wedge, and the shout tongue hangs off the chin edge.
+- **NE/N 6:** Clean, but no cheek or blush sliver shows, so there's no expression cue at all.
+
+**(5) Top 6 pixel fixes**
+1. **Eyes, all views:** make the lid a single `K` row with a 1px outer lash flick at the top-outer corner, one row up. Raise the iris to 2×2 `iI` directly under the lid, with a `W` glint at the top-inner pixel.
+2. **Brows:** add a 2px `K`/`h` brow above each eye. Tilt it down toward the nose for determined and effort, and up for pain and surprised.
+3. **Shout:** use an open mouth 3 wide × 2 tall, with a `K` outline, a dark `r` fill and a 1px lighter tongue only in the bottom-centre. Move it up one row off the chin. Use a new tongue colour, not `e`.
+4. **Joy:** a 4-wide open D-mouth: a top row of `K`, then `K r r K`. Neutral and smile become an asymmetric 2px smirk `r` that lifts on the right.
+5. **Effort:** clenched teeth, a 3-wide `K` box with a `W` row inside, plus squinted eyes (lid only, iris hidden).
+6. **Squash:** eyes as `>` `<` squeezed into one row, cheeks pushed out 1px, and a flat 2px `K` mouth. Also give NE a 1px `e` blush on the visible cheek edge for joy and effort.
+
+I didn't modify any files.
+
+Saving session...completed.

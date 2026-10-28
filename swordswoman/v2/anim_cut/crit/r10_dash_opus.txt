@@ -1,0 +1,30 @@
+Restored session: Mon 26 Oct 2026 13:19:26 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+**Pixel director review: dash_SE**
+
+**What works:** The character looks the same in every frame (bow, bob haircut, red dress, eyes), outlines are clean, and the palette holds. Frame 3 (skid) is the only key pose that reads properly: a low lunge, the trailing leg pushed out, and a dust puff.
+
+**The 3 biggest problems**
+
+1. **Frames 1–2 (burst): the afterimage is a flat slab, not a smear.** Behind the head and back there's a solid maroon and purple block with a stair-stepped vertical left edge. In frame 2 it splits into two hard parallel bands. Red "ghost leg" stubs hang under the skirt and read as stray pixels. The body itself is upright with no forward lean. It looks like a cape glitch, not speed.
+   **Fix:** Lean the torso 15–20° toward SE. Stretch the body about 2px longer along the travel direction and make it about 1px narrower. Replace the slab with 3–4 horizontal speed streaks that taper from 3px to 1px to nothing, coming off the hair, skirt hem and sword. Use 2 colors only, a red with no outline and its darker shade, and fade them out over 2 frames. Delete the ghost legs.
+
+2. **Frame 0 (antic): there's no anticipation.** The silhouette is almost the same height as frame 7 (rest). There's no crouch and no wind-up, yet it's the longest frame at 150ms, so the dash starts with no energy.
+   **Fix:** Squash the body 2–3px: bend the knees, drop the hips, and lean back, away from SE. Pull the sword hand back behind the hip. Lift the bow and hair 1px so they lag behind. Cut the frame to about 100ms and add a second 60ms frame that crouches deeper.
+
+3. **Frames 4→5→6 (brake/recover): the follow-through is mushy and the sprite jumps.** Brake and settle are nearly upright and look the same, with no overshoot and nothing settling late. Between frames 5 and 6 the character jumps about 100px back to the center of the cell, and the sword angle flips with no in-between frame. The skid-to-stop also has no squash.
+   **Fix:** Keep the root position where it ends after the skid, or slide it back over 2 frames. In frame 4, squash the body 2px and tip it past vertical, back toward NW. In frame 5, overshoot 1px forward. Hair, bow and skirt should settle 1 frame after the body. Add one in-between frame that rotates the sword. The dust puffs (grey pebble blobs) need a dark outline color and should shrink and scatter rather than sit there as static lumps.
+
+**Minor issues:**
+- Shadow width doesn't change with the pose.
+- The top of the hair looks flattened in frames 1–2, probably clipped where the smear layer overlaps it.
+- The sword blade switches between a 1px and 2px highlight across frames.
+
+**Scores:** key poses 4, timing 4, squash & stretch 2, smears 2, identity 8, pixel cleanliness 6.
+
+SCORE dash: 4
+
+Saving session...completed.

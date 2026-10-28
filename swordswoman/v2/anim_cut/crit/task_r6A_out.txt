@@ -1,0 +1,14 @@
+Restored session: Mon 26 Oct 2026 11:23:20 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I reworked `idle_SE` and `walk_SE` (plus the `_ns` builds) against every point in the round-5 notes, and built and checked the sheets three times. One minor note is left out (below). Scores are untested until the critics re-run.
+
+**Idle:** The bow is now one sprite that only moves by offset: up 1px on sink and top, down 1px on low. The hem widens on low and narrows on top, and the head drops 1px extra on settle. Low is cut to 140ms. The blink is half-lid → closed → half-lid. On the low frames the blade rotates to a new in-between angle (tip about 3px higher) and the hair tip flares out.
+
+**Walk:** Contact is now 120ms and pass 80ms. Both passes now lift the trailing foot about 5px. The bow uses one sprite, and the bob reads at 2px. The blade lags up on the down frames. The hem flares on contact and lifts on up. The second step twists the torso 1px.
+
+**New parts:** `common/kat_iw6_095`, `se/legs_iw6_p1`, `se/skirt_iw6_{ctR,upL,upR,nar}`, `se/torso_iw6_{tw,twsq}`.
+
+**Left out:** the hair doesn't lift on the sink frames, and the in-between blade is a 34° line, slightly steppy.
+
+Saving session...completed.

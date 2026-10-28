@@ -1,0 +1,21 @@
+**S — 8/10**
+1. The hair sides drop as straight vertical slabs to the chin, so the head reads as a helmet. Step the bottom 2–3 rows inward by 1px each so the bob curves into the jaw.
+2. The bow sits flat on the skull with no gap. Add 1 row of dark hair (the bun) peeking out under the bow knot so the bun shows from the front too.
+**Final:** yes, after fix 1.
+
+**E — 6/10**
+1. The bun and the left bow loop merge into one horizontal shape that reads as a cap brim. Drop the bun about 2px lower and further back, round it to about 5×5, and leave a 1px gap of hair outline between it and the bow.
+2. The face front edge is a flat column of skin with the eye right on the border. Add a 1px nose bump and a chin step, and move the eye 1px back from the edge.
+**Final:** no.
+
+**NE — 7/10**
+1. The light skin patch on the right edge of the head reads as a stray speck or a hand at 1x. Cut it to 2–3px, use the shadow skin tone, and outline it as a cheek.
+2. The left boot is a solid dark block with no shape. Add a 1px lighter top or sole line so it reads as a staggered step instead of a blob.
+**Final:** after fix 1.
+
+**N — 8/10**
+1. The hair bottom is a flat horizontal cut. Round the two lower corners, 1px each, to match the domed skull.
+2. The bow knot over the bun is a flat dark square. Give it 1 mid-tone pixel so the knot separates from the bun.
+**Final:** yes.
+
+I judged these from the 4x previews only and didn't check pixel by pixel, so stray pixels and jaggies aren't confirmed either way.

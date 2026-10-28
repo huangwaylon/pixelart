@@ -1,0 +1,19 @@
+{
+ "size": [
+  15,
+  15
+ ],
+ "facing": "E",
+ "attach": "hit_point",
+ "pivot": [
+  7,
+  7
+ ],
+ "ms": [
+  40
+ ],
+ "layer": "over_character",
+ "radius_px": 7,
+ "symmetric": true,
+ "note": "1 frame on the hit-stop frame; W disc d=11 with p (upper-left) / n (lower-right) rim, 4 cardinal spikes"
+}

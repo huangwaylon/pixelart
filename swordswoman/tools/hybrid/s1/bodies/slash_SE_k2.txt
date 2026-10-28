@@ -1,0 +1,46 @@
+# slash_SE_k2 IMPACT (hit-stop, 160 ms): deepest lunge (guide head 70,74 -> stamp 62,52), torso leans forward 4 px, blade level at full reach (guide tip 106,86), 1-frame steel_2 spark star on the hit point, thin tail of the crescent behind the blade; HELD frame: ribbons, sleeve and bow frozen in their k1 trail (no secondary motion)
+fx: none
+from: turn_SE -1 6
+stamp: 62 52
+bow: -1 -1
+expr: frown
+clear: 54,87,60,99
+shear: 82 93 7
+clear: 30,94,120,112
+patch: 42 94
+________________KRRRRRRRRRRRRRRK____
+____________KKKKRdRRRRRRRRRRRRRRK___
+_________KKKRRRRRRddRRRRRRRRRRRRRK__
+______KKKRRRRRRRRKddKRRRRRRRRRRRRRK_
+___KKKRRRRRRRRRRRKdKRRRRRRRRRRRRRRK_
+__KvrrrrRRRRRRRKK_KvrrrrrrrrrrrRRRK_
+____KKvvvvvvvKK____KKvvvvvvvvvKKrK__
+______KKKKKKK_______KKKKKKKKKKKKK___
+limb: s 2 63,99 60,102 56,103 behind
+limb: d 2 55,103 55,104 behind
+limb: s 2 74,100 79,102 80,103 behind
+limb: d 2 80,103 82,104 behind
+limb: R 3 66,88 74,91
+patch: 70 90
+KKK__
+KRRK_
+KRRRK
+KvvvK
+_KKK_
+top: 74 89
+_KKKK_
+KssssK
+KmsssK
+_KKKK_
+sword: 78,91 107,87
+opb: stamp 52,86 ________KKKKK/_____KKKRRRRK/__KKKRRRRRRrK/_KRRRRRRRrrK_/KRRRRRrrrrK__/_KvvvvvvKK___/__KKKKKK_____
+opb: curve 65,86 55,83 43,87 p
+opb: curve 65,85 55,82 43,86 P
+opb: curve 43,87 38,89 33,87 p
+opb: curve 43,86 38,88 33,86 P
+opb: curve 66,89 56,91 47,96 p
+opb: curve 66,88 56,90 47,95 P
+op: smear 70,93 37,14 62 8 3 tones=P,p taper=tail
+op: smear 96,87 12,6 120 20 3 tones=w,P taper=lead
+op: cluster 104,82 w ___X___/___X___/__XXX__/XXXXXXX/__XXX__/___X___/___X___
+op: cluster 104,82 T _______/_X___X_/_______/_______/_______/_X___X_/_______

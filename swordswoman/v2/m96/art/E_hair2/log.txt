@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I changed six pixels in `out.txt`: four soften the hair sheen's L specks into one g/L band (sprite (66–67,38–41)), and two clean up the dithered h/H noise at row 45. The gate passes (ssim_b −0.001, dE −0.008, sil ±0, lint the same), but the bow, tails, outline and bushiness are untouched: the outline was already K everywhere, a bow highlight added an orphan pixel so I reverted it, and the ssim budget left no room to reshape the bow or slim the hair.

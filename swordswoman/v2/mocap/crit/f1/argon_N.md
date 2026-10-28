@@ -1,0 +1,8 @@
+idle: NEW nat/prop/read/energy = 7/9/5/4 ; OLD = 6 ; fixes: f0–5 angle blade further out to the right so it isn't occluded by the torso; widen stance by ~2–3 px for a clearer silhouette in N view.
+walk: NEW nat/prop/read/energy = 8/9/6/5 ; OLD = 6 ; fixes: f0/f3 exaggerate foot separation and knee lift by ~2 px to read at 1x; f3–4 angle sword further right so it doesn't merge into the leg silhouette.
+run: NEW nat/prop/read/energy = 7/9/4/4 ; OLD = 6 ; fixes: f0–5 forward torso lean is too subtle and blade is nearly invisible (foreshortened/occluded)—swing sword out to the right side and increase stride extension on f2/f5.
+jump: NEW nat/prop/read/energy = 7/9/5/5 ; OLD = 7 ; fixes: f1/f6 crouch is too upright/narrow—widen knees and drop hips 3 px lower; f3–5 flare arms and blade outward during apex/fall to break the vertical pillar silhouette.
+dash: NEW nat/prop/read/energy = 6/9/4/4 ; OLD = 7 ; fixes: f1–2 lack forward drive and blade disappears—lean torso 30° forward and trail sword clearly to the side; f3 recovery pose twists awkwardly, widen foot plant for stability.
+slash: NEW nat/prop/read/energy = 6/8/3/3 ; OLD = 8 ; fixes: f2–3 swing happens entirely in front of the body (occluded in N view) with a tiny smear—cheat the swing plane wider from right-to-left and add a full arc smear on f2 (40ms).
+overhead: NEW nat/prop/read/energy = 8/9/7/7 ; OLD = 7 ; fixes: f1–2 raise hands/blade 3–4 px higher above the head so the windup clears the hair silhouette; f3 extend the white smear arc further down-right toward the ground impact.
+hurt: NEW nat/prop/read/energy = 7/9/5/5 ; OLD = 7 ; fixes: f0–1 flinch is too vertical—arch back/shoulders toward the camera and splay arms/sword wider; shorten f0 to 50ms so it snaps into the f1 recoil pose faster.

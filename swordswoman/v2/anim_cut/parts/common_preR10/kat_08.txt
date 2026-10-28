@@ -1,0 +1,6 @@
+; pivot 22 2
+...##################......
+.##wwwwwwwwwwwwwwwwwk#####.
+#wnnnnnnnnnnnnnnnnnnkDddDd#
+.###################k#####.
+....................#......

@@ -1,0 +1,20 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Scores**
+- **S: 6/10.** The bow, kimono and wide sleeves match the illustration. The thigh skin band between the hem and the socks is almost gone. The forehead has dark speckles.
+- **SE: 5/10.** The hair outline is jagged and spiky. The bow blends into the hair, and the ribbon tails are broken single pixels.
+- **E: 6.5/10.** The proportions, bun and bow are good. The sleeve and arm are too small for the illustration, and the hand doesn't read.
+- **NE: 6.5/10.** The ribbon tails are there and the pose is right. The obi band is lost at the back.
+- **N: 7/10.** This is the closest match. The bow and hair shape are clean.
+- **Overall: 6/10**
+
+**Face at 1x:** the eyes are big enough but turn into grey blobs, and the catchlight is barely visible. The red mouth dot works. Nothing looks weird, but the face doesn't read as cute yet.
+
+**Colours:** the red kimono ramp, the grey-lavender obi and the dark boots stay consistent across views. The hair highlight is noisy, mottled light brown that isn't a planned ramp.
+
+**Top 5 fixes**
+1. **All views, hair:** swap the speckled highlight noise for 2–3 solid highlight bands with stepped edges.
+2. **S/SE/E, eyes:** make each eye a 2-tone iris with a dark top lash line and one pure-white catchlight pixel near the top.
+3. **S/SE, thighs:** bring back a 2–3px skin band between the hem and the sock tops, as in the illustration.
+4. **SE/E, bow and ribbon tails:** give the bow a 1px dark outline so it separates from the hair, and make the tails continuous 1px red lines.
+5. **S head, forehead and cheeks:** remove the stray dark pixels on the forehead. Also tidy the hands in E and SE into clear 2×3 skin blobs.

@@ -1,0 +1,66 @@
+{
+ "size": [
+  70,
+  30
+ ],
+ "facing": "E",
+ "attach": "head_top",
+ "pivot": [
+  35,
+  29
+ ],
+ "ms": [
+  60,
+  120
+ ],
+ "cell_offset": [
+  64,
+  29
+ ],
+ "cell": "128x128 cell, 96 px figure, feet pivot (64,124), faces SE; head top ~(64,29) (bow x60-66 y29-33), head ~x50-80 y29-60, chest ~y70-80; default hit_point = target body_centre (64,88) (old (32,44) mapped); canvas top-left sits at cell (29,0)",
+ "layer": "over",
+ "mirror": "flip x: x -> 69-x, pivot -> [34,29] (stars swap sides, fine)",
+ "orbit": {
+  "centre": [
+   35,
+   16
+  ],
+  "semi_axes": [
+   22,
+   3
+  ],
+  "angles_deg": [
+   [
+    90,
+    210,
+    330
+   ],
+   [
+    150,
+    270,
+    30
+   ]
+  ],
+  "star_size_by_slot": [
+   [
+    "front 15 (centre)",
+    "mid 11 (left)",
+    "back 7 (right)"
+   ],
+   [
+    "front 15 (left)",
+    "back 7 (centre top)",
+    "mid 11 (right)"
+   ]
+  ],
+  "note": "flattened, lowered orbit; depth from size; front star bottoms at canvas row 25 = cell y25, 4 px above the head top / bow (y29)"
+ },
+ "star_px": {
+  "front": "15 px 5-point star (17x17 with K)",
+  "mid": "11 px 5-point star (13x13 with K)",
+  "back": "7 px 4-point sparkle (9x9 with K)"
+ },
+ "shading": "3-tone: y fill, f on the lower-right third of each star (pixels with dx+dy >= ~R/3 from centre), 2 px w dot top-left (1 px on the back sparkle); every star K outlined",
+ "loop": "cycle f0,f1 for dizzy (reads as a 60 deg orbit step)",
+ "note": "r2: f lower-right volume + w dot; width kept ~2x old. gen work/B/make_r2.py"
+}

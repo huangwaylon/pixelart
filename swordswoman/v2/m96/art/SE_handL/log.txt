@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I only tapered the bottom of the hand: in crop rows 19–20, the flat 3px K base became a rounded fingertip step (`KsSK` / `KK`). That passes the gate (ssim_b +0.001, dE −0.014, sil −0.000, O3 3, no S4 orphans), and `out.txt` holds this version. The bigger redraw the task asked for didn't fit the budget: a wider, longer mitten with a thumb line overshot ssim_b and dE and added an orphan pixel and a 1‑3‑1 jaggy. Other ways of lengthening the fingers added jaggies too. So the hand is still the 2–3px‑wide stub it was, and the sleeve hem is unchanged.

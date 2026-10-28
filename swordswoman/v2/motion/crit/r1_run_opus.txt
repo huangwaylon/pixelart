@@ -1,0 +1,16 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+OVERALL: 5
+
+**Scores for the NEW motion**
+- **Natural: 5.** The second step doesn't match the first. In the first air frame the arms are tucked in; in air2 they're flung wide like wings.
+- **Whole-body: 6.** The hips and torso now move with the step, but the head jumps around on its own: it shifts sideways 1.3→9.8 px and nods down as far as −24°.
+- **Fluid: 5.** The body barely sinks after landing. It is only 0.35 px lower in down than in contact (0.12 px in down2), so there's no real squash, and contact, down and push all sit at about the same height.
+- **Appealing: 5.** Both legs bend at once in push/push2 (SE view), so it looks like a hop rather than a run.
+- **Secondary motion: 5.** The ribbon tails swing visibly in the E view. The skirt hem and back hair barely lag behind the body.
+- **Readable at 1x: 6.**
+
+**Top 3 fixes**
+1. **Body height on landing:** in down and down2, drop the body another 2–3 px below contact, then rise steadily through push. Make air and air2 the same height (about −4 px; right now one is −3 and the other −4.7).
+2. **Head:** cut the head's sideways drift to under 3 px and keep the nod within −5° to −10°. Let it trail the chest by one frame instead of moving on its own.
+3. **Arms and legs, push2/air2:** pull the arms back to within about 4 px of the torso, matching push/air. Straighten the back leg in push and push2 so it fully extends to drive off the ground.

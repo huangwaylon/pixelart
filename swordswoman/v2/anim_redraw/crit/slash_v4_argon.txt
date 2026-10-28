@@ -1,0 +1,13 @@
+SCORE 5.5/10
+
+1. **Frame 2 (Smear)**: The smear arc has atrocious jaggies on the outer curve and hugs the head too closely, destroying silhouette readability and range.
+2. **Frame 1 (Windup)**: The sword looks impaled through her skull/ear; her right arm and hand are completely hidden, breaking the windup silhouette.
+3. **Frame 3 (Impact)**: The 1px starburst FX looks like cheap programmer art, and the remnant smear behind the blade is visual noise.
+4. **Frames 1–4 (Feet/Grounding)**: No anchor foot; both feet slide around the canvas cell across the windup and lunge instead of pivoting from a pinned back foot.
+5. **Frames 0–6 (Head/Hair)**: The head is copy-pasted with zero secondary motion on the hair bun or bow during a violent slash, killing the bouncy feel.
+6. **Frames 3–4 (Blade Angle)**: Between impact (F3) and follow-through (F4), the sword barely moves while her torso pops up 4px, making the follow-through feel stiff and disconnected.
+
+**Top 3 Fixes:**
+1. **Redraw F2–F3 FX**: Extend the F2 smear outward by 8–10px with a clean, anti-aliased crescent curve and tapered tail; replace the F3 1px cross with a chunky pixel-cluster spark.
+2. **Fix F1 Pose & Pin Back Foot**: Raise the sword and visible hands *above/behind* the head in F1 for a clear silhouette, and lock the screen-left foot's X/Y position across F0–F5.
+3. **Add Secondary Motion**: Lag the hair bun and bow ribbons back by 2–3px in F2–F3, then overshoot forward in F4–F5 to sell the energy and bounce.

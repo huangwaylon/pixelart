@@ -1,0 +1,19 @@
+Restored session: Mon 26 Oct 2026 11:28:34 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 6/10.** The beats are all there, but the impact doesn't hit and the character changes shape from frame to frame.
+
+1. **Impact (F3) is weak.** The starburst is a few white and pink pixels that get lost in the hand and blade. Make it 2–3× bigger, add a 1-frame white flash on the target side, and raise the hit-stop from 80ms to 110–130ms. 80ms barely registers as a freeze. The shake isn't visible on the sheet, so check it in-engine.
+2. **Follow-through (F4) doesn't follow through.** The blade angle is nearly the same as F3, so the swing stops dead at the hit. Carry the blade past the impact, low and behind toward the lower left, and let the hips over-rotate.
+3. **The smear (F2) is the best frame, but it's too clean and even.** It's the same width from end to end, and its inner edge has stair-step jaggies. Taper it thick at the blade end and thin at the tail, and add a lighter leading edge. It also needs a second, fading smear frame inside F3 so the effect doesn't cut off abruptly.
+4. **The windup (F1) reads as a hop, not loaded weight.** The lifted knee and upright torso look floaty. Sink the hips 2–3px and plant both feet so the drop into F2 feels like a spring letting go.
+5. **Proportions drift.** The bow is larger in F1, the hair-bun shapes change in F4 and F5, and the head shrinks in F2 and F3. Blade thickness also varies (about 2px in F0, about 3px in F5). Lock the head sprite and the blade width.
+6. **Feet aren't pinned.** The back foot slides between F2, F3 and F4, and the lead foot moves between F5 and F6. Pick one anchor foot for each stance change and keep it fixed.
+7. **The silhouette goes muddy in F2 and F3.** The arms disappear into the dress and hair, so the hands and grip don't read at 1x. Push the arm out with a 1px gap or a light rim.
+8. **Recovery (F5 to F6) is fine,** but F6 copies F0 exactly. Add a small settle (overshoot down 1px, then back up) so it feels bouncy.
+9. **Timing:** the 45ms smear is good. Move 20ms from F1 into the F3 hit-stop, and cut F6 to about 120ms.
+
+**Fix first:** #1, #2 and #5, which are impact, follow-through and consistency.
+
+Saving session...completed.

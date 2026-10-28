@@ -1,0 +1,13 @@
+SCORE 5/10
+
+1. All SE variants (hair/bob): You overcorrected the old boxy helmet into a puffy mushroom/afro—the left/right hair bulbs outward and tucks under the chin instead of hanging down in a sleek, tapered bob with pointed tips like `iso_SE` and the old head.
+2. SE & E `squash` (skull/hair): Squash looks melted and jagged; the left side of the hair has a 2px horizontal shelf/spike sticking out instead of a clean compressed curve.
+3. All E variants (bow & bun): In true profile, the bow looks like a severed crab claw/heart rather than foreshortened side loops, and the bun sits too low and tiny behind it compared to the prominent top-back bun in `iso_E`.
+4. All SE variants (face/bangs): The blunt hime-cut bangs shelf is broken by a stray dark hair pixel dipping into the upper-left eye corner, and the added pink blush + lower mouth pixel clutter the tiny face compared to the clean, stoic old master.
+5. SE & E `lookup` vs `lean`/`neutral` (variants): Virtually zero pixel differentiation—`lookup` barely shifts the eye/brow by 1px without tilting the skull, bangs line, or bow/bun axis back.
+6. All E variants (back of skull): The lower-back hair staircase (45-degree jagged steps) looks choppy and lacks the smooth, heavy rounded sweep of a bob cut seen in `iso_E`.
+
+FIXES:
+1. Reshape the bob silhouette (SE & E): Pull in the puffed-out upper cheek hair by 1-2px and extend the lower side-locks downward by 2px so the hair frames the jaw with clean, inward-tapering tips rather than a round ball.
+2. Clean up SE face & bangs: Flatten the bangs into an unbroken horizontal shelf (remove the left-eye dip), drop the pink blush pixels to match the old head's clean read, and shift the mouth 1px right to align with the 3/4 nose/centerline.
+3. Redraw E bow/bun & push `lookup`/`squash`: Enlarge the E bun upward by 1-2px, reshape the E bow into a clear side-loop + overlapping knot, and make `lookup` shift the bangs/face up 1px while `squash` widens smoothly without side spikes.

@@ -1,0 +1,45 @@
+{
+ "size": [
+  24,
+  7
+ ],
+ "facing": "E",
+ "attach": "feet",
+ "pivot": [
+  12,
+  6
+ ],
+ "ms": [
+  60,
+  80,
+  100,
+  120
+ ],
+ "cell_offset": [
+  20,
+  37
+ ],
+ "cell": "40x40 cell of the 32 px figure (A_r3, feet ~20,37, back heel ~16,37, front toe ~24,36); ground_y = cell row 37 (shoe-sole row); pivot = ground point",
+ "layer": "over",
+ "ground_y": 6,
+ "centre_x": 12,
+ "width_px": [
+  12,
+  18,
+  22,
+  24
+ ],
+ "lift_px": [
+  0,
+  0,
+  1,
+  2
+ ],
+ "note": "symmetric burst (shading not mirrored: lit top-left on both sides). f0 6x4 pair; f1 4x4 inner + 6x5 outer each side; f2 4x3 + 5x5 lifted off ground; f3 4x3 + 4x4 drifted up to the top. No flip needed.",
+ "puffs_per_side": [
+  1,
+  2,
+  2,
+  2
+ ]
+}

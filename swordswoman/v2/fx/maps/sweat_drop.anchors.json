@@ -1,0 +1,48 @@
+{
+ "size": [
+  6,
+  12
+ ],
+ "facing": "E",
+ "attach": "head_side",
+ "pivot": [
+  2,
+  0
+ ],
+ "ms": [
+  120,
+  120,
+  200
+ ],
+ "offset_from_head_top": [
+  13,
+  3
+ ],
+ "head_top_in_cell": [
+  32,
+  14
+ ],
+ "head_width": 23,
+ "cell_offset": [
+  45,
+  17
+ ],
+ "cell": "64x64 C_r3 cell, 48 px figure, feet pivot (32,62), faces SE; head top ~(32,14), head width ~23, chest ~y40-44; pivot = drop tip on f0, drop body just outside / on the front (right) hair outline",
+ "layer": "over",
+ "mirror": "flip x: x -> 5-x, pivot -> [3,0]; offset_from_head_top -> [-13,3]",
+ "slide_px": [
+  0,
+  1,
+  2
+ ],
+ "elongate_px": [
+  0,
+  0,
+  2
+ ],
+ "frames": [
+  "f0 round drop, 1 px W glint",
+  "f1 slid 1 px, W highlight stretched to a 2 px streak",
+  "f2 slid 1 px more, neck +2 px (body bottom moves 0/1/4 px = accelerating fall)"
+ ]
+}

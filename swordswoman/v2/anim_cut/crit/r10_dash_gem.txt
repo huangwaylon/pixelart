@@ -1,0 +1,15 @@
+Here are the 3 most important concrete problems holding this animation back from top commercial quality:
+
+1. **Vertical afterimages ruin horizontal momentum (Frames 1–2, character back/trail region):**
+   * **Problem:** In `1 40ms burst` and `2 50ms burst2`, the crimson and dark-purple afterimages are simply offset duplicates of the upright standing silhouette. Because the trail edges run vertically from the hair bow down to the boots, it reads like a static ghost clone standing behind her rather than high-velocity horizontal motion. Worse, in Frame 1, the trail's dark outline directly merges with the katana blade's upper outline, creating a muddy tangent that swallows the weapon silhouette.
+   * **Fix:** Replace the upright silhouette clones with horizontal, tapered motion smears. Pull horizontal streaks backward from the hair bow, hair tips, and tunic hem that taper to points on the left. Remove the dark exterior outline from the afterimage entirely so it cleanly separates from the solid-outlined main body and katana blade.
+
+2. **Stiff upright head and static expression break the dash line of action (Frames 0–4, head/hair/face region):**
+   * **Problem:** Across `0 150ms antic`, `1 40ms burst`, `2 50ms burst2`, and `3 90ms skid`, the torso and legs lean dynamically, but the head cutout remains locked at a 0-degree vertical angle with a completely blank, wide-eyed idle stare. There is no secondary overlap on the hair or bow during the high-G acceleration (`1`–`2`) or violent deceleration (`3`), making her look like a rigid doll sliding on a track.
+   * **Fix:** Tilt/shear the head forward by 1–2 pixels during `1` and `2` (lowering the brow line and squinting the eyes by 1px for effort) and sweep the back hair lock and bow ribbons horizontally to the left. In `3 90ms skid`, tilt the head slightly back to sell the sudden braking force and make the hair and bow overshoot forward (to the right) by 2 pixels across `3` and `4 70ms brake`.
+
+3. **Rotated cutout jaggies and anatomy tangents on the katana & legs (Frames 0–4, lower body & weapon region):**
+   * **Problem:** Because this is a cutout rig, rotating the thin katana blade creates severe staircase jaggies and broken double-thick outlines—most notably in `1 40ms burst` (where the blade tip hits the dust puff and loses its crispness) and `3 90ms skid` (uneven 3px-to-1px steps along the blade). Additionally, in `3 90ms skid`, the extended front (right) leg is a straight diagonal stick with a jagged outline that connects high up under the skirt at an awkward tangent, while the back (left) knee is completely lost in a cluster of dark outline pixels.
+   * **Fix:** Hand-clean the katana blade in every frame to enforce a strict 1px core highlight with uniform 2:1 or 1:1 pixel steps along the outlines, ensuring a 1px gap or clean overlap over the dust puff in Frame 1. In Frame 3, redraw the front skidding leg to show a clear knee bend and plant the boot flat against the ground (angling the toe up slightly into the dirt cloud) while cleaning up the internal dark pixel cluster on the back leg.
+
+SCORE dash: 6.5

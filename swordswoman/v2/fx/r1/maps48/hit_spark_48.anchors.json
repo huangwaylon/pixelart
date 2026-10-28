@@ -1,0 +1,26 @@
+{
+ "size": [
+  21,
+  21
+ ],
+ "facing": "E",
+ "attach": "hit_point",
+ "pivot": [
+  10,
+  10
+ ],
+ "ms": [
+  40,
+  60,
+  80
+ ],
+ "layer": "over_character",
+ "radius_px": [
+  9,
+  10,
+  10
+ ],
+ "symmetric": true,
+ "flip_W": "symmetric; f2 sparks mirror x -> 20-x (optional)",
+ "note": "f0 19px starburst (4 long cardinal rays W/y/o, 4 short diagonal y/o), f1 21px ring + detached rays, f2 6 sparks + 2 glints. Play on the frame after hit_flash."
+}

@@ -1,0 +1,14 @@
+**Scores:**
+* **A (Cross-view consistency):** 6/10
+* **B (48px readability):** 7/10
+* **C (Iso correctness):** 5/10
+* **D (Katana clarity):** 6/10
+* **E (Fitness as final reference):** 6/10
+
+**Top 5 Remaining Problems:**
+
+1. **`iso_S` (Camera pitch mismatch):** Still drawn at ~45–50° elevation, not 30°. Compare against `r3G_mat` (S): the 3D ground truth shows exposed bare legs and boots clearly separated below the hem, whereas `iso_S` has an egg-shaped balloon skirt that nearly swallows the legs and hides the neck/collar entirely.
+2. **`iso_NE` & `iso_N` (Flat elevation vs. 3D authority):** Both rear views remain stuck at ~10–15° elevation. In `r3G_mat` (NE, N), the bow sits high on the upper silhouette; in `r3H_sheet`, the bun/bow sits low on the back of the head and the obi curves UP (or flat) instead of following the downward 30° cylinder wrap.
+3. **`iso_E` (Ballooning skirt profile):** The front and rear of the skirt bulge outward into a sphere that does not match the straight A-line cone in `left`/`right` or `r3G_mat` (E).
+4. **`left_k` at 48px (Broken blade):** In `D_turn_k_pal`, the dark dress hem outline cuts directly across the steel pixels of the blade, snapping the sword in two.
+5. **`r3H_sheet_k` (Incomplete coverage):** Missing `iso_S_k`, `iso_NE_k`, and `iso_N_k`—cannot sign off on a final 8-direction sprite reference with 3 isometric weapon views missing.

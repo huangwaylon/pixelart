@@ -1,0 +1,19 @@
+Restored session: Mon 26 Oct 2026 10:48:15 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 5/10.** The idea is right but it doesn't land as a dash.
+
+1. **Timing unknown:** the frame durations came through empty, so I can't judge holds or snap. Send the ms list. As drawn, F1 and F2 are almost the same pose, so the burst stalls instead of travelling.
+2. **Anticipation (F0) is weak:** there's barely any crouch, the hips aren't loaded and there's no lean against the dash direction. Drop her 2–3px, squash the torso and pull the sword back further.
+3. **Burst (F1–F2):** the lunge silhouette is good, but the checkerboard afterimage looks like dither noise at 1x. Use solid flat shapes, 1–2 tones, that taper off. Make F2 a clear smear or stretch, not a copy of F1.
+4. **Proportions drift:** her head is visibly wider and flatter in F1–F2 than in F0 and F3. Her torso and legs get taller by F5, so she grows about 2px over the clip.
+5. **Skid (F3) has no physics:** she's standing upright. She needs a strong backward lean, a planted front heel and a bigger dust plume at the feet. The small dust puff you have floats.
+6. **Sword continuity is broken:** the grip and blade angle jump between F3, F4 and F5, and the hilt changes hands. Lock the hand position and only rotate the blade.
+7. **Position snaps:** F1–F2 push her to the right of the cell, then F3 jumps back to centre. Decide between in-place and root motion, and ease the return over 2 frames.
+8. **Feet are not pinned:** the planted foot slides 1–2px from F3 to F5 and the stance width changes for no reason.
+9. **FX cleanup:** the F4 dust ring reads as orphan pixels, and the speed lines are evenly spaced, which looks stiff. Vary their length and spacing.
+10. **Recover (F4–F5):** there's no overshoot or settle bounce, so she just appears in idle. Add one dip frame.
+11. **Fix order:** sword continuity, then the skid lean, then consistent proportions, then solid smear FX.
+
+Saving session...completed.

@@ -1,0 +1,15 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt `dash_SE` and `dash_SE_ns` and QC passes on both. I did 4 build-and-review passes but haven't re-scored against the r9 critics.
+
+**What changed:**
+- **Afterimages:** the blocky smear is gone. Each burst frame now leaves solid, flat 2-tone red silhouettes of its own lunge behind it (made by `work/dash10/mkghost.py`).
+- **Poses:** new lunge legs. Skid hem curves up and skid arm thrown up. Brake has braced legs, and the hem wraps the front thigh.
+- **Blade and secondary motion:** blade angle changes every frame and never dips below the ground. Hair/bow swap variants a frame late.
+- **Shadow:** now follows her feet; the rest shadow is centred.
+
+**New parts:** `dash10_legs_lunge`, `dash10_legs_lunge2`, `dash10_legs_brake`, `dash10_skirt_skid`, `dash10_skirt_brake`, `dash10_head_hf`, `dash10_head_lean_hf`, `dash10_ghost*`, `dash10_dust_*`, `dash10_shadow*`.
+
+**Weak spots:** wind-up lean is mild, the ghost back leg reads faintly, and the custom shadow is slightly bluer than other actions'.
+
+Saving session...completed.

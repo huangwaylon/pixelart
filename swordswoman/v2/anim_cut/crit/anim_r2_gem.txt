@@ -1,0 +1,67 @@
+Here is the Round 2 critique. While some motion arcs are starting to read, your cutout rig is suffering from severe **layer-offset disconnection** (floating heads), lazy linear smears, and static silhouettes where the body moves as a single solid block instead of an overlapping organic rig. 
+
+Here is the breakdown per sheet:
+
+---
+
+### 1. IDLE — **4.5 / 10**
+The vertical bob has basic timing, but the rig falls apart structurally on the transitions, and the silhouette is completely dead from the waist down.
+
+1. **Frame 1 (`sink`, neck/chin region around `y:31–33`):** **Decapitation bug.** You shifted the torso down by 2px while leaving the head behind (or vice versa), opening a 1–2px horizontal gap of raw grey background directly between the chin outline and the kimono collar. Shift the head layer down `+1px` and extend the neck skin/outline `+1px` down so the head stays attached to the spine.
+2. **Frames 0–5 (Katana scabbard & lower hem `y:40–62`):** **Zero secondary motion on the prop and skirt.** As her hips drop 2px in frames 2–3 (`low`/`low2`), the scabbard stays frozen at the exact same angle and pixel shape, clipping through the floor plane (`y:63`). When the hips drop in `f2–f3`, rotate/pivot the scabbard tip `+2px` left and `+1px` up to show it resting against the ground/hip angle, and flare the bottom skirt hem outward by `+1px` on both sides to show cloth compression.
+3. **Frames 0 & 5 (`rest` vs `top`):** **Redundant apex poses.** Frame 5 (`top`, 200ms) and Frame 0 (`rest`, 300ms) are virtually identical in height, creating a 500ms dead freeze at the top of the loop. Push `f5 (top)` `+1px` higher in the torso (stretch), keep the head lagging `-1px` down with the bow tips drooped, and drop `f5` timing to `120ms` so `f0` acts as the true settle.
+
+---
+
+### 2. WALK — **5.5 / 10**
+The head bob and bow flap have decent rhythm, but the cutout rig still suffers from the neck-gap bug and the upper body has zero counter-rotation (twist) to balance the legs.
+
+1. **Frames 0 & 4 (`contact` & `contact2`, neck region `y:31–32`):** **Floating head gap.** Just like in the idle, a 1px horizontal slit of grey background appears between the chin and the red collar on both contact frames. Lock your head pivot to the torso neck socket and paint 2–3 dark outline/skin pixels behind the chin on the torso layer as a permanent neck buffer.
+2. **Frames 2 vs 6 (`pass` vs `pass2`, legs `y:46–56`):** **Asymmetrical pass readability.** In `f2 (pass)`, the passing (back) leg is barely lifted (only 1px higher than the standing foot), making her look like she's shuffling both feet flat on the ground, whereas `f6 (pass2)` lifts the front knee clearly. In `f2`, raise the back foot/shin upward by `-3px` and tuck it behind the standing calf so the pass silhouette clearly reads as a one-legged weight transfer.
+3. **Frames 0–7 (Front/right sleeve & torso `x:36–46, y:33–45`):** **Dead arm swing.** The front (screen-left) big sleeve moves 1px vertically, and the back (screen-right) hand pokes out identically in `f0–f1` and disappears in `f2`, with no opposing swing between steps 1 and 2. In `f0–f1` (left foot forward), swing the screen-left sleeve back `-2px` (left) and push the screen-right hand forward `+2px` (right); reverse this in `f4–f5` by tucking the right hand completely behind the torso and swinging the front sleeve forward `+2px` right across the obi.
+
+---
+
+### 3. RUN — **5.0 / 10**
+The run lacks forward drive because the torso stays completely vertical (90° upright) as if she is riding a Segway while her legs cycle underneath.
+
+1. **Frames 0–5 (Head & Torso `y:12–45`):** **Zero forward lean.** A chibi run needs the head and shoulders driving ahead of the hips. Right now her spine is completely vertical. Shift the entire torso layer `+2px` right (forward) and the head layer `+3px` to `+4px` right relative to the hip pivot, and tilt the kimono hem `-2px` up on the back-left side so her body angles forward at ~15–20°.
+2. **Frames 2 & 5 (`air` & `air2`, sword & arm `x:2–25, y:30–35`):** **Robotic 90-degree sword snap.** Between `f1 (push)` and `f2 (air)`, the katana snaps from a ~30° downward diagonal to a dead-flat horizontal line (`y:30–33`) with clean horizontal pixel rows, then drops back in `f3` (`reach2` actually leaves it horizontal, breaking symmetry with `f0`!). Fix the arc: keep the blade angled slightly down (`~10–15°`) in `f2/f5`, and make `f3 (reach2)` match `f0`'s diagonal angle (or slightly lower for overlap) instead of leaving it stuck horizontally.
+3. **Frames 0, 1, 3, 4 (Eyes/Face `y:26–32`):** **Dead stare and no vertical squash on push.** Her face and torso height are 100% identical between `reach` and `push`. On `f1 (push)` and `f4 (push2)`, drop the head `-1px` down into the collar, compress the kimono torso `-1px` vertically (`+1px` wider at theobi), and drop the timing of `air/air2` from `80ms` to `65ms` so she doesn't float in mid-air during a sprint.
+
+---
+
+### 4. JUMP (No-Katana) — **5.5 / 10**
+Good energy in the arm poses going up (`f1–f2`), and nice dust puffs on landing, but the framing, mid-air pose transition, and crouch anticipation are broken.
+
+1. **Frames 2, 3, 4 (`rise`, `apex`, `hang`, top border `y:0–6`):** **Canvas clipping.** The top of her red hair bow is guillotined flat against the top edge (`y:0`) of the 64x64 cell. In sprite sheets, clipping the silhouette against the bounding box looks like an amateur export error. Shift the entire character down by `+4px` in `f2`, `+5px` in `f3`, and `+5px` in `f4` (there is plenty of empty room above the ground shadow at `y:58`), and let the game engine handle vertical jump height—or keep the sprite within `y:2–58`.
+2. **Frames 4 & 5 (`hang` & `fall`, arms `x:12–52, y:26–36`):** **T-pose stiffness.** In `f4–f5`, both sleeves stick straight out horizontally at 180° (`y:28–33` in `f4`, `y:38–43` in `f5`), creating a rigid, inorganic "crucifix/T-pose" silhouette. Angle the sleeves upward in a "V" shape (`+3px` to `+4px` higher at the cuffs than the shoulders) so the wide kimono sleeves billow upward from air resistance during the fall.
+3. **Frame 0 (`crouch`, 90ms) vs Frame 6 (`land`, 100ms):** **Weak anticipation and bow-lag error.** `f0 (crouch)` barely compresses—her head is at `y:10`, whereas in `f6 (land)` her head drops to `y:12` with a wider stance. Make `f0` match `f6`'s deep squash (`+2px` lower head, wider knees) and increase `f0` to `110ms` for proper jump wind-up. Also, in `f5 (fall)`, the hair bow is already blown upward well before she hits peak downward velocity, and in `f6 (land)` the bow sits upright instead of slapping *downward* (`+2px` lower on the ribbon tips) from landing inertia.
+
+---
+
+### 5. DASH — **4.0 / 10**
+The burst effect violates the pixel-art quality prompt, and the body posture during the dash looks like a leisurely walk rather than an explosive burst.
+
+1. **Frames 1 & 2 (`burst` & `burst2`, background trails `x:2–32, y:4–58`):** **Lazy comb-filter speed lines.** The prompt specifically asked for clean, hand-shaped pixel art. You drew 20 uniform 1px horizontal red/orange bars spaced every 2 pixels vertically like a barcode or Venetian blind, plus noisy single-pixel white confetti around the sword. Delete the comb lines completely. Replace them with a single cohesive **afterimage silhouette** (1–2 stepped flat-color silhouettes of her head/body 8px and 16px behind in dark crimson/plum) or 2–3 thick tapering ribbon streaks (`3–4px` thick at the body tapering to `1px` points behind the bow and hem).
+2. **Frames 1 & 2 (`burst` & `burst2`, character pose):** **Upright posture and grounded walking legs.** During a `40ms` high-speed dash, her legs are in a casual upright walking stride with both feet planted flat on the ground, and her torso is vertical. Compress her silhouette vertically by `-3px`, lean the torso/head forward `+4px` right, kick the back leg completely off the ground (`-3px` up, angled horizontally behind the skirt), and flatten the hair bow straight back horizontally (`y:9–12`).
+3. **Frames 3 & 4 (`skid` & `brake`):** **Missing backward counter-lean.** When braking from a high-speed dash in `f3`, her body is still upright/leaning slightly forward. In `f3 (skid)`, lean the torso and head **backward** (`-2px` left relative to the hips), plant the front heel forward `+2px` right with the toe angled up, and whip the hair bow and front sleeve forward (`+2px` right) to show deceleration momentum.
+
+---
+
+### 6. SLASH — **5.5 / 10**
+The impact sparks and hit-stop idea (`f3–f4`) are a step in the right direction, but the smear arc is mathematically broken, and the hit-stop frames have an accidental animation boil instead of deliberate vibration.
+
+1. **Frame 2 (`SMEAR`, crescent arc `x:18–60, y:2–56`):** **Reverse-tapered, jagged smear outside the blade path.** Look at the geometry: in `f1 (coil)` the sword tip is at top-left (`x:10, y:16`). The smear in `f2` starts at `x:18, y:12` as a 1px dotted line, balloons outward to `x:60` (way further right than the actual sword tip ever reaches in `f3`, which stops at `x:53`), and ends in a blunt, squared-off 8px-wide shovel tip at the bottom without connecting to the sword blade at all. Reshape the crescent: start with a clean `1px` tail at `x:10, y:16` (matching `f1`), curve smoothly through `x:54` at mid-height, and **merge the leading edge directly into the diagonal katana blade** at the bottom-right (`x:42–53, y:44–56`) so the blade forms the sharp leading edge of the smear.
+2. **Frames 3 & 4 (`impact` vs `hitstop`):** **Broken hit-stop diff (accidental head bounce, static spark).** In `f3`, her mouth is open (2px dark hole), her head is 1px lower, and the spark is at `x:50–61`. In `f4 (hitstop)`, her head pops *up* `+1px`, her mouth closes, her legs stay 100% frozen, and the yellow spark trail (`x:52–61, y:22–57`) is **100% identical pixel-for-pixel** for `130ms` total (`60ms + 70ms`). A frozen spark kills the speed of a slash. On `f4`, keep the head down (or shift the torso/sword `+1px` right for tension vibration), and **dissipate the spark** into 3–4 separated fading embers drifting upward/outward instead of pasting the exact same spark sprite twice.
+3. **Frame 5 (`follow`, 80ms):** **Aborted follow-through.** Instead of following through on the slash, `f5` immediately pulls the sword *backward* (left) and straightens her spine up toward the idle pose. A heavy overhead slash needs overshoot: in `f5`, keep the torso leaned forward from `f3/f4`, let the sword tip stay planted low or swing slightly past the impact point (`+2px` further down/left along the floor arc) while the hair bow settles forward, and let `f6 (recover)` do the work of lifting the blade and torso back up.
+
+---
+
+### Summary Scorecard (Round 2)
+* **Idle:** 4.5 / 10 *(Fix neck decapitation in f1, animate scabbard/hem on low frames)*
+* **Walk:** 5.5 / 10 *(Fix neck gap in f0/f4, lift pass leg in f2, add arm/shoulder opposition)*
+* **Run:** 5.0 / 10 *(Add forward torso lean, fix horizontal sword snap in f2/f3/f5)*
+* **Jump:** 5.5 / 10 *(Stop clipping bow at y:0 in f2–f4, fix T-pose arms in f4–f5, deepen f0 crouch)*
+* **Dash:** 4.0 / 10 *(Replace barcode speed lines with pixel afterimage/ribbons, lean body in f1–f2, lean back in f3 skid)*
+* **Slash:** 5.5 / 10 *(Connect & taper smear into the blade in f2, animate/dissipate spark in f4, hold forward posture in f5)*

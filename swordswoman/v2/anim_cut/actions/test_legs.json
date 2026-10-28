@@ -1,0 +1,268 @@
+{
+ "name": "test_legs",
+ "partdir": "parts/se",
+ "cell": [
+  64,
+  64
+ ],
+ "ground": [
+  32,
+  60
+ ],
+ "rig": {
+  "legs": {
+   "part": "legs",
+   "at": "root",
+   "z": 1
+  },
+  "skirt": {
+   "part": "skirt",
+   "at": "legs.hip",
+   "z": 3
+  },
+  "torso": {
+   "part": "torso",
+   "at": "skirt.waist",
+   "off": [
+    0,
+    0
+   ],
+   "z": 4
+  },
+  "armF": {
+   "part": "armF",
+   "at": "torso.shR",
+   "z": 2
+  },
+  "armN": {
+   "part": "armN",
+   "at": "torso.shL",
+   "z": 6
+  },
+  "head": {
+   "part": "head",
+   "at": "torso.neck",
+   "z": 7
+  },
+  "bun": {
+   "part": "bun",
+   "at": "head.bun",
+   "z": 0
+  },
+  "bow": {
+   "part": "bow",
+   "at": "head.bow",
+   "z": 8
+  }
+ },
+ "frames": [
+  {
+   "ms": 250,
+   "label": "stand",
+   "set": {
+    "legs": {
+     "part": "legs"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "wc1",
+   "set": {
+    "legs": {
+     "part": "legs_wc1"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "wd1",
+   "set": {
+    "legs": {
+     "part": "legs_wd1"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "wp1",
+   "set": {
+    "legs": {
+     "part": "legs_wp1"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "wu1",
+   "set": {
+    "legs": {
+     "part": "legs_wu1"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "wc2",
+   "set": {
+    "legs": {
+     "part": "legs_wc2"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "wd2",
+   "set": {
+    "legs": {
+     "part": "legs_wd2"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "wp2",
+   "set": {
+    "legs": {
+     "part": "legs_wp2"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "wu2",
+   "set": {
+    "legs": {
+     "part": "legs_wu2"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "rr1",
+   "set": {
+    "legs": {
+     "part": "legs_rr1"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "rp1",
+   "set": {
+    "legs": {
+     "part": "legs_rp1"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "ra1",
+   "set": {
+    "legs": {
+     "part": "legs_ra1"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "rr2",
+   "set": {
+    "legs": {
+     "part": "legs_rr2"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "rp2",
+   "set": {
+    "legs": {
+     "part": "legs_rp2"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "ra2",
+   "set": {
+    "legs": {
+     "part": "legs_ra2"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "crouch",
+   "set": {
+    "legs": {
+     "part": "legs_crouch"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "launch",
+   "set": {
+    "legs": {
+     "part": "legs_launch"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "tuck",
+   "set": {
+    "legs": {
+     "part": "legs_tuck"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "fall",
+   "set": {
+    "legs": {
+     "part": "legs_fall"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "land",
+   "set": {
+    "legs": {
+     "part": "legs_land"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "lunge",
+   "set": {
+    "legs": {
+     "part": "legs_lunge"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "skid",
+   "set": {
+    "legs": {
+     "part": "legs_skid"
+    }
+   }
+  },
+  {
+   "ms": 250,
+   "label": "stance",
+   "set": {
+    "legs": {
+     "part": "legs_stance"
+    }
+   }
+  }
+ ],
+ "sheet_cols": 8
+}

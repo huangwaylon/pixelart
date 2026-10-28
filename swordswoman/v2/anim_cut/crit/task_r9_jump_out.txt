@@ -1,0 +1,18 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt jump_SE and jump_SE_ns. QC passes on both, and I did five build-and-review passes, but the critics haven't re-scored it yet.
+
+**What changed:** each key pose now has its own torso, skirt and leg parts:
+- **Squash and stretch:** crouch squashed and leaning forward, launch stretched.
+- **Hem:** flares at apex, flips up on the fall, curves on the land.
+- **Legs:** 3px with two skin tones.
+- **Lag:** hair ends and bow trail one frame and overshoot.
+- **Blade:** only the clean 9/10/11 angles, one step per frame, with a launch smear.
+- **Apex:** now the true top of the arc.
+- **Tail:** 250ms, down from 330ms.
+
+**New parts:** `jump9_*` (heads, torsos, skirts, legs, fx); test sheet: `actions/test_jump9.json`.
+
+**Weaknesses:** the apex tuck legs are stubby, no `px` hand polish yet, and only one smear frame.
+
+Saving session...completed.

@@ -1,0 +1,30 @@
+import sys
+FACING = {
+ "S":  "facing straight toward the viewer (front view from the high camera)",
+ "SE": "turned three-quarters toward the lower right of the picture (we see her face in three-quarter view, looking down-right), exactly like image 1",
+ "E":  "facing the right side of the picture in full profile (we see the right... no: we see her left cheek? -- she looks to the right, one eye visible)",
+ "NE": "turned away from us toward the upper right of the picture: back three-quarter view, we see the back of her head and only the edge of her cheek and bangs on the right",
+ "N":  "facing directly away from the viewer: full back view, we see the back of her head, the bun and bow, her bare upper back and the long skirt tails",
+ "NW": "turned away from us toward the upper left of the picture: back three-quarter view, we see the back of her head and only the edge of her cheek and bangs on the left",
+ "W":  "facing the left side of the picture in full profile, one eye visible, looking left",
+ "SW": "turned three-quarters toward the lower left of the picture (we see her face in three-quarter view, looking down-left)",
+}
+FACING["E"] = "facing the right side of the picture in full profile, one eye visible, looking right"
+SWORD = {
+ "S": "on the right side of the picture", "SE": "in her far hand, on the right side of the picture, the blade sticking out to the right past her skirt",
+ "E": "in her far hand behind her body, the blade visible below and behind her skirt", "NE": "on the left side of the picture",
+ "N": "on the left side of the picture", "NW": "in her near hand on the left side of the picture",
+ "W": "in her near hand in front of her body", "SW": "in her near hand, on the lower right of the picture",
+}
+d = sys.argv[1]
+B = len(sys.argv) > 2 and sys.argv[2] == "guidefirst"
+txt = (f"""Draw ONE full-body figure of the chibi anime swordswoman from image 1, in EXACTLY the art style, rendering, line quality, colours, face design and chibi proportions of image 1: soft cel-shaded chibi anime illustration, clean thin dark-brown lineart, a huge round head (head plus bun is almost half of her total height), very large blue eyes set low on the face, small narrow body, short legs, tiny feet. Same high isometric camera as image 1 (looking down about 30 degrees, we see the top of her head).
+Pose and direction: copy image 2, a rough 3D guide of the same character. She is {FACING[d]}. Relaxed standing idle, feet slightly apart, arms hanging slightly away from the body. Match image 2 for the direction, pose, silhouette and where the sword is, but draw it as a clean finished illustration like image 1, not like a 3D render.
+The katana is held loosely in her LEFT hand (her own left), blade pointing down and angled outward away from her leg, tip near the ground; here it is {SWORD[d]}. ONE sword only. She has NO sheath and NO scabbard: nothing hangs on her hip or back. Her right hand is empty.
+Image 3 is the head and hair model sheet (front, three-quarter, back): copy the hair, bangs, bun and bow exactly. Image 4 is the costume reference.
+Costume: very dark brunette hair, heavy side-swept bangs over the brows, two thin face-framing strands to the jaw, a HIGH round slightly messy bun on the top-back of the head, a BIG bright red two-loop ribbon bow at the base of the bun; tall stiff flared red collar open at the front; red high-necked sleeveless top; bare shoulders; detached red sleeves that flare wide like bell sleeves; dark-brown leather corset with buckled straps around the waist; two long thin pale-pink scarf ribbons from the back of the collar hanging down in soft S-curves; asymmetric red wrap skirt, short in front with a slit showing black shorts, long pointed petal-shaped tails at the back; bare legs; black strappy high-heel sandals; katana with a black handle wrapped with small red diamonds, a small silver guard with a little crescent hook, a silver blade.
+Calm half-lidded eyes, small closed mouth, pink blush. Plain flat white background, no ground shadow, no text.""")
+if B:
+    txt = txt.replace("image 1", "IMG_A").replace("image 2", "image 1").replace("IMG_A", "image 2")
+    txt = "Image 1 sets the direction and pose, image 2 sets the art style. " + txt
+print(txt)

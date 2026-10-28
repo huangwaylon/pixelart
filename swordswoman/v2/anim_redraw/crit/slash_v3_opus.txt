@@ -1,0 +1,17 @@
+Restored session: Mon 26 Oct 2026 11:00:36 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I'd score this **5/10**. The poses work but the impact doesn't, and the character's proportions drift between frames.
+
+- **Frame 1 (windup):** Both feet leave the ground, so it reads as a float rather than a coiled anticipation. Pin the back foot and squash down before rising. The raised sword is a 1px grey line that disappears at 1x; it needs a darker outline and a bright edge.
+- **Frame 2 (smear):** This isn't a solid smear. It's a thin, broken pale crescent plus a separate grey blob over the torso, which makes two competing arcs. Make it one fat, tapered, filled arc from upper-left to lower-right, brightest at the leading edge.
+- **Frame 3 (impact):** The spark is a few thin white lines that are smaller than the smear before it, so the hit gets weaker instead of stronger. Use a bigger 2–3 colour starburst and a 1-frame white flash on the blade. Shake isn't visible on the sheet, so check it's 1–2px and off the background, not just the sprite.
+- **Frame 4 (follow-through):** A second X-shaped spark appears and reads as crossed swords or a second hit. Remove it and let the blade carry past the target with a fading trail.
+- **Proportions:** Frame 6 looks larger than frame 0 (head and torso width), and the bun and hair outline move every frame. Lock the head silhouette and compare frames as onion skins.
+- **Grounding:** The stance foot slides between frames 2 and 5. Pin the planted foot to the same pixel.
+- **Timing:** The 45ms smear is fine. Cut the impact to about 80ms and use the extra time for a held squash before frame 1. Frames 5–6 together run 280ms, which drags, so merge them or cut frame 6 to about 100ms.
+- **Readability:** At 1x the sword vanishes everywhere except frame 2. Give the blade a darker outline and keep it the same length in every frame (it currently changes length).
+
+**Top fixes:** a solid filled smear, a bigger impact spark with a flash, remove the frame 4 spark, and lock the proportions and planted foot.
+
+Saving session...completed.

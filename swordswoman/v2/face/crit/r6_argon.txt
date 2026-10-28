@@ -1,0 +1,34 @@
+**1. Expression Scores (1x Readability & Pixel Flaws)**
+*   **Neutral (6/10):** Readable, flat. Sclera-bottom-row muddies with skin; 1px mouth is timid.
+*   **Determined (6.5/10):** Brow-pixels clip bangs; needs 1px skin buffer above inner eye corners.
+*   **Shout (4/10):** Fails at 1x. 3x3 mouth ring with pink center reads as "ooh"/blowing, not a battle cry.
+*   **Effort (3/10):** Unreadable. White teeth pixels merge with skin into a muddy horizontal smudge.
+*   **Joy (8/10):** Good `^ ^` eyes; mouth shares the weak "ooh" ring problem.
+*   **Smile (6/10):** Asymmetric smirk pixel blurs with cheek shadow in SE.
+*   **Surprised (5/10):** Reads sleepy; dark brow/lid pixels above eyes weigh them down instead of widening.
+*   **Pain (7/10):** `> <` reads well, but open mouth makes it look like laughing.
+*   **Blink_hal (6.5/10):** Fine, slightly cross-eyed in S.
+*   **Blink_clo (7.5/10):** Clean, sits 1px too low.
+*   **Squash (7/10):** Good 1px vertical head-drop; closed eyes need thicker outer lashes.
+
+**2. Intentional & Pokemon-like**
+Lacks Gen4/5 contrast. Official sprites (see Lyra/Rosa refs) use tall vertical eyes (3x4/2x4) with crisp 1px white upper-glints, dark lashes, and zero noisy bottom-sclera. Your mouths overuse full dark outlines; Pokemon uses 1–2px dark/red slots without full rings.
+
+**3. Personality**
+Reads doll-like and passive. Needs sharper upper lash angles and asymmetric smirks for "spirited/confident."
+
+**4. Views**
+*   **S (6/10):** Symmetry makes 3px mouths look robotic.
+*   **SE (6.5/10):** Far eye needs 1px narrower width for true 3/4 depth. (`C_r4 SE` has much better jawline/cheek volume).
+*   **E (5/10):** Mouths sit 1px too far back instead of breaking the silhouette; eye sits 1px too deep.
+*   **NE/N (7.5/10):** Clean, but NE needs 1px cheek/lash protrusion.
+
+**5. Top 6 Concrete Pixel Edits**
+1.  **Eyes (All):** Replace bottom-white sclera pixels with blue iris; put a crisp 1px white glint at top-inner corner under the black lash.
+2.  **Shout Mouth:** Change to 3w x 2h: top row dark-red/black, bottom row bright pink/red, no bottom-outline pixel.
+3.  **Effort Mouth:** Use 3w x 1h white bar capped by 1px dark corners (or a 2px angled grit); delete top/bottom dark borders.
+4.  **Surprised Eyes:** Delete dark brow pixels; expose 1px skin above lash and shrink iris to 1x2 to show white sclera.
+5.  **Pain Mouth:** Replace open ring with a 2–3px jagged/wavy dark line (`~`).
+6.  **E Profile:** Shift eye 1px right; cut mouth 1px into the front jawline outline.
+
+**Scores:** Readable at 1x: **6/10** | Intentionally designed: **5.5/10** | Pokemon-like: **5/10** | Carries personality: **5.5/10** | **Overall: 5.5/10**

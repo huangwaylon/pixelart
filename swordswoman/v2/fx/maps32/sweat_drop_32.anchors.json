@@ -1,0 +1,43 @@
+{
+ "size": [
+  4,
+  9
+ ],
+ "facing": "E",
+ "attach": "head_side",
+ "pivot": [
+  1,
+  0
+ ],
+ "ms": [
+  120,
+  120,
+  200
+ ],
+ "offset_from_head_top": [
+  10,
+  2
+ ],
+ "head_top_in_cell": [
+  20,
+  6
+ ],
+ "head_width": 18,
+ "cell_offset": [
+  30,
+  8
+ ],
+ "cell": "40x40 cell of the 32 px figure (A_r3, feet ~20,37, head top ~20,6, head width ~18); pivot = drop tip on f0, just outside the front (right) hair outline",
+ "layer": "over",
+ "slide_px": [
+  0,
+  1,
+  2
+ ],
+ "elongate_px": [
+  0,
+  0,
+  1
+ ],
+ "flip_W": "mirror x: x -> 3-x; offset_from_head_top -> [-10,2]"
+}

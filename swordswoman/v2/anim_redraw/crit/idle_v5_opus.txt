@@ -1,0 +1,16 @@
+Restored session: Mon 26 Oct 2026 11:35:31 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+SCORE: 5/10. It works as a breathing idle, but it doesn't feel bouncy or energetic.
+
+- **Timing:** Frames 3–6 are the same pose for 580ms; only the eyes change for the blink (5–15 px per frame). The whole loop is one 4px rise and fall (top edge goes 9→13→9), so it reads as a slow sine wave. It needs a fast drop, a 1-frame squash at the bottom and a quick spring back up.
+- **Blink:** The 80/120/80 half-closed, closed, half-open sequence is good. But it plays during the dead hold, so it's the only thing moving. Shift it into the start of the rise so it overlaps the body motion.
+- **Secondary motion:** The bow, the hair buns and the hair ends move rigidly with the head. None of them lag behind or keep moving after the head stops. On a chibi, the bow is your best source of bounce: delay it 1–2 frames.
+- **Katana:** The blade only moves with the body bob. It doesn't tilt or catch a glint. Add a 1px angle change at the low point and a 2-frame specular glint during the hold. That's the FX budget for an idle; there are no fast actions here, so smears aren't needed.
+- **Feet:** Pinned. The bottom rows (55–59) are pixel-identical in every frame. The leg and hem rows (52–54) change by 15–36 px between frames, so check that the knees bend and the shins don't slide.
+- **Palette:** Frame 6 uses 15 colours and every other frame uses 17. Two colours drop out on the half-open blink frame, which points to a palette slip in the redraw.
+- **Shimmer:** The body changes by about 470 px per frame, so it's being redrawn each frame rather than moved as a whole. Frame 9's face (eyes and mouth) visibly doesn't match frame 0. Lock the face, sword hilt and outlines, and move them as whole-pixel shifts.
+- **Silhouette:** The red dress and red sword hands blur together at 1x. Separate the hands with a darker outline or a skin highlight.
+- **Fixes, in priority order:** cut the 3–6 hold to about 300ms, add a squash frame and bow follow-through, fix frame 6's palette and frame 9's face, and add a blade glint.
+
+Saving session...completed.

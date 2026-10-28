@@ -1,0 +1,4 @@
+**Scores:** Natural: 7/10 | Readable at 1x: 6/10 | Energetic: 8/10 | Pokemon-trainer feel: 8/10
+
+1. **Frame 3 (Stride, 60ms):** The orb pulls straight into her torso silhouette on the exact camera axis, killing the windup arc; cheat the throwing arm and orb 3–4px out to the left/back so the cocked arm silhouette reads clearly before the smear.
+2. **Frames 5–6 (Follow-through, 140ms/100ms):** The mocap pulls her throwing arm completely inside her torso outline, leaving a static, armless blob during a long 240ms hold; cheat the right arm/hand 3–4px out to the right/down to show the classic extended trainer pointing/follow-through pose.

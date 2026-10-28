@@ -1,0 +1,251 @@
+#!/usr/bin/env python3
+"""ff_redraw.py: frame-by-frame redraw harness (Opus pixel artist per frame, guided by 3D renders).
+
+  ff_redraw.py prep     ACT DIR --guides GDIR [--cell 64 64] [--pivot 32 61] [--gpivot 48 88] [--gscale 4] [--ms 100,100,..]
+  ff_redraw.py draw     ACT DIR --master M.txt --stamp S.txt [--frames 0,1] [--jobs N] [--accounts a,b,c] [--key0] [--retries 2]
+  ff_redraw.py assemble ACT DIR [--stamp S.txt]
+  ff_redraw.py all      ACT DIR --guides GDIR --master M.txt --stamp S.txt [...]      (prep + draw --key0 + assemble)
+  ff_redraw.py stamp    MASTER.txt OUT.txt --rows Y0 Y1 [--pivot X Y]                  (cut a head stamp from a master)
+
+Work dir: v2/anim_cut/ff/<ACT>_<DIR>/
+  guide:  gNN.txt (guide char-map at 1x in the target cell, pk palette by material), gNN_1x.png, gNN_4x.png, gNN_sil.png
+  frames: fNN.txt (artist output, validated), pNN.txt (prompt), logNN.txt (artist replies), lintNN.txt
+  out:    sheet.png (guide|frame pairs, <=1000px), <ACT>_<DIR>.gif (6x on #6e6e6e), lint.txt, frames.json (ms, key, air)
+Guides: GDIR/fNN_matid.png (flat material IDs, gscale x, feet pivot gpivot at 1x; hy3d keys_parts or hy3d/frames).
+A frame is airborne if its key name contains apex/rise/fall/air/launch (then '; air' meta skips the feet check).
+Artist accounts run concurrently (tested OK up to 18 parallel claude-as calls; see NOTES.md).
+"""
+import json, os, re, subprocess, sys, time
+from concurrent.futures import ThreadPoolExecutor
+import numpy as np
+from PIL import Image, ImageDraw
+
+HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
+import lint_style as LS
+ROOT = os.path.abspath(os.path.join(HERE, '..'))
+V2 = os.path.abspath(os.path.join(ROOT, '..'))
+GUIDE_MD = os.path.join(V2, 'style', 'STYLE_GUIDE.md')
+RGB = {k: tuple(int(v[0][j:j + 2], 16) for j in (1, 3, 5)) for k, v in LS.PAL.items()}
+BG = (0x6e, 0x6e, 0x6e)
+IOU_MIN = 0.5  # min body-silhouette IoU between drawn frame and guide
+AIR = ('apex', 'rise', 'fall', 'air', 'launch', 'hang')
+
+
+def wd(act, d):
+    p = os.path.join(ROOT, 'ff', '%s_%s' % (act, d)); os.makedirs(p, exist_ok=True); return p
+
+
+def opt(a, k, n=1, default=None, cast=str):
+    if k not in a: return default
+    i = a.index(k); v = [cast(x) for x in a[i + 1:i + 1 + n]]; del a[i:i + 1 + n]
+    return v[0] if n == 1 else v
+
+
+def write_cm(path, g, meta=()):
+    open(path, 'w').write(''.join('; %s\n' % m for m in meta) + '\n'.join(g) + '\n')
+
+
+def render(g, s=1, bg=None):
+    h, w = len(g), len(g[0]); im = Image.new('RGBA', (w, h), (bg + (255,)) if bg else (0, 0, 0, 0)); px = im.load()
+    for y, r in enumerate(g):
+        for x, c in enumerate(r):
+            if c in RGB: px[x, y] = RGB[c] + (255,)
+    return im.resize((w * s, h * s), Image.NEAREST)
+
+
+# ---------------- prep ----------------
+def nearest_char(rgb, chars='KWsSLHhEeRrdIink'):
+    best = min(chars, key=lambda c: sum((a - b) ** 2 for a, b in zip(rgb, RGB[c])))
+    return best
+
+
+def guide_from_matid(path, cell, pivot, gpivot, gs, snap_feet=True):
+    im = np.array(Image.open(path).convert('RGBA')); H, W = im.shape[0] // gs, im.shape[1] // gs
+    g = [['.'] * cell[0] for _ in range(cell[1])]; cache = {}
+    ox, oy = gpivot[0] - pivot[0], gpivot[1] - pivot[1]
+    if snap_feet:  # standing frame: put the lowest opaque 1x row exactly on the pivot row
+        rows = np.where((im[..., 3] > 128).reshape(H, gs, W, gs).sum(axis=(1, 3)).max(axis=1) * 2 >= gs * gs)[0]
+        if len(rows): oy = int(rows.max()) - pivot[1]
+    for y in range(cell[1]):
+        for x in range(cell[0]):
+            X, Y = x + ox, y + oy
+            if not (0 <= X < W and 0 <= Y < H): continue
+            blk = im[Y * gs:(Y + 1) * gs, X * gs:(X + 1) * gs].reshape(-1, 4)
+            blk = blk[blk[:, 3] > 128]
+            if len(blk) * 2 < gs * gs: continue
+            cols, cnt = np.unique(blk[:, :3], axis=0, return_counts=True)
+            c = tuple(int(v) for v in cols[cnt.argmax()])
+            if c not in cache: cache[c] = nearest_char(c)
+            g[y][x] = cache[c]
+    return [''.join(r) for r in g]
+
+
+def prep(act, d, gdir, cell=(64, 64), pivot=(32, 61), gpivot=(48, 88), gs=4, ms=None):
+    out = wd(act, d); keys = []
+    kj = os.path.join(gdir, 'keys.json')
+    if os.path.exists(kj): keys = json.load(open(kj)).get('keys', [])
+    files = sorted(f for f in os.listdir(gdir) if re.match(r'f\d+_matid\.png$', f))
+    frames = []
+    for i, f in enumerate(files):
+        key = keys[i] if i < len(keys) else 'f%02d' % i
+        air = any(a in key for a in AIR)
+        g = guide_from_matid(os.path.join(gdir, f), cell, pivot, gpivot, gs, not air)
+        write_cm(os.path.join(out, 'g%02d.txt' % i), g, ['pivot %d %d' % tuple(pivot)] + (['air'] if air else []))
+        render(g, 1).save(os.path.join(out, 'g%02d_1x.png' % i))
+        render(g, 4, BG).save(os.path.join(out, 'g%02d_4x.png' % i))
+        sil = [''.join('K' if c != '.' else '.' for c in r) for r in g]
+        render(sil, 4, (255, 255, 255)).save(os.path.join(out, 'g%02d_sil.png' % i))
+        frames.append({'i': i, 'key': key, 'ms': (ms[i] if ms and i < len(ms) else 100), 'air': air, 'src': os.path.join(gdir, f)})
+    json.dump({'act': act, 'dir': d, 'cell': list(cell), 'pivot': list(pivot), 'frames': frames},
+              open(os.path.join(out, 'frames.json'), 'w'), indent=1)
+    print('prep %s_%s: %d guide frames -> %s' % (act, d, len(frames), out))
+
+
+# ---------------- prompt ----------------
+def guide_rules():
+    t = open(GUIDE_MD).read()
+    secs = []
+    for h in ('## 5.', '## 6.', '## 10.'):
+        i = t.find(h)
+        if i >= 0:
+            j = t.find('\n## ', i + 4); secs.append(t[i:j if j > 0 else None].strip())
+    return '\n\n'.join(secs)
+
+
+def legend():
+    return '\n'.join('%s %s %s' % (k, v[0], v[1]) for k, v in LS.PAL.items())
+
+
+def prompt(act, d, fj, i, master, stamp, fixes=None):
+    out = wd(act, d); fr = fj['frames'][i]; n = len(fj['frames']); cw, ch = fj['cell']; px, py = fj['pivot']
+    fpath = os.path.join(out, 'f%02d.txt' % i)
+    if fixes:
+        return ('You are the Pokemon-style pixel artist. Your frame %s failed the automatic style lint. Edit that file in place '
+                '(Read it first) and fix EVERY item, changing as little else as possible; keep the head stamp face exact.\n'
+                'FIX LIST:\n- %s\n\nRules recap:\n%s\nReply <=30 words.' % (fpath, '\n- '.join(fixes), guide_rules()[:2500]))
+    def nb(j):
+        j %= n; f = os.path.join(out, 'f%02d.txt' % j)
+        return ('drawn frame %s' % f) if os.path.exists(f) else ('guide %s (not drawn yet)' % os.path.join(out, 'g%02d.txt' % j))
+    g = open(os.path.join(out, 'g%02d.txt' % i)).read()
+    return f"""You are a senior Pokemon-style pixel artist (PMD / BW battle-trainer look) redrawing ONE animation frame by hand as a char-map. Work autonomously; nobody answers questions.
+ACTION {act}, direction {d}, frame {i} of {n} (key '{fr['key']}', {fr['ms']} ms{', AIRBORNE' if fr['air'] else ''}). Cell {cw}x{ch}; feet pivot ({px},{py}) = the lowest row of the standing feet{' (airborne: feet above it)' if fr['air'] else ''}.
+INPUTS (Read the PNGs; all are <=1000px):
+- 3D pose guide for this frame (proportions, pose, foreshortening; colours = material IDs only, NOT the style): char-map below, and {out}/g{i:02d}_4x.png (4x), {out}/g{i:02d}_sil.png (silhouette), original render {fr['src']} (384px).
+- STYLE MASTER (the look to copy exactly: outline, shading clusters, hair sheen, red ramp, proportions): {master} (char-map; Read it; render at 1x in your head).
+- LOCKED HEAD + FACE STAMP: {stamp}. Paste it pixel-identical (eyes, lash, mouth, hair mass); you may shift it as a whole, squash it by 1px on landings, and change hair-end/bang tips only by 1-2px for overlap.
+- Continuity: previous = {nb(i - 1)}; next = {nb(i + 1)}. Same character, same palette, same volumes; motion must read between them.
+GUIDE CHAR-MAP (1x, {cw}x{ch}, material colours mapped to the nearest palette char):
+{g}
+PALETTE (only these chars, '.' transparent):
+{legend()}
+STYLE RULES (binding):
+{guide_rules()}
+TASK: draw the whole figure for this frame (torso, sleeves, skirt, legs, hair silhouette and katana redrawn for the pose; head from the stamp) following the guide's pose but cheating limbs/blade across the screen where the 3D depth axis foreshortens them. Pure black K outline on every silhouette edge, no K inside except lash/pupils, no 1-3-1 jaggies, no orphan pixels, feet on the pivot row.
+Write the result with the Write tool to {fpath}: exactly {ch} rows of {cw} chars{', first line "; air"' if fr['air'] else ''}. Then self-check by running: /Users/waylonhuang/Documents/other/pixelart/swordswoman/.venv/bin/python {HERE}/lint_style.py {fpath} --stamp {stamp} --pivot {px} {py}{' --air' if fr['air'] else ''} and fix until OK (max 3 passes). Do not modify any other file. Reply <=30 words."""
+
+
+def call_artist(acc, ptxt, log):
+    for k in range(3):
+        r = subprocess.run(['zsh', '-ic', 'claude-as %s --dangerously-skip-permissions --model claude-opus-5-5 -p "$(cat %s)"' % (acc, ptxt)],
+                           stdin=subprocess.DEVNULL, capture_output=True, text=True)
+        o = r.stdout + r.stderr; open(log, 'a').write('\n=== %s try %d\n%s' % (acc, k, o))
+        if not re.search(r'API Error|Proxy startup failed|ECONNREFUSED|no available port', o): return o
+        time.sleep(30)
+    return o
+
+
+def validate(path, fj, stamp):
+    cw, ch = fj['cell']
+    if not os.path.exists(path): return ['MISSING the artist did not write %s' % path]
+    g, meta = LS.read(path)
+    fx = []
+    if len(g) != ch or any(len(r) != cw for r in g):
+        fx.append('SIZE grid is %dx%d, must be exactly %dx%d (pad with ".")' % (max(map(len, g)) if g else 0, len(g), cw, ch))
+        g = [r[:cw].ljust(cw, '.') for r in g[:ch]] + ['.' * cw] * max(0, ch - len(g))
+    fx += LS.lint(g, meta, LS.read(stamp)[0] if stamp else None, tuple(fj['pivot']))
+    gp = os.path.join(os.path.dirname(path), 'g' + os.path.basename(path)[1:])  # POSE: silhouette IoU with the 3D guide (katana excluded)
+    if os.path.exists(gp):
+        gg = LS.read(gp)[0]
+        A = {(x, y) for y, r in enumerate(g) for x, c in enumerate(r) if c not in '.nk'}
+        B = {(x, y) for y, r in enumerate(gg) for x, c in enumerate(r) if c not in '.nk'}
+        iou = len(A & B) / max(1, len(A | B))
+        if iou < IOU_MIN:
+            fx.append('POSE body silhouette overlaps the 3D guide only %d%% (need >=%d%%): follow the guide pose, position and limb placement more closely' % (iou * 100, IOU_MIN * 100))
+    return fx
+
+
+def draw_one(act, d, fj, i, master, stamp, acc, retries):
+    out = wd(act, d); log = os.path.join(out, 'log%02d.txt' % i); fpath = os.path.join(out, 'f%02d.txt' % i)
+    p = os.path.join(out, 'p%02d.txt' % i); open(p, 'w').write(prompt(act, d, fj, i, master, stamp))
+    t0 = time.time(); call_artist(acc, p, log); fixes = validate(fpath, fj, stamp); k = 0
+    while fixes and k < retries and not fixes[0].startswith('MISSING'):
+        k += 1; pf = os.path.join(out, 'p%02d_fix%d.txt' % (i, k)); open(pf, 'w').write(prompt(act, d, fj, i, master, stamp, fixes))
+        call_artist(acc, pf, log); fixes = validate(fpath, fj, stamp)
+    open(os.path.join(out, 'lint%02d.txt' % i), 'w').write('\n'.join(fixes) or 'OK')
+    print('f%02d %s (%s, %d fix rounds, %ds)%s' % (i, 'OK' if not fixes else 'LINT %d' % len(fixes), acc, k, time.time() - t0,
+                                                   '' if not fixes else ': ' + '; '.join(f[:60] for f in fixes)), flush=True)
+    return fixes
+
+
+def draw(act, d, master, stamp, frames=None, jobs=3, accounts=('bni_requests', 'nsystem4', 'be_system'), key0=False, retries=2):
+    fj = json.load(open(os.path.join(wd(act, d), 'frames.json')))
+    idx = frames if frames is not None else list(range(len(fj['frames'])))
+    if key0 and 0 in idx:
+        draw_one(act, d, fj, 0, master, stamp, accounts[0], retries); idx = [i for i in idx if i != 0]
+    with ThreadPoolExecutor(max_workers=jobs) as ex:
+        list(ex.map(lambda t: draw_one(act, d, fj, t[1], master, stamp, accounts[(t[0] + int(key0)) % len(accounts)], retries), enumerate(idx)))
+
+
+# ---------------- assemble ----------------
+def assemble(act, d, stamp=None, s=6):
+    out = wd(act, d); fj = json.load(open(os.path.join(out, 'frames.json'))); cw, ch = fj['cell']
+    ims, pairs, rep = [], [], []
+    for f in fj['frames']:
+        i = f['i']; fp = os.path.join(out, 'f%02d.txt' % i)
+        gg = LS.read(os.path.join(out, 'g%02d.txt' % i))[0]
+        if os.path.exists(fp):
+            g, meta = LS.read(fp); g = [r[:cw].ljust(cw, '.') for r in g[:ch]] + ['.' * cw] * max(0, ch - len(g))
+            fx = LS.lint(g, meta, LS.read(stamp)[0] if stamp else None, tuple(fj['pivot']))
+        else:
+            g, fx = ['.' * cw] * ch, ['MISSING']
+        rep.append('f%02d %s %s\n%s' % (i, f['key'], 'OK' if not fx else 'FAIL', ''.join('    %s\n' % x for x in fx)))
+        ims.append(render(g, s, BG).convert('RGB')); pairs.append((render(gg, 1, BG), render(g, 1, BG), f))
+    # gif
+    ims[0].save(os.path.join(out, '%s_%s.gif' % (act, d)), save_all=True, append_images=ims[1:], loop=0,
+                duration=[f['ms'] for f in fj['frames']], disposal=2)
+    # sheet: per frame a column [guide | frame], scale to fit 1000px
+    n = len(pairs); cols = min(n, 4); rows = (n + cols - 1) // cols
+    sc = max(1, min(4, (1000 - 8 * (cols + 1)) // (cols * 2 * cw), (1000 - rows * 22) // (rows * ch)))
+    W, H = cols * (2 * cw * sc + 8) + 8, rows * (ch * sc + 22) + 8
+    sh = Image.new('RGB', (W, H), (40, 40, 40)); dr = ImageDraw.Draw(sh)
+    for k, (gi, fi, f) in enumerate(pairs):
+        c, r = k % cols, k // cols; x0, y0 = 8 + c * (2 * cw * sc + 8), 8 + r * (ch * sc + 22)
+        dr.text((x0, y0), 'f%02d %s %dms (guide | frame)' % (f['i'], f['key'], f['ms']), fill=(230, 230, 230))
+        sh.paste(gi.resize((cw * sc, ch * sc), Image.NEAREST).convert('RGB'), (x0, y0 + 14))
+        sh.paste(fi.resize((cw * sc, ch * sc), Image.NEAREST).convert('RGB'), (x0 + cw * sc, y0 + 14))
+    sh.save(os.path.join(out, 'sheet.png'))
+    open(os.path.join(out, 'lint.txt'), 'w').write(''.join(rep))
+    print('assemble -> %s/{%s_%s.gif, sheet.png %dx%d, lint.txt}' % (out, act, d, W, H)); print(''.join(rep))
+
+
+def cut_stamp(master, outp, y0, y1, pivot=None):
+    g, _ = LS.read(master); rows = g[y0:y1 + 1]
+    xs = [x for r in rows for x, c in enumerate(r) if c != '.']; x0, x1 = min(xs), max(xs)
+    meta = ['source %s rows %d %d cols %d %d' % (os.path.basename(master), y0, y1, x0, x1)]
+    if pivot: meta.append('pivot %d %d' % (pivot[0] - x0, pivot[1] - y0))
+    write_cm(outp, [r[x0:x1 + 1] for r in rows], meta); print('stamp', outp, x1 - x0 + 1, 'x', len(rows))
+
+
+if __name__ == '__main__':
+    a = sys.argv[1:]; cmd = a.pop(0)
+    if cmd == 'stamp':
+        rows = opt(a, '--rows', 2, cast=int); pv = opt(a, '--pivot', 2, cast=int); cut_stamp(a[0], a[1], rows[0], rows[1], pv); sys.exit()
+    cell = opt(a, '--cell', 2, [64, 64], int); piv = opt(a, '--pivot', 2, [32, 61], int); gp = opt(a, '--gpivot', 2, [48, 88], int)
+    gs = opt(a, '--gscale', 1, 4, int); ms = opt(a, '--ms'); ms = [int(x) for x in ms.split(',')] if ms else None
+    gdir = opt(a, '--guides'); master = opt(a, '--master'); stamp = opt(a, '--stamp'); fr = opt(a, '--frames')
+    fr = [int(x) for x in fr.split(',')] if fr else None; jobs = opt(a, '--jobs', 1, 3, int)
+    accs = tuple(opt(a, '--accounts', 1, 'bni_requests,nsystem4,be_system').split(',')); rt = opt(a, '--retries', 1, 2, int)
+    key0 = '--key0' in a; a = [x for x in a if x != '--key0']; act, d = a[0], a[1]
+    if cmd in ('prep', 'all'): prep(act, d, gdir, cell, piv, gp, gs, ms)
+    if cmd in ('draw', 'all'): draw(act, d, master, stamp, fr, jobs, accs, key0 or cmd == 'all', rt)
+    if cmd in ('assemble', 'all'): assemble(act, d, stamp)

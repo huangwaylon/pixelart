@@ -1,0 +1,5 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I redrew the bottom of the S-view side lock (rows 16–19 of the crop) as a straight, tapering strand. It's H with an h inner line and K outline on both sides, and it ends in a clean K point at row 19 instead of smearing diagonally into the kimono. The gap it left is filled with kimono E.
+
+The first attempt passed `try.sh` with nothing flagged: dE +0.029, ssim_b and sil unchanged, no lint increase. This doesn't fully fix the critic's complaint. The loop-like K pixels at the shoulder sit in rows 7–9, inside the protected face box, so I couldn't touch them.

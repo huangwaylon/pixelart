@@ -1,0 +1,9 @@
+**Score: 6.5/10 — Verdict: FIX**
+
+Colour consistency and hair clustering/sheen are good, and bow sides match the turnaround logic, but silhouettes are too blocky and several features diverge from the binding illustrations.
+
+1. **[ILLUS] Bangs & Side Locks (S, SE, E, NE — head rows):** Sprites have flat, horizontal hime-cut bangs and boxy side hair. The illustrations have parted, diagonal-swept bangs, distinct long face-framing locks reaching the collar/chest (SE, E, NE), and flared-out hair tips.
+2. **[ILLUS] Bun Missing/Unclear (S, SE — top of head):** In S and SE illustrations, a brown hair bun is visible behind the red bow loops. The sprites only show red pixels with no distinct brown bun volume.
+3. **[ILLUS] Head & Torso Width (S, N — whole body):** S and N are overly wide and boxy compared to the slender, V-tapered illustrations. Narrow the head by 2px and waist by 2–3px; curve the flat bottom tunic hem (S, SE, N).
+4. **[ILLUS] Sleeves & Tunic Separation (S, SE, N — torso/arms):** Flare the kimono sleeves outward into distinct bell shapes separated from the skirt, instead of merging them into a solid red block.
+5. **Eyes & Legs (S, SE, E — face & lower body):** Eyes are tall vertical rectangles; make them rounder with clearer upper lashes. Smooth the jagged inner-leg outlines in SE and E (rows 45–55).

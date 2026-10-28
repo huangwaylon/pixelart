@@ -1,0 +1,13 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt `dash_SE`, `dash_SE_ns` and `slash_SE` with at least 3 review-and-fix passes each. Sheet paths are logged in `NOTES.md`.
+
+**Slash:** the smear is now steel-blue and white only, no orange. It starts at the blade tip on the coil frame and ends in the blade, thin to 7px, curving just over the head. Wind-up turns 2 steps per frame. Impact twists torso and shoulder forward, flashes the blade white, then a hit-stop and pale sparks.
+
+**Dash:** sprint lean and stride copied from the redraw run; the near ghost now shows, the blade change is smooth, and the vertical settle blade is gone.
+
+**New parts:** `se/slash_torso_twist`, `se/dash5_torso_lean3`, `common/fx_slash5_{smear,trail,flash,spark1,spark2}`, `common/fx_dash5_streak1/2`. Generator: `work/r5/smear5.py`.
+
+**Weak:** blade ghosts are noisy, the lift frame looks like a spear poke, and the dash loop restart turns the blade 3 steps.
+
+Saving session...completed.

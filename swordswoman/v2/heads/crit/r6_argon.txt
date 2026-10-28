@@ -1,0 +1,10 @@
+SCORE 5/10
+1. **All SE variants (Bang shelf & forehead):** Single stray dark hair pixels drop down between the eyes, breaking the crisp blunt-bangs shelf from the old master/ref; white sclera/highlight pixels above the iris read as a weird notched forehead.
+2. **All SE variants (Bob tips & jawline):** The hair curls completely *under* the chin like a beard or round ball, losing the distinct sharp downward-pointing bob tips and open neck/chin of the design ref and old master.
+3. **All SE variants (Outer hair silhouette):** The back-left and lower-right hair curves suffer from severe 1px staircase jaggies and double-thick corner pixels instead of smooth 2px-3px dome steps.
+4. **All E variants (Profile face & nose):** The face protrudes too far forward with a sharp, pointy 2px nose/mouth snout; a chibi profile needs a flatter vertical face plane with a subtle 1px nose bump.
+5. **All E variants (Bow anatomy):** In true profile, the bow still shows two side-by-side red loops (a knot plus a rear loop) rather than a single foreshortened side loop in front of the bun.
+6. **SE & E Squash / Lean (Volume & orphan errors):** `SE_squash` has a flat 7px horizontal bottom line and loses the right hair tip entirely; `SE_blink/lean/neutral/lookup` all have a stray 1px dark orphan indent sticking up into the left bangs.
+7. **Fix 1 (Restore Blunt Bangs):** Level the bangs into a clean horizontal dark-brown shelf directly touching the top of the eyes (remove the middle hanging pixels and top white eye-gap pixels) to match the old head's instant readability.
+8. **Fix 2 (Open the Chin & Bob Tips):** Erase the dark hair pixels wrapping directly under the chin in SE; let the skin chin sit at the bottom-most center pixel, flanked by distinct left/right hair tips pointing down.
+9. **Fix 3 (Clean Silhouette Curves & E-Profile):** Smooth the outer hair dome using clean 2-3-2 pixel runs (fixing the 1px staircases), tuck the E-profile nose back by 1px, and collapse the E-bow into one clean side-facing loop.

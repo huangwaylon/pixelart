@@ -1,0 +1,14 @@
+OVERALL: 6
+
+- Natural: 5
+- Whole-body: 6
+- Fluid: 6
+- Appealing: 5
+- Secondary motion convincing: 6
+- Readable at 1x: 7
+
+**Top 3 Concrete Fixes:**
+
+1. **Skid (SE & E) – Head/Neck:** The NEW motion loses the OLD version's forward weight absorption; the neck stretches up and pulls the head backward like a giraffe. Compress the neck down 4px and pitch the head/upper torso forward 20° (closer to OLD) so she braces against momentum.
+2. **Skid (SE & E) – Ribbon Tails & Skirt:** During braking deceleration, secondary elements must whip *forward* past the body (overshoot/follow-through). Instead, the ribbon tails still trail backward at 45°. Flip the ribbon tails forward/upward 60° over the bun, and flare the front skirt hem forward 3px.
+3. **Burst to Smear (SE & E) – Back Leg:** The trailing leg stays bent identically across both frames. Fully extend the back leg backward by 6px on **Burst** (push-off) before tucking it on **Smear** to create snappy propulsion.

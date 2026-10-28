@@ -1,0 +1,50 @@
+{
+ "_doc": "placeholder in TARGET form (lead r4 numbers); explicit multipliers are the solver's start values",
+ "torso": {
+  "width": 0.92,
+  "depth": 0.9,
+  "height": 1.05,
+  "waist": 1.3117
+ },
+ "skirt": {
+  "width": 0.85,
+  "depth": 0.88
+ },
+ "arms": {
+  "length": 1.45,
+  "thickness": 0.85,
+  "shoulder_x": 1.4463
+ },
+ "legs": {
+  "length": 2.5035,
+  "thickness": 0.85
+ },
+ "hands": {
+  "scale": 0.85
+ },
+ "boots": {
+  "scale": 0.85
+ },
+ "head": {
+  "scale": 1.1706
+ },
+ "neck": {
+  "extra": 0.053
+ },
+ "targets": {
+  "heads_tall": 3.2,
+  "shoulder_over_headw": 0.7,
+  "waist_over_headw": 0.5,
+  "legs_frac_of_height": 0.42,
+  "neck_gap": 0.05
+ },
+ "measure": {
+  "heads_tall": 3.22,
+  "shoulder_over_headw": 0.7,
+  "waist_over_headw": 0.5,
+  "legs_frac_of_height": 0.419,
+  "neck_gap": 0.05,
+  "head_h": 0.927,
+  "total_h": 2.986
+ }
+}

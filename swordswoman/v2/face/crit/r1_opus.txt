@@ -1,0 +1,51 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I read both sheets and enlarged the S/SE/E rows; I didn't edit any files. Scores are 1–10 (official sprite = 9).
+
+**(1) Readability at 1x**
+- **neutral 7:** the lash and 2-tone iris read. The flat brow makes it look passive.
+- **determined 7:** best one. Brow `KWiKK` gives a clear slant.
+- **shout 4:** the `e` in the middle of the mouth row with an `r` below it reads as a tongue sticking out. The eyes look half-shut and sleepy, not fierce.
+- **effort 5:** the white bar `rWWWr` reads as a grin. The eyes look like flat "=" lines.
+- **joy 6:** the ^^ arch works. The mouth is too small to say "victory".
+- **smile 4:** almost the same as neutral. The `.r.r./..r..` "w" mouth turns into a dark smudge.
+- **surprised 5:** the white-heavy eye with a 1px pupil looks blank. The 2x2 mouth sits off-centre.
+- **pain 7:** the >< reads, but the mouth copies effort.
+- **blink_half 6:** OK.
+- **blink_closed 7:** OK. The row-4 `K` looks like a tear.
+- **squash 5:** the open 3x2 dark mouth reads as a gasp or shout, not a landing.
+
+**(2) Pokemon-likeness:** About 60%. The lash wing and glint are deliberate. The mouth shapes are generic and mostly share one 2–3px vocabulary.
+
+**(3) Personality:** Only determined shows it. Neutral and smile look meek and need a lowered lid or a smirk.
+
+**(4) Per view**
+- **S 6.5:** shout and effort mouths.
+- **SE 6:** the mouth lands on the cheek edge as a red blob, and the far eye collapses.
+- **E 5:** the mouths turn into pink dots on the silhouette, and shout, joy and squash look the same.
+- **NE/N 6:** fine, but the blush sliver can't be seen at 1x.
+
+**(5) Top fixes**
+1. **shout mouth:** a 5x2 dark `r` block with the tongue `e` enclosed at the bottom centre (below).
+2. **shout eye:** a full eye box under a steep inner brow.
+3. **effort mouth:** add a bottom `rrr` lip so the teeth read as gritted.
+4. **smile:** raise the lower lid (`.KK..`) and use an asymmetric smirk mouth.
+5. **surprised:** a full-height white eye with a centred pupil, a bottom lash, and a centred "o" mouth.
+6. **Profile (`MOUTH_P`):** shout `["r..","rr_","rr."]`; squash `["...","rr.","..."]`.
+
+**(6) Replacement stamps**
+```python
+EYE['shout']    =["...KK","KKK..","KWiiK",".iII.","....."]
+MOUTH['shout']  =[".rrr.","rrrrr",".rer."]
+EYE['effort']   =["KK...","..KK.","KKKK.",".....","....."]
+MOUTH['effort'] =[".....","rWWWr",".rrr."]
+EYE['smile']    =[".....","KKKK.","KWiK.",".KK..","....."]
+MOUTH['smile']  =[".....","....r",".rrr."]
+EYE['surprised']=[".KKK.","KKKK.","WWiW.","WWiW.",".KK.."]
+MOUTH['surprised']=["..r..",".rer.","..r.."]
+MOUTH['squash'] =[".....",".rrr.","r...r"]
+```
+
+**Overall: 5.5/10.** The eyes are on-model, but the mouths and the E view hold it back.
+
+Saving session...completed.

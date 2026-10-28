@@ -1,0 +1,8 @@
+idle: NEW nat/prop/read/energy = 8/9/6/5 ; OLD = 7 ; fixes: widen stance on all frames (f0-f5) to separate legs in silhouette; angle blade ~20 deg down-right or back so it reads as held at rest rather than poking straight out.
+walk: NEW nat/prop/read/energy = 8/9/7/6 ; OLD = 7 ; fixes: widen stride separation on contact keys f0 and f3; swing lead arm clear of torso on f2 and f5.
+run: NEW nat/prop/read/energy = 7/9/5/4 ; OLD = 8 ; fixes: add ~20 deg forward torso lean across f0-f5; extend back leg Drive and front knee lift on airborne frames f2 and f5 so it reads distinctly from walk.
+jump: NEW nat/prop/read/energy = 6/8/4/3 ; OLD = 8 ; fixes: deepen squat and swing arms back on anticipation f1; tuck knees into chest on apex f3-f4 and swing blade behind back to open up the torso silhouette.
+dash: NEW nat/prop/read/energy = 6/8/4/3 ; OLD = 8 ; fixes: pitch torso forward ~35 deg and lengthen stride lunge on burst frames f1-f2; trail sword horizontally behind back on f1-f3 for clear directional flow.
+slash: NEW nat/prop/read/energy = 7/8/5/4 ; OLD = 9 ; fixes: pull sword further behind body on windup f1 to clear the face/torso; step front foot deep into a wide lunge on swing/follow-through f2-f3 and double the smear arc radius.
+overhead: NEW nat/prop/read/energy = 7/8/5/5 ; OLD = 8 ; fixes: raise hands and sword fully above head on windup f1-f2 instead of hiding behind the hair; drop into a deep front-knee lunge on impact f3-f4 with the blade reaching the floor plane.
+hurt: NEW nat/prop/read/energy = 7/8/5/4 ; OLD = 8 ; fixes: arch torso backward and throw head/arms back on impact f0-f1 for a clear hit-react silhouette; widen stagger stance on recovery f2.

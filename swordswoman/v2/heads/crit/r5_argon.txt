@@ -1,0 +1,13 @@
+SCORE 6/10
+
+1. SE/E all (Bangs vs Eyes): The dark upper-eyelash bar from the old master is gone; pale skin sits between the blunt bangs shelf and the blue iris, giving her a startled, wide-eyed stare instead of her stoic low-lidded identity.
+2. SE all (Face framing): The screen-right hair lock wraps too far inward and the screen-left sideburn staircases in too high, pinching the face into a tiny diamond and losing the wide chibi cheek curve of the old master.
+3. E all (Profile nose/chin): The 1px protruding nose poke and long staircased jaw make her look like an adult side-profile; chibi profiles need a flatter vertical front plane with a tiny snub curve.
+4. E all (Bow anatomy): The red bow in profile reads as two upright bunny ears or a vertical horn; the front loop should project forward/sideways while the knot sits tucked against the bun.
+5. SE all (Bun placement): The bun is wedged low on the screen-left temple *under* the bow's left loop, whereas the 3D ref clearly places the bun crowning *above/behind* the bow knot.
+6. SE/E Lookup & Lean (Skull shape): Rotating the head introduced 4–6px vertical/horizontal flat walls on the back-left skull and boxy staircase jaggies along the lower-left bob curve.
+
+Top 3 Fixes:
+1. Restore the 1px dark lash line directly touching/tucking under the bangs shelf across all SE/E open-eye frames (drop the bangs 1px if needed to close the skin gap).
+2. Widen the SE lower face by opening the screen-right hair framing by 1px and dropping the screen-left bob wall straighter down to match the old master's cheek width before tapering to the chin.
+3. Reshape the E profile: flatten the nose/chin protrusion by 1px for a softer chibi muzzle, and flatten the E bow's rear loop while tilting the main loop forward.

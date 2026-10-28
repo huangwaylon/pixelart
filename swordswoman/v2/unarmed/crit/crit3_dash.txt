@@ -1,0 +1,5 @@
+1) **Natural unarmed motion: 6/10** — No weapon-carry look remains, and frames 1–3 have a nice forward dash lean, but the abrupt full-body spin/stop across frames 4–5 feels more like a combat dodge/evade recovery than a natural running dash.
+2) **Cheerful trainer feel: 6/10** — The lively forward lunge and bouncy hair bow in frames 1–3 feel energetic and cute, though the dramatic spin at the end reads a bit too tactical/acrobatic for a casual trainer sprint.
+3) **Readable at 1x: 7/10** — The overall silhouette, leg drive, and head direction read clearly in the bottom row, though the arms blend into the dress torso during frame 2 and the rapid spin in frames 4–5 may flicker at fast playback speeds.
+
+**Single most important fix:** Replace the 360° spin in frames 4–5 with a standard opposite-leg stride (or a simple forward skid/recovery if it's a one-shot dash) so the motion stays grounded along the direction of travel.

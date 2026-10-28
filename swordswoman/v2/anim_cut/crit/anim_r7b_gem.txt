@@ -1,0 +1,55 @@
+Here is the Round 7 directorial critique. You have the framework down, but your secondary motion (overlapping action) is either non-existent (rigid cutout blocks translating vertically) or physics-breaking (the ribbon turning into a floating UFO during the jump), and your smear/trail geometry is weak and blocky.
+
+---
+
+### 1. IDLE
+* **Problem 1 (Frames 1–4, 6–10 | Bow & Hair Tips):** Zero overlapping action. As the head translates down in `1 sink` and `2 low`, the top bow and lower hair tips move down at the exact same pixel rate as the skull. **Fix:** In `1 sink` and `6 sink-half2`, shift the red bow 1px UP relative to the head (lagging behind the drop), and in `3 rise` / `9 rise2`, flatten the bow loops down by 1px to show downward drag against the upward motion.
+* **Problem 2 (Frame 2 | Legs & Boots):** In `2 low`, the knees bow outward laterally by 2px creating an awkward, bow-legged frog stance that doesn't match the second cycle (`7 low-blink2`, `8 low-half2`) where the legs stay vertical and simply compress. **Fix:** Copy the vertical leg/boot cluster from Frame 7 (`low-blink2`, y=48..58) directly into Frame 2 so both breathing cycles squash consistently without the sudden knee pop.
+* **Problem 3 (Frames 4 & 10 | Timing & Chest/Skirt):** `4 top` and `10 top2` sit at 200ms while `0 rest` and `5 rest2` are 320ms, creating a double-hold at the top of the arc that makes the breathing robotic. **Fix:** Reduce `4 top` and `10 top2` from 200ms to 100ms, and flare the bottom skirt hem inward by 1px on each side in `4 top`/`10 top2` for subtle vertical stretch.
+
+SCORE idle: 7
+
+---
+
+### 2. WALK
+* **Problem 1 (Frames 2 & 6 | Passing Legs):** In `2 pass` and `6 pass2`, the raised passing leg (viewer's right) is chopped off horizontally at the shin with a flat 4px black line, looking like a peg-leg or amputated stump rather than a bent knee/foot tucked back. **Fix:** Shift the raised foot 2px higher and angle the black boot toe 2px downward/back (SW) so it reads as a lifted ankle, not a horizontal slice.
+* **Problem 2 (Frames 0–3 vs 4–7 | Katana & Arm Swing):** In `0 contact` to `3 up`, the katana angle is nearly static (around 35°), whereas in `4 contact2` to `5 down2` it drops steeply to 50°. However, the front arm (viewer's right) barely moves across the entire 8-frame loop. **Fix:** In `0 contact` and `1 down`, swing the front fist 3px forward (right) and raise it 1px; in `4 contact2` and `5 down2`, tuck the front fist 2px back toward the torso to create true counter-rotation against the legs.
+* **Problem 3 (Frames 0–7 | Skirt Hem Silhouette):** The skirt hem is a completely static rigid trapezoid across all 8 frames despite the legs kicking forward and back underneath it. **Fix:** In `0 contact` and `4 contact2`, push the leading right-side skirt corner 2px forward; in `2 pass` and `6 pass2`, tuck the front corner 1px inward so the dress reacts to the knee drive.
+
+SCORE walk: 6.5
+
+---
+
+### 3. RUN
+* **Problem 1 (Frame 3 | Katana Angle & Hand):** In `3 air`, the katana suddenly rotates down to a steep ~65° angle while the back leg kicks straight out through the blade's pixels, tangling the silhouette into a messy cross. Compare this to `7 air2` where the sword is held higher and cleaner. **Fix:** Rotate the katana in `3 air` counter-clockwise by 20° (lifting the tip 5px higher, matching `2 push`) so it clears the kicking back foot completely.
+* **Problem 2 (Frames 0–7 | Torso & Head Spine Angle):** For a run, the character is completely upright (90° vertical spine, identical to the walk). There is no forward drive or urgency. **Fix:** Shift the head and upper torso/shoulders 2px forward (to the right, x+2) across all 8 frames relative to the hips, and trail the top red bow loops 2px back (left) so she leans into the sprint.
+* **Problem 3 (Frames 3 & 7 | Timing & Airborne Stretch):** `3 air` and `7 air2` at 80ms feel sluggish compared to the 60ms `down`/`push` frames, making her float at the stride peak without enough push-off snap. **Fix:** Change `2 push` and `6 push2` to 50ms, `3 air` and `7 air2` to 70ms, and lower the back hair tail in `1 down`/`5 down2` by 1px while flipping the hair tips up by 2px in `3 air`/`7 air2`.
+
+SCORE run: 6
+
+---
+
+### 4. JUMP
+* **Problem 1 (Frame 6 | Detached Floating Bow):** In `6 fall`, the red ribbon completely detaches from her head, floating 3px in the air above her skull with grey background visible between the bow and hair! **Fix:** Move the entire red bow cluster in Frame 6 down by 4px so the knot sits directly on the crown of the head, while keeping the outer loop tips angled 2px upward to show drag properly without decapitating the accessory.
+* **Problem 2 (Frames 4 & 5 | Apex/Hang Legs):** In `4 apex` and `5 hang`, both legs hang down as identical, symmetrical vertical sticks with flat feet side-by-side, looking like a rigid toy being lifted by a string. **Fix:** Tuck the knees up by 3px in `4 apex` and `5 hang`, staggering the feet (front foot 2px higher and tucked back, back foot angled down) to create an athletic mid-air tuck.
+* **Problem 3 (Frames 4, 5 & 7 | Timing & Land Squash):** 250ms combined hang time (`4 apex` 110ms + `5 hang` 140ms) stops the momentum dead in mid-air. Meanwhile, `7 land` (100ms) has the exact same head height as `8 recover` (80ms), so there is no impact bounce. **Fix:** Cut `4 apex` to 80ms and `5 hang` to 90ms; in `7 land`, drop the head and torso 2px lower (squashing the skirt 2px wider laterally) so `8 recover` actually rebounds upward.
+
+SCORE jump: 6
+
+---
+
+### 5. DASH
+* **Problem 1 (Frame 1 | Afterimage Trail Geometry):** In `1 burst`, the two-tone red/burgundy trail behind her looks like a solid brick wall or heavy cape with a vertical flat back edge, completely taller than her hair and wider than her body. **Fix:** Carve horizontal gaps into the left edge of the trail in `1 burst` (matching the silhouette of her head, sword, and skirt separately rather than one giant blob) and taper the trailing left edge into 3 sharp horizontal points that match the height of her bow, waist, and hem.
+* **Problem 2 (Frames 1 & 2 | Dash Pose Lean):** During `1 burst` and `2 burst2`, her head and torso are still completely vertical—she looks like she is casually jogging in front of a red wall rather than bursting forward at high velocity. **Fix:** Shift her head 3px right and 2px down in `1 burst` (and 2px right, 1px down in `2 burst2`), extending her back leg 3px further left to create a steep 45° forward lunge.
+* **Problem 3 (Frames 3 & 4 | Skid/Brake Sword & Hair):** In `3 skid` and `4 brake`, she leans back slightly to stop, but her hair and bow remain rock-solid and her katana points straight down-left at the exact same angle as `0 antic`. **Fix:** In `3 skid`, whip the hair tips and bow 2px forward (right) from momentum overrun, and swing the katana forward across her body (pointing SE) to counterbalance the braking motion.
+
+SCORE dash: 6
+
+---
+
+### 6. SLASH
+* **Problem 1 (Frames 5, 6 & 7 | Smear Crescent Shape):** The smear is amateurish and broken across three frames: `5 swingA` has a tiny disconnected white horn above her head, and `6 SMEAR` has a microscopic, straight triangular wedge between her hands and the blade tip covering less than 25° of arc. **Fix:** In `6 SMEAR`, draw a full, sweeping crescent arc starting from above her back shoulder (x=26, y=20), curving wide out in front of her face (reaching x=48) down to the blade tip, tapering cleanly from 8px thick at the blade down to a 1px tail at the top. Remove the leftover white sliver in `7 impact` completely—`impact` should only have the blade and the hit-spark.
+* **Problem 2 (Frames 6–9 | Torso & Head Commitment):** From `6 SMEAR` through `9 hitstop2`, her head and upper body remain upright and static while only her tiny arms move in front of her chest. There is zero weight behind the cut. **Fix:** In `6 SMEAR` through `9 hitstop2`, drop her head and torso 2px lower and 3px further right (forward), widening her front knee bend by 2px so she lunges into the strike.
+* **Problem 3 (Frames 3 & 4 | Windup Timing & Coil):** `3 wind` (50ms) and `4 coil` (120ms) are nearly identical poses—the sword merely tilts 15° steeper while the body stands frozen for 170ms total. **Fix:** In `4 coil`, twist the back shoulder 2px left, raise the katana pommel 2px higher above the brow, and drop the hips 1px into a coiled crouch so the 120ms hold builds real tension before `5 swingA`.
+
+SCORE slash: 5.5

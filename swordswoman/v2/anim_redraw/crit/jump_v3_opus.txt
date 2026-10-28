@@ -1,0 +1,19 @@
+Restored session: Mon 26 Oct 2026 11:00:36 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+SCORE: 6/10. The arc reads and the timing skeleton is good, but the landing is weak and the sword keeps changing.
+
+1. **Landing squash (f6) is soft.** It's just a crouch with a narrower silhouette than the f0 crouch. Widen it 2–3px, push the head down another 2px, and flatten the skirt. Right now nothing tells you she hit the ground hard.
+2. **Fall is too short.** f4 sits almost at the apex height and f5 lasts 60ms, so she drops about 20px in one jump into f6. Add a stretched fall frame (or make f5 lower and longer), or the land will keep looking teleported.
+3. **The sword wanders.** Low-left in f0, flat at the waist in f2–4, almost gone in f5, low and flat in f6, angled up in f7, diagonal down in f8. It needs a consistent overlapping-action path with a trail. Its angle shouldn't snap between poses.
+4. **No smear where it counts.** Launch has speed ticks and fall has head ticks, but there's no motion smear on the body, skirt or sword in f1 and f5. The goal asked for smears on fast actions.
+5. **Proportions drift.** The head and hair mass looks 1–2px bigger in f2–f3 than in f0 and f8. The bow changes width as well.
+6. **The silhouette turns into a dark blob.** Hair, body and boots merge in f4–f6. Give the arms or legs a rim, or separate them with a value step, so the limbs read at 1x.
+7. **Dust FX are repeated.** The ring sprite in f7 is the same as in f2. f6's puffs are tiny and don't spread outward. Landing dust should be bigger and asymmetric, and dissipate over f6→f7→f8.
+8. **Legs in f2–f3 are a mushy tuck.** The knees and boots form an unreadable cluster at 1x. Make it one clear tucked shape.
+9. **Grounding is mostly fine.** Contact frames share a baseline (f0, f6, f8 ≈ y75). f7 looks about 1px off; check it.
+10. **Timing:** the 140ms apex hang works. f8 at 150ms is fine. Cut f0 to 100ms so the anticipation snaps more.
+11. **To reach 8+:** fix the land squash, add a fall stretch, lock the sword path, add 2 smears, make the landing dust bigger, and make the head size consistent.
+
+Saving session...completed.

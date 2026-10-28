@@ -1,0 +1,390 @@
+{
+ "name": "test_arms",
+ "partdir": "parts/se",
+ "cell": [
+  96,
+  80
+ ],
+ "ground": [
+  48,
+  72
+ ],
+ "sheet_cols": 6,
+ "rig": {
+  "legs": {
+   "part": "legs",
+   "at": "root",
+   "z": 1
+  },
+  "skirt": {
+   "part": "skirt",
+   "at": "legs.hip",
+   "z": 3
+  },
+  "torso": {
+   "part": "torso",
+   "at": "skirt.waist",
+   "off": [
+    0,
+    0
+   ],
+   "z": 4
+  },
+  "armF": {
+   "part": "armF",
+   "at": "torso.shR",
+   "z": 2
+  },
+  "armN": {
+   "part": "armN",
+   "at": "torso.shL",
+   "z": 6
+  },
+  "head": {
+   "part": "head",
+   "at": "torso.neck",
+   "z": 7
+  },
+  "bun": {
+   "part": "bun",
+   "at": "head.bun",
+   "z": 0
+  },
+  "bow": {
+   "part": "bow",
+   "at": "head.bow",
+   "z": 8
+  },
+  "kat": {
+   "part": "kat_13",
+   "at": "armN.hand",
+   "z": 5
+  }
+ },
+ "frames": [
+  {
+   "ms": 400,
+   "label": "fwd",
+   "set": {
+    "armN": {
+     "part": "armN_fwd",
+     "z": 6
+    },
+    "armF": {
+     "part": "armF_back",
+     "z": 2
+    }
+   },
+   "hide": [
+    "kat"
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "back",
+   "set": {
+    "armN": {
+     "part": "armN_back",
+     "z": 6
+    },
+    "armF": {
+     "part": "armF_fwd",
+     "z": 2
+    }
+   },
+   "hide": [
+    "kat"
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "runF",
+   "set": {
+    "armN": {
+     "part": "armN_runF",
+     "z": 6
+    },
+    "armF": {
+     "part": "armF_runB",
+     "z": 2
+    }
+   },
+   "hide": [
+    "kat"
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "runB",
+   "set": {
+    "armN": {
+     "part": "armN_runB",
+     "z": 6
+    },
+    "armF": {
+     "part": "armF_runF",
+     "z": 2
+    }
+   },
+   "hide": [
+    "kat"
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "up",
+   "set": {
+    "armN": {
+     "part": "armN_up",
+     "z": 8
+    },
+    "armF": {
+     "part": "armF_up",
+     "z": 2
+    }
+   },
+   "hide": [
+    "kat"
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "coil",
+   "set": {
+    "armN": {
+     "part": "armN_coil",
+     "z": 8
+    },
+    "armF": {
+     "part": "armF_out",
+     "z": 2
+    }
+   },
+   "hide": [
+    "kat"
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "ext",
+   "set": {
+    "armN": {
+     "part": "armN_ext",
+     "z": 6
+    },
+    "armF": {
+     "part": "armF_back",
+     "z": 2
+    }
+   },
+   "hide": [
+    "kat"
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "out",
+   "set": {
+    "armN": {
+     "part": "armN_out",
+     "z": 6
+    },
+    "armF": {
+     "part": "armF_out",
+     "z": 2
+    }
+   },
+   "hide": [
+    "kat"
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "hold",
+   "set": {
+    "armN": {
+     "part": "armN_hold",
+     "z": 6
+    },
+    "armF": {
+     "part": "armF",
+     "z": 2
+    }
+   },
+   "hide": [
+    "kat"
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "fwd+k",
+   "set": {
+    "armN": {
+     "part": "armN_fwd",
+     "z": 6
+    },
+    "armF": {
+     "part": "armF_back",
+     "z": 2
+    },
+    "kat": {
+     "part": "kat_13",
+     "at": "armN.hand",
+     "z": 5
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "back+k",
+   "set": {
+    "armN": {
+     "part": "armN_back",
+     "z": 6
+    },
+    "armF": {
+     "part": "armF_fwd",
+     "z": 2
+    },
+    "kat": {
+     "part": "kat_10",
+     "at": "armN.hand",
+     "z": 1
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "runF+k",
+   "set": {
+    "armN": {
+     "part": "armN_runF",
+     "z": 6
+    },
+    "armF": {
+     "part": "armF_runB",
+     "z": 2
+    },
+    "kat": {
+     "part": "kat_15",
+     "at": "armN.hand",
+     "z": 5
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "runB+k",
+   "set": {
+    "armN": {
+     "part": "armN_runB",
+     "z": 6
+    },
+    "armF": {
+     "part": "armF_runF",
+     "z": 2
+    },
+    "kat": {
+     "part": "kat_09",
+     "at": "armN.hand",
+     "z": 1
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "up+k",
+   "set": {
+    "armN": {
+     "part": "armN_up",
+     "z": 8
+    },
+    "armF": {
+     "part": "armF_up",
+     "z": 2
+    },
+    "kat": {
+     "part": "kat_04",
+     "at": "armN.hand",
+     "z": 5
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "coil+k",
+   "set": {
+    "armN": {
+     "part": "armN_coil",
+     "z": 8
+    },
+    "armF": {
+     "part": "armF_out",
+     "z": 2
+    },
+    "kat": {
+     "part": "kat_06",
+     "at": "armN.hand",
+     "z": 1
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "ext+k",
+   "set": {
+    "armN": {
+     "part": "armN_ext",
+     "z": 6
+    },
+    "armF": {
+     "part": "armF_back",
+     "z": 2
+    },
+    "kat": {
+     "part": "kat_14",
+     "at": "armN.hand",
+     "z": 5
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "out+k",
+   "set": {
+    "armN": {
+     "part": "armN_out",
+     "z": 6
+    },
+    "armF": {
+     "part": "armF_out",
+     "z": 2
+    },
+    "kat": {
+     "part": "kat_09",
+     "at": "armN.hand",
+     "z": 1
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "hold+k",
+   "set": {
+    "armN": {
+     "part": "armN_hold",
+     "z": 6
+    },
+    "armF": {
+     "part": "armF",
+     "z": 2
+    },
+    "kat": {
+     "part": "kat_13",
+     "at": "armN.hand",
+     "z": 5
+    }
+   }
+  }
+ ]
+}

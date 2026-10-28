@@ -1,0 +1,181 @@
+#!/usr/bin/env python3
+"""lint_style.py: automated STYLE_GUIDE checks (v2/style/STYLE_GUIDE.md) for Pokemon-style char-maps.
+
+  lint_style.py frame.txt [frame2.txt ...] [--stamp head_stamp.txt] [--pivot X Y] [--air] [--json]
+                [--palette v2/final/palette.json] [--master MASTER.txt]
+  --palette: lock to that palette (char -> hex -> material, see colorcheck.py): every off-palette pixel fails (PAL);
+             eye chars = the palette's eyes ramp. --master (with --palette): MAT ramp-swap lint vs the master (colorcheck).
+  Without --palette/--master the behaviour is the old one (pk_palette.json, no MAT check).
+
+Char-map: rows of v2/style/pk_palette.json chars, '.' transparent, ';' meta lines ignored
+(meta '; air' in a frame = airborne, skips the feet check; '; pivot X Y' overrides the feet pivot).
+Checks (each failure = one fix line with coordinates, fed back to the artist):
+  PAL   palette-only chars; <= 16 colours (S5)
+  O1    every silhouette edge pixel (opaque, 4-touching transparent/cell edge) is K
+  R1    no K inside the silhouette except lash/pupils (face box from the stamp) and the 2px soles/hair underside
+  O3    no 1-3-1 outline jaggies (contour step pattern 1,>=3,1 in one direction)
+  S4    no orphan pixels (a pixel with no 8-neighbour of the same char), except W/n/K/eye chars
+  HEAD  head stamp found with face (eyes+lash) pixel-identical and head bbox within +-1px of the stamp
+  FEET  lowest opaque row == pivot row and feet centred within +-8px of pivot x (bottom 3 rows) (skipped for '; air')
+Exit code 0 = clean. As a module: lint(grid, meta, stamp=None, pivot=(32,61)) -> list of fix strings.
+"""
+import json, os, sys
+
+PAL_PATH = '/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/style/pk_palette.json'
+PAL = json.load(open(PAL_PATH))['colors']
+EYE = set('iIW')
+PALOBJ = None  # colorcheck.Palette when locked via set_palette()
+
+
+def set_palette(path):
+    """lock the module to a palette JSON (PAL/EYE/PAL_PATH switch); returns the colorcheck.Palette."""
+    global PAL, EYE, PAL_PATH, PALOBJ
+    import colorcheck as CC
+    PALOBJ = CC.load(path); PAL = PALOBJ.colors; PAL_PATH = PALOBJ.path
+    if PALOBJ.eyes: EYE = set(PALOBJ.eyes)
+    return PALOBJ
+
+
+def read(path):
+    g, meta = [], {}
+    for l in open(path):
+        l = l.rstrip('\n')
+        if l.startswith(';'):
+            p = l[1:].split()
+            if p: meta[p[0]] = [int(v) if v.lstrip('-').isdigit() else v for v in p[1:]]
+        elif l.strip():
+            g.append(l)
+    w = max(len(l) for l in g) if g else 0
+    return [l.ljust(w, '.') for l in g], meta
+
+
+def stamp_info(st):
+    """eye/lash face box and head bbox of a head stamp grid."""
+    pts = [(x, y) for y, r in enumerate(st) for x, c in enumerate(r) if c in EYE]
+    xs, ys = [p[0] for p in pts], [p[1] for p in pts]
+    face = (min(xs) - 1, min(ys) - 1, max(xs) + 1, max(ys)) if pts else None  # lash row above the iris
+    op = [(x, y) for y, r in enumerate(st) for x, c in enumerate(r) if c != '.']
+    bb = (max(p[0] for p in op) - min(p[0] for p in op) + 1, max(p[1] for p in op) - min(p[1] for p in op) + 1)
+    return face, bb
+
+
+def find_stamp(g, st, face):
+    """best offset of the stamp's face box in g (exact match of eye/lash pixels), else best partial."""
+    H, W = len(g), len(g[0]); fx0, fy0, fx1, fy1 = face
+    fpx = [(x, y, st[y][x]) for y in range(fy0, fy1 + 1) for x in range(fx0, fx1 + 1)
+           if 0 <= y < len(st) and 0 <= x < len(st[0]) and st[y][x] != '.']
+    best = (-1, 0, 0)
+    for oy in range(-fy0, H - fy0):
+        for ox in range(-fx0, W - fx0):
+            m = 0
+            for x, y, c in fpx:
+                X, Y = x + ox, y + oy
+                if 0 <= X < W and 0 <= Y < H and g[Y][X] == c: m += 1
+            if m > best[0]: best = (m, ox, oy)
+    return best[0], len(fpx), best[1], best[2]
+
+
+def lint(g, meta=None, stamp=None, pivot=(32, 61), air=False, max_colors=16, palette=None, master=None):
+    """palette: colorcheck.Palette (or path) = locked palette, strict off-palette check with pixel coords;
+    master: master grid -> MAT ramp-swap lint (needs a palette; falls back to the module palette)."""
+    meta = meta or {}; fixes = []
+    if isinstance(palette, str):
+        import colorcheck as CC; palette = CC.load(palette)
+    if palette is not None:
+        import colorcheck as CC
+        fixes += CC.off_palette(g, palette); max_colors = max(max_colors, len(palette.colors))
+        if master: fixes += CC.material_lint(g, palette, master, stamp)
+    elif master:
+        import colorcheck as CC; fixes += CC.material_lint(g, PALOBJ or CC.load(PAL_PATH), master, stamp)
+    if 'pivot' in meta: pivot = tuple(meta['pivot'][:2])
+    air = air or 'air' in meta
+    H, W = len(g), len(g[0])
+    op = lambda x, y: 0 <= x < W and 0 <= y < H and g[y][x] != '.'
+    used = {c for r in g for c in r} - {'.'}
+    bad = used - set(palette.colors if palette is not None else PAL)
+    if bad and palette is None: fixes.append('PAL off-palette chars %s at %s' % (sorted(bad), [(x, y) for y, r in enumerate(g) for x, c in enumerate(r) if c in bad][:8]))
+    if len(used) > max_colors: fixes.append('PAL %d colours > %d' % (len(used), max_colors))
+    if not used: return fixes + ['EMPTY frame']
+    # face box in frame coords (from stamp match)
+    fbox = None
+    if stamp:
+        face, sbb = stamp_info(stamp)
+        if face:
+            m, n, ox, oy = find_stamp(g, stamp, face)
+            fbox = (face[0] + ox, face[1] + oy, face[2] + ox, face[3] + oy)
+            if m < n: fixes.append('HEAD face (eyes+lash) differs from the stamp: %d/%d px match at stamp offset (%d,%d); copy the stamp face exactly' % (m, n, ox, oy))
+            # head bbox: opaque pixels in the stamp's rows/cols window (+-2) around the match
+            sx0, sy0 = ox, oy
+            hp = [(x, y) for y in range(max(0, sy0 - 2), min(H, sy0 + len(stamp) + 1))
+                  for x in range(max(0, sx0 - 2), min(W, sx0 + len(stamp[0]) + 2))
+                  if g[y][x] in 'KHhLsS' and y < sy0 + len(stamp)]
+            if hp:
+                hw = max(p[0] for p in hp) - min(p[0] for p in hp) + 1
+                if abs(hw - sbb[0]) > 1: fixes.append('HEAD width %d vs stamp %d (>1px); keep the stamp head silhouette' % (hw, sbb[0]))
+        else:  # closed-eye stamp (joy/blink): anchor on all stamp pixels; face box = its lower 55% (lash line, mouth, blush)
+            import colorcheck as CC
+            m, n, ox, oy = CC.anchor(g, stamp); hs = len(stamp)
+            fbox = (ox, oy + int(hs * 0.45), ox + len(stamp[0]) - 1, oy + hs - 1)
+            if m < n: fixes.append('HEAD differs from the closed-eye stamp: %d/%d px match at offset (%d,%d); paste the stamp exactly' % (m, n, ox, oy))
+    inface = lambda x, y: fbox and fbox[0] <= x <= fbox[2] and fbox[1] <= y <= fbox[3]
+    low = max(y for y in range(H) if any(c != '.' for c in g[y]))
+    o1, r1, orph = [], [], []
+    for y in range(H):
+        for x in range(W):
+            c = g[y][x]
+            if c == '.': continue
+            edge = any(not op(x + dx, y + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+            if edge and c != 'K': o1.append((x, y))
+            if not edge and c == 'K' and not inface(x, y):
+                nb = [g[y + dy][x + dx] for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))]
+                touches_out = any(op(x + dx, y + dy) and g[y + dy][x + dx] == 'K' and
+                                  any(not op(x + dx + ex, y + dy + ey) for ex, ey in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+                                  for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+                ok2 = touches_out and (y >= low - 2 or any(n in 'Hh' for n in nb))  # 2px soles / hair underside
+                ok2 = ok2 or (y > 0 and g[y - 1][x] in 'sSK' and y + 1 < H and g[y + 1][x] not in 'sS')  # chin line over the body
+                if not ok2: r1.append((x, y))
+            if c not in 'WnK' and c not in EYE and not inface(x, y):
+                same = any(0 <= x + dx < W and 0 <= y + dy < H and g[y + dy][x + dx] == c
+                           for dx in (-1, 0, 1) for dy in (-1, 0, 1) if dx or dy)
+                if not same: orph.append((x, y, c))
+    if o1: fixes.append('O1 %d silhouette-edge pixels are not K (outline must be continuous black): %s' % (len(o1), o1[:12]))
+    if r1: fixes.append('R1 %d black K pixels inside the silhouette (use r on red, h on hair/obi/boots, S on skin): %s' % (len(r1), r1[:12]))
+    if orph: fixes.append('S4 %d orphan pixels (single-pixel clusters): %s' % (len(orph), orph[:12]))
+    # O3: contour profiles
+    jag = []
+    rows = [y for y in range(H) if any(c != '.' for c in g[y])]
+    cols = [x for x in range(W) if any(g[y][x] != '.' for y in range(H))]
+    profs = [('left', [(y, min(x for x in range(W) if g[y][x] != '.')) for y in rows]),
+             ('right', [(y, max(x for x in range(W) if g[y][x] != '.')) for y in rows]),
+             ('top', [(x, min(y for y in range(H) if g[y][x] != '.')) for x in cols]),
+             ('bottom', [(x, max(y for y in range(H) if g[y][x] != '.')) for x in cols])]
+    for name, pr in profs:
+        d = [(pr[i + 1][0], pr[i + 1][1] - pr[i][1]) for i in range(len(pr) - 1) if pr[i + 1][0] == pr[i][0] + 1]
+        for i in range(1, len(d) - 1):
+            a, b, c = d[i - 1][1], d[i][1], d[i + 1][1]
+            if abs(a) == 1 and abs(c) == 1 and abs(b) >= 3 and (a > 0) == (b > 0) == (c > 0):
+                jag.append((name, d[i][0]))
+    if jag: fixes.append('O3 1-3-1 outline jaggies (use equal step lengths) on contour/line: %s' % jag[:10])
+    # FEET
+    if not air:
+        px, py = pivot
+        if low != py: fixes.append('FEET lowest opaque row %d != pivot row %d (feet must stand on the pivot; add "; air" meta only for airborne frames)' % (low, py))
+        fx = [x for y in range(low - 2, low + 1) for x in range(W) if g[y][x] != '.']
+        if fx and abs((min(fx) + max(fx)) / 2 - px) > 8: fixes.append('FEET centre x %.1f (bottom 3 rows) is >8px from pivot x %d' % ((min(fx) + max(fx)) / 2, px))
+    return fixes
+
+
+if __name__ == '__main__':
+    a = sys.argv[1:]; stamp = None; pivot = (32, 61); air = '--air' in a; js = '--json' in a; pal = master = None
+    if '--palette' in a: i = a.index('--palette'); pal = set_palette(a[i + 1]); del a[i:i + 2]
+    if '--master' in a: i = a.index('--master'); master = read(a[i + 1])[0]; del a[i:i + 2]
+    if '--stamp' in a: i = a.index('--stamp'); stamp = read(a[i + 1])[0]; del a[i:i + 2]
+    if '--pivot' in a: i = a.index('--pivot'); pivot = (int(a[i + 1]), int(a[i + 2])); del a[i:i + 3]
+    files = [f for f in a if not f.startswith('--')]; res = {}; bad = 0
+    for f in files:
+        g, meta = read(f); fx = lint(g, meta, stamp, pivot, air, palette=pal, master=master); res[f] = fx; bad += bool(fx)
+        if not js:
+            print(('OK   ' if not fx else 'FAIL ') + f)
+            for l in fx: print('   ', l)
+    if js: print(json.dumps(res, indent=1))
+    sys.exit(1 if bad else 0)

@@ -1,0 +1,14 @@
+**Scores:**
+* **final_quality:** 6/10
+* **master_consistency:** 9/10
+* **motion:** 5/10
+* **readability_1x:** 7/10
+* **no_boiling:** 4/10
+
+**Verdict:** Head stamps and palette match the master well, and the 1px vertical bob works, but the lower body suffers from severe line boiling, anatomical distortion, and virtually zero motion across hold/transition pairs.
+
+**Concrete Fixes:**
+1. **f03 & f04 (Legs/Knees):** Remove the jagged 1px outward/inward horizontal kinks in the stockings; they read as broken bones at 1x rather than a knee bend or weight shift.
+2. **f05 (Screen-right Thigh):** Fix the protruding skin/outline pixels on the outer right thigh—it bulges out 1px wider than MASTER/f00, causing a pop on the loop reset.
+3. **f02 (Stockings):** Restore the 1px vertical gap between the upper thighs/stockings to match MASTER; they currently merge into a noisy cluster.
+4. **f00→f01 & f03→f04 (Full Body):** These frame pairs are nearly identical. Add 1px of delayed follow-through on the hair ribbon tails and sleeve tips during `f01 settle` and `f04 rise` to justify the 6-frame count.

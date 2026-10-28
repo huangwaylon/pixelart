@@ -1,0 +1,8 @@
+; pivot 4 4
+..####..
+.#jjHH#.
+#jjHHHh#
+#jHHHhh#
+#HHHhhh#
+.#hhhh#.
+..####..

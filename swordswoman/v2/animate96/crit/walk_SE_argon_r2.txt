@@ -1,0 +1,15 @@
+**Scores:**
+* **final_quality:** 4/10
+* **master_consistency:** 8/10
+* **motion:** 3/10
+* **readability_1x:** 5/10
+* **no_boiling:** 7/10
+
+**Verdict:** Not final quality. The upper body is a static copy-paste from the MASTER instead of following the 3D reference, creating a robotic "riverdance" effect. The second step (f03–f05) lacks stride extension and fails to loop into f00.
+
+**Concrete Fixes:**
+1. **Arms/Hands (f00–f05):** Animate arm swings matching the 3D guide; currently, arms and hands are completely frozen in the MASTER pose across all frames.
+2. **Legs/Stride (f03):** Widen the leg split on `f03 contact2` to match the reference; right now both legs are vertical, looking like a pass pose instead of a contact.
+3. **Back Leg (f04, f05):** Kick the left calf/foot backward in `f04` and cross it behind in `f05` so it transitions cleanly into `f00`.
+4. **Hair/Ribbon (f01, f02, f04, f05):** Add 1px delayed follow-through on the bow and side-locks during down/pass frames.
+5. **Skirt Hem (f03):** Clean the stray dark pixel between the thighs.

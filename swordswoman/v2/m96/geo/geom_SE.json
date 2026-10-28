@@ -1,0 +1,136 @@
+{
+ "view": "SE",
+ "src0": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/hair/turnE_final/iso_SE_fixed.png",
+ "it": [
+  {
+   "L": {
+    "crown": 30,
+    "eye": 52,
+    "chin": 65,
+    "shoulder": 66,
+    "waist": 74,
+    "obi_bot": 80,
+    "hem": 92,
+    "sock_top": 93,
+    "boot_top": 113
+   },
+   "head_w": 31,
+   "head_h": 36,
+   "maxerr": 2
+  },
+  {
+   "L": {
+    "crown": 29,
+    "eye": 50,
+    "chin": 62,
+    "shoulder": 63,
+    "waist": 74,
+    "obi_bot": 78,
+    "hem": 90,
+    "sock_top": 91,
+    "boot_top": 113
+   },
+   "head_w": 35,
+   "head_h": 34,
+   "maxerr": 2
+  },
+  {
+   "L": {
+    "crown": 30,
+    "eye": 48,
+    "chin": 64,
+    "shoulder": 65,
+    "waist": 74,
+    "obi_bot": 78,
+    "hem": 90,
+    "sock_top": 91,
+    "boot_top": 113
+   },
+   "head_w": 31,
+   "head_h": 35,
+   "maxerr": 2
+  },
+  {
+   "L": {
+    "crown": 30,
+    "eye": 51,
+    "chin": 63,
+    "shoulder": 64,
+    "waist": 74,
+    "obi_bot": 78,
+    "hem": 90,
+    "sock_top": 91,
+    "boot_top": 113
+   },
+   "head_w": 35,
+   "head_h": 34,
+   "maxerr": 2
+  },
+  {
+   "L": {
+    "crown": 30,
+    "eye": 49,
+    "chin": 63,
+    "shoulder": 64,
+    "waist": 74,
+    "obi_bot": 78,
+    "hem": 90,
+    "sock_top": 91,
+    "boot_top": 113
+   },
+   "head_w": 35,
+   "head_h": 34,
+   "maxerr": 2
+  },
+  {
+   "L": {
+    "crown": 30,
+    "eye": 51,
+    "chin": 63,
+    "shoulder": 64,
+    "waist": 74,
+    "obi_bot": 78,
+    "hem": 90,
+    "sock_top": 91,
+    "boot_top": 114
+   },
+   "head_w": 30,
+   "head_h": 34,
+   "maxerr": 3
+  },
+  {
+   "L": {
+    "crown": 30,
+    "eye": 49,
+    "chin": 62,
+    "shoulder": 63,
+    "waist": 74,
+    "obi_bot": 78,
+    "hem": 90,
+    "sock_top": 91,
+    "boot_top": 114
+   },
+   "head_w": 35,
+   "head_h": 33,
+   "maxerr": 2
+  }
+ ],
+ "H": 97,
+ "final": {
+  "L": {
+   "crown": 30,
+   "eye": 52,
+   "chin": 64,
+   "shoulder": 65,
+   "waist": 74,
+   "obi_bot": 78,
+   "hem": 90,
+   "sock_top": 91,
+   "boot_top": 114
+  },
+  "head_w": 34,
+  "head_h": 35,
+  "x0": 46,
+  "x1": 79
+ }
+}

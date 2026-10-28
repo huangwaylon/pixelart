@@ -1,0 +1,133 @@
+{
+ "name": "test_head5",
+ "partdir": "parts/se",
+ "cell": [
+  64,
+  64
+ ],
+ "ground": [
+  32,
+  60
+ ],
+ "rig": {
+  "legs": {
+   "part": "legs",
+   "at": "root",
+   "z": 1
+  },
+  "skirt": {
+   "part": "skirt",
+   "at": "legs.hip",
+   "z": 3
+  },
+  "torso": {
+   "part": "torso",
+   "at": "skirt.waist",
+   "off": [
+    0,
+    0
+   ],
+   "z": 4
+  },
+  "armF": {
+   "part": "armF",
+   "at": "torso.shR",
+   "z": 2
+  },
+  "armN": {
+   "part": "armN",
+   "at": "torso.shL",
+   "z": 6
+  },
+  "head": {
+   "part": "head",
+   "at": "torso.neck",
+   "z": 7
+  },
+  "bun": {
+   "part": "bun",
+   "at": "head.bun",
+   "z": 0
+  },
+  "bow": {
+   "part": "bow",
+   "at": "head.bow",
+   "z": 8
+  }
+ },
+ "frames": [
+  {
+   "ms": 400,
+   "label": "head",
+   "set": {
+    "head": {
+     "part": "head"
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "blink",
+   "set": {
+    "head": {
+     "part": "head_blink"
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "iw4_blink",
+   "set": {
+    "head": {
+     "part": "head_iw4_blink"
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "iw4_half",
+   "set": {
+    "head": {
+     "part": "head_iw4_half"
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "lean",
+   "set": {
+    "head": {
+     "part": "head_lean"
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "shout",
+   "set": {
+    "head": {
+     "part": "head_shout"
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "sq",
+   "set": {
+    "head": {
+     "part": "head_sq"
+    }
+   }
+  },
+  {
+   "ms": 400,
+   "label": "st",
+   "set": {
+    "head": {
+     "part": "head_st"
+    }
+   }
+  }
+ ],
+ "sheet_cols": 4
+}

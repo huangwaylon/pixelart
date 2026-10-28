@@ -1,0 +1,5 @@
+1) **Natural unarmed motion: 8/10** — Completely free of any weapon-carry or guard stiffness; the arms swing cleanly in opposition to the legs, though the elbows stay slightly rigid/straight on the backswing.
+2) **Cheerful trainer feel: 8/10** — The bouncy vertical bob, big kick-ups on the passing frames, and flared dress give it an energetic, upbeat RPG-trainer charm.
+3) **Readable at 1x: 6/10** — The leg stride and head bob read great, but because the red sleeves are the exact same hue/value as the dress and back-bow, the arms completely blend into the torso on frames 2, 3, and 4.
+
+**Most important fix:** Shift the brightness/hue of the sleeves (or add a dark outline/cuff separation at the pixel level) so the swinging arms pop clearly against the red dress and bow at 1x resolution.

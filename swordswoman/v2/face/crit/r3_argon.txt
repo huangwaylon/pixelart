@@ -1,0 +1,32 @@
+**(1) Expressions (1x readability & score /10):**
+* **Neutral (8.5):** Reads well. S mouth (flat 2px) lacks the confident smirk present in SE.
+* **Determined (7.5):** Flat horizontal lids read sleepy/bored rather than fierce. Needs diagonal inner brow drop.
+* **Shout (6.5):** S/SE mouth has a dark outline completely encircling pink—reads as thick lipstick or a stuck-out tongue at 1x.
+* **Effort (6):** 3x2 white mouth block with dark border looks like buck teeth or foaming, not a grit grimace.
+* **Joy (9):** Very clean `^ ^` eyes and blush. Official quality.
+* **Smile (7.5):** S-view 3px dark U-mouth is too heavy; looks like an open-mouth gasp or goatee. SE smirk is much better.
+* **Surprised (6.5):** Bottom lash pixel + high brow makes the eyes look sunken/hollow at 1x.
+* **Pain (8):** `> <` reads clearly, though S/SE mouth is slightly noisy.
+* **Blink Half (7):** Identical eye shape to *Determined*; only the mouth differs.
+* **Blink Closed (9):** Clean, reads instantly.
+* **Squash (8.5):** Great silhouette compression (1px lower head/bow) and "oof" dot mouth.
+
+**(2) Pokemon Grammar:** 8/10. Eye glints and sclera-to-iris ratios match Gen 5 well. However, dark-outlined mouths (*Shout*, *Effort*, *Smile* S) violate BW trainer style, which uses 1–2px dark/red clusters without full black borders at this scale (see Lyra/Dawn refs).
+
+**(3) Personality:** 8/10. *SE Neutral*, *SE Smile*, and *Joy* nail the spirited swordswoman vibe. *Determined* and *Effort* need sharper aggression.
+
+**(4) Views:**
+* **S (7/10):** Symmetrical mouths (*Shout*, *Effort*, *Smile*) look boxy/awkward.
+* **SE (8.5/10):** Strongest row; great 3/4 appeal (even better on C_r4 test body).
+* **E (7.5/10):** Forward eye placement works, but *Shout*/*Smile* mouths sit 1px too far back from the chin tip instead of breaking/touching the profile edge.
+* **NE/N (8.5/10):** Good silhouette. NE lacks a 1px cheek/lash sliver to distinguish it clearly from N at 1x.
+
+**(5) Top 6 Pixel Edits:**
+1. **Shout mouth (S/SE):** Remove bottom/side dark outline pixels; make it a 3x2 dark-red top row + pink bottom row (classic `D` shape).
+2. **Determined vs Blink-Half:** In *Determined*, drop the inner corner of the dark upper lid down 1px (replacing top-inner sclera/iris pixel) for an angry `\` `/` slant.
+3. **Effort mouth (S/SE):** Replace the white/black box with a 3x1 horizontal white bar (teeth) capped only by 1px dark corners, or a jagged 3x1 dark grimace.
+4. **Smile mouth (S):** Replace the 3-wide dark U with a 2-wide dark line + 1px raised corner (matching SE's smirk).
+5. **Surprised eyes:** Delete the bottom lash pixel; expose 1px of white sclera *below* the blue iris to sell shock.
+6. **E-view mouths (Shout/Effort/Pain):** Shift mouth pixels 1px right to indented/touch the front facial outline.
+
+**Overall Score: 7.8 / 10**

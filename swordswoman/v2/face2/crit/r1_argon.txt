@@ -1,0 +1,23 @@
+**1. Overall Assessment & Scores**
+* **Sprite (5/10):** Uncanny, not cute. Look at your HGSS/BW references: anime sprites use **tall, narrow eyes (2×4px)** with a **1px skin bridge** for the nose. Your 4×5px eyes are too wide/blocky and separated by a flat 2px bridge, making the face look wide and frog-like. Heavy black jawlines kill the soft DS-style *moe* aesthetic.
+* **Portrait (6.5/10):** Better, but suffers from a harsh, triangular V-chin, wide-set eyes (6px bridge), and blocky dark eye corners.
+
+**2. Weak Expressions at 1x**
+* **Neutral vs. Cheerful vs. Determined (Sprite):** Nearly identical at 1x. A 1px mouth shift or 1px brow slant gets swallowed by the massive black eyelashes.
+* **Effort (Both):** Looks sleepy/smug, not straining. Half-lids + flat white teeth read as a lazy grin. Needs angled `\` `/` brows and a grimace.
+* **Shout (Sprite):** Black-outlined open mouth looks like a goatee/mustache at 1x.
+* **Surprised (Sprite):** Wide white sclera makes her look cross-eyed/robotic.
+* **Embarrassed (Both):** Reads as "annoyed/tired." The `w` mouth looks like teeth/scowl, and half-lids kill the bashful cute look.
+
+**3. View Consistency & Profiles**
+* **SE (3/4):** Flat. Both eyes are 3px wide—the far (right) eye must compress to **2px wide** for perspective.
+* **E (Profile):** Not an anime profile. The face is a flat vertical wall with a 1px tumor nose. An anime profile needs a recessed eye (set back 1–2px from the bridge), a diagonal nose-to-lip step, and a tucked chin. Eye is drawn front-facing instead of a side-triangle.
+* **NE:** Needs 1px of eyelash/cheek protruding past the hair to read as 3/4 back.
+
+**4. Top 6 Concrete Pixel Fixes**
+1. **S Sprite Eyes:** Narrow from 4×5 to **3×4px** (2px iris + 1px sclera). Reduce nose bridge from 2px to **1px** (centering the features).
+2. **S Sprite Jawline:** Replace the bottom 3 black chin outline pixels with dark skin/hair shadow (like Rosa/Lyra) to soften the face.
+3. **SE Far Eye:** Shrink the right eye width from 3px to **2px** (1px sclera, 1px iris) and shift it 1px left.
+4. **E Profile Silhouette:** Push the eye 1px left into the head; step the face outline out 1px for the nose, back 1px for the mouth, and back 1px for the chin.
+5. **Shout Mouth (Sprite):** Remove the dark outline around the mouth; use a clean **2×2px dark-red/pink** block so it doesn't read as facial hair.
+6. **Portrait Chin & Eyes:** Widen the flat bottom of the chin from 3px to **5px** (softening the sharp V-jaw) and move both eyes **1px inward**.

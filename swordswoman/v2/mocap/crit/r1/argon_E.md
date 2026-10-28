@@ -1,0 +1,8 @@
+idle: NEW nat/prop/read/energy = 8/9/8/6 ; OLD = 7 ; fixes: f0–5 angle blade down ~15° or widen stance slightly for a stronger combat-ready silhouette; add 1px torso/head dip on f2–3 for clearer breathing at 1x.
+walk: NEW nat/prop/read/energy = 7/9/6/5 ; OLD = 7 ; fixes: f1,3,4 angle sword backward/away from legs so blade doesn't merge with calves; widen contact stride on f0 and f3 by 2px.
+run: NEW nat/prop/read/energy = 5/8/4/3 ; OLD = 8 ; fixes: f0–5 add ~20° forward torso lean and trail sword behind body (currently vertical and occluding front leg); extend leg stride on f2 and f5 (reads as a slow jog).
+jump: NEW nat/prop/read/energy = 5/8/3/2 ; OLD = 8 ; fixes: f1 and f6 need deep knee bend/crouch (at least 4–6px lower hip) for takeoff/landing weight; f3–4 tuck knees up and swing sword back to silhouette air-time.
+dash: NEW nat/prop/read/energy = 5/8/3/2 ; OLD = 8 ; fixes: f1–2 pitch torso forward ~35° into a low lunge with wide leg split (currently too upright, looks like a casual step); swing blade back horizontally on f1–2 for directional thrust.
+slash: NEW nat/prop/read/energy = 6/8/5/4 ; OLD = 8 ; fixes: f2–3 step front foot forward 4px into a lunge and extend sword arm away from body so the smear arc projects clearly ahead; f1 pull sword further back to open up the windup silhouette.
+overhead: NEW nat/prop/read/energy = 7/8/6/5 ; OLD = 8 ; fixes: f1 raise hands/hilt above head height to read as a true overhead windup; f2–3 drop hips 3px lower and extend smear arc further forward/downward for heavy impact feel.
+hurt: NEW nat/prop/read/energy = 5/8/4/3 ; OLD = 8 ; fixes: f0–1 arch torso back and fling sword arm out to clear silhouette (currently too upright and stiff); f2 deepen crouch and angle blade away from legs.

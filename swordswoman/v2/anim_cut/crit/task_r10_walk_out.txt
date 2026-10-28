@@ -1,0 +1,16 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt walk_SE and walk_SE_ns with a wider stride. QC passes on both. I reviewed the sheet four times but didn't do a final critique pass.
+
+- **Legs:** heels about 12px apart, toe-off back foot, passing foot lifted 3–4px below the hem.
+- **Arms:** the far arm now hangs on a diagonal and its hand shows on the back swing. The sword arm swings less.
+- **Blade:** low, behind the body, stepping 11→10.5→10 one frame behind the arm, clear of the legs.
+- **Head and bow:** a reacting variant on every frame, plus a blink.
+
+The stock squash head failed QC (too wide), so I made a narrower copy.
+
+New parts: `walk10_legs_{c,d,p}{1,2}`, `walk10_armF_{f,b}`, `walk10_armN_f`, `walk10_head_hf`.
+
+Weaknesses: the up frames reuse round-9 legs, and the blade holds 10 for three frames.
+
+Saving session...completed.

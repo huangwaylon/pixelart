@@ -1,0 +1,25 @@
+; origin 20 8
+; view SE
+; expr smile
+.....KKK...........
+....KHLHK...KKKKK..
+....KLHHK.KKeeeeK..
+.KK.KHhhhKEEEEEeK..
+KeeKKhrRrrEEEEERK..
+KeEeKrRRrrREEERRK..
+KEEEerRRrrrRRRRRK..
+KERRRrrrrhhrrrrhK..
+KRrrrhhHLLHHHHhhhK.
+.KrHLLHhHHHhHHhHHhK
+.KHHHHHhhHhShHhShHK
+..KHHHHhhhSsShSsShK
+..KHHHHhssssssssshK
+..KHHHHhKKKKsssKKKK
+..KHhHHhKWiKsssiWSK
+..KHhHHhsiiIsssiiSK
+..KHhHhhesssssssseK
+..KhHhHhssssrsrssK.
+..KhHhhhsssssrsSK..
+...KhHhhhsssssSK...
+...KhKhhhsssSSK....
+....K.KhhhsSSK.....

@@ -1,0 +1,3 @@
+; pivot 15 1
+.......wwwwxxxx
+nnnwwwwxxxxxxxx

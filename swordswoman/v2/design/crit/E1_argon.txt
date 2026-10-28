@@ -1,0 +1,17 @@
+**Art Director Review**
+
+* **Trainer Read:** No. They read as stiff, generic chibi T-poses rather than dynamic, graceful Pokémon trainers. 
+* **Proportions/Awkwardness:** The heads are balloon-wide, making the bodies feel stubby. The knees are noticeably knock-kneed (inward-bending), the boots are shapeless blobs, and the symmetry is robotic.
+* **Sugimori Face:** No. The eyes are too wide-set and horizontal. Sugimori eyes are taller, vertically oval, with sharper triangular upper-lash corners and distinct oblong pupils. 
+* **Height Estimate:** **A:** ~3.4 heads tall (closer to Gen 4/5 sprite proportions). **B:** ~3.1 heads tall (bulkier torso/limbs).
+
+**Scores & Selection**
+* **Candidate A:** 6.5/10
+* **Candidate B:** 5.5/10
+* **Pick: Candidate A.** It has a much better, slender silhouette, a clearer neck, and hits the 45% leg-to-height ratio better than B.
+
+**Top 4 Concrete Fixes for A:**
+1. **Break the A-Pose:** Give her a Gen-5 battle stance—shift weight to one hip, angle the torso 15°, bend one elbow (hand on hip or holding a Poké Ball).
+2. **Sugimori Face Overhaul:** Make the eyes taller and narrower, bring them slightly closer together, and narrow the upper cranium/hair width by 10%.
+3. **Straighten Legs & Upgrade Boots:** Fix the inward knee bend; add cuffs, laces, or soles to the boots so they aren't plain brown socks.
+4. **Outfit Detail:** Add a white under-collar (*juban*) and an obi cord (*obijime*) to break up the flat red/black blocks.

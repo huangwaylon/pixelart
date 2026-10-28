@@ -1,0 +1,418 @@
+[
+{
+"k": 6,
+"score": 8.1,
+"m": {
+"area": 495,
+"neg": 134,
+"neg_frac": 0.271,
+"blade_vis": 36,
+"blade_all": 43,
+"blade_hidden": 7,
+"blade_over_body": 6,
+"ground_gap": 0.0,
+"foot_px": 3,
+"h": 43,
+"bottom": 59,
+"w": 39,
+"clip": 0,
+"blade_len": 25.1,
+"tilt": 21.6,
+"bend_px": 4.2,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.52,
+-0.88,
+0,
+1
+],
+"ik.R": [
+-0.46,
+-0.82,
+0,
+1
+],
+"scr": {
+"upper_arm.L": [
+-150,
+0
+],
+"upper_arm.R": [
+-128,
+-10
+]
+},
+"blade_scr": [
+-175,
+0
+],
+"roll": 4
+}
+},
+{
+"k": 1,
+"score": 7.97,
+"m": {
+"area": 489,
+"neg": 128,
+"neg_frac": 0.262,
+"blade_vis": 39,
+"blade_all": 45,
+"blade_hidden": 6,
+"blade_over_body": 5,
+"ground_gap": 0.0,
+"foot_px": 3,
+"h": 43,
+"bottom": 59,
+"w": 38,
+"clip": 0,
+"blade_len": 25.1,
+"tilt": 20.1,
+"bend_px": 4.0,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.48,
+-0.88,
+0,
+1
+],
+"ik.R": [
+-0.46,
+-0.84,
+0,
+1
+],
+"scr": {
+"upper_arm.L": [
+-140,
+0
+],
+"upper_arm.R": [
+-120,
+-10
+]
+},
+"blade_scr": [
+-176,
+0
+],
+"roll": 3
+}
+},
+{
+"k": 3,
+"score": 7.84,
+"m": {
+"area": 492,
+"neg": 133,
+"neg_frac": 0.27,
+"blade_vis": 44,
+"blade_all": 50,
+"blade_hidden": 6,
+"blade_over_body": 6,
+"ground_gap": 0.0,
+"foot_px": 2,
+"h": 44,
+"bottom": 60,
+"w": 39,
+"clip": 0,
+"blade_len": 25.2,
+"tilt": 17.1,
+"bend_px": 3.5,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.5,
+-0.88,
+0,
+1
+],
+"ik.R": [
+-0.4,
+-0.88,
+0,
+1
+],
+"scr": {
+"upper_arm.L": [
+-120,
+0
+],
+"upper_arm.R": [
+-125,
+-10
+]
+},
+"blade_scr": [
+-180,
+0
+],
+"roll": 2
+}
+},
+{
+"k": 4,
+"score": 7.54,
+"m": {
+"area": 494,
+"neg": 132,
+"neg_frac": 0.267,
+"blade_vis": 40,
+"blade_all": 47,
+"blade_hidden": 7,
+"blade_over_body": 7,
+"ground_gap": 0.0,
+"foot_px": 2,
+"h": 43,
+"bottom": 59,
+"w": 37,
+"clip": 0,
+"blade_len": 25.0,
+"tilt": -14.3,
+"bend_px": 6.4,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.46,
+-0.88,
+0,
+1
+],
+"ik.R": [
+-0.5,
+-0.78,
+0,
+1
+],
+"scr": {
+"upper_arm.L": [
+-145,
+0
+],
+"upper_arm.R": [
+-118,
+-10
+]
+},
+"blade_scr": [
+-170,
+0
+],
+"roll": 5
+}
+},
+{
+"k": 0,
+"score": 7.51,
+"m": {
+"area": 488,
+"neg": 128,
+"neg_frac": 0.262,
+"blade_vis": 41,
+"blade_all": 48,
+"blade_hidden": 7,
+"blade_over_body": 7,
+"ground_gap": -0.0,
+"foot_px": 2,
+"h": 45,
+"bottom": 60,
+"w": 36,
+"clip": 0,
+"blade_len": 25.1,
+"tilt": 17.2,
+"bend_px": 3.5,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.44,
+-0.88,
+0,
+1
+],
+"ik.R": [
+-0.42,
+-0.88,
+0,
+1
+],
+"scr": {
+"upper_arm.L": [
+-128,
+0
+],
+"upper_arm.R": [
+-114,
+-10
+]
+},
+"blade_scr": [
+-172,
+0
+],
+"roll": 2
+}
+},
+{
+"k": 7,
+"score": 7.5,
+"m": {
+"area": 486,
+"neg": 127,
+"neg_frac": 0.261,
+"blade_vis": 42,
+"blade_all": 48,
+"blade_hidden": 6,
+"blade_over_body": 8,
+"ground_gap": -0.0,
+"foot_px": 2,
+"h": 44,
+"bottom": 60,
+"w": 37,
+"clip": 0,
+"blade_len": 25.1,
+"tilt": 17.8,
+"bend_px": 3.4,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.45,
+-0.88,
+0,
+1
+],
+"ik.R": [
+-0.44,
+-0.88,
+0,
+1
+],
+"scr": {
+"upper_arm.L": [
+-125,
+0
+],
+"upper_arm.R": [
+-112,
+-10
+]
+},
+"blade_scr": [
+-185,
+0
+],
+"roll": 3
+}
+},
+{
+"k": 2,
+"score": 7.49,
+"m": {
+"area": 493,
+"neg": 134,
+"neg_frac": 0.272,
+"blade_vis": 42,
+"blade_all": 49,
+"blade_hidden": 7,
+"blade_over_body": 7,
+"ground_gap": -0.0,
+"foot_px": 3,
+"h": 44,
+"bottom": 59,
+"w": 36,
+"clip": 0,
+"blade_len": 24.9,
+"tilt": -11.5,
+"bend_px": 5.4,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.4,
+-0.88,
+0,
+1
+],
+"ik.R": [
+-0.48,
+-0.8,
+0,
+1
+],
+"scr": {
+"upper_arm.L": [
+-135,
+0
+],
+"upper_arm.R": [
+-110,
+-10
+]
+},
+"blade_scr": [
+-168,
+0
+],
+"roll": 4
+}
+},
+{
+"k": 5,
+"score": 7.33,
+"m": {
+"area": 484,
+"neg": 126,
+"neg_frac": 0.26,
+"blade_vis": 39,
+"blade_all": 47,
+"blade_hidden": 8,
+"blade_over_body": 8,
+"ground_gap": -0.0,
+"foot_px": 4,
+"h": 44,
+"bottom": 59,
+"w": 34,
+"clip": 0,
+"blade_len": 24.6,
+"tilt": 17.3,
+"bend_px": 3.8,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.42,
+-0.88,
+0,
+1
+],
+"ik.R": [
+-0.38,
+-0.86,
+0,
+1
+],
+"scr": {
+"upper_arm.L": [
+-110,
+0
+],
+"upper_arm.R": [
+-105,
+-10
+]
+},
+"blade_scr": [
+-160,
+0
+],
+"roll": 1
+}
+}
+]

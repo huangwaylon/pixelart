@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I added a small skin-tone hand with a K outline under the right bell-sleeve hem and removed the 1px nub on the sleeve outline. I also turned the grey-brown specks on the obi into O/o and on the kimono into R, made the shadow row under the skirt S instead of m, and turned the doubled K on the sock top into D. The first try passed the budget with no '!' (dE +0.054 against the +0.06 limit, ssim_b +0.000, sil -0.000, lint O1 2 / S4 12 / O3 none flagged), so I kept that version in `out.txt`.

@@ -1,0 +1,21 @@
+**S: 7/10. Not final yet; close.**
+1. The bun is completely hidden. Add a 2–3px dark lobe peeking above the skull outline between the bow loops.
+2. The bangs end in a dead-straight horizontal line at eye level. Break it into 2–3 clumps by notching 1px.
+3. The hands are pale 1–2px dots under the sleeves. Make them 2x2 or 3x2 skin mittens with a dark outline on the bottom and outer side.
+
+**E: 5/10. Not final.**
+1. The bun reads as a thin 1–2px horizontal stick off the back of the head. Make it a round 4x4 lobe with an outline.
+2. The sleeve is a big rectangle behind the torso, so it reads as a backpack. Bring the arm forward over the body, taper the cuff and put the mitten in front.
+3. The face is a flat rectangle. Add a 1px nose bump, a chin step back into the neck, and a 1px ear or skin break in the hair mass so the head isn't a solid helmet.
+
+**NE: 5.5/10. Not final.**
+1. It doesn't read as 3/4. It looks like straight back (N) with a slight tilt. Add a 2–3px sliver of cheek and ear on the right edge of the skull, and shift the bun and bow 2px to the left.
+2. A light grey rim runs down the right side of the hair, plus stray light pixels at the lower right. That breaks the flat 2-tone rule. Recolour those pixels to the base hair or outline colour.
+3. The legs are uneven: the left boot is a stub, the right leg is longer and offset. Set equal leg lengths and stagger them by 1px for depth.
+
+**N: 6.5/10. Close.**
+1. There's a teal-grey ring around the bun that isn't in the palette. Use the dark hair outline.
+2. The hair hem is a perfectly straight horizontal line across the neck. Add a shallow curve or 2 nape points.
+3. The hands are the same white dots as S. Make them outlined mittens. The back of the obi is a blank red rectangle: add the knot or 1px dark seam lines.
+
+**Across all views:** keep the skull top and bow top on the same height lines. E's skull currently sits about 1px high.

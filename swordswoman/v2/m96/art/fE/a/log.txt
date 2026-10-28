@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I replaced the old eye in `out.txt` with the exact front_left block (lash on sprite row 51, cols 71–75, iris centred on the illustration's iris), cleaned the old eye pixels to skin, put 2 px of blush at (73–74, 55), and added an "mm" mouth at (75–76, 58), keeping the face contour; the EYE SPEC CHECK prints OK, but the gate still carries `!`: face_ssim 0.357 (−0.145), ssim_b 0.959 (−0.003), dE 8.80 (+0.16), sil and line_f fine — moving the eye a column either way and testing other blush and mouth spots didn't help, because most of the drop comes from replacing the old auto sprite's large white eye with the spec block, which allows no extra white.

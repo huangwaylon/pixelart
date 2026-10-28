@@ -1,0 +1,10 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+I rewrote all three parts in place, and the head now reads as SE 3/4. I composed and previewed it twice (`work/pv/stand.png`).
+
+- **Head** (22×21): face moved right; near eye 3px, far eye 2px against the cheek. Mouth at x15, far blush 1px, cheek tapers to a 7px rounded chin. Bob is long and wide on the back, a thin strip on the far side. Bangs are 2–3px clumps; light from top-left. Pivot 13 19, bow 13 1, bun 2 4.
+- **Bow** (17×8): far loop ~30% smaller, knot right of centre; pivot 9 7.
+- **Bun**: round 5×5 with a 2×2 sheen.
+
+The lint still reports 25 single-pixel hits, which I left: mostly diagonal outline steps and eye pixels.

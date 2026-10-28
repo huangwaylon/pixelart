@@ -1,0 +1,36 @@
+### Scores (0–10)
+
+* **illustration_appeal: 5/10** — The palette is functional, and the 1x previews read well against dark and green backgrounds, but the character lacks the chibi charm of the reference. The head-to-body ratio is too tall/narrow (closer to 1:1.5 than true SD chibi), and the face lacks the soft roundness and large expressive eye shapes of the target art.
+* **cross_direction_consistency: 6/10** — Locking the katana to the left hand across all 8 directions is handled logically (occluded properly on the back/left side in E/W/SW), and the hair bun rotates convincingly. However, the silhouette width and torso/corset landmarks shift noticeably between S, SE, and SW.
+* **motion_expressiveness: 5/10** — `slash_SE` and `jump_E` have clear key poses, though the upper body remains too upright and stiff during attacks and dashes. `walk_SE` is extremely stiff—the head, torso, and arms are almost entirely static copy-pastes while only the legs and skirt hem cycle underneath.
+* **smear_craft: 6/10** — `slash_SE_k1` has a readable crescent arc, and `slash_SE_k2` has a nice residual trail + impact spark. However, `dash_SE_f1` uses raw horizontal 1px/2px scanline strips that feel mechanical and disconnected from the character's contours rather than a cohesive pixel-art speed smear.
+* **pixel_cleanliness: 5/10** — Plagued by jagged 1px stair-stepping on diagonal katana blades, stray single-pixel noise/sparkles in the follow-through and apex frames, and muddy clusters around the corset belt and sandals where dark outlines merge with interior shading.
+* **design_fidelity: 5/10** — Major costume hallmarks from the reference are lost or altered: the wide dark-brown double-buckled leather corset is reduced to a thin 2px belt with a single gold dot; the signature cold-shoulder/detached sleeve gap is completely missing (painted as solid red shoulders); and the black inner shorts + criss-cross sandal straps are barely legible.
+
+---
+
+### Top 6 Defects (with Frame & Pixel-Level Fixes)
+
+1. **`walk_SE_k0` through `walk_SE_k3` — Frozen Upper Body & Blade Angle Pop (`walk_SE_k2`)**
+   * **Defect:** The head, hair ribbons, torso, and left sword-arm barely move a single pixel vertically or rotationally across all 4 frames, making her look like she is gliding on a Segway. Worse, in `walk_SE_k2`, the katana blade suddenly snaps to a near-vertical 90° straight-down line (only 1px wide), breaking the diagonal perspective held in `k0`, `k1`, and `k3`.
+   * **Pixel Fix:** Add a 1px vertical bounce (down 1px on passing frames `k1`/`k3`, up 1px on contact/push-off `k0`/`k2`) to the head and torso cluster. In `walk_SE_k2`, redraw the blade from the hilt at `(x+5, y+18)` down-right at a ~60° angle using a clean 2px-step diagonal (`2px down, 1px right` repeating) so it transitions smoothly between `k1` and `k3` instead of snapping vertical.
+
+2. **`turn_S`, `turn_SE`, `turn_SW` — Missing Cold-Shoulder Cutouts & Undersized Corset**
+   * **Defect:** The reference art features prominent bare skin at the shoulders (detached wide sleeves with a black top trim) and a tall, dark-brown structured corset covering the entire midriff. On the sprites, the shoulders are solid red fabric from cowl to cuff, and the corset is compressed into a 2px-tall dark line with a single 2x2 yellow square.
+   * **Pixel Fix:** Across the turnaround and base templates, paint a `2x2` or `3x2` flesh-tone patch (`#FAD4B8`) right below the red cowl edges on both left and right shoulders, bordered underneath by a `1px` dark-brown/black band before the red sleeve resumes. Expand the dark-brown corset (`#3A2622`) vertically by `2px` upward into the red chest area, and replace the single yellow blob with two stacked `1x1` gold pixels separated by `1px` of dark brown to represent the double buckles.
+
+3. **`dash_SE_f1` — Comb-Like Horizontal Pixel Strips Instead of Tapered Motion Smears**
+   * **Defect:** The trailing pink/white speed effect on the left side consists of ~15 separated `1px`-tall horizontal bars with uniform gaps, looking like an interlaced VHS glitch rather than a pixel-art dash smear.
+   * **Pixel Fix:** Merge the core horizontal strips behind the head, cowl, and skirt into 3–4 solid, chunky wedge shapes (4–6px tall at the body edge, tapering down to `2px` and then `1px` tips toward the left). Use two-tone shading (white core where the body just left, fading into the mid-pink `#E87A90` at the trailing tips) and delete the isolated floating 1px/2px dashes above the hair bun.
+
+4. **`jump_E_apex` — Dangling Vertical Pixel Fringes on Skirt Hem & Disconnected Rear Ribbon**
+   * **Defect:** At the bottom of the skirt in `jump_E_apex`, the cloth splits into four awkward, vertical `1px`-wide icicle/comb teeth hanging straight down over the legs (`1px` red/pink alternating with `1px` dark gaps). Additionally, behind her mid-back is a floating triangular red cluster that disconnects from the cowl/ribbon flow.
+   * **Pixel Fix:** Consolidate the bottom skirt hem into two clean, overlapping diagonal triangular flaps (at least `3–4px` wide at their base, tapering to a point) that wrap around the downward-extended legs. Connect the floating red pixels behind her back directly to the neck cowl with a `2px`-wide pink ribbon bridge (`#F2A6B0`), or remove the stray red pixels entirely.
+
+5. **`slash_SE_k2` & `slash_SE_k3` — Jagged Blade Aliasing & Noisy Single-Pixel Debris**
+   * **Defect:** In `slash_SE_k2`, the horizontal katana blade has inconsistent thickness and merges messily into a noisy 1px-checkerboard star at the tip, while the trailing pink arc underneath breaks into disconnected 1px dots. In `slash_SE_k3`, there are 3 stray floating pink single pixels (`1x1`) on the far left that read as stray dust rather than follow-through dissipation, and the blade step-pattern is uneven (`3px, 1px, 2px, 4px`).
+   * **Pixel Fix:** In `slash_SE_k2`, make the blade a crisp `2px`-tall horizontal line (`1px` bright white top edge, `1px` steel-grey bottom edge) leading into a clean 4-point cross spark (`5x5` with a solid `3x3` white core). Connect the lower pink trail into a continuous `1px`–`2px` curve without 1px gaps. In `slash_SE_k3`, delete the isolated `1x1` pink dots on the left and regularize the blade's diagonal staircase to a strict `2px-across, 1px-down` run.
+
+6. **`turn_SW` vs. `turn_SE` — Foreshortened/Broken Sword & Asymmetric Head Shape**
+   * **Defect:** Because the sword is locked to her left hand, in `turn_SW` the blade crosses slightly behind/beside her left leg. However, the exposed blade in `turn_SW` is stubby (almost half the length of `turn_SE`), bends downward at a steeper angle than the hilt, and merges into the sandal outline. Furthermore, her face in `turn_SW` is 1–2px narrower on the cheek than in `turn_SE`, making the head look squished.
+   * **Pixel Fix:** In `turn_SW`, widen the right cheek (viewer's right) by `1px` of skin tone plus `1px` dark outline to match the volume of `turn_SE`. Extend the katana blade past her left foot by another `4–5px` along a straight line aligned strictly with the hilt angle, and place a `1px` dark outline buffer between the bright grey blade pixels and her left leg/sandal so the weapon silhouettes clearly.

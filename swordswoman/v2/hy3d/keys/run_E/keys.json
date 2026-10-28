@@ -1,0 +1,29 @@
+{
+ "action": "run",
+ "dir": "E",
+ "keys": [
+  "run_reach",
+  "run_push",
+  "run_air"
+ ],
+ "cell_1x": 96,
+ "scale": 4,
+ "pivot_1x": [
+  48,
+  88
+ ],
+ "px_per_unit_1x": 26.0,
+ "elev_deg": 30,
+ "ids": [
+  "skin",
+  "hair",
+  "dress",
+  "obi",
+  "boots",
+  "eyes",
+  "bow",
+  "sleeve",
+  "blade",
+  "hilt"
+ ]
+}

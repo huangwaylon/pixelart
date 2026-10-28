@@ -1,0 +1,9 @@
+; pivot 13 0
+; anchor waist 13 -1
+......#eEEEEEEEERRR#.......
+....##eEEEEEEEEEERRR##.....
+..##eEEEEEEEEEEEEEERRRR##..
+.#eEEEEEEEEEEEEEEEEERRRrr#.
+#RReEEEEEEEEEEEEEEEERRRr###
+.##RRRRRRRRRRRRRRRRRRRr##..
+...###################.....

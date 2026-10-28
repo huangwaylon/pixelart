@@ -1,0 +1,9 @@
+#!/bin/zsh
+# crit.sh ROUND : Argon + Opus on png/sheet.png vs the old SE head + design refs -> crit/r<ROUND>_{argon,opus}.txt
+R=/Users/waylonhuang/Documents/other/pixelart/swordswoman; H=$R/v2/heads; P=$R/.venv/bin/python; r=$1
+S=$H/png/sheet.png; OLD=$R/v2/anim_redraw/m48/heads/preview.png; REF=$R/v2/design/turnD/iso_SE.png; REFE=$R/v2/design/turnD/iso_E.png
+Q="You are a harsh senior pixel-art director. Judge a new HEAD SET (char-map parts, 48px chibi swordswoman; head ~23px wide). Sheet $S: top row = SE (front 3/4) variants in order blink, lean, lookup, neutral, squash; second row = E (true profile) variants lean, lookup, neutral, squash; bottom strip = same at 1x. Old head for identity reference: $OLD (first tile = old master, the others are old variants). Design refs: $REF (SE) and $REFE (E). Judge SPECIFICALLY: (1) skull roundness: domed crown, hair bulging past the temples, cheeks tapering to a soft small chin, no boxy helmet / flat top / vertical walls / square bottom, but also not a featureless ball; (2) identity vs the old SE head and the refs: big low blue eyes, blunt bangs shelf, bob length, bun always visible, big red bow on top (loops left/right); (3) variant consistency and pixel cleanliness (orphans, jaggies). Reply <=12 lines: 'SCORE x/10' (7 = shippable), then the top 6 concrete pixel problems (name the variant and area), then the 3 most valuable fixes."
+$P $R/tools/gemini.py ask "$Q" $S $OLD $REF > $H/crit/r${r}_argon.txt 2>&1 &
+zsh -ic "claude-as be_system --dangerously-skip-permissions --model claude-opus-5-5 -p '$Q Use the Read tool on the PNGs.' < /dev/null" > $H/crit/r${r}_opus.txt 2>&1 &
+wait
+for f in argon opus; do echo "== $f"; grep -v -e "can't change" -e "Saving session" -e "Restored session" -e "^rm:" -e "^$" $H/crit/r${r}_$f.txt | cut -c1-260 | head -14; done

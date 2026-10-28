@@ -1,0 +1,74 @@
+{
+ "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/snap/v13_preeyefix/masters": {
+  "S": {
+   "face_ssim": 0.574,
+   "eye_lash_delta": [
+    0.3,
+    0.3
+   ],
+   "eye_iris_delta": [
+    0.5,
+    0.5
+   ],
+   "contour_mae": 0.418
+  },
+  "SE": {
+   "face_ssim": 0.61,
+   "eye_lash_delta": [
+    -0.5,
+    0.2
+   ],
+   "eye_iris_delta": [
+    -0.5,
+    0.5
+   ],
+   "contour_mae": 0.573
+  },
+  "E": {
+   "face_ssim": 0.354,
+   "eye_lash_delta": [
+    0.0
+   ],
+   "eye_iris_delta": [
+    0.2
+   ],
+   "contour_mae": 0.924
+  }
+ },
+ "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/masters": {
+  "S": {
+   "face_ssim": 0.584,
+   "eye_lash_delta": [
+    0.3,
+    0.3
+   ],
+   "eye_iris_delta": [
+    0.5,
+    0.5
+   ],
+   "contour_mae": 0.418
+  },
+  "SE": {
+   "face_ssim": 0.61,
+   "eye_lash_delta": [
+    -0.5,
+    0.2
+   ],
+   "eye_iris_delta": [
+    -0.5,
+    0.5
+   ],
+   "contour_mae": 0.573
+  },
+  "E": {
+   "face_ssim": 0.422,
+   "eye_lash_delta": [
+    0.0
+   ],
+   "eye_iris_delta": [
+    0.2
+   ],
+   "contour_mae": 0.924
+  }
+ }
+}

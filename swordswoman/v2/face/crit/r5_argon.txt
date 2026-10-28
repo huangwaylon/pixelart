@@ -1,0 +1,33 @@
+**(1) Expressions (1x readability & pixel critique)**
+* **Neutral (7.5/10):** Readable, slightly blank. S mouth is a flat 2px bar; SE far eye lacks a white sclera column (Compare Hilda/Rosa).
+* **Determined (7/10):** Inner brow pixels drop too low/close, creating a "unibrow" shadow. Mouth needs a slight confident smirk or tight offset, not identical to neutral.
+* **Shout (6.5/10):** Readable, but 1px pink tongue surrounded by dark outline reads as a bucktooth/lip ring at 1x. Eyes still too static compared to Determined.
+* **Effort (6/10):** 3x2 mouth with 2 white teeth pixels + dark outline looks bloated and skeletal ("beaver teeth"). At this scale (see Dawn/Rosa), grits are 2x1 white or simple open mouths.
+* **Joy (8.5/10):** Great `^ ^` arcs. Mouth in S looks slightly bloated; remove bottom dark lip pixel.
+* **Smile (7.5/10):** SE smirk works well; S mouth looks lopsided/swollen rather than a clean upbeat curve.
+* **Surprised (8/10):** Removing lower sclera fixed the creepiness! In S, the 1x2 vertical mouth touches the chin outline, reading like a goatee/drool.
+* **Pain (8/10):** Clear `> <`. Mouth in S/SE is muddled—simplify to a clean 2x1 grimace or open triangle.
+* **Blink_hal (7.5/10) & Blink_clo (8.5/10):** Clean. Hal-blink sclera blends slightly with skin tone.
+* **Squash (8/10):** Good 1px vertical compression on head/bow, readable tight eyes.
+
+**(2) Pokemon-likeness**
+Closer, but mouths are over-rendered. Gen4/5 trainers use 1–3 pixels for mouths without full dark outlines (see Lyra/Dawn refs). Current mouths have heavy dark borders that crowd the chin. Eyes need 1px vertical sclera/glint separation in SE to pop like Rosa/Hilda.
+
+**(3) Personality**
+Joy, Determined, and SE Smile hit "spirited/confident." Neutral S and Effort feel stiff/awkward due to heavy mouth outlines.
+
+**(4) Views**
+* **S (7.5/10):** Symmetric, but heavy mouth outlines clutter the narrow lower face.
+* **SE (7.5/10):** Best angle, but far eye (left) is a solid dark/blue block needing 1px white sclera/glint on the outer edge.
+* **E (6.5/10):** Mouths sit 1px too far left (inward) instead of breaking/touching the front cheek outline (see BattleGirl ref).
+* **NE/N (8.5/10):** Clean silhouette; squash/effort head-bob reads well.
+
+**(5) Top 6 Concrete Pixel Fixes**
+1. **Effort mouth (S/SE):** Replace the 4x3 dark-bordered teeth box with a 3x1 white/pink horizontal bar capped only by 1px dark corners (or a 2x2 dark/pink open grit).
+2. **Shout mouth (S/SE):** Widen interior to 2x2 (top row dark red, bottom row pink tongue) and drop the bottom-most dark chin-border pixel so it doesn't look circular/toothy.
+3. **E-view mouths (All):** Shift mouth pixels 1px right to touch/indent the front jawline silhouette, matching official profile sprites.
+4. **SE far eye (Neutral/Smile/Surprised):** Add 1px white highlight/sclera on the left edge of the far eye so it matches the near eye's liveliness.
+5. **Surprised mouth (S):** Change from 1x2 vertical to 2x1 or 2x2 placed 1px higher so it separates cleanly from the chin outline.
+6. **Determined brow (S/SE):** Lighten the 2 center skin pixels between the eyebrows; current AA shadow bridges them into a unibrow.
+
+**Overall Score: 7.8 / 10**

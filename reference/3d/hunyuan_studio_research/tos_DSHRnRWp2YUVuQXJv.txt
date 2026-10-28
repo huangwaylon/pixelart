@@ -1,0 +1,638 @@
+padId":"HtgEjvaEnAro","metaCreateTime":1761620091626,"isOwner":false,"dirty":2,"specialKey":null,"clientIp":"","userLink":"","creatorDomain":"300000000","ownerAppid":"","isAdmin":false,"privilegeAttribute":
+dropboxConnected":false,"isEmbed":true,"initialSpaces":null,"shouldGetFbLoginStatus":true,"cacheTime":null,"use
+lastModifyTime":1770347151369,"ownerId":"144115215448482535","relative":null,"creatorCorpName":"","creatorCorpId":"","specialKeyTranslation":null,"uin":"null","privilegeExpire":0,"isPublicPad":false,"useFbChat":false,"newOpenSvc":1,"appInfoConfig":null,"isPermCalcBySrv":false,"roomUserCount":1,"proTitle":"","domainId":"300000000","userColor":0,"titleIsReadOnly":false,"isOpendocxfromTim":false,"userIsGuest":false,"collab
+padId":"HtgEjvaEnAro","padType":"doc","globalPadId":"300000000
+rWelcome and thank you for your interest in Tencent HY 3D Global
+rTencent HY 3D Global, together with any related websites, networks, applications, software, documentation and services provided by Tencent (collectively, the 
+is an AI model service that supports various forms of input, such as text, images, videos and voice, and can generate output based on such inputs. In addition to these Terms of Service, there are additional terms and policies that are applicable to your use of the Services (
+You agree to comply with these Terms of Services and the following Additional Terms to the extent they are applicable to your use of the Services:
+u0013HYPERLINK https://docs.qq.com/doc/DSHFRaU96UWVhRVZV docLink 
+r-to the extent you have purchased any Services that require payments to our affiliate (
+u0013HYPERLINK https://docs.qq.com/doc/DSHdueXFvYWRvVEZp docLink 
+r-any other terms or information incorporated into them by reference. 
+rIn case there is any contradiction between the Terms of Services and the Additional Terms applicable to your use of the Services including the HY Subscriptions, the Terms of Services and our Acceptable Use Policy shall apply and prevail over the HY Subscriptions and Payment Terms 
+u0013HYPERLINK https://docs.qq.com/doc/DSHdueXFvYWRvVEZp docLink 
+u0015regarding all matters except access to and use of Hunyuan Subscriptions and your payment for such access and use.
+rThese Terms of Services and the Additional Terms are legally binding contracts between you and Tencent regarding your use of the international version of the Services, and the Additional Terms form part of and are incorporated into these Terms of Services (together, the 
+u0013HYPERLINK https://docs.qq.com/doc/DSEhSTGhQSHNRUEVC docLink 
+u0015for more information about how we collect and use personal information.
+rFor the purposes of these Terms of Service, and unless specified otherwise, 
+r1.1Minimum Age. You must be at least 18 years old or the minimum age required in your country or region to consent to use the Services. By agreeing to these Terms, you represent and warrant to us that: (a) you are at least 18 years old; (b) you have not previously been suspended or removed from the Services; and (c) your use of the Services complies with the Terms and all applicable laws and regulations.
+r2.1Registration. To access our Services, you are required to register for an account (
+and you may be required to provide us with certain information. Where the option is available, you may also register for an Account through a third-party platform. You agree that you will comply with any applicable terms and conditions of that third party platform. If you wish to use HY Subscriptions, you will be required to create an account with our affiliate, as further described below.
+rYou represent that all information you provide in relation to your Account is accurate, up to date and complete.
+rIf you refuse to provide such information, or if the information provided is incorrect or inaccurate or we have reason to suspect that it is incorrect or inaccurate, you may not be able to access the Services.
+rWe reserve the right to change the method of account registration and account binding process at any time.
+r2.2Security and Confidentiality of Account. You are responsible for maintaining the security and confidentiality of your Account, and must not share your account details or make your Account available to anyone else. You shall immediately notify us of any unauthorized use of your Account. 
+r2.3Responsibility. You are fully responsible for all activities that occur under your Account. If you create an Account or use the Services on behalf of another person or entity, you must have the authority to do so and to accept these Terms on their behalf. 
+r2.4Lost Account. If you lose your Account, you may request to retrieve it by contacting us. We may require you to provide additional information, and if you are unable to do so or provide insufficient information, we will not be able to retrieve your Account for you. It will take a reasonable period of time for us to respond, and we are not liable for any losses that are not caused by us.
+r2.5Closure of Account and Termination of Access. You may stop accessing the Services at any time and you may close your Account at any time by contacting us at HY
+r3.1Service Modification or Discontinuation. We may discontinue, suspend, interrupt and/or modify the Services (or any portion thereof) at any time without notice to you. If we discontinue or modify the Services in a way that materially decreases the functionality of the Services, we will aim to provide you with advance notice of such changes but we may make changes without notice to you if the change is necessary to address an emergency or threat to the security of the Services or Tencent, comply with or respond to litigation, address intellectual property rights concerns, or comply with the law or government requests. We will not be liable for any change to or any suspension or discontinuation of the Services or your access to them.
+r3.2Updates. We may make updates or changes to the Services from time to time (
+including software modifications, upgrades, replacements, and changes to the functionality. We may also make new features or functionalities available from time to time through the Services and add new services to the Services from time to time, use of which may be contingent upon your agreement to additional requirements. If you elect not to make the update, some of the functions of the Services may be restricted or may not function as normal.
+r4.1Ownership. You acknowledge that Tencent, its affiliates and/or its licensors own all respective rights, title and interest, including intellectual property rights, in and to the Services. Except for the rights of access and use expressly granted in these Terms, these Terms do not grant you any right, title, or interest in or to our Services.
+r4.2Access and Use. You may only access the Services via your Account and the use of any Services shall be subject to these Terms Subject to your compliance with these Terms (including our Acceptable Use Policy), you may access and use the Services in a manner not exceeding any applicable usage limitation or term, and within the designated territory. 
+r4.3Permitted Use. You must use the Services: (a) in a lawful manner in compliance with applicable laws; (b) in accordance with these Terms and any other guidelines, policies or documentation we make available to you in relation to the Services; and (c) in a manner that does not violate any of our rights or those of any other person or entity, provided that you must not reproduce, disseminate, transfer, sell, rent, lend, license, transfer, etc., the Services without our written consent.
+r(a)not to engage in any harmful activity (such as creating Output that may be used for harassing, bullying, abusing, threatening, or intimidating others); 
+r(b)not to engage in activity that is fraudulent, false, or misleading; 
+r(c)not to use the Services to create, share, or distribute any inappropriate or illegal content or material; 
+r(d)not to infringe on or violate the rights and interests of third parties, including intellectual property rights, data privacy rights and personality rights; 
+r(e)not to attempt to or assist anyone to reverse engineer, decompile, disassemble, or discover or extract the source code or underlying components of the Services and the programs, software, systems, models, algorithms, and data that the Services depend on;
+r(f)not to use any technical means to reproduce the Services; 
+r(g)not to use, launch, develop or distribute any automated or programmed system or method, including but not limited to any spider, robot, cheat utility, scraper, data mining or similar data crawling or extraction tools, or malicious programs or viruses to access or to extract data or Output from the Services;
+r(h)not to use the Services and/or the Output to develop generate content or AI models that are in competition with us;
+r(j)not to interfere with or disrupt the Services, such as bypassing protective security measures or safety mitigations placed on the Services; uploading or attempting to upload any material, program, or software that contains any virus, worm, spyware, Trojan horse or other program or code designed to interrupt, destroy or limit the functionality or availability of the Services, or removing, hiding, modifying or replacing any notices or links contained in the Services; 
+r(k)not to access or use the Services inappropriately by forging clicks, creating false requests, or accessing the Services beyond the ordinary range, such as by registering a large number of accounts or registering an account using false identity;
+r(l)not to remove any copyright, trademark or other proprietary notices contained in the Services; and 
+r(m)not to engage in any other activities, behaviors or actions that may harm the Services or Tencent (including its affiliates).  
+r4.5Third Party Services. Our Services may include third party software, products or services and outputs from such services (collectively, the 
+We are not responsible for any Third Party Services. Please refer to the related agreements or other documentations in relation to these instead. Any issues or disputes arising from use of Third Party Services should be resolved with such third party without any liability to Tencent. Our software may include open source software that is governed by its own licenses that we have made available to you.
+rThis Section applies to the extent you purchase any HY Subscriptions. In case of conflict between the provisions of this Section 5 and the remainder of the Terms of Services, the provision of this Section 5 will prevail to the extent relevant to HY Subscriptions.
+r5.1HY Subscriptions. Certain of our Services may require you to make payments (
+r5.2Accounts Registration. If you wish to use HY Subscriptions, you will be required to create an account with the Payment Affiliate (
+u0013HYPERLINK https://docs.qq.com/doc/DSHdueXFvYWRvVEZp docLink 
+u0015 and comply with any applicable terms and conditions of the Payment Affiliate. 
+r5.3Fees and Payment. The creation of a Payment Account and payment of any applicable Fees to the Payment Affiliate in accordance with HY Subscriptions and Payment Terms
+u0013HYPERLINK https://docs.qq.com/doc/DSHdueXFvYWRvVEZp docLink 
+u0015will discharge you of any obligations related to the payment of Fees to us. Unless specified otherwise in the HY Subscriptions and Payment Terms, all Fees are non-refundable and exclusive of any duties, customs fees, or taxes (other than Tencent
+s income tax) associated with the purchase of the Services, including any related penalties, interest or other additions thereto. Please consult the HY Subscriptions and Payment Terms
+u0013HYPERLINK https://docs.qq.com/doc/DSHdueXFvYWRvVEZp docLink 
+u0015for more information regarding invoicing and third party fees. 
+r5.4Changes to Fees. To the extent permitted under applicable laws, our Payment Affiliate may increase or introduce new Fees and charges for HY Subscriptions at any time after prior notice. Any new or changed charges will apply to the Hunyuan Subscriptions as of the date specified in the relevant notice, or if no such date is specified then with immediate effect. 
+r5.5Contact Regarding HY Subscriptions. If you want to learn more about the HY Subscriptions or have any problems using the HY Subscriptions, please contact us at https://www.tencentcloud.com/contact-us
+rIf you think the HY Subscriptions are faulty or inaccurately described or wish to contact us for any other reason regarding the Subscription, you can also contact our dedicated team at https://andon.tencentcloud.com/online-service
+r6.1Your Content. You may submit text or other materials to the Services for processing (
+and our Services may generate responses based in your Inputs (
+r6.2Inputs. You are responsible for all Inputs, including ensuring that they do not violate applicable laws or these Terms. You represent and warrant that you have the valid rights, licenses, permissions and authorizations needed for use to process the Inputs to our Services. You also represent and warrant that your submission of the Inputs will not violate these Terms (including our Acceptable Use Policy) or any applicable laws.
+r6.3Content. To the extent permitted by applicable law, you retain any right title and interest you have in the Inputs. Subject to your compliance with these Terms, we hereby assign to you all our rights, title and interest, if any, in and to the Outputs. 
+r6.4Accuracy of Content. As artificial intelligence and machine learning are still constantly evolving, the Services and its use are not error free, may not work as expected, and may generate incomplete or inaccurate results. We make no representations and warranties regarding the accuracy and reliability of any Outputs. When using our Services, you understand and acknowledge that:
+r(a)the Outputs generated may not always be accurate. The Services are provided for your informational purposes only; please do not rely on it as your sole source of truth or factual information;
+r(b)you are responsible for assessing the accuracy and suitability of each Output for your specific needs, which includes conducting a human review when necessary and you are responsible for judgments made based on the Output;
+r(c)you must not use any Outputs for any purposes that can have legal or significant effects on a person, such as decisions regarding finances, education, employment, housing, insurance, legal matters, medical issues, or other important fields. Please consult a qualified professional for relevant advice;
+r(d)the Outputs may be incomplete, incorrect, or offensive; and
+r(e)the Outputs do not reflect the views of Tencent. If the Outputs mention any third-party products or services, it does not imply endorsement or affiliation.
+r6.5Similarity of Content. Due to the nature of artificial intelligence and machine learning, Outputs may not be unique, and the Services may generate the same or similar output for other users. Similar Inputs may also result in the same, similar, or different Output.
+r6.6Publication of Content. If you publish or disseminate any Outputs generated by the Services, you should indicate to the public that such Outputs are generated by artificial intelligence, so as to not confuse or mislead others. 
+r6.7Marks. We will add artificial intelligence-generated marks to the Output, such as watermarks that are visible to the naked eye as well as marks that cannot be directly perceived by humans but can be detected by technical means. 
+r6.8Personal Information. If your Inputs contain any personal information, please ensure that you have obtained the informed consent of the relevant individual(s) and/or their parent or legal guardian(s) (if they are a minor). Please refer to our Privacy Policy 
+u0013HYPERLINK https://docs.qq.com/doc/DSEhSTGhQSHNRUEVC docLink 
+We may use Content to provide, maintain, develop, and improve our Services, comply with applicable law, enforce our terms and policies, and keep our Services safe. We will not train our models on any Content that are not publicly available, except that we may use the Feedback in accordance with Section 6 if you provide Feedback to us (through the Services or otherwise) regarding any Content.
+r7.1Feedback. We appreciate any feedback, comments, ideas, and suggestions for improving the Services and/or the Output (
+You acknowledge that any Feedback provided by you to Tencent with regards to the Services is not confidential information, and Tencent and its affiliates can have unrestricted use and dissemination of such Feedback for any and all purposes, including but not limited to for improving the Services, without any compensation, attribution or acknowledgement to you. 
+r7.2Reporting Inappropriate Content. If you find inappropriate Content such as harassment, child abuse, bullying, or any other Content that you consider violating these Terms, any applicable laws and regulations, or your legitimate rights and interests, please contact us in accordance with Clause 13 and we will handle your request promptly.
+r8.1Our Intellectual Property Rights. Tencent is the owner of the Services and all programs, software, information, data, algorithms, models and other content with intellectual property rights that the Service relies on. You must not implement, exploit or transfer the aforementioned intellectual property rights for any commercial or non-commercial purpose without our written consent.
+r8.2Intellectual Property Infringement Compliant. We respect the legitimate rights and interests of individuals. If you believe that the Services and/or any Outputs infringe upon your intellectual property rights, please contact us in accordance with Clause 13 and we will handle your request promptly.
+r9.1Termination of these Terms. Without prejudice to any of our rights under these Terms or at law, we may in our sole discretion and without prior notification, or by notice from any competent authority, take actions or measures including but not limited to, sending warnings, suspending, modifying, restricting or terminating your access to or use of the Services or any aspect of the Services (in whole or in part), terminating these Terms, deleting or taking down relevant Content, and any other necessary measures, immediately if:
+r(b)we reasonably believe that you have violated any applicable laws, engaged in any fraudulent or deceptive activity, or are otherwise using the Services to engage in illegal or harmful activities or infringing on the rights or interests of any third party, in connection with your use of the Services;
+r(c)we determine that it is reasonable for us to do so to comply with applicable laws or our legal obligations; or
+r(d)any current or future regulatory or other requirement (i) would result in difficulty for us to continue offering the Service(s); or (ii) we reasonably believe may conflict with these Terms or the Services. 
+rTencent is not liable for any loss or damages resulting from implementing the above measures. To the extent as required by applicable laws, Tencent will keep the relevant records and report to relevant competent authorities. You shall be responsible for any legal liabilities, claims, damages, demands or losses claimed by Tencent or any other third party arising out of or in connection with your own actions. 
+r9.2Termination of HY Subscriptions. Termination of these Terms in accordance with this Section 9 will result in the termination of the HY Subscription and Payment Terms
+u0013HYPERLINK https://docs.qq.com/doc/DSHdueXFvYWRvVEZp docLink 
+u0015 and the termination of your access to or use of the HY Subscriptions or any aspect of the HY Subscriptions (in whole or in part). Our Payment Affiliate reserves the right to terminate the HY Subscriptions in accordance with the HY Subscriptions and Payment Terms
+u0013HYPERLINK https://docs.qq.com/doc/DSHdueXFvYWRvVEZp docLink 
+u0015. Upon termination or expiration of the HY Subscriptions and Payment Terms
+u0013HYPERLINK https://docs.qq.com/doc/DSHdueXFvYWRvVEZp docLink 
+u0015, you will pay our Payment Affiliate any Fees or other amounts owed under the HY Subscriptions and Payment Terms within 30 days of termination or expiration.
+r9.3Suspension of HY Subscriptions. Our Payment Affiliate reserves the right to suspend or modify the HY Subscriptions in accordance with the HY Subscriptions and Payment Terms
+u0013HYPERLINK https://docs.qq.com/doc/DSHdueXFvYWRvVEZp docLink 
+u0015 . If the Payment Affiliate restricts or suspends your access to any or all of the HY Subscriptions, or otherwise modifies the HY Subscriptions under these Terms or the HY Subscriptions and Payment Terms
+u0013HYPERLINK https://docs.qq.com/doc/DSHdueXFvYWRvVEZp docLink 
+r(a)where HY Subscriptions are suspended, you remain responsible for all Fees accrued through the date of suspension (including where the charges were incurred before suspension date but performance of the relevant obligations were after the suspension date); and 
+r(b)you remain responsible for any applicable charges for any part of the HY Subscriptions (including any modified portions thereto) to which you have access.
+r9.4Effects of Termination. Upon termination of these Terms, your rights under these Terms shall immediately cease. The following provisions shall survive any termination of these Terms: Clauses 
+r10.1YOUR USE OF THE SERVICES AND CONTENT IS SOLELY AT YOUR OWN RISK.
+BASIS, AND TO THE MAXIMUM EXTENT PERMISSIBLE UNDER APPLICABLE LAWS, NEITHER TENCENT NOR ANY OF ITS LICENSORS OR AFFILIATES, PROVIDERS OR DISTRIBUTORS, MAKE, AND TENCENT HEREBY DISCLAIMS ON BEHALF OF ITSELF AND SUCH PERSONS, ANY REPRESENTATIONS OR WARRANTIES (WHETHER EXPRESS, IMPLIED, OR STATUTORY), REGARDING THE SERVICES, TENCENT HY, ANY OTHER RELATED SOFTWARE OR SERVICES, OR ANY MEDIA OR OTHER CONTENT SUBMITTED, UPLOADED, STORED, TRANSMITTED OR DISPLAYED BY OR THROUGH THE SERVICES, INCLUDING ANY REPRESENTATION, WARRANTY OR UNDERTAKING:
+r(a)THAT THE SERVICES WILL BE UNINTERRUPTED, SECURE, ERROR-FREE OR FREE FROM VIRUSES OR OTHER HARMFUL COMPONENTS;
+r(e)THAT THE SERVICES WILL BE SECURE OR COMPATIBLE WITH YOUR NETWORKS, SYSTEMS, APPLICATIONS, HARDWARE, OR DEVICES; OR 
+r(f)THAT THE SERVICES WILL BE OF MERCHANTABLE OR SATISFACTORY QUALITY, ACCURATE, AVAILABLE, RELIABLE OR FIT FOR ANY PARTICULAR PURPOSE. FOR THE AVOIDANCE OF DOUBT, THE SERVICES ARE NOT DESIGNED OR INTENDED FOR HIGH RISK ACTIVITIES.
+r10.3TENCENT AND ITS AFFILIATES ARE NOT RESPONSIBLE FOR THE ACTS OR OMISSIONS OF, OR FOR THE FAILINGS OF, ANY THIRD PARTY OF ANY SERVICE, NETWORK, SOFTWARE OR HARDWARE, INCLUDING BUT NOT LIMITED TO ANY THIRD PARTY SERVICES UTILIZED BY TENCENT, INTERNET SERVICE PROVIDERS, TELECOMMUNICATIONS PROVIDERS, OR ANY SOFTWARE OR HARDWARE NOT PROVIDED BY TENCENT.
+r10.4You understand that we are not responsible for any activities or legal consequences of your use of the Services. You are solely responsible for using the Services in compliance with all applicable laws and regulations, and with these Terms.
+r11.1TO THE MAXIMUM EXTENT PERMISSIBLE UNDER APPLICABLE LAWS, NEITHER TENCENT, NOR ITS AFFILIATES OR LICENSORS, SHALL BE LIABLE TO YOU UNDER ANY CAUSE OF ACTION OR THEORY OF LIABILITY, EVEN IF ADVISED OF THE POSSIBILITY OF THOSE DAMAGES, FOR: ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, OR DAMAGES FOR LOSS OF PROFITS, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF GOODWILL, DATA, PROFIT, REVENUE, CUSTOMERS OR OPPORTUNITIES OR OTHER INTANGIBLE LOSSES, WHETHER BASED ON CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY OR OTHERWISE, RESULTING FROM:(A) THE USE OR INABILITY TO USE THE SERVICES OR THE CONTENT; (B) UNAUTHORIZED ACCESS TO OR ALTERATION OF ANY CONTENT; (C) CONDUCT OF ANY THIRD PARTY, INCLUDING BUT NOT LIMITED TO OTHER USERS OF THE SERVICES; OR (D) ANY OTHER MATTER RELATING TO THE SERVICES.  
+r11.2OUR AGGREGATE LIABILITY TO YOU FOR ALL DAMAGES, LOSSES AND CAUSES OF ACTION ARISING OUT OF OR IN ANY WAY RELATED TO THE SERVICES, THE CONTENT, OR THESE TERMS, WHETHER IN CONTRACT, TORT (INCLUDING NEGLIGENCE) OR OTHERWISE SHALL NOT EXCEED (i) USD 100 or (ii) THE FEES YOU HAVE PAID TO OUR PAYMENT AFFILIATE IF YOU HAVE PURCHASED ANY HY Subscriptions. THE LIMITATIONS IN THIS SECTION APPLY ONLY TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.
+r11.3NOTHING IN THESE TERMS SHALL EXCLUDE OR LIMIT LIABILITY FOR: (A) DEATH, PERSONAL INJURY OR PROPERTY DAMAGE; (B) A PARTY
+S FRAUDULENT ACTIVITIES, CONDUCT AND/OR MISREPRESENTATION; (C) YOUR INDEMNIFICATION OBLIGATIONS UNDER CLAUSE 
+r11.4TO THE EXTENT PERMITTED BY LAW, YOU WILL INDEMNIFY AND HOLD US, OUR AFFILIATES AND OUR OFFICERS, DIRECTORS, EMPLOYEES AND PERSONNEL HARMLESS FROM, INCLUDING BUT NOT LIMITED TO ALL DAMAGES, LIABILITIES, SETTLEMENTS, COSTS AND ATTORNEY
+S FEES, CLAIMS OR DEMANDS MADE BY ANY THIRD PARTY DUE TO OR ARISING OUT OF YOUR ACCESS OR USE OF THE SERVICES OR THE CONTENT, ANY PRODUCTS OR SERVICES THAT YOU DEVELOP, OFFER, OR OTHERWISE MAKE AVAILABLE USING OR OTHERWISE IN CONNECTION WITH THE SERVICES, YOUR VIOLATION OF THESE TERMS OR APPLICABLE LAW OR, OR THE INFRINGEMENT OR VIOLATION OF ANY THIRD PARTY RIGHT (INCLUDING ANY INTELLECTUAL PROPERTY RIGHTS).
+r12.1Assignment. You may not assign or transfer any rights or obligations under these Terms, and any attempted assignment or transfer shall be void. You hereby agree that we retain the right to assign our rights or obligations under these Terms to any of our affiliates, subsidiaries, or successors in connection with any merger, acquisition or sale of all or substantially all of Tencent
+s assets. If Tencent assigns any rights or obligations, regardless of its title, Tencent will notify you within a reasonable period. Upon such assignment or transfer taking effect, the successor or permitted assignees (as the case may be) shall assume assignor/transferor
+s liability and assignor/transferor is released from the same.
+r12.2Relationship of the Parties. Nothing in these Terms shall constitute or be deemed to constitute a partnership, joint venture, agency, franchise, employee-employer relationship or other fiduciary relationship between you and Tencent other than the contractual relationship expressly provided for in these Terms or by use of our Services.
+r12.3Changes to these Terms or our Services. We are continuously working to develop and improve our Services. We may update these Terms or our Services accordingly from time to time. All changes shall be effective as soon as they are launched on the Services. If you do not agree with or accept the changes, please stop using our Services.
+r12.4No waiver. Our failure to enforce a provision is not a waiver of our right to do so later. No single or partial exercise of any right or remedy provided under these Terms or by applicable laws shall preclude or restrict the further exercise of that or any other right or remedy.
+r12.5Severability. If any portion of these Terms is determined to be invalid or unenforceable, that portion shall be enforced to the maximum extent permissible and will not affect the enforceability of any other terms.
+r(a)Your Status. You are not, nor acting on behalf of anyone who is: 
+r(i)subject to sanctions or export restrictions as listed in any list of designated persons maintained by any authority with jurisdiction over you (any person so listed being a 
+r(ii)operating from or located or resident in a country or territory that is the target of comprehensive sanctions (
+r(b)Trade Compliance. In connection with your use of the Services, you will comply with all applicable export controls and economic sanctions laws and regulations (collectively, 
+You agree not to engage in any activities in connection with the use of the Services that would violate Trade Laws or that would risk placing Tencent in breach of any Trade Laws. You are solely responsible for compliance with Trade Laws related to the manner in which you choose to use the Services. For the avoidance of doubt, these Terms require you to, and you are solely responsible for complying with Trade Laws in the use of the Services by you.If Tencent has reasons to believe that you are a Restricted Person, are in or a resident of Embargoed Territories, or otherwise engaging in activities that violate Trade Laws or would risk placing Tencent in breach of any Trade Laws, Tencent may, at our sole discretion, take any and all relevant actions, such as requesting you to cease the conduct that violates Trade Laws, disabling or suspending Services, terminating Services with immediate e
+nal and complete expression of all agreements between you and Tencent regarding the Services and supersede all prior oral and written agreements or representations regarding these matters. 
+r12.8Third Parties. Unless expressly provided otherwise under these Terms, a person who is not a party to these Terms shall have no right under the Contracts (Rights of Third Parties) Act 2001 to enforce any of its terms. To the extent these Terms expressly grant rights to third parties, the parties to these Terms shall be permitted to change or exclude such rights at any time without the consent of the relevant third party.
+r12.9Governing law and jurisdiction. Except to the extent that any applicable additional terms incorporated into these Terms provide differently, or the applicable laws and regulations of your jurisdiction mandate otherwise (for example, you may have statutory rights in your jurisdiction in relation to bringing or defending claims in a local court (including small claims court)), the governing law of these Terms is the laws of Singapore. Any dispute arising out of or in connection with these Terms, including any question regarding its existence, validity or termination, shall be referred to and finally resolved by arbitration administered by the Singapore International Arbitration Centre in accordance with the Arbitration Rules of the Singapore International Arbitration Centre for the time being in force, which rules are deemed to be incorporated by reference in this clause. The seat of the arbitration shall be Singapore. The Tribunal shall consist of one arbitrator. The language of the arbitration shall be English. 
+rClass Action and Jury Trial Waiver. YOU AND TENCENT ARE EACH WAIVING THE RIGHT TO A TRIAL BY JURY OR TO BRING, JOIN, OR PARTICIPATE IN ANY PURPORTED CLASS ACTION, COLLECTIVE ACTION, PRIVATE ATTORNEY GENERAL ACTION, OR OTHER REPRESENTATIVE PROCEEDING OF ANY KIND AS A PLAINTIFF OR CLASS MEMBER. THE FOREGOING APPLIES TO ALL USERS (BOTH NATURAL PERSONS AND ENTITIES), REGARDLESS OF WHETHER YOU HAVE OBTAINED OR USED THE SERVICE FOR PERSONAL, COMMERCIAL, OR OTHER PURPOSES. Further, if the parties
+dispute is resolved through arbitration, unless you and Tencent both agree, the arbitrator may not consolidate another person
+s claims with your claims and may not otherwise preside over any form of a representative or class proceeding.
+rIf you would like to contact us regarding the HY Subscriptions, please contact the dedicated team at https://andon.tencentcloud.com/online-service
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+top":1797,"right":1440,"bottom":1797,"left":1440,"header":851,"footer":992,"gutter":0
+ty":"ir","bi":6490,"ei":6507,"rt":"bookmarkRange","id":"pqs6ht","pr":
+ty":"ir","bi":12890,"ei":12926,"rt":"bookmarkRange","id":"zqiudt","pr":
+ty":"ir","bi":13985,"ei":14239,"rt":"bookmarkRange","id":"c0o6bs","pr":
+ty":"ir","bi":18054,"ei":18084,"rt":"bookmarkRange","id":"lccna3","pr":
+ty":"ir","bi":18787,"ei":19321,"rt":"bookmarkRange","id":"89vqp9","pr":
+ty":"ir","bi":19995,"ei":20406,"rt":"bookmarkRange","id":"5und6p","pr":
+ty":"ir","bi":23378,"ei":23405,"rt":"bookmarkRange","id":"q4z3ue","pr":
+ty":"ir","bi":25298,"ei":25338,"rt":"bookmarkRange","id":"n9wk7d","pr":
+ty":"ir","bi":25339,"ei":26182,"rt":"bookmarkRange","id":"5eqezl","pr":
+ty":"ir","bi":26912,"ei":26912,"rt":"bookmarkRange","id":"zboo62","pr":
+ty":"ir","bi":26912,"ei":27561,"rt":"bookmarkRange","id":"bi9oei","pr":
+ty":"ir","bi":27564,"ei":27564,"rt":"bookmarkRange","id":"tzb6hb","pr":
+ty":"ir","bi":27564,"ei":27580,"rt":"bookmarkRange","id":"nlmo0m","pr":
+ty":"ir","bi":31703,"ei":31738,"rt":"bookmarkRange","id":"wuizqe","pr":
+ty":"ir","bi":33468,"ei":33482,"rt":"bookmarkRange","id":"s7nkfh","pr":
+blurRad":57150,"dist":19050,"dir":5400000,"algn":"STRectAlignment
+usb0":"E0000AFF","usb1":"00007843","usb2":"00000001","usb3":"00000000","csb0":"000001BF","csb1":"00000000"
+usb0":"A00002EF","usb1":"4000207B","usb2":"00000000","usb3":"00000000","csb0":"0000019F","csb1":"00000000"
+usb0":"20002A87","usb1":"80000000","usb2":"00000008","usb3":"00000000","csb0":"000001FF","csb1":"00000000"
+usb0":"00000003","usb1":"00000000","usb2":"00000001","usb3":"00000000","csb0":"0000019F","csb1":"00000000"
+usb0":"00000001","usb1":"080E0000","usb2":"00000016","usb3":"00000000","csb0":"0004001F","csb1":"00000000"
+usb0":"A00002FF","usb1":"500039FB","usb2":"00000000","usb3":"00000000","csb0":"00000197","csb1":"00000000"
+name":"Normal Table","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"caption","semiHidden":true,"unhideWhenUsed":true,"qFormat":true
+name":"Outline List 1","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"No List","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"TOC Heading","uiPriority":39,"semiHidden":true,"unhideWhenUsed":true,"qFormat":true
+name":"Table Contemporary","semiHidden":true,"unhideWhenUsed":true
+name":"Table Colorful 2","semiHidden":true,"unhideWhenUsed":true
+name":"Table Simple 1","semiHidden":true,"unhideWhenUsed":true
+name":"Table Classic 2","semiHidden":true,"unhideWhenUsed":true
+name":"Table Columns 1","semiHidden":true,"unhideWhenUsed":true
+name":"Table Classic 4","semiHidden":true,"unhideWhenUsed":true
+name":"Table Subtle 2","semiHidden":true,"unhideWhenUsed":true
+name":"Smart Hyperlink","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Table Colorful 1","semiHidden":true,"unhideWhenUsed":true
+name":"Table Colorful 3","semiHidden":true,"unhideWhenUsed":true
+name":"Outline List 3","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Table Professional","semiHidden":true,"unhideWhenUsed":true
+name":"Table Simple 3","semiHidden":true,"unhideWhenUsed":true
+name":"Mention","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Table Elegant","semiHidden":true,"unhideWhenUsed":true
+name":"Table 3D effects 2","semiHidden":true,"unhideWhenUsed":true
+name":"HTML Bottom of Form","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"HTML Top of Form","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Default Paragraph Font","uiPriority":1,"semiHidden":true,"unhideWhenUsed":true
+name":"Table Columns 4","semiHidden":true,"unhideWhenUsed":true
+name":"footnote text","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Table Classic 1","semiHidden":true,"unhideWhenUsed":true
+name":"Outline List 2","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Table Columns 2","semiHidden":true,"unhideWhenUsed":true
+name":"Hashtag","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Unresolved Mention","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Table Simple 2","semiHidden":true,"unhideWhenUsed":true
+name":"footnote reference","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Bibliography","uiPriority":37,"semiHidden":true,"unhideWhenUsed":true
+name":"Table Columns 3","semiHidden":true,"unhideWhenUsed":true
+name":"Table 3D effects 3","semiHidden":true,"unhideWhenUsed":true
+name":"Smart Link","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Table Classic 3","semiHidden":true,"unhideWhenUsed":true
+name":"Table Columns 5","semiHidden":true,"unhideWhenUsed":true
+name":"Table Subtle 1","semiHidden":true,"unhideWhenUsed":true
+name":"Table 3D effects 1","semiHidden":true,"unhideWhenUsed":true
+defLockedState":false,"defUIPriority":0,"defSemiHidden":false,"defUnhideWhenUsed":false,"defQFormat":false,"count":376
+ascii":"Monaco","hAnsi":"Monaco","eastAsia":"Monaco","cs":"Monaco"
+ascii":"Monaco","hAnsi":"Monaco","eastAsia":"Monaco","cs":"Monaco"
+name":"compatibilityMode","uri":"http://schemas.microsoft.com/office/word","val":"15"
+name":"enableOpenTypeFeatures","uri":"http://schemas.microsoft.com/office/word","val":"1"
+name":"doNotFlipMirrorIndents","uri":"http://schemas.microsoft.com/office/word","val":"1"
+name":"differentiateMultirowTableHeaders","uri":"http://schemas.microsoft.com/office/word","val":"1"
+name":"useWord2013TrackBottomHyphenation","uri":"http://schemas.microsoft.com/office/word","val":"1"
+name":"overrideTableStyleFontSizeAndJustification","uri":"http://schemas.microsoft.com/office/word","val":"1"
+pos":0,"spv":0,"smartsheetPermissionInvalid":false,"apool":null,"isChunked":false,"viewFilterSpecItems":"","calcByFrontend":false,"apid":
+apid":"","r":267,"s":"674539759301","t":1792763206603,"i":"DSHRnRWp2YUVuQXJv","g":"ab64a7b0f420250d3025556b17126cd15e0eea20"
+gray":0,"dver":"3.0.0","padSubId":"BB08J2","ver":0,"smartsheetPermission":null,"header":
+sig":"ab64a7b0f420250d3025556b17126cd15e0eea20","upid":"DSHRnRWp2YUVuQXJv","sid":"674539759301","tid":1792763206603
+websocket":true,"smartsheetConfig":"","rev":267,"bad":2,"dirty":2,"pver":0
+lastModifyUser":"p.144115215448482535","title":"Tencent HY 3D Terms of Service","padType":"doc","docStatus":0,"userId":"g.94311221635","shortLink":"https://docs.qq.com/doc/DSHRnRWp2YUVuQXJv","advPolicy":
+srcType":6,"creatorId":"144115215448482535","personalizeInfo":
+initialTitle":"Tencent HY 3D Terms of Service","isLogin":false,"license
+status":0,"localPadId":"HtgEjvaEnAro","isDeleted":false,"userName":"","disableFB":true,"accountPrivs":
+isCreator":false,"isTimDomain":true,"serverTimestamp":1792763206,"isUpgrade":false,"createdDate":1761636519000,"isUserChangeTitle":1,"relativeUrl":null,"padTitle":"Tencent HY 3D Terms of Service","userDomain":"","engine
+HtgEjvaEnAro","userPic":null,"userInfo":null,"rightFlag":1,"friendUserIds":
+encrypted":"","dataIniting":false,"openRev":0,"isOverConNum":false,"traceid":"74092d7e7b4d4c95ac603115652d2d56","formulaResults":null,"calcRev":null,"policy":2
+isGray":false,"dver":"3.0.0","isProduction":true,"padType":"doc","bodyData":
+isPublicDomain":true,"following":false,"lastSaveAuthor":null,"isOwner":false,"googleButtonTarget":"
+padType":"doc","robotsNoindex":false,"bodyClass":"propad prouser dogfood ","isPro":true,"account":null,"isSubDomain":true,"isFork":false,"localPadId":"HtgEjvaEnAro","userPic":null,"signinUrl":"https://docs.qq.com","websocket":true,"pageTitle":"
+description":"Tencent HY 3D Terms of Service","isProAccountHolder":true,"disableRichText":false,"padHTML":"","initialTitle":"Tencent HY 3D Terms of Service","isMultiAccount":false,"signedInAccounts":
+fullSuperdomain":"docs.qq.com","cQQDomainRequestType":0,"isAdmin":false,"shortLink":"https://docs.qq.com/doc/DSHRnRWp2YUVuQXJv","cont":"https://docs.qq.com/doc/DSHRnRWp2YUVuQXJv"

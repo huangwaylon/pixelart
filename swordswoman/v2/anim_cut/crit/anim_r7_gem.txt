@@ -1,0 +1,53 @@
+Here is the director's critique for Round 7. While timing and FX have seen surface improvements, the animation still suffers heavily from "rigid cutout-rig syndrome"—parts are translating without volume deformation, overlapping secondary action on the hair/bow is minimal or mistimed, and the slash smear is severely underdeveloped.
+
+### IDLE
+1. **Frames 1–3 (`sink`, `low`, `rise`) — Rigid Head/Bow Translation (No Lag):** As the torso drops by 2px into `low` (f2), the top ribbon bow and lower hair tips drop in simultaneous 1:1 lockstep with the skull. **Fix:** In f1 (`sink`), offset the bow loops +1px up and flare the outer hair tips 1px outward to show drag. In f2 (`low`), drop the bow loops 1px lower than the resting head offset (squash), and in f3 (`rise`), delay the bow recovery by keeping it -1px lower while the head rises.
+2. **Frames 0–10 — Dead Katana Welded to Hip:** The katana blade angle (~35°) and pixel cluster remain completely frozen relative to the pelvis across the entire breathing cycle, moving up and down like a stiff cardboard prop. **Fix:** In f2 (`low`) and f7 (`low-blink2`), pivot the sword tip -2px downward (flattening the angle slightly as the hand presses down) and restore it in `rise`/`top`.
+3. **Frames 6, 7, 8 (`sink-half2`, `low-blink2`, `low-half2`) — Linear/Robotic Blink:** Going from half-lid (120ms) -> closed (100ms) -> half-lid (100ms) totaling 320ms is way too slow and symmetrical, reading like a sleepy animatronic rather than a snappy pixel blink. **Fix:** Cut f6 entirely (go straight from open eyes in f5 to closed in f7, or reduce f6 to 40ms), hold f7 (`low-blink2`) for 70ms, and keep f8 (`low-half2`) at 60ms for a fast snap-shut, slow-open rhythm.
+
+SCORE idle: 6.5
+
+---
+
+### WALK
+1. **Frames 0–3 vs 4–7 — Dead Katana & Right Arm:** During a walk cycle, the sword arm (right arm, screen-left) stays frozen in the exact same pose and blade angle across all 8 frames, only translating vertically with the torso bob. There is zero counter-swing against the legs. **Fix:** In f0 (`contact`, left foot forward), swing the sword pommel/hand +2px forward and drop the blade tip -3px lower; in f4 (`contact2`, right foot forward), pull the sword hand -2px back and raise the blade tip +3px higher.
+2. **Frames 2 (`pass`) & 6 (`pass2`) — Stiff Skirt Hem & Leg Tangents:** The skirt bottom hem is a static horizontal line that never reacts to the knees pushing forward, and the passing leg forms a clunky, flat vertical column right next to the standing leg. **Fix:** Tilt the leading edge of the skirt hem +1px up on `contact`/`down` frames, and in `pass` (f2, f6), shift the lifted passing foot 2px further back (left) with a clearer 2px gap between the shins so the silhouette doesn't merge into a block.
+3. **Frames 1 (`down`) & 5 (`down2`) — Missing Secondary Bow Lag:** On the heavy down-steps (f1, f5), the ribbon bow sits in its default upright silhouette. **Fix:** Squash the bow loops down by 1px and flare the left/right tips outward by 1px on f1 and f5, then stretch them +1px taller on `pass`/`up` (f2–3, f6–7).
+
+SCORE walk: 6.0
+
+---
+
+### RUN
+1. **Frame 3 (`air`) & Frame 7 (`air2`) — Broken Sword Silhouette & Tangent:** In f3 (`air`), the katana blade drops steep and crosses directly behind the trailing right foot/shoe, creating a messy dark-outline tangent where the black shoe merges with the blade outline, and the blade looks shortened/bent. **Fix:** Keep the katana swept further back behind the hip in f3 (angle ~40° like f2 instead of ~65°), clearing the trailing shoe by at least 3px to the left.
+2. **Frames 0–7 — Rigid Vertical Spine (No Forward Run Lean):** The head and torso remain upright (90° vertical) identically to the walk cycle, robbing the run of forward momentum and urgency. **Fix:** Shift the head/hair/bow assembly +2px forward (right) relative to the hips across all run frames, and flare the back hair bottom-left corner -2px left to show wind drag.
+3. **Frames 2 (`push`) & 6 (`push2`) — Scissoring Stick Legs:** In f2 and f6, both legs are extended downward at nearly the same time, reading like a stiff compass or walk-pass rather than an explosive push-off. **Fix:** In f2 (`push`) and f6 (`push2`), tuck the front recovery knee +3px higher toward the skirt hem while only the back push leg extends straight to the ground.
+
+SCORE run: 5.5
+
+---
+
+### JUMP
+1. **Frames 2 (`launch`) & 3 (`rise`) — Zero Vertical Stretch on Torso/Head:** Launching off the ground (f2, 50ms; f3, 70ms) uses the exact same default head/torso/hair proportions as standing idle, making the upward impulse feel floaty and cutout-driven. **Fix:** In f2 and f3, elongate the torso by +2px vertically, narrow the skirt width by 2px, and droop the bow loops inward/downward by 2px due to G-force.
+2. **Frame 6 (`fall`) — Detached Floating Bow Bug:** In f6 (`fall`), the red ribbon bow is floating 2px completely detached above the top of the skull with a visible background gap underneath it. While drag is good, completely severing the bow from the hair outline breaks the sprite art. **Fix:** Move the bow down 2px so its knot stays anchored to the crown of the head, and instead angle the two bow loops upward into a V-shape (+2px at the outer tips) to show air resistance.
+3. **Frames 7 (`land`) & 8 (`recover`) — Weak Landing Squash & Static Hair:** Upon landing (f7), the head barely drops and the heavy mass of hair doesn't flare out on impact. **Fix:** Drop the head/shoulders an extra 2px lower into the torso in f7 (`land`), flare the bottom-left and bottom-right hair corners outward by 2px each, and widen the skirt hem by +2px on each side.
+
+SCORE jump: 6.5
+
+---
+
+### DASH
+1. **Frames 1 (`burst`) & 2 (`burst2`) — Cluttered Opaque Afterimages:** The red/maroon silhouette clones behind the character are fully opaque, hard-edged duplicates that overlap the main sprite's sword and legs, turning the silhouette into an unreadable red blob. **Fix:** Replace the solid clones with a single clean horizontal smear/ghost separated by 4px from the back, or checker-dither/strip the trails into horizontal ribbon bands that do not overlap the white katana blade.
+2. **Frames 1 (`burst`) & 2 (`burst2`) — Upright Head & Zero Hair Lag:** Moving at high burst speed (40ms/50ms), her head and hair remain upright as if standing still. **Fix:** Shift the head +3px forward (right), flatten the bow loops backward (-2px left, -1px height), and stretch the back hair tail -3px left into a wind-swept point.
+3. **Frame 3 (`skid`) & Frame 4 (`brake`) — Sword Clipping & Weak Braking Pose:** In f3 (`skid`), the katana simply drops back to its default idle angle instead of whipping forward from inertia, and the torso leans forward instead of bracing back against momentum. **Fix:** In f3 (`skid`), lean the torso/shoulders -2px back (left) while the front foot plants hard forward, and swing the katana tip forward/upward across the body (or flare the skirt hem +3px forward to show forward inertia during the stop).
+
+SCORE dash: 6.0
+
+---
+
+### SLASH
+1. **Frame 5 (`swingA`) & Frame 6 (`SMEAR`) — Tiny, Disconnected Smear Arc:** The prompt requires "hand-shaped clean tapering crescents," but f5 has a tiny, detached 6x3px white fleck above the bow, and f6 (`SMEAR`) has a tiny, stubby white triangle tucked beside her cheek that barely spans 45 degrees. It completely fails to connect the overhead coil (f4) to the ground impact (f7). **Fix:** In f6 (`SMEAR`), paint a sweeping 140-degree crescent arc starting from above the back of the head (top-left of character) curving all the way down to the blade tip at bottom-right—thick (6–8px) near the blade and tapering cleanly to a 1px point above the head. Remove the awkward floating chip in f5.
+2. **Frames 6 (`SMEAR`) through 10 (`follow`) — Stiff Cutout Torso (Zero Spine Twist or Lunge):** During the violent downward slash and hitstop (f6–f9), her head and torso stay upright and static, merely translating a few pixels right without bending forward into the strike. **Fix:** In f6–f9, drop the head/shoulders 3px lower and +2px further forward (right) over the front knee, angle the skirt hem steeply forward, and flare the back hair upward (+2px) on f6–f7 from the sudden downward snap.
+3. **Frames 7 (`impact`), 8 (`hitstop`), 9 (`hitstop2`) — Frozen Hitstop Without Vibration/Shake:** Holding the exact same pixel pose across f7, f8, and f9 (150ms total) with only tiny 1px white dots fading at the tip makes the pause look like a framerate stutter rather than a heavy hit-stop. **Fix:** In f8 (`hitstop`, 60ms), shift the character body -1px left and the blade +1px right (compression tremor), and make the impact spark in f7 a bolder 4-point cross flash (7x7px) that collapses into directional debris streaks in f8.
+
+SCORE slash: 5.0

@@ -1,0 +1,5 @@
+**Score: 5/10.** The windup → stride → release arc reads well, the smear and sparkle land, and the follow lunge is energetic. But the back view hides the hand at the key moments, and the orb's path after release doesn't make sense.
+
+**Fix 1, follow / follow2 / recover:** a red-white blob sits at the top of her head after the release, so it looks like she never let go of the orb. If it's the hair bow, recolour it or move it off the head silhouette. If it's the orb, remove it from every frame after release.
+
+**Fix 2, orb mid-flight and landing pop:** both are drawn on top of her torso, so in the north view the throw seems to go nowhere. Put the flying orb at least 12–20 px up-screen and smaller, and set the pop clearly beyond her, not at her feet.

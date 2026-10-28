@@ -1,0 +1,13 @@
+SCORE 5.5/10
+
+1. Frames 1-2 (Direction/Perspective): Dash bursts purely horizontally (East) instead of SE; speed lines, trail, and leg stride lack the downward 3/4 diagonal angle.
+2. Frames 1-2 (Afterimage FX): Opaque red trails use the exact same palette as her dress, muddying the silhouette and reading as gore or a giant cape at 1x scale.
+3. Frames 0-5 (Head/Face): The head is entirely copy-pasted across all 6 frames with zero tilt, squash/stretch, hair drag, or bow follow-through, killing the energy.
+4. Frame 0 (Torso/Right Shoulder): Strange red blocky protrusion behind her right shoulder breaks the silhouette, and the anticipation crouch lacks a strong wind-up coil.
+5. Frame 4 (Dust FX / Feet): The dust puff resolves into a rigid, noisy pixel donut right next to her boots, and the sword blade clips the bottom cell border in Frames 4-5.
+6. Frames 3-4 (Body/Skid): Transition from extreme horizontal lunge (F2) to upright posture (F3) is too abrupt, and her torso stays stiffly vertical while braking.
+
+Top 3 Fixes:
+1. Recolor the F1-F2 afterimage to a distinct, cooler desaturated hue (or use alpha/dither) so the main character's red dress and silhouette pop clearly.
+2. Angle the F1-F2 lunge, speed lines, and afterimage slightly downward to sell the SE (front 3/4) movement vector rather than a flat side-view dash.
+3. Add secondary motion to the head/hair/bow: tuck the chin in F0, Sweep the hair/bow back in F1-F2, and whip them forward during the F3 skid.

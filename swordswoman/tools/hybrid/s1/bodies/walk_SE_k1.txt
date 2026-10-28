@@ -1,0 +1,22 @@
+# walk_SE_k1: down: weight on the bent front knee, body 3 px lower, tail/bow/ribbons lag UP
+fx: none
+from: turn_SE 1 3
+stamp: 57 49
+bow: 0 -1
+clear: 50,99,84,110
+move: 57,85,62,96 2,1
+shear: 79 90 1
+limb: s 2 62,99 60,101 59,102
+limb: d 2 58,103 59,104
+limb: s 2 70,99 73,101 72,102
+limb: d 2 72,103 73,104
+kat: katana_idle_2to1 71 89 under
+top: 74 93
+_KKK_
+KsssK
+KmssK
+_KKK_
+opb: stamp 55,91 ____KKR/__KKRRR/_KRRRRr/KRRRRrr/KRRRrrr/KRRrrrv/_KRrrvK/_KRrvK_/KRvvK__/KvKK___/KK_____
+opb: curve 61,83 53,85 55,90 P
+opb: curve 55,90 55,94 51,97 p
+opb: stamp 72,84 _____KssK__/_____KsmmK_/____KCRRrK_/____KCRRRrK/___KCRRRRrK/__KCRRRRRrK/_KRRRRRRRrK/_KRRRRRRrrK/_KvvvvvvvvK/__KKKKKKKK_

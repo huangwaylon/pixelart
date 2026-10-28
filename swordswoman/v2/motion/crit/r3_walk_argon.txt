@@ -1,0 +1,15 @@
+OVERALL: 7
+
+**Scores (1-10):**
+*   **Natural:** 7
+*   **Whole-body:** 7
+*   **Fluid:** 8
+*   **Appealing:** 7
+*   **Secondary motion convincing:** 6
+*   **Readable at 1x:** 6
+
+**Top 3 Concrete Fixes:**
+
+1.  **E View – Arm Silhouette (contact2, down2, pass2):** The arms collapse into the torso mass, killing the 1x silhouette compared to the OLD version. Push the forward-swinging right hand **3–4 px right (forward)** past the chest line, and pull the back-swinging left elbow **2–3 px left (back)**.
+2.  **Both Views – Bow/Ribbon Readability (All frames):** Shortening the bow tails lost the appealing, readable silhouette of the OLD sheet (shrinking to 2–3 px blobs at 1x). Scale the bow loops/tails up by **30–40% (+2–3 px outward)** and pitch them **15° up** on `down`/`down2` for clearer drag.
+3.  **SE View – Knee Pop (up vs contact2):** In `up`, the swinging left leg is already fully straight, causing a stiff stall into `contact2`. Bend the left knee **15–20°** in `up` (pulling the foot **2 px back/up**) so it snaps straight onto the heel at `contact2`.

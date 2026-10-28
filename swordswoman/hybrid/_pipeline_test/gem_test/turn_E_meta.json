@@ -1,0 +1,36 @@
+{
+ "input": "hybrid/lock/wip/dir_E_a.png",
+ "bg": "flood",
+ "src_size": [
+  944,
+  1136
+ ],
+ "src_body": [
+  89,
+  1060
+ ],
+ "fit": "iou",
+ "scale": 0.05949,
+ "offset": [
+  43,
+  50
+ ],
+ "downsample": "box",
+ "quant": "material",
+ "outline": "auto",
+ "clean": {
+  "orphans": 63,
+  "notches": 19,
+  "spurs": 0,
+  "doubles": 10
+ },
+ "guide": "renders/model_round_9/iso_E_64",
+ "iou": 0.6172,
+ "iou_body": 0.6443,
+ "height": 60,
+ "body_height": 60,
+ "baseline": 108,
+ "feet_cx": 67.5,
+ "colours": 16,
+ "opaque": 1020
+}

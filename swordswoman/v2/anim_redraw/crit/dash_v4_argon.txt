@@ -1,0 +1,13 @@
+SCORE 5.5/10
+
+1. **Frames 1–2 (Pose/Perspective):** Dash flattens into a pure side-profile (90° right) instead of moving along the SE (front 3/4) axis established in F0 and F5.
+2. **Frames 1–2 (Afterimages):** Hollow 1px outline trails create severe pixel noise and tangents with the sword and back arm; silhouette readability collapses at 1x.
+3. **Frames 0 & 3 (Anticipation/Skid):** F0 is barely a crouch, and F3 looks like a casual step—neither has enough torso tilt or squash to sell explosive momentum or braking force.
+4. **Frames 1–5 (Head/Bow):** Zero secondary motion; the rigid hair block and red bow never tilt, squash, or drag behind the body during the 45ms burst or skid.
+5. **Frames 3–4 (Dust/Sword FX):** Dust is a tiny, static 5px beige blob under the heel, and the sword spark line in F3 vanishes in F4 while the blade is still scraping the ground.
+6. **Frames 3–5 (Feet/Grounding):** The character slides backward inside the cell from F3 to F5 with unpinned feet, making the recovery look like moonwalking.
+
+**Top 3 Fixes:**
+1. **Replace Hollow Trails:** Swap the noisy 1px outline ghosts in F1–F2 for solid, flat-colored silhouette shapes (1–2 shades darker/desaturated) to instantly clean up 1x readability.
+2. **Push Exaggeration & Overlap:** Compress F0 lower and pull the torso back; in F1–F2, drag the bow/hair flaps backward; in F3, lean the torso backward against the skid to sell braking weight.
+3. **Pin the Front Foot (F3–F5):** Lock the planted front boot to the exact same X-coordinate from F3 through F5, and animate the dust puff expanding forward and dissipating.

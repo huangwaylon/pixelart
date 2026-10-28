@@ -1,0 +1,30 @@
+; blush 5 18 2
+; blush_far 12 18 2
+; eye_near 5 14 3 4
+; eye_far 11 14 3 4
+; brow_row 13
+; mouth 9 19
+.......KKKKK.......
+.KKK..KHHLHhK..KKK.
+KeeeKKKHHHHhKKKEERK
+KeEEErrKKKKKrrEERRK
+KeEEErrKeERKrrERRRK
+KEERRrrKERRKrrRRrRK
+.KRRrKKKKKKKKKrRRK.
+..KKKKHHHHHHHKKKK..
+...KHHLLLHHHHHHK...
+..KHHLLHHHHHHHHhK..
+.KHHLHHHHHHHHHHHhK.
+.KHHHHHhHHHhHHHHhK.
+KHHhSHhSHHhSHhShHhK
+KHHhssssssssssshHhK
+KHHhs...sss...ShHhK
+KHHhs...sss...ShHhK
+KHHhs...sss...ShHhK
+KHHhs...sss...ShHhK
+KHHhsssssssssSShHhK
+KHhHhssssssssShHhHK
+.KHhKKsssssSSKKhHK.
+..KK..KssssSK..KK..
+......KKSSSKK......
+.......KssSK.......

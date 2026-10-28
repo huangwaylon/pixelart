@@ -1,0 +1,16 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt run_SE for round 9; both builds pass QC. I haven't scored it against the critics.
+
+**What changed:**
+- **Legs:** all 8 poses redrawn with real strides (heel strike, full push-off extension, knee drive, reach), a clean outline on every leg, and the far leg darker.
+- **Body:** torso squashes/stretches 2px and leans forward on push. Head shifts 3–5px ahead of the hips.
+- **Overlap:** bow and hair react a frame late.
+- **Skirt:** the hem changes shape every frame.
+- **Sword arm:** swings about 9px; the blade turns with it half a step per frame.
+
+**New parts:** `run9_legs_*`, `run9_skirt_*` (8 each), `run9_torso_{sq,st,lean}`, `run9_head_{fl,dr}`, `run9_armF_hi`.
+
+**Weak spots:** on contact2 the blade runs behind the kicked-back boot. The ground shadow can't shrink in the air frames.
+
+Saving session...completed.

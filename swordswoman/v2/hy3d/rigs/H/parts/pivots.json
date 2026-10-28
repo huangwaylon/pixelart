@@ -1,0 +1,192 @@
+{
+ "arm_L": {
+  "bone": "upper_arm.L",
+  "parent": "chest",
+  "pivot": [
+   0.2753,
+   0.7989,
+   0.0379
+  ],
+  "faces": 31280,
+  "watertight": true
+ },
+ "arm_R": {
+  "bone": "upper_arm.R",
+  "parent": "chest",
+  "pivot": [
+   -0.2753,
+   0.7989,
+   0.0379
+  ],
+  "faces": 31280,
+  "watertight": true
+ },
+ "bow": {
+  "bone": "head",
+  "parent": "neck",
+  "pivot": [
+   0.0,
+   1.1062,
+   0.0076
+  ],
+  "faces": 3840,
+  "watertight": true
+ },
+ "bun": {
+  "bone": "head",
+  "parent": "neck",
+  "pivot": [
+   0.0,
+   1.1062,
+   0.0076
+  ],
+  "faces": 1280,
+  "watertight": true
+ },
+ "head": {
+  "bone": "head",
+  "parent": "neck",
+  "pivot": [
+   0.0,
+   1.1062,
+   0.0076
+  ],
+  "faces": 30000,
+  "watertight": true
+ },
+ "leg_L": {
+  "bone": "thigh.L",
+  "parent": "hips",
+  "pivot": [
+   0.1203,
+   0.2693,
+   0.0324
+  ],
+  "faces": 30000,
+  "watertight": true
+ },
+ "leg_R": {
+  "bone": "thigh.R",
+  "parent": "hips",
+  "pivot": [
+   -0.1203,
+   0.2693,
+   0.0324
+  ],
+  "faces": 30000,
+  "watertight": true
+ },
+ "skirt": {
+  "bone": "skirt",
+  "parent": "hips",
+  "pivot": [
+   0.0,
+   0.4679,
+   -0.0035
+  ],
+  "faces": 30000,
+  "watertight": true
+ },
+ "torso": {
+  "bone": "chest",
+  "parent": "spine",
+  "pivot": [
+   0.0,
+   0.4593,
+   0.0104
+  ],
+  "faces": 12288,
+  "watertight": true
+ },
+ "_reproportion": {
+  "spec": {
+   "head": {
+    "scale": 0.98,
+    "wx": 1.15,
+    "fringe": 0.18,
+    "wz": 1.07
+   },
+   "neck": {
+    "extra": 0.2,
+    "r": 0.0457
+   },
+   "torso": {
+    "width": 1.12,
+    "depth": 1.2,
+    "height": 1.19,
+    "waist": 0.6,
+    "sh": 1.3,
+    "waist_zk": 1.0,
+    "sq": 0.65
+   },
+   "skirt": {
+    "width": 0.9,
+    "depth": 0.8,
+    "height": 1.2,
+    "flare": 1.3,
+    "flarez": 1.0
+   },
+   "arms": {
+    "length": 1.4429,
+    "thickness": 0.9566,
+    "shoulder_x": 0.97,
+    "dy": 0.08,
+    "flare": 1.65,
+    "flarez": 1.15
+   },
+   "legs": {
+    "length": 2.3634,
+    "thickness": 1.0,
+    "thigh": 1.3,
+    "shin": 0.95,
+    "spread": 1.0,
+    "prof": [
+     0.195,
+     0.22,
+     0.13,
+     0.145
+    ],
+    "straight": 1.0,
+    "ytop": -0.05,
+    "sock": 0.99
+   },
+   "hands": {
+    "scale": 0.5
+   },
+   "boots": {
+    "scale": 1.0,
+    "top": 0.33,
+    "sx": 0.7,
+    "sz": 1.6,
+    "fwd": 0,
+    "centre": 1.0,
+    "toe": 0.3,
+    "ankle": 0.15
+   },
+   "eyes": {
+    "dy": 0.01,
+    "scale": 1.0
+   },
+   "bow": {
+    "dz": -0.3,
+    "dy": -0.15
+   },
+   "bun": {
+    "dz": -0.04,
+    "dy": 0.0
+   }
+  },
+  "src": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/hy3d/partsAB4f",
+  "d_leg": 0.7698,
+  "d_torso": 0.0681,
+  "measure": {
+   "heads_tall": 3.9,
+   "shoulder_over_headw": 0.59,
+   "waist_over_headw": 0.36,
+   "legs_frac_of_height": 0.42,
+   "neck_gap": -0.14,
+   "head_h": 0.776,
+   "total_h": 3.023
+  }
+ }
+}

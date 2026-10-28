@@ -1,0 +1,2923 @@
+{
+ "note": "rest pose, armature space (= world at yaw 0): +X her LEFT, -Y her FRONT (S), +Z up, 1 unit = 1 old H; guide head height H' = 1.162",
+ "bones": {
+  "root": {
+   "parent": null,
+   "head": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tail": [
+    0.0,
+    0.45,
+    0.0
+   ],
+   "deform": false,
+   "up_axis": "Z",
+   "local_axes_world": {
+    "X": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     1.0,
+     0.0
+    ],
+    "Z": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "constraints": []
+  },
+  "cog": {
+   "parent": "root",
+   "head": [
+    0.0,
+    0.0,
+    0.8329
+   ],
+   "tail": [
+    0.0,
+    0.35,
+    0.8329
+   ],
+   "deform": false,
+   "up_axis": "Z",
+   "local_axes_world": {
+    "X": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     1.0,
+     0.0
+    ],
+    "Z": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "constraints": []
+  },
+  "hips": {
+   "parent": "cog",
+   "head": [
+    0.0,
+    0.0,
+    0.8329
+   ],
+   "tail": [
+    0.0,
+    0.0,
+    0.9458
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "Z": [
+     0.0,
+     -1.0,
+     0.0
+    ]
+   },
+   "constraints": []
+  },
+  "spine": {
+   "parent": "hips",
+   "head": [
+    0.0,
+    0.0,
+    0.9458
+   ],
+   "tail": [
+    0.0,
+    0.0,
+    1.2058
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "Z": [
+     0.0,
+     -1.0,
+     0.0
+    ]
+   },
+   "constraints": []
+  },
+  "chest": {
+   "parent": "spine",
+   "head": [
+    0.0,
+    0.0,
+    1.2058
+   ],
+   "tail": [
+    0.0,
+    0.0,
+    1.5458
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "Z": [
+     0.0,
+     -1.0,
+     0.0
+    ]
+   },
+   "constraints": []
+  },
+  "neck": {
+   "parent": "chest",
+   "head": [
+    0.0,
+    0.0,
+    1.5458
+   ],
+   "tail": [
+    0.0,
+    0.0,
+    1.7058
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "Z": [
+     0.0,
+     -1.0,
+     0.0
+    ]
+   },
+   "constraints": []
+  },
+  "head": {
+   "parent": "neck",
+   "head": [
+    0.0,
+    0.0,
+    1.7058
+   ],
+   "tail": [
+    0.0,
+    0.0,
+    2.8088
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "Z": [
+     0.0,
+     -1.0,
+     0.0
+    ]
+   },
+   "constraints": []
+  },
+  "bun": {
+   "parent": "head",
+   "head": [
+    0.0,
+    0.18,
+    2.6888
+   ],
+   "tail": [
+    0.0,
+    0.3179,
+    3.0815
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     1.0,
+     0.0,
+     -0.0
+    ],
+    "Y": [
+     0.0,
+     0.331,
+     0.943
+    ],
+    "Z": [
+     0.0,
+     -0.943,
+     0.331
+    ]
+   },
+   "constraints": []
+  },
+  "bow": {
+   "parent": "bun",
+   "head": [
+    -0.2547,
+    -0.0735,
+    2.9207
+   ],
+   "tail": [
+    -0.2547,
+    -0.0735,
+    3.2132
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     1.0,
+     -0.0,
+     -0.0
+    ],
+    "Y": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "Z": [
+     -0.0,
+     -1.0,
+     0.0
+    ]
+   },
+   "constraints": [
+    "LOCKED_TRACK:face_camera"
+   ]
+  },
+  "bow_loop.L": {
+   "parent": "bow",
+   "head": [
+    -0.1954,
+    -0.0818,
+    2.9544
+   ],
+   "tail": [
+    0.2394,
+    -0.1424,
+    3.202
+   ],
+   "deform": true,
+   "up_axis": "Z",
+   "local_axes_world": {
+    "X": [
+     0.154,
+     -0.863,
+     -0.482
+    ],
+    "Y": [
+     0.863,
+     -0.12,
+     0.491
+    ],
+    "Z": [
+     -0.482,
+     -0.491,
+     0.726
+    ]
+   },
+   "constraints": []
+  },
+  "bow_loop.R": {
+   "parent": "bow",
+   "head": [
+    -0.314,
+    -0.0818,
+    2.9544
+   ],
+   "tail": [
+    -0.7488,
+    -0.1424,
+    3.202
+   ],
+   "deform": true,
+   "up_axis": "Z",
+   "local_axes_world": {
+    "X": [
+     0.154,
+     0.863,
+     0.482
+    ],
+    "Y": [
+     -0.863,
+     -0.12,
+     0.491
+    ],
+    "Z": [
+     0.482,
+     -0.491,
+     0.726
+    ]
+   },
+   "constraints": []
+  },
+  "hair_lock.L": {
+   "parent": "head",
+   "head": [
+    0.5791,
+    -0.1403,
+    2.1829
+   ],
+   "tail": [
+    0.597,
+    -0.1403,
+    1.7872
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     0.998,
+     -0.045,
+     0.045
+    ],
+    "Y": [
+     0.045,
+     0.0,
+     -0.999
+    ],
+    "Z": [
+     0.045,
+     0.999,
+     0.002
+    ]
+   },
+   "constraints": []
+  },
+  "hair_lock.R": {
+   "parent": "head",
+   "head": [
+    -0.5791,
+    -0.1403,
+    2.1829
+   ],
+   "tail": [
+    -0.597,
+    -0.1403,
+    1.7872
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     0.998,
+     0.045,
+     -0.045
+    ],
+    "Y": [
+     -0.045,
+     -0.0,
+     -0.999
+    ],
+    "Z": [
+     -0.045,
+     0.999,
+     0.002
+    ]
+   },
+   "constraints": []
+  },
+  "scarf.L.001": {
+   "parent": "neck",
+   "head": [
+    0.1,
+    0.2,
+    1.7729
+   ],
+   "tail": [
+    0.125,
+    0.36,
+    1.5758
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.98,
+     -0.076,
+     -0.186
+    ],
+    "Y": [
+     0.098,
+     0.627,
+     -0.773
+    ],
+    "Z": [
+     0.175,
+     -0.775,
+     -0.607
+    ]
+   },
+   "constraints": []
+  },
+  "scarf.L.002": {
+   "parent": "scarf.L.001",
+   "head": [
+    0.125,
+    0.36,
+    1.5758
+   ],
+   "tail": [
+    0.14,
+    0.51,
+    1.4158
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.996,
+     0.0,
+     -0.093
+    ],
+    "Y": [
+     0.068,
+     0.682,
+     -0.728
+    ],
+    "Z": [
+     0.064,
+     -0.731,
+     -0.679
+    ]
+   },
+   "constraints": []
+  },
+  "scarf.L.003": {
+   "parent": "scarf.L.002",
+   "head": [
+    0.14,
+    0.51,
+    1.4158
+   ],
+   "tail": [
+    0.17,
+    0.62,
+    1.2258
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.988,
+     -0.0,
+     -0.156
+    ],
+    "Y": [
+     0.135,
+     0.496,
+     -0.857
+    ],
+    "Z": [
+     0.077,
+     -0.868,
+     -0.49
+    ]
+   },
+   "constraints": []
+  },
+  "scarf.L.004": {
+   "parent": "scarf.L.003",
+   "head": [
+    0.17,
+    0.62,
+    1.2258
+   ],
+   "tail": [
+    0.22,
+    0.7,
+    1.0258
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.97,
+     0.0,
+     -0.243
+    ],
+    "Y": [
+     0.226,
+     0.362,
+     -0.904
+    ],
+    "Z": [
+     0.088,
+     -0.932,
+     -0.351
+    ]
+   },
+   "constraints": []
+  },
+  "scarf.L.005": {
+   "parent": "scarf.L.004",
+   "head": [
+    0.22,
+    0.7,
+    1.0258
+   ],
+   "tail": [
+    0.27,
+    0.75,
+    0.9029
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.936,
+     0.142,
+     -0.323
+    ],
+    "Y": [
+     0.353,
+     0.353,
+     -0.867
+    ],
+    "Z": [
+     -0.009,
+     -0.925,
+     -0.38
+    ]
+   },
+   "constraints": []
+  },
+  "scarf.R.001": {
+   "parent": "neck",
+   "head": [
+    -0.1,
+    0.2,
+    1.7729
+   ],
+   "tail": [
+    -0.125,
+    0.36,
+    1.5758
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.98,
+     0.076,
+     0.186
+    ],
+    "Y": [
+     -0.098,
+     0.627,
+     -0.773
+    ],
+    "Z": [
+     -0.175,
+     -0.775,
+     -0.607
+    ]
+   },
+   "constraints": []
+  },
+  "scarf.R.002": {
+   "parent": "scarf.R.001",
+   "head": [
+    -0.125,
+    0.36,
+    1.5758
+   ],
+   "tail": [
+    -0.14,
+    0.51,
+    1.4158
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.996,
+     -0.0,
+     0.093
+    ],
+    "Y": [
+     -0.068,
+     0.682,
+     -0.728
+    ],
+    "Z": [
+     -0.064,
+     -0.731,
+     -0.679
+    ]
+   },
+   "constraints": []
+  },
+  "scarf.R.003": {
+   "parent": "scarf.R.002",
+   "head": [
+    -0.14,
+    0.51,
+    1.4158
+   ],
+   "tail": [
+    -0.17,
+    0.62,
+    1.2258
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.988,
+     0.0,
+     0.156
+    ],
+    "Y": [
+     -0.135,
+     0.496,
+     -0.857
+    ],
+    "Z": [
+     -0.077,
+     -0.868,
+     -0.49
+    ]
+   },
+   "constraints": []
+  },
+  "scarf.R.004": {
+   "parent": "scarf.R.003",
+   "head": [
+    -0.17,
+    0.62,
+    1.2258
+   ],
+   "tail": [
+    -0.22,
+    0.7,
+    1.0258
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.97,
+     -0.0,
+     0.243
+    ],
+    "Y": [
+     -0.226,
+     0.362,
+     -0.904
+    ],
+    "Z": [
+     -0.088,
+     -0.932,
+     -0.351
+    ]
+   },
+   "constraints": []
+  },
+  "scarf.R.005": {
+   "parent": "scarf.R.004",
+   "head": [
+    -0.22,
+    0.7,
+    1.0258
+   ],
+   "tail": [
+    -0.27,
+    0.75,
+    0.9029
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.936,
+     -0.142,
+     0.323
+    ],
+    "Y": [
+     -0.353,
+     0.353,
+     -0.867
+    ],
+    "Z": [
+     0.009,
+     -0.925,
+     -0.38
+    ]
+   },
+   "constraints": []
+  },
+  "shoulder.L": {
+   "parent": "chest",
+   "head": [
+    0.06,
+    0.0,
+    1.5729
+   ],
+   "tail": [
+    0.25,
+    0.0,
+    1.5329
+   ],
+   "deform": true,
+   "up_axis": "X",
+   "local_axes_world": {
+    "X": [
+     -0.206,
+     0.0,
+     -0.979
+    ],
+    "Y": [
+     0.979,
+     0.0,
+     -0.206
+    ],
+    "Z": [
+     -0.0,
+     -1.0,
+     -0.0
+    ]
+   },
+   "constraints": []
+  },
+  "arm_clear.L": {
+   "parent": "shoulder.L",
+   "head": [
+    0.25,
+    0.0,
+    1.5329
+   ],
+   "tail": [
+    0.292,
+    -0.005,
+    1.4423
+   ],
+   "deform": false,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.907,
+     0.0,
+     -0.421
+    ],
+    "Y": [
+     0.42,
+     -0.05,
+     -0.906
+    ],
+    "Z": [
+     -0.021,
+     -0.999,
+     0.045
+    ]
+   },
+   "constraints": []
+  },
+  "upper_arm.L": {
+   "parent": "arm_clear.L",
+   "head": [
+    0.25,
+    0.0,
+    1.5329
+   ],
+   "tail": [
+    0.4014,
+    -0.018,
+    1.1197
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.937,
+     -0.083,
+     -0.34
+    ],
+    "Y": [
+     0.344,
+     -0.041,
+     -0.938
+    ],
+    "Z": [
+     0.064,
+     -0.996,
+     0.067
+    ]
+   },
+   "constraints": []
+  },
+  "forearm.L": {
+   "parent": "upper_arm.L",
+   "head": [
+    0.4014,
+    -0.018,
+    1.1197
+   ],
+   "tail": [
+    0.5385,
+    -0.0722,
+    0.7912
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.923,
+     0.0,
+     -0.385
+    ],
+    "Y": [
+     0.381,
+     -0.15,
+     -0.912
+    ],
+    "Z": [
+     -0.058,
+     -0.989,
+     0.139
+    ]
+   },
+   "constraints": [
+    "IK:IK"
+   ]
+  },
+  "hand.L": {
+   "parent": "forearm.L",
+   "head": [
+    0.5385,
+    -0.0722,
+    0.7912
+   ],
+   "tail": [
+    0.5986,
+    -0.1022,
+    0.69
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.809,
+     0.218,
+     -0.545
+    ],
+    "Y": [
+     0.495,
+     -0.247,
+     -0.833
+    ],
+    "Z": [
+     -0.316,
+     -0.944,
+     0.092
+    ]
+   },
+   "constraints": [
+    "COPY_ROTATION:IK_rot"
+   ]
+  },
+  "sword": {
+   "parent": "hand.L",
+   "head": [
+    0.5686,
+    -0.0872,
+    0.7842
+   ],
+   "tail": [
+    2.0696,
+    -0.0872,
+    -0.0139
+   ],
+   "deform": true,
+   "up_axis": "Z",
+   "local_axes_world": {
+    "X": [
+     0.0,
+     1.0,
+     0.0
+    ],
+    "Y": [
+     0.883,
+     -0.0,
+     -0.469
+    ],
+    "Z": [
+     -0.469,
+     0.0,
+     -0.883
+    ]
+   },
+   "constraints": [
+    "COPY_TRANSFORMS:to_sheath"
+   ]
+  },
+  "sword_grip.R": {
+   "parent": "sword",
+   "head": [
+    0.7232,
+    -0.0872,
+    0.7982
+   ],
+   "tail": [
+    0.6294,
+    -0.0872,
+    0.6216
+   ],
+   "deform": false,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.883,
+     -0.0,
+     0.469
+    ],
+    "Y": [
+     -0.469,
+     -0.0,
+     -0.883
+    ],
+    "Z": [
+     0.0,
+     -1.0,
+     -0.0
+    ]
+   },
+   "constraints": []
+  },
+  "sleeve.L": {
+   "parent": "forearm.L",
+   "head": [
+    0.5385,
+    -0.0522,
+    0.8783
+   ],
+   "tail": [
+    0.5885,
+    0.0278,
+    0.5783
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.986,
+     0.0,
+     -0.164
+    ],
+    "Y": [
+     0.159,
+     0.254,
+     -0.954
+    ],
+    "Z": [
+     0.042,
+     -0.967,
+     -0.251
+    ]
+   },
+   "constraints": []
+  },
+  "sleeve_cuff.L": {
+   "parent": "sleeve.L",
+   "head": [
+    0.5635,
+    -0.0122,
+    0.7283
+   ],
+   "tail": [
+    0.601,
+    0.0478,
+    0.5033
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.986,
+     0.0,
+     -0.164
+    ],
+    "Y": [
+     0.159,
+     0.254,
+     -0.954
+    ],
+    "Z": [
+     0.042,
+     -0.967,
+     -0.251
+    ]
+   },
+   "constraints": []
+  },
+  "elbow_help.L": {
+   "parent": "upper_arm.L",
+   "head": [
+    0.4014,
+    -0.018,
+    1.2068
+   ],
+   "tail": [
+    0.4315,
+    -0.0299,
+    1.1345
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.923,
+     0.0,
+     -0.385
+    ],
+    "Y": [
+     0.381,
+     -0.15,
+     -0.912
+    ],
+    "Z": [
+     -0.058,
+     -0.989,
+     0.139
+    ]
+   },
+   "constraints": [
+    "COPY_ROTATION:half_rot"
+   ]
+  },
+  "upper_arm_help.L": {
+   "parent": "arm_clear.L",
+   "head": [
+    0.25,
+    0.0,
+    1.5329
+   ],
+   "tail": [
+    0.2924,
+    -0.005,
+    1.4416
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.907,
+     -0.0,
+     -0.421
+    ],
+    "Y": [
+     0.42,
+     -0.05,
+     -0.906
+    ],
+    "Z": [
+     -0.021,
+     -0.999,
+     0.045
+    ]
+   },
+   "constraints": [
+    "COPY_ROTATION:half_rot"
+   ]
+  },
+  "shoulder.R": {
+   "parent": "chest",
+   "head": [
+    -0.06,
+    0.0,
+    1.5729
+   ],
+   "tail": [
+    -0.25,
+    0.0,
+    1.5329
+   ],
+   "deform": true,
+   "up_axis": "X",
+   "local_axes_world": {
+    "X": [
+     -0.206,
+     -0.0,
+     0.979
+    ],
+    "Y": [
+     -0.979,
+     0.0,
+     -0.206
+    ],
+    "Z": [
+     0.0,
+     -1.0,
+     -0.0
+    ]
+   },
+   "constraints": []
+  },
+  "arm_clear.R": {
+   "parent": "shoulder.R",
+   "head": [
+    -0.25,
+    0.0,
+    1.5329
+   ],
+   "tail": [
+    -0.292,
+    -0.005,
+    1.4423
+   ],
+   "deform": false,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.907,
+     -0.0,
+     0.421
+    ],
+    "Y": [
+     -0.42,
+     -0.05,
+     -0.906
+    ],
+    "Z": [
+     0.021,
+     -0.999,
+     0.045
+    ]
+   },
+   "constraints": []
+  },
+  "upper_arm.R": {
+   "parent": "arm_clear.R",
+   "head": [
+    -0.25,
+    0.0,
+    1.5329
+   ],
+   "tail": [
+    -0.4014,
+    -0.018,
+    1.1197
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.937,
+     0.083,
+     0.34
+    ],
+    "Y": [
+     -0.344,
+     -0.041,
+     -0.938
+    ],
+    "Z": [
+     -0.064,
+     -0.996,
+     0.067
+    ]
+   },
+   "constraints": []
+  },
+  "forearm.R": {
+   "parent": "upper_arm.R",
+   "head": [
+    -0.4014,
+    -0.018,
+    1.1197
+   ],
+   "tail": [
+    -0.5385,
+    -0.0722,
+    0.7912
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.923,
+     -0.0,
+     0.385
+    ],
+    "Y": [
+     -0.381,
+     -0.15,
+     -0.912
+    ],
+    "Z": [
+     0.058,
+     -0.989,
+     0.139
+    ]
+   },
+   "constraints": [
+    "IK:IK"
+   ]
+  },
+  "hand.R": {
+   "parent": "forearm.R",
+   "head": [
+    -0.5385,
+    -0.0722,
+    0.7912
+   ],
+   "tail": [
+    -0.5986,
+    -0.1022,
+    0.69
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.809,
+     -0.218,
+     0.545
+    ],
+    "Y": [
+     -0.495,
+     -0.247,
+     -0.833
+    ],
+    "Z": [
+     0.316,
+     -0.944,
+     0.092
+    ]
+   },
+   "constraints": [
+    "COPY_ROTATION:IK_rot"
+   ]
+  },
+  "sleeve.R": {
+   "parent": "forearm.R",
+   "head": [
+    -0.5385,
+    -0.0522,
+    0.8783
+   ],
+   "tail": [
+    -0.5885,
+    0.0278,
+    0.5783
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.986,
+     -0.0,
+     0.164
+    ],
+    "Y": [
+     -0.159,
+     0.254,
+     -0.954
+    ],
+    "Z": [
+     -0.042,
+     -0.967,
+     -0.251
+    ]
+   },
+   "constraints": []
+  },
+  "sleeve_cuff.R": {
+   "parent": "sleeve.R",
+   "head": [
+    -0.5635,
+    -0.0122,
+    0.7283
+   ],
+   "tail": [
+    -0.601,
+    0.0478,
+    0.5033
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.986,
+     -0.0,
+     0.164
+    ],
+    "Y": [
+     -0.159,
+     0.254,
+     -0.954
+    ],
+    "Z": [
+     -0.042,
+     -0.967,
+     -0.251
+    ]
+   },
+   "constraints": []
+  },
+  "elbow_help.R": {
+   "parent": "upper_arm.R",
+   "head": [
+    -0.4014,
+    -0.018,
+    1.2068
+   ],
+   "tail": [
+    -0.4315,
+    -0.0299,
+    1.1345
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.923,
+     -0.0,
+     0.385
+    ],
+    "Y": [
+     -0.381,
+     -0.15,
+     -0.912
+    ],
+    "Z": [
+     0.058,
+     -0.989,
+     0.139
+    ]
+   },
+   "constraints": [
+    "COPY_ROTATION:half_rot"
+   ]
+  },
+  "upper_arm_help.R": {
+   "parent": "arm_clear.R",
+   "head": [
+    -0.25,
+    0.0,
+    1.5329
+   ],
+   "tail": [
+    -0.2924,
+    -0.005,
+    1.4416
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.907,
+     0.0,
+     0.421
+    ],
+    "Y": [
+     -0.42,
+     -0.05,
+     -0.906
+    ],
+    "Z": [
+     0.021,
+     -0.999,
+     0.045
+    ]
+   },
+   "constraints": [
+    "COPY_ROTATION:half_rot"
+   ]
+  },
+  "thigh.L": {
+   "parent": "hips",
+   "head": [
+    0.13,
+    0.0,
+    0.8629
+   ],
+   "tail": [
+    0.14,
+    -0.025,
+    0.4544
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     0.001,
+     -0.025
+    ],
+    "Y": [
+     0.024,
+     -0.061,
+     -0.998
+    ],
+    "Z": [
+     -0.003,
+     -0.998,
+     0.061
+    ]
+   },
+   "constraints": []
+  },
+  "shin.L": {
+   "parent": "thigh.L",
+   "head": [
+    0.14,
+    -0.025,
+    0.4544
+   ],
+   "tail": [
+    0.14,
+    0.035,
+    0.21
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     -0.0,
+     0.0
+    ],
+    "Y": [
+     -0.0,
+     0.238,
+     -0.971
+    ],
+    "Z": [
+     0.0,
+     -0.971,
+     -0.238
+    ]
+   },
+   "constraints": [
+    "IK:IK"
+   ]
+  },
+  "foot.L": {
+   "parent": "shin.L",
+   "head": [
+    0.14,
+    0.035,
+    0.21
+   ],
+   "tail": [
+    0.14,
+    -0.11,
+    0.035
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     -0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     -0.638,
+     -0.77
+    ],
+    "Z": [
+     0.0,
+     -0.77,
+     0.638
+    ]
+   },
+   "constraints": [
+    "COPY_ROTATION:IK_rot"
+   ]
+  },
+  "toe.L": {
+   "parent": "foot.L",
+   "head": [
+    0.14,
+    -0.11,
+    0.035
+   ],
+   "tail": [
+    0.14,
+    -0.215,
+    0.03
+   ],
+   "deform": true,
+   "up_axis": "Z",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     -0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     -0.999,
+     -0.048
+    ],
+    "Z": [
+     -0.0,
+     -0.048,
+     0.999
+    ]
+   },
+   "constraints": []
+  },
+  "knee_help.L": {
+   "parent": "thigh.L",
+   "head": [
+    0.14,
+    -0.025,
+    0.4849
+   ],
+   "tail": [
+    0.14,
+    -0.0118,
+    0.4256
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     -0.0,
+     0.0
+    ],
+    "Y": [
+     -0.0,
+     0.217,
+     -0.976
+    ],
+    "Z": [
+     -0.0,
+     -0.976,
+     -0.217
+    ]
+   },
+   "constraints": [
+    "COPY_ROTATION:half_rot"
+   ]
+  },
+  "thigh_help.L": {
+   "parent": "hips",
+   "head": [
+    0.13,
+    0.0,
+    0.8629
+   ],
+   "tail": [
+    0.1325,
+    -0.0063,
+    0.7655
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     0.002,
+     -0.026
+    ],
+    "Y": [
+     0.026,
+     -0.064,
+     -0.998
+    ],
+    "Z": [
+     -0.004,
+     -0.998,
+     0.064
+    ]
+   },
+   "constraints": [
+    "COPY_ROTATION:half_rot"
+   ]
+  },
+  "thigh.R": {
+   "parent": "hips",
+   "head": [
+    -0.13,
+    0.0,
+    0.8629
+   ],
+   "tail": [
+    -0.14,
+    -0.025,
+    0.4544
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     -0.001,
+     0.025
+    ],
+    "Y": [
+     -0.024,
+     -0.061,
+     -0.998
+    ],
+    "Z": [
+     0.003,
+     -0.998,
+     0.061
+    ]
+   },
+   "constraints": []
+  },
+  "shin.R": {
+   "parent": "thigh.R",
+   "head": [
+    -0.14,
+    -0.025,
+    0.4544
+   ],
+   "tail": [
+    -0.14,
+    0.035,
+    0.21
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     0.0,
+     -0.0
+    ],
+    "Y": [
+     0.0,
+     0.238,
+     -0.971
+    ],
+    "Z": [
+     0.0,
+     -0.971,
+     -0.238
+    ]
+   },
+   "constraints": [
+    "IK:IK"
+   ]
+  },
+  "foot.R": {
+   "parent": "shin.R",
+   "head": [
+    -0.14,
+    0.035,
+    0.21
+   ],
+   "tail": [
+    -0.14,
+    -0.11,
+    0.035
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     0.0,
+     -0.0
+    ],
+    "Y": [
+     0.0,
+     -0.638,
+     -0.77
+    ],
+    "Z": [
+     0.0,
+     -0.77,
+     0.638
+    ]
+   },
+   "constraints": [
+    "COPY_ROTATION:IK_rot"
+   ]
+  },
+  "toe.R": {
+   "parent": "foot.R",
+   "head": [
+    -0.14,
+    -0.11,
+    0.035
+   ],
+   "tail": [
+    -0.14,
+    -0.215,
+    0.03
+   ],
+   "deform": true,
+   "up_axis": "Z",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     0.0,
+     -0.0
+    ],
+    "Y": [
+     0.0,
+     -0.999,
+     -0.048
+    ],
+    "Z": [
+     -0.0,
+     -0.048,
+     0.999
+    ]
+   },
+   "constraints": []
+  },
+  "knee_help.R": {
+   "parent": "thigh.R",
+   "head": [
+    -0.14,
+    -0.025,
+    0.4849
+   ],
+   "tail": [
+    -0.14,
+    -0.0118,
+    0.4256
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     0.0,
+     -0.0
+    ],
+    "Y": [
+     0.0,
+     0.217,
+     -0.976
+    ],
+    "Z": [
+     -0.0,
+     -0.976,
+     -0.217
+    ]
+   },
+   "constraints": [
+    "COPY_ROTATION:half_rot"
+   ]
+  },
+  "thigh_help.R": {
+   "parent": "hips",
+   "head": [
+    -0.13,
+    0.0,
+    0.8629
+   ],
+   "tail": [
+    -0.1325,
+    -0.0063,
+    0.7655
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     -0.002,
+     0.026
+    ],
+    "Y": [
+     -0.026,
+     -0.064,
+     -0.998
+    ],
+    "Z": [
+     0.004,
+     -0.998,
+     0.064
+    ]
+   },
+   "constraints": [
+    "COPY_ROTATION:half_rot"
+   ]
+  },
+  "skirt.F": {
+   "parent": "hips",
+   "head": [
+    0.0,
+    -0.22,
+    0.9529
+   ],
+   "tail": [
+    0.0,
+    -0.36,
+    0.6814
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     -0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     -0.458,
+     -0.889
+    ],
+    "Z": [
+     0.0,
+     -0.889,
+     0.458
+    ]
+   },
+   "constraints": [
+    "TRANSFORM:follow_L",
+    "TRANSFORM:follow_R"
+   ]
+  },
+  "skirt.F.001": {
+   "parent": "skirt.F",
+   "head": [
+    0.0,
+    -0.36,
+    0.6814
+   ],
+   "tail": [
+    0.0,
+    -0.47,
+    0.5545
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     -0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     -0.655,
+     -0.756
+    ],
+    "Z": [
+     0.0,
+     -0.756,
+     0.655
+    ]
+   },
+   "constraints": []
+  },
+  "skirt.L": {
+   "parent": "hips",
+   "head": [
+    0.27,
+    0.0,
+    0.9529
+   ],
+   "tail": [
+    0.42,
+    0.03,
+    0.6512
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.891,
+     -0.062,
+     -0.449
+    ],
+    "Y": [
+     0.443,
+     0.089,
+     -0.892
+    ],
+    "Z": [
+     0.095,
+     -0.994,
+     -0.052
+    ]
+   },
+   "constraints": [
+    "TRANSFORM:follow_flex"
+   ]
+  },
+  "skirt.L.001": {
+   "parent": "skirt.L",
+   "head": [
+    0.42,
+    0.03,
+    0.6512
+   ],
+   "tail": [
+    0.6488,
+    0.0854,
+    0.3578
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.791,
+     0.195,
+     -0.58
+    ],
+    "Y": [
+     0.608,
+     0.147,
+     -0.78
+    ],
+    "Z": [
+     -0.067,
+     -0.97,
+     -0.235
+    ]
+   },
+   "constraints": []
+  },
+  "skirt.L.002": {
+   "parent": "skirt.L.001",
+   "head": [
+    0.6488,
+    0.0854,
+    0.3578
+   ],
+   "tail": [
+    0.694,
+    0.1657,
+    0.1578
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.977,
+     0.016,
+     -0.214
+    ],
+    "Y": [
+     0.205,
+     0.365,
+     -0.908
+    ],
+    "Z": [
+     0.064,
+     -0.931,
+     -0.359
+    ]
+   },
+   "constraints": []
+  },
+  "skirt.R": {
+   "parent": "hips",
+   "head": [
+    -0.27,
+    0.0,
+    0.9529
+   ],
+   "tail": [
+    -0.42,
+    0.03,
+    0.6512
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.891,
+     0.062,
+     0.449
+    ],
+    "Y": [
+     -0.443,
+     0.089,
+     -0.892
+    ],
+    "Z": [
+     -0.095,
+     -0.994,
+     -0.052
+    ]
+   },
+   "constraints": [
+    "TRANSFORM:follow_flex"
+   ]
+  },
+  "skirt.R.001": {
+   "parent": "skirt.R",
+   "head": [
+    -0.42,
+    0.03,
+    0.6512
+   ],
+   "tail": [
+    -0.6488,
+    0.0854,
+    0.3578
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.791,
+     -0.195,
+     0.58
+    ],
+    "Y": [
+     -0.608,
+     0.147,
+     -0.78
+    ],
+    "Z": [
+     0.067,
+     -0.97,
+     -0.235
+    ]
+   },
+   "constraints": []
+  },
+  "skirt.R.002": {
+   "parent": "skirt.R.001",
+   "head": [
+    -0.6488,
+    0.0854,
+    0.3578
+   ],
+   "tail": [
+    -0.694,
+    0.1657,
+    0.1578
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.977,
+     -0.016,
+     0.214
+    ],
+    "Y": [
+     -0.205,
+     0.365,
+     -0.908
+    ],
+    "Z": [
+     -0.064,
+     -0.931,
+     -0.359
+    ]
+   },
+   "constraints": []
+  },
+  "skirt.B": {
+   "parent": "hips",
+   "head": [
+    0.0,
+    0.22,
+    0.9529
+   ],
+   "tail": [
+    0.0,
+    0.38,
+    0.6814
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     -0.0,
+     -0.0
+    ],
+    "Y": [
+     0.0,
+     0.508,
+     -0.861
+    ],
+    "Z": [
+     0.0,
+     -0.861,
+     -0.508
+    ]
+   },
+   "constraints": [
+    "TRANSFORM:follow_L",
+    "TRANSFORM:follow_R"
+   ]
+  },
+  "skirt.tail.001": {
+   "parent": "skirt.B",
+   "head": [
+    0.0,
+    0.38,
+    0.6814
+   ],
+   "tail": [
+    0.0,
+    0.5451,
+    0.4722
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     0.0,
+     0.0
+    ],
+    "Y": [
+     -0.0,
+     0.62,
+     -0.785
+    ],
+    "Z": [
+     -0.0,
+     -0.785,
+     -0.62
+    ]
+   },
+   "constraints": []
+  },
+  "skirt.tail.002": {
+   "parent": "skirt.tail.001",
+   "head": [
+    0.0,
+    0.5451,
+    0.4722
+   ],
+   "tail": [
+    0.0,
+    0.7451,
+    0.2261
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     0.631,
+     -0.776
+    ],
+    "Z": [
+     -0.0,
+     -0.776,
+     -0.631
+    ]
+   },
+   "constraints": []
+  },
+  "skirt.tail.003": {
+   "parent": "skirt.tail.002",
+   "head": [
+    0.0,
+    0.7451,
+    0.2261
+   ],
+   "tail": [
+    0.0,
+    0.7871,
+    0.1074
+   ],
+   "deform": true,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     0.0,
+     0.0
+    ],
+    "Y": [
+     -0.0,
+     0.333,
+     -0.943
+    ],
+    "Z": [
+     -0.0,
+     -0.943,
+     -0.333
+    ]
+   },
+   "constraints": []
+  },
+  "sheath": {
+   "parent": "hips",
+   "head": [
+    0.27,
+    -0.3,
+    0.9329
+   ],
+   "tail": [
+    0.4248,
+    1.1552,
+    0.422
+   ],
+   "deform": true,
+   "up_axis": "Z",
+   "local_axes_world": {
+    "X": [
+     0.994,
+     -0.106,
+     0.0
+    ],
+    "Y": [
+     0.1,
+     0.939,
+     -0.33
+    ],
+    "Z": [
+     0.035,
+     0.328,
+     0.944
+    ]
+   },
+   "constraints": []
+  },
+  "hand_ik.L": {
+   "parent": "cog",
+   "head": [
+    0.5385,
+    -0.0722,
+    0.8783
+   ],
+   "tail": [
+    0.5986,
+    -0.1022,
+    0.69
+   ],
+   "deform": false,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.953,
+     0.0,
+     -0.304
+    ],
+    "Y": [
+     0.301,
+     -0.15,
+     -0.942
+    ],
+    "Z": [
+     -0.046,
+     -0.989,
+     0.143
+    ]
+   },
+   "constraints": []
+  },
+  "elbow_pole.L": {
+   "parent": "cog",
+   "head": [
+    0.5014,
+    0.532,
+    1.2068
+   ],
+   "tail": [
+    0.5014,
+    0.682,
+    1.2068
+   ],
+   "deform": false,
+   "up_axis": "Z",
+   "local_axes_world": {
+    "X": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     1.0,
+     0.0
+    ],
+    "Z": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "constraints": []
+  },
+  "hand_ik.R": {
+   "parent": "cog",
+   "head": [
+    -0.5385,
+    -0.0722,
+    0.8783
+   ],
+   "tail": [
+    -0.5986,
+    -0.1022,
+    0.69
+   ],
+   "deform": false,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -0.953,
+     -0.0,
+     0.304
+    ],
+    "Y": [
+     -0.301,
+     -0.15,
+     -0.942
+    ],
+    "Z": [
+     0.046,
+     -0.989,
+     0.143
+    ]
+   },
+   "constraints": [
+    "COPY_TRANSFORMS:to_tsuka"
+   ]
+  },
+  "elbow_pole.R": {
+   "parent": "cog",
+   "head": [
+    -0.5014,
+    0.532,
+    1.2068
+   ],
+   "tail": [
+    -0.5014,
+    0.682,
+    1.2068
+   ],
+   "deform": false,
+   "up_axis": "Z",
+   "local_axes_world": {
+    "X": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     1.0,
+     0.0
+    ],
+    "Z": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "constraints": []
+  },
+  "foot_ctrl.L": {
+   "parent": "root",
+   "head": [
+    0.14,
+    0.075,
+    0.0
+   ],
+   "tail": [
+    0.14,
+    -0.225,
+    0.0
+   ],
+   "deform": false,
+   "up_axis": "Z",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     -1.0,
+     0.0
+    ],
+    "Z": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "constraints": []
+  },
+  "toe_pivot.L": {
+   "parent": "foot_ctrl.L",
+   "head": [
+    0.14,
+    -0.11,
+    0.0
+   ],
+   "tail": [
+    0.14,
+    0.01,
+    0.0
+   ],
+   "deform": false,
+   "up_axis": "Z",
+   "local_axes_world": {
+    "X": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     1.0,
+     0.0
+    ],
+    "Z": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "constraints": []
+  },
+  "foot_ik.L": {
+   "parent": "toe_pivot.L",
+   "head": [
+    0.14,
+    0.035,
+    0.21
+   ],
+   "tail": [
+    0.14,
+    -0.11,
+    0.035
+   ],
+   "deform": false,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     -0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     -0.638,
+     -0.77
+    ],
+    "Z": [
+     0.0,
+     -0.77,
+     0.638
+    ]
+   },
+   "constraints": []
+  },
+  "knee_pole.L": {
+   "parent": "root",
+   "head": [
+    0.16,
+    -0.775,
+    0.4849
+   ],
+   "tail": [
+    0.16,
+    -0.925,
+    0.4849
+   ],
+   "deform": false,
+   "up_axis": "Z",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     -1.0,
+     0.0
+    ],
+    "Z": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "constraints": []
+  },
+  "foot_ctrl.R": {
+   "parent": "root",
+   "head": [
+    -0.14,
+    0.075,
+    0.0
+   ],
+   "tail": [
+    -0.14,
+    -0.225,
+    0.0
+   ],
+   "deform": false,
+   "up_axis": "Z",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     -1.0,
+     0.0
+    ],
+    "Z": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "constraints": []
+  },
+  "toe_pivot.R": {
+   "parent": "foot_ctrl.R",
+   "head": [
+    -0.14,
+    -0.11,
+    0.0
+   ],
+   "tail": [
+    -0.14,
+    0.01,
+    0.0
+   ],
+   "deform": false,
+   "up_axis": "Z",
+   "local_axes_world": {
+    "X": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     1.0,
+     0.0
+    ],
+    "Z": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "constraints": []
+  },
+  "foot_ik.R": {
+   "parent": "toe_pivot.R",
+   "head": [
+    -0.14,
+    0.035,
+    0.21
+   ],
+   "tail": [
+    -0.14,
+    -0.11,
+    0.035
+   ],
+   "deform": false,
+   "up_axis": "Y",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     -0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     -0.638,
+     -0.77
+    ],
+    "Z": [
+     0.0,
+     -0.77,
+     0.638
+    ]
+   },
+   "constraints": []
+  },
+  "knee_pole.R": {
+   "parent": "root",
+   "head": [
+    -0.16,
+    -0.775,
+    0.4849
+   ],
+   "tail": [
+    -0.16,
+    -0.925,
+    0.4849
+   ],
+   "deform": false,
+   "up_axis": "Z",
+   "local_axes_world": {
+    "X": [
+     -1.0,
+     0.0,
+     0.0
+    ],
+    "Y": [
+     0.0,
+     -1.0,
+     0.0
+    ],
+    "Z": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "constraints": []
+  }
+ },
+ "props": {
+  "ik_leg.L": 1.0,
+  "ik_leg.R": 1.0,
+  "ik_arm.L": 0.0,
+  "ik_arm.R": 0.0,
+  "two_hand": 0.0,
+  "skirt_follow": 1.0,
+  "sword_mode": "str",
+  "shoulder_autoraise": "str",
+  "arm_clear": "str",
+  "expr_wide": 0.0,
+  "expr_frown": 0.0,
+  "expr_smile": 1.0,
+  "expr_hurt": 0.0,
+  "bow_face_camera": 0.85,
+  "H": 1.0,
+  "iso_ortho": 6.8,
+  "front": "str",
+  "handedness": "str"
+ },
+ "actions": [
+  "anim_idle",
+  "anim_idle_E",
+  "anim_idle_N",
+  "anim_idle_NE",
+  "anim_idle_NW",
+  "anim_idle_S",
+  "anim_idle_SE",
+  "anim_idle_SW",
+  "anim_idle_W",
+  "anim_jump",
+  "anim_jump_E",
+  "anim_jump_N",
+  "anim_jump_NE",
+  "anim_jump_NW",
+  "anim_jump_S",
+  "anim_jump_SE",
+  "anim_jump_SW",
+  "anim_jump_W",
+  "anim_overhead_slash",
+  "anim_overhead_slash_E",
+  "anim_overhead_slash_N",
+  "anim_overhead_slash_NE",
+  "anim_overhead_slash_NW",
+  "anim_overhead_slash_S",
+  "anim_overhead_slash_SE",
+  "anim_overhead_slash_SW",
+  "anim_overhead_slash_W",
+  "anim_run",
+  "anim_run_E",
+  "anim_run_N",
+  "anim_run_NE",
+  "anim_run_NW",
+  "anim_run_S",
+  "anim_run_SE",
+  "anim_run_SW",
+  "anim_run_W",
+  "anim_slash",
+  "anim_slash_E",
+  "anim_slash_N",
+  "anim_slash_NE",
+  "anim_slash_NW",
+  "anim_slash_S",
+  "anim_slash_SE",
+  "anim_slash_SW",
+  "anim_slash_W",
+  "anim_walk",
+  "anim_walk_E",
+  "anim_walk_N",
+  "anim_walk_NE",
+  "anim_walk_NW",
+  "anim_walk_S",
+  "anim_walk_SE",
+  "anim_walk_SW",
+  "anim_walk_W",
+  "pose_attack_slash_mid",
+  "pose_idle",
+  "pose_idle_E",
+  "pose_idle_N",
+  "pose_idle_NE",
+  "pose_idle_NW",
+  "pose_idle_S",
+  "pose_idle_SE",
+  "pose_idle_SW",
+  "pose_idle_W",
+  "pose_jump_apex",
+  "pose_overhead",
+  "pose_rest",
+  "pose_run_stride",
+  "pose_sword_ready",
+  "pose_walk_contact"
+ ],
+ "landmarks": {
+  "eye_L": [
+   "head",
+   [
+    0.24232,
+    -0.43434,
+    2.04856
+   ]
+  ],
+  "eye_R": [
+   "head",
+   [
+    -0.24229,
+    -0.43451,
+    2.04853
+   ]
+  ],
+  "mouth": [
+   "head",
+   [
+    0.00063,
+    -0.4192,
+    1.89292
+   ]
+  ],
+  "face": [
+   "head",
+   [
+    0.00026,
+    -0.42834,
+    1.98629
+   ]
+  ],
+  "head_center": [
+   "head",
+   [
+    0.0,
+    0.0,
+    2.2329
+   ]
+  ],
+  "head_top": [
+   "head",
+   [
+    -0.0,
+    0.0,
+    2.8929
+   ]
+  ],
+  "chin": [
+   "head",
+   [
+    0.0,
+    -0.14542,
+    1.73114
+   ]
+  ],
+  "bun": [
+   "bun",
+   [
+    6e-05,
+    0.26502,
+    2.90162
+   ]
+  ],
+  "bow": [
+   "bow",
+   [
+    -0.25471,
+    -0.07352,
+    2.92066
+   ]
+  ],
+  "bow_loop_L": [
+   "bow_loop.L",
+   [
+    0.2394,
+    -0.14239,
+    3.202
+   ]
+  ],
+  "bow_loop_R": [
+   "bow_loop.R",
+   [
+    -0.74883,
+    -0.14239,
+    3.202
+   ]
+  ],
+  "sword_tip": [
+   "sword",
+   [
+    2.11398,
+    -0.08718,
+    0.06958
+   ]
+  ],
+  "sword_pommel": [
+   "sword",
+   [
+    0.35195,
+    -0.10482,
+    0.87734
+   ]
+  ],
+  "sword_guard": [
+   "sword",
+   [
+    0.83344,
+    -0.08718,
+    0.64331
+   ]
+  ],
+  "sword_hook": [
+   "sword",
+   [
+    0.73126,
+    -0.08718,
+    0.45299
+   ]
+  ],
+  "heel_L": [
+   "foot.L",
+   [
+    0.14,
+    0.08499,
+    -0.00051
+   ]
+  ],
+  "heel_R": [
+   "foot.R",
+   [
+    -0.14,
+    0.08499,
+    -0.00051
+   ]
+  ]
+ }
+}

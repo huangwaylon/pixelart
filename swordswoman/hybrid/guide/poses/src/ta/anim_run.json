@@ -1,0 +1,50 @@
+{
+ "name": "run",
+ "frames": [
+  {
+   "file": "run_f0.json"
+  },
+  {
+   "file": "run_f1.json"
+  },
+  {
+   "file": "run_f2.json"
+  },
+  {
+   "file": "run_f3.json",
+   "smears": [
+    {
+     "kind": "trail",
+     "from": "hybrid/guide/poses/src/ta/run_f1.json",
+     "bone": "foot.L",
+     "t": 1.0,
+     "radius": 0.15,
+     "steps": 8
+    }
+   ]
+  },
+  {
+   "file": "run_f4.json"
+  },
+  {
+   "file": "run_f5.json"
+  },
+  {
+   "file": "run_f6.json"
+  },
+  {
+   "file": "run_f7.json",
+   "smears": [
+    {
+     "kind": "trail",
+     "from": "hybrid/guide/poses/src/ta/run_f5.json",
+     "bone": "foot.R",
+     "t": 1.0,
+     "radius": 0.15,
+     "steps": 8
+    }
+   ]
+  }
+ ],
+ "timing_ms": "see hybrid/ANIM_DIRECTION.md section 1"
+}

@@ -1,0 +1,17 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Scores**
+- final_quality: **5/10**
+- master_consistency: **7/10**
+- motion: **3/10**
+- readability_1x: **5/10**
+- no_boiling: **4/10**
+
+The palette, ribbon, dress and sash hold up. The leg cycle is broken, and the head and arms don't behave like a walk.
+
+**Fixes**
+1. **f03 (contact2):** both legs are straight, parallel and planted, so there's no stride. Redraw it as a mirror of f00: the other leg reaches forward and the trailing leg extends back. Then make f04 and f05 mirrors of f01 and f02. Right now f04 and f05 repeat f00's leg layout, so the legs never actually swap.
+2. **Arms, all frames:** the sleeves are frozen in the master's T-pose. Swing them opposite to the legs, 2–3 px at the contacts, with the hands crossing the body line.
+3. **Face (f02, f04, f05) and hair (f01, f03):** the eyes shift to look sideways and the mouth and bangs strands redraw, which causes boiling. Lock the head pixels to the master and move the head only as a whole.
+4. **Body bob:** add a 1 px drop on f01 and f04 and a 1 px rise on f02 and f05. The torso currently stays at a constant height.
+5. **Dust FX:** puffs also show up on f01 and f04. Keep them on f00 and f03 only, centred under the contact heel.

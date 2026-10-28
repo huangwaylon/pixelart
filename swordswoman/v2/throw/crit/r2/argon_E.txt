@@ -1,0 +1,4 @@
+Scores — Natural: 8/10, Readable (1x): 6/10, Energetic: 8/10, Trainer Feel: 7/10.
+
+1. **Frame 1 (Ready):** Offset the orb slightly to her side or lower; right now it sits dead-center over her neck/chin, looking like she's eating it at 1x scale.
+2. **Frame 4 (Release):** Widen and thicken the white motion smear by 1–2px and start it further back behind the head so the fast 50ms whip reads with more punch at 1x.

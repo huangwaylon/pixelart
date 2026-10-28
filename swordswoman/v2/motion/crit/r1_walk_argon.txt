@@ -1,0 +1,10 @@
+OVERALL: 6
+
+**Scores (NEW):** Natural: 6 | Whole-body: 6 | Fluid: 7 | Appealing: 6 | Secondary: 4 | Readable at 1x: 6
+
+**Critique:** Adding *up* frames fixes the 6-frame rush, and the grounded stride is much better than OLD. However, the posture is too upright/robotic, and the new ribbon tails are too thin (1px), breaking into sub-pixel noise at 1x while barely moving compared to the bolder OLD bow.
+
+**Top 3 Concrete Fixes:**
+1. **All frames ( especially `down`/`down2` in E view) – Ribbon tails & bow:** Scale bow/tails up by 40% to read as a solid 2-3px cluster at 1x. On `down`/`down2`, rotate tails UP 25° (drag); on `up`/`up2`, snap DOWN 20° (overshoot).
+2. **`down`/`down2` (SE & E) – Pelvis/Head:** Drop pelvis and head 2px lower to give real weight to the step.
+3. **`contact`/`contact2` (SE) – Shoulders:** Increase counter-twist by rotating the forward shoulder 15° further across the chest.

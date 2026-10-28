@@ -1,0 +1,46 @@
+{
+ "size": [
+  68,
+  20
+ ],
+ "facing": "E",
+ "attach": "feet",
+ "pivot": [
+  34,
+  19
+ ],
+ "ms": [
+  60,
+  80,
+  100,
+  120
+ ],
+ "cell_offset": [
+  66,
+  124
+ ],
+ "cell": "128x128 cell, 96 px figure, feet pivot (64,124), faces SE; back boot x58-64 sole row 124 (back heel x58), front boot x66-74; ground_y = cell row 124; pivot = ground point",
+ "layer": "over",
+ "mirror": "symmetric; no flip needed (geometry mirrored, light top-left on both sides)",
+ "ground_y": 19,
+ "centre_x": 34,
+ "width_px": [
+  32,
+  48,
+  60,
+  62
+ ],
+ "lift_px": [
+  0,
+  0,
+  2,
+  6
+ ],
+ "puffs_per_side": [
+  2,
+  4,
+  4,
+  4
+ ],
+ "note": "r2: pivot x34 = first column right of centre line. Each side one billow: big lobe at the feet -> 9/6 px lobes outward, outer lobes lifted 2 px on later frames; flat G base on row 19 (f0-f2), f3 floats; U sel-out rim top-left, G bottom/right. work/gen_dust2.py."
+}

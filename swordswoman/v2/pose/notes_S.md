@@ -1,0 +1,17 @@
+# S view sub-strand notes (owns scripts/ov_S.py; backup of the f12 version: tmp/ov_S_f12.py)
+## r1 (out_S_r1, crit/S_r1)
+- POST-authored legs for S (helper lg/sw: final [x, y, depth, knee x, knee depth]): walk feet at hip width alternating near/far + passing knee up toward camera, free arm swing; run drive leg under body + rear heel kicked up behind, air lift 0.54; jump launch arrow (feet together, arms up), apex tuck, fall flail, land wider; dash smear rear leg further, head up; slash follow blade depth -35 (was hidden, v5 px); overhead impact/follow = steep down-right blade in FRONT of the legs (blade depth -45; sweeps showed hid 3 vs 11); hurt recoil roll 9 + both arms wide, stagger buckled.
+- crit S_r1: Argon 7.5/7/6.5/7.5/7/7.5/7.5/8, Opus 7/5/6/7/6/7/5/6 (idle..hurt).
+## r2 (out_S_r2, crit/S_r2)
+- walk near/far depth +-0.45 + wider x, pass knee higher + body up (sq -0.08); run contact rear heel out to the side, sq 0.14; idle free hand out, deeper head sink; jump apex tuck (arms low), fall feet reaching; dash burst head up, rear leg longer; slash windup hand off the shoulder; overhead raise arms 145/139, smear/follow blade depth toward camera (hid 18 -> 9); hurt stagger head forward, off-arm dangling.
+- crit S_r2: Argon 7.5/7.5/7.5/8/7.5/8.5/8/8, Opus 6.5/6.5/6.5/7/6.5/6.5/6/6.
+## r3 (out_S_r3, crit/S_r3)
+- idle down_hold deeper; walk down knee bend, pass foot higher; run push leg extended, run blade -165; jump launch lean + trailing leg, fall splay; dash antic coil; slash windup blade 120 + off-arm down, follow tip out; overhead impact/follow blade -30/-38 (outward), deeper crouch; hurt stagger head up, knee out.
+- crit S_r3: Argon 7.5/7.5/7.5/8/8/8.5/8/8, Opus 6/6/6/7/7/6/6/6 (Opus noisy: same-ish as r2 6.5s).
+## r4 (out_S_r4, crit/S_r4) = FINAL S state of ov_S.py
+- walk down feet wider/hips lower, pass foot higher; run contact wider, blade -155; jump launch trailing shin + blade 130, apex arms wider; dash antic head down, blade tip up; slash follow blade -10 (out right above the knee); overhead impact tip -45 right of the feet, follow -12 near-horizontal; hurt stagger head -26 up, off-arm flung up-right.
+- crit S_r4: Argon 8/8/8/8/8/9/8/8, Opus 7/6/7/7/7/8/7/6. Remaining < 7 (Opus): walk, hurt.
+## e1 (rig E; out_S_e1, crit/S_e1; backup tmp/ov_S_g1.py) idle blade breathes, walk near/far contrast, run push kick+lean, jump apex wide arms/blade up-left, dash antic blade up-left, slash follow higher, overhead impact hands right / follow flat, hurt stagger head up. Argon 8.5/8/8/8.5/8.5/8.5/8.5/8, Opus 6.5/6/6.5/7.5/7/6.5/7/6.5 (g1 Opus 7/6.5/7/7.5/7/7.5/7/7).
+## e2 (out_S_e2, crit/S_e2; backup tmp/ov_S_e1.py) idle free hand hangs, walk contact2 re-staged + pass blade up, run blade -140 + contact2 wider, jump rise tuck, dash recover lean, slash antic coil + follow up, overhead impact hands right, hurt hit head back. Argon 7.5/7.5/8/8/8.5/8/8/7.5, Opus 6.5/6/6.5/7/7/6.5/6/6.
+## e3 (out_S_e3, crit/S_e3; ov saved tmp/ov_S_e3.py) walk/run strides reverted to g1, apex arm up-left, slash follow up-right, overhead impact back to g1. Argon 7.5/7.5/8/8.5/8.5/8.5/8.5/7.5, Opus 6/6/6/7/7/7/6/7.
+- Rig-E rounds summary (sum Argon+Opus avg): g1 14.6, e1 15.05, e2 14.3, e3 14.6. Opus swings +-1 with no consistent direction. FINAL ov_S.py = e1 state (restored from tmp/ov_S_e1.py; out_S_e1 = matching renders). Backups: tmp/ov_S_g1.py, ov_S_e2.py, ov_S_e3.py.

@@ -1,0 +1,39 @@
+{
+ "size": [
+  13,
+  13
+ ],
+ "facing": "E",
+ "attach": "ball",
+ "pivot": [
+  6,
+  6
+ ],
+ "ms": [
+  60,
+  60,
+  60,
+  60
+ ],
+ "cell_offset": [
+  110,
+  70
+ ],
+ "layer": "over",
+ "mirror": "flip x for W-facing: x -> w-1-x, pivot_x -> w-1-pivot_x, negate dx of offsets/velocity, cell_offset_x -> 127-x (spin then runs backwards, acceptable)",
+ "loop": true,
+ "cell": "128x128 cell, 96 px figure, feet pivot (64,124), ground row 124; throw-pose release hand = s48 throw_E frames.json (hy3d/frames_G) frame 3 'release' hand.R x2 -> (111,69), used as (110,70); this is NOT the idle hand (~(81,84)); stride hand (frame 2) ~(63,66); cell_offset = orb at the release hand",
+ "spawn": "spawn at the release hand (110,70) on the release frame, then move by flight_per_unit",
+ "flight_per_unit": [
+  50,
+  -10
+ ],
+ "outline": "K 1 px all round (13 px circle: runs 5/2/1x2/5 per octant)",
+ "note": "red top r with fixed 3 px w highlight top-left and x shade crescent right; 2-row j band (rows 6-7 mid, rows 5-6 at the edges: bows down 1 px so the equator reads as seen from above); white bottom w with v down both the left edge and the lower-right crescent; button = 3x2 w/v face in a full j ring (pokes 1 px above/below the band), foreshortened 2x2 at the sides; it travels L->R while highlight/shading stay fixed",
+ "frames": [
+  "f0 button centred x4-8",
+  "f1 button right x7-10 (2x2 face)",
+  "f2 button on the far side (plain band)",
+  "f3 button left x2-5 (2x2 face); loop f0"
+ ]
+}

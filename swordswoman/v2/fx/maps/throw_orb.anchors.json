@@ -1,0 +1,38 @@
+{
+ "size": [
+  7,
+  7
+ ],
+ "facing": "E",
+ "attach": "ball",
+ "pivot": [
+  3,
+  3
+ ],
+ "ms": [
+  60,
+  60,
+  60,
+  60
+ ],
+ "cell_offset": [
+  55,
+  35
+ ],
+ "cell": "64x64 C_r3 cell, 48 px figure, feet pivot (32,62); throw pose E view: hand at stride (cocked behind the head) ~(32,33), at release ~(55,35), head centre ~(40,31); cell_offset = orb at the release hand",
+ "layer": "over",
+ "mirror": "flip x for W-facing: x -> w-1-x, pivot_x -> w-1-pivot_x, negate dx of offsets/velocity, cell_offset_x -> 63-x (spin then runs backwards, acceptable)",
+ "loop": true,
+ "spawn": "spawn at the release hand (55,35) on the release frame, then move by flight_per_unit",
+ "flight_per_unit": [
+  25,
+  -5
+ ],
+ "outline": "K 1 px all round (reads on #6e6e6e floor and over the red dress)",
+ "frames": [
+  "f0 red top r + 1 px W highlight (2,2) + R shade (5,2), k band row 3 with W charm at x3 (centre), W/w lower half",
+  "f1 charm slid to x4",
+  "f2 charm on the far side (plain k band)",
+  "f3 charm reappears at x2; loop f0"
+ ]
+}

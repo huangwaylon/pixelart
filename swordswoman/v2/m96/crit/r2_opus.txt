@@ -1,0 +1,17 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I looked at both images only and changed no files.
+
+**Scores:** S 6, SE 5, E 6, NE 6.5, N 7. **Overall: 6/10.**
+
+1. **Match to illustrations:** The kimono, obi, socks and boots are close in every view. The skin band shows but is only 1–2px and tight. In SE the hair is much too bushy and the bow is half buried. In E the hair at the back is too big. In S the side tails curl into loops at the shoulders instead of falling straight to the chest.
+2. **Face at 1x:** It doesn't read as cute anime. The eyes are low-contrast grey-brown under heavy lids, so she looks drowsy or sad. The catchlights barely show. The blush is stronger than the eyes, and the mouth is a muddy smudge.
+3. **Pixel craft:** The hair has noisy, dithered highlight specks and stray light pixels, worst in SE and E. Outlines change between dark brown and black, and the stepping is uneven. The hands are pale blobs. The ribbon tails read well in NE and E but get lost in SE.
+4. **Colours:** The red ramp and obi match across views. The S collar or neck shadow is too red and dark.
+
+**Top 5 fixes:**
+1. Faces in S, SE and E: make the eyes 1px taller, with a dark pupil, a white 1px catchlight and a lighter iris. Thin the upper lid and tone the blush down.
+2. Hair in SE: cut the silhouette back, clear the stray highlight pixels, and fully show the bow and both tails.
+3. Hair in all views: use clean, solid highlight bands and one outline colour.
+4. Side tails in S: make them straight strands down to the chest.
+5. Hands in all views: give each a 1px outline and a thumb notch. Swap the S neck shadow for a skin-shadow tone.

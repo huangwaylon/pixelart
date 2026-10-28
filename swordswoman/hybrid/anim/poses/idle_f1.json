@@ -1,0 +1,110 @@
+{
+ "format": "dirpose/1",
+ "name": "idle_f1",
+ "dirs": [
+  "SE",
+  "S",
+  "NW"
+ ],
+ "ops": [
+  [
+   "base",
+   "idle_{D}"
+  ],
+  [
+   "move",
+   "cog",
+   [
+    0,
+    0,
+    -0.029
+   ]
+  ],
+  [
+   "rot",
+   "chest",
+   "X",
+   1.0
+  ],
+  [
+   "rot",
+   "shoulder.L",
+   "Y",
+   -0.0
+  ],
+  [
+   "rot",
+   "shoulder.R",
+   "Y",
+   0.0
+  ],
+  [
+   "rot",
+   "head",
+   "X",
+   2.5
+  ],
+  [
+   "rot",
+   "hips",
+   "Y",
+   0.3
+  ],
+  [
+   "rot",
+   "bun",
+   "X",
+   1.5
+  ],
+  [
+   "rot",
+   "bow",
+   "X",
+   -1.5
+  ],
+  [
+   "scarf_hang",
+   0.147,
+   0.0,
+   0.16
+  ],
+  [
+   "chain",
+   "skirt.tail",
+   "X",
+   [
+    3.0,
+    3.3,
+    3.63
+   ]
+  ],
+  [
+   "rot",
+   "sleeve.L",
+   "X",
+   2.0
+  ],
+  [
+   "rot",
+   "sleeve.R",
+   "X",
+   4.0
+  ],
+  [
+   "rot",
+   "sword",
+   "Z",
+   2.0
+  ]
+ ],
+ "intent": {
+  "anim": "idle",
+  "frame": 1,
+  "ms": 140,
+  "beat": "inhale rising",
+  "crown_px_vs_f0": 1,
+  "hem_px_vs_f0": 0,
+  "expression": "calm half-lid; f3 has an optional blink alt (idle_blink) every 3rd loop"
+ },
+ "no_dir_turn": true
+}

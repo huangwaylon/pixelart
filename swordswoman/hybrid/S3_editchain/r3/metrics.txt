@@ -1,0 +1,30 @@
+sprite                   h bodyH base    fx cols offp orph gap ntch spur dbl    IoU   IoUb  eyeΔ  bowΔ  grdΔ
+jump_E_apex.png       66.0  66.0    0 -0.57   20    0    0  22    5    6   3 0.4359 0.4203     -  27.9  13.2
+jump_E_crouch.png     56.0  56.0    0   4.0   19    0    0  11    3    6   4 0.4922 0.4802     -  34.7     -
+jump_E_land.png       51.0  51.0    0  -2.0   19    0    0  19    5    7   5 0.4219  0.416     -     -     -
+slash_SE_k0.png       60.0  60.0    0  -0.5   21    0    0  21    7    7   5 0.5418 0.5192     -  29.0  21.8
+slash_SE_k1.png       60.0  60.0    0  4.33   22    0    0  46   17   12   5 0.4854 0.4565     -  31.6   9.5
+slash_SE_k2.png       57.0  57.0    0  6.33   22    0    0   8    6   23   4 0.5196  0.496     -  30.4   5.6
+slash_SE_k3.png       59.0  59.0    0  6.33   21    0    0  20    5   18   2  0.537 0.5174     -  28.2   5.6
+turn_E.png            62.0  62.0    0  -0.2   21    0    0   1    5    5   3 0.6296 0.6072     -  30.1   7.9
+turn_N.png            62.0  62.0    0  -0.5   18    0    0   2    4    5   4   0.58 0.5703     -  30.0  10.0
+turn_NE.png           62.0  62.0    0 -0.09   18    0    0   3    5   10   2 0.6001 0.5955     -  28.2   6.7
+turn_NW.png           62.0  62.0    0   0.0   18    0    0  12    4   10   4  0.586 0.5972     -  29.1  12.7
+turn_S.png            62.0  62.0    0  -0.5   21    0    0   0    7    8   4 0.6178 0.6055     -  27.6  10.7
+turn_SE.png           62.0  62.0    0   0.3   21    0    0   1   11    7   3 0.5337 0.5248     -  28.2   5.7
+turn_SW.png           62.0  62.0    0 -0.17   21    0    0  14   12   11   2 0.5718 0.5535     -  28.8  14.9
+turn_W.png            62.0  62.0    0  0.38   20    0    0   0    6    5   4 0.6402 0.6396     -  30.2  16.2
+walk_SE_k0.png        63.0  63.0    0   1.0   22    0    0   0    4    2   2 0.5621 0.5613     -  29.6   6.9
+walk_SE_k1.png        60.0  60.0    0   1.5   22    0    0   0   12    5   3 0.5449 0.5439     -  30.5   6.6
+walk_SE_k2.png        61.0  61.0    0   0.5   22    0    0  12    8    7   2 0.5769  0.577     -  26.2   5.5
+walk_SE_k3.png        64.0  64.0    0   0.0   22    0    0   0    5    2   1 0.5678 0.5663     -  27.4   7.7
+colour drift (L1 of tone mix vs set median; worst sprite):
+  hair 0.246 (turn_N)  red 0.33 (jump_E_apex)  skin 0.336 (turn_NE)  leather 0.135 (slash_SE_k2)  dark 0.088 (jump_E_land)  steel 0.783 (slash_SE_k1)  eye 0.469 (jump_E_apex)  pink 0.426 (jump_E_apex)  purple 0.0 (jump_E_land)
+directions (turn set) spread: height 0.0, body_height 0.0, eye_row_rel 0.016, bow_rel 0.015, baseline 0.0, feet_cx 0.88
+seq jump_E (3 fr): h_ratio [0.903, 1.065, 0.823] w_ratio [1.24, 1.32, 1.32] squash 0.823 stretch 1.065 flicker 0 boil [0, 4]
+    head disp 9.1 overlap 1.31 lag 0 | bow disp 8.8 overlap 2.0 lag 0 | tip len 130.5 smooth 0.079 arc {'cx': 66.0, 'cy': 73.0, 'r': 36.7, 'rms': 0.0} | smear [20, 40, 21]
+seq slash_SE (4 fr): h_ratio [0.968, 0.968, 0.919, 0.952] w_ratio [1.105, 1.737, 1.579, 1.263] squash 0.919 stretch 0.968 flicker 2 boil [127, 188, 130]
+    head disp 6.1 overlap 3.85 lag 0 | bow disp 6.9 overlap 4.41 lag 0 | tip len 89.6 smooth 0.246 arc {'cx': 60.7, 'cy': 93.9, 'r': 42.3, 'rms': 0.69} | smear [79, 148, 61, 87]
+seq walk_SE (4 fr): h_ratio [1.016, 0.968, 0.984, 1.032] w_ratio [1.026, 1.105, 1.132, 1.079] squash 0.968 stretch 1.032 flicker 0 boil [156, 144, 168, 205]
+    head disp 3.0 overlap 1.07 lag 0 | bow disp 4.0 overlap 1.82 lag 0 | tip len 8.2 smooth 0.333 arc {'cx': 89.8, 'cy': 101.4, 'r': 2.2, 'rms': 0.37} | smear [49, 54, 62, 54]
+report: hybrid/S3_editchain/r3/metrics.json

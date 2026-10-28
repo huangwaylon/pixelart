@@ -1,0 +1,250 @@
+{
+ "_doc": "M96 EYE SPEC (96px figure, palette v2/pixelize/palette.json). Source of truth for eyes/mouths/blush of masters, head stamps and animated frames. Code: v2/m96/tools/eyes.py (templates, mirror, detect, stamp, check); checker CLI v2/m96/tools/eyecheck.py. See EYE_SPEC.md.",
+ "legend": {
+  "K": "lash / closed-eye line",
+  "@": "CATCHLIGHT (rendered W): 1x2 px, iris column 2 (inset), top two iris rows; with the 1x2 K pupil at iris column 3 just right of it; same screen-space position in every eye/view/expression (iris is never mirrored)",
+  "W": "sclera (only where the template has it)",
+  "h": "iris top (dark grey-brown)",
+  "g": "iris mid",
+  "L": "iris bottom light",
+  "m": "brow (on skin) / mouth line",
+  "S": "skin shadow / lid",
+  "R": "open-mouth interior",
+  "k": "blush / tongue",
+  ".": "skin (eye box is cleared to skin first)",
+  "_": "keep base pixel"
+ },
+ "front_left": {
+  "_doc": "near/left eye in screen space, 6 cols x 6 rows: brow row (only skin marks touched) + lash row + 3 iris rows + 1 empty row (no lower lid, no grey under-row: both read as eye bags). c0 = outer lash wing (row 2), c1-c4 = iris. IRIS (identical in every eye, never mirrored): h top row, g sides, L light bottom (inside the eye), K pupil 1px at iris col 3 (row 2), CATCHLIGHT '@' = 1x2 W at iris col 2 (top two iris rows, inset). Right eye = eyetmpl.mirror() mirrors only the lash/wing geometry; SE far eye = front_right cols 1,2,3,5; E uses front_left.",
+  "neutral": [
+   "......",
+   ".KKKK.",
+   "Kh@hh.",
+   ".g@Kg.",
+   ".gLLg.",
+   "......"
+  ],
+  "cheerful": [
+   "......",
+   ".KKKK.",
+   "Kh@hh.",
+   ".g@Kg.",
+   "..LL..",
+   "......"
+  ],
+  "determined": [
+   "......",
+   "KKKK..",
+   "Kh@hKK",
+   ".g@Kg.",
+   ".gLLg.",
+   "......"
+  ],
+  "shout": [
+   ".mmm..",
+   "KKKK..",
+   "Kh@hKK",
+   ".g@Kg.",
+   "..LL..",
+   "......"
+  ],
+  "effort": [
+   "mm.___",
+   "......",
+   "KKK...",
+   "..KKK.",
+   "......",
+   "......"
+  ],
+  "joy": [
+   "......",
+   "......",
+   ".KKK..",
+   "K...K.",
+   "......",
+   "......"
+  ],
+  "surprised": [
+   ".KKKK.",
+   "......",
+   ".h@hh.",
+   ".g@Kg.",
+   ".gLLg.",
+   "......"
+  ],
+  "pain": [
+   "......",
+   "KK....",
+   "..KKK.",
+   "KK....",
+   "......",
+   "......"
+  ],
+  "blink_half": [
+   "......",
+   "......",
+   ".KKKK.",
+   "Kg@Kg.",
+   ".gLLg.",
+   "......"
+  ],
+  "blink_closed": [
+   "......",
+   "......",
+   "......",
+   "K.....",
+   ".KKKK.",
+   "......"
+  ],
+  "embarrassed": [
+   "..mm..",
+   ".KKKK.",
+   "Kh@hh.",
+   ".g@Kg.",
+   ".gLLg.",
+   "......"
+  ]
+ },
+ "aliases": {
+  "hurt": "pain"
+ },
+ "mouth": {
+  "_doc": "4 cols x 3 rows (cheek, mouth, jaw rows) at the anchor 'mouth' origin. m line, R open interior (no K ring), k tongue. Every mark has a same-colour 8-neighbour (qc orphan rule).",
+  "neutral": [
+   "____",
+   ".mm.",
+   "____"
+  ],
+  "cheerful": [
+   "____",
+   "RRRR",
+   ".kk."
+  ],
+  "determined": [
+   "____",
+   "mmmm",
+   "____"
+  ],
+  "shout": [
+   "_RR_",
+   "RkkR",
+   "_RR_"
+  ],
+  "effort": [
+   "____",
+   "mmmm",
+   "m__m"
+  ],
+  "joy": [
+   "R__R",
+   "RRRR",
+   ".kk."
+  ],
+  "surprised": [
+   "____",
+   ".RR.",
+   ".RR."
+  ],
+  "pain": [
+   "____",
+   "mmmm",
+   "_RR_"
+  ],
+  "blink_half": [
+   "____",
+   ".mm.",
+   "____"
+  ],
+  "blink_closed": [
+   "____",
+   ".mm.",
+   "____"
+  ],
+  "embarrassed": [
+   "____",
+   "m.m.",
+   ".m.m"
+  ]
+ },
+ "blush": {
+  "_doc": "k px per visible cheek (far cheek max 2; NE 1 px x 2 rows), on the row under the eye block (lash row + 5). Always >= 2 px (qc orphan rule) and present in the neutral master (qc: stamps may not add colours absent from the master head); embarrassed adds a 2nd row",
+  "neutral": 2,
+  "cheerful": 3,
+  "determined": 2,
+  "shout": 2,
+  "effort": 2,
+  "joy": 3,
+  "surprised": 2,
+  "pain": 2,
+  "blink_half": 2,
+  "blink_closed": 2,
+  "embarrassed": 4
+ },
+ "ne_lash": {
+  "_doc": "NE: only the lash tip pokes past the cheek outline (px count, stacked upward from the lash row)",
+  "neutral": 1,
+  "cheerful": 1,
+  "determined": 1,
+  "shout": 1,
+  "effort": 0,
+  "joy": 0,
+  "surprised": 2,
+  "pain": 0,
+  "blink_half": 1,
+  "blink_closed": 0,
+  "embarrassed": 1
+ },
+ "iris_chars": "hgL",
+ "rules": [
+  "One construction everywhere: thin K lash row + wing one row lower at the outer corner; iris 4x3: h top, g sides, L light bottom, K pupil 1px (iris col 3, row 2), W catchlight 1x2 (iris col 2, rows 1-2); nothing below the iris (a lid or grey row read as eye bags).",
+  "Catchlight: 1x2 W at iris column 2, top two iris rows, pupil right next to it; identical in both eyes, all views, all expressions, mirrored frames (the iris block is never mirrored).",
+  "Eye vertical position: lash row = head crown row + eye_dy (eye_dy identical for S and SE; E/NE per anchor JSON).",
+  "Expressions change only lash/lid/brow rows; whenever the iris is visible it is this iris + catchlight.",
+  "Iris colour = the illustration's grey-brown: palette h #342126 / g #5e4a45 / L #85706a (eyes material).",
+  "Open-eye expressions keep the neutral iris + catchlight pixels exactly (qc stamps rule); expressions change only lash/brow/lid rows, mouth and blush; closed/squint expressions (joy, blink_closed, effort, pain) drop the iris."
+ ],
+ "eye_dy": 21,
+ "kinds_by_view": {
+  "S": [
+   "front_left",
+   "front_right"
+  ],
+  "SE": [
+   "front_left",
+   "far"
+  ],
+  "E": [
+   "front_left"
+  ],
+  "NE": [],
+  "N": [],
+  "W": [
+   "front_right"
+  ],
+  "SW": [
+   "far_left",
+   "front_right"
+  ],
+  "NW": [],
+  "_doc": "left-to-right in screen space; mirrored views (W/SW/NW) use mirrored kinds, the catchlight stays top-left"
+ },
+ "front_right_override": {
+  "_doc": "hand-mirrored right eyes where the lid slope must mirror but the catchlight column may not",
+  "determined": [
+   "......",
+   "..KKKK",
+   "KK@hhK",
+   ".g@Kg.",
+   ".gLLg.",
+   "......"
+  ],
+  "shout": [
+   "..mmm.",
+   "..KKKK",
+   "KK@hhK",
+   ".g@Kg.",
+   "..LL..",
+   "......"
+  ]
+ }
+}

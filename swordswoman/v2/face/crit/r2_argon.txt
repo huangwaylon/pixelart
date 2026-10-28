@@ -1,0 +1,34 @@
+**(1) Expression Readability & Scores (1x)**
+*   **Neutral (7/10):** Readable. S-view 1px mouth dot looks slightly blank/pouty.
+*   **Determine (7.5/10):** Good furrowed brow. S-view 2px flat mouth reads solemn, not confident.
+*   **Shout (7/10):** Big improvement from R1, but S-view mouth (4x3 with heavy dark outline) touches chin outline, reading like a goatee/donut.
+*   **Effort (6/10):** Clenched teeth (2 white px + dark frame) too bulky for a 9px face height; reads as a thick-lipped grimace. Eyes lack iris blue, looking possessed.
+*   **Joy (8.5/10):** Clean `^ ^` arches and happy mouth.
+*   **Smile (6.5/10):** Raising the lower lid with skin-tone makes eyes look tiny/beady rather than warmly squinting.
+*   **Surprised (6.5/10):** Vertical white sclera strips on outer edges make her look cross-eyed.
+*   **Pain (8/10):** `> <` eyes read instantly. S-view mouth is 1px too wide.
+*   **Blink_hal (7.5/10):** Reads well, slightly sleepy/smug.
+*   **Blink_clo (8.5/10):** Clean closed lashes.
+*   **Squash (8/10):** Nice 1px vertical compression; frown works well.
+
+**(2) Pokemon-like Grammar?**
+Closer, but mouths are **over-outlined**. Look at Lyra/Dawn/Rosa refs: mouths are 1–3px of dark/red/pink *without* dark top/bottom borders. Your Effort/Shout mouths use full dark rings, cramping the tiny chin. Eye glints (top-inner white, bottom-outer blue) are solid, though standard BW eyes are 1px taller.
+
+**(3) Personality?**
+Spirited in SE/C_r4, but S-view Neutral/Determine look too stoic/doll-like. Needs an asymmetric smirk for confidence.
+
+**(4) Views**
+*   **S (6.5/10):** Strict symmetry makes expressions stiff; large mouths collide with the chin outline.
+*   **SE (8/10):** Best angle. Far eye (2px wide) and near eye (3px wide) balance well. (Note: C_r4 SE has better cheek roundness).
+*   **E (7.5/10):** Profile mouths fixed nicely! Eye sits 1px too far back from the nose bridge.
+*   **NE/N (8.5/10):** Clean. Squash frames correctly drop 1px.
+
+**(5) Top 6 Concrete Pixel Fixes**
+1.  **Effort mouth (S/SE):** Delete the bottom dark outline of the mouth. Use 2 white pixels (teeth) directly above the chin shadow, with 1px dark corners.
+2.  **Effort eyes (S/SE):** Replace the outer black bottom-lash pixel with blue iris so eyes read as squinting, not blacked-out.
+3.  **Shout mouth (S):** Narrow from 4px to 3px wide: top row 3px dark red, bottom row 1px pink tongue flanked by skin-tone (remove side dark outlines).
+4.  **Surprised eyes (S/SE):** Remove the outer vertical white sclera column; instead, raise the top lash by 1px and use a 2x2 blue iris + 1px white glint to show wide eyes without crossing them.
+5.  **Smile eyes (S/SE):** Restore the full 2px vertical blue iris from Neutral; convey the smile purely via the 2px upturned mouth + pink blush pixels.
+6.  **Determine mouth (S):** Shift the left mouth pixel up by 1px (or use skin-shadow) to create a confident 2px diagonal smirk.
+
+**Overall Score: 7.4 / 10** (Solid R2 progress; un-outline the mouths to hit 8.5+).

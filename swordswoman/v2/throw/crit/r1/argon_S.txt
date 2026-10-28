@@ -1,0 +1,4 @@
+**Scores (0–10):** Natural: 8 | Readable at 1x: 5 | Energetic: 7 | Pokémon-trainer feel: 6
+
+1. **Frames 5–7 (Follow, Follow2, Recover):** In top-down South view, the flying orb overlaps her torso/legs and reads as if she's still holding it or dribbling it between her feet—give the orb a higher parabolic arc (and a ground shadow) so it visibly separates from her silhouette immediately after release.
+2. **Frame 4 (Release) & Frame 5 (Follow):** The mocap is too literal to a heavy ground-bound baseball pitch; cheat the release smear wider outside her body silhouette and have the trainer hold an iconic, upright "point/extend arm forward" pose during the follow-through instead of folding completely down.

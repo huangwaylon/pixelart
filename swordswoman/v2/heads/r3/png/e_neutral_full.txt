@@ -1,0 +1,27 @@
+; pivot 15 23
+; composed head+bun+bow (e neutral)
+...###...###..........
+..#jHH#.#RRR#...####..
+.#jHHHh##rRRR#.#eeeE#.
+.#HHHHh#.#rr##eEEEER#.
+.#HHHhh#####eE#EEERR#.
+..#hh###HHH#ER#RRRR#..
+...##jHHHHH#########..
+..#jHHHHHHHHHHHHHHH#..
+.#jHHHHHHHHHHHHHHHHH#.
+.#jHHHHHHHHHHHHHHHHH#.
+#jHHHHHHHHHHHHHHHHHHh#
+#jHHHHHHHHHHHHHHHHHHh#
+#HHHHHHHHHHHhHHHHHHHh#
+#hHHHHHHHHHHhHHHHHHhh#
+#hHHHHHHHHHhh223322#..
+.#hHHHHHHHHhh22##22#..
+.#hhHHHHHHHh222wi22#..
+..#hHHHHHHHh222iI22#..
+..#hhHHHHHHh222II222#.
+..#hhHHHHHHh22222222#.
+...#hhHHHHHh2222221#..
+...#hhHHHHhh2222222#..
+....#hhHHhhh#22222#...
+.....#hhhhhh######....
+......######..........

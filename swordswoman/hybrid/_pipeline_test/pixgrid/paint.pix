@@ -1,0 +1,6 @@
+# paint-over test: extends a PNG, patch with standard chars
+extends: v5_rt.png
+patch: 20 20
+_KK_
+KwwK
+_KK_

@@ -1,0 +1,43 @@
+{
+ "size": [
+  18,
+  18
+ ],
+ "facing": "E",
+ "attach": "ball_land",
+ "pivot": [
+  8,
+  12
+ ],
+ "ms": [
+  40,
+  60,
+  80,
+  80
+ ],
+ "cell_offset": [
+  32,
+  58
+ ],
+ "cell": "64x64 C_r3 cell, 48 px figure, feet pivot (32,62); throw pose E view: hand at stride (cocked behind the head) ~(32,33), at release ~(55,35), head centre ~(40,31); cell_offset = example landing point on the ground in front of the figure (use the real landing point)",
+ "layer": "over",
+ "mirror": "flip x for W-facing: x -> w-1-x, pivot_x -> w-1-pivot_x, negate dx of offsets/velocity, cell_offset_x -> 63-x (f0/f1 ring symmetric)",
+ "burst_centre": [
+  8.5,
+  8.5
+ ],
+ "burst_note": "burst centre = orb centre, 3.5 px above the ground pivot (orb radius)",
+ "radius_px": [
+  7,
+  10,
+  10,
+  10
+ ],
+ "play_after": "throw_orb (hide the orb on f0)",
+ "frames": [
+  "f0 flash: 12x14 W disc with y rim and 2 px y/W stubs N/S/E/W",
+  "f1 ring 12 px (W inner / w outer, 8 px hole) + 5 chips: 2x2 r/R and W/w, 2 px R, pinwheel",
+  "f2 ring gone, 6 chips (2x2 rR / Ww, 2 px) at radius 8-9",
+  "f3 4 fading 1x2 chips (r/R, W/w) drifting outward"
+ ]
+}

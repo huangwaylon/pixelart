@@ -1,0 +1,5 @@
+**Scores:** Natural: 7/10 | Readable at 1x: 6/10 | Energetic: 8/10 | Trainer Feel: 7/10
+
+**Top 2 Fixes:**
+1. **Frame 1 (Ready):** Move the orb 3–4px away from her torso into clean silhouette space; right now it overlaps her face/chest, making her head read poorly at 1x and hiding the iconic "holding up the ball" trainer pose.
+2. **Frames 5–7 (Follow-through & Flight):** Increase the horizontal distance traveled by the orb between frames and add a subtle 1px bounce before Frame 9; currently, the ball drops almost vertically right in front of her feet, killing the momentum of that big baseball windup.

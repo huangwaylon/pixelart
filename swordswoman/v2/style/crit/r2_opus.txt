@@ -1,0 +1,35 @@
+Restored session: Mon 26 Oct 2026 14:01:26 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+# Art-director critique, round 2
+
+## A: PMD-40, score 5/10
+At 1×, the head-to-body ratio and silhouette match PMD well. At 4× and 6× it doesn't read as official.
+1. **Hair is one flat dark mass.** PMD hair uses 3 tones with a hard highlight arc. Add a 1-px lighter band that follows the curve of the crown, and break the right-side edge into strands.
+2. **The sword is a 2–3 px light-blue smear with stair-step edges.** Redraw the blade as 1 px white plus 1 px grey inside a black outline, and draw the hilt as a clear 2-px brown block held in the fist.
+3. **The kimono reads as a red blob.** Add 2–3 dark-red fold lines (sleeve edge, hem, the V of the collar) and limit red to 3 tones.
+4. **The outline doubles up.** There are 2-px corners on the bow, hair and feet. Cut them to a single-pixel line, and give the feet 2–3 px of shoe with a highlight.
+
+## C: Hybrid-48, score 6/10
+The outline is the cleanest of the three and the pose reads well.
+1. **The eyes are big anime eyes with lashes.** PMD eyes are about 2×3 px of dark iris with a single white pixel. Remove the lashes and lower the brow line.
+2. **The hair on the right is a ruler-straight vertical edge** (a giveaway that it comes from the 3D model). Give it a slight taper, plus 1–2 notches where strands separate.
+3. **The sleeve shading has banding/dither** (4–5 reds). Cut it to 3 reds with flat cel shading.
+4. **The hand and hilt don't read**, and the feet are 2-px stubs. Use a skin-tone fist pixel cluster over a brown grip, and 3-px shoes.
+
+## B: BW-battle-72, score 4/10
+The rendering is the best of the three (hair strands, open mouth), but the proportions break the BW frame. BW trainer sprites are 6–7 heads tall, and B is about 2.5 heads at 72 px, so it reads as an indie RPG mascot.
+1. **Too many soft "pillow" tones** on the hair and kimono. Use 4 tones per material.
+2. **The hair highlight is sparse and grey.** Make it a solid band with a tinted highlight.
+3. **The legs are rigid blocks.** Taper them, and add knee and ankle breaks.
+4. **The obi is a flat purple bar.** Add a tie knot and a fold.
+
+## Best fit for an 8-direction action game: C
+- **Size:** 48 px fits 8-direction tiles and leaves room for a readable slash arc and dash smear.
+- **Look:** PMD proportions are the official top-down "Pokemon" look.
+- **Animation cost:** it's manageable across 8 directions × 6 actions.
+- **Why not A or B:** A is too small for the sword to read in slash frames. B has wrong proportions for its target, and at 72 px it would take about 3× the pixel cleanup per frame.
+
+Fix C's eyes and hair edge first. Those two changes are the biggest part of the gap to 8.
+
+Saving session...completed.

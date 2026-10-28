@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I made the hand a 3-row skin mitten (s, with S shadow forming a small thumb) that hangs down-left out of the sleeve under a 1px K outline, and closed the sleeve hem with a clean 2px K step. It passes the budget on the third of four tries, with no '!' flags: ssim_b -0.000, dE +0.013, sil -0.001, orphan pixels (S4) down from 2 to 1, and no new outline gaps or jaggies.

@@ -1,0 +1,14 @@
+**Scores:** A) Consistency 6 · B) Readability at 48px 7 · C) Iso correctness 4 · D) Katana clarity 5
+
+**Problems by view**
+- **left:** The bun sits on the face side of the bow. Front, back and right all put the bow forward and the bun behind it, so this view contradicts the rest. The wide kimono sleeve is also missing, leaving only a thin arm (right has the same sleeve problem).
+- **iso_S:** It is a copy of front at eye level. The crown isn't showing, the eyes haven't moved down the face, and the legs and feet aren't foreshortened.
+- **iso_SE / iso_E:** The camera only looks slightly down. The face is still drawn eye-level, and the top of the head looks no different from front.
+- **iso_NE:** The bow is about 1.3× bigger than in back, tilted, and more detailed. At 40px it turns into a red blob that covers half the head. The hair is fuller and wider than in back.
+- **iso_N:** The bow is oversized, and the hair is longer and wider than in back. The elevation is plausible but the scale has drifted.
+- **back (probes):** The bow loops and bun read as red horns at 40px.
+- **Katana, all views:** The blade is a 1px light grey line that nearly disappears on the grey background. The guard is lost at 40px, and the dark handle blends into the obi and boots.
+- **iso_SE_k / iso_E_k:** The blade crosses the legs and boots, which muddies the silhouette. In iso_E_k it's unclear which hand holds the sword (near or far).
+- **front_k:** The bow is larger than in front.
+
+**Must regenerate:** iso_S, iso_SE and iso_E (redraw at a true ~30° down angle), iso_NE and iso_N (match bow and hair size to back), and left (swap bun and bow, add the sleeve). For the katana set, regenerate iso_SE_k and iso_E_k with the blade kept clear of the legs, and give the blade a darker edge on every katana view.

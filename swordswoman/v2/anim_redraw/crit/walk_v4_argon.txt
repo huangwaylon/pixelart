@@ -1,0 +1,13 @@
+SCORE 4.5/10
+
+1. **Broken Walk Mechanics (f3, f7)**: High-point frames (f3, f7) show wide contact strides instead of passing/push-off poses, while actual contact frames (f0, f4) have the same wide stride, causing two frames of wide legs in a row (f3->f4, f7->f0) and severe foot sliding.
+2. **Ground Plane Drift (f0–f7)**: The planted foot's bottom pixel shifts vertically by up to 4px across the cycle (e.g., planted foot rises in f3 and f7 along with the head), making her float and hop rather than walk on a solid floor.
+3. **Sword Length & Angle Jitter (f0–f7)**: The katana blade shrinks significantly in f2, f3, f6, f7 (losing 4–5px in length) and shifts its staircase angle erratically instead of following a smooth pendulum arc from the hand/hip.
+4. **Torso/Arm Shimmer & Popping (f0 vs f1, f4 vs f5)**: The right arm sleeve and chest highlight pop in shape and width between frames rather than swinging cleanly; f0's right sleeve flares out with jagged orphan-like pixels compared to f4.
+5. **No Secondary Motion (f0–f7)**: The oversized chibi head, hair bun, side bangs, and red bow are completely rigid copy-pastes that only translate vertically, lacking the requested lively bounce/overlap.
+6. **Muddy Leg Crossover & Shading (f1, f2, f6)**: In passing frames f1 and f6, the front and back boots merge into an unreadable dark blob with inconsistent skin-tone leg pixels popping in and out (compare bare legs in f5/f7 vs solid black in f1/f2).
+
+**Top 3 Fixes:**
+1. **Fix Foot Poses & Ground Line**: Lock a horizontal ground line for all planted feet; make f0/f4 the widest contact strides, f1/f5 low squash/recoil, f2/f6 mid-passing, and f3/f7 high push-off (one foot grounded on toes, the other lifting forward—not a wide split).
+2. **Stabilize the Katana**: Copy-paste a single consistent blade sprite or keep exact pixel length across all 8 frames, rotating it subtly by 1–2px at the tip to lag behind the hip's vertical bounce.
+3. **Add Follow-Through & Clean Legs**: Offset the bow flaps and hair tips by 1px down on down-frames (f2, f6) and 1px up on descent (f0, f4), and clearly separate the back leg in passing frames (f1, f2, f5, f6) using a darker shade value so boots don't merge.

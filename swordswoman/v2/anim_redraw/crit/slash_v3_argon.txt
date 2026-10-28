@@ -1,0 +1,10 @@
+SCORE 5.5/10
+1. F2–F3 (Smear/Blade): The smear arc (F2) is way too thin at the tail and gets completely occluded by her giant chibi head, breaking the arc's flow; in F3, the sword blade gets clipped off by the right 64x64 cell border.
+2. F1 (Windup Silhouette): Raising the sword directly behind the dark hair bun hides 80% of the blade; only a tiny 4px white tip peeks out top-left, making the windup unreadable at 1x.
+3. F2–F4 (Head/Hair Stiffness): The head, face, hair, and bow appear copy-pasted vertically down from F0 with zero forward tilt, squash, or hair/bow drag during an aggressive lunge.
+4. F3 (Spark FX): The impact spark at the bottom-right looks like a stiff geometric asterisk/crosshair rather than an energetic slash impact, and clashes with the sword tangent.
+5. F4 (Follow-through Sword): The crossguard grows into a massive 4x3px white cross, looking like a glowing Christian cross rather than a katana/short-sword guard in perspective.
+6. F1–F2 (Foot Grounding): Neither foot stays pinned as a pivot; both feet teleport between F1 and F2, making the lunge feel unanchored.
+FIX 1 (Clear Silhouette & Canvas): Shift the character 6–8px left across all frames so F2–F4 sword tips and smears don't clip the right edge; in F1, angle the sword further left/up so the full blade clears the hair silhouette.
+FIX 2 (Redraw Smear & FX): In F2, bring the smear arc in *front* of the lower face/body or widen its front edge so the swing plane reads; replace F3's geometric cross spark with a snappy 2-value crescent/burst impact, and fix F4's oversized white crossguard.
+FIX 3 (Secondary Motion): Tilt the head forward 1–2px on F2–F3, squashing the face height by 1px on F3 impact, and trail the red bow/bun upward on F2 and downward on F3–F4 for bouncy follow-through.

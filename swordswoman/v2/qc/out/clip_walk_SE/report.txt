@@ -1,0 +1,8 @@
+QC GATE clip: PASS  (7 items, 0 failing; palette pixelize/palette.json)
+PASS walk_SE_c00
+PASS walk_SE_c01
+PASS walk_SE_c02
+PASS walk_SE_c03
+PASS walk_SE_c04
+PASS walk_SE_c05
+PASS walk_SE_continuity

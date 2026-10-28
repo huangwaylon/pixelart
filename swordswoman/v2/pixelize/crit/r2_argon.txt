@@ -1,0 +1,30 @@
+**(1) Overall Method Ranking (/10)**
+1. **E2 (kcent+face): 7.0** – Best balance of clean color clusters and facial feature retention.
+2. **C (k-centroid): 6.5** – Smooth body shading and silhouette, slightly weaker eyes than E2.
+3. **E1 (PixelOE+face): 5.5** – Improved faces over B, but retains noisy clothing outlines.
+4. **A (majority): 5.0** – Clean flat regions, but loses fine details like eyes at lower resolutions.
+5. **B (PixelOE): 4.5** – High contrast, but introduces stray noise pixels and distorted eyes.
+6. **D (Gemini): 3.5** – Hallucinates bare legs instead of black stockings; inconsistent proportions.
+
+**(2) Size Ranking**
+1. **96px** – Necessary resolution to resolve eyes, mouth, and ribbon cleanly.
+2. **80px** – Good silhouette, though facial features begin to blur.
+3. **64px** – Too low-res for this detail level; faces become unreadable blobs.
+
+**(3) Face Scores (/10 at 80px | 96px)**
+* **A:** 4.0 | 5.5 (Eyes merge into bangs; lacks mouth definition)
+* **B:** 4.0 | 5.0 (Sclera pixels are oversized and asymmetric)
+* **C:** 5.5 | 6.5 (Decent spacing, soft contour)
+* **D:** 5.0 | 5.5 (Clear eyes, but alters original expression)
+* **E1:** 5.5 | 6.0 (Better eye placement, noisy chin contour)
+* **E2:** 6.0 | 7.0 (Best eye symmetry, spacing, and mouth hint)
+
+**(4) Top 3 Method+Size Combinations**
+1. **E2 @ 96px**
+2. **C @ 96px**
+3. **E2 @ 80px**
+
+**(5) Top 3 Defects of #1 (E2 @ 96px)**
+1. **Front-view eyes:** Still lack distinct sclera/pupil separation, reading as dark slots.
+2. **Hand/finger definition:** Hands blend into the red sleeves with muddy pixel clusters.
+3. **Jagged outlines:** The outer silhouette and ribbon edges have minor staircase aliasing.

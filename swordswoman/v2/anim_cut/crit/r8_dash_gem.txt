@@ -1,0 +1,17 @@
+Here is the critique of your `dash_SE` animation sheet from a strict pixel-art direction standpoint. While the key poses and timing readability are decent, the piece relies too heavily on automated cutout-rig rotation without hand-cleaning the resulting pixel artifacts, and the secondary motion lacks follow-through.
+
+### Top 3 Concrete Problems & Fixes
+
+1. **Rotated Pixel Jaggies & Broken Outlines on Katana (Frames 0, 1, 3, 4, 5, 6 - Bottom-left quadrant, weapon region)**
+   * **Problem:** The katana is clearly being rotated as a rigid sprite via nearest-neighbor interpolation rather than being redrawn per angle. In Frames 0, 4, 5, and 6 (45-degree angle), the dark outline forms severe staircase jaggies and double-thick pixel clusters along the blade edge, while the white/grey blade interior fractures into disconnected single-pixel checkerboards. Contrast this with Frame 2 (horizontal), where the blade is clean.
+   * **Exact Fix:** Hand-pixel the katana at each specific angle. For the ~45-degree angle (Frames 0, 4, 5, 6), enforce a strict 1-pixel diagonal step for both the upper and lower outlines, keeping the inner blade a consistent 2-pixel thickness without dark outline pixels bleeding into the metal core. For the ~30-degree angle (Frames 1, 3), use clean 2:1 pixel steps (`--__--__`) for the line art.
+
+2. **Rigid Head/Hair & Zero Secondary Overlap (All Frames 0 through 6 - Upper torso/head region)**
+   * **Problem:** The entire head, hair, and top ribbon are pasted as an identical, static block across every single frame, without a single pixel of deformation, tilt, or drag. During a high-speed burst (Frames 1–2) and violent skid (Frame 3), having the ribbon and side-locks remain stiffly upright kills the sense of velocity and weight. Furthermore, in Frame 5 (`settle`), the character pops *higher* vertically than in Frame 6 (`rest`) without any squash/stretch, looking like an accidental vertical translation rather than a recovery settle.
+   * **Exact Fix:** Redraw the top ribbon and back hair bun to react to momentum. In Frames 1 and 2 (`burst`), flatten the ribbon down by 2–3 pixels and trail the loops leftward to show wind resistance. In Frame 3 (`skid`), whip the hair locks and ribbon forward (right) by 2 pixels to show inertia overlapping the braking body. In Frame 5 (`settle`), lower the head by 1 pixel relative to Frame 6 (`rest`) to create a subtle cushion squash before rising into the final idle pose.
+
+3. **Static Cutout Afterimages & Detached Speed Lines (Frames 1 & 2 - Center-left background region)**
+   * **Problem:** In Frames 1 and 2, the red afterimage is simply a recolored duplicate of the active pose shifted ~12 pixels left, complete with a heavy outline that competes visually with the main sprite and creates muddy pixel tangents behind the sword arm and back leg. Additionally, the horizontal white speed lines on the far left of Frame 1 (2 lines) and Frame 2 (1 tiny line) are completely detached from the character and too sparse to convey a burst.
+   * **Exact Fix:** Remove the dark outline from the afterimage sprites entirely—use flat silhouette fills so they recede behind the main character's black outline. In Frame 1, replace the cloned pose afterimage with the *previous* pose silhouette (Frame 0 `antic`) stretched horizontally toward Frame 1 to bridge the motion gap. Connect the white speed lines directly to the trailing edges of the ribbon and sword tip, tapering them from 2 pixels thick near the body down to 1 pixel at the tail.
+
+SCORE dash: 6.2

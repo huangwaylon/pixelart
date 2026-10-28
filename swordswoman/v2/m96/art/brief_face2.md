@@ -1,0 +1,5 @@
+
+ROUND 2 (refine). Start from DIR/start2.txt (a first polish of crop.txt; crop origin in the sprite = X0,Y0). FEEDBACK: FB
+DIR/ref3.txt = the illustration box-averaged at 3x the sprite resolution (each sprite pixel = 3x3 chars; row labels = sprite rows, header = sprite column ones-digit repeated 3x), mapped to the nearest palette char with no material rules ('.' = pure white = eye whites/highlights). Use it to place the lash, iris, whites and mouth on the exact sprite rows/columns of the illustration.
+Rules: '.' INSIDE the face (enclosed eye-white holes) must become W (never transparent). Otherwise keep the outer silhouette and everything outside the face as is.
+SELF-CHECK LOOP (required): after writing DIR/OUT run `/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/tools/try.sh VIEWCODE DIR/OUT X0 Y0`. It prints the fidelity gate vs the original auto sprite (no value may carry '!'; higher face_ssim/ssim_b and lower dE are better) and writes a compare image (Read it). Iterate up to 5 times, aiming for a cute, clear anime face AND a face_ssim at or above the original. Keep the version with the best balance; it must have no '!'.

@@ -1,0 +1,48 @@
+{
+ "size": [
+  42,
+  12
+ ],
+ "facing": "E",
+ "attach": "hand",
+ "pivot": [
+  35,
+  4
+ ],
+ "ms": [
+  40,
+  60,
+  60
+ ],
+ "cell_offset": [
+  44,
+  40
+ ],
+ "cell": "64x64 C_r3 cell, 48 px figure, feet pivot (32,62), faces SE; cell_offset = sword hand in the slash pose",
+ "layer": "over",
+ "mirror": "flip x for W-facing: pivot_x -> size_w-1-pivot_x, negate dx of arc_*, cell_offset_x -> 63-x",
+ "arc_start": [
+  -35,
+  0
+ ],
+ "arc_end": [
+  6,
+  -4
+ ],
+ "arc_centre": [
+  -16,
+  -21
+ ],
+ "arc_mid": [
+  -15,
+  7
+ ],
+ "arc_note": "arc_start = tail tip, arc_end = leading tip, arc_centre = centre of the circle through tail tip, outer bottom and lead tip, arc_mid = outer-edge midpoint; [dx,dy] from pivot",
+ "max_thickness_px": 7,
+ "frames": [
+  "f0 smear: 42x12 moon crescent; outer W band 2-3 px, p middle, 1 px b inner rim; tail joined to the body: n tip 2 px (rows 4-6) running into the W/p bands; lead tip 2 px W at the upper right",
+  "f1 thinned 3 px band (p W W) on a flatter outer edge: lead tip lowered to row 3 at 2 px/row (~27 deg), outer runs 1-2-2-2-3-3-3-3-6 (no flat step), tail cut back to x12 with a 2 px n point",
+  "f2 4 evenly spaced 2 px chips (~5 px apart) on the outer edge near the lead tip: WW, pW, pW, pW"
+ ],
+ "target": "42x12 crescent (work/h_try.txt guide, hand-cleaned in work/r4E5/make.py); pivot = sword hand on the inner side 6 px left / 4 px below the lead tip; canvas at cell (9,36)-(50,47)"
+}

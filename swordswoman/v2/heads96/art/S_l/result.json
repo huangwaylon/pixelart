@@ -1,0 +1,35 @@
+{
+ "logs": [
+  {
+   "attempt": 0,
+   "sec": 93,
+   "fixes": [
+    "lagL: S4 floating pixels (no neighbours) at [(10, 36)]: remove or connect",
+    "drop: S4 floating pixels (no neighbours) at [(10, 36)]: remove or connect"
+   ]
+  },
+  {
+   "attempt": 1,
+   "sec": 40,
+   "fixes": []
+  }
+ ],
+ "out": {
+  "lagR": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/S/artist/l_lagR.txt",
+   "lint": []
+  },
+  "lift": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/S/artist/l_lift.txt",
+   "lint": []
+  },
+  "lagL": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/S/artist/l_lagL.txt",
+   "lint": []
+  },
+  "drop": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/S/artist/l_drop.txt",
+   "lint": []
+  }
+ }
+}

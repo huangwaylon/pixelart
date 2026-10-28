@@ -1,0 +1,426 @@
+[
+{
+"k": 1,
+"score": 9.54,
+"m": {
+"area": 520,
+"neg": 157,
+"neg_frac": 0.302,
+"blade_vis": 42,
+"blade_all": 46,
+"blade_hidden": 4,
+"blade_over_body": 2,
+"ground_gap": -0.0,
+"foot_px": 2,
+"h": 34,
+"bottom": 59,
+"w": 49,
+"clip": 0,
+"blade_len": 27.0,
+"tilt": -26.3,
+"bend_px": 11.6,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.85,
+-0.45,
+0,
+1
+],
+"ik.R": [
+-0.95,
+-0.2,
+0,
+1
+],
+"lean": 16,
+"roll": 14,
+"spine": [
+6,
+0,
+-6
+],
+"head": [
+-18,
+0,
+0
+],
+"blade_scr": [
+178,
+0
+]
+}
+},
+{
+"k": 6,
+"score": 9.5,
+"m": {
+"area": 516,
+"neg": 161,
+"neg_frac": 0.312,
+"blade_vis": 48,
+"blade_all": 53,
+"blade_hidden": 5,
+"blade_over_body": 4,
+"ground_gap": -0.0,
+"foot_px": 2,
+"h": 33,
+"bottom": 59,
+"w": 47,
+"clip": 0,
+"blade_len": 26.4,
+"tilt": -25.5,
+"bend_px": 11.2,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.82,
+-0.4,
+0,
+1
+],
+"ik.R": [
+-0.92,
+-0.22,
+0,
+1
+],
+"lean": 18,
+"roll": 10,
+"spine": [
+8,
+0,
+-6
+],
+"head": [
+-20,
+0,
+0
+],
+"blade_scr": [
+190,
+0
+]
+}
+},
+{
+"k": 7,
+"score": 9.37,
+"m": {
+"area": 521,
+"neg": 150,
+"neg_frac": 0.288,
+"blade_vis": 37,
+"blade_all": 42,
+"blade_hidden": 5,
+"blade_over_body": 0,
+"ground_gap": 0.0,
+"foot_px": 1,
+"h": 35,
+"bottom": 59,
+"w": 50,
+"clip": 0,
+"blade_len": 27.0,
+"tilt": -31.2,
+"bend_px": 10.7,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.92,
+-0.55,
+0,
+1
+],
+"ik.R": [
+-0.88,
+-0.28,
+0,
+1
+],
+"lean": 14,
+"roll": 6,
+"spine": [
+4,
+0,
+-6
+],
+"head": [
+-16,
+0,
+0
+],
+"blade_scr": [
+186,
+0
+]
+}
+},
+{
+"k": 5,
+"score": 9.23,
+"m": {
+"area": 527,
+"neg": 150,
+"neg_frac": 0.285,
+"blade_vis": 28,
+"blade_all": 33,
+"blade_hidden": 5,
+"blade_over_body": 1,
+"ground_gap": 0.0,
+"foot_px": 2,
+"h": 36,
+"bottom": 59,
+"w": 50,
+"clip": 0,
+"blade_len": 26.9,
+"tilt": -29.1,
+"bend_px": 11.7,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.88,
+-0.48,
+0,
+1
+],
+"ik.R": [
+-0.8,
+-0.35,
+0,
+1
+],
+"lean": 8,
+"roll": 18,
+"spine": [
+0,
+0,
+-6
+],
+"head": [
+-10,
+0,
+0
+],
+"blade_scr": [
+172,
+0
+]
+}
+},
+{
+"k": 3,
+"score": 9.17,
+"m": {
+"area": 527,
+"neg": 154,
+"neg_frac": 0.292,
+"blade_vis": 32,
+"blade_all": 38,
+"blade_hidden": 6,
+"blade_over_body": 3,
+"ground_gap": -0.0,
+"foot_px": 2,
+"h": 33,
+"bottom": 59,
+"w": 52,
+"clip": 0,
+"blade_len": 26.9,
+"tilt": -31.7,
+"bend_px": 12.3,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.95,
+-0.42,
+0,
+1
+],
+"ik.R": [
+-0.9,
+-0.18,
+0,
+1
+],
+"lean": 12,
+"roll": 16,
+"spine": [
+4,
+0,
+-6
+],
+"head": [
+-16,
+0,
+0
+],
+"blade_scr": [
+176,
+0
+]
+}
+},
+{
+"k": 2,
+"score": 9.06,
+"m": {
+"area": 516,
+"neg": 153,
+"neg_frac": 0.297,
+"blade_vis": 46,
+"blade_all": 51,
+"blade_hidden": 5,
+"blade_over_body": 5,
+"ground_gap": -0.0,
+"foot_px": 1,
+"h": 34,
+"bottom": 59,
+"w": 48,
+"clip": 0,
+"blade_len": 27.0,
+"tilt": -23.6,
+"bend_px": 10.9,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.8,
+-0.55,
+0,
+1
+],
+"ik.R": [
+-0.85,
+-0.3,
+0,
+1
+],
+"lean": 20,
+"roll": 8,
+"spine": [
+10,
+0,
+-6
+],
+"head": [
+-22,
+0,
+0
+],
+"blade_scr": [
+184,
+0
+]
+}
+},
+{
+"k": 0,
+"score": 8.96,
+"m": {
+"area": 522,
+"neg": 143,
+"neg_frac": 0.274,
+"blade_vis": 24,
+"blade_all": 30,
+"blade_hidden": 6,
+"blade_over_body": 1,
+"ground_gap": 0.0,
+"foot_px": 2,
+"h": 36,
+"bottom": 59,
+"w": 51,
+"clip": 0,
+"blade_len": 27.1,
+"tilt": -32.2,
+"bend_px": 10.9,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.9,
+-0.5,
+0,
+1
+],
+"ik.R": [
+-0.9,
+-0.25,
+0,
+1
+],
+"lean": 10,
+"roll": 10,
+"spine": [
+0,
+0,
+-6
+],
+"head": [
+-14,
+0,
+0
+],
+"blade_scr": [
+180,
+0
+]
+}
+},
+{
+"k": 4,
+"score": 8.65,
+"m": {
+"area": 507,
+"neg": 149,
+"neg_frac": 0.294,
+"blade_vis": 51,
+"blade_all": 55,
+"blade_hidden": 4,
+"blade_over_body": 6,
+"ground_gap": 0.0,
+"foot_px": 1,
+"h": 33,
+"bottom": 59,
+"w": 47,
+"clip": 0,
+"blade_len": 27.0,
+"tilt": -17.2,
+"bend_px": 11.1,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.75,
+-0.5,
+0,
+1
+],
+"ik.R": [
+-1.0,
+-0.15,
+0,
+1
+],
+"lean": 24,
+"roll": 12,
+"spine": [
+12,
+0,
+-6
+],
+"head": [
+-26,
+0,
+0
+],
+"blade_scr": [
+180,
+0
+]
+}
+}
+]

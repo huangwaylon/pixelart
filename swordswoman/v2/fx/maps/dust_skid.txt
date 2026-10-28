@@ -1,0 +1,37 @@
+# dust_skid 48px (F6: tapered puff trail, tall at the heel (right) -> small at the back, 1-2 px uneven gaps); work/r4F6/make.py
+# frame 0 70ms
+...........................
+...........................
+...........................
+...........................
+......................GGG..
+.....................GuuUG.
+...........GGGG....GGuuuUUG
+.....GGG..GuuuUG..GuuuuUUUG
+....GuuUG.GuUUUG..GuUUUUUgG
+....GgggG.GggggG..GgggggggG
+.....GGG...GGGG....GGGGGGG.
+# frame 1 70ms
+...........................
+...........................
+...........................
+......................GGG..
+.....................GuuUG.
+...........GGG....GGGuuuUUG
+..........GuuUG..GuuuuuUUUG
+..GGG....GuuUUG..GuuuUUUUUG
+.GuuUG...GuUUUG..GuUUUUUUgG
+.GgggG...GggggG..GggggggggG
+..GGG.....GGGG....GGGGGGGG.
+# frame 2 90ms
+...........................
+...........................
+......GG...................
+.....GuUG.............GGG..
+.....GggG...GGG......GuuUG.
+......GG...GuuUG...GGuuuUUG
+...........GgggG..GuuuuUUUG
+............GGG...GuUUUUUgG
+..................GgggggggG
+...................GGGGGGG.
+...........................

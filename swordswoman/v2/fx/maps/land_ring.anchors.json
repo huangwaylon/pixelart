@@ -1,0 +1,53 @@
+{
+ "size": [
+  31,
+  9
+ ],
+ "facing": "E",
+ "attach": "feet",
+ "pivot": [
+  15,
+  4
+ ],
+ "ms": [
+  60,
+  80,
+  100
+ ],
+ "cell_offset": [
+  34,
+  61
+ ],
+ "layer": "behind",
+ "layer_split": {
+  "behind_rows": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "over_rows": [
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "why": "far/top arc passes behind the shoes, centre row + near/bottom arc in front"
+ },
+ "mirror": "symmetric; no flip needed",
+ "note": "pivot = ellipse centre = ground point (cell 34,61). Widths 17/27/31 (shoes 13), heights 5/7/9; far arc n, ends + near shoulders u, near bottom W; runs 7-3-2 / 11-4-2-2 / 9-4-3-2-2. f2 = 6 evenly spaced dashes (5-6 px along the ring, 3 px gaps): top + bottom centre gaps, two dashes wrapping each end. Canvas bottom reaches cell row 65: do not clip effects to the cell.",
+ "ground_y": 4,
+ "width_px": [
+  17,
+  27,
+  31
+ ],
+ "height_px": [
+  5,
+  7,
+  9
+ ],
+ "symmetric": true,
+ "cell": "64x64 C_r3 cell, 48 px figure, feet pivot (32,62), faces SE; back silhouette edge (K) x21 rows 23-32, x23 row 40, x20 rows 43-48; body centre ~(32,44); shoes x28-40 (centre 34), ground_y = cell row 61 (back-shoe sole row)"
+}

@@ -1,0 +1,23 @@
+**S_r1 — Score: 6.5/10**
+Off-model silhouette and pose relative to `SE_anchor`. Hair is boxy and lacks the top-down perspective curvature.
+1. **Top knot (above yellow line):** Delete the 2px dark nub protruding above the bow knot; `SE_anchor` and `E_r1` show the hair bun sits *behind* the bow, not on top of it.
+2. **Hair crown (below cyan line):** Round the top-left and top-right corners of the hair mass by 1–2px; current flat horizontal line looks purely 2D front-on, ignoring the 30° camera.
+3. **Sleeves/Hands (mid-torso):** Flare the outer sleeve silhouettes outward by 1px and tuck the hands up to match the kimono-style wide sleeves and arms-akimbo read of `SE_anchor`.
+
+**E_r1 — Score: 7.5/10**
+Solid profile read, but cranial depth and bow geometry drift from anchor.
+1. **Bow loop (yellow/cyan lines):** Widen the red bow loop by 1px toward the front (right) and add the dark interior crease pixel; currently reads as a flat cap.
+2. **Back of skull (between cyan/green):** Trim 1px column off the rear vertical hair edge; cranium is too deep front-to-back compared to `SE_anchor`.
+3. **Skirt hem (above legs):** Flatten the bottom skirt curve by 1px; the front/back bustle bulges are too symmetrical and rounded vs. the sharp pleated flare in `SE_anchor`.
+
+**NE_r1 — Score: 5/10**
+Fails 3/4 isometric perspective; torso and hair are completely orthographic (identical to `N_r1` width), only the feet and face sliver turn.
+1. **Torso/Sleeves (below green line):** Shift the torso center 1px right, foreshorten the far (right) sleeve by 1–2px, and overlap the near (left) shoulder into the back.
+2. **Hair silhouette (cyan to green):** Round the top-left crown corner and break the rigid vertical left hair edge to match the organic hair volume of `SE_anchor`.
+3. **Bow/Bun placement (yellow/cyan):** Shift the bun and bow knot 1px left (away from the camera-facing side) to properly reflect the 3/4 rear rotation.
+
+**N_r1 — Score: 6/10**
+Reads as a flat rectangle at 1x due to rigid vertical/horizontal hair lines.
+1. **Hair outer edges (cyan to green):** Taper the top corners inward by 1–2px and flare the bottom hair tips slightly; remove the severe rectangular box shape.
+2. **Bow knot (between yellow/cyan):** Add a 2px wide red center knot between the bow loops above the dark bun; currently looks like two disconnected red ears.
+3. **Hemline (bottom of tunic):** Drop the center-back skirt hem by 1px to respect the 30° top-down cylinder wrap.

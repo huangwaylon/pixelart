@@ -1,0 +1,29 @@
+Restored session: Mon 26 Oct 2026 11:37:54 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Per action**
+
+- **Idle: A wins.** The figure stays identical across all 13 frames. B's two-hand ready pose has more attitude, but the face, sword angle and legs change shape every frame. **A's biggest problem:** the bounce is only 1–2px and the sword hangs dead toward the lower left. At 1x it reads as a standing still, not breathing.
+- **Walk: A wins.** Clear contact/down/pass/up poses and the skirt bounces. B is smaller, and its legs shuffle while the sword stays rigid. **A's biggest problem:** the sword stays at the same angle trailing behind, and the arms don't swing. In the down frames the feet blur into the skirt.
+- **Run: B wins.** It has a real forward lean, a big stride, airborne frames and speed lines. A is basically an upright walk played faster. **B's biggest problem:** the head changes size and face between frames (f2 and f6 are noticeably different), the grip floats off the hand, and the speed lines don't touch the body.
+- **Jump: A wins.** Anticipation, a squashed crouch, a stretched launch, a hang at the top, a squashed landing with dust, and a rebound. That's textbook. B shrinks and grows between frames, the sword jumps position, and there's no squash or stretch. **A's biggest problem:** in rise, apex and fall the blade cuts diagonally across her body, so it looks like she's been stabbed. The stretched launch frame also changes her head shape.
+- **Dash: B wins.** The low lunge with the blade leading and the afterimage sell the speed. A's dithered red smear reads as blood or noise, and her body stays upright. **B's biggest problem:** the grey-blue line-art ghost is spaghetti at 1x, and in f4 the sword passes through her legs.
+- **Slash: A wins, narrowly.** It has the right structure: anticipation, wind-up, a 40ms smear, impact, hitstop and recovery. B's crescent and lunge look better, but its recovery frames jump between unrelated poses (the sword changes hands, then sits flat at the waist). **A's biggest problem:** the smear is a thin pale arc floating above her head, not connected to the blade. Her body doesn't lunge or twist, so the hit has no weight.
+
+**Head shape:** both heads are too boxy, and B's is worse. Both have a flat top, vertical hair walls and a square, block-like bottom, so she reads as wearing a helmet. A round chibi skull needs a domed crown, hair that bulges out past the temples, and cheeks that taper into a small soft chin. The bun on the back of the head also comes and goes: it's always there in B but appears only in some A frames. Pick one.
+
+**Merge plan**
+
+1. **A's rig is the source of truth** for proportions, part shapes, timing in ms, squash/stretch and hitstop. That's where the consistency comes from.
+2. **B is the pose library only.** Retarget the rig to B's key poses for run, dash and slash. Never ship B's pixels directly.
+3. **Use Gemini once, for the parts sheet.** Redraw the head and hair (2–3 angles), torso and sword hand, then clean them by hand to a locked palette and feed them into A's parts.
+4. **Put FX on their own layer and hand-pixel them.** Make 2–3 smear frames that sweep from the blade edge; for the dash, use a solid 2-tone afterimage. Drop A's dither cloud and B's outline ghost.
+5. **Run an automatic QC check:** reject any frame where the head's bounding box or the palette differs from the reference by more than 1px.
+
+**Top 3 fixes**
+
+1. **Rebuild the head as a round skull part.** Every frame of every action uses it, so it's the biggest win for appeal.
+2. **Re-rig the sword arm.** The blade should follow the arm swing in idle and walk, and never cross the torso; add a second grip point for two-handed poses.
+3. **Push the fast actions:** a 10–15° forward lean, airborne frames in the run, a full-body lunge and twist on the slash, and smears that come off the blade.
+
+Saving session...completed.

@@ -1,0 +1,597 @@
+{
+ "verdict": "PASS",
+ "mode": "clip",
+ "items": [
+  {
+   "name": "walk_SE_c00",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/animate96/work/walk_SE/c00.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {
+    "eyecheck": {
+     "view": "SE",
+     "eyes": [
+      {
+       "kind": "front_left",
+       "x0": 60,
+       "y0": 52,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      },
+      {
+       "kind": "far",
+       "x0": 70,
+       "y0": 52,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      }
+     ],
+     "expr": "neutral",
+     "catchlights": 4,
+     "eye_dy": 20
+    },
+    "head_offset": [
+     -2,
+     2
+    ],
+    "view": "SE",
+    "key": "contact",
+    "rest": false,
+    "contact": true,
+    "rows": {
+     "crown": 32,
+     "eye": 50,
+     "chin": 66,
+     "shoulder": 67,
+     "waist": 75,
+     "obi_bot": 79,
+     "hem": 91,
+     "skin_top": 92,
+     "sock_top": 97,
+     "knee": 105,
+     "boot_top": 114,
+     "sole": 124
+    },
+    "head": {
+     "x0": 47,
+     "x1": 77,
+     "y0": 32,
+     "y1": 66,
+     "w": 31,
+     "h": 35
+    },
+    "bow_off": -9.0,
+    "eyes": [
+     [
+      60,
+      50,
+      [
+       [
+        62,
+        54
+       ],
+       [
+        62,
+        55
+       ]
+      ]
+     ],
+     [
+      70,
+      52,
+      [
+       [
+        71,
+        54
+       ],
+       [
+        71,
+        55
+       ]
+      ]
+     ]
+    ]
+   },
+   "issues": []
+  },
+  {
+   "name": "walk_SE_c01",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/animate96/work/walk_SE/c01.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {
+    "eyecheck": {
+     "view": "SE",
+     "eyes": [
+      {
+       "kind": "front_left",
+       "x0": 58,
+       "y0": 52,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      },
+      {
+       "kind": "far",
+       "x0": 68,
+       "y0": 52,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      }
+     ],
+     "expr": "neutral",
+     "catchlights": 4,
+     "eye_dy": 20
+    },
+    "head_offset": [
+     -4,
+     2
+    ],
+    "view": "SE",
+    "key": "down",
+    "rest": false,
+    "contact": false,
+    "rows": {
+     "crown": 32,
+     "eye": 50,
+     "chin": 66,
+     "shoulder": 67,
+     "waist": 76,
+     "obi_bot": 80,
+     "hem": 92,
+     "skin_top": 93,
+     "sock_top": 96,
+     "knee": 95,
+     "boot_top": 95,
+     "sole": 124
+    },
+    "head": {
+     "x0": 45,
+     "x1": 75,
+     "y0": 32,
+     "y1": 66,
+     "w": 31,
+     "h": 35
+    },
+    "bow_off": -9.0,
+    "eyes": [
+     [
+      58,
+      50,
+      [
+       [
+        60,
+        54
+       ],
+       [
+        60,
+        55
+       ]
+      ]
+     ],
+     [
+      68,
+      52,
+      [
+       [
+        69,
+        54
+       ],
+       [
+        69,
+        55
+       ]
+      ]
+     ]
+    ]
+   },
+   "issues": []
+  },
+  {
+   "name": "walk_SE_c02",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/animate96/work/walk_SE/c02.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {
+    "eyecheck": {
+     "view": "SE",
+     "eyes": [
+      {
+       "kind": "front_left",
+       "x0": 60,
+       "y0": 50,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      },
+      {
+       "kind": "far",
+       "x0": 70,
+       "y0": 50,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      }
+     ],
+     "expr": "neutral",
+     "catchlights": 4,
+     "eye_dy": 20
+    },
+    "head_offset": [
+     -2,
+     0
+    ],
+    "view": "SE",
+    "key": "pass",
+    "rest": false,
+    "contact": false,
+    "rows": {
+     "crown": 30,
+     "eye": 48,
+     "chin": 64,
+     "shoulder": 65,
+     "waist": 74,
+     "obi_bot": 78,
+     "hem": 90,
+     "skin_top": 91,
+     "sock_top": 95,
+     "knee": 101,
+     "boot_top": 108,
+     "sole": 124
+    },
+    "head": {
+     "x0": 47,
+     "x1": 77,
+     "y0": 30,
+     "y1": 64,
+     "w": 31,
+     "h": 35
+    },
+    "bow_off": -9.0,
+    "eyes": [
+     [
+      60,
+      48,
+      [
+       [
+        62,
+        52
+       ],
+       [
+        62,
+        53
+       ]
+      ]
+     ],
+     [
+      70,
+      50,
+      [
+       [
+        71,
+        52
+       ],
+       [
+        71,
+        53
+       ]
+      ]
+     ]
+    ]
+   },
+   "issues": []
+  },
+  {
+   "name": "walk_SE_c03",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/animate96/work/walk_SE/c03.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {
+    "eyecheck": {
+     "view": "SE",
+     "eyes": [
+      {
+       "kind": "front_left",
+       "x0": 64,
+       "y0": 52,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      },
+      {
+       "kind": "far",
+       "x0": 74,
+       "y0": 52,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      }
+     ],
+     "expr": "neutral",
+     "catchlights": 4,
+     "eye_dy": 20
+    },
+    "head_offset": [
+     2,
+     2
+    ],
+    "view": "SE",
+    "key": "contact2",
+    "rest": false,
+    "contact": true,
+    "rows": {
+     "crown": 32,
+     "eye": 50,
+     "chin": 66,
+     "shoulder": 67,
+     "waist": 76,
+     "obi_bot": 80,
+     "hem": 94,
+     "skin_top": 95,
+     "sock_top": 97,
+     "knee": 104,
+     "boot_top": 111,
+     "sole": 124
+    },
+    "head": {
+     "x0": 51,
+     "x1": 81,
+     "y0": 32,
+     "y1": 66,
+     "w": 31,
+     "h": 35
+    },
+    "bow_off": -9.0,
+    "eyes": [
+     [
+      64,
+      50,
+      [
+       [
+        66,
+        54
+       ],
+       [
+        66,
+        55
+       ]
+      ]
+     ],
+     [
+      74,
+      52,
+      [
+       [
+        75,
+        54
+       ],
+       [
+        75,
+        55
+       ]
+      ]
+     ]
+    ]
+   },
+   "issues": []
+  },
+  {
+   "name": "walk_SE_c04",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/animate96/work/walk_SE/c04.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {
+    "eyecheck": {
+     "view": "SE",
+     "eyes": [
+      {
+       "kind": "front_left",
+       "x0": 65,
+       "y0": 51,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      },
+      {
+       "kind": "far",
+       "x0": 75,
+       "y0": 51,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      }
+     ],
+     "expr": "neutral",
+     "catchlights": 4,
+     "eye_dy": 20
+    },
+    "head_offset": [
+     3,
+     1
+    ],
+    "view": "SE",
+    "key": "down2",
+    "rest": false,
+    "contact": false,
+    "rows": {
+     "crown": 31,
+     "eye": 49,
+     "chin": 65,
+     "shoulder": 66,
+     "waist": 75,
+     "obi_bot": 79,
+     "hem": 91,
+     "skin_top": 92,
+     "sock_top": 97,
+     "knee": 103,
+     "boot_top": 109,
+     "sole": 124
+    },
+    "head": {
+     "x0": 52,
+     "x1": 82,
+     "y0": 31,
+     "y1": 65,
+     "w": 31,
+     "h": 35
+    },
+    "bow_off": -9.0,
+    "eyes": [
+     [
+      65,
+      49,
+      [
+       [
+        67,
+        53
+       ],
+       [
+        67,
+        54
+       ]
+      ]
+     ],
+     [
+      75,
+      51,
+      [
+       [
+        76,
+        53
+       ],
+       [
+        76,
+        54
+       ]
+      ]
+     ]
+    ]
+   },
+   "issues": []
+  },
+  {
+   "name": "walk_SE_c05",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/animate96/work/walk_SE/c05.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {
+    "eyecheck": {
+     "view": "SE",
+     "eyes": [
+      {
+       "kind": "front_left",
+       "x0": 64,
+       "y0": 50,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      },
+      {
+       "kind": "far",
+       "x0": 74,
+       "y0": 50,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      }
+     ],
+     "expr": "neutral",
+     "catchlights": 4,
+     "eye_dy": 20
+    },
+    "head_offset": [
+     2,
+     0
+    ],
+    "view": "SE",
+    "key": "pass2",
+    "rest": false,
+    "contact": false,
+    "rows": {
+     "crown": 30,
+     "eye": 48,
+     "chin": 64,
+     "shoulder": 65,
+     "waist": 74,
+     "obi_bot": 78,
+     "hem": 90,
+     "skin_top": 91,
+     "sock_top": 96,
+     "knee": 104,
+     "boot_top": 112,
+     "sole": 124
+    },
+    "head": {
+     "x0": 51,
+     "x1": 81,
+     "y0": 30,
+     "y1": 64,
+     "w": 31,
+     "h": 35
+    },
+    "bow_off": -9.0,
+    "eyes": [
+     [
+      64,
+      48,
+      [
+       [
+        66,
+        52
+       ],
+       [
+        66,
+        53
+       ]
+      ]
+     ],
+     [
+      74,
+      50,
+      [
+       [
+        75,
+        52
+       ],
+       [
+        75,
+        53
+       ]
+      ]
+     ]
+    ]
+   },
+   "issues": []
+  },
+  {
+   "name": "walk_SE_continuity",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/animate96/work/walk_SE",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  }
+ ],
+ "clips": {
+  "walk_SE": {
+   "view": "SE",
+   "frames": 6,
+   "rest": []
+  }
+ }
+}

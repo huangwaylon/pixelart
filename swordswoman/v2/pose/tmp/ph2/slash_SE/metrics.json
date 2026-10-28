@@ -1,0 +1,551 @@
+{
+"frames": [
+{
+"area": 505,
+"neg": 145,
+"neg_frac": 0.287,
+"blade_vis": 32,
+"blade_all": 39,
+"blade_hidden": 7,
+"blade_over_body": 0,
+"ground_gap": 0.0,
+"foot_px": 2,
+"h": 40,
+"bottom": 59,
+"w": 41,
+"clip": 0,
+"blade_len": 26.1,
+"tilt": 12.9,
+"bend_px": 4.6,
+"shape": "C",
+"name": "antic",
+"ms": 160,
+"air": false
+},
+{
+"area": 541,
+"neg": 167,
+"neg_frac": 0.309,
+"blade_vis": 41,
+"blade_all": 48,
+"blade_hidden": 7,
+"blade_over_body": 0,
+"ground_gap": -0.0,
+"foot_px": 2,
+"h": 48,
+"bottom": 59,
+"w": 35,
+"clip": 0,
+"blade_len": 23.4,
+"tilt": -14.7,
+"bend_px": 2.3,
+"shape": "C",
+"delta": 0.657,
+"name": "windup",
+"ms": 80,
+"air": false
+},
+{
+"area": 458,
+"neg": 125,
+"neg_frac": 0.273,
+"blade_vis": 44,
+"blade_all": 50,
+"blade_hidden": 6,
+"blade_over_body": 8,
+"ground_gap": -0.0,
+"foot_px": 2,
+"h": 41,
+"bottom": 59,
+"w": 42,
+"clip": 0,
+"blade_len": 25.0,
+"tilt": -12.7,
+"bend_px": 7.7,
+"shape": "C",
+"delta": 0.916,
+"name": "smear",
+"ms": 40,
+"air": false
+},
+{
+"area": 462,
+"neg": 115,
+"neg_frac": 0.249,
+"blade_vis": 41,
+"blade_all": 48,
+"blade_hidden": 7,
+"blade_over_body": 4,
+"ground_gap": 0.0,
+"foot_px": 3,
+"h": 37,
+"bottom": 59,
+"w": 45,
+"clip": 0,
+"blade_len": 26.2,
+"tilt": -24.4,
+"bend_px": 7.9,
+"shape": "C",
+"delta": 0.499,
+"name": "impact",
+"ms": 120,
+"air": false
+},
+{
+"area": 465,
+"neg": 128,
+"neg_frac": 0.275,
+"blade_vis": 41,
+"blade_all": 44,
+"blade_hidden": 3,
+"blade_over_body": 2,
+"ground_gap": -0.0,
+"foot_px": 3,
+"h": 39,
+"bottom": 59,
+"w": 43,
+"clip": 0,
+"blade_len": 24.5,
+"tilt": -22.8,
+"bend_px": 7.7,
+"shape": "C",
+"delta": 0.29,
+"name": "follow",
+"ms": 80,
+"air": false
+},
+{
+"area": 473,
+"neg": 131,
+"neg_frac": 0.277,
+"blade_vis": 41,
+"blade_all": 47,
+"blade_hidden": 6,
+"blade_over_body": 8,
+"ground_gap": 0.0,
+"foot_px": 2,
+"h": 43,
+"bottom": 59,
+"w": 33,
+"clip": 0,
+"blade_len": 23.8,
+"tilt": -11.5,
+"bend_px": 4.9,
+"shape": "C",
+"delta": 0.527,
+"name": "recover",
+"ms": 120,
+"air": false
+},
+{
+"area": 519,
+"neg": 152,
+"neg_frac": 0.293,
+"blade_vis": 34,
+"blade_all": 42,
+"blade_hidden": 8,
+"blade_over_body": 6,
+"ground_gap": -0.0,
+"foot_px": 4,
+"h": 45,
+"bottom": 59,
+"w": 33,
+"clip": 0,
+"blade_len": 24.5,
+"tilt": 9.7,
+"bend_px": 3.5,
+"shape": "C",
+"delta": 0.506,
+"name": "settle",
+"ms": 100,
+"air": false
+}
+],
+"pts": [
+{
+"head_top": [
+45.12,
+43.79
+],
+"head": [
+45.52,
+48.89
+],
+"neck": [
+45.92,
+53.99
+],
+"chest": [
+46.27,
+59.3
+],
+"hips": [
+46.28,
+59.56
+],
+"foot.R": [
+37.82,
+75.74
+],
+"knee.R": [
+46.74,
+68.19
+],
+"hand.R": [
+38.24,
+59.59
+],
+"foot.L": [
+51.5,
+75.31
+],
+"knee.L": [
+52.81,
+65.31
+],
+"hand.L": [
+53.38,
+58.63
+],
+"zmin_px": 0.0,
+"blade_pommel": [
+41.48,
+58.7
+],
+"blade_tip": [
+15.65,
+62.65
+]
+},
+{
+"head_top": [
+41.56,
+36.4
+],
+"head": [
+42.37,
+42.53
+],
+"neck": [
+43.18,
+48.66
+],
+"chest": [
+44.35,
+56.13
+],
+"hips": [
+44.41,
+56.47
+],
+"foot.R": [
+35.07,
+73.71
+],
+"knee.R": [
+44.46,
+66.76
+],
+"hand.R": [
+35.0,
+52.38
+],
+"foot.L": [
+51.67,
+75.06
+],
+"knee.L": [
+51.17,
+63.33
+],
+"hand.L": [
+51.49,
+54.31
+],
+"zmin_px": -0.0,
+"blade_pommel": [
+35.63,
+54.69
+],
+"blade_tip": [
+22.66,
+35.24
+]
+},
+{
+"head_top": [
+55.82,
+44.23
+],
+"head": [
+55.12,
+49.49
+],
+"neck": [
+54.43,
+54.76
+],
+"chest": [
+51.6,
+59.68
+],
+"hips": [
+51.51,
+59.93
+],
+"foot.R": [
+35.97,
+72.68
+],
+"knee.R": [
+47.36,
+68.55
+],
+"hand.R": [
+54.27,
+60.06
+],
+"foot.L": [
+62.81,
+75.17
+],
+"knee.L": [
+59.48,
+64.6
+],
+"hand.L": [
+53.16,
+56.93
+],
+"zmin_px": -0.0,
+"blade_pommel": [
+51.13,
+60.73
+],
+"blade_tip": [
+75.87,
+56.95
+]
+},
+{
+"head_top": [
+53.0,
+47.64
+],
+"head": [
+53.14,
+52.58
+],
+"neck": [
+53.27,
+57.52
+],
+"chest": [
+51.22,
+62.47
+],
+"hips": [
+51.16,
+62.72
+],
+"foot.R": [
+33.59,
+71.74
+],
+"knee.R": [
+46.15,
+70.24
+],
+"hand.R": [
+55.05,
+64.32
+],
+"foot.L": [
+65.53,
+75.24
+],
+"knee.L": [
+60.29,
+65.86
+],
+"hand.L": [
+50.85,
+58.84
+],
+"zmin_px": 0.0,
+"blade_pommel": [
+51.67,
+65.04
+],
+"blade_tip": [
+77.2,
+70.96
+]
+},
+{
+"head_top": [
+52.46,
+46.47
+],
+"head": [
+52.69,
+51.51
+],
+"neck": [
+52.92,
+56.55
+],
+"chest": [
+50.74,
+61.83
+],
+"hips": [
+50.67,
+62.08
+],
+"foot.R": [
+33.55,
+71.89
+],
+"knee.R": [
+45.89,
+70.07
+],
+"hand.R": [
+55.51,
+63.93
+],
+"foot.L": [
+64.52,
+75.12
+],
+"knee.L": [
+59.6,
+65.44
+],
+"hand.L": [
+49.21,
+57.69
+],
+"zmin_px": -0.0,
+"blade_pommel": [
+52.44,
+63.87
+],
+"blade_tip": [
+74.37,
+74.84
+]
+},
+{
+"head_top": [
+51.14,
+41.99
+],
+"head": [
+51.03,
+47.31
+],
+"neck": [
+50.93,
+52.62
+],
+"chest": [
+49.53,
+58.23
+],
+"hips": [
+49.48,
+58.51
+],
+"foot.R": [
+38.0,
+74.35
+],
+"knee.R": [
+47.72,
+67.56
+],
+"hand.R": [
+46.5,
+60.41
+],
+"foot.L": [
+57.92,
+75.2
+],
+"knee.L": [
+56.4,
+64.5
+],
+"hand.L": [
+53.06,
+56.55
+],
+"zmin_px": 0.0,
+"blade_pommel": [
+48.55,
+57.71
+],
+"blade_tip": [
+27.58,
+69.06
+]
+},
+{
+"head_top": [
+47.62,
+39.48
+],
+"head": [
+47.94,
+44.97
+],
+"neck": [
+48.27,
+50.46
+],
+"chest": [
+48.14,
+56.74
+],
+"hips": [
+48.14,
+57.04
+],
+"foot.R": [
+41.4,
+75.92
+],
+"knee.R": [
+47.86,
+66.47
+],
+"hand.R": [
+43.48,
+58.39
+],
+"foot.L": [
+53.6,
+75.23
+],
+"knee.L": [
+53.67,
+64.2
+],
+"hand.L": [
+53.48,
+55.3
+],
+"zmin_px": -0.0,
+"blade_pommel": [
+46.47,
+56.95
+],
+"blade_tip": [
+23.36,
+65.04
+]
+}
+]
+}

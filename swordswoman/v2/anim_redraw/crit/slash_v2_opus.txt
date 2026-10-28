@@ -1,0 +1,17 @@
+Restored session: Mon 26 Oct 2026 10:48:15 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 5/10.** The poses read and the timing curve is roughly right, but the impact has no weight and it falls apart on frame-to-frame consistency.
+
+- **F2 smear:** The arc's left tail breaks into scattered dotted pixels, which reads as noise, not motion. The crescent also runs into the blade, so you get two overlapping shapes. Make it one solid tapered arc, thick at the blade end and thinning to nothing at the tail, in 2 tones at most.
+- **F3 impact:** This is the money frame and it's the weakest one. The spark is a few tiny white pixels, unreadable at 1x. The pose is the same as F2's, so there's no squash and no hit-stop: I can't see any visible offset for the shake. Add a 4–6px starburst spark with a frame of 1px body squash, and offset the whole sprite ±1px.
+- **F3 and F4:** These are nearly identical poses, so the "fade" (F4) is just a static hold with leftover smear. Either cut it or use it to pull the weight back.
+- **F1 windup:** The hop-crouch with a raised knee is lively, but the foot leaves its spot and then lands somewhere new in F2 with no anticipation squash in between. The sword also comes up behind her head without any arc.
+- **Feet aren't pinned:** The stance width jumps between F4 and F5, and F6 and F7 slide right. Pick anchor pixels for the planted foot and lock them across F2–F5.
+- **Proportions drift:** F7's head and torso look about 2–3px taller and shifted right compared with F0, so the loop back to ready will pop. Redraw F7 on top of F0 and match them.
+- **F5 follow-through:** The sword dropping down-right is a good idea, but the torso suddenly squares up to the camera. Keep the rotation going from F3 instead.
+- **Timing:** The 40ms smear is fine. The impact hold should be 120–150ms with the shake spread across it. 110+140ms on the recovery is too slow; drop it to about 80+100ms.
+- **Cleanup:** The red dress has some pillow-ish shading on the skirt in F2–F4. The hair outline flickers in static areas between F6 and F7.
+
+Saving session...completed.

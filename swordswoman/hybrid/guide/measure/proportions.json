@@ -1,0 +1,132 @@
+{
+ "note": "H = head height crown->chin (excl. bun/bow).  Concept values hand-measured on the art; model values from rest-pose geometry (tools/hybrid/measure_rig.py).  Width/depth are the hair mass.  iso_v5 values are projected (30 deg elevation), so vertical ratios there are foreshortened vs the orthos.",
+ "concept": {
+  "turnaround_v6_front": {
+   "H_px": 229,
+   "crown_sole_H": 2.576,
+   "chin_sole_H": 1.576,
+   "eye_above_chin_H": 0.227,
+   "brow_above_chin_H": 0.332,
+   "bow_top_above_crown_H": 0.284,
+   "legs_crotch_sole_H": 0.581,
+   "corset_band_H": 0.332,
+   "skirt_tail_above_sole_H": 0.057,
+   "front_hem_above_sole_H": 0.38,
+   "hair_w_H": 1.135,
+   "bow_w_H": 0.782,
+   "collar_w_H": 0.991,
+   "eye_h_H": 0.131,
+   "eye_w_H": 0.197
+  },
+  "turnaround_v6_side": {
+   "H_px": 221,
+   "crown_sole_H": 2.661,
+   "chin_sole_H": 1.661,
+   "eye_above_chin_H": 0.208,
+   "head_depth_H": 0.995
+  },
+  "iso_v5_SE": {
+   "H_px": 294,
+   "crown_sole_H": 2.456,
+   "chin_sole_H": 1.456,
+   "eye_above_chin_H": 0.184,
+   "brow_above_chin_H": 0.279,
+   "bow_top_above_crown_H": 0.333,
+   "corset_band_H": 0.306,
+   "hair_w_H": 1.139,
+   "sword_proj_H": 1.337
+  }
+ },
+ "round9": {
+  "H_world": 1.1485,
+  "crown_z": 2.9485,
+  "chin_z": 1.8,
+  "crown_sole_H": 2.567,
+  "chin_sole_H": 1.567,
+  "eye_above_chin_H": 0.292,
+  "bow_top_above_crown_H": 0.388,
+  "bow_w_H": 0.741,
+  "legs_crotch_sole_H": 0.692,
+  "corset_band_H": 0.393,
+  "collar_w_H": 0.802,
+  "hair_w_H": 1.061,
+  "head_depth_H": 0.935,
+  "skirt_tail_above_sole_H": 0.187,
+  "eye_h_H": 0.162,
+  "katana_len_H": 1.727,
+  "bun_center_z_above_crown_H": 0.113
+ },
+ "guide": {
+  "H_world": 1.1838,
+  "crown_z": 2.9149,
+  "chin_z": 1.7311,
+  "crown_sole_H": 2.462,
+  "chin_sole_H": 1.462,
+  "eye_above_chin_H": 0.268,
+  "bow_top_above_crown_H": 0.3,
+  "bow_w_H": 0.863,
+  "legs_crotch_sole_H": 0.611,
+  "corset_band_H": 0.381,
+  "collar_w_H": 0.946,
+  "hair_w_H": 1.161,
+  "head_depth_H": 0.945,
+  "skirt_tail_above_sole_H": 0.064,
+  "eye_h_H": 0.106,
+  "katana_len_H": 1.675,
+  "bun_center_z_above_crown_H": -0.02
+ },
+ "pixal3d_4view": {
+  "note": "from the earlier front ortho (hybrid/guide/measure/tex_p3d_front.png): taller legs, smaller head",
+  "crown_sole_H": 2.91,
+  "eye_above_chin_H": 0.35,
+  "hair_w_H": 1.04
+ },
+ "silhouette_overlays": {
+  "guide_front_vs_turnaround_v6": {
+   "iou": 0.7678,
+   "top_above_crown_ref": 0.12,
+   "top_above_crown_guide": 0.114,
+   "overlay": "hybrid/guide/measure/overlay_guide_front.png"
+  },
+  "guide_side_vs_turnaround_v6": {
+   "iou": 0.6477,
+   "top_above_crown_ref": 0.129,
+   "top_above_crown_guide": 0.142,
+   "overlay": "hybrid/guide/measure/overlay_guide_side.png"
+  },
+  "round9_front_vs_turnaround_v6": {
+   "iou": 0.7401,
+   "top_above_crown_ref": 0.12,
+   "top_above_crown_guide": 0.147,
+   "overlay": "hybrid/guide/measure/overlay_round9_front.png"
+  },
+  "round9_side_vs_turnaround_v6": {
+   "iou": 0.6736,
+   "top_above_crown_ref": 0.128,
+   "top_above_crown_guide": 0.176,
+   "overlay": "hybrid/guide/measure/overlay_round9_side.png"
+  },
+  "guide_isoSE_vs_iso_v5": {
+   "iou": 0.7435,
+   "top_above_crown_ref": 0.137,
+   "top_above_crown_guide": 0.109,
+   "overlay": "hybrid/guide/measure/overlay_guide_isoSE.png"
+  },
+  "round9_isoSE_vs_iso_v5": {
+   "iou": 0.7033,
+   "top_above_crown_ref": 0.137,
+   "top_above_crown_guide": 0.164,
+   "overlay": "hybrid/guide/measure/overlay_round9_isoSE.png"
+  },
+  "guide_vs_pixal3d_iso8_iou": {
+   "S": 0.702,
+   "SE": 0.696,
+   "E": 0.678,
+   "NE": 0.709,
+   "N": 0.671,
+   "NW": 0.686,
+   "W": 0.651,
+   "SW": 0.643
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "name": "run",
+ "frames": [
+  {
+   "file": "run_f0.json"
+  },
+  {
+   "file": "run_f1.json"
+  },
+  {
+   "file": "run_f2.json"
+  },
+  {
+   "file": "run_f3.json"
+  },
+  {
+   "file": "run_f4.json"
+  },
+  {
+   "file": "run_f5.json"
+  },
+  {
+   "file": "run_f6.json"
+  },
+  {
+   "file": "run_f7.json"
+  }
+ ],
+ "timing_ms": "see hybrid/ANIM_DIRECTION.md section 1"
+}

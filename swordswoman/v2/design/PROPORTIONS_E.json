@@ -1,0 +1,74 @@
+{
+ "_doc": "Level E (slim Pokemon-trainer) proportions, DESIGN strand 2026-10-26. Multipliers/offsets are relative to the AB4 rigid parts (v2/hy3d/partsAB4f, renders v2/parts/out/AB4/renders) in reproportion.py format; apply with scripts/make_rig.sh v2/design/PROPORTIONS_E.json E. 'targets' are in reproportion_solve.py's OWN measure definitions and equal what these multipliers already produce (solver exits at iteration 0). The design-side 2D numbers (crown excl. bun/bow to sole, outer shoulder incl. sleeve caps, obi waist, hem width, all over hair-mass head width) are in 'design_2d' and were matched on the meshes with v2/design/tools_e/m3.py.",
+ "source_front": "v2/design/turnE/front.png (Level E front; measured frontE_19: 3.32 heads, shoulders 0.65, waist 0.40, hem 0.78, legs 0.40 -> final design pushed to the lead targets below)",
+ "design_2d": {
+  "heads_tall_crown_to_sole": 3.45,
+  "shoulder_outer_over_headw": 0.7,
+  "waist_obi_over_headw": 0.5,
+  "hem_over_headw": 0.8,
+  "legs_hem_to_sole_frac": 0.42,
+  "neck_visible_frac_of_height": 0.03,
+  "fingertip_height_frac": 0.38,
+  "eye_centre_down_head": 0.66,
+  "face_width_over_headw": 0.55,
+  "bun_bow_excluded": true
+ },
+ "measured_3d_2d_defs": {
+  "heads": 3.44,
+  "sh": 0.7,
+  "waist": 0.505,
+  "hem": 0.8,
+  "legs": 0.42,
+  "neck": 0.03,
+  "finger": 0.378,
+  "eye": 0.646,
+  "headW_over_headH": 1.06,
+  "thigh_over_headw": 0.2,
+  "knee_over_headw": 0.125
+ },
+ "head": {
+  "scale": 0.9515
+ },
+ "neck": {
+  "extra": 0.0645
+ },
+ "torso": {
+  "width": 0.92,
+  "depth": 0.82,
+  "height": 1.05,
+  "waist": 1.5555
+ },
+ "skirt": {
+  "width": 1.0375,
+  "depth": 0.8,
+  "height": 1.0
+ },
+ "arms": {
+  "length": 1.4029,
+  "thickness": 0.85,
+  "shoulder_x": 1.0693
+ },
+ "legs": {
+  "length": 2.3366,
+  "thickness": 1.0
+ },
+ "hands": {
+  "scale": 0.85
+ },
+ "boots": {
+  "scale": 1.0
+ },
+ "eyes": {
+  "dy": 0.0,
+  "scale": 1.0
+ },
+ "targets": {
+  "heads_tall": 3.6,
+  "shoulder_over_headw": 0.63,
+  "waist_over_headw": 0.73,
+  "legs_frac_of_height": 0.431,
+  "neck_gap": 0.066
+ },
+ "camera_note": "All design_2d numbers are TRUE FRONT (orthographic, 0 deg elevation), like the design sheet. In the 30-deg-elevated game camera (rig_parts.py rest_S) the same rig reads ~3.15 heads with legs ~0.40 because vertical limbs foreshorten (cos30) while the round head does not. That is expected; do not re-solve for the elevated view.",
+ "pixel_notes": "48 px figure (64 cell): head ~14 px tall/wide, face ~8 px, neck 1-2 rows x 3 px, shoulders ~10 px, obi waist ~7 px, hem ~11 px, legs >=4 px wide incl. selout outline (never 1px K both sides on a 2-3 px leg), boots 4-6 px long."
+}

@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I redrew the S-view side lock (rows 11–21 of the crop) as one straight, slightly tapering strand: an h inner line, H base and K outline, angling down over the shoulder to a clean K point at the chest. I also turned the leftover hair specks inside the kimono into E, so the kimono no longer has gaps there. The try.sh check passed with no '!' (ssim_b -0.000, dE +0.047, sil -0.000). One limitation: the dark K blob at rows 7–10 (the start of the old loop under the cheek) is mostly inside the protected face box, so I couldn't change it.

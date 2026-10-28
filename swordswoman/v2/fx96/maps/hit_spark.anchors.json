@@ -1,0 +1,37 @@
+{
+ "size": [
+  30,
+  30
+ ],
+ "facing": "E",
+ "attach": "hit_point",
+ "pivot": [
+  14,
+  14
+ ],
+ "ms": [
+  40,
+  60,
+  80
+ ],
+ "cell_offset": [
+  63,
+  76
+ ],
+ "cell": "128x128 cell, 96 px figure, feet pivot (64,124), faces SE; head top ~(64,29) (bow x60-66 y29-33), head ~x50-80 y29-60, chest ~y70-80; default hit_point = target body_centre (63,76) (torso centre on the obi; r2, was (64,88) on the skirt)",
+ "layer": "over",
+ "mirror": "flip x for W-facing: x -> 29-x, pivot_x -> 15, cell_offset_x -> 127-x",
+ "core_px": "2x2 centre at (14..15,14..15); pivot = upper-left of it; 4-fold rotationally symmetric about (14.5,14.5)",
+ "radius_px": [
+  15,
+  15,
+  14
+ ],
+ "frames": [
+  "f0 10x10 rounded core (w, 1 px y rim) + 4 pinwheel 1 px rays (3 w, 5 y, 2 f tip) + 4 detached 1 px diagonals (4 y, 1 f)",
+  "f1 ring broken into 4 angular diagonal arcs at r~9 (1 px w inside, 1 px y rim outside, y ends) + 4 detached 1 px cardinal dashes yyyff at r 11-15, pinwheel stagger",
+  "f2 6 chips at r 11-14: 3 2x2 y lumps with f outward corner, 3 1 px slivers with f outer tip"
+ ],
+ "play_after": "hit_flash",
+ "note": "r2: single 1 px core/rim/rays (no doubled bands), ring broken into angular arcs, ~20% smaller (36 -> 30). same timing. gen work/B/make_r2.py"
+}

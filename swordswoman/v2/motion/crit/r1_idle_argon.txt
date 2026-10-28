@@ -1,0 +1,7 @@
+OVERALL: 5
+Natural: 6 | Whole-body: 6 | Fluid: 5 | Appealing: 5 | Secondary: 4 | Readable at 1x: 4
+
+Top 3 concrete fixes:
+1. **Stiff Arms/Shoulders (All frames, especially `shift`/`cross` & `shift2`/`cross2`):** The arms stay locked in an identical A-pose silhouette throughout the weight shift. On `land_L` and `hold_L`, drop the left shoulder 1–2px and swing the left hand inward/downward by 2–3px (opposing the hip shift) to break the rigid upper-body symmetry.
+2. **Bow & Ribbon Readability (All frames, SE & E views):** The bow was scaled down so much from OLD to NEW that the ribbon tails become 1px noise or vanish in SE. Scale the bow loops up by 30% (2–3px wider) and flare the ribbon tails outward 2px on `cross` and `cross2` so the drag reads at 1x.
+3. **Pelvis Dip on Passing (`cross` and `cross2`):** The weight transfer glides horizontally. Drop the pelvis/skirt 1–2px lower on `cross` and `cross2` with slight knee flexion to create a proper Richard Williams passing-position arc before rising into `land_L`/`land_R`.

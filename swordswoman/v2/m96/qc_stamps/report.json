@@ -1,0 +1,366 @@
+{
+ "verdict": "PASS",
+ "mode": "stamps",
+ "items": [
+  {
+   "name": "stamp_E_blink_closed",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/E_blink_closed.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_E_blink_half",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/E_blink_half.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_E_cheerful",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/E_cheerful.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_E_determined",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/E_determined.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_E_effort",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/E_effort.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_E_embarrassed",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/E_embarrassed.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_E_joy",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/E_joy.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_E_neutral",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/E_neutral.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_E_pain",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/E_pain.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_E_shout",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/E_shout.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_E_surprised",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/E_surprised.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_NE_blink_closed",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/NE_blink_closed.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_NE_blink_half",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/NE_blink_half.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_NE_cheerful",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/NE_cheerful.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_NE_determined",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/NE_determined.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_NE_effort",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/NE_effort.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_NE_embarrassed",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/NE_embarrassed.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_NE_joy",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/NE_joy.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_NE_neutral",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/NE_neutral.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_NE_pain",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/NE_pain.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_NE_shout",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/NE_shout.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_NE_surprised",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/NE_surprised.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_N_neutral",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/N_neutral.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_SE_blink_closed",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/SE_blink_closed.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_SE_blink_half",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/SE_blink_half.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_SE_cheerful",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/SE_cheerful.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_SE_determined",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/SE_determined.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_SE_effort",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/SE_effort.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_SE_embarrassed",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/SE_embarrassed.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_SE_joy",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/SE_joy.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_SE_neutral",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/SE_neutral.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_SE_pain",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/SE_pain.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_SE_shout",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/SE_shout.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_SE_surprised",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/SE_surprised.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_S_blink_closed",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/S_blink_closed.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_S_blink_half",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/S_blink_half.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_S_cheerful",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/S_cheerful.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_S_determined",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/S_determined.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_S_effort",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/S_effort.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_S_embarrassed",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/S_embarrassed.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_S_joy",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/S_joy.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_S_neutral",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/S_neutral.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_S_pain",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/S_pain.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_S_shout",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/S_shout.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  },
+  {
+   "name": "stamp_S_surprised",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/S_surprised.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  }
+ ]
+}

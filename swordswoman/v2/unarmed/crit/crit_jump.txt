@@ -1,0 +1,5 @@
+1) Natural unarmed motion: **7/10** — Completely free of any weapon-carry or guard stiffness, though the arms stay tucked too low during the airborne frames and detach from the shoulders in frame 3 (top row).
+2) Cheerful trainer feel: **6/10** — The deep crouch (frame 2) and landing absorption (frame 7) are bouncy and cute, but the mid-air pose feels a bit stiff and passive rather than joyful.
+3) Readable at 1x: **8/10** — The vertical jump arc, squash-and-stretch, and high-contrast red/white outfit read very clearly at true pixel resolution.
+
+**Single most important fix:** Reattach the floating arms in frame 3 and swing the arms upward during the apex (frames 4–5) for a more natural, energetic jump.

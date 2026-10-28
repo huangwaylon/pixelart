@@ -1,0 +1,410 @@
+[
+{
+"k": 1,
+"score": 7.14,
+"m": {
+"area": 507,
+"neg": 155,
+"neg_frac": 0.306,
+"blade_vis": 42,
+"blade_all": 47,
+"blade_hidden": 5,
+"blade_over_body": 0,
+"ground_gap": 1.1,
+"foot_px": 1,
+"h": 50,
+"bottom": 58,
+"w": 31,
+"clip": 0,
+"blade_len": 26.9,
+"tilt": -21.0,
+"bend_px": 2.7,
+"shape": "C"
+},
+"var": {
+"scr": {
+"upper_arm.R": [
+160,
+0
+],
+"upper_arm.L": [
+150,
+0
+]
+},
+"blade_scr": [
+130,
+10
+],
+"spine": [
+-24,
+0,
+-20
+],
+"roll": -16,
+"ik.L": [
+0.12,
+-0.99,
+0,
+1
+]
+}
+},
+{
+"k": 5,
+"score": 6.88,
+"m": {
+"area": 503,
+"neg": 148,
+"neg_frac": 0.294,
+"blade_vis": 42,
+"blade_all": 46,
+"blade_hidden": 4,
+"blade_over_body": 0,
+"ground_gap": 1.1,
+"foot_px": 1,
+"h": 51,
+"bottom": 58,
+"w": 29,
+"clip": 3,
+"blade_len": 27.3,
+"tilt": -21.6,
+"bend_px": 3.1,
+"shape": "C"
+},
+"var": {
+"scr": {
+"upper_arm.R": [
+155,
+0
+],
+"upper_arm.L": [
+140,
+0
+]
+},
+"blade_scr": [
+125,
+5
+],
+"spine": [
+-16,
+0,
+-20
+],
+"roll": -20,
+"ik.L": [
+0.1,
+-0.99,
+0,
+1
+]
+}
+},
+{
+"k": 0,
+"score": 6.84,
+"m": {
+"area": 501,
+"neg": 151,
+"neg_frac": 0.301,
+"blade_vis": 38,
+"blade_all": 43,
+"blade_hidden": 5,
+"blade_over_body": 0,
+"ground_gap": 1.1,
+"foot_px": 1,
+"h": 52,
+"bottom": 58,
+"w": 28,
+"clip": 0,
+"blade_len": 27.7,
+"tilt": -19.3,
+"bend_px": 2.1,
+"shape": "C"
+},
+"var": {
+"scr": {
+"upper_arm.R": [
+150,
+0
+],
+"upper_arm.L": [
+140,
+0
+]
+},
+"blade_scr": [
+118,
+10
+],
+"spine": [
+-20,
+0,
+-20
+],
+"roll": -14,
+"ik.L": [
+0.12,
+-0.99,
+0,
+1
+]
+}
+},
+{
+"k": 6,
+"score": 6.11,
+"m": {
+"area": 502,
+"neg": 156,
+"neg_frac": 0.311,
+"blade_vis": 37,
+"blade_all": 47,
+"blade_hidden": 10,
+"blade_over_body": 0,
+"ground_gap": 1.1,
+"foot_px": 2,
+"h": 47,
+"bottom": 59,
+"w": 35,
+"clip": 5,
+"blade_len": 24.0,
+"tilt": -6.9,
+"bend_px": 7.6,
+"shape": "C"
+},
+"var": {
+"scr": {
+"upper_arm.R": [
+170,
+0
+],
+"upper_arm.L": [
+160,
+0
+]
+},
+"blade_scr": [
+150,
+0
+],
+"spine": [
+-30,
+0,
+-20
+],
+"roll": -14,
+"ik.L": [
+0.22,
+-0.82,
+0,
+1
+]
+}
+},
+{
+"k": 3,
+"score": 5.97,
+"m": {
+"area": 495,
+"neg": 150,
+"neg_frac": 0.303,
+"blade_vis": 34,
+"blade_all": 43,
+"blade_hidden": 9,
+"blade_over_body": 0,
+"ground_gap": 1.1,
+"foot_px": 3,
+"h": 47,
+"bottom": 58,
+"w": 32,
+"clip": 9,
+"blade_len": 25.3,
+"tilt": -9.3,
+"bend_px": 8.0,
+"shape": "C"
+},
+"var": {
+"scr": {
+"upper_arm.R": [
+165,
+0
+],
+"upper_arm.L": [
+155,
+0
+]
+},
+"blade_scr": [
+140,
+0
+],
+"spine": [
+-28,
+0,
+-20
+],
+"roll": -18,
+"ik.L": [
+0.16,
+-0.9,
+0,
+1
+]
+}
+},
+{
+"k": 7,
+"score": 3.93,
+"m": {
+"area": 489,
+"neg": 140,
+"neg_frac": 0.286,
+"blade_vis": 49,
+"blade_all": 54,
+"blade_hidden": 5,
+"blade_over_body": 29,
+"ground_gap": 1.1,
+"foot_px": 1,
+"h": 49,
+"bottom": 59,
+"w": 28,
+"clip": 0,
+"blade_len": 28.2,
+"tilt": -7.8,
+"bend_px": 7.7,
+"shape": "C"
+},
+"var": {
+"scr": {
+"upper_arm.R": [
+145,
+0
+],
+"upper_arm.L": [
+135,
+0
+]
+},
+"blade_scr": [
+112,
+20
+],
+"spine": [
+-26,
+0,
+-20
+],
+"roll": -16,
+"ik.L": [
+0.18,
+-0.88,
+0,
+1
+]
+}
+},
+{
+"k": 2,
+"score": 3.91,
+"m": {
+"area": 477,
+"neg": 131,
+"neg_frac": 0.275,
+"blade_vis": 46,
+"blade_all": 51,
+"blade_hidden": 5,
+"blade_over_body": 24,
+"ground_gap": 1.1,
+"foot_px": 2,
+"h": 50,
+"bottom": 59,
+"w": 25,
+"clip": 0,
+"blade_len": 28.4,
+"tilt": -4.3,
+"bend_px": 6.8,
+"shape": "C"
+},
+"var": {
+"scr": {
+"upper_arm.R": [
+140,
+0
+],
+"upper_arm.L": [
+130,
+0
+]
+},
+"blade_scr": [
+105,
+15
+],
+"spine": [
+-18,
+0,
+-20
+],
+"roll": -12,
+"ik.L": [
+0.2,
+-0.8,
+0,
+1
+]
+}
+},
+{
+"k": 4,
+"score": 3.04,
+"m": {
+"area": 483,
+"neg": 130,
+"neg_frac": 0.269,
+"blade_vis": 36,
+"blade_all": 49,
+"blade_hidden": 13,
+"blade_over_body": 27,
+"ground_gap": 1.1,
+"foot_px": 2,
+"h": 50,
+"bottom": 59,
+"w": 26,
+"clip": 0,
+"blade_len": 28.0,
+"tilt": -3.5,
+"bend_px": 6.7,
+"shape": "C"
+},
+"var": {
+"scr": {
+"upper_arm.R": [
+150,
+0
+],
+"upper_arm.L": [
+145,
+0
+]
+},
+"blade_scr": [
+100,
+25
+],
+"spine": [
+-22,
+0,
+-20
+],
+"roll": -10,
+"ik.L": [
+0.25,
+-0.75,
+0,
+1
+]
+}
+}
+]

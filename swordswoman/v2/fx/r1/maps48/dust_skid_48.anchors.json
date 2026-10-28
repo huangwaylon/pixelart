@@ -1,0 +1,26 @@
+{
+ "size": [
+  28,
+  9
+ ],
+ "facing": "E",
+ "attach": "feet",
+ "pivot": [
+  25,
+  8
+ ],
+ "ground_y": 8,
+ "layer": "behind_character",
+ "heel_offset_from_feet": [
+  -4,
+  0
+ ],
+ "place": "pivot -> feet_pivot + heel_offset (cell 28,62)",
+ "trail_dir": "W (behind, character slides E)",
+ "note": "pivot = front (right) end of the trail at the heel; trail streams back -x; pebbles = small g/Ug chips",
+ "ms": [
+  70,
+  70,
+  90
+ ]
+}

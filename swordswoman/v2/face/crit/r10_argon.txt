@@ -1,0 +1,34 @@
+**Sub-scores (1-10):** Readable at 1x: **6** | Intentionally designed: **5** | Pokemon-like: **5** | Carries personality: **5** | **Overall: 5.5/10**
+
+**(1) Expressions (1-10 & Pixel Flaw):**
+*   **Neutral (6):** 2x2 eyes lack verticality (BW refs use 2x3/2x4); 2px mouth looks timid.
+*   **Determined (5):** Brow angle lost under heavy dark bangs; mouth identical to neutral.
+*   **Shout (4):** 3x2 mouth with dark outline around pink center reads as sticking tongue out, not yelling.
+*   **Effort (4):** 4x2 mouth with 2 white pixels inside dark frame reads as buck-teeth/bucky grin.
+*   **Joy (8):** Good `^ ^` eyes, but mouth has same "tongue" issue as Shout.
+*   **Smile (6):** Barely differs from neutral; 3px mouth needs stronger corner lift.
+*   **Surprised (6):** 2x2 black dot mouth is too heavy; eyes need white sclera below iris.
+*   **Pain (6):** `> <` eyes touch hair outline creating dark clusters; wavy mouth is noisy.
+*   **Blink_hal (5):** Flat horizontal lids + slight smile reads sleepy/smug, not mid-blink.
+*   **Blink_clo (7):** Clean closed lids, but smiling mouth should match Neutral's mouth.
+*   **Squash (6):** Reads grumpy/pouting rather than physical impact; needs actual 1px vertical head compression.
+
+**(2) Design & Pokemon-likeness:**
+Not yet. Official BW trainers (Lyra/Dawn/Rosa) have **3-4px tall eyes** with distinct 1px white glints, 2-tone irises, and clear upper lashes separated from hair by 1px skin. Yours are 2px tall and merge into the bangs, killing brow expressions. Mouths overuse dark full-outlines instead of clean 1-2px dark-red/brown lines or un-outlined 2x2 open shapes.
+
+**(3) Personality:**
+Reads passive/doll-like rather than spirited/confident. Lacks the asymmetric smirk or sharp eye-lash angles of Rosa/Hilda.
+
+**(4) Views:**
+*   **S (6/10):** Symmetrical pillow-feeling; chin is too pointy (1px tip) vs rounded Pokemon chins.
+*   **SE (6.5/10):** Both eyes are 2px wide; far (right) eye must be 1px wide for proper 3/4 foreshortening.
+*   **E (5/10):** Flat vertical face plane; lacks 1px nose/mouth protrusion. Ear sits too low.
+*   **NE/N (7/10):** Clean, though NE needs 1px cheek/lash sliver to distinguish from N.
+
+**(5) Top 6 Concrete Pixel Fixes:**
+1.  **Eyes (All):** Raise bang line 1px. Make eyes 2x3px (near) and 1x3px (far in SE): top row dark lash + 1px white glint, middle blue, bottom light-blue highlight.
+2.  **Shout/Joy Mouth:** Remove bottom/side dark outline; use a 2x2 or 3x2 shape (top row dark red/brown interior, bottom row pink tongue) like PMD Meloetta.
+3.  **Effort Mouth:** Replace dark-framed teeth with a 3x1 white bar capped by 1px dark corners, or a 3x1 diagonal grimace.
+4.  **Determined/Smile Mouth:** Give Determined a 2px asymmetric smirk (1px up on left); give Smile a 3px wide `\_/` shape using mid-tone skin-red, not black.
+5.  **E Profile Silhouette:** Push nose/upper-lip out 1px right; indent mouth 1px on Shout/Effort to break the flat vertical line.
+6.  **Squash Frame:** Shift bow and upper hair down 1px to physically squash the head height.

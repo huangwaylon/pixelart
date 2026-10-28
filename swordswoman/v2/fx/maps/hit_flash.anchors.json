@@ -1,0 +1,23 @@
+{
+ "size": [
+  13,
+  13
+ ],
+ "facing": "E",
+ "attach": "hit_point",
+ "pivot": [
+  6,
+  6
+ ],
+ "ms": [
+  40
+ ],
+ "cell_offset": [
+  32,
+  44
+ ],
+ "cell": "64x64 C_r3 cell, 48 px figure, feet pivot (32,62), faces SE; head top ~(32,14), head width ~23, chest ~y40-44; default hit_point = target body_centre (32,44)",
+ "layer": "over",
+ "mirror": "symmetric (no flip needed)",
+ "note": "hard 8-point star (13 px main arms; 2 px W-cored diagonal spikes with y rims grow out of the 5x5 W core, y tips), W/y only, no AA; 1 frame on the hit-stop frame, then hit_spark"
+}

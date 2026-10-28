@@ -1,0 +1,10 @@
+**Rating: 4/10**
+
+1. **Eye tops rounder?** No. The upper eyelids remain completely flat (horizontal 4–5px black bars). Only in *E blink_half* and *surprised* is there a slight arch, though *surprised* looks boxy.
+2. **Cute, feminine lashes?** Mixed. The added outer pixels create a winged effect, but because they connect diagonally and double up horizontally, they create heavy, jagged "checkerboard" noise at the outer corners.
+3. **Consistent across views/expressions?** Mostly consistent across S/SE/E, though *determined* lost its inner brow-to-lid angry slant, making the eyes look identical to *neutral*.
+4. **1x readability:** Poor. At 1x, the extra outer lash pixels merge with the side hair outline, making the eye corners look smudged and overly dark.
+
+**Top 2 Pixel-Level Fixes:**
+1. **Round the upper lid:** Replace the innermost and outermost black pixels of the top eyelid row with dark-brown (anti-aliasing) or skin tone to create a true curved arch.
+2. **Clean up outer lashes:** Remove the lower diagonal pixel of the outer lash cluster so a single, clean 1px wing extends outward without touching the hair outline.

@@ -1,0 +1,6 @@
+# turn_W: body = turn_E cel mirrored about x=63.5 and re-lit (tone runs reversed so the key light stays top-left).
+# Bodies are asymmetric, so the katana is NOT mirrored: facing W her LEFT hand is the near hand -> blade in front.
+base: turn_E.cel mirror=127 skip=katana
+head: W 52 41
+[katana]
+@katana 62 90 118 19 hook=1

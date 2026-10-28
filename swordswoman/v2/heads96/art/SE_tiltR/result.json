@@ -1,0 +1,22 @@
+{
+ "logs": [
+  {
+   "attempt": 0,
+   "sec": 154,
+   "fixes": [
+    "_: S4 floating pixels (no neighbours) at [(6, 29)]: remove or connect"
+   ]
+  },
+  {
+   "attempt": 1,
+   "sec": 17,
+   "fixes": []
+  }
+ ],
+ "out": {
+  "_": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/SE/artist/base_tiltR.txt",
+   "lint": []
+  }
+ }
+}

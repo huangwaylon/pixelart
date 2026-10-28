@@ -1,0 +1,24 @@
+{
+ "name": "slash",
+ "frames": [
+  {
+   "file": "slash_f0.json"
+  },
+  {
+   "file": "slash_f1.json"
+  },
+  {
+   "file": "slash_f2.json"
+  },
+  {
+   "file": "slash_f3.json"
+  },
+  {
+   "file": "slash_f4.json"
+  },
+  {
+   "file": "slash_f5.json"
+  }
+ ],
+ "timing_ms": "see hybrid/ANIM_DIRECTION.md section 1"
+}

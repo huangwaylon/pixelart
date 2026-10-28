@@ -1,0 +1,21 @@
+# walk_SE_k3: up: heel off, body 1 px high, right leg reaching forward; right arm swings back, sword arm forward
+fx: none
+from: turn_SE 0 -1
+stamp: 56 45
+bow: 0 1
+clear: 50,95,84,110
+move: 56,81,61,92 -3,-1
+limb: s 2 68,95 68,101
+limb: d 2 68,102 68,104
+limb: s 2 63,95 66,98 67,100
+limb: d 2 67,101 69,102
+kat: katana_idle_2to1 73 85 under
+top: 76 89
+_KKK_
+KsssK
+KmssK
+_KKK_
+opb: stamp 56,90 ____KRR/___KRRR/___KRRR/__KRRRr/__KRRRr/_KRRRrr/_KRRRrr/_KRRrrv/KRRrrvK/KRrvvK_/KvvKK__/KK_____
+opb: curve 60,79 54,84 56,89 P
+opb: curve 56,89 58,93 54,96 p
+opb: stamp 73,80 _____KssK__/_____KsmmK_/____KCRRrK_/____KCRRRrK/___KCRRRRrK/__KCRRRRRrK/_KRRRRRRRrK/_KRRRRRRrrK/_KvvvvvvvvK/__KKKKKKKK_

@@ -1,0 +1,12 @@
+; pivot 1 -1
+; anchor hand 3 8
+####..
+#EER#.
+#EERR#
+#ERRR#
+#ERRR#
+#RRRR#
+#RRRr#
+#RRrr#
+#Rr###
+.##...

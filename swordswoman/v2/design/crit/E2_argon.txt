@@ -1,0 +1,20 @@
+**Art Director Review**
+
+*   **Trainer Read & Proportions:** Reads more like a generic chibi doll than a dynamic Pokémon trainer. While nothing is fat, the torso is **too thin/fragile** (0.31 waist vs. 0.5 target) and the legs are slightly **stubby** (35% vs. 42%). The rigid A-pose lacks the lively asymmetry of Lyra/Dawn.
+*   **Face:** Generic anime, not Sugimori. Eyes need to be taller, slightly narrower, with sharper triangular outer corners and bolder pupils/highlights.
+*   **Consistency & Iso:** Ortho views are consistent, but **iso elevation fails**. `iso_S` and `iso_N` are virtually identical to `front`/`back` (only one foot shifted). In a true 30° top-down view, we must see the top of the head/bun, bow, shoulders, and curved belt/hem lines.
+*   **Pixel Probes:** **Poor.** The 1px black auto-outline destroys the 2–3px thin limbs, turning legs into solid black sticks and arms into muddy blobs against the dress. Eyes vanish or turn into creepy dark pits (`iso_SE`).
+
+**Scores:**
+*   **A (Trainer Read):** 5/10
+*   **B (Proportions):** 6/10
+*   **C (Face):** 5/10
+*   **D (View Consistency):** 4/10 (due to flat Iso)
+*   **E (Pixel Readability):** 3/10
+
+**Top 5 Concrete Fixes:**
+1.  **Fix Iso Camera:** Tilt `iso` views to 30°: lower facial features on the head sphere, show top of bun/bow, and curve horizontal seams (belt/hem) downward.
+2.  **Adjust Proportions:** Raise waist/hem to hit 42% leg length; widen waist to ~0.45x head width for a sturdier torso.
+3.  **Switch to Sel-Out (Selective Outlining):** Replace black internal/limb outlines with dark brown/burgundy so thin legs/arms don't turn into black sticks at 40/48px.
+4.  **Exaggerate Features for Downsampling:** Enlarge eye whites/pupils and thicken limbs slightly before downsampling so they survive 40px.
+5.  **Sugimori-fy Face & Pose:** Make eyes taller/sharper; add a high-contrast white accent (collar trim or belt motif) to break up the dark red/brown palette.

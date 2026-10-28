@@ -1,0 +1,22 @@
+### **C (Hybrid-48 r3)**
+**1. Official Read Score: 5.5/10** (Caught in no-man's-land: too large/flat for BW OW, too simple/stiff for HGSS Battle).
+**2. Concrete Pixel Fixes:**
+*   **Face/Jaw (Lower head rows):** 3/4 view lacks perspective foreshortening. Far (viewer-right) cheek has 3px of skin right of the eye. **Fix:** Shift right eye 1px right; pull right jaw outline 1px left to curve the head.
+*   **Bangs/Hairline:** Straight horizontal 6px line looks stamped on. **Fix:** Drop 2px vertical locks between and framing the eyes (see Lyra) to break the grid.
+*   **Kimono Skirt (Below obi):** Large flat-red clusters look untextured at 48px scale. **Fix:** Add 2 vertical dark-red shade columns to define pleats/drape, plus a highlight pixel on the front-left knee fold.
+*   **Katana Blade:** Strict 1px 45° stair-step with heavy pure-black enclosing outlines looks like a thick club at 1x. **Fix:** Replace top-edge pure black with dark steel-blue (`#384058`) so the white edge reads razor-thin.
+
+---
+
+### **A' (PMD-32)**
+**1. Official Read Score: 7.0/10** (Much closer to official; pixel density matches scale, though silhouette is slightly boxy).
+**2. Concrete Pixel Fixes:**
+*   **Bangs (Row above eyes):** 5px unbroken horizontal line flattens the cranium. **Fix:** Raise the center 2px by 1 row and drop a 1px dark-hair notch between the eyes.
+*   **Hair Crown:** Specular highlight is a dull, flat 4px bar. **Fix:** Cluster a brighter 2x2 highlight on the upper-left curve (matching Meloetta’s high-contrast shine).
+*   **Legs/Feet:** Two parallel vertical tubes lack PMD’s dynamic outward stance. **Fix:** Shift viewer-right foot 1px right and angle its toe outward.
+*   **Obi/Torso:** Reads as a muddy horizontal band. **Fix:** Add 1 bright highlight pixel to the upper-left kimono collar and deepen the under-obi shadow by 1 shade.
+
+---
+
+### **3. Master Style Verdict: A' (PMD-32)**
+**Why:** PMD-32 is battle-tested for 8-direction animation. At 32px, motion reads through silhouette shifts rather than complex internal cloth rendering. **C (48px)** sits at an awkward resolution where flat shading looks unfinished during idle, yet animating full HGSS-level folds across 6 actions × 8 directions (300+ frames) will explode production time and cause severe frame-to-frame "boiling." Lock **A'** as master.

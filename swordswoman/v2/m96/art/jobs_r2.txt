@@ -1,0 +1,11 @@
+S_bodyL S 41 63 64 100 body
+S_bodyR S 64 63 87 100 body
+SE_hair SE 44 25 84 63 hair
+SE_body SE 44 63 84 100 body
+SE_legs SE 48 100 80 126 legs
+E_legs E 50 100 80 126 legs
+NE_hair NE 43 25 83 63 hair
+NE_body NE 43 63 83 100 body
+NE_legs NE 48 100 80 126 legs
+N_hairL N 40 25 63 63 hair
+N_bodyR N 63 63 87 100 body

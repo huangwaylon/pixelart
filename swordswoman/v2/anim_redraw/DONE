@@ -1,0 +1,13 @@
+ANIM_REDRAW SE set done (2026-10-26). 48px char, 64x64 cell (jump 64x80), GIFs 6x NN on #6e6e6e.
+Pipeline: Gemini 2x2 sheets from hand-keyed mannequin guides (gen64 --mine --sword) -> fin48 (palette lock, feet/obi pin,
+locked round-dome SE master head stamp + bow lag, procedural 2px katana, body squash/shear ops, outline/orphan cleanup, FX) ; idle procedural (idle48).
+Final (Argon / Opus, after 3 crit rounds):
+  idle  gifs/idle_SE.gif  (v3)  5   / 6
+  walk  gifs/walk_SE.gif  (v4)  4.5 / 4
+  run   gifs/run_SE.gif   (v6)  4.5 / 5.5
+  jump  gifs/jump_SE.gif  (v3)  5.5 / 6
+  dash  gifs/dash_SE.gif  (v3)  5.5 / 6
+  slash gifs/slash_SE.gif (v4)  5.5 / 6
+Sheets: sheets/<action>_SE.png. Critiques: crit/<action>_<ver>_{argon,opus}.txt.
+Known weak: walk/run legs merge at 1x and halves of the cycle don't mirror clearly (Gemini body redraw limit); head is a rigid stamp (no tilt);
+katana angle still pops a little between Gemini poses; body proportions drift ~1-2px between frames.

@@ -1,0 +1,15 @@
+**(1) Official Sprite Scores**
+* **A' (PMD-32): 5/10.** The 1x1 scale fits the PMD grid, but the rendering is too flat. Compared to Meloetta, your shading lacks hue-shifting and high-contrast speculars. The diagonal blade has severe "jaggies" (staircasing), and the kimono lacks internal dark linework to separate the sleeve from the torso.
+* **C (Hybrid-48): 4.5/10.** Uncanny scale. At 48px, official sprites require denser internal detailing. Yours looks like a 32px sprite stretched up—large flat color blocks, pillow-shaded robe folds, and a blocky, stepped sword blade.
+
+**(2) Slash Animation: 5.5/10**
+1. **f2 (Smear):** A solid black-outlined white banana reads like a physical object, not motion. **Fix:** Drop the black outline on the trail's back edge; use un-outlined white/cyan pixels tapering into the blade tip.
+2. **f1 to f2 (Torso/Head Lock):** The head and eyes don't move a single pixel during the strike, killing the force. **Fix:** Shift the head 2px forward and 1px down on f2/f3, and turn the torso into the swing.
+3. **f1 (Ground Line/Volume):** She stretches vertically and floats 2px off the baseline while her robe skirt shrinks. **Fix:** Keep the back foot planted on the f0 ground line; use a low crouch/squash instead of stretching upward.
+4. **f3 to f4 (Broken Recovery Arc):** Going from a 45-degree downward point (f3) to a vertical drop while still lunging (f4) feels limp. **Fix:** Keep the wide slash angle on f3, then pull the body back upright on f4 while bringing the sword to rest.
+
+**(3) Body Proportions vs. Officials**
+* **Shoulder/Waist:** Too wide and boxy. BW NPCs taper inward to a tiny 6–8px torso width; yours is a wide rectangle.
+* **Head/Body:** C’s torso is too tall (1:1.5 ratio); official chibis are closer to 1:1.
+* **Face:** Eyes sit too high and small. Official chibis place larger eyes in the lower half of the head with a 1px chin.
+* **Legs:** Stiff vertical sticks set too far apart. Taper them inward.

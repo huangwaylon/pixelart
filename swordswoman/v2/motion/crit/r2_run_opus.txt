@@ -1,0 +1,15 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+OVERALL: 6
+
+- Natural: 6. Rhythm is good, but the two halves of the cycle don't match.
+- Whole-body: 7. The down and push frames load weight well, especially in E.
+- Fluid: 6. The head path jumps between frames.
+- Appealing: 6
+- Secondary motion: 5. In E the ribbons trail behind nicely. In SE they show only in contact2, down2 and push2, then disappear, so they pop.
+- Readable at 1x: 7
+
+Top 3 fixes:
+1. **Make the two halves match.** Head height in frames.json: down 98.7 vs down2 92.0, air 80.5 vs air2 76.6. Set both down frames to about 96 and both air frames to about 79. Also, the head shifts about 5 px sideways in down2 (x 106.9 vs 101). Bring that down to 2 px or less.
+2. **Cut the torso squash and stretch.** The neck-to-chest distance swings from 8 (down) to 17 (air2), so the torso changes length too much. Limit it to plus or minus 15% and push the bob into the knees and hips instead.
+3. **Fix the SE arms.** In push2 and air2 the arms spread out to the sides almost like a T-pose. Swing them forward and back along the run direction, bend the elbows about 90°, and keep the hands within about 6 px of the ribcage. Also, keep the SE ribbon tails visible in every frame, hanging 4–6 px behind the bow.

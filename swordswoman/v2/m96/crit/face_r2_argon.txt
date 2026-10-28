@@ -1,0 +1,11 @@
+**Nose & Brows:** Huge improvement. The skin gap above the brows prevents them from merging with the bangs at 1x, and the steeper V in *determined/shout* reads unmistakably angry/focused. The 2px shadow nose in S/SE and 1px E bump are consistent across all views, though in S *neutral* the 2px horizontal nose + 2px mouth stack slightly double-reads as pursed lips at 1x. 
+
+**Illustration Match:** Very close. The SE bow outline, slender hands, and upturned red smile capture the source art's charm well. E-view bangs sit 1px thicker/further back from the brow than the illustration.
+
+**1x Expressions:** Core states (*neutral, cheerful, determined, joy, pain*) pop instantly. However, *effort* vs. *pain* vs. *blink_close* blur together at 1x—only subtle mouth/cheek-tick differences separate them.
+
+**Scores:** Brows: 9/10 | Nose: 8/10 | Consistency: 9/10 | 1x Readability: 8.5/10 | Overall: 8.5/10
+
+**Top 2 Fixes:**
+1. **Nose in S:** Reduce S-view nose to 1px (or lower contrast) so it doesn't compete with small mouths at 1x.
+2. **Differentiate *effort* vs *pain*:** Give *effort* a wider/gritted mouth cue or sweat drop to separate it from *pain/blink_close* at 1x.

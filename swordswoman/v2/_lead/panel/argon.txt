@@ -1,0 +1,26 @@
+### ACTION BREAKDOWN
+
+* **Idle — Winner: A.** Clean volume preservation and readable secondary bow/hair motion; B’s scabbard and sword grip melt into a muddy blob across her torso. 
+  * *Biggest problem in A:* The torso/skirt drop as a rigid block without fabric squash, and the sword blade suffers from severe stair-stepping (jaggies) as it rotates.
+* **Walk — Winner: A.** Grounded contact poses and consistent proportions; B’s legs turn into mush and she looks like she’s floating backward in frame 4.
+  * *Biggest problem in A:* The skirt bottom is a flat, static horizontal line that clips stiffly over the legs instead of wrapping or billowing with the stride.
+* **Run — Winner: A.** Clear silhouette, readable airborne phases, and solid bow follow-through; B’s legs lose their joints and the floating speed lines look cheap at 1x.
+  * *Biggest problem in A:* Zero torso forward-lean—her spine stays dead vertical, making her look like she’s speed-walking rather than sprinting.
+* **Jump — Winner: A.** Well-paced anticipation, squash/stretch, and ribbon drag; B shrinks the character’s scale and loses her weapon silhouette mid-air.
+  * *Biggest problem in A:* The sword angle and hand grip teleport wildly between frames 2, 3, and 4 instead of following a smooth arc.
+* **Dash — Winner: B.** Aggressive forward lunge, great low center of gravity, and punchy skid recovery; A is far too upright and the dithered trail looks noisy at 1x.
+  * *Biggest problem in B:* The 1px grey outline ghost-trail looks like a selection artifact—replace it with a solid flat-color silhouette afterimage.
+* **Slash — Winner: B.** Dynamic body twist, committed weight shift into the front leg, and a dramatic overhead windup; A is a stiff arm-chop with a lifeless torso.
+  * *Biggest problem in B:* The sword smear arc (frame 3) has jagged interior pixels and doesn't connect cleanly to the blade tip on impact.
+
+### HEAD SHAPE JUDGMENT
+**Both fail the round chibi skull test.** A is a literal rectangle with a flat top and vertical back-wall; the hair hugs a box. B rounds the top corners slightly, but the jaw/cheek-to-hair transition is still a 90-degree brick. Both need 2–3px shaved off the upper-back skull corner and a fuller, curved cheek/bangs volume.
+
+### MERGE PLAN & TOP 3 FIXES
+* **Base Pipeline:** Use **A’s cutout rig** for Idle, Walk, Run, and Jump to guarantee pixel/volume consistency.
+* **Key Poses:** Use **B’s redraws** as pose/proportion blueprints for high-deformation actions (Dash lunge, Slash windup/lunge, and B’s Idle scabbard-hold pose).
+* **Weapon:** Standardize on B’s thicker, higher-contrast sword blade and scabbard, hand-pixelled at 4–6 clean angles to avoid rotation jaggies.
+* **VFX:** Keep B’s dust puffs and impact sparks; use solid-color silhouettes for dash trails.
+* **Top Fix 1 (Round the Skull):** Redraw the base head/hair asset in A’s rig to have a curved crown and rounded back-of-head silhouette.
+* **Top Fix 2 (Spine Tilt & Skirt Deformation):** Add 2–3 hand-drawn torso/skirt swap-parts to A’s rig (tilted forward for run/dash, twisted for slash, squashed for crouch/land).
+* **Top Fix 3 (Clean Weapon Arcs):** Hand-pixel the sword and smear frames on a dedicated layer after rigging so blades never stair-step or teleport between frames.

@@ -1,0 +1,26 @@
+{
+  "_doc": "FACE strand: action/key -> expression. Expression names = v2/face/out/sprite/<VIEW>_<expr>.txt (VIEW S,SE,E,NE,N; W/SW/NW = mirror of E/SE/NE). Grammar: v2/face/FACE_GUIDE.md, stamps: v2/face/tools/faces.py. NE/N only change the cheek sliver (blush) - keep the same keys for consistency. 'hold' = keep the previous frame's face.",
+  "expressions": ["neutral","determined","shout","effort","joy","smile","surprised","pain","blink_half","blink_closed","squash"],
+  "default": "neutral",
+  "idle": {
+    "frames": ["neutral","neutral","neutral","neutral","neutral","neutral"],
+    "blink": {"every_ms": [2800, 4200], "sequence": [["blink_half",60],["blink_closed",90],["blink_half",60]], "rule": "insert on a random idle loop boundary, never during a body-bob extreme; double-blink 1 in 5"},
+    "variant_smile": {"use": "every 3rd-4th idle loop or after a won fight", "frames": ["smile","smile","smile","smile","smile","smile"]}
+  },
+  "walk": {"all": "neutral", "blink": "allowed, same timing as idle"},
+  "run": {"all": "determined", "note": "eyes forward; no blink during run"},
+  "jump": {"anticipation": "determined", "crouch": "effort", "launch_stretch": "effort", "rise": "determined", "apex_hold": "neutral", "fall": "determined", "land_squash": "squash", "recover": "neutral"},
+  "dash": {"anticipation": "determined", "smear_1": "effort", "smear_2": "effort", "skid": "determined", "recover": "neutral"},
+  "slash": {"anticipation": "determined", "wind_up_coil": "determined", "smear_arc": "shout", "impact_hitstop": "shout", "follow_through": "shout", "recover": "neutral", "settle": "smile"},
+  "overhead_slash": {"anticipation": "determined", "raise": "determined", "smear": "shout", "impact": "shout", "recover": "neutral"},
+  "hurt": {"hit": "pain", "knockback": "pain", "recover": "blink_closed", "after": "determined"},
+  "victory": {"all": "joy", "end_hold": "smile"},
+  "surprised": {"use": "item pickup, enemy appears, being startled; 2-3 frames then neutral"},
+  "timing_rules": [
+    "Face changes land ON the key pose frame, not between keys (one-frame lead is allowed on shout: switch on the smear frame so the open mouth is already there at impact).",
+    "Never change the face on a smear frame unless the change is to shout/effort; the eye stays readable through the smear.",
+    "Hold shout through the hit-stop; return to neutral (confident smirk) on recover so she reads cocky, not exhausted.",
+    "Blink never overlaps shout/effort/pain; pain already has closed eyes.",
+    "squash also lowers the head 1 px (one skull row removed, faces.build_view does it); use it only on the landing contact frame."
+  ]
+}

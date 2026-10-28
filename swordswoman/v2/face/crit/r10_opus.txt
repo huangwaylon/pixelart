@@ -1,0 +1,39 @@
+Restored session: Mon 26 Oct 2026 18:29:09 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Overall **5/10**. I read both sheets, plus the S/SE/E/NE char-maps for the pixel references.
+
+**Criteria:** readable at 1x 5 · intentionally designed 5 · Pokemon-like 5 · personality 4
+
+**(1) Readability per expression (score, main pixel problem)**
+- **neutral 6:** The light-blue `i` iris is only 2px with no dark pupil, so the eye goes grey at 1x. The `W` glint sits on the inner edge (col 7 and col 11, mirrored), which makes her look cross-eyed.
+- **determined 6:** The brow is a single `K` at col 4/14 that merges into the hair outline, so the slant is lost.
+- **shout 5:** The mouth is `rKKKr` over `KeK` on row 20, which is the chin row. The pink `e` reads as a tongue sticking out, not a yell.
+- **effort 5:** The `WWW` teeth idea is good, but the `ee` blush on row 18 touches the mouth's `r` and smears it.
+- **joy 7:** The `^^` eyes read fine. The mouth is again crammed into the chin.
+- **smile 5:** Almost the same as neutral.
+- **surprised 7:** The `WKW` eyes and O mouth work.
+- **pain 7:** The `><` eyes work. The zigzag `rsrsr` mouth is noise.
+- **blink half 4:** Can't be told from neutral.
+- **blink closed 6:** Reads as closed.
+- **squash 4:** Duplicates blink_closed and doesn't sell the impact.
+
+**(2) Design:** Partly intentional. There is a lash row, a glint and distinct mouth shapes, but no dark pupil, no consistent glint side, and no brow in neutral. Pokemon trainer eyes are dark, 2px wide and full height, with one glint on the same side in both eyes.
+
+**(3) Personality:** Weak. Without a brow and with a symmetric soft mouth, neutral reads as passive, not confident.
+
+**(4) Per view**
+- **S 6:** Eyes touch the hair outline at col 4/14.
+- **SE 6:** Same eye issues; the shout mouth is squeezed down onto the jaw.
+- **E 5:** The eye is 3px with the iris below the lash. The mouth is a single `r` notch, and the shout breaks the profile.
+- **NE/N 5:** Almost identical to each other. The cheek sliver is only 1–2 `s` with no blush.
+
+**(5) Top 6 fixes**
+1. **Eyes:** Replace the `ii` iris with a 2x2 dark pupil (`K`/dark navy), with `i` only on the bottom row. Put one `W` glint at top-left in *both* eyes.
+2. **Eye margin:** Move both eyes 1px inward so there's a skin column between them and the hair, and extend the lash 1px outward on row 14 (a wing).
+3. **Neutral/confident brow:** On row 13, add a 2px brow per eye, raised on the outer side. Change the mouth to a 3px smirk: `rr` with the right end 1px higher.
+4. **Shout:** Raise the mouth 1 row. Make it 3 wide x 2 tall, all `K`, with a lighter `r` bottom-center for the tongue. Drop the `e` and keep the chin row clean.
+5. **Squash:** Use `><` eyes plus a flat 4px `K` mouth, and drop the blush, so it's distinct from blink_closed. For blink half, use a full lash row plus a 1px-tall iris.
+6. **Blush:** Move `ee` 1 column outward, so it's never next to the mouth. In profile (E), show the open mouth as a 1px `K` notch inside the silhouette.
+
+Saving session...completed.

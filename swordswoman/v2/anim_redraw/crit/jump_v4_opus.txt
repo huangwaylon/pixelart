@@ -1,0 +1,18 @@
+Restored session: Mon 26 Oct 2026 11:28:34 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 6/10.** The jump height and timing work. The sword's motion and the lack of secondary motion are what make it look amateur.
+
+1. **The vertical arc is solid.** Head-top Y runs 118→62→32→20→20→53→118→103. The rise eases in, F3 and F4 hold the apex, and the fall speeds up. The 140ms apex hang reads well. Keep all of this.
+2. **The sword is the worst problem.** It vanishes completely in F1. After that it jumps between angles with no arc: low horizontal, gone, up-diagonal, down-diagonal, horizontal, horizontal, down-diagonal. At 1x it flickers. Pick one path: trail it down in F0–F1, carry it up through F2–F3, then let it drag behind on the fall.
+3. **The hair and bow don't react at all.** They're the same rigid shape whether she's going up or down. The pigtail buns and bow loops should lag behind on the rise, lift on the fall, and bounce down on landing. Without that it's a paper doll moving on a path.
+4. **The landing squash is weak.** F6 is basically a copy of the F0 crouch, with no extra width and no lower head. The impact needs to be harder than the anticipation: add a 1–2px wider frame, a squashed head, and a 1-frame hold. The F5 down-lines are nice but tiny.
+5. **The head stamps aren't working.** It's the same face in every frame. I can't see a look-up at the apex or a squash on landing. If they're in there, they're too subtle at 48px. Push the eyes up 1px and close them for the F6 squash.
+6. **The FX are stamped.** The dust ring sprite is the same in F2 and F7, and it sits there while the body rises. It needs a 2–3 frame dissipate cycle. The F1 speed lines are the best FX here.
+7. **The pixels are mostly clean,** with flat hair masses and no obvious orphan pixels. Two problems: the arm and hand mush into the torso in F3 and F4, and F3's skirt swallows the legs, so the silhouette turns into a blob at the apex.
+8. **Feet:** the F0 and F6 contact points roughly match. F7 to F8 seems to shift the stance a pixel or two, so check that the stance stays pinned there.
+
+**Fix priority:** sword continuity, then hair and bow overlap, then a stronger land squash, then FX dissipation.
+
+Saving session...completed.

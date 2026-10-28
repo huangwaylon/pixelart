@@ -1,0 +1,12 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I reworked run_SE and jump_SE in `actions_src/run_jump.py`. All four builds (with and without katana) compile, and I went through 4 build/critique passes. I haven't re-run the critics.
+
+- **Run:** new stride legs copied from the redraw reference: a passing leg on contact, back leg fully extended on push with the other knee driving up, and the back boot kicked up on air. The body bobs 4px, the head leans 3px forward, and both arms pump. The katana is fixed at kat_10, low and angled down-back.
+- **Jump:** the blade now swings with the arm: raised on launch, overhead with a pale arc smear, trailing on the fall. It moves at most 2 steps per frame. Launch is 2px longer and land is wider and shorter. I widened the cell to 76x80 so the blade can't clip; this assumes the engine aligns frames by the feet.
+
+**New parts:** `legs_run5_{c,p,a}{1,2}`, `armN_run5_B2`, `legs_jmp5_launch`, `legs_jmp5_land`, `torso_jmp5_sq`. NOTES.md is updated.
+
+**Still weak:** the skirt hides most of the thighs, and the jump settle frame is awkward.
+
+Saving session...completed.

@@ -1,0 +1,4 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+
+Saving session...completed.

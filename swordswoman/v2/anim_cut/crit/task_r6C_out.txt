@@ -1,0 +1,20 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt dash_SE (with and without the katana) and slash_SE, and fixed every round-5 point. I did three build-and-review passes.
+
+- **Dash:**
+  - Afterimages are now two sword-less silhouettes with no dark outline and dithered edges. Speed streaks start at her body and run back through them.
+  - Burst leans 5px forward with a long push-off stride.
+  - Skid drops 3px and leans back, with the hem and bow 2–3px forward.
+  - The katana steps one direction per frame (11 → 12 → 13), with no jump across her legs.
+- **Slash:**
+  - The windup now twists the shoulders back.
+  - Impact and the frame before it are a deep lunge, and the body lands 1px lower on impact.
+  - The smear is one crescent from 1px to 7px that ends at the blade. Its tip was cleaned by hand.
+- I replaced `bow_back` with `bow_dn` so the bow never changes shape.
+
+New parts: `parts/se/dash6_{torso_lean5,torso_back,legs_burst,legs_skid}`, `slash6_{torso_coil,legs_lunge}`, `parts/common/fx_dash6_ghost1/2`, `fx_slash6_smear/trail`. The generators are in `work/r6/`.
+
+Weak spots: the near ghost is still a solid maroon block, and the coil hand is small against the hair.
+
+Saving session...completed.

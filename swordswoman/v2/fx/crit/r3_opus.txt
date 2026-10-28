@@ -1,0 +1,17 @@
+**Round 3 verdict: about 75% of the way to PMD/Gen3–5. The pixels are clean (hard edges, no anti-aliasing, a tight palette). It's shippable as a v1 library after about five small fixes.**
+
+1. **hit_flash 8.** A crisp 8-point star that reads like a Gen4 hit at both 48px and 40px.
+2. **hit_spark 7.** The f2 scatter is fixed: 6 varied chips. In f0 the right arm (cols 15–18) and the lower-right diagonal (row 15) are longer than their opposites, so the star leans; mirror it. The f0 bottom rows 16–18 are empty, so trim them or re-centre.
+3. **slash_diag 7 / slash_over 7.** Good shape, and the slash_over f2 chips are now 2px. The outer rim is still blue-grey (`b`), not a saturated cyan or yellow, so both still read pale and modern on the grey floor. This is the third round with the same note.
+4. **slash_h 6.** The crescent is better and it now hits chest height. But f1 rows 0–8 are still a 1–2px stroke climbing straight up to the corner (the hook is back), and the f0 `nnnnnn` tail on row 4 is a detached hairline. Flatten the f1 tip to about 30° and join the tail.
+5. **hurt_star 7.** The size variety is fixed. At 48px the stars still float about 10px above the bow (ctx_L cell 6), so lower the head_top anchor by about 6px.
+6. **sweat_drop 8.** The f2 stretch now sells the motion.
+7. **dust_land 8.** The f3 two-puff fade is fixed. The f0 puffs cover the shoes at 40px, so drop them 1px.
+8. **dust_skid 6.** The plank is gone, but it's now an even row of same-height loaves, and at 40px (ctx_L cell 2) it still reads as a log. Taper it: tall puff at the foot, small puffs at the back, with gaps between them.
+9. **dust_step 6.** The f1 single big outlined blob reads as a rock. Split it into 2 puffs, or open the outline at the top.
+10. **jump_whoosh 5.** The emoticon face is gone. The f0 `\ /` strokes now sit next to the sword in context (ctx_L cell 7), so they look like extra blades. The f1 vertical bars read as `| |`. Use curved arcs that open upward, in a paler colour than the sword steel.
+11. **land_ring 7.** The size step is fixed. In context it's nearly invisible at the feet, so brighten the front arc one shade.
+12. **speed_lines_long and short 7.** The stagger and the body overlap are fixed. There are still 4 lines spaced almost evenly; nudge one line by 1–2px vertically.
+13. **dash_ghost 8.** The lines are now clipped where they meet the ghosts, so it's clean. This is the best PMD match in the set.
+
+**Overall: 7/10. Shippable as a reusable library** for in-engine use. Before calling it final, fix the slash rims and the slash_h hook, rework jump_whoosh and dust_skid, and lower the hurt_star anchor.

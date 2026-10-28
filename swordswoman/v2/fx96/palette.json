@@ -1,0 +1,313 @@
+{
+ "name": "fx96",
+ "note": "v2/pixelize/palette.json (18 locked, chars unchanged) + old v2/fx colours remapped to free chars, material 'fx'. Outlines use locked K #160c0d (old fx K #000000 kept as X). '.'=transparent",
+ "colors": {
+  "K": {
+   "hex": "#160c0d",
+   "material": [
+    "outline"
+   ],
+   "desc": "outline (all materials), pupil, lash line"
+  },
+  "h": {
+   "hex": "#342126",
+   "material": [
+    "hair",
+    "boots",
+    "eyes"
+   ],
+   "desc": "hair shadow / inner hair lines / tie line; iris top; boot shadow"
+  },
+  "H": {
+   "hex": "#433833",
+   "material": [
+    "hair",
+    "boots"
+   ],
+   "desc": "hair base; boot base"
+  },
+  "g": {
+   "hex": "#5e4a45",
+   "material": [
+    "hair",
+    "boots",
+    "eyes"
+   ],
+   "desc": "hair light (tied-top + crown); iris mid; boot light"
+  },
+  "L": {
+   "hex": "#85706a",
+   "material": [
+    "hair",
+    "boots",
+    "eyes"
+   ],
+   "desc": "hair sheen band; iris lower light; boot toe glint"
+  },
+  "s": {
+   "hex": "#eaa991",
+   "material": [
+    "skin"
+   ],
+   "desc": "skin base"
+  },
+  "S": {
+   "hex": "#c98a7c",
+   "material": [
+    "skin"
+   ],
+   "desc": "skin shadow (under bangs, neck, inner legs)"
+  },
+  "m": {
+   "hex": "#a5706b",
+   "material": [
+    "skin",
+    "mouth"
+   ],
+   "desc": "mouth, nose dot, inner skin lines, brow"
+  },
+  "k": {
+   "hex": "#e58f84",
+   "material": [
+    "skin"
+   ],
+   "desc": "blush (skin; cheeks in cheerful/embarrassed/joy/effort expressions only; soft pink on the skin ramp - the illustration cheeks show no distinct blush). Never use dress red for blush"
+  },
+  "e": {
+   "hex": "#962723",
+   "material": [
+    "dress",
+    "bow"
+   ],
+   "desc": "red light (bow top, shoulder, sleeve top edge)"
+  },
+  "E": {
+   "hex": "#7d1918",
+   "material": [
+    "dress",
+    "bow"
+   ],
+   "desc": "red base (dress, sleeves, bow)"
+  },
+  "R": {
+   "hex": "#5f1220",
+   "material": [
+    "dress",
+    "bow"
+   ],
+   "desc": "red shadow (folds, under obi, sleeve inside, bow knot)"
+  },
+  "Q": {
+   "hex": "#c6c4c4",
+   "material": [
+    "obi"
+   ],
+   "desc": "obi light edge / highlight"
+  },
+  "O": {
+   "hex": "#857a90",
+   "material": [
+    "obi"
+   ],
+   "desc": "obi base (grey-lavender)"
+  },
+  "o": {
+   "hex": "#63576a",
+   "material": [
+    "obi"
+   ],
+   "desc": "obi shadow"
+  },
+  "W": {
+   "hex": "#f6eeea",
+   "material": [
+    "eyes"
+   ],
+   "desc": "eye highlight, eye white"
+  },
+  "D": {
+   "hex": "#2b2927",
+   "material": [
+    "socks"
+   ],
+   "desc": "sock base (black mid-thigh socks)"
+  },
+  "d": {
+   "hex": "#373230",
+   "material": [
+    "socks"
+   ],
+   "desc": "sock light / sheen"
+  },
+  "X": {
+   "hex": "#000000",
+   "material": [
+    "fx"
+   ],
+   "desc": "outline (emotes, hurt star) (old fx char 'K')"
+  },
+  "w": {
+   "hex": "#f8f8f8",
+   "material": [
+    "fx"
+   ],
+   "desc": "white core / leading edge (old fx char 'W')"
+  },
+  "p": {
+   "hex": "#d8e0f0",
+   "material": [
+    "fx"
+   ],
+   "desc": "pale steel band (old fx char 'p')"
+  },
+  "n": {
+   "hex": "#a8b0c8",
+   "material": [
+    "fx"
+   ],
+   "desc": "light blue-grey band (= blade colour) (old fx char 'n')"
+  },
+  "b": {
+   "hex": "#687898",
+   "material": [
+    "fx"
+   ],
+   "desc": "dark blue-grey rim / slash inner edge (old fx char 'b')"
+  },
+  "y": {
+   "hex": "#f8e060",
+   "material": [
+    "fx"
+   ],
+   "desc": "spark yellow (old fx char 'y')"
+  },
+  "f": {
+   "hex": "#f09838",
+   "material": [
+    "fx"
+   ],
+   "desc": "spark orange tips (old fx char 'o')"
+  },
+  "u": {
+   "hex": "#f0e8e0",
+   "material": [
+    "fx"
+   ],
+   "desc": "dust light (old fx char 'u')"
+  },
+  "U": {
+   "hex": "#c8b8a8",
+   "material": [
+    "fx"
+   ],
+   "desc": "dust mid (old fx char 'U')"
+  },
+  "t": {
+   "hex": "#887868",
+   "material": [
+    "fx"
+   ],
+   "desc": "dust shadow / rim (old fx char 'g')"
+  },
+  "c": {
+   "hex": "#a8d8f8",
+   "material": [
+    "fx"
+   ],
+   "desc": "sweat light (old fx char 'c')"
+  },
+  "B": {
+   "hex": "#3878d0",
+   "material": [
+    "fx"
+   ],
+   "desc": "sweat blue (old fx char 'B')"
+  },
+  "a": {
+   "hex": "#b8d0f8",
+   "material": [
+    "fx"
+   ],
+   "desc": "afterimage light (old fx char 'a')"
+  },
+  "A": {
+   "hex": "#6888d0",
+   "material": [
+    "fx"
+   ],
+   "desc": "afterimage dark (old fx char 'A')"
+  },
+  "G": {
+   "hex": "#4c4038",
+   "material": [
+    "fx"
+   ],
+   "desc": "dust outline (dark warm grey; g is too close to the #6e6e6e floor) (old fx char 'G')"
+  },
+  "r": {
+   "hex": "#e83840",
+   "material": [
+    "fx"
+   ],
+   "desc": "throw orb red (top half) (old fx char 'r')"
+  },
+  "x": {
+   "hex": "#a01c30",
+   "material": [
+    "fx"
+   ],
+   "desc": "throw orb red shade / dark rim (old fx char 'R')"
+  },
+  "v": {
+   "hex": "#c8c8d8",
+   "material": [
+    "fx"
+   ],
+   "desc": "throw orb white shade (lower half) (old fx char 'w')"
+  },
+  "j": {
+   "hex": "#302838",
+   "material": [
+    "fx"
+   ],
+   "desc": "throw orb band + button ring (dark, softer than K) (old fx char 'k')"
+  }
+ },
+ "fx_remap_old_to_new": {
+  "K": "X",
+  "W": "w",
+  "p": "p",
+  "n": "n",
+  "b": "b",
+  "y": "y",
+  "o": "f",
+  "u": "u",
+  "U": "U",
+  "g": "t",
+  "c": "c",
+  "B": "B",
+  "a": "a",
+  "A": "A",
+  "G": "G",
+  "r": "r",
+  "R": "x",
+  "w": "v",
+  "k": "j"
+ },
+ "materials": {
+  "outline": "K",
+  "hair": "hHgL",
+  "boots": "hHgL",
+  "skin": "sSmk",
+  "mouth": "mK",
+  "dress": "eER",
+  "bow": "eER",
+  "obi": "QOo",
+  "eyes": "KhgLW",
+  "socks": [
+   "K",
+   "D",
+   "d"
+  ]
+ }
+}

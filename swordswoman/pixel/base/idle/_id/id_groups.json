@@ -1,0 +1,1 @@
+{"groups": {"hair": 1, "sheen": 2, "bun": 3, "bow": 4, "face": 5, "ear": 6, "corset": 7, "buckles": 8, "pouch": 9, "skirt": 10, "skirt_under": 11, "sleeve": 12, "ornament": 13, "scarf": 14, "sword": 15, "arm": 16, "hand": 17, "leg_L": 18, "leg_R": 19, "collar": 20, "torso": 21, "shorts": 22, "thigh_strap": 23, "kagi": 24}, "encoding": "R channel = id * 10"}

@@ -1,0 +1,15 @@
+ANIM_REDRAW round 2 (lead: legs / heads / katana) done 2026-10-26. gifs/<action>_SE.gif + sheets/<action>_SE.png now = round-2 versions.
+1 LEGS: walk/run legs hand-pixelled by Opus (be_system) as char-maps (work48/{walk,run}/legs/fNN.txt, rows 46-63, 2 passes):
+  near leg 2+3 highlight / boot d, far leg 1 / boot D, 1px gaps, swap between half-cycles, knee up on passing, planted soles on row 59.
+2 HEADS: m48/heads/neutral (rounder dome, separate round bun; now in m48/SE.png), up (irises+brows 1px up), squash (+1 col, -1 row);
+  lean = neutral +1px forward/down. Used: run all lean; jump squash/up/up/up/../squash; dash burst lean; slash smear+impact lean. Head x locked to the obi on walk/run.
+3 KATANA: anim_cut parts/common/kat_DD.txt sprites (16 dirs, grip pivot) via fin48.kat_place; angle sequences step <= 1 direction except the slash windup/swing:
+  walk d9 x8, run d9 x8 (smooth hilt path, behind body), jump d8 d6 d7 d7 d8 d8 d8 d9 d9, dash d8 d8 d8 d9 d9 d9, slash d1 d7 d15 d15 d14 d0 d1.
+4 SCORES (Argon / Opus):
+  idle  v5  5.5 / 5     (v4 4.5/4)
+  walk  v5  4   / 5     (earlier pass 4.5/5, 4.5/5)
+  run   v8  5.5 / 5.5   (earlier passes 4.5/5, 5.5/5)
+  jump  v4  5.5 / 6
+  dash  v4  5.5 / 5
+  slash v5  5   / 6
+Still weak: walk up-frames (f3/f7) pop up and read as a skip; body/torso redraw boils 1-2px (Gemini); bow/hair have no overlap; run halves still look alike to the critics.

@@ -1,0 +1,21 @@
+### Concrete Problems & Fixes
+
+1. **Stiff Cutout Rig & Lack of Overlap (All Frames - Head/Hair/Bow/Skirt):**
+   * **Problem:** The head, hair, and ribbon are completely static pastes that only translate vertically. The skirt hem only squashes slightly on down frames (F1, F5) without flowing with leg movement.
+   * **Fix:** Add 1–2px of vertical lag/drag to the ribbon ends and lower hair tips during transitions (e.g., flare upward on F1/F5 down, compress downward on F3/F7 up). Shift skirt hem pixels horizontally to follow the leading leg on contact frames (F0, F4).
+
+2. **Jaggies and Broken Linework on Rotated Katana (Frames 3, 4, 5, 6 - Sword Blade):**
+   * **Problem:** Rotating the sword closer to vertical introduces severe staircase jaggies and double-thick outline clusters along the blade edge and tip. In F5, the blade tip touches the bottom canvas border.
+   * **Fix:** Hand-clean the blade pixel clusters in F3–F6 to maintain a consistent 2:1 or 3:1 step pattern with single-pixel outlines. Shorten or angle the blade up by 2px in F5 so it clears the bottom frame edge.
+
+3. **Missing Hand/Arm Readability & Depth Sorting (Frames 3, 4, 5 - Back Left Arm):**
+   * **Problem:** As the screen-right arm swings backward in F3–F5, the hand disappears entirely into the torso silhouette, making the arm look like an amputated stump rather than swinging behind the body. 
+   * **Fix:** Maintain at least 2–3 skin pixels of the hand peeking out behind the hip/skirt edge on F4 and F5, or adjust the sleeve cuff shading to clearly indicate the forearm is angled away from the camera.
+
+### Rubric Evaluation
+
+* **Animation & Motion:** 5/10 — The basic vertical bob and leg cycle function, and arm opposition is present. However, the heavy reliance on simple translation without secondary motion makes the character feel stiff rather than bouncy and energetic.
+* **Pixel Art Quality:** 5/10 — The base sprite is clean, but automated cutout rotation/scaling causes jagged outlines on the katana and awkward pixel clustering on the squashed torso/skirt during the "down" frames.
+* **Pose Readability:** 6/10 — Key walk phases (contact, down, pass, up) are distinct in the legs, though the silhouette becomes muddied when the back arm merges into the torso on frames 3–5.
+
+SCORE walk: 5

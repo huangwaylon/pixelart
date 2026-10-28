@@ -1,0 +1,112 @@
+[
+ {
+  "sprite": "turn_NE",
+  "edit": "added far bow loop x49-54 y45-51 tucked behind the bun (behind-mode)",
+  "reason": "bow read as ONE small loop; S/N/SE/E show two loops (identity drift)"
+ },
+ {
+  "sprite": "turn_NW",
+  "edit": "added far bow loop x74-79 y45-51 tucked behind the bun",
+  "reason": "same two-loop bow as N/NE"
+ },
+ {
+  "sprite": "turn_NW",
+  "edit": "orphan red_0 at (77,49) -> r",
+  "reason": "cleanup R13: single pixel left by the edit above"
+ },
+ {
+  "sprite": "turn_NW",
+  "edit": "orphan red_0 at (75,50) -> K",
+  "reason": "cleanup R13: single pixel left by the edit above"
+ },
+ {
+  "sprite": "turn_SW",
+  "edit": "bow red_3 moved from loop right edges to upper-left",
+  "reason": "mirrored cel flipped the light; light is upper-left in every direction"
+ },
+ {
+  "sprite": "turn_W",
+  "edit": "bow red_3 moved from loop right edges to upper-left",
+  "reason": "mirrored cel flipped the light"
+ },
+ {
+  "sprite": "walk_SE_k0",
+  "edit": "bow shifted -1 px vs head",
+  "reason": "overlap: the bow trails the head bob by one key (up while falling, down on the rise)"
+ },
+ {
+  "sprite": "walk_SE_k0",
+  "edit": "orphan hair_0 at (58,44) -> K",
+  "reason": "cleanup R13: single pixel left by the edit above"
+ },
+ {
+  "sprite": "walk_SE_k0",
+  "edit": "orphan outline at (64,50) -> h",
+  "reason": "cleanup R13: single pixel left by the edit above"
+ },
+ {
+  "sprite": "walk_SE_k1",
+  "edit": "bow shifted -1 px vs head",
+  "reason": "overlap: the bow trails the head bob by one key (up while falling, down on the rise)"
+ },
+ {
+  "sprite": "walk_SE_k1",
+  "edit": "orphan outline at (63,51) -> v",
+  "reason": "cleanup R13: single pixel left by the edit above"
+ },
+ {
+  "sprite": "walk_SE_k3",
+  "edit": "bow shifted +1 px vs head",
+  "reason": "overlap: the bow trails the head bob by one key (up while falling, down on the rise)"
+ },
+ {
+  "sprite": "walk_SE_k3",
+  "edit": "orphan hair_0 at (58,43) -> K",
+  "reason": "cleanup R13: single pixel left by the edit above"
+ },
+ {
+  "sprite": "walk_SE_k3",
+  "edit": "orphan outline at (59,49) -> h",
+  "reason": "cleanup R13: single pixel left by the edit above"
+ },
+ {
+  "sprite": "slash_SE_k1",
+  "edit": "blade-arc rows 91-93 x53-74 repainted as skirt + hem, arc keeps its 3-row lead band",
+  "reason": "arc buried hips and hem; silhouette unreadable at 1x"
+ },
+ {
+  "sprite": "slash_SE_k1",
+  "edit": "orphan red_0 at (60,93) -> R",
+  "reason": "cleanup R13: single pixel left by the edit above"
+ },
+ {
+  "sprite": "slash_SE_k2",
+  "edit": "near bell sleeve: red_1 cast shadow 1 px right of its seam + red_0 lining in the opening",
+  "reason": "sleeve and lit skirt were the same red_3: red-on-red at 1x"
+ },
+ {
+  "sprite": "slash_SE_k2",
+  "edit": "orphan red_1 at (56,96) -> K",
+  "reason": "cleanup R13: single pixel left by the edit above"
+ },
+ {
+  "sprite": "slash_SE_k3",
+  "edit": "near bell sleeve: red_1 cast shadow 1 px right of its seam + red_0 lining in the opening",
+  "reason": "sleeve and lit skirt were the same red_3: red-on-red at 1x"
+ },
+ {
+  "sprite": "jump_E_crouch",
+  "edit": "repainted skirt bell y88-98 (wider squash, lit upper-left, petal hem) + knees/shins",
+  "reason": "skirt vanished behind the knees; squash must widen the volume"
+ },
+ {
+  "sprite": "jump_E_crouch",
+  "edit": "orphan red_1 at (57,91) -> R",
+  "reason": "cleanup R13: single pixel left by the edit above"
+ },
+ {
+  "sprite": "jump_E_apex",
+  "edit": "5 tapered take-off speed lines (pink_1 near body -> pink_0, broken tails)",
+  "reason": "motion lines were 2 short dashes; the take-off read static"
+ }
+]

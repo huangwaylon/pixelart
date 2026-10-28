@@ -1,0 +1,44 @@
+[
+ {
+  "name": "bbox_0.5_1_0.41",
+  "sec": 63.0,
+  "faces": 356302,
+  "mlx_peak_gb": 13.0
+ },
+ {
+  "name": "pose_rest",
+  "sec": 66.1,
+  "faces": 298604,
+  "mlx_peak_gb": 13.0
+ },
+ {
+  "name": "pose_sword_ready",
+  "sec": 67.6,
+  "faces": 371836,
+  "mlx_peak_gb": 13.0
+ },
+ {
+  "name": "pose_attack_slash_mid",
+  "sec": 72.5,
+  "faces": 332610,
+  "mlx_peak_gb": 13.0
+ },
+ {
+  "name": "pose_overhead",
+  "sec": 81.2,
+  "faces": 376172,
+  "mlx_peak_gb": 13.0
+ },
+ {
+  "name": "pose_run_stride",
+  "sec": 87.1,
+  "faces": 384012,
+  "mlx_peak_gb": 13.0
+ },
+ {
+  "name": "pose_jump_apex",
+  "sec": 87.0,
+  "faces": 321542,
+  "mlx_peak_gb": 13.0
+ }
+]

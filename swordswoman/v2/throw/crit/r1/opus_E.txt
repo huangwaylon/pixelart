@@ -1,0 +1,5 @@
+**Score: 6/10.** The release smear and sparkle work, and the windup leg kick is lively. After release, though, the energy falls flat.
+
+- **Readable at 1x:** mostly. The windup kick and the release arc read well. The ready and windup frames face the camera instead of turning to the E profile, so the turn into the stride happens all at once.
+- **Fix 1 (follow2, recover, mid-flight):** the orb hangs about 50 px in front of her for roughly 400 ms. Make it travel clearly each frame (about 60, 120, 180+ px with a slight arc), or move it off-frame and only show the landing pop.
+- **Fix 2 (follow and follow2):** her body stays upright and her weight stays back. Bend her trunk well forward, bring the throwing arm down across her body to the opposite hip, and lift the back heel or leg so she visibly commits to the throw.

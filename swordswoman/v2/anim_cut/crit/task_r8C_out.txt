@@ -1,0 +1,31 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I've rebuilt dash_SE (+ _ns) and slash_SE. QC reports no FAIL lines, and I checked the sheets over 3+ passes.
+
+**Dash:**
+- The afterimage is now one solid 2-tone silhouette of her, 14px behind: pink with a red outline on burst, darker red on burst2. The overlapping ghost "wall" is gone.
+- Her head is pushed 4px forward in the burst.
+- On the skid she leans back, with the bow thrown forward.
+- The blade swings one angle step per frame.
+- The brake frame had her boots 1px below the ground; fixed.
+- The jump in height between brake and settle is down from 7px to about 4px.
+
+**Slash:**
+- The impact is now a wide, low lunge with the torso and head thrown forward (it reuses dash's lunge legs).
+- The coil is a deeper crouch.
+- The smear is now one large crescent drawn from the blade tip's path: 1px tail behind her head, over the bow, 8px thick where it meets the blade, steel colours only. The small smear "horn" on swingA and the sliver on impact are gone.
+- Sparks change each frame: a bold star on impact, then debris streaks with a white flash on the blade, then fading dots.
+
+**New files:**
+- `parts/common/fx_dash10_ghost{A,B,C}`
+- `fx_slash10_sm{1,2,3}`
+- `fx_slash10_spark{0,1,2}`
+- `kat14_slash10_flash`
+- scripts in `work/r9/`
+
+**Weaknesses:**
+- The smear is only on one frame, not the 2–3 the lead asked for, because the extra frames read as floating fragments. Two smear parts are generated but not used.
+- The dash blade trails behind her rather than leading.
+- On recover, the hand jumps about 24px in one frame.
+
+Saving session...completed.

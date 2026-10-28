@@ -1,0 +1,8 @@
+SE_top SE 44 25 84 50 hair
+E_top E 45 25 83 50 hair
+S_handL S 40 74 58 98 body
+S_handR S 70 74 88 98 body
+SE_handL SE 43 74 61 98 body
+SE_handR SE 66 74 84 98 body
+N_handL N 40 74 58 98 body
+N_handR N 70 74 88 98 body

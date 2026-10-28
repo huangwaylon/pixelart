@@ -1,0 +1,24 @@
+; pivot 17 20
+; composed head+bun+bow (e squash)
+....###....###..........
+...#jHH#..#rRR#..#####..
+..#jHHHh#.#rrR##eeeeEE#.
+..#HHHhh#####eE#EEEERR#.
+...#h####HHH#ER#RRRRR#..
+...##jHHHHHH#########...
+..#jHHHHHHHHHHHHHHHHH#..
+.#jHHHHHHHHHHHHHHHHHHH#.
+.#jHHHHHHHHHHHHHHHHHHH#.
+#jHHHHHHHHHHHHHHHHHHHHh#
+#HHHHHHHHHHHHhHHHHHHHHh#
+#hHHHHHHHHHHHhHHHHHHHhh#
+#hHHHHHHHHHHhhh223322#..
+.#hHHHHHHHHHhhh22##22#..
+.#hhHHHHHHHHh2222wi22#..
+..#hHHHHHHHHh2222iI22#..
+..#hhHHHHHHHh2222II222#.
+...#hhHHHHHHh22222221#..
+...#hhHHHHHhh22222222#..
+....#hhhHHhhh##22222#...
+.....#hhhhhhh#######....
+......#######...........

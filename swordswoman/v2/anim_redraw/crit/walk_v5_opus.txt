@@ -1,0 +1,16 @@
+Restored session: Mon 26 Oct 2026 11:36:22 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 5/10.** The poses are there, but the motion reads as a skip with stiff props. (I judged from the contact sheet only; I couldn't zoom in further because PIL isn't installed, so pixel-level claims are by eye.)
+
+- **Bounce is in the wrong place.** In F3/F7 the whole body pops up about 2px and the feet look like they leave the ground, so it reads as a hop. The drop should come in F1/F5, right after the foot lands, but those frames sit at the same height as the contact frames. Push F1/F5 down 1px and keep a foot planted in F3/F7.
+- **Feet slide.** The planted foot drifts sideways between F0→F1→F2 instead of staying put while the body moves over it. Lock the support foot's x position until it lifts.
+- **Head and bow wobble.** The bow's outline and the hair edges redraw differently each frame, especially F3 and F7. Hold those pixels fixed and move them only with the bounce.
+- **The katana is stiff.** It just slides along with the body. It needs a 1-frame lag on the tip and a slight angle change on the up/down frames. Right now the brightest, longest shape in the sprite is also the deadest.
+- **Arm and dress don't move.** The free arm barely swings and the skirt hem never trails. Add 1–2px of hem lag and an arm swing opposite the near leg.
+- **Legs merge mid-stride.** In F2/F6 the light near leg and dark far leg blur into one dark mass. Give the far leg a clear dark outline gap and make the knee bend read.
+- **F3 and F7 don't match.** The torso and arm shapes differ between the two halves of the cycle more than mirroring the legs would explain, which looks like an off-model frame. Make them consistent.
+- **Timing hangs at the top.** The 110ms up-poses linger at the high point, which feels floaty. Swap the timing: make the down-pose the longer frame (~110ms) and the top short (~80ms).
+- **What works:** the strong F0/F4 contact poses, the clean palette, and how readable it is at 1x.
+
+Saving session...completed.

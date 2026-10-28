@@ -1,0 +1,15 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt slash_SE; qc passes and I did 5 build-and-review passes.
+
+**What changed:**
+- **Smears:** swingA has no arc now, just the blade overhead, stretched, with a trailing edge. SMEAR is the only crescent: 1px tail, 6px lead, outer rim, white core, grey-blue inner edge, no specks. Impact shows the spark only.
+- **Impact:** body drops 2px (wider knee); hitstop shakes right and the next frame springs back.
+- **Recovery:** new 60ms "pass" frame, so the blade goes 13 → 12 → 11 with no jump.
+- **Timing and overlap:** antic cut to 70ms. Hair and bow variants on every frame, one frame late. Lean heads in the lunge. Per-frame shadows. Hem changes on almost every frame (the two hitstops share one).
+
+**Weaknesses:** the pass blade hangs in front of the skirt; the coil torso is unchanged.
+
+**New parts:** `slash10_lg_sq`, `slash10_shout_{hf,hu,hd,hb}`, `slash10_head_hf`, `slash10_lean_hf` (trimmed so qc's head-size check passes), `common/slash10_kat04_str`, `common/slash10_fx_sm2` (from `work/r12/smear12.py`).
+
+Saving session...completed.

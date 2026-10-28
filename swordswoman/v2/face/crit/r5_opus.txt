@@ -1,0 +1,46 @@
+Restored session: Mon 26 Oct 2026 17:57:51 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+Scores are from the 1x/2x sheet; pixel notes are from the `S_` / `SE_` / `E_` char-maps.
+
+**(1) Readability at 1x (official sprite = 9)**
+- **neutral 6**: the 3x3 eye (top lash row, W+i, iiI) works. The mouth is a flat 4px `rrrr` line, and on skin it reads as a smudge.
+- **determined 6**: the brow slant (`KKK` stepping down to the centre) reads. The mouth is the same flat `rrr`, so the face has no set jaw.
+- **shout 4**: an `rrr` row over `KKK` with `r` at the sides reads as a small dark dash, or a tongue. It doesn't read as an open yell.
+- **effort 5**: the `WWW` teeth row is one pixel tall, so it reads as a white line, not gritted teeth.
+- **joy 7**: the ∩ eyes (`KK`/`K..K`) read well. The mouth is still a closed `rrr`, which gives contentment, not victory.
+- **smile 6**: barely different from neutral.
+- **surprised 4**: the mouth is 2px `rr`, which isn't an "O". The eyes lose the lash weight and look blank.
+- **pain 7**: the >< eyes read. The `WW` mouth is ambiguous.
+- **blink half / blink closed 7 / 7**: fine.
+- **squash 6**: the same as blink closed, with no cheek push.
+
+**(2) Intentional design and Pokemon look: 5/10.** The lash plus W glint is correct BW grammar. The mouths are all one width and one row tall, with no dark outline, so they come out as filler rather than designed shapes.
+
+**(3) Personality: 4/10.** Nothing shows confidence. There's no smirk, no asymmetry and no brow tilt in neutral.
+
+**(4) Views**
+- **S 6**: the mouths are too weak.
+- **SE 6**: the far eye loses its glint, and the mouth sits too centred for a 3/4 view.
+- **E 4**: the eye is 2px, and the mouth (`rr`, or `rK`) is pushed to the edge and gets lost in the outline. There's no lip notch.
+- **NE/N 7**: clean, but the blush sliver is barely visible.
+
+**(5) Top 6 pixel fixes**
+1. **Shout mouth:** make it 3 wide x 2 tall dark K, with an `r` tongue pixel bottom-centre. Widen the top row to 4px so it reads as a D-shape.
+2. **Surprised:** make the mouth a 2x2 K "O" with a skin pixel in the centre (`.K.`/`K.K`/`.K.` if there's room). Keep the lash row, and shrink the iris to 1px with a W glint.
+3. **Neutral and smile:** add a 1px upturn at the right mouth corner (an `r` one row up). This asymmetric smirk is the confident signature, and it also gives the SE view a direction.
+4. **Joy:** make the mouth an open 3x2 (K top row, `r` under it), and add an `e` blush pixel under each ∩ eye.
+5. **Effort:** make the teeth 3 wide x 2 tall `WWW`, outlined in K top and bottom, with the brows slanted like determined.
+6. **E profile:** grow the eye to 2x3 with the lash pixel extending past the outline. Cut a 1px K notch into the silhouette at the lip, and put the open mouths for shout and surprised inside the face, not on the edge.
+
+**Criteria scores**
+| Criterion | Score |
+|---|---|
+| Readable at 1x | 5 |
+| Intentionally designed | 5 |
+| Pokemon-like | 6 |
+| Carries personality | 4 |
+| **Overall** | **5/10** |
+
+Saving session...completed.

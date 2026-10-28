@@ -1,0 +1,21 @@
+# jump_E_apex STRETCH (220 ms): same turn_E cel (identity), head 4 px up (49,41), body 2 px taller: trailing leg
+# extended down-back with the toe pointed, front knee tucked up, skirt hem flipped up by the drag, one ribbon and
+# the bow lagging DOWN behind the upward move, two short take-off streaks under the feet.
+fx: none
+from: turn_E -1 -4
+stamp: 49 41
+bow: 0 1
+kat: katana_idle_2to1 41 78 m under
+clear: 30,93,110,112
+limb: s 2 61,92 60,97 58,100
+limb: d 2 57,101 56,102
+limb: s 2 65,92 70,93 68,96
+limb: d 2 68,97 70,97
+patch: 51 92
+__KKKK____________KKK
+_KRRRRKKKKKKKKKKKKRRK
+KRRvvvvvvvvvvvvvvvvRK
+_KK______________KK__
+opb: curve 56,76 50,82 52,89 P
+opb: curve 52,89 54,93 51,96 p
+opb: speed 62,102 0,1 2 4 4 T

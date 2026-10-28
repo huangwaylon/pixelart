@@ -1,0 +1,20 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+OVERALL: 6
+
+- Natural: 6
+- Whole-body: 7
+- Fluid: 6
+- Appealing: 5
+- Secondary motion convincing: 5
+- Readable at 1x: 6
+
+**Top 3 fixes:**
+
+1. **Release and follow (both views): the head turns too far.** At the moment of the throw we see only the back of her head, so the face disappears. Turn the head about 30° back toward the camera, so the face is still about ¾ visible past the shoulder. Keep it pitched about 10° down along the throw line.
+
+2. **Release and follow: the ribbon tails stick out stiff and straight.** They read as two red sticks pointing horizontally behind her. Make the tails lag 1 frame behind the head. Add an S-curve that droops about 15–20° below horizontal at the tips. Start sagging them in follow2, not in recover.
+
+3. **Release (50ms): the throwing arm can't be seen.** It's hidden behind her torso and head. Extend it fully forward and down past the front hip, about 4 px beyond the silhouette at 1x, with the palm open. In follow, carry it across her body to the opposite knee. Right now there's no clear arc from windup to follow-through.
+
+Minor: in stride/release, flare the skirt hem about 2 px behind her. It currently stays too close to the body for a motion this violent.

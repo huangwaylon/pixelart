@@ -1,0 +1,16 @@
+**Critique**
+1. **Match:** Proportions and bows match well, though S/N skirts balloon at the hips instead of flaring linearly like an A-line kimono. Socks, boots, and the *zettai ryoiki* skin band are accurate across all views.
+2. **Face (1x):** Eyes and catchlights read well, but dark grey lower-eye pixels read as heavy eye-bags. The 2px dark red mouth reads as a startled open "O", especially in E where it sits too low and detached. S forehead has noisy shadow pixels (looks like a scar).
+3. **Cleanliness:** SE/NE hair interiors have messy, pillow-shaded dark clusters. E/NE hanging ribbon tails are swallowed by dark outlines, losing their red identity. S/N hands look like tiny prongs.
+4. **Colours:** Palette consistency across views (kimono red, obi grey, skin, boots) is excellent.
+
+**Scores**
+* **S:** 7.5/10 | **SE:** 7/10 | **E:** 6.5/10 | **NE:** 7/10 | **N:** 8/10
+* **Overall:** 7.2/10
+
+**Top 5 Concrete Fixes**
+1. **S/SE/E (Face, under eyes):** Replace dark-grey bottom iris pixels with skin-shadow/blush tone to eliminate eye-bags.
+2. **S/SE/E (Mouth):** Change the 2px dark-red mouth to a softer skin-shadow shade; in **E**, shift it 1px up and 1px right to form a profile notch.
+3. **S (Forehead, left):** Remove the 4–5 stray mid-tone shadow pixels under the bangs.
+4. **SE/NE (Crown hair):** Flatten the noisy dark-brown clusters into clean, solid mid-brown shapes.
+5. **E/NE (Back of hair):** Widen the hanging ribbon tail with 1px of bright red so it isn't solid outline.

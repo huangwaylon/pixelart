@@ -1,0 +1,13 @@
+SCORE 4.5/10
+
+1. **Broken Run Mechanics (Frames 0-7, Legs):** Frames 0 & 4 are wide contact poses, yet 2 & 3 are *also* extended while 6 & 7 are awkward airborne hops—making the two halves of the cycle completely asymmetrical and limp.
+2. **Teleporting Katana (Frame 1 vs 0,2-7):** In Frame 1, the scabbard pops from trailing behind the legs to across her front waist/hand, then teleports back down behind the boots in Frame 2.
+3. **Unpinned Ground Plane (Frames 0-7, Boots):** The planted foot Y-level shifts up and down by 3-5 pixels across the cycle (compare Frame 1 planted boot to Frame 3/6/7), causing severe vertical floating.
+4. **Static Hair & Bow (Frames 0-7, Head):** The large red bow, hair bun, and sidelocks are copy-pasted rigid blocks with zero secondary bounce, drag, or follow-through to sell the heavy vertical bob.
+5. **Robotic Speed Lines (Frames 0-7, Left BG):** The three white horizontal dashes barely change position or length across all 8 frames, reading as stuck HUD noise rather than dynamic air FX.
+6. **Jaggies & Tangents on Scabbard (Frames 2, 5, 6, 7):** The white scabbard has inconsistent 2:1/1:1 staircase jaggies and creates muddy tangents where it intersects the dark boot outlines in Frames 2, 6, and 7.
+
+**Top 3 Fixes:**
+1. **Standardize the 8-Frame Stride:** Align all grounded feet to a single baseline Y; match the cycle halves symmetrically: Contact (0,4), Down/Pass (1,5), Push-off (2,6), Airborne High-point (3,7).
+2. **Pin the Scabbard to the Hip:** Keep the katana consistently angled behind the back hip across all frames (fix Frame 1 immediately), adding a 1-frame lag/overshoot in angle on the Down (1,5) and Up (3,7) frames.
+3. **Add Overlapping Action to Head/FX:** Flap the bow tips and hair bun up on Down frames (1,5) and flatten them down on Up frames (3,7); animate the speed lines streaking backward and dissipating over 3-4 frames instead of hovering.

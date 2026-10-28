@@ -1,0 +1,11 @@
+**Score: 5.5/10 — Verdict: FIX**
+
+The palette, clean clusters, and hair sheen are solid, but severe proportional and structural mismatches against the binding illustrations break the turnaround.
+
+**Concrete Fixes:**
+1. **All views (Head/Chin) [ILLUS]:** Heads are boxy/square with flat 6–8px chins, making her look stocky. Taper jawlines to a soft 2–3px rounded chin and curve the outer hair silhouette inward at neck level.
+2. **S, NE, N (Skirt/Hem) [ILLUS]:** Bottom hems are completely flat horizontal lines. Curve the skirt hems downward in the center and flare the side silhouettes outward below the obi.
+3. **SE, NE (Obi/Belt) [ILLUS]:** In SE, the grey obi is 2px too high (sitting on the chest, leaving almost no red collar). Move SE obi down 2px to match S/E. In NE, angle the obi slightly downward toward the right to match the 3/4 back perspective.
+4. **S, SE, N (Sleeves) [ILLUS]:** Sleeves hang vertically like tubes; flare them outward diagonally toward the wrists into bell sleeves.
+5. **E (Face Profile) [ILLUS]:** Nose protrudes too sharply and the dark pixel at the jaw/mouth corner reads as an open mouth/beard. Soften nose to 1px and clean the lower cheek/chin outline.
+6. **NE, N (Bow/Bun) [ILLUS]:** Distinctly round out the brown hair bun on the upper-left crown; shorten the hanging red ribbon tails by 2–3px so they stop above the shoulders, flaring them slightly left.

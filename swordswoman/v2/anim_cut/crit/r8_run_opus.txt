@@ -1,0 +1,42 @@
+Restored session: Mon 26 Oct 2026 12:28:43 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Bottom line: this reads as a skirt sliding along with legs paddling underneath, not a run. The rig keeps the top two-thirds of the sprite almost frozen.
+
+**Strengths.** Identity holds across all 8 frames: the bow, bob haircut, eyes and palette all match. Outlines on the head and dress are clean, and the 2‑contact / 2‑air timing (~90–120 ms per frame) is a reasonable base.
+
+**Three most important problems**
+
+1. **No forward lean, and the head, hair and bow don't react (all frames, top 60% of the sprite).** The torso is perfectly upright in every frame, and the head, hair and bow are pasted at the same angle. They only shift by about 3–8 px, so there's no bob, squash or follow-through. A run needs about 10–15° of forward tilt, which means rotating the whole torso, head and hair around the hips. Fix:
+   - In the down frames (160, 560): drop the body 2 px, squash the head and hair mass 1 px vertically, and tilt the bow tails up 1–2 px.
+   - In the air frames (380, 780): raise the body 3–4 px, stretch it 1 px, and lag the bow and hair ends 1 frame behind the head.
+   - Shrink the ground shadow by about 4 px in the air frames. Right now it stays the same size.
+
+2. **The stride is weak and the legs don't alternate (frames 0/470 and 260/660, legs and skirt, bottom ~40 px).** Contact2 and push2 look nearly identical to contact and push: the same leg is kicked back and the same foot is planted. Both legs are thin pink sticks under the skirt hem with broken or missing dark outlines. Fix:
+   - Redraw the second half with the legs swapped.
+   - Lengthen the stride so the front foot lands about 6–8 px ahead of the hip.
+   - Give the push frame a fully extended back leg.
+   - Close a 1 px dark outline around each shin and shoe.
+   - Flare the skirt hem 2 px toward the back in the push and air frames, so the cloth overlaps the motion instead of staying a rigid triangle.
+
+3. **The arms and katana are static, and the blade is jaggy (all frames, left arm and blade, x≈15–90).** The sword arm barely changes angle. The blade length drifts by about 10 px between frames (160 vs 380), and it has uneven 2‑1‑2 stair steps with bright single-pixel highlights that read as noise. The front fist pumps by only about 2 px. Fix:
+   - Lock the blade length.
+   - Redraw the blade as a clean 1:2 or 1:3 diagonal with a continuous 1 px highlight.
+   - Swing the sword arm forward and back opposite the legs, about 20° each way.
+   - Pump the front fist 4–6 px, from chin height down to the hip.
+
+**Sub-scores (/10):**
+
+| Category | Score |
+|---|---|
+| Key poses | 4 |
+| Bounce / squash & stretch | 3 |
+| Overlap | 2 |
+| Timing | 5 |
+| Smears | N/A (none, which is fine for a run) |
+| Identity | 8 |
+| Pixel quality | 5 |
+
+SCORE run: 4
+
+Saving session...completed.

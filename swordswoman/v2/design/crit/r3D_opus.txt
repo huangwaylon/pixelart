@@ -1,0 +1,26 @@
+Restored session: Mon 26 Oct 2026 10:17:33 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+**Scores**
+- A) Cross-view consistency: **6/10**
+- B) Readability at 48px: **6/10**
+- C) Iso views for a ~30° top-down game: **3/10**
+- D) Katana variant clarity: **5/10**
+
+**Problems by view**
+- **All iso views:** They're drawn at eye level, not from 30° above. The top of the head never shows, the head and torso aren't foreshortened, and the feet aren't placed on a tilted ground. Copied as-is, they'll look like side-on sprites in a top-down world.
+- **iso_S:** Nearly a copy of front, with no elevation cue.
+- **iso_SE:** The bob is wider and puffier than in front. The near hand is an oversized mitten. The stance is mid-step while every other view stands neutral.
+- **iso_E:** The head is almost a full side profile rather than 3/4, so it duplicates "right" and isn't a true in-between. The torso reads flat-on.
+- **iso_NE:** The bun sits on the viewer's left side of the head instead of back-centre, and the bow hangs off it on the side. The bow/bun placement contradicts every other view. The legs are mid-step with one boot raised. Hair on the right falls long, like a sidelock.
+- **iso_N:** The bow sits higher than in "back", and the hair mass is wider and longer than in "back".
+- **back:** The bow sits low, at the back of the head, rather than at the crown as in front.
+- **left / right:** The arms merge into the sleeves and dress. At 40px the arm is gone and only a skin-coloured stub is left.
+- **40px probes:** The bow and hair blur into one dark blob, and the eyes are about 2px.
+- **right_k:** The sword hilt and blade are drawn on the near side of the body, which suggests the left hand. Front, left and back all show the right hand.
+- **Katana probes:** The blade is 1px grey, close in value to the grey background, and breaks up at 40px. The hilt guard and grip are lost. There are no katana variants for the iso views.
+
+**Regenerate:** all five iso views, redrawn at a true 30° elevation (iso_NE is the worst), and right_k with the sword in the far hand. Lock bow height and hair volume to front and back.
+
+Saving session...completed.

@@ -1,0 +1,43 @@
+Restored session: Mon 26 Oct 2026 12:49:51 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+I looked at all 7 frames. The character stays on-model, and the outlines and palette hold up mostly fine. The motion is the problem: this reads as cutout parts sliding around, not a body throwing its weight. There's almost no squash and stretch and no follow-through.
+
+**1. Frames 1–2 (burst): the smear is wrong and the body is stiff.**
+- The speed lines (about x 360–430, y 60–200 in frame 1, and the same spot in frame 2) are flat-ended, stacked rectangles in maroon and white. They look like a glitch, not motion.
+- They're horizontal, but the dash heads SE, so they should run down to the right.
+- The body pose is nearly the same in both frames. The head barely leans forward and the ribbon stands straight up.
+- The back leg (frame 1, about x 380–440, y 190–210) is a skin-coloured strip with no outline, and you can see the rig seam at the hip.
+- **Fix:**
+  - Swap the bars for 3–4 smears that start thick at the body and taper to one pixel, angled to match the dash, using 2 tones (dark red to mid red) with no white.
+  - Stretch the torso about 15% along the dash direction and lean the head 2–3 pixels forward.
+  - Bend the ribbon and hair back.
+  - Outline the back leg.
+
+**2. Frames 3–4 (skid and brake): the stop has no weight and nothing follows through.**
+- The ribbon, hair and skirt stay rigid when she stops. They should keep moving forward.
+- Frame 3 has a loose red skirt chunk floating at about x 215–230, y 430–445.
+- In frame 4, the katana (about x 370–410, y 430–500) shows as two parallel lines with a gap between them, which looks jagged.
+- **Fix:**
+  - In frame 3, squash her 2–3 pixels shorter and wider, and throw the ribbon and hair 3 pixels forward. In frame 4, let them swing back.
+  - Join the skirt chunk to the hem.
+  - Redraw the blade as one clean anti-aliased line: a 1-pixel highlight on a 1-pixel dark edge.
+
+**3. Frame 0 (anticipation) and frames 5–6 (settle and rest): weak bookends and stray pixels.**
+- Frame 0 is basically the idle pose. She doesn't crouch or wind up away from the dash.
+- In frame 5, the dust dots (about x 755–790, y 478) are loose, unconnected pixels, and the sword is cut short behind her leg.
+- In frame 6, the shadow (x 110–175) sits off to the left of her feet (x 160–195).
+- **Fix:**
+  - In frame 0, drop the hips 3 pixels, lean her back and away from SE, pull the sword back, and hold the frame for about 160 ms.
+  - Make the dust in frame 5 a 2-step puff that fades out, and show the whole blade.
+  - Centre the shadow under her feet in frame 6.
+
+**Smaller issues:** The timings follow a reasonable rhythm, but with no squash and stretch the impact doesn't land. The arms in frame 6 hover at her sides like they aren't attached.
+
+Scores: readability 5, energy 3, pixel quality 5, identity 8.
+
+SCORE dash: 4
+
+Saving session...completed.

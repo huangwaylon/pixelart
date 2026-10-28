@@ -1,0 +1,24 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 6/10.** It's a clear step up from the old helmet head, but not ready to ship.
+
+1. **Skull roundness (7/10):** The crown is domed and the hair bulges past the temples on both views, so the old flat top and vertical walls are gone. The bottom is still a problem. In SE, the face ends in a flat 3–4px row with almost no taper, so it reads as a box rather than a soft small chin. The whole silhouette leans toward an onion or rice-ball, with too much undifferentiated dark mass. The E view's back of skull is good, but its face front is a straight vertical wall with a stair-stepped chin.
+2. **Identity (6/10):** The big red bow with left/right loops and the visible bun both work. The eyes are blue and low but noticeably smaller and weaker than the old master's; they've lost the strong white catchlights, so they read as dots at 1x. The bangs aren't a blunt shelf: the edge is notched and ragged, while the ref shows a hard straight fringe. The bob stops at chin level, but the ref hangs past the chin, especially on the far side in SE. In SE the bun sits dead centre above the bow like an antenna; in the ref it sits behind and to the left with the bow overlapping it.
+3. **Consistency (5/10):** The bow and bun drift between variants. E squash slides the bow right and the bun down-left. SE lean and lookup shift the face but leave the hair outline nearly identical, so the face looks like it's sliding inside a mask instead of the head turning. Squash is fine.
+4. **Cleanliness (6/10):** I didn't find obvious single-pixel orphans, but there are jaggies:
+   - stair-steps on the lower left of the SE hair outline;
+   - a doubled outline where the bow meets the crown;
+   - uneven 1–2px blobs along the bangs edge.
+   
+   At 1x the face is too small a share of the head and the dark hair swallows it.
+
+**Fixes:**
+- Narrow the bottom two face rows into a 2px chin.
+- Make the bangs one straight blunt row.
+- Grow the eyes to the old master's size and restore the white catchlights.
+- Lengthen the bob 2px below the chin.
+- Move the bun behind and left of the bow, and lock bow and bun positions across all variants.
+
+I judged from the sheet at its own scale because Pillow isn't installed here, so I couldn't zoom in further.
+
+Saving session...completed.

@@ -1,0 +1,34 @@
+**Overall Score: 7.5/10** (Huge step up, close to BW trainer polish).
+
+**(1) Expressions (1x Readability & Pixel Flaws)**
+*   **Neutral (8/10):** Readable. S-view mouth smirk (right-side step-up pixel) slightly muddies with the chin outline at 1x.
+*   **Determined (7.5/10):** Heavy flat brow reads slightly sleepy rather than fierce; needs an inner-brow downward V-slant.
+*   **Shout (7/10):** Good dark core/tongue, but eyes are too static. Needs angled angry top lashes (like PMD Meloetta angry) to sell impact.
+*   **Effort (6.5/10):** Weakest read. The 3x1 white teeth bar lacks a dark surround, blending into the pale skin as a glowing lip/mustache.
+*   **Joy (9/10):** Spot-on `^ ^` arches and blush. Official quality.
+*   **Smile (8.5/10):** Clean, charming idle variant.
+*   **Surprised (6.5/10):** Drop the white sclera under the iris; it makes the eyes look roll-eyed/creepy at 1x. Just use a taller iris/pupil + raised brow.
+*   **Pain (8.5/10):** Crisp `> <` wince.
+*   **Blink_hal (7.5/10):** Reads identical to Determined at 1x. Needs neutral/soft brow, not a flat heavy bar.
+*   **Blink_clo (9/10):** Clean.
+*   **Squash (8/10):** Good wince + 1px head compression.
+
+**(2) Pokemon-like Grammar:**
+8/10. Eye glints and red/pink mouths match BW trainers well. However, official sprites avoid unbordered white teeth (Effort) and bottom-white sclera at this tiny scale (Surprised).
+
+**(3) Personality:**
+8/10. Carries the spirited/confident vibe well in SE and C_r4, though S-view feels slightly stiff due to flat horizontal brows.
+
+**(4) Views**
+*   **S (7.5/10):** Symmetric V-chin is a bit sharp/pointy compared to softer official rounded chins (see Lass/Dawn).
+*   **SE (8.5/10):** Best row. Far-eye compression works great.
+*   **E (7/10):** Mouths sit 1px too far back from the front face outline, looking pasted on the cheek rather than breaking the muzzle profile.
+*   **NE/N (9/10):** Solid. Good subtle squash shift on column 11.
+
+**(5) Top 6 Concrete Pixel Fixes**
+1.  **Effort mouth:** Replace the 3px white bar with a 2px white core flanked by 1px dark-red corners, or swap to a tight `^` grimace line.
+2.  **Surprised eyes:** Replace the bottom white sclera pixels with skin tone; shrink the iris by 1px vertically so skin shows all around, or push the top lash up 1px into the bangs.
+3.  **Shout/Determined brows:** Drop the inner-corner lash pixel down 1px and raise the outer corner 1px to create an aggressive diagonal slant.
+4.  **E-view mouths (Shout/Joy/Pain):** Shift mouth clusters 1px right so they touch the front facial outline.
+5.  **S-view chin:** Widen the bottom-most chin outline from 2px to 3–4px for a rounder Pokemon-style jaw.
+6.  **Blink_hal:** Soften the top lash dark line using brown/mid-tone anti-aliasing at the outer corners so it doesn't match Determined's scowl.

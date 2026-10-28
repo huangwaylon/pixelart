@@ -1,0 +1,17 @@
+**Scores:**
+*   **A) Cross-view consistency:** 5/10
+*   **B) Simplicity/readability at 48px:** 7/10
+*   **C) Suitability of iso views (~30° elevation):** 3/10
+*   **D) Katana variant clarity:** 4/10
+
+**Concrete Problems by View:**
+*   **iso_S, iso_E, iso_N:** Zero top-down (~30°) foreshortening. They are identical to the flat orthographic *front, left,* and *back* views. Camera elevation is 0°, breaking consistency with *iso_SE* and *iso_NE*.
+*   **iso_SE:** Head/hair mass is swollen compared to *front* and *iso_S*. The bun is barely visible; at ~30° elevation, the top of the bun should project higher.
+*   **iso_NE:** Hair back edge is jagged/messy compared to the smooth bob in *back* and *right*. Bun/bow sits lower on the skull than in *left* and *right*.
+*   **left_k:** Hand swaps the katana to the **left** hand (in *front_k* and *back_k*, it is held in the **right** hand). 
+*   **right_k:** Because she holds the sword in her right hand (foreground), the wide sleeve should overlap the torso/obi; instead, the sleeve is narrower than in the base *right* view, exposing the back of the obi.
+*   **back_k (48px probe):** Dark blade value merges into the grey background and dark hilt; silhouette is lost.
+
+**Must Regenerate:**
+1.  **iso_S, iso_E, iso_N:** Must be redrawn with true ~30° top-down foreshortening (showing top of head/bun, curved hem/belt lines, shortened vertical torso/legs) to match *iso_SE* and *iso_NE*.
+2.  **left_k:** Must hold the katana in the right (far/background) hand, partially occluded by the body/skirt, not the left hand.

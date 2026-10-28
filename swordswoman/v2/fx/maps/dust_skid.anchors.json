@@ -1,0 +1,45 @@
+{
+ "size": [
+  27,
+  11
+ ],
+ "facing": "E",
+ "attach": "feet",
+ "pivot": [
+  26,
+  10
+ ],
+ "ms": [
+  70,
+  70,
+  90
+ ],
+ "cell_offset": [
+  30,
+  61
+ ],
+ "cell": "64x64 C_r3 cell, 48 px figure, feet pivot (32,62), faces SE; back foot x28-34 sole row 61 (back heel x28), front foot x35-40 sole row 60; ground_y = cell row 61 (back-shoe sole row); pivot = ground point",
+ "layer": "behind",
+ "mirror": "flip x: x -> 26-x, pivot -> [0,10]; keep shading light top-left (re-stamp)",
+ "ground_y": 10,
+ "trail": "left (behind, -x)",
+ "length_px": [
+  23,
+  26,
+  22
+ ],
+ "lift_px": [
+  [
+   0
+  ],
+  [
+   0
+  ],
+  [
+   1,
+   3,
+   5
+  ]
+ ],
+ "note": "pivot = heel end of the trail, tucked under the back heel (cell 30,61). Tapered trail of separate G-outlined puffs, tallest at the heel and smaller toward the back, uneven gaps: f0 9x7 | 2 | 6x5 | 1 | 5x4; f1 10x8 | 1 | 6x6 | 2 | 5x4 (further back); f2 lifts and shrinks toward the back: 9x7 lift 1, 5x4 lift 3, 4x4 lift 5."
+}

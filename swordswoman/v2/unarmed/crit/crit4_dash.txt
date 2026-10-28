@@ -1,0 +1,5 @@
+1) **Natural unarmed motion: 8/10** — No weapon-grip or guard posture remains; the arms pump cleanly, though the two-footed landing in frame 4 reads slightly more like a hop-stop than a continuous dash stride.
+2) **Cheerful trainer feel: 7/10** — The upright recovery in frame 5 is cute and upbeat, though the heavy forward neck-tilt in frame 4 looks a bit slumped/winded rather than energetic.
+3) **Readable at 1x: 8/10** — Silhouettes, head direction, and leg alternation are very clear at 1x, with only the arms in frame 2 blending slightly into the red dress mass.
+
+**Single most important fix:** In **frame 4**, lift the chin/gaze forward instead of looking straight down at the ground so she keeps an alert, cheerful trainer energy through the braking step.

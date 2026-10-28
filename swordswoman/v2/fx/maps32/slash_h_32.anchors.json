@@ -1,0 +1,48 @@
+{
+ "size": [
+  30,
+  11
+ ],
+ "facing": "E",
+ "attach": "hand",
+ "pivot": [
+  22,
+  3
+ ],
+ "ms": [
+  40,
+  60,
+  60
+ ],
+ "cell_offset": [
+  44,
+  32
+ ],
+ "cell": "64x48 action cell (A_slash_f*, feet ~33,45); pivot = sword hand on smear frame f2",
+ "layer": "over",
+ "arc_start": [
+  -21,
+  1
+ ],
+ "arc_end": [
+  5,
+  -1
+ ],
+ "arc_centre": [
+  -7.0,
+  1.0
+ ],
+ "arc_mid": [
+  -6,
+  6
+ ],
+ "arc_note": "arc_start = tail tip, arc_end = leading tip, arc_centre = centre of curvature, arc_mid = outer-edge midpoint; all [dx,dy] from pivot",
+ "max_thickness_px": 5,
+ "frames": [
+  "f0 full crescent W/p/b, n tail",
+  "f1 thinned 2-3 px, tail retracted",
+  "f2 4 tapered chips on outer arc near lead"
+ ],
+ "flip_W": "mirror x: pivot_x -> size_w-1-pivot_x, negate dx of arc_*, cell_offset_x -> 63-x",
+ "target": "~28x10 flat foreshortened crescent, chest/waist height"
+}

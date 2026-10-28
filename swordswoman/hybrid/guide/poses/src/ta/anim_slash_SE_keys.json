@@ -1,0 +1,85 @@
+{
+ "name": "slash_SE_keys",
+ "frames": [
+  {
+   "file": "slash_SE_k0.json"
+  },
+  {
+   "file": "slash_SE_k1.json",
+   "smears": [
+    {
+     "kind": "blade",
+     "path": [
+      "../samples/ta/slashS_00.json",
+      "../samples/ta/slashS_01.json",
+      "../samples/ta/slashS_02.json",
+      "../samples/ta/slashS_03.json",
+      "../samples/ta/slashS_04.json",
+      "../samples/ta/slashS_05.json",
+      "../samples/ta/slashS_06.json",
+      "../samples/ta/slashS_07.json",
+      "../samples/ta/slashS_08.json",
+      "../samples/ta/slashS_09.json",
+      "../samples/ta/slashS_10.json",
+      "../samples/ta/slashS_11.json",
+      "../samples/ta/slashS_12.json",
+      "../samples/ta/slashS_13.json",
+      "../samples/ta/slashS_14.json",
+      "../samples/ta/slashS_15.json",
+      "../samples/ta/slashS_16.json",
+      "../samples/ta/slashS_17.json"
+     ],
+     "inner": 0.4,
+     "outer": 1.0,
+     "taper": 0.85
+    },
+    {
+     "kind": "trail",
+     "from": "prev",
+     "bone": "hand.L",
+     "t": 1.0,
+     "radius": 0.05,
+     "steps": 6
+    }
+   ]
+  },
+  {
+   "file": "slash_SE_k2.json",
+   "smears": [
+    {
+     "kind": "blade",
+     "path": [
+      "../samples/ta/slashS_14.json",
+      "../samples/ta/slashS_15.json",
+      "../samples/ta/slashS_16.json",
+      "../samples/ta/slashS_17.json",
+      "../samples/ta/slashS_18.json",
+      "../samples/ta/slashS_19.json",
+      "../samples/ta/slashS_20.json"
+     ],
+     "inner": 0.6,
+     "outer": 1.0,
+     "taper": 0.9
+    }
+   ]
+  },
+  {
+   "file": "slash_SE_k3.json",
+   "smears": [
+    {
+     "kind": "blade",
+     "path": [
+      "../samples/ta/slashS_20.json",
+      "../samples/ta/slashS_21.json",
+      "../samples/ta/slashS_22.json",
+      "../samples/ta/slashS_23.json",
+      "../samples/ta/slashS_24.json"
+     ],
+     "inner": 0.88,
+     "outer": 1.0,
+     "taper": 0.95
+    }
+   ]
+  }
+ ]
+}

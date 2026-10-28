@@ -1,0 +1,17 @@
+1) **Sections**: Vertical rows match the trainer templates closely, except F_E's ankle line is 1px too high. However, the upper-head widths and jawlines are overly boxy compared to the tapered chins and rounded craniums of the DS trainers.
+2) **Quality**: Not yet DS-Pokemon quality. The stiff, symmetrical A-stance, 2px-wide pillar thighs with heavy black inner outlines, and square jaw make her look robotic rather than cute and feminine.
+3) **Hair at 1x**: The red bow reads as a colour spot, and F_E's side silhouette is nice, but in S/SE the flat horizontal top and vertical sides read like a blocky helmet. N's back hair looks muddy and tangled.
+4) **Consistency**: Bow placement drifts—in SE it stays on the viewer's right (her left) despite turning right, then jumps to the back in E. Obi back-bow detail appears in NE but vanishes in N.
+
+**Top 8 Fixes**:
+1. **S/SE/N** – Jawline: Replace the 2 bottom corner black outline pixels of the face with hair/dark-brown to taper the chin.
+2. **S/SE/NE/N** – Inner legs: Swap 4–5px of pure black inner-thigh outline for dark skin/shadow to soften the legs.
+3. **S** – Crown: Drop the outer 2px of top-head outline by 1px to round the boxy skull.
+4. **SE** – Bow: Shift red bow 2px left so it sits behind the knot, matching the head rotation toward E.
+5. **E** – Boot: Lower the top cuff of the boot by 1px to align with the ankle guide.
+6. **N** – Hair back: Clean the 6px vertical dark gap in the lower hair into a smooth curved half-up overhang.
+7. **N** – Obi: Copy the 3x2px #4c4460/#847078 obi knot pattern from NE onto N's sash.
+8. **SE/NE** – Far foot: Raise the back boot sole by 1px to sell perspective depth.
+
+**Score**: 5.5/10
+**VERDICT: FIX**

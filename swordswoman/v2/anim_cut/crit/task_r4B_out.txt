@@ -1,0 +1,30 @@
+Restored session: Mon 26 Oct 2026 10:33:09 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I reworked both actions in `actions_src/run_jump.py` and built all four (run_SE, jump_SE, both `_ns`). I reviewed each build as zoomed contact sheets over about four passes; nothing touches the cell edge.
+
+**Run**
+- **Bounce:** contact is now the lowest frame (bent planted leg, squashed body), push rises, and air is highest and stretched with the hem fluttering. Every frame is 60ms.
+- **Lean:** the chest leans 2px toward travel and the head sits 2px further forward.
+- **Katana:** locked at kat_10 in every frame.
+- **Far arm:** pumps fist-up forward, then hangs mid, then swings back. In `_ns` the near arm pumps opposite it.
+- **Bow:** pops up on contact and drags down on the rise.
+
+**Jump**
+- **Head:** the same head shape throughout; only the face changes.
+- **Timing:** antic is 100ms, apex and hang are 120ms each, and I added a rebound overshoot frame.
+- **Launch:** pointed toes, far leg 2px higher, torso 3px taller and narrower.
+- **Air:** arms go from 30° up to a raised V at apex to an uneven flail on hang. The body drops 2px on hang while the bow floats.
+- **Fall:** the far leg is 3px higher than the near one.
+- **Land and recover:** the land frame has eyes shut and the hem and bow still up; they drop on the next frame.
+- **Katana:** never moves more than one direction step between frames.
+
+**New parts** (`parts/se/`): torso_run_lean(_sq/_st), legs_run_c1/c2, armF_pumpF/M/B, legs_jmp_launch2, legs_jmp_rise, legs_jmp_fall2, torso_jmp_lng, skirt_jmp_flare, armN_jmp_top.
+
+**Remaining weaknesses:**
+- The sword hand stays still in both katana builds.
+- Legs on the run contact frames look short under the skirt.
+- The jump shadow is just switched off in the air, because the engine can't shrink it.
+- I kept the run blade fixed instead of tilting it on air frames, because the two critics disagree on that point.
+
+Saving session...completed.

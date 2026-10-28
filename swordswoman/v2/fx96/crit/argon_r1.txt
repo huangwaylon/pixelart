@@ -1,0 +1,24 @@
+**VFX Critique (PMD / 96px Scale Standard)**
+
+*   **throw_orb (7/10):** 13x13 is good, but the black equator line is flat on frames 2 & 4; curve it by 1–2px to sell spherical 3D rotation.
+*   **throw_trail (5/10):** Inner curve has severe staircase jaggies; smooth the arc gradient and shift the red pivot to the trail’s start (hand position), not the tip.
+*   **throw_sparkle (6/10):** Reads as a rigid 1px geometric cross; taper the cardinal tips and add a 3x3 solid white core so it feels luminous.
+*   **throw_pop (4/10):** Frame 2’s ring is a chunky, pillow-shaded grey donut; replace with a sharp 2px-thick pure white shockwave and larger 3x3 shell shards.
+*   **hit_spark (6/10):** Frame 2 morphs into a thick round donut that kills the sharp impact; keep Frame 2 angular with disconnected, outward-shooting 1px/2px spikes.
+*   **hit_flash (6/10):** Too static as a single 40ms frame; add a second 30ms frame where the core shrinks and diagonal rays extend by 3px.
+*   **speed_lines_long (3/10):** 2px-tall lines look like a chunky 2x upscale; redraw as razor-sharp 1px-tall horizontal lines with longer, varied lengths (15–40px).
+*   **speed_lines_short (3/10):** Same 2px-tall upscale flaw; thin to 1px height and cluster 2–3 lines closer together for better rhythm.
+*   **dust_step (5/10):** Reads like solid pebbles due to dark outlines and separated spheres; merge puffs into a single cloud and replace the dark outline on the top/lit edge with mid-tone tan.
+*   **dust_land (5/10):** Pillow-shaded, repetitive circular puffs look like a string of beads; overlap the shapes into a flat-bottomed billowing mass and soften internal dark borders.
+*   **dust_skid (5/10):** Trails off as 3 distinct rocks; connect the puffs into a low, streaky smear and remove the dark outlines on the trailing upper edges.
+*   **jump_whoosh (4/10):** Looks like vertical parentheses `( )` around the calves; reshape into a horizontal, perspective-foreshortened U-arc wrapping under the heels.
+*   **land_ring (6/10):** The 1px ellipse has uneven pixel stepping on the left/right curves; clean the Bresenham curve and make Frame 1's front edge 2px thick for perspective weight.
+*   **hurt_star (4/10):** 70px width is way too wide (orbits empty air) and uses a harsh pure-black outline; shrink orbit width to ~36px and change outlines to dark warm brown/amber.
+*   **sweat_drop (6/10):** Pure black outline is too heavy next to the character’s soft dark-brown linework; recolor the outline to deep navy/indigo and round the bottom curve by 1px.
+
+**Top 5 Priority Fixes Overall:**
+1.  **Overhaul Dust Shading (`step`/`land`/`skid`):** Eliminate the "bag of pebbles" look by merging spheres, removing internal dark lines, and using sel-out (tan/grey outlines) on top edges.
+2.  **De-chunk Speed Lines:** Convert all 2px-thick speed lines to crisp 1px-tall lines so they match the 96px resolution rather than looking 2x nearest-neighbor scaled.
+3.  **Match Character Linework (`hurt_star`/`sweat_drop`):** Replace pure `#000000` outlines with colored darks (deep brown/navy) to match the character sprite's softer palette.
+4.  **Fix Shockwave Rings (`throw_pop`/`hit_spark`):** Replace thick, banded "donut" rings with snappy, high-contrast 1–2px expanding arcs that break apart cleanly.
+5.  **Tighten Anchors & Perspective (`hurt_star`/`jump_whoosh`):** Narrow the hurt star orbit to fit the head width, and flatten `jump_whoosh` to match the ground plane perspective.

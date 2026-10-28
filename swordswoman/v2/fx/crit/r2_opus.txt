@@ -1,0 +1,26 @@
+Restored session: Mon 26 Oct 2026 15:50:14 JST
+**Verdict:** Round 2 is about 70% of the way to PMD, up from 60%. The pixels are clean now: no anti-aliasing, hard outlines, and a tight palette. The burst, hit and dust effects now read like Gen3–5. The slashes are still a bit pale and modern-looking. jump_whoosh and skid are the weak spots.
+
+1. **slash_diag: 7/10.** Good belly and ramp, and the f2 chips are now evenly spaced.
+   - f0 and f1: the upper tail still thins to a 1px hairline for about 8px. End it in a 2px point.
+   - All frames: there's still no saturated outer rim, so the slash reads grey-white on the grey floor. Add a 1px cyan or yellow rim on the outer edge only.
+2. **slash_h: 5/10.**
+   - f1: the right end curls up into a vertical hook, so it reads as a "J" or a checkmark.
+   - f2: the chips keep that upturn.
+   - Fix: keep it a flat, tapered crescent with the tip pointing along the travel direction. In context it crosses the obi, so raise it 2–3px to chest height.
+3. **slash_over: 7/10.** Its clearance from the head and bow is fixed. Its tail and rim have the same problems as slash_diag. The f2 chips are single 1px dashes, so make them 2px long.
+4. **hit_flash: 7/10.** It's now a proper hard 8-point star. The diagonal tips are a single orange pixel each, which looks dirty at 40px. Use yellow instead, or drop those tips.
+5. **hit_spark: 7/10.** f0 and the 2px ring in f1 are good. In f2 the 8 chips are identical and evenly spaced on a perfect circle, so it reads as a clock face. Vary the radius by ±2px, mix 2×2 and 1px chips, and use 5–6 chips.
+6. **hurt_star: 7/10.** The junk pixels are gone. In f0 all three stars are nearly the same size, so make the back star 3px. At 48px the stars float about 6px above the bow; lower them to about 2px above it.
+7. **sweat_drop: 7/10.** All 3 frames are near-identical, so the motion barely shows. Slide the drop 1px per frame and add a 1px streak-highlight change.
+8. **dust_land: 7/10.** Big improvement: round outlined puffs with lit tops. f3 is back to scattered single dots ("fade by chips"). Instead, show 2 small puffs of 2–3px.
+9. **dust_skid: 5/10.** The flat cream slabs under the puffs read as a plank or bone. In context (ctx_L, cell 2) the ball plus stick looks like a dropped object. Replace them with low 2–3px puffs that get smaller toward the back.
+10. **dust_step: 6/10.** The f0 single puff next to the foot reads as a pebble. Use 2 puffs, or offset it up and back 1px.
+11. **speed_lines_long and short: 6/10.** There are still 5–6 evenly spaced lines with similar lengths, so they read as a "≡" menu icon. In context they float detached about 4px from the body.
+    - Use 3–4 lines with staggered x-starts and lengths of roughly 100%, 60%, 80% and 40%.
+    - Overlap the body silhouette by 1–2px.
+12. **jump_whoosh: 4/10.** In f0 the brackets with inner ticks read as an emoticon face "( ' ' )". Delete the inner ticks, angle the arcs outward, and open them at the top.
+13. **land_ring: 7/10.** The 2-tone floor plane works. f0 and f1 are still too close in size, so make f0 about 60% of f1. The f2 dashes are uneven on the left, so space them evenly.
+14. **dash_ghost: 8/10.** This is the most PMD-like piece. One fix: where the speed lines cross the ghost silhouettes the image gets muddy, so clip the lines where they overlap the ghosts.
+
+**40px check:** everything stays legible. The slash arcs and dust_land are slightly oversized for that cell; scale them about 10% smaller.

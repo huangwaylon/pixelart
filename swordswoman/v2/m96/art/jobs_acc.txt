@@ -1,0 +1,4 @@
+SE_hair2 SE 44 25 84 64 hair nsystem4
+E_hair2 E 45 25 83 64 hair be_system
+S_tailL S 41 50 60 80 hair bni_requests
+S_tailR S 67 50 87 80 hair nsystem4

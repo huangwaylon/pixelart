@@ -1,0 +1,13 @@
+**(1) Match to Illustration:** Good overall proportions, bow placements, and leg skin bands. However, kimono skirts flare horizontally like bubble skirts (especially S/N) instead of an A-line, and sleeves billow at the wrists instead of hanging straight.
+**(2) Face at 1x:** Reads tired/blank rather than cute. Eyes are too flat (3px tall), and the dark brown row directly underneath reads as heavy eye bags at 1x. S-view single-pixel eyebrow dots look strange. 
+**(3) Cleanliness:** Stepping is mostly clean, and ribbon tails read well. However, there are stray sub-pixel artifacts on the thighs, and hands lack clear finger/thumb shapes.
+**(4) Colour Consistency:** Very consistent across all views; the 18-colour ramp holds together well across kimono, obi, skin, and boots.
+
+**Scores:** S: 7/10 | SE: 7.5/10 | E: 7.5/10 | NE: 8/10 | N: 7.5/10 — **Overall: 7.5/10**
+
+**Top 5 Concrete Fixes:**
+1. **S/SE/E Faces (Under-eyes):** Replace the dark brown pixels directly under the sclera/iris with base skin or blush tone to remove the "eye bags."
+2. **S/SE/E Eyes (Height):** Increase eye height by 1px upward and curve the top lash line to look cute/alert rather than flat.
+3. **S/N Kimono (Skirt/Sleeves):** Flatten the outer skirt curves into straight A-lines and remove the inward wrist pinch on the sleeves.
+4. **S Face (Eyebrows):** Extend the 1px dark eyebrow dots into 2–3px soft brown lines hidden partially under the bangs.
+5. **E/NE Thighs (Stray pixels):** Clean the stray red/brown pixels on the bare skin band just above the black sock line.

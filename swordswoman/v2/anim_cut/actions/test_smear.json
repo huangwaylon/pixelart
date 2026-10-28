@@ -1,0 +1,22 @@
+{"name":"test_smear","partdir":"parts/se","cell":[96,80],"ground":[48,72],"sheet_cols":4,
+ "rig":{
+  "legs":{"part":"legs","at":"root","z":1},
+  "skirt":{"part":"skirt","at":"legs.hip","z":3},
+  "torso":{"part":"torso","at":"skirt.waist","off":[0,0],"z":4},
+  "armF":{"part":"armF_back","at":"torso.shR","z":2},
+  "armN":{"part":"armN_ext","at":"torso.shL","z":6},
+  "head":{"part":"head","at":"torso.neck","z":7},
+  "bun":{"part":"bun","at":"head.bun","z":0},
+  "bow":{"part":"bow","at":"head.bow","z":8},
+  "kat":{"part":"kat_14","at":"armN.hand","z":5}
+ },
+ "frames":[
+  {"ms":300,"label":"ext+k14"},
+  {"ms":300,"label":"smear_slash","set":{"sm":{"part":"smear_slash","at":"armN.hand","z":4.5}}},
+  {"ms":300,"label":"smear_slash2","set":{"sm":{"part":"smear_slash2","at":"armN.hand","z":4.5}}},
+  {"ms":300,"label":"hit_flash","set":{"sm":{"part":"smear_slash2","at":"armN.hand","z":4.5},"fl":{"part":"hit_flash","at":"armN.hand","off":[15,15],"z":9}}},
+  {"ms":300,"label":"hit_spark","set":{"fl":{"part":"hit_spark","at":"armN.hand","off":[16,16],"z":9}}},
+  {"ms":300,"label":"ghost stand","set":{"armN":{"part":"armN"},"armF":{"part":"armF"},"gh":{"part":"ghost_se","at":"ground","off":[-6,-3],"z":-1}},"hide":["kat"]},
+  {"ms":300,"label":"dash+spd2","root":[4,0],"set":{"legs":{"part":"legs_lunge"},"armN":{"part":"armN_runB"},"armF":{"part":"armF_runF"},"gh":{"part":"ghost_se","at":"ground","off":[-4,-3],"z":-1}},"hide":["kat"],"fx":[{"part":"spd2","at":"ground","off":[-22,-22],"z":-2}]},
+  {"ms":300,"label":"spd1|spd2","hide":["legs","skirt","torso","armF","armN","head","bun","bow","kat"],"fx":[{"part":"spd1","at":"ground","off":[-14,-30],"z":1},{"part":"spd2","at":"ground","off":[14,-30],"z":1},{"part":"hit_flash","at":"ground","off":[-10,-10],"z":1},{"part":"hit_spark","at":"ground","off":[10,-10],"z":1}]}
+ ]}

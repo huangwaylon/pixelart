@@ -1,0 +1,14 @@
+**Scores**
+- A) Cross-view consistency: 6
+- B) Readability at 48px: 6
+- C) Iso views correct (elevation + facing): 4
+- D) Katana clarity: 5
+- E) Fitness as the final reference: 5
+
+**Top 5 problems to fix by hand**
+
+1. **iso_N and iso_SE, camera angle:** both look eye-level. iso_N is almost a copy of the back view, with feet and boots not foreshortened. iso_SE should show the top of the head and more of the crown. iso_S goes too far the other way, with the head oversized. Make all five iso views use the same ~30° camera.
+2. **Bow and bun, all views:** in the front view the bow is in front of the bun. In the back view it sits under the bun. In iso_NE it is huge and pushed to one side. Settle on one bow size and one position relative to the bun.
+3. **Bow vs. dress, 40px and 48px probes:** the bow and dress are the same red, so the bow blends into the body at 40px. Give the bow its own shade or a dark edge line.
+4. **Katana, all probes:** the blade is a 1px blue-grey line that barely stands out from the grey background. The guard and handle disappear, and in iso_E_k the hand is lost. Make the handle 2px with a clear guard, and add a bright highlight line on the blade edge.
+5. **Face and hands, left/right/iso_E probes:** the profile eye and nose turn into noise, and the hands are blobs. Hand-place a 2px eye, a nose bump, and a 2×2 hand shape. In iso_NE, clean up the stray cheek and ear pixels.

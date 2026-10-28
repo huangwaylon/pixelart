@@ -1,0 +1,70 @@
+Restored session: Mon 26 Oct 2026 16:30:37 JST
+I scored both sheets against the HGSS/BW and PMD references and changed no files.
+
+## Expression sheet, round 3
+
+**(1) Readability at 1x**
+| Expr | Score | Pixel problem |
+|---|---|---|
+| neutral | 7 | The `....r` smirk pixel looks like a stray mark or dimple at 1x, not a smile. |
+| determined | 8 | The heavy brow band works. It's the clearest face on the sheet. |
+| shout | 5 | Pink `rrrrr` over `eee` reads as lipstick or a tongue, because the mouth has no dark inside. |
+| effort | 4 | The 3-row `rWWWr` box reads as a moustache and beard. The near eye (`KWiKK`) smears. |
+| joy | 8 | The ^^ eyes are good. The 1px tongue gets lost. |
+| smile | 7 | The U mouth works. The `.KK..` lower lid looks like a frown. |
+| surprised | 7 | The white eyes read well, but they look alarmed rather than spirited. The far eye in SE turns into a white blob. |
+| pain | 8 | The >< eyes are clear. The `rWWr` mouth sits off-centre. |
+| blink half / closed | 8 / 8 | Fine. |
+| squash | 4 | The half-lid plus "o" mouth reads as bored or sleepy, not as an impact. |
+
+**(2) Design:** about 70% intentional. The lash wing and glint are consistent. The mouths are the weak point: they're pink outlines with no dark core, while real Pokémon open mouths use a dark inside with a light tongue.
+
+**(3) Personality:** determined and joy carry it. Neutral and squash read as passive or sleepy.
+
+**(4) Views**
+- **S: 7.** The mouth shapes are the main weakness.
+- **SE: 7.** The far eye gets squashed on surprised and effort.
+- **E: 5.** The eye is too small and the mouths are 1px blobs, so the expressions all look the same.
+- **NE/N: 8.** Correctly quiet; only the blush changes.
+
+**(5) Top 6 fixes**
+1. **Shout mouth:** a dark trapezoid, `rKKKr` over `.rer.`.
+2. **Effort mouth:** remove the top row, leaving gritted teeth `rWWWr` over `.rrr.`.
+3. **Squash:** a flat lid with the iris showing, plus a wide flat mouth line `rrrrr`.
+4. **Neutral:** move the smirk pixel down into the mouth row (`.rrrr`), or delete it.
+5. **E view:** a 2x3 eye with a 1px lash spike past the brow; open mouths cut the silhouette (`_`).
+6. **Replacement stamps** for the three weakest:
+```python
+EYE['shout']  =["KK...","..KKK","KWiiK",".iII.","....."]
+MOUTH['shout']=[".....","rKKKr",".rer."]; MOUTH_P['shout']=["...","rK_","re."]
+EYE['effort'] =[".....","KKK..",".KKKK",".WiI.","....."]
+MOUTH['effort']=[".....","rWWWr",".rrr."]; MOUTH_P['effort']=["...","rW_","..."]
+EYE['squash'] =[".....",".....","KKKKK","KiiI.","....."]
+MOUTH['squash']=[".....","rrrrr","....."]; MOUTH_P['squash']=["...","rr_","..."]
+```
+**Overall: 6.5/10**
+
+## PMD 40x40 portraits
+| Expr | Score | Problem |
+|---|---|---|
+| neutral | 6 | The pupils are pushed to the right, so she looks shifty; the mouth is off-centre. |
+| determined | 7 | Good brows; the mouth is too faint. |
+| shout | 4 | The dark red blob reads as lipstick. It needs a dark inside, a tongue and a teeth row. |
+| effort | 7 | The teeth work. |
+| joy | 9 | Matches the PMD look. |
+| smile | 7 | Fine. |
+| surprised | 5 | The mouth reads as a "kiss". |
+| pain | 8 | Good. |
+| worried | 6 | The tilted brows are too subtle. |
+| inspired | 8 | Good. |
+| teary | 8 | Good. |
+| blink | 8 | Good. |
+
+**Top 5 fixes**
+1. Crop tighter: the face should fill about 60% of the frame, like Meloetta's. Right now the hair and bow take up the frame.
+2. Add a flat pastel background per emotion, as PMD does.
+3. Rebuild the shout and surprised mouths as a dark inside with a lighter tongue.
+4. Centre the pupils on neutral.
+5. Add 2 shading tones to the hair mass, which is currently flat.
+
+**Overall: 6.5/10**

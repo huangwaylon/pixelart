@@ -1,0 +1,68 @@
+Here is a strict pixel-art director’s critique of the base sprite.
+
+### 1. Silhouette & 1x Read
+* **Missing Feet/Boots:** The prompt mentions "dark boots," and at a ~43px character height inside a 64x64 cell, you have ~20 pixels of vertical breathing room, yet the legs end abruptly in flat horizontal stumps. At 1x, she looks like she is sinking into the floor.
+* **The Back Bun:** The bun on the top-left of the head is only a 3x4 protrusion with a muddled internal cluster. At 1x, it fails to read as a hair bun and looks like a stray jagged lump or tumor on the silhouette.
+* **Neck/Shoulder Pinch:** Because the chin line goes completely flat horizontally for 12 pixels, the head sits on the torso like a cardboard box on a smaller box.
+
+### 2. The 3/4 (SE) View Read
+* **Flat Front-Facing Bow:** The head is turned SE, yet the massive bow on top is drawn in dead-flat 100% front symmetry (6px left wing, 3px knot, 6px right wing). In SE 3/4 view, the far (right) wing must be foreshortened (1–2px narrower) and shifted slightly behind the crown curve.
+* **Box Jaw:** The face area is a literal rectangle (`13px` wide by `8px` tall) with 90-degree corners bordered by vertical sideburn columns. Because the bottom outline of the chin is a dead-flat horizontal line, the head has zero 3/4 tilt or facial curve.
+* **Eye Foreshortening:** Both eyes are identically wide (`3px` wide), and the far eye (viewer's right) actually has a *wider* dark-blue brow/lash bar (`3px` vs `2px` on the left eye). In 3/4 SE view, the far eye should be either `2px` wide or tucked 1px closer to the right cheek outline to sell the turn of the cylinder.
+* **Symmetrical Skirt & Legs:** The skirt flares out identically on both sides (`2px` step, `2px` step) and ends in a flat horizontal hem. The legs are identical `3px`-wide vertical pillars on the exact same Y-plane. For a SE 3/4 stance, the back (right) leg should be stepped 1px higher (further back in Z-space) and 1px narrower or darker.
+
+### 3. Outline, Jaggies, Double-Thickness & Banding
+* **L-Corners / Doubles on Outlines:** 
+  * Look at the bottom corners of the face: you have dark outline pixels forming thick L-blocks where the chin meets the sideburns.
+  * Look at the bottom-right of the hair (viewer's right): there is a `2x2` solid block of dark outline where the hair lock ends next to the chin.
+  * The bow's inner bottom-right wing has a `2px` thick vertical dark border against the knot, while the left side has a `1px` border.
+* **Staircase Banding:**
+  * **Hair Highlight:** The grey highlight on the crown steps down left-to-right right alongside the dark outline of the bow/head, creating staircase banding.
+  * **Skirt Folds:** The dark red fold lines inside the skirt (`1px` wide diagonal stairs) band awkwardly against the outer silhouette steps.
+  * **Legs:** Each leg is `1px` outline + `2px` pale skin + `1px` shadow skin + `1px` outline. That consists of 5 parallel vertical lines per leg— textbook vertical banding.
+
+### 4. Shading, Clusters & Orphans
+* **Noisy Single-Pixel Orphans:**
+  * **Bangs:** The bangs have three `1px` dark notches poking down into the forehead (`x` positions above left eye, center, right edge). At 1x, `1px` hair teeth just look like anti-aliasing noise or dirt on the forehead. Group hair locks into larger irregular shapes (`2px–4px` wide steps).
+  * **Skirt Fold:** The center-left fold on the skirt is made of three disconnected `1px` diagonal/staggered dark red pixels. In pixel art, isolated diagonal 1px lines read as gritty noise, not cloth volume.
+* **Kimono Collar Geometry Error:** A kimono always wraps **left-over-right** (from the wearer's perspective, forming a `y` shape from the viewer's perspective). Even more importantly, your dark red collar line stops dead at the center and disappears into a flat horizontal seam. The overlap needs to drop diagonally across the chest into the obi.
+* **Sleeve Cushioning / Pillow Shading:** The viewer-left sleeve has a vertical bright highlight strip separated from the left outline by `1px` of mid-tone red, and bordered on the bottom by a dark red horizontal cuff wrap. This creates a "pillow" box instead of a hanging bell sleeve.
+
+### 5. Rigging / Cutout Readiness
+* Because this will be sliced into separate layers (Head, Torso, Sleeves, Skirt, Legs), the **viewer-left sleeve** is currently merged into the torso outline at the armpit, and the **hand** is a flat `2x1` rectangle trapped inside the sleeve's bottom outline. When that sleeve rotates in a rig, the square cutout will break immediately.
+* The **skirt** has a flat horizontal bottom outline. When legs animate underneath a flat horizontal skirt line, the hip joint looks mechanical. A curved hem (`1px` lower in the center) hides leg rotation much better.
+
+---
+
+### Prioritized Per-Pixel / Per-Region Fix List
+
+1. **Add Boots & Fix Leg Perspective (Bottom 6 rows of sprite):**
+   * Extend the legs down by `3px` into the empty bottom canvas.
+   * Paint dark brown/black boots ( matches hair/obi palette) covering the bottom `4px` of the legs, with a `1px` toe bump pointing right (SE) on the left foot, and right-down on the right foot.
+   * Shift the back leg (viewer's right) **up by 1px** (both the boot sole and the shadow under the skirt) so she stands in 3/4 space instead of on a flat tightrope.
+2. **Fix the Face Box & Chin Line (Chin row & cheek corners):**
+   * Drop the center `6px` of the chin's dark horizontal outline **down by 1px** (shifting the neck/collar down 1px if needed, or overlapping the collar) so the jaw has a curved chibi cheek-to-chin contour instead of a 12px flat ruler line.
+   * Remove the `1px` skin-shadow corner pixels at the bottom-left and bottom-right of the face, or replace them with the dark outline to round the jaw corners; right now those pink-tan corner pixels create a muddy square jaw.
+3. **Foreshorten the Head & Bow into SE 3/4 View:**
+   * **Bow:** Narrow the right wing of the bow (viewer's right) by `1px` on its outer edge, and shift the entire bow `1px` to the right so it sits over the turned centerline of the head. Fix the asymmetric `2px`-wide black outline between the knot and the right bow wing—make it `1px` dark red shadow instead of black outline.
+   * **Eyes:** Narrow the far eye (viewer's right) from `3px` wide to `2px` wide, OR shift the far eye `1px` closer to the right cheek outline (leaving only `1px` of skin on the far side of the face). Fix the top eyelash bar on the left eye so it is `3px` wide (matching the eye width) instead of having a `1px` skin notch on its upper-left corner.
+4. **Clean Up the Hair Silhouette & Bangs:**
+   * **Back Bun:** Expand the bun on the upper-left by `1px` outward and upward so it forms a clear `4x5` rounded silhouette, and merge the two diagonal highlight pixels inside it into a solid `2x2` cluster.
+   * **Bangs:** Remove the three isolated `1px` dark teeth along the brow line. Instead, drop a `3px`-wide chunk of bangs down by `1px` on the far right side and a `2px` chunk on the left side to create clean, intentional locks.
+   * **Bottom-Right Hair Lock:** Remove the extra interior black outline pixel at the bottom-right tip of the hair to eliminate the `2x2` outline block.
+5. **Rebuild the Sleeves & Hands for Cutout Rigging:**
+   * **Left Sleeve (Foreground):** Widen the bottom bell of the sleeve by `1px` downwards so it hangs like a real kimono sleeve. Extend the hand (`2x2` skin cluster instead of `2x1`) so it peeks out from the *front* (right side) of the sleeve opening rather than sitting centered at the bottom.
+   * **Right Sleeve (Background):** Tuck it `1px` further behind the torso (narrow its visible width by `1px`) to reinforce the SE turn.
+6. **Fix Skirt Hem & De-noise Cloth Folds:**
+   * Drop the middle `8px` of the skirt's bottom hem outline down by `1px` (and shift the highlight/midtone above it down `1px`) to give the skirt a curved, conical 3D volume.
+   * Delete the three disconnected `1px` dark-red pixels in the left-center of the skirt. Connect them into a clean `1px`-wide vertical/slightly-stepped shadow column of at least `3px` vertical length, or remove the center fold entirely and rely on broad cel-shaded form shadow on the right third of the skirt.
+
+---
+
+### Scores
+
+* **Silhouette & 1x Readability:** 5.5 / 10 *(Reads clearly as a girl with a bow, but missing boots, stump legs, boxy neck pinch, and noisy bun hurt it).*
+* **3/4 Perspective & Construction:** 4.0 / 10 *(Body and head are almost completely flat front-facing; only the hair sideburn width and kimono collar hint at SE).*
+* **Pixel Technique (Outlines, Clusters, AA/Banding):** 5.0 / 10 *(Clean palette, no egregious AI noise, and sits firmly on the pixel grid, but suffers from L-corner doubles, 1px orphan teeth, and rigid horizontal/vertical banding).*
+* **Cutout Rigging Readiness:** 6.0 / 10 *(Cleanly separated color zones make slicing easy, but flat horizontal seams at the chin and skirt hem will look stiff when rotating).*
+* **Overall Score:** **5.2 / 10** — *A serviceable beginner/intermediate indie placeholder with cute appeal, but structurally too flat and boxy for production without a perspective and silhouette pass.*

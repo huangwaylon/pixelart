@@ -1,0 +1,5 @@
+API Error: Request rejected (429) · Request could go over budget, you have hit your daily cost allocation for quota 'personal:2320745444' (current spend: $497.51 + estimated cost: $2.62 exceeds budget: $500.00). See https://genai.apple.com/use/governance/ for more information.
+
+---stderr---
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle

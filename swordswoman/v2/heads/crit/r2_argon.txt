@@ -1,0 +1,13 @@
+SCORE 6/10
+
+1. **All SE variants (Crown/Bow)**: The bow sits in a flat trench on top of the skull, killing the domed crown, and the bun sits vertically on top of the left bow loop like a snowman instead of behind the bow at the back-left (as in the old master and SE ref).
+2. **All SE variants (Lower Hair/Bob)**: The hair tips curl inward into two thin, scraggly claw-like hooks around the chin instead of forming the clean, weighty, blunt-cut bob shelf seen in the design ref and old master.
+3. **SE & E `lookup` (Eyes)**: Replacing the bottom row of the 2x3 iris with bright white sclera makes her eyes look rolled-back/ milky rather than tilting the head or gaze upward.
+4. **All E variants (Profile Face/Nose)**: The nose is a sharp 1px-tall horizontal spike jutting out mid-face, creating a harsh stair-step profile instead of the soft, continuous chibi cheek-to-chin curve.
+5. **All E variants (Back of Skull/Bow)**: The back of the hair forms a 6px vertical wall with blocky staircase corners, and the bow looks like two detached red beads rather than a foreshortened side-view ribbon.
+6. **SE `lookup` & `squash` (Bangs/Outline Jaggies)**: `lookup` has a stray 1px dark orphan indent on the left bang edge and a 1px spike on the right outer hair wall; `squash` flattens the top of the hair into a long horizontal table.
+
+**Top 3 Fixes:**
+1. **Fix SE Crown & Bun/Bow Hierarchy**: Raise the top-center hair outline by 1–2px behind/between the bow loops to restore the dome, and tuck the bun down-left *behind* the left bow loop (like old preview tile 1).
+2. **Clean the Bob Silhouette**: Thicken the side hair masses and terminate the bottom edge in a clean, inward-tapering blunt curve that frames the jaw without thin 1–2px dangling hooks.
+3. **Soften E Profile & Fix `lookup` Gaze**: Smooth the E face front into a gentle curve (use a 2px tall subtle nose bump or none at all), round the 6px vertical back-wall into a 3-2-1-2-3 arc, and for `lookup`, shift the entire eye+bang unit up 1px instead of clipping the bottom of the iris with white.

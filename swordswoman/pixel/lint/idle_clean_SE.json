@@ -1,0 +1,3014 @@
+{
+ "anim": "idle",
+ "src": "clean",
+ "dirs": {
+  "SE": {
+   "frames": {
+    "f00": {
+     "flags": [
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 73,
+       "sev": "warn",
+       "detail": "steel_2",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 76,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 76,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 77,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "torso"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 86,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 72,
+       "y": 86,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 88,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 88,
+       "sev": "warn",
+       "detail": "red_2",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 78,
+       "y": 88,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "orphan",
+       "x": 75,
+       "y": 91,
+       "sev": "info",
+       "detail": "skin_1",
+       "region": "kagi"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 93,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 88,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 89,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 90,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 91,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 91,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 73,
+       "y": 93,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 75,
+       "y": 94,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 95,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 96,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 97,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 98,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 99,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 100,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 101,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 102,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 80,
+       "y": 103,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 80,
+       "y": 104,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 81,
+       "y": 105,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 81,
+       "y": 106,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 82,
+       "y": 107,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 67,
+       "y": 106,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs"
+      },
+      {
+       "type": "notch",
+       "x": 60,
+       "y": 107,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 78,
+       "y": 88,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "spur",
+       "x": 52,
+       "y": 101,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "skirt"
+      },
+      {
+       "type": "spur",
+       "x": 66,
+       "y": 106,
+       "sev": "warn",
+       "detail": "outline"
+      },
+      {
+       "type": "spur",
+       "x": 59,
+       "y": 107,
+       "sev": "warn",
+       "detail": "outline"
+      },
+      {
+       "type": "spur",
+       "x": 82,
+       "y": 108,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "banding",
+       "x": 51,
+       "y": 57,
+       "sev": "warn",
+       "detail": "9 px band of red_1 along the outline",
+       "region": "bow"
+      },
+      {
+       "type": "banding",
+       "x": 65,
+       "y": 57,
+       "sev": "warn",
+       "detail": "5 px band of hair_0 along the outline",
+       "region": "hair"
+      },
+      {
+       "type": "banding",
+       "x": 79,
+       "y": 99,
+       "sev": "warn",
+       "detail": "17 px band of steel_0 along the outline",
+       "region": "sword"
+      },
+      {
+       "type": "banding",
+       "x": 67,
+       "y": 101,
+       "sev": "warn",
+       "detail": "5 px band of skin_0 along the outline",
+       "region": "leg_L"
+      },
+      {
+       "type": "inner_break",
+       "x": 66,
+       "y": 72,
+       "sev": "warn",
+       "detail": "gap between line ends (65,72) and (67,72)",
+       "region": "face"
+      }
+     ],
+     "pivot": {
+      "baseline_y": 107,
+      "feet_x0": 59,
+      "feet_x1": 69,
+      "feet_cx": 63.5
+     },
+     "colours": [
+      "dark_1",
+      "eye_0",
+      "eye_1",
+      "hair_0",
+      "hair_1",
+      "hair_2",
+      "leather_1",
+      "leather_2",
+      "outline",
+      "pink_0",
+      "pink_1",
+      "red_0",
+      "red_1",
+      "red_2",
+      "red_3",
+      "skin_0",
+      "skin_1",
+      "skin_2",
+      "steel_0",
+      "steel_1",
+      "steel_2"
+     ],
+     "n_colours": 21,
+     "opaque_px": 1180
+    },
+    "f01": {
+     "flags": [
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 73,
+       "sev": "warn",
+       "detail": "steel_2",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 76,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 76,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 77,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "arm"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 86,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 72,
+       "y": 86,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 88,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 88,
+       "sev": "warn",
+       "detail": "red_2",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 78,
+       "y": 88,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "orphan",
+       "x": 75,
+       "y": 91,
+       "sev": "info",
+       "detail": "skin_1",
+       "region": "kagi"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 93,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 88,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 89,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 90,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 91,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 91,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 73,
+       "y": 93,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 75,
+       "y": 94,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 95,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 96,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 97,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 98,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 99,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 100,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 101,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 102,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 80,
+       "y": 103,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 80,
+       "y": 104,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 81,
+       "y": 105,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 81,
+       "y": 106,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 82,
+       "y": 107,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 67,
+       "y": 106,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs"
+      },
+      {
+       "type": "notch",
+       "x": 60,
+       "y": 107,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 78,
+       "y": 88,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "spur",
+       "x": 52,
+       "y": 101,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "skirt"
+      },
+      {
+       "type": "spur",
+       "x": 66,
+       "y": 106,
+       "sev": "warn",
+       "detail": "outline"
+      },
+      {
+       "type": "spur",
+       "x": 59,
+       "y": 107,
+       "sev": "warn",
+       "detail": "outline"
+      },
+      {
+       "type": "spur",
+       "x": 82,
+       "y": 108,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "banding",
+       "x": 51,
+       "y": 57,
+       "sev": "warn",
+       "detail": "9 px band of red_1 along the outline",
+       "region": "bow"
+      },
+      {
+       "type": "banding",
+       "x": 65,
+       "y": 57,
+       "sev": "warn",
+       "detail": "5 px band of hair_0 along the outline",
+       "region": "hair"
+      },
+      {
+       "type": "banding",
+       "x": 79,
+       "y": 99,
+       "sev": "warn",
+       "detail": "17 px band of steel_0 along the outline",
+       "region": "sword"
+      },
+      {
+       "type": "banding",
+       "x": 67,
+       "y": 101,
+       "sev": "warn",
+       "detail": "5 px band of skin_0 along the outline",
+       "region": "leg_L"
+      },
+      {
+       "type": "inner_break",
+       "x": 66,
+       "y": 72,
+       "sev": "warn",
+       "detail": "gap between line ends (65,72) and (67,72)",
+       "region": "hair"
+      }
+     ],
+     "pivot": {
+      "baseline_y": 107,
+      "feet_x0": 59,
+      "feet_x1": 69,
+      "feet_cx": 63.5
+     },
+     "colours": [
+      "dark_1",
+      "eye_0",
+      "eye_1",
+      "hair_0",
+      "hair_1",
+      "hair_2",
+      "leather_1",
+      "leather_2",
+      "outline",
+      "pink_0",
+      "pink_1",
+      "red_0",
+      "red_1",
+      "red_2",
+      "red_3",
+      "skin_0",
+      "skin_1",
+      "skin_2",
+      "steel_0",
+      "steel_1",
+      "steel_2"
+     ],
+     "n_colours": 21,
+     "opaque_px": 1180
+    },
+    "f02": {
+     "flags": [
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 73,
+       "sev": "warn",
+       "detail": "steel_2",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 76,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 76,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 77,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "arm"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 87,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 72,
+       "y": 87,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 89,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 89,
+       "sev": "warn",
+       "detail": "red_2",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 78,
+       "y": 89,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "orphan",
+       "x": 75,
+       "y": 92,
+       "sev": "info",
+       "detail": "skin_1",
+       "region": "kagi"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 94,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 89,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 90,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 91,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 92,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 92,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 73,
+       "y": 94,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 75,
+       "y": 95,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 96,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 97,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 98,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 99,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 100,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 101,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 102,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 103,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 80,
+       "y": 104,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 80,
+       "y": 105,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 81,
+       "y": 106,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 81,
+       "y": 107,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 82,
+       "y": 108,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 67,
+       "y": 106,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs"
+      },
+      {
+       "type": "notch",
+       "x": 60,
+       "y": 107,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 78,
+       "y": 89,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "spur",
+       "x": 52,
+       "y": 102,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "skirt"
+      },
+      {
+       "type": "spur",
+       "x": 66,
+       "y": 106,
+       "sev": "warn",
+       "detail": "outline"
+      },
+      {
+       "type": "spur",
+       "x": 59,
+       "y": 107,
+       "sev": "warn",
+       "detail": "outline"
+      },
+      {
+       "type": "spur",
+       "x": 82,
+       "y": 109,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "banding",
+       "x": 51,
+       "y": 57,
+       "sev": "warn",
+       "detail": "9 px band of red_1 along the outline",
+       "region": "bow"
+      },
+      {
+       "type": "banding",
+       "x": 65,
+       "y": 57,
+       "sev": "warn",
+       "detail": "5 px band of hair_0 along the outline",
+       "region": "hair"
+      },
+      {
+       "type": "banding",
+       "x": 79,
+       "y": 100,
+       "sev": "warn",
+       "detail": "17 px band of steel_0 along the outline",
+       "region": "sword"
+      },
+      {
+       "type": "inner_break",
+       "x": 66,
+       "y": 72,
+       "sev": "warn",
+       "detail": "gap between line ends (65,72) and (67,72)",
+       "region": "hair"
+      }
+     ],
+     "pivot": {
+      "baseline_y": 107,
+      "feet_x0": 59,
+      "feet_x1": 69,
+      "feet_cx": 63.5
+     },
+     "colours": [
+      "dark_1",
+      "eye_0",
+      "eye_1",
+      "hair_0",
+      "hair_1",
+      "hair_2",
+      "leather_1",
+      "leather_2",
+      "outline",
+      "pink_0",
+      "pink_1",
+      "red_0",
+      "red_1",
+      "red_2",
+      "red_3",
+      "skin_0",
+      "skin_1",
+      "skin_2",
+      "steel_0",
+      "steel_1",
+      "steel_2"
+     ],
+     "n_colours": 21,
+     "opaque_px": 1189
+    },
+    "f03": {
+     "flags": [
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 74,
+       "sev": "warn",
+       "detail": "steel_2",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 77,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 77,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 78,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "torso"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 87,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 72,
+       "y": 87,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 89,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 89,
+       "sev": "warn",
+       "detail": "red_2",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 78,
+       "y": 89,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "orphan",
+       "x": 75,
+       "y": 92,
+       "sev": "info",
+       "detail": "skin_1",
+       "region": "kagi"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 94,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 89,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 90,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 91,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 92,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 92,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 73,
+       "y": 94,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 75,
+       "y": 95,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 96,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 97,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 98,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 99,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 100,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 101,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 102,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 103,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 80,
+       "y": 104,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 80,
+       "y": 105,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 81,
+       "y": 106,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 81,
+       "y": 107,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 82,
+       "y": 108,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 67,
+       "y": 106,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs"
+      },
+      {
+       "type": "notch",
+       "x": 60,
+       "y": 107,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 78,
+       "y": 89,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "spur",
+       "x": 52,
+       "y": 102,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "skirt"
+      },
+      {
+       "type": "spur",
+       "x": 66,
+       "y": 106,
+       "sev": "warn",
+       "detail": "outline"
+      },
+      {
+       "type": "spur",
+       "x": 59,
+       "y": 107,
+       "sev": "warn",
+       "detail": "outline"
+      },
+      {
+       "type": "spur",
+       "x": 82,
+       "y": 109,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "banding",
+       "x": 51,
+       "y": 58,
+       "sev": "warn",
+       "detail": "9 px band of red_1 along the outline",
+       "region": "bow"
+      },
+      {
+       "type": "banding",
+       "x": 65,
+       "y": 58,
+       "sev": "warn",
+       "detail": "5 px band of hair_0 along the outline",
+       "region": "hair"
+      },
+      {
+       "type": "banding",
+       "x": 79,
+       "y": 100,
+       "sev": "warn",
+       "detail": "17 px band of steel_0 along the outline",
+       "region": "sword"
+      },
+      {
+       "type": "inner_break",
+       "x": 66,
+       "y": 73,
+       "sev": "warn",
+       "detail": "gap between line ends (65,73) and (67,73)",
+       "region": "face"
+      }
+     ],
+     "pivot": {
+      "baseline_y": 107,
+      "feet_x0": 59,
+      "feet_x1": 69,
+      "feet_cx": 63.5
+     },
+     "colours": [
+      "dark_1",
+      "eye_0",
+      "eye_1",
+      "hair_0",
+      "hair_1",
+      "hair_2",
+      "leather_1",
+      "leather_2",
+      "outline",
+      "pink_0",
+      "pink_1",
+      "red_0",
+      "red_1",
+      "red_2",
+      "red_3",
+      "skin_0",
+      "skin_1",
+      "skin_2",
+      "steel_0",
+      "steel_1",
+      "steel_2"
+     ],
+     "n_colours": 21,
+     "opaque_px": 1168
+    },
+    "f04": {
+     "flags": [
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 74,
+       "sev": "warn",
+       "detail": "steel_2",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 77,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "torso"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 77,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 78,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "torso"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 87,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 72,
+       "y": 87,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 89,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 89,
+       "sev": "warn",
+       "detail": "red_2",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 78,
+       "y": 89,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "orphan",
+       "x": 75,
+       "y": 92,
+       "sev": "info",
+       "detail": "skin_1",
+       "region": "kagi"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 94,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 89,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 90,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 91,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 92,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 92,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 73,
+       "y": 94,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 75,
+       "y": 95,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 96,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 97,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 98,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 99,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 100,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 101,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 102,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 103,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 80,
+       "y": 104,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 80,
+       "y": 105,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 81,
+       "y": 106,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 81,
+       "y": 107,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 82,
+       "y": 108,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 67,
+       "y": 106,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs"
+      },
+      {
+       "type": "notch",
+       "x": 60,
+       "y": 107,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 78,
+       "y": 89,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "spur",
+       "x": 52,
+       "y": 102,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "skirt"
+      },
+      {
+       "type": "spur",
+       "x": 66,
+       "y": 106,
+       "sev": "warn",
+       "detail": "outline"
+      },
+      {
+       "type": "spur",
+       "x": 59,
+       "y": 107,
+       "sev": "warn",
+       "detail": "outline"
+      },
+      {
+       "type": "spur",
+       "x": 82,
+       "y": 109,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "banding",
+       "x": 51,
+       "y": 58,
+       "sev": "warn",
+       "detail": "9 px band of red_1 along the outline",
+       "region": "bow"
+      },
+      {
+       "type": "banding",
+       "x": 65,
+       "y": 58,
+       "sev": "warn",
+       "detail": "5 px band of hair_0 along the outline",
+       "region": "hair"
+      },
+      {
+       "type": "banding",
+       "x": 79,
+       "y": 100,
+       "sev": "warn",
+       "detail": "17 px band of steel_0 along the outline",
+       "region": "sword"
+      },
+      {
+       "type": "inner_break",
+       "x": 66,
+       "y": 73,
+       "sev": "warn",
+       "detail": "gap between line ends (65,73) and (67,73)",
+       "region": "face"
+      }
+     ],
+     "pivot": {
+      "baseline_y": 107,
+      "feet_x0": 59,
+      "feet_x1": 69,
+      "feet_cx": 63.5
+     },
+     "colours": [
+      "dark_1",
+      "eye_0",
+      "eye_1",
+      "hair_0",
+      "hair_1",
+      "hair_2",
+      "leather_1",
+      "leather_2",
+      "outline",
+      "pink_0",
+      "pink_1",
+      "red_0",
+      "red_1",
+      "red_2",
+      "red_3",
+      "skin_0",
+      "skin_1",
+      "skin_2",
+      "steel_0",
+      "steel_1",
+      "steel_2"
+     ],
+     "n_colours": 21,
+     "opaque_px": 1171
+    },
+    "f05": {
+     "flags": [
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 74,
+       "sev": "warn",
+       "detail": "steel_2",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 77,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "torso"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 77,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 78,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "torso"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 87,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 72,
+       "y": 87,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 89,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 89,
+       "sev": "warn",
+       "detail": "red_2",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 78,
+       "y": 89,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "orphan",
+       "x": 75,
+       "y": 92,
+       "sev": "info",
+       "detail": "skin_1",
+       "region": "kagi"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 94,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 89,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 90,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 91,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 92,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 92,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 73,
+       "y": 94,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 75,
+       "y": 95,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 96,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 97,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 98,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 99,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 100,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 101,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 102,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 103,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 80,
+       "y": 104,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 80,
+       "y": 105,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 81,
+       "y": 106,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 81,
+       "y": 107,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 82,
+       "y": 108,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 67,
+       "y": 106,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs"
+      },
+      {
+       "type": "notch",
+       "x": 60,
+       "y": 107,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 78,
+       "y": 89,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "spur",
+       "x": 52,
+       "y": 102,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "skirt"
+      },
+      {
+       "type": "spur",
+       "x": 66,
+       "y": 106,
+       "sev": "warn",
+       "detail": "outline"
+      },
+      {
+       "type": "spur",
+       "x": 59,
+       "y": 107,
+       "sev": "warn",
+       "detail": "outline"
+      },
+      {
+       "type": "spur",
+       "x": 82,
+       "y": 109,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "banding",
+       "x": 51,
+       "y": 58,
+       "sev": "warn",
+       "detail": "9 px band of red_1 along the outline",
+       "region": "bow"
+      },
+      {
+       "type": "banding",
+       "x": 65,
+       "y": 58,
+       "sev": "warn",
+       "detail": "5 px band of hair_0 along the outline",
+       "region": "hair"
+      },
+      {
+       "type": "banding",
+       "x": 79,
+       "y": 100,
+       "sev": "warn",
+       "detail": "17 px band of steel_0 along the outline",
+       "region": "sword"
+      },
+      {
+       "type": "inner_break",
+       "x": 66,
+       "y": 73,
+       "sev": "warn",
+       "detail": "gap between line ends (65,73) and (67,73)",
+       "region": "face"
+      }
+     ],
+     "pivot": {
+      "baseline_y": 107,
+      "feet_x0": 59,
+      "feet_x1": 69,
+      "feet_cx": 63.5
+     },
+     "colours": [
+      "dark_1",
+      "eye_0",
+      "eye_1",
+      "hair_0",
+      "hair_1",
+      "hair_2",
+      "leather_1",
+      "leather_2",
+      "outline",
+      "pink_0",
+      "pink_1",
+      "red_0",
+      "red_1",
+      "red_2",
+      "red_3",
+      "skin_0",
+      "skin_1",
+      "skin_2",
+      "steel_0",
+      "steel_1",
+      "steel_2"
+     ],
+     "n_colours": 21,
+     "opaque_px": 1171
+    },
+    "f06": {
+     "flags": [
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 74,
+       "sev": "warn",
+       "detail": "steel_2",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 77,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "torso"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 77,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 78,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "torso"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 86,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 72,
+       "y": 86,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 88,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 88,
+       "sev": "warn",
+       "detail": "red_2",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 78,
+       "y": 88,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "orphan",
+       "x": 75,
+       "y": 91,
+       "sev": "info",
+       "detail": "skin_1",
+       "region": "kagi"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 93,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 88,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 89,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 90,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 91,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 91,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 73,
+       "y": 93,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 75,
+       "y": 94,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 95,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 96,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 97,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 98,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 99,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 100,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 101,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 102,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 80,
+       "y": 103,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 80,
+       "y": 104,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 81,
+       "y": 105,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 81,
+       "y": 106,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 82,
+       "y": 107,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 67,
+       "y": 106,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs"
+      },
+      {
+       "type": "notch",
+       "x": 60,
+       "y": 107,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 78,
+       "y": 88,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "spur",
+       "x": 52,
+       "y": 101,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "skirt"
+      },
+      {
+       "type": "spur",
+       "x": 66,
+       "y": 106,
+       "sev": "warn",
+       "detail": "outline"
+      },
+      {
+       "type": "spur",
+       "x": 59,
+       "y": 107,
+       "sev": "warn",
+       "detail": "outline"
+      },
+      {
+       "type": "spur",
+       "x": 82,
+       "y": 108,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "banding",
+       "x": 51,
+       "y": 58,
+       "sev": "warn",
+       "detail": "9 px band of red_1 along the outline",
+       "region": "bow"
+      },
+      {
+       "type": "banding",
+       "x": 65,
+       "y": 58,
+       "sev": "warn",
+       "detail": "5 px band of hair_0 along the outline",
+       "region": "hair"
+      },
+      {
+       "type": "banding",
+       "x": 79,
+       "y": 99,
+       "sev": "warn",
+       "detail": "17 px band of steel_0 along the outline",
+       "region": "sword"
+      },
+      {
+       "type": "banding",
+       "x": 67,
+       "y": 101,
+       "sev": "warn",
+       "detail": "5 px band of skin_0 along the outline",
+       "region": "leg_L"
+      },
+      {
+       "type": "inner_break",
+       "x": 66,
+       "y": 73,
+       "sev": "warn",
+       "detail": "gap between line ends (65,73) and (67,73)",
+       "region": "face"
+      }
+     ],
+     "pivot": {
+      "baseline_y": 107,
+      "feet_x0": 59,
+      "feet_x1": 69,
+      "feet_cx": 63.5
+     },
+     "colours": [
+      "dark_1",
+      "eye_0",
+      "eye_1",
+      "hair_0",
+      "hair_1",
+      "hair_2",
+      "leather_1",
+      "leather_2",
+      "outline",
+      "pink_0",
+      "pink_1",
+      "red_0",
+      "red_1",
+      "red_2",
+      "red_3",
+      "skin_0",
+      "skin_1",
+      "skin_2",
+      "steel_0",
+      "steel_1",
+      "steel_2"
+     ],
+     "n_colours": 21,
+     "opaque_px": 1166
+    },
+    "f07": {
+     "flags": [
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 73,
+       "sev": "warn",
+       "detail": "steel_2",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 76,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 76,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 77,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "arm"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 86,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 72,
+       "y": 86,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 88,
+       "sev": "warn",
+       "detail": "steel_1",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 88,
+       "sev": "warn",
+       "detail": "red_2",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 78,
+       "y": 88,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "orphan",
+       "x": 75,
+       "y": 91,
+       "sev": "info",
+       "detail": "skin_1",
+       "region": "kagi"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 93,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 88,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 89,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 90,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 91,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 91,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "kagi"
+      },
+      {
+       "type": "outline_gap",
+       "x": 73,
+       "y": 93,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 75,
+       "y": 94,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 95,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 96,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 97,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 98,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 99,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 100,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 101,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 79,
+       "y": 102,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 80,
+       "y": 103,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 80,
+       "y": 104,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 81,
+       "y": 105,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 81,
+       "y": 106,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 82,
+       "y": 107,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 67,
+       "y": 106,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs"
+      },
+      {
+       "type": "notch",
+       "x": 60,
+       "y": 107,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 78,
+       "y": 88,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "kagi"
+      },
+      {
+       "type": "spur",
+       "x": 52,
+       "y": 101,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "skirt"
+      },
+      {
+       "type": "spur",
+       "x": 66,
+       "y": 106,
+       "sev": "warn",
+       "detail": "outline"
+      },
+      {
+       "type": "spur",
+       "x": 59,
+       "y": 107,
+       "sev": "warn",
+       "detail": "outline"
+      },
+      {
+       "type": "spur",
+       "x": 82,
+       "y": 108,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "banding",
+       "x": 51,
+       "y": 57,
+       "sev": "warn",
+       "detail": "9 px band of red_1 along the outline",
+       "region": "bow"
+      },
+      {
+       "type": "banding",
+       "x": 65,
+       "y": 57,
+       "sev": "warn",
+       "detail": "5 px band of hair_0 along the outline",
+       "region": "hair"
+      },
+      {
+       "type": "banding",
+       "x": 79,
+       "y": 99,
+       "sev": "warn",
+       "detail": "17 px band of steel_0 along the outline",
+       "region": "sword"
+      },
+      {
+       "type": "banding",
+       "x": 67,
+       "y": 101,
+       "sev": "warn",
+       "detail": "5 px band of skin_0 along the outline",
+       "region": "leg_L"
+      },
+      {
+       "type": "inner_break",
+       "x": 66,
+       "y": 72,
+       "sev": "warn",
+       "detail": "gap between line ends (65,72) and (67,72)",
+       "region": "face"
+      }
+     ],
+     "pivot": {
+      "baseline_y": 107,
+      "feet_x0": 59,
+      "feet_x1": 69,
+      "feet_cx": 63.5
+     },
+     "colours": [
+      "dark_1",
+      "eye_0",
+      "eye_1",
+      "hair_0",
+      "hair_1",
+      "hair_2",
+      "leather_1",
+      "leather_2",
+      "outline",
+      "pink_0",
+      "pink_1",
+      "red_0",
+      "red_1",
+      "red_2",
+      "red_3",
+      "skin_0",
+      "skin_1",
+      "skin_2",
+      "steel_0",
+      "steel_1",
+      "steel_2"
+     ],
+     "n_colours": 21,
+     "opaque_px": 1181
+    }
+   },
+   "totals": {
+    "orphan": 64,
+    "notch": 16,
+    "spur": 24,
+    "banding": 28,
+    "inner_break": 8,
+    "info": 200
+   },
+   "pivot": {
+    "baseline_min": 107,
+    "baseline_max": 107,
+    "baseline_drift": 0,
+    "baseline_offset_from_pivot": 3,
+    "feet_cx_min": 63.5,
+    "feet_cx_max": 63.5,
+    "feet_cx_drift": 0.0,
+    "feet_cx_offset_from_pivot": -0.5
+   },
+   "colours_per_frame": [
+    21,
+    21,
+    21,
+    21,
+    21,
+    21,
+    21,
+    21
+   ]
+  }
+ }
+}

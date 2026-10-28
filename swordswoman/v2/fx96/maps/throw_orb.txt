@@ -1,0 +1,57 @@
+# throw_orb 96px 13x13 4f spin loop (button C->R->hidden->L), 2-row j band bowed 1 px; r2 work/throw/make_r2.py
+# frame 0 60ms
+....KKKKK....
+..KKrrrrxKK..
+.KrwwrrrrrxK.
+.KwrrrrrrrxK.
+KrrrrrrrrrrxK
+KjjrrjjjrrjjK
+KjjjjwwwjjjjK
+KvwjjwwvjjvvK
+KvwwwjjjwwvvK
+.KvwwwwwwvvK.
+.KvwwwwvvvvK.
+..KKvvvvvKK..
+....KKKKK....
+# frame 1 60ms
+....KKKKK....
+..KKrrrrxKK..
+.KrwwrrrrrxK.
+.KwrrrrrrrxK.
+KrrrrrrrrrrxK
+KjjrrrrrjjjjK
+KjjjjjjjwvjjK
+KvwjjjjjvvjvK
+KvwwwwwwjjvvK
+.KvwwwwwwvvK.
+.KvwwwwvvvvK.
+..KKvvvvvKK..
+....KKKKK....
+# frame 2 60ms
+....KKKKK....
+..KKrrrrxKK..
+.KrwwrrrrrxK.
+.KwrrrrrrrxK.
+KrrrrrrrrrrxK
+KjjrrrrrrrjjK
+KjjjjjjjjjjjK
+KvwjjjjjjjvvK
+KvwwwwwwwwvvK
+.KvwwwwwwvvK.
+.KvwwwwvvvvK.
+..KKvvvvvKK..
+....KKKKK....
+# frame 3 60ms
+....KKKKK....
+..KKrrrrxKK..
+.KrwwrrrrrxK.
+.KwrrrrrrrxK.
+KrrrrrrrrrrxK
+KjjjjrrrrrjjK
+KjjwwjjjjjjjK
+KvjwvjjjjjvvK
+KvwjjwwwwwvvK
+.KvwwwwwwvvK.
+.KvwwwwvvvvK.
+..KKvvvvvKK..
+....KKKKK....

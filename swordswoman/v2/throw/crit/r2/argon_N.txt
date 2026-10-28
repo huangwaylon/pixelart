@@ -1,0 +1,4 @@
+**Scores:** Natural: 6/10 | Readable at 1x: 5/10 | Energetic: 7/10 | Trainer Feel: 7/10
+
+1. **Frames 4–6 (Release to Follow2):** The silhouette compresses into an unreadable blob because the throwing arm and torso overlap the head/body from this North angle; extend the throwing arm out to the left side of the silhouette during the follow-through so the action reads clearly at 1x.
+2. **Frames 5–7 (Orb Flight):** Because you are throwing mostly along the camera axis (North/up-left), the orb barely moves in screen-space for 3 frames and looks like it stalls hovering near her head; exaggerate the perspective by curving the arc higher and pushing the landing pop further up-left to sell the distance.

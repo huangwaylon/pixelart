@@ -1,0 +1,10 @@
+OVERALL: 6
+
+**Scores (1-10):**
+* Natural: 6 | Whole-body: 7 | Fluid: 6 | Appealing: 6 | Secondary motion: 5 | Readable at 1x: 6
+
+**Top 3 Concrete Fixes:**
+
+1. **Recoil (SE view) – Detached Left Arm:** The screen-right forearm/sleeve completely separates from the torso (leaving a gap of background). Pull the upper arm/shoulder joint back and in by ~4–5 px (at 1x) to reconnect the silhouette.
+2. **Hit & Recoil (SE view) – Ribbon Disappearance:** The red ribbon tails are readable in E view, but completely hidden behind the head in SE view. Rotate/offset the ribbon tails screen-left and up by ~4–6 px on *hit* and *recoil* so they whip outside the head's silhouette.
+3. **Recover & Settle (E view) – Frozen Ribbon Tails:** The ribbon tails stay rigidly sticking straight out at a 45° angle after *stagger*. On *recover* and *settle*, rotate them downward by 30° and 45° respectively so gravity settles them against the hair.

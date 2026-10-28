@@ -1,0 +1,33 @@
+{
+ "name": "overhead",
+ "frames": [
+  {
+   "file": "overhead_f0.json"
+  },
+  {
+   "file": "overhead_f1.json"
+  },
+  {
+   "file": "overhead_f2.json"
+  },
+  {
+   "file": "overhead_f3.json"
+  },
+  {
+   "file": "overhead_f4.json"
+  },
+  {
+   "file": "overhead_f5.json"
+  },
+  {
+   "file": "overhead_f6.json"
+  },
+  {
+   "file": "overhead_f7.json"
+  },
+  {
+   "file": "overhead_f8.json"
+  }
+ ],
+ "timing_ms": "see hybrid/ANIM_DIRECTION.md section 1"
+}

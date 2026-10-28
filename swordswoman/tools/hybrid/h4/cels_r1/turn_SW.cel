@@ -1,0 +1,5 @@
+# turn_SW: body = turn_SE mirrored + re-lit; katana moved to her LEFT hand, which is the NEAR (viewer-right) hand facing SW.
+base: turn_SE.cel mirror=127 skip=katana
+head: SW 53 41
+[katana]
+@katana 75 91 50 21

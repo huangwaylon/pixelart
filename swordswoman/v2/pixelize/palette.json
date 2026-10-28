@@ -1,0 +1,159 @@
+{
+ "name": "pixelize_18_socks",
+ "note": "locked v2/final/palette.json (16) + socks ramp D/d (pixelize strand, legs a: black mid-thigh socks), extracted from sock band pixels of all 9 turnE_final views",
+ "colors": {
+  "K": {
+   "hex": "#160c0d",
+   "material": [
+    "outline"
+   ],
+   "desc": "outline (all materials), pupil, lash line"
+  },
+  "h": {
+   "hex": "#342126",
+   "material": [
+    "hair",
+    "boots",
+    "eyes"
+   ],
+   "desc": "hair shadow / inner hair lines / tie line; iris top; boot shadow"
+  },
+  "H": {
+   "hex": "#433833",
+   "material": [
+    "hair",
+    "boots"
+   ],
+   "desc": "hair base; boot base"
+  },
+  "g": {
+   "hex": "#5e4a45",
+   "material": [
+    "hair",
+    "boots",
+    "eyes"
+   ],
+   "desc": "hair light (tied-top + crown); iris mid; boot light"
+  },
+  "L": {
+   "hex": "#85706a",
+   "material": [
+    "hair",
+    "boots",
+    "eyes"
+   ],
+   "desc": "hair sheen band; iris lower light; boot toe glint"
+  },
+  "s": {
+   "hex": "#eaa991",
+   "material": [
+    "skin"
+   ],
+   "desc": "skin base"
+  },
+  "S": {
+   "hex": "#c98a7c",
+   "material": [
+    "skin"
+   ],
+   "desc": "skin shadow (under bangs, neck, inner legs)"
+  },
+  "m": {
+   "hex": "#a5706b",
+   "material": [
+    "skin",
+    "mouth"
+   ],
+   "desc": "mouth, nose dot, inner skin lines, brow"
+  },
+  "k": {
+   "hex": "#e58f84",
+   "material": [
+    "skin"
+   ],
+   "desc": "blush (skin; cheeks in cheerful/embarrassed/joy/effort expressions only; soft pink on the skin ramp - the illustration cheeks show no distinct blush). Never use dress red for blush"
+  },
+  "e": {
+   "hex": "#962723",
+   "material": [
+    "dress",
+    "bow"
+   ],
+   "desc": "red light (bow top, shoulder, sleeve top edge)"
+  },
+  "E": {
+   "hex": "#7d1918",
+   "material": [
+    "dress",
+    "bow"
+   ],
+   "desc": "red base (dress, sleeves, bow)"
+  },
+  "R": {
+   "hex": "#5f1220",
+   "material": [
+    "dress",
+    "bow"
+   ],
+   "desc": "red shadow (folds, under obi, sleeve inside, bow knot)"
+  },
+  "Q": {
+   "hex": "#c6c4c4",
+   "material": [
+    "obi"
+   ],
+   "desc": "obi light edge / highlight"
+  },
+  "O": {
+   "hex": "#857a90",
+   "material": [
+    "obi"
+   ],
+   "desc": "obi base (grey-lavender)"
+  },
+  "o": {
+   "hex": "#63576a",
+   "material": [
+    "obi"
+   ],
+   "desc": "obi shadow"
+  },
+  "W": {
+   "hex": "#f6eeea",
+   "material": [
+    "eyes"
+   ],
+   "desc": "eye highlight, eye white"
+  },
+  "D": {
+   "hex": "#2b2927",
+   "material": [
+    "socks"
+   ],
+   "desc": "sock base (black mid-thigh socks)"
+  },
+  "d": {
+   "hex": "#373230",
+   "material": [
+    "socks"
+   ],
+   "desc": "sock light / sheen"
+  }
+ },
+ "materials": {
+  "outline": "K",
+  "hair": "hHgL",
+  "boots": "hHgL",
+  "skin": "sSmk",
+  "mouth": "mK",
+  "dress": "eER",
+  "bow": "eER",
+  "obi": "QOo",
+  "eyes": "KhgLW",
+  "socks": [
+   "K",
+   "D",
+   "d"
+  ]
+ }
+}

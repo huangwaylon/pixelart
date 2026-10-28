@@ -1,0 +1,19 @@
+Restored session: Mon 26 Oct 2026 10:48:15 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 5/10.** The poses are on-model and it reads as a jump, but it has no bounce or impact yet.
+
+1. **No squash and stretch.** F0 crouch and F6 land squash are fine, but F1 launch isn't stretched. The body is about as tall as at rest, so the jump has no snap. Stretch F1 by 2–3px and add a vertical smear or speed lines.
+2. **The sword jitters.** Its angle jumps from low-forward (F0) to high-back (F1–F2), flat (F3), diagonal (F4), vertical (F5), then flat (F6). That's random swapping, not follow-through. In F1, F2, F4 and F5 it seems to grow from behind the head with no hand on it. Pick one arc, keep the grip visible, and let it trail on the rise and lead on the fall.
+3. **The fall has no reach.** F4 and F5 are just the rise poses moved down. Extend the legs toward the ground in F5 so the landing is set up.
+4. **The apex doesn't hang.** F3 changes the pose completely, with a forward lean and the sword swung flat. Keep F2→F3 close so the top of the arc reads as a pause. The bow also nearly touches the top of the cell.
+5. **Dust stays too long.** The F1 puffs carry into F2 unchanged, and the F6 puffs into F7. Make them grow and fade over 2–3 frames, or cut them.
+6. **The sword clips the cell.** In F7 and F8 the blade tip leaves the bottom-left edge. The recover pose also drops the sword low, which doesn't match the idle grip.
+7. **Proportions drift.** The head and bangs change shape between frames (F5 is flatter and wider than F4). The arm and sleeve are a vague red blob with pillow shading in F2 and F3.
+8. **Positives:** the feet are pinned well (F0, F6 and F8 baselines match), the palette is consistent, the outlines are clean, and the face reads at 1x.
+9. **Timing can't be judged:** no frame durations came with the sheet.
+
+**Top fixes:** add the F1 stretch and smear, fix the sword arc and grip, and draw a new F5 with the legs reaching down.
+
+Saving session...completed.

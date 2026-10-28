@@ -1,0 +1,36 @@
+**(1) Expressions (1x Readability & Score /10):**
+*   **Neutral (6):** Blank stare. Needs outer-top lash pixel and confident smirk (raise screen-right mouth corner 1px).
+*   **Determine (5):** Reads sad/worried in S/SE. Inner brow pixels sit too high; drop inner brow 1px to form a sharp downward V.
+*   **Shout (5):** Reads happy/singing, not attacking. Needs angled angry upper lashes and taller 3x3 D-mouth.
+*   **Effort (4):** Uncanny grimace. 4x2 white teeth block with dark border looks like thick lips/binky.
+*   **Joy (8):** Best read. 3x1 `^` eye arches are slightly flat; thicken top-center lash to 2px.
+*   **Smile (6):** Redundant with Neutral. Open mouth into a 2x2 happy triangle (dark top, pink bottom).
+*   **Surprised (6):** S/SE eyes lack sclera contrast. Shrink iris to 1x2 and show white *under* it.
+*   **Pain (7):** `><` eyes work, but 3px wavy mouth is noisy at 1x.
+*   **Blink_hal (5):** Reads stoned/smug, not mid-blink. Lower lid 1px, flatten mouth to neutral.
+*   **Blink_clo (7):** Clean, but flat 3x1 line reads sleepy. Curve down 1px at outer edge.
+*   **Squash (6):** Reads grumpy, not physical impact. Raise chin/jawline 1px into head mass.
+
+**(2) Design & Pokemon-likeness:**
+*   **Readable at 1x:** 6/10 | **Intentionally designed:** 5/10 | **Pokemon-like:** 5/10
+*   Eyes are blocky 2x2/2x3 rectangles lacking Gen4/5 tapered outer lashes (see Lyra/Rosa). Mouths overuse dark outlines around 1px light fills, reading as swollen lips rather than crisp anime mouths.
+
+**(3) Personality:**
+*   **Carries personality:** 5/10. Reads polite/doll-like. Lacks the cocky asymmetric smirks and sharp upper-lid angles of a spirited swordswoman.
+
+**(4) Views:**
+*   **S (6/10):** Mirror-symmetry makes faces robotic. Jaw tapers too sharply (1px chin).
+*   **SE (6/10):** Far (left) eye is identical width to near eye, flattening the 3/4 turn.
+*   **E (5/10):** Eye sits 1px too far forward (touching nose bridge). Mouth doesn't indent silhouette.
+*   **NE/N (7/10):** Clean, though NE could push cheek silhouette 1px right on Squash/Joy.
+*   *(Note: C_r4 SE test head has much better 3px chin stability and cheek volume).*
+
+**(5) Top 6 Concrete Pixel Fixes:**
+1.  **SE Far Eye:** Narrow screen-left eye by 1px horizontally across all columns (2px wide vs 3px near eye).
+2.  **Determine/Shout Lids:** Drop inner eyebrow pixel 1px down (touching iris) and raise outer lash 1px to create a diagonal slash angle.
+3.  **Effort/Shout Mouths:** Remove bottom dark outline. Effort = 3x1 white teeth under 3x1 dark line. Shout = 3x2 dark top, 3x1 pink tongue bottom.
+4.  **E Profile Placement:** Shift eye 1px left (away from front edge); carve 1px background indent into jawline for open mouths (Shout/Joy).
+5.  **S/SE Jawline:** Widen chin bottom from 1px to 3px (match C_r4 grammar) so big mouths don't crowd the outline.
+6.  **Pain Mouth:** Replace wavy line with a 3x2 dark trapezoid (narrow top, wide bottom).
+
+**Overall Score: 5.5/10**

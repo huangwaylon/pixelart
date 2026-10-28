@@ -1,0 +1,15 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Composite reviewed (`crit_r3.png`). Overall the silhouettes and layout match. What still differs from the illustrations is mostly the faces, some texture noise, and a few stray pixels.
+
+1. **S, face:** The eyes are muddy grey blobs and there is grey shading smeared across the cheeks. Redraw each eye as a 2×3 dark iris with one light catch-light pixel, and make the cheeks flat skin colour. The mouth is too wide: cut it to a 1–2px smile. Soften the chin by removing the heavy black line under the jaw (use the shadow-skin colour instead).
+2. **S/NE, obi:** There is a near-white highlight streak in the obi that the illustration doesn't have. Recolour it to the mid lavender so the obi looks the same in all 5 views.
+3. **S, hem:** The illustration's skirt flares a little at the bottom. Widen the hem by 1px on each side.
+4. **SE, face:** The same eye and cheek noise as S, and the skin has blocky darker patches. Flatten them. The hand at the right sticks straight out sideways; in the illustration it hangs down by the hip. Move it down next to the sleeve.
+5. **E, profile:** The nose is a 1px lump sticking out. Make it a single-pixel step in the face outline, then add a clean step for the lips and chin. Remove the darker salmon patch on the cheek and neck. The legs have stair-step jaggies: clean up the front leg's outline and show more of the back leg and boot, as in the illustration.
+6. **NE/N, hair:** The hair is speckled with highlight dots. Group it into 2–3 clean bands of shading. Make the ribbon tails longer, down to the shoulder blades, as in the illustration.
+7. **N, legs:** The dark gap between the legs reads as shorts. Narrow it to a 1px outline.
+8. **Colour consistency:** NE/N kimono has more dark-red noise than S/E. Use the same 3 reds in the same order everywhere. The hair highlight is lighter in E than in S/N, so standardise it.
+9. **Cleanliness:** Clear the orphan pixels around the bow knots (the grey knot in S). At 1x the faces turn into a smudge; the face fixes above will help with that.
+
+Score: 6/10. **FIX**

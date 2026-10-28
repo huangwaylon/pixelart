@@ -1,0 +1,357 @@
+{
+ "encoding": "R channel = id * 10 (exact, no AA); G/B only make the colours distinct",
+ "background": "alpha 0",
+ "unknown": "R=0 (part not in the legend)",
+ "parts": {
+  "hair": {
+   "id": 1,
+   "rgb": [
+    10,
+    90,
+    20
+   ],
+   "hex": "#0a5a14",
+   "objects": [
+    "hair_bob",
+    "hair_cap",
+    "bangs",
+    "hair_strands",
+    "hair_streaks",
+    "hair_sheen"
+   ]
+  },
+  "bun": {
+   "id": 2,
+   "rgb": [
+    20,
+    230,
+    120
+   ],
+   "hex": "#14e678",
+   "objects": [
+    "bun",
+    "bun_sheen",
+    "bun_crease"
+   ]
+  },
+  "bow": {
+   "id": 3,
+   "rgb": [
+    30,
+    10,
+    255
+   ],
+   "hex": "#1e0aff",
+   "objects": [
+    "bow"
+   ]
+  },
+  "face": {
+   "id": 4,
+   "rgb": [
+    40,
+    200,
+    255
+   ],
+   "hex": "#28c8ff",
+   "objects": [
+    "head",
+    "face_decals"
+   ]
+  },
+  "ear": {
+   "id": 5,
+   "rgb": [
+    50,
+    200,
+    150
+   ],
+   "hex": "#32c896",
+   "objects": [
+    "ears"
+   ]
+  },
+  "collar": {
+   "id": 6,
+   "rgb": [
+    60,
+    30,
+    120
+   ],
+   "hex": "#3c1e78",
+   "objects": [
+    "collar",
+    "choker"
+   ]
+  },
+  "torso": {
+   "id": 7,
+   "rgb": [
+    70,
+    160,
+    90
+   ],
+   "hex": "#46a05a",
+   "objects": [
+    "body_torso",
+    "neck",
+    "bodice",
+    "chest_flower",
+    "chest_cord"
+   ]
+  },
+  "corset": {
+   "id": 8,
+   "rgb": [
+    80,
+    90,
+    220
+   ],
+   "hex": "#505adc",
+   "objects": [
+    "corset",
+    "corset_buckles",
+    "corset_tabs",
+    "belt_pouch"
+   ]
+  },
+  "skirt": {
+   "id": 9,
+   "rgb": [
+    90,
+    40,
+    60
+   ],
+   "hex": "#5a283c",
+   "objects": [
+    "skirt_outer"
+   ]
+  },
+  "skirt_under": {
+   "id": 10,
+   "rgb": [
+    100,
+    10,
+    140
+   ],
+   "hex": "#640a8c",
+   "objects": [
+    "skirt_under"
+   ]
+  },
+  "shorts": {
+   "id": 11,
+   "rgb": [
+    110,
+    250,
+    20
+   ],
+   "hex": "#6efa14",
+   "objects": [
+    "shorts",
+    "thigh_strap.L"
+   ]
+  },
+  "sleeve_L": {
+   "id": 12,
+   "rgb": [
+    120,
+    200,
+    30
+   ],
+   "hex": "#78c81e",
+   "objects": [
+    "sleeve.L",
+    "sleeve_band.L"
+   ]
+  },
+  "sleeve_R": {
+   "id": 13,
+   "rgb": [
+    130,
+    110,
+    250
+   ],
+   "hex": "#826efa",
+   "objects": [
+    "sleeve.R",
+    "sleeve_band.R",
+    "arm_ornament.R"
+   ]
+  },
+  "arm_L": {
+   "id": 14,
+   "rgb": [
+    140,
+    240,
+    120
+   ],
+   "hex": "#8cf078",
+   "objects": [
+    "arm.L"
+   ]
+  },
+  "arm_R": {
+   "id": 15,
+   "rgb": [
+    150,
+    60,
+    250
+   ],
+   "hex": "#963cfa",
+   "objects": [
+    "arm.R"
+   ]
+  },
+  "hand_L": {
+   "id": 16,
+   "rgb": [
+    160,
+    140,
+    10
+   ],
+   "hex": "#a08c0a",
+   "objects": [
+    "hand.L"
+   ]
+  },
+  "hand_R": {
+   "id": 17,
+   "rgb": [
+    170,
+    10,
+    80
+   ],
+   "hex": "#aa0a50",
+   "objects": [
+    "hand.R"
+   ]
+  },
+  "leg_L": {
+   "id": 18,
+   "rgb": [
+    180,
+    180,
+    230
+   ],
+   "hex": "#b4b4e6",
+   "objects": [
+    "leg.L"
+   ]
+  },
+  "leg_R": {
+   "id": 19,
+   "rgb": [
+    190,
+    230,
+    60
+   ],
+   "hex": "#bee63c",
+   "objects": [
+    "leg.R"
+   ]
+  },
+  "shoe_L": {
+   "id": 20,
+   "rgb": [
+    200,
+    20,
+    20
+   ],
+   "hex": "#c81414",
+   "objects": [
+    "shoe.L",
+    "foot.L"
+   ]
+  },
+  "shoe_R": {
+   "id": 21,
+   "rgb": [
+    210,
+    90,
+    120
+   ],
+   "hex": "#d25a78",
+   "objects": [
+    "shoe.R",
+    "foot.R"
+   ]
+  },
+  "scarf_L": {
+   "id": 22,
+   "rgb": [
+    220,
+    220,
+    250
+   ],
+   "hex": "#dcdcfa",
+   "objects": [
+    "scarf.L"
+   ]
+  },
+  "scarf_R": {
+   "id": 23,
+   "rgb": [
+    230,
+    150,
+    200
+   ],
+   "hex": "#e696c8",
+   "objects": [
+    "scarf.R"
+   ]
+  },
+  "sword": {
+   "id": 24,
+   "rgb": [
+    240,
+    250,
+    250
+   ],
+   "hex": "#f0fafa",
+   "objects": [
+    "katana"
+   ]
+  },
+  "smear": {
+   "id": 25,
+   "rgb": [
+    250,
+    100,
+    100
+   ],
+   "hex": "#fa6464",
+   "objects": [
+    "smear_blade",
+    "smear_trail"
+   ]
+  }
+ },
+ "groups": {
+  "hair": 1,
+  "bun": 2,
+  "bow": 3,
+  "face": 4,
+  "ear": 5,
+  "collar": 6,
+  "torso": 7,
+  "corset": 8,
+  "skirt": 9,
+  "skirt_under": 10,
+  "shorts": 11,
+  "sleeve_L": 12,
+  "sleeve_R": 13,
+  "arm_L": 14,
+  "arm_R": 15,
+  "hand_L": 16,
+  "hand_R": 17,
+  "leg_L": 18,
+  "leg_R": 19,
+  "shoe_L": 20,
+  "shoe_R": 21,
+  "scarf_L": 22,
+  "scarf_R": 23,
+  "sword": 24,
+  "smear": 25
+ }
+}

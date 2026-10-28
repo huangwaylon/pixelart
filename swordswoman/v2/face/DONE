@@ -1,0 +1,5 @@
+FACE strand DONE 2026-10-26
+FINAL: out/FINAL_expr_sheet.png (sprite v11, S/SE/E 4x+1x vs real trainers), out/FINAL_portraits.png (PMD portraits r5 vs Meloetta).
+Code: tools/faces.py (+ compact EYE3/MOUTH3 for the Level E FINAL head), tools/final_sheet.py; sprite char-maps out/sprite/; portraits portrait/P_*.txt.
+Critics (4-criteria framing): sprite Argon 5.5 / Opus 5, portraits Argon 5.0 / Opus 5.5 -> >=7 target NOT met (see NOTES steps 7-19).
+Level E re-fit: PENDING (no FINAL turnE); exact adjustments in FACE_GUIDE.md section 9.

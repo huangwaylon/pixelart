@@ -1,0 +1,25 @@
+; origin 20 8
+; view SE
+; expr effort
+.....KKK...........
+....KHLHK...KKKKK..
+....KLHHK.KKeeeeK..
+.KK.KHhhhKEEEEEeK..
+KeeKKhrRrrEEEEERK..
+KeEeKrRRrrREEERRK..
+KEEEerRRrrrRRRRRK..
+KERRRrrrrhhrrrrhK..
+KRrrrhhHLLHHHHhhhK.
+.KrHLLHhHHHhHHhHHhK
+.KHHHHHhhHhShHhShHK
+..KHHHHhhhSsShSsShK
+..KHHHHhssssssssshK
+..KHHHHhKKKssssKKKK
+..KHhHHhsKKKKsKKKSK
+..KHhHHhsWiIsssiWSK
+..KHhHhhesssssssseK
+..KhHhHhssssrWrssK.
+..KhHhhhssssrrrSK..
+...KhHhhhsssssSK...
+...KhKhhhsssSSK....
+....K.KhhhsSSK.....

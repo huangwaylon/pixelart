@@ -1,0 +1,19 @@
+DESIGN strand, round 4 (48px pixel masters): DONE (2026-10-26)
+
+Method: cm.py palette probes of turnD/iso_* + r3iso/c/mat_* (angle authority) -> Opus (be_system) pixel artist with the SE anchor, proportion lock and (per lead) a shared ROUND head template -> lint (off-palette/orphans/head metrics) -> 1x/4x sheet with height lines -> Argon + Opus crit. 7 no-katana rounds (5 critted), 2 katana rounds (both critted).
+
+Scores (Argon / Opus):
+- r1: S 6.5/6, E 7.5/5, NE 5/4, N 6/4 (boxy heads, N bow ears)
+- r3 (round head template): S 7/6, E 6.5/5, NE 7.5/6, N 6.5/5
+- r5: S 8.5/8, E 8/6, NE 7.5/7, N 9/8
+- final (r6/r7 + katana k2): S 9.5/8, E 8.5/7, NE 8.5/8, N 9/8; S_k 8.5/7, E_k 9/5*, NE_k 8.5/7, N_k 9/6
+  *Opus E_k "wrong hand" rejected: facing E, her right hand is the near (camera-side) hand.
+Head size: measured head_w 23-24, skull rows 14-16..34-35, bow top row 10-11, ground row 59 in all views (drift <=1px; both critics pass).
+Argon verdict: ready. Opus: no-katana S/NE/N ready, E nearly; katana needs hand polish (blade foreshortening S_k/NE_k, N_k angle, NE_k grip), and SE anchor must get the round skull (v2/heads/ not READY yet; E/SE heads should be aligned with it when it lands).
+
+FINAL files (v2/design/m48/):
+- S.txt/.png, E.txt/.png, NE.txt/.png, N.txt/.png (no katana, 1x 64x64)
+- S_k.txt/.png, E_k.txt/.png, NE_k.txt/.png, N_k.txt/.png (katana)
+- sheet_4x.png (SE anchor + 8 masters, 1x + 4x, height lines)
+- work/head_tpl.txt (shared head outline), tools/cm.py (probe/render/lint), tools/sheet.py
+Crits: m48/crit/{r1,r3,r4,r5,r6k1,fin}_{argon,opus}.txt. Spec: DESIGN_SPEC.md "48px PIXEL MASTERS".

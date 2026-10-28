@@ -1,0 +1,15 @@
+Here are the 3 most important concrete problems in the `jump_SE` animation:
+
+1. **Frame 2 (`2 50ms launch`), Katana Region (Bottom-Left) — Broken Smear Geometry & Jaggies:** 
+   The katana trail is drawn as a blocky, stepped wedge with a dark outline running right through the middle of the blade/trail boundary, and raw un-tapered stair-stepping along the bottom edge. Moreover, in Frame 1 the blade starts low and moves *up* into Frame 3, so a trail extending *below* the blade in Frame 2 is physically inverted. 
+   *Exact fix:* Remove the dark internal outline separating the blade from the smear, reposition the smear so it trails *behind* the upward motion path (or sweep the sword downward during launch to justify the arc), and taper the trailing white/blue pixels into a clean, smooth curve without 2-pixel stair-steps.
+
+2. **Frames 2 to 6 (`launch` through `fall`), Head & Hair Region — Zero Secondary Motion / Stiff Cutout Rig:** 
+   The character's large red hair bow and the lower locks of hair are completely static across the entire jump arc (identical pixel clusters pasted from frame to frame, aside from a minor 1px shift on the bow in Frame 2/7). During high-velocity frames like `launch` (Frame 2) and `fall` (Frame 6), the rigid hair kills the sense of vertical momentum.
+   *Exact fix:* In Frame 2 (`launch`), flatten the red bow lobes downward by 1–2 pixels against the head and tuck the side hair locks inward. In Frame 5 (`hang`) and Frame 6 (`fall`), flare the bottom hair tips outward by 2 pixels and angle the bow lobes upward by 2–3 pixels to show air resistance and drag.
+
+3. **Frames 1, 7, and 8 (`crouch`, `land`, `recover`), Katana Scabbard / Blade Tip (Bottom-Left) — Ground Clipping & 45-Degree Jaggies:** 
+   During the lowest squash poses (Frames 1 and 7), the katana tip drops below the y-level of the character's feet/ground shadow plane, visually stabbing into the floor. Furthermore, in Frames 4, 8, and 9, the blade is rotated to a near-45-degree angle using sloppy 1px/2px alternating outlines that create severe "sawtooth" jaggies along the thin blade.
+   *Exact fix:* Rotate the sword hilt upward by 15–20 degrees in Frames 1 and 7 so the tip stays clear above the ground plane (aligned with or above the boot soles), and clean the blade outlines in Frames 4, 8, and 9 into strict 1:1 or 2:1 pixel steps with a consistent 1px white core.
+
+SCORE jump: 6.5

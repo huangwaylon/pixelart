@@ -1,0 +1,114 @@
+{
+ "format": "dirpose/1",
+ "name": "idle_f3",
+ "dirs": [
+  "SE",
+  "S",
+  "NW"
+ ],
+ "ops": [
+  [
+   "base",
+   "idle_{D}"
+  ],
+  [
+   "move",
+   "cog",
+   [
+    0,
+    0,
+    0.035
+   ]
+  ],
+  [
+   "rot",
+   "chest",
+   "X",
+   -5.5
+  ],
+  [
+   "rot",
+   "shoulder.L",
+   "Y",
+   -7.2
+  ],
+  [
+   "rot",
+   "shoulder.R",
+   "Y",
+   7.2
+  ],
+  [
+   "rot",
+   "head",
+   "X",
+   -2.1
+  ],
+  [
+   "rot",
+   "hips",
+   "Y",
+   -1.2
+  ],
+  [
+   "rot",
+   "bun",
+   "X",
+   1.8
+  ],
+  [
+   "rot",
+   "bow",
+   "X",
+   8.1
+  ],
+  [
+   "scarf_hang",
+   2.242,
+   0.0,
+   0.24
+  ],
+  [
+   "chain",
+   "skirt.tail",
+   "X",
+   [
+    -3.6,
+    -3.96,
+    -4.356
+   ]
+  ],
+  [
+   "rot",
+   "sleeve.L",
+   "X",
+   3.2
+  ],
+  [
+   "rot",
+   "sleeve.R",
+   "X",
+   -3.2
+  ],
+  [
+   "rot",
+   "sword",
+   "Z",
+   -2.5
+  ],
+  [
+   "rot",
+   "sword",
+   "X",
+   -7.5
+  ]
+ ],
+ "intent": {
+  "anim": "idle",
+  "frame": 3,
+  "ms": 220,
+  "ta_push": true,
+  "beat": "inhale top (hold)"
+ },
+ "no_dir_turn": true
+}

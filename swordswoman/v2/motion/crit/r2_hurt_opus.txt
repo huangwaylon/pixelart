@@ -1,0 +1,17 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+OVERALL: 5
+
+- Natural: 5
+- Whole-body: 6
+- Fluid: 5
+- Appealing: 5
+- Secondary motion convincing: 3
+- Readable at 1x: 6
+
+**What's wrong:** The hit-to-recoil curl now reads better than OLD. But stagger is a running split-lunge, not a loss of balance. The springs on hair and hem barely move: in frames.json most offsets are under 1 px, so they don't show at 1x. In recover and settle, the ribbon tails stick out as a straight, stiff stroke that looks like an antenna.
+
+**Top 3 fixes:**
+1. **Stagger (SE and E):** Shorten the stride by about 40%. Pull the trailing foot in so it lands under the hips, and drop the hips 2–3 px. Bring both arms in and down by about 30° so it reads as off-balance rather than running.
+2. **Hit to recoil:** Snap the head back, against the impact, by about 15° (SE currently has it nodding 15° forward). In recoil, side locks and back hair should lag 2–3 px at 1x.
+3. **Ribbon (recover and settle):** Let the tails hang from gravity, 60–80° below horizontal. Give them a slight S-curve with 2 segments. Cap the swing overshoot at about 25°.

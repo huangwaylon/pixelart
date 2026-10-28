@@ -1,0 +1,5 @@
+; pivot 11 3
+..uu...............uu..
+.uuuU.u..........u.uuuU
+uuUUUuuU.......uuUuUUUo
+.ooooUoo.......ooUoooo.

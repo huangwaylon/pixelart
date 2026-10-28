@@ -1,0 +1,26 @@
+Restored session: Mon 26 Oct 2026 13:13:22 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+I couldn't zoom in because PIL isn't installed, so this review is from the sheet at its native size. Pixel positions are approximate, measured within each frame.
+
+**What works:** The vertical bob is strong (frame 1 sits about 15–20 px below frame 3), the timing curve (100/90/80/100 ms) is sensible, and the pass frames (2 and 6) clearly lift and bend a leg. Palette and outlines on the base character are clean.
+
+**Top 3 problems:**
+
+1. **Katana changes angle and grip between frames (frames 3, 6, 7, sword hand and blade).** In frames 0, 1, 4 and 5 the blade trails down-left at about 45°. In frame 3 it flattens to about 30° and sits away from the hand. In frame 7 it snaps to nearly vertical. In frame 6 it crosses the front leg. As a result it flickers instead of swinging, and the hilt doesn't stay in the fist (there's a gap of about 2 px at the hilt in frame 3). The blade's edge also steps unevenly (1:1 mixed with 1:2 runs), which reads as jaggies.
+   **Fix:** Pin the hilt pivot to the hand bone and limit rotation to ±8° that lags the arm by one frame. Redraw the blade as a clean 1:2 line in each of the 2–3 angles it uses, with a 1 px highlight.
+
+2. **Rigid cutout parts with no overlap (hair, bow, skirt, free arm in all frames).** The hair and bow move with the head as one solid block: there's no lag on the up/down frames. The skirt hem has the same outline in every frame, with no flare on frames 1/5 and no stretch on frames 3/7. The free arm (screen right) barely swings, so there's almost no arm opposition. In frames 1 and 5 it juts out flat.
+   **Fix:** Delay the hair and bow by one frame. On the down frames (1, 5), squash the skirt 1–2 px wider; on the up frames (3, 7), stretch it 1–2 px taller. Swing the free arm about 25° in opposition to the legs.
+
+3. **Identity break and cutout seams (frame 6 face, frames 2 and 6 waist).** In frame 6 the eyes are closed or redrawn, so the face jumps to a different character in mid-stride. Where the torso joins the skirt in frames 2 and 6, the outlines double up and leave orphan dark pixels. The shoulder joints show notches in the outline.
+   **Fix:** Use the standard face in frame 6, or make it a deliberate 1-frame blink in the same style. Merge the outlines at the joints so only one 1 px dark line remains, and delete the stray pixels.
+
+Minor: contact frames 0 and 4 are almost mirror twins with nothing to tell left foot from right. The shadow is a fixed ellipse; it should shrink about 2 px on the up frames.
+
+Overall it reads as a puppet rather than a hand-animated walk. It isn't shippable yet.
+
+SCORE walk: 5
+
+Saving session...completed.

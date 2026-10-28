@@ -1,0 +1,11 @@
+Here are the concrete, pixel-actionable fixes to match the target illustrations strictly:
+
+1. **All Views – Missing Bottom Hem Outline:** The bottom edge of the red kimono skirt has NO dark outline in any view, blending directly into the legs. Add a 1px dark outline row across the bottom skirt hem in S, SE, E, NE, and N, curving it slightly in S, SE, and NE to match the illustration's rounded hem.
+2. **S & SE – Missing Neck / V-Collar Skin:** The illustration clearly shows skin at the neck/collar opening. In S and SE, the chin sits directly on solid red fabric. Add 2–3 skin pixels in a small V-shape below the chin, framed by dark red lapel lines.
+3. **S – Eyes & Boots:** The eyes are muddy 2x3 brown blocks lacking the crisp white sclera highlight seen in SE; replace the outer/upper-inner brown pixel with the lightest skin/white tone for a 1x read. Add a 1px gap between the two boots (currently fused into one block) so they match N's separated stance.
+4. **SE – Obi Height:** The grey obi is 3px tall here (vs 2px in all other views). Trim the top row of the obi by 1px to keep proportions consistent.
+5. **E – Missing Hand & Sleeve Flare:** The right sleeve ends as a flat red rectangle with no hand. Widen the bottom cuff by 1px to the left for the flare, and add 2x2 skin pixels (with dark outline) below the sleeve cuff for her visible fingers.
+6. **NE & N – Obi Continuity:** In NE, the grey obi is broken into two stepped blocks and missing on the left hip; connect it cleanly across the back waist to the left edge. In N, extend the grey obi 1px left and right so it reaches the torso outlines, matching S.
+7. **N – Right Sleeve Silhouette:** The viewer-right sleeve has a jagged 2px horizontal spike sticking out on the right and a scooped bottom edge. Trim the rightmost protruding pixel and smooth the bottom sleeve line to match the symmetrical A-line flare of the left sleeve and S view.
+
+**Score:** 7.5/10 — **FIX**

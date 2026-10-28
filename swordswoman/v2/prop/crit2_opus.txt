@@ -1,0 +1,13 @@
+Vertically the blockouts line up with the refs. The open points are mostly about widths and pose, not section placement.
+
+- **Section lines match.** Crown, eye, chin, shoulder, armpit, waist, hip, hem, knee, ankle and sole all fall on or within 1px of the template in S, SE, NE and N. Legs at 43% of height and 3.43 heads fit Hilda, Rosa and Dawn. Keep them.
+- **Head and neck are fine.** A 14×14 head that is wider than the 12px shoulders is normal for these sprites; Hilda's and Dawn's heads with hair are also wider than their shoulders. A 1-row neck matches the refs, where it is mostly hidden by hair. No change needed.
+- **The skirt reads as a straight tube.** The hem is 12px, the same as the shoulders, but Dawn's and Lyra's skirts flare past their shoulders. Widen the hem to 14px (1px each side, on the bottom 2 rows only) and leave the hip row at 10px so it flares out from the obi.
+- **The waist pinch is a bit soft.** An obi of 6 against a chest of 8 is right, but the skirt starts flaring too late. Make the first skirt row 1px wider than the obi (8px), then step out.
+- **Arms are too thin and too stiff.** The arms read as 2px dark strips glued to the torso. Make them 3px including the outline, open a 1px gap of background between arm and torso from the armpit row down to the waist row, and keep the hands ending at the hip/hem line, which is already right.
+- **The stance is narrower than any ref.** The feet sit at about hip width with the legs parallel, while every ref plants its feet wider than its hips. For the battle pose, move each foot 2px outward from the knee down, so the outer foot edges are about 16px apart. Thigh 5 and calf 4 can stay.
+- **Boots are fine.** A 6px foot fits the refs. Add a 1px lighter sole row, as on Hilda's and Dawn's shoes, so the foot doesn't merge with the shadow, and lower the boot top 1 row so the calf shows above it.
+- **The E profile is a stick.** The chest is about 5px deep and the skirt about 6px, with no back flare. Make the torso 6–7px deep, give the skirt 9px with 2px of flare behind the hips, and add a 1px bulge behind the calf.
+- **NE and N are fine.** The back views' shoulder and hem widths match S. Just carry over the same skirt flare and arm gap.
+
+VERDICT: MATCH

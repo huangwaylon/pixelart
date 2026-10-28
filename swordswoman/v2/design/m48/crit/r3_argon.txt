@@ -1,0 +1,21 @@
+**Head Size Consistency:** **PASS** for skull height (cyan-to-green is consistent within 1px). **FAIL** for top silhouette: S bun breaches yellow guide by 2px; E bow drops 1px below yellow; N bow spans 20px wide vs S 14px.
+
+**S_r3: 7/10**
+1. **Top/Bun (Above Yellow):** Delete the 2px-tall dark bun bump sticking out above the yellow guide; the bow sits in front of the bun here, or lower the bun into the bow gap.
+2. **Bow Width (Yellow–Cyan):** Narrow outer bow edges by 1px per side so it doesn't overpower the skull width.
+3. **Skirt Hem (Mid-Lower):** Drop the center-bottom skirt hem outline 1px to show top-down foreshortening instead of a flat horizontal line.
+
+**E_r3: 6.5/10**
+1. **Bun/Bow (Yellow–Cyan):** Shift the bun 1px up and 1px left to read as a round knot; raise bow top 1px to hit the yellow guide.
+2. **Back Skull (Mid-Left Hair):** The vertical 7px straight line on the back of the head looks flat; pad the center 3px outward by 1px to round the dome.
+3. **Front Arm/Hand:** The 2px skin mitten blends into the skirt front; shift the sleeve + hand 1px left (back) to clearly separate arm from torso profile.
+
+**NE_r3: 7.5/10**
+1. **Bun/Bow Overlap (Yellow–Cyan):** In a back-3/4 view, the bun is closer to the camera than the bow. Pull the dark bun pixels 1px down into the bow's center knot so the bun overlaps the bow.
+2. **Cheek (Above Green, Right):** Shave the top 1px of the 3px vertical skin strip so the cheek tapers into the jawline.
+3. **Left Foot (Bottom):** Raise the back (left) boot 1px higher than the right boot to match isometric depth.
+
+**N_r3: 6.5/10**
+1. **Bow Shape (Yellow–Cyan):** Bow is 4px wider than S_r3 and winged. Trim 2px off both left and right outer tips and flatten the top edge to match S_r3's boxy loops.
+2. **Bun Occlusion (Cyan):** The bun is in front of the bow from behind. Expand the dark bun circle downward over the red center knot so the bun sits on top of the bow, not behind it.
+3. **Hair Crown (Below Cyan):** Widen the top hair row under the bow by 1px on each side to fix the pinched upper-skull curve.

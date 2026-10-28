@@ -1,0 +1,18 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+**SCORE: 4.5/10.** The head art and palette are appealing, but the body doesn't stay on-model from frame to frame. The head is stamped and the katana is a stiff overlay, so it reads as three separate layers, not one running character.
+
+1. **Off-model body redraws (all frames):** sleeve length, skirt hem shape and obi width/height change every frame. Compare the cuffs in f2 and f6 with f1 and f5, and the obi in f0 with f5. The static areas boil.
+2. **Head is disconnected from the torso, worst in f0 and f4:** the torso pitches about 30° forward but the head stays perfectly upright and identical. No tilt, no 1px squash on contact, so it looks pasted on.
+3. **Mismatched strides:** f0 is a deep horizontal lunge with the head top near y≈18 (1x), while f4 is upright with the head near y≈12. f2 and f6 also tuck the legs differently, so the cycle limps.
+4. **Bob curve:** the body jumps about 5px from contact (f0/f4) to the peak (f1/f5) in one frame, then drops back to mid height in f2/f6. The peak lasts one frame with no ease. The 80ms holds land on the passing frames, not on the hang.
+5. **Katana:** it's a 1px straight line at nearly the same angle in every frame. In f2 and f3 the grip doesn't sit in the hand: the blade ends at the shoulder or behind the head. There is no smear or arc anywhere, even though the brief asks for smears on fast actions.
+6. **Dirty pixels:** pink ear/skin specks poke out of the left hair edge in f1, f5 and f7. The leg and foot outlines switch between black and selout. The f2 front arm makes a stiff straight-out "punch" silhouette, and the feet change size between f1 and f6.
+
+**Top 3 fixes:**
+1. **Lock the body to the model:** paint over one clean contact frame and one clean passing frame by hand, then mirror or derive the other six from them. Use fixed sleeve, obi and hem templates, and redo f0 to match f4's lean.
+2. **Make the head follow the body:** rotate or shift the head 1–2px with the torso lean, squash it 1px on contact, and make the peak a 2-frame hang. Add 1–2 frames of lag to the bow and hair.
+3. **Rebuild the katana:** anchor it to the hand pivot every frame, swing it in an arc against the arm swing, and add a 2–3px palette-matched smear on f1 and f5. Then clean up the ear specks and the mixed outlines.
+
+Saving session...completed.

@@ -1,0 +1,4 @@
+**Score: 6/10.** Windup, stride and release read well at 1x. The smear arc and the deep forward bend in follow-through give it real energy, and the poses feel like a trainer, not a stiff pitcher.
+
+1. **follow → follow2 → recover:** the orb barely moves between follow2 and recover, so it looks like it's floating by her head while she bends. Make it travel a clear, growing distance each frame, or take it out of these frames and let the flight shot carry it.
+2. **Orb mid-flight + landing pop:** she faces N (away from camera), but the orb drifts screen-left at head height and lands to her left. Send it up-screen in a rising-then-falling arc that shrinks as it goes. Also keep the red-white orb readable in flight instead of the plain white sparkle.

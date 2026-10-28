@@ -1,0 +1,12 @@
+SCORE 5.5/10
+1. **Frames 1 & 5 (Sword):** The katana completely vanishes during the fast vertical stretches instead of trailing or foreshortening, breaking object permanence.
+2. **Frames 0–8 (Head/Ribbon):** The head, hair, and ribbon are 100% rigid copy-pastes with zero secondary motion (no ribbon lag on launch/fall, no hair squash on landing).
+3. **Frames 0, 6, 7, 8 (Feet/Ground):** Ground contact baseline shifts vertically—feet in F8 sit lower than F7 and F0, making the ground plane feel unstable.
+4. **Frame 5 (Head/Speed lines):** White speed lines clip awkwardly behind the left hair outline looking like stray artifact pixels, and stop right above the ribbon.
+5. **Frames 1, 2, 6, 7 (Dust FX):** Dust puffs are symmetrical geometric rings ("donuts") snapped to a rigid horizontal grid rather than organic, perspective-correct ground smoke.
+6. **Frames 2, 3, 4 (Torso/Arms):** The upper body and crossed arms are completely static across the entire rise, apex, and start of the fall, making her look like a levitating statue.
+
+**Top 3 Fixes:**
+1. **Add Secondary Motion:** Flap the ribbon and hair tips upward on fall (F4–F5) and squash them downward on impact (F6) to sell gravity and momentum.
+2. **Keep the Sword Visible:** Angle the scabbard/blade steeply downward in F1 and upward in F5 to follow the body's stretch and arc.
+3. **Lock Ground Plane & Rework Dust:** Align the bottom of the boots to a single Y-baseline across F0, F6, F7, F8, and replace the ring puffs with flat, dissipating oval cloud shapes.

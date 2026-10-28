@@ -1,0 +1,21 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt run_SE and jump_SE plus both _ns versions in `actions_src/run_jump.py`. All four pass QC, and I checked the sheets over 3 passes each.
+
+- **Run:**
+  - **Lean and legs:** head sits 4px ahead of the hips. Kicked-back leg is now a bent knee with the boot up. Recovery foot lifts 3px on push frames.
+  - **Air:** torso stretches 1px.
+  - **Far arm:** new, one shade darker, stays visible.
+  - **Blade:** only 9.5/10, drawn behind the legs.
+  - **Bow:** lags at most 1px up, so it never floats.
+- **Jump:**
+  - **Crouch:** light antic dip then a deep 140ms crouch.
+  - **Rise:** full-width stretch torso, so no scale pop.
+  - **Blade:** stays left of the body in the air.
+  - **Land:** deeper. Recover sits halfway up, and the dust moves outward.
+
+**New parts:** `legs_run9_{c1,c2,a1,a2,p1,p2}`, `armF_run9_{F,M,D}`, `torso_run9_st`, `legs_jmp9_mid`, `common/fx_jmp9_land2`.
+
+**Still weak:** blade is nearly flat on run contact/air2, the bent shin is still a pale bar, and the jump antic and recover poses look alike.
+
+Saving session...completed.

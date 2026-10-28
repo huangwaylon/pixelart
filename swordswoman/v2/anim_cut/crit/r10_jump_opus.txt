@@ -1,0 +1,30 @@
+Restored session: Mon 26 Oct 2026 13:19:26 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+**jump_SE review: the timing works, but there is almost no secondary motion and the pixel cleanup is poor**
+
+What's working: the beats read in order (crouch, launch, hang, fall, land, recover). The 50 ms launch snap and the 110 ms land hold have good impact timing. Dust puffs at take-off and landing help. Frame 7 has a real squash: the skirt splays wide and the body drops low. The weak spots are the anticipation, the hair and ribbon, the sword, and the cleanup of the rotated rig pieces.
+
+1. **Hair and ribbon don't move at all (F2–F8, top of the head).** The bow and hair silhouette are pasted on identically in every frame. While she rises (F2–F3), the bow loops and the hair ends should trail 2–3 px downward. At the apex (F4–F5) they should float up 2–3 px. During the fall (F6) the hair should flare upward. On the land (F7) the bow should flop down 2 px, then settle over F8–F9. Today the head reads as one stiff sprite, which kills the "bouncy" brief.
+
+2. **The sword angle jumps around with no smears (F2→F3→F4→F6, blade on the left side).** The blade goes diagonal, then near-vertical, then diagonal, then flat horizontal, with nothing bridging the jumps, so it flickers. Pick one arc. For example, trail the sword low behind her on the way up, then sweep it up to horizontal by F6. Add a tapered 3-frame smear on the F5→F6 swing: 1 px at the tip, widening to 3 px in a light steel tint, then fade it out. The blade's staircase is also uneven at the 30–40° angles (F2, F4, F9), showing 1-2-1-3 pixel steps. Redraw it on clean 1:2 or 1:1 steps instead of using rotated pixels.
+
+3. **The anticipation is too weak, and rotating the rig pieces broke the outlines (F0–F1, plus the shoulders and hands in F3–F6).** F1 only lowers the body by about 8 px. The torso and head don't widen and the knees barely bend. Squash the torso by about 15% in height and 2 px wider, tilt the head forward 1–2 px, and push the knees out so F2's stretch has something to contrast against. The F2 stretch itself needs 3–4 px more leg length, with the toes pointed. Also, at the joints of the rotated arms (F3: raised fist, upper right; F4/F5: both shoulders), the outlines double up or break, and stray mid-tone pixels collect there. Hand-fix every joint with one continuous 1 px dark outline and remove those orphan pixels.
+
+Smaller issues:
+- The eyes-closed hang in F5 is a nice touch, but the kicked-back leg pops back to straight in F6. Add an in-between.
+- In F7 the sword clips through the skirt, and the hilt is swallowed by the red mass.
+
+Scores (/10):
+- Timing: 6.5
+- Squash & stretch: 5
+- Overlap: 2.5
+- Smears: 1
+- Identity consistency: 7
+- Pixel cleanliness: 5
+
+SCORE jump: 5
+
+Saving session...completed.

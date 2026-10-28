@@ -1,0 +1,28 @@
+**Criteria Scores (Official PMD = 9)**
+* **Readable at 1x:** 6/10 (Heavy black interior outlines crush facial features at 1x).
+* **Intentionally Designed:** 5/10 ("Mr. Potato Head" syndrome: the base head/hair never moves, only facial features swap).
+* **Pokemon/PMD-like:** 5/10 (Lacks PMD's colored sel-out, dynamic background patterns, and squash-and-stretch).
+* **Carries Personality:** 7/10 (Good confident smirk, but stiff posture limits the "spirited" trait).
+
+**Per-Emotion Audit**
+* **Neutral (7/10):** Chin/jawline uses pure `#000000`, making the lower face heavy; 1px skin-shadow looks like dirt.
+* **Determined (6/10):** Flat 4px horizontal mouth looks bored, not fierce; needs an inverted arc and head tilt.
+* **Shout (5/10):** Open eyes + angry vein reads as "annoyed yelling," missing PMD’s tight-shut shouting eyes and radial BG.
+* **Effort (5/10):** Wide 8px clenched-teeth rectangle looks robotic; sweat drops blend into hair outline.
+* **Joy (6/10):** Static shoulders/hair kill the energy; needs raised arms or upward head bob + BG flower/sunburst.
+* **Smile (6/10):** Dark sclera/eyelashes make eyes look sunken/creepy at 1x instead of warm happy arcs.
+* **Surprised (6/10):** Tiny 1px pupils in massive white sclera look cross-eyed; needs PMD shock BG spikes.
+* **Pain (7/10):** `><` eyes work well, but wavy mouth is too symmetrical; tilt the head down.
+* **Worried (6/10):** Mouth is an upside-down triangle with black outline, reading like a hitler-mustache at 1x.
+* **Inspired (7/10):** Good eye sparkles, but static pose lacks the awe/leaning-in of Meloetta’s hands-up pose.
+* **Teary (5/10):** Blue waterfalls look like rigid icicles/facepaint; PMD uses big pooling teardrops at eye corners.
+* **Blink (4/10):** Wrong slot usage—peaceful sleeping/blinking does not read as "Stunned/Dazed."
+
+**Top 5 Pixel Fixes**
+1. **Replace `#000000` interior lines** (mouth, nose, eyes, jaw) with dark warm brown/burgundy.
+2. **Shift the head/hair 1–2px** per emotion (up for Joy/Shout, down for Pain/Worried).
+3. **Add PMD background effects** (speedlines for Shout/Surprised, flowers for Joy).
+4. **Redraw Teary eyes** as pooling corner droplets instead of vertical blue stripes.
+5. **Fix Smile eyes** to simple closed upward arcs (like Joy, minus open mouth).
+
+**Overall Score: 5.8/10**

@@ -1,0 +1,127 @@
+# turn_NE, hand-typed back 3/4 (facing up-right). Derived from turn_N (same legs/ribbons), back turned toward viewer-left:
+# lacing and collar seam shift left, the near (her right, viewer right) sleeve is big, the far sword arm is narrow.
+# Traced from hybrid/lock/turn/turn_NE.png. Katana in her LEFT (far) hand = viewer left, blade down-left.
+head: NE 51 41
+[katana]
+@katana 55 89 128 22 hook=-1
+[ribbons]
+76 52 P
+76 75 P
+77 51 P
+77 76 P
+78 50 P
+78 77 P
+79 49 Pp
+79 77 pP
+80 49 Pp
+80 77 pP
+81 48 Pp
+81 78 pP
+82 48 Pp
+82 78 pP
+83 48 Pp
+83 78 pP
+84 47 Pp
+84 79 pP
+85 47 Pp
+85 79 pP
+86 47 pP
+86 79 Pp
+87 47 pP
+87 79 Pp
+88 46 pP
+88 80 Pp
+89 46 P
+89 81 P
+90 46 Pp
+90 80 pP
+91 47 p
+91 80 p
+92 47 p
+92 80 p
+93 46 p
+93 81 p
+[legs]
+92 57 KssssK
+93 57 KssssK
+94 57 KsSssK
+95 57 KsSssK
+96 57 KsSssK
+97 58 KsSsK
+98 58 KsssK
+99 59 KssK
+100 59 KssK
+101 58 KdddK
+102 58 KdsdK
+103 58 KdddK
+104 58 KK.K
+92 65 KssmmK
+93 65 KssmmK
+94 65 KssmmK
+95 65 KssmmK
+96 65 KssmmK
+97 65 KssmK
+98 65 KssmK
+99 65 KsmK
+100 65 KsmK
+101 65 KdddK
+102 65 KdsdK
+103 65 KdddK
+104 65 K.KK
+[skirt]
+85 57 KCRRRRRRRRRrrK
+86 56 KCRRRRRRRRRRrrK
+87 55 KCRRRRRRRRRRRrrK
+88 54 KCRRRRvRRRRRRRRrK
+89 53 KCRRRRRvRRRRRRRRrrK
+90 52 KRRRRRRvRRRRRRRRRrrK
+91 51 KRRRRRRRvRRRRRRRRRrrK
+92 50 KrRRRRRRvRRRRRRRRRrrrK
+93 49 KrrRRRRRvRRRRRRRRRrrvK
+94 48 KvrrrRRrvvrRRRRRRrrvvK
+95 48 KvvrrrvKKKvrrRRrrvvK
+96 47 KKvvvK....KvvvvvvK
+97 47 KK.........KK.KK
+[torso]
+69 54 KRK..............KRK
+70 54 KRRK............KRRK
+71 54 KRRRrK........KrRRRK
+72 54 KRCRRRrrrrrrrrrRRRrK
+73 54 KRCRRRRRRRRRRRRRRRrK
+74 54 KRCRRRRRRRRRRRRRRrrK
+75 54 KrRRRRRRRRRRRRRRrrvK
+76 52 KKssKvvvvvvvvvvvvvvvKsssKK
+77 52 KSsKRCRRRRRRRRRRRrrKssssmK
+78 52 KSsKRCRRRRRRRRRRRrrKmsssmK
+79 52 KsK.KLLLLLLLLLLLLLK.KssmK
+80 56 KlllllLllllllK
+81 56 KllllLlLlllllK
+82 56 KlllllLllllllK
+83 56 KllllLlLlllllK
+84 56 KlllllLllllllK
+[sleeves]
+80 53 KCRv
+81 53 KCRv
+82 52 KCRRv
+83 52 KCRRv
+84 52 KCRRv
+85 51 KCRRRv
+86 51 KRRRRv
+87 51 KrRRrv
+88 51 KvvvvK
+89 52 KKKK
+90 53 KsK
+80 70 vRRRrK
+81 70 vRRRrK
+82 70 vRRRrrK
+83 70 vRRRRrK
+84 70 vRRRRrrK
+85 70 vRRRRrrK
+86 70 vRRRRRrrK
+87 70 vRRRRRrrK
+88 70 vrRRRRrrrK
+89 70 KvvrrrrvvK
+90 71 KKKKKKKK
+91 73 KssK
+92 73 KsmK
+93 74 KK

@@ -1,0 +1,19 @@
+Restored session: Mon 26 Oct 2026 11:59:43 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt idle_SE and walk_SE plus both _ns versions in `actions_src/idle_walk.py`. QC passes with no FAIL lines, and I checked the sheets over 3 passes.
+
+**Walk**
+- **Bob:** head now drops 3px on down frames and rises 2px above contact on pass/up (5px total, was 4).
+- **Legs:** new pass legs raise the free foot 5px; push-off is on the toe.
+- **Arm swing:** the sword arm swings from back to a new forward pose. The blade turns with the arm, a frame late, one step at a time, and stays off the torso.
+
+**Idle:** the blade dips on the low frames and lifts at the top.
+
+**Both:** one bow sprite throughout; only its offset lags.
+
+**New parts:** `legs_wk9_{p1,p2,u1,u2}`, `armN_wk9_f`.
+
+**Still weak:** the katana build's forward swing is shallow, because a steeper blade would hit the ground. The hilt is hidden behind the hem on contact2.
+
+Saving session...completed.

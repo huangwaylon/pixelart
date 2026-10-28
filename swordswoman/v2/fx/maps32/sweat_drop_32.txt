@@ -1,0 +1,30 @@
+# frame 0 120ms
+.K..
+KcK.
+KcBK
+KWBK
+KBBK
+.KK.
+....
+....
+....
+# frame 1 120ms
+....
+.K..
+KcK.
+KcBK
+KWBK
+KBBK
+.KK.
+....
+....
+# frame 2 200ms
+....
+....
+.K..
+KcK.
+KcK.
+KcBK
+KWBK
+KBBK
+.KK.

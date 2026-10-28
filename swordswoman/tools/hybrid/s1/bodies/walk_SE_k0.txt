@@ -1,0 +1,22 @@
+# walk_SE_k0: contact: long stride, front (left) heel strikes, back toe pushes; right arm swings forward, sword arm back; torso leans 1 px into the step
+fx: none
+from: turn_SE 1 1
+stamp: 57 47
+bow: 0 -1
+clear: 50,97,84,110
+move: 57,83,62,94 3,0
+shear: 77 88 1
+limb: s 2 62,97 60,100 58,102
+limb: d 2 57,103 58,104
+limb: s 2 70,97 72,100 73,102
+limb: d 2 73,103 75,104
+kat: katana_idle_2to1 70 86 under
+top: 73 91
+_KKK_
+KsssK
+KmssK
+_KKK_
+opb: stamp 56,90 ____KKR/__KKRRR/_KRRRRr/KRRRRrr/KRRRrrr/KRRrrrv/_KRrrvK/_KRrvK_/KRvvK__/KvKK___/KK_____
+opb: curve 61,81 53,84 55,89 P
+opb: curve 55,89 55,93 51,96 p
+opb: stamp 72,82 _____KssK__/_____KsmmK_/____KCRRrK_/____KCRRRrK/___KCRRRRrK/__KCRRRRRrK/_KRRRRRRRrK/_KRRRRRRrrK/_KvvvvvvvvK/__KKKKKKKK_

@@ -1,0 +1,25 @@
+; origin 20 8
+; view SE
+; expr joy
+.....KKK...........
+....KHLHK...KKKKK..
+....KLHHK.KKeeeeK..
+.KK.KHhhhKEEEEEeK..
+KeeKKhrRrrEEEEERK..
+KeEeKrRRrrREEERRK..
+KEEEerRRrrrRRRRRK..
+KERRRrrrrhhrrrrhK..
+KRrrrhhHLLHHHHhhhK.
+.KrHLLHhHHHhHHhHHhK
+.KHHHHHhhHhShHhShHK
+..KHHHHhhhSsShSsShK
+..KHHHHhssssssssshK
+..KHHHHhsKKssssKKKK
+..KHhHHhKssKsssssSK
+..KHhHHhsssssssssSK
+..KHhHhhesssssssseK
+..KhHhHhssssKKKssK.
+..KhHhhhsssssesSK..
+...KhHhhhsssssSK...
+...KhKhhhsssSSK....
+....K.KhhhsSSK.....

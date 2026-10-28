@@ -1,0 +1,27 @@
+**No-katana**
+
+- **S: 9.** No real defects.
+- **E: 8.**
+  1. Bun to skull joint: the 1px gap or notch at the back of the skull reads as a separate ball. Fill it with hair-dark so the bun sits on the skull.
+  2. The arm/sleeve mass is muddy against the skirt. Add a 1px darker red line separating sleeve from skirt.
+- **NE: 7.**
+  1. The cheek/ear sliver on the right of the skull is 2 pale pixels sitting on the hair edge, so it reads as an orphan. Make it a clean 1×3 vertical strip or remove it.
+  2. The bow sits off-centre left and floats on the cyan line. Shift it 1px right or join it to the bun.
+- **N: 9.** Bow knot dark pixels jag at the top. Smooth them to a symmetric 3px knot.
+
+**Katana**
+
+- **S_k: 7.**
+  1. Guard and grip are lost in the hand and sleeve. Add a 2px brown guard just below the fist and 1–2px of dark grip below it.
+  2. The blade diagonal steps unevenly (2-1-2-3). Make it a consistent 2:1 run.
+- **E_k: 6.**
+  1. The grip and guard overlap the red skirt, so the dark grip disappears. Outline the guard in light brown, or move the hand 1–2px so the hilt clears the skirt.
+  2. The blade's dark underside edge is broken along the run. Make it continuous.
+- **NE_k: 7.**
+  1. The hand-to-guard link is unclear, with 1px of gap between the fist and the hilt. Close it.
+  2. Same cheek orphan as NE.
+- **N_k: 7.**
+  1. The fist looks like it's floating: the arm stub is too short, so the guard looks detached from the body. Extend the sleeve 1px down and out.
+  2. The tip ends in a single lone light pixel. Taper it to light plus dark.
+
+**Verdict:** The no-katana set (S, E, N) is ready as final masters once the E bun fix is in; NE needs its cheek fixed first. The katana set isn't final yet. Hilt readability is the shared problem in all four, so make one consistent hilt template (fist, 2px brown guard, dark grip) and stamp it on all four. Then fix blade step consistency and re-check.

@@ -1,0 +1,21 @@
+# walk_SE_k2: passing: support leg straight, swing leg lifted and bent; lagging parts drop
+fx: none
+from: turn_SE 0 0
+stamp: 56 46
+bow: 0 1
+clear: 50,96,84,110
+move: 56,82,61,93 0,0
+limb: s 2 63,96 65,99 65,100
+limb: d 2 65,101 66,101
+limb: s 2 68,96 68,102
+limb: d 2 68,103 69,104
+kat: katana_idle_2to1 71 86 under
+top: 74 90
+_KKK_
+KsssK
+KmssK
+_KKK_
+opb: stamp 55,91 ____KRR/___KRRR/___KRRR/__KRRRr/__KRRRr/_KRRRrr/_KRRRrr/_KRRrrv/KRRrrvK/KRrvvK_/KvvKK__/KK_____
+opb: curve 60,80 53,85 55,90 P
+opb: curve 55,90 56,94 52,97 p
+opb: stamp 72,81 _____KssK__/_____KsmmK_/____KCRRrK_/____KCRRRrK/___KCRRRRrK/__KCRRRRRrK/_KRRRRRRRrK/_KRRRRRRrrK/_KvvvvvvvvK/__KKKKKKKK_

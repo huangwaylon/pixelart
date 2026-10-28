@@ -1,0 +1,39 @@
+**(1) Expressions (1x Readability & Pixel Critique)**
+* **Neutral (6/10):** Readable, bland. 2x2 eyes lack verticality; flat 2px mouth lacks confidence.
+* **Determine (5/10):** Brow merges with lash into a 3px stair-step blob, crushing the blue iris to 1px.
+* **Shout (4/10):** Mouth has a dark outline encircling pink—reads as thick lips or sticking tongue out, not an open shout.
+* **Effort (4/10):** White teeth with full dark border reads like a pacifier/buck-teeth.
+* **Joy (7/10):** `^` eyes work, but mouth has the same bordered-lip issue as Shout.
+* **Smile (6/10):** Nearly identical to Neutral at 1x; 1px mouth shift barely registers.
+* **Surprised (6/10):** 2x2 dark O-mouth is too big/low, touching the chin outline.
+* **Pain (7/10):** `><` eyes read well; wavy 3px mouth is noisy—use a simple 2x1 grimace.
+* **Blink_hal (5/10):** Reads sleepy/smug; thick upper lid kills the eye glint.
+* **Blink_clo (7/10):** Clean, sits 1px too high on the face.
+* **Squash (6/10):** Reads grumpy, not compressed; head/hair height barely changes.
+
+**(2) Intentional / Pokemon-like:**
+No. Official BW/HGSS trainers (Lyra, Hilda, Rosa) use **2x3 or 2x4 vertical eyes** with a 1px white highlight and 1-2px unbordered mouths. Your eyes are horizontal/squat (3x2), and your open mouths have heavy dark borders around pink/white fills, creating a Western-indie look rather than Game Freak’s clean anime shorthand.
+
+**(3) Personality:**
+Weak. Neutral and Smile look passive/doll-like. Only Determine and Joy hint at a spirited swordswoman.
+
+**(4) Views**
+* **S (6/10):** Too symmetrical; blocky chin (5px flat bottom).
+* **SE (6/10):** Far eye and near eye are both 2px wide—lacks foreshortening.
+* **E (4/10):** Flat vertical face wall; no nose/mouth protrusion; mouth floats too far back on cheek.
+* **NE/N (7/10):** Clean, but NE needs a 1px eyelash/cheek silhouette break; N is copy-pasted across all columns (add 1px vertical bounce on Squash/Shout).
+
+**(5) Top 6 Concrete Pixel Edits**
+1. **Tall Eyes (All):** Make irises 1x2 or 2x3 vertical: top-left 1px white glint, bottom 1-2px bright blue, top 2px black lash extending 1px outward.
+2. **Shout/Joy Mouth:** Remove bottom/side black outline. Use a 2x2 or 3x2 dark-red/brown upper pixel row + pink lower row (like Meloetta happy).
+3. **Effort Mouth:** Replace boxed white teeth with a 3x1 horizontal white bar, capped only on top by 3px dark brown.
+4. **Determine Brow:** Separate brow from eye using a 1px skin-tone gap, or angle the top lash diagonally without deleting the white glint.
+5. **SE Foreshortening:** Narrow the far (right) eye to 1px wide x 3px tall; keep near eye 2x3. Shift mouth 1px right.
+6. **E Profile Silhouette:** Push nose/upper-lip out 1px east; tuck mouth 1px directly under nose tip touching the outline.
+
+**Scores:**
+* Readable at 1x: **6/10**
+* Intentionally designed: **5/10**
+* Pokemon-like: **4/10**
+* Carries personality: **5/10**
+* **Overall: 5.5/10**

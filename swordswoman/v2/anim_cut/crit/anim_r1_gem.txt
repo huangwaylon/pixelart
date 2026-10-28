@@ -1,0 +1,109 @@
+Here is a strict pixel-art direction pass. While the silhouette and colors are charming, this suffers heavily from typical "cutout-rig laziness": parts translate by 1px vertically without secondary deformation, rotated sprites exhibit severe jagged pixel aliasing (especially the katana and legs), and high-energy actions (slash, dash, jump) lack genuine bodily squash-and-stretch or silhouette distortion.
+
+---
+
+### 1. IDLE
+**Score: 5.5 / 10**
+*Reads as a rigid elevator ride rather than organic breathing. The entire head/torso block shifts down as a static stamp.*
+
+1. **Zero Overlapping Action on Hair Bow (Frames 1 & 3, top head region `y: 4–14`):** 
+   * **Problem:** The bow moves down on Frame 1 (`sink`) and up on Frame 3 (`rise`) locked 1:1 with the skull. 
+   * **Fix:** Offset the bow by **+1px up** on Frame 1 (lagging behind the sinking head), flatten its loops by **1px vertically** on Frame 2 (`low`) as it settles, and squash/drag the bow tips **-1px down** on Frame 3 (`rise`) as the head pushes upward.
+2. **Identical In-Between Silhouettes (Frames 1 & 3, full torso/head):** 
+   * **Problem:** Frame 1 (`160ms sink`) and Frame 3 (`160ms rise`) are nearly pixel-identical. This creates mechanical ping-ponging.
+   * **Fix:** On Frame 3 (`rise`), lead with the chest: shift the collar/V-neck **+1px up** ahead of the sleeves, and keep the sleeves/hands **-1px lower** than Frame 1 to show gravity drag.
+3. **Static Skirt Hem & Sleeves (Frame 2 `low`, `y: 42–48`):** 
+   * **Problem:** At the lowest point of the breath, the kimono hem and wide sleeves stay rigid instead of flaring out to show weight.
+   * **Fix:** Widen the bottom skirt hem and outer sleeve edges by **+1px outward** (left and right) on Frame 2 (`320ms low`) to create a subtle squash.
+
+---
+
+### 2. WALK
+**Score: 5.0 / 10**
+*The katana acts like a glued walking stick, and the front/back leg depth sorting fails to read clearly between cycles.*
+
+1. **Frozen Katana Angle Across All 8 Frames (Frames 0–7, bottom-right quadrant):** 
+   * **Problem:** The sword stays locked at the exact same ~65° angle throughout the entire walk cycle, merely translating up and down with the torso. It looks weightless and robotic.
+   * **Fix:** Rotate the katana tip **+3px to +4px forward/up** on `up` frames (Frames 3 & 7) and let it dip **-2px downward** with a slight lag on `down` frames (Frames 1 & 5).
+2. **Broken Passing Pose Leg Readability (Frame 2 `pass` vs. Frame 6 `pass2`, `y: 46–58`):** 
+   * **Problem:** On Frame 2, the standing leg is a vertical pillar of bare skin pixels with no knee joint, while on Frame 6 (`pass2`), both legs turn into a muddy dark cluster of boots with zero skin separation.
+   * **Fix:** On Frame 2, shift the raised back foot **+2px left** so the silhouette separates from the standing shin. On Frame 6, expose **2x3px of skin** on the front passing leg so it clearly overlaps the darkened back leg.
+3. **Weak Up/Down Bounce Amplitude (Frames 1 & 5 `down` vs. Frames 3 & 7 `up`):** 
+   * **Problem:** The vertical head/torso delta between `down` and `up` is barely 2px, making the walk feel stiff rather than bouncy.
+   * **Fix:** Drop the head and torso an extra **-1px down** on Frames 1 & 5 (widening the sleeves by 1px), and reduce `down` timing from `100ms` to **`80ms`** while holding `up` (Frames 3 & 7) at **`120ms`** for a snappier "pop" at the top of the step.
+
+---
+
+### 3. RUN
+**Score: 4.5 / 10**
+*A 3-frame loop duplicated twice with almost zero distinction between the left-leg and right-leg strides, plus nasty rotation artifacts.*
+
+1. **Jagged 1px-Thick Stick Legs on Reach (Frames 0 & 3 `reach`/`reach2`, `y: 48–58`):** 
+   * **Problem:** The extended front leg is a rotated cutout line that thins down to a jagged 1px diagonal staircase with broken dark outlines. Furthermore, Frame 0 and Frame 3 have nearly identical leg shading, failing to show which leg is in front.
+   * **Fix:** Hand-clean the front leg to a consistent **2px–3px skin width** with clean pixel-art clusters. On Frame 3 (`reach2`), darken the extended leg by 1 shade (back leg reaching forward) and shift the front hip/hem **+1px down** to differentiate the two halves of the cycle.
+2. **Zero Forward Torso Lean (Frames 0–5, torso/head alignment):** 
+   * **Problem:** Her head and spine remain completely vertical (same posture as Idle), killing any sense of forward momentum.
+   * **Fix:** Shift the entire head and upper chest assembly **+2px to +3px to the right** (forward) relative to the hips across all 6 frames, and tilt the head forward slightly (drop brow/eyes **+1px down**).
+3. **Static Sword & Bow During Stride (Frames 0–5, left side & top of head):** 
+   * **Problem:** Both the swept-back katana and the flattened hair bow stay frozen in one pose across all 6 frames.
+   * **Fix:** Bob the katana tip **+2px up** on `push` frames (1, 4) and **-2px down** on `reach` frames (0, 3). Flap the back loop of the hair bow **+2px up** on `air` frames (2, 5).
+
+---
+
+### 4. JUMP (No-Katana)
+**Score: 5.5 / 10**
+*The T-pose arms in mid-air look awkward and cutout-pasted, and the launch/fall frames lack vertical stretch.*
+
+1. **Bizarre "Upward Karate-Chop" / T-Pose Arms (Frames 1–5, left/right torso edges):** 
+   * **Problem:** On Frames 1, 2, and 5, her front (right-side) forearm sticks straight up like a vertical flesh-colored pillar (`x: 42–45, y: 12–24`), and on Frames 3–4 (`apex`/`hang`) her sleeves snap horizontally into a stiff airplane T-pose.
+   * **Fix:** Replace the vertical stick-arm on Frames 1–2 with a tucked elbow or upward-reaching fist angled inward toward the face. On Frames 3–4 (`apex`/`hang`), angle the sleeves **~30° downward** (flared out like wings) rather than straight horizontal 90° cutouts.
+2. **Weak Crouch & Land Squash (Frame 0 `crouch` & Frame 6 `land`):** 
+   * **Problem:** During `crouch` and `land`, her head only drops a few pixels while her torso remains the exact same height—her legs just bow outward into a wide frog-stance.
+   * **Fix:** Compress the torso vertically by **-2px** (bring the obi belt up toward the collar), drop the head **-2px lower** so the chin overlaps the collar, and flare the skirt hem outward by **+2px on each side**. Cut Frame 0 (`crouch`) from `90ms` to **`65ms`** for a punchier takeoff.
+3. **No Stretch on Launch/Fall & Static Hair on Fall (Frames 1 `launch` & 5 `fall`):** 
+   * **Problem:** Frame 5 (`fall`) uses the exact same hair and bow sprite as Idle—zero upward wind drag as she plummets.
+   * **Fix:** On Frame 1 (`launch`), stretch the torso and legs vertically by **+2px**. On Frame 5 (`fall`), lift the side hair locks and hair bun **+2px upward** and flare the bow tails straight up to sell downward velocity.
+
+---
+
+### 5. DASH
+**Score: 4.5 / 10**
+*The giant maroon blob behind her ruins the pixel-art aesthetic, and the character pose during the burst is just her Run sprite pasted in place.*
+
+1. **Ugly, Muddy Maroon Afterimage Blob (Frames 1 & 2 `burst`/`burst2`, `x: 10–28, y: 8–52`):** 
+   * **Problem:** Instead of a clean silhouette trail or tapering speed crescents, there is a lumpy, amorphous maroon cloud behind her combined with four tiny, amateurish 1px white diagonal lines on the left.
+   * **Fix:** Delete the maroon blob and the 4 white scratch lines completely. Replace them with a **1-frame offset silhouette ghost** (using a flat dark-red/purple palette) shifted **-10px left** on Frame 1 and **-6px left** on Frame 2, bridged by 2–3 sharp, tapering horizontal speed streaks (3px thick tapering to 1px).
+2. **Identical Burst Poses with No Stretch (Frames 1 & 2 `40ms burst` / `40ms burst2`):** 
+   * **Problem:** Frames 1 and 2 are 99% identical in character posture, and neither stretches horizontally to sell extreme acceleration.
+   * **Fix:** On Frame 1 (`burst`), stretch the head/torso/sleeves horizontally by **+3px**, compress vertically by **-2px**, and lean the head **+3px forward**. On Frame 2 (`burst2`), begin transitioning out of the stretch so the two 40ms frames aren't redundant duplicates.
+3. **Weak Anticipation & Skid Poses (Frame 0 `antic` & Frame 3 `skid`):** 
+   * **Problem:** Frame 0 (`antic`) is just a vertical squat with no backward recoil. Frame 3 (`skid`) looks like a casual walk step with a tiny 3px beige smudge on the front foot.
+   * **Fix:** On Frame 0 (`antic`, bump to **`80ms`**), shift the torso **-2px left** (coiling back) and raise the front foot off the ground. On Frame 3 (`skid`), lean the torso **-2px backward** (fighting momentum) while planting the front heel forward at a sharp angle with a larger, clean C-shaped dust puff (**6x5px**).
+
+---
+
+### 6. SLASH
+**Score: 4.0 / 10**
+*For the hero combat action, this lacks all impact: the body barely moves between Smear, Impact, and Hitstop, and the smear arc looks like a thin, jagged MS Paint curve rather than a sword swing.*
+
+1. **Thin, Jagged, Disconnected Smear Arc (Frame 2 `SMEAR` & Frame 3 `impact`, right side):** 
+   * **Problem:** The slash smear on Frame 2 is a 2px–3px wide yellow/white ribbon that curves vertically like a parenthesis `)` completely detached from the sword hilt, plus a weird stray 1px yellow line floating behind her head (`x: 16, y: 24`). It does not connect the `coil` blade angle to the `impact` blade angle.
+   * **Fix:** Redraw the smear on Frame 2 as a **wide, tapering crescent wedge**: **10px–12px thick** near the outer bottom-right impact edge, tapering cleanly to a **1px point** up at the top-left (`coil` origin), overlapping and hiding the blade itself on Frame 2. Remove the fading yellow arc on Frame 3 (`impact`)—by impact, the smear should vanish or dissolve into 2–3 detached trailing pixels.
+2. **Zero Body Lunge or Torso Rotation (Frames 2, 3, 4 `SMEAR` / `impact` / `hitstop`):** 
+   * **Problem:** Her head, torso, and legs stay completely static in the exact same screen coordinates across Frames 2, 3, and 4. There is no weight behind the swing, and no hit-stop vibration.
+   * **Fix:** On Frame 2 (`SMEAR`), lunge the entire body **+4px right** and drop the hips **-2px down** into a wide combat stance. On Frame 3 (`impact`), push **+1px further right** with the head/chest leaning forward. On Frame 4 (`hitstop`), shift the character **-1px left** (recoil shake) while keeping the blade tip locked on the impact spark.
+3. **Sword Tip Never Reaches the Ground/Target Plane (Frames 2–4, `y: 40–56`):** 
+   * **Problem:** At `impact` (Frame 3), the sword is held at the exact same casual downward-right angle as her Idle/Walk pose! A heavy overhead slash should follow through low or wide, not stop at her default resting sword angle.
+   * **Fix:** Extend the front arm forward by **+3px** on Frames 2–4 and angle the katana blade lower and further right (tip reaching `x: 56, y: 56`), rotating her front shoulder forward and pulling her left (back) sleeve back to show full torso twist.
+
+---
+
+### Summary Priority Matrix for Next Pass
+| Action | Score | #1 Priority Fix |
+| :--- | :---: | :--- |
+| **Idle** | **5.5/10** | Add 1px lag/overlap to hair bow and differentiate Frame 1 (`sink`) from Frame 3 (`rise`). |
+| **Walk** | **5.0/10** | Unlock the frozen katana angle and fix leg overlap readability on passing frames (2 & 6). |
+| **Run** | **4.5/10** | Lean torso forward +3px, fix 1px jagged stick-legs on `reach`, and shade back leg darker on Frame 3. |
+| **Jump** | **5.5/10** | Fix vertical stick-arm on launch/fall and horizontal T-pose sleeves at apex; add torso squash on land. |
+| **Dash** | **4.5/10** | Replace maroon blob with clean silhouette ghost + tapering speed streaks; stretch torso on Frame 1. |
+| **Slash** | **4.0/10** | Redraw smear as a thick tapering crescent wedge (12px→1px) and add a +4px forward body lunge on swing. |

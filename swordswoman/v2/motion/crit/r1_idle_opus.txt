@@ -1,0 +1,12 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+OVERALL: 4
+
+- Natural 4 · Whole-body 3 · Fluid 5 · Appealing 4 · Secondary convincing 2 · Readable at 1x 3
+
+At 1x this reads as a head wobble on a frozen body. In frames.json the hips x stays at 96.28 in every frame. Body bob is never more than 0.5 px. Hair and hem springs never move more than 0.35 px. Only the ribbons (up to 2.8 px) and the head tilt (±8°) show up.
+
+**Top 3 fixes:**
+1. **Weight shift:** move the pelvis about 2 px toward the planted foot. At hold_R it goes right, at hold_L left, peaking at land_L and land_R. Drop the unweighted hip 1 px, counter-tilt the shoulders 3–4°, and bend the free knee forward. Cut head tilt to ±4° so the body leads and the head follows.
+2. **Breath:** at breathe_R, lift the chest and shoulders 1 px. At shift and shift2, dip the whole body 1 px before it travels (anticipation).
+3. **Secondary motion:** make the side locks and back hair lag 1–2 px behind the head through shift → land, and the hem trail the hips by 1 px. Ribbons should settle by hold_L, not keep drifting until blink.

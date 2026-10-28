@@ -1,0 +1,13 @@
+**Top 3 Concrete Problems:**
+
+1. **All Frames - Sword Blade (Bottom-Left Region):** The rotated katana exhibits severe staircase jaggies, double-thick outlines, and inconsistent width (especially in frames 0, 2, 6, and 7). **Fix:** Manually redraw the blade at clean pixel-art angles (1:1 or 2:1 steps) with a consistent 1px dark outline and uniform blade width.
+2. **Frames 1, 2, 5, 6 - Legs (Lower Center Region):** In the "down" poses (frames 1, 5), the front foot floats instead of planting flat, killing weight. In the "pass" poses (frames 2, 6), the planted leg becomes rigidly vertical and lacks knee flexion. **Fix:** Anchor the front foot flat on the ground line in frames 1 and 5, and add a slight diagonal bend to the supporting leg in frames 2 and 6.
+3. **Frames 0 to 7 - Arms & Torso (Center Region):** The left arm (character's left, screen right) barely swings across the cycle, resulting in weak opposition and a stiff cutout look. **Fix:** Swing the back arm further behind the torso in frames 0 and 1, and bring it clearly forward past the chest in frames 4 and 5 to create counter-rotation.
+
+**Rubric Scores:**
+* **Readability & Key Poses:** 5/10 (Basic vertical bob works, but weak arm swing and stiff leg transitions reduce silhouette clarity).
+* **Weight, Bounce & Overlap:** 5/10 (The head ribbon has nice squash/stretch, but the hair and skirt are completely rigid with zero follow-through).
+* **Pixel-Art Cleanliness:** 4/10 (Heavy rotation artifacts on the sword and jagged sub-pixel shifts on the limbs betray the cutout rig setup).
+* **Identity & Consistency:** 6/10 (Proportions hold well, though the single-frame blink on frame 6 feels abrupt).
+
+SCORE walk: 5

@@ -1,0 +1,13 @@
+SCORE 5.5/10
+
+1. **f1, f2 (Head/Hair/Bow)**: Zero secondary motion or drag; the hair and bow remain completely rigid and upright during a violent burst, killing the sense of speed.
+2. **f1, f2 (Afterimage FX)**: The 1px hollow outline trails are noisy, jagged, and create severe visual clutter where they intersect the sword and rear leg, ruining silhouette readability at 1x.
+3. **f1, f2, f3 (Direction/Vector)**: The animation is labeled SE (front 3/4), but the burst pose, horizontal speed lines, and skid trail move purely East (side-scroller style), breaking perspective consistency.
+4. **f4 (Legs/Feet)**: Both legs merge into a single vertical column with the back leg/foot completely disappearing behind the front leg, creating a stiff, unbalanced silhouette during recovery.
+5. **f3, f4 (Sword)**: In f3 the sword awkwardly bisects the torso, and in f4 the blade detaches into a floating horizontal line behind her calf with no visible hand or hilt grip.
+6. **f0 (Torso/Head)**: The anticipation frame lacks a clear coil; her head stays high and upright instead of tucking down and back, weakening the explosive contrast into f1.
+
+**Top 3 Fixes:**
+1. **Replace hollow outlines (f1, f2)**: Swap the noisy 1px outline trails for solid, flat-colored silhouette echoes (1-2 shades darker/cooler) or a clean motion smear, and angle the speed lines slightly downward to match the SE plane.
+2. **Add secondary drag & squash (f0-f2)**: Compress the head lower into the shoulders on f0; sweep the side hairlocks and bow ribbons backward horizontally on f1-f2 to sell the air resistance.
+3. **Fix recovery silhouette & sword (f3-f4)**: Separate the legs in f4 so both feet are planted in a wide, stable stance, and redraw the sword in f3-f4 attached clearly to her hand off to the side so it reads in the silhouette.

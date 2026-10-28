@@ -1,0 +1,708 @@
+{
+ "_doc": "M96 EYE SPEC (96px figure, palette v2/pixelize/palette.json). Source of truth for eyes/mouths/blush of masters, head stamps and animated frames. Code: v2/m96/tools/eyes.py (templates, mirror, detect, stamp, check); checker CLI v2/m96/tools/eyecheck.py. See EYE_SPEC.md.",
+ "legend": {
+  "K": "lash (thick: lash row + outer-corner px), cat-eye wing flick, lower-lash hint, pupil, closed-eye line",
+  "@": "CATCHLIGHT (rendered W): 1x2 px, iris column 2 (inset), top two iris rows; with the 1x2 K pupil at iris column 3 just right of it; same screen-space position in every eye/view/expression (iris is never mirrored)",
+  "W": "sclera (only where the template has it)",
+  "h": "iris top (dark grey-brown)",
+  "g": "iris mid",
+  "L": "iris bottom light",
+  "m": "brow (on skin) / mouth line",
+  "S": "skin shadow / lid",
+  "R": "open-mouth interior",
+  "k": "blush / tongue",
+  ".": "skin (eye box is cleared to skin first)",
+  "_": "keep base pixel"
+ },
+ "front_left": {
+  "_doc": "near/left eye in screen space (outer corner = col 0, inner = col 5), 6 cols x 6 rows: gap row (lash-1, skin) + lash row + 3 iris rows + 1 empty row; the eye itself is 5 wide (cols 0-4, col 5 empty; qc xview eye size 5x4). EYE ROUND (rounder tops + lashes): ARCHED upper lash = 3 K px (cols 1-3) on the lash row with g (mid-tone) anti-alias px at both ends (cols 0 and 4; crit r1: h ends read as K = flat), and BOTH K ends 1 row lower: outer-corner K col 0 on the first iris row, inner-corner K col 4 on the first iris row (covers the iris top-right h; catchlight + pupil untouched). OUTER LASH FLICKS = 2 separate 1-px strokes outside the block forking from the outer-corner K (wing: (-1,1) up-out K + (-1,3) down-out soft h; px between stays skin; E profile: the K flick only). Thicker outer half (corner K + flicks) vs a single inner K. LOWER LASH hint = 1 h px at col 0 of the iris bottom row. IRIS (identical in every eye, never mirrored): h top row, g sides, L light bottom, K pupil 1px (iris col 3, row 3), CATCHLIGHT '@' = 1x2 W at iris col 2 rows 2-3. Surprised = the same arch 1 row higher (top in the gap row, skin row over the iris); blink_half = arch on the iris row; determined/shout keep the arched lid (expression via brow/mouth only); joy/blink_closed arcs + 1 flick; effort/pain unchanged. Row 5 outer col = '_' (keep).",
+  "neutral": [
+   "......",
+   "gKKKg.",
+   "Kh@hK.",
+   ".g@Kg.",
+   "hgLLg.",
+   "_....."
+  ],
+  "cheerful": [
+   "......",
+   "gKKKg.",
+   "Kh@hK.",
+   ".g@Kg.",
+   "h.LL..",
+   "_....."
+  ],
+  "determined": [
+   "......",
+   "gKKKg.",
+   "Kh@hK.",
+   ".g@Kg.",
+   "hgLLg.",
+   "_....."
+  ],
+  "shout": [
+   "......",
+   "gKKKg.",
+   "Kh@hK.",
+   ".g@Kg.",
+   "h.LL..",
+   "_....."
+  ],
+  "effort": [
+   "......",
+   "......",
+   "KKK...",
+   "..KKK.",
+   "......",
+   "_....."
+  ],
+  "joy": [
+   "......",
+   "......",
+   ".KKK..",
+   "K...K.",
+   "......",
+   "_....."
+  ],
+  "surprised": [
+   "gKKKg.",
+   "K...K.",
+   ".h@hh.",
+   ".g@Kg.",
+   "hgLLg.",
+   "_....."
+  ],
+  "pain": [
+   "......",
+   "KK....",
+   "..KKK.",
+   "KK....",
+   "......",
+   "_....."
+  ],
+  "blink_half": [
+   "......",
+   "......",
+   "gKKKg.",
+   "Kg@KK.",
+   "hgLLg.",
+   "_....."
+  ],
+  "blink_closed": [
+   "......",
+   "......",
+   "......",
+   "K.....",
+   ".KKKK.",
+   "_....."
+  ],
+  "embarrassed": [
+   "......",
+   "gKKKg.",
+   "Kh@hK.",
+   ".g@Kg.",
+   "hgLLg.",
+   "_....."
+  ]
+ },
+ "aliases": {
+  "hurt": "pain"
+ },
+ "mouth": {
+  "_doc": "4 cols x 3 rows (cheek, mouth, jaw rows) at the anchor 'mouth' origin. m line, R open interior (no K ring), k tongue. Every mark has a same-colour 8-neighbour (qc orphan rule). Face round 2: neutral smile corners tried (crit r2: corners touch the 2px nose = moustache) -> plain .mm. line kept.",
+  "neutral": [
+   "____",
+   ".mm.",
+   "____"
+  ],
+  "cheerful": [
+   "R__R",
+   ".RR.",
+   "____"
+  ],
+  "determined": [
+   "____",
+   "mmmm",
+   "____"
+  ],
+  "shout": [
+   "_RR_",
+   "RkkR",
+   "_RR_"
+  ],
+  "effort": [
+   "____",
+   "mmmm",
+   "m__m"
+  ],
+  "joy": [
+   "R__R",
+   "RRRR",
+   ".kk."
+  ],
+  "surprised": [
+   "____",
+   ".RR.",
+   ".RR."
+  ],
+  "pain": [
+   "____",
+   "mmmm",
+   "_RR_"
+  ],
+  "blink_half": [
+   "____",
+   ".mm.",
+   "____"
+  ],
+  "blink_closed": [
+   "____",
+   ".mm.",
+   "____"
+  ],
+  "embarrassed": [
+   "____",
+   "m.m.",
+   ".m.m"
+  ]
+ },
+ "blush": {
+  "_doc": "FACE ROUND 2: soft OVAL blush patches in k (skin blush), template rows drawn at each anchor blush [x, y, kind] (kind front = 4 wide, far = 3 wide (SE far cheek), ne = NE 1x2). Only s/S/k pixels are painted (never outline/eye/mouth); every k has a k neighbour (qc S4). Present in the neutral master (qc: stamps may not add colours absent from the master head).",
+  "front": {
+   "neutral": [
+    "kkkk",
+    ".kk."
+   ],
+   "cheerful": [
+    "kkkk",
+    "kkkk"
+   ],
+   "joy": [
+    "kkkk",
+    "kkkk"
+   ],
+   "embarrassed": [
+    "kkkk",
+    "kkkk",
+    ".kk."
+   ],
+   "_default": [
+    "kkkk",
+    ".kk."
+   ]
+  },
+  "far": {
+   "neutral": [
+    "kkk",
+    ".kk"
+   ],
+   "cheerful": [
+    "kkk",
+    "kkk"
+   ],
+   "joy": [
+    "kkk",
+    "kkk"
+   ],
+   "embarrassed": [
+    "kkk",
+    "kkk",
+    ".kk"
+   ],
+   "_default": [
+    "kkk",
+    ".kk"
+   ]
+  },
+  "ne": {
+   "_default": [
+    "k",
+    "k"
+   ],
+   "embarrassed": [
+    "k",
+    "k",
+    "k"
+   ]
+  }
+ },
+ "ne_lash": {
+  "_doc": "NE: only the lash tip pokes past the cheek outline (px count, stacked upward from the lash row)",
+  "neutral": 1,
+  "cheerful": 1,
+  "determined": 1,
+  "shout": 1,
+  "effort": 0,
+  "joy": 0,
+  "surprised": 2,
+  "pain": 0,
+  "blink_half": 1,
+  "blink_closed": 0,
+  "embarrassed": 1
+ },
+ "iris_chars": "hgL",
+ "rules": [
+  "One construction everywhere (eye round, on top of face round 2): ARCHED upper lash = 3 K (eye cols 1-3) on the lash row + g anti-alias ends, outer and inner K ends 1 row lower (clean 1px steps); 2 separate outer lash flicks (wing list) forking from the outer K: up-out K + down-out soft h (E: K only); LOWER-LASH hint = 1 h px at the outer corner of the iris bottom row; iris 4x3: h top, g sides, L light bottom, K pupil 1px, W catchlight 1x2 (iris col 2); no lid line / grey row under the iris. E profile eye (kind 'profile', kind_override) = same arch with skin ends + 2-row outer K (fidelity). SE far eye = derived (top 2 K + g ends, K ends 1 row lower).",
+  "Catchlight: 1x2 W at iris column 2, top two iris rows, pupil right next to it; identical in both eyes, all views, all expressions, mirrored frames (the iris block is never mirrored).",
+  "Eye vertical position = the illustration eye line (face_measure.json): lash row = qc crown + eye_dy[view] (S 20, SE 21, E 20).",
+  "Expressions change only lash/lid/brow rows, wing, mouth and blush; whenever the iris is visible it is this iris + catchlight.",
+  "Iris colour = the illustration's grey-brown: palette h #342126 / g #5e4a45 / L #85706a (eyes material).",
+  "Open-eye expressions keep the neutral iris + catchlight pixels exactly (qc stamps rule) except the inner-corner K; closed/squint expressions drop the iris: joy/blink_closed keep 1 outer flick, effort/pain none.",
+  "Brows: thin 1px g arcs (brow.char) (4-5 px; far eye 3-4 px) in rows lash-3/lash-2 with a 1-row skin gap above the lash; expression changes only their shape.",
+  "Nose: S = 2 px vertical S at the face centre-left (63, 54-55); SE = 2 px S at (71, 55-56) beside the far eye; E = profile nose bump 2 rows (K out at col 79, rows 54-55, K underside at (78,56)). NE/N none.",
+  "Blush: soft oval k patches (front 4+2 px, SE far 3+2, E one front patch, NE 1x2) under the eyes, on the illustration blush (rows lash+5, lash+6)."
+ ],
+ "eye_dy": {
+  "_doc": "lash row - qc crown (30) per view, measured on the illustration (face_measure.json): S 20 (lash 50), SE 21 (lash 51; illus near 51.5 / far 50.8), E 20 (lash 50)",
+  "S": 20,
+  "SE": 21,
+  "E": 20,
+  "W": 20,
+  "SW": 21
+ },
+ "kinds_by_view": {
+  "S": [
+   "front_left",
+   "front_right"
+  ],
+  "SE": [
+   "front_left",
+   "far"
+  ],
+  "E": [
+   "profile"
+  ],
+  "NE": [],
+  "N": [],
+  "W": [
+   "front_right"
+  ],
+  "SW": [
+   "far_left",
+   "front_right"
+  ],
+  "NW": [],
+  "_doc": "left-to-right in screen space; mirrored views (W/SW/NW) use mirrored kinds, the catchlight stays top-left"
+ },
+ "front_right_override": {
+  "_doc": "hand-mirrored right eyes (eye round): the lid/lash geometry mirrors (outer = col 5, inner-corner drop = col 1 on the iris top-left) but the catchlight/pupil columns may not",
+  "neutral": [
+   "......",
+   ".gKKKg",
+   ".K@hhK",
+   ".g@Kg.",
+   ".gLLgh",
+   "....._"
+  ],
+  "embarrassed": [
+   "......",
+   ".gKKKg",
+   ".K@hhK",
+   ".g@Kg.",
+   ".gLLgh",
+   "....._"
+  ],
+  "determined": [
+   "......",
+   ".gKKKg",
+   ".K@hhK",
+   ".g@Kg.",
+   ".gLLgh",
+   "....._"
+  ],
+  "cheerful": [
+   "......",
+   ".gKKKg",
+   ".K@hhK",
+   ".g@Kg.",
+   "..LL.h",
+   "....._"
+  ],
+  "shout": [
+   "......",
+   ".gKKKg",
+   ".K@hhK",
+   ".g@Kg.",
+   "..LL.h",
+   "....._"
+  ],
+  "surprised": [
+   ".gKKKg",
+   ".K...K",
+   ".h@hh.",
+   ".g@Kg.",
+   ".gLLgh",
+   "....._"
+  ],
+  "blink_half": [
+   "......",
+   "......",
+   ".gKKKg",
+   ".K@KgK",
+   ".gLLgh",
+   "....._"
+  ]
+ },
+ "brow": {
+  "_doc": "Brows (FACE_SPEC.md): 3 template rows = lash-4, lash-3, lash-2 (eye block y0-3..y0-1); row lash-1 (eye block row 0) is the skin GAP (surprised: lash raised into it, the brow is raised too). Colour = brow.char (g, hair-ramp brown; templates write h). front_left = screen-left eye, inner (toward the nose) = right end; front_right = mirror; far = SE far eye (inner = left end, x0 = far eye x0); E uses front_left. Window: over brow cols (front 1-4, far 0-3) every hair/K/m px from the row above the brow top down to lash-2 becomes skin (top row S = shade under the bangs, rest s), so the brow never touches the fringe.",
+  "front_left": {
+   "neutral": [
+    "......",
+    "..hhh.",
+    ".h...."
+   ],
+   "cheerful": [
+    "..hhh.",
+    ".h....",
+    "......"
+   ],
+   "surprised": [
+    "..hh..",
+    ".h..h.",
+    "......"
+   ],
+   "embarrassed": [
+    "....h.",
+    ".hhh..",
+    "......"
+   ],
+   "pain": [
+    "......",
+    "...hh.",
+    ".hh..."
+   ],
+   "determined": [
+    ".hh...",
+    "...h..",
+    "....h."
+   ],
+   "blink_half": [
+    "......",
+    "..hhh.",
+    ".h...."
+   ],
+   "blink_closed": [
+    "......",
+    "..hhh.",
+    ".h...."
+   ],
+   "joy": [
+    "..hhh.",
+    ".h....",
+    "......"
+   ],
+   "effort": [
+    ".hh...",
+    "...h..",
+    "....h."
+   ],
+   "shout": [
+    ".hh...",
+    "...h..",
+    "....h."
+   ]
+  },
+  "far": {
+   "neutral": [
+    "....",
+    "hhh.",
+    "...h"
+   ],
+   "cheerful": [
+    "hhh.",
+    "...h",
+    "...."
+   ],
+   "surprised": [
+    ".hh.",
+    "h..h",
+    "...."
+   ],
+   "embarrassed": [
+    "h...",
+    ".hhh",
+    "...."
+   ],
+   "pain": [
+    "....",
+    "hh..",
+    "..hh"
+   ],
+   "determined": [
+    "..hh",
+    ".h..",
+    "h..."
+   ],
+   "blink_half": [
+    "....",
+    "hhh.",
+    "...h"
+   ],
+   "blink_closed": [
+    "....",
+    "hhh.",
+    "...h"
+   ],
+   "joy": [
+    "hhh.",
+    "...h",
+    "...."
+   ],
+   "effort": [
+    "..hh",
+    ".h..",
+    "h..."
+   ],
+   "shout": [
+    "..hh",
+    ".h..",
+    "h..."
+   ]
+  },
+  "char": "g",
+  "rows_above_lash": [
+   4,
+   3,
+   2
+  ],
+  "gap_row_above_lash": 1
+ },
+ "wing": {
+  "_doc": "outer lash flicks (eye round; was the 1-px cat-eye wing): K px OUTSIDE the 6x6 block, [dx, dy] relative to the front_left eye origin (x0, y0 = gap row). Entries [dx, dy] (K) or [dx, dy, char]. Open eyes: (-1,1) up-out K + (-1,3, h) soft down-out of the outer-corner K (surprised (-1,0)/(-1,2,h)); E profile: wing_override (K flick only); far keeps K flicks only; blink_half/joy/blink_closed (-1,2); effort/pain none. front_right: dx -> 5 - dx; far (SE far eye, 4 wide): dx -> 4 (lands on the cheek outline). Stamps restore the master px under every flick position of the other expressions (anchor eyes[i].wing_bg).",
+  "neutral": [
+   [
+    -1,
+    1
+   ],
+   [
+    -1,
+    3,
+    "h"
+   ]
+  ],
+  "embarrassed": [
+   [
+    -1,
+    1
+   ],
+   [
+    -1,
+    3,
+    "h"
+   ]
+  ],
+  "cheerful": [
+   [
+    -1,
+    1
+   ],
+   [
+    -1,
+    3,
+    "h"
+   ]
+  ],
+  "determined": [
+   [
+    -1,
+    1
+   ],
+   [
+    -1,
+    3,
+    "h"
+   ]
+  ],
+  "shout": [
+   [
+    -1,
+    1
+   ],
+   [
+    -1,
+    3,
+    "h"
+   ]
+  ],
+  "surprised": [
+   [
+    -1,
+    0
+   ],
+   [
+    -1,
+    2,
+    "h"
+   ]
+  ],
+  "blink_half": [
+   [
+    -1,
+    2
+   ]
+  ],
+  "effort": [],
+  "joy": [
+   [
+    -1,
+    2
+   ]
+  ],
+  "pain": [],
+  "blink_closed": [
+   [
+    -1,
+    2
+   ]
+  ]
+ },
+ "far_lower_lash": false,
+ "lid": {
+  "_doc": "EYE ROUND (rounder tops + lashes; FACE_SPEC.md). eyecheck rules on top of the exact template match: ARCH = in every 'arch' expression the topmost K row of the eye block is a run of 2-3 px and BOTH run ends step down exactly 1 row (outer + inner corner K diagonal-adjacent below), and the catchlight W px stay uncovered; FLICKS = the expression's outer lash flicks (eye_spec wing) are K, at least flicks_min[expr], and (except the SE far eye, whose outer corner is the cheek outline) separate strokes: the px between two flicks is not K.",
+  "arch": [
+   "neutral",
+   "cheerful",
+   "embarrassed",
+   "determined",
+   "shout",
+   "surprised",
+   "blink_half",
+   "joy"
+  ],
+  "run": [
+   2,
+   3
+  ],
+  "flicks_min": {
+   "neutral": 2,
+   "cheerful": 2,
+   "embarrassed": 2,
+   "determined": 2,
+   "shout": 2,
+   "surprised": 2,
+   "blink_half": 1,
+   "joy": 1,
+   "blink_closed": 1
+  }
+ },
+ "kind_override": {
+  "_doc": "eye round: per-kind templates replacing the derived ones. profile = E profile eye (same arch: 3 K top cols 1-3, outer K col 0, inner K col 4 one row lower; ends are skin instead of h and the outer K is 2 rows: measured E face_ssim .337 vs .302 with the S/SE h-end version).",
+  "profile": {
+   "neutral": [
+    "......",
+    ".KKK..",
+    "Kh@hK.",
+    "Kg@Kg.",
+    "hgLLg.",
+    "_....."
+   ],
+   "embarrassed": [
+    "......",
+    ".KKK..",
+    "Kh@hK.",
+    "Kg@Kg.",
+    "hgLLg.",
+    "_....."
+   ],
+   "determined": [
+    "......",
+    ".KKK..",
+    "Kh@hK.",
+    "Kg@Kg.",
+    "hgLLg.",
+    "_....."
+   ],
+   "cheerful": [
+    "......",
+    ".KKK..",
+    "Kh@hK.",
+    "Kg@Kg.",
+    "h.LL..",
+    "_....."
+   ],
+   "shout": [
+    "......",
+    ".KKK..",
+    "Kh@hK.",
+    "Kg@Kg.",
+    "h.LL..",
+    "_....."
+   ],
+   "surprised": [
+    ".KKK..",
+    "K...K.",
+    "Kh@hh.",
+    ".g@Kg.",
+    "hgLLg.",
+    "_....."
+   ],
+   "blink_half": [
+    "......",
+    "......",
+    ".KKK..",
+    "Kg@KK.",
+    "hgLLg.",
+    "_....."
+   ]
+  }
+ },
+ "wing_override": {
+  "_doc": "eye round crit r1: per-kind flick lists. profile (E): one up-out K flick (the soft lower flick sits on the side hair; E face_ssim .354 vs .337)",
+  "profile": {
+   "neutral": [
+    [
+     -1,
+     1
+    ]
+   ],
+   "embarrassed": [
+    [
+     -1,
+     1
+    ]
+   ],
+   "cheerful": [
+    [
+     -1,
+     1
+    ]
+   ],
+   "determined": [
+    [
+     -1,
+     1
+    ]
+   ],
+   "shout": [
+    [
+     -1,
+     1
+    ]
+   ],
+   "surprised": [
+    [
+     -1,
+     0
+    ]
+   ],
+   "blink_half": [
+    [
+     -1,
+     2
+    ]
+   ],
+   "joy": [
+    [
+     -1,
+     2
+    ]
+   ],
+   "blink_closed": [
+    [
+     -1,
+     2
+    ]
+   ]
+  }
+ }
+}

@@ -1,0 +1,40 @@
+Here is the harsh animation and pixel-art director critique for Round 6. While you have basics of anticipation and secondary motion on the bow loops, the cutout rig is constantly breaking pixel integrity via naive nearest-neighbor rotation, rigid vertical translations, and weak posing.
+
+### 1. IDLE
+* **Problem 1 (Frames 1–3, 8–10 — Feet/Legs region):** The character doesn't bend her knees or compress her torso to breathe; the entire upper rig simply slides down 1–2px over the static lower legs, eating the shin pixels. In Frames 2 and 8 (`low`/`low2`), keep the belt/hem 1px higher and instead widen the skirt hem by 1px on each side to show actual breathing expansion rather than leg-telescoping.
+* **Problem 2 (Frames 0–12 — Katana blade & Bow):** Zero overlapping lag on the katana angle and minimal bow deformation. As the body sinks in Frame 2 and 8, rotate/drop the katana tip down by 1px (shifting the tip from `y=46` to `y=47`) and flare the bow ribbon tips up by 1px in Frames 1 and 7 (`sink`/`sink2`) to show drag.
+* **Problem 3 (Frames 8–10 — Timing & Blink):** The blink happens while locked at the bottom of the breath (`low2` -> `half2` -> `blink2`), making the pause feel robotic (230ms total stuck at the bottom). Move the closed-eye blink to Frame 7 (`sink2`, 80ms) and Frame 8 (`low2`, 90ms) so the blink overlaps the downward motion, and cut Frame 9 (`half2`) entirely.
+
+### 2. WALK
+* **Problem 1 (Frames 0–7 — Head & Torso vertical bounce):** The walk cycle has only a 1px vertical translation between `down` (Frames 1, 5) and `up` (Frames 3, 7), reading like a stiff glide. Drop the head and torso an additional 1px down in Frames 1 and 5 (`down`/`down2`), and compress the skirt vertically by 1px while flaring the hem out by 1px.
+* **Problem 2 (Frames 3 & 7 — Front/Back Legs in `up`/`up2`):** On the push-off frames (`up` and `up2`), the legs look like stiff sticks—the knees are completely straight and the feet detach awkwardly from the ground shadow. Bend the trailing knee by shifting the foot up 2px and back 1px, and drop the torso 1px forward to create weight.
+* **Problem 3 (Frames 0–3 vs 4–7 — Arm/Katana swing):** The katana is glued to the hip at the exact same 45-degree angle across all 8 frames, only translating 1px horizontally. In Frames 0–1 (`contact`/`down`), swing the pommel forward 2px and tip back 2px; in Frames 4–5 (`contact2`/`down2`), swing the tip forward/up 2px to counter-balance the opposite leg stride.
+
+### 3. RUN
+* **Problem 1 (Frames 0–5 — Torso Lean & Head Spine):** For a run, her spine is completely vertical (90 degrees), identical to the walk cycle. Shift the head 2px right (forward) and 1px down across all frames, and shift the torso/chest 1px right relative to the hips to create an aggressive forward run lean.
+* **Problem 2 (Frames 2 & 5 — `air` / `air2` Silhouette):** The airborne frames look like she is floating vertically rather than surging forward; the front knee is barely lifted. In Frames 2 and 5, bring the front knee up 2px higher into the skirt hem and extend the back foot 2px further left (behind her) to open up the stride silhouette.
+* **Problem 3 (Frames 1 & 4 — `push` / `push2` Timing & Pose):** At 45ms, `push` is barely visible, and the pose is just a halfway tween between `contact` and `air` rather than a strong drive phase. Increase `contact` (Frames 0, 3) to 50ms, increase `push` (Frames 1, 4) to 65ms with a straighter driving back leg, and set `air` (Frames 2, 5) to 75ms.
+
+### 4. JUMP
+* **Problem 1 (Frames 2 & 3 — `launch` and `rise` Stretch):** Frame 2 (`launch`) just exposes two vertical stick legs without stretching the torso or dress, and Frame 3 (`rise`) immediately snaps back to the standard idle torso. In Frame 2, narrow the hair/head width by 1px and elongate the red dress torso by 2px vertically; in Frame 3, keep the legs extended downward rather than already tucked.
+* **Problem 2 (Frames 2–6 — Katana Orientation):** During the jump, the katana suddenly flips from pointing backward (SE) in Idle/Run to pointing forward (SE-right) across her body, and the blade pixel cluster breaks into jagged stepped doubles in Frame 3 (`rise`). Keep the katana swept back behind her body (pointing down-left) during `launch`/`rise` (Frames 2–4) to follow the upward drag, only swinging forward slightly on `apex`/`hang` (Frames 4–5).
+* **Problem 3 (Frames 7 & 8 — `land` and `recover` Squash):** In Frame 7 (`land`), her legs spread wide like a frog while her head simply drops into her shoulders. Bring the feet 2px closer together, widen the skirt hem by 2px on each side to show cloth compression on the ground, and reduce Frame 7 from 130ms to 90ms so she doesn't freeze in the frog pose.
+
+### 5. DASH
+* **Problem 1 (Frames 1 & 2 — `burst` / `burst2` Afterimage & Speedlines):** Mixing a 50% checkerboard dither silhouette with solid white 1px horizontal bars looks messy and amateurish—checkerboard dithering fails at 64x64 resolution when moving fast. Replace the checkerboard dither in Frames 1–2 with a solid flat-color dark-red silhouette trail offset 6px and 12px behind her, and taper the white speedlines to 1px tips.
+* **Problem 2 (Frames 1 & 2 — Dash Posture):** Her head and torso are still upright during a high-speed burst (`burst` at 40ms, `burst2` at 50ms). Drop the head 3px lower and 3px further right, flatten the hair bow horizontally to the left so it streams behind her, and extend the katana horizontally behind her (pointing straight left) instead of dangling down at 60 degrees.
+* **Problem 3 (Frames 5 & 6 — `settle` to `rest` Sword Flip):** In Frame 5 (`settle`), the katana is planted vertically straight down (`x=25`) like a cane, then in Frame 6 (`rest`) it teleports into a forward-pointing diagonal across her front leg. Smoothly rotate the sword back to the standard rear-facing hip carry across Frames 4, 5, and 6.
+
+### 6. SLASH
+* **Problem 1 (Frame 5 — `SMEAR` Arc Geometry):** The white smear crescent is way too thick and blunt at the bottom right (6px wide block clipping into the blade) and detaches from the sword tip path at the top left (floating above her bow without tapering cleanly). Shave 2px off the inner curve near the hilt in Frame 5, curve the bottom outer edge inward so it meets the actual pixel tip of the katana, and taper the top tail behind her head to a clean 1px point.
+* **Problem 2 (Frames 5–8 — Body Lunge & Weight):** From `SMEAR` (Frame 5) through `hitstop2` (Frame 8), her upper body stays upright centered over her pelvis; only her legs spread apart. Shift the torso and head 3px right (forward) and 2px down in Frames 5–8 so she actually throws her bodyweight into the cut, and flare the back left skirt hem up by 2px to show momentum.
+* **Problem 3 (Frames 6–8 — Impact Sparks & Hitstop Vibration):** The impact spark at the sword tip in Frame 6–7 looks like a static symmetric snowflake, and the character doesn't vibrate during `hitstop` -> `hitstop2` (110ms total freeze). Offset the character body and sword 1px left in Frame 7 (`hitstop`) and 1px right in Frame 8 (`hitstop2`) for directional hit-shake, and directionalize the spark into 3 sharp diagonal V-streaks shooting up-left and up-right from the ground contact point.
+
+---
+
+SCORE idle: 6
+SCORE walk: 5
+SCORE run: 5
+SCORE jump: 5
+SCORE dash: 5
+SCORE slash: 6

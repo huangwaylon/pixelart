@@ -1,0 +1,16 @@
+Restored session: Mon 26 Oct 2026 11:28:34 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 5/10.** The burst frames are good. The anticipation, skid and recover around them are weak, so the dash doesn't hit hard.
+
+- **F0 anticipation (130ms) is barely a pose.** It's almost the same as idle: no crouch, no lean back, no load in the knees. You spend 130ms with nothing to look at. Squash her down 2–3px and lean her away from the dash direction.
+- **F1–F2 burst is the best part.** The lean, the stretch and the speed lines all read. But the hollow afterimages are wobbly scribble outlines that look like noise at 1x. Use 1–2 clean silhouette offsets instead of jittery lines. The F2 legs also tangle into a mess at 1x.
+- **F2→F3 is a pop, not a skid.** She goes straight from a full horizontal lunge to standing upright, and the sword flips from trailing behind her to angled down in front with nothing in between. A skid should lean back against the momentum, with the heels dug in and the body still stretched. Right now she just stops.
+- **The dust is weak and soft-shaded.** The F3 smudge is tiny. The F4 puff is a soft round blob with pillow shading and it floats to the right of her feet. Give it a hard 2–3 tone cloud that starts at the heel and spreads behind her.
+- **Proportions drift.** F5 is taller and thinner than F0, the head and bow shift shape and position frame to frame, and the hair outline changes. That will flicker at 1x.
+- **Feet aren't pinned.** In F3–F5 the planted foot slides across the floor with no reason.
+- **The recover (F4–F5, 240ms) is floaty.** There's no settle or overshoot bounce, just a slow stand-up. Add one frame where she dips past the rest pose before settling.
+- **Fixes in order:** a real anticipation crouch, a skid that leans back, clean afterimages, locked proportions and feet, and harder-shaded dust at the heel.
+
+Saving session...completed.

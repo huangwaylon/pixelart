@@ -1,0 +1,13 @@
+Restored session: Mon 26 Oct 2026 13:00:17 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 6/10.** The roundness fix worked but went too far: it now reads as a ball with a face window, and some of her identity was lost. (I judged the sheet as delivered, about 6x; I couldn't zoom further because PIL isn't installed.)
+
+1. **Skull (7/10):** The helmet problem is fixed. The crown is domed, there are no flat walls and no square bottom. But on SE the hair wraps all the way round under the face, so it's a coconut. You need flat-ish bob ends and side locks hanging past the jaw, as in iso_SE. The chin is soft but almost invisible: the face just merges into the bottom-right outline. On E, the face is a small bump on a big sphere. Move the profile forward about 1px and let the bob end in a blunt, angled cut, not a curve.
+2. **Identity (5/10):** The eyes are noticeably smaller than the old master's, and the white catch-light is missing, so the doll-eye look is gone. Go back to the old 3x3 iris with a highlight. The bangs shelf is there but sits too high and thin. The bob is too short, ending at the chin instead of below the jaw. The SE bun is a dark-on-dark bump that disappears; give it a highlight or a rim. The bow is good: big, red, loops left and right on SE, angled in front of the bun on E, matching the ref.
+3. **Consistency (6/10):** On SE, blink, lean, lookup and neutral share one skull. Squash shifts the face down convincingly, but its tile is cropped short; check the anchor. On E, lean and squash change the size of the back of the skull rather than its position or squash, so it will pop between frames. Lookup barely differs from neutral on either facing.
+4. **Pixels (6/10):** The lower-left bob contour has uneven 1-2-1-3 steps. The hair is nearly flat with almost no light: add a 1-2px highlight band on the crown. There's a lone dark pixel inside the knot of the E bow, and the mouth is a single pink dot that blurs at 1x. I see no stray single pixels in the outline.
+
+**Priority fixes:** bigger eyes with catch-lights, a longer straight-cut bob with side locks, a readable bun, and the same skull size across all E frames.
+
+Saving session...completed.

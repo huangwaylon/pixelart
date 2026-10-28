@@ -1,0 +1,17 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 6/10.** It reads well and has energy, but the travel and continuity between frames break it.
+
+1. **Spatial pop (worst problem).** In F1 and F2 she lunges well to the right of the cell. Then F3 snaps her back to the centre, so the skid looks like a rubber-band jump backwards. Either let F3 and F4 keep her forward and ease back to centre, or give root motion to the engine.
+2. **Direction.** This is an SE sheet, but the dash, ghosts and speed lines all run straight east. They should angle down-right, or this is really the E animation.
+3. **Burst frames.** F1 and F2 are almost the same pose shifted a few pixels, so you pay for two frames and get one. Make F2 a real smear: stretched torso, the trailing leg blurred into a wedge, the sword as one arc.
+4. **Afterimages.** The hollow ghost outlines wobble, with jaggy stair-steps and broken one-pixel runs. At 1x they turn into grey noise. Use 2–3 solid silhouettes that drop in value, or a single clean outline with straight runs.
+5. **Sword continuity.** The blade swaps angle and hand position every frame: back-left in F3, down-left in F4, forward-down in F5. You can't follow the grip. Lock the hand and arc the blade through its positions.
+6. **Dust.** In F4 the puff sits in front of her foot, but skid dust should spray behind, against the motion. The F3 streaks float above the ground as loose dashes, and the dust appears and disappears instead of growing and fading over 2–3 frames.
+7. **Skid weight.** F3 is too upright. She needs a backward lean, a planted front heel with a bent knee, and her hair and ribbon still flying forward (follow-through). As it stands she just stops.
+8. **Grounding.** Her foot line moves between F0, F3, F4 and F5, and her heels float in F0. Pin the contact foot to a single baseline row.
+9. **Clean-up.** Her outline merges into the hair mass, so the dark hair blob swallows the head silhouette. Her ribbon reshapes a little between static frames, which causes shimmer.
+10. **Timing.** 130 / 45 / 45 is good. Change the skid from 120 / 90 to 150 (the impact hold) / 70, and leave the 150 recover as it is.
+11. **Keep:** the anticipation crouch, the readable chibi proportions, the palette, and the snappy burst timing.
+
+Saving session...completed.

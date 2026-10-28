@@ -1,0 +1,14 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 6/10.** The pixel work is clean. The motion is a rigid up-and-down slide, not a living idle.
+
+- **Rigid translate:** from frame 0 to 3 the head, bow, torso and katana all drop together as one block (up to 3px). Nothing lags or overlaps. The hair panels, bow and katana tip should settle 1 frame after the body, and the shoulders should drop before the head.
+- **Range is too big and in the wrong place:** the top of the sprite runs from y=9 to y=13, a 4px swing on a 48px body. It all comes from the legs getting shorter, so it reads as a hop, not breathing. Frame 9 overshoots higher than frame 0 and looks like she's leaving the ground. Use about 2px, carried by the chest and shoulders, with the knees bending only slightly.
+- **Wasted frame:** frame 4 differs from frame 3 by just 5px (the half-lid). Fold it in, or give the blink a squash: brows drop and the head dips 1px.
+- **Blink:** the closed-eye frame 5 is a flat dash, and the mouth or face loses its accent (the palette drops from 16 to 14 colours). It reads as dozing, not a quick blink. Add a lash curve, and let the close-and-open take 2 frames with the open slower.
+- **Timing:** 280ms at the top, then three even 120ms steps down, then 110/150 back up. That's linear, with no ease. Bunch the frames near the top and bottom of the breath and move faster through the middle. The rise from frame 6 to 9 is the "energetic" beat but has no anticipation.
+- **Katana:** it's dead weight. A ready-stance idle wants a 1px tip bob that lags the body, and a glint on the blade at the peak (frame 9 or 0) as a cheap bit of effect. Right now it has no FX at all.
+- **Clean:** the feet are pinned (rows ≥54 are identical except a 10px hem change at frames 1→2 and 6→7). The palette is consistent, there are no orphan pixels or shimmer in static areas, and the silhouette reads well at 1x.
+- **Minor:** the sleeve fold on her right arm is redrawn every frame. Check it for crawl. The skirt hem pixels at row 54 flip on/off on the 1→2 and 6→7 transitions.
+
+Saving session...completed.

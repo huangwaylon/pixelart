@@ -1,0 +1,20 @@
+{
+ "size": [
+  31,
+  18
+ ],
+ "facing": "E",
+ "attach": "feet",
+ "pivot": [
+  13,
+  5
+ ],
+ "ground_y": 5,
+ "layer": "behind_character",
+ "place": "pivot -> feet pivot at launch (cell 32,62); effect stays on the ground while she rises",
+ "note": "f0: 3 W/p/n lines below the feet (6/8/6 px) + 2 W/p/n swish flicks at ground level; f1: lines 9 px, 2 px lower, broken by a gap; swishes p/n drift out+up",
+ "ms": [
+  50,
+  80
+ ]
+}

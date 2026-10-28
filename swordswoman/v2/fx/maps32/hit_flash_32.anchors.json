@@ -1,0 +1,23 @@
+{
+ "size": [
+  9,
+  9
+ ],
+ "facing": "E",
+ "attach": "hit_point",
+ "pivot": [
+  4,
+  4
+ ],
+ "ms": [
+  40
+ ],
+ "cell_offset": [
+  20,
+  22
+ ],
+ "cell": "40x40 cell of the 32 px figure (A_r3, feet ~20,37, head top ~20,6, head width ~18); default hit_point = target body_centre (20,22)",
+ "layer": "over",
+ "note": "hard 4-point star, W core, 1 px y edge, no AA; 1 frame on the hit-stop frame, then hit_spark",
+ "symmetric": true
+}

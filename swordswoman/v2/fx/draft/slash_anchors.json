@@ -1,0 +1,44 @@
+{
+ "slash_h": {
+  "arc_centre": [
+   22,
+   10
+  ],
+  "arc_start": [
+   0,
+   16
+  ],
+  "arc_end": [
+   39,
+   1
+  ]
+ },
+ "slash_diag": {
+  "arc_centre": [
+   10,
+   19
+  ],
+  "arc_start": [
+   1,
+   2
+  ],
+  "arc_end": [
+   10,
+   36
+  ]
+ },
+ "slash_over": {
+  "arc_centre": [
+   22,
+   22
+  ],
+  "arc_start": [
+   1,
+   18
+  ],
+  "arc_end": [
+   29,
+   42
+  ]
+ }
+}

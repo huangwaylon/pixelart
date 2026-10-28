@@ -1,0 +1,14 @@
+Restored session: Mon 26 Oct 2026 11:15:58 JST
+**Scores**
+- **A. Consistency: 6.** iso_NE and iso_N heads are about 10–15% bigger than iso_S/SE, so the scale drifts around the turn. The bow also changes size and angle from view to view.
+- **B. 48px readability: 6.** Front, side and SE read well. iso_NE and iso_N fall apart into blobs.
+- **C. Iso correctness: 5.5.** iso_NE is better now. But iso_N is still basically an eye-level back view: full legs, almost no top of the head. iso_S and iso_SE show the bun above the bow, and the 30° renders hide it there.
+- **D. Katana clarity: 5.5.** The blade turns into a dotted 1px grey line, and the hilt and guard disappear at 40px.
+- **E. Fitness as final reference: 6.** Usable, but don't sign it off until 1–3 below are fixed.
+
+**Top 5 hand fixes for the pixel artist**
+1. **Bun in iso_S and iso_SE:** remove it, or show only a sliver behind the bow, as in r3G_mat.
+2. **iso_N camera:** redraw it for 30° down. Show more crown and part line, shorten the legs about 2px, overlap the feet with the hem, and make the bow one bow shape. It currently reads as two red "ears".
+3. **Scale:** shrink the iso_NE and iso_N heads to iso_S head width. One shared head-height guide for all 9 views.
+4. **Katana:** draw a solid 2px blade with a 1px highlight edge, not stair-step dots. Add a clear 2–3px dark hilt plus a 1px gold or dark tsuba so it separates from the hand and sleeve. Keep blade length the same in every view; iso_SE and iso_NE are long.
+5. **Face and obi at 40px:** in iso_S, lift the eyes 1px clear of the bangs. In iso_E, remove the vertical red sleeve stripe that cuts the obi. In back views, separate the obi from the hair: obi one step lighter or bluer, hair warmer.

@@ -1,0 +1,89 @@
+# turn_E, hand-typed profile right. Traced from hybrid/lock/turn/turn_E.png. Katana in her LEFT (far) hand, blade behind the skirt.
+head: E 50 41
+[katana]
+@katana 67 87 125 22 hook=-1
+[ribbons]
+76 59 P
+77 58 PP
+78 57 Pp
+79 56 Pp
+80 56 Pp
+81 55 Pp
+82 55 Pp
+83 55 pP
+84 55 pP
+85 54 pP
+86 54 pP
+87 54 P
+88 53 Pp
+89 53 p
+90 53 p
+[legs]
+92 65 KsmmK
+93 65 KsmmK
+94 65 KsmmK
+95 65 KsmmK
+96 65 KsmmK
+97 65 KsmK
+98 65 KsmK
+99 66 KmK
+100 66 KmK
+101 65 KdmdK
+102 65 KddddK
+103 65 KdKdddK
+104 65 KK.KKK
+92 61 KSsssK
+93 61 KSsssK
+94 61 KSsssK
+95 61 KSsssK
+96 61 KSsssK
+97 62 KSssK
+98 62 KsssK
+99 62 KssK
+100 62 KssK
+101 61 KdsdK
+102 61 KdsddK
+103 61 KdKddddK
+104 61 KK.KKKK
+93 62 KddddddK
+[skirt]
+85 59 KCRRRRRRRRRrK
+86 58 KCRRRRRRRRRRrK
+87 57 KCRRRRRRRRRRRrK
+88 56 KCRRRRRRRRRRRRrK
+89 56 KRRRRRRRRRRRRRrK
+90 55 KRRRRRRRRRRRRRRrK
+91 55 KrRRRRRRRRRRRRrrK
+92 54 KrRRRRRRRrrvvvvvrK
+93 54 KvrRRRRRrvvK
+94 53 KvrRRRrvK
+95 53 KvvrrvK
+96 52 KvvvK
+97 52 KK
+[torso]
+74 60 KRRRRRRRRRRK
+75 59 KRCRRRRRRRRRK
+76 59 KrRRRRRRRRrvK
+77 59 KsSsssKrRRRvK
+78 58 KsSssssmKRCRRrK
+79 58 KsSsssmKLLLLLK
+80 59 KlllllllllllK
+81 59 KllllllllllTK
+82 59 KKKKKKKKKKKKK
+83 59 KlllllllllllK
+84 59 KllllllllllTK
+[sleeve]
+80 60 KCRRRrK
+81 60 KCRRRrK
+82 59 KCRRRRrK
+83 59 KCRRRRrK
+84 58 KCRRRRRrK
+85 58 KCRRRRRrK
+86 57 KCRRRRRRrK
+87 57 KRRRRRRRrK
+88 57 KrRRRRRrrK
+89 56 KvvrrrrrvK
+90 57 KKKKKKKK
+89 66 KsK
+90 65 KssK
+91 66 KK

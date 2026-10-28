@@ -1,0 +1,7 @@
+rig H2 - master (96 px, 128 cell; rows with soles aligned; widths px; g96/scripts/meas96.py). '!' |r|>1, '-' not checked, '?' not found
+view         H    crown      eye     chin shoulder   armpit    waist      hem  socktop     knee    ankle    whead    wneckwshoulder wsleeves     wobi     whem    wband    wsock    wcalf    wfoot  fails
+S           +1       -1       +0       +1       +1      -2!       +0       -1       +1       -1       +0       +1       +0       +0       -1       +0       +1       +0       +0       +0      -3!  2
+SE          +0       +0       -1       +1       +1        -       +0       -1       -1      +1!       -1       -1       +1       +0       +0      -3!      +3!      +2!       +1       -1       +0  4
+E           -1       +1      -5!       +1       -1        -       +0       -1       +1      -1!       +1       +0        -        -       +1        -       -1       -1       +0       +0       -1  2
+NE         +7!      -7!        -        -       -1        ?       -0       +0       -1        ?      -2!       +1        -      -6!       +0       +0      -3!       +1      +7!      +7!       +1  7
+N          -3!      +3!        -        -       +1       -1      +2!       +1       +1        ?       +0       +0        -      +2!       +1      -3!       +0       +0       +1       +1      -2!  6

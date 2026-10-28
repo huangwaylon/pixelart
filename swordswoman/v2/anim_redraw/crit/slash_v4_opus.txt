@@ -1,0 +1,15 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 6/10.** The structure and timing are solid, but the impact frame is weak and the drawing drifts between frames.
+
+- **F1 windup (170ms):** Good anticipation, and the hop gives it bounce. But the body shrinks and floats off the ground. The head and bow look smaller and higher than in F0, so the proportions drift. Pin the back foot so she squashes down instead of lifting off.
+- **F2 smear (45ms):** The arc has the right shape and direction, but it's a thin, even grey ring with a soft gradient on the edge. Make it a thick crescent that tapers, with a hard white leading edge. 45ms is about 3 ticks, so it barely registers. Use 60ms or make the smear much bolder.
+- **F3 impact (80ms):** This is the weakest frame. The starburst is about 6px of red and white sparkle buried in the sword. It doesn't read at 1x, and the red blends into her outfit. Make it 2–3x bigger in white and yellow, and hold it for 110–130ms so the hit-stop actually lands. I can't see the shake on a still sheet, so check it in motion.
+- **F2→F4 feet:** The lunge stance changes width every frame and the back foot slides horizontally. Lock the front foot to one pixel position.
+- **F4 follow-through:** This is the best pose. The dark sash trailing on the left adds nice drag. Push the overshoot a bit further past the F3 sword angle.
+- **F5/F6 recover:** These are almost the same as F0, so it snaps straight back to idle with no settle. Add a small dip or overshoot at the end.
+- **Cleanup:** At 1x there are scattered grey anti-aliasing pixels around the arc and the blade. The hair outline gets thicker and thinner from frame to frame, which causes shimmer around the head. The red highlights on the dress move around when they should stay put.
+
+**Top 3 fixes:** a bigger and longer impact flash, a bolder tapered smear, and pinned feet with locked head size.
+
+Saving session...completed.

@@ -1,0 +1,22 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+## Round 4 critique
+
+**(1) Reads as an official sprite**
+- **A' (PMD-32): 6/10.** It's the closest one yet. The silhouette and palette count are right. What keeps it below official: the outer outline is only near-black and turns dark red/brown around the kimono and hair. The eyes are too big and detailed (PMD uses about 2×3 px with one highlight). There's a stray dark nose/mouth cluster. The blade is a grey line with no black edge, so it disappears on mid-grey. The feet are black blobs with no shape.
+- **C (Hybrid-48): 4/10.** It's caught between styles. The head and face are PMD, but the shading is soft BW-style. The kimono outline is red instead of black, and the face is too sparse for 48 px. The pale stick legs don't belong with the rest of the sprite.
+
+**(2) Slash: 5/10**
+1. **Volume pops.** In f2 the sword shrinks to a tiny fork, and the head and torso change size from f2 to f3 to f5. Lock the head and blade length and only rotate them.
+2. **The smear arc doesn't match the swing.** The f3 crescent sweeps up and right and sits apart from the blade, yet f4 lands low and in front. Make the smear go from overhead down to low-front, attach it to the hilt, and narrow it to 3–4 px.
+3. **The holds are wasted.** f4 and f5 are nearly the same pose. Put a 1–2 frame hit spark or white flash on f4. Make f5 a real overshoot (blade past the target, torso twisted), or cut it and give f4 200 ms.
+4. **The feet slide.** The feet's y-position bounces about 2 px between frames, and the lunge stance in f4 drifts back. Pin the back foot to a fixed baseline. Lunge 3–4 px toward the target and step back in f6. Wind-up needs a 1 px crouch.
+
+**(3) Proportions compared with the official sprites**
+- **Head:body ratio:** about 1:1, which is fine for PMD. C's ratio is off: BW is closer to 1:2.
+- **Shoulders/waist:** too boxy. The torso is a rectangle as wide as the head. Taper it at the obi and narrow the shoulders by 2 px.
+- **Legs:** too short and splayed in A'. In C they're too thin compared with the torso. Give them 1–2 px more length and a visible knee or sock break.
+- **Neck:** missing. The chin is buried in the collar. Add one row of skin, or a shadow under the chin.
+- **Face:** the eyes sit too low and wide, and there's no mouth. Raise the eyes 1 px, set them closer together, and add a 1 px mouth.
+
+Saving session...completed.

@@ -1,0 +1,18 @@
+You are a strict art director for a COMMERCIAL pixel-art isometric action game. Judge two sprite strategies (S3_editchain and S5_pixelnative), round 2, POLISHED results.
+
+Images, in order:
+1-4: compare sheets (turntable = idle in 8 directions S,SE,E,NE,N,NW,W,SW; walk_SE k0-k3 contact/down/passing/up; slash_SE k0 anticipation, k1 SMEAR, k2 impact hit-stop, k3 follow-through; jump_E crouch/apex/land). In each sheet the TOP row block is S3_editchain (polished at 4x, plus 1x on grass and the pre-polish 1x), the MIDDLE row block is S5_pixelnative (same layout), and the bottom is the reference pixelization.
+5: concept/chibi_iso_v5.png = THE look target (chibi swordswoman, huge round head ~2.5 heads tall, dark-brunette high bun with big red two-loop bow, side-swept bangs, blue eyes, blush, tall flared red collar, bare shoulders, red dress with detached flared bell sleeves, dark-brown buckled corset, pink scarf ribbons, black shorts, strappy heels, katana with black/red diamond-wrap handle, silver blade, small crescent hook guard).
+6: docs/palette_v1_vs_v2_terrain.png = the user's beloved pixelized version (shape and proportions).
+
+Sprite target: 56-64 px tall character in a 128x128 cell, locked palette, transparent.
+Animation direction: motion must be EXPRESSIVE and LIVELY: squash and stretch, strong anticipation, follow-through and overlapping secondary motion (bun, bow loops, ribbons, skirt tails, sleeves lag and settle), weight shifts, hit-stop holds, arcs. SMEARS ARE IMPORTANT FOR FAST MOVEMENT (blade-arc smear on slash k1, stretched/multiple-limb smears, run/dash smears, motion lines). No stiff 1px-bob idles.
+
+Be STRICT. Scale 0-10 where 8 = ship quality for a commercial pixel-art iso action game AND looks like the iso_v5 illustration AND moves with life. Do not inflate. Pixel art from AI-assisted pipelines usually scores 4-6.
+
+For EACH strategy score: illustration_appeal, cross_direction_consistency, cross_frame_consistency, pose_fidelity_to_guide, motion_expressiveness, pixel_cleanliness, design_fidelity (0-10 each), an overall (0-10), pass (true only if overall >= 8), and must_fix: a list of CONCRETE fixes (name the sprite/key, the body part, and what to change, e.g. "slash_SE_k1: ...").
+Also note how much the polish helped vs the pre-polish 1x (polish_delta: short text per strategy).
+Then pick best ("S3_editchain" or "S5_pixelnative") and give combine_ideas: concrete ideas to merge the strengths of both.
+
+Return ONLY JSON of this shape:
+{"per_strategy":[{"key":"S3_editchain","scores":{"illustration_appeal":0,"cross_direction_consistency":0,"cross_frame_consistency":0,"pose_fidelity_to_guide":0,"motion_expressiveness":0,"pixel_cleanliness":0,"design_fidelity":0},"overall":0,"pass":false,"must_fix":["..."],"polish_delta":"..."},{"key":"S5_pixelnative",...}],"best":"...","combine_ideas":["..."]}

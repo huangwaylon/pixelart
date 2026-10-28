@@ -1,0 +1,5 @@
+1) **4/10** — The character's right arm is detached from the shoulder and held bent in a rigid, weapon-carrying or shield-guard pose with nearly zero movement across frames.
+2) **4/10** — The stiff, robotic posture and nearly invisible breathing/bobbing motion make her feel more like a static mannequin than a lively, cheerful trainer.
+3) **5/10** — The overall silhouette and bow read well at 1x, but the floating right arm merges into a confusing red cluster by her hip, and the idle animation is too subtle to register a pixel shift.
+
+**Most important fix:** Reattach the character's right arm to her shoulder in a relaxed, natural pose and exaggerate the vertical breathing/bobbing motion so the idle loop is actually visible at 1x resolution.

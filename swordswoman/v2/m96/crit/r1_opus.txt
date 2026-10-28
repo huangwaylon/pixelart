@@ -1,0 +1,18 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Scores:** S 6 · SE 5 · E 6 · NE 7 · N 7.5 · **Overall 6/10**
+
+**1. Match to illustration:** The back views (NE, N) are close, with strong bows and clear ribbon tails. In S the head is too wide and squat. In SE the bow almost disappears; only a few red pixels show on the left. The thigh skin band between hem and socks is thin or missing in S and SE, but clear in the art.
+
+**2. Face at 1x:** This is the weakest area. The eyes are heavy-lidded, low-contrast slits with no visible catchlight, so she reads sleepy or sullen rather than cute. The mouth is nearly invisible.
+
+**3. Pixel cleanliness:** Hair in SE and E is noisy, with dither-like stray clusters and no clean strand clumps. Sleeve edges and hands in S and SE are jaggy, and the hands are unreadable. Outline weight varies between 1px and 2px.
+
+**4. Colour:** The kimono and obi are mostly consistent. SE's red runs darker and more mottled than the other views. Socks and boots are fine.
+
+**Top 5 fixes:**
+1. **S/SE/E eyes:** make them about 4–5px tall with a dark upper lash line, an iris that shades lighter toward the bottom, and a 1px white catchlight. Lighten the lids.
+2. **S/SE mouth:** add a 2px warm mouth mark and a 1px blush.
+3. **SE bow:** redraw a clear red bow, upper left of the head, matching the illustration.
+4. **SE/E hair:** remove the stray pixels and rebuild the hair as 3-tone clumps with clean 1px outlines.
+5. **S/SE thighs and sleeves:** restore a 2–3px skin band above the socks. Clean the stepping on the sleeve cuffs and draw 3–4px mitten hands.

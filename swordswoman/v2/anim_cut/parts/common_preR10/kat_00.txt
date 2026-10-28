@@ -1,0 +1,6 @@
+; pivot 4 2
+......##################...
+.#####kwwwwwwwwwwwwwwwww##.
+#dDddDknnnnnnnnnnnnnnnnnnw#
+.#####k###################.
+......#....................

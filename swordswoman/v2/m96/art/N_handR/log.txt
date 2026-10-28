@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I replaced the 1px hand nub with a tapered 2x3 skin hand under the sleeve opening (s on the lit side, S on the right) with a closed K outline. It passed the gate: ssim_b −0.001, dE +0.046, sil −0.000, O3 1 (same as before), no new O1 or S4. The hand is smaller than the 3x4 mitten you asked for and has no separate thumb, because the bigger versions went over the dE budget or added a jaggy. I left the sleeve hem as it was. Result is in `out.txt`.

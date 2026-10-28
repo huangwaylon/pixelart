@@ -1,0 +1,82 @@
+{
+ "name": "fx_v2",
+ "note": "FX palette; K/W/n/B-like chars shared with pk_palette (K,W,n identical hex). '.'=transparent",
+ "colors": {
+  "K": [
+   "#000000",
+   "outline (emotes, hurt star)"
+  ],
+  "W": [
+   "#f8f8f8",
+   "white core / leading edge"
+  ],
+  "p": [
+   "#d8e0f0",
+   "pale steel band"
+  ],
+  "n": [
+   "#a8b0c8",
+   "light blue-grey band (= blade colour)"
+  ],
+  "b": [
+   "#687898",
+   "dark blue-grey rim / slash inner edge"
+  ],
+  "y": [
+   "#f8e060",
+   "spark yellow"
+  ],
+  "o": [
+   "#f09838",
+   "spark orange tips"
+  ],
+  "u": [
+   "#f0e8e0",
+   "dust light"
+  ],
+  "U": [
+   "#c8b8a8",
+   "dust mid"
+  ],
+  "g": [
+   "#887868",
+   "dust shadow / rim"
+  ],
+  "c": [
+   "#a8d8f8",
+   "sweat light"
+  ],
+  "B": [
+   "#3878d0",
+   "sweat blue"
+  ],
+  "a": [
+   "#b8d0f8",
+   "afterimage light"
+  ],
+  "A": [
+   "#6888d0",
+   "afterimage dark"
+  ],
+  "G": [
+   "#4c4038",
+   "dust outline (dark warm grey; g is too close to the #6e6e6e floor)"
+  ],
+  "r": [
+   "#e83840",
+   "throw orb red (top half)"
+  ],
+  "R": [
+   "#a01c30",
+   "throw orb red shade / dark rim"
+  ],
+  "w": [
+   "#c8c8d8",
+   "throw orb white shade (lower half)"
+  ],
+  "k": [
+   "#302838",
+   "throw orb band + button ring (dark, softer than K)"
+  ]
+ }
+}

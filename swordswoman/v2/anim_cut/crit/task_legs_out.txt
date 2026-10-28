@@ -1,0 +1,7 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+All 21 leg poses are in `parts/se/`: `legs_wc1/wd1/wp1/wu1` and `legs_wc2/wd2/wp2/wu2`, `legs_rr1/rp1/ra1/rr2/rp2/ra2`, `legs_crouch/launch/tuck/fall/land`, and `legs_lunge/skid/stance`. They're all composed in `actions/test_legs.json` (one labelled frame each, stand first). I checked the sheet and fixed things three times; they read well. Your base files weren't touched.
+
+**Anchors:** same as `legs.txt`. The hip anchor sits 5 rows above the top leg row, so the skirt hem hides 2 thigh rows. The pivot is the ground centre under the hip; hip height above it is 16 for stand/passing/air, 15 contact, 14 down/stance, 17 up, 12 crouch/lunge, 13 skid, 11 land. Forward feet go below the pivot to show depth.
+
+The colours and boot shapes come from a helper I wrote, `work/legsgen.py`; edit it and re-run to regenerate.

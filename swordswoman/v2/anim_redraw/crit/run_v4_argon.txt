@@ -1,0 +1,13 @@
+SCORE 4.5/10
+
+1. **Broken Loop / Leg Symmetry (f2–f3 vs f6–f7):** The second half of the stride does not mirror the first; f6 and f7 have nearly identical leg silhouettes (right knee stays raised in both), causing a severe limp when looping f7 to f0.
+2. **Teleporting Katana (f1 vs f2–f7):** In f1, the scabbard/katana swings across the front of the skirt pointing right, then instantly snaps behind the legs pointing down-left in f2; it lacks a consistent anchor at the left hip.
+3. **Asymmetrical Bounce (f1 vs f5):** Down-pose f5 squashes the head significantly lower than down-pose f1, creating a lopsided vertical rhythm instead of an even two-beat bounce.
+4. **Rigid Head/Hair/Bow (f0–f7):** The bow, side-locks, and back hair bun are completely static copy-pastes across all 8 frames with zero overlap/follow-through on the vertical drops (f1, f5).
+5. **Tangled Silhouette & Ground Plane (f1, f5, f6):** In f1 and f5, the feet and legs merge into a messy dark cluster with the skirt hem; in f6, the grounded left foot steps lower on the Y-axis than the contact feet in f1/f3.
+6. **Jaggies & Shading Shifts (f0–f7):** The white katana blade has stepped staircase jaggies throughout, and the skirt's red highlight/shadow masses flicker inconsistently (especially f3 vs f4).
+
+**Top 3 Fixes:**
+1. **Rebuild f6–f7 Legs:** Make f5–f7 the proper anatomical opposite of f1–f3 so the left and right strides alternate cleanly into f0.
+2. **Pin the Katana:** Anchor the hilt to the back/left hip and keep the blade trailing behind her in all frames (fix f1's front-swing) with a gentle, consistent secondary bounce.
+3. **Add Hair/Bow Follow-Through & Even Bounce:** Match the head Y-height on down-frames f1 and f5, and flap the bow/hair tips up by 1–2px on drop frames (f1, f5) and down on push-off frames (f2, f6).

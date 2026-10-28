@@ -1,0 +1,51 @@
+{
+ "logs": [
+  {
+   "attempt": 0,
+   "sec": 66,
+   "fixes": [
+    "lagL: O1 48 edge pixels are not K outline (draft had 44): [(11, 7), (21, 7), (11, 8), (19, 8), (21, 8), (10, 9), (12, 9), (20, 9), (23, 9), (8, 10)]; every edge pixel facing empty space is K",
+    "lagR: O1 48 edge pixels are not K outline (draft had 45): [(11, 7), (21, 7), (11, 8), (13, 8), (21, 8), (8, 9), (12, 9), (20, 9), (22, 9), (8, 10)]; every edge pixel facing empty space is K",
+    "drop: O1 48 edge pixels are not K outline (draft had 43): [(11, 7), (21, 7), (13, 8), (14, 8), (15, 8), (16, 8), (17, 8), (18, 8), (19, 8), (8, 9)]; every edge pixel facing empty space is K"
+   ]
+  },
+  {
+   "attempt": 1,
+   "sec": 76,
+   "fixes": [
+    "lagL: PAL chars e not allowed here (use only EHKRh): [(9, 10, 'e'), (10, 10, 'e'), (11, 10, 'e'), (12, 10, 'e'), (19, 10, 'e'), (20, 10, 'e'), (21, 10, 'e'), (22, 10, 'e')]",
+    "lagR: PAL chars e not allowed here (use only EHKRh): [(9, 10, 'e'), (10, 10, 'e'), (11, 10, 'e'), (12, 10, 'e'), (19, 10, 'e'), (20, 10, 'e'), (21, 10, 'e'), (22, 10, 'e')]",
+    "lift: PAL chars e not allowed here (use only EHKRh): [(9, 10, 'e'), (10, 10, 'e'), (11, 10, 'e'), (12, 10, 'e'), (19, 10, 'e'), (20, 10, 'e'), (21, 10, 'e'), (22, 10, 'e')]",
+    "drop: PAL chars e not allowed here (use only EHKRh): [(9, 10, 'e'), (10, 10, 'e'), (11, 10, 'e'), (12, 10, 'e'), (19, 10, 'e'), (20, 10, 'e'), (21, 10, 'e'), (22, 10, 'e')]",
+    "drop: SIZE 206 px vs draft 177: keep the same mass (only redraw the lean/sway cleanly)"
+   ]
+  }
+ ],
+ "out": {
+  "lift": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/N/artist/w_lift.txt",
+   "lint": [
+    "PAL chars e not allowed here (use only EHKRh): [(9, 10, 'e'), (10, 10, 'e'), (11, 10, 'e'), (12, 10, 'e'), (19, 10, 'e'), (20, 10, 'e'), (21, 10, 'e'), (22, 10, 'e')]"
+   ]
+  },
+  "lagL": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/N/artist/w_lagL.txt",
+   "lint": [
+    "PAL chars e not allowed here (use only EHKRh): [(9, 10, 'e'), (10, 10, 'e'), (11, 10, 'e'), (12, 10, 'e'), (19, 10, 'e'), (20, 10, 'e'), (21, 10, 'e'), (22, 10, 'e')]"
+   ]
+  },
+  "lagR": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/N/artist/w_lagR.txt",
+   "lint": [
+    "PAL chars e not allowed here (use only EHKRh): [(9, 10, 'e'), (10, 10, 'e'), (11, 10, 'e'), (12, 10, 'e'), (19, 10, 'e'), (20, 10, 'e'), (21, 10, 'e'), (22, 10, 'e')]"
+   ]
+  },
+  "drop": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/N/artist/w_drop.txt",
+   "lint": [
+    "PAL chars e not allowed here (use only EHKRh): [(9, 10, 'e'), (10, 10, 'e'), (11, 10, 'e'), (12, 10, 'e'), (19, 10, 'e'), (20, 10, 'e'), (21, 10, 'e'), (22, 10, 'e')]",
+    "SIZE 206 px vs draft 177: keep the same mass (only redraw the lean/sway cleanly)"
+   ]
+  }
+ }
+}

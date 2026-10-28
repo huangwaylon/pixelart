@@ -1,0 +1,599 @@
+{
+ "verdict": "PASS",
+ "mode": "clip",
+ "items": [
+  {
+   "name": "idle_SE_c00",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/animate96/work/idle_SE/c00.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {
+    "eyecheck": {
+     "view": "SE",
+     "eyes": [
+      {
+       "kind": "front_left",
+       "x0": 62,
+       "y0": 50,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      },
+      {
+       "kind": "far",
+       "x0": 72,
+       "y0": 50,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      }
+     ],
+     "expr": "neutral",
+     "catchlights": 4,
+     "eye_dy": 20
+    },
+    "head_offset": [
+     0,
+     0
+    ],
+    "view": "SE",
+    "key": "up",
+    "rest": true,
+    "contact": false,
+    "rows": {
+     "crown": 30,
+     "eye": 48,
+     "chin": 64,
+     "shoulder": 65,
+     "waist": 74,
+     "obi_bot": 78,
+     "hem": 90,
+     "skin_top": 91,
+     "sock_top": 95,
+     "knee": 104,
+     "boot_top": 113,
+     "sole": 124
+    },
+    "head": {
+     "x0": 49,
+     "x1": 79,
+     "y0": 30,
+     "y1": 64,
+     "w": 31,
+     "h": 35
+    },
+    "bow_off": -9.0,
+    "eyes": [
+     [
+      62,
+      48,
+      [
+       [
+        64,
+        52
+       ],
+       [
+        64,
+        53
+       ]
+      ]
+     ],
+     [
+      72,
+      50,
+      [
+       [
+        73,
+        52
+       ],
+       [
+        73,
+        53
+       ]
+      ]
+     ]
+    ]
+   },
+   "issues": []
+  },
+  {
+   "name": "idle_SE_c01",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/animate96/work/idle_SE/c01.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {
+    "eyecheck": {
+     "view": "SE",
+     "eyes": [
+      {
+       "kind": "front_left",
+       "x0": 62,
+       "y0": 50,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      },
+      {
+       "kind": "far",
+       "x0": 72,
+       "y0": 50,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      }
+     ],
+     "expr": "neutral",
+     "catchlights": 4,
+     "eye_dy": 20
+    },
+    "head_offset": [
+     0,
+     0
+    ],
+    "view": "SE",
+    "key": "settle",
+    "rest": false,
+    "contact": false,
+    "rows": {
+     "crown": 30,
+     "eye": 48,
+     "chin": 64,
+     "shoulder": 65,
+     "waist": 74,
+     "obi_bot": 78,
+     "hem": 90,
+     "skin_top": 91,
+     "sock_top": 95,
+     "knee": 104,
+     "boot_top": 113,
+     "sole": 124
+    },
+    "head": {
+     "x0": 49,
+     "x1": 79,
+     "y0": 30,
+     "y1": 64,
+     "w": 31,
+     "h": 35
+    },
+    "bow_off": -9.0,
+    "eyes": [
+     [
+      62,
+      48,
+      [
+       [
+        64,
+        52
+       ],
+       [
+        64,
+        53
+       ]
+      ]
+     ],
+     [
+      72,
+      50,
+      [
+       [
+        73,
+        52
+       ],
+       [
+        73,
+        53
+       ]
+      ]
+     ]
+    ]
+   },
+   "issues": []
+  },
+  {
+   "name": "idle_SE_c02",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/animate96/work/idle_SE/c02.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {
+    "eyecheck": {
+     "view": "SE",
+     "eyes": [
+      {
+       "kind": "front_left",
+       "x0": 60,
+       "y0": 51,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      },
+      {
+       "kind": "far",
+       "x0": 70,
+       "y0": 51,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      }
+     ],
+     "expr": "neutral",
+     "catchlights": 4,
+     "eye_dy": 20
+    },
+    "head_offset": [
+     -2,
+     1
+    ],
+    "view": "SE",
+    "key": "down",
+    "rest": false,
+    "contact": false,
+    "rows": {
+     "crown": 31,
+     "eye": 49,
+     "chin": 65,
+     "shoulder": 66,
+     "waist": 75,
+     "obi_bot": 79,
+     "hem": 91,
+     "skin_top": 92,
+     "sock_top": 96,
+     "knee": 104,
+     "boot_top": 113,
+     "sole": 124
+    },
+    "head": {
+     "x0": 47,
+     "x1": 77,
+     "y0": 31,
+     "y1": 65,
+     "w": 31,
+     "h": 35
+    },
+    "bow_off": -9.0,
+    "eyes": [
+     [
+      60,
+      49,
+      [
+       [
+        62,
+        53
+       ],
+       [
+        62,
+        54
+       ]
+      ]
+     ],
+     [
+      70,
+      51,
+      [
+       [
+        71,
+        53
+       ],
+       [
+        71,
+        54
+       ]
+      ]
+     ]
+    ]
+   },
+   "issues": []
+  },
+  {
+   "name": "idle_SE_c03",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/animate96/work/idle_SE/c03.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {
+    "eyecheck": {
+     "view": "SE",
+     "eyes": [
+      {
+       "kind": "front_left",
+       "x0": 59,
+       "y0": 51,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      },
+      {
+       "kind": "far",
+       "x0": 69,
+       "y0": 51,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      }
+     ],
+     "expr": "neutral",
+     "catchlights": 4,
+     "eye_dy": 20
+    },
+    "head_offset": [
+     -3,
+     1
+    ],
+    "view": "SE",
+    "key": "down_hold",
+    "rest": false,
+    "contact": false,
+    "rows": {
+     "crown": 31,
+     "eye": 49,
+     "chin": 65,
+     "shoulder": 66,
+     "waist": 75,
+     "obi_bot": 79,
+     "hem": 91,
+     "skin_top": 92,
+     "sock_top": 96,
+     "knee": 104,
+     "boot_top": 113,
+     "sole": 124
+    },
+    "head": {
+     "x0": 46,
+     "x1": 76,
+     "y0": 31,
+     "y1": 65,
+     "w": 31,
+     "h": 35
+    },
+    "bow_off": -9.0,
+    "eyes": [
+     [
+      59,
+      49,
+      [
+       [
+        61,
+        53
+       ],
+       [
+        61,
+        54
+       ]
+      ]
+     ],
+     [
+      69,
+      51,
+      [
+       [
+        70,
+        53
+       ],
+       [
+        70,
+        54
+       ]
+      ]
+     ]
+    ]
+   },
+   "issues": []
+  },
+  {
+   "name": "idle_SE_c04",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/animate96/work/idle_SE/c04.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {
+    "eyecheck": {
+     "view": "SE",
+     "eyes": [
+      {
+       "kind": "front_left",
+       "x0": 59,
+       "y0": 51,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      },
+      {
+       "kind": "far",
+       "x0": 69,
+       "y0": 51,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      }
+     ],
+     "expr": "neutral",
+     "catchlights": 4,
+     "eye_dy": 20
+    },
+    "head_offset": [
+     -3,
+     1
+    ],
+    "view": "SE",
+    "key": "rise",
+    "rest": false,
+    "contact": false,
+    "rows": {
+     "crown": 31,
+     "eye": 49,
+     "chin": 65,
+     "shoulder": 66,
+     "waist": 75,
+     "obi_bot": 79,
+     "hem": 91,
+     "skin_top": 92,
+     "sock_top": 96,
+     "knee": 104,
+     "boot_top": 113,
+     "sole": 124
+    },
+    "head": {
+     "x0": 46,
+     "x1": 76,
+     "y0": 31,
+     "y1": 65,
+     "w": 31,
+     "h": 35
+    },
+    "bow_off": -9.0,
+    "eyes": [
+     [
+      59,
+      49,
+      [
+       [
+        61,
+        53
+       ],
+       [
+        61,
+        54
+       ]
+      ]
+     ],
+     [
+      69,
+      51,
+      [
+       [
+        70,
+        53
+       ],
+       [
+        70,
+        54
+       ]
+      ]
+     ]
+    ]
+   },
+   "issues": []
+  },
+  {
+   "name": "idle_SE_c05",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/animate96/work/idle_SE/c05.txt",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {
+    "eyecheck": {
+     "view": "SE",
+     "eyes": [
+      {
+       "kind": "front_left",
+       "x0": 61,
+       "y0": 51,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      },
+      {
+       "kind": "far",
+       "x0": 71,
+       "y0": 51,
+       "expr": "neutral",
+       "mismatch": 0,
+       "brow_px": 4,
+       "brow_bad": 0
+      }
+     ],
+     "expr": "neutral",
+     "catchlights": 4,
+     "eye_dy": 20
+    },
+    "head_offset": [
+     -1,
+     1
+    ],
+    "view": "SE",
+    "key": "up2",
+    "rest": false,
+    "contact": false,
+    "rows": {
+     "crown": 31,
+     "eye": 49,
+     "chin": 65,
+     "shoulder": 66,
+     "waist": 75,
+     "obi_bot": 79,
+     "hem": 91,
+     "skin_top": 92,
+     "sock_top": 96,
+     "knee": 104,
+     "boot_top": 113,
+     "sole": 124
+    },
+    "head": {
+     "x0": 48,
+     "x1": 78,
+     "y0": 31,
+     "y1": 65,
+     "w": 31,
+     "h": 35
+    },
+    "bow_off": -9.0,
+    "eyes": [
+     [
+      61,
+      49,
+      [
+       [
+        63,
+        53
+       ],
+       [
+        63,
+        54
+       ]
+      ]
+     ],
+     [
+      71,
+      51,
+      [
+       [
+        72,
+        53
+       ],
+       [
+        72,
+        54
+       ]
+      ]
+     ]
+    ]
+   },
+   "issues": []
+  },
+  {
+   "name": "idle_SE_continuity",
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/animate96/work/idle_SE",
+   "verdict": "PASS",
+   "overlays": [],
+   "metrics": {},
+   "issues": []
+  }
+ ],
+ "clips": {
+  "idle_SE": {
+   "view": "SE",
+   "frames": 6,
+   "rest": [
+    "up"
+   ]
+  }
+ }
+}

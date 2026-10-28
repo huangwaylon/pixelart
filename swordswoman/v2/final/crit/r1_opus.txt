@@ -1,0 +1,35 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+1. **S (3/4 front)**
+   - **Sleeves:** In the illustration they are wide bell sleeves that hang down to hip level. The master holds them out flat like a T-pose. Redraw them as drooping, flared shapes with the hands at the hips.
+   - **Face:** There are grey smudges under the eyes that read as tears, and the nose/mouth area is muddy. Clear those back to skin. Make the eyes about 2px tall with a dark top lash and a skin highlight, add a 1px nose and a small smile.
+   - **Collar:** The dark choker line should be a red V-crossover collar with a skin triangle below it.
+   - **Hair:** The side locks should reach the shoulders on both sides.
+
+2. **SE**
+   - **Brow/eye:** The eye reads as angry. Lighten the brow and make the near eye round and soft.
+   - **Legs:** The pose is wrong. The illustration has the near leg stepping forward and planted; the master has one foot raised. Match the illustration.
+   - **Obi:** The block is too tall. Cut it to the same height as in S.
+
+3. **E (profile)**
+   - **Face:** The profile is a flat vertical line. Add a forehead-to-nose bump, a lip, and a chin.
+   - **Head:** It is too narrow, and the back is a black blob. Widen it and give it rounded bob layers with mid-tone strands.
+   - **Body:** The torso is a stick. Add the hanging sleeve in front and thicken the kimono.
+   - **Obi:** It is only a tiny patch. Make it a full band across the waist.
+
+4. **NE / N**
+   - **Obi:** The white highlight blocks are noise. Use the same 2-tone grey-lavender as S.
+   - **Sleeves (N):** Make them drooping, like in S.
+   - **Hair:** The top highlight band is patchy. Smooth it into one clean arc.
+
+5. **Colour consistency**
+   - **Obi:** Its shades and highlight colour differ from view to view. Pick one ramp of base, shadow and highlight and use it in all 5 views.
+   - **Hair:** The top highlight is lighter in SE and NE than in S and N. Use the same highlight colour everywhere.
+   - **Red and skin:** The kimono red, bow red and skin tones are already consistent.
+
+6. **Cleanliness**
+   - Remove the single stray pixels in the hair highlights and fix the stair-stepped edges on the sleeve outlines.
+   - Use selective outlining: dark outline outside, coloured lines inside.
+   - At 1x the faces in S and SE read as noise.
+
+**Score: 5/10, FIX.**

@@ -1,0 +1,15 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt slash_SE (`actions_src/slash.py`) and it passes QC. I made 4 build-and-review passes, plus a test sheet (`actions_src/test_slash9.py`) with one labelled frame per new part.
+
+**Changes:**
+- **Body:** squashed torso for coil, stretched forward-leaning torso for the upswing, impact 2px lower than the smear frame.
+- **Overlap:** hair ends drag on fast frames and overshoot on follow; the bow lags and overshoots; the hem changes almost every frame.
+- **Legs:** 3px outlined back leg on a clean 2:1 slope, longer stride.
+- **FX:** 3-frame smear tapering 1px→6px with tail fragments, no longer cut by the head; spark clusters in place of single dots.
+
+New parts are all prefixed `slash9_`.
+
+**Still weak:** the sword arm still merges with the skirt in red, the impact-frame smear trail looks slightly detached, and the critics haven't re-scored it.
+
+Saving session...completed.

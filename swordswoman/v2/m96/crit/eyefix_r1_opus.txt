@@ -1,0 +1,12 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+Your message was cut off after "make", but it matches the critique prompt in `crit/eyefix_q.txt`, so I judged the 'after' rows against that brief.
+
+**a=6, b=6, c=7, d=6**
+
+The arch now has a peak in S and E neutral, cheerful and determined. Surprised still looks boxy, and SE near-eye tops look flat at 1x.
+
+**Top 2 pixel fixes:**
+1. **The mid-tone outer line (g, col 0 under the K end) looks like a separate grey stripe at 8x and a smudge at 1x.** Make it skin so the outer corner is just K end + K corner + wing. Lash thickness should come from the K pixels, not a halo.
+2. **SE far eye: the lash end and wing merge with the dark hair and cheek edge**, so the shape is lost. Add a 1px skin gap between the far eye's outer end and the hair, or drop the far wing.

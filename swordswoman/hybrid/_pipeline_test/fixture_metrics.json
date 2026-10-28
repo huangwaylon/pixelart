@@ -1,0 +1,3083 @@
+{
+ "sprites": [
+  {
+   "name": "jump_E_apex.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/jump_E_apex.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 22,
+   "opaque": 1155,
+   "orphans": 16,
+   "lint": {
+    "outline_gap": 0,
+    "notch": 13,
+    "spur": 10,
+    "double": 1,
+    "jaggy": 7,
+    "banding": 1
+   },
+   "bbox": [
+    41,
+    38,
+    92,
+    93
+   ],
+   "height": 56.0,
+   "width": 52.0,
+   "body_height": 56.0,
+   "baseline": 93.0,
+   "feet_cx": 61.83,
+   "eye_row": 61.5,
+   "sword_px": 56.0,
+   "baseline_off": -11,
+   "feet_cx_off": -2.17,
+   "eye_row_rel": 0.42,
+   "bow_rel": 0.119,
+   "feat": {
+    "eyes": [
+     63.5,
+     61.5
+    ],
+    "bow": [
+     52.45,
+     44.68
+    ],
+    "head": [
+     53.8,
+     52.04
+    ],
+    "body": [
+     65.96,
+     77.37
+    ],
+    "guard": [
+     75.0,
+     72.0
+    ],
+    "sword_tip": [
+     91.0,
+     61.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.727,
+     "hair_1": 0.24,
+     "hair_2": 0.033,
+     "_px": 275
+    },
+    "red": {
+     "red_0": 0.112,
+     "red_1": 0.388,
+     "red_2": 0.478,
+     "red_3": 0.022,
+     "_px": 464
+    },
+    "skin": {
+     "skin_0": 0.2,
+     "skin_1": 0.744,
+     "skin_2": 0.056,
+     "_px": 90
+    },
+    "leather": {
+     "outline": 0.851,
+     "leather_1": 0.099,
+     "leather_2": 0.05,
+     "_px": 181
+    },
+    "dark": {
+     "outline": 0.945,
+     "dark_1": 0.055,
+     "_px": 163
+    },
+    "steel": {
+     "steel_0": 0.517,
+     "steel_1": 0.207,
+     "steel_2": 0.276,
+     "_px": 58
+    },
+    "eye": {
+     "eye_0": 0.333,
+     "eye_1": 0.667,
+     "_px": 6
+    },
+    "pink": {
+     "pink_0": 0.714,
+     "pink_1": 0.286,
+     "_px": 70
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/jump_E_apex",
+   "iou": 0.994,
+   "iou_body": 0.9604,
+   "drift": {
+    "eyes": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "eye_row": 0.0
+   }
+  },
+  {
+   "name": "jump_E_crouch.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/jump_E_crouch.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 20,
+   "opaque": 989,
+   "orphans": 16,
+   "lint": {
+    "outline_gap": 0,
+    "notch": 9,
+    "spur": 9,
+    "double": 0,
+    "jaggy": 23,
+    "banding": 2
+   },
+   "bbox": [
+    35,
+    52,
+    74,
+    107
+   ],
+   "height": 56.0,
+   "width": 40.0,
+   "body_height": 56.0,
+   "baseline": 107.0,
+   "feet_cx": 63.43,
+   "eye_row": 75.5,
+   "sword_px": 32.0,
+   "baseline_off": 3,
+   "feet_cx_off": -0.57,
+   "eye_row_rel": 0.42,
+   "bow_rel": 0.1,
+   "feat": {
+    "eyes": [
+     65.5,
+     75.5
+    ],
+    "bow": [
+     60.07,
+     57.59
+    ],
+    "head": [
+     58.86,
+     64.94
+    ],
+    "body": [
+     66.69,
+     89.94
+    ],
+    "guard": [
+     59.0,
+     90.0
+    ],
+    "sword_tip": [
+     51.0,
+     89.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.768,
+     "hair_1": 0.18,
+     "hair_2": 0.053,
+     "_px": 284
+    },
+    "red": {
+     "red_0": 0.086,
+     "red_1": 0.455,
+     "red_2": 0.449,
+     "red_3": 0.009,
+     "_px": 336
+    },
+    "skin": {
+     "skin_0": 0.081,
+     "skin_1": 0.919,
+     "skin_2": 0.0,
+     "_px": 62
+    },
+    "leather": {
+     "outline": 0.787,
+     "leather_1": 0.152,
+     "leather_2": 0.061,
+     "_px": 164
+    },
+    "dark": {
+     "outline": 0.97,
+     "dark_1": 0.03,
+     "_px": 133
+    },
+    "steel": {
+     "steel_0": 0.459,
+     "steel_1": 0.213,
+     "steel_2": 0.328,
+     "_px": 61
+    },
+    "eye": {
+     "eye_0": 0.333,
+     "eye_1": 0.667,
+     "_px": 6
+    },
+    "pink": {
+     "pink_0": 0.667,
+     "pink_1": 0.333,
+     "_px": 72
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/jump_E_crouch",
+   "iou": 0.993,
+   "iou_body": 0.9244,
+   "drift": {
+    "eyes": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "eye_row": 0.0
+   }
+  },
+  {
+   "name": "jump_E_land.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/jump_E_land.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 21,
+   "opaque": 1021,
+   "orphans": 14,
+   "lint": {
+    "outline_gap": 0,
+    "notch": 11,
+    "spur": 7,
+    "double": 0,
+    "jaggy": 7,
+    "banding": 2
+   },
+   "bbox": [
+    39,
+    52,
+    74,
+    107
+   ],
+   "height": 56.0,
+   "width": 36.0,
+   "body_height": 56.0,
+   "baseline": 107.0,
+   "feet_cx": 61.67,
+   "eye_row": 76.0,
+   "sword_px": 62.0,
+   "baseline_off": 3,
+   "feet_cx_off": -2.33,
+   "eye_row_rel": 0.429,
+   "bow_rel": 0.103,
+   "feat": {
+    "eyes": [
+     64.5,
+     76.0
+    ],
+    "bow": [
+     60.2,
+     57.75
+    ],
+    "head": [
+     58.85,
+     64.96
+    ],
+    "body": [
+     66.59,
+     89.91
+    ],
+    "guard": [
+     59.0,
+     89.0
+    ],
+    "sword_tip": [
+     39.0,
+     95.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.78,
+     "hair_1": 0.181,
+     "hair_2": 0.039,
+     "_px": 282
+    },
+    "red": {
+     "red_0": 0.058,
+     "red_1": 0.529,
+     "red_2": 0.404,
+     "red_3": 0.009,
+     "_px": 344
+    },
+    "skin": {
+     "skin_0": 0.086,
+     "skin_1": 0.914,
+     "skin_2": 0.0,
+     "_px": 58
+    },
+    "leather": {
+     "outline": 0.802,
+     "leather_1": 0.145,
+     "leather_2": 0.052,
+     "_px": 172
+    },
+    "dark": {
+     "outline": 0.972,
+     "dark_1": 0.028,
+     "_px": 142
+    },
+    "steel": {
+     "steel_0": 0.5,
+     "steel_1": 0.234,
+     "steel_2": 0.266,
+     "_px": 64
+    },
+    "eye": {
+     "eye_0": 0.333,
+     "eye_1": 0.667,
+     "_px": 6
+    },
+    "pink": {
+     "pink_0": 0.711,
+     "pink_1": 0.289,
+     "_px": 83
+    },
+    "purple": {
+     "purple_0": 1.0,
+     "_px": 8
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/jump_E_land",
+   "iou": 0.9942,
+   "iou_body": 0.9439,
+   "drift": {
+    "eyes": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "eye_row": 0.0
+   }
+  },
+  {
+   "name": "slash_SE_k0.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/slash_SE_k0.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 20,
+   "opaque": 967,
+   "orphans": 10,
+   "lint": {
+    "outline_gap": 0,
+    "notch": 7,
+    "spur": 4,
+    "double": 1,
+    "jaggy": 9,
+    "banding": 2
+   },
+   "bbox": [
+    44,
+    49,
+    75,
+    106
+   ],
+   "height": 58.0,
+   "width": 32.0,
+   "body_height": 58.0,
+   "baseline": 106.0,
+   "feet_cx": 67.71,
+   "eye_row": 74.0,
+   "sword_px": 51.0,
+   "baseline_off": 2,
+   "feet_cx_off": 3.71,
+   "eye_row_rel": 0.431,
+   "bow_rel": 0.128,
+   "feat": {
+    "eyes": [
+     63.5,
+     74.0
+    ],
+    "bow": [
+     56.36,
+     56.41
+    ],
+    "head": [
+     59.92,
+     62.27
+    ],
+    "body": [
+     61.25,
+     92.0
+    ],
+    "guard": [
+     61.0,
+     89.0
+    ],
+    "sword_tip": [
+     44.0,
+     82.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.638,
+     "hair_1": 0.321,
+     "hair_2": 0.041,
+     "_px": 268
+    },
+    "red": {
+     "red_0": 0.143,
+     "red_1": 0.327,
+     "red_2": 0.519,
+     "red_3": 0.011,
+     "_px": 349
+    },
+    "skin": {
+     "skin_0": 0.178,
+     "skin_1": 0.822,
+     "skin_2": 0.0,
+     "_px": 107
+    },
+    "leather": {
+     "outline": 0.945,
+     "leather_1": 0.021,
+     "leather_2": 0.034,
+     "_px": 145
+    },
+    "dark": {
+     "outline": 0.932,
+     "dark_1": 0.068,
+     "_px": 147
+    },
+    "steel": {
+     "steel_0": 0.5,
+     "steel_1": 0.173,
+     "steel_2": 0.327,
+     "_px": 52
+    },
+    "eye": {
+     "eye_0": 0.308,
+     "eye_1": 0.692,
+     "_px": 13
+    },
+    "pink": {
+     "pink_0": 1.0,
+     "pink_1": 0.0,
+     "_px": 14
+    },
+    "purple": {
+     "purple_0": 1.0,
+     "_px": 9
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/slash_SE_k0",
+   "iou": 0.9959,
+   "iou_body": 0.9423,
+   "drift": {
+    "eyes": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "eye_row": 0.0
+   }
+  },
+  {
+   "name": "slash_SE_k1.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/slash_SE_k1.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 21,
+   "opaque": 1167,
+   "orphans": 19,
+   "lint": {
+    "outline_gap": 44,
+    "notch": 12,
+    "spur": 10,
+    "double": 0,
+    "jaggy": 15,
+    "banding": 2
+   },
+   "bbox": [
+    37,
+    50,
+    100,
+    106
+   ],
+   "height": 57.0,
+   "width": 64.0,
+   "body_height": 57.0,
+   "baseline": 106.0,
+   "feet_cx": 67.71,
+   "eye_row": 74.56,
+   "sword_px": 61.0,
+   "baseline_off": 2,
+   "feet_cx_off": 3.71,
+   "eye_row_rel": 0.431,
+   "bow_rel": 0.122,
+   "feat": {
+    "eyes": [
+     63.11,
+     74.56
+    ],
+    "bow": [
+     55.59,
+     56.96
+    ],
+    "head": [
+     58.52,
+     63.0
+    ],
+    "body": [
+     62.28,
+     90.77
+    ],
+    "guard": [
+     72.0,
+     91.0
+    ],
+    "sword_tip": [
+     92.0,
+     99.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.663,
+     "hair_1": 0.326,
+     "hair_2": 0.011,
+     "_px": 261
+    },
+    "red": {
+     "red_0": 0.146,
+     "red_1": 0.329,
+     "red_2": 0.525,
+     "red_3": 0.0,
+     "_px": 356
+    },
+    "skin": {
+     "skin_0": 0.19,
+     "skin_1": 0.79,
+     "skin_2": 0.019,
+     "_px": 105
+    },
+    "leather": {
+     "outline": 0.773,
+     "leather_1": 0.163,
+     "leather_2": 0.064,
+     "_px": 172
+    },
+    "dark": {
+     "outline": 0.937,
+     "dark_1": 0.063,
+     "_px": 142
+    },
+    "steel": {
+     "steel_0": 0.292,
+     "steel_1": 0.088,
+     "steel_2": 0.619,
+     "_px": 113
+    },
+    "eye": {
+     "eye_0": 0.286,
+     "eye_1": 0.714,
+     "_px": 14
+    },
+    "pink": {
+     "pink_0": 0.576,
+     "pink_1": 0.424,
+     "_px": 132
+    },
+    "purple": {
+     "purple_0": 1.0,
+     "_px": 5
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/slash_SE_k1",
+   "iou": 0.8569,
+   "iou_body": 0.7974,
+   "drift": {
+    "eyes": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "eye_row": 0.0
+   }
+  },
+  {
+   "name": "slash_SE_k2.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/slash_SE_k2.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 20,
+   "opaque": 1031,
+   "orphans": 10,
+   "lint": {
+    "outline_gap": 0,
+    "notch": 8,
+    "spur": 9,
+    "double": 0,
+    "jaggy": 11,
+    "banding": 1
+   },
+   "bbox": [
+    48,
+    52,
+    102,
+    106
+   ],
+   "height": 55.0,
+   "width": 55.0,
+   "body_height": 55.0,
+   "baseline": 106.0,
+   "feet_cx": 67.71,
+   "eye_row": 74.0,
+   "sword_px": 69.0,
+   "baseline_off": 2,
+   "feet_cx_off": 3.71,
+   "eye_row_rel": 0.4,
+   "bow_rel": 0.111,
+   "feat": {
+    "eyes": [
+     65.17,
+     74.0
+    ],
+    "bow": [
+     55.69,
+     58.13
+    ],
+    "head": [
+     57.23,
+     64.02
+    ],
+    "body": [
+     63.49,
+     90.11
+    ],
+    "guard": [
+     77.0,
+     90.0
+    ],
+    "sword_tip": [
+     101.0,
+     84.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.724,
+     "hair_1": 0.228,
+     "hair_2": 0.049,
+     "_px": 268
+    },
+    "red": {
+     "red_0": 0.125,
+     "red_1": 0.331,
+     "red_2": 0.52,
+     "red_3": 0.023,
+     "_px": 344
+    },
+    "skin": {
+     "skin_0": 0.17,
+     "skin_1": 0.83,
+     "skin_2": 0.0,
+     "_px": 106
+    },
+    "leather": {
+     "outline": 0.718,
+     "leather_1": 0.215,
+     "leather_2": 0.067,
+     "_px": 195
+    },
+    "dark": {
+     "outline": 0.94,
+     "dark_1": 0.06,
+     "_px": 149
+    },
+    "steel": {
+     "steel_0": 0.479,
+     "steel_1": 0.205,
+     "steel_2": 0.315,
+     "_px": 73
+    },
+    "eye": {
+     "eye_0": 0.333,
+     "eye_1": 0.667,
+     "_px": 12
+    },
+    "pink": {
+     "pink_0": 1.0,
+     "pink_1": 0.0,
+     "_px": 20
+    },
+    "purple": {
+     "purple_0": 1.0,
+     "_px": 4
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/slash_SE_k2",
+   "iou": 0.9913,
+   "iou_body": 0.9413,
+   "drift": {
+    "eyes": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "eye_row": 0.0
+   }
+  },
+  {
+   "name": "slash_SE_k3.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/slash_SE_k3.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 19,
+   "opaque": 1068,
+   "orphans": 14,
+   "lint": {
+    "outline_gap": 0,
+    "notch": 7,
+    "spur": 7,
+    "double": 0,
+    "jaggy": 5,
+    "banding": 2
+   },
+   "bbox": [
+    46,
+    51,
+    99,
+    106
+   ],
+   "height": 56.0,
+   "width": 54.0,
+   "body_height": 56.0,
+   "baseline": 106.0,
+   "feet_cx": 67.71,
+   "eye_row": 74.6,
+   "sword_px": 72.0,
+   "baseline_off": 2,
+   "feet_cx_off": 3.71,
+   "eye_row_rel": 0.421,
+   "bow_rel": 0.12,
+   "feat": {
+    "eyes": [
+     64.2,
+     74.6
+    ],
+    "bow": [
+     55.42,
+     57.74
+    ],
+    "head": [
+     57.27,
+     63.5
+    ],
+    "body": [
+     63.37,
+     90.09
+    ],
+    "guard": [
+     74.0,
+     93.0
+    ],
+    "sword_tip": [
+     98.0,
+     103.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.718,
+     "hair_1": 0.222,
+     "hair_2": 0.06,
+     "_px": 266
+    },
+    "red": {
+     "red_0": 0.12,
+     "red_1": 0.353,
+     "red_2": 0.497,
+     "red_3": 0.03,
+     "_px": 368
+    },
+    "skin": {
+     "skin_0": 0.15,
+     "skin_1": 0.85,
+     "skin_2": 0.0,
+     "_px": 107
+    },
+    "leather": {
+     "outline": 0.775,
+     "leather_1": 0.157,
+     "leather_2": 0.069,
+     "_px": 204
+    },
+    "dark": {
+     "outline": 0.946,
+     "dark_1": 0.054,
+     "_px": 167
+    },
+    "steel": {
+     "steel_0": 0.52,
+     "steel_1": 0.2,
+     "steel_2": 0.28,
+     "_px": 75
+    },
+    "eye": {
+     "eye_0": 0.25,
+     "eye_1": 0.75,
+     "_px": 8
+    },
+    "pink": {
+     "pink_0": 1.0,
+     "pink_1": 0.0,
+     "_px": 31
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/slash_SE_k3",
+   "iou": 0.9981,
+   "iou_body": 0.9389,
+   "drift": {
+    "eyes": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "eye_row": 0.0
+   }
+  },
+  {
+   "name": "turn_E.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/turn_E.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 21,
+   "opaque": 998,
+   "orphans": 12,
+   "lint": {
+    "outline_gap": 0,
+    "notch": 13,
+    "spur": 10,
+    "double": 0,
+    "jaggy": 9,
+    "banding": 2
+   },
+   "bbox": [
+    52,
+    48,
+    79,
+    111
+   ],
+   "height": 64.0,
+   "width": 28.0,
+   "body_height": 59.0,
+   "baseline": 106.0,
+   "feet_cx": 65.33,
+   "eye_row": 73.5,
+   "sword_px": 32.0,
+   "baseline_off": 2,
+   "feet_cx_off": 1.33,
+   "eye_row_rel": 0.432,
+   "bow_rel": 0.11,
+   "feat": {
+    "eyes": [
+     66.5,
+     73.5
+    ],
+    "bow": [
+     61.33,
+     54.49
+    ],
+    "head": [
+     60.9,
+     62.2
+    ],
+    "body": [
+     65.81,
+     88.27
+    ],
+    "guard": [
+     71.0,
+     94.0
+    ],
+    "sword_tip": [
+     78.0,
+     110.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.787,
+     "hair_1": 0.192,
+     "hair_2": 0.021,
+     "_px": 286
+    },
+    "red": {
+     "red_0": 0.073,
+     "red_1": 0.429,
+     "red_2": 0.483,
+     "red_3": 0.016,
+     "_px": 315
+    },
+    "skin": {
+     "skin_0": 0.167,
+     "skin_1": 0.8,
+     "skin_2": 0.033,
+     "_px": 90
+    },
+    "leather": {
+     "outline": 0.845,
+     "leather_1": 0.101,
+     "leather_2": 0.054,
+     "_px": 168
+    },
+    "dark": {
+     "outline": 0.953,
+     "dark_1": 0.047,
+     "_px": 149
+    },
+    "steel": {
+     "steel_0": 0.536,
+     "steel_1": 0.196,
+     "steel_2": 0.268,
+     "_px": 56
+    },
+    "eye": {
+     "eye_0": 0.333,
+     "eye_1": 0.667,
+     "_px": 6
+    },
+    "pink": {
+     "pink_0": 0.757,
+     "pink_1": 0.243,
+     "_px": 70
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/turn_E",
+   "iou": 0.997,
+   "iou_body": 0.9279,
+   "drift": {
+    "eyes": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "eye_row": 0.0
+   }
+  },
+  {
+   "name": "turn_N.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/turn_N.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 17,
+   "opaque": 1192,
+   "orphans": 17,
+   "lint": {
+    "outline_gap": 0,
+    "notch": 7,
+    "spur": 5,
+    "double": 1,
+    "jaggy": 12,
+    "banding": 1
+   },
+   "bbox": [
+    45,
+    47,
+    78,
+    110
+   ],
+   "height": 64.0,
+   "width": 34.0,
+   "body_height": 60.0,
+   "baseline": 106.0,
+   "feet_cx": 58.0,
+   "sword_px": 56.0,
+   "baseline_off": 2,
+   "feet_cx_off": -6.0,
+   "bow_rel": 0.082,
+   "feat": {
+    "bow": [
+     68.69,
+     51.91
+    ],
+    "head": [
+     63.28,
+     61.76
+    ],
+    "body": [
+     63.58,
+     86.31
+    ],
+    "guard": [
+     54.0,
+     91.0
+    ],
+    "sword_tip": [
+     45.0,
+     109.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.767,
+     "hair_1": 0.189,
+     "hair_2": 0.044,
+     "_px": 339
+    },
+    "red": {
+     "red_0": 0.0,
+     "red_1": 0.496,
+     "red_2": 0.477,
+     "red_3": 0.027,
+     "_px": 486
+    },
+    "skin": {
+     "skin_0": 0.183,
+     "skin_1": 0.717,
+     "skin_2": 0.1,
+     "_px": 60
+    },
+    "leather": {
+     "outline": 0.793,
+     "leather_1": 0.155,
+     "leather_2": 0.052,
+     "_px": 174
+    },
+    "dark": {
+     "outline": 1.0,
+     "dark_1": 0.0,
+     "_px": 138
+    },
+    "steel": {
+     "steel_0": 0.554,
+     "steel_1": 0.143,
+     "steel_2": 0.304,
+     "_px": 56
+    },
+    "pink": {
+     "pink_0": 0.662,
+     "pink_1": 0.338,
+     "_px": 77
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/turn_N",
+   "iou": 0.9909,
+   "iou_body": 0.9539,
+   "drift": {
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    }
+   }
+  },
+  {
+   "name": "turn_NE.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/turn_NE.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 20,
+   "opaque": 1073,
+   "orphans": 12,
+   "lint": {
+    "outline_gap": 0,
+    "notch": 8,
+    "spur": 9,
+    "double": 0,
+    "jaggy": 0,
+    "banding": 2
+   },
+   "bbox": [
+    35,
+    49,
+    76,
+    105
+   ],
+   "height": 57.0,
+   "width": 42.0,
+   "body_height": 57.0,
+   "baseline": 105.0,
+   "feet_cx": 63.7,
+   "sword_px": 58.0,
+   "baseline_off": 1,
+   "feet_cx_off": -0.3,
+   "bow_rel": 0.095,
+   "feat": {
+    "bow": [
+     68.44,
+     54.41
+    ],
+    "head": [
+     63.01,
+     61.81
+    ],
+    "body": [
+     63.11,
+     86.58
+    ],
+    "guard": [
+     53.0,
+     85.0
+    ],
+    "sword_tip": [
+     35.0,
+     102.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.752,
+     "hair_1": 0.217,
+     "hair_2": 0.031,
+     "_px": 318
+    },
+    "red": {
+     "red_0": 0.069,
+     "red_1": 0.355,
+     "red_2": 0.524,
+     "red_3": 0.051,
+     "_px": 389
+    },
+    "skin": {
+     "skin_0": 0.032,
+     "skin_1": 0.935,
+     "skin_2": 0.032,
+     "_px": 62
+    },
+    "leather": {
+     "outline": 0.772,
+     "leather_1": 0.174,
+     "leather_2": 0.054,
+     "_px": 167
+    },
+    "dark": {
+     "outline": 0.97,
+     "dark_1": 0.03,
+     "_px": 133
+    },
+    "steel": {
+     "steel_0": 0.5,
+     "steel_1": 0.224,
+     "steel_2": 0.276,
+     "_px": 58
+    },
+    "pink": {
+     "pink_0": 0.722,
+     "pink_1": 0.278,
+     "_px": 72
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/turn_NE",
+   "iou": 0.9908,
+   "iou_body": 0.9569,
+   "drift": {
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    }
+   }
+  },
+  {
+   "name": "turn_NW.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/turn_NW.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 17,
+   "opaque": 1049,
+   "orphans": 9,
+   "lint": {
+    "outline_gap": 0,
+    "notch": 8,
+    "spur": 6,
+    "double": 4,
+    "jaggy": 11,
+    "banding": 3
+   },
+   "bbox": [
+    45,
+    47,
+    76,
+    113
+   ],
+   "height": 67.0,
+   "width": 32.0,
+   "body_height": 59.0,
+   "baseline": 105.0,
+   "feet_cx": 62.73,
+   "sword_px": 60.0,
+   "baseline_off": 1,
+   "feet_cx_off": -1.27,
+   "bow_rel": 0.049,
+   "feat": {
+    "bow": [
+     61.53,
+     49.9
+    ],
+    "head": [
+     62.98,
+     61.62
+    ],
+    "body": [
+     63.77,
+     87.17
+    ],
+    "guard": [
+     55.0,
+     94.0
+    ],
+    "sword_tip": [
+     45.0,
+     112.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.704,
+     "hair_1": 0.252,
+     "hair_2": 0.044,
+     "_px": 321
+    },
+    "red": {
+     "red_0": 0.0,
+     "red_1": 0.657,
+     "red_2": 0.309,
+     "red_3": 0.033,
+     "_px": 359
+    },
+    "skin": {
+     "skin_0": 0.438,
+     "skin_1": 0.562,
+     "skin_2": 0.0,
+     "_px": 64
+    },
+    "leather": {
+     "outline": 0.775,
+     "leather_1": 0.18,
+     "leather_2": 0.045,
+     "_px": 178
+    },
+    "dark": {
+     "outline": 0.972,
+     "dark_1": 0.028,
+     "_px": 142
+    },
+    "steel": {
+     "steel_0": 0.533,
+     "steel_1": 0.183,
+     "steel_2": 0.283,
+     "_px": 60
+    },
+    "pink": {
+     "pink_0": 0.651,
+     "pink_1": 0.349,
+     "_px": 63
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/turn_NW",
+   "iou": 0.9896,
+   "iou_body": 0.945,
+   "drift": {
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    }
+   }
+  },
+  {
+   "name": "turn_S.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/turn_S.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 21,
+   "opaque": 1107,
+   "orphans": 19,
+   "lint": {
+    "outline_gap": 0,
+    "notch": 10,
+    "spur": 4,
+    "double": 5,
+    "jaggy": 5,
+    "banding": 1
+   },
+   "bbox": [
+    49,
+    48,
+    84,
+    112
+   ],
+   "height": 65.0,
+   "width": 36.0,
+   "body_height": 59.0,
+   "baseline": 106.0,
+   "feet_cx": 63.5,
+   "eye_row": 72.64,
+   "sword_px": 59.0,
+   "baseline_off": 2,
+   "feet_cx_off": -0.5,
+   "eye_row_rel": 0.418,
+   "bow_rel": 0.098,
+   "feat": {
+    "eyes": [
+     64.09,
+     72.64
+    ],
+    "bow": [
+     58.92,
+     53.81
+    ],
+    "head": [
+     62.12,
+     60.83
+    ],
+    "body": [
+     63.25,
+     87.52
+    ],
+    "guard": [
+     72.0,
+     94.0
+    ],
+    "sword_tip": [
+     83.0,
+     111.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.59,
+     "hair_1": 0.371,
+     "hair_2": 0.04,
+     "_px": 251
+    },
+    "red": {
+     "red_0": 0.01,
+     "red_1": 0.339,
+     "red_2": 0.605,
+     "red_3": 0.047,
+     "_px": 387
+    },
+    "skin": {
+     "skin_0": 0.239,
+     "skin_1": 0.754,
+     "skin_2": 0.007,
+     "_px": 138
+    },
+    "leather": {
+     "outline": 0.731,
+     "leather_1": 0.206,
+     "leather_2": 0.063,
+     "_px": 223
+    },
+    "dark": {
+     "outline": 0.976,
+     "dark_1": 0.024,
+     "_px": 167
+    },
+    "steel": {
+     "steel_0": 0.476,
+     "steel_1": 0.206,
+     "steel_2": 0.317,
+     "_px": 63
+    },
+    "eye": {
+     "eye_0": 0.455,
+     "eye_1": 0.545,
+     "_px": 22
+    },
+    "pink": {
+     "pink_0": 1.0,
+     "pink_1": 0.0,
+     "_px": 17
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/turn_S",
+   "iou": 1.0,
+   "iou_body": 0.9534,
+   "drift": {
+    "eyes": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "eye_row": 0.0
+   }
+  },
+  {
+   "name": "turn_SE.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/turn_SE.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 21,
+   "opaque": 1020,
+   "orphans": 9,
+   "lint": {
+    "outline_gap": 0,
+    "notch": 7,
+    "spur": 6,
+    "double": 2,
+    "jaggy": 7,
+    "banding": 1
+   },
+   "bbox": [
+    50,
+    48,
+    83,
+    108
+   ],
+   "height": 61.0,
+   "width": 34.0,
+   "body_height": 60.0,
+   "baseline": 107.0,
+   "feet_cx": 63.0,
+   "eye_row": 72.07,
+   "sword_px": 58.0,
+   "baseline_off": 3,
+   "feet_cx_off": -1.0,
+   "eye_row_rel": 0.401,
+   "bow_rel": 0.123,
+   "feat": {
+    "eyes": [
+     66.0,
+     72.07
+    ],
+    "bow": [
+     56.84,
+     55.38
+    ],
+    "head": [
+     59.8,
+     61.38
+    ],
+    "body": [
+     64.62,
+     87.71
+    ],
+    "guard": [
+     72.0,
+     91.0
+    ],
+    "sword_tip": [
+     82.0,
+     107.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.652,
+     "hair_1": 0.3,
+     "hair_2": 0.048,
+     "_px": 250
+    },
+    "red": {
+     "red_0": 0.039,
+     "red_1": 0.571,
+     "red_2": 0.371,
+     "red_3": 0.019,
+     "_px": 361
+    },
+    "skin": {
+     "skin_0": 0.245,
+     "skin_1": 0.745,
+     "skin_2": 0.009,
+     "_px": 110
+    },
+    "leather": {
+     "outline": 0.743,
+     "leather_1": 0.193,
+     "leather_2": 0.064,
+     "_px": 187
+    },
+    "dark": {
+     "outline": 0.933,
+     "dark_1": 0.067,
+     "_px": 149
+    },
+    "steel": {
+     "steel_0": 0.525,
+     "steel_1": 0.213,
+     "steel_2": 0.262,
+     "_px": 61
+    },
+    "eye": {
+     "eye_0": 0.286,
+     "eye_1": 0.714,
+     "_px": 14
+    },
+    "pink": {
+     "pink_0": 1.0,
+     "pink_1": 0.0,
+     "_px": 23
+    },
+    "purple": {
+     "purple_0": 1.0,
+     "_px": 4
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/turn_SE",
+   "iou": 1.0,
+   "iou_body": 0.9482,
+   "drift": {
+    "eyes": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "eye_row": 0.0
+   }
+  },
+  {
+   "name": "turn_SW.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/turn_SW.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 20,
+   "opaque": 1070,
+   "orphans": 20,
+   "lint": {
+    "outline_gap": 0,
+    "notch": 7,
+    "spur": 5,
+    "double": 4,
+    "jaggy": 7,
+    "banding": 2
+   },
+   "bbox": [
+    50,
+    49,
+    81,
+    117
+   ],
+   "height": 69.0,
+   "width": 32.0,
+   "body_height": 59.0,
+   "baseline": 107.0,
+   "feet_cx": 64.0,
+   "eye_row": 73.07,
+   "sword_px": 62.0,
+   "baseline_off": 3,
+   "feet_cx_off": 0.0,
+   "eye_row_rel": 0.408,
+   "bow_rel": 0.069,
+   "feat": {
+    "eyes": [
+     62.57,
+     73.07
+    ],
+    "bow": [
+     61.23,
+     53.1
+    ],
+    "head": [
+     65.06,
+     60.55
+    ],
+    "body": [
+     62.42,
+     87.7
+    ],
+    "guard": [
+     69.0,
+     96.0
+    ],
+    "sword_tip": [
+     80.0,
+     116.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.563,
+     "hair_1": 0.415,
+     "hair_2": 0.022,
+     "_px": 277
+    },
+    "red": {
+     "red_0": 0.017,
+     "red_1": 0.353,
+     "red_2": 0.553,
+     "red_3": 0.077,
+     "_px": 351
+    },
+    "skin": {
+     "skin_0": 0.18,
+     "skin_1": 0.812,
+     "skin_2": 0.008,
+     "_px": 133
+    },
+    "leather": {
+     "outline": 0.745,
+     "leather_1": 0.183,
+     "leather_2": 0.072,
+     "_px": 208
+    },
+    "dark": {
+     "outline": 0.945,
+     "dark_1": 0.055,
+     "_px": 164
+    },
+    "steel": {
+     "steel_0": 0.492,
+     "steel_1": 0.206,
+     "steel_2": 0.302,
+     "_px": 63
+    },
+    "eye": {
+     "eye_0": 0.286,
+     "eye_1": 0.714,
+     "_px": 14
+    },
+    "pink": {
+     "pink_0": 1.0,
+     "pink_1": 0.0,
+     "_px": 15
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/turn_SW",
+   "iou": 1.0,
+   "iou_body": 0.9453,
+   "drift": {
+    "eyes": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "eye_row": 0.0
+   }
+  },
+  {
+   "name": "turn_W.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/turn_W.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 20,
+   "opaque": 1049,
+   "orphans": 12,
+   "lint": {
+    "outline_gap": 0,
+    "notch": 11,
+    "spur": 7,
+    "double": 0,
+    "jaggy": 7,
+    "banding": 3
+   },
+   "bbox": [
+    50,
+    48,
+    75,
+    115
+   ],
+   "height": 68.0,
+   "width": 26.0,
+   "body_height": 59.0,
+   "baseline": 106.0,
+   "feet_cx": 61.67,
+   "eye_row": 73.5,
+   "sword_px": 60.0,
+   "baseline_off": 2,
+   "feet_cx_off": -2.33,
+   "eye_row_rel": 0.432,
+   "bow_rel": 0.078,
+   "feat": {
+    "eyes": [
+     60.5,
+     73.5
+    ],
+    "bow": [
+     59.73,
+     52.58
+    ],
+    "head": [
+     64.11,
+     60.98
+    ],
+    "body": [
+     61.79,
+     86.79
+    ],
+    "guard": [
+     60.0,
+     96.0
+    ],
+    "sword_tip": [
+     50.0,
+     114.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.635,
+     "hair_1": 0.355,
+     "hair_2": 0.009,
+     "_px": 318
+    },
+    "red": {
+     "red_0": 0.086,
+     "red_1": 0.572,
+     "red_2": 0.305,
+     "red_3": 0.037,
+     "_px": 325
+    },
+    "skin": {
+     "skin_0": 0.227,
+     "skin_1": 0.773,
+     "skin_2": 0.0,
+     "_px": 88
+    },
+    "leather": {
+     "outline": 0.824,
+     "leather_1": 0.118,
+     "leather_2": 0.059,
+     "_px": 187
+    },
+    "dark": {
+     "outline": 0.969,
+     "dark_1": 0.031,
+     "_px": 159
+    },
+    "steel": {
+     "steel_0": 0.533,
+     "steel_1": 0.183,
+     "steel_2": 0.283,
+     "_px": 60
+    },
+    "eye": {
+     "eye_0": 0.333,
+     "eye_1": 0.667,
+     "_px": 6
+    },
+    "pink": {
+     "pink_0": 0.75,
+     "pink_1": 0.25,
+     "_px": 60
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/turn_W",
+   "iou": 0.9934,
+   "iou_body": 0.9478,
+   "drift": {
+    "eyes": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "eye_row": 0.0
+   }
+  },
+  {
+   "name": "walk_SE_k0.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/walk_SE_k0.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 22,
+   "opaque": 1072,
+   "orphans": 7,
+   "lint": {
+    "outline_gap": 0,
+    "notch": 7,
+    "spur": 6,
+    "double": 3,
+    "jaggy": 4,
+    "banding": 2
+   },
+   "bbox": [
+    50,
+    49,
+    84,
+    109
+   ],
+   "height": 61.0,
+   "width": 35.0,
+   "body_height": 57.0,
+   "baseline": 105.0,
+   "feet_cx": 67.0,
+   "eye_row": 73.07,
+   "sword_px": 58.0,
+   "baseline_off": 1,
+   "feet_cx_off": 3.0,
+   "eye_row_rel": 0.422,
+   "bow_rel": 0.14,
+   "feat": {
+    "eyes": [
+     66.0,
+     73.07
+    ],
+    "bow": [
+     57.03,
+     56.97
+    ],
+    "head": [
+     60.0,
+     62.53
+    ],
+    "body": [
+     63.72,
+     88.32
+    ],
+    "guard": [
+     73.0,
+     91.0
+    ],
+    "sword_tip": [
+     83.0,
+     108.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.701,
+     "hair_1": 0.277,
+     "hair_2": 0.023,
+     "_px": 264
+    },
+    "red": {
+     "red_0": 0.158,
+     "red_1": 0.421,
+     "red_2": 0.41,
+     "red_3": 0.011,
+     "_px": 373
+    },
+    "skin": {
+     "skin_0": 0.224,
+     "skin_1": 0.757,
+     "skin_2": 0.019,
+     "_px": 107
+    },
+    "leather": {
+     "outline": 0.73,
+     "leather_1": 0.194,
+     "leather_2": 0.077,
+     "_px": 196
+    },
+    "dark": {
+     "outline": 0.947,
+     "dark_1": 0.053,
+     "_px": 151
+    },
+    "steel": {
+     "steel_0": 0.492,
+     "steel_1": 0.23,
+     "steel_2": 0.279,
+     "_px": 61
+    },
+    "eye": {
+     "eye_0": 0.286,
+     "eye_1": 0.714,
+     "_px": 14
+    },
+    "pink": {
+     "pink_0": 0.667,
+     "pink_1": 0.333,
+     "_px": 45
+    },
+    "purple": {
+     "purple_0": 1.0,
+     "_px": 4
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/walk_SE_k0",
+   "iou": 1.0,
+   "iou_body": 0.9509,
+   "drift": {
+    "eyes": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "eye_row": 0.0
+   }
+  },
+  {
+   "name": "walk_SE_k1.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/walk_SE_k1.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 21,
+   "opaque": 1066,
+   "orphans": 5,
+   "lint": {
+    "outline_gap": 0,
+    "notch": 8,
+    "spur": 8,
+    "double": 1,
+    "jaggy": 12,
+    "banding": 1
+   },
+   "bbox": [
+    51,
+    49,
+    84,
+    109
+   ],
+   "height": 61.0,
+   "width": 34.0,
+   "body_height": 58.0,
+   "baseline": 106.0,
+   "feet_cx": 69.0,
+   "eye_row": 73.07,
+   "sword_px": 58.0,
+   "baseline_off": 2,
+   "feet_cx_off": 5.0,
+   "eye_row_rel": 0.415,
+   "bow_rel": 0.116,
+   "feat": {
+    "eyes": [
+     66.0,
+     73.07
+    ],
+    "bow": [
+     58.53,
+     55.71
+    ],
+    "head": [
+     60.92,
+     61.74
+    ],
+    "body": [
+     64.05,
+     87.9
+    ],
+    "guard": [
+     73.0,
+     90.0
+    ],
+    "sword_tip": [
+     83.0,
+     108.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.673,
+     "hair_1": 0.289,
+     "hair_2": 0.038,
+     "_px": 263
+    },
+    "red": {
+     "red_0": 0.097,
+     "red_1": 0.474,
+     "red_2": 0.404,
+     "red_3": 0.024,
+     "_px": 371
+    },
+    "skin": {
+     "skin_0": 0.263,
+     "skin_1": 0.702,
+     "skin_2": 0.035,
+     "_px": 114
+    },
+    "leather": {
+     "outline": 0.689,
+     "leather_1": 0.221,
+     "leather_2": 0.089,
+     "_px": 190
+    },
+    "dark": {
+     "outline": 0.923,
+     "dark_1": 0.077,
+     "_px": 142
+    },
+    "steel": {
+     "steel_0": 0.492,
+     "steel_1": 0.23,
+     "steel_2": 0.279,
+     "_px": 61
+    },
+    "eye": {
+     "eye_0": 0.286,
+     "eye_1": 0.714,
+     "_px": 14
+    },
+    "pink": {
+     "pink_0": 0.69,
+     "pink_1": 0.31,
+     "_px": 42
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/walk_SE_k1",
+   "iou": 1.0,
+   "iou_body": 0.9505,
+   "drift": {
+    "eyes": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "eye_row": 0.0
+   }
+  },
+  {
+   "name": "walk_SE_k2.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/walk_SE_k2.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 22,
+   "opaque": 1030,
+   "orphans": 11,
+   "lint": {
+    "outline_gap": 0,
+    "notch": 8,
+    "spur": 6,
+    "double": 0,
+    "jaggy": 8,
+    "banding": 3
+   },
+   "bbox": [
+    52,
+    48,
+    83,
+    108
+   ],
+   "height": 61.0,
+   "width": 32.0,
+   "body_height": 58.0,
+   "baseline": 105.0,
+   "feet_cx": 65.5,
+   "eye_row": 72.56,
+   "sword_px": 58.0,
+   "baseline_off": 1,
+   "feet_cx_off": 1.5,
+   "eye_row_rel": 0.423,
+   "bow_rel": 0.131,
+   "feat": {
+    "eyes": [
+     66.11,
+     72.56
+    ],
+    "bow": [
+     58.84,
+     55.61
+    ],
+    "head": [
+     61.17,
+     61.36
+    ],
+    "body": [
+     64.63,
+     87.39
+    ],
+    "guard": [
+     72.0,
+     91.0
+    ],
+    "sword_tip": [
+     82.0,
+     107.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.673,
+     "hair_1": 0.277,
+     "hair_2": 0.05,
+     "_px": 260
+    },
+    "red": {
+     "red_0": 0.072,
+     "red_1": 0.481,
+     "red_2": 0.432,
+     "red_3": 0.014,
+     "_px": 347
+    },
+    "skin": {
+     "skin_0": 0.235,
+     "skin_1": 0.735,
+     "skin_2": 0.029,
+     "_px": 102
+    },
+    "leather": {
+     "outline": 0.749,
+     "leather_1": 0.175,
+     "leather_2": 0.077,
+     "_px": 183
+    },
+    "dark": {
+     "outline": 0.932,
+     "dark_1": 0.068,
+     "_px": 147
+    },
+    "steel": {
+     "steel_0": 0.525,
+     "steel_1": 0.213,
+     "steel_2": 0.262,
+     "_px": 61
+    },
+    "eye": {
+     "eye_0": 0.267,
+     "eye_1": 0.733,
+     "_px": 15
+    },
+    "pink": {
+     "pink_0": 0.75,
+     "pink_1": 0.25,
+     "_px": 48
+    },
+    "purple": {
+     "purple_0": 1.0,
+     "_px": 4
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/walk_SE_k2",
+   "iou": 0.999,
+   "iou_body": 0.9477,
+   "drift": {
+    "eyes": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "eye_row": 0.0
+   }
+  },
+  {
+   "name": "walk_SE_k3.png",
+   "path": "hybrid/_pipeline_test/fixture_smear/walk_SE_k3.png",
+   "off_palette": 0,
+   "semi_alpha": 0,
+   "colours": 21,
+   "opaque": 1020,
+   "orphans": 10,
+   "lint": {
+    "outline_gap": 0,
+    "notch": 5,
+    "spur": 4,
+    "double": 1,
+    "jaggy": 14,
+    "banding": 2
+   },
+   "bbox": [
+    51,
+    49,
+    83,
+    109
+   ],
+   "height": 61.0,
+   "width": 33.0,
+   "body_height": 58.0,
+   "baseline": 106.0,
+   "feet_cx": 66.5,
+   "eye_row": 73.13,
+   "sword_px": 57.0,
+   "baseline_off": 2,
+   "feet_cx_off": 2.5,
+   "eye_row_rel": 0.416,
+   "bow_rel": 0.117,
+   "feat": {
+    "eyes": [
+     66.27,
+     73.13
+    ],
+    "bow": [
+     58.53,
+     55.78
+    ],
+    "head": [
+     61.1,
+     61.85
+    ],
+    "body": [
+     64.88,
+     87.96
+    ],
+    "guard": [
+     72.0,
+     90.0
+    ],
+    "sword_tip": [
+     82.0,
+     108.0
+    ]
+   },
+   "tone_mix": {
+    "hair": {
+     "hair_0": 0.686,
+     "hair_1": 0.28,
+     "hair_2": 0.034,
+     "_px": 264
+    },
+    "red": {
+     "red_0": 0.134,
+     "red_1": 0.471,
+     "red_2": 0.349,
+     "red_3": 0.046,
+     "_px": 350
+    },
+    "skin": {
+     "skin_0": 0.27,
+     "skin_1": 0.7,
+     "skin_2": 0.03,
+     "_px": 100
+    },
+    "leather": {
+     "outline": 0.731,
+     "leather_1": 0.198,
+     "leather_2": 0.071,
+     "_px": 182
+    },
+    "dark": {
+     "outline": 0.978,
+     "dark_1": 0.022,
+     "_px": 136
+    },
+    "steel": {
+     "steel_0": 0.483,
+     "steel_1": 0.233,
+     "steel_2": 0.283,
+     "_px": 60
+    },
+    "eye": {
+     "eye_0": 0.267,
+     "eye_1": 0.733,
+     "_px": 15
+    },
+    "pink": {
+     "pink_0": 0.717,
+     "pink_1": 0.283,
+     "_px": 46
+    }
+   },
+   "guide": "hybrid/_pipeline_test/fixture_smear/guide/walk_SE_k3",
+   "iou": 0.999,
+   "iou_body": 0.9501,
+   "drift": {
+    "eyes": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "bow": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "guard": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "sword_tip": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "head": {
+     "dx": 0.0,
+     "dy": 0.0,
+     "d": 0.0
+    },
+    "eye_row": 0.0
+   }
+  }
+ ],
+ "colour_drift": {
+  "hair": {
+   "median": {
+    "hair_0": 0.701,
+    "hair_1": 0.277,
+    "hair_2": 0.039
+   },
+   "max_drift": 0.293,
+   "worst": "turn_SW.png",
+   "mean_drift": 0.115
+  },
+  "red": {
+   "median": {
+    "red_0": 0.086,
+    "red_1": 0.429,
+    "red_2": 0.477,
+    "red_3": 0.023
+   },
+   "max_drift": 0.492,
+   "worst": "turn_NW.png",
+   "mean_drift": 0.201
+  },
+  "skin": {
+   "median": {
+    "skin_0": 0.19,
+    "skin_1": 0.773,
+    "skin_2": 0.009
+   },
+   "max_drift": 0.468,
+   "worst": "turn_NW.png",
+   "mean_drift": 0.143
+  },
+  "leather": {
+   "median": {
+    "outline": 0.773,
+    "leather_1": 0.174,
+    "leather_2": 0.063
+   },
+   "max_drift": 0.354,
+   "worst": "slash_SE_k0.png",
+   "mean_drift": 0.086
+  },
+  "dark": {
+   "median": {
+    "outline": 0.947,
+    "dark_1": 0.053
+   },
+   "max_drift": 0.106,
+   "worst": "turn_N.png",
+   "mean_drift": 0.034
+  },
+  "steel": {
+   "median": {
+    "steel_0": 0.5,
+    "steel_1": 0.206,
+    "steel_2": 0.283
+   },
+   "max_drift": 0.662,
+   "worst": "slash_SE_k1.png",
+   "mean_drift": 0.086
+  },
+  "eye": {
+   "median": {
+    "eye_0": 0.297,
+    "eye_1": 0.703
+   },
+   "max_drift": 0.316,
+   "worst": "turn_S.png",
+   "mean_drift": 0.068
+  },
+  "pink": {
+   "median": {
+    "pink_0": 0.722,
+    "pink_1": 0.278
+   },
+   "max_drift": 0.556,
+   "worst": "slash_SE_k0.png",
+   "mean_drift": 0.232
+  },
+  "purple": {
+   "median": {
+    "purple_0": 1.0
+   },
+   "max_drift": 0.0,
+   "worst": "jump_E_land.png",
+   "mean_drift": 0.0
+  }
+ },
+ "ramp_area": {
+  "hair": {
+   "mean": 0.264,
+   "min": 0.224,
+   "max": 0.306
+  },
+  "red": {
+   "mean": 0.346,
+   "min": 0.305,
+   "max": 0.408
+  },
+  "skin": {
+   "mean": 0.09,
+   "min": 0.05,
+   "max": 0.125
+  },
+  "leather": {
+   "mean": 0.173,
+   "min": 0.146,
+   "max": 0.201
+  },
+  "dark": {
+   "mean": 0.14,
+   "min": 0.116,
+   "max": 0.156
+  },
+  "steel": {
+   "mean": 0.06,
+   "min": 0.047,
+   "max": 0.097
+  },
+  "eye": {
+   "mean": 0.009,
+   "min": 0.0,
+   "max": 0.02
+  },
+  "pink": {
+   "mean": 0.049,
+   "min": 0.014,
+   "max": 0.113
+  }
+ },
+ "directions": {
+  "height": {
+   "min": 57.0,
+   "max": 69.0,
+   "spread": 12.0
+  },
+  "body_height": {
+   "min": 57.0,
+   "max": 60.0,
+   "spread": 3.0
+  },
+  "eye_row_rel": {
+   "min": 0.401,
+   "max": 0.432,
+   "spread": 0.031
+  },
+  "bow_rel": {
+   "min": 0.049,
+   "max": 0.123,
+   "spread": 0.074
+  },
+  "baseline": {
+   "min": 105.0,
+   "max": 107.0,
+   "spread": 2.0
+  },
+  "feet_cx": {
+   "min": 58.0,
+   "max": 65.33,
+   "spread": 7.33
+  }
+ },
+ "sequences": [
+  {
+   "anim": "jump",
+   "dir": "E",
+   "frames": [
+    "jump_E_crouch.png",
+    "jump_E_apex.png",
+    "jump_E_land.png"
+   ],
+   "loop": false,
+   "flicker": 0,
+   "boil_px": [
+    0,
+    0
+   ],
+   "h": [
+    56,
+    56,
+    56
+   ],
+   "w": [
+    30,
+    33,
+    36
+   ],
+   "h_ratio": [
+    0.949,
+    0.949,
+    0.949
+   ],
+   "w_ratio": [
+    1.364,
+    1.5,
+    1.636
+   ],
+   "squash": 0.949,
+   "stretch": 0.949,
+   "body_path": [
+    [
+     66.7,
+     89.9
+    ],
+    [
+     66.0,
+     77.4
+    ],
+    [
+     66.6,
+     89.9
+    ]
+   ],
+   "head_disp_max": 12.9,
+   "head_overlap": 2.93,
+   "head_lag": 0,
+   "head_lag_corr": 1.0,
+   "bow_disp_max": 12.9,
+   "bow_overlap": 4.68,
+   "bow_lag": 0,
+   "bow_lag_corr": 1.0,
+   "tip_path": [
+    [
+     51.0,
+     89.0
+    ],
+    [
+     91.0,
+     61.0
+    ],
+    [
+     39.0,
+     95.0
+    ]
+   ],
+   "tip_len": 111.0,
+   "tip_smooth": 0.0,
+   "tip_arc": {
+    "cx": -49.7,
+    "cy": -97.5,
+    "r": 212.0,
+    "rms": 0.0
+   },
+   "smear_px": [
+    0,
+    0,
+    0
+   ],
+   "smear_src": "outside guide",
+   "flags": [
+    "weak squash/stretch (< 8 % height range)"
+   ]
+  },
+  {
+   "anim": "slash",
+   "dir": "SE",
+   "frames": [
+    "slash_SE_k0.png",
+    "slash_SE_k1.png",
+    "slash_SE_k2.png",
+    "slash_SE_k3.png"
+   ],
+   "loop": false,
+   "flicker": 0,
+   "boil_px": [
+    48,
+    35,
+    29
+   ],
+   "h": [
+    58,
+    57,
+    55,
+    56
+   ],
+   "w": [
+    27,
+    53,
+    30,
+    33
+   ],
+   "h_ratio": [
+    0.967,
+    0.95,
+    0.917,
+    0.933
+   ],
+   "w_ratio": [
+    1.038,
+    2.038,
+    1.154,
+    1.269
+   ],
+   "squash": 0.917,
+   "stretch": 0.967,
+   "body_path": [
+    [
+     61.2,
+     92.0
+    ],
+    [
+     62.3,
+     90.8
+    ],
+    [
+     63.5,
+     90.1
+    ],
+    [
+     63.4,
+     90.1
+    ]
+   ],
+   "head_disp_max": 2.7,
+   "head_overlap": 3.74,
+   "head_lag": 0,
+   "head_lag_corr": -0.79,
+   "bow_disp_max": 1.7,
+   "bow_overlap": 2.91,
+   "bow_lag": 0,
+   "bow_lag_corr": -0.63,
+   "tip_path": [
+    [
+     44.0,
+     82.0
+    ],
+    [
+     92.0,
+     99.0
+    ],
+    [
+     101.0,
+     84.0
+    ],
+    [
+     98.0,
+     103.0
+    ]
+   ],
+   "tip_len": 87.6,
+   "tip_smooth": 0.26,
+   "tip_arc": {
+    "cx": 72.5,
+    "cy": 85.1,
+    "r": 28.2,
+    "rms": 2.6
+   },
+   "smear_px": [
+    0,
+    157,
+    0,
+    0
+   ],
+   "smear_src": "outside guide",
+   "flags": []
+  },
+  {
+   "anim": "walk",
+   "dir": "SE",
+   "frames": [
+    "walk_SE_k0.png",
+    "walk_SE_k1.png",
+    "walk_SE_k2.png",
+    "walk_SE_k3.png"
+   ],
+   "loop": true,
+   "flicker": 0,
+   "boil_px": [
+    42,
+    16,
+    21,
+    19
+   ],
+   "h": [
+    57,
+    58,
+    58,
+    58
+   ],
+   "w": [
+    28,
+    27,
+    24,
+    26
+   ],
+   "h_ratio": [
+    0.95,
+    0.967,
+    0.967,
+    0.967
+   ],
+   "w_ratio": [
+    1.077,
+    1.038,
+    0.923,
+    1.0
+   ],
+   "squash": 0.95,
+   "stretch": 0.967,
+   "body_path": [
+    [
+     63.7,
+     88.3
+    ],
+    [
+     64.1,
+     87.9
+    ],
+    [
+     64.6,
+     87.4
+    ],
+    [
+     64.9,
+     88.0
+    ]
+   ],
+   "head_disp_max": 1.2,
+   "head_overlap": 0.41,
+   "head_lag": 0,
+   "head_lag_corr": 0.92,
+   "bow_disp_max": 1.8,
+   "bow_overlap": 0.8,
+   "bow_lag": 0,
+   "bow_lag_corr": 0.67,
+   "tip_path": [
+    [
+     83.0,
+     108.0
+    ],
+    [
+     83.0,
+     108.0
+    ],
+    [
+     82.0,
+     107.0
+    ],
+    [
+     82.0,
+     108.0
+    ]
+   ],
+   "tip_len": 2.4,
+   "tip_smooth": -0.134,
+   "tip_arc": {
+    "cx": 82.5,
+    "cy": 107.5,
+    "r": 0.7,
+    "rms": 0.0
+   },
+   "smear_px": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "smear_src": "outside guide",
+   "flags": []
+  }
+ ]
+}

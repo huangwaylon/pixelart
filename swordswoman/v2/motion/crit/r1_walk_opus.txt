@@ -1,0 +1,21 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+OVERALL: 5
+
+- Natural: 5
+- Whole-body: 5
+- Fluid: 5
+- Appealing: 6
+- Secondary motion convincing: 4
+- Readable at 1x: 6
+
+The new version has a clearer stride than the old one, especially in the E view, and the 8-frame timing is right. Three things hold it back.
+
+**Top 3 fixes:**
+
+1. **Body bob.** Contact (+3.5 px) and down (+3.6 px) sit almost level, and so do pass (+0.4) and up (−0.3). The body jumps between two heights instead of easing. Raise contact/contact2 by about 1.5 px so it sits halfway, push down/down2 1 px lower to make it the lowest frame, and keep up/up2 the highest.
+
+2. **Head drifts in the second half.** In frames.json the head's x offset is about 0 in frames 0–3 but +3 to +5 px in contact2 through pass2, and tilt stays near 5° there. The cycle is lopsided and pops at the loop. Mirror the first half: about ±1.5 px sideways and ±3° tilt.
+
+3. **Hair and arms barely move.** The side locks, back hair and bow move under 1.2 px, which won't show at 1x. Raise the spring gain about 2.5× so they lag 2–3 px behind the down and pass frames. In SE the arms stay flared out the whole cycle. Bring them about 4 px closer to the body and swing them about ±5 px front-to-back, opposite the legs.

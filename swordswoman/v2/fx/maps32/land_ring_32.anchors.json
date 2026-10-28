@@ -1,0 +1,48 @@
+{
+ "size": [
+  20,
+  5
+ ],
+ "facing": "E",
+ "attach": "feet",
+ "pivot": [
+  10,
+  2
+ ],
+ "ms": [
+  60,
+  80,
+  100
+ ],
+ "cell_offset": [
+  20,
+  37
+ ],
+ "cell": "40x40 cell of the 32 px figure (A_r3: feet ~20,37, sole row 37, back edge of body x11, body centre ~20,22)",
+ "layer": "behind",
+ "layer_split": {
+  "behind_rows": [
+   0,
+   1
+  ],
+  "over_rows": [
+   2,
+   3,
+   4
+  ],
+  "why": "far arc passes behind the shoes, near arc in front"
+ },
+ "note": "pivot = ellipse centre = ground point (sole row). Widths 12/16/18, heights 3/5/5; far arc n, ends + near shoulders u, near bottom W; ends 2 px thick, top/bottom 1 px. f2 = 4 thin arcs, 2 px gaps at top/bottom centre and 1 row gap at each end.",
+ "ground_y": 2,
+ "width_px": [
+  12,
+  16,
+  18
+ ],
+ "height_px": [
+  3,
+  5,
+  5
+ ],
+ "symmetric": true
+}

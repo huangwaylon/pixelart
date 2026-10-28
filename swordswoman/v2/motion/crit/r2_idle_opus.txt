@@ -1,0 +1,18 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+OVERALL: 6
+
+- Natural: 6
+- Whole-body: 7
+- Fluid: 6
+- Appealing: 6
+- Secondary motion convincing: 5
+- Readable at 1x: 5
+
+The hips shift about 3.5 px with a 2 px dip on the cross, which is good mechanics. The problem is that most other motion is under a pixel, so it disappears at 1x.
+
+**Top 3 fixes:**
+
+1. **Secondary motion in shift, cross and land_L (first weight shift).** Spring offsets there are only 0.1–0.5 px, while shift2/cross2 reach 1–1.5 px, so the two halves of the loop don't match. Raise the hair_side, hair_back and hem tips to about 1.5 px, trailing against the hip travel (toward −x). On land_L, overshoot by about 1 px.
+2. **foot.R in shift → land_L (and back in shift2 → land_R).** The foot moves 2 px sideways and 3 px down while `air=false`, so it reads as sliding. Either pin it in place, or lift it 1–2 px on cross/cross2 so it reads as a step.
+3. **Breathe and look.** breathe_R raises the head only 0.85 px, so add 1 px of chest/shoulder rise. look only turns the head from −10° to −7.5°, which won't read, so push it to about +10° (toward camera) with a 1 px eye-line shift. Also make the ribbon tails longer or more visible in SE; right now they're only readable in E.

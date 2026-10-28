@@ -1,0 +1,44 @@
+# turn_SE body, hand-typed (Claude): 3/4 front facing right. Near (left, sword) arm in front of the body side,
+# far arm behind on the left, front wrap with shorts on her right, long back tail sweeping left-down (guide skirt_tail_tip 52,97).
+fx: none
+kat: katana_idle_2to1 71 86 under
+origin: 56 76
+grid:
+...K..................K.
+..KCRR............RRrK..
+..KCRRRR..........RRrK..
+..KRRRRRRR........RRrK..
+...KrRRRRRRRRRRRRRRRrK..
+..KsKvrrrrrrrrrrrrrrvKK.
+..KsmKRRRRRRRRRRRRRRRrK.
+.KRRRKLLLLLLLLLLLLLLLLK.
+.KRRRKllllllllTllllTllK.
+KRRRRKllllllllllllllllK.
+KRRRRKllllllllTllllTllK.
+KRRRrKKKKKKKKKKKKKKKKKK.
+KvvvvKRRRRRRRRRRRRRRRrK.
+.KsmK.KRRRRRRRRRRRRRRRrK
+.KmmK.KddRRRRRRRRRRRRRrK
+..KK..KddKRRRRRRRRRRRrrK
+.....KddKRRRRRRRRRRRrrK.
+.....KdKRRRRRRRRRRRRrrK.
+.....KKRRRRRRRRRRRRrrrK.
+......KvrrrrrrrrrrrvvK..
+......KKsmKKvKsmKK......
+.......KsmK..KsmK.......
+.......KsmK..KsmK.......
+.......KsmK..KsmK.......
+.......KsmK..KsmK.......
+.......KdmK..KsmK.......
+......KdKK...KddKK......
+.....KKKdK...KdKdKK.....
+......KKK.....KK.KK.....
+top: 74 90
+_KKK_
+KsssK
+KmssK
+_KKK_
+opb: stamp 56,90 ____KRR/___KRRR/___KRRR/__KRRRr/__KRRRr/_KRRRrr/_KRRRrr/_KRRrrv/KRRrrvK/KRrvvK_/KvvKK__/KK_____
+opb: curve 60,80 54,84 56,89 P
+opb: curve 56,89 58,93 54,96 p
+opb: stamp 72,81 _____KssK__/_____KsmmK_/____KCRRrK_/____KCRRRrK/___KCRRRRrK/__KCRRRRRrK/_KRRRRRRRrK/_KRRRRRRrrK/_KvvvvvvvvK/__KKKKKKKK_

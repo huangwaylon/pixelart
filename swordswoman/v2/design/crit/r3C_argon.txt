@@ -1,0 +1,24 @@
+**Scores:**
+*   **A (Consistency): 6/10**
+*   **B (Simplicity): 7/10**
+*   **C (Pixel Readability): 4/10**
+
+**Concrete View Drifts:**
+*   **Bow/Bun Placement:** In `front.png`, the bow sits atop the crown with the bun barely peeking over. In `left.png`, `back.png`, and `iso_NE.png`, the bun drops to the back of the skull with the bow tucked *under* or *around* it. In `iso_SE.png`, the bun vanishes behind the bow.
+*   **Camera Pitch:** `iso_E.png` and `iso_N.png` are flat orthographic profiles (`right.png`/`back.png` clones) with slightly tweaked feet—zero isometric foreshortening on the head, shoulders, or hem.
+*   **Katana:** In `front_k.png`, the blade clips awkwardly behind the sleeve cuff rather than being gripped.
+
+**Pixel Mush (40/48px):**
+*   **Face/Bangs:** Hime-cut side locks merge into the eyes, creating muddy dark-blue/brown noise. The 1px hair gaps become stray dirty pixels.
+*   **Kimono Collar:** The Y-lapel in `front.png` and `front_D1` turns into dark checkerboard static across the chest.
+*   **Hands/Katana:** Open fingers become 1-2px flesh warts. The katana hilt disappears into the sleeve; the blade becomes a disconnected, jagged staircase.
+*   **Outlines:** Automated downsampling leaves severe double-pixel ”jaggies” along the skirt hem and hair silhouette.
+
+**Winner & Next Steps:**
+**`front_D2` at 48px wins** (40px is salvageable only with heavy manual cleanup). `D1` fails because its collar noise is worse than `C`, and its thick boots eat the leg gap.
+
+**Simplify Further:**
+1.  **Drop the collar line completely** (solid red chest like `D2`).
+2.  **Ball hands into 2x2px mittens**—kill the thumb/finger splits.
+3.  **Solidify bangs** into one clean horizontal shelf; widen the face by 2px so eyes don't touch side-hair.
+4.  **Thicken katana blade** to 2px wide with a high-contrast gold guard (tsuba) to separate it from the hand.

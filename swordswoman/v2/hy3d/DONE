@@ -1,0 +1,8 @@
+HY3D strand round 3 DONE (2026-10-26 11:12)
+1. Rest mesh: best/rest_mat.glb (2mv4 turbo on Level D views, bow x1.3, bangs pulled back, eyes +25%, material IDs via scripts/matid2.py) + best/README.md.
+2. Rig: rig/rig.blend via scripts/rig.py (humanoid armature, auto weights + head/arm/skirt overrides, 8 radial skirt bones, separate katana bone-parented to hand.R).
+3. Keys v2 (pushed): keys/<action>_<SE|E>/fNN_{matid,shade}.png + keys.json, sheets keys/sheet_<action>.png (v1 kept in keys_v1/).
+4. 2.1 shape test: out/sheet_21.png. 2.1 has the cleanest front face but invents a ponytail (off-model); 2mv kept.
+5. Critique keys v2 (crit/r3/*_v2.md): Argon idle6 walk6 run6.5 jump5 dash6.5 slash5, guide 6.5; Opus 3/4/5/6/4/6, guide 5.
+   Open fixes: bigger arm swings that break the torso silhouette, sleeves collapse when arms are raised (limit to ~110 deg / V pose), dash_skid brace, slash_recover blade high, hem spikes, hands not visible.
+6. Omni EMA vs non-EMA (out/omni_ema/sheet_*.png): EMA wins (Argon 6 vs 4, Opus 7 vs 4); non-EMA has more floaters/fragments. Issue #5 not reproduced -> keep EMA.

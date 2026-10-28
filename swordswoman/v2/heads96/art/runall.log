@@ -1,0 +1,22 @@
+SE_t attempts 1 secs [38] lint left {'lagL': 0, 'lagR': 0, 'lift': 0, 'drop': 0}
+S_r attempts 1 secs [44] lint left {'lagL': 0, 'lagR': 0, 'lift': 0, 'drop': 0}
+SE_l attempts 1 secs [45] lint left {'lagL': 0, 'lagR': 0, 'lift': 0, 'drop': 0}
+SE_B attempts 1 secs [48] lint left {'lagL': 0, 'lagR': 0, 'lift': 0, 'drop': 0}
+E_l attempts 1 secs [50] lint left {'lagL': 0, 'lagR': 0, 'lift': 0, 'drop': 0}
+NE_r attempts 1 secs [51] lint left {'lagL': 0, 'lagR': 0, 'lift': 0, 'drop': 0}
+N_tiltL attempts 1 secs [52] lint left {'_': 0}
+N_r attempts 1 secs [55] lint left {'lagL': 0, 'lagR': 0, 'lift': 0, 'drop': 0}
+N_B attempts 1 secs [61] lint left {'lagL': 0, 'lagR': 0, 'lift': 0, 'drop': 0}
+NE_tiltR attempts 2 secs [93, 38] lint left {'_': 0}
+S_l attempts 2 secs [93, 40] lint left {'lagR': 0, 'lift': 0, 'lagL': 0, 'drop': 0}
+E_tiltR attempts 2 secs [96, 39] lint left {'_': 0}
+NE_B attempts 2 secs [79, 56] lint left {'lagL': 1, 'lift': 0, 'drop': 0, 'lagR': 1}
+S_tiltR attempts 1 secs [173] lint left {'_': 0}
+NE_t attempts 2 secs [68, 112] lint left {'lift': 1, 'drop': 1, 'lagL': 1, 'lagR': 1}
+N_l attempts 1 secs [194] lint left {'lagL': 0, 'lagR': 0, 'lift': 0, 'drop': 0}
+S_tiltL attempts 1 secs [212] lint left {'_': 0}
+E_w attempts 2 secs [87, 126] lint left {'lagL': 0, 'lift': 0, 'lagR': 0, 'drop': 0}
+SE_w attempts 2 secs [117, 103] lint left {'lagL': 0, 'lift': 0, 'lagR': 1, 'drop': 0}
+N_w attempts 2 secs [56, 165] lint left {'lift': 1, 'lagL': 1, 'lagR': 1, 'drop': 1}
+SE_tiltL attempts 2 secs [191, 63] lint left {'_': 0}
+E_tiltL attempts 2 secs [253, 33] lint left {'_': 0}

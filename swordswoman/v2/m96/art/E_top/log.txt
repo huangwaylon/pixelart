@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I made the bow easier to read and cleaned up the hair without moving the silhouette: the right loop is now filled with E (base red) instead of R (shadow red), the left loop has a 2px e highlight at the top, the knot and the folds below the right loop are shaded with R, there's a K line where the right loop meets the hair, and I removed three stray single h pixels from the hair. The check passed with no '!' (ssim_b -0.001, dE +0.044, sil +0.000, lint the same as before), but the bow still doesn't match the illustration's size — my first try at the full two-loop shape cost too much (ssim_b -0.006, dE +0.31, sil -0.004).

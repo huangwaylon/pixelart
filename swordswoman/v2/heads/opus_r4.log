@@ -1,0 +1,31 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+All the SE and E fixes are in, in place, with the same file names and pivot/anchor convention. I wrote a new outline checker, `tools/runs.py`. On every head file and every composited `png/*_full.txt` it reports a maximum outer-outline run of 3px in all four directions (left, right, top, bottom) and 0 enclosed holes. That includes horizontal runs, so even the bangs shelf didn't need an exception. Every file uses only palette characters and has no ragged rows. I went through three visual passes on `sheet.png` plus close-up renders (new `tools/zoom.py`).
+
+**SE (a–e)**
+- **a) Chin/jaw:** skin widths below the eyes are now 10, 8, 6, 3, so the jaw outline steps 1-1-1-2-3 into a 3px chin. Both bob tips sit right against the jaw, with no gaps. The near tip hangs lowest and the neck sits below the chin.
+- **b) Silhouette:** the dome now peaks in a 3px point under the bow knot, so the bow sits on a curve. The right hair wall bulges out to its widest at lash/eye level, then curves back in. The bottom hem is a rounded U. The bow loops were 5px vertical walls, so I tapered them as well.
+- **c) Bun:** brighter rim light on its top-left, and the head outline cuts a clear notch where it meets the skull. It's still visible in squash.
+- **d) Blink:** flat closed lids on the mid-eye row.
+- **e) Cleanup:** the right jaw-to-hair join steps evenly now. The mouth and blush sit inside the skin, so nothing floats.
+- **Unchanged identity:** the brow, lash and eye pixels are copied exactly.
+
+**E (f–i)**
+- **f) Face front:** forehead tucked under a 2px bangs overhang, then eye, 1px nose bump, lips and a small soft chin. The longest straight run on the face front is 3px.
+- **g) Eye:** I made it 1px taller, as asked: a 3px lash line plus 4 iris rows (w glint top-left). The r3 eye was already 4 rows including the lash, so the brief's "(4 rows incl. lash)" and "1px taller" contradict each other. I went with "taller"; it's now 5 rows, and it reads clearly at 1x.
+- **h) Back of skull:** a round arc into the nape (vertical runs 3, 3, 2, 2, 1, 1, 1, then horizontal 2, 3, 3), ending in a tip that tucks in under the jaw. No 90° corner.
+- **i) Bow:** a tall bright near loop that rises above the bun, a smaller dark far loop behind it, and the knot sitting down into the dome.
+
+**Choices you didn't ask for**
+- **Sheen arc:** I added a 1px highlight arc across the crown in both views. The dome stopped reading as a flat dark cap. It's easy to remove if you don't want it.
+- **SE lean:** the critic said it looked almost identical to neutral, so it now has a visible forward-down tilt. The face drops 1px, the crown tilts forward, and the head sits 1px forward of the neck.
+- **Variants:** all variants are rebuilt from the two neutrals by the new `tools/r4_build.py`. Lookup keeps the same pivot and anchors as neutral, so the chin lifts off the neck. I logged all of this in `NOTES.md` under r4.
+
+**Summary**
+1. Files: `se/head_{neutral,lean,lookup,squash,blink}.txt`, `se/bow.txt` (17x8, pivot 8,7), `se/bow_squash.txt` (19x7, 9,6), `{se,e}/bun.txt` (7x7, 3,3), `{se,e}/bun_squash.txt` (7x6, 3,2), plus `e/head_{neutral,lean,lookup,squash}.txt`, `e/bow.txt` (12x9, 5,8), `e/bow_squash.txt` (12x8, 5,7).
+2. SE neutral 26x22, pivot (16,20) at the chin bottom/neck, bow (13,2), bun (3,1). Blink is the same size with the same anchors; lookup is 26x21 with the same pivot and anchors.
+3. SE lean 26x23, pivot (15,20), bow (14,2), bun (4,1). SE squash 28x20, pivot (17,18), bow (14,2), bun (4,1).
+4. E neutral 23x23, pivot (16,21) under the jaw, bow (10,3), bun (4,0). E lookup 23x22 with the same pivot and anchors.
+5. E lean 23x24, pivot (15,21), bow (11,3), bun (5,0). E squash 25x21, pivot (18,19), bow (11,3), bun (5,0). New tools: `r4_build.py`, `runs.py`, `zoom.py`; the r3 state is still backed up in `heads/r3/`.
+
+Saving session...completed.

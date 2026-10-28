@@ -1,0 +1,8 @@
+
+=== bni_requests try 0
+Restored session: Mon 26 Oct 2026 14:37:25 JST
+I wrote `ff/walk_SE/f01.txt` and it passes lint. I only redrew the legs and hem as a passing pose. The near leg is straight and planted on row 61, and the far boot is raised 2px. Head, body and katana are unchanged from f00.
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+
+Saving session...completed.

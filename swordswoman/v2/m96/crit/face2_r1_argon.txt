@@ -1,0 +1,13 @@
+**Scores (1–10):**
+* **Faithfulness:** 7/10
+* **Eye height:** 8/10 (Raised 1px; matches orange/red guides well)
+* **Feminine lashes:** 6/10 (Upper wing is better, but new outer lower-lash pixel makes eyes look boxy/heavy)
+* **Chin softer:** 6/10 (S-view is still a strict 45° V-taper)
+* **Side/3/4 cheek:** 8/10 (SE cheek bulge is much cleaner; E nose/mouth silhouette improved)
+* **Blush visible:** 9/10 (3px L-shape reads clearly at 1x)
+* **Overall:** 7.5/10
+
+**Top 3 Concrete Pixel Fixes:**
+1. **Un-box the eyes (S/SE/E):** Remove the dark pixel at the bottom-outer corner of the eye (replace with skin/blush tone). Keep the top-outer cat-eye wing pixel so the eye tilts upward instead of looking rectangular.
+2. **Soften S-view chin:** Widen the very bottom chin outline from 2px to 4px, or use mid-tone skin/anti-aliasing on the inner corners of the 45° jaw steps to round out the sharp V-shape.
+3. **Neutral mouth smile:** The illustration has a gentle smile; shift the outer pixels of the neutral mouth up 1px (or use a softer shadow tone) so she doesn't look overly solemn.

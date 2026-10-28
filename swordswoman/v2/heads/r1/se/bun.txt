@@ -1,0 +1,8 @@
+; pivot 3 3
+..###..
+.#jHH#.
+#jHHHH#
+#HHHHh#
+#HHHhh#
+.#hhh#.
+..###..

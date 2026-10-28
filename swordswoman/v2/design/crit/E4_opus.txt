@@ -1,0 +1,29 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+**Level E crit: v2 swordswoman (E4)**
+
+**A. Proportions / gracefulness: 7/10**
+This is much slimmer than the last version and the measurements are on target. Two problems remain. The thighs read slightly heavy against the narrow obi. The wide sleeves and the bob together make the top half bulky, so the figure looks top-heavy compared with Dawn and Hilda. The neck is barely visible under the hair.
+
+**B. Face: 5/10**
+The chin and face shape are good. The eyes are the main problem: they're narrow and half-lidded, so she looks smug and sleepy instead of neutral. Sugimori eyes are taller (about 0.2 of the head), with a bold upper lash that flicks out at the corner, a large iris and a clear highlight. The eyebrows are hidden behind the bangs, and the smirk reads as attitude rather than a calm neutral.
+
+**C. Stance: 4/10**
+She stands symmetrically with her arms locked in an A-shape and her hands curled like claws. The knees turn in slightly. The hero pose is the only one that feels alive.
+
+**D. View consistency: 6/10**
+The bow changes size, especially in the left view and iso_N. The bun's size and position drift, the back hair is longer than in the front views, and the face in iso_E looks like a different person. The outfit stays consistent.
+
+**E. Sprite guide (44–48 px): 7/10**
+The bob, the grey obi band and the boots all make strong shapes at that size. The narrow eyes will turn into a single dark line. The bow plus the hair takes up too much of the height.
+
+**Fixes, in priority order:**
+1. Open the eyes to about 0.2 of the head height. Use a bold upper lash with an outer flick, a big iris and one highlight.
+2. Thin the bangs or lift them above the brow line so short, expressive eyebrows show.
+3. Change the mouth to a small, level neutral line, with the smirk kept as an alternate expression.
+4. Slim the thighs about 8% and cut the sleeve flare so the upper body is narrower.
+5. Change the stance: weight on one leg, a slight hip shift, relaxed open hands, and arms closer to the body.
+6. Lock the size and position of the bow and bun, and the back hair length, across every view. Shrink the bow about 15%.
+
+Saving session...completed.

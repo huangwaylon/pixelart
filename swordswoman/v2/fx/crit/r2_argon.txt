@@ -1,0 +1,16 @@
+**Verdict:** Huge improvement—reads like early Gen 3/PMD1, though outlines/weight still clash slightly with your sprite's pure-black 1px lineart.
+
+* **slash_diag (7/10):** Good arc, but f1's inner blue edge has staircase jaggies, and f3 breaks into uniform 2px dashes. *Fix:* Smooth f1's inner curve; vary f3 fragment lengths (1px, 4px, 2px).
+* **slash_h (6.5/10):** Reads too flat/stiff; the right-side hook looks like a 90° corner rather than a perspective sweep. *Fix:* Add 1–2px of vertical curve to the bottom edge and sharpen the right tip.
+* **slash_over (7.5/10):** Best slash. Still, the bottom tip ends bluntly on a 2px flat. *Fix:* Taper the bottom-most tip to a single pixel on f1/f2.
+* **hit_flash (6/10):** Very rigid 45°/90° cross; the 4 diagonal yellow nubs look pasted onto a plus sign. *Fix:* Pull the white core out 1px diagonally so the transition from cardinal to diagonal spikes isn't a hard stair-step.
+* **hit_spark (7.5/10):** Very PMD. However, f2's ring is slightly octagon-boxy, and f3's 6 dots are dead-symmetrical. *Fix:* Offset 2 of the f3 dots by 1px to feel organic.
+* **hurt_star (8/10):** Great palette/readability, but pure-black `#000` outlines fight the character's head outline. *Fix:* Swap `#000` outline for dark warm brown/maroon (`#3a1c1a`).
+* **sweat_drop (8/10):** Clean, classic. Same `#000` outline issue—looks heavy at 40px. *Fix:* Use dark navy (`#102040`) for the outer line; drop 1px higher on f3 for accelerate-down feel.
+* **dust_land (6.5/10):** Individual balls instead of a connected cloud—"bubble wrap" syndrome on f1/f2. *Fix:* Erase internal dark outlines where puffs overlap so they merge into one billowing mass.
+* **dust_skid (6/10):** The horizontal ground streak looks like a rigid plank beneath two separate spheres. *Fix:* Taper the streak's left tail and merge the spheres into the base.
+* **dust_step (7.5/10):** Nice and punchy, though f2's small puff is tangent to the big one. *Fix:* Overlap them by 2px and bridge their light cores.
+* **speed_lines_long & short (5.5/10):** Every line has an identical 2px-tall white "club" head on a 1px tail—looks like flying golf clubs/sperm. *Fix:* Keep lines strictly 1px tall throughout; create weight via *length* and *color* gradients (white front, blue mid, grey tail), or taper 1px-2px-1px in the middle.
+* **jump_whoosh (5/10):** Still reads like parentheses `( | | )` around the feet. *Fix:* Connect the bottom into a shallow U-cup under the feet, or angle the vertical ticks outward (`\ /`).
+* **land_ring (7/10):** Good perspective, but f1 is barely wider than the feet on the 48px sprite. *Fix:* Start f1 4px wider; thin the left/right edges on f3 before the top/bottom break.
+* **afterimage demo (8.5/10):** Excellent PMD Agility feel! Only flaw: the sword's black outline ghosting creates a muddy ladder. *Fix:* Mask out the sword from the ghosts, or fill the ghost-sword with the flat blue/grey silhouette tone too.

@@ -1,0 +1,24 @@
+### Concrete Pixel Problems
+
+1. **Frames 2, 7, 8 (`low`, `low-blink2`, `low-half2`) - Legs / Boots Region:** 
+   * **Problem:** When the torso squashes down, the upper thighs are simply covered, and a diagonal black line cuts across the legs, making the ankles look pinched and disjointed rather than bending at the knees.
+   * **Exact Fix:** Remove the inner diagonal dark pixels on the shins. Shift the knee highlights down by 1px and widen the outer leg silhouette by 1px to indicate an outward knee bend rather than vertical clipping.
+
+2. **All Frames (Especially 2, 3, 7, 8, 9) - Katana Scabbard (Lower Left):**
+   * **Problem:** The scabbard angle shifts via automated rotation, creating severe stair-stepping (jaggies) and inconsistent outline thickness along the white highlight and dark border.
+   * **Exact Fix:** Replace the rotated scabbard sprites in the `low` and `rise` frames with a hand-drawn 2:1 or 1:1 pixel line. Manually clean the double-thick black outline clumps along the bottom edge of the scabbard in frames 2 and 3.
+
+3. **Frames 0–10 - Hair Bow & Skirt Hem (Top & Mid-Torso):**
+   * **Problem:** The animation relies entirely on rigid 1-2px vertical translation of the head/torso cutout without true secondary overlap. The bow and skirt hem remain static in shape, making the bounce feel stiff and mechanical.
+   * **Exact Fix:** In `sink` (Frames 1, 6), shift the outer tips of the red bow up by 1px (drag). In `low` (Frames 2, 7, 8), flatten the bow's top curve by 1px and flare the skirt hem outward by 1px on both left and right edges (squash/settle).
+
+---
+
+### Evaluation Breakdown
+
+* **Pose & Silhouette Readability:** 6/10 — The SE facing is clear, and the chibi proportions read well, though the silhouette barely changes across the loop.
+* **Squash, Stretch & Overlap:** 4/10 — Cutout translation dominates. There is minimal pixel-level deformation on the hair, bow, or dress to sell weight and bounciness.
+* **Timing & Spacing:** 5/10 — The timing values (140ms–220ms) provide a decent slow breathing cadence, and the quick 100ms blink in frame 7 works well, but the linear vertical spacing feels robotic.
+* **Pixel-Art Cleanliness:** 5/10 — The base sprite is clean, but the rig movement introduces jagged stair-stepping on the angled scabbard and awkward pixel collisions at the boots/skirt boundary.
+
+SCORE idle: 5

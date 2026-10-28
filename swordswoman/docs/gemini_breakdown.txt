@@ -1,0 +1,128 @@
+As a Senior Character Art Director, I have reviewed the provided concept art. Image 1 is clearly the primary, high-fidelity hero render, while Images 2 and 3 are looser gesture/action explorations. 
+
+Here is the exhaustive design document and breakdown for this character.
+
+---
+
+### I. Exhaustive Costume & Color Breakdown
+
+*Note: Hex colors are approximate targets for a PBR (Physically Based Rendering) or stylized 3D pipeline, sampled primarily from the fully rendered Image 1. Lighting conditions in the concept affect these, so these represent the "local" (true) colors.*
+
+**1. Hair**
+*   **Appearance:** High, voluminous, slightly messy double-bun or looped updo. Heavy, piecey bangs framing the forehead, with two longer strands framing the jawline. Back of the head is pulled tight.
+*   **Material:** Natural Hair.
+*   **Colors:** Base: `#3A3132` (Dark Espresso) | Shadow: `#1A1516` | Highlight: `#6B5C5E` (Cool brown/grey reflection).
+
+**2. Bow**
+*   **Appearance:** Tied around the base of the hair bun. Two prominent, stiff loops pointing upwards and slightly outwards like rabbit ears.
+*   **Material:** Stiffened silk or heavy cotton canvas (holds its shape well).
+*   **Colors:** Base: `#E82742` (Crimson) | Shadow: `#9E0F22` | Highlight: `#FF6B7F`.
+
+**3. Face**
+*   **Appearance:** Youthful, anime-proportioned. Sharp chin, large eyes.
+*   **Material:** Skin.
+*   **Colors:** Skin Base: `#FDE4DA` | Skin Shadow: `#DCA9A1` | Blush: `#F0A8A8` | Eye Iris: `#4A65C2` (Vibrant Blue).
+
+**4. Collar/Choker**
+*   **Appearance:** A high, stiff, funnel-like collar that stands away from the neck, integrating into the main top. It obscures the lower neck and nape from the back.
+*   **Material:** Thick, structured wool or layered fabric with interfacing.
+*   **Colors:** Matches the main dress. Base: `#E82742` | Shadow: `#9E0F22`.
+
+**5. Scarf/Ribbons**
+*   **Appearance:** Long, trailing ribbons that seem to originate from the back of the neck/shoulders. They flow dynamically.
+*   **Material:** Chiffon or lightweight silk (highly translucent and floaty).
+*   **Colors:** Slightly pinker than the main dress. Base: `#F04A7D` | Shadow: `#B82454` | Highlight: `#FF9EBD`.
+
+**6. Top/Sleeves**
+*   **Appearance:** Form-fitting across the bust, transitioning into long sleeves that flare dramatically at the cuffs (bell sleeves). The shoulders have a slight puff or gather.
+*   **Material:** Silk or fine, high-thread-count cotton.
+*   **Colors:** Base: `#E82742` | Shadow: `#9E0F22` | Highlight: `#FF6B7F`.
+
+**7. Arm Ornaments (Right Shoulder)**
+*   **Appearance:** Visible only in Image 1. A decorative knot or floral motif on the right shoulder with thin, dangling cords.
+*   **Material:** Braided silk cord.
+*   **Colors:** Base: `#A62BA6` (Magenta/Purple) | Highlight: `#D95CD9`.
+
+**8. Corset/Harness**
+*   **Appearance:** A complex, underbust structural piece. *Front:* Features multiple horizontal straps with buckles, a central vertical stabilizing plate, and cutouts revealing the red dress beneath. *Sides:* Wraps tightly around the ribs and waist. *Back:* Likely features lace-up details or heavy buckling (inferred).
+*   **Material:** Thick, boiled leather with brass or dark iron hardware.
+*   **Colors:** Leather Base: `#4A2E1B` (Dark Chocolate) | Shadow: `#24140A` | Highlight: `#7A4F32` | Hardware: `#333333`.
+
+**9. Belts/Pouches**
+*   **Appearance:** Integrated into the lower edge of the corset. Small, rigid, boxy pouches sit on the hips.
+*   **Material:** Hardened leather.
+*   **Colors:** Matches corset. Base: `#4A2E1B`.
+
+**10. Skirt Layers**
+*   **Appearance:** A dramatic high-low hemline. *Front:* Open, draped, and short, exposing the legs. *Back/Sides:* Long, voluminous, and heavily ruffled/pleated, acting almost like a cape.
+*   **Material:** Layered silk or lightweight taffeta.
+*   **Colors:** Outer Base: `#E82742` | Inner Lining (visible in folds): `#F04A7D` (Lighter pinkish-red).
+
+**11. Shorts**
+*   **Appearance:** Tight, athletic boy-shorts worn under the skirt for modesty during combat.
+*   **Material:** Spandex/Cotton blend.
+*   **Colors:** Base: `#2A2A2A` (Charcoal Black).
+
+**12. Thigh Strap (Left Leg)**
+*   **Appearance:** A single strap wrapping around the upper left thigh, holding a small pouch or buckle mechanism.
+*   **Material:** Leather.
+*   **Colors:** Base: `#4A2E1B`.
+
+**13. Gloves**
+*   **Appearance:** Fingerless tactical gloves covering the palm and back of the hand, ending at the wrist.
+*   **Material:** Soft leather or synthetic grip fabric.
+*   **Colors:** Base: `#2A2A2A`.
+
+**14. Footwear**
+*   **Appearance:** (Based on Image 1). High-heeled pumps with a closed, pointed toe. Thin straps crisscross up the ankle and lower calf.
+*   **Material:** Polished leather.
+*   **Colors:** Base: `#2A2A2A` | Highlight: `#555555`.
+
+**15. Katana**
+*   **Appearance:** 
+    *   *Tsuka (Handle):* Traditional diamond wrap.
+    *   *Tsuba (Guard):* Highly stylized, featuring two curved, horn-like prongs pointing towards the blade.
+    *   *Blade:* Standard curved single-edge.
+*   **Material:** Steel, ray skin, cotton wrap.
+*   **Colors:** Handle Wrap: `#2A2A2A` | Handle Diamonds: `#E82742` | Guard: `#9AA0A6` (Silver) | Blade Base: `#D0D5D9` | Blade Highlight: `#FFFFFF`.
+
+---
+
+### II. Inconsistencies & Canonical Recommendations
+
+As Art Director, here is how we resolve the discrepancies between the hero render (Img 1) and the action sketches (Img 2 & 3) for the final 3D model/production bible:
+
+1.  **Footwear (The biggest discrepancy):** 
+    *   *Issue:* Image 1 shows high heels. Images 2 and 3 show flat, ballet-style pointed shoes.
+    *   *Ruling:* **Treat Image 1 (Heels) as Canonical.** The heels contribute significantly to the character's stylized, elegant silhouette. The sketches likely used flats simply because they are easier to draw quickly in dynamic poses.
+2.  **Corset Detail:**
+    *   *Issue:* Image 1 has intricate straps and cutouts. Images 2/3 show a solid dark mass.
+    *   *Ruling:* **Treat Image 1 as Canonical.** The sketches are just shorthand. The modelers must build the complex strapped version.
+3.  **Sword Design:**
+    *   *Issue:* Image 1 has a specific, horned tsuba (guard) and wrapped handle. Images 2/3 show a generic stick/basic katana.
+    *   *Ruling:* **Treat Image 1 as Canonical.** The prop team must build the stylized sword.
+4.  **Right Shoulder Ornament:**
+    *   *Issue:* Present in Image 1, missing in 2 and 3.
+    *   *Ruling:* **Keep it.** It breaks up the symmetry of the red top nicely.
+
+---
+
+### III. 64px Chibi Pixel Art Translation Guide
+
+When downscaling this design to a 64-pixel tall chibi sprite, readability is paramount. We must rely on the "squint test." Here is what stays and what goes:
+
+**What SURVIVES (Exaggerate these):**
+*   **The Silhouette:** The massive red hair bow (make it huge, maybe 1/4 the size of the head).
+*   **Color Blocking:** The stark contrast between the pale skin, the bright red dress, and the dark brown/black corset block.
+*   **The Collar:** A few pixels of red framing the lower face.
+*   **The Skirt Shape:** The high-low cut. Show bare legs in the front, with a block of red pixels trailing behind.
+*   **The Sword:** A simple silver line with a dark handle. The unique guard can be represented by a single silver pixel jutting out.
+*   **Eyes:** Bright blue pixels to contrast the red.
+
+**What MUST BE DROPPED (Too noisy for 64px):**
+*   **Corset Straps:** Drop all the individual horizontal straps and cutouts. The corset becomes a solid dark brown rectangle/hourglass shape. You might keep *one* lighter brown pixel to imply a buckle.
+*   **Shoe Laces/Straps:** Drop the crisscross ankle straps entirely. The feet just become dark grey/black pointed pixels (heels will be hard to read at this scale, just make them dark boots/shoes).
+*   **Shoulder Ornament:** Drop the purple knot. It will look like a glitch or a mistake at 64px.
+*   **Sword Handle Wrap:** Drop the red diamonds. The handle is just a solid dark grey line.
+*   **Thigh Strap:** Highly likely to be dropped, or reduced to a single dark pixel line if leg real estate allows.
+*   **Scarf Ribbons:** Unless the character is in an idle animation where they are floating, drop the extra pink ribbons to avoid muddying the silhouette of the main dress.

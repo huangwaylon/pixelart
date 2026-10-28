@@ -1,0 +1,223 @@
+{
+ "how_to_use": "Paste whole stamps at integer offsets, never scale. Row 0 = bow top; all heads 24 wide, centre col 11.5. Align heads by their LAST row (chin / nape) on the body neck row. SINK (squash) = place the head 1-2 rows lower and let the collar layer paint OVER the jaw (h3 compositor collar_over). TILT = head_<D>_tilt+1/-1 (1 row taller). Bow lag = bow_<D>.png pasted 1-2 px off after the head. Expressions only on S SE E SW W.",
+ "exprs": [
+  "calm",
+  "glare",
+  "wide",
+  "kiai",
+  "squint",
+  "smile",
+  "squeeze"
+ ],
+ "dirs": {
+  "S": {
+   "size": [
+    24,
+    30
+   ],
+   "chin_row": 29,
+   "cx": 11.5,
+   "bow_rows": 7,
+   "eyes": [
+    {
+     "x0": 6,
+     "x1": 9,
+     "y0": 22,
+     "y1": 24
+    },
+    {
+     "x0": 14,
+     "x1": 17,
+     "y0": 22,
+     "y1": 24
+    }
+   ],
+   "mouth": [
+    11,
+    26,
+    2
+   ],
+   "hair_share": {
+    "h": 0.794,
+    "H": 0.17,
+    "J": 0.036
+   },
+   "mirrored_from": null
+  },
+  "SE": {
+   "size": [
+    24,
+    29
+   ],
+   "chin_row": 28,
+   "cx": 11.5,
+   "bow_rows": 7,
+   "eyes": [
+    {
+     "x0": 7,
+     "x1": 11,
+     "y0": 21,
+     "y1": 23
+    },
+    {
+     "x0": 16,
+     "x1": 18,
+     "y0": 21,
+     "y1": 23
+    }
+   ],
+   "mouth": [
+    14,
+    25,
+    1
+   ],
+   "hair_share": {
+    "h": 0.708,
+    "H": 0.253,
+    "J": 0.039
+   },
+   "mirrored_from": null
+  },
+  "E": {
+   "size": [
+    24,
+    30
+   ],
+   "chin_row": 29,
+   "cx": 11.5,
+   "bow_rows": 7,
+   "eyes": [
+    {
+     "x0": 17,
+     "x1": 20,
+     "y0": 21,
+     "y1": 23
+    }
+   ],
+   "mouth": [
+    21,
+    26,
+    1
+   ],
+   "hair_share": {
+    "h": 0.726,
+    "H": 0.244,
+    "J": 0.03
+   },
+   "mirrored_from": null
+  },
+  "NE": {
+   "size": [
+    24,
+    29
+   ],
+   "chin_row": 28,
+   "cx": 11.5,
+   "bow_rows": 8,
+   "eyes": [],
+   "mouth": null,
+   "hair_share": {
+    "h": 0.819,
+    "H": 0.162,
+    "J": 0.019
+   },
+   "mirrored_from": null
+  },
+  "N": {
+   "size": [
+    24,
+    27
+   ],
+   "chin_row": 26,
+   "cx": 11.5,
+   "bow_rows": 6,
+   "eyes": [],
+   "mouth": null,
+   "hair_share": {
+    "h": 0.792,
+    "H": 0.196,
+    "J": 0.012
+   },
+   "mirrored_from": null
+  },
+  "NW": {
+   "size": [
+    24,
+    29
+   ],
+   "chin_row": 28,
+   "cx": 11.5,
+   "bow_rows": 8,
+   "eyes": [],
+   "mouth": null,
+   "hair_share": {
+    "h": 0.803,
+    "H": 0.178,
+    "J": 0.019
+   },
+   "mirrored_from": "NE"
+  },
+  "W": {
+   "size": [
+    24,
+    30
+   ],
+   "chin_row": 29,
+   "cx": 11.5,
+   "bow_rows": 7,
+   "eyes": [
+    {
+     "x0": 3,
+     "x1": 6,
+     "y0": 21,
+     "y1": 23
+    }
+   ],
+   "mouth": [
+    2,
+    26,
+    1
+   ],
+   "hair_share": {
+    "h": 0.825,
+    "H": 0.152,
+    "J": 0.023
+   },
+   "mirrored_from": "E"
+  },
+  "SW": {
+   "size": [
+    24,
+    29
+   ],
+   "chin_row": 28,
+   "cx": 11.5,
+   "bow_rows": 7,
+   "eyes": [
+    {
+     "x0": 5,
+     "x1": 7,
+     "y0": 21,
+     "y1": 23
+    },
+    {
+     "x0": 12,
+     "x1": 16,
+     "y0": 21,
+     "y1": 23
+    }
+   ],
+   "mouth": [
+    9,
+    25,
+    1
+   ],
+   "hair_share": {
+    "h": 0.794,
+    "H": 0.192,
+    "J": 0.014
+   },
+   "mirrored_from": "SE"
+  }
+ }
+}

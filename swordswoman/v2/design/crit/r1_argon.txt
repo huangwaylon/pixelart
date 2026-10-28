@@ -1,0 +1,44 @@
+### 1. Design Scores (Harsh 48px Action-Sprite Rubric)
+
+*   **L1_K: 6/10** — Best silhouette and proportions, retains kimono sleeves and sword, which are crucial for action. However, the face and torso shading are still too noisy and turn into muddy grey/brown pixels at 48px.
+*   **L1_N: 5/10** — Good proportions and kimono shape, but losing the katana removes her primary action silhouette and character class identity. Hair strands are too fine for clean downsampling.
+*   **L2_K: 4/10** — Cleaner color blocks, but switching from kimono sleeves to short puff-sleeves completely changes her genre from "ninja/samurai" to "Little Red Riding Hood." The sword looks like a thin grey toothpick.
+*   **L2_N: 2/10** — Generic doll. Zero original identity remains besides "brown hair, red dress." The bun + bow placement creates an awkward, bulbous top silhouette.
+*   **L3_K: 3/10** — Reads clearly at 48px, but the proportions (massive head, 2-pixel legs) are *terrible* for "lively action animation"—she cannot visibly run, lunge, or pivot. The thick black outline eats up precious internal pixel real estate.
+*   **L3_N: 1/10** — Unusable for an action game. No limbs to animate, completely generic RPG-Maker NPC vibe, and the giant bow reads as devil horns or cat ears.
+
+---
+
+### 2. Which Level to Pursue
+
+**Pursue a hybrid of L1's proportions/silhouette with L2's flat value blocking (Specifically: L1_K geometry + L2_K rendering style).** 
+L1 is the only level that keeps enough limb length for dynamic 3D/pixel animation and retains the kimono silhouette, while L2 has the clean, un-shaded color blocking needed for 48px readability.
+
+---
+
+### 3. Concrete Adjustments: Simplify, Exaggerate, & Keep
+
+**Must Keep (Core Identity):**
+*   **Wide kimono sleeves & detached shoulder skin-gap:** The tiny skin gap at the shoulders (from the original) is a massive readability booster—it separates the arms from the torso in a sea of red.
+*   **Front skirt slit (showing dark underskirt/thighs):** Crucial for leg visibility during running/kicking animations; a solid red bell-skirt (like L1–L3) hides hip articulation.
+*   **Wide dark corset/obi:** Breaks the red torso in half horizontally so she doesn't become a red blob.
+*   **High bun + oversized red bow + Katana.**
+
+**Exaggerate (For 48px Readability):**
+*   **Bow:** Make the bow tails/loops 30% larger than L1_K so they clearly break the silhouette outside the hair bun.
+*   **Katana Blade Width:** Double the blade thickness from L1_K/L2_K (closer to L3_K's thickness, but L1_K's length). A realistic-width blade vanishes orstrobes during isometric rotation.
+*   **Corset/Obi Contrast:** Make the belt much darker (near-black brown) and taller, and push the red fabric to a brighter, more saturated crimson so they separate instantly.
+
+**Simplify (Remove entirely):**
+*   **All internal cloth folds, belt buckles, and hair strand lines:** Use flat cell-shaded color blocks on the 3D model.
+*   **Pink neck ribbons & purple arm cords:** Too thin; they just become stray noisy pixels.
+*   **Strappy sandals:** Replace with solid dark-brown tabi boots (like L1/L2) with a clean, bright skin-tone gap at the thighs/shins for high-contrast leg tracking.
+
+---
+
+### 4. Specific Technical & Visual Issues
+
+*   **The "Mickey Mouse Ear" Bun (L2_N):** Because the bow sits *behind* or *inside* the bun silhouette in L2_N, the round bun protrudes out the back like a mouse ear. **Fix:** In 3D, seat the bow *in front* of the bun, angled toward the camera/top-down view, with the loops extending wider than the bun itself.
+*   **Sword Disappearing Act (L1_K, L2_K):** At 40–48px, the 1px-wide blade breaks up into disconnected grey dots due to aliasing. **Fix:** Exaggerate the blade chord width in the 3D mesh so it renders at a minimum of 2–3px wide at 48px height, with a high-contrast white edge highlight.
+*   **Stumpy Leg Syndrome (L3_K, L3_N):** The legs are only 3–4 pixels tall. In an isometric action game, you need clear knee/foot telemetry for dodging and attacking. **Fix:** Keep L1's leg length, and bring back the original's **front skirt split** so we see full leg movement up to the mid-thigh.
+*   **Outline Bloat (L3):** The heavy black outline in L3 crushes the hands, feet, and face at 40/48px. **Fix:** Use a 1px *selective* dark-colored outline on the exterior silhouette only, and rely on high value contrast (bright skin vs. dark hair/boots, bright red cloth vs. dark brown obi) for internal separation.

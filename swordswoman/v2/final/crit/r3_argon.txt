@@ -1,0 +1,10 @@
+Here are the actionable fixes needed to faithfully match the reference illustrations:
+
+1. **S & N Views (Pose/Legs/Sleeves):** Both pixel views have wide, boxy silhouettes and lack a gap between the legs. In **S** and **N**, insert a 1px vertical dark-outline gap between the upper thighs so the legs are distinct, angle theboots slightly outward, and taper the upper shoulders inward by 1px on each side so the sleeves flare out in an A-line from the elbows down, matching the reference.
+2. **S View (Bangs & Collar):** The bangs are too flat/horizontal. Drop the right-side bang down toward the center between the eyes to create the diagonal swept fringe shown in the reference. Extend the dark red kimono V-neck outline down by 2px toward the obi to show the cross-over collar.
+3. **SE View (Face & Hair Lock):** The far-right side-lock hangs too low, merging into the kimono sleeve; trim it up by 2-3px and define its tip over the chest. Shift the far-right eye 1px left or narrow the right cheek by 1px so the 3/4 face isn't as flat/wide.
+4. **E View (Profile Nose & Bun):** The nose protrudes as a sharp 1px dark outline spike; replace that dark tip pixel with the mid/shadow skin tone for a softer anime profile, and add 1px of chin definition. Expand the back hair bun leftward by 1px to make it fuller and rounder.
+5. **NE & N Views (Ribbon Tails & Hem):** The ribbon tails hang completely vertical like stiff poles. Angle the bottom 4–5 pixels of the ribbon tails outward to the left by 1–2px to match the curved flow in the reference. Round the flat horizontal kimono bottom hem by dropping the center pixels down 1px.
+6. **Colour & Cleanliness:** Palette consistency across all 5 views is excellent (100% match on hair, skin, kimono, and obi). Clean up the jagged 1px single pixels at the bottom tip of the **SE** ribbon tail.
+
+**Score:** 7.5/10 — **FIX**

@@ -1,0 +1,13 @@
+SCORE 5.5/10
+
+1. Palette corruption (F5): Katana blade inexplicably turns peach/skin-colored instead of steel-grey.
+2. Broken blink (F5): Deleting the eyes entirely leaves a creepy blank face; lacks a closed-eyelid line, and F4/F6 have no half-lid transitions despite the 60ms timing setup.
+3. Robotic translate-bob (F0–F9): Head, hair, and torso shift down 1–2px as a rigid, copy-pasted block without secondary motion or pixel reshaping.
+4. Dead appendages (F0–F9): Hair bun, red bow, and kimono sleeves are 100% static relative to the head/torso, failing the "bouncy, energetic" goal.
+5. Stiff lower body (F0–F9): Pelvis and skirt hemline just clip over the static thigh pixels as the torso drops, showing zero knee-bend or weight shift.
+6. Collar/neck shimmer (F0–F3, F7–F9): The V-neck skin area and collar shading pop abruptly by 1px vertically rather than smoothly compressing.
+
+Top 3 Fixes:
+1. Fix F5 immediately: restore the steel blade palette, draw a dark 1px closed-eyelid line at the lower eye level, and add half-closed lids to F4 and F6.
+2. Add secondary motion (overlap): delay the bow ribbons, hair bun, and katana tip by 1 frame (F1/F4 down, F8/F0 up) so they trail the torso's vertical bounce.
+3. Animate knee flex: on the lowest frames (F3–F6), shift the front knee/shin pixels 1px down/forward and flare the skirt hem 1px outward to sell grounded weight.

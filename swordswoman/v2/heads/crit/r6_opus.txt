@@ -1,0 +1,12 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 6/10.** This fixes the helmet problem, but it overcorrects into a hairball with a face window. Identity has slipped from the old master. I judged from the 6x sheet only (no PIL here for pixel-level crops), so the orphan calls below are by eye.
+
+1. **Skull roundness (6.5):** The crown is properly domed and the hair now bulges past the temples. There's no flat top or vertical walls left. But the hair outline wraps under the face, so the whole silhouette is one closed ball and the chin doesn't taper; the face looks punched into a sphere. The bob needs to break the circle: let the side locks hang straight down past the cheek, with the face's own jaw stepping in to a 2–3px chin.
+2. **Identity (6):** The big low blue eyes and the bow loops reading left/right on top are good, and the bun is always visible. The blunt bangs shelf is weaker than on the old master: it reads as a soft hairline, not a hard horizontal edge over the brows. The bob length is lost in the ball shape. In E the bow sits on the crown pointing forward, but iso_E puts it at the back by the bun. The bun merges into the outline at 1x and needs a lighter rim or a 1px gap.
+3. **Consistency (6.5):** Size and anchor hold across the SE variants. Squash and lookup read clearly. Blink and lean are fine, but lean barely differs from neutral. In E, lean's hair hangs about 2px lower than the others, which will pop between frames.
+4. **Cleanliness (5.5):** The outlines are lumpy, with uneven stair-steps and small bumps on the SE right side, at the bun joint and on the E nape. There are scattered lone light pixels in the hair that look like noise, not a deliberate shine; group them into one 2–3px highlight arc.
+
+**Top fix:** reopen the bottom of the silhouette into straight bob side locks plus a visible small chin, and cut a hard bangs edge. That would get it to about 8.
+
+Saving session...completed.

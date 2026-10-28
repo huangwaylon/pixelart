@@ -1,0 +1,25 @@
+; origin 20 8
+; view SE
+; expr shout
+.....KKK...........
+....KHLHK...KKKKK..
+....KLHHK.KKeeeeK..
+.KK.KHhhhKEEEEEeK..
+KeeKKhrRrrEEEEERK..
+KeEeKrRRrrREEERRK..
+KEEEerRRrrrRRRRRK..
+KERRRrrrrhhrrrrhK..
+KRrrrhhHLLHHHHhhhK.
+.KrHLLHhHHHhHHhHHhK
+.KHHHHHhhHhShHhShHK
+..KHHHHhhhSsShSsShK
+..KHHHHhKKssssssKKK
+..KHHHHhssKKsssKsKK
+..KHhHHhKsKKKsKKsSK
+..KHhHHhsWiIsssiWSK
+..KHhHhhesssssssseK
+..KhHhHhssssKKKssK.
+..KhHhhhssssKeKSK..
+...KhHhhhsssssSK...
+...KhKhhhsssSSK....
+....K.KhhhsSSK.....

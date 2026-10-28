@@ -1,0 +1,25 @@
+; pivot 15 19
+; anchor bow 11 3
+; anchor bun 4 -1
+........######........
+.....###HHHHHH###.....
+...##HHHHHHHHHHHH##...
+..#jHHHHHHHHHHHHHHH#..
+.#jHHHHHHHHHHHHHHHHH#.
+.#jHHHHHHHHHHHHHHHHH#.
+#jHHHHHHHHHHHHHHHHHh#.
+#jHHHHHHHHHHHHHHHHHh#.
+#jHHHHHHHHHHHHHHHHHHh#
+#HHHHHHHHHHHHhHHHHhh##
+#hHHHHHHHHHHhHHH33H2##
+#hHHHHHHHHHHhhh22222#.
+#hhHHHHHHHHHhhh###22#.
+#hhHHHHHHHHHhH22wI22#.
+.#hhHHHHHHHHhH22II22#.
+.#hhHHHHHHHHhH22ww222#
+.#hhHHHHHhhhhH222222#.
+..#hhHHHhhhhhH222221#.
+...#hhhhhhhhhh22221#..
+....#hhhhhhh#######...
+.....#hh####..........
+......##..............

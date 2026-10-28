@@ -1,0 +1,197 @@
+{
+ "_doc": "M96 head anchors (128x128 master cell coords, v2/m96/masters/EC0_<V>_96.txt). Eye template origin (x0,y0) = top-left of the eye_spec block (row B = brow row; lash row = y0+1). mouth = origin of the 4x3 mouth block (cheek/mouth/jaw rows). blush = [x, y, max px] per cheek, drawn centred-left at (x..x+n-1, y). ne_lash = pixels (in order) that poke past the cheek outline. Head stamps v2/m96/heads/<V>_<expr>.txt are full-head crops at 'stamp' = [x0, y0, x1, y1) with '; origin x0 y0' meta; paste = copy every non-'.' char to (x0+c, y0+r). eye_dy = lash row - qc crown (21 in S/SE/E). Built by tools/stamp.py. nose = [x,y,char] pixels drawn verbatim (E: profile outline bump).",
+ "views": {
+  "S": {
+   "eyes": [
+    {
+     "kind": "front_left",
+     "x0": 56,
+     "y0": 50
+    },
+    {
+     "kind": "front_right",
+     "x0": 66,
+     "y0": 50
+    }
+   ],
+   "mouth": [
+    62,
+    56
+   ],
+   "blush": [
+    [
+     58,
+     56,
+     2
+    ],
+    [
+     68,
+     56,
+     2
+    ]
+   ],
+   "crown": 30,
+   "chin": 63,
+   "stamp": [
+    50,
+    29,
+    78,
+    65
+   ],
+   "nose": [
+    [
+     64,
+     54,
+     "S"
+    ],
+    [
+     64,
+     55,
+     "S"
+    ]
+   ]
+  },
+  "SE": {
+   "eyes": [
+    {
+     "kind": "front_left",
+     "x0": 62,
+     "y0": 50
+    },
+    {
+     "kind": "far",
+     "x0": 72,
+     "y0": 50
+    }
+   ],
+   "mouth": [
+    67,
+    57
+   ],
+   "blush": [
+    [
+     64,
+     56,
+     2
+    ],
+    [
+     72,
+     56,
+     2
+    ]
+   ],
+   "crown": 30,
+   "chin": 63,
+   "stamp": [
+    45,
+    28,
+    80,
+    65
+   ],
+   "nose": [
+    [
+     70,
+     54,
+     "S"
+    ],
+    [
+     70,
+     55,
+     "S"
+    ]
+   ]
+  },
+  "E": {
+   "eyes": [
+    {
+     "kind": "front_left",
+     "x0": 72,
+     "y0": 50
+    }
+   ],
+   "mouth": [
+    74,
+    56
+   ],
+   "blush": [
+    [
+     71,
+     56,
+     2
+    ]
+   ],
+   "crown": 30,
+   "chin": 63,
+   "stamp": [
+    46,
+    26,
+    82,
+    65
+   ],
+   "nose": [
+    [
+     78,
+     54,
+     "s"
+    ],
+    [
+     79,
+     54,
+     "K"
+    ],
+    [
+     78,
+     55,
+     "K"
+    ]
+   ]
+  },
+  "NE": {
+   "eyes": [],
+   "mouth": null,
+   "blush": [
+    [
+     74,
+     58,
+     1
+    ],
+    [
+     74,
+     59,
+     1
+    ]
+   ],
+   "ne_lash": [
+    [
+     76,
+     56
+    ],
+    [
+     76,
+     55
+    ]
+   ],
+   "crown": 30,
+   "chin": 63,
+   "stamp": [
+    44,
+    27,
+    80,
+    65
+   ]
+  },
+  "N": {
+   "eyes": [],
+   "mouth": null,
+   "blush": [],
+   "crown": 30,
+   "chin": 63,
+   "stamp": [
+    49,
+    29,
+    78,
+    65
+   ]
+  }
+ }
+}

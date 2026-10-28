@@ -1,0 +1,20 @@
+Restored session: Mon 26 Oct 2026 14:21:11 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**C (Hybrid-48 r3): 5.5/10.** The proportions and palette are close, but it reads like fan pixel art polished in Aseprite, not like Game Freak's work.
+1. **Hair mass (rows ~3–14):** it's one flat dark slab with a single highlight band. Add the BW recipe: 3 tones, a hard shadow on the right/under-fringe side, and 2–3 strand-break pixels in the fringe.
+2. **Face (rows ~10–17):** the skin is a large flat area with no jaw shadow. Add a one-tone shadow column under the hair and on the right cheek, and give the eyes a 1 px dark top lid plus a white glint.
+3. **Kimono and obi (rows ~19–28):** the shading is pillowy, which reads as a blur, not a cel cut. Use 2 hard fold lines on the sleeves and skirt hem. Make the obi a 2-tone band, and add a sel-out (coloured inner line) where the sleeves meet the body.
+4. **Sword (lower left):** it's a thin, stair-stepped diagonal floating at the hip. Join the hilt to the fist pixel, use clean 2:1 line steps, give it a 1 px black outline, and dim the white to light grey with a single white highlight pixel.
+
+**A' (PMD-32): 6.5/10.** It's the nearest to Meloetta and Gallade in silhouette weight and outline.
+1. **Sword:** it's too long and too bright, so it takes more attention than the character. Shorten it by about 25% and cut the white down to a 1-pixel highlight.
+2. **Legs (bottom ~6 rows):** they're thin and pale like stilts. PMD feet are stubby, so use 2 px wide legs, take 1 row off them, and make the shoes chunkier.
+3. **Face shadow:** the left half is a muddy brown-grey. Swap it for a warm skin-shadow tone and limit it to a strip 1–2 px wide.
+4. **Outline corners:** there are doubled black pixels at the bow, elbows and hem corners. Remove them so the line stays a single pixel wide, as Meloetta's does.
+
+**Master style: use A'.** PMD is the official template for exactly this job, 8-direction chibi action sets (walk, attack and so on). At 32 px, each frame has few enough pixels to stay on-model across 8 directions × 6 actions, and redraws for jump, dash and slash stay cheap. C's extra detail in the hair and face would drift from frame to frame and need heavy cleanup. Keep C for a portrait or battle-sprite version.
+
+I scored these by eye. I couldn't measure the pure-black outlines on our sprites because PIL isn't installed.
+
+Saving session...completed.

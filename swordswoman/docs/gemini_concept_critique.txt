@@ -1,0 +1,15 @@
+**Image 2 (Turnaround)**
+*   **(a) Costume Fidelity:** 6/10 
+*   **(b) Chibi Appeal/Roundness:** 9/10
+*   **(c) 64px Readability:** 8/10 (Clean color blocking and strong contrast aid downscaling).
+
+**Image 3 (Isometric)**
+*   **(a) Costume Fidelity:** 6/10
+*   **(b) Chibi Appeal/Roundness:** 9/10 (Excellent use of perspective to emphasize the oversized head).
+*   **(c) 64px Readability:** 8/10 (Strong, readable silhouette).
+
+**Top 3 Deviations for the 3D Modeler to Correct:**
+
+1.  **Sword Hilt and Guard:** The original concept features a highly distinct, large curved crossguard (prongs) and a red diamond pattern laced into the hilt. The chibi concepts incorrectly substitute a generic, plain katana. Revert to the original weapon design.
+2.  **Leather Harness Complexity:** The original features a complex, asymmetrical brown leather harness with hanging straps, unique layered cutouts, and specific hip pouches. The chibi artists over-simplified this into a generic, flat three-buckle corset. The 3D model needs the structural complexity of the original harness.
+3.  **Unapproved Choker:** Both chibi images feature a black choker. This does not exist in the original concept and clutters the neck area. Remove the choker entirely; the neckline silhouette should rely solely on the structured, high red fabric collar.

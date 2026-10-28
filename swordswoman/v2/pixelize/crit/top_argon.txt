@@ -1,0 +1,12 @@
+**Sheet 1 (96 px):**
+* **(a) View Scores (/10):** S: 6 | SE: 6 | E: 7 | NE: 7 | N: 7. Shapes, bow placement, and sock/skin bands generally follow the source, though facial clarity degrades in front/three-quarter views.
+* **(b) Colour Consistency:** Consistent across all five views, matching the source palette well.
+* **(c) 3 Worst Defects:** 1. Muddy eye clusters in S and SE views. 2. Jagged, unrefined black outlines on sleeves and hair ribbons. 3. Loss of distinct finger/hand definition across views.
+
+**Sheet 2 (80 px):**
+* **(a) View Scores (/10):** S: 5 | SE: 5 | E: 6 | NE: 6 | N: 7. Overall silhouettes and key features (bow side, sock bands) remain intact, but facial features suffer noticeably from lower resolution.
+* **(b) Colour Consistency:** Consistent palette maintained across all views.
+* **(c) 3 Worst Defects:** 1. Severely blurred eyes in S and SE views (appearing almost closed in S). 2. Cluttered pixel clusters along the hair ribbon and bun. 3. blocky, indistinct hands and boots.
+
+**Comparison & Conclusion:**
+Sheet 1 (96 px) better represents the source material; while both exhibit automated downscaling artifacts (jagged outlines), the extra resolution preserves cleaner facial readability. The 80 px version loses essential eye definition and facial expression in the S and SE views, making the character look noticeably different from the source illustration.

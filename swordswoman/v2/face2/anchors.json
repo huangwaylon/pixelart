@@ -1,0 +1,205 @@
+{
+ "_doc": "FACE2 anchors. Tile = 19x22 char map (out/sprite/<VIEW>_<expr>.txt, '.' = transparent). Head: crown tile row 4, chin outline tile row 18 (15 px), neck from row 19; hair mass cols 0-15 (16 px). To place on a 64-cell master: cell = tile + (dx,dy) = (+24,+9) -> crown row 13, chin outline row 27, neck row 28 (prop/blockout/head_region.json: crown may rise to 13, chin line 28, cols 24-39). Eye stamp = kit.EYE[expr] (5 cols x 6 rows: c0 lash wing, c1-3 eye, c4 inner margin; r0 brow row, r1-5 eye), right/far eye mirrored; far SE eye = kit.far(); profile = kit.PROF_E (4 cols). Mouth stamp = 4x3 (row0 cheek, row1 mouth, row2 jaw) at 'mouth'; profile mouths kit.MOUTH_E2 (3x3, '_' cuts the silhouette). Blush = BLUSH[expr] px of k from 'blush'.",
+ "offset_tile_to_cell": [
+  24,
+  9
+ ],
+ "views": {
+  "S": {
+   "eyes": [
+    {
+     "stamp_x0": 3,
+     "brow_row": 9,
+     "eye_rows": [
+      10,
+      14
+     ],
+     "mirror": false,
+     "far": false
+    },
+    {
+     "stamp_x0": 12,
+     "brow_row": 9,
+     "eye_rows": [
+      10,
+      14
+     ],
+     "mirror": true,
+     "far": false
+    }
+   ],
+   "mouth_xy": [
+    6,
+    15
+   ],
+   "blush_xy": [
+    [
+     3,
+     15
+    ],
+    [
+     11,
+     15
+    ]
+   ],
+   "lash_cue_px": null,
+   "cell": {
+    "eyes": [
+     {
+      "stamp_x0": 27,
+      "brow_row": 18
+     },
+     {
+      "stamp_x0": 36,
+      "brow_row": 18
+     }
+    ],
+    "mouth_xy": [
+     30,
+     24
+    ]
+   }
+  },
+  "SE": {
+   "eyes": [
+    {
+     "stamp_x0": 6,
+     "brow_row": 9,
+     "eye_rows": [
+      10,
+      14
+     ],
+     "mirror": false,
+     "far": false
+    },
+    {
+     "stamp_x0": 13,
+     "brow_row": 9,
+     "eye_rows": [
+      10,
+      14
+     ],
+     "mirror": true,
+     "far": true
+    }
+   ],
+   "mouth_xy": [
+    9,
+    15
+   ],
+   "blush_xy": [
+    [
+     7,
+     15
+    ],
+    [
+     12,
+     15
+    ]
+   ],
+   "lash_cue_px": null,
+   "cell": {
+    "eyes": [
+     {
+      "stamp_x0": 30,
+      "brow_row": 18
+     },
+     {
+      "stamp_x0": 37,
+      "brow_row": 18
+     }
+    ],
+    "mouth_xy": [
+     33,
+     24
+    ]
+   }
+  },
+  "E": {
+   "eyes": [
+    {
+     "stamp_x0": 8,
+     "brow_row": 9,
+     "eye_rows": [
+      10,
+      14
+     ],
+     "mirror": false,
+     "far": false
+    }
+   ],
+   "mouth_xy": [
+    10,
+    15
+   ],
+   "blush_xy": [
+    [
+     9,
+     15
+    ]
+   ],
+   "lash_cue_px": null,
+   "cell": {
+    "eyes": [
+     {
+      "stamp_x0": 32,
+      "brow_row": 18
+     }
+    ],
+    "mouth_xy": [
+     34,
+     24
+    ]
+   }
+  },
+  "NE": {
+   "eyes": [],
+   "mouth_xy": null,
+   "blush_xy": [
+    [
+     14,
+     13
+    ]
+   ],
+   "lash_cue_px": [
+    [
+     16,
+     11
+    ],
+    [
+     16,
+     10
+    ]
+   ],
+   "cell": {
+    "eyes": [],
+    "mouth_xy": null
+   }
+  },
+  "N": {
+   "eyes": [],
+   "mouth_xy": null,
+   "blush_xy": [],
+   "lash_cue_px": null,
+   "cell": {
+    "eyes": [],
+    "mouth_xy": null
+   }
+  }
+ },
+ "eye_boxes_S_cell": {
+  "left": [
+   28,
+   19,
+   3,
+   5
+  ],
+  "right": [
+   33,
+   19,
+   3,
+   5
+  ],
+  "note": "x,y,w,h; eye centre row 21 = 0.57 of the head (<=0.66 rule)"
+ }
+}

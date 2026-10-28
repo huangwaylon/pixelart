@@ -1,0 +1,21 @@
+**(1) Scores (/10)**
+* **Sprite:** Cute: 8.5 | Anime/JP: 8.5 | Big eyes at 1x: 9.0 | Intentional: 9.0 | Consistent: 8.5
+* **Portrait:** Cute: 9.0 | Anime/JP: 9.0 | Big eyes at 1x: 9.5 | Intentional: 9.0 | Consistent: 9.0
+
+**(2) Weak Expressions at 1x**
+* **Sprite S `determined`:** Inner brows connect to the upper lash line, creating a heavy T-bar/unibrow block at 1x.
+* **Sprite S `effort`:** The 3-px wide mouth with a 1-px center gap reads like buck teeth/fangs rather than a strained grimace.
+* **Sprite S/SE `embarrassed`:** The 2-px vertical cyan tear lines fuse with the pink blush and mouth corners into noisy muddy clusters.
+* **Portrait `surprised`:** The 3-px tall vertical mouth touches the chin shadow, reading like a goatee/chin cleft at 1x.
+
+**(3) Profile (E) & 3/4 (SE) Check**
+* **E (Profile):** Yes, a true anime profile now. Forehead, 1-px nose bump, lip notch, recessed neck, and side-triangle eye read cleanly.
+* **SE (3/4):** Good 3/4 eye compression (3-px near, 2-px far), though the far cheek contour is a bit vertical/boxy—a 1-px taper at the lower-right jaw would sell the turn better.
+
+**(4) Top 6 Concrete Pixel Edits**
+1. **Sprite S `determined`:** Replace the 2 inner brow dark pixels touching the top of the lashes with skin tone so brows float 1 px clear of the eyes.
+2. **Sprite S `effort`:** Replace the 1-px light center gap in the mouth with mouth-red (`r`), making a clean 3-px horizontal grit line.
+3. **Sprite S/SE `embarrassed`:** Delete the bottom pixel of each cyan tear so it stays a 1-px sparkle at the outer eye corner, clear of the blush (`k`).
+4. **Sprite E `pain`:** Replace the upper-left dark pixel of the `>` eye with skin tone so it forms a clean 3-px chevron instead of a 2x2 blotch.
+5. **Portrait `surprised`:** Shorten the mouth by 1 px at the bottom (replace lowest dark mouth pixel with skin) to separate it from the chin outline.
+6. **Portrait `effort`:** Widen the white teeth row by 1 px on each side (2 px → 4 px wide) so the clenched-teeth grimace reads instantly at 1x.

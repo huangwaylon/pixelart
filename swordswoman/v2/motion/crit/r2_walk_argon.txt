@@ -1,0 +1,14 @@
+OVERALL: 7
+
+- Natural: 7
+- Whole-body: 8
+- Fluid: 7
+- Appealing: 7
+- Secondary motion convincing: 6
+- Readable at 1x: 7
+
+**Top 3 Concrete Fixes:**
+
+1. **All frames (especially SE Pass/Up) – Ribbon Tails:** At 1x, the thin tails are 1px wide and clip into the skull silhouette. Thicken the mesh by 2x and push the tails backward/outward by 2–3px at 1x so they read clearly like the OLD bow, peaking in height on `down`/`down2` (1 frame after head drops).
+2. **Contact / Contact2 (E & SE) – Front Foot:** It lands flat-footed, killing weight. Pitch the front toe UP by 20–25° (heel strike) on `contact`/`contact2`, snapping flat on `down`/`down2`.
+3. **Contact / Down / Up2 (E view) – Front (Right) Arm:** Foreshortening makes the sleeve merge into the chest into a stump. Swing the forearm 3–4px further forward/outward away from the torso to open a negative-space gap or clearly overlap the chest silhouette.

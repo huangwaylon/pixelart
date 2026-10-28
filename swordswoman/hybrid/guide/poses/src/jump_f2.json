@@ -1,0 +1,28 @@
+{
+ "format": "dirpose/1",
+ "name": "jump_f2",
+ "dirs": [
+  "E",
+  "SE"
+ ],
+ "ops": [
+  [
+   "base",
+   "jump_apex"
+  ],
+  [
+   "props",
+   {
+    "expr_smile": 1
+   }
+  ]
+ ],
+ "intent": {
+  "anim": "jump",
+  "frame": 2,
+  "ms": 150,
+  "beat": "apex (hang)",
+  "engine_z_px": 16,
+  "ta_push": true
+ }
+}

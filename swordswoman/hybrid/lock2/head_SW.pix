@@ -1,0 +1,32 @@
+# lock2 head v2 SW (built by tools/hybrid/h3/heads.py)
+size: 24 29
+grid:
+..........KKK.....KKKK..
+.........KRRCKK..KhhhhK.
+........KRRRKRCKKhhhhhhK
+......KRRRRKrRRCKhhhhhhK
+......KRRRRKrRRCKhhhhhhK
+.....KrRRRRvrRRRKhhhhhhK
+.....KRRrvrvvrRRKhhhhhhK
+.....KKvvKrKvvKKhhhhhhK.
+....KHJKKKhKKKhhhhhhhhK.
+....KHJHhhhhhhhhhhhhhhK.
+...KHJHhHhhhhHhhhhhhhhK.
+..KHJHhhhHhhhHhhhhhhhhhK
+.KHHHhhhhHhhhhHhhhhhhhhK
+.KHHHHhhhhHhhhHhhhhhhhhK
+KHHHhHhhhhHhhhhHhhhhhhhK
+KHHhhHhhhhhHhhhHhhhhhhhK
+KHHhhhHhhhhHhhhhHhhhhhhK
+KHHHhhHhhhhHhhhhhhhhhhK.
+.KHHHhhhhsmhhhhmhhhhhhK.
+.KHHHhmsssmhhmssmKhhhhK.
+.KHHKKKKssssKKKKKsKhhhK.
+..KHHewesssseeewesKhhK..
+..KHhEEEsssseEEEeSmhhK..
+...KhsEEsssssEEsssmhK...
+...KhppssssssssppsmhK...
+...KhssssmssssssssmhK...
+......KssssssssssmK.....
+.......KsssssssmK.......
+........KKKKKKK.........

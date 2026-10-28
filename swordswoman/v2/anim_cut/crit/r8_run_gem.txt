@@ -1,0 +1,17 @@
+Here is my critique of the `run_SE` contact sheet. While the vertical head bob is readable, this currently reads like a stiff, automated cutout rig rather than hand-polished pixel art. The upper body has zero forward lean, the secondary elements (hair, bow, skirt) are frozen solid, and the programmatic rotation on the limbs and sword has created severe pixel-art artifacts.
+
+Here are the 3 most important concrete problems to fix:
+
+**1. Programmatic rotation artifacts and collapsing leg width (Frames 2, 3, 4, 6 — Legs & Katana)**
+*   **The Problem:** Rotating limb and weapon sprites without hand-cleanup has ruined the pixel clusters. Most severely, in **Frame 6 (push2)**, the pushing back leg collapses into a 1-pixel-wide diagonal line of skin pixels surrounded by thick, stair-stepping black outline blocks, while in **Frame 2 (push)** the pushing leg is 2-3 pixels thick. Additionally, the katana blade in **Frames 2, 3, and 4** has severe jagged stair-stepping (2-1-2-1 pixel rhythms) along its top and bottom edges, with interior highlight pixels touching the outer background in Frame 3.
+*   **Exact Fix:** Hand-redraw the rotated limbs and blade on every frame. In Frame 6, widen the pushing leg's skin cluster to a consistent 2-pixel minimum thickness so it matches Frame 2. On the katana (especially Frames 2–4), enforce clean, uniform diagonal pixel runs (e.g., strict 2x1 or 1x1 steps depending on the angle) and ensure a continuous 1px dark outline encloses the white/grey blade pixels.
+
+**2. Broken silhouette and gait asymmetry on contact poses (Frames 0 & 4 vs. Frames 3 & 7 — Lower Body / Legs)**
+*   **The Problem:** In a run cycle, the `contact` frames (0 and 4) must show the widest stride extension, where the front heel strikes the ground ahead of the torso and the back leg trails behind. Here, your widest strides are actually in the `air` frames (3 and 7), while on **Frame 0 (contact)** and **Frame 4 (contact2)**, the front leg is already planted vertically directly underneath the torso. Furthermore, the cycle is broken between steps: in Frame 0/1 the front foot is flat and blocky (4px wide), whereas in Frame 4/5 the front leg is thinner, angled, and lacks the same foot shape.
+*   **Exact Fix:** In Frames 0 and 4, angle the front leg forward by ~30 degrees so the foot lands beneath the front edge of the face/skirt, creating a true heel-strike silhouette. Save the vertical plant beneath the hip for the `down` frames (1 and 5). Standardize the front foot sprite between Frame 0/1 and Frame 4/5 so both strides have identical mass (shifting only the shading by 1px to indicate near vs. far leg).
+
+**3. Zero secondary motion / "Helmet Hair" and stiff torso (All Frames 0–7 — Head, Bow, Hair, Skirt)**
+*   **The Problem:** The head, hair, ribbon bow, and skirt hem are copy-pasted identically across all 8 frames, only translating vertically. This kills the energy of the run and exposes the cutout rig. Additionally, the torso and head are completely vertical rather than leaning into the SE run direction.
+*   **Exact Fix:** Shift the head and hair 1–2 pixels forward (down-right) relative to the hips to establish a permanent forward lean. Add overlapping follow-through: on the `down` and `push` frames (1, 2, 5, 6), squash the bow loops down by 1px and flare the bottom-left hair tips and skirt hem out by 1–2px (lagging behind the downward drop). On the `air` frames (3 and 7), trail the bow ends and hair tips 1px upward as she rises.
+
+SCORE run: 5

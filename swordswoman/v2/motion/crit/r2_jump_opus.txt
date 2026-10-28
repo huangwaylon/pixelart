@@ -1,0 +1,15 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+OVERALL: 6
+
+- Natural: 6. Timing works, but the head leans forward in crouch (x≈109) and back in land (x≈90). The two poles don't match.
+- Whole-body: 6
+- Fluid: 5. Launch hips are only 5 px above antic, so the push-off pops instead of extending. Recover→settle rises with no dip below the end pose, so it has no ease.
+- Appealing: 5. The apex is a stiff T-pose: arms out at ±20 px, legs hanging straight.
+- Secondary motion: 5. The hair reads well now. The ribbon in E crouch is a rigid diagonal stick, and the skirt at apex flares into a flat disc that turns to pixel noise.
+- Readable at 1x: 6. Sleeves swamp the silhouette at apex and fall.
+
+Top 3 fixes:
+1. **Apex:** tuck knees up about 8 px, with feet about 6 px behind the hips. Bring hands about 6 px in and up. That makes a compact ball shape instead of a T.
+2. **Land and recover:** lean the chest and head forward over the knees in land, not back. Have recover drop the hips about 2 px below settle so it overshoots, then eases up.
+3. **Ribbon and skirt:** lag the ribbon one frame behind the head with a curved bend; in crouch it should trail up and back. Cap skirt flare at about 3 px so apex keeps a bell shape, not a disc.

@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I redrew the bow's upper loop as a solid shape (e light, E base, R folds), outlined in K, rising from an R knot behind the bun, and joined the knot to the left loop, which now has an e highlight on top. On the hair I removed stray g/L/h specks and joined the LLL sheen into one continuous band. The gate passes: ssim_b −0.001, dE +0.037, sil +0.000, and lint O1/S4/O3 are unchanged.

@@ -1,0 +1,11 @@
+**1) Nose & Brows Consistency:** Yes, vertical Y-levels align across S/SE/E. Brows clearly shift angle per emotion. The S/SE 2px shadow nose is subtle and clean, though the E profile nose bump is slightly blunt (2px vertical flat tip).
+**2) Match to Illustration:** Close match. Brows sit nicely below the fringe. However, the E illustration has a sharper, upturned nose point and a slightly more recessed chin than the pixel profile.
+**3) 1x Expression Readability:** *Determined* (lowered V-brows) and *Pain/Joy/Shout* read great at 1x. *Cheerful* vs *Neutral* is still too subtle at 1x—the 1px brow lift and dark-red closed mouth barely register over neutral.
+**4) Full-body Tweaks:** SE bow separation and wider thigh bands read much better at 1x. Hands are slender, though the dark outline around the 1px thumb notch makes S/N hands look slightly bulky/mitt-like at 1x.
+
+**Scores:** Brows: 9/10 | Nose: 8/10 | Consistency: 9/10 | 1x Readability: 7.5/10 | Overall: 8.5/10
+
+**Top 3 Pixel Fixes:**
+1. **E Profile (Nose/Chin):** Replace the upper pixel of the 2px vertical nose tip with skin-shadow to sharpen the upturn; shift the chin outline 1px left (inward).
+2. **S & SE Cheerful (Mouth):** Brighten the mouth center by 1–2px (lighter pink/red) or curve the outer corners up 1px so the smile pops against *Neutral* at 1x.
+3. **S & N Full-Body (Hands):** Replace the dark inner outline pixel between thumb and fingers with mid-tone skin shadow to de-clutter the 1x hand silhouette.

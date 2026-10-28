@@ -1,0 +1,1 @@
+TASK C (dust): redraw dust_step (old 14x14 3f -> ~28x28), dust_land (old 34x10 4f -> ~68x20, symmetric puffs spreading both ways from the feet), dust_skid (old 27x11 3f -> ~54x22, puffs trailing behind a skid, drawn behind). Puffs u/U/t with G outline; round cloud lobes with 1 px outline, light top-left. ground_y must be the cell ground row 124 (pivot on ground).

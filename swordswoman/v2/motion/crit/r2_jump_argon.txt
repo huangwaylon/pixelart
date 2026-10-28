@@ -1,0 +1,14 @@
+OVERALL: 7
+
+* **Natural:** 7
+* **Whole-body:** 8
+* **Fluid:** 7
+* **Appealing:** 7
+* **Secondary motion convincing:** 6
+* **Readable at 1x:** 7
+
+**Top 3 Concrete Fixes:**
+
+1. **`Apex` (Both views) — Head/Hair clipping:** The character jumps out of the top of the 96px frame, clipping the hair bun and bow off-screen. Lower the entire body root on `apex` by 4–6px (at 1x) and `rise` by 2px so the silhouette stays fully inside the canvas.
+2. **`Fall` & `Land` (Both views) — Ribbon/Skirt drag:** In `fall`, the skirt flares horizontally rather than dragging upward against air resistance, and the ribbon tails vanish behind the head. Angle skirt hems and ribbon tails upward (+30–45°) on `fall`, and whip ribbon tails higher (+4px up) on `land` so they read clearly at 1x.
+3. **`Launch` (E view) — Line of Action:** The torso is too vertical, killing forward/upward thrust. Pitch the chest forward (+10°) and swing both arms further up/forward (+15°) to create a stronger launch arc into `rise`.

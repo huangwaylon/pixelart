@@ -1,0 +1,11 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Consistency: 7/10.** The open-eye construction holds up well. Every open eye has one 2px white catchlight in the upper-left of the iris, the light comes from the same side in both eyes (not mirrored), the grey-brown iris colours match, and the lash weight is steady across S, SE and E. Nothing flips between views or expressions.
+
+**Readability at 1x: 5/10.** Joy, shout and surprised read, mostly because of the mouth. Neutral, cheerful, determined and embarrassed look the same at 1x. Effort, pain and blink_close are all closed eyes and are hard to tell apart.
+
+Inconsistencies (no zoom tool here, so these are from the image as rendered):
+1. **SE, all open expressions:** the far eye is a different shape (hooked lash, no full lower lid), and its catchlight is weaker or partly cut off compared with the near eye.
+2. **E, surprised:** the iris and catchlight sit lower under a heavy top bar. In S and SE surprised they stay high.
+3. **S and SE, cheerful and determined:** the eyes are almost identical to neutral, so the eyes don't carry the expression.
+4. **S and SE, shout and embarrassed:** a mauve block sits above the eyes that no other expression has, and it reads as a smudge, not a brow.

@@ -1,0 +1,13 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt run_SE and jump_SE (plus both _ns builds) and went through the sheets about four times. Nothing has been re-scored by the critics yet.
+
+**Run:** it now uses the standard bow only (bow_up / bow_dn / plain, trailing 2px). Body bob is +1 on contact (head sinks 2) / 0 / −3 in the air. Timing is 60/45/75ms. The sword hand pumps back, up, then low, with the blade locked at kat_10, so the tip bounces about 3px out of step with the body and never reads as a horizontal lance.
+
+**Jump:** the blade stays in a low front-right guard (15→13→15→14), so it never swaps sides. I cut the rise smear because the crescent version read messy. Launch is 2px longer; hang drops 3px with the hem flared; land holds 130ms.
+
+**New parts:** `parts/se/armN_run6_hi.txt`, `parts/se/legs_jmp6_launch.txt`
+
+**Weaknesses:** no near-arm raise during the jump, and the bow flickers between variants in the run.
+
+Saving session...completed.

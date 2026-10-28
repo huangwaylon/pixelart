@@ -1,0 +1,13 @@
+SCORE 4.5/10
+
+1. **Broken Leg Swap & Anatomy (F0–F7):** Both halves of the cycle put the *same* back-left leg trailing in the exact same pose (compare F0 vs F4, F1 vs F5). There is no true alternating stride, and F2/F6 passing poses twist into knock-kneed tangents.
+2. **Stiff Stamped Head & Hair (F0–F7):** The master head is completely static—zero secondary overlap/drag on the bow or side-locks during high-velocity vertical bounces (7px jump from F0 to F1).
+3. **Collar/Neck Artifacting (F1–F3, F4–F7):** A weird horizontal flesh-colored bar protrudes from her neck/chin over the red shoulder in F1, F2, F3, F5, and morphs into noisy shoulder spikes in F7.
+4. **Rigid Procedural Katana (F0–F7):** The blade stays locked at an identical ~30° angle across all 8 frames with ugly stair-step jaggies and no rotational follow-through or arc as the rear arm pumps.
+5. **Skating Ground Plane (F0, F3, F4, F7):** Contact feet aren't pinned to a consistent floor Y-level or sliding rearward at constant speed; F3/F7 front-foot strikes hover higher than F0/F4 push-offs.
+6. **Weak/Repetitive FX (F1, F2, F5, F6):** The single-pixel horizontal speed dashes look like stray background noise, and the symmetrical cross-shaped dust rings on F1/F5 don't expand or dissipate.
+
+**Top 3 Fixes:**
+1. **Differentiate Left vs. Right Strides:** Redraw F4–F7 legs/arms so the near (right) and far (left) limbs clearly swap depth, silhouette, and shading values compared to F0–F3.
+2. **Add Secondary Motion & Sword Arcs:** Tilt the katana +/-15° with delayed wrist overlap at the apex/lows, and animate 1–2px of lag on the red bow flaps and hair tips (down on F1/F5, up on F3/F7).
+3. **Clean the Neck Seam & Pin the Floor:** Erase the stray skin-tone pixels bleeding past the chin onto the right shoulder, and align all grounded heel/toe contacts to a single Y baseline.

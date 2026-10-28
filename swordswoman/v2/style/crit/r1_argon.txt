@@ -1,0 +1,31 @@
+Here is my strict review. None of these currently pass as official DS-era Pokémon sprites; they read as modern indie pixel art with pillow-shaded gradients and rigid geometry.
+
+### **A: PMD-40**
+* **Era Read & Score:** **4/10**. Too stiff and blocky compared to PMD’s organic, compact cluster work.
+* **5 Concrete Differences & Fixes:**
+  1. **Outlines:** Solid `#000000` outer border. *Fix:* Replace with dark, hue-shifted outlines (deep maroon for dress, dark navy/brown for hair) like Meloetta/Gallade.
+  2. **Face Shape:** Flat vertical right cheek wall. *Fix:* Indent the cheek by 1px at the bottom-right to create a rounded chibi jaw.
+  3. **Hair Rendering:** Banded horizontal highlight strip. *Fix:* Group into chunky, curved specular clusters at the crown following the head's sphere.
+  4. **Shading/Light:** Pillow-shaded dress folds. *Fix:* Enforce top-left lighting; push shadow clusters exclusively to the bottom-right of the skirt and beneath the right sleeve.
+  5. **Pose:** Feet are parallel on the same horizontal plane. *Fix:* Offset the back (left) foot up by 1–2px to match the 3/4 isometric perspective of PMD sprites.
+
+### **B: BW-battle-72**
+* **Era Read & Score:** **2/10**. Fails the target style completely. BW battle sprites are ~4–5 heads tall with dynamic anatomy; this is an upscaled 2.5-head chibi with severe banding.
+* **5 Concrete Differences & Fixes:**
+  1. **Proportions:** Chibi proportions at 72px leave massive, flat, un-textured color fields. *Fix:* Redraw at 4.5 heads tall with articulated knees, torso twist, and distinct fingers like Hilda/Lyra.
+  2. **Banding/Pillow Shading:** Concentric gradient rings on the hair and skirt edge. *Fix:* Collapse to 3 high-contrast ramp tones with hard, directional shadow shapes (top-left light source).
+  3. **Geometry:** Straight 90-degree vertical/horizontal lines on bangs, skirt hem, and stick legs. *Fix:* Curve the bang line and angle the legs/skirt to show cloth weight and stance.
+  4. **Eyes:** Generic 2x3 pixel blocks. *Fix:* Construct distinct anime eyes: dark upper lash line, 1px white sclera, vertical iris with a lower-tone pupil.
+  5. **Internal Outlines:** Heavy black lines around the sash and hands. *Fix:* Use dark colored self-outlines internally; reserve black strictly for deep crevices.
+
+### **C: Hybrid-48**
+* **Era Read & Score:** **3.5/10**. Cleanest read, but too geometric and flat for Gen 4/5.
+* **5 Concrete Differences & Fixes:**
+  1. **Head/Hair:** Perfect rectangular helmet. *Fix:* Break the silhouette with tapered bang tips and a curved back-head contour.
+  2. **Skirt:** Rigid trapezoid with symmetric gradient shading. *Fix:* Add 1–2 vertical fold clusters lit from the top-left.
+  3. **Internal Lines:** Solid black lines separating arms from torso. *Fix:* Soften to dark crimson (`#4a1525`).
+  4. **Eyes:** Flat blue rectangles. *Fix:* Add a dark upper eyelash overhang (2–3px wide) to integrate them into the face like the G5 NPC.
+  5. **Stance:** Static doll pose. *Fix:* Angle the sword arm forward and stagger the feet.
+
+### **Best Base to Iterate**
+**Candidate A (PMD-40)**. Its lower resolution naturally hides the anatomical stiffness that ruins **B** and **C**, and its scale is closest to genuine DS overworld/dungeon density. Fix the outlines, round the jaw, and stagger the feet on **A**.

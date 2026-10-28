@@ -1,0 +1,8 @@
+; pivot 10 6
+.#####.............
+#eeeeE###.....####.
+#eEEEEEEE##.##eeER#
+#EEEEEEERR#E#EERRR#
+#ERRRRRRRr#E#RRRRr#
+.#rrr######R######.
+..###.....###......

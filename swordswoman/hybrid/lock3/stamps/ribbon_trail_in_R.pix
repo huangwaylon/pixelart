@@ -1,0 +1,23 @@
+# lock3 ribbon stamp trail_in R (root = first K px)
+size: 8 20
+grid:
+Kp......
+.Pp.....
+..Pp....
+...PPp..
+....PPp.
+....PPp.
+.....PPp
+.....PPp
+.....PPp
+.....PPp
+.....PPp
+.....PPp
+....PPp.
+....Pp..
+....Pp..
+....Pp..
+....Pp..
+.....P..
+......P.
+.......P

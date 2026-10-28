@@ -1,0 +1,117 @@
+{
+ "format": "dirpose/1",
+ "name": "turn",
+ "dirs": [
+  "S",
+  "SE",
+  "E",
+  "NE",
+  "N",
+  "NW",
+  "W",
+  "SW"
+ ],
+ "ops": [
+  [
+   "base",
+   "idle_{D}"
+  ],
+  [
+   "move",
+   "cog",
+   [
+    0,
+    0,
+    -0.088
+   ]
+  ],
+  [
+   "rot",
+   "chest",
+   "X",
+   2.2
+  ],
+  [
+   "rot",
+   "shoulder.L",
+   "Y",
+   -0.0
+  ],
+  [
+   "rot",
+   "shoulder.R",
+   "Y",
+   0.0
+  ],
+  [
+   "rot",
+   "head",
+   "X",
+   3.5
+  ],
+  [
+   "rot",
+   "hips",
+   "Y",
+   0.45
+  ],
+  [
+   "rot",
+   "bun",
+   "X",
+   2.7
+  ],
+  [
+   "rot",
+   "bow",
+   "X",
+   -2.7
+  ],
+  [
+   "scarf_hang",
+   0.147,
+   0.0,
+   0.24
+  ],
+  [
+   "chain",
+   "skirt.tail",
+   "X",
+   [
+    5.4,
+    5.94,
+    6.534
+   ]
+  ],
+  [
+   "rot",
+   "sleeve.L",
+   "X",
+   3.2
+  ],
+  [
+   "rot",
+   "sleeve.R",
+   "X",
+   6.4
+  ],
+  [
+   "rot",
+   "sword",
+   "Z",
+   5.0
+  ],
+  [
+   "rot",
+   "sword",
+   "X",
+   3.75
+  ]
+ ],
+ "intent": {
+  "anim": "idle",
+  "frame": 1,
+  "note": "STANDARD TEST SET turn_<DIR>.png: idle neutral key (TA p2 idle f1)"
+ },
+ "no_dir_turn": true
+}

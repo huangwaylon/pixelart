@@ -1,0 +1,5 @@
+1) **8/10** – Reads well as an unarmed recoil and stumble back, with no leftover sword-grip or guard posture.
+2) **7/10** – Fits a light, cartoonish trainer stumble, though the forward lunge in frame 3 feels slightly aggressive rather than purely reactive.
+3) **7/10** – The body recoil and leg stances read clearly at 1x, but the arms merge into the red torso in frames 2 and 3.
+
+**Single most important fix:** Push the arms further out from the silhouette in frames 2 and 3 (e.g., hands thrown up in surprise) so they don't blend into the torso at 1x resolution.

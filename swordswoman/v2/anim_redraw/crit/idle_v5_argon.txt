@@ -1,0 +1,13 @@
+SCORE 5.5/10
+
+1. **Robotic cut-and-drag motion (All frames, head/torso):** The head, hair, and torso shift vertically as rigid 1px blocks (dropping in f1–f3, rising in f7–f9) with zero pixel-level sub-pixel easing or overlap.
+2. **Dead secondary elements (All frames, bow/hair/skirt):** The top red bow, side hair locks, and skirt hem are 100% static relative to the body—zero follow-through or bounce to sell "lively, bouncy" energy.
+3. **Wasted frames & flat blink (f3–f6, eyes/body):** f3, f4, and f6 are 100% identical sprites; f5 swaps in flat 2px horizontal lines for closed eyes with no upper-eyelid descent in f4 or opening cushion in f6.
+4. **Rigid weapon/arm lock (All frames, katana/hands):** The sword and arms drop and rise locked to the exact same frame ticks as the torso instead of lagging 1 frame behind to show weight.
+5. **Diagonal jaggies & silhouette mud (All frames, sword/scabbard):** The gray scabbard across the red dress has stepped 2:1/1:1 jagged outlines and tangents with the collar/sleeves, hurting readability.
+6. **Stiff knee squash (f2–f6, legs):** The 2px body drop simply deletes leg pixels above the boots without bending the knees outward or shifting weight between the front and back foot.
+
+**Top 3 Fixes:**
+1. **Add 1-frame overlapping action:** Delay the vertical drop/rise of the red bow, hair tips, and katana blade by 1 frame behind the torso (e.g., torso hits bottom on f2, bow/sword settle on f3; torso rises on f7, bow/sword lag until f8).
+2. **Animate a 3-frame blink on the duplicate frames:** Use f4 (currently a duplicate of f3) for a half-closed lid (eyes 1px shorter from top), keep f5 closed (curve the line down 1px at center), and use f6 for a wide/half-open recovery.
+3. **Sub-pixel ease & clean the blade:** Use shading shifts on the collar, bow, and bangs on transition frames (f1, f7) to soften the 1px snap, and clean the scabbard/blade into strict 2px-step stairs.

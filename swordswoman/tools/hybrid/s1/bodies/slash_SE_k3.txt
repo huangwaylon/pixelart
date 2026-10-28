@@ -1,0 +1,45 @@
+# slash_SE_k3 FOLLOW-THROUGH (240 ms): body rises and settles back (guide head 68,71 -> stamp 60,49), blade carries on past the target down-right; secondary OVERSHOOT: ribbons, skirt tail, sleeve and bow swing past rest to the right (they trailed left on k1/k2) and will settle; fading pink_0 wisps of the arc
+fx: none
+from: turn_SE 1 3
+stamp: 60 49
+bow: 1 0
+clear: 56,84,62,96
+shear: 79 90 3
+clear: 30,91,120,112
+patch: 51 91
+______KRRRRRRRRRRRRRRRK______
+_____KdRRRRRRRRRRRRRRRRK_____
+_____KddRRRRRRRRRRRRRRRRK____
+____KRddKRRRRRRRRRRRRRRRRK___
+____KRRdKRRRRRRRRRRRRRRRRRK__
+___KRRRKKRRRRRRRRRRRRRRRRRRK_
+___KvrrK.KvrrrrrrrrrrrrrrRRRK
+____KKK...KKvvvvKKvvvvvvKrRK_
+________________________KrK__
+_________________________KK__
+limb: s 2 63,97 60,101 58,103 behind
+limb: d 2 57,103 57,104 behind
+limb: s 2 73,97 76,100 76,103 behind
+limb: d 2 76,103 78,104 behind
+limb: R 3 64,86 72,89
+patch: 68 88
+KKK__
+KRRK_
+KRRRK
+KvvvK
+_KKK_
+top: 72 87
+_KKKK_
+KssssK
+KmsssK
+_KKKK_
+sword: 76,89 96,103
+opb: stamp 72,85 KKKKK________/KRRRRKKK_____/KrRRRRRRKKK__/_KrrRRRRRRRK_/__KrrrrRRRRRK/___KKvvvvvvK_/_____KKKKKK__
+opb: curve 66,85 77,80 86,85 p
+opb: curve 66,84 77,79 86,84 P
+opb: curve 86,85 90,89 94,87 p
+opb: curve 86,84 90,88 94,86 P
+opb: curve 67,87 78,91 87,94 p
+opb: curve 67,86 78,90 87,93 P
+op: arc 70,95 33,13 25 58 p
+op: arc 70,95 31,12 34 50 P

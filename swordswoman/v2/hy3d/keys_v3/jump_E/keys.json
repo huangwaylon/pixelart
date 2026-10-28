@@ -1,0 +1,30 @@
+{
+ "action": "jump",
+ "dir": "E",
+ "keys": [
+  "jump_crouch",
+  "jump_launch",
+  "jump_apex",
+  "jump_fall",
+  "jump_land"
+ ],
+ "cell_1x": 96,
+ "scale": 4,
+ "pivot_1x": [
+  48,
+  88
+ ],
+ "px_per_unit_1x": 26.0,
+ "elev_deg": 30,
+ "ids": [
+  "skin",
+  "hair",
+  "dress",
+  "obi",
+  "boots",
+  "eyes",
+  "bow",
+  "blade",
+  "hilt"
+ ]
+}

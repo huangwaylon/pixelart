@@ -1,0 +1,13 @@
+You are a senior pixel artist continuing YOUR OWN work on the round-chibi-skull head set in /Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads/ (briefs heads/prompt_r1..r3.txt; backups heads/r2, heads/r3). Round-3 critics: heads/crit/r3_argon.txt (5.5) and heads/crit/r3_opus.txt (5) - read both. Identity is back (keep the eyes/brows/lash rows exactly). Fix, in place, keeping file names and the pivot/anchor convention (update anchors if shapes move):
+SE (all variants):
+a) Chin/jaw: the bottom of the face must be a soft rounded taper, e.g. face widths over the last 4 rows ~10,8,6,4 with the chin outline curving 1-2-3, and NO transparent holes between the chin and the bob tips (row 18-19 of neutral currently has '..' voids next to a 2px peg): the bob tips hug the jaw (fill with h/H + outline) and the neck is below the chin.
+b) Outer silhouette: the screen-right hair wall must curve OUTWARD past the temple (widest at eye level) then back in - no straight vertical run longer than 3px anywhere on the outer outline; the dome rises under/behind the bow so the bow sits on a curve (no flat top line under the bow); the bottom hem of the bob is rounded (no long flat bottom row).
+c) Bun: separate it from the hair mass with a rim light (j on its top-left) and a clear # outline notch where it meets the skull; keep it visible in squash.
+d) Blink: flat or slightly upward-curved closed lids (happy/calm), not sloping down to the middle.
+e) Clean the stair-steps where jaw meets hair on the right; mouth/blush pixels must touch the face (no floating pinks).
+E (all variants):
+f) Face front: a continuous soft profile curve - forehead under the bangs, a gentle 1px nose bump about 2 rows below the eye, cheek bulge, small soft chin; no vertical wall longer than 3px on the face front.
+g) Eye: 1px taller (4 rows incl. lash) with a w glint so it reads at 1x.
+h) Back of skull/nape: round arc (3-2-1-1-2-3 style), bob tip at the back-bottom tucking into the nape like E squash does; no 90-degree corner.
+i) Bow: a side-view ribbon with a clear near loop that rises ABOVE the bun and a smaller far loop behind, knot in the middle - not a flat bar.
+Rules as before (palette chars, 1px # outline, flat cel shading lit top-left, no orphans/jaggies). Verify with /Users/waylonhuang/Documents/other/pixelart/swordswoman/.venv/bin/python /Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads/tools/preview.py and Read heads/png/sheet.png; iterate at least 3 times (also run a quick script that prints the outer-outline run lengths so you can prove no straight run > 3px except the bangs shelf). End with a 5-line summary (files, sizes, pivots/anchors).

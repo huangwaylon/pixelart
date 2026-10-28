@@ -1,0 +1,254 @@
+{
+ "name": "test_kat10",
+ "partdir": "parts/se",
+ "cell": [
+  72,
+  72
+ ],
+ "ground": [
+  36,
+  64
+ ],
+ "rig": {
+  "legs": {
+   "part": "legs",
+   "at": "root",
+   "z": 1
+  },
+  "skirt": {
+   "part": "skirt",
+   "at": "legs.hip",
+   "z": 3
+  },
+  "torso": {
+   "part": "torso",
+   "at": "skirt.waist",
+   "off": [
+    0,
+    0
+   ],
+   "z": 4
+  },
+  "armF": {
+   "part": "armF",
+   "at": "torso.shR",
+   "z": 2
+  },
+  "armN": {
+   "part": "armN",
+   "at": "torso.shL",
+   "z": 6
+  },
+  "head": {
+   "part": "head",
+   "at": "torso.neck",
+   "z": 7
+  },
+  "bun": {
+   "part": "bun",
+   "at": "head.bun",
+   "z": 0
+  },
+  "bow": {
+   "part": "bow",
+   "at": "head.bow",
+   "z": 8
+  },
+  "kat": {
+   "part": "kat_13",
+   "at": "armN.hand",
+   "z": 5
+  }
+ },
+ "frames": [
+  {
+   "ms": 300,
+   "label": "kat_00",
+   "set": {
+    "kat": {
+     "part": "kat_00"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat_01",
+   "set": {
+    "kat": {
+     "part": "kat_01"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat_02",
+   "set": {
+    "kat": {
+     "part": "kat_02"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat_03",
+   "set": {
+    "kat": {
+     "part": "kat_03"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat_04",
+   "set": {
+    "kat": {
+     "part": "kat_04"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat_05",
+   "set": {
+    "kat": {
+     "part": "kat_05"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat_06",
+   "set": {
+    "kat": {
+     "part": "kat_06"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat_07",
+   "set": {
+    "kat": {
+     "part": "kat_07"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat_08",
+   "set": {
+    "kat": {
+     "part": "kat_08"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat_09",
+   "set": {
+    "kat": {
+     "part": "kat_09"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat_10",
+   "set": {
+    "kat": {
+     "part": "kat_10"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat_11",
+   "set": {
+    "kat": {
+     "part": "kat_11"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat_12",
+   "set": {
+    "kat": {
+     "part": "kat_12"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat_13",
+   "set": {
+    "kat": {
+     "part": "kat_13"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat_14",
+   "set": {
+    "kat": {
+     "part": "kat_14"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat_15",
+   "set": {
+    "kat": {
+     "part": "kat_15"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat_iw6_095",
+   "set": {
+    "kat": {
+     "part": "kat_iw6_095"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat_iw7_b",
+   "set": {
+    "kat": {
+     "part": "kat_iw7_b"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat_run7_105",
+   "set": {
+    "kat": {
+     "part": "kat_run7_105"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "dash9_kat_10",
+   "set": {
+    "kat": {
+     "part": "dash9_kat_10"
+    }
+   }
+  },
+  {
+   "ms": 300,
+   "label": "kat14_slash10_flash",
+   "set": {
+    "kat": {
+     "part": "kat14_slash10_flash"
+    }
+   }
+  }
+ ]
+}

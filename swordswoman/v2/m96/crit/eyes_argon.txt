@@ -1,0 +1,9 @@
+**Consistency: 9/10 | Readability: 8/10**
+
+The eye construction, iris palette, and 1x2 white catchlights (consistently anchored to screen-left, never flipping) are rock-solid across views. Foreshortening on the SE far eye (2px wide vs. 3px near eye) is handled cleanly. At 1x, high-contrast expressions (*joy, pain, effort, shout, surprised, blink*) read instantly; subtle brow/mouth shifts (*neutral* vs. *cheerful* vs. *determined*) are much softer at 1x but distinguishable in context.
+
+**Concrete Inconsistencies:**
+1. **E (determined, shout):** The upper lash extends 1px right to touch the profile outline, whereas in *neutral, cheerful,* and *embarrassed* it leaves a 1px skin gap.
+2. **SE (determined, shout, joy):** The far eye's upper lash merges directly into the black face outline, losing the 1px skin gap kept in *neutral/cheerful*.
+3. **E (joy):** Two dark mouth/blush pixels clip into the bottom of the eye crop, missing in SE *joy*.
+4. **S/SE/E (cheerful vs. neutral):** The eye crops are 100% identical; expression relies entirely on the mouth.

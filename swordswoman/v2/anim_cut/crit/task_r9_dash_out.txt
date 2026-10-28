@@ -1,0 +1,14 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt `actions_src/dash.py` (both builds); QC passes on both. I did about four review passes.
+
+**What changed:**
+- **Afterimage:** a tapered two-tone tail hugging her back, with speed lines attached to it. Regenerate via `work/r9d/mk.sh`.
+- **Motion:** deeper coil with a back-lean; head moves 3–5px against the hips; bow and hem lag, then overshoot every frame; far arm swings each frame; blade goes 10→9→9→10→11→10.
+- **Ending:** feet stop, upper body pitches forward, then a lower squash-settle, so no height pop.
+
+**New parts:** `dash9_legs_lunge3`, `dash9_skirt_{coil,lean2,fwd,fwd2}`, `dash9_dust_*`, `dash9_line_a/b/c`, `dash9_smearA/B`, cleaned-tip `dash9_kat_10`.
+
+**Still weak:** both burst frames share one leg pose, and hair ends never move.
+
+Saving session...completed.

@@ -1,0 +1,7 @@
+HY3D round 3 (rigid PARTS rig) DONE 2026-10-26 12:30
+- Parts: AB4 (READY 12:16). Its head still hid the eyes in SE, so I used partsAB4f/ = AB4 + head through scripts/facefix.py.
+- Rig: scripts/rig_parts.py. Rigid 1:1 bone parenting per pivots.json, legs split at the knee (+ knee ball), rigid arms, katana on hand.R with the blade aimed as an absolute direction. The skirt tilts with the leading thigh, flares with the spread and is shortened x0.78. Kept: the 30 deg iso camera, the head-turn cheat, plus SE head x1.07. Parts hints applied (E arm swing <= 60 deg).
+- Poses: rig/keys_parts.json v3 (from keys v4 + panel pushes: run lean ~17 + airborne key, dash lunge with the blade leading, slash impact lunge + twist, the blade kept outside the torso, arms lowered from T).
+- Output: keys_parts/<action>_<SE|E>/fNN_{shade,matid}.png + keys.json, sheets keys_parts/sheet_*.png, cmp_anim_redraw.png. v1/v2 kept in keys_parts_v1/, keys_parts_v2/.
+- Crit v3 (crit/r6): Argon 6.5/10 (idle 7, walk 6.5, run 5.5, jump 7.5, dash 6.5, slash 5); Opus 4/10 (6/4/4/5/5/5). Usable as a cutout guide: Argon SE 11/18, E 14/18; Opus SE 7/18, E 11/18. Both agree on SE 6 and E 10 (list in NOTES.md "FOR anim_cut").
+- Gaps: the SE iso depth foreshortens strides and the blade (2D cheats it); the rigid skirt hides the front knee in SE lunges; run_air and slash_coil are rejected by both critics.

@@ -1,0 +1,82 @@
+{
+ "size": [
+  15,
+  25
+ ],
+ "facing": "E",
+ "attach": "body_centre",
+ "pivot": [
+  22,
+  22
+ ],
+ "ms": [
+  40,
+  40
+ ],
+ "cell_offset": [
+  32,
+  44
+ ],
+ "offset_from_body_centre": [
+  -22,
+  -22
+ ],
+ "layer": "behind",
+ "mirror": "flip x for W-facing (pivot -> [-8,22])",
+ "note": "same rows/heads as speed_lines_long, no swell; canvas top-left = cell (10,22).",
+ "line_rows_cell": [
+  23,
+  31,
+  40,
+  46
+ ],
+ "gaps": [
+  8,
+  9,
+  6
+ ],
+ "head_end_x_cell": [
+  [
+   22,
+   22,
+   24,
+   21
+  ],
+  [
+   20,
+   19,
+   22,
+   18
+  ]
+ ],
+ "lengths": [
+  [
+   10,
+   6,
+   9,
+   4
+  ],
+  [
+   9,
+   7,
+   6,
+   5
+  ]
+ ],
+ "shift_back_px": [
+  [
+   0,
+   0,
+   0,
+   0
+  ],
+  [
+   2,
+   3,
+   2,
+   3
+  ]
+ ],
+ "with_afterimage": "with afterimage ghosts k*5 px behind (3 ghosts): add [-15,0] to cell_offset so the heads meet the oldest ghost, and draw the lines behind the ghosts AND clip them to outside the ghost/figure alpha (demo work/dash_ghost_r4.png)",
+ "cell": "64x64 C_r3 cell, 48 px figure, feet pivot (32,62), faces SE; back silhouette edge (K) x21 rows 23-32, x23 row 40, x20 rows 43-48; body centre ~(32,44); shoes x28-40 (centre 34), ground_y = cell row 61 (back-shoe sole row)"
+}

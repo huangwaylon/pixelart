@@ -1,0 +1,13 @@
+**Scores:** A 6 · B 6 · C 5 · D 6 · E 5
+
+**Top 5 remaining problems:**
+
+1. **iso_NE: not redrawn and still at eye level.** The obi is a flat horizontal band, the hem is straight, the feet are side by side, and you can't see the top of the head. It reads as a slightly turned back view. The 30° render (r3G NE) shows the top of the head and a curved obi. It now clashes with the new SE/E/N views.
+
+2. **iso_E: the near arm is missing.** The body is a thin column and the hand floats on the hem. At 48px that hand reads as a pink stain, and the red stripe down the front reads as a scarf. The render shows the arm and sleeve clearly in silhouette.
+
+3. **iso_S: the head is still too big.** It takes up about 55% of the height, and the bangs hide the eyes at 40px. Put the face/eye row 1–2px lower or shorten the bangs. The legs are better but still about 3px at 40px, so the feet look stubby.
+
+4. **left_k: the sword is in the wrong hand.** In left profile the right hand is on the far side, but the hilt is drawn in front of the body. It should be partly hidden, or the pose should switch to the left hand. The katana set also lacks iso_S, iso_NE and iso_N, so it isn't complete as a final reference.
+
+5. **Katana at pixel size:** the brown tsuba (hand guard) and hilt disappear against the red sleeve and hem, so you can't tell where the grip is. On front_k and back_k the blade breaks into dashes on the 45° diagonals instead of an even 2+1 stair-step. On iso_E_k the blade crosses the legs and blurs the feet.

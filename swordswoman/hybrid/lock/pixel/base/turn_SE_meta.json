@@ -1,0 +1,34 @@
+{
+ "input": "hybrid/lock/turn/turn_SE.png",
+ "bg": "flood",
+ "src_size": [
+  256,
+  512
+ ],
+ "src_body": [
+  74,
+  459
+ ],
+ "fit": "none",
+ "scale": 0.15544,
+ "offset": [
+  49,
+  45
+ ],
+ "downsample": "box",
+ "quant": "material",
+ "outline": "auto",
+ "clean": {
+  "orphans": 67,
+  "notches": 11,
+  "spurs": 0,
+  "doubles": 6
+ },
+ "guide": null,
+ "height": 61,
+ "body_height": 61,
+ "baseline": 105,
+ "feet_cx": 65.5,
+ "colours": 15,
+ "opaque": 1117
+}

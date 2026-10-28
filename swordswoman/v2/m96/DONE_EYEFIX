@@ -1,0 +1,5 @@
+M96 eye-fix round DONE 2026-10-27. Final = eyes4/D (promoted to masters/ + heads/). Rollback: snap/v13_preeyefix.
+Construction: round dome lash (h cap in gap row + 3-K run + K outer end/corner + g inner shoulder/end), ONE up-out wing, oval iris; no lower-lash/2nd flick.
+Gates: QC masters PASS, QC stamps PASS (45), eyecheck 36/36 (+ new DETACHED LASH PX check).
+face_ssim v13 -> final: S .574->.584, SE .6099->.6105, E .354->.422; lash/iris deltas + contour MAE unchanged.
+Critique r3 (final): Argon a=8 b=8 c=7 d=8; Opus a=7 b=6 c=7 d=6 (crit/eyefix_r3_*.txt).

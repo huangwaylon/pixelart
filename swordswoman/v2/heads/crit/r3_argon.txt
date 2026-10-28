@@ -1,0 +1,13 @@
+SCORE 5.5/10
+
+1. SE all variants (chin/jaw): The bottom of the face drops into a narrow 2px-wide peg chin flanked by dark voids, losing the soft rounded chibi cheek-to-chin taper of the old master and ref.
+2. SE all variants (crown/silhouette): A stray 1px dark outline spike sticks out at the far-right temple/ear level, and the right hair wall drops too vertically below it, breaking the smooth dome.
+3. SE all variants (bangs/face): The blunt bangs shelf is a completely flat horizontal line lacking the 1px skin-gap splits from the old master, and the right sideburn is too thick, crowding the far eye.
+4. E all variants (face profile): The forehead-to-nose line is a dead-vertical 6px wall with a boxy 2px protruding snout/chin; it lacks a soft cheek curve and gentle chibi nose bump.
+5. E lean, lookup, neutral (back of skull): The lower-left hair silhouette forms a boxy 90-degree vertical/horizontal corner instead of tucking smoothly into the nape like E squash does.
+6. E all variants (bow): The red bow sits flat like a brick with a 4px horizontal top and squished dark-red back loop, losing the perky, angled loop volume seen in the SE set.
+
+FIXES:
+1. Smooth SE jaw & bangs: Widen the chin base to 3–4px with a smoother stair-step cheek taper, shave the 1px right-temple spike, and re-introduce the two 1px skin notches in the bangs shelf.
+2. Soften E profile & nape: Pull the upper face back 1px or push the nose/cheek out 1px with anti-aliasing/blush shading to break the vertical wall, and apply E squash's rounded lower-left hair curve to all E frames.
+3. Reshape E bow & bun: Raise the front bow loop 1px at the tip and brighten/open the back loop so it reads as two distinct ribbons tied in front of the bun rather than a flat bar.

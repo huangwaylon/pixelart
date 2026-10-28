@@ -1,0 +1,205 @@
+{
+ "name": "pixelize_24",
+ "note": "locked 16 + 8 error-driven extras (mkpal24.py)",
+ "colors": {
+  "K": {
+   "hex": "#160c0d",
+   "material": [
+    "outline"
+   ],
+   "desc": "outline (all materials), pupil, lash line"
+  },
+  "h": {
+   "hex": "#342126",
+   "material": [
+    "hair",
+    "boots",
+    "eyes"
+   ],
+   "desc": "hair shadow / inner hair lines / tie line; iris top; boot shadow"
+  },
+  "H": {
+   "hex": "#433833",
+   "material": [
+    "hair",
+    "boots"
+   ],
+   "desc": "hair base; boot base"
+  },
+  "g": {
+   "hex": "#5e4a45",
+   "material": [
+    "hair",
+    "boots",
+    "eyes"
+   ],
+   "desc": "hair light (tied-top + crown); iris mid; boot light"
+  },
+  "L": {
+   "hex": "#85706a",
+   "material": [
+    "hair",
+    "boots",
+    "eyes"
+   ],
+   "desc": "hair sheen band; iris lower light; boot toe glint"
+  },
+  "s": {
+   "hex": "#eaa991",
+   "material": [
+    "skin"
+   ],
+   "desc": "skin base"
+  },
+  "S": {
+   "hex": "#c98a7c",
+   "material": [
+    "skin"
+   ],
+   "desc": "skin shadow (under bangs, neck, inner legs)"
+  },
+  "m": {
+   "hex": "#a5706b",
+   "material": [
+    "skin",
+    "mouth"
+   ],
+   "desc": "mouth, nose dot, inner skin lines, brow"
+  },
+  "k": {
+   "hex": "#e58f84",
+   "material": [
+    "skin"
+   ],
+   "desc": "blush (skin; cheeks in cheerful/embarrassed/joy/effort expressions only; soft pink on the skin ramp - the illustration cheeks show no distinct blush). Never use dress red for blush"
+  },
+  "e": {
+   "hex": "#962723",
+   "material": [
+    "dress",
+    "bow"
+   ],
+   "desc": "red light (bow top, shoulder, sleeve top edge)"
+  },
+  "E": {
+   "hex": "#7d1918",
+   "material": [
+    "dress",
+    "bow"
+   ],
+   "desc": "red base (dress, sleeves, bow)"
+  },
+  "R": {
+   "hex": "#5f1220",
+   "material": [
+    "dress",
+    "bow"
+   ],
+   "desc": "red shadow (folds, under obi, sleeve inside, bow knot)"
+  },
+  "Q": {
+   "hex": "#c6c4c4",
+   "material": [
+    "obi"
+   ],
+   "desc": "obi light edge / highlight"
+  },
+  "O": {
+   "hex": "#857a90",
+   "material": [
+    "obi"
+   ],
+   "desc": "obi base (grey-lavender)"
+  },
+  "o": {
+   "hex": "#63576a",
+   "material": [
+    "obi"
+   ],
+   "desc": "obi shadow"
+  },
+  "W": {
+   "hex": "#f6eeea",
+   "material": [
+    "eyes"
+   ],
+   "desc": "eye highlight, eye white"
+  },
+  "1": {
+   "hex": "#4c1920",
+   "material": [
+    "dress",
+    "bow"
+   ],
+   "desc": "extra (near R, 5092 px)"
+  },
+  "2": {
+   "hex": "#2b0c0e",
+   "material": [
+    "hair",
+    "boots",
+    "eyes"
+   ],
+   "desc": "extra (near h, 4746 px)"
+  },
+  "3": {
+   "hex": "#e9bbac",
+   "material": [
+    "skin"
+   ],
+   "desc": "extra (near s, 2695 px)"
+  },
+  "4": {
+   "hex": "#742425",
+   "material": [
+    "dress",
+    "bow"
+   ],
+   "desc": "extra (near R, 2603 px)"
+  },
+  "5": {
+   "hex": "#969494",
+   "material": [
+    "hair",
+    "boots",
+    "eyes"
+   ],
+   "desc": "extra (near L, 1512 px)"
+  },
+  "6": {
+   "hex": "#5d5a5d",
+   "material": [
+    "hair",
+    "boots",
+    "eyes"
+   ],
+   "desc": "extra (near g, 1224 px)"
+  },
+  "7": {
+   "hex": "#b5918a",
+   "material": [
+    "skin"
+   ],
+   "desc": "extra (near S, 1141 px)"
+  },
+  "8": {
+   "hex": "#815150",
+   "material": [
+    "skin",
+    "mouth"
+   ],
+   "desc": "extra (near m, 800 px)"
+  }
+ },
+ "materials": {
+  "outline": "K",
+  "hair": "hHgL",
+  "boots": "hHgL",
+  "skin": "sSmk",
+  "mouth": "mK",
+  "dress": "eER",
+  "bow": "eER",
+  "obi": "QOo",
+  "eyes": "KhgLW"
+ }
+}

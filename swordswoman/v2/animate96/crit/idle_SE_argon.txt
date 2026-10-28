@@ -1,0 +1,15 @@
+**Scores:**
+* **final_quality:** 6/10
+* **master_consistency:** 8/10
+* **motion:** 5/10
+* **readability_1x:** 7/10
+* **no_boiling:** 5/10
+
+**Verdict:** Not final quality. The 3D guide shows a dynamic hip-sway and knee bend, but the pixel translation reduces this to a stiff vertical torso slide, introducing severe pixel boiling on the legs and dress hem.
+
+**Concrete Fixes:**
+1. **f00–f05 (Thighs/Stockings):** Restore the 1px dark-red dress shadow on the screen-left upper thigh present in MASTER; it was accidentally erased in all animation frames.
+2. **f02 (Right Leg):** Fix the broken outer outline and erratic shading on the screen-right calf; it currently indents and boils against f01/f03.
+3. **f05 (Dress Hem/Thighs):** The dress drops without pushing the stocking line down, merging the thighs into a single skin-colored band. Restore the central 1px vertical gap between legs.
+4. **f04–f05 (Left Hand):** Clean the screen-left hand silhouette; f04 loses thumb definition and f05 shifts the wrist outline erratically.
+5. **f00, f03 (Face):** Soften the 1px black mouth corners on cheerful stamps; at 1x they read too wide/harsh. Toggle expressions less frequently to prevent 450ms face flickering.

@@ -1,0 +1,48 @@
+{
+ "size": [
+  38,
+  40
+ ],
+ "facing": "E",
+ "attach": "hand",
+ "pivot": [
+  24,
+  38
+ ],
+ "ms": [
+  40,
+  60,
+  60
+ ],
+ "cell_offset": [
+  44,
+  45
+ ],
+ "cell": "64x64 C_r3 cell, 48 px figure, feet pivot (32,62), faces SE; cell_offset = sword hand in the slash pose",
+ "layer": "over",
+ "mirror": "flip x for W-facing: pivot_x -> size_w-1-pivot_x, negate dx of arc_*, cell_offset_x -> 63-x",
+ "arc_start": [
+  -23,
+  -34
+ ],
+ "arc_end": [
+  4,
+  1
+ ],
+ "arc_centre": [
+  -7,
+  -16
+ ],
+ "arc_mid": [
+  12,
+  -20
+ ],
+ "arc_note": "arc_start = tail tip, arc_end = leading tip, arc_centre = centre of curvature (approx), arc_mid = outer-edge midpoint; [dx,dy] from pivot",
+ "max_thickness_px": 6,
+ "frames": [
+  "f0 smear: W body (2-3 px outer) / p middle / 1 px b inner rim, n tail; tail 1->2->3 px",
+  "f1 same outer edge thinned to 3 px (W W p), tail cut back ~36% with n 1->2 px taper",
+  "f2 4 tapered chips (1-2-1 px, W outer / p inner) evenly spaced along the outer edge from the lead tip"
+ ],
+ "target": "~38x40 overhead cleave from behind the bow; inner edge >= 2 px clear of bow/hair/head"
+}

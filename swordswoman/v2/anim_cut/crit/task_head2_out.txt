@@ -1,0 +1,13 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I made the three head variants and checked them in a test action: composed it, looked at the sheet and a zoomed crop, and fixed things over four rounds.
+
+**New files** (`parts/se/`):
+- `head_blink.txt`: closed eyes are flat dark lines on the row just below the old lash row. They're flat, not curved: a bent line read as a frown, and shading under it looked like blush.
+- `head_lean.txt`: the bangs cover one more row, and the brows and lashes sit 1px lower. Eyes are narrowed to 2 rows.
+- `head_shout.txt`: eyes have a heavy flat top. The mouth is open 2×2 (`##` over `11`).
+- `actions/test_head2.json`: frames labelled base, blink, lean, shout, sq, st.
+
+**Anchors:** all three use the same pivot and anchors as `head.txt`.
+
+`head_sq` and `head_st` already had the same eye and mouth pixels as `head.txt` (checked by script), so I didn't change them.

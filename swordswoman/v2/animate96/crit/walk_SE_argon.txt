@@ -1,0 +1,15 @@
+**Scores:**
+* **final_quality:** 5/10
+* **master_consistency:** 7/10
+* **motion:** 3/10
+* **readability_1x:** 6/10
+* **no_boiling:** 7/10
+
+**Verdict:** Reject. Head and hair are cleanly pasted from the master, preventing boiling, but the locomotion mechanics and arm/skirt shapes break the cycle.
+
+**Concrete Fixes:**
+1. **f00–f01 (Arms & Skirt):** Completely redraw to match the master/f02–f05 volume; the wide, T-pose arms and flat rectangular skirt break character consistency and cause severe popping into f02.
+2. **f00 vs f01 (Legs/Body):** `f00` (contact) and `f01` (down) are nearly identical. In `f00`, extend the front leg forward for heel-strike and raise the back foot's heel off the ground.
+3. **f03–f05 (Arms):** Add opposite arm swing to counterbalance the legs; currently, arms stay locked in the exact master pose for half the cycle.
+4. **f04 (Back Leg):** The leg kicks up like a run while the torso stays in an idle pose; lower the foot to match walk mechanics.
+5. **f00–f05 (Hair Bow & Skirt Hem):** Add 1–2px secondary follow-through bounce lagging behind head/torso vertical movement.

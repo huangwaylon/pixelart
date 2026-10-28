@@ -1,0 +1,6 @@
+a=7,b=7,c=8,d=8
+
+The "after" rows successfully eliminate the hollow gap in "surprised" and clean up the noisy multi-pixel outer fringes in S/SE views. However, two concrete pixel-level fixes will better hit the rounded "⌒" target:
+
+1. **Round the flat top edge (neutral, cheerful, determined in S/SE/E):** The upper lash is still a flat 3–4px horizontal bar. Move the center 2 dark lash pixels above the iris up by 1px (replacing the mid-tone brown anti-aliasing pixels) and drop the inner-corner dark pixel by 1px to create a true curved arch.
+2. **Flip the outer lash wing up (neutral, cheerful, determined in S/SE):** The outermost lash pixel drops down-and-out, looking droopy. Shift that single outer wing pixel up by 1px for a crisp, upturned feminine flick.

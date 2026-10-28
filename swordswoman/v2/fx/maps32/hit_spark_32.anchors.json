@@ -1,0 +1,36 @@
+{
+ "size": [
+  14,
+  14
+ ],
+ "facing": "E",
+ "attach": "hit_point",
+ "pivot": [
+  6,
+  6
+ ],
+ "ms": [
+  40,
+  60,
+  80
+ ],
+ "cell_offset": [
+  20,
+  22
+ ],
+ "cell": "40x40 cell of the 32 px figure (A_r3, feet ~20,37, head top ~20,6, head width ~18); default hit_point = target body_centre (20,22)",
+ "layer": "over",
+ "core_px": "2x2 centre at (6..7,6..7); pivot = upper-left of it",
+ "radius_px": [
+  7,
+  7,
+  7
+ ],
+ "frames": [
+  "f0 4x4 W core, rays up5/right5/down4/left3 (2 px W root -> y -> o tip), 4 diagonals (SE longest)",
+  "f1 8 px W/y ring 2 px thick + 4 detached 2 px y/o rays (pinwheel stagger)",
+  "f2 6 2x2 y/o chips at 60 deg spacing, r~6"
+ ],
+ "play_after": "hit_flash",
+ "flip_W": "mirror x: x -> 13-x, pivot -> [7,6]"
+}

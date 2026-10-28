@@ -1,0 +1,37 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Here's the critique.
+
+**(1) Scores /10**
+
+| | Sprite | Portrait |
+|---|---|---|
+| Cute | 6 | 7 |
+| Anime/Japanese | 7 | 7 |
+| Big eyes read at 1x | 7 | 8 |
+| Intentional | 6 | 7 |
+| Consistent across views | 6 | 7 |
+
+The eyes are now big and well built. What holds the score down is everything around them: a square head, a flat 4 px chin, a thick neck and a helmet-like fringe. They make her look older and stiffer than the eyes do.
+
+**(2) Weak expressions at 1x**
+- **effort:** the white 2×2 teeth block reads as buck teeth or a smirk. It doesn't read as strain.
+- **surprised:** the iris is fully filled, so at 1x it looks the same as neutral. There's no white ring around it.
+- **embarrassed:** the white crossed sparkle eyes read as dizzy or pain. They clash with the pain cell.
+- **blink_half vs blink_closed:** at 1x they differ by about 1 px, so they're nearly the same cell.
+- **neutral vs determined:** only the brow is different, about 1 px.
+- **Portrait neutral:** the dark "W" mouth plus the red pixel reads as lipstick or a pout. The tan pixels under the outer eye corners read as eye bags.
+
+**(3) Profiles**
+- **E:** Yes, it's a real profile now. The forehead, nose bump, lip notch and chin are all there. But the eye touches the front edge of the face, there's no jaw angle, and the hair at the back of the head is about 1 px too big.
+- **SE:** Mostly a real 3/4. But the far cheek is a straight vertical edge that never pushes out past the hair, so the face still feels like a flat mask turned sideways.
+
+**(4) Top 6 pixel edits**
+1. **S/SE, every open-eye cell:** remove the light-blue pixel under each iris, because it reads as a tear. Use skin instead, plus a 1 px lash-colour dot at the outer lower corner. This brings over the fix you already made on the portraits.
+2. **S chin:** take the 4 px flat chin down to a 2 px point by deleting the corner skin pixel on each side. Narrow the neck to 4 px. Add a 1 px cheek bulge on each side at the row just below the eyes.
+3. **S/SE surprised:** shrink the iris to a 1×2 pupil and put a 1 px white border on the left, right and top.
+4. **S/SE effort:** replace the teeth with a 3 px dark gritted line and 1 white pixel in the middle. Lower the inner brow pixels by 1 px.
+5. **S/SE embarrassed:** use the neutral eyes with the iris lowered 1 px and the top lid flattened. Keep the hatched blush.
+6. **E:** move the eye 1 px back from the profile edge. Add a 1 px step in the jaw outline under the ear. Trim 1 px off the back-of-head hair.
+
+On the portrait side, change the neutral mouth to a 2 px dark line with 1 red pixel, and turn the eye-bag pixels back to skin.

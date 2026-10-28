@@ -1,0 +1,4 @@
+**Scores:** Natural: 7/10 | Readable at 1x: 6/10 | Energetic: 8/10 | Trainer Feel: 7/10
+
+1. **Frame 3 (Stride):** The orb overlaps the face/neck, muddying the silhouette at 1x; cheat the throwing arm and orb 4–5px back/left (behind the head) to keep the profile clean and widen the arc into the Frame 4 smear.
+2. **Frames 5–7 (Follow-through):** The orb's flight path stalls horizontally and feels too floaty/close; increase horizontal spacing by +6px per frame and rotate the orb sprite 90° each frame to sell throw velocity.

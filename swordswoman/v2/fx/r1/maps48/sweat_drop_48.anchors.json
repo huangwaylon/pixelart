@@ -1,0 +1,38 @@
+{
+ "size": [
+  9,
+  11
+ ],
+ "facing": "E",
+ "attach": "head_side",
+ "pivot": [
+  4,
+  0
+ ],
+ "ms": [
+  120,
+  120,
+  200
+ ],
+ "offset_from_head_top": [
+  14,
+  2
+ ],
+ "head_top_in_cell": [
+  32,
+  14
+ ],
+ "head_width": 23,
+ "cell_offset": [
+  42,
+  16
+ ],
+ "layer": "over_character",
+ "slide_px": [
+  0,
+  1,
+  3
+ ],
+ "flip_W": "mirror x -> 8-x; offset_from_head_top -> [-14,2]",
+ "note": "pivot = drop tip on f0; sits just outside the upper-front of the head (SE facing) clear of hair outline; f1 slides 1 px, f2 slides +2 and squashes 9x8"
+}

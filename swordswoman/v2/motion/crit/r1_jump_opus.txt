@@ -1,0 +1,17 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+OVERALL: 5
+
+- Natural: 6
+- Whole-body: 6
+- Fluid: 5
+- Appealing: 6
+- Secondary motion convincing: 4
+- Readable at 1x: 7
+
+The crouch and apex tuck read well. The silhouettes are clear at 1x in both views. The weak spots are the head and the secondary springs: back hair stays at about +20–25° from launch through recover, so it never reverses or overlaps.
+
+**Top 3 fixes:**
+1. **Launch:** the head nods down to −25° and tilts −14°, which kills the push. Set nod to about +10° (chin up, eyes to the sky). In E, lean the torso about 10° forward along the line of thrust.
+2. **Back hair, side locks and ribbons:** in rise, let them trail down to about −15°. At apex, let them float up (+5°). In fall, flip them up to +25–30°. At land, whip them down to −20° and overshoot. In settle, land on +5° and damp out instead of snapping from 21° to 2°.
+3. **Land:** compression is only 12 px against 21 px in crouch. Push it to about 18–20 px with a deeper knee bend. Then make settle return to neutral, since the head is still at nod −11° and tilt −7°.

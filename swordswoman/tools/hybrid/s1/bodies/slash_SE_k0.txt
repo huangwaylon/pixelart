@@ -1,0 +1,43 @@
+# slash_SE_k0 ANTICIPATION (coil, 220 ms hold): head on the guide (62,70) -> stamp 54,48, torso leans BACK 2 px over the hips, two-hand grip at her right shoulder, blade drawn back up-left past the head, weight on the back leg, front knee bent; skirt tail, ribbons, sleeve and bow pulled the other way (right)
+fx: none
+from: turn_SE 2 4
+stamp: 54 50
+bow: 1 -1
+expr: frown
+clear: 57,85,63,97
+shear: 80 91 -4
+clear: 30,92,120,112
+patch: 56 92
+______KRRRRRRRRRRRRRRRK______
+_____KdRRRRRRRRRRRRRRRRK_____
+_____KddRRRRRRRRRRRRRRRRK____
+____KRddKRRRRRRRRRRRRRRRRK___
+____KRRdKRRRRRRRRRRRRRRRRRK__
+___KRRRKKRRRRRRRRRRRRRRRRRRK_
+___KvrrK.KvrrrrrrrrrrrrrrRRRK
+____KKK...KKvvvvKKvvvvvvKrRK_
+________________________KrK__
+_________________________KK__
+limb: s 2 61,98 54,101 51,103 behind
+limb: d 2 50,103 50,104 behind
+limb: s 2 72,98 75,100 74,103 behind
+limb: d 2 74,103 76,104 behind
+limb: R 3 69,86 61,88
+patch: 53 88
+_KRRK
+KRRRK
+KvvvK
+_KKK_
+top: 54 85
+_KKKK_
+KssssK
+KmsssK
+_KKKK_
+sword: 56,87 32,58
+opb: stamp 70,86 KKKKK________/KRRRRKKK_____/KrRRRRRRKKK__/_KrrRRRRRRRK_/__KrrrrRRRRRK/___KKvvvvvvK_/_____KKKKKK__
+opb: curve 66,85 75,82 82,87 p
+opb: curve 66,84 75,81 82,86 P
+opb: curve 82,87 86,90 89,87 p
+opb: curve 82,86 86,89 89,86 P
+opb: curve 64,86 71,91 79,94 p
+opb: curve 64,85 71,90 79,93 P

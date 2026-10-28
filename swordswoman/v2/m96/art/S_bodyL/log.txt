@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I changed `out.txt` (accepted on the first try: ssim_b +0.001, dE −0.008, sil ±0, lint unchanged): hand `mm` → small `s/S` shape, thigh `m` → `S` shadow row, three hair-coloured `h` specks in the kimono → `R` folds, and a darker `o` row along the bottom of the obi.

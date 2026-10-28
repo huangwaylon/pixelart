@@ -1,0 +1,48 @@
+{
+ "size": [
+  37,
+  32
+ ],
+ "facing": "E",
+ "attach": "hand",
+ "pivot": [
+  4,
+  31
+ ],
+ "ms": [
+  40,
+  60,
+  60
+ ],
+ "cell_offset": [
+  28,
+  54
+ ],
+ "cell": "64x64 C_r3 cell, 48 px figure, feet pivot (32,62), faces SE; pivot = lead tip, cell_offset = the sword hand (low front-left, end of the downward cut)",
+ "layer": "over",
+ "mirror": "flip x for W-facing: pivot_x -> size_w-1-pivot_x, negate dx of arc_*, cell_offset_x -> 63-x",
+ "arc_start": [
+  32,
+  -31
+ ],
+ "arc_end": [
+  0,
+  0
+ ],
+ "arc_centre": [
+  0,
+  -31
+ ],
+ "arc_mid": [
+  22,
+  -7
+ ],
+ "arc_note": "arc_start = tail tip, arc_end = leading tip, arc_centre = centre of curvature (approx), arc_mid = outer-edge midpoint; [dx,dy] from pivot",
+ "max_thickness_px": 6,
+ "frames": [
+  "f0 smear: W outer (down-right) 2-3 px / p / 1 px b inner rim, n tail 1->2->3 px; lead tip 3->2->1 px pointing left",
+  "f1 outer band 3 px (W W p), tail cut back ~22% with n 1->2 px taper",
+  "f2 4 chips along the outer edge from the lead tip, 6/5/4/3 px, W outer / p inner, 1-2-1 taper"
+ ],
+ "target": "37x32 downward diagonal cut, chord 45 deg (over is ~55 deg the other way): tail right of the head (cell 60,23) -> across the right hand -> lead at the sword hand (28,54)"
+}

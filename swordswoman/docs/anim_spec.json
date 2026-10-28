@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "fps_note": "durations in ms per frame; engine may scale globally",
+  "cell": {"w": 128, "h": 128, "pivot": [64, 104], "pivot_rule": "feet/root world point at the pivot in every frame and direction; export trimmed atlas with per-frame offsets relative to this pivot"},
+  "directions": ["S", "SE", "E", "NE", "N", "NW", "W", "SW"],
+  "anims": {
+    "idle":        {"frames": 6, "loop": true,  "ms": [150,150,150,150,150,150]},
+    "combat_idle": {"frames": 4, "loop": true,  "ms": [120,120,120,120]},
+    "walk":        {"frames": 8, "loop": true,  "ms": [100,100,100,100,100,100,100,100], "contacts": [0, 4]},
+    "run":         {"frames": 8, "loop": true,  "ms": [70,70,70,70,70,70,70,70], "contacts": [0, 4]},
+    "dash":        {"frames": 4, "loop": false, "ms": [50,60,60,80], "phases": {"windup": [0], "travel": [1,2], "brake": [3]}, "afterimage_frames": [1,2], "iframes": "engine"},
+    "jump":        {"frames": 6, "loop": false, "ms": [70,90,120,90,70,90], "phases": {"anticipation": [0], "rise": [1], "apex": [2], "fall": [3], "land": [4], "recover": [5]},
+                    "root_locked": true, "engine_z_offset_px": [0, 10, 16, 8, 0, 0], "shadow_scale": [1.0, 0.9, 0.8, 0.9, 1.0, 1.0]},
+    "attack1":     {"frames": 6, "loop": false, "ms": [70,70,50,80,80,80], "phases": {"anticipation": [0,1], "active": [2], "recovery": [3,4,5]}, "smear_frames": [2], "chain_window": [3,4], "dash_cancel_from": 4},
+    "attack2":     {"frames": 7, "loop": false, "ms": [70,70,50,50,80,80,80], "phases": {"anticipation": [0,1], "active": [2,3], "recovery": [4,5,6]}, "smear_frames": [2,3], "chain_window": [4,5], "dash_cancel_from": 5},
+    "attack3":     {"frames": 9, "loop": false, "ms": [80,80,90,50,60,90,90,90,100], "phases": {"anticipation": [0,1,2], "active": [3,4], "recovery": [5,6,7,8]}, "smear_frames": [3,4], "chain_window": null, "dash_cancel_from": 7},
+    "hurt":        {"frames": 3, "loop": false, "ms": [60,100,120], "flash": {"frames": [0], "color": "#eef0f5", "mode": "solid silhouette"}},
+    "death":       {"frames": 6, "loop": false, "ms": [100,100,120,120,150,400], "hold_last": true},
+    "air_attack_optional":    {"frames": 5, "loop": false, "ms": [60,50,50,80,80], "phases": {"anticipation": [0], "active": [1,2], "recovery": [3,4]}, "smear_frames": [1,2]},
+    "landing_slash_optional": {"frames": 6, "loop": false, "ms": [60,50,60,80,90,100], "phases": {"anticipation": [0], "active": [1,2], "recovery": [3,4,5]}, "smear_frames": [1,2]}
+  },
+  "hurtbox": {"shape": "capsule", "width_H": 0.8, "width_px": 14, "covers": "torso + legs only (not sleeves, skirt flare, bow, ribbons)"}
+}

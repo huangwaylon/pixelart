@@ -1,0 +1,43 @@
+{
+ "size": [
+  52,
+  28
+ ],
+ "facing": "E",
+ "attach": "hand",
+ "pivot": [
+  49,
+  24
+ ],
+ "ms": [
+  40,
+  60
+ ],
+ "cell_offset": [
+  110,
+  70
+ ],
+ "layer": "over",
+ "mirror": "flip x for W-facing: x -> w-1-x, pivot_x -> w-1-pivot_x, negate dx of offsets/velocity, cell_offset_x -> 127-x",
+ "cell": "128x128 cell, 96 px figure, feet pivot (64,124), ground row 124; throw-pose release hand = s48 throw_E frames.json (hy3d/frames_G) frame 3 'release' hand.R x2 -> (111,69), used as (110,70); this is NOT the idle hand (~(81,84)); stride hand (frame 2) ~(63,66); cell_offset = release hand; canvas at cell (61,46)-(112,73)",
+ "play_on": "release frame only",
+ "arc_start": [
+  -49,
+  -10
+ ],
+ "arc_top": [
+  -26,
+  -22
+ ],
+ "arc_end": [
+  0,
+  0
+ ],
+ "arc_note": "[dx,dy] from pivot; pivot = the rounded tip at the release hand (trail start for the orb); arc_start = 1 px tail tip behind the head (~stride hand), arc_top = apex above the head",
+ "max_thickness_px": 10,
+ "note": "circular arc (outer edge centre (23.75,30.96) r 28.5); thickness: 1 px n tail for the first ~12 px, smoothstep up to 10 px at 70% of the arc, cos taper to a rounded 2 px tip at the hand; along: n -> p -> w with slanted colour boundaries; across: 1 px n inner rim, 1 px p, w body",
+ "frames": [
+  "f0 full overhand smear: 1 px n tail behind the head -> p -> w band to 10 px with n/p inner rims, tapering to a rounded 2 px tip at the hand",
+  "f1 tail gone, thinner (to 5 px) n/p/w remnant from the apex down to the hand, 1.5 px inside f0's outer edge"
+ ]
+}

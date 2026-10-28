@@ -1,0 +1,5 @@
+**Score: 5/10.** The windup, stride and release read as one strong overhand arc with good energy. But the follow frames break it: at 1x she seems to still be holding the orb, and the low lunge reads as stumbling rather than a confident trainer pose.
+
+**Fix 1 (follow, follow2, recover):** Remove the red-white orb near her hip and hand. It's still drawn after release, so the throw looks like it never happened. Also raise the lunge about 3–4 px and pull her torso more upright so she isn't nearly horizontal.
+
+**Fix 2 (orb mid-flight):** Replace the plain yellow sparkle with the actual red-white orb (about 5 px) plus a 2–3 px streak back toward her hand, so a viewer can follow the orb from release to the landing pop. The release smear should also bend down toward the camera, not only up and back.

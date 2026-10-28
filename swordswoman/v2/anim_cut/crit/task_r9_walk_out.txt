@@ -1,0 +1,13 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt walk_SE and walk_SE_ns in `actions_src/walk.py`; both pass qc. Every frame now has its own legs, skirt and torso. The head rocks up to 3px forward of the hips and bobs 6px. The bow, hair ends and hem settle a frame late. The arms swing 5–9px against the legs, and the blade uses only kat_10/11.
+
+New parts (`parts/se/`): `walk9_legs_{c,d,p,u}{1,2}`, `walk9_skirt_*` (8), `walk9_torso_{lean,lean2,sql}`, `walk9_head_{hu,hd}`.
+
+Weaknesses:
+- Stride is only about 10px.
+- Hair lag is subtle.
+- In contact2 the blade overlaps the hem corner.
+- The near arm holds the same pose for three frames.
+
+Saving session...completed.

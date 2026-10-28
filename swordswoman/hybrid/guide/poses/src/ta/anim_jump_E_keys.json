@@ -1,0 +1,14 @@
+{
+ "name": "jump_E_keys",
+ "frames": [
+  {
+   "file": "jump_E_crouch.json"
+  },
+  {
+   "file": "jump_E_apex.json"
+  },
+  {
+   "file": "jump_E_land.json"
+  }
+ ]
+}

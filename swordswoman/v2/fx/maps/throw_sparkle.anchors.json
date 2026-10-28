@@ -1,0 +1,30 @@
+{
+ "size": [
+  9,
+  9
+ ],
+ "facing": "E",
+ "attach": "hand",
+ "pivot": [
+  4,
+  4
+ ],
+ "ms": [
+  40,
+  60,
+  60
+ ],
+ "cell_offset": [
+  55,
+  35
+ ],
+ "cell": "64x64 C_r3 cell, 48 px figure, feet pivot (32,62); throw pose E view: hand at stride (cocked behind the head) ~(32,33), at release ~(55,35), head centre ~(40,31); cell_offset = release hand",
+ "layer": "over",
+ "mirror": "flip x for W-facing: x -> w-1-x, pivot_x -> w-1-pivot_x, negate dx of offsets/velocity, cell_offset_x -> 63-x (symmetric, flip is a no-op)",
+ "play_on": "release frame, with throw_trail",
+ "frames": [
+  "f0 4-point glint: 3x3 W core (plus shape), 1 px W arms to radius 4 with y tips",
+  "f1 radius 3: W centre cross, y corners and tips",
+  "f2 radius 1: W dot in a y plus"
+ ]
+}

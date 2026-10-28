@@ -1,0 +1,87 @@
+QC GATE masters: PASS  (6 items, 0 failing; palette pixelize/palette.json)
+PASS master_S
+   ~ [palette] MAT 3 px of m (mouth/skin ramp) enclosed in the boots/hair area at (53,51)-(53,53)
+   ~ [palette] MAT 2 px of S (skin ramp) enclosed in the boots/hair area at (74,52)-(74,53)
+   ~ [palette] MAT 11 px of s (skin ramp) enclosed in the bow/dress area at (42,86)-(45,90)
+   ~ [outline] R1 25 black K pixels inside the silhouette (use r on red, h on hair/obi/boots, S on skin): [(55, 45), (63, 48), (72, 49), (55, 50), (58, 50), (59, 50), (68, 50), (69, 50), (72, 50), (56, 51), (71, 51)
+   ~ [outline] O3 1-3-1 outline jaggies (use equal step lengths) on contour/line: [('top', 85)]
+   ~ [eyes] EYE0 at (56,47) has no outline-colour lash pixel on its top row
+   ~ [eyes] EYE1 at (67,47) has no outline-colour lash pixel on its top row
+PASS master_SE
+   ~ [palette] MAT 3 px of s (skin ramp) enclosed in the boots/hair area at (75,50)-(76,51)
+   ~ [palette] MAT 9 px of ms (mouth/skin ramp) enclosed in the boots/hair area at (55,52)-(57,55)
+   ~ [palette] MAT 2 px of s (skin ramp) enclosed in the eyes area at (75,53)-(75,54)
+   ~ [palette] MAT 8 px of H (boots/hair ramp) enclosed in the bow/dress area at (73,61)-(75,64)
+   ~ [palette] MAT 1 px of H (boots/hair ramp) enclosed in the bow/dress area at (73,65)-(73,65)
+   ~ [palette] MAT 1 px of H (boots/hair ramp) enclosed in the bow/dress area at (64,68)-(64,68)
+   ~ [palette] MAT 10 px of s (skin ramp) enclosed in the bow/dress area at (80,81)-(83,85)
+   ~ [palette] MAT 9 px of s (skin ramp) enclosed in the bow/dress area at (46,89)-(49,92)
+   ~ [outline] R1 61 black K pixels inside the silhouette (use r on red, h on hair/obi/boots, S on skin): [(55, 34), (56, 34), (63, 34), (51, 35), (52, 35), (53, 35), (54, 35), (59, 35), (60, 35), (61, 35), (62, 35)
+   ~ [outline] O3 1-3-1 outline jaggies (use equal step lengths) on contour/line: [('top', 64), ('top', 83), ('bottom', 58)]
+   ~ [eyes] EYE0 at (62,48) has no outline-colour lash pixel on its top row
+   ~ [eyes] EYE1 at (72,50) has no outline-colour lash pixel on its top row
+PASS master_E
+   ~ [palette] MAT 8 px of m (mouth/skin ramp) enclosed in the boots/hair area at (65,58)-(66,63)
+   ~ [outline] R1 14 black K pixels inside the silhouette (use r on red, h on hair/obi/boots, S on skin): [(75, 43), (76, 44), (71, 50), (74, 50), (75, 50), (72, 51), (75, 52), (48, 59), (64, 112), (65, 112), (66, 1
+   ~ [outline] O3 1-3-1 outline jaggies (use equal step lengths) on contour/line: [('left', 29), ('right', 121), ('bottom', 58)]
+   ~ [eyes] EYE0 at (72,47) has no outline-colour lash pixel on its top row
+PASS master_NE
+   ~ [palette] MAT 11 px of ms (mouth/skin ramp) enclosed in the boots/hair area at (70,54)-(71,63)
+   ~ [palette] MAT 5 px of ks (skin ramp) enclosed in the boots/hair area at (74,58)-(74,62)
+   ~ [palette] MAT 2 px of R (bow/dress ramp) enclosed in the boots/hair area at (64,64)-(65,64)
+   ~ [palette] MAT 5 px of Ss (skin ramp) enclosed in the bow/dress area at (52,83)-(54,84)
+   ~ [palette] MAT 4 px of s (skin ramp) enclosed in the bow/dress area at (78,90)-(79,91)
+   ~ [palette] MAT 1 px of E (bow/dress ramp) enclosed in the skin area at (67,95)-(67,95)
+   ~ [palette] MAT 1 px of E (bow/dress ramp) enclosed in the skin area at (71,95)-(71,95)
+   ~ [outline] R1 21 black K pixels inside the silhouette (use r on red, h on hair/obi/boots, S on skin): [(53, 31), (51, 32), (53, 41), (52, 42), (72, 45), (51, 47), (75, 52), (69, 57), (56, 63), (72, 64), (79, 89)
+   ~ [outline] O3 1-3-1 outline jaggies (use equal step lengths) on contour/line: [('left', 86), ('right', 123), ('bottom', 81)]
+PASS master_N
+   ~ [palette] MAT 1 px of R (bow/dress ramp) enclosed in the boots/hair area at (59,64)-(59,64)
+   ~ [palette] MAT 1 px of R (bow/dress ramp) enclosed in the boots/hair area at (62,64)-(62,64)
+   ~ [palette] MAT 3 px of R (bow/dress ramp) enclosed in the boots/hair area at (64,64)-(66,64)
+   ~ [palette] MAT 9 px of s (skin ramp) enclosed in the bow/dress area at (43,84)-(45,87)
+   ~ [outline] R1 11 black K pixels inside the silhouette (use r on red, h on hair/obi/boots, S on skin): [(73, 80), (51, 84), (75, 84), (46, 85), (83, 85), (82, 86), (62, 90), (59, 113), (60, 113), (66, 113), (67, 
+   ~ [outline] O3 1-3-1 outline jaggies (use equal step lengths) on contour/line: [('left', 61), ('left', 89)]
+PASS xview
+   ~ [xview] COLOR E boots uses extra g vs the other views (>=3% share chars)
+   ~ [xview] COLOR SE bow uses extra e vs the other views (>=3% share chars)
+   ~ [xview] COLOR S hair uses extra Lg vs the other views (>=3% share chars)
+   ~ [xview] COLOR SE hair uses extra Lg vs the other views (>=3% share chars)
+   ~ [xview] COLOR E obi uses extra Q vs the other views (>=3% share chars)
+   ~ [xview] COLOR NE skin uses  lacks k vs the other views (>=3% share chars)
+   ~ [xview] COLOR N skin uses  lacks km vs the other views (>=3% share chars)
+   ~ [xview] COLOR E socks uses  lacks d vs the other views (>=3% share chars)
+metric                 S                        SE                       E                     NE            N       
+head WxH               28x34                    31x35                    33x34                 32x34         29x34   
+crown                  30                       30                       30                    30            30      
+eye                    47                       48                       47                    -             -       
+chin                   63                       64                       63                    63            63      
+shoulder               64                       65                       64                    64            64      
+waist                  74                       74                       74                    74            74      
+obi_bot                78                       78                       77                    78            78      
+hem                    90                       90                       90                    90            90      
+skin_top               91                       91                       91                    91            91      
+sock_top               95                       95                       95                    94            95      
+knee                   104                      104                      104                   103           104     
+boot_top               114                      114                      114                   113           114     
+sole                   124                      124                      124                   124           124     
+eyes n                 2                        2                        1                     0             0       
+eye y-crown            17                       18                       17                    -             -       
+eye x-mid              -7.5                     -2.0                     7.0                   -             -       
+eye WxH                5x7                      5x7                      5x7                   -             -       
+catchlights            [2, 2]@[(2, 4), (2, 5)]  [2, 2]@[(2, 4), (2, 5)]  [2]@[(2, 4), (2, 5)]  -             -       
+iris                   Lgh                      Lgh                      Lgh                   -             -       
+bow off/asym           +0.0/+0                  -9.0/-18                 -8.5/-17              -8.0/-16      +0.0/+0 
+bow WxH                20x6                     17x15                    10x13                 18x36         17x19   
+use boots %            H64h36                   h88H12                   *H77h20g4             h70H30        h85H15  
+use boots/eyes/hair %  -                        -                        h100                  -             h100    
+use boots/hair %       -                        H100                     -                     -             -       
+use bow %              E72R28                   *E52R25e23               E63R34e2              E71R29        E73R27  
+use dress %            E88R11e1                 E82R18                   E84R16                E80R20        E88R12  
+use eyes %             g41W24L24h12             g33W22h22L22             g44W22L22h11          -             -       
+use hair %             *H76h13L7g4              *H62h30L5g3              H70h27L2g1            H69h30L1      H55h43L2
+use mouth/skin %       m100                     -                        m100                  -             -       
+use obi %              O87o13                   O88o12                   *O68o21Q11            O82o18        o85O15  
+use outline %          K100                     K100                     K100                  K100          K100    
+use skin %             s81m11k5S4               s76m14S6k4               s78m13S5k4            *s55m21S21k3  *s73S27 
+use socks %            D91d9                    D91d9                    *D100                 D83d17        D76d24  

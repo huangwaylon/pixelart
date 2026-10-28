@@ -1,0 +1,77 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+# Critique: round 1 redesigns (48 px isometric sprite, must also drive a 3D model)
+
+## 1) Scores (reads at 48 px + keeps identity + animatable)
+
+| Design | Score | Verdict |
+|---|---|---|
+| **L1_K** | **6** | The only one that still looks a little like her: wrap collar, wide sleeves, katana. At 48 px, though, the sleeves, torso and skirt merge into one red blob. The belt nearly disappears and the bun hides behind the bow. Legs are stubs. With no outline, the edges fringe into the background. |
+| **L1_N** | **4** | Same blob problems as L1_K. Without the sword she's a generic "girl in red yukata". |
+| **L2_K** | **5** | Puff sleeves and a bell skirt make her a Western party dress. Her ninja identity is gone. The bun-plus-bow reads as a mouse ear. The sword is fine in length, but the arm holding it is a 1 px twig. |
+| **L2_N** | **2** | Reads as Minnie Mouse: a bun on each side of a centre bow. It's also front-facing, not isometric. Reject. |
+| **L3_K** | **6** | Best value blocking in the probe. Flat skin, hair and red each read as a clean mass at 40 px, and the outline holds the silhouette. But the sword is dagger-short, the nub arms and stub legs can't sell a lunge or run, the heavy black outline eats interior pixels, and the body looks like a plain sack dress. |
+| **L3_N** | **3** | Front view, not isometric. The bow is a giant flat shape that won't work in 3D, there's no bun, and the expression is blank. Big head, no body to animate. |
+
+## 2) Which level to pursue
+
+None of the six as drawn. **Use L2's level of shape detail, L1's costume and silhouette, and L3's flat value blocks and outline approach.** That works out to about 6–8 major shapes and roughly 12–14 colours. The main failure across all six is that they removed the wrong things. They kept the dress and dropped the costume pieces that make her her: scarf, corset, detached sleeves, slit skirt, and her attitude.
+
+## 3) What to simplify, exaggerate and keep
+
+**Must keep (identity):**
+- Dark bob with side-swept bangs, plus a high bun with a big red bow.
+- **Red high collar/scarf.** Every redesign dropped it, and it's the ninja read.
+- **Wide dark corset band.**
+- **Detached wide sleeves with bare shoulders.**
+- Wrap skirt with a slit over black shorts.
+- Katana.
+- Blue eyes and the **stern, determined expression.** All six went neutral or doll-faced.
+- Pink ribbon tails.
+
+**Simplify:**
+- **Hair:** one solid helmet shape with 2–3 bang clumps and a single highlight band. No strand lines.
+- **Corset:** one dark-brown block, **3–4 px tall at 48 px**, with at most one buckle highlight pixel. The 1–2 px belts in round 1 vanish in the probe.
+- **Scarf:** a chunky collar ring plus one or two short tails. Drop the folds.
+- **Footwear:** replace the strappy sandals with dark tabi or wrapped boots, one dark block per foot. This also makes the 3D model simpler.
+- **Skirt:** an asymmetric wrap. Front panel plus back panel, with a slit that shows the dark shorts.
+
+**Exaggerate:**
+- **Sleeve bells:** wider and longer. They give clear arm shapes and follow-through in animation.
+- **Bare shoulders:** skin pixels between the collar and the sleeves break up the red mass and separate arm from torso. This is the cheapest readability gain available.
+- **Legs:** about **28–32% of total height**, up from roughly 15–20% now. Without that, no run cycle, stance or lunge will read.
+- **Scarf tail and pink ribbon tails:** make them big enough to flutter. They're the "lively animation" budget.
+- **Face:** eyes 2 px tall, blue with a dark upper lash line, plus a 1 px angled brow carved from the bang shape to keep the scowl.
+
+**Colour:**
+- Reds in three values, with a shadow that leans crimson or violet. Use a slightly darker red for the scarf than the dress so the head and body separate.
+- Hair in near-black brown, so it doesn't sit at the same value as the corset.
+- Brown corset, 2 values.
+- Skin, 2–3 values.
+- Steel, 3 values.
+- Pink, 1–2 values.
+- One eye blue.
+- An outline colour (see below).
+
+**Proportions:** head (including hair) about 40–42% of height, so roughly 20 px of a 48 px sprite. L2_N and L3 are about 55%, which kills the body.
+
+## 4) Specific issues
+
+- **Bun reads as a mouse ear:** caused by putting the bun beside the bow at the same size. Move the bun **high on the back of the crown**, keep it smaller than the bow, and put the bow wings horizontally in front of or below it. From the isometric angle the bow should overlap the bun so they read as one shape. Never two bumps.
+- **Sword:**
+  - At rest, about 0.8–1.0× her height. The original is about 1.3×, which is too long to swing without clipping the frame. L3's is about 0.4×, a dagger.
+  - Blade 2 px wide with a 1 px light edge, plus a distinct dark tsuba and dark hilt so the grip reads.
+  - For the _N variants, put a saya (scabbard) on the hip so she stays identifiable.
+- **Arms:** L2_K and L3 have twig or nub arms. The sleeves have to carry the arm read.
+- **Outline:**
+  - L1 and L2 have no outline, so edges dissolve into a halo against the grey background.
+  - L3's thick pure-black outline, with interior lines on top, eats about 2 px of a 48 px sprite.
+  - Use a **1 px exterior-only outline in dark brown or crimson** (selective outlining). Interior separation should come from value changes, not lines.
+- **Probe takeaway:** at 48 px the face is the brightest, largest block, and the body is one mid-red mass. Get value separation from the dark corset, the dark legs and feet, the skin shoulders and the darker scarf. Don't add detail.
+- **View:** L2_N and L3_N are drawn front-on. Everything must be the same roughly 30° isometric three-quarter view as the concept.
+- **3D coherence:**
+  - Bob = one helmet mesh. Bun = a sphere on the back of the crown. Bow = two lobes plus a knot that read from any angle, not a flat front-view cutout like L3_N's.
+  - Skirt = front and back panels with a few cloth bones.
+  - Sleeves = separate bell meshes with their own bones, scarf tail and ribbons = bone chains.
+  - Avoid puff sleeves, which bulge awkwardly at the shoulder when the arm moves.
+  - Keep the legs long enough to hold a knee joint.

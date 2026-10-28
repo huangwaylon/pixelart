@@ -1,0 +1,25 @@
+{
+ "logs": [
+  {
+   "attempt": 0,
+   "sec": 193,
+   "fixes": [
+    "lagL: grid missing/unparsable",
+    "lagR: grid missing/unparsable",
+    "lift: grid missing/unparsable",
+    "drop: grid missing/unparsable"
+   ]
+  },
+  {
+   "attempt": 1,
+   "sec": 194,
+   "fixes": [
+    "lagL: grid missing/unparsable",
+    "lagR: grid missing/unparsable",
+    "lift: grid missing/unparsable",
+    "drop: grid missing/unparsable"
+   ]
+  }
+ ],
+ "out": {}
+}

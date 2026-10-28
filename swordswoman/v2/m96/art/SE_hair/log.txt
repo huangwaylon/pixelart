@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I recoloured the left ribbon tail from a solid black clump into a continuous red E/R line with K edges (rows 19–25, adding one K outline pixel at row 23) and turned a few hair pixels in the bow, top and left, into red (R/E), with no '!' (ssim_b +0.001, dE −0.061, sil +0.000, O1/S4/O3 unchanged).

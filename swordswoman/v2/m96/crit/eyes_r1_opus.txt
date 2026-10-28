@@ -1,0 +1,14 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+(1) Rounder tops: 6/10. The after rows do arch a little, since the lid corners now sit lower than the middle. But the middle of the lid is still a flat 3–4px bar, so at 1x it reads as a slightly thicker straight line, not a dome.
+
+(2) Cute, feminine lashes: 5/10. The outer-corner flick is there, but it's a blocky stub. In surprised and the E view it merges into the brow and hair.
+
+(3) Consistency: 6/10. S and SE match well. The E view loses its arch and turns into a blob. Joy and blink_half have no lash, so the change disappears there.
+
+(4) 1x readability: 5/10. The eyes look darker and heavier, not cuter.
+
+Top 2 fixes:
+1. Shape the lid row as a 1-3-1 arch: one corner pixel on each side 1px lower, three on top. Turn the inner-corner lid pixel into a mid-tone or skin.
+2. Make the lash one darkest-colour pixel placed diagonally up and out from the outer corner, with at least 1px of skin between it and the brow. Add the same pixel to the outer end of the joy and blink_half lines.

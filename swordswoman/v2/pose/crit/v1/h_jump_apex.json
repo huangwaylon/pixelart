@@ -1,0 +1,450 @@
+[
+{
+"k": 3,
+"score": 10.18,
+"m": {
+"area": 488,
+"neg": 149,
+"neg_frac": 0.305,
+"blade_vis": 41,
+"blade_all": 52,
+"blade_hidden": 11,
+"blade_over_body": 0,
+"ground_gap": 21.9,
+"foot_px": 1,
+"h": 32,
+"bottom": 37,
+"w": 45,
+"clip": 0,
+"blade_len": 25.0,
+"tilt": 18.7,
+"bend_px": 1.7,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.15,
+-0.3,
+0,
+1
+],
+"ik.R": [
+0.05,
+-0.3,
+0,
+1
+],
+"scr": {
+"upper_arm.R": [
+170,
+0
+],
+"upper_arm.L": [
+30,
+0
+]
+},
+"blade_scr": [
+200,
+0
+],
+"spine": [
+24,
+0,
+-8
+]
+}
+},
+{
+"k": 1,
+"score": 9.86,
+"m": {
+"area": 502,
+"neg": 154,
+"neg_frac": 0.307,
+"blade_vis": 38,
+"blade_all": 48,
+"blade_hidden": 10,
+"blade_over_body": 0,
+"ground_gap": 20.2,
+"foot_px": 10,
+"h": 34,
+"bottom": 38,
+"w": 46,
+"clip": 0,
+"blade_len": 25.6,
+"tilt": 10.8,
+"bend_px": 1.2,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.28,
+-0.3,
+0,
+1
+],
+"ik.R": [
+-0.1,
+-0.5,
+0,
+1
+],
+"scr": {
+"upper_arm.R": [
+175,
+0
+],
+"upper_arm.L": [
+10,
+0
+]
+},
+"blade_scr": [
+190,
+0
+],
+"spine": [
+18,
+0,
+-8
+]
+}
+},
+{
+"k": 0,
+"score": 9.76,
+"m": {
+"area": 504,
+"neg": 147,
+"neg_frac": 0.292,
+"blade_vis": 31,
+"blade_all": 37,
+"blade_hidden": 6,
+"blade_over_body": 0,
+"ground_gap": 20.2,
+"foot_px": 1,
+"h": 35,
+"bottom": 39,
+"w": 45,
+"clip": 0,
+"blade_len": 25.0,
+"tilt": 9.6,
+"bend_px": 1.7,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.2,
+-0.36,
+0,
+1
+],
+"ik.R": [
+0.02,
+-0.44,
+0,
+1
+],
+"scr": {
+"upper_arm.R": [
+165,
+0
+],
+"upper_arm.L": [
+25,
+0
+]
+},
+"blade_scr": [
+160,
+0
+],
+"spine": [
+14,
+0,
+-8
+]
+}
+},
+{
+"k": 6,
+"score": 9.75,
+"m": {
+"area": 509,
+"neg": 150,
+"neg_frac": 0.295,
+"blade_vis": 35,
+"blade_all": 42,
+"blade_hidden": 7,
+"blade_over_body": 0,
+"ground_gap": 19.3,
+"foot_px": 2,
+"h": 36,
+"bottom": 39,
+"w": 46,
+"clip": 0,
+"blade_len": 25.7,
+"tilt": -7.0,
+"bend_px": 2.1,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.32,
+-0.36,
+0,
+1
+],
+"ik.R": [
+-0.2,
+-0.32,
+0,
+-1
+],
+"scr": {
+"upper_arm.R": [
+180,
+0
+],
+"upper_arm.L": [
+0,
+0
+]
+},
+"blade_scr": [
+185,
+0
+],
+"spine": [
+10,
+0,
+-8
+]
+}
+},
+{
+"k": 7,
+"score": 9.64,
+"m": {
+"area": 494,
+"neg": 148,
+"neg_frac": 0.3,
+"blade_vis": 38,
+"blade_all": 47,
+"blade_hidden": 9,
+"blade_over_body": 0,
+"ground_gap": 20.0,
+"foot_px": 1,
+"h": 37,
+"bottom": 41,
+"w": 46,
+"clip": 0,
+"blade_len": 25.3,
+"tilt": 10.3,
+"bend_px": 0.6,
+"shape": "I"
+},
+"var": {
+"ik.L": [
+0.1,
+-0.4,
+0,
+1
+],
+"ik.R": [
+0.2,
+-0.4,
+0,
+1
+],
+"scr": {
+"upper_arm.R": [
+155,
+0
+],
+"upper_arm.L": [
+35,
+0
+]
+},
+"blade_scr": [
+165,
+0
+],
+"spine": [
+20,
+0,
+-8
+]
+}
+},
+{
+"k": 5,
+"score": 9.56,
+"m": {
+"area": 516,
+"neg": 159,
+"neg_frac": 0.308,
+"blade_vis": 39,
+"blade_all": 48,
+"blade_hidden": 9,
+"blade_over_body": 0,
+"ground_gap": 18.8,
+"foot_px": 1,
+"h": 39,
+"bottom": 42,
+"w": 37,
+"clip": 0,
+"blade_len": 22.1,
+"tilt": 7.8,
+"bend_px": 1.7,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.22,
+-0.28,
+0,
+1
+],
+"ik.R": [
+-0.05,
+-0.62,
+0,
+1
+],
+"scr": {
+"upper_arm.R": [
+140,
+0
+],
+"upper_arm.L": [
+50,
+0
+]
+},
+"blade_scr": [
+130,
+0
+],
+"spine": [
+12,
+0,
+-8
+]
+}
+},
+{
+"k": 2,
+"score": 9.51,
+"m": {
+"area": 514,
+"neg": 152,
+"neg_frac": 0.296,
+"blade_vis": 28,
+"blade_all": 34,
+"blade_hidden": 6,
+"blade_over_body": 0,
+"ground_gap": 18.6,
+"foot_px": 4,
+"h": 37,
+"bottom": 40,
+"w": 43,
+"clip": 0,
+"blade_len": 24.1,
+"tilt": -5.6,
+"bend_px": 1.3,
+"shape": "C"
+},
+"var": {
+"ik.L": [
+0.3,
+-0.42,
+0,
+1
+],
+"ik.R": [
+-0.25,
+-0.4,
+0,
+-1
+],
+"scr": {
+"upper_arm.R": [
+150,
+0
+],
+"upper_arm.L": [
+40,
+0
+]
+},
+"blade_scr": [
+150,
+0
+],
+"spine": [
+8,
+0,
+-8
+]
+}
+},
+{
+"k": 4,
+"score": 9.48,
+"m": {
+"area": 504,
+"neg": 145,
+"neg_frac": 0.288,
+"blade_vis": 31,
+"blade_all": 37,
+"blade_hidden": 6,
+"blade_over_body": 0,
+"ground_gap": 17.6,
+"foot_px": 2,
+"h": 39,
+"bottom": 42,
+"w": 46,
+"clip": 0,
+"blade_len": 25.6,
+"tilt": -6.9,
+"bend_px": 0.9,
+"shape": "I"
+},
+"var": {
+"ik.L": [
+0.35,
+-0.5,
+0,
+1
+],
+"ik.R": [
+-0.3,
+-0.55,
+0,
+-1
+],
+"scr": {
+"upper_arm.R": [
+160,
+0
+],
+"upper_arm.L": [
+20,
+0
+]
+},
+"blade_scr": [
+170,
+0
+],
+"spine": [
+4,
+0,
+-8
+]
+}
+}
+]

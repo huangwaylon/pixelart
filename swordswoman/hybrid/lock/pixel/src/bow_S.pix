@@ -1,0 +1,13 @@
+# canonical sprite-scale bow (+bun top) cut from head_S.pix rows 0-9; stamp it as one cel with the head
+size: 20 10
+grid:
+.KKK...KKKKKK...KKK.
+KCRRK.KhHJJHhK.KCRRK
+KCRRRKhHHHHhhhKCRRRK
+KRRRRrKhKKKKhKrRRRRK
+KRRRRrrvCRRrvrrRRRRK
+KRRRRrrvCRRrvrrRRRRK
+KRRRRrrvCRRrvrrRRRRK
+.KRRrrrvRRrrvrrrRRK.
+..KKrvvvKrrKvvvrKK..
+..KhKKKKhKKhKKKKhK..

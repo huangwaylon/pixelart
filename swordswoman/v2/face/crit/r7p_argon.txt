@@ -1,0 +1,28 @@
+**CRITERIA SCORES (vs Official PMD = 9)**
+* **Readable at 1x:** 6/10 (Pure black outlines muddy inner features; tiny mouths vanish).
+* **Intentionally Designed:** 5/10 ("Mr. Potato Head" syndrome—100% static head/shoulders, only swapping eye/mouth stickers).
+* **Pokemon/PMD-like:** 4/10 (Lacks PMD's colored sel-out/anti-aliasing, dynamic head tilts, and patterned emotion backgrounds).
+* **Carries Personality:** 5/10 (Smirk helps, but stiff posture kills the "spirited swordswoman" energy).
+
+**PER-EMOTION AUDIT**
+* **Neutral (6/10):** Asymmetrical smirk looks like a stray pixel error at 1x.
+* **Determined (6/10):** Needs a 1-2px downward head shift; brow angle is too flat.
+* **Shout (4/10):** Wrong background (needs speed-lines); red vein blends into dark hair; mouth is a stiff rectangle.
+* **Effort/Angry (4/10):** Clenched-teeth ladder-pixels look robotic; reads as constipated, not angry.
+* **Joy (5/10):** Missing raised arms/tilted head and background burst; reads identical to Smile.
+* **Smile (7/10):** Best portrait, though static shoulders feel stiff.
+* **Surprised (4/10):** Missing white shock-burst background; 3x3 mouth looks like a pacifier.
+* **Pain (5/10):** Reuses Shout's exact `><` eyes; needs trembling brow lines and head recoil.
+* **Worried (6/10):** Wavy mouth is over-pixelated; sweat drop is too small (needs 2px width).
+* **Inspired (5/10):** Black background looks dead (PMD Inspired uses bright yellow!).
+* **Teary (5/10):** Tears detach like floating blue beads instead of pooling along the lower lid.
+* **Blink/Stunned (5/10):** White scleras merge with pale skin; needs stronger upper-lid shadow.
+
+**TOP 5 PIXEL FIXES**
+1. **Kill Pure Black Outlines:** Replace `#000000` inner lines with dark burgundy/brown; add 1px anti-aliasing on jaw and hair curves.
+2. **Animate Head/Shoulders:** Shift the head 1-2px up for *Joy/Shout*, down for *Pain/Worried*, and add raised hands for *Joy/Inspired*.
+3. **Fix Backgrounds:** Add PMD burst rays to *Shout/Surprised*, floral/sparkle motifs to *Joy*, and bright yellow to *Inspired*.
+4. **Redraw Mouths:** Round out the rectangular *Shout/Effort* mouths; use dark reddish-brown for lip lines instead of black.
+5. **Pop the FX:** Give the red anger-mark a 1px pale halo so it separates from dark hair; enlarge sweat drops by 2x.
+
+**OVERALL SCORE: 5.0 / 10**

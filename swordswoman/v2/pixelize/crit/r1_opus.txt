@@ -1,0 +1,26 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**1. Overall ranking (/10)**
+1. **E2 k-centroid + face pass: 7.5.** Cleanest clusters, accurate hair and colours, and the eyes are now clearly visible in both views.
+2. **C k-centroid: 6.5.** Clean and on-model, but the eyes wash out in the front view, especially at 80.
+3. **A majority: 6.** Flat and tidy, but the eyes become chunky white blocks and the hair looks blobby.
+4. **E1 PixelOE + face pass: 5.5.** The face pass helps, but PixelOE's dark speckle and heavy outlines remain.
+5. **D Gemini redraw + grid snap: 5.** Nice pixel style, but it drifts off-model: the 96 px hair and bangs change, the 64/80 legs have fringe artifacts, and sizes don't match each other.
+6. **B PixelOE: 4.5.** Noisiest. The eyes become slits and the hair gets dark speckle.
+
+**2. Sizes:** 96 > 80 >> 64. At 64 the face loses its eyes and the legs break up.
+
+**3. Face score at 80 / 96** (eye shape, spacing, mouth, contour)
+- A: 5 / 6. Spacing is fine, but the white blocks are too big and there's no mouth.
+- B: 3 / 4. Squinting slits and a ragged jaw.
+- C: 4 / 5. Good contour, faint front-view eyes.
+- D: 5 / 6. Has a mouth at 96, but the face is redrawn rather than the source's.
+- E1: 4 / 5. Blush is good; the eyes are still slit lines.
+- E2: 6 / 7. Best eye spacing and contour; eyes are dark and readable.
+
+**4. Top 3 combinations:** E2 @ 96, E2 @ 80, C @ 96.
+
+**5. Main defects left in E2**
+- **Eyes look sleepy.** The front view has half-lidded rectangles with no catchlight or iris colour, while the source has large round eyes.
+- **No mouth or smile.** The lower face is a blank skin area, and the chin is a little square.
+- **Leftover noise.** There are stray pixels in the hair and ribbon tails, dither speckle on the skirt, and gaps in the leg outlines.

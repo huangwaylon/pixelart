@@ -1,0 +1,80 @@
+{
+ "size": [
+  28,
+  28
+ ],
+ "facing": "E",
+ "attach": "feet",
+ "pivot": [
+  22,
+  27
+ ],
+ "ms": [
+  80,
+  100,
+  120
+ ],
+ "cell_offset": [
+  58,
+  124
+ ],
+ "cell": "128x128 cell, 96 px figure, feet pivot (64,124), faces SE; back boot x58-64 sole row 124 (back heel x58), front boot x66-74; ground_y = cell row 124; pivot = ground point",
+ "layer": "over",
+ "mirror": "flip x: x -> 27-x, pivot -> [5,27]; re-run work/gen_dust2.py with mirrored lobes so the U sel-out rim stays top-left (do not flip pixels)",
+ "ground_y": 27,
+ "heel_x": 22,
+ "puff_px": [
+  [
+   [
+    12,
+    11
+   ],
+   [
+    9,
+    9
+   ],
+   [
+    6,
+    6
+   ]
+  ],
+  [
+   [
+    13,
+    13
+   ],
+   [
+    10,
+    10
+   ],
+   [
+    7,
+    7
+   ]
+  ],
+  [
+   [
+    10,
+    10
+   ],
+   [
+    8,
+    8
+   ],
+   [
+    5,
+    5
+   ],
+   [
+    3,
+    3
+   ]
+  ]
+ ],
+ "lift_px": [
+  0,
+  2,
+  14
+ ],
+ "note": "r2: one billowing mass per frame, lobes graded 12/9/6 px from the heel outward and rising up/back; flat G base on ground row 27 (f0,f1); only short t creases at lobe notches; sel-out outline U on lit top-left, G bottom/right. f2 detached, lifted 14 px + fleck. work/gen_dust2.py."
+}

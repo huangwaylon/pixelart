@@ -1,0 +1,1922 @@
+[
+{
+"name": "A_SE_64",
+"ssim": 0.7673666990161648,
+"ssim_b": 0.9017100040966888,
+"dE": 12.4020860779276,
+"sil": 0.987885462555066,
+"bloat": 1.010022271714922,
+"iou_hair": 0.7189189189189189,
+"iou_red": 0.7862068965517242,
+"iou_skin": 0.5435897435897435,
+"iou_obi": 0.9642857142857143,
+"iou_boot": 0.3541666666666667,
+"line_f": 0.7487851700761894,
+"kcomp": 4,
+"orph": 1,
+"face_err": 0.23131826672655276,
+"face_n_eyes": 1,
+"face_mouth": false,
+"face_iou": 0.5396825396825397,
+"depth_chest": 1.0,
+"depthpx_chest": [
+15,
+15
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+20,
+20
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+25,
+25
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+9,
+9
+]
+},
+{
+"name": "A_SE_80",
+"ssim": 0.7982865610571698,
+"ssim_b": 0.9157902188785743,
+"dE": 10.513810676255117,
+"sil": 0.9882026370575989,
+"bloat": 1.011938202247191,
+"iou_hair": 0.7620689655172413,
+"iou_red": 0.8348017621145375,
+"iou_skin": 0.654485049833887,
+"iou_obi": 0.9166666666666666,
+"iou_boot": 0.5866666666666667,
+"line_f": 0.7764262682373974,
+"kcomp": 3,
+"orph": 0,
+"face_err": 0.24729048894877503,
+"face_n_eyes": 1,
+"face_mouth": false,
+"face_iou": 0.5882352941176471,
+"depth_chest": 1.0,
+"depthpx_chest": [
+18,
+18
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+26,
+26
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+27,
+27
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+12,
+12
+]
+},
+{
+"name": "A_SE_96",
+"ssim": 0.8001836344403225,
+"ssim_b": 0.9152235670052331,
+"dE": 9.745301384731935,
+"sil": 0.9897660818713451,
+"bloat": 1.0093503937007875,
+"iou_hair": 0.7852906287069988,
+"iou_red": 0.8411214953271028,
+"iou_skin": 0.7139423076923077,
+"iou_obi": 0.9206349206349206,
+"iou_boot": 0.6285714285714286,
+"line_f": 0.7969481709386241,
+"kcomp": 6,
+"orph": 1,
+"face_err": 0.278180577542352,
+"face_n_eyes": 0,
+"face_mouth": false,
+"face_iou": 0.5714285714285714,
+"depth_chest": 1.176,
+"depthpx_chest": [
+20,
+17
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+30,
+30
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+30,
+30
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+14,
+14
+]
+},
+{
+"name": "A_front_64",
+"ssim": 0.7716920837313652,
+"ssim_b": 0.8897258375833464,
+"dE": 13.430475444393178,
+"sil": 0.990405117270789,
+"bloat": 1.0075268817204301,
+"iou_hair": 0.7445255474452555,
+"iou_red": 0.7412790697674418,
+"iou_skin": 0.5384615384615384,
+"iou_obi": 0.8518518518518519,
+"iou_boot": 0.40625,
+"line_f": 0.7340808344198174,
+"kcomp": 5,
+"orph": 0,
+"face_err": 0.11112256214883146,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.5360824742268041,
+"depth_chest": 1.0,
+"depthpx_chest": [
+15,
+15
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+21,
+21
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+29,
+29
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+11,
+11
+]
+},
+{
+"name": "A_front_80",
+"ssim": 0.7791712419410384,
+"ssim_b": 0.9150824457518584,
+"dE": 11.662744818603256,
+"sil": 0.9817927170868347,
+"bloat": 1.0156695156695157,
+"iou_hair": 0.7293577981651376,
+"iou_red": 0.7882797731568998,
+"iou_skin": 0.6040462427745664,
+"iou_obi": 0.8888888888888888,
+"iou_boot": 0.5348837209302325,
+"line_f": 0.7525490120778048,
+"kcomp": 9,
+"orph": 0,
+"face_err": 0.08493714634523242,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.5592105263157895,
+"depth_chest": 1.0,
+"depthpx_chest": [
+20,
+20
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+26,
+26
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+34,
+34
+],
+"depth_thigh": 1.077,
+"depthpx_thigh": [
+14,
+13
+]
+},
+{
+"name": "A_front_96",
+"ssim": 0.8078109696157053,
+"ssim_b": 0.9072056793367452,
+"dE": 9.988479465231627,
+"sil": 0.988112220637185,
+"bloat": 1.011063011063011,
+"iou_hair": 0.813953488372093,
+"iou_red": 0.80078125,
+"iou_skin": 0.702755905511811,
+"iou_obi": 0.7878787878787878,
+"iou_boot": 0.5808823529411765,
+"line_f": 0.8377954967004868,
+"kcomp": 7,
+"orph": 1,
+"face_err": 0.20004131301189904,
+"face_n_eyes": 1,
+"face_mouth": false,
+"face_iou": 0.5370370370370371,
+"depth_chest": 1.0,
+"depthpx_chest": [
+22,
+22
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+32,
+32
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+42,
+42
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+16,
+16
+]
+},
+{
+"name": "B_SE_64",
+"ssim": 0.7511818365431645,
+"ssim_b": 0.9138740731283124,
+"dE": 14.0009937121119,
+"sil": 0.9626373626373627,
+"bloat": 0.9888641425389755,
+"iou_hair": 0.4986449864498645,
+"iou_red": 0.7551724137931034,
+"iou_skin": 0.5154639175257731,
+"iou_obi": 0.8518518518518519,
+"iou_boot": 0.3191489361702128,
+"line_f": 0.8760402978537014,
+"kcomp": 9,
+"orph": 45,
+"face_err": 0.13513771117099724,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.5625,
+"depth_chest": 1.0,
+"depthpx_chest": [
+15,
+15
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+20,
+20
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+25,
+25
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+9,
+9
+]
+},
+{
+"name": "B_SE_80",
+"ssim": 0.7708846537378546,
+"ssim_b": 0.9343280760628427,
+"dE": 11.687808045679475,
+"sil": 0.9639389736477115,
+"bloat": 0.9887640449438202,
+"iou_hair": 0.565068493150685,
+"iou_red": 0.8017429193899782,
+"iou_skin": 0.6033898305084746,
+"iou_obi": 0.8913043478260869,
+"iou_boot": 0.5205479452054794,
+"line_f": 0.9323034009226479,
+"kcomp": 18,
+"orph": 74,
+"face_err": 0.1671622838205699,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.69,
+"depth_chest": 1.0,
+"depthpx_chest": [
+18,
+18
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+26,
+26
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+27,
+27
+],
+"depth_thigh": 0.917,
+"depthpx_thigh": [
+11,
+12
+]
+},
+{
+"name": "B_SE_96",
+"ssim": 0.7911233768806638,
+"ssim_b": 0.9262211273685447,
+"dE": 10.530868678996013,
+"sil": 0.9756453969800293,
+"bloat": 0.9960629921259843,
+"iou_hair": 0.6011904761904762,
+"iou_red": 0.8129829984544049,
+"iou_skin": 0.697841726618705,
+"iou_obi": 0.8571428571428571,
+"iou_boot": 0.580952380952381,
+"line_f": 0.943547761309847,
+"kcomp": 24,
+"orph": 103,
+"face_err": 0.15764486325663768,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.6666666666666666,
+"depth_chest": 1.176,
+"depthpx_chest": [
+20,
+17
+],
+"depth_waist": 1.033,
+"depthpx_waist": [
+31,
+30
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+30,
+30
+],
+"depth_thigh": 1.071,
+"depthpx_thigh": [
+15,
+14
+]
+},
+{
+"name": "B_front_64",
+"ssim": 0.764319780453579,
+"ssim_b": 0.9178446865436092,
+"dE": 15.179489257681244,
+"sil": 0.9434968017057569,
+"bloat": 0.9602150537634409,
+"iou_hair": 0.47101449275362317,
+"iou_red": 0.6539589442815249,
+"iou_skin": 0.5276595744680851,
+"iou_obi": 0.7777777777777778,
+"iou_boot": 0.421875,
+"line_f": 0.8509417444591795,
+"kcomp": 6,
+"orph": 51,
+"face_err": 0.09845401146533517,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.8080808080808081,
+"depth_chest": 1.0,
+"depthpx_chest": [
+15,
+15
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+21,
+21
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+29,
+29
+],
+"depth_thigh": 0.818,
+"depthpx_thigh": [
+9,
+11
+]
+},
+{
+"name": "B_front_80",
+"ssim": 0.7625917568007331,
+"ssim_b": 0.9307493606826517,
+"dE": 13.368966533471756,
+"sil": 0.9511514305652478,
+"bloat": 0.9914529914529915,
+"iou_hair": 0.5358744394618834,
+"iou_red": 0.6876190476190476,
+"iou_skin": 0.615606936416185,
+"iou_obi": 0.7567567567567568,
+"iou_boot": 0.5,
+"line_f": 0.8809468995853016,
+"kcomp": 11,
+"orph": 62,
+"face_err": 0.12979692827575606,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.6582278481012658,
+"depth_chest": 1.0,
+"depthpx_chest": [
+20,
+20
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+26,
+26
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+34,
+34
+],
+"depth_thigh": 0.923,
+"depthpx_thigh": [
+12,
+13
+]
+},
+{
+"name": "B_front_96",
+"ssim": 0.7978421813143244,
+"ssim_b": 0.9265934891614225,
+"dE": 11.21478254606395,
+"sil": 0.9667142177841179,
+"bloat": 0.9894179894179894,
+"iou_hair": 0.6095551894563427,
+"iou_red": 0.7542932628797886,
+"iou_skin": 0.6840077071290944,
+"iou_obi": 0.6716417910447762,
+"iou_boot": 0.4852941176470588,
+"line_f": 0.9541658073829655,
+"kcomp": 15,
+"orph": 92,
+"face_err": 0.12198236494359,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.7201834862385321,
+"depth_chest": 1.0,
+"depthpx_chest": [
+22,
+22
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+32,
+32
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+42,
+42
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+16,
+16
+]
+},
+{
+"name": "C0_SE_64",
+"ssim": 0.7956153184125585,
+"ssim_b": 0.9362099065807964,
+"dE": 11.72476996520962,
+"sil": 0.9721603563474388,
+"bloat": 0.9721603563474388,
+"iou_hair": 0.7103825136612022,
+"iou_red": 0.7569444444444444,
+"iou_skin": 0.6190476190476191,
+"iou_obi": 0.8888888888888888,
+"iou_boot": 0.3191489361702128,
+"line_f": 0.7640016023025682,
+"kcomp": 5,
+"orph": 33,
+"face_err": 0.1582753374336235,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.6307692307692307,
+"depth_chest": 1.0,
+"depthpx_chest": [
+15,
+15
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+20,
+20
+],
+"depth_hip": 0.96,
+"depthpx_hip": [
+24,
+25
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+9,
+9
+]
+},
+{
+"name": "C0_SE_80",
+"ssim": 0.8143966243963013,
+"ssim_b": 0.939869987195835,
+"dE": 10.046268003830992,
+"sil": 0.9817415730337079,
+"bloat": 0.9817415730337079,
+"iou_hair": 0.7690972222222222,
+"iou_red": 0.8288288288288288,
+"iou_skin": 0.6862068965517242,
+"iou_obi": 0.9574468085106383,
+"iou_boot": 0.5205479452054794,
+"line_f": 0.848683708508203,
+"kcomp": 10,
+"orph": 44,
+"face_err": 0.18739465561544166,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.6372549019607843,
+"depth_chest": 0.944,
+"depthpx_chest": [
+17,
+18
+],
+"depth_waist": 0.923,
+"depthpx_waist": [
+24,
+26
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+27,
+27
+],
+"depth_thigh": 0.917,
+"depthpx_thigh": [
+11,
+12
+]
+},
+{
+"name": "C0_SE_96",
+"ssim": 0.8228635982121282,
+"ssim_b": 0.94643673104327,
+"dE": 9.330019277624842,
+"sil": 0.9754058042302016,
+"bloat": 0.9763779527559056,
+"iou_hair": 0.758703481392557,
+"iou_red": 0.8203125,
+"iou_skin": 0.7128953771289538,
+"iou_obi": 0.9354838709677419,
+"iou_boot": 0.5904761904761905,
+"line_f": 0.8525475334596558,
+"kcomp": 14,
+"orph": 72,
+"face_err": 0.12651976728184142,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.6054421768707483,
+"depth_chest": 1.176,
+"depthpx_chest": [
+20,
+17
+],
+"depth_waist": 0.967,
+"depthpx_waist": [
+29,
+30
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+30,
+30
+],
+"depth_thigh": 0.929,
+"depthpx_thigh": [
+13,
+14
+]
+},
+{
+"name": "C0_front_64",
+"ssim": 0.7890553373356332,
+"ssim_b": 0.9170376325871397,
+"dE": 13.005103301295055,
+"sil": 0.9634408602150538,
+"bloat": 0.9634408602150538,
+"iou_hair": 0.7022900763358778,
+"iou_red": 0.6920821114369502,
+"iou_skin": 0.6379310344827587,
+"iou_obi": 0.7777777777777778,
+"iou_boot": 0.390625,
+"line_f": 0.761980517891233,
+"kcomp": 3,
+"orph": 30,
+"face_err": 0.09968739118085777,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.6979166666666666,
+"depth_chest": 1.0,
+"depthpx_chest": [
+15,
+15
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+21,
+21
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+29,
+29
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+11,
+11
+]
+},
+{
+"name": "C0_front_80",
+"ssim": 0.7980178378553205,
+"ssim_b": 0.9425417484690832,
+"dE": 11.122030794117101,
+"sil": 0.9722222222222222,
+"bloat": 0.9722222222222222,
+"iou_hair": 0.7622549019607843,
+"iou_red": 0.7319391634980988,
+"iou_skin": 0.6715542521994134,
+"iou_obi": 0.8333333333333334,
+"iou_boot": 0.4883720930232558,
+"line_f": 0.8048118660890383,
+"kcomp": 7,
+"orph": 41,
+"face_err": 0.10295299525763205,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.6274509803921569,
+"depth_chest": 1.0,
+"depthpx_chest": [
+20,
+20
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+26,
+26
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+34,
+34
+],
+"depth_thigh": 0.923,
+"depthpx_thigh": [
+12,
+13
+]
+},
+{
+"name": "C0_front_96",
+"ssim": 0.8127486147887937,
+"ssim_b": 0.9357620555810489,
+"dE": 10.01543162011257,
+"sil": 0.9701923076923077,
+"bloat": 0.9711399711399712,
+"iou_hair": 0.7847457627118644,
+"iou_red": 0.7585301837270341,
+"iou_skin": 0.7238658777120316,
+"iou_obi": 0.7575757575757576,
+"iou_boot": 0.5514705882352942,
+"line_f": 0.8823462300151383,
+"kcomp": 13,
+"orph": 47,
+"face_err": 0.10629131301189906,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.5668202764976958,
+"depth_chest": 1.0,
+"depthpx_chest": [
+22,
+22
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+32,
+32
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+42,
+42
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+16,
+16
+]
+},
+{
+"name": "D_SE_64",
+"ssim": 0.48315153869827804,
+"ssim_b": 0.7190802152969814,
+"dE": 24.810924006314664,
+"sil": 0.8087318087318087,
+"bloat": 0.9376391982182628,
+"iou_hair": 0.4772727272727273,
+"iou_red": 0.43492063492063493,
+"iou_skin": 0.4052863436123348,
+"iou_obi": 0.4411764705882353,
+"iou_boot": 0.35294117647058826,
+"line_f": 0.7182191728216485,
+"kcomp": 13,
+"orph": 33,
+"face_err": 0.27570041881219326,
+"face_n_eyes": 0,
+"face_mouth": false,
+"face_iou": 0.5,
+"depth_chest": 0.867,
+"depthpx_chest": [
+13,
+15
+],
+"depth_waist": 0.9,
+"depthpx_waist": [
+18,
+20
+],
+"depth_hip": 0.88,
+"depthpx_hip": [
+22,
+25
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+9,
+9
+]
+},
+{
+"name": "D_SE_80",
+"ssim": 0.43085043595618117,
+"ssim_b": 0.6546519920989515,
+"dE": 24.391169440352616,
+"sil": 0.8031088082901554,
+"bloat": 0.9550561797752809,
+"iou_hair": 0.4612850082372323,
+"iou_red": 0.45880149812734083,
+"iou_skin": 0.4565826330532213,
+"iou_obi": 0.38181818181818183,
+"iou_boot": 0.48148148148148145,
+"line_f": 0.8065477298968304,
+"kcomp": 25,
+"orph": 58,
+"face_err": 0.11182286050644626,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.45161290322580644,
+"depth_chest": 0.889,
+"depthpx_chest": [
+16,
+18
+],
+"depth_waist": 0.885,
+"depthpx_waist": [
+23,
+26
+],
+"depth_hip": 1.037,
+"depthpx_hip": [
+28,
+27
+],
+"depth_thigh": 0.917,
+"depthpx_thigh": [
+11,
+12
+]
+},
+{
+"name": "D_SE_96",
+"ssim": 0.18776406584835728,
+"ssim_b": 0.304369808300873,
+"dE": 33.496166935683725,
+"sil": 0.6275104206138689,
+"bloat": 1.1136811023622046,
+"iou_hair": 0.35446685878962536,
+"iou_red": 0.3812351543942993,
+"iou_skin": 0.2291970802919708,
+"iou_obi": 0.3218390804597701,
+"iou_boot": 0.28205128205128205,
+"line_f": 0.5316374067444213,
+"kcomp": 35,
+"orph": 67,
+"face_err": 0.10604634535493111,
+"face_n_eyes": 2,
+"face_mouth": true,
+"face_iou": 0.28440366972477066,
+"depth_chest": 1.353,
+"depthpx_chest": [
+23,
+17
+],
+"depth_waist": 1.067,
+"depthpx_waist": [
+32,
+30
+],
+"depth_hip": 1.267,
+"depthpx_hip": [
+38,
+30
+],
+"depth_thigh": 1.214,
+"depthpx_thigh": [
+17,
+14
+]
+},
+{
+"name": "D_front_64",
+"ssim": 0.7807510762408454,
+"ssim_b": 0.9199912379102478,
+"dE": 13.617326021180816,
+"sil": 0.9667381974248928,
+"bloat": 0.9709677419354839,
+"iou_hair": 0.6781609195402298,
+"iou_red": 0.6656891495601173,
+"iou_skin": 0.6,
+"iou_obi": 0.7142857142857143,
+"iou_boot": 0.375,
+"line_f": 0.8249491418301041,
+"kcomp": 8,
+"orph": 32,
+"face_err": 0.10514613117240047,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.6907216494845361,
+"depth_chest": 1.0,
+"depthpx_chest": [
+15,
+15
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+21,
+21
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+29,
+29
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+11,
+11
+]
+},
+{
+"name": "D_front_80",
+"ssim": 0.6647436731769668,
+"ssim_b": 0.8719795838675237,
+"dE": 16.01229671535099,
+"sil": 0.8879310344827587,
+"bloat": 1.0277777777777777,
+"iou_hair": 0.6420047732696897,
+"iou_red": 0.7105263157894737,
+"iou_skin": 0.672463768115942,
+"iou_obi": 0.8055555555555556,
+"iou_boot": 0.627906976744186,
+"line_f": 0.9025494703874334,
+"kcomp": 22,
+"orph": 43,
+"face_err": 0.14603490275548878,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.5796178343949044,
+"depth_chest": 1.05,
+"depthpx_chest": [
+21,
+20
+],
+"depth_waist": 0.962,
+"depthpx_waist": [
+25,
+26
+],
+"depth_hip": 1.029,
+"depthpx_hip": [
+35,
+34
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+13,
+13
+]
+},
+{
+"name": "D_front_96",
+"ssim": 0.5030783022549028,
+"ssim_b": 0.7183446138385513,
+"dE": 21.643220567479467,
+"sil": 0.8516268980477223,
+"bloat": 1.052910052910053,
+"iou_hair": 0.5293132328308208,
+"iou_red": 0.5732009925558312,
+"iou_skin": 0.5704099821746881,
+"iou_obi": 0.3291139240506329,
+"iou_boot": 0.5555555555555556,
+"line_f": 0.9356386832586558,
+"kcomp": 1,
+"orph": 38,
+"face_err": 0.06712623921182215,
+"face_n_eyes": 2,
+"face_mouth": true,
+"face_iou": 0.5,
+"depth_chest": 1.045,
+"depthpx_chest": [
+23,
+22
+],
+"depth_waist": 1.156,
+"depthpx_waist": [
+37,
+32
+],
+"depth_hip": 0.976,
+"depthpx_hip": [
+41,
+42
+],
+"depth_thigh": 1.062,
+"depthpx_thigh": [
+17,
+16
+]
+},
+{
+"name": "EB_SE_64",
+"ssim": 0.7593996459226375,
+"ssim_b": 0.8974823554080168,
+"dE": 13.858088503082863,
+"sil": 0.9626373626373627,
+"bloat": 0.9888641425389755,
+"iou_hair": 0.47802197802197804,
+"iou_red": 0.7465753424657534,
+"iou_skin": 0.5208333333333334,
+"iou_obi": 0.8214285714285714,
+"iou_boot": 0.3191489361702128,
+"line_f": 0.8706457183774904,
+"kcomp": 5,
+"orph": 14,
+"face_err": 0.20279644132972738,
+"face_n_eyes": 1,
+"face_mouth": false,
+"face_iou": 0.5423728813559322,
+"depth_chest": 1.0,
+"depthpx_chest": [
+15,
+15
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+20,
+20
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+25,
+25
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+9,
+9
+]
+},
+{
+"name": "EB_SE_80",
+"ssim": 0.7718814039918332,
+"ssim_b": 0.9250102903977226,
+"dE": 11.522985262250868,
+"sil": 0.9639389736477115,
+"bloat": 0.9887640449438202,
+"iou_hair": 0.5501730103806228,
+"iou_red": 0.7991360691144709,
+"iou_skin": 0.5824915824915825,
+"iou_obi": 0.8936170212765957,
+"iou_boot": 0.5068493150684932,
+"line_f": 0.9179824653617308,
+"kcomp": 10,
+"orph": 21,
+"face_err": 0.184790488948775,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.594059405940594,
+"depth_chest": 1.0,
+"depthpx_chest": [
+18,
+18
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+26,
+26
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+27,
+27
+],
+"depth_thigh": 0.917,
+"depthpx_thigh": [
+11,
+12
+]
+},
+{
+"name": "EB_SE_96",
+"ssim": 0.7846882885102634,
+"ssim_b": 0.9062891031855651,
+"dE": 10.461256785836428,
+"sil": 0.9756453969800293,
+"bloat": 0.9960629921259843,
+"iou_hair": 0.5837264150943396,
+"iou_red": 0.8095975232198143,
+"iou_skin": 0.6795180722891566,
+"iou_obi": 0.8153846153846154,
+"iou_boot": 0.5523809523809524,
+"line_f": 0.9218121670800473,
+"kcomp": 12,
+"orph": 28,
+"face_err": 0.1172477892598634,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.6137931034482759,
+"depth_chest": 1.176,
+"depthpx_chest": [
+20,
+17
+],
+"depth_waist": 1.033,
+"depthpx_waist": [
+31,
+30
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+30,
+30
+],
+"depth_thigh": 1.071,
+"depthpx_thigh": [
+15,
+14
+]
+},
+{
+"name": "EB_front_64",
+"ssim": 0.7670291788265637,
+"ssim_b": 0.9030184493547635,
+"dE": 15.387871576399597,
+"sil": 0.9456289978678039,
+"bloat": 0.9623655913978495,
+"iou_hair": 0.4264705882352941,
+"iou_red": 0.6473988439306358,
+"iou_skin": 0.4808510638297872,
+"iou_obi": 0.7777777777777778,
+"iou_boot": 0.421875,
+"line_f": 0.8477326194532327,
+"kcomp": 3,
+"orph": 23,
+"face_err": 0.25420797967856573,
+"face_n_eyes": 0,
+"face_mouth": false,
+"face_iou": 0.5208333333333334,
+"depth_chest": 1.0,
+"depthpx_chest": [
+15,
+15
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+21,
+21
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+29,
+29
+],
+"depth_thigh": 0.818,
+"depthpx_thigh": [
+9,
+11
+]
+},
+{
+"name": "EB_front_80",
+"ssim": 0.7687040573751998,
+"ssim_b": 0.9160054187506544,
+"dE": 13.221948875437397,
+"sil": 0.9539427773900907,
+"bloat": 0.9943019943019943,
+"iou_hair": 0.509090909090909,
+"iou_red": 0.6723484848484849,
+"iou_skin": 0.625,
+"iou_obi": 0.75,
+"iou_boot": 0.46511627906976744,
+"line_f": 0.8766292781133161,
+"kcomp": 3,
+"orph": 28,
+"face_err": 0.11839067198625804,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.5592105263157895,
+"depth_chest": 1.0,
+"depthpx_chest": [
+20,
+20
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+26,
+26
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+34,
+34
+],
+"depth_thigh": 0.923,
+"depthpx_thigh": [
+12,
+13
+]
+},
+{
+"name": "EB_front_96",
+"ssim": 0.800230577021761,
+"ssim_b": 0.9112081842741999,
+"dE": 11.210187612666111,
+"sil": 0.969091773656681,
+"bloat": 0.9918229918229918,
+"iou_hair": 0.5869565217391305,
+"iou_red": 0.7437582128777924,
+"iou_skin": 0.6756756756756757,
+"iou_obi": 0.6764705882352942,
+"iou_boot": 0.45588235294117646,
+"line_f": 0.9484230533810122,
+"kcomp": 9,
+"orph": 45,
+"face_err": 0.26045797967856577,
+"face_n_eyes": 0,
+"face_mouth": false,
+"face_iou": 0.5539906103286385,
+"depth_chest": 1.0,
+"depthpx_chest": [
+22,
+22
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+32,
+32
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+42,
+42
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+16,
+16
+]
+},
+{
+"name": "EC0_SE_64",
+"ssim": 0.7904273158022495,
+"ssim_b": 0.9204799778753083,
+"dE": 12.059168174240764,
+"sil": 0.9721603563474388,
+"bloat": 0.9721603563474388,
+"iou_hair": 0.695054945054945,
+"iou_red": 0.75,
+"iou_skin": 0.5706806282722513,
+"iou_obi": 0.8571428571428571,
+"iou_boot": 0.3191489361702128,
+"line_f": 0.7708384558642735,
+"kcomp": 4,
+"orph": 9,
+"face_err": 0.20788076672655276,
+"face_n_eyes": 1,
+"face_mouth": false,
+"face_iou": 0.532258064516129,
+"depth_chest": 1.0,
+"depthpx_chest": [
+15,
+15
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+20,
+20
+],
+"depth_hip": 0.96,
+"depthpx_hip": [
+24,
+25
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+9,
+9
+]
+},
+{
+"name": "EC0_SE_80",
+"ssim": 0.807693781690574,
+"ssim_b": 0.931819824503957,
+"dE": 10.192242123336042,
+"sil": 0.9817415730337079,
+"bloat": 0.9817415730337079,
+"iou_hair": 0.7582608695652174,
+"iou_red": 0.811529933481153,
+"iou_skin": 0.6506849315068494,
+"iou_obi": 0.9782608695652174,
+"iou_boot": 0.5068493150684932,
+"line_f": 0.8317861121425919,
+"kcomp": 6,
+"orph": 19,
+"face_err": 0.184790488948775,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.6078431372549019,
+"depth_chest": 0.944,
+"depthpx_chest": [
+17,
+18
+],
+"depth_waist": 0.923,
+"depthpx_waist": [
+24,
+26
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+27,
+27
+],
+"depth_thigh": 0.917,
+"depthpx_thigh": [
+11,
+12
+]
+},
+{
+"name": "EC0_SE_96",
+"ssim": 0.8168489916090681,
+"ssim_b": 0.9408439463142052,
+"dE": 9.371826271758186,
+"sil": 0.9754058042302016,
+"bloat": 0.9763779527559056,
+"iou_hair": 0.7463942307692307,
+"iou_red": 0.8080495356037152,
+"iou_skin": 0.6884057971014492,
+"iou_obi": 0.9206349206349206,
+"iou_boot": 0.5754716981132075,
+"line_f": 0.8413206471697285,
+"kcomp": 9,
+"orph": 29,
+"face_err": 0.278180577542352,
+"face_n_eyes": 0,
+"face_mouth": false,
+"face_iou": 0.6,
+"depth_chest": 1.176,
+"depthpx_chest": [
+20,
+17
+],
+"depth_waist": 0.967,
+"depthpx_waist": [
+29,
+30
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+30,
+30
+],
+"depth_thigh": 0.929,
+"depthpx_thigh": [
+13,
+14
+]
+},
+{
+"name": "EC0_front_64",
+"ssim": 0.7846167632763038,
+"ssim_b": 0.9096604660063249,
+"dE": 13.239337139227697,
+"sil": 0.9634408602150538,
+"bloat": 0.9634408602150538,
+"iou_hair": 0.6641509433962264,
+"iou_red": 0.6618075801749271,
+"iou_skin": 0.592274678111588,
+"iou_obi": 0.7777777777777778,
+"iou_boot": 0.390625,
+"line_f": 0.7876246102498793,
+"kcomp": 4,
+"orph": 25,
+"face_err": 0.25420797967856573,
+"face_n_eyes": 0,
+"face_mouth": false,
+"face_iou": 0.5208333333333334,
+"depth_chest": 1.0,
+"depthpx_chest": [
+15,
+15
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+21,
+21
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+29,
+29
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+11,
+11
+]
+},
+{
+"name": "EC0_front_80",
+"ssim": 0.7934088467796586,
+"ssim_b": 0.9332756313366232,
+"dE": 11.36763355526648,
+"sil": 0.9722222222222222,
+"bloat": 0.9722222222222222,
+"iou_hair": 0.7402912621359223,
+"iou_red": 0.7053231939163498,
+"iou_skin": 0.6460176991150443,
+"iou_obi": 0.8333333333333334,
+"iou_boot": 0.46511627906976744,
+"line_f": 0.80450285849001,
+"kcomp": 5,
+"orph": 25,
+"face_err": 0.10757336429395034,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.5620915032679739,
+"depth_chest": 1.0,
+"depthpx_chest": [
+20,
+20
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+26,
+26
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+34,
+34
+],
+"depth_thigh": 0.923,
+"depthpx_thigh": [
+12,
+13
+]
+},
+{
+"name": "EC0_front_96",
+"ssim": 0.8109532081413251,
+"ssim_b": 0.9281087453670688,
+"dE": 10.083770880480943,
+"sil": 0.9711538461538461,
+"bloat": 0.9721019721019721,
+"iou_hair": 0.7647058823529411,
+"iou_red": 0.7447916666666666,
+"iou_skin": 0.6863905325443787,
+"iou_obi": 0.7647058823529411,
+"iou_boot": 0.5441176470588235,
+"line_f": 0.8772451911219709,
+"kcomp": 10,
+"orph": 30,
+"face_err": 0.26045797967856577,
+"face_n_eyes": 0,
+"face_mouth": false,
+"face_iou": 0.5488372093023256,
+"depth_chest": 1.0,
+"depthpx_chest": [
+22,
+22
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+32,
+32
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+42,
+42
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+16,
+16
+]
+},
+{
+"name": "EBp24_SE_64",
+"ssim": 0.7541329903922851,
+"ssim_b": 0.8928303056434748,
+"dE": 13.739573699503728,
+"sil": 0.9626373626373627,
+"bloat": 0.9888641425389755,
+"iou_hair": 0.4085714285714286,
+"iou_red": 0.7074829931972789,
+"iou_skin": 0.4427083333333333,
+"iou_obi": 0.8518518518518519,
+"iou_boot": 0.3191489361702128,
+"line_f": 0.870026210207561,
+"kcomp": 6,
+"orph": 13,
+"face_err": 0.20279644132972738,
+"face_n_eyes": 1,
+"face_mouth": false,
+"face_iou": 0.5423728813559322,
+"depth_chest": 1.0,
+"depthpx_chest": [
+15,
+15
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+20,
+20
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+25,
+25
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+9,
+9
+]
+},
+{
+"name": "EBp24_SE_80",
+"ssim": 0.7538901476420604,
+"ssim_b": 0.9094225600755667,
+"dE": 11.504944866093332,
+"sil": 0.9639389736477115,
+"bloat": 0.9887640449438202,
+"iou_hair": 0.49113475177304966,
+"iou_red": 0.7818574514038877,
+"iou_skin": 0.5423728813559322,
+"iou_obi": 0.8723404255319149,
+"iou_boot": 0.5068493150684932,
+"line_f": 0.9181654729621476,
+"kcomp": 10,
+"orph": 27,
+"face_err": 0.21395715561544165,
+"face_n_eyes": 1,
+"face_mouth": false,
+"face_iou": 0.5959595959595959,
+"depth_chest": 1.0,
+"depthpx_chest": [
+18,
+18
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+26,
+26
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+27,
+27
+],
+"depth_thigh": 0.917,
+"depthpx_thigh": [
+11,
+12
+]
+},
+{
+"name": "EBp24_SE_96",
+"ssim": 0.7760752154854689,
+"ssim_b": 0.8972910068341489,
+"dE": 10.322410396553819,
+"sil": 0.9756453969800293,
+"bloat": 0.9960629921259843,
+"iou_hair": 0.5159313725490197,
+"iou_red": 0.7737909516380655,
+"iou_skin": 0.6253041362530414,
+"iou_obi": 0.8181818181818182,
+"iou_boot": 0.5428571428571428,
+"line_f": 0.9244911048740783,
+"kcomp": 12,
+"orph": 40,
+"face_err": 0.18922581123788534,
+"face_n_eyes": 1,
+"face_mouth": false,
+"face_iou": 0.593103448275862,
+"depth_chest": 1.176,
+"depthpx_chest": [
+20,
+17
+],
+"depth_waist": 1.033,
+"depthpx_waist": [
+31,
+30
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+30,
+30
+],
+"depth_thigh": 1.071,
+"depthpx_thigh": [
+15,
+14
+]
+},
+{
+"name": "EBp24_front_64",
+"ssim": 0.763716279754107,
+"ssim_b": 0.9007518674652042,
+"dE": 15.53906816380071,
+"sil": 0.9456289978678039,
+"bloat": 0.9623655913978495,
+"iou_hair": 0.4461538461538462,
+"iou_red": 0.5971014492753624,
+"iou_skin": 0.4217391304347826,
+"iou_obi": 0.7777777777777778,
+"iou_boot": 0.421875,
+"line_f": 0.8481871419885437,
+"kcomp": 3,
+"orph": 32,
+"face_err": 0.25420797967856573,
+"face_n_eyes": 0,
+"face_mouth": false,
+"face_iou": 0.5,
+"depth_chest": 1.0,
+"depthpx_chest": [
+15,
+15
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+21,
+21
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+29,
+29
+],
+"depth_thigh": 0.818,
+"depthpx_thigh": [
+9,
+11
+]
+},
+{
+"name": "EBp24_front_80",
+"ssim": 0.761935875867381,
+"ssim_b": 0.9073553557680238,
+"dE": 13.405155315515588,
+"sil": 0.9539427773900907,
+"bloat": 0.9943019943019943,
+"iou_hair": 0.5432098765432098,
+"iou_red": 0.6026615969581749,
+"iou_skin": 0.5634218289085545,
+"iou_obi": 0.75,
+"iou_boot": 0.4186046511627907,
+"line_f": 0.8808055577238311,
+"kcomp": 3,
+"orph": 34,
+"face_err": 0.10837464634523239,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.5394736842105263,
+"depth_chest": 1.0,
+"depthpx_chest": [
+20,
+20
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+26,
+26
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+34,
+34
+],
+"depth_thigh": 0.923,
+"depthpx_thigh": [
+12,
+13
+]
+},
+{
+"name": "EBp24_front_96",
+"ssim": 0.7975217609988028,
+"ssim_b": 0.9087556444911689,
+"dE": 11.233511349103003,
+"sil": 0.969091773656681,
+"bloat": 0.9918229918229918,
+"iou_hair": 0.6020583190394511,
+"iou_red": 0.6882430647291942,
+"iou_skin": 0.6264591439688716,
+"iou_obi": 0.696969696969697,
+"iou_boot": 0.4632352941176471,
+"line_f": 0.9483921161825726,
+"kcomp": 9,
+"orph": 51,
+"face_err": 0.26045797967856577,
+"face_n_eyes": 0,
+"face_mouth": false,
+"face_iou": 0.5446009389671361,
+"depth_chest": 1.0,
+"depthpx_chest": [
+22,
+22
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+32,
+32
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+42,
+42
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+16,
+16
+]
+},
+{
+"name": "EC0p24_SE_64",
+"ssim": 0.7789300812538752,
+"ssim_b": 0.9141871124631475,
+"dE": 11.928112857971874,
+"sil": 0.9721603563474388,
+"bloat": 0.9721603563474388,
+"iou_hair": 0.6062322946175638,
+"iou_red": 0.7526132404181185,
+"iou_skin": 0.546875,
+"iou_obi": 0.8,
+"iou_boot": 0.3191489361702128,
+"line_f": 0.7708384558642735,
+"kcomp": 4,
+"orph": 8,
+"face_err": 0.2904573632566377,
+"face_n_eyes": 0,
+"face_mouth": false,
+"face_iou": 0.5666666666666667,
+"depth_chest": 1.0,
+"depthpx_chest": [
+15,
+15
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+20,
+20
+],
+"depth_hip": 0.96,
+"depthpx_hip": [
+24,
+25
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+9,
+9
+]
+},
+{
+"name": "EC0p24_SE_80",
+"ssim": 0.7983159608619627,
+"ssim_b": 0.9250468686981309,
+"dE": 10.070424566762737,
+"sil": 0.9817415730337079,
+"bloat": 0.9817415730337079,
+"iou_hair": 0.6535714285714286,
+"iou_red": 0.8173719376391982,
+"iou_skin": 0.6190476190476191,
+"iou_obi": 0.9782608695652174,
+"iou_boot": 0.5068493150684932,
+"line_f": 0.8319601596543263,
+"kcomp": 6,
+"orph": 22,
+"face_err": 0.184790488948775,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.5980392156862745,
+"depth_chest": 0.944,
+"depthpx_chest": [
+17,
+18
+],
+"depth_waist": 0.923,
+"depthpx_waist": [
+24,
+26
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+27,
+27
+],
+"depth_thigh": 0.917,
+"depthpx_thigh": [
+11,
+12
+]
+},
+{
+"name": "EC0p24_SE_96",
+"ssim": 0.8059747883171696,
+"ssim_b": 0.9319762517642683,
+"dE": 9.224529488411617,
+"sil": 0.9754058042302016,
+"bloat": 0.9763779527559056,
+"iou_hair": 0.6523867809057528,
+"iou_red": 0.8015503875968992,
+"iou_skin": 0.6553398058252428,
+"iou_obi": 0.9206349206349206,
+"iou_boot": 0.5566037735849056,
+"line_f": 0.837272113436867,
+"kcomp": 9,
+"orph": 36,
+"face_err": 0.278180577542352,
+"face_n_eyes": 0,
+"face_mouth": false,
+"face_iou": 0.593103448275862,
+"depth_chest": 1.176,
+"depthpx_chest": [
+20,
+17
+],
+"depth_waist": 0.967,
+"depthpx_waist": [
+29,
+30
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+30,
+30
+],
+"depth_thigh": 0.929,
+"depthpx_thigh": [
+13,
+14
+]
+},
+{
+"name": "EC0p24_front_64",
+"ssim": 0.7843289293293372,
+"ssim_b": 0.9105717888667905,
+"dE": 13.23398173449906,
+"sil": 0.9634408602150538,
+"bloat": 0.9634408602150538,
+"iou_hair": 0.6692015209125475,
+"iou_red": 0.6569767441860465,
+"iou_skin": 0.5782608695652174,
+"iou_obi": 0.7777777777777778,
+"iou_boot": 0.390625,
+"line_f": 0.7876246102498793,
+"kcomp": 4,
+"orph": 31,
+"face_err": 0.25420797967856573,
+"face_n_eyes": 0,
+"face_mouth": false,
+"face_iou": 0.5,
+"depth_chest": 1.0,
+"depthpx_chest": [
+15,
+15
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+21,
+21
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+29,
+29
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+11,
+11
+]
+},
+{
+"name": "EC0p24_front_80",
+"ssim": 0.7930256534039603,
+"ssim_b": 0.9327582884460119,
+"dE": 11.345950901432744,
+"sil": 0.9722222222222222,
+"bloat": 0.9722222222222222,
+"iou_hair": 0.7365853658536585,
+"iou_red": 0.699047619047619,
+"iou_skin": 0.6194690265486725,
+"iou_obi": 0.8333333333333334,
+"iou_boot": 0.46511627906976744,
+"line_f": 0.80450285849001,
+"kcomp": 5,
+"orph": 33,
+"face_err": 0.10837464634523239,
+"face_n_eyes": 2,
+"face_mouth": false,
+"face_iou": 0.5394736842105263,
+"depth_chest": 1.0,
+"depthpx_chest": [
+20,
+20
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+26,
+26
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+34,
+34
+],
+"depth_thigh": 0.923,
+"depthpx_thigh": [
+12,
+13
+]
+},
+{
+"name": "EC0p24_front_96",
+"ssim": 0.8124160119963816,
+"ssim_b": 0.9307836316317483,
+"dE": 9.975276473824568,
+"sil": 0.9711538461538461,
+"bloat": 0.9721019721019721,
+"iou_hair": 0.7721088435374149,
+"iou_red": 0.7421875,
+"iou_skin": 0.6856581532416502,
+"iou_obi": 0.7761194029850746,
+"iou_boot": 0.5441176470588235,
+"line_f": 0.8763177273722409,
+"kcomp": 10,
+"orph": 32,
+"face_err": 0.26045797967856577,
+"face_n_eyes": 0,
+"face_mouth": false,
+"face_iou": 0.5370370370370371,
+"depth_chest": 1.0,
+"depthpx_chest": [
+22,
+22
+],
+"depth_waist": 1.0,
+"depthpx_waist": [
+32,
+32
+],
+"depth_hip": 1.0,
+"depthpx_hip": [
+42,
+42
+],
+"depth_thigh": 1.0,
+"depthpx_thigh": [
+16,
+16
+]
+}
+]

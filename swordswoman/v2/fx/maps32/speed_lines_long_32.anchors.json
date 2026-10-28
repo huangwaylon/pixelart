@@ -1,0 +1,58 @@
+{
+ "size": [
+  18,
+  18
+ ],
+ "facing": "E",
+ "attach": "body_centre",
+ "pivot": [
+  27,
+  10
+ ],
+ "ms": [
+  40,
+  40
+ ],
+ "cell_offset": [
+  20,
+  22
+ ],
+ "cell": "40x40 cell of the 32 px figure (A_r3: feet ~20,37, sole row 37, back edge of body x11, body centre ~20,22)",
+ "layer": "behind",
+ "note": "pivot lies outside the canvas (lines trail 7..25 px behind the body centre); canvas top-left = cell (-7,12). Heads (W, 2 px tall) nearest the body at cell x8-10, tails n to the west. Flip x for facing W.",
+ "line_rows_cell": [
+  13,
+  18,
+  22,
+  29
+ ],
+ "lengths": [
+  [
+   12,
+   8,
+   14,
+   10
+  ],
+  [
+   10,
+   13,
+   9,
+   12
+  ]
+ ],
+ "shift_back_px": [
+  [
+   0,
+   0,
+   0,
+   0
+  ],
+  [
+   3,
+   2,
+   2,
+   3
+  ]
+ ],
+ "with_afterimage": "if afterimage ghosts are drawn n px behind, add [-n,0] to cell_offset so heads start behind the oldest ghost (demo work/dash_ghost_r2.png uses -12)"
+}

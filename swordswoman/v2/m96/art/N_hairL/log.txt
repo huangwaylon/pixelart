@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I made three single-pixel edits to `out.txt`: removed the stray red speck in the ribbon tail at (17,19), deleted the doubled K pixel on the lower-left hair outline at (8,31), and turned the 3px K clump at the strand tip into an h-filled tip at (10,33). The gate accepts it with no '!': dE −0.008, ssim_b and sil unchanged, lint the same as the current sprite (S4:1, O3:1, O1 0).

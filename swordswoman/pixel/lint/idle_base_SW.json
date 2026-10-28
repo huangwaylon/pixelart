@@ -1,0 +1,5447 @@
+{
+ "anim": "idle",
+ "src": "base",
+ "dirs": {
+  "SW": {
+   "frames": {
+    "f00": {
+     "flags": [
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 47,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 47,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 49,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "bun"
+      },
+      {
+       "type": "orphan",
+       "x": 61,
+       "y": 57,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 57,
+       "y": 71,
+       "sev": "warn",
+       "detail": "eye_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 57,
+       "y": 72,
+       "sev": "warn",
+       "detail": "eye_1",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 74,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 58,
+       "y": 76,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 67,
+       "y": 76,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 71,
+       "y": 81,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "scarf"
+      },
+      {
+       "type": "orphan",
+       "x": 54,
+       "y": 84,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 86,
+       "sev": "warn",
+       "detail": "leather_2",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 87,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 51,
+       "y": 88,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 51,
+       "y": 89,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 94,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 95,
+       "sev": "warn",
+       "detail": "leather_2",
+       "region": "thigh_strap"
+      },
+      {
+       "type": "orphan",
+       "x": 64,
+       "y": 95,
+       "sev": "warn",
+       "detail": "leather_1",
+       "region": "thigh_strap"
+      },
+      {
+       "type": "orphan",
+       "x": 67,
+       "y": 95,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "hand"
+      },
+      {
+       "type": "orphan",
+       "x": 69,
+       "y": 95,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 96,
+       "sev": "warn",
+       "detail": "leather_1",
+       "region": "thigh_strap"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_2",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 103,
+       "sev": "warn",
+       "detail": "skin_1",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 104,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 72,
+       "y": 104,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 106,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 74,
+       "y": 108,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 75,
+       "y": 110,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 76,
+       "y": 112,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 70,
+       "y": 100,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 72,
+       "y": 103,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 73,
+       "y": 105,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 74,
+       "y": 107,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 75,
+       "y": 109,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 111,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 113,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 61,
+       "y": 56,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "bow"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 60,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "bun"
+      },
+      {
+       "type": "notch",
+       "x": 57,
+       "y": 76,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "collar"
+      },
+      {
+       "type": "notch",
+       "x": 70,
+       "y": 80,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 71,
+       "y": 82,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 54,
+       "y": 83,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 72,
+       "y": 84,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 87,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "scarf"
+      },
+      {
+       "type": "notch",
+       "x": 69,
+       "y": 100,
+       "sev": "info",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 100,
+       "sev": "info",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 63,
+       "y": 102,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 61,
+       "y": 46,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "spur",
+       "x": 67,
+       "y": 48,
+       "sev": "warn",
+       "detail": "hair_0",
+       "region": "bun"
+      },
+      {
+       "type": "spur",
+       "x": 53,
+       "y": 83,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "spur",
+       "x": 74,
+       "y": 87,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "scarf"
+      },
+      {
+       "type": "spur",
+       "x": 64,
+       "y": 107,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_L"
+      },
+      {
+       "type": "spur",
+       "x": 81,
+       "y": 116,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "spur",
+       "x": 80,
+       "y": 117,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "double",
+       "x": 55,
+       "y": 70,
+       "sev": "warn",
+       "detail": "L-corner; removable without breaking the 8-connected line",
+       "region": "face"
+      },
+      {
+       "type": "double",
+       "x": 62,
+       "y": 102,
+       "sev": "warn",
+       "detail": "L-corner; removable without breaking the 8-connected line",
+       "region": "leg_R"
+      },
+      {
+       "type": "double",
+       "x": 68,
+       "y": 103,
+       "sev": "warn",
+       "detail": "L-corner; removable without breaking the 8-connected line",
+       "region": "leg_L"
+      },
+      {
+       "type": "jaggy",
+       "x": 55,
+       "y": 92,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "skirt"
+      },
+      {
+       "type": "jaggy",
+       "x": 55,
+       "y": 93,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "skirt"
+      },
+      {
+       "type": "jaggy",
+       "x": 55,
+       "y": 94,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "skirt"
+      },
+      {
+       "type": "jaggy",
+       "x": 68,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 69,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 70,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 71,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "banding",
+       "x": 65,
+       "y": 99,
+       "sev": "warn",
+       "detail": "5 px band of skin_1 along the outline",
+       "region": "leg_L"
+      },
+      {
+       "type": "banding",
+       "x": 75,
+       "y": 106,
+       "sev": "warn",
+       "detail": "26 px band of steel_0 along the outline",
+       "region": "sword"
+      },
+      {
+       "type": "flicker",
+       "x": 66,
+       "y": 84,
+       "sev": "warn",
+       "detail": "red_2 -> leather_2 -> red_2 (f07..f01)"
+      },
+      {
+       "type": "flicker",
+       "x": 73,
+       "y": 97,
+       "sev": "warn",
+       "detail": "steel_0 -> steel_1 -> steel_0 (f07..f01)"
+      },
+      {
+       "type": "flicker",
+       "x": 64,
+       "y": 100,
+       "sev": "warn",
+       "detail": "outline -> skin_0 -> outline (f07..f01)"
+      }
+     ],
+     "pivot": {
+      "baseline_y": 107,
+      "feet_x0": 63,
+      "feet_x1": 65,
+      "feet_cx": 64.0
+     },
+     "colours": [
+      "dark_1",
+      "eye_0",
+      "eye_1",
+      "hair_0",
+      "hair_1",
+      "hair_2",
+      "leather_1",
+      "leather_2",
+      "outline",
+      "pink_0",
+      "red_0",
+      "red_1",
+      "red_2",
+      "red_3",
+      "skin_0",
+      "skin_1",
+      "skin_2",
+      "steel_0",
+      "steel_1",
+      "steel_2"
+     ],
+     "n_colours": 20,
+     "opaque_px": 1091
+    },
+    "f01": {
+     "flags": [
+      {
+       "type": "orphan",
+       "x": 61,
+       "y": 57,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sheen"
+      },
+      {
+       "type": "orphan",
+       "x": 61,
+       "y": 58,
+       "sev": "warn",
+       "detail": "hair_1",
+       "region": "sheen"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 73,
+       "sev": "warn",
+       "detail": "steel_2",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 74,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 58,
+       "y": 76,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 76,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 67,
+       "y": 76,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 78,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 57,
+       "y": 79,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "ornament"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 80,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 80,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "arm"
+      },
+      {
+       "type": "orphan",
+       "x": 71,
+       "y": 81,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "scarf"
+      },
+      {
+       "type": "orphan",
+       "x": 54,
+       "y": 84,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 86,
+       "sev": "warn",
+       "detail": "leather_2",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 87,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 94,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 95,
+       "sev": "warn",
+       "detail": "leather_2",
+       "region": "thigh_strap"
+      },
+      {
+       "type": "orphan",
+       "x": 67,
+       "y": 95,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "hand"
+      },
+      {
+       "type": "orphan",
+       "x": 69,
+       "y": 95,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 96,
+       "sev": "warn",
+       "detail": "leather_1",
+       "region": "thigh_strap"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 98,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_2",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 64,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 103,
+       "sev": "warn",
+       "detail": "skin_1",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 104,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 72,
+       "y": 104,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 106,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 74,
+       "y": 108,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 75,
+       "y": 110,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 76,
+       "y": 112,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 70,
+       "y": 100,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 72,
+       "y": 103,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 73,
+       "y": 105,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 74,
+       "y": 107,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 75,
+       "y": 109,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 111,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 113,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 60,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "bun"
+      },
+      {
+       "type": "notch",
+       "x": 57,
+       "y": 76,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "collar"
+      },
+      {
+       "type": "notch",
+       "x": 56,
+       "y": 79,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "ornament"
+      },
+      {
+       "type": "notch",
+       "x": 70,
+       "y": 80,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 71,
+       "y": 82,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 54,
+       "y": 83,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 72,
+       "y": 84,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 86,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "scarf"
+      },
+      {
+       "type": "notch",
+       "x": 75,
+       "y": 86,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "scarf"
+      },
+      {
+       "type": "notch",
+       "x": 72,
+       "y": 90,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 59,
+       "y": 97,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "notch",
+       "x": 59,
+       "y": 99,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "notch",
+       "x": 69,
+       "y": 100,
+       "sev": "info",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 100,
+       "sev": "info",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 63,
+       "y": 102,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 56,
+       "y": 78,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "ornament"
+      },
+      {
+       "type": "spur",
+       "x": 53,
+       "y": 83,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "spur",
+       "x": 74,
+       "y": 86,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "scarf"
+      },
+      {
+       "type": "spur",
+       "x": 76,
+       "y": 86,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "scarf"
+      },
+      {
+       "type": "spur",
+       "x": 59,
+       "y": 98,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 57,
+       "y": 103,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 64,
+       "y": 107,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_L"
+      },
+      {
+       "type": "spur",
+       "x": 81,
+       "y": 116,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "spur",
+       "x": 80,
+       "y": 117,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "double",
+       "x": 62,
+       "y": 102,
+       "sev": "warn",
+       "detail": "L-corner; removable without breaking the 8-connected line",
+       "region": "leg_R"
+      },
+      {
+       "type": "double",
+       "x": 68,
+       "y": 103,
+       "sev": "warn",
+       "detail": "L-corner; removable without breaking the 8-connected line",
+       "region": "leg_L"
+      },
+      {
+       "type": "jaggy",
+       "x": 55,
+       "y": 92,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "skirt"
+      },
+      {
+       "type": "jaggy",
+       "x": 55,
+       "y": 93,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "skirt"
+      },
+      {
+       "type": "jaggy",
+       "x": 55,
+       "y": 94,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "skirt"
+      },
+      {
+       "type": "jaggy",
+       "x": 64,
+       "y": 48,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bow"
+      },
+      {
+       "type": "jaggy",
+       "x": 65,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bow"
+      },
+      {
+       "type": "jaggy",
+       "x": 66,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 67,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 68,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 69,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 70,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 71,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "banding",
+       "x": 75,
+       "y": 106,
+       "sev": "warn",
+       "detail": "26 px band of steel_0 along the outline",
+       "region": "sword"
+      },
+      {
+       "type": "inner_break",
+       "x": 63,
+       "y": 56,
+       "sev": "warn",
+       "detail": "gap between line ends (62,56) and (64,57)",
+       "region": "bow"
+      },
+      {
+       "type": "flicker",
+       "x": 72,
+       "y": 73,
+       "sev": "warn",
+       "detail": "hair_0 -> skin_1 -> hair_0 (f00..f02)"
+      }
+     ],
+     "pivot": {
+      "baseline_y": 107,
+      "feet_x0": 63,
+      "feet_x1": 65,
+      "feet_cx": 64.0
+     },
+     "colours": [
+      "dark_1",
+      "eye_0",
+      "eye_1",
+      "hair_0",
+      "hair_1",
+      "hair_2",
+      "leather_1",
+      "leather_2",
+      "outline",
+      "pink_0",
+      "red_0",
+      "red_1",
+      "red_2",
+      "red_3",
+      "skin_0",
+      "skin_1",
+      "skin_2",
+      "steel_0",
+      "steel_1",
+      "steel_2"
+     ],
+     "n_colours": 20,
+     "opaque_px": 1087
+    },
+    "f02": {
+     "flags": [
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 48,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 64,
+       "y": 48,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 65,
+       "y": 49,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 61,
+       "y": 57,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 73,
+       "sev": "warn",
+       "detail": "steel_2",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 65,
+       "y": 74,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 58,
+       "y": 76,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 76,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 67,
+       "y": 76,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 78,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 57,
+       "y": 79,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "ornament"
+      },
+      {
+       "type": "orphan",
+       "x": 71,
+       "y": 81,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "scarf"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 82,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "arm"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 83,
+       "sev": "warn",
+       "detail": "leather_2",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 67,
+       "y": 83,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 54,
+       "y": 84,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 86,
+       "sev": "warn",
+       "detail": "leather_2",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 87,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 51,
+       "y": 88,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 51,
+       "y": 89,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 65,
+       "y": 90,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 93,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 55,
+       "y": 94,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "skirt"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 94,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 55,
+       "y": 95,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "skirt"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 95,
+       "sev": "warn",
+       "detail": "leather_2",
+       "region": "thigh_strap"
+      },
+      {
+       "type": "orphan",
+       "x": 67,
+       "y": 95,
+       "sev": "warn",
+       "detail": "skin_1",
+       "region": "hand"
+      },
+      {
+       "type": "orphan",
+       "x": 69,
+       "y": 95,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 96,
+       "sev": "warn",
+       "detail": "leather_1",
+       "region": "thigh_strap"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_2",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 64,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 70,
+       "y": 101,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 103,
+       "sev": "warn",
+       "detail": "skin_1",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 104,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 106,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 74,
+       "y": 108,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 75,
+       "y": 110,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 76,
+       "y": 112,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 70,
+       "y": 100,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 71,
+       "y": 102,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 73,
+       "y": 105,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 74,
+       "y": 107,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 75,
+       "y": 109,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 111,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 113,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 60,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "bun"
+      },
+      {
+       "type": "notch",
+       "x": 57,
+       "y": 76,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "collar"
+      },
+      {
+       "type": "notch",
+       "x": 56,
+       "y": 79,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "ornament"
+      },
+      {
+       "type": "notch",
+       "x": 70,
+       "y": 80,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "scarf"
+      },
+      {
+       "type": "notch",
+       "x": 70,
+       "y": 81,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 71,
+       "y": 82,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 54,
+       "y": 83,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 72,
+       "y": 83,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "scarf"
+      },
+      {
+       "type": "notch",
+       "x": 72,
+       "y": 84,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 86,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "scarf"
+      },
+      {
+       "type": "notch",
+       "x": 54,
+       "y": 92,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "skirt"
+      },
+      {
+       "type": "notch",
+       "x": 74,
+       "y": 94,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "skirt"
+      },
+      {
+       "type": "notch",
+       "x": 59,
+       "y": 99,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "notch",
+       "x": 68,
+       "y": 99,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "leg_L"
+      },
+      {
+       "type": "notch",
+       "x": 69,
+       "y": 100,
+       "sev": "info",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 100,
+       "sev": "info",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 63,
+       "y": 102,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 56,
+       "y": 78,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "ornament"
+      },
+      {
+       "type": "spur",
+       "x": 53,
+       "y": 83,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "spur",
+       "x": 77,
+       "y": 84,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "scarf"
+      },
+      {
+       "type": "spur",
+       "x": 74,
+       "y": 86,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "scarf"
+      },
+      {
+       "type": "spur",
+       "x": 50,
+       "y": 87,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "spur",
+       "x": 54,
+       "y": 93,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "skirt"
+      },
+      {
+       "type": "spur",
+       "x": 75,
+       "y": 94,
+       "sev": "info",
+       "detail": "steel_0",
+       "region": "kagi"
+      },
+      {
+       "type": "spur",
+       "x": 57,
+       "y": 103,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 64,
+       "y": 107,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_L"
+      },
+      {
+       "type": "spur",
+       "x": 81,
+       "y": 116,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "spur",
+       "x": 80,
+       "y": 117,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "double",
+       "x": 62,
+       "y": 102,
+       "sev": "warn",
+       "detail": "L-corner; removable without breaking the 8-connected line",
+       "region": "leg_R"
+      },
+      {
+       "type": "double",
+       "x": 68,
+       "y": 103,
+       "sev": "warn",
+       "detail": "L-corner; removable without breaking the 8-connected line",
+       "region": "leg_L"
+      },
+      {
+       "type": "jaggy",
+       "x": 76,
+       "y": 81,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "scarf"
+      },
+      {
+       "type": "jaggy",
+       "x": 76,
+       "y": 82,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "scarf"
+      },
+      {
+       "type": "jaggy",
+       "x": 76,
+       "y": 83,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "scarf"
+      },
+      {
+       "type": "jaggy",
+       "x": 65,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bow"
+      },
+      {
+       "type": "jaggy",
+       "x": 66,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 67,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 68,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 69,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 70,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 71,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "banding",
+       "x": 62,
+       "y": 98,
+       "sev": "warn",
+       "detail": "5 px band of skin_0 along the outline",
+       "region": "leg_R"
+      },
+      {
+       "type": "banding",
+       "x": 66,
+       "y": 99,
+       "sev": "warn",
+       "detail": "5 px band of skin_0 along the outline",
+       "region": "leg_L"
+      },
+      {
+       "type": "banding",
+       "x": 75,
+       "y": 106,
+       "sev": "warn",
+       "detail": "26 px band of steel_0 along the outline",
+       "region": "sword"
+      },
+      {
+       "type": "inner_break",
+       "x": 63,
+       "y": 56,
+       "sev": "warn",
+       "detail": "gap between line ends (62,56) and (64,57)",
+       "region": "bow"
+      },
+      {
+       "type": "flicker",
+       "x": 73,
+       "y": 52,
+       "sev": "warn",
+       "detail": "hair_0 -> outline -> hair_0 (f01..f03)"
+      },
+      {
+       "type": "flicker",
+       "x": 74,
+       "y": 52,
+       "sev": "warn",
+       "detail": "outline -> clear -> outline (f01..f03)"
+      }
+     ],
+     "pivot": {
+      "baseline_y": 107,
+      "feet_x0": 63,
+      "feet_x1": 65,
+      "feet_cx": 64.0
+     },
+     "colours": [
+      "dark_1",
+      "eye_0",
+      "eye_1",
+      "hair_0",
+      "hair_1",
+      "hair_2",
+      "leather_1",
+      "leather_2",
+      "outline",
+      "pink_0",
+      "red_0",
+      "red_1",
+      "red_2",
+      "red_3",
+      "skin_0",
+      "skin_1",
+      "skin_2",
+      "steel_0",
+      "steel_1",
+      "steel_2"
+     ],
+     "n_colours": 20,
+     "opaque_px": 1084
+    },
+    "f03": {
+     "flags": [
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 54,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 55,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 61,
+       "y": 57,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 72,
+       "y": 59,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "bun"
+      },
+      {
+       "type": "orphan",
+       "x": 57,
+       "y": 72,
+       "sev": "warn",
+       "detail": "eye_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 73,
+       "sev": "warn",
+       "detail": "steel_2",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 58,
+       "y": 76,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 76,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 76,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 78,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 80,
+       "sev": "warn",
+       "detail": "skin_2",
+       "region": "arm"
+      },
+      {
+       "type": "orphan",
+       "x": 70,
+       "y": 80,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "scarf"
+      },
+      {
+       "type": "orphan",
+       "x": 71,
+       "y": 82,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 83,
+       "sev": "warn",
+       "detail": "leather_2",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 86,
+       "sev": "warn",
+       "detail": "leather_2",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 87,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 51,
+       "y": 88,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 51,
+       "y": 89,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 65,
+       "y": 90,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 93,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 94,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 95,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 95,
+       "sev": "warn",
+       "detail": "leather_1",
+       "region": "thigh_strap"
+      },
+      {
+       "type": "orphan",
+       "x": 67,
+       "y": 95,
+       "sev": "warn",
+       "detail": "skin_1",
+       "region": "hand"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 96,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "thigh_strap"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_2",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 64,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 70,
+       "y": 101,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 103,
+       "sev": "warn",
+       "detail": "skin_1",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 71,
+       "y": 103,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 104,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 72,
+       "y": 105,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 107,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 76,
+       "y": 112,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 77,
+       "y": 114,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 70,
+       "y": 100,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 71,
+       "y": 102,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 72,
+       "y": 104,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 73,
+       "y": 106,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 74,
+       "y": 108,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 111,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 113,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 115,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 66,
+       "y": 49,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "bow"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 60,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "bun"
+      },
+      {
+       "type": "notch",
+       "x": 57,
+       "y": 76,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "collar"
+      },
+      {
+       "type": "notch",
+       "x": 70,
+       "y": 81,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 72,
+       "y": 84,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 86,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "scarf"
+      },
+      {
+       "type": "notch",
+       "x": 54,
+       "y": 92,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "skirt"
+      },
+      {
+       "type": "notch",
+       "x": 74,
+       "y": 94,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "skirt"
+      },
+      {
+       "type": "notch",
+       "x": 59,
+       "y": 99,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "notch",
+       "x": 68,
+       "y": 99,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "skirt"
+      },
+      {
+       "type": "notch",
+       "x": 69,
+       "y": 100,
+       "sev": "info",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 100,
+       "sev": "info",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 63,
+       "y": 102,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 77,
+       "y": 84,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "scarf"
+      },
+      {
+       "type": "spur",
+       "x": 74,
+       "y": 86,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "scarf"
+      },
+      {
+       "type": "spur",
+       "x": 50,
+       "y": 87,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "spur",
+       "x": 75,
+       "y": 94,
+       "sev": "info",
+       "detail": "steel_0",
+       "region": "kagi"
+      },
+      {
+       "type": "spur",
+       "x": 57,
+       "y": 103,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 64,
+       "y": 107,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_L"
+      },
+      {
+       "type": "spur",
+       "x": 80,
+       "y": 118,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "double",
+       "x": 62,
+       "y": 102,
+       "sev": "warn",
+       "detail": "L-corner; removable without breaking the 8-connected line",
+       "region": "leg_R"
+      },
+      {
+       "type": "double",
+       "x": 68,
+       "y": 103,
+       "sev": "warn",
+       "detail": "L-corner; removable without breaking the 8-connected line",
+       "region": "leg_L"
+      },
+      {
+       "type": "jaggy",
+       "x": 56,
+       "y": 72,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "face"
+      },
+      {
+       "type": "jaggy",
+       "x": 57,
+       "y": 73,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "face"
+      },
+      {
+       "type": "jaggy",
+       "x": 57,
+       "y": 74,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "collar"
+      },
+      {
+       "type": "jaggy",
+       "x": 57,
+       "y": 75,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "collar"
+      },
+      {
+       "type": "jaggy",
+       "x": 56,
+       "y": 79,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "ornament"
+      },
+      {
+       "type": "jaggy",
+       "x": 56,
+       "y": 80,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "ornament"
+      },
+      {
+       "type": "jaggy",
+       "x": 56,
+       "y": 81,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "ornament"
+      },
+      {
+       "type": "jaggy",
+       "x": 56,
+       "y": 82,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "sleeve"
+      },
+      {
+       "type": "banding",
+       "x": 74,
+       "y": 107,
+       "sev": "warn",
+       "detail": "27 px band of steel_2 along the outline",
+       "region": "sword"
+      },
+      {
+       "type": "inner_break",
+       "x": 63,
+       "y": 56,
+       "sev": "warn",
+       "detail": "gap between line ends (62,56) and (64,57)",
+       "region": "bow"
+      },
+      {
+       "type": "flicker",
+       "x": 57,
+       "y": 68,
+       "sev": "warn",
+       "detail": "hair_0 -> hair_1 -> hair_0 (f02..f04)"
+      }
+     ],
+     "pivot": {
+      "baseline_y": 107,
+      "feet_x0": 63,
+      "feet_x1": 65,
+      "feet_cx": 64.0
+     },
+     "colours": [
+      "dark_1",
+      "eye_0",
+      "eye_1",
+      "hair_0",
+      "hair_1",
+      "hair_2",
+      "leather_1",
+      "leather_2",
+      "outline",
+      "pink_0",
+      "red_0",
+      "red_1",
+      "red_2",
+      "red_3",
+      "skin_0",
+      "skin_1",
+      "skin_2",
+      "steel_0",
+      "steel_1",
+      "steel_2"
+     ],
+     "n_colours": 20,
+     "opaque_px": 1093
+    },
+    "f04": {
+     "flags": [
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 53,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 54,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 57,
+       "y": 72,
+       "sev": "warn",
+       "detail": "eye_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 58,
+       "y": 72,
+       "sev": "warn",
+       "detail": "steel_2",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 58,
+       "y": 76,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 76,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 78,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 80,
+       "sev": "warn",
+       "detail": "skin_2",
+       "region": "arm"
+      },
+      {
+       "type": "orphan",
+       "x": 70,
+       "y": 80,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "scarf"
+      },
+      {
+       "type": "orphan",
+       "x": 71,
+       "y": 82,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 83,
+       "sev": "warn",
+       "detail": "leather_2",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 86,
+       "sev": "warn",
+       "detail": "leather_2",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 87,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 51,
+       "y": 88,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 51,
+       "y": 89,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 65,
+       "y": 90,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 93,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 94,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 95,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 95,
+       "sev": "warn",
+       "detail": "leather_1",
+       "region": "thigh_strap"
+      },
+      {
+       "type": "orphan",
+       "x": 67,
+       "y": 95,
+       "sev": "warn",
+       "detail": "skin_1",
+       "region": "hand"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 96,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "thigh_strap"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_2",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 70,
+       "y": 101,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 103,
+       "sev": "warn",
+       "detail": "skin_1",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 71,
+       "y": 103,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 104,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 72,
+       "y": 105,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 107,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 74,
+       "y": 109,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 75,
+       "y": 111,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 70,
+       "y": 100,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 71,
+       "y": 102,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 72,
+       "y": 104,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 73,
+       "y": 106,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 74,
+       "y": 108,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 75,
+       "y": 110,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 112,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 115,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 66,
+       "y": 49,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "bow"
+      },
+      {
+       "type": "notch",
+       "x": 57,
+       "y": 76,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "collar"
+      },
+      {
+       "type": "notch",
+       "x": 70,
+       "y": 81,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 72,
+       "y": 84,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 86,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "scarf"
+      },
+      {
+       "type": "notch",
+       "x": 54,
+       "y": 92,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "skirt"
+      },
+      {
+       "type": "notch",
+       "x": 74,
+       "y": 94,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "skirt"
+      },
+      {
+       "type": "notch",
+       "x": 59,
+       "y": 99,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "notch",
+       "x": 68,
+       "y": 99,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "skirt"
+      },
+      {
+       "type": "notch",
+       "x": 69,
+       "y": 100,
+       "sev": "info",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 100,
+       "sev": "info",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 63,
+       "y": 102,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 76,
+       "y": 68,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "hair"
+      },
+      {
+       "type": "spur",
+       "x": 50,
+       "y": 87,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "spur",
+       "x": 75,
+       "y": 94,
+       "sev": "info",
+       "detail": "steel_0",
+       "region": "kagi"
+      },
+      {
+       "type": "spur",
+       "x": 57,
+       "y": 103,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 64,
+       "y": 107,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_L"
+      },
+      {
+       "type": "spur",
+       "x": 80,
+       "y": 118,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "double",
+       "x": 55,
+       "y": 70,
+       "sev": "warn",
+       "detail": "L-corner; removable without breaking the 8-connected line",
+       "region": "face"
+      },
+      {
+       "type": "double",
+       "x": 62,
+       "y": 102,
+       "sev": "warn",
+       "detail": "L-corner; removable without breaking the 8-connected line",
+       "region": "leg_R"
+      },
+      {
+       "type": "double",
+       "x": 68,
+       "y": 103,
+       "sev": "warn",
+       "detail": "L-corner; removable without breaking the 8-connected line",
+       "region": "leg_L"
+      },
+      {
+       "type": "jaggy",
+       "x": 75,
+       "y": 64,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "hair"
+      },
+      {
+       "type": "jaggy",
+       "x": 75,
+       "y": 65,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "hair"
+      },
+      {
+       "type": "jaggy",
+       "x": 75,
+       "y": 66,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "hair"
+      },
+      {
+       "type": "jaggy",
+       "x": 75,
+       "y": 67,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "hair"
+      },
+      {
+       "type": "banding",
+       "x": 74,
+       "y": 107,
+       "sev": "warn",
+       "detail": "27 px band of steel_2 along the outline",
+       "region": "sword"
+      },
+      {
+       "type": "flicker",
+       "x": 59,
+       "y": 88,
+       "sev": "warn",
+       "detail": "red_2 -> leather_1 -> red_2 (f03..f05)"
+      },
+      {
+       "type": "flicker",
+       "x": 65,
+       "y": 100,
+       "sev": "warn",
+       "detail": "skin_1 -> skin_0 -> skin_1 (f03..f05)"
+      }
+     ],
+     "pivot": {
+      "baseline_y": 107,
+      "feet_x0": 63,
+      "feet_x1": 65,
+      "feet_cx": 64.0
+     },
+     "colours": [
+      "dark_1",
+      "eye_0",
+      "eye_1",
+      "hair_0",
+      "hair_1",
+      "hair_2",
+      "leather_1",
+      "leather_2",
+      "outline",
+      "pink_0",
+      "red_0",
+      "red_1",
+      "red_2",
+      "red_3",
+      "skin_0",
+      "skin_1",
+      "skin_2",
+      "steel_0",
+      "steel_1",
+      "steel_2"
+     ],
+     "n_colours": 20,
+     "opaque_px": 1090
+    },
+    "f05": {
+     "flags": [
+      {
+       "type": "orphan",
+       "x": 64,
+       "y": 48,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 65,
+       "y": 48,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 49,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 52,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 57,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "hair"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 57,
+       "sev": "warn",
+       "detail": "red_2",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 55,
+       "y": 68,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "hair"
+      },
+      {
+       "type": "orphan",
+       "x": 55,
+       "y": 69,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 56,
+       "y": 69,
+       "sev": "warn",
+       "detail": "skin_1",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 58,
+       "y": 72,
+       "sev": "warn",
+       "detail": "steel_2",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 74,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 74,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 78,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 80,
+       "sev": "warn",
+       "detail": "skin_2",
+       "region": "arm"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 81,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "arm"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 82,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "arm"
+      },
+      {
+       "type": "orphan",
+       "x": 71,
+       "y": 82,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 83,
+       "sev": "warn",
+       "detail": "leather_2",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 86,
+       "sev": "warn",
+       "detail": "leather_2",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 87,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 65,
+       "y": 90,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 93,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 94,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 95,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 95,
+       "sev": "warn",
+       "detail": "leather_1",
+       "region": "thigh_strap"
+      },
+      {
+       "type": "orphan",
+       "x": 67,
+       "y": 95,
+       "sev": "warn",
+       "detail": "skin_1",
+       "region": "hand"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 96,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "thigh_strap"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_2",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 64,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 70,
+       "y": 101,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 103,
+       "sev": "warn",
+       "detail": "skin_1",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 71,
+       "y": 103,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 104,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 72,
+       "y": 105,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 107,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 76,
+       "y": 112,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 77,
+       "y": 114,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 70,
+       "y": 100,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 71,
+       "y": 102,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 72,
+       "y": 104,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 73,
+       "y": 106,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 74,
+       "y": 108,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 111,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 113,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 78,
+       "y": 115,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 55,
+       "y": 71,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "face"
+      },
+      {
+       "type": "notch",
+       "x": 57,
+       "y": 76,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "collar"
+      },
+      {
+       "type": "notch",
+       "x": 70,
+       "y": 81,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 72,
+       "y": 84,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 87,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "scarf"
+      },
+      {
+       "type": "notch",
+       "x": 54,
+       "y": 92,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "skirt"
+      },
+      {
+       "type": "notch",
+       "x": 74,
+       "y": 94,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "skirt"
+      },
+      {
+       "type": "notch",
+       "x": 59,
+       "y": 99,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "notch",
+       "x": 68,
+       "y": 99,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "skirt"
+      },
+      {
+       "type": "notch",
+       "x": 69,
+       "y": 100,
+       "sev": "info",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 100,
+       "sev": "info",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 63,
+       "y": 102,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 59,
+       "y": 51,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "spur",
+       "x": 55,
+       "y": 72,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "face"
+      },
+      {
+       "type": "spur",
+       "x": 74,
+       "y": 87,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "scarf"
+      },
+      {
+       "type": "spur",
+       "x": 75,
+       "y": 94,
+       "sev": "info",
+       "detail": "steel_0",
+       "region": "kagi"
+      },
+      {
+       "type": "spur",
+       "x": 57,
+       "y": 103,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 64,
+       "y": 107,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_L"
+      },
+      {
+       "type": "spur",
+       "x": 80,
+       "y": 118,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "double",
+       "x": 62,
+       "y": 102,
+       "sev": "warn",
+       "detail": "L-corner; removable without breaking the 8-connected line",
+       "region": "leg_R"
+      },
+      {
+       "type": "double",
+       "x": 68,
+       "y": 103,
+       "sev": "warn",
+       "detail": "L-corner; removable without breaking the 8-connected line",
+       "region": "leg_L"
+      },
+      {
+       "type": "jaggy",
+       "x": 60,
+       "y": 48,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bow"
+      },
+      {
+       "type": "jaggy",
+       "x": 60,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bow"
+      },
+      {
+       "type": "jaggy",
+       "x": 60,
+       "y": 50,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bow"
+      },
+      {
+       "type": "jaggy",
+       "x": 60,
+       "y": 52,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bow"
+      },
+      {
+       "type": "jaggy",
+       "x": 60,
+       "y": 53,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bow"
+      },
+      {
+       "type": "jaggy",
+       "x": 60,
+       "y": 54,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bow"
+      },
+      {
+       "type": "jaggy",
+       "x": 66,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bow"
+      },
+      {
+       "type": "jaggy",
+       "x": 67,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 68,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 69,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 70,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 71,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 72,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "banding",
+       "x": 74,
+       "y": 107,
+       "sev": "warn",
+       "detail": "27 px band of steel_2 along the outline",
+       "region": "sword"
+      }
+     ],
+     "pivot": {
+      "baseline_y": 107,
+      "feet_x0": 63,
+      "feet_x1": 65,
+      "feet_cx": 64.0
+     },
+     "colours": [
+      "dark_1",
+      "eye_0",
+      "eye_1",
+      "hair_0",
+      "hair_1",
+      "hair_2",
+      "leather_1",
+      "leather_2",
+      "outline",
+      "pink_0",
+      "red_0",
+      "red_1",
+      "red_2",
+      "red_3",
+      "skin_0",
+      "skin_1",
+      "skin_2",
+      "steel_0",
+      "steel_1",
+      "steel_2"
+     ],
+     "n_colours": 20,
+     "opaque_px": 1101
+    },
+    "f06": {
+     "flags": [
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 47,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 47,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 64,
+       "y": 48,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 65,
+       "y": 48,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 49,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 70,
+       "y": 49,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 70,
+       "y": 50,
+       "sev": "warn",
+       "detail": "red_2",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 53,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 54,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 61,
+       "y": 57,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sheen"
+      },
+      {
+       "type": "orphan",
+       "x": 61,
+       "y": 58,
+       "sev": "warn",
+       "detail": "hair_1",
+       "region": "sheen"
+      },
+      {
+       "type": "orphan",
+       "x": 58,
+       "y": 71,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 58,
+       "y": 72,
+       "sev": "warn",
+       "detail": "steel_2",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 57,
+       "y": 74,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 74,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 74,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 58,
+       "y": 75,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 76,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 67,
+       "y": 76,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 57,
+       "y": 79,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "ornament"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 80,
+       "sev": "warn",
+       "detail": "skin_2",
+       "region": "arm"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 81,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "arm"
+      },
+      {
+       "type": "orphan",
+       "x": 71,
+       "y": 82,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 67,
+       "y": 83,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 72,
+       "y": 84,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 85,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 86,
+       "sev": "warn",
+       "detail": "leather_2",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 87,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 65,
+       "y": 90,
+       "sev": "info",
+       "detail": "steel_1",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 93,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 55,
+       "y": 94,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "skirt"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 94,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 55,
+       "y": 95,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "skirt"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 95,
+       "sev": "warn",
+       "detail": "leather_2",
+       "region": "thigh_strap"
+      },
+      {
+       "type": "orphan",
+       "x": 67,
+       "y": 95,
+       "sev": "warn",
+       "detail": "skin_1",
+       "region": "hand"
+      },
+      {
+       "type": "orphan",
+       "x": 69,
+       "y": 95,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 96,
+       "sev": "warn",
+       "detail": "leather_1",
+       "region": "thigh_strap"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_2",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 64,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 103,
+       "sev": "warn",
+       "detail": "skin_1",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 104,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 72,
+       "y": 104,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 106,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 74,
+       "y": 108,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 75,
+       "y": 110,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 76,
+       "y": 112,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 70,
+       "y": 100,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 72,
+       "y": 103,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 73,
+       "y": 105,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 74,
+       "y": 107,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 75,
+       "y": 109,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 111,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 113,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 61,
+       "y": 56,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "bow"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 60,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "bun"
+      },
+      {
+       "type": "notch",
+       "x": 56,
+       "y": 79,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "ornament"
+      },
+      {
+       "type": "notch",
+       "x": 70,
+       "y": 81,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 87,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "scarf"
+      },
+      {
+       "type": "notch",
+       "x": 75,
+       "y": 87,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "scarf"
+      },
+      {
+       "type": "notch",
+       "x": 54,
+       "y": 92,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "skirt"
+      },
+      {
+       "type": "notch",
+       "x": 59,
+       "y": 99,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "notch",
+       "x": 68,
+       "y": 99,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "leg_L"
+      },
+      {
+       "type": "notch",
+       "x": 69,
+       "y": 100,
+       "sev": "info",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 63,
+       "y": 102,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 61,
+       "y": 46,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "spur",
+       "x": 56,
+       "y": 78,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "ornament"
+      },
+      {
+       "type": "spur",
+       "x": 74,
+       "y": 87,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "scarf"
+      },
+      {
+       "type": "spur",
+       "x": 76,
+       "y": 87,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "scarf"
+      },
+      {
+       "type": "spur",
+       "x": 54,
+       "y": 93,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "skirt"
+      },
+      {
+       "type": "spur",
+       "x": 57,
+       "y": 103,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 64,
+       "y": 107,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_L"
+      },
+      {
+       "type": "spur",
+       "x": 81,
+       "y": 116,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "spur",
+       "x": 80,
+       "y": 117,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "double",
+       "x": 62,
+       "y": 102,
+       "sev": "warn",
+       "detail": "L-corner; removable without breaking the 8-connected line",
+       "region": "leg_R"
+      },
+      {
+       "type": "double",
+       "x": 68,
+       "y": 103,
+       "sev": "warn",
+       "detail": "L-corner; removable without breaking the 8-connected line",
+       "region": "leg_L"
+      },
+      {
+       "type": "jaggy",
+       "x": 56,
+       "y": 80,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "ornament"
+      },
+      {
+       "type": "jaggy",
+       "x": 56,
+       "y": 81,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "ornament"
+      },
+      {
+       "type": "jaggy",
+       "x": 56,
+       "y": 82,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "sleeve"
+      },
+      {
+       "type": "jaggy",
+       "x": 66,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bow"
+      },
+      {
+       "type": "jaggy",
+       "x": 67,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 68,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 69,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 70,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bow"
+      },
+      {
+       "type": "jaggy",
+       "x": 71,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 72,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "banding",
+       "x": 62,
+       "y": 98,
+       "sev": "warn",
+       "detail": "5 px band of skin_0 along the outline",
+       "region": "leg_R"
+      },
+      {
+       "type": "banding",
+       "x": 66,
+       "y": 99,
+       "sev": "warn",
+       "detail": "5 px band of skin_0 along the outline",
+       "region": "leg_L"
+      },
+      {
+       "type": "banding",
+       "x": 74,
+       "y": 106,
+       "sev": "warn",
+       "detail": "27 px band of steel_2 along the outline",
+       "region": "sword"
+      }
+     ],
+     "pivot": {
+      "baseline_y": 107,
+      "feet_x0": 63,
+      "feet_x1": 65,
+      "feet_cx": 64.0
+     },
+     "colours": [
+      "dark_1",
+      "eye_0",
+      "eye_1",
+      "hair_0",
+      "hair_1",
+      "hair_2",
+      "leather_1",
+      "leather_2",
+      "outline",
+      "pink_0",
+      "red_0",
+      "red_1",
+      "red_2",
+      "red_3",
+      "skin_0",
+      "skin_1",
+      "skin_2",
+      "steel_0",
+      "steel_1",
+      "steel_2"
+     ],
+     "n_colours": 20,
+     "opaque_px": 1100
+    },
+    "f07": {
+     "flags": [
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 47,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 47,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 64,
+       "y": 48,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 65,
+       "y": 48,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 67,
+       "y": 48,
+       "sev": "warn",
+       "detail": "hair_0",
+       "region": "bun"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 49,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "bun"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 49,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "bun"
+      },
+      {
+       "type": "orphan",
+       "x": 69,
+       "y": 49,
+       "sev": "warn",
+       "detail": "hair_0",
+       "region": "bun"
+      },
+      {
+       "type": "orphan",
+       "x": 70,
+       "y": 49,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 70,
+       "y": 50,
+       "sev": "warn",
+       "detail": "red_2",
+       "region": "bow"
+      },
+      {
+       "type": "orphan",
+       "x": 61,
+       "y": 57,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sheen"
+      },
+      {
+       "type": "orphan",
+       "x": 61,
+       "y": 58,
+       "sev": "warn",
+       "detail": "hair_1",
+       "region": "sheen"
+      },
+      {
+       "type": "orphan",
+       "x": 58,
+       "y": 72,
+       "sev": "warn",
+       "detail": "steel_2",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 57,
+       "y": 74,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 58,
+       "y": 74,
+       "sev": "warn",
+       "detail": "red_2",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 74,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 58,
+       "y": 75,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "collar"
+      },
+      {
+       "type": "orphan",
+       "x": 62,
+       "y": 76,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 67,
+       "y": 76,
+       "sev": "warn",
+       "detail": "pink_0",
+       "region": "face"
+      },
+      {
+       "type": "orphan",
+       "x": 57,
+       "y": 79,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "ornament"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 85,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 86,
+       "sev": "warn",
+       "detail": "leather_2",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 68,
+       "y": 87,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "corset"
+      },
+      {
+       "type": "orphan",
+       "x": 51,
+       "y": 88,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 51,
+       "y": 89,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "sleeve"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 94,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 63,
+       "y": 95,
+       "sev": "warn",
+       "detail": "leather_2",
+       "region": "thigh_strap"
+      },
+      {
+       "type": "orphan",
+       "x": 67,
+       "y": 95,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "hand"
+      },
+      {
+       "type": "orphan",
+       "x": 69,
+       "y": 95,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 96,
+       "sev": "warn",
+       "detail": "leather_1",
+       "region": "thigh_strap"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 98,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 59,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 60,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_2",
+       "region": "leg_R"
+      },
+      {
+       "type": "orphan",
+       "x": 64,
+       "y": 101,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 103,
+       "sev": "warn",
+       "detail": "skin_1",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 66,
+       "y": 104,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_L"
+      },
+      {
+       "type": "orphan",
+       "x": 72,
+       "y": 104,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 73,
+       "y": 106,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 74,
+       "y": 108,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 75,
+       "y": 110,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "orphan",
+       "x": 76,
+       "y": 112,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 70,
+       "y": 100,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 72,
+       "y": 103,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 73,
+       "y": 105,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 74,
+       "y": 107,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 75,
+       "y": 109,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 76,
+       "y": 111,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "outline_gap",
+       "x": 77,
+       "y": 113,
+       "sev": "info",
+       "detail": "steel_2",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 66,
+       "y": 48,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "bow"
+      },
+      {
+       "type": "notch",
+       "x": 61,
+       "y": 56,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "bow"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 60,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "bun"
+      },
+      {
+       "type": "notch",
+       "x": 56,
+       "y": 79,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "ornament"
+      },
+      {
+       "type": "notch",
+       "x": 70,
+       "y": 80,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 71,
+       "y": 82,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 72,
+       "y": 84,
+       "sev": "warn",
+       "detail": "4 opaque 4-nbrs",
+       "region": "sleeve"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 87,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "scarf"
+      },
+      {
+       "type": "notch",
+       "x": 74,
+       "y": 94,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "skirt"
+      },
+      {
+       "type": "notch",
+       "x": 59,
+       "y": 97,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "notch",
+       "x": 59,
+       "y": 99,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "notch",
+       "x": 69,
+       "y": 100,
+       "sev": "info",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 73,
+       "y": 100,
+       "sev": "info",
+       "detail": "3 opaque 4-nbrs",
+       "region": "sword"
+      },
+      {
+       "type": "notch",
+       "x": 63,
+       "y": 102,
+       "sev": "warn",
+       "detail": "3 opaque 4-nbrs",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 61,
+       "y": 46,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "bow"
+      },
+      {
+       "type": "spur",
+       "x": 67,
+       "y": 48,
+       "sev": "warn",
+       "detail": "hair_0",
+       "region": "bun"
+      },
+      {
+       "type": "spur",
+       "x": 56,
+       "y": 78,
+       "sev": "warn",
+       "detail": "red_1",
+       "region": "ornament"
+      },
+      {
+       "type": "spur",
+       "x": 77,
+       "y": 85,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "scarf"
+      },
+      {
+       "type": "spur",
+       "x": 74,
+       "y": 87,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "scarf"
+      },
+      {
+       "type": "spur",
+       "x": 75,
+       "y": 94,
+       "sev": "info",
+       "detail": "steel_0",
+       "region": "kagi"
+      },
+      {
+       "type": "spur",
+       "x": 59,
+       "y": 98,
+       "sev": "warn",
+       "detail": "skin_0",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 57,
+       "y": 103,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_R"
+      },
+      {
+       "type": "spur",
+       "x": 64,
+       "y": 107,
+       "sev": "warn",
+       "detail": "outline",
+       "region": "leg_L"
+      },
+      {
+       "type": "spur",
+       "x": 81,
+       "y": 116,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "spur",
+       "x": 80,
+       "y": 117,
+       "sev": "info",
+       "detail": "outline",
+       "region": "sword"
+      },
+      {
+       "type": "double",
+       "x": 62,
+       "y": 102,
+       "sev": "warn",
+       "detail": "L-corner; removable without breaking the 8-connected line",
+       "region": "leg_R"
+      },
+      {
+       "type": "double",
+       "x": 68,
+       "y": 103,
+       "sev": "warn",
+       "detail": "L-corner; removable without breaking the 8-connected line",
+       "region": "leg_L"
+      },
+      {
+       "type": "jaggy",
+       "x": 56,
+       "y": 80,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "ornament"
+      },
+      {
+       "type": "jaggy",
+       "x": 56,
+       "y": 81,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "ornament"
+      },
+      {
+       "type": "jaggy",
+       "x": 56,
+       "y": 82,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "sleeve"
+      },
+      {
+       "type": "jaggy",
+       "x": 75,
+       "y": 63,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "hair"
+      },
+      {
+       "type": "jaggy",
+       "x": 75,
+       "y": 64,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "hair"
+      },
+      {
+       "type": "jaggy",
+       "x": 75,
+       "y": 65,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "hair"
+      },
+      {
+       "type": "jaggy",
+       "x": 75,
+       "y": 66,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "hair"
+      },
+      {
+       "type": "jaggy",
+       "x": 68,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 69,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 70,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bow"
+      },
+      {
+       "type": "jaggy",
+       "x": 71,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "jaggy",
+       "x": 72,
+       "y": 49,
+       "sev": "warn",
+       "detail": "irregular stair run",
+       "region": "bun"
+      },
+      {
+       "type": "banding",
+       "x": 75,
+       "y": 106,
+       "sev": "warn",
+       "detail": "26 px band of steel_0 along the outline",
+       "region": "sword"
+      }
+     ],
+     "pivot": {
+      "baseline_y": 107,
+      "feet_x0": 63,
+      "feet_x1": 65,
+      "feet_cx": 64.0
+     },
+     "colours": [
+      "dark_1",
+      "eye_0",
+      "eye_1",
+      "hair_0",
+      "hair_1",
+      "hair_2",
+      "leather_1",
+      "leather_2",
+      "outline",
+      "pink_0",
+      "red_1",
+      "red_2",
+      "red_3",
+      "skin_0",
+      "skin_1",
+      "skin_2",
+      "steel_0",
+      "steel_1",
+      "steel_2"
+     ],
+     "n_colours": 19,
+     "opaque_px": 1089
+    }
+   },
+   "totals": {
+    "orphan": 241,
+    "notch": 90,
+    "spur": 49,
+    "double": 18,
+    "jaggy": 75,
+    "banding": 13,
+    "flicker": 9,
+    "info": 145,
+    "inner_break": 3
+   },
+   "pivot": {
+    "baseline_min": 107,
+    "baseline_max": 107,
+    "baseline_drift": 0,
+    "baseline_offset_from_pivot": 3,
+    "feet_cx_min": 64.0,
+    "feet_cx_max": 64.0,
+    "feet_cx_drift": 0.0,
+    "feet_cx_offset_from_pivot": 0.0
+   },
+   "colours_per_frame": [
+    20,
+    20,
+    20,
+    20,
+    20,
+    20,
+    20,
+    19
+   ]
+  }
+ }
+}

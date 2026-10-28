@@ -1,0 +1,13 @@
+SCORE 5.5/10
+
+1. **All variants (Hair silhouette)**: Over-corrected the old boxy helmet into a featureless sphere; lost the distinct bob-cut bottom tips/corners that frame the chin and neck in the design ref and old master.
+2. **All E variants (Profile bow/bun)**: The bow is drawn front-facing (symmetrical left/right loops) instead of in side profile, and the bun sits too high rather than wrapping the back-upper curve of the skull.
+3. **SE & E Squash (Skull shape)**: The squash flattens into a horizontal sausage/pill shape, losing the cheek taper and creating long flat horizontal jaggies along the crown and base.
+4. **SE Lookup (Bangs/Forehead)**: Raising the bangs leaves two wide, blocky 2x2 skin-tone pillars above the eyes that break the blunt hime-cut fringe shelf and read like giant square eyebrows.
+5. **All SE variants (Far-side cheek/hair)**: The right-side hair framing the far cheek is completely gone or reduced to a 1px outline, losing the 3/4 bob wrap-around seen in the concept art.
+6. **E Lean vs E Neutral/Lookup (Variant consistency)**: E Lean shifts only the lower face/eye by 1px while the skull, bun, and bow remain static, failing to sell a head tilt/lean.
+
+**Top 3 Fixes:**
+1. **Restore the bob corners**: Pull the bottom-left hair mass down and out by 1–2px to form a distinct pointed bob tip rather than a continuous round ball curve.
+2. **Foreshorten the E-profile bow**: Redraw the E-row bow in side/3/4 perspective (overlapping loops angling back against the bun) instead of pasting a front-facing bowtie on a profile head.
+3. **Fix SE Lookup fringe**: Keep the blunt bangs line intact (only shift it up 1px as a solid shelf) and shift the eyes/pupils up against it rather than carving square holes into the hair.

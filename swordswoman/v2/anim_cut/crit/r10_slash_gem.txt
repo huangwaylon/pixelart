@@ -1,0 +1,20 @@
+### 3 Most Important Concrete Problems
+
+1. **Frame 6 (SMEAR) — Blade Smear Region (Top-Right Arc):** 
+   * **Problem:** The smear is a uniform, thin 2-3px ribbon with jagged step-banding along the outer curve rather than a dynamic slash arc. It lacks volume and connects only to the tip rather than the hilt/body pivot.
+   * **Exact Fix:** Widen the smear near the blade's current position (bottom right) to 8-12px, tapering to a 1px point at the top-left origin. Smooth the outer curve using consistent pixel steps (e.g., 3-2-1-1-2-3) and fill the inner wedge with a mid-tone blue/grey to suggest the plane of the cut.
+
+2. **Frames 1–4 (antic to coil) & 6–10 — Katana Blade (Rotated Sprite):**
+   * **Problem:** Automated sprite rotation on the sword has created severe pixel-art artifacts: broken dark outlines, double-thick jagged steps ("jaggies"), and inconsistent blade thickness (especially visible in Frame 3 and Frame 8).
+   * **Exact Fix:** Hand-clean the blade on all angled frames. Enforce a strict 1px dark outline without diagonal gaps, and use a uniform 2:1 or 1:1 pixel stepping pattern for the blade edge.
+
+3. **Frames 5–7 (swingA to impact) — Head & Torso Region:**
+   * **Problem:** The cutout rig stays completely rigid during the highest-energy frames. The face and hair remain upright and static while lunging, killing the bouncy, energetic target. 
+   * **Exact Fix:** In Frame 6 and 7, shift the head 2px lower and 2px further right to lean into the lunge. Add 1-2px of vertical squash to the head in Frame 7 (impact) and flare the back hair/ribbon upward by 2-3px in Frame 6 for overlap.
+
+### Sub-scores
+* **Animation & Timing:** 6/10 (Good frame distribution and hit-stop, but rigid cutout parts limit energy and squash/stretch).
+* **Smear & FX:** 4/10 (The smear is a thin line rather than a tapered arc; impact spark in Frame 7 is a basic symmetrical star).
+* **Pixel-Art Quality:** 5/10 (Rotated limb/weapon parts cause jaggies and broken outlines that violate strict pixel-art standards).
+
+SCORE slash: 5

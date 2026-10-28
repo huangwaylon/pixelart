@@ -1,0 +1,24 @@
+{
+ "name": "idle",
+ "frames": [
+  {
+   "file": "idle_f0.json"
+  },
+  {
+   "file": "idle_f1.json"
+  },
+  {
+   "file": "idle_f2.json"
+  },
+  {
+   "file": "idle_f3.json"
+  },
+  {
+   "file": "idle_f4.json"
+  },
+  {
+   "file": "idle_f5.json"
+  }
+ ],
+ "timing_ms": "see hybrid/ANIM_DIRECTION.md section 1"
+}

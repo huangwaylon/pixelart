@@ -1,0 +1,39 @@
+Restored session: Mon 26 Oct 2026 12:49:51 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+The sheet is too small to read exact pixels, so the coordinates below are approximate positions within each frame, measured from its top-left corner.
+
+**Overall.** The silhouettes read clearly, the character looks the same in every frame, and the timing has a real ease-in and a hold. But the two key frames, smear and impact, are muddy. It looks like a rig was rotated, not like frames drawn by hand.
+
+**Scores**
+- Key poses: 6
+- Timing: 6
+- Squash & stretch and overlap: 4
+- Smear: 4
+- Pixel quality: 5
+- Identity: 7
+
+**Top 3 problems**
+
+1. **F5 swingA plus F6 SMEAR: two smears, and the first goes the wrong way.** F5 puts a white hook-shaped arc at the upper left, behind her head (about x40–80, y15–40). That fights the F6 crescent on her right side, so the eye sees the blade jump from left to right. F6 also has a constant thick width with hard ends, plus loose specks at its tail (about x55–65, y20–30).
+   - **Fix:** In F5, delete the arc and show the actual blade overhead with a slight stretch along its length.
+   - Make F6 the only smear: a single crescent from about 11 o'clock to 5 o'clock, 1px at the tail and 4–5px at the leading edge. Use two tones (white core, light grey-blue edge) and add a 1px dark outline on the outer curve only.
+   - Delete the loose specks.
+
+2. **F7 impact: the smear is still there, and the body doesn't squash.** The crescent is drawn again under the spark (about x140–160, y45–110), which blurs the contact. Her body in F7–F9 is a pixel-perfect copy of F6, so the hit has no weight.
+   - **Fix:** Remove the smear completely from F7.
+   - In F7, push the hips 2px lower, widen the front knee 1–2px, and flick the hair and bow 2px back.
+   - In F8, offset the whole sprite 1px right; in F9, return it. Keep the spark only.
+
+3. **F10 follow to F11 recover: the katana jumps across her body.** The blade goes from the lower right (about x120–135, y85–110) to the lower left (about x40–60, y80–120) with no frame in between. The rotated arm and blade segments in F10–F12 also show uneven stair-step lines, broken outlines where the parts join, and stray pixels at the shoulder.
+   - **Fix:** Add a 60ms frame with the blade passing in front of her waist at a low horizontal angle.
+   - Redraw the blade in all rotated frames by hand, with 1:1 or 2:1 pixel steps and a 1px highlight and shadow pair.
+   - Close the outlines at the shoulder and wrist joints after the rotation.
+
+**Smaller issues:** The wind-up runs about 420ms (F0–F4), which is long for "energetic"; trim F1 to 70ms. The hair and skirt never trail behind the motion in F5–F7.
+
+SCORE slash: 5
+
+Saving session...completed.

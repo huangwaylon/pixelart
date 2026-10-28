@@ -1,0 +1,35 @@
+Restored session: Mon 26 Oct 2026 18:55:43 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+# PMD portrait review: v5 swordswoman vs. Meloetta
+
+## Criteria (official PMD = 9)
+- **Readable at 1x: 6.** The eyes hold up at 1x. In about half the set the mouth disappears.
+- **Intentionally designed: 5.** The eye shapes are mostly good. Mouths look like placeholders and the brows barely change between emotions.
+- **Pokemon/PMD-like: 5.** The face is cropped too tight, the head is always front-on and the same size, and there's no shoulder or gesture. Meloetta's head tilts, leans and gets hands into the frame.
+- **Personality: 5.** The emotions are generic. Nothing reads as a cocky swordswoman: no smirk, no lopsided grin.
+
+## Per emotion
+- **Neutral 6:** The mouth is a 2px blush-coloured dash. It needs a dark 3–4px line.
+- **Determined 5:** The brows are angled but the eyes are unchanged and the mouth is still a dot. It needs narrowed lids and a set or smirking mouth.
+- **Shout 6:** The squint and open mouth read. The mouth isn't big enough; Meloetta's takes up about a third of the face.
+- **Effort/Angry 4:** The gritted teeth come out as a striped box and the eyes are neutral. It needs a heavy V-brow cutting into the top of the eye.
+- **Joy 7:** Strongest of the set. ^^ eyes, open mouth, blush.
+- **Smile 5:** Almost the same as Joy. Use open eyes with a soft closed smile instead.
+- **Surprised 6:** The "o" mouth works. The eyes need to grow taller with smaller pupils.
+- **Pain 6:** The >< eyes and sweat drop read, but the mouth is noise at 1x.
+- **Worried 5:** Reads as sleepy. The brows need to tip up much more steeply and the mouth needs a wobble.
+- **Inspired 7:** The sparkle pupils are good. It needs a wider grin.
+- **Teary 7:** The tears and wavy mouth read clearly.
+- **Blink/Stunned 4:** Blank white eyes with no shock in them. Add a sweat drop, shrink the irises to dots and drop the jaw.
+
+## Top 5 pixel fixes
+1. **Mouths:** Draw every mouth in the dark outline colour, at least 4px wide, with a filled dark interior and a 1px tongue or teeth accent.
+2. **Brows:** Make them 2px thick and 5px long, with a different angle per emotion, and let them overlap the eye's top line.
+3. **Eyes:** Vary the eye shape per emotion: narrowed lid for Determined, taller eyes for Surprised, shrunken irises for Stunned.
+4. **Framing:** Pull back about 4px so the hair crown and shoulders show, and tilt or shift the head on high-energy emotions.
+5. **Shading and Smile:** Add a one-step cheek and jaw shadow. Separate Smile from Joy.
+
+**Overall: 5.5/10**
+
+Saving session...completed.

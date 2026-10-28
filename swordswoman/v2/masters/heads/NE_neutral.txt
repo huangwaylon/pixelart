@@ -1,0 +1,24 @@
+; origin 20 8
+; view NE
+..........KKK..........
+.........KHLHK.........
+...KKKK..KLHhK..KKKK...
+.KKeeeeKKKHhhKKKeeeEKK.
+KeEEEeeeKreeErKeeeEEERK
+KeEEEEEERrEERrREEEERRRK
+KEEEEEERRrERRrRREERRRRK
+KEERRRRrrrRRRrrrRRRRrrK
+KKrrrrrHHHHHHHhhrrrrrKK
+..KHHHHLLLHHHHHHhhhhK..
+..KHHHHHHHHHHHHHHhhhK..
+..KHLLHHHHHHHHhHHhhhK..
+..KLHHHHHHhHHHhHHhhhK..
+..KHHHHHHHhHHHhHHhhhK..
+..KHHHHHHhHHHHhHHhhhK..
+..KHHHHHHhHHHhHHhhhhK..
+..KHHHHHhHHHHhHHhhhsK..
+..KhHHHHhHHHHhHHhhhsK..
+..KhHHHhHHHHhHHhhhhsK..
+..KhHHHhHHHhhHhhhhsK...
+...KhhKhhSShhSssssK....
+....KK.KhSShSsssssK....

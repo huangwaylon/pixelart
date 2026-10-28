@@ -1,0 +1,49 @@
+{
+  "ranking": [
+    "mv_frontback_s7",
+    "sv_gemA_s7",
+    "t2cpp_1024_gemA_s7",
+    "t2cpp_512_gemA768_s7",
+    "t2cpp_512_gemA_s7",
+    "sv_gemA_s42",
+    "baseline_hunyuan2mini",
+    "baseline_trellismac_s7",
+    "sv_v6_s42",
+    "sv_v6_s7",
+    "sv_iso34_s7"
+  ],
+  "pixal3d_beats_trellis": "yes",
+  "scores": {
+    "mv_frontback_s7": 7,
+    "sv_gemA_s7": 7,
+    "t2cpp_1024_gemA_s7": 6,
+    "t2cpp_512_gemA768_s7": 6,
+    "t2cpp_512_gemA_s7": 6,
+    "sv_gemA_s42": 6,
+    "baseline_hunyuan2mini": 5,
+    "baseline_trellismac_s7": 5,
+    "sv_v6_s42": 4,
+    "sv_v6_s7": 4,
+    "sv_iso34_s7": 3
+  },
+  "strengths": [
+    "Pixal3D (especially mv_frontback_s7 and sv_gemA_s7) captures micro-silhouettes like the crescent-hook katana guard, distinct corset lacing, and sharp collar flaps much better than TRELLIS.2.",
+    "Pixal3D's generated textures provide usable colour separation (red dress, skin, dark hair) that translates cleanly into the 64px sprite pipeline, whereas TRELLIS.2 textures are unusable/black.",
+    "mv_frontback_s7 eliminates the hallucinated long ponytails seen in SV runs while preserving the full blade length and thin ribbon structures.",
+    "t2cpp_1024_gemA_s7 produces cleaner, smoother clay surfaces on the dress and hair bun with fewer non-manifold artifacts than Pixal3D.",
+    "baseline_hunyuan2mini is the only watertight mesh and executes fastest (23s), though its details are too soft for direct detail reference."
+  ],
+  "weaknesses": [
+    "Pixal3D SV runs hallucinate long ponytails or thick braids in the back view that ruin rear/side silhouettes in the 64px sprites.",
+    "mv_frontback_s7 flattens the sword into the frontal plane and duplicates the hair bun vertically due to 2-view ambiguity.",
+    "All Pixal3D meshes are overly dense (~970k tris) with high non-manifold edge counts (3.8k to 26.6k), failing watertightness.",
+    "TRELLIS.2 cpp runs suffer from severe texture darkening/blackout (even the 768px fix looks burnt in the sprite sheet) and blunt thin features like the sword blade and collar edges.",
+    "sv_iso34_s7 suffers from severe perspective distortion, resulting in squat proportions, a serrated blade, and a melted face."
+  ],
+  "tuning_suggestions": [
+    "Run Pixal3D MV with all 4 views (front, back, left, right from chibi_turnaround_v6 with uncapped blade tips) since the weights expect 4 views; this should fix the doubled bun and flat-plane sword in mv_frontback_s7.",
+    "Stick to concept-projection colouring for the sprite pipeline rather than baked AI textures, as it yields much cleaner palette snapping across both engines.",
+    "For TRELLIS.2 cpp, debug the colour/lighting normalizer on the 1024px pipeline or use vertex-colour transfer from the concept image.",
+    "Apply a post-process decimation and manifold-repair pass (e.g., Blender Voxel Remesh or MeshLab) to Pixal3D outputs if boolean/rigging operations are required downstream."
+  ]
+}

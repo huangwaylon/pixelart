@@ -1,0 +1,64 @@
+{
+ "size": [
+  35,
+  15
+ ],
+ "facing": "E",
+ "attach": "head_top",
+ "pivot": [
+  17,
+  14
+ ],
+ "ms": [
+  60,
+  120
+ ],
+ "cell_offset": [
+  32,
+  14
+ ],
+ "cell": "64x64 C_r3 cell, 48 px figure, feet pivot (32,62), faces SE; head top ~(32,14), head width ~23, chest ~y40-44; canvas top-left sits at cell (15,0)",
+ "layer": "over",
+ "mirror": "flip x keeps pivot [17,14] (the 5/3 px back stars swap sides, fine)",
+ "orbit": {
+  "centre": [
+   17,
+   6
+  ],
+  "semi_axes": [
+   11,
+   1.5
+  ],
+  "angles_deg": [
+   [
+    90,
+    210,
+    330
+   ],
+   [
+    150,
+    270,
+    30
+   ]
+  ],
+  "star_size_by_slot": [
+   [
+    "front 7",
+    "5",
+    "3"
+   ],
+   [
+    "7",
+    "3 (back)",
+    "5"
+   ]
+  ],
+  "note": "flattened, lowered orbit; depth from size (7 front / 5 mid / 3 back, orbit tilted so left side is nearer). Star bottoms at cell y11/y10 = 2-3 px above the bow / head top (y14)"
+ },
+ "star_px": {
+  "front": "7 px fill (9x9 with K)",
+  "mid": "5 px fill (7x7 with K)",
+  "back": "3 px diamond (5x5 with K)"
+ },
+ "loop": "cycle f0,f1 for dizzy (reads as a 60 deg orbit step)"
+}

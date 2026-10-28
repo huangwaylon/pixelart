@@ -1,0 +1,28 @@
+**Criteria Scores (Official PMD = 9):**
+* **Readable at 1x:** 6/10 (Eyes/mouths are too small; micro-details blur at 1x).
+* **Intentionally Designed:** 5/10 (Pillow-shaded hair, jagged outlines, zero head/body movement across 12 slots).
+* **Pokemon/PMD-like:** 4/10 (Harsh #000000 outlines, flat backgrounds, anime icons like 💢 instead of PMD background VFX).
+* **Carries Personality:** 6/10 (Smirk works, but the rigid bust kills her spirited nature).
+
+**Per-Emotion Audit:**
+* **Neutral (6/10):** Heavy upper-eyelid pixels read as sleepy, not spirited, at 1x.
+* **Determined (6/10):** Tiny 3px mouth lacks grit; identical head angle to Neutral.
+* **Shout (5/10):** 💢 icon breaks PMD style; needs radial speedlines and head tilt back.
+* **Effort/Angry (4/10):** Reads as awkward constipation. Sweat drop contradicts the "Angry" slot; clenched teeth form a noisy grid at 1x.
+* **Joy (6/10):** Needs raised shoulders/arms like Meloetta; static torso kills the joy.
+* **Smile (6/10):** 1px-thin eye arcs and blush disappear at 1x.
+* **Surprised (5/10):** Missing dynamic shock background; tiny pupils lookcross-eyed.
+* **Pain (5/10):** `><` eyes look like mild sourness, not combat damage. Tilt head down/away.
+* **Worried (6/10):** Wavy mouth is noisy; eyebrows blend into bangs.
+* **Inspired (7/10):** Best slot, but 1px white eye sparkles muddy the small irises at 1x.
+* **Teary (5/10):** Thick cyan tear streams look like face paint. Keep tears pooled on lower lids.
+* **Blink/Stunned (4/10):** Tiny irises + circle mouth look comical/goofy, missing PMD’s hollowed-out shock.
+
+**Top 5 Pixel Fixes:**
+1. **Kill pure black outlines:** Replace interior/outer `#000000` lines with dark maroon/brown (`#2A1721`), matching Meloetta's soft colored lineart.
+2. **Animate the base bust:** Shift the head/shoulders per emotion (lean in for Determined, throw head back for Shout/Joy, flinch for Pain/Surprised).
+3. **Enlarge eyes by 2px vertically:** PMD relies on oversized expressive eyes; yours are too small to hold highlights cleanly at 1x.
+4. **Replace anime icons with PMD backgrounds:** Cut the 💢 and small sweat drops; add radial burst lines, wavy dread lines, and proper PMD large white tear/sweat droplets.
+5. **Fix hair shading:** Replace the symmetric, pillow-shaded grey highlight strip with clustered, directional highlights following the hair volume.
+
+**Overall Score: 5.3 / 10**

@@ -1,0 +1,14 @@
+Here is the proportional breakdown and concrete pixel fixes for the 48px blockout compared to the official Gen 4/5 sprites:
+
+* **Vertical Sections:** Crown-to-hem vertical landmarks (chin, waist, hip, hem, knee) align very well with the official trainers, though the ankle tick sits 1px lower than the BW/HGSS average.
+* **Head Width:** Even as a placeholder, the head block (including hair volume) is ~2–3px wider than the official trainers; shave 1px off both left and right edges in S/N/SE/NE views so it doesn't dwarf the shoulders.
+* **Neck:** Completely buried or invisible; expose 1px of skin height (about 2–3px wide) between the chin and the red collar to match the clear head-to-torso separation on Dawn, Lyra, and Rosa.
+* **Torso & Waist Pinch:** The torso is a straight vertical column; pinch the pale obi/waist inward by 1px on each side (making the waist 2px narrower than the shoulders/chest) to capture the official feminine hourglass silhouette.
+* **Skirt Flare:** The skirt drops straight down from the waist; flare the red hem outward by 1–2px per side below the obi so it forms an A-line trapezoid matching Dawn’s skirt and Rosa’s shorts.
+* **Leg Width & Taper:** The legs are overly thick, blocky columns (~4px wide all the way down); slim the thighs by 1px on the inner edge and taper the calves down to 2–3px wide above the boot cuff.
+* **Leg Stance & Gap:** The 1px gap between the legs is too narrow and rigid; shift each leg outward by 1px from the pelvis down to create a natural 2–3px gap and slight outward A-stance.
+* **Profile Depth (blk E):** The side-view leg and torso are 1–2px too thick front-to-back; shave 1px off the back of the thigh/calf and indent the front of the knee by 1px for anatomical shape.
+* **Arms:** Currently tiny, unarticulated stubs stopping at the waist; extend skin-toned forearms down to the hip/hem line (adds ~4–5px total length, 2px wide) and angle them 1–2px outward from the body.
+* **Boots:** Look like heavy rectangular blocks; raise the top cuff by 1–2px to the mid-calf (like Dawn/Lyra) and trim 1px off the upper-back heel edge so the ankle tapers before flaring into the toe box.
+
+VERDICT: NOT YET

@@ -1,0 +1,14 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt idle_SE and idle_SE_ns (`actions_src/idle.py`). qc passes, and I reviewed the sheet over 5 build passes.
+
+- **Sword:** steadier. It only moves half a step at a time (kat_10, plus the existing 9.5 and 10.5 in-betweens), with the tip trailing the hand by a frame. The sleeves now move just 1px.
+- **Bounce:** retimed to 160/120/100/180/140/140 ms. I removed the head drifting sideways.
+- **Lag:** hair, bow and blade now react a frame after the body, using the shared variants.
+- **Blink:** now half, then closed, then half, with heavier lids and a lash tick.
+
+**New parts:** `parts/se/idle10_*` (blink/half heads, a trimmed `idle10_head_hf`, 1px sleeve shifts).
+
+**Weaknesses:** the blade still holds the same angle for about 2 frames in a row. The bow's tilt shape looks a bit lopsided.
+
+Saving session...completed.

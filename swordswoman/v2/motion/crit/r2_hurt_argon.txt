@@ -1,0 +1,14 @@
+OVERALL: 7
+
+* **Natural:** 7
+* **Whole-body:** 8
+* **Fluid:** 7
+* **Appealing:** 7
+* **Secondary motion convincing:** 6
+* **Readable at 1x:** 7
+
+**Top 3 Concrete Fixes:**
+
+1. **Frame 2 (`recoil`), Left Arm (SE View):** The upper arm is completely hidden, making the red cuff look detached and floating at 1x. Rotate the left shoulder down/outward by 15–20° (shift the forearm 3px down-left) to connect the silhouette to the torso.
+2. **Frames 1–2 (`hit`, `recoil`), Arms/Torso:** The OLD version had a clearer impact silhouette because the arms splayed out. In NEW, both arms stay tucked in front across frames 1–2. On `hit`, throw the arms and head back/outward 4–5px more to contrast with the tucked `recoil`.
+3. **Frames 4–5 (`recover`, `settle`), Ribbon Tails (E View):** The thin red strand sticks out stiffly at a 45° angle like wire, breaking gravity on `settle`. Rotate the ribbon tail downward by 35–40° on `recover` and let it hang nearly vertical (within 10° of the hair contour) on `settle`.

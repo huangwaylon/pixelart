@@ -1,0 +1,5 @@
+1) **8/10** – Completely free of any weapon-carry or guard stiffness; the arms hang naturally and the gentle hip-sway reads clearly as an unarmed idle, though the arms are slightly rigid.
+2) **7/10** – The playful weight shift from side to side gives a cute, relaxed personality, though adding a tiny head-bob or more bounce would make her feel even livelier.
+3) **7/10** – The silhouette and swaying motion read well at 1x, but the dark glasses merge with the eyes into a slightly muddy horizontal line, and the skirt experiences minor mesh clipping against the thighs.
+
+**Most important fix:** Adjust the skirt skinning/rigging so the upper thighs don't poke through the dress mesh during the extreme left/right hip sways (especially visible in frames 1 and 4).

@@ -1,0 +1,13 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Score: 6.5/10. Verdict: FIX**
+
+1. **S rows 24–34: sleeves.** [ILLUS] The sleeves are stubby and boxy. The illustration has wide, flared sleeves that hang below the wrists. Widen them into bell shapes that hang 2–3px below the hands, like the N view does.
+2. **S/SE rows 22–26: collar.** [ILLUS] There's a plain square of skin at the neck. Draw the crossed V collar with a darker inner lapel.
+3. **SE rows 17–20: ribbon tail.** [ILLUS] The tail sticks out sideways as a flat horizontal spike. In the illustration it hangs down and curves. Redraw it as a 1–2px diagonal that runs down to about row 24.
+4. **S/SE/E hair: missing sheen.** NE and N have a sheen band, but S, SE and E are a noisy dark mass with no sheen. Add the same sheen band (rows ~9–10) and merge the hair into 2–3 flat tones.
+5. **SE rows 37–47: inner thigh.** There's a stray dark vertical line on the inner thigh. The legs in S, SE and E are straight tubes. Taper them from thigh to knee to calf, with one highlight column.
+6. **E rows 42–48: rear boot.** [ILLUS] The rear boot is a blob that's detached from the leg. Connect the rear calf, then draw the boot cuff and toe.
+7. **S/SE/E hem rows 33–36: flat hem.** [ILLUS] The hem is flat or jagged. Curve it and give it the pleated flare from the illustration. In E, push the skirt out past the back.
+8. **E face:** [ILLUS] The profile has no nose bump and the eye is too large. Narrow the eye to the illustration's almond shape and add a 1px nose.
+9. **S/SE eyes:** At 1x the lash line merges into the brows. Leave a 1px gap of skin between them and keep the 1px highlight.

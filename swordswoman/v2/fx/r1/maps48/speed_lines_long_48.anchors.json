@@ -1,0 +1,40 @@
+{
+ "size": [
+  22,
+  29
+ ],
+ "facing": "E",
+ "attach": "body_centre",
+ "pivot": [
+  21,
+  14
+ ],
+ "offset_from_body_centre": [
+  -13,
+  -2
+ ],
+ "body_centre_cell": [
+  32,
+  40
+ ],
+ "place": "pivot -> body_centre + offset (cell 19,38) = just behind her back at mid-torso; lines extend -x",
+ "layer": "behind_character",
+ "line_lengths_f0": [
+  13,
+  18,
+  15,
+  17,
+  12
+ ],
+ "line_lengths_f1": [
+  15,
+  13,
+  18,
+  14
+ ],
+ "note": "heads W (nearest body) -> p -> n tail; lines span effect y0..28 (cell y24..52); use with afterimage() ghost",
+ "ms": [
+  40,
+  40
+ ]
+}

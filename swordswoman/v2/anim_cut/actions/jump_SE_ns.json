@@ -1,0 +1,553 @@
+{
+ "name": "jump_SE_ns",
+ "partdir": "parts/se",
+ "cell": [
+  76,
+  80
+ ],
+ "ground": [
+  40,
+  76
+ ],
+ "rig": {
+  "legs": {
+   "part": "legs",
+   "at": "root",
+   "z": 1
+  },
+  "skirt": {
+   "part": "skirt",
+   "at": "legs.hip",
+   "z": 3
+  },
+  "torso": {
+   "part": "torso",
+   "at": "skirt.waist",
+   "off": [
+    0,
+    0
+   ],
+   "z": 4
+  },
+  "armF": {
+   "part": "armF",
+   "at": "torso.shR",
+   "z": 2
+  },
+  "armN": {
+   "part": "armN",
+   "at": "torso.shL",
+   "z": 6
+  },
+  "head": {
+   "part": "head",
+   "at": "torso.neck",
+   "z": 7
+  },
+  "bun": {
+   "part": "bun",
+   "at": "head.bun",
+   "z": 0
+  },
+  "bow": {
+   "part": "bow",
+   "at": "head.bow",
+   "z": 8
+  },
+  "kat": {
+   "part": "kat_13",
+   "at": "armN.hand",
+   "z": 5
+  }
+ },
+ "frames": [
+  {
+   "ms": 80,
+   "label": "antic",
+   "set": {
+    "legs": {
+     "part": "legs_jmp9_mid"
+    },
+    "head": {
+     "part": "head_lean_hu",
+     "off": [
+      0,
+      1
+     ]
+    },
+    "bow": {
+     "part": "bow_tl",
+     "off": [
+      0,
+      0
+     ]
+    },
+    "skirt": {
+     "part": "skirt_sq"
+    },
+    "torso": {
+     "part": "jump9_torso_lean"
+    },
+    "armN": {
+     "part": "armN"
+    },
+    "armF": {
+     "part": "armF"
+    }
+   },
+   "root": [
+    0,
+    0
+   ],
+   "hide": [
+    "kat"
+   ],
+   "shadow": 8
+  },
+  {
+   "ms": 130,
+   "label": "crouch",
+   "set": {
+    "legs": {
+     "part": "jump9_legs_crouch"
+    },
+    "head": {
+     "part": "jump10_head_shout_hf",
+     "off": [
+      0,
+      2
+     ]
+    },
+    "bow": {
+     "part": "bow_up",
+     "off": [
+      0,
+      -1
+     ]
+    },
+    "skirt": {
+     "part": "jump9_skirt_crouch"
+    },
+    "torso": {
+     "part": "jump9_torso_crouch"
+    },
+    "armN": {
+     "part": "armN_back"
+    },
+    "armF": {
+     "part": "armF_back"
+    }
+   },
+   "root": [
+    0,
+    0
+   ],
+   "hide": [
+    "kat"
+   ],
+   "shadow": 10
+  },
+  {
+   "ms": 50,
+   "label": "launch",
+   "set": {
+    "legs": {
+     "part": "jump9_legs_launch"
+    },
+    "head": {
+     "part": "jump9_head_shout_dn"
+    },
+    "bow": {
+     "part": "bow_sqz",
+     "off": [
+      0,
+      2
+     ]
+    },
+    "skirt": {
+     "part": "jump9_skirt_st"
+    },
+    "torso": {
+     "part": "jump9_torso_st"
+    },
+    "armN": {
+     "part": "armN_out"
+    },
+    "armF": {
+     "part": "armF_jmp_v"
+    }
+   },
+   "root": [
+    0,
+    0
+   ],
+   "hide": [
+    "kat"
+   ],
+   "fx": [
+    {
+     "part": "jump10_fx_launch",
+     "at": "ground",
+     "off": [
+      0,
+      0
+     ],
+     "z": 0.5
+    }
+   ],
+   "shadow": 7
+  },
+  {
+   "ms": 70,
+   "label": "rise",
+   "set": {
+    "legs": {
+     "part": "jump9_legs_rise"
+    },
+    "head": {
+     "part": "head_hd"
+    },
+    "bow": {
+     "part": "bow_str",
+     "off": [
+      0,
+      1
+     ]
+    },
+    "skirt": {
+     "part": "skirt_jmp_st"
+    },
+    "torso": {
+     "part": "jump9_torso_st"
+    },
+    "armN": {
+     "part": "armN_jmp_v",
+     "z": 7.5
+    },
+    "armF": {
+     "part": "armF_jmp_hi"
+    }
+   },
+   "root": [
+    0,
+    -12
+   ],
+   "hide": [
+    "kat"
+   ],
+   "fx": [
+    {
+     "part": "jump10_fx_launch2",
+     "at": "ground",
+     "off": [
+      0,
+      0
+     ],
+     "z": 0.5
+    }
+   ],
+   "shadow": 5
+  },
+  {
+   "ms": 100,
+   "label": "apex",
+   "set": {
+    "legs": {
+     "part": "jump9_legs_tuck"
+    },
+    "head": {
+     "part": "head_hu"
+    },
+    "bow": {
+     "part": "bow_str",
+     "off": [
+      0,
+      -1
+     ]
+    },
+    "skirt": {
+     "part": "jump9_skirt_bell"
+    },
+    "torso": {
+     "part": "torso"
+    },
+    "armN": {
+     "part": "armN_jmp_top"
+    },
+    "armF": {
+     "part": "armF_jmp_hi"
+    }
+   },
+   "root": [
+    0,
+    -24
+   ],
+   "hide": [
+    "kat"
+   ],
+   "shadow": 5
+  },
+  {
+   "ms": 120,
+   "label": "hang",
+   "set": {
+    "legs": {
+     "part": "jump9_legs_fall"
+    },
+    "head": {
+     "part": "head_blink_hu",
+     "off": [
+      0,
+      1
+     ]
+    },
+    "bow": {
+     "part": "bow_up",
+     "off": [
+      0,
+      -1
+     ]
+    },
+    "skirt": {
+     "part": "skirt_jmp7_droop"
+    },
+    "torso": {
+     "part": "torso_sq"
+    },
+    "armN": {
+     "part": "armN_jmp_hi"
+    },
+    "armF": {
+     "part": "armF_jmp_v"
+    }
+   },
+   "root": [
+    0,
+    -21
+   ],
+   "hide": [
+    "kat"
+   ],
+   "shadow": 5
+  },
+  {
+   "ms": 80,
+   "label": "fall",
+   "set": {
+    "legs": {
+     "part": "jump9_legs_launch"
+    },
+    "head": {
+     "part": "head_hu"
+    },
+    "bow": {
+     "part": "bow_up",
+     "off": [
+      0,
+      -2
+     ]
+    },
+    "skirt": {
+     "part": "jump9_skirt_up"
+    },
+    "torso": {
+     "part": "jump9_torso_st"
+    },
+    "armN": {
+     "part": "armN_jmp_v",
+     "z": 7.5
+    },
+    "armF": {
+     "part": "armF_jmp_hi"
+    }
+   },
+   "root": [
+    0,
+    -9
+   ],
+   "hide": [
+    "kat"
+   ],
+   "shadow": 6
+  },
+  {
+   "ms": 110,
+   "label": "land",
+   "set": {
+    "legs": {
+     "part": "legs_jmp_land"
+    },
+    "head": {
+     "part": "head_hu",
+     "off": [
+      0,
+      3
+     ]
+    },
+    "bow": {
+     "part": "bow_up",
+     "off": [
+      0,
+      0
+     ]
+    },
+    "skirt": {
+     "part": "jump9_skirt_land"
+    },
+    "torso": {
+     "part": "jump9_torso_crouch"
+    },
+    "armN": {
+     "part": "armN_out"
+    },
+    "armF": {
+     "part": "armF_fwd"
+    }
+   },
+   "root": [
+    0,
+    0
+   ],
+   "hide": [
+    "kat"
+   ],
+   "fx": [
+    {
+     "part": "fx_jmp7_land",
+     "at": "ground",
+     "off": [
+      0,
+      0
+     ],
+     "z": 0.5
+    }
+   ],
+   "shadow": 10
+  },
+  {
+   "ms": 80,
+   "label": "recover",
+   "set": {
+    "legs": {
+     "part": "legs_jmp9_mid"
+    },
+    "head": {
+     "part": "jump10_head_hf",
+     "off": [
+      0,
+      1
+     ]
+    },
+    "bow": {
+     "part": "bow_sqz",
+     "off": [
+      0,
+      1
+     ]
+    },
+    "skirt": {
+     "part": "skirt_jmp_land"
+    },
+    "torso": {
+     "part": "torso_jmp5_sq"
+    },
+    "armN": {
+     "part": "armN_back"
+    },
+    "armF": {
+     "part": "armF_fwd"
+    }
+   },
+   "root": [
+    0,
+    0
+   ],
+   "hide": [
+    "kat"
+   ],
+   "fx": [
+    {
+     "part": "jump10_fx_land2",
+     "at": "ground",
+     "off": [
+      0,
+      0
+     ],
+     "z": 0.5
+    }
+   ],
+   "shadow": 9
+  },
+  {
+   "ms": 70,
+   "label": "settle",
+   "set": {
+    "head": {
+     "part": "head_hd"
+    },
+    "bow": {
+     "part": "bow_str",
+     "off": [
+      0,
+      0
+     ]
+    },
+    "skirt": {
+     "part": "skirt_swR"
+    },
+    "torso": {
+     "part": "torso_jmp_st"
+    },
+    "armN": {
+     "part": "armN"
+    },
+    "armF": {
+     "part": "armF"
+    }
+   },
+   "root": [
+    0,
+    0
+   ],
+   "hide": [
+    "kat"
+   ],
+   "fx": [
+    {
+     "part": "jump10_fx_land3",
+     "at": "ground",
+     "off": [
+      0,
+      0
+     ],
+     "z": 0.5
+    }
+   ],
+   "shadow": 8
+  },
+  {
+   "ms": 100,
+   "label": "rest",
+   "set": {
+    "bow": {
+     "part": "bow",
+     "off": [
+      0,
+      0
+     ]
+    },
+    "armN": {
+     "part": "armN"
+    }
+   },
+   "root": [
+    0,
+    0
+   ],
+   "hide": [
+    "kat"
+   ],
+   "shadow": 8
+  }
+ ]
+}

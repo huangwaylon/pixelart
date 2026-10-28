@@ -1,0 +1,35 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Scores (1–10):** readable at 1x 4 · intentionally designed 5 · Pokémon-like 4 · personality 3 · **overall 4/10**
+
+**(1) Each expression at 1x**
+- **neutral 5:** The mouth is 1 `r` at row 19 col 11, off-centre, plus `rrr` low on the chin. At 1x it reads as a smudge, not a smirk.
+- **determined 5:** The brow `KKK` and the eye `KKK` rows touch, so the whole eye area is one dark bar. There's no squint.
+- **shout 4:** The mouth is only 3 px wide (`rrr` over `KKK` over `rer`), the same size as joy's. It reads as a tongue or a pout, not an impact yell.
+- **effort 3:** Reads the same as shout and determined. There's no gritted-teeth signal.
+- **joy 6:** The `^` eye arcs work, but their outer `K` merges into the side hair at cols 4 and 14.
+- **smile 5:** Hard to tell apart from neutral.
+- **surprised 4:** The eyes are 2×2 `W`/`i` with no dark pupil, so they look blank, not shocked. The `rr` mouth is too small.
+- **pain 6:** The `><` eyes read, but the zig-zag mouth `rsrsr` is noise at 1x.
+- **blink half/closed 6:** These are fine.
+- **squash 4:** Identical to blink closed.
+
+**(2) Designed / Pokémon-like?** Partly. There's a glint (`W`), but no top lash wing, no lower-lid tick, and the iris doesn't sit against a dark upper lid. Mouths are all 3 px slivers; there's no open "D" shape and no teeth.
+
+**(3) Personality?** Weak. Neutral looks meek. Nothing has the confident lid-lowered smirk Hilda or Rosa have.
+
+**(4) Per view**
+- **S 5:** The eyes sit too wide and fuse with the hair frame. The mouth is too low (chin row).
+- **SE 5:** The far eye is cramped, and the mouth doesn't shift toward the far cheek.
+- **E 3:** The eye is one dark blob with no glint or lash flick. Every column looks the same.
+- **NE/N 6:** Correctly empty, but NE shows no cheek sliver or blush to separate it from N.
+
+**(5) Top 6 fixes**
+1. **All open eyes:** make the eye a 2-wide × 3-tall block, with a solid `K` lash row on top that sticks 1 px past the outer corner (the wing), a `W` glint at top-inner, a dark iris at the bottom, and 1 `s` gap before the hair.
+2. **Shout:** make the mouth a 4w×3h dark `K`/`r` "D" shape with a lighter tongue in the bottom 2 px, moved up 1 row.
+3. **Neutral/smile:** centre the mouth and draw a 3 px smirk (`r r` + 1 raised corner), and lower the upper lid 1 px for a confident look.
+4. **Effort:** draw a 4w×2h gritted mouth (`K` outline, `W` teeth row) and make one eye a squint (`K` row plus 1 iris px).
+5. **Surprised:** add a 1 px dark pupil centred in each eye (no lash wing) and make the mouth an open `O`, 2w×3h.
+6. **E view:** add a lash flick 1 px forward of the eye, an iris and a glint, and a 2 px open mouth for shout and joy. Show 1 cheek-blush pixel in NE.
+
+Saving session...completed.

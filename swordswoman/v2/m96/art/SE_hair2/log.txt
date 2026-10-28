@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I made 19 small pixel changes to the SE hair/bow crop, and the final `out.txt` passes the gate on the second try (ssim_b −0.001, dE −0.019, sil +0.000; outline gaps O1 1→0, orphan pixels S4 4→3, jaggies O3 unchanged at 3): the bow's top-loop tip is now red, the left loop has a K edge against the hair and R shading underneath, the gap in the ribbon tail's outline is closed, two stray L highlight specks are now H, and six L pixels at the ends of the sheen band are softened to g.

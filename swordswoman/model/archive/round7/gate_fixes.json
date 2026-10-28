@@ -1,0 +1,185 @@
+{
+ "note": "round 7 render-in-the-loop gate fixes (model/solve_gates.py); replayed by build_character.py after the pose / cycle solves",
+ "fixes": [
+  {
+   "action": "anim_idle_NE",
+   "frames": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "sword": [
+    -25,
+    0,
+    -40
+   ],
+   "scarf": null,
+   "cell": "anim_idle_NE (all frames)"
+  },
+  {
+   "action": "anim_jump_E",
+   "frames": [
+    1
+   ],
+   "sword": [
+    0,
+    -15,
+    0
+   ],
+   "scarf": null,
+   "cell": "anim_jump_E_f0"
+  },
+  {
+   "action": "anim_jump_E",
+   "frames": [
+    2
+   ],
+   "sword": [
+    0,
+    -15,
+    0
+   ],
+   "scarf": null,
+   "cell": "anim_jump_E_f1"
+  },
+  {
+   "action": "anim_overhead_slash_SW",
+   "frames": [
+    2
+   ],
+   "sword": [
+    -15,
+    0,
+    0
+   ],
+   "scarf": null,
+   "cell": "anim_overhead_slash_SW_f1"
+  },
+  {
+   "action": "anim_run_E",
+   "frames": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "sword": [
+    15,
+    0,
+    0
+   ],
+   "scarf": null,
+   "cell": "anim_run_E (all frames)"
+  },
+  {
+   "action": "anim_run_NE",
+   "frames": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "sword": [
+    0,
+    0,
+    -40
+   ],
+   "scarf": null,
+   "cell": "anim_run_NE (all frames)"
+  },
+  {
+   "action": "anim_slash_S",
+   "frames": [
+    3
+   ],
+   "sword": [
+    0,
+    0,
+    -40
+   ],
+   "scarf": null,
+   "cell": "anim_slash_S_f2"
+  },
+  {
+   "action": "anim_walk_E",
+   "frames": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "sword": [
+    15,
+    0,
+    0
+   ],
+   "scarf": null,
+   "cell": "anim_walk_E (all frames)"
+  },
+  {
+   "action": "pose_idle_NE",
+   "frames": [
+    1
+   ],
+   "sword": [
+    -15,
+    0,
+    0
+   ],
+   "scarf": null,
+   "cell": "iso_NE"
+  },
+  {
+   "action": "pose_run_stride",
+   "frames": [
+    1
+   ],
+   "sword": [
+    0,
+    0,
+    60
+   ],
+   "scarf": null,
+   "cell": "pose_run_stride_NW"
+  },
+  {
+   "action": "anim_run_E",
+   "frames": [
+    1,
+    9
+   ],
+   "arm": [
+    0,
+    20
+   ],
+   "sword": [
+    15,
+    0,
+    -150
+   ],
+   "scarf": null,
+   "cell": "anim_run_E_f0"
+  }
+ ]
+}

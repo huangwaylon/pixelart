@@ -1,0 +1,775 @@
+{
+ "_doc": "face2/measure.py: face measurements of the turnE_final illustrations (face round 2).\nWrites v2/m96/face_measure.json + face2/measure_<V>.png overlays (<=800px).\n- raw: landmarks read on the raw illustration (px), as fractions of crown(hair top)->chin(chin outline) and of the face width.\n- spr: the same landmarks in sprite (128-cell) coords, read on the WARPED source geo/src_V.png (the masters' own frame,\n  tools/geom.py), plus the auto face contour (skin edge per sprite row) from that warped source.\nSprite target = round to pixels: row r covers [r, r+1).",
+ "views": {
+  "S": {
+   "raw": {
+    "src": "iso_S",
+    "crown": 60,
+    "chin": [
+     384,
+     507
+    ],
+    "face_w": [
+     279,
+     478,
+     "skin edge at the eye line y=400"
+    ],
+    "lash_top": 367,
+    "lash_band": [
+     367,
+     379
+    ],
+    "iris_c": [
+     [
+      315,
+      393
+     ],
+     [
+      435,
+      393
+     ]
+    ],
+    "eye_bottom": 418,
+    "eye_x": [
+     [
+      278,
+      337
+     ],
+     [
+      412,
+      472
+     ]
+    ],
+    "brow": [
+     [
+      290,
+      345,
+      333,
+      345
+     ],
+     [
+      405,
+      470,
+      335,
+      348
+     ]
+    ],
+    "nose": [
+     372,
+     436
+    ],
+    "mouth": [
+     350,
+     402,
+     460
+    ],
+    "jaw": [
+     [
+      288,
+      460,
+      460
+     ],
+     [
+      316,
+      432,
+      484
+     ],
+     [
+      344,
+      412,
+      500
+     ]
+    ],
+    "chin_flat": [
+     352,
+     404,
+     504
+    ]
+   },
+   "raw_frac": {
+    "head_h_px": 447,
+    "lash_top": 0.687,
+    "eye_bottom": 0.801,
+    "iris_c": 0.745,
+    "brow": 0.624,
+    "nose": 0.841,
+    "mouth": 0.895,
+    "face_w_px": 199,
+    "eye_w_over_face_w": 0.296,
+    "eye_h_over_head_h": 0.114,
+    "inter_eye_gap_over_face_w": 0.377,
+    "mouth_w_over_face_w": 0.261,
+    "jaw_w_over_face_w": {
+     "0.895": 0.864,
+     "0.949": 0.583,
+     "0.984": 0.342
+    },
+    "chin_flat_over_face_w": 0.261
+   },
+   "spr": {
+    "lash_top": 49.7,
+    "lash_band": [
+     49.7,
+     50.7
+    ],
+    "iris_c": [
+     [
+      59.0,
+      52.0
+     ],
+     [
+      68.5,
+      52.0
+     ]
+    ],
+    "eye_bottom": 53.8,
+    "eye_x": [
+     [
+      56.0,
+      60.8
+     ],
+     [
+      67.0,
+      72.3
+     ]
+    ],
+    "brow": [
+     [
+      56.2,
+      61.2,
+      47.9,
+      48.5
+     ],
+     [
+      66.8,
+      72.0,
+      48.5,
+      49.0
+     ]
+    ],
+    "nose": [
+     63.5,
+     54.7,
+     55.5
+    ],
+    "mouth": [
+     62.0,
+     66.0,
+     57.0,
+     57.3
+    ],
+    "chin": [
+     63.0,
+     61.0
+    ],
+    "chin_flat": [
+     61.7,
+     64.3
+    ],
+    "blush": [
+     [
+      56.7,
+      60.7,
+      54.7,
+      56.7
+     ],
+     [
+      67.7,
+      71.7,
+      54.7,
+      56.7
+     ]
+    ],
+    "contour": {
+     "56": [
+      56.77,
+      71.16
+     ],
+     "57": [
+      57.44,
+      70.49
+     ],
+     "58": [
+      58.78,
+      69.15
+     ],
+     "59": [
+      60.57,
+      67.36
+     ],
+     "60": [
+      62.58,
+      65.42
+     ]
+    }
+   }
+  },
+  "SE": {
+   "raw": {
+    "src": "iso_SE_fixed",
+    "crown": 69,
+    "chin": [
+     440,
+     514
+    ],
+    "lash_top_near": 386,
+    "lash_top_far": 372,
+    "eye_bottom_near": 450,
+    "eye_bottom_far": 432,
+    "eye_x": [
+     [
+      345,
+      412
+     ],
+     [
+      470,
+      520
+     ]
+    ],
+    "brow_far": [
+     470,
+     525,
+     350,
+     357
+    ],
+    "nose": [
+     468,
+     455
+    ],
+    "mouth": [
+     423,
+     462,
+     481
+    ],
+    "far_cheek_x": [
+     [
+      497,
+      473
+     ],
+     [
+      477,
+      498
+     ]
+    ],
+    "blush": [
+     [
+      340,
+      407,
+      453,
+      477
+     ],
+     [
+      477,
+      497,
+      450,
+      470
+     ]
+    ]
+   },
+   "raw_frac": {
+    "head_h_px": 445,
+    "lash_top_near": 0.712,
+    "lash_top_far": 0.681,
+    "eye_bottom_near": 0.856,
+    "eye_bottom_far": 0.816,
+    "brow_far": 0.639,
+    "nose": 0.867,
+    "mouth": 0.926
+   },
+   "spr": {
+    "lash_top": [
+     51.5,
+     50.8
+    ],
+    "iris_c": [
+     [
+      65.3,
+      54.0
+     ],
+     [
+      73.0,
+      53.0
+     ]
+    ],
+    "eye_bottom": [
+     56.0,
+     55.0
+    ],
+    "eye_x": [
+     [
+      62.2,
+      67.0
+     ],
+     [
+      71.7,
+      75.2
+     ]
+    ],
+    "brow_far": [
+     70.5,
+     75.5,
+     49.3,
+     49.8
+    ],
+    "nose": [
+     71.2,
+     55.8,
+     56.8
+    ],
+    "mouth": [
+     68.0,
+     71.0,
+     58.3,
+     58.7
+    ],
+    "chin": [
+     69.7,
+     60.8
+    ],
+    "blush": [
+     [
+      62.2,
+      66.0,
+      56.2,
+      58.0
+     ],
+     [
+      71.7,
+      74.7,
+      55.5,
+      57.3
+     ]
+    ],
+    "contour": {
+     "56": [
+      61.07,
+      74.29
+     ],
+     "57": [
+      61.15,
+      73.91
+     ],
+     "58": [
+      62.12,
+      73.09
+     ],
+     "59": [
+      63.62,
+      71.74
+     ],
+     "60": [
+      66.48,
+      70.16
+     ],
+     "53": [
+      null,
+      71.58
+     ],
+     "54": [
+      null,
+      74.51
+     ],
+     "55": [
+      null,
+      74.44
+     ]
+    }
+   }
+  },
+  "E": {
+   "raw": {
+    "src": "iso_E",
+    "crown": 76,
+    "chin": [
+     500,
+     488
+    ],
+    "lash_top": 347,
+    "iris_c": [
+     483,
+     375
+    ],
+    "eye_bottom": 400,
+    "eye_x": [
+     448,
+     499
+    ],
+    "brow": [
+     470,
+     525,
+     315,
+     322
+    ],
+    "nose_tip": [
+     541,
+     412
+    ],
+    "mouth": [
+     497,
+     520,
+     442
+    ],
+    "profile": [
+     [
+      545,
+      330,
+      "forehead"
+     ],
+     [
+      528,
+      362,
+      "bridge"
+     ],
+     [
+      541,
+      412,
+      "nose tip"
+     ],
+     [
+      527,
+      428,
+      "philtrum"
+     ],
+     [
+      530,
+      437,
+      "upper lip"
+     ],
+     [
+      528,
+      452,
+      "lower lip"
+     ],
+     [
+      511,
+      466,
+      "chin front"
+     ],
+     [
+      500,
+      488,
+      "chin bottom"
+     ]
+    ]
+   },
+   "raw_frac": {
+    "head_h_px": 412,
+    "lash_top": 0.658,
+    "eye_bottom": 0.786,
+    "iris_c": 0.726,
+    "brow": 0.589,
+    "nose": 0.816,
+    "mouth": 0.888
+   },
+   "spr": {
+    "lash_top": 50.0,
+    "iris_c": [
+     74.8,
+     52.3
+    ],
+    "eye_bottom": 54.5,
+    "eye_x": [
+     72.0,
+     76.0
+    ],
+    "brow": [
+     73.0,
+     76.7,
+     47.0,
+     47.5
+    ],
+    "nose_tip": [
+     79.2,
+     54.8
+    ],
+    "mouth": [
+     76.0,
+     77.7,
+     58.0,
+     58.3
+    ],
+    "chin_bottom": [
+     75.8,
+     62.0
+    ],
+    "blush": [
+     72.0,
+     75.3,
+     54.7,
+     56.7
+    ],
+    "profile": [
+     [
+      80.2,
+      49.0,
+      "forehead"
+     ],
+     [
+      79.0,
+      50.5,
+      ""
+     ],
+     [
+      78.0,
+      52.0,
+      ""
+     ],
+     [
+      77.7,
+      53.0,
+      "bridge"
+     ],
+     [
+      79.2,
+      54.8,
+      "nose tip"
+     ],
+     [
+      78.3,
+      56.3,
+      "philtrum"
+     ],
+     [
+      78.5,
+      57.5,
+      "upper lip"
+     ],
+     [
+      77.7,
+      58.0,
+      "mouth"
+     ],
+     [
+      77.8,
+      58.7,
+      "lower lip"
+     ],
+     [
+      77.0,
+      60.0,
+      "chin"
+     ],
+     [
+      76.5,
+      61.0,
+      ""
+     ],
+     [
+      75.8,
+      62.0,
+      "chin bottom"
+     ]
+    ],
+    "contour": {
+     "49": [
+      null,
+      77.97
+     ],
+     "50": [
+      null,
+      77.82
+     ],
+     "51": [
+      null,
+      77.59
+     ],
+     "52": [
+      null,
+      77.43
+     ],
+     "53": [
+      null,
+      77.59
+     ],
+     "54": [
+      null,
+      78.59
+     ],
+     "55": [
+      null,
+      78.59
+     ],
+     "56": [
+      null,
+      78.52
+     ],
+     "57": [
+      null,
+      78.28
+     ],
+     "58": [
+      null,
+      77.74
+     ],
+     "59": [
+      null,
+      77.2
+     ],
+     "60": [
+      null,
+      76.66
+     ],
+     "61": [
+      null,
+      76.19
+     ]
+    }
+   }
+  },
+  "NE": {
+   "note": "no face features (back 3/4): lash tip + cheek blush only; geometry unchanged"
+  },
+  "N": {
+   "note": "back view: no face"
+  }
+ },
+ "targets": {
+  "_doc": "pixel targets applied (tools/face2build.py ANC/GEO; row r = [r,r+1)). eye lash row / iris rows; nose/mouth/blush px; contour edits",
+  "S": {
+   "lash_row": 50,
+   "iris_rows": [
+    51,
+    53
+   ],
+   "eye_x0": [
+    56,
+    66
+   ],
+   "brow_rows": [
+    47,
+    48
+   ],
+   "nose": [
+    [
+     63,
+     54
+    ],
+    [
+     63,
+     55
+    ]
+   ],
+   "mouth_line": [
+    57,
+    [
+     63,
+     64
+    ]
+   ],
+   "blush": [
+    [
+     57,
+     55,
+     "4+2 oval"
+    ],
+    [
+     67,
+     55,
+     "4+2 oval"
+    ]
+   ],
+   "jaw_skin_spans": {
+    "56": [
+     57,
+     70
+    ],
+    "57": [
+     58,
+     69
+    ],
+    "58": [
+     59,
+     68
+    ],
+    "59": [
+     60,
+     67
+    ],
+    "60": [
+     62,
+     65
+    ]
+   }
+  },
+  "SE": {
+   "lash_row": 51,
+   "iris_rows": [
+    52,
+    54
+   ],
+   "eye_x0": [
+    62,
+    72
+   ],
+   "nose": [
+    [
+     71,
+     55
+    ],
+    [
+     71,
+     56
+    ]
+   ],
+   "mouth_line": [
+    58,
+    [
+     68,
+     69
+    ]
+   ],
+   "blush": [
+    [
+     62,
+     56,
+     "4+2"
+    ],
+    [
+     72,
+     56,
+     "3+2 far"
+    ]
+   ],
+   "far_cheek_K_col": {
+    "55": 75,
+    "56": 75
+   }
+  },
+  "E": {
+   "lash_row": 50,
+   "iris_rows": [
+    51,
+    53
+   ],
+   "eye_x0": 72,
+   "profile_K_col": {
+    "49": 79,
+    "50": 78,
+    "51": 78,
+    "52": 78,
+    "53": 78,
+    "54": 79,
+    "55": 79,
+    "56": 78,
+    "57": 78,
+    "58": 77,
+    "59": 76,
+    "60": 76
+   },
+   "mouth_line": [
+    57,
+    [
+     75,
+     76
+    ]
+   ],
+   "blush": [
+    [
+     72,
+     55,
+     "4+2"
+    ]
+   ]
+  }
+ }
+}

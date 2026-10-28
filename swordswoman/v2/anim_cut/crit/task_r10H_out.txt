@@ -1,0 +1,9 @@
+Restored session: Mon 26 Oct 2026 12:51:22 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I made 12 head hair-end variants and 4 bow variants in `parts/se/`. The test action `actions/test_sec10.json` has one labelled frame per part. I composed and checked it 3 times, fixing a hair outline gap and a boxy loop on `bow_sqz`.
+
+- **Heads:** `head`, `head_blink`, `head_lean`, each with `_hf`, `_hu`, `_hd`, `_hb`. I added one column on the left, so pivot and anchors are shifted +1 x (pivot 15 19, bow 15 1, bun 4 4). They land on the same pixels as the base heads.
+- **Bows:** `bow_sqz`, `bow_str`, `bow_tl`, `bow_tr`. The pivot is still the bottom of the knot. I skipped `bow_tails` because the bow has no tails.
+
+Saving session...completed.

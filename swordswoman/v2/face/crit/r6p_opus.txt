@@ -1,0 +1,34 @@
+Restored session: Mon 26 Oct 2026 18:22:42 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Scores (official PMD = 9)**
+- Readable at 1x: **5**. At 1x most of each frame is hair. The eyes are 2–3px slits, so only shout, joy and teary still read.
+- Intentionally designed: **5**. Shout, joy, smile, pain and teary use clear icon shapes. Neutral, determined, worried and blink look like a realistic face that has been redrawn.
+- Pokémon/PMD-like: **4**. The lipstick lips, nose shading and almond lash-eyes are closer to anime or western realism. PMD uses big round eyes and a simple mouth with no lips.
+- Personality: **5**. The confidence only comes through in shout and joy. The rest look mild or sultry.
+
+**Per emotion**
+- Neutral **5**: the eyes are half-lidded, so she looks sleepy or seductive rather than spirited. The mouth is a 2px red smirk.
+- Determined **4**: almost identical to neutral. It needs sharper V brows and a flat, set mouth.
+- Shout **7**: strong open mouth and >< eyes. The anger mark is too faint.
+- Effort/Angry **5**: the teeth grid is muddy and the eyes don't show strain.
+- Joy **7**: good, the closest to PMD.
+- Smile **7**: the ^^ eyes and blush work. The mouth line is a bit thin.
+- Surprised **6**: the eye whites are good, but the pupils are too small. The "o" mouth needs a dark fill.
+- Pain **6**: the >< reads. The wavy mouth gets lost.
+- Worried **4**: the eyes are too small. There's no tilted-brow shape and no wobbly mouth.
+- Inspired **6**: the star highlights are nice, but the eyes need to be about 2px larger.
+- Teary **7**: the tear streams read well. The mouth is weak.
+- Blink/Stunned **3**: the dot pupils and pursed lipstick lips look unsettling, not stunned.
+
+**Top 5 pixel fixes**
+1. Make the eyes about 7×9px with a black outline, a 2-tone iris and a 2×2 white highlight, and push them wider apart and lower.
+2. Remove the lip colour. Draw mouths as dark shapes with a red or pink inner tone, and keep the closed mouth to one dark line.
+3. Add 1–2px dark brows above the hair line. The brow angle should carry determined, worried and angry.
+4. Make the face about 60% of the frame by zooming in or cutting the hair volume. Drop the nose shading and keep at most one nose pixel.
+5. Give every emotion a different eye silhouette, and add strong dark outlines plus fully opaque sweat and anger marks.
+
+**Overall: 5/10**
+
+Saving session...completed.

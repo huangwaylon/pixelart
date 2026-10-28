@@ -1,0 +1,13 @@
+SCORE 4.5/10
+
+1. **Broken Run Mechanics (F0, F2, F4, F6, F7):** Both F0 and F4 are identical-leg-forward contact poses (screen-right leg reaches forward in both), meaning she hops on one leg for half the cycle instead of alternating strides. F6 & F7 both stay floating in mid-air before snapping instantly to F0's ground contact.
+2. **Teleporting Katana (F0–F7):** The scabbard has zero consistent attachment point. In F1 it flips forward across her waist/pelvis; in F2–F5 it drops down behind her calves/ankles; in F7 it teleports up to her rear shoulder/hand.
+3. **Broken Arm Swing (F0–F7):** Her screen-left (back) arm stays pinned pointing backward in F2–F7 instead of swinging forward to counter-balance the opposite leg.
+4. **Inconsistent Ground Plane (F0–F7):** Lowest foot contact shifts vertically by 4–5 pixels (F4 foot reaches Y-bottom ~59, while F1/F5 passing contact is ~4px higher, and F6/F7 hover high), making her bounce on an uneven floor.
+5. **Rigid Head & Hair (F0–F7):** The head, face, hair, and bow are copy-pasted static blocks translated vertically with zero overlapping action/follow-through on the bow ribbons or side hair buns.
+6. **Jaggies & Tangents on Scabbard/Skirt (F2–F6):** The white scabbard has uneven stair-step clusters (2px–1px–3px jaggies) and forms messy tangents with the black boots and bare legs in F2, F3, F4, and F6, destroying silhouette readability.
+
+**Top 3 Fixes:**
+1. **Fix the 8-Frame Stride Symmetry:** Make F0–F3 the Right-Leg-Forward step (F0 Contact, F1 Down/Pass, F2 Push-off, F3 Air) and F4–F7 the Left-Leg-Forward step with swapped leg depth/shading and opposite arm swings.
+2. **Pin the Katana to the Left Hip:** Keep the scabbard mouth locked to her belt/obi across all frames, only rotating the tail end slightly by 5–10 degrees to show secondary bounce.
+3. **Lock Ground Line & Add Secondary Motion:** Align all grounded feet (F0, F1, F2, F4, F5, F6) to a consistent baseline Y-coordinate, and offset the bow/hair bun bounce by 1 frame after the head changes vertical direction.

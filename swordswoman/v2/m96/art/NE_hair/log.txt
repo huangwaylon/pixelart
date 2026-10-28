@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I turned the left ribbon tail from a dashed double black line into a continuous thin red ribbon (K-E-K, rows 26–38), and replaced a stray R and an interior K speck in the hair with h. It passed the gate: ssim_b −0.001, dE +0.001, sil −0.000, O1 still 0, O3 still 2, and S4 orphans dropped from 4 to 1. The top 3 rows of that tail are still black, because extending the red that far took dE over the limit (+0.037 to +0.066) and added an outline gap.

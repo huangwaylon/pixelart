@@ -1,0 +1,18 @@
+**Style & Cleanliness:** Authentic PMD/Gen 4 aesthetic. Palettes, silhouette readability, and 2-3 frame snappy dissipation match Chunsoft’s *Slash* and status icons. Clean clusters, zero stray noise, minor curve jaggies remaining.
+
+1. **slash_h (8/10):** Clean taper; f1 bottom curve has a 4px flat step before jumping to 2px.
+2. **slash_diag (8/10):** Strong arc; f1 outer edge has a 1-2-1-3px staircase jaggy near the midpoint.
+3. **slash_over (8/10):** Great reach; f1 top-left curve has a sharp 90° pixel corner on the blue trail.
+4. **hit_spark (9/10):** Punchy PMD impact; f2 ring interior has 4 inner-corner pixels making it slightly octagonal.
+5. **hit_flash (9/10):** Crisp 1-frame pop; diagonals are 1px stubby compared to cardinal spikes.
+6. **speed_lines_long (8/10):** Good taper; top line has an unnecessary 2px vertical bump that breaks sleekness.
+7. **speed_lines_short (7/10):** Functional, but all 4 streaks align vertically on the right edge—needs staggered X-offsets.
+8. **dust_step (8/10):** Nice puff; f2 looks slightly like a bone/peanut due to the narrow 2px pinch.
+9. **dust_land (9/10):** Chunky, well-shaded; 100% symmetrical—flipping/offsetting one side by 1px would feel more organic.
+10. **dust_skid (8/10):** Good silhouette; the 4 bumps are too evenly spaced (repetitive rhythm).
+11. **jump_whoosh (7/10):** Reads weak; rigid 1:2 stair-stepped lines lack curve, and f1 clips behind the 48px sword.
+12. **land_ring (8/10):** Clean perspective; f1 inner hole is a 2px slit—widening to 4px improves ring readability.
+13. **hurt_star (9/10):** Spot-on PMD status icon; big star's bottom-left spike has a 2px blocky tip.
+14. **sweat_drop (9/10):** Classic; f3 bottom curve is a 3px flat horizontal line—needs a 1px lowest tip.
+
+**Overall: 8.5/10 — Shippable.** Anchors scale effortlessly from 40px to 48px, and the dash demo sells the motion. Ready for production.

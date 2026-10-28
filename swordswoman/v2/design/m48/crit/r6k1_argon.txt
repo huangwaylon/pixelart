@@ -1,0 +1,13 @@
+**No-Katana Masters**
+* **S (9/10):** 1. Collar V-neck shading is asymmetrical; mirror the 1px mid-tone pink buffer on the screen-right lapel.
+* **E (8/10):** 1. Chest skin shows a 2px vertical cleavage line mismatched with S/SE; reduce to 1px or close tunic. 2. Back hair bun sits 1px lower than SE_anchor; raise bun 1px.
+* **NE (8.5/10):** 1. Back hair bun is a 2x1 nub buried under the bow; expand to 3x2 below the cyan line to match E/N volume. 2. Screen-left sleeve cuff is 1px wider than screen-right; trim inner-left dark outline by 1px.
+* **N (9/10):** 1. Hair bun is 1px off-center to screen-right; shift bun 1px left to align with obi knot.
+
+**Katana Masters**
+* **S_k (8.5/10):** 1. Guard (tsuba) is 1px gold; add 1px brown above it to read as a crossguard. 2. Pommel is missing on inner side of hand; add 1px dark grip extending past thumb.
+* **E_k (8/10):** 1. Grip and hand merge into skirt hem; add 1px dark outline above hand to separate from tunic. 2. Guard overlaps skirt outline; shift blade+guard 1px forward (right) to clear the hand.
+* **NE_k (8.5/10):** 1. Right hand skin pixels are overwritten by dark grip; restore 2x1 skin pixels for knuckles above grip. 2. Inherit NE bun fix.
+* **N_k (9/10):** 1. Pommel clips into skirt hem; shift dark grip pixels 1px right.
+
+**Verdict:** **NOT READY** until E/NE hair bun volumes and E_k/NE_k hand-grip readability are fixed. Unarmed S/N are animation-ready.

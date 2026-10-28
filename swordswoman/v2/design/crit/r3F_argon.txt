@@ -1,0 +1,14 @@
+**Scores:**
+A) Cross-view consistency: 7/10
+B) Readability at 48px: 8/10
+C) Iso views correct: 6/10
+D) Katana clarity: 6/10
+E) Overall fitness: 7/10
+
+**Top 5 Problems to Fix by Hand:**
+
+1. **`iso_N` (Full Body):** Camera elevation fails. It is virtually identical to orthographic `back` instead of matching `iso_S`'s ~30° top-down pitch. Foreshorten the torso/legs, curve the obi/hem upward, and show the top of the head/bun.
+2. **`iso_E` & `iso_E_k` (Torso/Head):** Reads too flat, nearly identical to `right`. Tilt the head/bun to expose the top plane and curve the obi and skirt hem downward to match the camera pitch.
+3. **`back_k` (Katana Blade):** In the 48px probe, the blade's grey value is too close to the background/shadow values, causing the silhouette to break up. Brighten the blade's top edge by 1–2 palette steps.
+4. **`iso_SE_k` (Katana & Boots):** The blade crosses directly over the front foot, creating a muddy pixel cluster at 48px. Angle the sword slightly outward to separate its silhouette from the boots.
+5. **`iso_NE` (Hair Bottom Edge):** The jagged hair tips do not match the smooth bob cut seen in all other views. Clean into a single smooth curve.

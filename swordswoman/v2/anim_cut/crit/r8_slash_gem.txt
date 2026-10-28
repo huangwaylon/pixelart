@@ -1,0 +1,14 @@
+### 3 Most Important Concrete Problems
+
+1. **Frame 6 (SMEAR) - Upper/Right Arc Region:** The smear arc is too uniform in thickness, has jagged stair-stepping along the top curve, and lacks an outline, breaking the sprite's style. **Fix:** Taper the tail end (top-left of head) down to 1px, smooth the outer curve clusters, and add a dark outline to the leading edge to match the blade.
+2. **Frames 1–10 - Head & Hair Region:** The head, hair, and bow remain completely rigid and forward-facing throughout the entire slash, making the cutout rig obvious and reducing energy. **Fix:** Shift the hair/bow 1–2px back during the lunge (Frames 6–7) and add a 1px vertical bounce to the bow during recovery (Frames 10–12) for overlapping action.
+3. **Frames 4–5 (coil/swingA) - Sword Blade Region:** The rotated katana exhibits severe jaggies and inconsistent outline thickness due to raw rotation. **Fix:** Manually clean the blade line to a consistent 2:1 or 1:1 pixel slope and remove doubled corner pixels on the black outline.
+
+### Dimension Scores
+
+* **Pose & Readability:** 6/10 (Clear silhouette progression, though torso/head stiffness limits dynamism.)
+* **Timing & Impact:** 6/10 (Good frame pacing and hit-stop, but lacks squash/stretch to sell the weight.)
+* **Pixel Technique & Rig Quality:** 4/10 (Noticeable rotation artifacts on the blade and a pasted-on look for the static head.)
+* **VFX / Smear:** 4/10 (The smear is unrefined and the impact sparks in Frames 7–9 are single-pixel noise rather than cohesive clusters.)
+
+SCORE slash: 5

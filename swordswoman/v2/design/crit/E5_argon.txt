@@ -1,0 +1,13 @@
+**Scores:**
+* **A. Proportions (7/10):** Slim with visible neck and ~40% leg height. However, she measures closer to 2.8–3.0 heads tall (3.3 including bun); cranium is slightly oversized for the 3.45 target.
+* **B. Face/Hair Spec (8/10):** Facial features hit every mark (low, narrow angled eyes, clear upper lash, soft pointed chin). Front hair tapers well, though `iso_N` looks very helmet-like.
+* **C. Cross-View Consistency (5/10):** Major sleeve discrepancy: wrist-length in `front`/`iso` views, but elbow-length in `left`/`back`/`right`/`iso_NE`/`iso_N`—exposing forearms. `iso_N` hair is rounder and lacks flicked tips.
+* **D. Style/Flat Cel Quality (9/10):** Clean linework, cohesive palette, and crisp 2-tone cel shading. Slightly more generic chibi than sharp Sugimori, but translates well to 48px sprites.
+* **E. Katana Variants (5/10):** `front_k` and `iso_SE_k` are solid, though the blade lacks a Sugimori-style bold outline. `iso_E_k` has a broken tang/grip alignment: the blade exits the bottom of the fist at a 60° angle to the horizontal hilt.
+
+**Top Fixes:**
+* **Unify sleeves:** Extend sleeves to the wrists in `left`, `back`, `right`, `iso_NE`, and `iso_N`.
+* **Fix `iso_E_k` sword:** Align the blade continuously with the hilt's axis.
+* **Fix `iso_N` hair:** Add tapered, flicked bottom tips to break the round helmet silhouette.
+* **Adjust head ratio:** Shrink the head/cranium by ~10% to hit the 3.45-head target.
+* **Darken blade outline:** Match the katana edge line weight to the character's outer lineart.

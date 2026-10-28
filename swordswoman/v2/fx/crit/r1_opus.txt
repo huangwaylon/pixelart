@@ -1,0 +1,28 @@
+**Overall:** About 60% of the way to PMD. The palette discipline and the dissolve-out frames are right. The weak points are hairline 1px strokes, soft or anti-aliased blobs, and dust or ring pieces with no outline. Those read as "modern indie", not Gen3–5. PMD effects use chunky, high-contrast shapes with a white core, a saturated rim, and few tones (see the fire, star-burst and claw refs on the board).
+
+1. **slash_diag: 6/10.** The crescent has a clean 3-tone ramp and a good taper. Problems:
+   - The 1px trailing hairline arc has uneven step runs (2-1-3-1) and vanishes in context.
+   - The pale blue-white sits too close in value to the gray floor.
+   - Frame 3's dashes have random lengths.
+   - Fix: drop the hairline or make it a 2px tapered tail with even step runs. Add a 1px saturated rim (cyan or Pokémon-type colour) on the outer edge. Frame 3 should break into 3–4 evenly spaced chips.
+2. **slash_h: 5/10.** Too thin and flat, and it reads as a smile or bowl. It needs the same 3–4px belly as slash_diag. Frame 2's tip pixel cluster is noisy.
+3. **slash_over: 6/10.** Same notes as slash_diag. In context it clips the head and bow, so pull it 4px outward. Consider a PMD-style 3-streak claw variant (like the pink Fury Swipes ref) for Scratch.
+4. **hit_flash: 4/10.** A soft white blob with blue anti-aliasing, so it isn't clean pixels. Redraw it as a hard 4- or 8-point star (white core, 1px light-yellow edge) with no anti-aliasing.
+5. **hit_spark: 7/10.** The most PMD-like effect here: ray burst, then ring, then scatter matches the explosion ref. The rays are 1px and thin out at the tips, so make the 4 main rays 2px at the root. The ring in frame 2 should be thicker (2px) with the rays shortened. Frame 3's sparks are too sparse, so use 5–6 chips, not 8 single pixels.
+6. **hurt_star: 4/10.** The stars are fine, but the gray "51/2"-looking marks under them are garbage pixels. Delete them. Use 3 stars orbiting on an ellipse, with depth shown by size (5px front, 3px back). Frame 2's loose white dots look like stray pixels.
+7. **sweat_drop: 7/10.** Good outline and highlight. Frame 3's squash loses the tip. Keep the point and slide the drop down 1–2px per frame instead.
+8. **dust_land / skid / step: 5/10.** The puffs are flat cream shapes with no dark outline or round "bubble" form (compare the white smoke ref), and the scattered single-pixel chips read as noise. Redraw them as 2–3 round puffs with a 1px warm-gray outline, a lit top and a shaded bottom. Grow, then fade by shrinking, not by spawning chips.
+9. **speed_lines_long / short: 5/10.** Uniform 1px lines read as UI rules. Vary the lengths, use a 2px white head with a 1px tail, and keep it to 3–5 lines. The blue afterimage in ctxD works and is the better PMD read, so keep it.
+10. **jump_whoosh: 3/10.** The Y- and fork-shaped strokes read as glyphs, not air. Use 2 short curved strokes rising from the feet (a mirrored "( )"), or just reuse dust_step.
+11. **land_ring: 6/10.** It reads well. Frame 1 is too small and too similar to frame 2. Make it 2-tone (white top arc, gray bottom arc) so it sits on the floor plane, and use even dash spacing in frame 3.
+
+**Resize for the 32px figure (scale about 0.67).** Redraw everything by hand. Nearest-neighbour downscaling will destroy the ramps and step runs. Targets in the 40×40 cell:
+- **Slash arcs:** about 22–26px chord, 3px maximum thickness, 2 tones plus rim, kept inside the cell and centred on the sword hand.
+- **hit_flash:** 9×9. **hit_spark:** 13×13, ring 7px across.
+- **hurt_star:** orbit band 18×6, about 2px above the bow.
+- **sweat_drop:** 4×6 including outline.
+- **Dust puffs:** 3–5px each, cluster up to 16–20px wide. Skid trail up to 20px.
+- **Speed lines:** 6–12px long, 3–4 lines over about 20px of height.
+- **land_ring:** about 18×5 at its largest frame. **jump_whoosh:** about 12×6.
+
+Minimum stroke is 2px for anything that must survive motion. Keep 1px only for outlines and the tiniest sparks.

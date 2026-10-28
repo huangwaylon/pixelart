@@ -1,0 +1,52 @@
+{
+ "_doc": "REPLACEABLE HEAD REGION (HAIR strand v2/hair/, FACE strand v2/face2/ own it). In blockout/<V>.txt the codes H,B,W,F,e (hair, bun, bow, face, eyes) above the chin line are placeholders. Body sections (neck row 28 down) are fixed by the template. Rows are 64-cell rows, soles on row 61 (sole line 62), crown 14.",
+ "head_box": {
+  "crown_row": 14,
+  "chin_line": 28,
+  "rows": [
+   14,
+   27
+  ],
+  "width_px": 15,
+  "cols": [
+   25,
+   39
+  ]
+ },
+ "latitude": {
+  "head_h_px": [
+   13.2,
+   13.9,
+   15.0
+  ],
+  "head_w_px": [
+   12.9,
+   14.7,
+   16.5
+  ],
+  "rule": "crown row may rise to 13 (h 15) or chin line drop to 29 (then shoulder line 30, neck 1 row). Head width (hair mass at temple/cheek level) <= 16 px (cols 24-39/40). Big anime eyes: fine inside this; keep eye centre <= 0.66 of head height down."
+ },
+ "hair_envelope": {
+  "top_row_incl_bow_bun": 5,
+  "side_cols": [
+   22,
+   42
+  ],
+  "note": "Free hair silhouette zone. Hair below the chin line is allowed only BEHIND the body (it must not widen shoulders >12 px or hide the neck gap / waist pinch in S,SE); ponytails/side locks may hang to row 41 (hem) outside the body only if <=2 px wide, so arms/waist still read."
+ },
+ "body_fixed_rows": {
+  "neck": 28,
+  "shoulder_line": 29,
+  "armpit": 32,
+  "obi": [
+   34,
+   36
+  ],
+  "hip_flare_full": 39,
+  "hem_line": 42,
+  "knee_line": 48,
+  "boot_top": 55,
+  "sole_line": 62
+ },
+ "unarmed": true
+}

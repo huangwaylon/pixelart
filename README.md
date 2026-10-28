@@ -1,3 +1,15 @@
+# Pixel art sprite projects
+
+| Project | Where | Best result |
+|---|---|---|
+| **Snowpeak girl** (main pipeline + pixel editor) | repo root: `pipeline/`, `editor/`, `data/` | `releases/S4_hd_actions_v1/` (13 clips, approved). `S4_hd2` is a newer refinement and so far has only idle, walk and run (`00_REVIEW/r21_s4_hd2/`). |
+| **Swordswoman** (merged from `../test`) | `swordswoman/` | 96 px masters in `swordswoman/v2/m96/` (animation still in progress). See `swordswoman/README.md`. |
+| 3D generative-model reference (Hunyuan3D etc.) | `reference/3d/` | `reference/3d/best/raw_mvD4_s5.glb` (Hunyuan3D-2mv) |
+
+Model weights and venvs are in `.models/` (gitignored, about 85 GB).
+
+---
+
 # Snowpeak sprite pipeline
 
 A pipeline that turns a 3D model into pixel art. Sprite sheets come out consistent across all 8 isometric facings, reproducible byte-for-byte, and quick to iterate on from feedback.

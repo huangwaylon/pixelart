@@ -1,0 +1,18 @@
+Restored session: Mon 26 Oct 2026 11:00:36 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+SCORE: 5/10. It moves with some energy, but it isn't consistent enough to ship.
+
+- **Off-model frames:** frames 1 and 5 look like a different drawing. The head is bigger, the torso shrinks and hunches, and the legs collapse into a red-and-black blob. At 1x the cycle visibly "pops" on those two frames.
+- **Katana keeps changing:** it goes level-back (frame 0), almost disappears to a hilt stub (frame 1), points down-left (frames 2–3), comes back up (frame 7), and sits low and level (frame 5). A trailing blade should follow one steady arc with some lag, not teleport.
+- **FX is fake:** the speed lines in frames 2/3/6/7 are static dashes pasted beside her that blink on and off. There's no real smear on the blade or the legs at the fastest moment (the 55 ms frames 2 and 6), which is where it's needed.
+- **Dust puffs:** the little sparkles in frames 0/1/4/5 are 2–3 pixel orphans at 1x. Make it one clear 3-frame puff on the contact frame, or remove it.
+- **Contact doesn't read:** no frame has a clear, planted heel strike. Feet drift and don't line up with a shared ground line. Frame 7's lift is fine, but frames 1 and 5 look like a crouch, not a footfall.
+- **Bounce is off:** the up/down is in the wrong place. The low point should be the frame right after contact and the high point the push-off. Right now the head drops on the 80 ms frames 1/5 but the body squashes without stretching after, so there's no snap.
+- **Arms are stiff:** the arms barely swing, so the front arm and sword hand look locked. There's no counter-rotation to sell the effort.
+- **Shimmer:** the bow changes size (bigger in frames 2/6), the bangs/bun outline and face shading wobble, and the skirt hem pixels flicker even where nothing should move.
+- **Palette and shading are fine:** no pillow shading, the palette stays consistent, and the outlines are mostly clean. The red/black silhouette reads well at 1x except in frames 1 and 5.
+- **Fixes, in order:** redraw frames 1/5 on-model, put the blade on one trailing arc and add a smear on frames 2/6, lock a ground line, move the low point to just after contact, and clean up the bow and hair edges.
+
+Saving session...completed.

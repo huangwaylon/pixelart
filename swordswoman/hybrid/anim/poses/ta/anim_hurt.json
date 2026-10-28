@@ -1,0 +1,15 @@
+{
+ "name": "hurt",
+ "frames": [
+  {
+   "file": "hurt_f0.json"
+  },
+  {
+   "file": "hurt_f1.json"
+  },
+  {
+   "file": "hurt_f2.json"
+  }
+ ],
+ "timing_ms": "see hybrid/ANIM_DIRECTION.md section 1"
+}

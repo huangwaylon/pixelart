@@ -1,0 +1,15 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 4/10.** The drawing is decent, but it doesn't work as a walk cycle yet.
+
+1. **Proportions jump on frames 3 and 7.** The head, bow and hair puff get about 10–15% bigger and the face shifts. In motion this reads as the head swelling, not as bounce. Redraw both frames from the frame 1 head and only move it up 1–2px.
+2. **The legs don't read.** At 1x the lower body is a dark smudge with no clear stride. Contact frames (0 and 4) need a visible heel-forward leg and a trailing toe, and passing frames (2 and 6) need a clear knee lift.
+3. **The feet slide.** The planted foot drifts 1–3px between frames 0→1→2 and 4→5→6. Pin it to a fixed ground pixel until it lifts off.
+4. **The bounce is backwards.** The body barely drops on contact and down frames, so it has no weight. Go down 2px on frames 1 and 5 and up 2px on frames 3 and 7, with the hair and bow lagging one frame behind.
+5. **The katana is stiff.** It keeps nearly the same angle and slides around as a block. It should counter-swing 1–2px against the hips, and the tip should follow through.
+6. **The sword shimmers.** Its highlight pixels flicker from frame to frame, and the stepped diagonal has jaggies that change every frame. Lock the blade to one clean 2:1 line.
+7. **The sleeve and skirt reds change between frames,** with different clusters and some extra 1px specks. Force everything onto one palette and clean up orphan pixels around the hem.
+8. **Timing:** 90ms on the passing frames is fine, but nothing hits. Hold the contact frames longer (~120ms) and add a 1–2px dust puff at heel strike so the walk feels energetic.
+9. **What works:** the silhouette, face and bow are appealing, and the 3/4 angle stays consistent. Fixing items 1–4 alone should get this to about 7.
+
+Saving session...completed.

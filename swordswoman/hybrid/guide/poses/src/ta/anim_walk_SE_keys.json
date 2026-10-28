@@ -1,0 +1,17 @@
+{
+ "name": "walk_SE_keys",
+ "frames": [
+  {
+   "file": "walk_SE_k0.json"
+  },
+  {
+   "file": "walk_SE_k1.json"
+  },
+  {
+   "file": "walk_SE_k2.json"
+  },
+  {
+   "file": "walk_SE_k3.json"
+  }
+ ]
+}

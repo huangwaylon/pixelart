@@ -1,0 +1,15 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Scores**
+- final_quality: **5/10**. Each frame reads as finished pixel art on its own, but they don't play as one animation.
+- master_consistency: **5/10**. The palette holds. The head shape, hair silhouette and bow position drift from the master, and the f02/f03 torso is wider and squatter.
+- motion: **4/10**. The bob is more than 1px. In f02/f03 the legs get shorter instead of the body sinking, and I can't see a clear weight shift from hip to hip.
+- readability_1x: **6/10**. At 1x it reads as a shimmer rather than a breath.
+- no_boiling: **3/10**. The hair, bow, sleeves, hands, skirt hem and boot outlines are all redrawn in every frame.
+
+**Fixes**
+1. **f01–f05, head:** use the master's head stamp exactly in every frame. Only the eyes and mouth should change, and only on f00/f03. Right now the eyes and nose differ between f01, f02, f04 and f05.
+2. **All frames, bow and hair:** lock the bow and the back hair mass. Only move the side locks, by 1px. Remove the extra fringe point on the f02 bow.
+3. **f02/f03, body:** sink the whole torso by 1px instead of widening it. Keep the thigh and boot lengths the same as the master.
+4. **All frames, sleeves and hands:** keep the master's sleeve silhouette. Offset the hands by 1px at most, and keep the master's finger count.
+5. **f01/f04, boots:** pin the feet to the same ground pixels. Get the weight shift from a 1px hip and skirt offset only.

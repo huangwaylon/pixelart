@@ -1,0 +1,4 @@
+**Scores:** Natural: 7/10 | Readable at 1x: 7/10 | Energetic: 8/10 | Trainer Feel: 8/10
+
+1. **Frames 5–6 (Follow-through):** The throwing arm disappears into the torso silhouette, making the 140ms hold look cut off; extend the throwing arm forward/downward (or swing it clearly across the body) to maintain silhouette readability and momentum.
+2. **Frame 3 (Stride):** The orb's height barely changes between Frame 3 and Frame 4, flattening the overhand arc; raise the orb 4–6px higher behind the head in Frame 3 so the Frame 4 smear arcs dramatically downward.

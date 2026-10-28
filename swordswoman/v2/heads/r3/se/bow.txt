@@ -1,0 +1,9 @@
+; pivot 8 7
+.###.........###.
+#eeE##.....##eeE#
+#eEEEE#####EEEER#
+#eEEEER#e#EEEERR#
+#EEERRR#E#ERRRRR#
+#ERRRr##R##rRRRr#
+.#rr##.#r#.##rr#.
+..##...###...##..

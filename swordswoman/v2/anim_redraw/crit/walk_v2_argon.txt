@@ -1,0 +1,13 @@
+SCORE 4.5/10
+
+1. **Inconsistent loop stride (f0, f4, f7):** f0 and f4 have virtually identical leg poses (right foot forward, left back), then f7 repeats it again, creating a broken, limping gait instead of an alternating 4+4 cycle.
+2. **Mangled leg anatomy (f1, f3, f6):** In f1, the legs merge into a single dark vertical pillar; in f6, the ankles cross into an unreadable cluster; in f7, the back heel breaks into noisy stray pixels.
+3. **Robotic head & hair (f0–f7):** The head, face, hair, and bow are 100% static copy-pastes, making her look like a stiff cutout sliding up and down with zero overlapping action.
+4. **Inconsistent katana length & angle (f1, f3):** The blade lengthens and drops too low in f1, then shrinks in f3, causing severe pixel shimmering along the white edge.
+5. **Shifting torso/collar (f1, f5, f6):** The white skin collar/neck area widens horizontally in f1 and f6 while the red sleeves morph erratically without a clear arm-swing arc.
+6. **Flat vertical bob (f0–f7):** The bounce lacks a clean sinusoidal wave; f5 drops abruptly and f6–f7 stay flat, killing the "bouncy, energetic" goal.
+
+**Top 3 Fixes:**
+1. **Fix the walk cycle phases:** Make f0–f3 step with the right leg forward (f0 contact, f1 down, f2 passing, f3 up) and f4–f7 mirror it with the left leg forward, ensuring planted feet slide back at a constant pixel speed.
+2. **Add secondary motion:** Offset the red bow and side-bun by 1px vertically on a 1-frame delay behind the head bob to create lively overlap.
+3. **Lock weapon & clean legs:** Keep the katana angle/length constant (only bobbing 1px with the hand) and use a 1px dark outline or shade separation to clearly distinguish front vs. back legs on passing frames (f1, f2, f5, f6).

@@ -1,0 +1,25 @@
+; origin 20 8
+; view SE
+; expr determined
+.....KKK...........
+....KHLHK...KKKKK..
+....KLHHK.KKeeeeK..
+.KK.KHhhhKEEEEEeK..
+KeeKKhrRrrEEEEERK..
+KeEeKrRRrrREEERRK..
+KEEEerRRrrrRRRRRK..
+KERRRrrrrhhrrrrhK..
+KRrrrhhHLLHHHHhhhK.
+.KrHLLHhHHHhHHhHHhK
+.KHHHHHhhHhShHhShHK
+..KHHHHhhhSsShSsShK
+..KHHHHhKssssssssKK
+..KHHHHhsKKKsssKKKK
+..KHhHHhssKKsssKsSK
+..KHhHHhsWiIsssiWSK
+..KHhHhhsssssssssSK
+..KhHhHhssssrrrssK.
+..KhHhhhsssssssSK..
+...KhHhhhsssssSK...
+...KhKhhhsssSSK....
+....K.KhhhsSSK.....

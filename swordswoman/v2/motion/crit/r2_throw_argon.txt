@@ -1,0 +1,9 @@
+OVERALL: 6
+Natural: 6 | Whole-body: 7 | Fluid: 6 | Appealing: 6 | Secondary: 6 | Readable 1x: 4
+
+The added `coil` frame and secondary springs improve weight, but the `release`→`follow2` forward lunge translates so far right that the head, throwing arm, and ribbons clip right off the 96px canvas—destroying 1x silhouette readability at the climax. 
+
+**Top 3 Concrete Fixes:**
+1. **`release`, `follow`, `follow2` (Root/Pelvis):** Pull whole body back-left by 10–14px (at 1x) in both SE and E so the head and throwing hand stay inside the frame boundary.
+2. **`follow2` (Head/Chest):** Reduce downward torso pitch by ~20° and lift the chin up-forward. Currently, her head dips so low it merges into the torso mass, losing the neck/head silhouette completely.
+3. **`release` & `follow` (Ribbon tails):** Widen ribbon thickness by +1px and curve them down-left by 15° along the motion arc (too straight/stiffly horizontal right now).

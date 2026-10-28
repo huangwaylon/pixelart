@@ -1,0 +1,27 @@
+{
+ "size": [
+  36,
+  10
+ ],
+ "facing": "E",
+ "attach": "feet",
+ "pivot": [
+  18,
+  9
+ ],
+ "ground_y": 9,
+ "layer": "behind_character",
+ "width_per_frame": [
+  16,
+  24,
+  30,
+  34
+ ],
+ "note": "symmetric burst both sides of the feet (feet occupy x~12-24); f3 thin wisps",
+ "ms": [
+  60,
+  80,
+  100,
+  120
+ ]
+}

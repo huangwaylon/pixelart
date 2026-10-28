@@ -1,0 +1,20 @@
+Restored session: Mon 26 Oct 2026 13:42:09 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Scores**
+- **A (PMD-40): 5/10.** The outline weight and blocky clusters are close to PMD, but the face and hair are generic modern indie chibi, not PMD.
+- **C (Hybrid-48): 5.5/10.** This is the cleanest of the three, with the most consistent clusters. It reads closer to a Gen-5 overworld NPC than to anything in battle.
+- **B (BW-battle-72): 3/10.** BW/HGSS battle trainers are about 5.5–6 heads tall, like Hilda and Lyra. A 2.5-head chibi can't read as a BW battle sprite at any polish level. Either reproportion it or drop the "battle" target.
+
+**Five concrete differences, shared by all three**
+1. **Outline:** Ours is uniform pure black everywhere, including interior seams (sleeves, skirt, belt). The real sprites use a black outer silhouette but colored inner lines: dark brown on hair, deep crimson on red cloth, rust-brown on skin. *Fix:* recolor the inner lines to the darkest shade of the touching material. Keep black only on the outer edge, and remove the interior black lines on A.
+2. **Shading:** Ours has 2 tones, banded, with no clear light direction. The real sprites use 3–4 hue-shifted tones lit from the front-left, with hard cast shadows. *Fix:* add a third shadow tone and shift the hues (red shadows toward purple-crimson, skin toward rose). Add a 1px shadow from the bangs across the forehead, a shadow from the skirt onto the thighs, and keep the right side darker.
+3. **Hair:** Ours is a smooth helmet shape with one soft highlight arc. The real hair has a jagged silhouette made of strand clusters, with highlights as broken diagonal dashes. *Fix:* add 2–4 pixel spikes at the bob's ends and an uneven fringe. Use 3 tones with a slight purple tint, and draw the highlight as 2–3 short dashes that follow the strands.
+4. **Eyes:** Ours have large light-blue irises with a white catchlight, which is generic anime. HGSS/BW eyes are a dark, heavy upper lash line (1–2px, flicked outward) over a narrow dark iris with a single highlight pixel. PMD eyes are black vertical pupils. *Fix:* make the top lash row dark and extend it 1px outward. Use navy/near-black for the iris and remove the pale-blue fill.
+5. **Pose/attitude:** Ours stands stiff and frontal, with arms at the sides and the sword hanging limply. Every reference is turned 3/4 with a weight shift and a gesture. *Fix:* turn the body 3/4 to the left, step the front foot out, raise the sword or hold it in a ready guard, and tilt the head slightly.
+
+Secondary issue: the palette has low contrast. The flat red and gray belt lack the white or cream accents the references rely on (Hilda's cap and top, Lyra's socks). Add one light accent, such as a collar or obi trim.
+
+**Best base to iterate: C.** Its proportions already match the Gen-5 overworld and PMD-adjacent scale, and it has the cleanest clusters. Apply fixes 1–5 to C, then derive the PMD version by scaling it down. Build a battle version as a separate, taller figure instead of enlarging B.
+
+Saving session...completed.

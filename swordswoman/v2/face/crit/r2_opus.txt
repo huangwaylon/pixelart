@@ -1,0 +1,51 @@
+Restored session: Mon 26 Oct 2026 16:19:49 JST
+**Round 2 · overall 6.5/10** (up from round 1, but well short of official 9)
+
+**(1) Readability at 1x**
+- neutral **6**: the mouth `.rr..`/`...r.` reads as a diagonal scratch that sits left of centre.
+- determined **5**: almost the same as neutral. The extra inner-corner K pixel doesn't show at 1x, and there's no lid or brow angle.
+- shout **5**: the row-0 inner brow (`...KK`) lifts the inner corner, so the face reads worried. The 3-row mouth blob merges into the blush and reads as a tongue.
+- effort **7**: good squint plus clenched teeth. The teeth are a little wide.
+- joy **8**: clear ^^ eyes.
+- smile **6**: the lower-lid KK works, but the mouth is a tiny lopsided tick.
+- surprised **7**: the whites have no bottom outline, so they bleed into the skin.
+- pain **8**: good ><.
+- blink_half **6**: fine.
+- blink_closed **5**: the lid arc `K..../.KKK.` bows downward, so it reads as joy or a wink.
+- squash **4**: the `r...r` chin makes a frown, so it reads sad or pouty instead of a landing impact.
+
+**(2) Pokémon-like design:** Partly. The lash wing, W glint and blue iris are on-model. The mouths are the weak part: they're not deliberate shapes the way Pokémon mouths are (D-shaped open mouth, 1-px smirk).
+
+**(3) Personality:** Joy, pain and effort carry "spirited". Nothing reads as "confident" yet, because neutral and determined lack a smirk or a lowered lid.
+
+**(4) Per view**
+- **S 6.5**: mouths are off-centre.
+- **SE 6**: the far eye is fine, but the 4-col mouth crop chops the shout and smile corners.
+- **E 6.5**: eyes are good, but blush takes up 2–3 px of the cheek and the open mouths notch the silhouette.
+- **NE/N 8**: correctly blank. The blush sliver is fine.
+
+**(5) Top 6 fixes**
+1. **determined:** make it a half-lid. Run a diagonal K lid across row 2 and push the glint down to row 3.
+2. **shout:** turn the inner brow into an angry slant (outer high, inner low). Drop the mouth's row-0 pixels so it becomes a 5×2 D-shape with a tongue.
+3. **squash:** use a flattened open eye and a neutral or "oof" mouth, not a frown.
+4. **neutral:** a centred 3-px line with the right corner lifted (smirk) gives the confidence.
+5. **blink_closed:** use a flat lash line on row 3 plus a 1-px wing, not an arc.
+6. **surprised:** add a K bottom row under the whites (`.KKK.` in row 4). Also cap blush at 2 px in profile.
+
+**(6) Replacement stamps**
+```python
+EYE['determined']   = [".....","KK...","KKKKK",".WiI.","..II."]
+EYE['shout']        = ["KK...","..KKK","KWiiK",".iII.","....."]
+EYE['squash']       = [".....",".....","KKKKK","KWiI.",".II.."]
+EYE['blink_closed'] = [".....",".....",".....","KKKK.","K...."]
+EYE['surprised']    = [".KKK.","KKKK.","WWiW.","WWiW.",".KKK."]
+
+MOUTH['neutral']    = ["....r",".rrr.","....."]   # SE keeps the old one (col 4 is cropped)
+MOUTH['determined'] = [".....","rrrr.","....."]
+MOUTH['shout']      = [".....","rrrrr",".rer."]
+MOUTH['squash']     = [".....",".rr..",".rr.."]
+MOUTH_P['shout']    = ["...","rr_","re."]
+MOUTH_P['squash']   = ["...","rr.","r.."]
+```
+
+I didn't edit any files.

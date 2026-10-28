@@ -1,0 +1,25 @@
+DESIGN strand, round 3 (rev r3G-I, 2026-10-26): DONE
+
+Level D model sheet final. See DESIGN_SPEC.md ("FINAL files", hand-fix rules, camera authority).
+
+This revision (crit r3E/r3F follow-ups):
+- Camera guide re-rendered from hy3d/best/rest_mat.glb: r3iso/c/mat_{S,SE,E,NE,N}.png (30 deg ortho). Supersedes r3iso/vc_*.
+- iso_SE/iso_E/iso_NE/iso_N redrawn from the higher camera (crown visible, obi/hem curve down). iso_E is a true profile (1 eye). iso_NE/iso_N bow matches back-view bow/hair ratio (0.76-0.77) and hair tips are clean.
+- iso_S: lower body stretched 1.8x under the hair line (keeps the top-down crown cue, head share 70% -> ~55%).
+- Katana: pixel rule 2px steel (w/n) + 1px dark underside edge, implemented in pal_probe.py --kat. Added iso_S_k, iso_NE_k, iso_N_k; iso_SE_k/iso_E_k redrawn.
+
+Scores (A consistency / B 48px / C iso / D katana / E overall):
+- r3F: Argon 7/8/6/6/7, Opus 6/6/4/5/5
+- r3G: Argon 6/7/4/6/5, Opus 6/6/4/6/5
+- r3H: Argon 6/7/5/6/6, Opus 6/6/5/6/5
+- r3I (final): Argon 6.5/7/6/6.5/7, Opus 6/6/5.5/5.5/6
+
+Known residuals (hand-fix rules in DESIGN_SPEC.md): iso_S ~45 deg (slightly high), iso_N elevation mild, iso_NE/N heads ~10% big, hilt/tsuba must be hand-drawn, iso_S eyes 1px under bangs. Follow r3iso/c/mat_* for the camera.
+
+FINAL files (v2/design/):
+- turnD/{front,left,back,right,iso_S,iso_SE,iso_E,iso_NE,iso_N}.png
+- turnD/{front_k,left_k,back_k,right_k,iso_S_k,iso_SE_k,iso_E_k,iso_NE_k,iso_N_k}.png
+- turnD/sheet.png, turnD/sheet_k.png
+- r3iso/c/mat_{S,SE,E,NE,N}.png (hidden camera guide)
+- probe/D_turn_pal.png, probe/D_turn_k_pal.png
+- DESIGN_SPEC.md, pal_probe.py

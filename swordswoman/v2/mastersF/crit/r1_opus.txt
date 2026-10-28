@@ -1,0 +1,23 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**1) Sections:** Mostly yes. Eye, chin, waist, hem and knee sit on the template lines. Two problems: the head is about 1–2px wider than Lyra/Dawn at eye level, and the boots run about 1px above the ankle line on E and NE. That makes her read a little chibi next to the refs.
+
+**2) Cute, feminine, Pokemon quality:** Close, but not there yet. The face kit is cute. The body is stiff: arms hang straight, hands are nubs, and there's no hip curve. The obi reads as a dark grey bar, so she looks like she's in a generic red dress rather than a kimono. The black outline is heavy all round, where BW sprites use coloured outlines.
+
+**3) Hair at 1x:** The bow reads well in every view. The half-up knot doesn't read: in S and SE she looks like she has loose hair, and in E the back hair reads as a ponytail.
+
+**4) Consistency:** Hair length changes from view to view (chest in S, waist in E, mid-back in N). The bow moves around too, and the E torso is narrower.
+
+**Top 8 fixes:**
+1. **S/SE:** Add a dark knot bump 2×2px on top of the crown, behind the bow.
+2. **All:** Fix hair length at the armpit+2 row. Trim the E back hair by about 4px.
+3. **E:** Show the hair is half-up. Add a 1px highlight line where it's tied, and narrow the hanging hair by 2px.
+4. **All:** Change the obi's top and bottom edges from black to the #4c4460 shadow. Put a 1px knot or bow at the back in NE and N.
+5. **S/SE:** Make the crossed collar a clear 1px light V that goes 3px deep.
+6. **All:** Bring the waist in 1px each side and widen the hips/hem 1px, for a feminine flare.
+7. **All:** Give each hand 2×2px, and use the arm colour instead of black on the inner arm outline.
+8. **E/NE:** Lower the boot tops 1px to the ankle line. In E, add a 1px nose point to the profile.
+
+**Score: 6/10**
+
+VERDICT: FIX

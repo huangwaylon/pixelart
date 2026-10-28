@@ -1,0 +1,44 @@
+{
+  "ranking": [
+    "mv4_gemfix_s42",
+    "mv4_gemfix_s7",
+    "mv4_gem_s7",
+    "r1_mv_fb_s7_r2post",
+    "baseline_trellismac_s7",
+    "t2cpp_512_gemA768_s7_r2post",
+    "baseline_hunyuan2mini",
+    "sv_gemBun_s42"
+  ],
+  "pixal3d_beats_trellis": "yes",
+  "scores": {
+    "mv4_gemfix_s42": 7.0,
+    "mv4_gemfix_s7": 6.8,
+    "mv4_gem_s7": 6.5,
+    "r1_mv_fb_s7_r2post": 5.8,
+    "baseline_trellismac_s7": 5.2,
+    "t2cpp_512_gemA768_s7_r2post": 4.8,
+    "baseline_hunyuan2mini": 4.2,
+    "sv_gemBun_s42": 3.0
+  },
+  "strengths": [
+    "Pixal3D 4-view runs (mv4_gemfix_s42, s7) lock in the 0.40 depth/height ratio, avoiding the front-to-back stretching seen in single-view and Hunyuan runs.",
+    "Watertight 1-component remeshing in r2post runs eliminates internal geometry noise that ruins 64px outline generation in baseline_trellismac_s7.",
+    "mv4_gemfix_s42 achieves the cleanest separation between the top red bow and the spherical hair bun in side and isometric silhouettes.",
+    "t2cpp_512_gemA768_s7_r2post produces the sharpest geometric creases on the high collar, corset, and skirt hem.",
+    "Multi-view texture projection in Pixal3D preserves readable color blocks for the brown corset, red dress, and skin tones at 64px."
+  ],
+  "weaknesses": [
+    "Katana geometry fails across all runs: it turns into a thick plank in mv4 runs, bends or disappears in baselines, and completely misses the crescent hook guard.",
+    "Remeshing fuses thin sheets (pink ribbons, collar edges, sleeve cuffs) into thick, blobby masses that muddy the 64px silhouette.",
+    "t2cpp_512_gemA768_s7_r2post suffers from catastrophic texture darkening, making its direct sprite output unusable without re-projecting colors.",
+    "sv_gemBun_s42 hallucinates a massive floor-length ponytail (0.91 depth/height), completely breaking the character's profile and back views.",
+    "Facial features in Pixal3D remeshes are overly recessed and noisy, causing dark shadows over the eyes and mouth at 64px.",
+    "Legs, ankle straps, and heels lack crisp geometric definition, merging into soft cylinders in the remeshed outputs."
+  ],
+  "tuning_suggestions": [
+    "Erase the katana and ribbons from the 2D turnaround views before 3D generation; attach procedural weapon and ribbon meshes in Blender afterward.",
+    "Fix the lighting/albedo bug in the t2cpp_512 pipeline, or project the mv4_gemfix_s42 textures onto the sharper t2cpp_512 geometry.",
+    "Flatten the face normal map or use unlit/flat-shaded albedo for the head region during sprite rendering to prevent eye-socket shadowing at 64px.",
+    "Use 4-view inputs strictly; drop single-view and 2-view pipelines to prevent depth hallucinations and doubled buns."
+  ]
+}

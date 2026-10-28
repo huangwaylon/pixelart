@@ -1,0 +1,170 @@
+initialTitle":"Tencent HY 3D Acceptable Use Policy","isProAccountHolder":true,"fullSuperdomain":"docs.qq.com","isOwner":false,"isPublicDomain":true,"isCreator":false,"robotsNoindex":false,"cont":"https://docs.qq.com/doc/DSHFRaU96UWVhRVZV","isPro":true,"lastSaveTimestamp":"2025
+userPic":null,"isSubDomain":true,"isFork":false,"padType":"doc","shortLink":"https://docs.qq.com/doc/DSHFRaU96UWVhRVZV","googleButtonTarget":"
+bodyClass":"propad prouser dogfood ","lastSaveAuthor":null,"account":null,"isMultiAccount":false,"signinUrl":"https://docs.qq.com","cQQDomainRequestType":0,"guestPolicies":
+localPadId":"HqQiOzQeaEVU","description":"Tencent HY 3D Acceptable Use Policy","disableRichText":false,"padHTML":"","isAdmin":false,"websocket":true
+title":"Tencent HY 3D Acceptable Use Policy","padType":"doc","license
+proTitle":"","serverTimestamp":1792763206,"metaCreateTime":1761636519518,"docStatus":0,"templateInfo":
+ownerAppid":"","initialTitle":"Tencent HY 3D Acceptable Use Policy","userPic":null,"privilegeExpire":0,"isPadAdmin":true,"isProPad":true,"localPadId":"HqQiOzQeaEVU","isDeleted":false,"isLogin":false,"friendUserIds":
+encrypted":"","nameGuess":null,"initialSpaces":null,"initialOptions":
+ownerId":"144115215448482535","createdDate":1761636794000,"userDomain":"","userName":"","uin":"null","userInfo":null,"specialKeyTranslation":null,"invitedUserInfos":
+clientIp":"","dropboxConnected":false,"useFbChat":false,"optimizedVer":0,"collab
+r":60,"s":"361750582512","t":1792763206858,"i":"DSHFRaU96UWVhRVZV","g":"5377d3615041541fcb2e8ce57a9d38b071a5859a","apid":""
+u0013HYPERLINK https://docs.qq.com/doc/DSHRnRWp2YUVuQXJv docLink 
+and applies to anyone who uses our Services. By accessing the Services, you agree to this Policy. If we learn that you have violated our Policy, we may suspend or terminate your access to our Services.
+rWe want the Services to be used creatively but also safely and responsibly. Therefore, you may use the Services as you wish, as long as you comply with applicable laws, the Terms of Service, the Privacy Policy
+u0013HYPERLINK https://docs.qq.com/doc/DSEhSTGhQSHNRUEVC docLink 
+u0015, and other terms or policies related to the Services, and do not harm yourself or others.
+rYou must be at least 18 years old or the minimum age required in your country or region to consent to use the Services.
+r1.Comply with applicable laws: You must comply with all applicable laws, and must not promote, contribute to, encourage, facilitate or assist with a third party
+s violation of the law. For example, you must not promote or engage in any illegal or criminal activity; engage in any regulated activities without complying with the relevant regulations; or engage in any activities that would violate national security laws (where applicable).
+rights and interests: This includes but is not limited to any third party intellectual property, data privacy rights and personality rights. This includes using someone
+without consent, especially in ways that may mislead others about the content
+r3.Do not compromise the identity or privacy of others: Do not compromise security or gain unauthorized access to computer systems or networks. Do not violate any person
+s privacy rights as defined under applicable data protection laws, including by collecting, processing, disclosing or generating any personal data, including sensitive personal data (e.g. biometric or genetic information, medical records or healthcare information, payment card information, criminal records, government identifiers, passwords, etc.) without a valid legal basis. 
+r4.Do not disclose, share or input confidential information or trade secrets when using the Services without proper authorization: This includes but is not limited to any sensitive, confidential and proprietary information or any information which may constitute trade secrets under applicable laws. 
+r5.Do not commit, promote, contribute to, encourage, facilitate, incite, and/or assist with: (a) self-harm or suicide; (b) bullying, harassing, threatening or intimidating others; (c) violent, abusive or hateful behavior or promote suffering; (d) discrimination on the basis of protected characteristics; (e) development or distribution of illegal or restricted substances, goods, or services, such as but not limited to alcohol, tobacco, firearms, explosives, quarantined products, or restricted investment in or trading of securities under applicable laws; or (f) development, acquisition or usage of weapons or surveillance spyware. 
+r6.Do not promote human trafficking, sexual violence, sexual exploitation, or create or distribute any non-consensual and/or illegal pornographic materials. For the avoidance of doubt, this applies to both adults and minors.
+r7.Do not compromise child safety: This includes using the Services to create materials relating to or facilitating or promoting child abuse or the exploitation or harm of a minor.
+r8.Do not intentionally deceive or mislead others: This includes using the Services to spread misinformation, such as: (a) creating deepfakes and impersonations without the related persons
+valid consent; (b) generating, promoting or furthering fraud, scams, spams, disinformation, defamatory content, and misleading content; (c) committing academic and/or professional dishonesty; or (d) engaging in political campaigning or lobbying.
+r9.Do not engage in abusive, fraudulent or predatory practices: This includes facilitating or promoting the production or distribution of counterfeit or illicitly acquire goods; the generation or distribution of spam; generating content for fraudulent activities, scams or schemes that could result in harm, including financial harm; or using content to develop or promote the sale or distribution of deceptive or fraudulent products.
+r10.Do not abuse the Services: This includes coordinating malicious activity via different accounts or creating multiple accounts to circumvent protections we have in place or providing access to persons or entities that have been previously banned or intentionally bypassing capabilities or restrictions in the Services for the purposes of creating harmful Outputs (e.g. prompt injection or jailbreaking).
+r11.Do not misrepresent that any Outputs are human-generated or constitutes professional advice: This includes impersonating a human by presenting results as human-generated or using results in a manner to convince a natural person that they are communicating with a natural person when they are not.
+r12.Do not use any Outputs for high stakes decisions that affects an individual
+s safety, rights or well-being: This includes using the Services for decisions regarding finances, education, employment, housing, insurance, legal matters, medical issues, or other important fields.
+r13.Do not interfere with or disrupt the Services, such as bypassing protective measures or safety mitigations placed on the Services; or removing, hiding, modifying or replacing any notices or links contained in the Services.
+rWe rely on automated systems, human reviews and user reports to determine if users violate this Policy. Consequences of violation may include warnings, and suspension and termination of your Account.
+rUsers are encouraged to promptly report any suspected misuse, rights infringement, or violation of this Policy via HY 
+tencent.com. We will review all reports in good faith and may take appropriate action in accordance with the Policy and applicable laws.
+rWe may update this Policy from time to time, including when we update it as our technology evolves and as we learn of new and unanticipated risks and abuse trends. Please check this page regularly for updates to our Policy.
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+eastAsia","ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+ascii":"Times New Roman","hAnsi":"Times New Roman","cs":"Times New Roman"
+top":1797,"right":1440,"bottom":1797,"left":1440,"header":851,"footer":992,"gutter":0
+blurRad":57150,"dist":19050,"dir":5400000,"algn":"STRectAlignment
+usb0":"00000003","usb1":"00000000","usb2":"00000001","usb3":"00000000","csb0":"0000019F","csb1":"00000000"
+usb0":"A00002EF","usb1":"4000207B","usb2":"00000000","usb3":"00000000","csb0":"0000019F","csb1":"00000000"
+usb0":"00000001","usb1":"080E0000","usb2":"00000016","usb3":"00000000","csb0":"0004001F","csb1":"00000000"
+usb0":"E0000AFF","usb1":"00007843","usb2":"00000001","usb3":"00000000","csb0":"000001BF","csb1":"00000000"
+usb0":"A00002FF","usb1":"500039FB","usb2":"00000000","usb3":"00000000","csb0":"00000197","csb1":"00000000"
+usb0":"20002A87","usb1":"80000000","usb2":"00000008","usb3":"00000000","csb0":"000001FF","csb1":"00000000"
+name":"Table Columns 1","semiHidden":true,"unhideWhenUsed":true
+name":"Table Simple 3","semiHidden":true,"unhideWhenUsed":true
+name":"Table Colorful 1","semiHidden":true,"unhideWhenUsed":true
+name":"Table Columns 2","semiHidden":true,"unhideWhenUsed":true
+name":"Table Classic 1","semiHidden":true,"unhideWhenUsed":true
+name":"Table Columns 5","semiHidden":true,"unhideWhenUsed":true
+name":"Bibliography","uiPriority":37,"semiHidden":true,"unhideWhenUsed":true
+name":"Smart Link","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"footnote text","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Table Colorful 2","semiHidden":true,"unhideWhenUsed":true
+name":"HTML Top of Form","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Table Elegant","semiHidden":true,"unhideWhenUsed":true
+name":"footnote reference","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Table Columns 3","semiHidden":true,"unhideWhenUsed":true
+name":"Table Classic 2","semiHidden":true,"unhideWhenUsed":true
+name":"Table Classic 4","semiHidden":true,"unhideWhenUsed":true
+name":"TOC Heading","uiPriority":39,"semiHidden":true,"unhideWhenUsed":true,"qFormat":true
+name":"Table Colorful 3","semiHidden":true,"unhideWhenUsed":true
+name":"Table Subtle 2","semiHidden":true,"unhideWhenUsed":true
+name":"Outline List 1","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"caption","semiHidden":true,"unhideWhenUsed":true,"qFormat":true
+name":"Outline List 3","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Default Paragraph Font","uiPriority":1,"semiHidden":true,"unhideWhenUsed":true
+name":"Hashtag","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"HTML Bottom of Form","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Table 3D effects 1","semiHidden":true,"unhideWhenUsed":true
+name":"Table Columns 4","semiHidden":true,"unhideWhenUsed":true
+name":"Table 3D effects 3","semiHidden":true,"unhideWhenUsed":true
+name":"Unresolved Mention","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Table Classic 3","semiHidden":true,"unhideWhenUsed":true
+name":"Table Simple 2","semiHidden":true,"unhideWhenUsed":true
+name":"Outline List 2","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Normal Table","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Table 3D effects 2","semiHidden":true,"unhideWhenUsed":true
+name":"Table Contemporary","semiHidden":true,"unhideWhenUsed":true
+name":"Mention","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Table Subtle 1","semiHidden":true,"unhideWhenUsed":true
+name":"Smart Hyperlink","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+name":"Table Simple 1","semiHidden":true,"unhideWhenUsed":true
+name":"Table Professional","semiHidden":true,"unhideWhenUsed":true
+name":"No List","uiPriority":99,"semiHidden":true,"unhideWhenUsed":true
+defLockedState":false,"defUIPriority":0,"defSemiHidden":false,"defUnhideWhenUsed":false,"defQFormat":false,"count":376
+ascii":"Monaco","hAnsi":"Monaco","eastAsia":"Monaco","cs":"Monaco"
+ascii":"Monaco","hAnsi":"Monaco","eastAsia":"Monaco","cs":"Monaco"
+name":"useWord2013TrackBottomHyphenation","uri":"http://schemas.microsoft.com/office/word","val":"1"
+name":"differentiateMultirowTableHeaders","uri":"http://schemas.microsoft.com/office/word","val":"1"
+name":"enableOpenTypeFeatures","uri":"http://schemas.microsoft.com/office/word","val":"1"
+name":"doNotFlipMirrorIndents","uri":"http://schemas.microsoft.com/office/word","val":"1"
+name":"overrideTableStyleFontSizeAndJustification","uri":"http://schemas.microsoft.com/office/word","val":"1"
+name":"compatibilityMode","uri":"http://schemas.microsoft.com/office/word","val":"15"
+dirty":2,"padType":"doc","isChunked":false,"smartsheetConfig":"","calcByFrontend":false,"bad":2,"websocketReopenCount":0,"pollingAttemptNumber":3,"pver":0,"globalPadId":"300000000
+HqQiOzQeaEVU","wmode":"wb","ver":0,"smartsheetPermission":null,"smartsheetPermissionInvalid":false,"gray":0,"dver":"3.0.0","padId":"HqQiOzQeaEVU","padSubId":"BB08J2","pos":0,"apool":null,"client":
+sig":"5377d3615041541fcb2e8ce57a9d38b071a5859a","upid":"DSHFRaU96UWVhRVZV","sid":"361750582512","tid":1792763206858
+chunk":false,"lastModifyTime":1766848976384,"globalPadId":"300000000
+HqQiOzQeaEVU","padTitle":"Tencent HY 3D Acceptable Use Policy","creatorCorpName":"","isEmbed":true,"isPermCalcBySrv":false,"cacheTime":null,"domainId":"300000000","creatorId":"144115215448482535","advPolicy":
+isOpendocxfromTim":false,"chunkCellSize":0,"roomUserCount":1,"relativeUrl":null,"use
+external":false,"userColor":0,"newOpenSvc":1,"isUpgrade":false,"userIsGuest":false,"isTimDomain":true,"dataIniting":false,"isPublicPad":false,"appInfoConfig":null,"calcRev":null,"creatorDomain":"300000000","lastModifyUser":"p.144115215448482535","userId":"g.98618793243","rightFlag":1,"creatorCorpId":"","isCreator":false,"relative":null,"dirty":2,"shortLink":"https://docs.qq.com/doc/DSHFRaU96UWVhRVZV","disableFB":true,"formulaResults":null,"policy":2,"srcType":6,"siteName":"
+isOwner":false,"specialKey":null,"titleIsReadOnly":false,"userLink":"","isOverConNum":false
+pver":0,"gray":0,"isGray":false,"needEscape":true,"isProduction":true,"htmlData":

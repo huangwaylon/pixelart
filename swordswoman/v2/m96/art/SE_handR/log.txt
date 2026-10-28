@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I made the right hand one pixel longer by adding a skin pixel at crop (14,7), just inside the sleeve opening, so it hangs from the sleeve as the illustration shows. The delta passes: ssim_b +0.000, dE +0.010, sil +0.000, and lint O1/S4/O3 unchanged. A bigger 3x4 mitten went over the dE budget (+0.13) and I couldn't make it fit, so the hand is still only 2px wide with no thumb, and I didn't touch the sleeve hem.

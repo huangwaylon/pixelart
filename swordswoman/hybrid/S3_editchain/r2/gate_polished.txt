@@ -1,0 +1,12 @@
+PASS  baseline spread 0 (all keys)       104.0..104.0
+PASS  feet_cx spread <= 1 (turn set)     63.50..64.38 spread 0.88
+PASS  body orphans 0                     {}
+PASS  flicker 0 outside FX (sequences)   body {'jump_E': 0, 'slash_SE': 0, 'walk_SE': 0}  fx-only {'jump_E': 0, 'slash_SE': 2, 'walk_SE': 0}
+PASS  standing body height 56-64 (turn)  [62.0]
+      heights incl. sword/FX: {'jump_E_apex': 66.0, 'jump_E_crouch': 56.0, 'jump_E_land': 51.0, 'slash_SE_k0': 59.0, 'slash_SE_k1': 60.0, 'slash_SE_k2': 57.0, 'slash_SE_k3': 59.0, 'turn_E': 62.0, 'turn_N': 68.0, 'turn_NE': 68.0, 'turn_NW': 64.0, 'turn_S': 68.0, 'turn_SE': 67.0, 'turn_SW': 67.0, 'turn_W': 62.0, 'walk_SE_k0': 63.0, 'walk_SE_k1': 66.0, 'walk_SE_k2': 65.0, 'walk_SE_k3': 64.0}
+PASS  off-palette + semi-alpha 0         0
+PASS  guide IoU reported for every key   {'jump_E_apex': 0.4367, 'jump_E_crouch': 0.4951, 'jump_E_land': 0.4238, 'slash_SE_k0': 0.5852, 'slash_SE_k1': 0.4862, 'slash_SE_k2': 0.5226, 'slash_SE_k3': 0.5524, 'turn_E': 0.6422, 'turn_N': 0.5973, 'turn_NE': 0.6142, 'turn_NW': 0.5714, 'turn_S': 0.6337, 'turn_SE': 0.5759, 'turn_SW': 0.6167, 'turn_W': 0.6472, 'walk_SE_k0': 0.6125, 'walk_SE_k1': 0.5504, 'walk_SE_k2': 0.6421, 'walk_SE_k3': 0.6358}
+PASS  walk crown range 4-5 px            crown rows [42, 44, 46, 41] range 5
+PASS  walk head lags the body (1 key)    body(corset) rows [80, 83, 80, 78], lowest-crown key 2 vs lowest-body key 1
+      lint totals (std set): {'outline_gap': 695, 'notch': 130, 'spur': 150, 'double': 65, 'jaggy': 323, 'banding': 96}
+GATE PASS

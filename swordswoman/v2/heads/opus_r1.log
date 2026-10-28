@@ -1,0 +1,27 @@
+Restored session: Mon 26 Oct 2026 11:43:01 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+The round-skull head set is done for both views. At 1x every variant passes the squint test: domed crown with a 5px top, hair widest at the temples just above the eyes, the bob curving back in, and a soft chin whose outline steps 1-2-3. I went through about 7 preview passes. The main fixes along the way:
+
+- **SE bun:** it read as a stem, so I enlarged it to 7×7 and raised it so it peeks over the knot.
+- **SE lookup eyes:** they read as looking down, so the white now sits below the iris.
+- **E bow:** the boxy loops read as two red "ears", so it's now a pinched bow-tie.
+- **Squash domes:** removed a few stray `h` pixels.
+
+A few things you should know before animators use these:
+
+- **Bun anchors have negative y.** The bun centre sits above the head grid (y −4 for SE, −2 for E) so it can peek over the bow. The composer handles this; check your engine does too.
+- **The bow anchor is slightly back of centre** (SE x=9 of 23), not dead centre as the brief says. Centred, the bow covered the whole top of the dome; set back, the front of the dome stays visible, as in iso_SE and iso_E.
+- **Lint:** `cm.py lint` still lists "orphans", but they're intentional: eye glints, the 1px mouth and diagonal outline steps.
+- **`preview.py` bug:** the 1x strip at the bottom of `sheet.png` overlaps itself because tiles are different widths. The per-variant `*_1x.png` files are fine. I didn't change the tool.
+
+The SE eyes are copied from the current SE head (`#` lash, `wii/iIi/III` near eye, `wi/iI/II` far eye, `33` brow highlights, `1` mouth/cheek). The lean, lookup and blink variants are generated from `head_neutral` by `crit/gen_se.py` and `crit/gen_e.py`, so re-run those after editing neutral; the squash heads are hand-drawn. Notes are added to `NOTES.md`.
+
+**Summary (5 lines):**
+1. Files in `heads/`: `se/head_{neutral,lean,lookup,squash,blink}.txt`, `se/{bun,bow,bow_squash}.txt`, `e/head_{neutral,lean,lookup,squash}.txt`, `e/{bun,bow,bow_squash}.txt`.
+2. SE head is 23×20 with pivot (13,18), bow anchor (9,3), bun anchor (8,−4). Lean has pivot (12,17), so the head sits +1x +1y. Squash is 25×18 with pivot (14,16), bow (10,3), bun (9,−4).
+3. E head is 22×20 with pivot (13,18), bow anchor (11,2), bun anchor (4,−2). Lean has pivot (12,17). Squash is 24×18 with pivot (15,16), bow (12,2), bun (5,−2).
+4. The bun is 7×7 with pivot (3,3) in both views. The SE bow is 17×8 with pivot (9,7), and its squash is 19×7 with pivot (10,6). The E bow is 13×7 with pivot (6,5), and its squash is 15×6 with pivot (7,4).
+5. Preview output is in `png/sheet.png` plus `png/<view>_<variant>_{1x,6x}.png` and `_full.txt`.
+
+Saving session...completed.

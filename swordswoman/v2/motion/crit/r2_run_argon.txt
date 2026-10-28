@@ -1,0 +1,15 @@
+OVERALL: 7
+
+**Scores:**
+* Natural: 7
+* Whole-body: 8
+* Fluid: 7
+* Appealing: 7
+* Secondary motion convincing: 6
+* Readable at 1x: 6
+
+**Top 3 Concrete Fixes:**
+
+1. **`push2` (SE & E) – Forearms/Sleeves:** Both red sleeves detach completely from the upper arms, leaving floating skin/gap pixels at 1x. Pull both forearm cuffs inward toward the elbow/torso by 2–3 px (at 1x) to close the gap and maintain a connected arm silhouette.
+2. **`push` (SE) – Left/Back Leg & Arms:** The silhouette collapses into a single vertical column. Extend the pushing back leg 3 px further up-left (backwards) to match `push2`’s clear stride extension, and pull the back arm 2 px left so its cuff clears the torso.
+3. **`down` (E) & `down2` (SE) – Ribbon Tails:** The ribbon springs snap too high horizontally, looking like stiff spikes. Rotate the ribbon tips downward by ~25° (drop tips 2–3 px at 1x) so they arc naturally behind the head.

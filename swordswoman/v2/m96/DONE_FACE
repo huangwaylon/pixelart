@@ -1,0 +1,8 @@
+M96 FACE ROUND DONE 2026-10-27
+- Brows (g, 3-row templates lash-4..-2, 1-row skin gap, per-expression shape) + nose (S/SE 2px S cue shadow side; E profile bump) on masters S/SE/E + all 45 stamps. NE/N: no face.
+- Hands (slender, thumb|notch|fingers) S/SE/N; S/SE thigh band; SE bow K-separation + lit top + calmer hair highlights.
+- Spec: FACE_SPEC.md (EYE_SPEC.md -> pointer), eye_spec.json brow section, anchor.json nose; eyecheck checks brow shape/colour/gap + nose.
+- Gates: qc_gate masters PASS 6/6, stamps PASS 45/45, eyecheck 36/36.
+- Fidelity vs master0 (crit/face_gate.txt): dE S +0.73 SE +1.16 E +0.14 N +0.22 vs previous masters; ssim_b SE -0.027 (fringe window + hands).
+- Crit: r1 Argon 8.5 / Opus 7; r2 Argon 8.5 / Opus 6 (brows too heavy -> switched h->g after r2).
+- Re-run: tools/faceround.sh IN OUT ; tools/stamp.py heads OUT heads ; sheets: sheet.py, stampsheet.py, facesheet.py.

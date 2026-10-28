@@ -1,0 +1,17 @@
+Restored session: Mon 26 Oct 2026 11:08:48 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 4/10.** It's better than a slideshow, but it doesn't read as a walk yet.
+
+1. **Legs don't read.** At 1x the lower body is a red-and-black blob, and I can't tell which leg is forward in F1, F2, F5 or F6. Stretch the stride, give each leg its own value, and push the contact poses (F0 and F4) wider.
+2. **Feet slide.** The planted foot moves 1–2px between contact and passing (F0→F1→F2, F4→F5→F6). Pin it to the same pixel until it lifts.
+3. **The bounce is backwards.** F3 and F7 sit about 2px higher, but they're timed as the long holds (110ms) where the body should be dropping. Put the lowest point on the frame right after contact and the peak on passing, and make the drop 2–3px so it actually feels bouncy.
+4. **The head is redrawn every frame.** The bow changes shape, the bun shrinks and grows, the eyes shift, and the head is taller and narrower in F3 and F7. That's off-model, and the static areas shimmer. Lock one head sprite and only move it whole-pixel on Y.
+5. **The katana is dead weight.** It keeps the same angle and slides along with the hips, then shortens in F3 and F7 (a length change, not foreshortening). Add 1–2px of drag and tip-bob that trails the hips by one frame, and keep the blade length fixed.
+6. **No secondary motion.** The skirt hem, bow tails and free arm don't follow through. Move the hem 1px a frame behind the body, and make the arm swing opposite the forward leg. Nothing here is fast enough to need smears, so there's no FX to add, and that's fine.
+7. **Clean-up.** There are stray dark pixels at the boot and sword grip, and the hair outline has stair-stepped jaggies. The palette holds, but the pillowy red highlight on the torso jumps around from frame to frame.
+
+**Fix first:** the foot pinning and the swapped bounce timing (both cheap), then lock the head. That gets it to about 6.5.
+
+Saving session...completed.

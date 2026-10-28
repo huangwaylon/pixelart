@@ -1,0 +1,38 @@
+{
+ "logs": [
+  {
+   "attempt": 0,
+   "sec": 104,
+   "fixes": [
+    "drop: O1 25 edge pixels are not K outline (draft had 14): [(13, 4), (14, 4), (15, 4), (16, 4), (17, 4), (18, 4), (12, 5), (19, 5), (13, 6), (14, 6)]; every edge pixel facing empty space is K"
+   ]
+  },
+  {
+   "attempt": 1,
+   "sec": 40,
+   "fixes": [
+    "drop: O1 27 edge pixels are not K outline (draft had 14): [(13, 4), (14, 4), (15, 4), (16, 4), (17, 4), (18, 4), (12, 5), (19, 5), (13, 6), (14, 6)]; every edge pixel facing empty space is K"
+   ]
+  }
+ ],
+ "out": {
+  "lagL": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/S/artist/w_lagL.txt",
+   "lint": []
+  },
+  "lagR": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/S/artist/w_lagR.txt",
+   "lint": []
+  },
+  "lift": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/S/artist/w_lift.txt",
+   "lint": []
+  },
+  "drop": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/S/artist/w_drop.txt",
+   "lint": [
+    "O1 27 edge pixels are not K outline (draft had 14): [(13, 4), (14, 4), (15, 4), (16, 4), (17, 4), (18, 4), (12, 5), (19, 5), (13, 6), (14, 6)]; every edge pixel facing empty space is K"
+   ]
+  }
+ }
+}

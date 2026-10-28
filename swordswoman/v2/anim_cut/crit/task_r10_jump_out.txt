@@ -1,0 +1,19 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt jump_SE and jump_SE_ns from `actions_src/jump.py`. QC passes on both after five build-and-review passes; the critics haven't re-scored it.
+
+**Changed:**
+- Shared hair and bow variants on every frame, reacting one frame late.
+- Ground shadow per frame: 10 crouch/land, 5 apex.
+- Launch smear removed; dust is now solid 2-tone puffs.
+- Blade moves 1–2 steps per frame, tip above the soles.
+
+**New parts:** `jump10_head_hf`, `jump10_head_shout_hf` (the shared `head_hf` failed QC's head-size check), `jump10_fx_{launch,launch2,land2,land3}`, plus `actions/test_jump10.json`.
+
+**Weaknesses:**
+- Blade is horizontal on the fall.
+- Settle and rest blade nearly identical.
+- No smear frame.
+- Raised-arm shoulder seam on rise unfixed.
+
+Saving session...completed.

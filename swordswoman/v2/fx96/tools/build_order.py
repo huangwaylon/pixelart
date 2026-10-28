@@ -1,0 +1,1 @@
+order=['throw_orb','throw_trail','throw_sparkle','throw_pop','hit_spark','hit_flash','speed_lines_long','speed_lines_short','dust_step','dust_land','dust_skid','jump_whoosh','land_ring','hurt_star','sweat_drop']

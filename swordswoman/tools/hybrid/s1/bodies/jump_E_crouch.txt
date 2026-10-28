@@ -1,0 +1,20 @@
+# jump_E_crouch ANTICIPATION SQUASH (160 ms): the turn_E cel drops 5 px (head stamp rigid, 51,50), knees bent forward,
+# skirt hem flares 4 px wider (volume kept: -5 px tall / +4 px wide), ribbons lift a little (trail the downward move).
+fx: none
+from: turn_E 1 5
+stamp: 51 50
+expr: frown
+kat: katana_idle_2to1 43 87 m under
+clear: 30,98,110,112
+patch: 46 97
+_____KKRR______________________
+___KKRRRRRRRRRRRRRRRRRRRRRRK___
+__KRRRRRRRRRRRRRRRRRRRRRRRRRRK_
+___KvvvrrrrrvvKKvvvvvvvvvvvvvK_
+____KKKKKKKKKK__KKKKKKKKKKKKK__
+limb: s 2 66,100 70,101 67,103 behind
+limb: d 2 67,103 70,104 behind
+limb: s 2 62,100 65,102 62,103 behind
+limb: d 2 62,103 64,104 behind
+opb: curve 58,86 51,88 54,93 P
+opb: curve 54,93 56,96 51,97 p

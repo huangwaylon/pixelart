@@ -1,0 +1,30 @@
+**Critique (round 3)**
+
+**(1) Scores**
+
+| | Cute | Anime/JP | Big eyes @1x | Intentional | Consistent |
+|---|---|---|---|---|---|
+| Sprite | 6 | 7 | 7 | 6 | 7 |
+| Portrait | 7 | 8 | 9 | 7 | 8 |
+
+**(2) Weak expressions at 1x**
+- **The S row has a goatee.** In neutral, cheerful, determined, shout, surprised and embarrassed there's a dark cluster under the mouth (the chin outline plus the shadow). At 1x it joins up with the mouth into a beard. This is the biggest problem.
+- **effort / pain (S, SE):** the X and gritted eyes plus the dark brows make a 5 px black bar. It looks like sunglasses, not a squint.
+- **surprised:** the white ring with a black 1x2 pupil and no blue makes the eye look dead. It also stops matching the other cells.
+- **SE neutral:** the mouth (dark pixel + r) reads as open or mid-speech.
+- **Portraits:** embarrassed has a dark wavy mouth over dark pixels, which reads as a moustache. Effort has half-lids, so she looks smug or sleepy rather than straining. In neutral and cheerful, the maroon pixel at the bottom-inner corner of each iris reads as a bloodshot eye or a tear.
+
+**(3) Views**
+- **E:** yes, it's a real profile now. Forehead, nose bump, lip notch and chin are all there. But there's no jaw-to-ear line, so the face drops straight into the neck like a column.
+- **SE:** yes, a real 3/4. The far-cheek bulge and the compressed far eye both work. The nose is too faint to anchor the turn.
+
+**(4) Top 6 pixel edits**
+1. **S, all open-mouth cells:** delete the dark pixels below the mouth, recolour the chin outline to skin-shadow, and keep only the 2 px chin point in outline.
+2. **S/SE effort and pain:** cut the brows to 2 px, raised at the outer end. Leave 1 px of skin between brow and eye.
+3. **surprised (S, SE, E):** keep the white ring but put a 1x2 blue iris i around the pupil, plus 1 n highlight.
+4. **SE neutral:** shrink the mouth to a single r pixel. Add a 1 px skin-shadow nose on the far-cheek edge, one row above the mouth.
+5. **E, all cells:** add a 2–3 px diagonal skin-shadow jaw line from under the ear to the chin. Narrow the neck by 1 px at the front.
+6. **Portraits:**
+   - In neutral and cheerful, swap the iris-corner maroon pixel for I (dark iris).
+   - In embarrassed, make the mouth a 3 px wavy r line with no outline below it.
+   - In effort, lower the lids only 1 px and add inner-brow furrow pixels.

@@ -1,0 +1,5 @@
+1) **Natural unarmed motion: 6/10** — The hip sway is natural, but the arms stay locked in a stiff ~30° A-pose throughout, making the hands look slightly braced or ready to hold items rather than relaxed.
+2) **Cheerful trainer feel: 6/10** — The side-to-side weight shift is cute, though the lack of vertical bounce and the rigid arms make her feel a bit robotic and subdued for an upbeat trainer.
+3) **Readable at 1x: 7/10** — The silhouette, bow, and hip sway read well at true pixel size, though the arms blend into the skirt silhouette on the inner side during the sway.
+
+**Most important fix:** Relax the arms down closer to the body (or put one hand on a hip) and add a slight secondary arm swing/vertical head bob to break the stiff A-pose.

@@ -1,0 +1,11 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+All 15 arm poses are in `parts/se/` and shown in context in `actions/test_arms.json`. I did three compose-and-fix rounds; it currently has 18 labelled frames, each pose with and without a katana.
+
+**Files:** `armN_{fwd,back,runF,runB,up,coil,ext,out,hold}.txt`, `armF_{fwd,back,runF,runB,up,out}.txt`. Blade lengthened to 19px (`BL` in `tools/katana.py`), all `kat_*.txt` regenerated; the handle was already 5px.
+
+**Anchors:** pivot is the shoulder, attached like the base (armN→`torso.shL`, armF→`torso.shR`). `hand` is the top-left pixel of the 2×2 hand; `kat_*` pivot goes there.
+
+**Z:** armN 6. `up` and `coil` need z8 or the head hides the hand. Katana z5 in front, z1 for back, out, coil and runB.
+
+Hand still sits low on `up` (head height), sword above. Head too big to clear.

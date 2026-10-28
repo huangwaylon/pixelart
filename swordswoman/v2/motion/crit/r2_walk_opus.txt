@@ -1,0 +1,12 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+OVERALL: 6
+
+Scores for the NEW motion: natural 6, whole-body 6, fluid 6, appealing 6, secondary 5, readable at 1x 6.
+
+**What works:** The E stride, contact poses and pass frames read clearly. The bob now has weight: lowest on down, highest on up. The skirt hem lags upward on contact and settles on down, which is good inertia.
+
+**Top 3 fixes**
+1. **Head is lopsided between the two steps.** It tilts 1.8 to 6.4° and drifts 3.5 to 5.2 px to the right in contact2 through pass2. In the first step it only moves -1.3 to +0.8 px. Mirror the first step into the second (tilt about ±3°, x within ±1 px) so the head stops drifting right every other step.
+2. **The ribbon tails stick up like antennae.** In E contact2/down2 and SE contact they point up and back, about 9 px above where they hang at rest, at 28–34°. Cap the lift at about 3 px and 12°, and have them peak on pass/up, a frame after the body's high point.
+3. **Arms and knees are too timid.** In the E up/up2 frames, swing the forward sleeve about 3 px further forward and the back hand about 3 px further back. In SE pass/pass2, raise the passing knee about 2 px.

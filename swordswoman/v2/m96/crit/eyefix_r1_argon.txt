@@ -1,0 +1,6 @@
+a=3,b=5,c=7,d=8
+
+**Top 2 Pixel-Level Fixes:**
+
+1. **Create an arch (`⌒`) instead of a flat bar:** Currently, the upper lash in **S/SE/E** (neutral, cheerful, determined) is a completely flat 5px horizontal line (`‾‾‾`), making her look sleepy/stern rather than cute and round. Raise the middle 2–3 pixels over the iris by 1px (using dark brown/black) and drop the inner corner by 1px (to skin tone or soft anti-aliasing) so the top edge visibly curves upward.
+2. **Soften the `surprised` top lid:** Replacing the hollow arch with a solid 2px-thick black block makes the eyes look heavy and dark rather than wide-eyed. Restore 1px of iris/catchlight height underneath the arched lash line, and add the outer 1px lash wing to **joy** and **blink_half** for feminine consistency.

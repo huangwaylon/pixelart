@@ -1,0 +1,17 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Verdict:** the illustrations work. At 48px the hair turns into a blob.
+
+- **Hair at 48px:** the half-up split doesn't show. The top section, side locks and back hair all merge into one dark brown mass. Side locks don't taper and there's no neck gap. The bow is 2–3 red pixels, so the bun disappears.
+- **Reimu?** No. There's no white, no detached sleeves, and the bow sits on the side. In the art the hair is cute, feminine and anime.
+- **Profiles:** left, right and iso_E are real profiles. iso_E nearly duplicates right.
+- **Consistency:** the bow is on her left in every view. The iso views have a consistently higher camera.
+
+**Top 5 fixes for the masters:**
+1. Outline the top section with a 1px dark line, put a highlight band on it, and use a mid tone for the lower hair.
+2. Make the bow bright and dark red, about 5×3px, with a 1px knot pixel and a 2px tail. Give the bun its own 3×3 circle.
+3. Taper the side locks to 1px points at chest height and add a 1–2px skin neck gap.
+4. Lighten the face, which shading currently covers. Add 2px eyes and split the bangs into 3 points.
+5. iso_SE and iso_NE have gone maroon/purple, so remap them to the red ramp. Remove the black stripes on the legs in front, back and N.
+
+**Regenerate:** iso_E. Its skirt and hips balloon out.

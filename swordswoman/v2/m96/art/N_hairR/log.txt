@@ -1,0 +1,7 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I made two small fixes to the hair outline. I removed the doubled K pixel at the right hair edge on row 11, so the line now steps cleanly from row 10 to 12, and I set the K on row 16 one pixel further out with a matching L sheen pixel, which breaks up a 3px straight run. The ribbon tail and bow were already continuous E/R, so I left them alone.
+
+The final run has no '!' on any value. ssim_b is 0.966 (+0.001), dE is 7.107 (−0.017), and silhouette and line_f are unchanged. Lint counts are the same as the original (R1 5, S4 7, O3 1), so the remaining orphan and jaggy flags are still there.
+
+I tried two other changes and dropped them. Pushing the upper-right edge out a pixel and reshaping the bottom hair tips both lowered the silhouette and dE scores, and the tip edit also added an orphan pixel. The tips seem to continue below the bottom of this crop, so I didn't change them.

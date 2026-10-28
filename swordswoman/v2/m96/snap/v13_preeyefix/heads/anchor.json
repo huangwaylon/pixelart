@@ -1,0 +1,230 @@
+{
+ "_doc": "M96 head anchors (128x128 master cell coords, v2/m96/masters/EC0_<V>_96.txt). Eye template origin (x0,y0) = top-left of the eye_spec block (row B = brow row; lash row = y0+1). mouth = origin of the 4x3 mouth block (cheek/mouth/jaw rows). blush = [x, y, max px] per cheek, drawn centred-left at (x..x+n-1, y). ne_lash = pixels (in order) that poke past the cheek outline. Head stamps v2/m96/heads/<V>_<expr>.txt are full-head crops at 'stamp' = [x0, y0, x1, y1) with '; origin x0 y0' meta; paste = copy every non-'.' char to (x0+c, y0+r). eye_dy = lash row - qc crown (21 in S/SE/E). Built by tools/stamp.py. nose = [x,y,char] pixels drawn verbatim (E: profile outline bump). FACE ROUND 2: eyes[i].wing_bg = master px under each cat-eye wing position (restored before drawing the expression wing); blush = [x, y, kind] oval patch origin (eye_spec blush[kind] templates); eye rows per eye_spec eye_dy (S 20, SE 21, E 20). Built by tools/face2build.py.",
+ "views": {
+  "S": {
+   "eyes": [
+    {
+     "kind": "front_left",
+     "x0": 56,
+     "y0": 49,
+     "wing_bg": {
+      "-1,0": "s",
+      "-1,1": "s",
+      "-1,2": "s",
+      "-1,3": "s"
+     }
+    },
+    {
+     "kind": "front_right",
+     "x0": 66,
+     "y0": 49,
+     "wing_bg": {
+      "6,0": "K",
+      "6,1": "s",
+      "6,2": "s",
+      "6,3": "s"
+     }
+    }
+   ],
+   "mouth": [
+    62,
+    56
+   ],
+   "blush": [
+    [
+     57,
+     55,
+     "front"
+    ],
+    [
+     67,
+     55,
+     "front"
+    ]
+   ],
+   "crown": 30,
+   "chin": 63,
+   "stamp": [
+    50,
+    29,
+    78,
+    65
+   ],
+   "nose": [
+    [
+     63,
+     54,
+     "S"
+    ],
+    [
+     63,
+     55,
+     "S"
+    ]
+   ]
+  },
+  "SE": {
+   "eyes": [
+    {
+     "kind": "front_left",
+     "x0": 62,
+     "y0": 50,
+     "wing_bg": {
+      "-1,0": "s",
+      "-1,1": "s",
+      "-1,2": "s",
+      "-1,3": "s"
+     }
+    },
+    {
+     "kind": "far",
+     "x0": 72,
+     "y0": 50,
+     "wing_bg": {
+      "4,0": "s",
+      "4,1": "K",
+      "4,2": "K"
+     }
+    }
+   ],
+   "mouth": [
+    67,
+    57
+   ],
+   "blush": [
+    [
+     62,
+     56,
+     "front"
+    ],
+    [
+     72,
+     56,
+     "far"
+    ]
+   ],
+   "crown": 30,
+   "chin": 63,
+   "stamp": [
+    45,
+    28,
+    80,
+    65
+   ],
+   "nose": [
+    [
+     71,
+     55,
+     "S"
+    ],
+    [
+     71,
+     56,
+     "S"
+    ]
+   ]
+  },
+  "E": {
+   "eyes": [
+    {
+     "kind": "profile",
+     "x0": 72,
+     "y0": 49,
+     "wing_bg": {
+      "-1,0": "s",
+      "-1,1": "s",
+      "-1,2": "s"
+     }
+    }
+   ],
+   "mouth": [
+    74,
+    56
+   ],
+   "blush": [
+    [
+     72,
+     55,
+     "front"
+    ]
+   ],
+   "crown": 30,
+   "chin": 63,
+   "stamp": [
+    46,
+    26,
+    82,
+    65
+   ],
+   "nose": [
+    [
+     78,
+     54,
+     "s"
+    ],
+    [
+     79,
+     54,
+     "K"
+    ],
+    [
+     78,
+     55,
+     "s"
+    ],
+    [
+     79,
+     55,
+     "K"
+    ],
+    [
+     78,
+     56,
+     "K"
+    ]
+   ]
+  },
+  "NE": {
+   "eyes": [],
+   "mouth": null,
+   "blush": [
+    [
+     74,
+     58,
+     "ne"
+    ]
+   ],
+   "ne_lash": [
+    [
+     76,
+     56
+    ],
+    [
+     76,
+     55
+    ]
+   ],
+   "crown": 30,
+   "chin": 63,
+   "stamp": [
+    44,
+    27,
+    80,
+    65
+   ]
+  },
+  "N": {
+   "eyes": [],
+   "mouth": null,
+   "blush": [],
+   "crown": 30,
+   "chin": 63,
+   "stamp": [
+    49,
+    29,
+    78,
+    65
+   ]
+  }
+ }
+}

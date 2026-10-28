@@ -1,0 +1,55 @@
+{
+ "size": [
+  24,
+  13
+ ],
+ "facing": "E",
+ "attach": "head_top",
+ "pivot": [
+  12,
+  11
+ ],
+ "ms": [
+  60,
+  120
+ ],
+ "cell_offset": [
+  20,
+  6
+ ],
+ "cell": "40x40 cell of the 32 px figure (A_r3, feet ~20,37, head top ~20,6, head width ~18); canvas top-left sits at cell (8,-5) (5 rows above the cell top)",
+ "layer": "over",
+ "orbit": {
+  "centre": [
+   12,
+   6
+  ],
+  "semi_axes": [
+   9,
+   3
+  ],
+  "band_px": [
+   18,
+   6
+  ],
+  "angles_deg": [
+   [
+    90,
+    210,
+    330
+   ],
+   [
+    150,
+    270,
+    30
+   ]
+  ],
+  "note": "screen angles (y down); front star bottom ~2 px above the bow top (cell y6)"
+ },
+ "star_px": {
+  "front": "5 px fill (7 with K)",
+  "back": "3 px fill (5 with K)"
+ },
+ "loop": "f0->f1->f0 reads as orbit; or cycle f0,f1 for dizzy",
+ "flip_W": "mirror x: x -> 23-x, pivot -> [11,11]"
+}

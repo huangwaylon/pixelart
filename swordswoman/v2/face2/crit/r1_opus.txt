@@ -1,0 +1,75 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+I read both sheets and edited nothing. One problem first: your goal got cut off after "\make", so I don't know the full brief. I've critiqued against the most likely goal, which is getting these to the standard of shipped DS-era trainer art and portraits. Send the rest of the brief and I'll aim the notes at it.
+
+---
+
+## Verdict: not shippable yet
+
+The expression logic is good. The drawing underneath isn't at the level of the references yet. Shape, hair and shading are all at a beginner level, and the large portraits make that obvious.
+
+---
+
+## 1. Face kit (15 px head, 5 directions × 11 expressions)
+
+**Fatal**
+- **The back views (NE/N) are a blank blob.** Fifty-five cells in this sheet are a dark rounded square with a bow on top. A back view needs:
+  - a crown highlight
+  - 2–3 strand clusters at the nape, with the hair ends breaking the outline
+  - the bow drawn from behind (knot plus tails), not the same two red squares
+  - 1–2 px of neck or skin at the bottom
+
+  Separately, there's no reason to draw 11 expressions for N. Every N cell is identical, so it should be one cell.
+- **SE isn't really three-quarter.** It's the front face shifted right. The far eye should narrow to about 2–3 px wide. The centre line (nose and mouth) should move toward the far side. The far cheek should be cut into by the hair outline, and the jaw should step once on the near side.
+- **E profile has no ear and no real face shape.** The nose is a single bump on a vertical line. You need a forehead–nose–lip–chin rhythm: at least 1 px in, 1 px out, 1 px in, then the chin. Add a 2 px skin ear in the hair mass. The eye in profile should be a "◁" wedge, not a cut-off front eye.
+
+**Serious**
+- **The eyes are too big for this head.** Your own caption says real battle sprites use eyes 1–3 px wide and 2–4 px tall, and yours are 4×5 by design. At 1× in your bottom strip, the heads read as goggles next to Lyra and Hilda. Going to 3×4 frees up the cheeks and chin, which is where the expression gets its room.
+- **The hair has no clusters.** It's one flat dark colour with a pure-black outline. Hilda's and Rosa's hair at the same scale has two or three tones, a highlight band and strand tips that break the silhouette.
+- **The outlines are pure black, inside the face as well.** HGSS and BW use a darkened version of each area's own colour. Hair should be outlined in dark hair-brown, and the chin and neck in dark skin-brown. Pure black inside the face makes it look like a sticker.
+- **Neutral, cheerful and determined look the same at 1×.** The only difference is brow pixels hidden under the bangs. Change the eye shape and the mouth as well; brows alone won't carry it at this size.
+
+**OK / keep**
+- Joy (^^), pain (><), surprised (small pupils), and blush placement.
+
+---
+
+## 2. Large portraits (PMD/FE scale)
+
+**Fatal**
+- **The face is a box.** The jaw is wide and the chin is a flat horizontal line, with a full black outline running under it into the neck. FE GBA and PMD jaws taper in steps of 1, 1, 2, 2, 3 px to a narrow chin. As drawn she looks square-jawed and older. This one fix will help more than anything else on this list.
+- **Blue is leaking under the eyes.** The iris colour spreads into the skin below the eye, most visibly in neutral, determined and embarrassed. It reads as bruising or eyeshadow. The lower eye edge should be a 1 px line: dark brown, or a light lash colour. The skin below it stays skin.
+- **The hair is a helmet.**
+  - The highlight is a single grey arc that reads as a headband. Make it a broken "angel ring" of 3–5 short dashes that follow the curve of the skull, tinted warm (pinkish-brown), not grey.
+  - The bangs are irregular 1 px stairs: jaggies. Group them into 3–4 deliberate locks with consistent step lengths, each ending in a point.
+  - The side hair is rectangular slabs. The black rectangle on her right (our left in the image) reads as a rendering error, not as shadow.
+
+**Serious**
+- **The skin has no lighting.** It needs a shadow cast by the bangs across the forehead, a shadow under the chin on the neck, and a single shade tone at the side of the face. At the moment only the blush gives the skin any volume.
+- **The bow is cut off by the frame,** and it isn't one design between the kit and the portraits. Either frame the bow fully, or crop deliberately so the knot still shows.
+- **The eyes are weak for a portrait.** The top lash line should be the heaviest line on the face: 2 px thick, flicking out at the corner. Right now the outline weight is the same all around the eye, so the eyes look small despite their size.
+- **The collar is two flat reds.** Add a single shadow wedge under the chin and a fold line.
+
+**Effects**
+- The anger mark on shout is four red squares. Use the proper 💢 cross-vein shape.
+- The sweat drop on pain and embarrassed, the "!" on surprised, and the checker-dithered blush on embarrassed are all correct PMD conventions. Keep them.
+- **blink_closed has lost the character.** It's flat thin lines. Closed eyes should keep the lash weight and curve, either a downward-curving ∪ or a heavy lid line with a lash flick at the outer corner.
+
+---
+
+## 3. Consistency between the two sheets
+
+They don't read as the same girl. The kit has bright blue eyes with whites, a narrow face and a full bow. The portrait has dark blue eyes with lower blobs, a wide face and a cropped bow. Pick one model sheet (eye colour count, eye shape, bang lock layout, bow shape) and derive both from it.
+
+---
+
+## Fix order
+1. Taper the jaw and chin on the portraits.
+2. Remove the blue under the eyes and thicken the upper lash line.
+3. Redraw the hair as locks, with a hue-shifted angel ring. Replace the pure-black outlines with darkened area colours.
+4. Shrink the kit eyes to 3×4, then redo SE and E as real turnarounds.
+5. Draw a proper back view and collapse N to a single cell.
+6. Add the bang shadow and chin shadow, then fix the anger mark and blink_closed.
+
+Send the full goal and I can narrow this, or turn it into pixel-by-pixel redline notes for specific cells.

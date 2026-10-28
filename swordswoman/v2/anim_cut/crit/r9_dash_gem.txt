@@ -1,0 +1,17 @@
+Here is the critique for the **dash_SE** contact sheet:
+
+### 3 Most Important Concrete Problems
+
+1. **Blocky, Unrefined Speed Trails / Afterimages (Frames 1 & 2, Left behind character)**
+   * **Problem:** The motion trail behind the head, hair, and ribbon looks like raw, blocky horizontal pixel extrusions rather than clean, tapered smears. The bright white horizontal bars inside the dark purple hair trail look like rendering artifacts or misplaced highlights, and the staggered step-edges create severe jaggies.
+   * **Fix:** Replace the thick, rectangular blocks with sharp, tapered triangular tails that come to 1px points on the far left. Remove the solid white bars inside the hair smear; instead, use a single mid-tone purple/maroon color (or dithered/alpha-blended silhouette) to separate the trail cleanly from the solid character sprite.
+
+2. **Broken Skirt Silhouette & Missing Overlap in Skid/Brake (Frames 3 & 4, Skirt & Front Leg region)**
+   * **Problem:** In **Frame 3 (`skid`)**, the right edge of the skirt stretches into a squared-off, awkward horizontal shelf right under the extended front hand, blending into the arm's silhouette. In **Frame 4 (`brake`)**, the front (right) leg is extended straight forward like a stiff wooden peg, emerging from underneath a completely flat, horizontal bottom skirt hem with zero cloth wrap or secondary motion.
+   * **Fix:** In Frame 3, curve the bottom-right hem of the skirt upward and pull it back by 3–4 pixels so the extended front hand and arm clearly read against the background, showing cloth drag. In Frame 4, angle the bottom skirt hem downward toward the front knee and curve the outline over the upper thigh so the skirt visibly overlaps and wraps around the braking leg.
+
+3. **Rotated-Cutout Jaggies on Katana Blade & Stiff Head/Hair Mass (Frames 0–4, Katana blade & Head region)**
+   * **Problem:** The katana blade exhibits classic nearest-neighbor rotation artifacts from a cutout rig: in **Frame 4 (`brake`)**, the steeper angle causes staircase jaggies and uneven double-thick dark outlines along the blade edge; in **Frames 1 & 2**, the blade outline clusters into thick dark steps. Additionally, the main hair block remains a rigid vertical rectangle across the entire dash—only the top ribbon flattens in Frames 1–2, while the side hair Locks show zero trailing drag or squash/stretch.
+   * **Fix:** Manually clean the katana blade pixel-by-pixel in every frame to enforce a strict 1px outline and smooth uniform step intervals (e.g., strict 2:1 or 1:1 pixel steps). In Frames 1 and 2 (`burst`/`burst2`), flare the back-left edge of the hair outward by 2–3 pixels into a trailing point, and compress the head height by 1–2 pixels in Frame 0 (`antic`) and Frame 3 (`skid`) to sell the weight and energy of the dash.
+
+SCORE dash: 6.5

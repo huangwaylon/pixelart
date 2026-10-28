@@ -1,0 +1,32 @@
+# lock3 head SW (built by tools/hybrid/h4/heads.py from src/)
+size: 24 29
+grid:
+....KKKK....KKKK..KKKK..
+...KCCCCK..KCCCCKKHJJHK.
+...KCCCCCKKCCCCCKHJHHHHK
+..KCCCCCCCCCCCCvKJHHHHhK
+..KCCCRvRRRvCRrKKHHHhhhK
+..KvCCrKRRRKCrvKKHHhhhhK
+...KvvvKrRrKvvKHKhhhhhhK
+....KKKKKrKKKKKKhhhhhhK.
+....KHJHHHHHHHhhhhhhhhK.
+....KHJHHHHHHhhhhhhhhhK.
+...KHJHHHHHHhhhhhhhhhhK.
+..KHJHHHHHhhhHhhhhhhhhhK
+.KHJHHHHHhhHHhhhhhhhhhhK
+.KHJHHHHhhhHHhhhhhhhhhhK
+KHJHHHhHhhhhHhhhhhhhhhhK
+KJHHhhhHHhhhHHhhhhhhhhhK
+KHHHhhhhHhhhhHhhhhhhhhhK
+KhhhhhhhHhhhhhHhhhhhhHK.
+.KhhhhhhhsmhhhHmhhhhhHK.
+.KhhhhmsssmhhmssmKhhhHK.
+.KhhKKKKssssKKKKKsKhHHK.
+..KhhewesssseeewesKhhK..
+..KhhEEEsssseEEEeSmhhK..
+...KhsEEsssssEEsssmhK...
+...KhppssssssssppsmhK...
+...KhssssmssssssssmhK...
+......KssssssssssmK.....
+.......KsssssssmK.......
+........KKKKKKK.........

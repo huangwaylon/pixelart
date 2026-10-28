@@ -1,0 +1,17 @@
+**Scores:**
+* **A) Cross-view consistency:** 6/10
+* **B) Simplicity/readability at 48px:** 7/10
+* **C) Iso views correctness (~30° elevation & facing):** 5/10
+* **D) Katana variant clarity:** 6/10
+
+**Problems per named view:**
+* **iso_S:** Identical to `front`. Lacks ~30° top-down camera tilt. Crown/bun visibility must increase, and hemline/obi must curve downward.
+* **iso_E & iso_E_k:** Reads as a ~60–75° front-quarter view (`iso_ESE`), not due East. Both eyes are visible, and the torso faces too far forward.
+* **iso_N:** Sleeve topology breaks model consistency—the under-hang/bell-sleeve fold does not exist in `back` or any other view.
+* **left_k & right_k:** Holding the katana in the foreground arm causes the blade and tsuba to cut directly across the hem and legs, creating severe pixel-cluster muddiness at 48px.
+* **front_k, back_k, left_k, right_k, iso_SE_k, iso_E_k:** At 48px, the 45° blade line breaks into jagged, disconnected single pixels and blends into the grey test background. The tsuba merges with the hand and sleeve cuff.
+
+**Must be regenerated:**
+* **iso_S:** Re-draw with true 30° overhead perspective matching `iso_N`.
+* **iso_E & iso_E_k:** Rotate character to face true profile-East with 30° overhead elevation (only one eye visible).
+* **iso_N:** Fix sleeve geometry to match `back`.

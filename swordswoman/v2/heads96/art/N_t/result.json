@@ -1,0 +1,35 @@
+{
+ "logs": [
+  {
+   "attempt": 0,
+   "sec": 36,
+   "fixes": [
+    "lagL: O1 22 edge pixels are not K outline (draft had 14): [(12, 22), (19, 22), (21, 22), (12, 23), (21, 23), (10, 24), (19, 24), (9, 25), (11, 26), (20, 26)]; every edge pixel facing empty space is K",
+    "lagR: O1 21 edge pixels are not K outline (draft had 14): [(13, 21), (11, 22), (19, 22), (21, 22), (11, 23), (20, 23), (13, 24), (22, 24), (12, 26), (21, 26)]; every edge pixel facing empty space is K"
+   ]
+  },
+  {
+   "attempt": 1,
+   "sec": 37,
+   "fixes": []
+  }
+ ],
+ "out": {
+  "lift": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/N/artist/t_lift.txt",
+   "lint": []
+  },
+  "drop": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/N/artist/t_drop.txt",
+   "lint": []
+  },
+  "lagL": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/N/artist/t_lagL.txt",
+   "lint": []
+  },
+  "lagR": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/N/artist/t_lagR.txt",
+   "lint": []
+  }
+ }
+}

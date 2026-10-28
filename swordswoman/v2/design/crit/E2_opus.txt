@@ -1,0 +1,15 @@
+**Verdict:** It doesn't read as Lyra or Dawn yet. It reads as a stiff chibi doll in a yukata: a big head, no gesture and no attitude.
+
+**Scores**
+- **A. Graceful / trainer read: 4.** The pose is a neutral A-pose with the arms hanging straight down. Every reference has a hip-shot stance, a weight shift and a confident arm pose.
+- **B. Proportions: 4.** The torso is too thin: shoulders are 0.55 head width (target ~0.7) and the waist is 0.31 (target ~0.5). The bob widens past the shoulders, so the head looks bigger than 3.1 heads. The legs are stubby at 35% (target 40–45%), and the boots make the lower leg look heavier still. The arms look like noodles.
+- **C. Face: 5.** It's generic moe anime: round grey eyes and a soft round jaw. Sugimori faces have a sharper, longer eye shape with a heavy upper lash line, a dark iris with one hard highlight, a small pointed chin and visible eyebrows.
+- **D. View consistency: 6.** The outfit matches across views. But the bun and bow move between views (crown in front, back of the skull in profile), and the boot height changes in iso_SE. The iso views barely show the 30° elevation: iso_S looks almost the same as front, with no extra crown or foreshortened feet.
+- **E. Pixel readability: 4.** At 40px the face disappears. Hair, obi and boots merge into three dark blobs, and the legs are lost against the boots.
+
+**Top 5 fixes**
+1. **Re-pose:** contrapposto stance, one hand on the hip or holding a Poké Ball, head tilted.
+2. **Widen the torso:** shoulders ~0.7 head width, waist ~0.5. Shrink the bob so it sits inside the shoulder line.
+3. **Lengthen the legs to ~42%:** shorter hem and longer thighs. Lower or lighten the boot tops, or add socks so the leg reads at small sizes.
+4. **Rework the face toward Sugimori:** narrower angled eyes, a 2px dark upper lash at 48px, eyebrows, a pointed chin.
+5. **Fix iso and value separation:** fix the bun and bow position, show more crown and foreshorten the feet in iso views. Lighten the hair or add a rim highlight, and make the obi a different value from the hair and boots.

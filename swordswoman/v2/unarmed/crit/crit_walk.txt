@@ -1,0 +1,5 @@
+1) **Natural unarmed motion: 8/10** — Completely free of any weapon-carry or guard posture; the arms swing naturally, though the stride length and high back-kick read much more like an energetic run/jog than a standard walk.
+2) **Cheerful trainer feel: 8/10** — The bouncy vertical bob, big hair bow, and peppy stride give her a lively, upbeat adventure vibe, even if the facial expression itself is slightly neutral.
+3) **Readable at 1x: 7/10** — The silhouette, limb separation, and gait cycle are very clear at 1x, though the eyes blur into dark sockets and the detached upper-arm gap is still slightly noticeable in the front/SE views.
+
+**Single most important fix:** Reattach the floating sleeves to the shoulders (especially visible in the S and SE views) and slightly reduce the leg stride spread if this is meant to be a casual walk rather than a run.

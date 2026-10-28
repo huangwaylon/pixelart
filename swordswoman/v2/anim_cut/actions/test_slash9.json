@@ -1,0 +1,416 @@
+{
+ "name": "test_slash9",
+ "partdir": "parts/se",
+ "cell": [
+  92,
+  76
+ ],
+ "ground": [
+  46,
+  62
+ ],
+ "rig": {
+  "legs": {
+   "part": "legs",
+   "at": "root",
+   "z": 1
+  },
+  "skirt": {
+   "part": "skirt",
+   "at": "legs.hip",
+   "z": 3
+  },
+  "torso": {
+   "part": "torso",
+   "at": "skirt.waist",
+   "off": [
+    0,
+    0
+   ],
+   "z": 4
+  },
+  "armF": {
+   "part": "armF",
+   "at": "torso.shR",
+   "z": 2
+  },
+  "armN": {
+   "part": "armN",
+   "at": "torso.shL",
+   "z": 6
+  },
+  "head": {
+   "part": "head",
+   "at": "torso.neck",
+   "z": 7
+  },
+  "bun": {
+   "part": "bun",
+   "at": "head.bun",
+   "z": 0
+  },
+  "bow": {
+   "part": "bow",
+   "at": "head.bow",
+   "z": 8
+  },
+  "kat": {
+   "part": "kat_13",
+   "at": "armN.hand",
+   "z": 5
+  }
+ },
+ "frames": [
+  {
+   "ms": 400,
+   "label": "torso_csq",
+   "set": {
+    "legs": {
+     "part": "legs_crouch"
+    },
+    "head": {
+     "part": "head_sq",
+     "off": [
+      -2,
+      2
+     ]
+    },
+    "bow": {
+     "part": "bow_up",
+     "off": [
+      1,
+      -1
+     ]
+    },
+    "skirt": {
+     "part": "skirt_sq"
+    },
+    "torso": {
+     "part": "slash9_torso_csq",
+     "off": [
+      -3,
+      1
+     ]
+    },
+    "armN": {
+     "part": "armN_coil",
+     "z": 8
+    },
+    "armF": {
+     "part": "armF_pumpF"
+    },
+    "kat": {
+     "part": "kat_05",
+     "at": "armN.hand",
+     "z": 1
+    }
+   },
+   "root": [
+    -3,
+    0
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "torso_str+head_drag+sm1",
+   "set": {
+    "legs": {
+     "part": "legs_lunge"
+    },
+    "head": {
+     "part": "slash9_head_drag",
+     "off": [
+      1,
+      -1
+     ]
+    },
+    "bow": {
+     "part": "bow_dn",
+     "off": [
+      -1,
+      2
+     ]
+    },
+    "skirt": {
+     "part": "skirt_swL"
+    },
+    "torso": {
+     "part": "slash9_torso_str",
+     "off": [
+      -1,
+      0
+     ]
+    },
+    "armN": {
+     "part": "armN_coil",
+     "z": 8
+    },
+    "armF": {
+     "part": "armF_pumpF"
+    },
+    "kat": {
+     "part": "kat_03",
+     "at": "armN.hand",
+     "z": 9
+    }
+   },
+   "root": [
+    -1,
+    -1
+   ],
+   "fx": [
+    {
+     "part": "slash9_fx_sm1",
+     "at": "ground",
+     "off": [
+      0,
+      0
+     ],
+     "z": 8.5
+    }
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "sm2",
+   "set": {
+    "legs": {
+     "part": "slash9_lg_lunge"
+    },
+    "head": {
+     "part": "slash9_head_drag",
+     "off": [
+      2,
+      -1
+     ]
+    },
+    "bow": {
+     "part": "bow_back",
+     "off": [
+      -5,
+      1
+     ]
+    },
+    "skirt": {
+     "part": "dash9_skirt_lean"
+    },
+    "torso": {
+     "part": "slash8_torso_lunge",
+     "off": [
+      2,
+      0
+     ]
+    },
+    "armN": {
+     "part": "slash9_armN_ext"
+    },
+    "armF": {
+     "part": "armF_back"
+    },
+    "kat": {
+     "part": "kat_15",
+     "at": "armN.hand",
+     "z": 5
+    }
+   },
+   "root": [
+    1,
+    -1
+   ],
+   "fx": [
+    {
+     "part": "slash9_fx_sm2",
+     "at": "ground",
+     "off": [
+      0,
+      0
+     ],
+     "z": 7.5
+    }
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "lunge set+sm3+spark0",
+   "set": {
+    "legs": {
+     "part": "slash9_lg_lunge"
+    },
+    "head": {
+     "part": "slash9_shout_drag",
+     "off": [
+      2,
+      0
+     ]
+    },
+    "bow": {
+     "part": "bow_back",
+     "off": [
+      -3,
+      2
+     ]
+    },
+    "skirt": {
+     "part": "slash9_sk_lunge"
+    },
+    "torso": {
+     "part": "slash8_torso_lunge",
+     "off": [
+      3,
+      1
+     ]
+    },
+    "armN": {
+     "part": "slash9_armN_ext"
+    },
+    "armF": {
+     "part": "armF_back"
+    },
+    "kat": {
+     "part": "kat_14",
+     "at": "armN.hand",
+     "z": 5
+    }
+   },
+   "root": [
+    2,
+    0
+   ],
+   "fx": [
+    {
+     "part": "slash9_fx_sm3",
+     "at": "ground",
+     "off": [
+      0,
+      0
+     ],
+     "z": 4.5
+    },
+    {
+     "part": "slash9_fx_spark0",
+     "at": "armN.hand",
+     "off": [
+      15,
+      15
+     ],
+     "z": 9
+    }
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "shout_fwd+spark2",
+   "set": {
+    "legs": {
+     "part": "slash9_lg_lunge"
+    },
+    "head": {
+     "part": "slash9_shout_fwd",
+     "off": [
+      2,
+      0
+     ]
+    },
+    "bow": {
+     "part": "bow",
+     "off": [
+      0,
+      2
+     ]
+    },
+    "skirt": {
+     "part": "slash9_sk_lunge"
+    },
+    "torso": {
+     "part": "slash8_torso_lunge",
+     "off": [
+      3,
+      1
+     ]
+    },
+    "armN": {
+     "part": "slash9_armN_ext"
+    },
+    "armF": {
+     "part": "armF_back"
+    },
+    "kat": {
+     "part": "kat_14",
+     "at": "armN.hand",
+     "z": 5
+    }
+   },
+   "root": [
+    2,
+    0
+   ],
+   "fx": [
+    {
+     "part": "slash9_fx_spark2",
+     "at": "armN.hand",
+     "off": [
+      15,
+      15
+     ],
+     "z": 9
+    }
+   ],
+   "shake": [
+    -1,
+    0
+   ]
+  },
+  {
+   "ms": 400,
+   "label": "head_fwd+sk_lunge2",
+   "set": {
+    "legs": {
+     "part": "slash9_lg_lunge"
+    },
+    "head": {
+     "part": "slash9_head_fwd",
+     "off": [
+      1,
+      1
+     ]
+    },
+    "bow": {
+     "part": "bow_dn",
+     "off": [
+      2,
+      2
+     ]
+    },
+    "skirt": {
+     "part": "slash9_sk_lunge2"
+    },
+    "torso": {
+     "part": "slash8_torso_lunge",
+     "off": [
+      2,
+      0
+     ]
+    },
+    "armN": {
+     "part": "slash9_armN_ext"
+    },
+    "armF": {
+     "part": "armF_back"
+    },
+    "kat": {
+     "part": "kat_13",
+     "at": "armN.hand",
+     "z": 5,
+     "off": [
+      1,
+      1
+     ]
+    }
+   },
+   "root": [
+    2,
+    0
+   ]
+  }
+ ]
+}

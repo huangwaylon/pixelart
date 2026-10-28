@@ -1,0 +1,5 @@
+1) **Natural unarmed motion: 8/10** — No weapon-carry or guard posture remains; the arms swing out cleanly for balance, though the legs stay a bit stiffly parallel during airtime (frames 4–6).
+2) **Cheerful trainer feel: 7/10** — The deep crouch (frame 2) and landing absorption (frame 7) have great bouncy energy, but the apex (frame 5) feels slightly subdued with arms only at shoulder height.
+3) **Readable at 1x: 8/10** — The vertical arc, squash-and-stretch, and silhouettes read very clearly at 1x, with only frame 2 compacting into a slightly busy cluster.
+
+**Most important fix:** Raise the arms higher (into a V-shape) and tuck/bend the knees more at the apex (frame 5) to make the jump read as a joyful, energetic leap rather than a cautious hop.

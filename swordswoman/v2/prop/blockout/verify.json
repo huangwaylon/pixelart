@@ -1,0 +1,142 @@
+{
+ "S": {
+  "H": 48,
+  "rows": {
+   "crown": 14,
+   "sole": 62,
+   "ankle": 55,
+   "eye": 23.0,
+   "chin": 28,
+   "shoulder": 29,
+   "hem": 42,
+   "crotch": 42,
+   "armpit": 32,
+   "hip": 39,
+   "waist": 35.5,
+   "knee": 48
+  },
+  "widths": {
+   "hip": 12,
+   "waist": 6,
+   "head": 14,
+   "neck": 2,
+   "shoulder": 12,
+   "thigh": 5,
+   "calf": 4,
+   "foot": 6
+  },
+  "fails": []
+ },
+ "SE": {
+  "H": 48,
+  "rows": {
+   "crown": 14,
+   "sole": 62,
+   "ankle": 55,
+   "eye": 23.0,
+   "chin": 28,
+   "shoulder": 29,
+   "hem": 42,
+   "crotch": 42,
+   "armpit": 32,
+   "hip": 39,
+   "waist": 35.5,
+   "knee": 48
+  },
+  "widths": {
+   "hip": 12,
+   "waist": 6,
+   "head": 14,
+   "neck": 2,
+   "shoulder": 12,
+   "thigh": 5,
+   "calf": 4,
+   "foot": 6
+  },
+  "fails": []
+ },
+ "E": {
+  "H": 48,
+  "rows": {
+   "crown": 14,
+   "sole": 62,
+   "ankle": 55,
+   "eye": 23.0,
+   "chin": 28,
+   "shoulder": 29,
+   "hem": 42,
+   "crotch": 42,
+   "armpit": null,
+   "hip": 40,
+   "waist": 35.5,
+   "knee": 48
+  },
+  "widths": {
+   "hip": 14,
+   "waist": 6,
+   "head": 14,
+   "neck": 2,
+   "shoulder": 7,
+   "thigh": 6,
+   "calf": 5,
+   "foot": 8
+  },
+  "fails": []
+ },
+ "NE": {
+  "H": 48,
+  "rows": {
+   "crown": 14,
+   "sole": 62,
+   "ankle": 55,
+   "eye": null,
+   "chin": 28,
+   "shoulder": 29,
+   "hem": 42,
+   "crotch": 42,
+   "armpit": 32,
+   "hip": 39,
+   "waist": 35.5,
+   "knee": 48
+  },
+  "widths": {
+   "hip": 12,
+   "waist": 6,
+   "head": 14,
+   "neck": 2,
+   "shoulder": 12,
+   "thigh": 5,
+   "calf": 4,
+   "foot": 6
+  },
+  "fails": []
+ },
+ "N": {
+  "H": 48,
+  "rows": {
+   "crown": 14,
+   "sole": 62,
+   "ankle": 55,
+   "eye": null,
+   "chin": 28,
+   "shoulder": 29,
+   "hem": 42,
+   "crotch": 42,
+   "armpit": 32,
+   "hip": 39,
+   "waist": 35.5,
+   "knee": 48
+  },
+  "widths": {
+   "hip": 12,
+   "waist": 6,
+   "head": 14,
+   "neck": 2,
+   "shoulder": 12,
+   "thigh": 5,
+   "calf": 4,
+   "foot": 6
+  },
+  "fails": []
+ }
+}

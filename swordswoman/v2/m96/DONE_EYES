@@ -1,0 +1,6 @@
+EYE ROUND (rounder tops + lashes) DONE 2026-10-27
+- Arched lid: 3 K top (cols 1-3) + g anti-alias ends, outer/inner K 1 row lower; 2 outer flicks (up-out K + soft h down-out; E profile 1 K flick); surprised = arch 1 row higher; determined/shout keep the arched lid; joy/blink_half/blink_closed + 1 flick.
+- Gates: qc_gate masters PASS, stamps PASS (45), eyecheck 36/36 OK (new ARCH + LASH FLICK checks, eye_spec lid).
+- face_ssim before->after: S .573->.574, SE .607->.610, E .319->.354; lash/iris deltas, contour MAE unchanged.
+- Crit r1 (on the h-end version): Argon 4/10, Opus 5-6 -> applied g ends, soft lower flick, E single flick.
+- Sheets: eyes_sheet.png (before|after 8x), face_sheet.png. Rollback: snap/v12_preeyes. Templates: eyes3/setspec_f.py; rebuild: tools/faceround.sh snap/v11_preface2/masters OUT + stamp.py heads.

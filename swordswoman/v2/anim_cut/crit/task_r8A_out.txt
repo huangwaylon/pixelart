@@ -1,0 +1,19 @@
+Restored session: Mon 26 Oct 2026 12:17:51 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I made a round 8 pass on idle_SE and walk_SE, plus both no-katana builds. Everything builds and qc reports no FAILs. I checked the sheets and close-up crops after each change.
+
+**What changed:**
+- **Walk, passing foot:** on the pass frames the lifted foot now hangs toe-down instead of ending in a flat boot block.
+- **Walk, far arm:** on the first contact frame the far arm now reaches about 2px further forward, so the arm swing reads better against the legs.
+- **Walk, blade:** the frame-5 (down2) blade tip was below ground level; I raised it 1px so it's inside the cell. The blade still follows the arm one step at a time and never crosses the torso.
+- **Idle timing:** rest holds are down from 320ms to 220ms, and sink/rise are up from 120ms to 140ms, so the pauses no longer stall the loop.
+
+**New parts:** `parts/se/legs_wk10_p1.txt`, `legs_wk10_p2.txt`, `armF_wk10_f.txt`
+
+**Remaining weaknesses:**
+- The idle blade's angle change is real (tip moves about 2–4px) but subtle at 1x.
+- On the blink frame the face reads as a large area of skin.
+- The far arm's back swing is hidden behind the body.
+
+Saving session...completed.

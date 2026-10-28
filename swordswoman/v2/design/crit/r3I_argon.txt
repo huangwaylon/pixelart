@@ -1,0 +1,13 @@
+**Scores**
+*   **A (Consistency):** 6.5/10 — `iso_S` is disproportionate; `iso_E` skirt lost its volume in the katana sheet.
+*   **B (48px Readability):** 7/10 — `iso_S` eyes muddle into bangs; katana blades have severe jaggies.
+*   **C (Iso Correctness):** 6/10 — `iso_NE` improved, but `iso_S` is at ~45–50° (far steeper than the 3D reference), and `iso_N` is still too flat (~15°).
+*   **D (Katana Clarity):** 6.5/10 — Complete set, but blade lengths and perspective foreshortening are erratic.
+*   **E (Fitness as Final Ref):** 7/10 — Passable for hand-pixeling only if the pixel artist overrides the perspective flaws using the 3D renders.
+
+**Top 5 Fixes for the Pixel Artist**
+1.  **Fix `iso_S` camera pitch:** The 2D sheet draws `iso_S` from ~45°+, crushing the torso and hiding the legs. Follow the 3D render (`r3G_mat`): raise the face, lengthen the torso, and expose the legs/boots.
+2.  **Tilt `iso_N` forward:** `iso_N` is essentially a duplicate of orthographic `back`. Shift the bun/bow down, show more top-of-head hair, and curve the obi/hem downward to match the 30° 3D render.
+3.  **Standardize `iso_E` skirt volume:** `iso_E` has a ballooning skirt in the unarmed sheet, which vanishes into a flat tube in `iso_E_k`. Pick the 3D render's Bell silhouette for both.
+4.  **Foreshorten katana blades:** In `iso_S_k` and `iso_SE_k`, the blade points toward the camera/ground and must be shorter and steeper than in orthographic `front_k`.
+5.  **Clean 48px blade lines & `iso_S` eyes:** Manually pixel straight 1px/2px stepped lines for the katana (fixing auto-downsample breaks) and drop the `iso_S` eye pixels 1px lower to clear the bangs.

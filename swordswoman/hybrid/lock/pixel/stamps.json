@@ -1,0 +1,130 @@
+{
+ "palette": "docs/palette.json (all stamps palette-locked, 0 off-palette, binary alpha)",
+ "how_to_use": "Paste stamps as whole cels at integer offsets (never scale or rotate). All head stamps share one canvas origin: row 0 = top of the bow, col 12.5 = head centre; the skull dome spans rows ~10-22 in every direction, chin/nape is the last row (N is 4 rows shorter: no chin). Place a head with its centre on the guide's head joint and keep it byte-identical in every frame of a direction except deliberate squash/expression frames (offset the bow cel 1 px for lag). Rim light is NOT baked in: add the camera-locked pink_0 rim on the full silhouette afterwards (<= 60 % of contour, broken). Sheen hair_2 = upper-left (key light top-left) in every direction.",
+ "stamps": {
+  "head_S": {
+   "file": "hybrid/lock/pixel/src/head_S.pix",
+   "png": "hybrid/lock/pixel/head_S.png",
+   "size": [
+    26,
+    34
+   ],
+   "bottom": 33,
+   "cx": 12.5,
+   "faces": "S",
+   "note": "front"
+  },
+  "head_SE": {
+   "file": "hybrid/lock/pixel/src/head_SE.pix",
+   "png": "hybrid/lock/pixel/head_SE.png",
+   "size": [
+    26,
+    34
+   ],
+   "bottom": 33,
+   "cx": 12.5,
+   "faces": "SE",
+   "note": "3/4 face right"
+  },
+  "head_E": {
+   "file": "hybrid/lock/pixel/src/head_E.pix",
+   "png": "hybrid/lock/pixel/head_E.png",
+   "size": [
+    26,
+    35
+   ],
+   "bottom": 34,
+   "cx": 12.5,
+   "faces": "E",
+   "note": "profile right, ear + jaw strand"
+  },
+  "head_NE": {
+   "file": "hybrid/lock/pixel/src/head_NE.pix",
+   "png": "hybrid/lock/pixel/head_NE.png",
+   "size": [
+    26,
+    34
+   ],
+   "bottom": 33,
+   "cx": 12.5,
+   "faces": "NE",
+   "note": "back 3/4, cheek edge right"
+  },
+  "head_N": {
+   "file": "hybrid/lock/pixel/src/head_N.pix",
+   "png": "hybrid/lock/pixel/head_N.png",
+   "size": [
+    26,
+    30
+   ],
+   "bottom": 29,
+   "cx": 12.5,
+   "faces": "N",
+   "note": "back, bow loops rise above bun, nape bottom (no chin; 4 rows shorter: align skull_top)"
+  },
+  "head_NW": {
+   "file": "hybrid/lock/pixel/src/head_NW.pix",
+   "png": "hybrid/lock/pixel/head_NW.png",
+   "size": [
+    26,
+    34
+   ],
+   "bottom": 33,
+   "cx": 12.5,
+   "faces": "NW",
+   "note": "mirror of NE + re-lit"
+  },
+  "head_W": {
+   "file": "hybrid/lock/pixel/src/head_W.pix",
+   "png": "hybrid/lock/pixel/head_W.png",
+   "size": [
+    26,
+    35
+   ],
+   "bottom": 34,
+   "cx": 12.5,
+   "faces": "W",
+   "note": "mirror of E + re-lit"
+  },
+  "head_SW": {
+   "file": "hybrid/lock/pixel/src/head_SW.pix",
+   "png": "hybrid/lock/pixel/head_SW.png",
+   "size": [
+    26,
+    34
+   ],
+   "bottom": 33,
+   "cx": 12.5,
+   "faces": "SW",
+   "note": "mirror of SE + re-lit"
+  },
+  "bow_S": {
+   "file": "hybrid/lock/pixel/src/bow_S.pix",
+   "use": "bow+bun-top cel cut from head_S; for secondary-motion frames (bow lag/settle) offset this cel 1 px against the head"
+  },
+  "bow_SE": {
+   "file": "hybrid/lock/pixel/src/bow_SE.pix",
+   "use": "bow+bun-top cel cut from head_SE; for secondary-motion frames (bow lag/settle) offset this cel 1 px against the head"
+  },
+  "bow_E": {
+   "file": "hybrid/lock/pixel/src/bow_E.pix",
+   "use": "bow+bun-top cel cut from head_E; for secondary-motion frames (bow lag/settle) offset this cel 1 px against the head"
+  },
+  "bow_N": {
+   "file": "hybrid/lock/pixel/src/bow_N.pix",
+   "use": "bow+bun-top cel cut from head_N; for secondary-motion frames (bow lag/settle) offset this cel 1 px against the head"
+  },
+  "katana_down": {
+   "file": "hybrid/lock/pixel/src/katana_down.pix",
+   "fist": [
+    4,
+    4
+   ],
+   "use": "blade straight down; mirror horizontally for the hook on the other side"
+  },
+  "katana_idle_2to1": {
+   "file": "hybrid/lock/pixel/src/katana_idle_2to1.pix",
+   "use": "idle angle (blade down-right 2:1, ~27 deg); mirror for down-left. Blade 2 px, hook >= 3 px with a gap."
+  }
+ }
+}

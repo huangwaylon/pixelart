@@ -1,0 +1,23 @@
+Restored session: Mon 26 Oct 2026 12:46:51 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+**Verdict:** The face, palette and silhouette hold together across all 12 frames, so the identity is consistent. As animation it doesn't work: it reads as a cutout rig with loose pivots, not a breathing idle.
+
+**1. The katana swings like a pendulum (frames 0→1→2→3→4, repeated in 6–11).**
+The blade angle swings about 40° between frames: roughly 45° in frame 0, nearly flat pointing left in frames 1, 2, 7 and 8, near-vertical in frames 3 and 9. In an idle the sword should be the most stable thing on screen, so this reads as a broken pivot. The flat frames also show the worst jaggies on the 1-px blade: uneven 3-2-4 stair-steps and no dark outline, so the blade disappears against the grey.
+*Fix:* Lock the blade to the hand with at most ±1 px of rotation, and let it ride the body bob vertically only. Redraw it once as a clean 1:2 or 1:3 line with a 1-px dark edge and a readable 2×2 tsuba (guard), then reuse that sprite.
+
+**2. The puff sleeve and shoulder pop and leave seams (frames 3, 4, 9, 10, left arm).**
+The sleeve changes shape between frames: it hangs as a blob in frame 3 and jumps up and out in frame 4. At the shoulder joint the outline doubles or breaks, a cutout seam roughly 2–3 px wide on the near-side sleeve top. The arm moves more than the torso does, which is backwards for breathing.
+*Fix:* Cap arm motion at 1 px and keep it in phase with the chest, lagging the torso by one frame. Hand-clean the shoulder joint in each pose so there's one continuous outline and no doubled dark pixels.
+
+**3. There's no overlap, and the blink is weak (bow, hem, frames 9 and 10).**
+The bow moves rigidly with the head, and the skirt hem is pixel-identical across frames, so the overlap you asked for isn't there. In frame 9 the closed eyes are thin, light lines with no lash weight, so she reads as asleep or wincing. Frame 10, labelled "half", is barely different from fully open. Timing is also off: the drop in frames 1–2 is fast (80 ms each) and the 200 ms hold at the low point makes it feel twitchy rather than like breathing.
+*Fix:* Delay the bow loops by one frame after the head and add 1 px of droop at the low pose. Flare the hem out by 1 px at the bottom of the bob and settle it back one frame later. Draw the blink with the dark outline colour, 2 px thick with a lash tick, and make the half-blink a real half-lid. Retime the bob to about 140/140/180 ms instead of 80/80/200.
+
+Smaller notes: the head drifts about 1 px left relative to the torso in frame 3, and frame 0 is two pixels away from being identical to frame 6.
+
+SCORE idle: 4
+
+Saving session...completed.

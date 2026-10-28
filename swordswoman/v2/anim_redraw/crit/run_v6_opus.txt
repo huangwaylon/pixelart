@@ -1,0 +1,16 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE: 5.5/10.** The rhythm and lean are better than earlier versions, but it isn't shippable yet. The model is unstable from frame to frame, and the blade and feet read as mush.
+
+- **Bounce:** F1 and F5 work as compressed down poses. The up frames (F3, F7) don't lift the head above the contact frames (F0, F4), so there's no hang time. Push them up 1–2px and stretch the body.
+- **Model drift:** the head and buns change size and position between frames. F1 and F5 look shrunken, the face slides sideways, and the bow width keeps changing. That shimmer is the worst problem at 1x. Lock the head to one sprite and only shift it by whole pixels.
+- **Root drift:** the body creeps right in F6 and F7 while F1 and F5 sit further left. An in-place run needs a pinned pelvis. As it is, the character looks like it's sliding.
+- **Katana:** the blade length, angle and grip jump between low trailing (F2, F3), flat at the hip (F1) and pointing back and up (F7). Pick one trailing arc with no more than about 15° of sway. Also, the "smear" is just a lighter blade with no real smear shape.
+- **Legs and feet:** the dark legs merge into the skirt and shoes. F2 and F6 are almost the same stride, so the legs don't clearly alternate. The feet are 2–3px blobs with no heel/toe read.
+- **Arms:** the front arm disappears into the torso in F1, F4 and F5. Only F6 and F7 show a real pump. Swing the fist forward and back clearly against the body.
+- **FX:** the speed lines sit at fixed positions and look pasted on. Scroll or stagger them every frame. There's no dust puff on contact frames and no motion trail on the skirt or hair.
+- **Timing:** the passing frames are only 55ms, which loses the snap. Hold contact and up (~80ms) and make the passing frame the fast one (~50ms), or the cycle will feel floaty.
+- **Cleanup:** there are stray single pixels on the skirt hem and sleeve edges, and the shoe outlines are uneven. Flat shading on the face is fine, but the skirt folds change every frame. Keep the fold logic consistent.
+- **Priority order:** 1) lock the head and root, 2) settle on one katana pose, 3) fix up-frame height and leg alternation, 4) add dust and scroll the speed lines.
+
+Saving session...completed.

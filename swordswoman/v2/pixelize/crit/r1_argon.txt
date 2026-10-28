@@ -1,0 +1,30 @@
+**1. Overall Method Ranking (/10)**
+1. **E2 (kcent+face): 7.0** — Clean body clusters from k-centroid combined with the best facial reconstruction.
+2. **C (k-centroid): 6.5** — Smooth, readable color blocking and clean outlines, though faces lack detail at lower resolutions.
+3. **E1 (PixelOE+face): 6.0** — Improved faces, but retains noisy outlines and fragmented limbs from the base method.
+4. **D (Gemini): 5.0** — Clean pixel placement, but alters character proportions and hairstyle at 96px.
+5. **A (majority): 4.5** — Preserves broad shapes, but drops thin lines and asymmetrical eye features.
+6. **B (PixelOE): 3.5** — Over-sharpened with noisy dithering, broken leg outlines, and distorted faces.
+
+**2. Size Ranking**
+1. **96px** — Sufficient resolution for clean limb separation, hair highlights, and readable eyes.
+2. **80px** — Good balance of sprite abstraction and detail, though front-view legs begin to merge with outlines.
+3. **64px** — Insufficient resolution for this level of detail; faces become muddy and limbs fragment into single-pixel noise.
+
+**3. Face Scores (/10 at 80px | 96px)**
+* **E2:** 6.5 | 7.0 (Balanced eye spacing, clear sclera/pupil separation, accurate chin contour)
+* **E1:** 6.0 | 6.5 (Good eye definition, slightly noisier hair framing and jawlines than E2)
+* **C:** 5.5 | 6.5 (Clean skin tones, but eyes are slightly blocky at 80px)
+* **D:** 5.5 | 6.0 (Readable features, but changes the source expression and bangs)
+* **A:** 4.0 | 5.0 (Asymmetrical eyes and missing mouths at 80px)
+* **B:** 3.0 | 4.0 (Heavy stray pixels around eyes and distorted mouths)
+
+**4. Top 3 Method + Size Combinations**
+1. **E2 @ 96px**
+2. **C @ 96px**
+3. **E2 @ 80px**
+
+**5. Top 3 Remaining Defects of #1 (E2 @ 96px)**
+1. **Front-view legs:** Inner leg outlines are broken and uneven, creating a jagged gap between the thighs.
+2. **Hands/Fingers:** Hands remain indistinct blobs merging into the red sleeves without clear thumb/finger definition.
+3. **SE-view mouth/nose:** The 3/4 view face close-up still shows slight shading muddiness around the mouth and nose compared to the clean front view.

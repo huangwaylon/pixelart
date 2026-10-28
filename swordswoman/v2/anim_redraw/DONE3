@@ -1,0 +1,6 @@
+ROUND CHIBI SKULL head set done (2026-10-26): v2/heads/ (README.md, READY).
+SE: head_{neutral,lean,lookup,squash,blink} + bun, bow, bow_squash, bun_squash; E: head_{neutral,lean,lookup,squash} + bun, bow, bow_squash.
+anim_cut char-map convention: head pivot = neck, anchors bow/bun; bun behind, bow in front. Previews png/<view>_<v>_{1x,6x}.png, composed png/*_full.txt, png/sheet.png.
+Opus (be_system, foreground) pixel artist, 6 crit rounds (Argon/Opus): r1 5.5/4, r2 6/6, r3 5.5/5, r4 5/6, r5 6/6, final r6 5/6.
+Fixed: domed crown, temple bulge, soft tapered chin, bob tips, bun always, 2-loop bow, master eyes with glints + lash under bangs.
+Open: critics still call SE slightly "hairball with a face window"; E profile bow/nose shape debated. anim_redraw frames not yet re-stamped with the new heads.

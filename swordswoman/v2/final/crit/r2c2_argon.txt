@@ -1,0 +1,7 @@
+**Score:** 6.8/10 — **Verdict:** FIX
+
+1. **S & SE Bangs [ILLUS]:** Top-of-forehead bangs are flat horizontal blocks with a continuous horizontal highlight. The illustrations show angled, parted, spiky bangs with curved broken highlights. Break the straight line and angle the fringe tips down toward the bridge of the nose.
+2. **S, SE, N Sleeves & Hem Separation [ILLUS]:** In the illustrations, wide flared sleeves clearly separate from the flared skirt hem (showing background/skin gaps in S/N). In S, SE, and N, the sleeves and skirt fuse into a single blocky mass; in N, the bottom edge forms a continuous horizontal line across sleeves and hem. Carve distinct gaps between sleeve cuffs and skirt sides.
+3. **SE Legs & Hem [ILLUS]:** The skirt hem is completely flat horizontally (needs downward curve), and the legs are unshaped vertical 2px sticks with a 1px gap. Add thigh/calf taper and overlap/angle the back leg slightly to match the 3/4 stance.
+4. **SE & E Ear/Side-locks [ILLUS]:** The illustration clearly shows an exposed ear between the front side-lock and back hair in SE and E. In SE it's a muddy brown pixel; in E the ear is missing or merged with the face. Define a distinct skin-toned ear behind the side-lock.
+5. **SE Eyes:** The grey-brown lower iris/eye-bag pixels make the eyes look sunken/tired at 1x. Clean up the lower sclera/iris to match the bright look in S.

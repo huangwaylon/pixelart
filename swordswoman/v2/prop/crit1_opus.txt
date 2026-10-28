@@ -1,0 +1,17 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+Your blockouts already hit the measured section lines. What still keeps them from matching the trainers is the outline: everything is built from straight blocks, with no taper anywhere. I estimated widths by eye from the comparison image (about 4.8× scale) and from the 3x sheet, so treat them as ±1px. I didn't edit any files.
+
+- **Section heights match:** crown, chin, shoulder, waist, hip, hem, knee, ankle and sole on all 5 blockouts land within about 1px of the template at 48px. Chin about y16, hem about y28, knee about y38, boot top about y42. The vertical spacing doesn't need to change.
+- **Head (placeholder):** at about 16 of 48px tall (33%) it is a little big. The trainers are about 14px including the hat. It is also about 17px wide against 10–11px shoulders. Ask the head team to keep the final head about 15px tall and no wider than about 15px.
+- **Neck:** you have none, and neither do the trainers, so that's fine. Keep the chin sitting directly on the collar. One skin-coloured pixel row for a neck is optional in front views.
+- **Shoulders/torso too wide:** the torso plus arms is about 14px across, against about 10px for Hilda and Dawn. Take 1px off each shoulder so the body is 8–9px and arms plus body total 11–12px.
+- **No waist pinch:** the sides go straight from shoulder to obi. Pull the waist in by 1px each side at about y21–22, so the obi is the narrowest row.
+- **Skirt flare:** the skirt is nearly a box. Widen the hem by +1px each side at y27–28, so hem width is shoulder width plus 2. The E view's backward flare is fine.
+- **Legs too thick and straight:** each leg is about 3.5–4px of one width all the way down. The trainers are about 3px at the thigh and 2px at the calf. Make legs 3px down to the knee (y38), then 2px to the ankle. Also widen the stance by 1px each side, so the feet sit further apart than the hips.
+- **Boots too tall and blocky:** they are about 6–7px tall, same width top and bottom, with no foot. Make the shaft 2–3px wide from the boot top (y42) to y46. Add a 4px-wide foot at y46–47 with the toe turned 1px outward, and a 1px dark sole row. In the E view, give the foot a 2px forward toe.
+- **Arms stuck to the body:** they hang flush at the sides and end at the hem (about y29–30). Add a 1px background gap between arm and torso from the armpit to the waist. Make the arms 2px wide, tapering to 1px at the wrist, and extend the hands 1px below the hem (about y30–31). The trainers' arms read as separate shapes.
+- **Back views (NE/N):** these have the same box torso and legs, so apply the same changes there. The bow sits right for the section lines, but at about 20px wide it is wider than the head. Trim it to about 16px so it isn't the widest part of the sprite.
+
+VERDICT: NOT YET

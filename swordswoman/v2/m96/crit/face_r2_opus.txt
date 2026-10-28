@@ -1,0 +1,18 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Brows:** The new skin row between brows and bangs works. Brows now sit clear of the hair in S and SE. But the neutral brows are too heavy: flat and near-black, almost as strong as the eye line. The illustration's brows are thin, soft brown arches partly hidden by the bangs. The steeper V reads well, but in SE "determined" it looks angry rather than resolute.
+
+**Nose:** It barely shows in S, which is right for this style. The E profile bump is subtle and correct. It's consistent across views.
+
+**Expressions at 1x:** Pain, joy, blink and surprised read because the eye shape or mouth changes. Neutral, cheerful and determined are nearly identical at 1x, and E is weaker than S/SE.
+
+**Scores:**
+- Brows: 6/10
+- Nose: 7/10
+- Consistency: 7/10
+- 1x readability: 4/10
+- Overall: 6/10
+
+**Top 2 fixes:**
+1. Make the neutral and cheerful brows a 1px mid-brown (lighter than the eye line) with a slight arch. Save dark, steep brows for determined, shout and effort.
+2. Let the mouth carry the 1x read. Use a 2px warm-red curve for cheerful and a flat dark mark offset low for determined, in E as well.

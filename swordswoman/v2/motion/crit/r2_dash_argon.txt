@@ -1,0 +1,14 @@
+OVERALL: 7
+
+- Natural: 7
+- Whole-body: 6
+- Fluid: 7
+- Appealing: 7
+- Secondary motion convincing: 6
+- Readable at 1x: 7
+
+**Top 3 Concrete Fixes:**
+
+1. **`skid` (120ms) — Ribbon tails & skirt hem:** During braking deceleration, inertia must carry light parts *forward*. Currently, the ribbon and back skirt still trail straight back as if accelerating. Whip the ribbon tails forward/up over the bun by ~45°, and flare the front skirt hem forward by 2–3 px (at 1x).
+2. **`smear` (40ms) — Trailing (right) leg & torso:** The pose is too bunched up and similar to `burst`, killing the dash pop. Fully extend the trailing leg backward/upward by 4–5 px (at 1x) and push the head/chest 2 px further forward to create a strong diagonal line of action.
+3. **`antic` (100ms) — Pelvis & torso:** Needs a stronger coil before the burst. Drop the pelvis 2 px lower, compress the torso forward/down by 15°, and pull the lead arm back 3 px closer to the ribs.

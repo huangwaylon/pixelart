@@ -1,0 +1,20 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I checked the five masters against the illustrations above them. They don't match yet: the outlines and palette are close, but the faces, hair shapes and legs need work.
+
+**1. Match to the illustration**
+1. **S, face:** The eyes are muddy grey blocks. Redraw them as large dark irises, about 2×3 pixels each, with a 1-pixel white highlight and a dark upper lash line. Add thin brows and a 1–2 pixel smile; right now there's no mouth.
+2. **S, hair:** The bangs are a flat band. Cut a part and 2–3 pointed strands like the illustration. Flick the side locks outward at shoulder height instead of running straight down. The ribbon tail on her left should hang down to the shoulder.
+3. **S, legs:** They read as one solid slab. Open a background gap between the thighs, add a knee shade, and taper the legs into the boots. Flare the sleeve ends wider and show the hands lower, below the cuffs.
+4. **SE:** The raised back boot looks like she's hopping. Plant both feet on the ground, with her right foot forward as drawn. Add a mouth, and add a cheek and jaw curve so the face doesn't look pasted on.
+5. **E:** The white eye block reads as a hole. Use a dark iris and lash facing right, and add a mouth and chin step under the nose. The arm and sleeve are missing: add the hanging sleeve and hand in front of the torso. Give the skirt a little flare.
+6. **NE and N:** Round the bottom of the bob like the illustration, not a flat cut. The bow and knot placement is correct.
+
+**2. Colour consistency:** Mostly consistent. The S hair reads browner and warmer than in the other views, so use the same hair ramp everywhere. Put the obi highlight on the same side in every view.
+
+**3. Cleanliness**
+1. **SE:** Remove the stray red pixel at the far left of the hair.
+2. **NE and N:** The hair texture is noisy, mixed pixels. Replace it with 2–3 clean strand clusters.
+3. **1x readability:** The faces vanish at 1x. The stronger eyes and mouth from section 1 will fix this.
+
+**Score: 6/10 — FIX**

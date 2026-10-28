@@ -1,0 +1,44 @@
+### 1. Scores (out of 10)
+* **A_K: 8.0** – Strongest silhouette, clear neck break, readable weapon.
+* **A_S: 6.0** – Dark red scabbard disappears into the red skirt/sleeve at 48px; hilt clutters the waist silhouette.
+* **A_N: 8.5** – Cleanest body base for 3D rigging, though lacks class identity without the blade.
+* **B_K: 6.5** – Collar destroys the head-to-body break and fuses the head to the torso at 48px.
+* **B_N: 6.5** – Same collar issue; reads like a hunched neck in pixel downsample.
+
+---
+
+### 2. Primary Reference Choice
+* **A vs. B: Choose A (No Collar).** At 48px, the chibi head already sits directly on the chest. B’s funnel collar eats the tiny bit of skin/neck separation, turning the upper torso into a solid red blob and making head rotation a clipping nightmare in 3D.
+* **Weapon Option: A_N as primary 3D modeling sheet; A_K as primary sprite/pose reference.** (Model the body unarmed, model the katana + scabbard as separate attachable props).
+
+---
+
+### 3. Remaining Problems & Concrete Fixes (Sprite & Animation)
+
+1. **Red-on-Red Camouflage (Sleeves vs. Torso/Skirt)**
+   * *Problem:* In the 48px test, the detached sleeves completely merge into the red bodice and skirt flaps, turning the torso into an unreadable red triangle.
+   * *Fix:* Shift the **sleeves to a darker crimson** (drop value by ~15–20%) OR add a **2–3px cream/gold trim** along the bottom cuff of the sleeves to separate them from the skirt behind them.
+2. **Katana Blade Breaks into Dotted Pixels**
+   * *Problem:* At 48px, the blade is still 1px wide and fragments on the isometric diagonal.
+   * *Fix:* Widen the blade chord by **+30% (make it chunky/stylized)** and remove the dark spine shadow—make the whole blade a **flat, high-value silver/white** so it pops against dark floors.
+3. **Weak Obi Contrast**
+   * *Problem:* The dark brown obi is too close in value to the shaded red robe and black shorts, muddying the waist center.
+   * *Fix:* Push the obi lighter/warmer (e.g., **ochre, warm tan, or muted gold**) OR add a bright **1-pixel-tall gold/white obijime (cord)** across the middle of the obi.
+4. **Tiny Hands Disappear**
+   * *Problem:* At 48px, her hands are 1–2 pixels and vanish inside the bell cuffs; swing animations won't read.
+   * *Fix:* Enlarge the hands by **1.5x** and give her **dark fingerless gauntlets/wraps** that extend slightly past the cuff to anchor the hand position.
+
+---
+
+### 4. Simplify Further?
+**Yes, slightly.** You are 90% there, but clean up these micro-shapes:
+* **Delete the thin black arm-bands** at the top of the detached sleeves—at 48px they just look like dirty anti-aliasing between skin and red fabric. Make the sleeve top a clean red edge.
+* **Merge the two front hair-locks** framing her face into thicker, solid wedges; the thin tips create noisy single pixels on her cheeks.
+
+---
+
+### 5. 3D Reconstruction & Rigging Blockers
+
+1. **Sleeves Fused with Skirt Silhouette:** In the 2D drawing, the right sleeve cuff overlaps and aligns tangent to the right skirt tail. An image-to-3D pipeline (or modeler) will fuse these into one mesh. **Fix:** Pose the reference with **arms raised 20–30° away from the body (A-pose)** so there is white space between the bell sleeves and the hip flaps.
+2. **Painted Hair Highlight Band:** The bright horizontal highlight strip across her bangs will bake into the diffuse texture and look broken when the head tilts or takes 3D lighting. **Fix:** Remove the highlight band completely; use flat base brown for 3D texture generation.
+3. **Skirt Tails Touching Calves:** The long side flaps of the red skirt hug the legs too closely—in 3D this will cause severe leg-through-skirt clipping during run cycles. **Fix:** Flare the skirt side-tails outward in a wider bell/A-line shape to give the thigh bones clearance.

@@ -1,0 +1,29 @@
+**Verdict:** It's better than round 1, but it still reads as a chibi doll in a yukata, not a Lyra/Dawn trainer. At 3.14 heads tall it's a different body type from the references, which are about 4.5–5.5 heads tall.
+
+**Fat, stubby or awkward:**
+- The bob haircut is a wide helmet. It makes the head look about 1.3× bigger than it is.
+- The thighs are thick and the knees are soft. The boots are short and heavy.
+- The arms hang straight in an A-pose, and the hands are vague.
+- The "hero" pose is just a hand on the hip. Nothing in the pose looks like action.
+- Nothing looks too thin.
+
+**Face:** Generic modern anime, not Sugimori. The eyes are too big and round, the bangs are a flat curtain, the mouth is a smirk, and there's no sharp brow or lash shape.
+
+**Views:** Mostly consistent, though the bow changes size between views. On the iso views, the 30° elevation only shows on the top of the head and the bun. The feet and hem aren't foreshortened, so iso_S looks almost the same as front.
+
+**Pixel probes:** The hair takes up about 40% of the sprite. The face shrinks to 2–3 unreadable pixels. The outline swallows the legs into black sticks, and the bow turns to noise on NE/N. The red dress and dark sash read well.
+
+| | Score |
+|---|---|
+| A graceful/trainer read | 4 |
+| B proportions | 4 |
+| C face | 4 |
+| D view consistency | 7 |
+| E pixel readability | 4 |
+
+**Top 5 fixes:**
+1. Go to about 4.5 heads tall. Shrink the head about 25%, lengthen the torso and legs, and give the waist and hips more S-curve.
+2. Cut the hair mass down. Use tapered, flicked ends and choppy bangs with face gaps.
+3. Restyle the face: smaller eyes with a thick upper lash and one highlight, a sharp brow, and a smaller, open smile.
+4. Use a dynamic stance in the turnaround: contrapposto, one knee forward, splayed fingers. Make the hero a real action pose.
+5. For the iso views, foreshorten the legs and hem and show the ellipse of the shoulder tops and sash. In the probes, use a lighter, selective outline so the legs keep their skin tone.

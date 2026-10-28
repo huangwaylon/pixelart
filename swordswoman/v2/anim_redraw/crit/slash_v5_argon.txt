@@ -1,0 +1,10 @@
+SCORE 5/10
+1. F1-F4: Scabbard disappears completely during the swing and magically reappears in F5.
+2. F2: Smear arc is too thin, jagged, and hugs the hair closely instead of extending outward to expand the attack silhouette and hitbox.
+3. F1: Windup pose lacks grounded torque; her feet cross awkwardly in the center and her head stays dead-pan forward instead of coiling back.
+4. F3: Impact starburst is placed on the hilt/hand rather than the blade tip/ground contact point, muddying the silhouette and reading like a hand injury.
+5. F2-F4: Back foot slides horizontally across the floor between the smear, impact, and follow-through frames instead of staying pinned.
+6. F0-F6: Face and hair are stiffly copy-pasted across all frames with zero secondary motion (no hair/bow bounce, no intense expression change on F2-F3).
+FIX 1: Redraw F2 smear as a thick, clean crescent extending well past the sword tip, and move the F3 starburst to the blade tip/ground impact point.
+FIX 2: Pin the back (screen-left) boot in place from F2 through F4, and plant the back foot firmly in F1 to create a coiled, stable windup.
+FIX 3: Keep the scabbard visible at the hip across F1-F4, and add 1-2px of delayed follow-through bounce to the hair bun and bow on F2-F5.

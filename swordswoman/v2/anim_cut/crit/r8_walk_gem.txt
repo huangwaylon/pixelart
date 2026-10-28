@@ -1,0 +1,13 @@
+### 3 Most Important Concrete Problems
+
+1. **Automated Rotation Artifacts on Katana (All Frames, Lower-Left Sword Region):** The blade exhibits severe stair-stepping and inconsistent 2-pixel clusters due to cutout rotation rather than manual pixel placement (especially noticeable in Frames 0, 1, and 5). **Fix:** Manually redraw the blade at fixed pixel-art angles (e.g., 1:1 or 2:1 pixel steps) with a consistent 1px dark outline to eliminate jaggies.
+2. **Rigid Cutout Translation / Zero Overlap (Frames 1 & 5, Head/Bow/Hair Region):** The head, hair, and bow shift down as a single static block on the "down" poses without any secondary motion or delay. **Fix:** Delay the bow and lower hair tips by 1 frame (keeping them 1px higher in Frames 1/5 and dropping them in Frames 2/6) to create bouncy follow-through.
+3. **Leg Thinning and Outline Breaks (Frame 7, Back Left Leg):** The trailing leg loses volume and shrinks to a 1px wide skin line near the ankle with broken dark outlining. **Fix:** Widen the calf/ankle by 1px to match the leg volume in Frame 3 and restore a continuous 1px dark outline.
+
+### Rubric Evaluation
+
+* **Animation & Motion (5/10):** Basic 8-frame walk structure (contact, down, pass, up) and arm opposition are functional, but the motion feels mechanical due to pure cutout translation and lack of squash, stretch, or overlapping action.
+* **Pixel-Art Quality (4/10):** The static upper body has clean clusters, but rotated limb and weapon layers introduce severe jaggies, inconsistent line weights, and broken outlines on the legs and katana.
+* **Readability & Identity (6/10):** Character silhouette and SE facing direction remain clear throughout the cycle, with distinct dark shading on the back leg aiding depth separation.
+
+SCORE walk: 5

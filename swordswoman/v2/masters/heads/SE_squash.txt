@@ -1,0 +1,25 @@
+; origin 20 8
+; view SE
+; expr squash
+...................
+.....KKK...........
+....KHLHK...KKKKK..
+....KLHHK.KKeeeeK..
+.KK.KHhhhKEEEEEeK..
+KeeKKhrRrrEEEEERK..
+KeEeKrRRrrREEERRK..
+KEEEerRRrrrRRRRRK..
+KERRRrrrrhhrrrrhK..
+KRrrrhhHLLHHHHhhhK.
+.KHHHHHhhHhShHhShHK
+..KHHHHhhhSsShSsShK
+..KHHHHhssssssssshK
+..KHHHHhsssssssssKK
+..KHhHHhKKssssssKSK
+..KHhHHhsKKKKsKKKSK
+..KHhHhhsssssssssSK
+..KhHhHhssssrrrssK.
+..KhHhhhssssrsrSK..
+...KhHhhhsssssSK...
+...KhKhhhsssSSK....
+....K.KhhhsSSK.....

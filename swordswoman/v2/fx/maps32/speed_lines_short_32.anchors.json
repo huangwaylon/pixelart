@@ -1,0 +1,57 @@
+{
+ "size": [
+  11,
+  18
+ ],
+ "facing": "E",
+ "attach": "body_centre",
+ "pivot": [
+  20,
+  10
+ ],
+ "ms": [
+  40,
+  40
+ ],
+ "cell_offset": [
+  20,
+  22
+ ],
+ "cell": "40x40 cell of the 32 px figure (A_r3: feet ~20,37, sole row 37, back edge of body x11, body centre ~20,22)",
+ "layer": "behind",
+ "note": "canvas top-left = cell (0,12); same rows as the long set, for short hops / step-dash.",
+ "line_rows_cell": [
+  13,
+  18,
+  22,
+  29
+ ],
+ "lengths": [
+  [
+   6,
+   4,
+   7,
+   5
+  ],
+  [
+   5,
+   7,
+   4,
+   6
+  ]
+ ],
+ "shift_back_px": [
+  [
+   0,
+   0,
+   0,
+   0
+  ],
+  [
+   3,
+   2,
+   2,
+   3
+  ]
+ ]
+}

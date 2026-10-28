@@ -1,0 +1,19 @@
+Here is the director's critique of the `idle_SE` animation sheet. 
+
+While the overlapping motion of the bow, hair, and skirt hem gives this rig a good foundational bounce, it suffers from severe cutout-rotation artifacts and rigid lower-body mechanics that keep it below shippable commercial standards.
+
+### 3 Most Important Concrete Problems
+
+1. **Severe Cutout-Rotation Jaggies on the Katana (Frames 2, 5, 8, 12 – Bottom-Left Region)**
+   * **Problem:** Because the katana is rotated programmatically via a cutout rig rather than hand-drawn per angle, the blade breaks into stepping staircases, inconsistent widths, and double-thick outlines whenever it leaves the clean 45-degree diagonal (Frames 0, 1). In **Frames 2 and 8 (`low`)**, the shallow angle creates clumsy 2-pixel steps with dark outline blocks trapped inside the white highlight. In **Frames 5 and 12 (`rise2`)**, the steeper angle causes the blade to bulge in thickness near the hilt and taper unevenly.
+   * **Exact Fix:** Stop rotating the sword sprite procedurally. Hand-pixel 3 dedicated, clean blade variants for the shallow (`low`), 45-degree (`top`/`fall`), and steep (`rise2`) angles. Ensure strict 1px single-pixel outlines and uniform 2px-to-1px blade thickness with clean pixel staircase patterns (e.g., strict 2:1 pixel steps for shallow/steep angles, removing all interior black outline clusters).
+
+2. **Telescoping Legs Instead of Knee Bend (Frames 2, 3, 8, 9, 10 – Lower Body / Legs Region)**
+   * **Problem:** During the lowest squash poses (`low`, `hold`, `blink-b`), the character's torso and skirt drop down by ~3–4 pixels, simply overlapping and swallowing the vertical leg columns. The legs remain completely straight 2px-wide vertical sticks that just get shorter. This reads as her torso telescoping into her shins rather than a natural knee bend, killing the weight of the bounce.
+   * **Exact Fix:** In Frames 2, 3, 8, 9, and 10, shift the middle pixels of both shins 1px down-right (SE) to create a forward knee-bend silhouette, and widen the shadow gap between the legs by 1px at the top near the skirt hem to sell outward compression/squash.
+
+3. **Broken Eye-Blink Shape & Missing Eyelash Readability (Frame 9 – Face / Eyes Region)**
+   * **Problem:** In **Frame 9 (`blink-b`)**, the closed eye lines are placed too high on the face (sitting at the exact vertical height of the upper brow/eyelash line from Frame 8 rather than dropping down to where the lower eyelid sits). Furthermore, the closed eyes are drawn as downward-curving "^" arches (`_/` and `\_`), which reads as a happy/squinting expression rather than a neutral blink, and the left eye loses its outer eyelash pixel, causing the face silhouette to pop.
+   * **Exact Fix:** In Frame 9, move both closed eye lines down by 2 pixels so they sit at the bottom of the eye socket (matching the bottom edge of the blue irises in Frame 8). Flatten the arches into horizontal lines with a 1px upward flick at the outer corners to retain the eyelash identity.
+
+SCORE idle: 6.5

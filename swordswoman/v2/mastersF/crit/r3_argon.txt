@@ -1,0 +1,17 @@
+**1) Sections:** Spot-on. Crown, eye, chin, waist, hem, knee, and sole align tightly with the DS trainer references.
+**2) Quality/Appeal:** Cute and feminine, though the blocky face kit + dark outlines feel slightly rigid compared to BW's softer sel-out. Still reads well at 1x.
+**3) Hair Readability:** Much improved! The half-up tie, topknot, and red side-bow read clearly at 1x across all angles.
+**4) Consistency:** High consistency across the turnaround. Only minor discrepancy: the bow sits on her anatomical left in S/N/NE, which means in SE (facing viewer's right) it should be partially occluded behind the knot rather than fully in front.
+
+**Top 8 Pixel Fixes:**
+1. **SE (Bow):** Shift red bow 2px left behind the dark knot to match left-side anatomy.
+2. **N (Hair):** Replace the 2px horizontal black bar at the lower hair tips with dark-brown shade (`#4c4460`) to remove the "hole" look.
+3. **E (Eye):** Add 1px skin-shadow or brown brow above the eye; it currently merges into the hairline.
+4. **S (Collar):** Shift the dark-red V-overlap 1px right to clearly read as a left-over-right kimono wrap.
+5. **E (Leg):** Trim 1px of black outline from the upper-front shin to soften the rigid vertical line.
+6. **NE (Ear/Cheek):** Trim 1px skin at the lower jaw corner; face protrusion is slightly heavy for a back-3/4 view.
+7. **S/N (Skirt):** Drop the center-2px of the hem 1px lower to curve the skirt rather than a flat horizontal line.
+8. **SE (Front Hair):** Extend her right front hair lock 1px down onto the shoulder to match S.
+
+**Score:** 8.5/10
+**VERDICT: SHIP**

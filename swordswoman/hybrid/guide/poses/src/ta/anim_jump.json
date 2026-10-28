@@ -1,0 +1,24 @@
+{
+ "name": "jump",
+ "frames": [
+  {
+   "file": "jump_f0.json"
+  },
+  {
+   "file": "jump_f1.json"
+  },
+  {
+   "file": "jump_f2.json"
+  },
+  {
+   "file": "jump_f3.json"
+  },
+  {
+   "file": "jump_f4.json"
+  },
+  {
+   "file": "jump_f5.json"
+  }
+ ],
+ "timing_ms": "see hybrid/ANIM_DIRECTION.md section 1"
+}

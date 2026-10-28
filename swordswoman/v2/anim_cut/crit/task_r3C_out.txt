@@ -1,0 +1,23 @@
+Restored session: Mon 26 Oct 2026 10:18:52 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt both actions. I went through the build-and-critique loop four times; nobody else has reviewed them yet.
+
+**Dash:**
+- The barcode lines are gone. Two afterimages of the character trail behind her (near one solid, far one checkered), with 1px light streaks that fade out on burst2.
+- Strong forward lunge on burst, lean back on skid, and the bow and hem overshoot on brake and settle. I added a "rest" frame at the end.
+- The katana trails low (kat 10/11) instead of pointing straight back.
+- Dust kicks up in front of the toe and sits behind the legs, so the boots stay dark.
+
+**Slash:**
+- New crescent smear from the coil blade over the head down into the kat_14 blade, about 165°. It tapers from 1px to about 6px.
+- New timings: impact 40ms, hit-stop 60+50ms with a shake, and three sparks that break apart.
+- The follow-through is lower and further forward, with the bow and hem lagging. I added an antic, a lift and a rest frame.
+
+Both now use a 64×72 cell, ground (32,62), so the tip isn't clipped.
+
+**New parts** (in `parts/common/`): `fx_dash_streak1/2`, `fx_dash_kick/kick2`, `fx_dash_puff`, `fx_slash_smear`, `fx_slash_smear_tail`, `fx_slash_spark1/2/3`. The smear generator is `work/r3/smear_gen.py`.
+
+**Weak spots:** the smear frame shows the arm already in the impact pose, the lift frame is close to horizontal, and the coil lean is mild.
+
+Saving session...completed.

@@ -1,0 +1,34 @@
+Restored session: Mon 26 Oct 2026 11:22:24 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**SCORE idle: 6**
+1. f0–f11, bow (rows ~2–9): the bow is locked to the head and moves 0px relative to it. Make it lag by 1 frame: +1px down on f2/f8 (low) and −1px up on f5/f11 (top), with the tails flicking 1px late.
+2. f1–f4, torso/hem: the bob is about 1px and the hem never changes shape. Sink by 2px on f2 and widen the hem by 1px on each side. At top (f5) narrow it by 1px and stretch the head and body up 1px.
+3. f9 blink lasts only 90ms and comes once in about 1.9s. Add a half-lid frame of 60ms before and after it. The katana tip is also frozen; let it dip 1px on the low frames.
+
+**SCORE walk: 6**
+1. Every frame is a flat 100ms. Hold contact (f0/f4) for 120ms and cut pass to 80ms so the steps have accent.
+2. The two halves don't match. f2 has both feet planted, but f6 has the knee raised high. Pick one pass pose and mirror it.
+3. f3/f7 "up": the body rises less than 1px, so it doesn't bounce. Raise it 2px over contact. The bow also changes shape on f3 (the loops grow), which breaks identity; keep the bow sprite fixed and only offset or rotate it.
+
+**SCORE run: 6**
+1. f2/f5 "air": the head is at the same height as on contact. Lift it 2–3px and drop it 1px with a squash on f0/f3.
+2. The katana barely moves (about 1px) across all 6 frames, like a stiff stick. Bounce the tip ±2px, out of phase with the body.
+3. The bow is drawn as a flat streamer that matches no other sheet, which breaks identity. Use the standard bow, angled 20°, with the tails trailing 2–3px.
+
+**SCORE jump: 5**
+1. The katana teleports between hands or sides: right to left at f2→f3, and left back to right at f10→f11. Keep it in one hand all the way through, or add a transition frame.
+2. The f3 "rise" smear is a thin arc over the head that reads as a jump rope. Either cut it or make it a tapered crescent, 4px thick at the blade and fading to 1px.
+3. f2 "launch" has no stretch. Make it 2px taller and 1px narrower, with the legs trailing. f7 "land" squash is good; hold it 130ms instead of 110ms.
+
+**SCORE dash: 6**
+1. f1/f2 afterimages: the three solid red ghosts with sword ghosts are muddy blobs. Use two ghosts with a 1px dither falloff and drop the sword from the ghosts.
+2. f3 "skid": she stands upright. Drop her 3px, lean the torso back about 15°, and let the hem/bow overshoot forward 2px.
+3. f5→f6: the katana jumps from behind her to across the front of her legs. Keep it on the back diagonal used in f0–f4.
+
+**SCORE slash: 6**
+1. f5 SMEAR: the top of the arc is a 1–2px wire and only the right end is thick. Redo it as one crescent that tapers from about 6px near the hilt to 1px at the tail and hugs the blade's path.
+2. The body never lunges. Push it 3–4px forward on f5/f6, and squash it 1px on impact.
+3. f7/f8 hit-stop: the pose is held but without shake. Add a ±1px x-jitter. Also cut f9 "follow" to 70ms and let the bow and hem overshoot 2px forward there.
+
+Saving session...completed.

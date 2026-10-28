@@ -1,0 +1,27 @@
+**Scores (sprite / portrait)**
+- Cute: 7 / 7.5
+- Anime/Japanese: 7 / 8
+- Big eyes read at 1x: 8 / 9
+- Intentional: 7 / 7
+- Consistent across views: 7 / 8
+
+**Weak at 1x**
+- **Cheerful S/SE:** the iris turns into a plain navy block with a tan row under it. That reads as tired eye bags, not happy.
+- **Determined S/SE:** the brows form one near-continuous black bar, so she looks like she's wearing glasses.
+- **Effort:** a single white pixel in the mouth reads as a buck tooth, and the line eyes read as sleeping.
+- **Surprised:** the white pixel under each pupil reads as a tear.
+- **Embarrassed S:** the pale pixels at the outer edge of the blush also read as tears.
+
+**Views**
+- **E:** yes, it's a real profile: forehead step, nose bump, lip notch, chin. But the front edge is flat from bangs down to the nose; there's no brow ridge.
+- **SE:** yes, a real 3/4: narrower far eye, nose breaks the contour, mouth is offset. But the far eye touches the outline with no skin pixel between them.
+
+**Top 6 edits**
+1. **Cheerful S/SE:** turn the tan row under each eye back to skin. Make the bottom 2 px of the eye iris i, plus 1 px glow n.
+2. **Determined S/SE:** clear 2 px of skin between the brows and drop each inner end 1 px.
+3. **Effort S/SE/E:** replace the single white tooth with a 3 px gritted line (white with r on both ends).
+4. **Surprised S/SE:** delete the white pixel under the pupil. Put the highlight at the pupil's top-left instead.
+5. **E:** pull the bangs back 1 px and add 1 skin brow-ridge pixel in front of the lash row. The front edge should step out at the brow, in at the eye, then out at the nose.
+6. **Portraits:**
+   - The chin is a flat line about 8 px wide. Step it 3-2-1 toward a 1 px centre point, with a jaw-shadow pixel each side.
+   - Cheerful: change the tan under the eyes to skin.

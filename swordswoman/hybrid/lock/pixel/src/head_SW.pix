@@ -1,0 +1,37 @@
+# canonical sprite-scale head, facing SW three-quarter (mirror of the E-side stamp + hand re-light) (hand-typed). 26 x 34
+size: 26 34
+grid:
+..........KKKK.....KKKKK..
+.........KRRRCKK..KhJJHhK.
+........KRRRRKRCKKhJJHHHhK
+......KRRRRRKrRRCKhhhHHHhK
+......KRRRRRKrRRCKhhhHHHhK
+......KRRRRRKrRRCKhhhHHHhK
+.....KrRRRRCvrRRRKhhhhHhhK
+.....KRRrvrRvvrRRKhhhhhhhK
+.....KKvvKrrKvvKKhhhhhhhK.
+....KhhKKKJJKKKhhhhhhhhhK.
+....KhJJJhhhhhhhhhhhhhhhK.
+...KhJJHHHhhhhhhhhhhhhhhK.
+..KhHHHHHHHHHhHHhhhhhHhhhK
+.KhhHHHHhHHHHHhHHhhhhhHhhK
+.KhHHHHHHhHHHHHhHHhhhhHhhK
+KhHHHHHHHhHHHHHhHHHhhhhHhK
+KhHHHHHHHhHHHHHhHHHHhhhHhK
+KhhHHHHHHHhHHHHHhHHHHhhhhK
+KhHhHHHHHHhHHHHHHhHHHhhhhK
+KhHHHHHHHHhHHHHHHhHHHhhhhK
+KhHHHHHHHHhhHHHHhhHHHhhhhK
+KhhHHHHHHHHhHHHHHHhHHhhhK.
+.KhhhHHHhsmhHHHhmhhHhhhhK.
+.KhhHhmsssmhHhmssmKhhhhhK.
+.KhhKKKKsssssKKKKKsKhhhhK.
+..KhhewessssseeewesKhhhK..
+..KhhEEEssssseEEEeSmhhhK..
+...KhsEEssssssEEsssmhhK...
+...KhppsssssssssppsmhhK...
+...KhsssssmssssssssmhK....
+...KhssssssssssssssmhK....
+......KsssssssssssmK......
+.......KssssssssmK........
+........KKKKKKKK..........

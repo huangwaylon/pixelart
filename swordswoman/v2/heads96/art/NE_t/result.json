@@ -1,0 +1,42 @@
+{
+ "logs": [
+  {
+   "attempt": 0,
+   "sec": 62,
+   "fixes": [
+    "lagL: O1 31 edge pixels are not K outline (draft had 20): [(16, 24), (16, 25), (15, 26), (17, 26), (15, 27), (17, 27), (17, 28), (17, 29), (17, 30), (16, 31)]; every edge pixel facing empty space is K",
+    "lagR: O1 31 edge pixels are not K outline (draft had 18): [(15, 24), (15, 25), (15, 26), (17, 26), (15, 27), (17, 27), (16, 28), (16, 29), (16, 30), (16, 31)]; every edge pixel facing empty space is K"
+   ]
+  },
+  {
+   "attempt": 1,
+   "sec": 98,
+   "fixes": [
+    "lagL: O1 32 edge pixels are not K outline (draft had 20): [(16, 24), (16, 25), (15, 26), (17, 26), (15, 27), (17, 27), (17, 28), (17, 29), (17, 30), (16, 31)]; every edge pixel facing empty space is K",
+    "lagR: O1 32 edge pixels are not K outline (draft had 18): [(15, 24), (15, 25), (15, 26), (17, 26), (15, 27), (17, 27), (16, 28), (16, 29), (16, 30), (16, 31)]; every edge pixel facing empty space is K"
+   ]
+  }
+ ],
+ "out": {
+  "lift": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/NE/artist/t_lift.txt",
+   "lint": []
+  },
+  "drop": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/NE/artist/t_drop.txt",
+   "lint": []
+  },
+  "lagL": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/NE/artist/t_lagL.txt",
+   "lint": [
+    "O1 32 edge pixels are not K outline (draft had 20): [(16, 24), (16, 25), (15, 26), (17, 26), (15, 27), (17, 27), (17, 28), (17, 29), (17, 30), (16, 31)]; every edge pixel facing empty space is K"
+   ]
+  },
+  "lagR": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/NE/artist/t_lagR.txt",
+   "lint": [
+    "O1 32 edge pixels are not K outline (draft had 18): [(15, 24), (15, 25), (15, 26), (17, 26), (15, 27), (17, 27), (16, 28), (16, 29), (16, 30), (16, 31)]; every edge pixel facing empty space is K"
+   ]
+  }
+ }
+}

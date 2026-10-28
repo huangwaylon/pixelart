@@ -1,0 +1,27 @@
+Restored session: Mon 26 Oct 2026 12:31:39 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+The jump arc reads, and the land squash in frame 7 (dust puffs, flattened skirt) is the strongest moment on the sheet. Everything else plays like a stiff cutout rig: there's no smear anywhere and almost no secondary motion. I scored it from the sheet at its native size (couldn't zoom in, PIL isn't installed), so the pixel locations are approximate.
+
+**What works:** the timing is mostly right: 140ms crouch hold, 50ms launch snap, and 110+130ms apex/hang. The apex sits clearly above the rise. The ground shadow stays put and lightens at height. The face, bow and palette stay consistent across all 12 frames.
+
+**Top 3 problems:**
+
+1. **F1 crouch → F2 launch: no real squash/stretch, no smear.** The crouch only drops the body about 3px. The head, hair and torso keep exactly the same proportions, and F2 is just the same body moved up with stick legs. The sword snaps from low-left (F1) to raised (F2) with nothing in between.
+   - F1: squash the torso and skirt about 15% vertically, widen it 2–3px, and drop the head into the shoulders so the neck disappears.
+   - F2: stretch the torso and legs 2–3px taller and narrower, and point the toes.
+   - Add a 2–3px-wide tapered crescent smear along the blade path, from the hilt to the tip position in F2, in the light blade colour with one darker edge pixel.
+
+2. **Hair and bow are a rigid helmet in every frame (F3–F9).** Nothing lags or overlaps. In F6 (fall) the hair should flare up 2–3px and the bow loops should lift. In F7 (land) the hair should keep moving down, hanging 2px below where it rests in F8. In F3 (rise) the hair ends should drag 1–2px below the jaw. Right now the head looks pasted onto the body.
+
+3. **Rotated-cutout artefacts on the blade and legs.**
+   - The blade in F2, F3, F6 and F10 has uneven stair-steps (1-2-1-3 runs) from rotating the sprite, it has no dark outline (unlike the body), and its length changes from frame to frame.
+   - Redraw the blade at a few fixed angles with even 1:1 or 2:1 steps, add a 1px dark underside, and keep the length the same.
+   - The legs in F2, F3 and F6 are 1–2px toothpicks with outline breaks where they meet the skirt hem. Thicken them to 3px, join the outline to the skirt, and cut the bent knees in F6 into clean shapes.
+
+**Minor:** the recovery tail (F8–F11, 330ms) is too long. The sword's angle in F9 → F10 → F11 pops by about 20°, so drop F10 or blend it. The dust puffs in F7 and F8 are isolated blobs; give them a 2-frame dissipation.
+
+SCORE jump: 5
+
+Saving session...completed.

@@ -1,0 +1,19 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+OVERALL: 5
+
+- Natural: 5
+- Whole-body: 5
+- Fluid: 4
+- Appealing: 5
+- Secondary motion convincing: 4
+- Readable at 1x: 6
+
+Round 2 helped: burst/smear lean and skid head-dip read better. But the secondary motion still has the wrong physics, and the recover still pops.
+
+**Top 3 fixes:**
+1. **Skid (both views), ribbon tails, side locks and back hair:** they still stream backward. On deceleration they should whip forward past the head, about 30–45° ahead of vertical. Right now they show no overlap at all.
+2. **Burst, ribbon:** it's already fully horizontal and stick-straight, too early and too rigid. Keep it about 20° off vertical in burst. Reach full extension only in smear, with an S-curve (tip lagging the root). Also cut its length about 30%; at 1x it reads as a red bar.
+3. **Recover:** she snaps fully upright, the same pose as OLD. Keep the pelvis about 4 px lower with a slight forward lean (5–8°). Let the hem and hair settle with one small backward overshoot. In E, the ribbon vanishes; let it hang and sway instead.
+
+Minor: in antic the arms should wind back, not reach forward.

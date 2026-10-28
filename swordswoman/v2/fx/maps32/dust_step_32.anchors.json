@@ -1,0 +1,52 @@
+{
+ "size": [
+  10,
+  9
+ ],
+ "facing": "E",
+ "attach": "feet",
+ "pivot": [
+  12,
+  8
+ ],
+ "ms": [
+  80,
+  100,
+  120
+ ],
+ "cell_offset": [
+  20,
+  37
+ ],
+ "cell": "40x40 cell of the 32 px figure (A_r3, feet ~20,37, back heel ~16,37, front toe ~24,36); ground_y = cell row 37 (shoe-sole row); pivot = ground point",
+ "layer": "over",
+ "ground_y": 8,
+ "heel_x": 6,
+ "note": "f0 5x4 puff on the ground just behind the back heel (cell x12-16, overlaps the heel by 1 px); f1 7x6 + 4x4 puff, rises 1-2 px and drifts back-left; f2 4x4 + 4x3 puffs higher/further back. Max width 10. flip_W: x->9-x, pivot->[-3,8], keep shading (light top-left).",
+ "puff_px": [
+  [
+   5,
+   4
+  ],
+  [
+   [
+    7,
+    6
+   ],
+   [
+    4,
+    4
+   ]
+  ],
+  [
+   [
+    4,
+    4
+   ],
+   [
+    4,
+    3
+   ]
+  ]
+ ]
+}

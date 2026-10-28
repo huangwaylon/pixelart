@@ -1,0 +1,7 @@
+HY3D round 2 (lead review of keys v2) DONE 2026-10-26 11:32
+1 CAMERA: verified numerically as exactly 30 deg elevation, 45 deg front-right; her forward projects to the viewer's lower-right. Same camera as design r3iso/render_iso.py (vc_SE). The "steep / faces E" read came from the mesh (deep bob helmet, recessed face, bangs + side locks proud of it). Fix: facefix.py + a per-view head offset (SE: pitch up 8, turn 14 toward camera; E: up 6, turn 10).
+2 FACE: best/rest_v2.glb (scripts/facefix.py): bang line +0.07, overhang flattened, side locks pulled back, big eyes repainted. Both eyes read in SE in nearly all keys (both critics).
+3 POSES: rig/keys.json v4, pushed toward anim_redraw (lean, knee-up run, deep crouch/land, lunges, overhead coil, diagonal impact), mitten hands, katana in run/jump/dash/slash, 12 smoothed skirt bones + corrective smooth, shorter hem, sleeve ID. Older versions in keys_v2/, keys_v3/, rig_v2.py/rig_v3.py.
+4 OUTPUT: keys/<action>_<SE|E>/fNN_{matid,shade}.png + keys.json, keys/sheet_<action>.png, keys/cmp_anim_redraw.png. Critiques crit/r4 (v3), crit/r5 (v4).
+   v4 scores: Argon idle 6.5, walk 6, run 6.5, jump 5.5, dash 6, slash 6, guide 6.5 | Opus 6/5/5/4/4/5, guide 5 (v2 was Argon 6.5 / Opus 5).
+Remaining gap: the single skinned bell skirt hides the legs in SE and webs between wide strides; the blade clips the skirt in E. Suggested next: use the PARTS strand's rigid part split (skirt + legs) under this rig/keys; shorten the katana to ~0.6 H with the tip back-down.

@@ -1,0 +1,34 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+**Overall: 4.6/10.** The jump is the only action with real squash and stretch. The other five read as a rigid rig sliding around, and the bow and hem have almost no overlapping action anywhere.
+
+**Idle — 5/10**
+1. F1–F3: the body sinks only about 1px and the head and bow move as one block. Drop the torso 2px in F2, drop the head 1px a frame later (in F3), and lift the bow loops 1px in F2 so they lag behind.
+2. F2: 320ms is a dead hold. Use 220ms, and add a 2-frame blink in F0.
+3. Hem is identical in all frames. Widen it 1px on each side in F2 for a little squash.
+
+**Walk — 4/10**
+1. All frames: the katana blade cuts diagonally across both legs, so the stride can't be read. Rotate it about 25° back so the tip sits behind the trailing heel.
+2. F1/F5 ("down") are only about 1px lower than F3/F7 ("up"). Make the difference 2–3px and stretch the torso 1px on the up frames.
+3. Sleeves stay frozen. Counter-swing the arms ±2px against the legs.
+
+**Run — 5/10**
+1. No forward lean. Tilt the torso and head about 10° (head forward 2–3px).
+2. F2/F5 ("air") use the same head height as the contact frames. Raise them 3px and shrink the shadow 2px. The hem should flare backward in air frames.
+3. The blade stays horizontal and rigid in every frame. Let the tip trail 2px up and down, a frame behind the body bob.
+
+**Jump — 6/10**
+1. F5 (fall) reuses the F1 launch pose with the arm up. Swap it for a stretched fall: arms up and out, hem and bow flipped upward 2–3px. Raise its time to 90ms.
+2. F3 and F4 are near-duplicates in a T-pose. Make F4 a tuck with knees up 3px, and cut F3 to 80ms.
+3. Identity drift: the face is about 1px narrower and the bang shape changes in F1–F2. Lock the head part.
+
+**Dash — 4/10**
+1. F1–F2: the afterimage is a flat, muddy maroon blob. Replace it with 2 dithered silhouettes of the F0 pose at 50% and 25%, spaced 6–8px apart.
+2. F2 is a duplicate of F1. Give it a 1px vertical stretch and a 3px forward offset, or drop it.
+3. F5: the camera angle turns toward the front (a different facing) and the blade has changed side. Keep the same 3/4 SE view and the same sword hand.
+
+**Slash — 4/10**
+1. F2: the smear is a uniform 1–2px yellow arc that doesn't touch the blade. Replace it with a filled crescent that starts at the hands, is 5–6px thick at the leading edge and tapers to 1px, and covers a 120° arc. Hide the blade in this frame.
+2. F4: the hit-stop is a softer copy of F3. Hold F3 exactly, add a 1-frame white flash on the spark, shake the body ±1px, and cut it to 60ms.
+3. F2/F3: the torso doesn't rotate. Twist the shoulders 2–3px forward and plant the front foot 2px out. F1's coil can drop to 110ms.

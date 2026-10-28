@@ -1,0 +1,2 @@
+f00 walk_contact OK
+f01 walk_passing OK

@@ -1,0 +1,120 @@
+# turn_SE, hand-typed 3/4 front-right. Traced from hybrid/lock/turn/turn_SE.png (+ iso_v5 with the sword moved to her LEFT hand).
+# near side = her right (viewer left), far side = her left (viewer right) holding the katana.
+head: SE 49 41
+[ribbons]
+75 54 P
+76 53 P
+77 52 Pp
+78 51 Pp
+79 50 Pp
+80 49 Pp
+81 49 Pp
+82 48 Pp
+83 48 pP
+84 48 pP
+85 47 pP
+86 47 pP
+87 47 P
+88 47 Pp
+89 48 Pp
+90 48 p
+91 49 p
+75 73 P
+76 74 P
+77 74 pP
+78 75 pP
+79 75 pP
+80 76 pP
+81 76 pP
+82 76 Pp
+83 76 Pp
+84 77 p
+[legs]
+93 57 KSsssK
+94 57 KSsssK
+95 57 KSsssK
+96 57 KSsssK
+97 57 KSssK
+98 58 KsssK
+99 58 KssK
+100 58 KssK
+101 57 KdddK
+102 57 KsdsdK
+103 57 KdddddK
+104 58 KKKKK
+92 65 KsssmK
+93 65 KsssmK
+94 65 KsssmK
+95 65 KsssmK
+96 65 KssmK
+97 65 KssmK
+98 66 KsmK
+99 66 KsmK
+100 65 KdddK
+101 65 KsdsdK
+102 65 KddddK
+103 66 KKKK
+[skirttail]
+95 51 KrRRRrrvK
+96 50 KrrRrrvK
+97 50 KrrrrvK
+98 49 KvvvvK
+99 49 KvvK
+100 48 KKK
+[skirt]
+85 57 KCRRRRRRRRRRrK
+86 56 KCRRRRRRRRRvrrK
+87 55 KCRRRRRRRRRvKvrK
+88 55 KRRRRRRRRRvKddKrK
+89 54 KRRRRRRRRRrvKddKvrK
+90 54 KRRRRRRRRrvKdddKvrK
+91 53 KRRRRRRRRrvKddddKvrK
+92 52 KRRRRRRRRrvK....KvrK
+93 52 KrRRRRRrrvK......KrK
+94 51 KrRRRRrrvK........KK
+[torso]
+72 56 K
+72 72 K
+73 56 KR
+73 71 RK
+74 56 KRRRrvvvvvvvvvrK
+75 56 KrRRRRRRrvvvvrRK
+76 54 KKssKrRRRRRRRRrrKsKK
+77 53 KSsssKRCRRRRRvvRrKsmK
+78 53 KSssmKRCRRRRRRRrrKmmK
+79 53 KSsK.KLLLLLLLLLLLKKmK
+80 57 KlllllllllllK
+81 57 KllTKKKKKKKTK
+82 57 KlllllllllllK
+83 57 KllTKKKKKKKTK
+84 57 KlllllllllllK
+[sleeveN]
+80 52 KCRRRv
+81 52 KCRRRv
+82 51 KCRRRRv
+83 51 KCRRRRv
+84 50 KCRRRRRv
+85 50 KCRRRRRv
+86 49 KCRRRRRRv
+87 49 KRRRRRRrv
+88 49 KrRRRRRrrK
+89 49 KvvrrrrvvK
+90 50 KKKKKKKK
+91 52 KSsK
+92 52 KssK
+93 53 KK
+[sleeveF]
+80 70 vRK
+81 70 vRrK
+82 70 vRrK
+83 70 vRrrK
+84 70 vRrrK
+85 70 vRrrrK
+86 71 vrrrrK
+87 71 KvvvvK
+88 72 KKKK
+89 72 KsmK
+90 72 KmK
+91 73 K
+[katana]
+@katana 73 89 48 22

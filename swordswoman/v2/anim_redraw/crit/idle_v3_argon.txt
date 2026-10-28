@@ -1,0 +1,13 @@
+SCORE 5/10
+
+1. **Robotic Elevator Bounce (All frames):** Head, torso, and katana shift vertically in locked unison with zero overlapping action or follow-through.
+2. **Stiff Blink (F4–F6):** F5 jumps straight to 1px horizontal slits with no half-closed eyelid easing on F4/F6 (despite 60ms durations set up for them).
+3. **Rigid Secondary Elements (All frames):** The red hair bow, hair bun, and side locks are 100% static pixels pasted onto the moving head, killing any lively/bouncy feel.
+4. **Leg Width & Shading Pop (F0, F8, F9 vs F1–F7):** On tall frames (F0, F8, F9), inner leg outlines/shadows thicken and shift horizontally, causing noisy pixel shimmer while grounded.
+5. **Katana/Arm Lock (F0–F9):** The sword and hands never rotate or lag behind the chest breathing—they just translate 1–2px vertically like a solid statue.
+6. **Collar/Neck Jaggies (F3–F6):** When the head drops 2px at the bottom of the breath, the chin crushes into the white collar, creating a muddy cluster of dark outline pixels.
+
+**Top 3 Fixes:**
+1. **Add Overlap/Lag:** Delay the hair bow, side bangs, and katana tip by 1 frame behind the torso's vertical shift (e.g., bow stays up on F1, drops on F2; stays down on F7, rises on F8).
+2. **Ease the Blink:** On F4 and F6 (60ms), lower the upper eyelids by 1–2px (half-closed) with a slight eyelash drop so the F5 closed state reads smoothly.
+3. **Clean the Legs:** Lock the boots and lower leg pixels completely across all 10 frames; drive the breathing bounce purely from the skirt hem/knees up to eliminate leg shimmer.

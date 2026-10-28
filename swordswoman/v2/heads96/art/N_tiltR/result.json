@@ -1,0 +1,15 @@
+{
+ "logs": [
+  {
+   "attempt": 0,
+   "sec": 24,
+   "fixes": []
+  }
+ ],
+ "out": {
+  "_": {
+   "path": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/heads96/layers/N/artist/base_tiltR.txt",
+   "lint": []
+  }
+ }
+}

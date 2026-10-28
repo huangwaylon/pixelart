@@ -1,0 +1,13 @@
+SCORE 4/10
+
+1. **f3, f7 (Legs)**: Both legs slant forward in parallel like she’s slipping on a banana peel instead of reaching into a walk contact pose; silhouette knots into a single muddy clump.
+2. **f0–f7 (Far/Left Arm)**: The screen-right arm is completely frozen or barely shifts 1px across the cycle, killing any torso twist or energetic counter-swing.
+3. **f0–f7 (Katana & Sword Arm)**: The blade stays locked at an identical 30° angle for all 8 frames, merely translating 1–2px vertically with the torso instead of lagging/overlapping.
+4. **f0–f7 (Head/Hair/Bow)**: Zero secondary motion—the massive ribbon and side hairlocks are copy-pasted static blocks that don't flap or follow-through on the vertical bounce.
+5. **f2, f6 (Feet/Passing Pose)**: The grounded foot drifts horizontally relative to the grid between down (f1/f5) and passing (f2/f6), causing the character to moonwalk/skate in place.
+6. **f1, f5 (Skirt/Torso)**: On the lowest down-frames, the skirt hem doesn't flare or squash, making the 1px vertical drop feel robotic and weightless.
+
+**Top 3 Fixes:**
+1. **Redraw f3 & f7 into proper Contact poses**: Separate the silhouette—extend the leading heel forward and trail the back toe behind so the stride actually opens up before the down-frame.
+2. **Add secondary lag to Bow, Hair, and Katana**: Tilt the katana tip down 2–3px on the up-frames (f2, f6) and up on the down-frames (f1, f5); animate the bow ears flapping 1px delayed behind the head bob.
+3. **Swing the far arm & lock foot tracking**: Swing the screen-right hand 2–3px forward on f0/f1 and tuck it back behind the torso on f4/f5, while sliding the grounded foot strictly backward at a constant pixel rate from contact to lift.

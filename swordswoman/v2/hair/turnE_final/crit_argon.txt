@@ -1,0 +1,11 @@
+**48px Readability & Critique**
+* **Hair:** Blobs into a solid brown helmet at 48px. The half-up separation, bun knot, side locks, and neck gap vanish; the red bow shrinks to 2–3 stray pixels. 
+* **Vibe:** Cute anime style. Avoids reading as Reimu thanks to the solid red mini-kimono (no white sleeves/ detached armpits) and offset smaller bow.
+* **Profiles & Consistency:** Bow placement (character’s left) is consistent. However, **left/right profiles are paper-thin** in the pixel probe (2–3px torso). **Camera height breaks on `iso_N`** (drawn flat like `back`, lacking the top-down perspective of `iso_S`–`iso_NE`).
+
+**Top 5 Pixel-Art Fixes & Regenerations**
+1. **Regenerate `iso_N` illustration:** Match the elevated, high-angle camera tilt of `iso_S` and `iso_NE`.
+2. **Exaggerate the bow & bun:** Overscale the red ribbon by ~30% at 48px using a bright crimson highlight so it reads as a bow, not noise.
+3. **Carve the half-up seam:** Add a continuous 1px dark-shadow crease and brighter crown highlight separating the tied top section from the lower hair.
+4. **Open neck/shoulder gaps:** Clear 1–2px of background/skin between the hanging side-locks and neck in front/iso views to break the helmet silhouette.
+5. **Thicken side profiles (`left`, `right`, `iso_E`):** Widen the torso/kimono drape by 2–3px and push the nose/forehead silhouette out by 1px.

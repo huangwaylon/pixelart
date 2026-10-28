@@ -1,0 +1,18 @@
+Restored session: Mon 26 Oct 2026 13:01:10 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt run_SE and run_SE_ns in `actions_src/run.py`; both pass QC.
+
+**What changed:**
+- **Hair and bow:** use the shared variants every frame, reacting a frame late.
+- **Blade:** swings each frame, a frame behind the body's bob. It sits in front of the skirt and clears both boots.
+- **Shadow:** shrinks in the air (9→5), with dust kicks on push.
+- **Squash:** head sinks on down, lifts on air; no-katana arm swing fixed.
+
+**New part:** `run10_head_hf`. The shared `head_lean_hf` failed QC (2px too wide), so I trimmed it.
+
+**Weaknesses:** blade passes only 1–2px above the kicked boot on air and contact2; little torso lean; bun barely visible.
+
+I didn't score it against the critics.
+
+Saving session...completed.

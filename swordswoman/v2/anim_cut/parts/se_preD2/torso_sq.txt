@@ -1,0 +1,13 @@
+; pivot 6 6
+; anchor neck 6 -1
+; anchor shL 0 2
+; anchor shR 12 1
+; anchor waist 6 6
+#EEER11111RE#
+#EEEER2221RE#
+#EEEEER22RER#
+#EEEEEEERRER#
+#EdDEddddddD#
+#ddddddddddD#
+#ddddDDDDDDD#
+#DDDD........

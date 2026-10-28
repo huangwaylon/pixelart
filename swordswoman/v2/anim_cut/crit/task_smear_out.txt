@@ -1,0 +1,18 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I've drawn all six parts and put them in context in `actions/test_smear.json` (8 labelled frames). I composed and checked the sheet three times; the final sheet reads cleanly.
+
+**Files** (all in `parts/common/`):
+- `smear_slash.txt`: a 37×34 crescent with a white outer edge, `y` core and `Y` inner band. It starts as a thin tail at upper-left behind the head, passes in front of the face, is 5px thick at the lower front, and tapers to a point at the blade (about +13,+12 from the grip). No outline.
+- `smear_slash2.txt`: a 1–2px `y`/`Y` remnant of the same arc, lower-front part only, breaking up toward its end.
+- `hit_flash.txt` (7×7), `hit_spark.txt` (5×5).
+- `ghost_se.txt`: a flat `R` silhouette taken from the stand pose.
+- `spd2.txt`: three short lines, same style as `spd1`.
+
+**Anchor conventions:**
+- **Smears:** pivot is the grip. Attach at `armN.hand` (with `armN_ext`) at z4.5, so they sit above the torso but under kat (z5), armN and head.
+- **Flash and spark:** pivot is the centre. Place at `armN.hand` with off `[15,15]` (the kat_14 tip), z9.
+- **Ghost:** pivot is ground centre. Place `at: ground`, off about `[-6,-3]`, z-1.
+- **spd2:** pivot is centre. Place `at: ground`, z-2.
+
+The ghost draws as solid `R`, not see-through.

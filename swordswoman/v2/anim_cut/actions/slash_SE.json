@@ -1,0 +1,867 @@
+{
+ "name": "slash_SE",
+ "partdir": "parts/se",
+ "cell": [
+  92,
+  76
+ ],
+ "ground": [
+  46,
+  62
+ ],
+ "rig": {
+  "legs": {
+   "part": "legs",
+   "at": "root",
+   "z": 1
+  },
+  "skirt": {
+   "part": "skirt",
+   "at": "legs.hip",
+   "z": 3
+  },
+  "torso": {
+   "part": "torso",
+   "at": "skirt.waist",
+   "off": [
+    0,
+    0
+   ],
+   "z": 4
+  },
+  "armF": {
+   "part": "armF",
+   "at": "torso.shR",
+   "z": 2
+  },
+  "armN": {
+   "part": "armN",
+   "at": "torso.shL",
+   "z": 6
+  },
+  "head": {
+   "part": "head",
+   "at": "torso.neck",
+   "z": 7
+  },
+  "bun": {
+   "part": "bun",
+   "at": "head.bun",
+   "z": 0
+  },
+  "bow": {
+   "part": "bow",
+   "at": "head.bow",
+   "z": 8
+  },
+  "kat": {
+   "part": "kat_13",
+   "at": "armN.hand",
+   "z": 5
+  }
+ },
+ "frames": [
+  {
+   "ms": 100,
+   "label": "ready",
+   "set": {
+    "legs": {
+     "part": "legs"
+    },
+    "head": {
+     "part": "head"
+    },
+    "bow": {
+     "part": "bow"
+    },
+    "torso": {
+     "part": "torso_iw"
+    },
+    "armN": {
+     "part": "armN_hold"
+    },
+    "armF": {
+     "part": "armF"
+    }
+   },
+   "root": [
+    0,
+    0
+   ],
+   "hide": [
+    "kat"
+   ],
+   "fx": [
+    {
+     "part": "kat_iw7_b",
+     "at": "armN.hand",
+     "off": [
+      2,
+      -2
+     ],
+     "z": 1
+    }
+   ],
+   "shadow": 8
+  },
+  {
+   "ms": 70,
+   "label": "antic",
+   "set": {
+    "legs": {
+     "part": "legs_stance"
+    },
+    "head": {
+     "part": "head_hu",
+     "off": [
+      -2,
+      1
+     ]
+    },
+    "bow": {
+     "part": "bow_tr",
+     "off": [
+      0,
+      0
+     ]
+    },
+    "skirt": {
+     "part": "skirt_sq"
+    },
+    "torso": {
+     "part": "torso_sq",
+     "off": [
+      -1,
+      1
+     ]
+    },
+    "armN": {
+     "part": "armN_back"
+    },
+    "armF": {
+     "part": "armF_fwd"
+    },
+    "kat": {
+     "part": "kat_09",
+     "at": "armN.hand",
+     "z": 1
+    }
+   },
+   "root": [
+    -1,
+    0
+   ],
+   "shadow": 9
+  },
+  {
+   "ms": 50,
+   "label": "lift",
+   "set": {
+    "legs": {
+     "part": "legs_stance"
+    },
+    "head": {
+     "part": "slash10_head_hf",
+     "off": [
+      -2,
+      -1
+     ]
+    },
+    "bow": {
+     "part": "bow_sqz",
+     "off": [
+      1,
+      1
+     ]
+    },
+    "skirt": {
+     "part": "skirt_swR"
+    },
+    "torso": {
+     "part": "torso_iw_st",
+     "off": [
+      -1,
+      -1
+     ]
+    },
+    "armN": {
+     "part": "armN_out"
+    },
+    "armF": {
+     "part": "armF_fwd"
+    },
+    "kat": {
+     "part": "kat_08",
+     "at": "armN.hand",
+     "z": 1
+    }
+   },
+   "root": [
+    -2,
+    0
+   ],
+   "shadow": 8
+  },
+  {
+   "ms": 50,
+   "label": "wind",
+   "set": {
+    "legs": {
+     "part": "legs_stance"
+    },
+    "head": {
+     "part": "head_hd",
+     "off": [
+      -1,
+      0
+     ]
+    },
+    "bow": {
+     "part": "bow_str",
+     "off": [
+      1,
+      -1
+     ]
+    },
+    "skirt": {
+     "part": "skirt_swL"
+    },
+    "torso": {
+     "part": "slash6_torso_coil",
+     "off": [
+      -2,
+      0
+     ]
+    },
+    "armN": {
+     "part": "armN_jmp_hi",
+     "z": 8
+    },
+    "armF": {
+     "part": "armF_pumpF"
+    },
+    "kat": {
+     "part": "kat_07",
+     "at": "armN.hand",
+     "z": 1
+    }
+   },
+   "root": [
+    -2,
+    0
+   ],
+   "shadow": 8
+  },
+  {
+   "ms": 120,
+   "label": "coil",
+   "set": {
+    "legs": {
+     "part": "legs_crouch"
+    },
+    "head": {
+     "part": "head_hu",
+     "off": [
+      -2,
+      2
+     ]
+    },
+    "bow": {
+     "part": "bow_str",
+     "off": [
+      1,
+      -2
+     ]
+    },
+    "skirt": {
+     "part": "skirt_sq"
+    },
+    "torso": {
+     "part": "slash9_torso_csq",
+     "off": [
+      -3,
+      1
+     ]
+    },
+    "armN": {
+     "part": "armN_coil",
+     "z": 8
+    },
+    "armF": {
+     "part": "armF_pumpF"
+    },
+    "kat": {
+     "part": "kat_05",
+     "at": "armN.hand",
+     "z": 1
+    }
+   },
+   "root": [
+    -3,
+    0
+   ],
+   "shadow": 10
+  },
+  {
+   "ms": 30,
+   "label": "swingA",
+   "set": {
+    "legs": {
+     "part": "legs_lunge"
+    },
+    "head": {
+     "part": "slash10_head_hf",
+     "off": [
+      1,
+      -1
+     ]
+    },
+    "bow": {
+     "part": "bow_sqz",
+     "off": [
+      -1,
+      1
+     ]
+    },
+    "skirt": {
+     "part": "skirt_swL"
+    },
+    "torso": {
+     "part": "slash9_torso_str",
+     "off": [
+      -1,
+      0
+     ]
+    },
+    "armN": {
+     "part": "armN_coil",
+     "z": 8
+    },
+    "armF": {
+     "part": "armF_pumpF"
+    }
+   },
+   "root": [
+    -1,
+    -1
+   ],
+   "hide": [
+    "kat"
+   ],
+   "fx": [
+    {
+     "part": "slash10_kat04_str",
+     "at": "armN.hand",
+     "off": [
+      0,
+      0
+     ],
+     "z": 9
+    }
+   ],
+   "shadow": 9
+  },
+  {
+   "ms": 40,
+   "label": "SMEAR",
+   "set": {
+    "legs": {
+     "part": "slash9_lg_lunge"
+    },
+    "head": {
+     "part": "head_lean_hb",
+     "off": [
+      2,
+      -1
+     ]
+    },
+    "bow": {
+     "part": "bow_tl",
+     "off": [
+      -4,
+      1
+     ]
+    },
+    "skirt": {
+     "part": "dash9_skirt_lean"
+    },
+    "torso": {
+     "part": "slash8_torso_lunge",
+     "off": [
+      2,
+      0
+     ]
+    },
+    "armN": {
+     "part": "slash9_armN_ext"
+    },
+    "armF": {
+     "part": "armF_back"
+    },
+    "kat": {
+     "part": "kat_15",
+     "at": "armN.hand",
+     "z": 5
+    }
+   },
+   "root": [
+    1,
+    -1
+   ],
+   "fx": [
+    {
+     "part": "slash10_fx_sm2",
+     "at": "ground",
+     "off": [
+      0,
+      0
+     ],
+     "z": 7.5
+    }
+   ],
+   "shadow": 11
+  },
+  {
+   "ms": 40,
+   "label": "impact",
+   "set": {
+    "legs": {
+     "part": "slash10_lg_sq"
+    },
+    "head": {
+     "part": "slash10_shout_hb",
+     "off": [
+      1,
+      1
+     ]
+    },
+    "bow": {
+     "part": "bow_back",
+     "off": [
+      -5,
+      2
+     ]
+    },
+    "skirt": {
+     "part": "slash9_sk_lunge"
+    },
+    "torso": {
+     "part": "slash8_torso_lunge",
+     "off": [
+      3,
+      1
+     ]
+    },
+    "armN": {
+     "part": "slash9_armN_ext"
+    },
+    "armF": {
+     "part": "armF_back"
+    },
+    "kat": {
+     "part": "kat_14",
+     "at": "armN.hand",
+     "z": 5
+    }
+   },
+   "root": [
+    3,
+    0
+   ],
+   "fx": [
+    {
+     "part": "slash9_fx_spark0",
+     "at": "armN.hand",
+     "off": [
+      15,
+      15
+     ],
+     "z": 9
+    }
+   ],
+   "shadow": 12
+  },
+  {
+   "ms": 60,
+   "label": "hitstop",
+   "set": {
+    "legs": {
+     "part": "slash10_lg_sq"
+    },
+    "head": {
+     "part": "slash10_shout_hf",
+     "off": [
+      1,
+      1
+     ]
+    },
+    "bow": {
+     "part": "bow_tl",
+     "off": [
+      -4,
+      3
+     ]
+    },
+    "skirt": {
+     "part": "slash9_skirt_lunge"
+    },
+    "torso": {
+     "part": "slash8_torso_lunge",
+     "off": [
+      3,
+      1
+     ]
+    },
+    "armN": {
+     "part": "slash9_armN_ext"
+    },
+    "armF": {
+     "part": "armF_back"
+    }
+   },
+   "root": [
+    3,
+    0
+   ],
+   "hide": [
+    "kat"
+   ],
+   "fx": [
+    {
+     "part": "kat14_slash10_flash",
+     "at": "armN.hand",
+     "off": [
+      0,
+      0
+     ],
+     "z": 5
+    },
+    {
+     "part": "slash9_fx_spark1",
+     "at": "armN.hand",
+     "off": [
+      15,
+      15
+     ],
+     "z": 9
+    }
+   ],
+   "shadow": 12,
+   "shake": [
+    1,
+    0
+   ]
+  },
+  {
+   "ms": 50,
+   "label": "hitstop2",
+   "set": {
+    "legs": {
+     "part": "slash9_lg_lunge"
+    },
+    "head": {
+     "part": "slash10_shout_hu",
+     "off": [
+      2,
+      0
+     ]
+    },
+    "bow": {
+     "part": "bow_sqz",
+     "off": [
+      -1,
+      2
+     ]
+    },
+    "skirt": {
+     "part": "slash9_sk_lunge"
+    },
+    "torso": {
+     "part": "slash8_torso_lunge",
+     "off": [
+      3,
+      1
+     ]
+    },
+    "armN": {
+     "part": "slash9_armN_ext"
+    },
+    "armF": {
+     "part": "armF_back"
+    },
+    "kat": {
+     "part": "kat_14",
+     "at": "armN.hand",
+     "z": 5
+    }
+   },
+   "root": [
+    2,
+    0
+   ],
+   "fx": [
+    {
+     "part": "slash9_fx_spark2",
+     "at": "armN.hand",
+     "off": [
+      15,
+      15
+     ],
+     "z": 9
+    }
+   ],
+   "shadow": 12
+  },
+  {
+   "ms": 80,
+   "label": "follow",
+   "set": {
+    "legs": {
+     "part": "slash9_lg_lunge"
+    },
+    "head": {
+     "part": "slash10_lean_hf",
+     "off": [
+      2,
+      1
+     ]
+    },
+    "bow": {
+     "part": "bow_dn",
+     "off": [
+      1,
+      2
+     ]
+    },
+    "skirt": {
+     "part": "slash9_sk_lunge2"
+    },
+    "torso": {
+     "part": "slash8_torso_lunge",
+     "off": [
+      2,
+      0
+     ]
+    },
+    "armN": {
+     "part": "slash9_armN_ext"
+    },
+    "armF": {
+     "part": "armF_back"
+    },
+    "kat": {
+     "part": "kat_13",
+     "at": "armN.hand",
+     "z": 5,
+     "off": [
+      3,
+      -1
+     ]
+    }
+   },
+   "root": [
+    2,
+    0
+   ],
+   "shadow": 11
+  },
+  {
+   "ms": 60,
+   "label": "pass",
+   "set": {
+    "legs": {
+     "part": "slash9_lg_lunge"
+    },
+    "head": {
+     "part": "head_hd",
+     "off": [
+      1,
+      1
+     ]
+    },
+    "bow": {
+     "part": "bow_tr",
+     "off": [
+      0,
+      0
+     ]
+    },
+    "skirt": {
+     "part": "dash9_skirt_fwd"
+    },
+    "torso": {
+     "part": "torso_sq",
+     "off": [
+      2,
+      1
+     ]
+    },
+    "armN": {
+     "part": "armN_fwd"
+    },
+    "armF": {
+     "part": "armF"
+    },
+    "kat": {
+     "part": "kat_12",
+     "at": "armN.hand",
+     "z": 5,
+     "off": [
+      1,
+      -3
+     ]
+    }
+   },
+   "root": [
+    2,
+    0
+   ],
+   "shadow": 11
+  },
+  {
+   "ms": 90,
+   "label": "recover",
+   "set": {
+    "legs": {
+     "part": "legs_lunge"
+    },
+    "head": {
+     "part": "head_hd",
+     "off": [
+      1,
+      0
+     ]
+    },
+    "bow": {
+     "part": "bow_str",
+     "off": [
+      1,
+      -1
+     ]
+    },
+    "skirt": {
+     "part": "skirt_swR"
+    },
+    "torso": {
+     "part": "torso_sq",
+     "off": [
+      1,
+      1
+     ]
+    },
+    "armN": {
+     "part": "armN_back"
+    },
+    "armF": {
+     "part": "armF"
+    },
+    "kat": {
+     "part": "kat_11",
+     "at": "armN.hand",
+     "z": 1
+    }
+   },
+   "root": [
+    2,
+    0
+   ],
+   "shadow": 9
+  },
+  {
+   "ms": 110,
+   "label": "settle",
+   "set": {
+    "legs": {
+     "part": "legs_stance"
+    },
+    "head": {
+     "part": "slash10_head_hf",
+     "off": [
+      0,
+      -1
+     ]
+    },
+    "bow": {
+     "part": "bow_sqz",
+     "off": [
+      0,
+      1
+     ]
+    },
+    "skirt": {
+     "part": "skirt_swL"
+    },
+    "torso": {
+     "part": "torso_iw_st",
+     "off": [
+      0,
+      -1
+     ]
+    },
+    "armN": {
+     "part": "armN_hold"
+    },
+    "armF": {
+     "part": "armF"
+    },
+    "kat": {
+     "part": "kat_10",
+     "at": "armN.hand",
+     "z": 1,
+     "off": [
+      2,
+      -3
+     ]
+    }
+   },
+   "root": [
+    0,
+    0
+   ],
+   "shadow": 8
+  },
+  {
+   "ms": 140,
+   "label": "rest",
+   "set": {
+    "legs": {
+     "part": "legs"
+    },
+    "head": {
+     "part": "head_hu"
+    },
+    "bow": {
+     "part": "bow"
+    },
+    "torso": {
+     "part": "torso_iw"
+    },
+    "armN": {
+     "part": "armN_hold"
+    },
+    "armF": {
+     "part": "armF"
+    }
+   },
+   "root": [
+    0,
+    0
+   ],
+   "hide": [
+    "kat"
+   ],
+   "fx": [
+    {
+     "part": "kat_iw7_b",
+     "at": "armN.hand",
+     "off": [
+      2,
+      -2
+     ],
+     "z": 1
+    }
+   ],
+   "shadow": 8
+  }
+ ]
+}

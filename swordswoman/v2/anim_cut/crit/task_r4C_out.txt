@@ -1,0 +1,22 @@
+Restored session: Mon 26 Oct 2026 10:33:09 JST
+rm: /Users/waylonhuang/.zsh_sessions/E6FA0A1A-246C-4923-A008-0CA2A1A2CCFA.session: No such file or directory
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt `dash_SE`, `dash_SE_ns` and `slash_SE` and went through four review-and-fix passes on each.
+
+**Dash:**
+- The checker ghosts are now two flat afterimages of her own outline (crimson at −9px, maroon at −18px), dropping to one on burst2. The barcode lines are gone; there's one tapered streak.
+- There's a 2px forward lean on burst, a 5px crouch on antic, and the skid keeps the normal 3/4 head and leans back.
+- The blade turns one step at a time (10→11→12→13) and its tip no longer pokes below the feet.
+- Brake throws the bow forward, and settle is now an overshoot, not a copy of rest.
+
+**Slash:**
+- The smear is a filled crescent (1px to 7px) running from the wind-up blade tip to the impact blade. Impact has a curved leftover trail.
+- The body drops 1px on impact. Both hit-stop frames keep the same pose and shake ±1px; the blade tip glows on the first.
+- Follow-through moves the blade one step past impact, and the end pose now matches the start pose so the loop doesn't jump.
+
+**New parts:** `se/dash_torso_lean`, `common/fx_dash_line1`, `fx_dash_line2` (unused), `fx_slash_smear4`, `fx_slash_trail4`. The smear generator is `work/r4/smear4.py`.
+
+**Still weak:** the blade turns 3 steps between lift and wind-up, the near ghost is mostly hidden, and the vertical blade on settle looks odd.
+
+Saving session...completed.

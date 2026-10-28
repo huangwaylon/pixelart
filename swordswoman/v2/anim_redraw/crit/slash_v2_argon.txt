@@ -1,0 +1,13 @@
+SCORE 5.5/10
+
+1. **Smear Arc (F2-F3):** The smear trail in F2 is thin, noisy, and jagged near the top-left tail; it lacks a thick, solid leading edge at the blade to sell speed and weight.
+2. **Silhouette & Arm Readability (F1):** In the windup, the sword, hands, and torso collapse into one narrow column; the sword tip blends into the hair bun, killing silhouette clarity.
+3. **Static Head/Hair (F2-F5):** The head, face, and hair are literally copy-pasted across the high-energy slash frames with zero squash, tilt, or hair/bow drag.
+4. **Shimmer & Volume Shift (F6-F7 vs F0):** The recovery frames aren't clean returns to idle; F7's torso and legs are taller than F0, and the sword blade has different pixel clusters, causing a noticeable pop on loop.
+5. **Weak Spark FX (F3-F4):** The impact spark at the hilt looks like a stray crossguard rather than an explosive hit—it's too small and blends into the blade pixels.
+6. **Jaggies & Orphans (F2-F5):** The extended back leg has broken, steppy black outlines, and the hair bow has stray dark outline pixels floating off the right loop in F2-F4.
+
+**Top 3 Fixes:**
+* **Redraw F2 Smear:** Widen the white/grey arc substantially near the sword tip and clean the trailing edge into 2-3 crisp, deliberate pixel clusters instead of single-pixel noise.
+* **Push F1 Silhouette & Secondary Motion:** Pull her sword arm further back/up in F1 so the blade clears the head silhouette, and offset the hair bow/bangs by 1-2px in F2-F4 for follow-through.
+* **Lock Proportions on Recovery:** Copy F0's exact head/torso/sword sprite into F7 (or use a pure 1px vertical squash in F6 leading directly back to F0) to eliminate loop shimmer.

@@ -1,0 +1,9 @@
+; pivot 6 9
+; anchor hip 6 -7
+.#221#.#221#
+.#221#.#221#
+.#221#.#221#
+.#dddD##ddD#
+#dddDD#dddD#
+#DDDDD#DDDDD#
+.#####.#####

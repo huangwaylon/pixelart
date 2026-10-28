@@ -1,0 +1,16 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+SCORE: 5/10. This is an eyeball read of the sheet only; I didn't measure pixels (PIL isn't installed).
+
+- **No bounce.** The head and bow stay at about the same height in every frame, maybe 1px of drift. A lively chibi walk needs a clear 2–3px drop on the contact frames (0 and 4) and a rise on the passing frames (2 and 6). Right now she glides.
+- **Legs turn to mush in frames 1 and 5.** The near and far legs merge into one dark red-black blob, and at 1x you can't tell which foot is planted. Separate them with value: make the far leg a darker shade, and leave a 1px gap or rim of light between the legs.
+- **Feet aren't pinned.** The planted foot seems to slide between frames 0→1→2 and 4→5→6 instead of staying fixed while the body moves over it. Lock the contact foot's pixels.
+- **The two halves of the cycle look too similar.** Frames 0–3 and 4–7 barely mirror each other; the left and right steps read as the same step. Swap which leg is in front clearly, and swing the free arm the opposite way.
+- **The katana is dead weight.** It's the same angle and length in all 8 frames. Add 1px of tip sway or a lag of a frame or two after the hips. Without it the blade looks pasted on. It also needs a 1px dark outline or a value step, because it disappears into the gray background at 1x.
+- **The free arm barely swings.** The arm moves about 2px. Push it to 4–5px forward and back, and lead it with the shoulder.
+- **No secondary motion.** The ponytail, the bow ribbons and the skirt hem should drag a frame behind the bounce. Right now they're rigid, and they're your cheapest source of "energetic".
+- **The bow changes shape.** It changes outline between frames (compare 0, 3 and 6), so it flickers even though it should be static. Lock it, or move it only as one solid offset.
+- **What works:** the palette stays consistent, the head proportions are stable, the face reads clearly at 1x, the shading is clean with no pillow shading, and the 100ms timing per frame is fine for 8 frames.
+- **Fix first:** the vertical bounce, untangling the legs in frames 1 and 5, and pinning the feet. Those three would get this to about 7.
+
+Saving session...completed.

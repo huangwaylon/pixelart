@@ -1,0 +1,29 @@
+{
+ "size": [
+  15,
+  9
+ ],
+ "facing": "E",
+ "attach": "feet",
+ "pivot": [
+  7,
+  8
+ ],
+ "ms": [
+  50,
+  80
+ ],
+ "cell_offset": [
+  20,
+  37
+ ],
+ "cell": "40x40 cell of the 32 px figure (A_r3: feet ~20,37, sole row 37, back edge of body x11, body centre ~20,22)",
+ "layer": "behind",
+ "note": "ground-anchored at the take-off point (does not follow the figure up). Mirrored \"( )\" strokes, inner bases at cell x15/x25 beside the shoes, p outer / W inner, 2 px base -> 1 px tip; 1 px launch streaks under each shoe. f1: strokes 8 px tall, lifted 1 px, broken into 3 evenly spaced pieces thinning upward.",
+ "ground_y": 8,
+ "figure_rise_px": [
+  3,
+  8
+ ],
+ "symmetric": true
+}

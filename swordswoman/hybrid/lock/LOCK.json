@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "date": "2026-10-25",
+  "owner": "art director",
+  "purpose": "Canonical refs every Gemini call and every pixel polisher receives. Identity/design lock; the 3D guide (model/, hybrid/guide/) owns camera, pose and timing.",
+  "illustration_lock": {
+    "turnaround_8dir": "hybrid/lock/turn8_iso.png",
+    "turnaround_cells": {
+      "S": "hybrid/lock/turn/turn_S.png", "SE": "hybrid/lock/turn/turn_SE.png", "E": "hybrid/lock/turn/turn_E.png",
+      "NE": "hybrid/lock/turn/turn_NE.png", "N": "hybrid/lock/turn/turn_N.png", "NW": "hybrid/lock/turn/turn_NW.png",
+      "W": "hybrid/lock/turn/turn_W.png", "SW": "hybrid/lock/turn/turn_SW.png"
+    },
+    "turnaround_layout": "1024x1024, 4x2 cells of 256x512. Top row S, SE, E, NE; bottom row N, NW, W, SW.",
+    "head_sheet": "hybrid/lock/head_sheet.png",
+    "expressions": "hybrid/lock/expressions.png",
+    "expressions_order": ["calm", "determined/combat", "effort shout", "hurt", "happy"],
+    "bow_bun": "hybrid/lock/bow_bun.png",
+    "katana": "hybrid/lock/katana.png",
+    "overview": "hybrid/lock/lock_overview.png"
+  },
+  "pixel_lock": {
+    "dir": "hybrid/lock/pixel/",
+    "manifest": "hybrid/lock/pixel/stamps.json",
+    "sources": "hybrid/lock/pixel/src/*.pix (tools/hybrid/pixgrid.py STANDARD legend)",
+    "sheet": "hybrid/lock/pixel/pixel_lock_sheet.png",
+    "fit_test": "hybrid/lock/pixel/fit_8dir_3x.png (head stamps over an auto-pixelized lock body, 3 terrains; body is NOT lock quality)"
+  },
+  "gemini_ref_order": {
+    "rule": "First refs weigh most. Always pass the style anchor first, then the lock cell for the direction, then the pose guide, then head sheet / expressions, costume truth last.",
+    "single_frame": ["concept/chibi_iso_v5.png", "hybrid/lock/turn/turn_<DIR>.png", "<guide render for the frame>", "hybrid/lock/head_sheet.png", "refs/1.png"],
+    "action_pose_add": ["refs/2.png or refs/3.png (energy only)", "hybrid/lock/expressions.png (combat/shout/hurt faces)"],
+    "handedness_trick": "Gemini's prior puts the katana in her RIGHT hand and 'fixes' prompts that ask for the left. Paint in mirror space: mirror the guide (and lock cell), ask for the sword in her RIGHT hand, then mirror the result back. That is how turn8_iso.png was made (wip/turn8_m_pro1 -> _FLIP). Per-cell edit prompts that ask to move the sword failed 8/8.",
+    "known_failure_modes": [
+      "iso_v5 as image 1 with a front-view request returns iso_v5 itself (SE pose): put the guide first or use an edit of a guide-traced sheet",
+      "asking for 8 figures can return 12 or 3: say 'exactly 8 figures, same 4x2 grid, do not add or reorder'",
+      "adds a sheath / second sword unless told 'NO sheath, nothing on her hip or back, one sword'",
+      "katana guard drifts to a giant sickle or trident: pass hybrid/lock/katana.png"
+    ]
+  },
+  "decisions": {
+    "sword_hand": "LEFT hand (refs/1 + design_bible 0.5). refs/2 two-handed grip on her left side agrees; refs/3 is ambiguous; iso_v5 and turnaround_v6 are mirrored per the bible. Attacks may be two-handed.",
+    "bow_position": "Bow centred on the front base of the bun with both loops rising above it (as the lock sheet draws it in all 8 views). The bible's 'offset to her right side' is dropped so the HEAD reads symmetric; head stamps for W/NW/SW are mirrors of E/NE/SE plus a hand re-light. Bodies stay asymmetric: never mirror a body.",
+    "head_scale": "Follow iso_v5, not bible 3: skull H ~22 px and head ~26 px wide on a 60 px sprite (head+bow ~48% of height).",
+    "collar": "Prompts always ask for a tall stiff flared collar open at the front. The lock sheet draws it closer to iso_v5's wrapped look; at sprite scale it is a 2-3 px red band round the jaw with a pointed flare tip each side (polisher adds the tips).",
+    "camera": "The lock sheet camera is flatter (~15-20 deg) than the 30 deg game camera. Camera/pose come from the 3D guide; the lock is for identity only.",
+    "rim_light": "Not baked into stamps; applied on the full silhouette (pink_0, <= 60% of contour, broken).",
+    "known_lock_defects": [
+      "turn8_iso E: far-hand blade painted by hand behind the skirt (only the blade shows)",
+      "turn8_iso NE: extra right-hand sword painted out by hand; the remaining left blade shows no hilt",
+      "turn8_iso: corset back shows a single buckle; choker, arm ornament and hip pouch are dropped (all DROP/SIMPLIFY at sprite scale anyway)"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+SCORE: 4/10
+
+- **Gait reads wrong:** F1 and F5 lift the knee to the hip. That's a march or skip, not a walk. The contact and passing poses aren't clear, the legs merge into one dark blob in F2, F3 and F6, and you can't tell which foot is planted.
+- **No bounce:** the bow's top barely moves across all 8 frames. The down position should be at contact (F0/F4) and the up position at passing (F2/F6), with 1–2px of vertical travel. Right now it floats.
+- **Horizontal drift:** the body slides about 3–5px inside the cell (F0 sits left, F3/F7 sit right). The root isn't pinned, so it will moonwalk in-engine.
+- **Katana is inconsistent:** F0 is longer, steeper and gripped at the chest, while F1–F7 are shorter and flatter. The angle and length jitter every frame, and the blade has no follow-through or secondary sway that follows the step.
+- **Arms:** F0 has a clear forward fist, then the arm disappears into the torso in most other frames. There's no counter-swing against the legs, so the energy dies.
+- **Shimmer in static areas:** the hair bun, bangs and bow outline get redrawn each frame with different pixel clusters. F0's bun is noticeably bigger, and the F4 head looks wider. Lock the head and only shift it.
+- **Proportions and palette:** the dress hem shape and red ramp shift between frames. The F4/F6 skirt has stray dark shadow pixels, and the boots change size.
+- **At 1x the silhouette mostly holds**, but the sword is the only thing that reads as motion. The legs turn to mush.
+- **Timing:** you didn't include frame durations, so I can't judge rhythm. Even timing won't give you impact anyway; hold the contact frames a little longer.
+- **Fix order:** pin the root, then rebuild the legs as contact/down/pass/up, add the 1–2px bob, then lock the head and sword as offset layers.
+
+Saving session...completed.

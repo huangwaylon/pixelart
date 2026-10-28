@@ -1,0 +1,13 @@
+SCORE 4.5/10
+
+1. **AI Hallucination / Mask Bleed (f1, f4, f5, f7 - Head/Hair):** The stamped head has severe skin-colored pixel artifacts bleeding outside the hair outline (left ponytail edge on f4/f7; right cheek/jaw on f1/f4/f5).
+2. **Broken Arm Cycle & Contralateral Mechanics (f0-f7 - Arms):** Both arms stay pinned to the exact same configuration (right arm trailing, left arm tucked forward) for all 8 frames instead of alternating with the legs.
+3. **Detached Procedural Katana (f1, f2, f5, f6 - Sword/Right Hand):** The katana is pasted behind the shoulder/back while the right hand waves empty below it; it only vaguely aligns with the hand in f0 and f4.
+4. **Leg/Skirt Silhouette Muddle (f2 - Legs):** During the passing pose, the front bent knee and back leg merge into an unreadable vertical blob with jagged double-outlines and broken boot shapes.
+5. **Inverted/Stiff Secondary Motion (f0-f7 - Ponytail/Bow):** The stamped head locks the bow and ponytail into a static block; it lacks drag/follow-through, rising rigidly on up-frames instead of lagging behind the head bob.
+6. **Inconsistent Front Arm Volume (f2, f3, f6 - Left Arm):** The tucked front arm completely vanishes in f2, turns into a tiny floating skin pixel on the far right in f3, and morphs into a dark hollow loop in f6.
+
+**Top 3 Fixes:**
+1. **Clean the Head Stamp Mask:** Erase all stray skin/pink pixels around the hair perimeter on f1, f4, f5, and f7, and composite the clean master head on a strict top layer.
+2. **Lock Sword to Hand Socket:** Anchor the procedural katana hilt directly to the right hand's pixel coordinates (or properly sheath it at the waist/obi) so it doesn't float out of her upper back.
+3. **Animate Arm Swing & Secondary Bounce:** Redraw the arms in f2–f5 to swing in opposition to the legs, and offset the bow/ponytail by 1–2px vertically on contact/up frames (f0, f1, f4, f5) for lively follow-through.

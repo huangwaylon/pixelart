@@ -1,0 +1,19 @@
+Restored session: Mon 26 Oct 2026 10:18:52 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I rebuilt idle_SE and walk_SE (plus the `_ns` versions) in `actions_src/idle_walk.py` and went through four build-and-review passes.
+
+**What changed:**
+- **Neck gaps:** the head never sits above the torso any more. I also added a torso copy that closes the open top-right edge of the collar.
+- **Idle:** knees bend for a 3px sink, the torso squashes, she blinks at the bottom, then a stretched torso lifts her 1px above rest. The hem squashes then flares, and the bow trails the head by one frame (done automatically). Timing is 240/130/200/180/120/150ms.
+- **Walk:** the passing foot now lifts 4px. Head bob is 4px. The sword arm swings 2px against the far arm, and the bow trails by one frame.
+
+**New parts:** `parts/se/`: `legs_iw_s1`, `legs_iw_s2`, `legs_iw_p1`, `legs_iw_p2`, `armN_iw_holdF`, `armN_iw_holdB`, `torso_iw`, `torso_iw_sq`, `torso_iw_st`.
+
+**Remaining weaknesses:**
+- The katana is held at 45° (kat_10), not ~20°. kat_11 is too long to keep the tip in the cell or to clear the back foot.
+- The katana is shifted up to 3px off the hand in some frames to keep it clear of the legs; the shift is hidden under the sleeve.
+- In walk the blade stays at one angle; only its position sways.
+- The contact stride is unchanged.
+
+Saving session...completed.

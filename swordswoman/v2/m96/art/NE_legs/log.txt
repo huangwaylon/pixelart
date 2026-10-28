@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I opened up the K-filled boot cuffs (left boot rows 14–15, right boot rows 16–17) with an h base and an H highlight on the right boot so the cuff reads as separate from the sock, and added a d sheen line down each sock; out.txt passes the gate (ssim_b +0.000, dE +0.037, sil +0.000, lint counts unchanged).

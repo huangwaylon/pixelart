@@ -1,0 +1,35 @@
+Restored session: Mon 26 Oct 2026 18:27:19 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Criteria:** readable at 1x **5**, intentionally designed **5**, Pokémon-like **5**, personality **4**. **Overall 5/10.**
+
+**(1) Readability at 1x (official sprite = 9)**
+- **neutral 6:** The eye is a 4×4 block (KKKK / KKiW / siiI / ssIs). The row-12 `I` hangs below the eye like a stray pixel. The glint (W) sits on the nose side of both eyes, so the light comes from two directions.
+- **determined 5:** The row-10 `KKKsKKK` nearly joins the two eyes into one unibrow band. The iris shrinks to `iiW`, and the neutral smirk pixel is dropped.
+- **shout 4:** The mouth is light `rrr` over dark `KKK`, which is upside down. At 1x it reads as a pout or tongue, not a yell.
+- **effort 5:** Looks too much like shout, with no clenched-teeth read.
+- **joy 7:** The `^^` arcs read well. The mouth has no tongue.
+- **smile 6:** Hard to tell apart from neutral.
+- **surprised 6:** The eyes are W+i with no dark pupil, so they look blank and lose life.
+- **pain 7:** The `><` reads. But row 12 has stray `K` pixels at cols 4 and 14 (cheek dents), and the `rsr` mouth is mush.
+- **blink half 7, closed 7, squash 6.**
+
+**(2) Design:** It's partly designed. There's a lash bar, but no wing flick at the outer corner, the glint isn't consistent, and mouths are 1–3 r pixels with no shape language. The trainer references use a dark pupil column, one fixed glint and an outer-corner lash.
+
+**(3) Personality:** It reads as mild and sleepy, not spirited. Neutral has no confident smirk you can see, determined has no V-brow, and shout has no open-jaw yell.
+
+**(4) Views**
+- **S 6:** Mostly works; the mouths are the weak part.
+- **SE 5:** The far eye squashes to 2 px, and the mouth drifts to the centre (col 10–12).
+- **E 4:** The mouth is one `r` on the jaw edge, so every expression looks the same.
+- **NE/N 7:** Clean, but there's no cheek sliver or blush to sell direction.
+
+**(5) Top 6 pixel edits**
+1. **Shout mouth:** 3 wide × 2 tall, `KKK` on top and `KrK` below (r = tongue), and cut the jaw notch `_` in E.
+2. **Glint:** put W at the top-left of both eyes (same side) and replace the inner W with K. Delete the row-12 `I`, or make it 1 px of `i` directly under the iris.
+3. **Lash wing:** add a K at the outer top corner, one row above the lash bar, on both eyes in neutral, smile and determined.
+4. **Determined:** a slanted brow, 2 K pixels angled down toward the nose, with one `s` gap kept between the eyes. Add a flat `rrrr` mouth line with a right-side uptick.
+5. **Neutral/smile smirk:** a 3 px `rrr` with the right end raised 1 row (an asymmetric smirk). Smile gets a 1 px dimple `r` at the left.
+6. **Surprised:** 1 px K pupil centred in each eye, W kept top-left. Mouth: a 2×2 `KK/KK` O ringed by `r`. In E, add a 2 px jaw cut on the jaw edge so every profile mouth shows.
+
+Saving session...completed.

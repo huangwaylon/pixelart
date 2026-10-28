@@ -1,0 +1,29 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Scores:** A Consistency **5/10**, B Simplicity **7/10**, C Readability at 40/48px **5/10**
+
+**A: Turnaround drifts**
+- **Bow and bun placement contradict each other across views.** In the front view the bow sits in front of the bun. The back view and iso_N also show the bow in front of the bun, which both can't be true. In the left view and iso_E the bow is clipped to the side or front of the bun. In iso_SE and iso_NE it jumps to the side, tilted about 30°.
+- **Hair:** the front view has chin-length side locks. The left view is a shorter bob with the ear exposed. The back view's hair mass is about 15% wider than the front's.
+- **Scale:** the iso_SE head is noticeably bigger relative to the body. The iso_N stance is wider than the front's.
+- **Side view:** the kimono skirt is shorter and flares less. The sleeve hangs straight while the other views are in A-pose.
+
+**C: Pixel problems**
+- **Top of the head:** the bun and bow knot merge into one dark-red blob. At 40px the bow's shading lines turn into striped noise. In iso_NE the bow is just red streaks in the hair.
+- **Face and collar:** the blush and the crossed collar lines become 1px mush. Eyes hold up at 48px but are borderline at 40px.
+- **Hands:** they read as pink smudges.
+- **Katana:** a 1px grey diagonal that reads as a stick. The guard and hilt vanish.
+- **Hair:** highlight strands become dither noise.
+- **Left view:** the legs are 1px and the ear is a stray pink dot.
+
+**Verdict: D2 wins.** D1's checker or dither bodice is pure noise. Level C carries too much detail in the lapel and the bow shading.
+
+**Simplify further:**
+1. Lock the bow to the back of the bun, small and untilted, in every view.
+2. Make the bun clearly separate from the bow, or drop it.
+3. Use 2-tone hair with no strand highlights.
+4. Use flat 2-tone red with no lapel line. Keep only the obi.
+5. Remove the blush.
+6. Draw hands as 2×2 blocks.
+7. Make the katana a 2px blade with a contrasting 2px guard.
+8. Fix the side-view hair length to match the front.

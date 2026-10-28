@@ -1,0 +1,14 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Scores**
+- Faithful to illustration face: 6
+- Eye height: 8. The eyes now sit on the measured lash and iris lines.
+- Feminine cat-eye lashes: 5. The lash is heavy, but the wing barely reads, and the eye looks sleepy instead of bright.
+- Chin softer: 6. The S chin is still a stepped V.
+- Profile/side cheek: 7. The SE bulge is gone and the E nose/lip reads, but the E eye block is too wide.
+- Blush visible: 8
+- Overall: 6
+
+**Top 2 fixes**
+1. **Eyes, all views:** Add a 1px white catchlight in the upper-inner iris. Make the lower-middle iris pixels lighter, warmer amber. Thin the lash to 1 row in the middle and keep it thick only at the outer corner wing. In E, cut the eye down to 2–3px wide.
+2. **S chin and brows:** Replace the chin point with a 2–3px flat bottom that has rounded corner steps. Shorten the grey brows to 3px, lighten them, and tuck them under the bangs.

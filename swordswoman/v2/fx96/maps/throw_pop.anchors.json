@@ -1,0 +1,43 @@
+{
+ "size": [
+  36,
+  36
+ ],
+ "facing": "E",
+ "attach": "ball_land",
+ "pivot": [
+  17,
+  24
+ ],
+ "ms": [
+  40,
+  60,
+  80,
+  80
+ ],
+ "cell_offset": [
+  100,
+  118
+ ],
+ "layer": "over",
+ "mirror": "flip x for W-facing: x -> w-1-x, pivot_x -> w-1-pivot_x, negate dx of offsets/velocity, cell_offset_x -> 127-x (f0/f1 ring symmetric)",
+ "cell": "128x128 cell, 96 px figure, feet pivot (64,124), ground row 124; throw-pose release hand = s48 throw_E frames.json (hy3d/frames_G) frame 3 'release' hand.R x2 -> (111,69), used as (110,70); this is NOT the idle hand (~(81,84)); stride hand (frame 2) ~(63,66); cell_offset (100,118) = EXAMPLE landing spot on the floor ~36 px in front of her (clear of the legs); game code uses the real landing point of the orb",
+ "burst_centre": [
+  17.5,
+  17.5
+ ],
+ "burst_note": "burst centre = orb centre, 6.5 px above the ground pivot (orb radius)",
+ "radius_px": [
+  14,
+  13,
+  18,
+  18
+ ],
+ "play_after": "throw_orb (hide the orb on f0)",
+ "frames": [
+  "f0 flash: 20 px w disc, 1 px rim y on the lit upper-left / f on the lower-right, 4 px tapered w/y spikes N/S/E/W with f tips",
+  "f1 1 px w ring r13 (27 px across) with a 1 px v inner edge on the lower-right only + 6 flecks: 1 px r / x alternating and 2 px w/v diagonal chips, pinwheel",
+  "f2 ring gone, flecks at radius 16-18 (1 px r/x, 2-3 px w/v chips)",
+  "f3 4 fading 1 px flecks (r, w, x, v) drifting outward"
+ ]
+}

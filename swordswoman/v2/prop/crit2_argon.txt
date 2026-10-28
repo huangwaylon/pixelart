@@ -1,0 +1,11 @@
+* **Vertical Landmarks Match:** Crown, eye, chin, shoulder, waist, hip, hem, and knee lines now align tightly with the Pokémon reference averages (especially Dawn and Lyra).
+* **Head-to-Body Ratio (3.43 heads):** The 14×14px head block with the 1px internal outline reads at the exact right visual weight against the 12px shoulders and 12px hem.
+* **Torso & Waist Pinch:** The 12px shoulder → 8px chest → 6px obi waist creates a clear, readable hourglass taper that matches the refs despite the neutral pose.
+* **Skirt Flare:** Expanding to a 12px hem (with a 6px profile depth in `blk E`) successfully captures the bell-shaped silhouette of Dawn's skirt and Rosa's shorts.
+* **Leg Length & Taper:** At 43% of total height, the 5px thigh tapering to a 4px calf matches the slender yet sturdy anime leg proportions of the official sprites.
+* **Ankle/Boot Height (Minor):** Your ankle tick sits ~1–2px lower than the refs; shifting the boot cuff up by 1–2px (to 5–6px tall) will better match Dawn/Hilda's boot proportions.
+* **Arm Readability in S/N:** Because the arms hang straight down, their 1px outlines merge with the torso/skirt edges; Flare the wrists out by 1px in `blk S/N` so the arms read as distinct forms.
+* **3/4 View Asymmetry (`blk SE`/`NE`):** The torso, skirt, and leg spacing in `SE`/`NE` are currently identical to `S`/`N`; shift the far leg and torso edge 1px inward to sell the 3/4 turn.
+* **Side Profile (`blk E`) Stance:** The 3px leg/calf in `blk E` looks slightly spindly compared to the 5px/4px front view; widen the profile thigh to 4px to match the front volume.
+
+VERDICT: MATCH

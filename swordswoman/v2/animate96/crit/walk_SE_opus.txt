@@ -1,0 +1,14 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I read both images and changed no files.
+
+**Scores:** final_quality 5/10 · master_consistency 6/10 · motion 4/10 · readability_1x 6/10 · no_boiling 4/10
+
+The sprite is clean, but the cycle isn't final quality yet. The two halves of the stride don't mirror each other, and the arms jump between poses.
+
+**Fixes:**
+1. **f00/f01 arms:** both sleeves stick straight out sideways, almost a T-pose, then drop to the sides in f02–f05. That pop is visible at 1x. Use a small arm swing opposite the legs, close to the master's pose, in all 6 frames.
+2. **f00 legs:** the back leg is kicked up with the knee bent, so it reads as a passing pose or a kick, not a contact. Plant both feet: front heel down, back toe touching the ground, matching the stride in f03.
+3. **f04 back leg:** it's lifted flat to horizontal, which is too high. Drop the foot to about knee height so it matches f01.
+4. **Dust puffs:** the GIF shows puffs on f01, f02, f04 and f05 as well. Keep them on f00 and f03 only, under the front heel, then fade out.
+5. **Boiling:** the hair outline, the bow shape, the blush and the dress hem length change from frame to frame. Lock the head and torso pixels to the master and just shift them up or down by 1px for bob.

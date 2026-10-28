@@ -1,0 +1,18 @@
+Restored session: Mon 26 Oct 2026 12:50:43 JST
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+The final polish is done in place: I hand-redrew the SE and E neutrals, and `tools/r5_build.py` builds the other variants from them. I ran `preview.py` and checked `png/sheet.png` against r2's sheet over 3+ rounds. A script confirms all four non-blink SE variants have the master eye rows pixel-for-pixel, including both `w` glints. Blink has both eyes closed with flat lids. No variant has blush, and each has exactly one `1` mouth pixel on the 3/4 centreline. `runs.py` reports every straight outline run at 3px or less and no holes. The one exception is the 4px top of the round 8px E bun.
+
+Things to know:
+- **Deleted files:** I removed `bow_squash.txt` and `bun_squash.txt` in both views. Squash now reuses the normal bow and bun 1px lower, so the loops stay up and every E variant has the same bow. The old files are still in `r4/`.
+- **E bow:** it now reads as a big bright near loop above the bun, a knot, and a small dark far loop. At 12x the near loop is still a bit leaf-shaped.
+- **Lookup:** it still differs only slightly from neutral (Argon's point 5), because this brief didn't ask for a change.
+
+Summary:
+1. **Files:** `se/head_{neutral,lean,lookup,squash,blink}.txt`, `se/bow.txt`, `se/bun.txt`, `e/head_{neutral,lean,lookup,squash}.txt`, `e/bow.txt`, `e/bun.txt`, plus the new `tools/r5_build.py`. I added an r5 entry to `NOTES.md`. Previews are in `png/` (`sheet.png`, `*_1x/6x.png`, `*_full.txt`).
+2. **SE sizes:** neutral 24x23, lean 24x24, lookup 24x22, squash 26x21, blink 24x23. Neutral keeps the domed crown, temple bulge and soft chin. The back mass is pulled in 2px with a rounded bottom ending in a point at chin level. The face-side bob ends in a tapered tip 2 rows below the jaw.
+3. **SE pivots/anchors:** neutral, lookup and blink: pivot (14,20), bow (11,2), bun (2,2). Lean: (13,20), (12,2), (3,2). Squash: (15,18), (12,3), (3,3). The bow is 17x8 with pivot (8,7); the bun is 7x7 with pivot (3,3).
+4. **E sizes/anchors:** neutral 23x22, pivot (16,21), bow (10,2), bun (3,0). Lookup 23x21 uses the same anchors. Lean 23x23: (15,21), (11,2), (4,0). Squash 25x20: (18,19), (11,3), (4,1). The eye is a 3x3 almond (`###` / `wii` / `2iI`).
+5. **E parts and outlines:** the E bow is 13x9 with pivot (6,8); the E bun is 8x7 with pivot (4,4), bigger and higher than before. Both buns now overlap the skull outline, so there's no doubled line at the join. The hair shine is now just a short rim on the top-left, with no horizontal streak.
+
+Saving session...completed.

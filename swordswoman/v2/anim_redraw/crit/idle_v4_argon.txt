@@ -1,0 +1,11 @@
+SCORE 4.5/10
+1. **Stiff Elevator Bobbing (F0–F9):** You literally just shifted the upper body and sword vertically by 1px per step. Zero squash/stretch, zero joint rotation—feels robotic, not bouncy or energetic.
+2. **Broken Sword/Scabbard Anatomy (All frames):** Across the chest, the grey diagonal line looks like a bent crowbar or second blade intersecting the main katana. The hand/guard/scabbard overlap is an unreadable pixel tangle.
+3. **Zero Secondary Motion / Drag (F1–F4, F7–F9):** The ribbon, hair bun, skirt hem, and sword tip move in rigid 1:1 lockstep with the head. No overlapping action or follow-through.
+4. **Static Blink Pose (F4–F6):** F4, F5, and F6 have identical body pixels while only the eyes change; this freezes the breathing arc for 230ms right after the F3 low-point.
+5. **Jaggies on Blade & Scabbard (All frames):** The katana blade has inconsistent 2:1/1:1 stair-stepping and harsh internal black/grey pixels that break the clean metallic silhouette.
+6. **Sub-pixel Shimmer on Skirt/Collar (F0–F3):** Shifting the torso down over pinned legs causes choppy 1px popping along the inner thigh gap and collar V-neck without proper anti-aliasing or cloth folding.
+**Top 3 Fixes:**
+- **Add Overlapping Action:** Delay the ribbon flaps, hair bun, and sword tip by 1–2 frames behind the torso's vertical movement so they dip/rise with inertia.
+- **Redraw Sword & Hands:** Clean up the chest region—clearly separate the front hand, gold/dark tsuba (guard), and scabbard from the blade, and enforce a strict 2:1 pixel slope on the blade edge.
+- **Compress & Cushion Timing:** Merge F4–F6 into the upward breathing recovery so the body doesn't freeze during the blink, and widen the skirt by 1px at the lowest crouch (F3/F4) for true squash.

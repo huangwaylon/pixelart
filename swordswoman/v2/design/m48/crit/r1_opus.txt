@@ -1,0 +1,23 @@
+**SE_anchor** is the reference. All scores are against it.
+
+**S — 6/10**
+1. The bow is wrong. It's a flat bar about 22px wide with the knot sticking up to the yellow line. Redraw it as the anchor's two rounded loops about 16px wide, with the knot level with the loops (rows 0–6).
+2. The head is about 1–2px wider than the anchor (hair cols 348–440 at 4x). Pull the bob flare at chin level in by 1px on each side.
+3. The bangs are cut in one flat line. Add the anchor's 1px stepped notch, and remove the lone highlight pixels on the bow ends.
+
+**E — 5/10**
+1. The arm is a single red slab from shoulder to hip. Add a sleeve-cuff break and a 2px hand, and separate it from the torso with a 1px darker red line.
+2. The bun is too big and pokes above the skull line. Shrink it by about 2px and drop it 2px so its top sits on cyan. The bow loop should sit forward of the bun, not stacked on it.
+3. The eye sits too low and the face area is too small. Raise the eye 1px, trim the hair 1px at the temple, and clean the stair-step on the nose and chin outline.
+
+**NE — 4/10**
+1. It reads as N. The hair is symmetric. Skew the silhouette: show more of the right side, put a 2–3px cheek or ear sliver on the right below the eye line, and drop the orphan skin pixel near (170,195).
+2. The bottom of the hair is a hard horizontal line on the green row, like a helmet. Break it with 2–3 hanging strands and a rounded nape.
+3. The bows sit as an even pair. Offset them, with the near loop bigger and the far loop smaller and partly hidden. Add one hair-highlight band (the flat dark mass looks unshaded next to the anchor).
+
+**N — 4/10**
+1. The head is a box: square corners from cyan down to green. Round each top corner by 2px and taper the bottom 2 rows toward the neck.
+2. The bows are identical mirrored blobs and the center bun merges into them. Separate the bun with a 1px outline, and give each loop its fold and inner shade pixel like the anchor.
+3. The hair has no highlight, which breaks with the anchor's lit hair. Add a 1px highlight arc on rows 8–10 (cyan+3). The boots are also 1px taller than S's, so match their height.
+
+**Global:** All four views share the anchor's palette and outline. The ground line is consistent. I estimated head size by eye from the 4x guides and didn't measure pixels. S and E look within the 1px drift limit, but S's width and E's bun top are out.

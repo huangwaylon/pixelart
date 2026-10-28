@@ -1,0 +1,3 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I cleaned up the leg crop (out.txt): the stray K pixels on the socks are gone, the socks now have a short d sheen line at the knee, and each boot has its own K cuff line instead of one bar running across both legs, with H/h shading and a small g glint on each toe. The two `!` flags (dE and face_ssim) are still showing, so this doesn't fully pass the "no `!`" rule. Both flags also appear when I run the unchanged crop.txt through try.sh, so they come from the existing sprite rather than these edits. My edits make dE about 0.04 worse, R1 drops from 30 to 25, line_f goes from 0.891 to 0.886, and O1 and S4 are unchanged at 2 and 11.

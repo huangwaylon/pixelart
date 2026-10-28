@@ -1,0 +1,30 @@
+{
+ "name": "walk",
+ "frames": [
+  {
+   "file": "walk_f0.json"
+  },
+  {
+   "file": "walk_f1.json"
+  },
+  {
+   "file": "walk_f2.json"
+  },
+  {
+   "file": "walk_f3.json"
+  },
+  {
+   "file": "walk_f4.json"
+  },
+  {
+   "file": "walk_f5.json"
+  },
+  {
+   "file": "walk_f6.json"
+  },
+  {
+   "file": "walk_f7.json"
+  }
+ ],
+ "timing_ms": "see hybrid/ANIM_DIRECTION.md section 1"
+}

@@ -1,0 +1,149 @@
+{
+ "arm_L": {
+  "bone": "upper_arm.L",
+  "parent": "chest",
+  "pivot": [
+   0.2751,
+   0.443,
+   0.0379
+  ],
+  "faces": 31280,
+  "watertight": true
+ },
+ "arm_R": {
+  "bone": "upper_arm.R",
+  "parent": "chest",
+  "pivot": [
+   -0.2751,
+   0.443,
+   0.0379
+  ],
+  "faces": 31280,
+  "watertight": true
+ },
+ "bow": {
+  "bone": "head",
+  "parent": "neck",
+  "pivot": [
+   0.0,
+   0.6606,
+   0.0076
+  ],
+  "faces": 3840,
+  "watertight": true
+ },
+ "bun": {
+  "bone": "head",
+  "parent": "neck",
+  "pivot": [
+   0.0,
+   0.6606,
+   0.0076
+  ],
+  "faces": 1280,
+  "watertight": true
+ },
+ "head": {
+  "bone": "head",
+  "parent": "neck",
+  "pivot": [
+   0.0,
+   0.6606,
+   0.0076
+  ],
+  "faces": 30000,
+  "watertight": true
+ },
+ "leg_L": {
+  "bone": "thigh.L",
+  "parent": "hips",
+  "pivot": [
+   0.1203,
+   0.024,
+   0.0324
+  ],
+  "faces": 30000,
+  "watertight": true
+ },
+ "leg_R": {
+  "bone": "thigh.R",
+  "parent": "hips",
+  "pivot": [
+   -0.1203,
+   0.024,
+   0.0324
+  ],
+  "faces": 30000,
+  "watertight": true
+ },
+ "skirt": {
+  "bone": "skirt",
+  "parent": "hips",
+  "pivot": [
+   0.0,
+   0.2226,
+   -0.0035
+  ],
+  "faces": 30000,
+  "watertight": true
+ },
+ "torso": {
+  "bone": "chest",
+  "parent": "spine",
+  "pivot": [
+   0.0,
+   0.214,
+   0.0104
+  ],
+  "faces": 12288,
+  "watertight": true
+ },
+ "_reproportion": {
+  "spec": {
+   "_doc": "PLACEHOLDER until v2/design/PROPORTIONS_E.json lands (lead targets: 3.0-3.4 heads, shoulders ~0.7 x head width, waist ~0.5 x head width, legs 40-45% of height, visible neck). Check values with scripts/reproportion.py output 'measure'.",
+   "head": {
+    "scale": 0.95
+   },
+   "neck": {
+    "extra": 0.05
+   },
+   "torso": {
+    "width": 0.92,
+    "depth": 0.9,
+    "height": 1.05
+   },
+   "skirt": {
+    "width": 0.85,
+    "depth": 0.88,
+    "height": 1.0
+   },
+   "arms": {
+    "length": 1.45,
+    "thickness": 0.85,
+    "shoulder_x": 1.18
+   },
+   "legs": {
+    "length": 2.05,
+    "thickness": 0.85
+   },
+   "hands": {
+    "scale": 0.85
+   },
+   "boots": {
+    "scale": 0.85
+   }
+  },
+  "src": "/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/hy3d/partsAB4f",
+  "d_leg": 0.5245,
+  "d_torso": 0.0179,
+  "measure": {
+   "heads_tall": 3.39,
+   "shoulder_over_headw": 0.7,
+   "waist_over_headw": 0.47,
+   "legs_frac_of_height": 0.402,
+   "neck_gap": 0.051,
+   "head_h": 0.752,
+   "total_h": 2.55
+  }
+ }
+}

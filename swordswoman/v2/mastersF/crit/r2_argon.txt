@@ -1,0 +1,17 @@
+**1) Sections:** Yes, vertical landmarks (crown, eye, chin, waist, hem, knee, sole) align accurately with the official DS references.
+**2) Quality:** Close, but the rigid vertical black outlines on the hair sides (S/SE/NE) and full black interior outlines on the legs make her look blocky/wooden compared to the tapered silhouettes and sel-out shading of the refs.
+**3) Hair at 1x:** The red bow and topknot silhouette read well, though in S the knot sits directly on the bow instead of closer to the crown center. The half-up seam in N is a bit too dark/chunky.
+**4) Consistency:** Mostly, except the S topknot is shifted too far to her left, and the red center spot on the obi appears in S/SE/NE/N (looking like a belt buckle all around) instead of a front obi-jime knot or back musubi bow.
+
+**Top 8 Fixes:**
+1. **S (Crown):** Shift topknot 2px left (toward center) so the bow sits beside it, matching SE/N.
+2. **S/SE (Hair sides):** Taper lower hair locks outward by 1px at shoulder level to break the rigid vertical box.
+3. **NE (Hair back):** Indent lower-left hair outline by 1px and add 2px of mid-tone shading to break the flat block.
+4. **S/SE/NE/N (Legs):** Replace 3-4px of interior black leg outlines with dark skin/brown sel-out to soften the sticks.
+5. **SE/NE (Obi):** Remove the 2x1px red center dot on NE/N; make SE/S a 1px horizontal cord or N a larger back bow.
+6. **E (Skirt back):** Soften the sharp 2px horizontal spike on the rear hem by dropping the top pixel 1px.
+7. **N (Hair seam):** Replace 3px of black outline in the mid-hair half-up curve with dark brown `#4c4460`.
+8. **S (Collar):** Shift the Y-collar junction 1px right to read clearly as a left-over-right kimono wrap.
+
+**Score:** 7.5/10
+**VERDICT: FIX**

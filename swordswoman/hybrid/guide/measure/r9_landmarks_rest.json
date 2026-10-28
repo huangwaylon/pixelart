@@ -1,0 +1,2519 @@
+{
+ "hair": {
+  "min": [
+   -0.609,
+   -0.5374,
+   1.9281
+  ],
+  "max": [
+   0.609,
+   0.5711,
+   2.9485
+  ],
+  "n": 254824
+ },
+ "bangs": {
+  "min": [
+   -0.5595,
+   -0.5374,
+   2.1214
+  ],
+  "max": [
+   0.5079,
+   -0.001,
+   2.9254
+  ],
+  "n": 40764
+ },
+ "head": {
+  "min": [
+   -0.5394,
+   -0.5025,
+   1.7771
+  ],
+  "max": [
+   0.5394,
+   0.5015,
+   2.8756
+  ],
+  "n": 35204
+ },
+ "bun": {
+  "min": [
+   -0.2843,
+   -0.1083,
+   2.7596
+  ],
+  "max": [
+   0.3181,
+   0.5527,
+   3.3963
+  ],
+  "n": 7524
+ },
+ "bow": {
+  "min": [
+   -0.6936,
+   -0.2298,
+   2.6898
+  ],
+  "max": [
+   0.1577,
+   -0.0153,
+   3.3942
+  ],
+  "n": 20432
+ },
+ "collar": {
+  "min": [
+   -0.4607,
+   -0.1788,
+   1.6588
+  ],
+  "max": [
+   0.4607,
+   0.4513,
+   2.0154
+  ],
+  "n": 6636
+ },
+ "corset": {
+  "min": [
+   -0.3159,
+   -0.2669,
+   1.0
+  ],
+  "max": [
+   0.3159,
+   0.2277,
+   1.4511
+  ],
+  "n": 10684
+ },
+ "shorts": {
+  "min": [
+   -0.3031,
+   -0.2068,
+   0.7943
+  ],
+  "max": [
+   0.3031,
+   0.2065,
+   1.0766
+  ],
+  "n": 2096
+ },
+ "skirt_outer": {
+  "min": [
+   -0.5861,
+   -0.4632,
+   0.215
+  ],
+  "max": [
+   0.5767,
+   0.6391,
+   1.062
+  ],
+  "n": 25212
+ },
+ "skirt_under": {
+  "min": [
+   -0.4917,
+   -0.0544,
+   0.4019
+  ],
+  "max": [
+   0.4869,
+   0.5301,
+   1.0418
+  ],
+  "n": 12876
+ },
+ "legs": {
+  "min": [
+   -0.2797,
+   -0.1504,
+   0.1337
+  ],
+  "max": [
+   0.2797,
+   0.1514,
+   1.119
+  ],
+  "n": 29812
+ },
+ "shoes": {
+  "min": [
+   -0.2228,
+   -0.2392,
+   -0.0172
+  ],
+  "max": [
+   0.2228,
+   0.1159,
+   0.2562
+  ],
+  "n": 7960
+ },
+ "katana": {
+  "min": [
+   0.3384,
+   -0.1325,
+   0.1444
+  ],
+  "max": [
+   2.1183,
+   -0.0418,
+   1.0143
+  ],
+  "n": 748
+ },
+ "sleeves": {
+  "min": [
+   -0.8478,
+   -0.3781,
+   0.6117
+  ],
+  "max": [
+   0.8472,
+   0.1953,
+   1.5872
+  ],
+  "n": 13440
+ },
+ "arms": {
+  "min": [
+   -0.5903,
+   -0.1278,
+   0.9406
+  ],
+  "max": [
+   0.5903,
+   0.1034,
+   1.7449
+  ],
+  "n": 31632
+ },
+ "hands": {
+  "min": [
+   -0.6377,
+   -0.1734,
+   0.7456
+  ],
+  "max": [
+   0.6377,
+   -0.0079,
+   1.003
+  ],
+  "n": 2736
+ },
+ "torso": {
+  "min": [
+   -0.2716,
+   -0.1947,
+   0.8108
+  ],
+  "max": [
+   0.2716,
+   0.193,
+   1.8002
+  ],
+  "n": 20498
+ },
+ "scarf": {
+  "min": [
+   -0.3038,
+   0.1226,
+   0.9116
+  ],
+  "max": [
+   0.3058,
+   0.8554,
+   1.9032
+  ],
+  "n": 4824
+ },
+ "face_decals_mats": [
+  "M_blush",
+  "M_eye_dark",
+  "M_eye_light",
+  "M_glint",
+  "M_ink",
+  "M_mouth"
+ ],
+ "fd_M_blush": {
+  "min": [
+   -0.3921,
+   -0.336,
+   1.9947
+  ],
+  "max": [
+   0.3921,
+   -0.0254,
+   2.0487
+  ],
+  "n": 66
+ },
+ "fd_M_eye_dark": {
+  "min": [
+   -0.3334,
+   -0.4856,
+   2.034
+  ],
+  "max": [
+   0.3334,
+   -0.3355,
+   2.2515
+  ],
+  "n": 194
+ },
+ "fd_M_eye_light": {
+  "min": [
+   -0.3176,
+   -0.4784,
+   2.0417
+  ],
+  "max": [
+   0.3176,
+   -0.345,
+   2.2283
+  ],
+  "n": 162
+ },
+ "fd_M_glint": {
+  "min": [
+   -0.3492,
+   -0.492,
+   2.0331
+  ],
+  "max": [
+   0.3492,
+   -0.3272,
+   2.2519
+  ],
+  "n": 358
+ },
+ "fd_M_ink": {
+  "min": [
+   -0.395,
+   -0.4972,
+   2.1185
+  ],
+  "max": [
+   0.395,
+   -0.319,
+   2.2709
+  ],
+  "n": 206
+ },
+ "fd_M_mouth": {
+  "min": [
+   -0.0388,
+   -0.4573,
+   1.9607
+  ],
+  "max": [
+   0.0388,
+   -0.4019,
+   2.0694
+  ],
+  "n": 15
+ },
+ "iso_ortho": 7.3,
+ "bones": {
+  "root": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.45,
+    0.0
+   ]
+  ],
+  "cog": [
+   [
+    0.0,
+    -0.45,
+    0.92
+   ],
+   [
+    0.0,
+    -0.1,
+    0.92
+   ]
+  ],
+  "hips": [
+   [
+    0.0,
+    -0.35,
+    0.0
+   ],
+   [
+    0.0,
+    -0.35,
+    0.2
+   ]
+  ],
+  "spine": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.26,
+    0.0
+   ]
+  ],
+  "chest": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.34,
+    0.0
+   ]
+  ],
+  "neck": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.16,
+    0.0
+   ]
+  ],
+  "head": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.984,
+    0.0
+   ]
+  ],
+  "bun": [
+   [
+    0.0,
+    0.0,
+    -0.1456
+   ],
+   [
+    0.0,
+    0.4144,
+    -0.2912
+   ]
+  ],
+  "bow": [
+   [
+    -0.2688,
+    -0.4892,
+    0.2436
+   ],
+   [
+    -0.2688,
+    -0.2145,
+    0.3401
+   ]
+  ],
+  "scarf.L.001": [
+   [
+    0.1,
+    -0.02,
+    -0.2
+   ],
+   [
+    0.125,
+    -0.13,
+    -0.36
+   ]
+  ],
+  "scarf.L.002": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0208,
+    0.2144,
+    0.0438
+   ]
+  ],
+  "scarf.L.003": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    -0.0121,
+    0.2154,
+    0.0506
+   ]
+  ],
+  "scarf.L.004": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    -0.0182,
+    0.218,
+    0.0325
+   ]
+  ],
+  "scarf.L.005": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0024,
+    0.2193,
+    0.0315
+   ]
+  ],
+  "scarf.R.001": [
+   [
+    -0.1,
+    -0.02,
+    -0.2
+   ],
+   [
+    -0.125,
+    -0.13,
+    -0.36
+   ]
+  ],
+  "scarf.R.002": [
+   [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   [
+    -0.0208,
+    0.2144,
+    0.0438
+   ]
+  ],
+  "scarf.R.003": [
+   [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   [
+    0.0121,
+    0.2154,
+    0.0506
+   ]
+  ],
+  "scarf.R.004": [
+   [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   [
+    0.0182,
+    0.218,
+    0.0325
+   ]
+  ],
+  "scarf.R.005": [
+   [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   [
+    -0.0024,
+    0.2193,
+    0.0315
+   ]
+  ],
+  "shoulder.L": [
+   [
+    0.06,
+    -0.06,
+    0.0
+   ],
+   [
+    0.25,
+    -0.1,
+    0.0
+   ]
+  ],
+  "arm_clear.L": [
+   [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   [
+    0.08,
+    0.0598,
+    0.005
+   ]
+  ],
+  "upper_arm.L": [
+   [
+    0.0,
+    -0.1,
+    0.0
+   ],
+   [
+    -0.0,
+    0.26,
+    0.0
+   ]
+  ],
+  "forearm.L": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0139,
+    0.3579,
+    0.0363
+   ]
+  ],
+  "hand.L": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0171,
+    0.1993,
+    0.0001
+   ]
+  ],
+  "sword": [
+   [
+    -0.0,
+    -0.1,
+    -0.0
+   ],
+   [
+    -1.1873,
+    1.1029,
+    -0.1829
+   ]
+  ],
+  "sword_grip.R": [
+   [
+    0.0,
+    -1.57,
+    -0.085
+   ],
+   [
+    0.0,
+    -1.57,
+    0.115
+   ]
+  ],
+  "sleeve.L": [
+   [
+    0.0,
+    -0.003,
+    -0.0198
+   ],
+   [
+    0.0695,
+    0.2777,
+    -0.1434
+   ]
+  ],
+  "elbow_help.L": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.003,
+    0.0787,
+    0.008
+   ]
+  ],
+  "upper_arm_help.L": [
+   [
+    0.0,
+    -0.1,
+    0.0
+   ],
+   [
+    -0.0,
+    0.0008,
+    0.0
+   ]
+  ],
+  "shoulder.R": [
+   [
+    -0.06,
+    -0.06,
+    -0.0
+   ],
+   [
+    -0.25,
+    -0.1,
+    -0.0
+   ]
+  ],
+  "arm_clear.R": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    -0.08,
+    0.0598,
+    0.005
+   ]
+  ],
+  "upper_arm.R": [
+   [
+    0.0,
+    -0.1,
+    0.0
+   ],
+   [
+    0.0,
+    0.26,
+    0.0
+   ]
+  ],
+  "forearm.R": [
+   [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   [
+    -0.0139,
+    0.3579,
+    0.0363
+   ]
+  ],
+  "hand.R": [
+   [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   [
+    -0.0171,
+    0.1993,
+    0.0001
+   ]
+  ],
+  "sleeve.R": [
+   [
+    -0.0,
+    -0.003,
+    -0.0198
+   ],
+   [
+    -0.0695,
+    0.2777,
+    -0.1434
+   ]
+  ],
+  "elbow_help.R": [
+   [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   [
+    -0.003,
+    0.0787,
+    0.008
+   ]
+  ],
+  "upper_arm_help.R": [
+   [
+    0.0,
+    -0.1,
+    0.0
+   ],
+   [
+    0.0,
+    0.0008,
+    0.0
+   ]
+  ],
+  "thigh.L": [
+   [
+    0.13,
+    -0.17,
+    0.0
+   ],
+   [
+    0.14,
+    -0.6,
+    0.025
+   ]
+  ],
+  "shin.L": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0072,
+    0.3059,
+    -0.0779
+   ]
+  ],
+  "foot.L": [
+   [
+    -0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.1443,
+    0.1756
+   ]
+  ],
+  "toe.L": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0708,
+    0.0777
+   ]
+  ],
+  "knee_help.L": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0016,
+    0.0673,
+    -0.0171
+   ]
+  ],
+  "thigh_help.L": [
+   [
+    0.13,
+    -0.17,
+    0.0
+   ],
+   [
+    0.1325,
+    -0.2775,
+    0.0063
+   ]
+  ],
+  "thigh.R": [
+   [
+    -0.13,
+    -0.17,
+    -0.0
+   ],
+   [
+    -0.14,
+    -0.6,
+    0.025
+   ]
+  ],
+  "shin.R": [
+   [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   [
+    -0.0072,
+    0.3059,
+    -0.0779
+   ]
+  ],
+  "foot.R": [
+   [
+    -0.0,
+    0.0,
+    -0.0
+   ],
+   [
+    0.0,
+    0.1443,
+    0.1756
+   ]
+  ],
+  "toe.R": [
+   [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0708,
+    0.0777
+   ]
+  ],
+  "knee_help.R": [
+   [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   [
+    -0.0016,
+    0.0673,
+    -0.0171
+   ]
+  ],
+  "thigh_help.R": [
+   [
+    -0.13,
+    -0.17,
+    -0.0
+   ],
+   [
+    -0.1325,
+    -0.2775,
+    0.0063
+   ]
+  ],
+  "skirt.F": [
+   [
+    0.0,
+    -0.08,
+    0.22
+   ],
+   [
+    0.0,
+    -0.3,
+    0.36
+   ]
+  ],
+  "skirt.F.001": [
+   [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   [
+    -0.0,
+    0.2447,
+    -0.0253
+   ]
+  ],
+  "skirt.L": [
+   [
+    0.27,
+    -0.08,
+    0.0
+   ],
+   [
+    0.42,
+    -0.34,
+    -0.03
+   ]
+  ],
+  "skirt.L.001": [
+   [
+    -0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0173,
+    0.2937,
+    -0.0209
+   ]
+  ],
+  "skirt.L.002": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0626,
+    0.2455,
+    -0.0288
+   ]
+  ],
+  "skirt.R": [
+   [
+    -0.27,
+    -0.08,
+    -0.0
+   ],
+   [
+    -0.42,
+    -0.34,
+    -0.03
+   ]
+  ],
+  "skirt.R.001": [
+   [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   [
+    -0.0173,
+    0.2937,
+    -0.0209
+   ]
+  ],
+  "skirt.R.002": [
+   [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   [
+    -0.0626,
+    0.2455,
+    -0.0288
+   ]
+  ],
+  "skirt.B": [
+   [
+    0.0,
+    -0.08,
+    -0.22
+   ],
+   [
+    0.0,
+    -0.3,
+    -0.38
+   ]
+  ],
+  "skirt.tail.001": [
+   [
+    -0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.2323,
+    0.0206
+   ]
+  ],
+  "skirt.tail.002": [
+   [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   [
+    -0.0,
+    0.2229,
+    0.0171
+   ]
+  ],
+  "skirt.tail.003": [
+   [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   [
+    -0.0,
+    0.1968,
+    0.0089
+   ]
+  ],
+  "sheath": [
+   [
+    0.27,
+    -0.1,
+    0.3
+   ],
+   [
+    0.4248,
+    -0.6109,
+    -1.1552
+   ]
+  ],
+  "hand_ik.L": [
+   [
+    0.5385,
+    -0.4222,
+    0.0454
+   ],
+   [
+    0.5986,
+    -0.4522,
+    -0.1429
+   ]
+  ],
+  "elbow_pole.L": [
+   [
+    0.5014,
+    0.182,
+    0.3739
+   ],
+   [
+    0.5014,
+    0.332,
+    0.3739
+   ]
+  ],
+  "hand_ik.R": [
+   [
+    -0.5385,
+    -0.4222,
+    0.0454
+   ],
+   [
+    -0.5986,
+    -0.4522,
+    -0.1429
+   ]
+  ],
+  "elbow_pole.R": [
+   [
+    -0.5014,
+    0.182,
+    0.3739
+   ],
+   [
+    -0.5014,
+    0.332,
+    0.3739
+   ]
+  ],
+  "foot_ctrl.L": [
+   [
+    0.14,
+    -0.375,
+    0.0
+   ],
+   [
+    0.14,
+    -0.675,
+    0.0
+   ]
+  ],
+  "toe_pivot.L": [
+   [
+    0.0,
+    -0.115,
+    0.0
+   ],
+   [
+    0.0,
+    -0.235,
+    0.0
+   ]
+  ],
+  "foot_ik.L": [
+   [
+    0.0,
+    0.025,
+    0.21
+   ],
+   [
+    0.0,
+    -0.12,
+    0.035
+   ]
+  ],
+  "knee_pole.L": [
+   [
+    0.16,
+    -1.225,
+    0.52
+   ],
+   [
+    0.16,
+    -1.375,
+    0.52
+   ]
+  ],
+  "foot_ctrl.R": [
+   [
+    -0.14,
+    -0.375,
+    0.0
+   ],
+   [
+    -0.14,
+    -0.675,
+    0.0
+   ]
+  ],
+  "toe_pivot.R": [
+   [
+    0.0,
+    -0.115,
+    0.0
+   ],
+   [
+    0.0,
+    -0.235,
+    0.0
+   ]
+  ],
+  "foot_ik.R": [
+   [
+    0.0,
+    0.025,
+    0.21
+   ],
+   [
+    0.0,
+    -0.12,
+    0.035
+   ]
+  ],
+  "knee_pole.R": [
+   [
+    -0.16,
+    -1.225,
+    0.52
+   ],
+   [
+    -0.16,
+    -1.375,
+    0.52
+   ]
+  ]
+ },
+ "shape_keys": {
+  "face_decals": [
+   "Basis",
+   "wide",
+   "frown",
+   "smile",
+   "hurt"
+  ]
+ },
+ "drivers": [
+  [
+   "rig",
+   "pose.bones[\"shin.L\"].constraints[\"IK\"].influence"
+  ],
+  [
+   "rig",
+   "pose.bones[\"foot.L\"].constraints[\"IK_rot\"].influence"
+  ],
+  [
+   "rig",
+   "pose.bones[\"forearm.L\"].constraints[\"IK\"].influence"
+  ],
+  [
+   "rig",
+   "pose.bones[\"hand.L\"].constraints[\"IK_rot\"].influence"
+  ],
+  [
+   "rig",
+   "pose.bones[\"shin.R\"].constraints[\"IK\"].influence"
+  ],
+  [
+   "rig",
+   "pose.bones[\"foot.R\"].constraints[\"IK_rot\"].influence"
+  ],
+  [
+   "rig",
+   "pose.bones[\"forearm.R\"].constraints[\"IK\"].influence"
+  ],
+  [
+   "rig",
+   "pose.bones[\"hand.R\"].constraints[\"IK_rot\"].influence"
+  ],
+  [
+   "rig",
+   "pose.bones[\"hand_ik.R\"].constraints[\"to_tsuka\"].influence"
+  ],
+  [
+   "rig",
+   "pose.bones[\"sleeve.L\"].scale"
+  ],
+  [
+   "rig",
+   "pose.bones[\"sleeve.R\"].scale"
+  ],
+  [
+   "rig",
+   "pose.bones[\"shoulder.L\"].rotation_quaternion"
+  ],
+  [
+   "rig",
+   "pose.bones[\"shoulder.L\"].rotation_quaternion"
+  ],
+  [
+   "rig",
+   "pose.bones[\"shoulder.R\"].rotation_quaternion"
+  ],
+  [
+   "rig",
+   "pose.bones[\"shoulder.R\"].rotation_quaternion"
+  ],
+  [
+   "rig",
+   "pose.bones[\"arm_clear.L\"].rotation_quaternion"
+  ],
+  [
+   "rig",
+   "pose.bones[\"arm_clear.L\"].rotation_quaternion"
+  ],
+  [
+   "rig",
+   "pose.bones[\"arm_clear.L\"].rotation_quaternion"
+  ],
+  [
+   "rig",
+   "pose.bones[\"arm_clear.L\"].rotation_quaternion"
+  ],
+  [
+   "rig",
+   "pose.bones[\"shoulder.L\"].location"
+  ],
+  [
+   "rig",
+   "pose.bones[\"shoulder.L\"].location"
+  ],
+  [
+   "rig",
+   "pose.bones[\"shoulder.L\"].location"
+  ],
+  [
+   "rig",
+   "pose.bones[\"arm_clear.R\"].rotation_quaternion"
+  ],
+  [
+   "rig",
+   "pose.bones[\"arm_clear.R\"].rotation_quaternion"
+  ],
+  [
+   "rig",
+   "pose.bones[\"arm_clear.R\"].rotation_quaternion"
+  ],
+  [
+   "rig",
+   "pose.bones[\"arm_clear.R\"].rotation_quaternion"
+  ],
+  [
+   "rig",
+   "pose.bones[\"shoulder.R\"].location"
+  ],
+  [
+   "rig",
+   "pose.bones[\"shoulder.R\"].location"
+  ],
+  [
+   "rig",
+   "pose.bones[\"shoulder.R\"].location"
+  ],
+  [
+   "rig",
+   "pose.bones[\"skirt.F\"].constraints[\"follow_L\"].influence"
+  ],
+  [
+   "rig",
+   "pose.bones[\"skirt.B\"].constraints[\"follow_L\"].influence"
+  ],
+  [
+   "rig",
+   "pose.bones[\"skirt.L\"].constraints[\"follow_flex\"].influence"
+  ],
+  [
+   "rig",
+   "pose.bones[\"skirt.F\"].constraints[\"follow_R\"].influence"
+  ],
+  [
+   "rig",
+   "pose.bones[\"skirt.B\"].constraints[\"follow_R\"].influence"
+  ],
+  [
+   "rig",
+   "pose.bones[\"skirt.R\"].constraints[\"follow_flex\"].influence"
+  ],
+  [
+   "rig",
+   "pose.bones[\"bow\"].constraints[\"face_camera\"].influence"
+  ]
+ ],
+ "constraints": {
+  "bow": [
+   [
+    "LOCKED_TRACK",
+    "face_camera",
+    ""
+   ]
+  ],
+  "forearm.L": [
+   [
+    "IK",
+    "IK",
+    "hand_ik.L"
+   ]
+  ],
+  "hand.L": [
+   [
+    "COPY_ROTATION",
+    "IK_rot",
+    "hand_ik.L"
+   ]
+  ],
+  "sword": [
+   [
+    "COPY_TRANSFORMS",
+    "to_sheath",
+    "sheath"
+   ]
+  ],
+  "elbow_help.L": [
+   [
+    "COPY_ROTATION",
+    "half_rot",
+    "forearm.L"
+   ]
+  ],
+  "upper_arm_help.L": [
+   [
+    "COPY_ROTATION",
+    "half_rot",
+    "upper_arm.L"
+   ]
+  ],
+  "forearm.R": [
+   [
+    "IK",
+    "IK",
+    "hand_ik.R"
+   ]
+  ],
+  "hand.R": [
+   [
+    "COPY_ROTATION",
+    "IK_rot",
+    "hand_ik.R"
+   ]
+  ],
+  "elbow_help.R": [
+   [
+    "COPY_ROTATION",
+    "half_rot",
+    "forearm.R"
+   ]
+  ],
+  "upper_arm_help.R": [
+   [
+    "COPY_ROTATION",
+    "half_rot",
+    "upper_arm.R"
+   ]
+  ],
+  "shin.L": [
+   [
+    "IK",
+    "IK",
+    "foot_ik.L"
+   ]
+  ],
+  "foot.L": [
+   [
+    "COPY_ROTATION",
+    "IK_rot",
+    "foot_ik.L"
+   ]
+  ],
+  "knee_help.L": [
+   [
+    "COPY_ROTATION",
+    "half_rot",
+    "shin.L"
+   ]
+  ],
+  "thigh_help.L": [
+   [
+    "COPY_ROTATION",
+    "half_rot",
+    "thigh.L"
+   ]
+  ],
+  "shin.R": [
+   [
+    "IK",
+    "IK",
+    "foot_ik.R"
+   ]
+  ],
+  "foot.R": [
+   [
+    "COPY_ROTATION",
+    "IK_rot",
+    "foot_ik.R"
+   ]
+  ],
+  "knee_help.R": [
+   [
+    "COPY_ROTATION",
+    "half_rot",
+    "shin.R"
+   ]
+  ],
+  "thigh_help.R": [
+   [
+    "COPY_ROTATION",
+    "half_rot",
+    "thigh.R"
+   ]
+  ],
+  "skirt.F": [
+   [
+    "TRANSFORM",
+    "follow_L",
+    "thigh.L"
+   ],
+   [
+    "TRANSFORM",
+    "follow_R",
+    "thigh.R"
+   ]
+  ],
+  "skirt.L": [
+   [
+    "TRANSFORM",
+    "follow_flex",
+    "thigh.L"
+   ]
+  ],
+  "skirt.R": [
+   [
+    "TRANSFORM",
+    "follow_flex",
+    "thigh.R"
+   ]
+  ],
+  "skirt.B": [
+   [
+    "TRANSFORM",
+    "follow_L",
+    "thigh.L"
+   ],
+   [
+    "TRANSFORM",
+    "follow_R",
+    "thigh.R"
+   ]
+  ],
+  "hand_ik.R": [
+   [
+    "COPY_TRANSFORMS",
+    "to_tsuka",
+    "sword_grip.R"
+   ]
+  ]
+ },
+ "obj_constraints": {},
+ "parents": {
+  "arm.L": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "arm.R": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "arm_ornament.R": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "bangs": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "belt_pouch": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "bodice": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "body_torso": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "bow": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "bun": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "bun_crease": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "bun_sheen": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "cam": [
+   null,
+   "OBJECT",
+   ""
+  ],
+  "chest_cord": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "chest_flower": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "choker": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "collar": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "corset": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "corset_buckles": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "corset_tabs": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "ears": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "face_decals": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "foot.L": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "foot.R": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "hair_cap": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "hair_proxy": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "hair_sheen": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "hair_strands": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "hair_streaks": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "hand.L": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "hand.R": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "head": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "head_collider": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "katana": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "katana_sprite": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "katana_sprite_kagi": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "key": [
+   "cam",
+   "OBJECT",
+   ""
+  ],
+  "leg.L": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "leg.R": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "neck": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "rig": [
+   null,
+   "OBJECT",
+   ""
+  ],
+  "saya": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "scarf.L": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "scarf.R": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "shoe.L": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "shoe.R": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "shorts": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "skirt_outer": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "skirt_under": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "sleeve.L": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "sleeve.R": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "sleeve_band.L": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "sleeve_band.R": [
+   "rig",
+   "OBJECT",
+   ""
+  ],
+  "thigh_strap.L": [
+   "rig",
+   "OBJECT",
+   ""
+  ]
+ },
+ "mods": {
+  "arm.L": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SHRINKWRAP",
+    "HeadCollide"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "arm.R": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SHRINKWRAP",
+    "HeadCollide"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "arm_ornament.R": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "bangs": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Thickness"
+   ],
+   [
+    "DATA_TRANSFER",
+    "HairNormals"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "belt_pouch": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Thickness"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "bodice": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Thickness"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "body_torso": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "bow": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Thickness"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "bun": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "bun_crease": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ]
+  ],
+  "bun_sheen": [
+   [
+    "ARMATURE",
+    "Armature"
+   ]
+  ],
+  "chest_cord": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "chest_flower": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "choker": [
+   [
+    "ARMATURE",
+    "Armature"
+   ]
+  ],
+  "collar": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Thickness"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "corset": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "corset_buckles": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "corset_tabs": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Thickness"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "ears": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "face_decals": [
+   [
+    "ARMATURE",
+    "Armature"
+   ]
+  ],
+  "foot.L": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "foot.R": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "hair_cap": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Thickness"
+   ],
+   [
+    "DATA_TRANSFER",
+    "HairNormals"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "hair_proxy": [
+   [
+    "ARMATURE",
+    "Armature"
+   ]
+  ],
+  "hair_sheen": [
+   [
+    "ARMATURE",
+    "Armature"
+   ]
+  ],
+  "hair_strands": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Thickness"
+   ],
+   [
+    "DATA_TRANSFER",
+    "HairNormals"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "hair_streaks": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Thickness"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "hand.L": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "hand.R": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "head": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "head_collider": [
+   [
+    "ARMATURE",
+    "Armature"
+   ]
+  ],
+  "katana": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "katana_sprite": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "katana_sprite_kagi": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "leg.L": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "leg.R": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "neck": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ]
+  ],
+  "saya": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "scarf.L": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Thickness"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "scarf.R": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Thickness"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "shoe.L": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "shoe.R": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "shorts": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "skirt_outer": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Thickness"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "skirt_under": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Thickness"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "sleeve.L": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SHRINKWRAP",
+    "HeadCollide"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Thickness"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "sleeve.R": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SHRINKWRAP",
+    "HeadCollide"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Thickness"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "sleeve_band.L": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SHRINKWRAP",
+    "HeadCollide"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "sleeve_band.R": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SHRINKWRAP",
+    "HeadCollide"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ],
+  "thigh_strap.L": [
+   [
+    "ARMATURE",
+    "Armature"
+   ],
+   [
+    "SUBSURF",
+    "Subsurf"
+   ],
+   [
+    "SOLIDIFY",
+    "Outline"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "size": [
+  22,
+  16
+ ],
+ "facing": "E",
+ "attach": "head_top",
+ "pivot": [
+  11,
+  15
+ ],
+ "ms": [
+  60,
+  120
+ ],
+ "layer": "over_character",
+ "symmetric": false,
+ "flip_W": "mirror x: x -> 21-x; pivot -> [10,15]",
+ "note": "pivot = bottom centre, 2 px clearance above head; f0 3 stars + W flash spikes, f1 2 small stars + 3 twinkles thrown outward"
+}
