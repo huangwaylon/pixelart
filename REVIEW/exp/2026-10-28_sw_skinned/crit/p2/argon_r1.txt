@@ -1,0 +1,44 @@
+Here is the pixel-art direction review comparing the new **P2** pixel chain against **r1 shipped** and **r1 chain** across the 3/4 walk (Images 1–2), 3/4 run (Image 3), and profile walk (Image 4) cycles.
+
+---
+
+### Category Scores (1–10)
+
+#### 1. Limb Continuity (Separation & Presence)
+* **r1 shipped: 3/10** — Critical failures. In the 3/4 walk `f00`, the back leg completely vanishes into a single-leg flamingo pose. In passing frames (`f03`, `f04`), the legs merge into an indistinct, skinny black pillar with zero depth separation.
+* **P2: 7/10** — Massive structural improvement on `f00` (both legs are present and grounded). However, P2 introduces a new thickness/merging problem during passing frames (`f02`, `f03`, `f04`, `f06`), where the internal dividing outline between near and far legs drops out or turns into muddy brown anti-aliasing, fusing both legs into a wide, heavy "tree-trunk" mass.
+
+#### 2. Thigh-to-Skirt Connection (Skin Band & Sock-Top Trim)
+* **r1 shipped: 4/10** — Skin bands frequently vanish (`f00`, `f03`, `f07`), leaving dark stockings plugged directly into the red hem. The red sock-top trim from the master still is completely absent.
+* **P2: 7/10** — The skin-toned thigh zone is consistently preserved across every frame, properly bridging the skirt hem and boots/stockings. However, the pixel clusters inside the thigh area are noisy—stray dark/red pixels (attempting to render the sock-top trim or skirt shadow) read like "dirt" or stray freckles on the skin rather than a clean horizontal band.
+
+#### 3. Frame-to-Frame Consistency (Flicker & Noise)
+* **r1 shipped: 5/10** — While the upper body uses clean, hand-crafted pixel clusters that hold together well, the lower body flickers violently because leg mass and sleeves pop in and out of existence (`f00` vs `f01`).
+* **P2: 5/10** — Solves the catastrophic limb-popping of `r1 shipped`, and cleanly fixes the catastrophic hair/face destruction seen in `r1 chain`. However, P2 suffers from classic procedural/downsampling "pixel crawl": the grey sash thickness fluctuates every frame, the face outline gains/loses a dark chin/cheek pixel (`f04`), and internal shading on the dress and thighs crawls with single-pixel noise.
+
+#### 4. Readability at 1x vs. Master Still
+* **r1 shipped: 6/10** — The upper body and face match the crisp, charming aesthetic of the master still very closely at 1x, but the disappearing legs ruin the animation read in motion.
+* **P2: 6/10** — At 1x, the leg movement reads as a complete cycle without vanishing limbs, and the face is recognizable (unlike `r1 chain`). However, compared to the master still, P2 looks slightly "over-inked" and soft; the legs read noticeably heavier/wider than the delicate chibi proportions of column 0, and the facial features lose a bit of their crisp contrast.
+
+#### 5. Silhouette Elegance (Lumps, Jaggies, Toe Tips)
+* **r1 shipped: 6/10** — Crisp, deliberate pixel placement on the hair, bow, and sleeves, though foot shapes are sometimes overly needle-thin or stubby (`f00`).
+* **P2: 5/10** — Silhouette lines suffer from automated-looking jaggies and double-thick outlines. Toe tips and heels are squared-off and club-like rather than tapering elegantly like the master still. The outer dress hems and hair locks have stair-stepping lumps (`f04` right cheek/hair, `f01` back heel).
+
+---
+
+### Top 5 Concrete Defects in P2 (with Frame Numbers)
+
+1. **Merged "Tree-Trunk" Passing Legs (3/4 Walk [Img 1 & 2]: `f03`, `f04`, `f05`, `f06`; Profile Walk [Img 4]: `f02`, `f03`)**
+   In the zoom board (Image 2), `f03` and `f04` show the near and far stockings fusing into a single wide dark mass. Because the internal separating line is lost or reduced to low-contrast brown pixels, the character appears to have one giant, thick leg instead of two overlapping slim legs.
+2. **Noisy/Spotted Thigh Skin Clusters (3/4 Walk [Img 2]: `f02`, `f03`, `f04`, `f06`)**
+   Instead of a clean 1px horizontal red trim or clean skin shading under the skirt, P2 places isolated dark/reddish single pixels inside the peach thigh area (especially visible in Image 2 `f03` and `f06`). In motion, these isolated pixels flicker like noise/artifacts on her skin.
+3. **Blunt, Club-Like Foot & Heel Silhouettes (3/4 Walk [Img 2]: `f00`, `f01`, `f02`; 3/4 Run [Img 3]: `f01`, `f05`)**
+   Look at the master still's delicate, tapered boot tips, then compare to P2 `f00` (front foot is a flat 4px-wide shovel) and `f01`/`f02` (the raised back foot is a boxy, clubbed blob with a heavy double-pixel outline).
+4. **Cheek/Hairline Stray Pixel Protrusions (3/4 Walk [Img 1]: `f04`; Profile Walk [Img 4]: `f04`, `f05`)**
+   In Image 1 `f04`, a stray horizontal 2px spike juts out from the screen-right sideburn/cheek outline. In Image 4 (Profile Walk) `f04` and `f05`, the front of the chin/mouth line develops dark, jagged pixel steps that break the smooth curve of the chibi jawline at 1x.
+5. **Inconsistent Obi/Sash Geometry & Sleeve Lumps (3/4 Walk [Img 1]: `f00`–`f02` vs `f03`–`f07`; 3/4 Run [Img 3]: `f04`, `f05`)**
+   In the 3/4 Walk (`f00`, `f01`), the grey belt shrinks to a tiny 3–4px dab on the front of the torso, then suddenly stretches across the body in `f02`–`f04`. Simultaneously, the tucked-back sleeves in the 3/4 Walk completely lose their flared silhouette compared to `r1 shipped`, turning the torso into a lumpy red potato shape.
+
+---
+
+SCORE: 6.0/10 vs 4.8/10

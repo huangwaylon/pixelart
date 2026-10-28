@@ -1,0 +1,25 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I read all four boards and zoomed into the P2 leg strips for walk and run. Overall, P2 fixes the legs and thighs the owner rejected. It still loses the near/far leg split in the passing frames, and the new skirt and skin treatment add problems of their own.
+
+## Scores (r1 shipped → P2)
+
+| Criterion | r1 shipped | P2 | Notes |
+|---|---|---|---|
+| 1. Limb continuity / near-far separation | 4 | 6 | No leg disappears in P2 any more (r1 shipped walk f00 and f03 read as one leg). But in walk f03–f06 the two black stockings still merge into one dark column. The lit rim on the near leg is too dark to read at 1x. |
+| 2. Thighs connected to skirt | 3 | 8 | Biggest win. A skin wedge and the red sock-top band show in every frame, so the legs hang from the body. r1 shipped had hip gaps (walk f01, f02, f05) and floating thighs. |
+| 3. Flicker / noise | 5 | 6 | Legs are steadier. New flicker comes from the skin under the hem: the patch changes size every frame (walk f02 large, f03 small, f06 wide), so the crotch area pulses. |
+| 4. 1x readability vs master | 6 | 6 | The bow and face are kept, which r1 chain lost. But at 1x the bell-shaped skirt dominates, the legs read as stubs, and the sash breaks up. |
+| 5. Silhouette elegance | 6 | 5 | The 2-tone skirt became a wide tent, broader than the master's dress, with stair-stepped corners on the hem. Boot toes are inconsistent. |
+
+## Top 5 P2 defects
+
+1. **The legs merge in the passing frames (walk f03, f04, f05, f06).** The near and far legs become one black mass from the knees to the boots, and f06 has a double-knee blob where the legs cross. The rim needs a lighter value (a full step above the stocking colour, not a dark grey) and a guaranteed 1-px gap or outline wherever the legs overlap.
+2. **The skirt is a tent and its hem is jagged (walk f02–f06, run f03–f05).** The hem flares to nearly twice the master's width, with 2–3 px stair-steps at the corners and a hard flat bottom. Hem smoothing has made it stiff rather than elegant. Cap the flare and allow a gently curved hem.
+3. **The skin under the hem pulses (walk f02, f03, f06, f07; idle f04–f10).** The pink patch between hem and sock band jumps between about 2 and 6 rows and changes width. Lock its height, for example to the 2–3 rows the master shows.
+4. **Boot toes are lumpy (walk f04, f05, f06; run f02, f07).** The near boot turns into a square stub, a single-pixel spur sticks out under the heel in walk f05, and in walk f06 both boots fuse into one blob. Use a toe template: a 2-px taper with a dark sole row.
+5. **Face and sash noise.** There are blocky pink rectangles on the face (walk f03 and f04, run f01 and f05, idle f05–f07), probably blush or shading quantised into flat blocks. The lavender sash breaks into a floating smear when the arm crosses it (idle f02–f10, run f03–f05). Pin both to master-derived masks.
+
+**Verdict:** P2 is a clear improvement on the owner's specific complaints: legs no longer vanish and the thighs stay attached. Defects 1 and 2 should be fixed before showing it again.
+
+SCORE: 6.5/10 vs 4.5/10

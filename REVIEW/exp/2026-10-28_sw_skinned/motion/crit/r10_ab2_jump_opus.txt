@@ -1,0 +1,19 @@
+SCORE A: 5/10, SCORE B: 5/10
+
+**B sub-scores (1–10)**
+- Whole-body motion incl. head: 6. The head tilts and leads more than in A, and the hair/bun mass moves on the rise.
+- Secondary motion readable at 1x: 4. Sleeves and skirt don't lag or follow through. The bow wiggles, but at 1x it reads as noise.
+- Timing/holds: 6. The crouch hold and 120 ms apex hang work, but the landing has almost no weight.
+- Elegance/confidence/femininity: 4.
+- No slouch: 6. The chest is upright, but the head pitches forward on f5–f7 and f9.
+- Legs/contacts readability: 6. The legs no longer drop out, but the feet stay blunt.
+- Appeal: 5.
+
+**Top 5 problems in B**
+1. **f6–f7 apex, arms:** both hands are folded onto the head, so it reads as "covering ears" and the head blobs together in the silhouette. Open them into a soft V: upper arms about 35° above horizontal, wrists dropped about 20°, hands clear of the head by at least 3 px at 1x.
+2. **f6–f7 apex, spine/legs:** there's no arch. The knees tuck backward and the shins just hang. Arch the chest back 10–15°, extend the trailing leg about 2 px, and point the toes down 30°.
+3. **f12 squash:** it barely drops, about 1 px against roughly 4 px in A. Drop the hips 3 px, widen the skirt by 1 px, and let the head lag 1 px down a frame later.
+4. **f1 and f9–f11, one arm:** it sticks out sideways about 4 px at 1x like a stiff wing. Keep it within 2 px of the body, angled forward and down, with a soft wrist.
+5. **Sleeves/skirt hem, f4→f9:** there's no drag. The bell sleeves should trail 2 px at take-off (f4), float up 1–2 px at the apex (f7), and lift the hem 1 px on the fall (f8–f9).
+
+The feet also need to land narrow and in line on f10 rather than wide.

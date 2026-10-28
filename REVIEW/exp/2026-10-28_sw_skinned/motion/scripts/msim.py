@@ -10,13 +10,13 @@ from scipy.spatial.transform import Rotation as Rot
 
 # group: freq Hz, damping ratio, gravity-hang blend, air drag 1/s, follow (chain curl), gain (output exaggeration), max deg
 GROUPS = {
-    "hair_front": dict(f=4.2, z=0.30, gw=0.15, cd=0.6, follow=0.7, gain=1.6, mx=14),
-    "hair_side":  dict(f=2.3, z=0.32, gw=0.45, cd=1.2, follow=0.5, gain=2.4, mx=22),
-    "hair_back":  dict(f=2.1, z=0.32, gw=0.40, cd=1.4, follow=0.5, gain=2.5, mx=28),
-    "bun":        dict(f=2.6, z=0.2, gw=0.00, cd=0.2, follow=0.0, gain=3.4, mx=16),
-    "bow":        dict(f=2.3, z=0.22, gw=0.08, cd=0.8, follow=0.6, gain=3.0, mx=24),
-    "sleeve":     dict(f=2.3, z=0.34, gw=0.45, cd=1.6, follow=0.7, gain=1.0, mx=25),
-    "skirt":      dict(f=3.0, z=0.3, gw=0.12, cd=1.4, follow=0.6, gain=2.6, mx=34),
+    "hair_front": dict(f=3.8, z=0.35, gw=0.15, cd=0.8, follow=0.15, gain=0.9, mx=14),
+    "hair_side": dict(f=2.0, z=0.70, gw=0.25, cd=1.2, follow=0.15, gain=0.7, mx=22),
+    "hair_back": dict(f=1.9, z=0.70, gw=0.20, cd=1.4, follow=0.0, gain=0.8, mx=28),
+    "bun": dict(f=3.6, z=0.30, gw=0.00, cd=0.2, follow=0.0, gain=3.0, mx=16),
+    "bow": dict(f=3.4, z=0.50, gw=0.08, cd=0.8, follow=0.15, gain=0.8, mx=24),
+    "sleeve":     dict(f=2.3, z=0.34, gw=0.45, cd=1.6, follow=0.15, gain=0.6, mx=25),
+    "skirt":      dict(f=2.8, z=0.3, gw=0.12, cd=1.4, follow=0.15, gain=2.2, mx=34),
     "obi_tail":   dict(f=2.0, z=0.22, gw=0.50, cd=1.5, follow=0.8, gain=1.5, mx=40),
 }
 COLL = {  # radii in metres for the R rig (~1.55 m); clamped to 0.97 x rest distance per particle
@@ -49,6 +49,7 @@ def chains_of(sk):
     return out
 
 
+SAT = {}  # group -> [clamped, total] output segments (diagnostic: a saturated chain sits at its limit instead of bouncing)
 HEAD_C = 0.45  # 'bone@' = sphere at head + 0.45 (tail - head)
 
 
@@ -196,7 +197,9 @@ class ChainSim:
                 d_t = dirs[i]; d_s = nrm(x[i + 1] - x[i])
                 rv = Rot.from_matrix(min_rot(d_t, d_s)).as_rotvec() * P["gain"]
                 ang = np.linalg.norm(rv); mx = math.radians(P["mx"])
-                if ang > mx: rv *= mx / ang
+                SAT.setdefault(g, [0, 0]); SAT[g][1] += 1
+                if ang > 0.8 * mx: SAT[g][0] += 1
+                if ang > 1e-9: rv *= mx * math.tanh(ang / mx) / ang   # soft limit: keeps bouncing near the cap instead of pinning
                 d_f = Rot.from_rotvec(rv).apply(d_t)
                 y.append(y[-1] + d_f * self.lens[b])
             y = np.array(y); self.collide(g, ch, y, H, T)

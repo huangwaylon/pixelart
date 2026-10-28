@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 5/10
+
+**B scores**
+- Whole-body motion incl. head: 5. The bob is about 2 px (lowest at f5). The head barely tilts and the hair mass stays rigid.
+- Secondary motion readable at 1x: 3. The bow and bun shimmer instead of trailing. The skirt hem moves about 1 px, and only the sleeves read.
+- Timing/holds: 6. The 60/80 ms contact/flight split is good, but the contacts have no clear hold.
+- Elegance/confidence/femininity: 4.
+- No slouch: 6. The torso is more upright than A, but the head still juts forward at f1 and f5.
+- Legs/contacts readability: 4.
+- Appeal: 5.
+
+**Top 5 problems in B**
+1. **f0–f1, legs:** the two legs merge into one column at 1x and the back leg disappears, which is the same flicker as A. Push the trailing knee about 2 px back and 1 px up so there is always at least 1 px of gap.
+2. **f2 and f5, feet:** the legs cross over the centerline (scissor), and the silhouette shows holes and loops there. Move the swing foot about 2 px out to its own side, and keep it narrow without crossing.
+3. **f4–f6, arms:** the bell sleeves flare out like wings, about 3–4 px past the torso on each side, so the elbows look wide. Pull the elbows in about 15–20° and keep the hands near the hips with soft wrists.
+4. **Every flight frame, toes:** the boots stay flat blocks with no pointed toe. Plantar-flex the airborne foot about 30–40° so it reads as at least a 1 px taper. Also lift the f3 and f7 heels about 1 px higher to make the steps look lighter.
+5. **Head and hair throughout:** the head is locked to the torso and the hair does not lag. Add a 1 px counter-bob with the head lowest one frame after contact, and a 3–5° tilt that alternates each step. Have the bun and bow trail 1–2 px opposite to travel, one frame late, and settle the skirt hem 1 px after each contact.

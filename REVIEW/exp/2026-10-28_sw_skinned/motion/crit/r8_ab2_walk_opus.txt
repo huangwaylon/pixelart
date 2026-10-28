@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 5/10
+
+**B sub-scores**
+- Whole-body motion incl. head: 5. The head bobs about 1 px and tilts a little, but the bun and bow move with the head as one piece.
+- Secondary readable at 1x: 4. The sleeves and skirt flare in f3–f5 only. In f6–f2 they hang flat, so at 1x it reads as popping, not follow-through.
+- Timing/holds: 6. Holding contact and passing at 90 ms and down and up at 120 ms is good. Everything else is linear.
+- Elegance/confidence/femininity: 4.
+- No slouch: 3. In f0, f1 and f7 the head juts forward and down, and the chest is hidden.
+- Legs/contacts readability: 5. The flicker is mostly gone, but the legs merge in f6/f7.
+- Appeal: 5.
+
+**Top 5 problems in B**
+1. **Whole body, f6→f2 vs f3→f5.** The body turns about 25–30° between the two halves of the cycle: narrow profile for the left step, wide front view for the right step. The silhouette width jumps about 5 px at 1x (f2→f3) and collapses again at f6. Lock the facing direction and keep the yaw within ±8°.
+2. **Head and neck, f0/f1/f7.** The head pushes forward and down about 1–2 px. Pull the head back 1 px, lift the chest about 10°, and drop the shoulders.
+3. **Feet, f4/f5.** The swing foot crosses behind the planted foot and overlaps it by about 2 px. Keep at least a 1 px gap. The f0 stance is also too wide; narrow it by 2 px.
+4. **Legs, f6/f7.** The two socks fuse into one dark block. Bend the swing knee by 15° or more and lift that foot 2 px with the toe pointed down.
+5. **Hair, bun, bow and sleeves, all frames.** There's no overlap. Make the bun and bow lag the head bob by 1 frame with 1 px of travel, and make the sleeve hems trail 1–2 px opposite to the body's movement in every frame. Add a 1 px hip sway on the planted side at f1/f5.

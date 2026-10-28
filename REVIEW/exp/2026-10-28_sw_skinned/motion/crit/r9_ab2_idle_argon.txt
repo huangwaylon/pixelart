@@ -1,0 +1,19 @@
+SCORE A: 4/10, SCORE B: 6/10
+
+**B Breakdown (1-10):**
+* Whole-body motion incl. head: 7
+* Secondary readable at 1x: 4
+* Timing/holds: 6
+* Elegance/confidence/femininity: 6
+* No slouch: 7
+* Legs/contacts readability: 6
+* Appeal: 7
+
+**Critique:** B fixes A’s forward slouch and frozen head, introducing an upright spine and contrapposto hip shift. However, at 1x, the procedural rig creates severe sub-pixel noise in the secondary elements, and the wide-stance phase loses feminine poise.
+
+**Top 5 Remaining Problems in B:**
+1. **f0–f4 Bow/Bun (Secondary):** Shatters into detached floating pixels (see f4 silhouette). Consolidate mesh/rig weights and animate as a solid 1–2 px delayed arc (+15° lag) rather than noisy per-frame jitter.
+2. **f0 vs f1 Head/Hair (Hold violation):** During a 600ms hold (`f0`+`f1`), the back hair silhouette explodes outward by 2–3 px on `f1` while the body stays static. Lock hair on `f1` to match `f0` (0 px change).
+3. **f5–f9 Legs (Posing):** Stance becomes wide, parallel, and blocky (3–4 px gap), losing the feminine narrow foot placement. Move the screen-right (unweighted) foot 1–2 px inward and 1 px up/back to keep a poised, narrow contrapposto.
+4. **f4–f10 Screen-Right Arm (Posing):** Stick-straight, stiff abduction away from the body. Rotate upper arm down/in by 15° (2 px closer to hip) and bend wrist softly inward.
+5. **f6–f8 Hair Side-Locks (1x Noise):** 1 px stray loops detach below the jaw/neck (visible in silhouettes). Pull side-locks 1–2 px inward to merge cleanly with the head silhouette.

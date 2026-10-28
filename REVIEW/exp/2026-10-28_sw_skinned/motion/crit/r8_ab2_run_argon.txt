@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 6/10
+
+**B Breakdown (1–10):**
+* **Whole-body motion incl. head:** 6/10 (Vertical bounce works; head pitch/tilt still rigid).
+* **Secondary readable at 1x:** 5/10 (Sleeves/skirt move, bun/bow/hair tips barely register 1px lag).
+* **Timing/holds:** 7/10 (60/80ms rhythm adds nice weight/snap vs flat 70ms).
+* **Elegance/confidence/femininity:** 5/10 (F0–F2 look poised; F4–F6 break into wide, heavy-kneed marching).
+* **No slouch:** 7/10 (Much more upright than A's hunch, though F5/F6 dip forward).
+* **Legs/contacts readability:** 5/10 (Better silhouette separation in F6/F7, but F1/F2/F4 still tangle/cross).
+* **Appeal:** 6/10 (Cleaner torso, charming bounce, clumsy back-half stride).
+
+**Top 5 Remaining Problems in B:**
+1. **F6 (Both legs):** Bow-legged "crab" stance ruins feminine silhouette. Bring screen-right knee inward (-3px X) and lower it (+2px Y) to keep a narrow, graceful track.
+2. **F4 & F5 (Left/back leg):** Raised shin crosses horizontally behind the standing leg, looking broken and tangled. Drop the foot down/left (-2px X, +3px Y) and point the toe downward (+25°).
+3. **F1 & F2 (Legs silhouette):** Zero negative space between thighs/calves at 1x causes leg-swap flicker. Offset back leg 2px screen-left in F1; separate front shin 2px screen-right in F2.
+4. **F4 (Screen-right arm/sleeve):** Juts out stiffly at 45°, breaking the "soft close arms" direction. Bend elbow to bring hand/cuff inward (-3px X) and up (-2px Y).
+5. **F1/F2 & F5/F6 (Hair bun/bow & bang tips):** Frozen to head sphere. Delay bun/bow by +1px Y on down-frames (F1/F5) and flare hair tips +1px outward on push-offs (F2/F6) for 1x overlap.

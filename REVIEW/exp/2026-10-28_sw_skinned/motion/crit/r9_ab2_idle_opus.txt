@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 5/10
+
+**B sub-scores**
+- Whole-body motion, including the head: 6. The head now tilts and turns and the hips shift, a clear step up from A's frozen head.
+- Secondary motion readable at 1x: 5. The bow and bun swing visibly. The bob edges and skirt hem barely change, and the sleeves stay rigid.
+- Timing and holds: 5. The weight-L and weight-R holds read. The 80/120 ms transfers jump pose without a clear arc, so they snap.
+- Elegance, confidence, femininity: 5. Hand-on-hip on the near arm gives attitude. The far arm sticks straight out like a flipper, which is not soft or close.
+- No slouch: 4. In f0–f2 the torso leans back (swayback). In f6–f7 the head drops forward and down, which reads as hunched.
+- Legs and contacts: 4. The legs are solid now with no dropouts. The feet cross in f0, f1 and f11.
+- Appeal: 5.
+
+**Top 5 problems in B**
+1. **Feet cross in f0, f1, f11.** The far ankle passes in front of the near one. Uncross them by about 3 px at 1x and keep a 1–2 px gap: a narrow stance whose feet never cross. Point the toe of the free foot.
+2. **Far arm in f2–f10 is straight, horizontal and stiff.** Lower it about 25–30° and bring it about 2 px closer to the body. Bend the elbow about 20° and drop the wrist about 15° so it reads soft.
+3. **Head in f6–f7 sinks about 2 px and juts forward.** Hold the head up and pull the chin back, then tilt the head 5–8° instead of lowering it.
+4. **Torso in f0–f2 leans back about 8°.** Straighten the spine. Put the contrapposto in the hips (about 1 px lateral shift, about 5° tilt) and counter it with the shoulders.
+5. **Bob and skirt hem barely move at 1x.** Add a 1 px lag and overshoot on the bob tips and hem after each weight transfer (f2→f3, f8→f9). Also let the far sleeve hang and sway 1 px instead of staying rigid.

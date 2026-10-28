@@ -136,6 +136,52 @@ Coordination contract: `CONTRACT.md`. This experiment has two roles: R (rigger: 
 
   The flags are unchanged.
 
+### Round 2 (R): animatable master-look head, fuller legs, limb IDs (rig r5, 18:20)
+
+**Head.**
+- `rig/head_hull.py` (pixtools) builds a **visual hull** from the m96 head stamps.
+  - Views: S, SE, E, NE and N, plus SW, W and NW mirrored from SE, E and NE.
+  - It goes through the exact game camera (rig H2 frame, PPU 52.608). The per-view alignment dx/dy and yaw are in `rig/align.json`.
+  - Voxels are 0.006 units. It is a strict carve, except a 2-view-tolerant zone at the top-back where the masters disagree on the bow and bun. It is smoothed and meshed with marching cubes, with padding so the surface is closed.
+- **Yaw fit.** Hull consistency was best with SE −10 and NE −25. SE −10 also gave the best body silhouette IoU (.863, see the r4 sweep). These are now the per-view defaults.
+- Reprojection IoU against the master head masks:
+
+| S | SE | E | NE | N |
+|---|---|---|---|---|
+| .95 | .88 | .88 | .85 | .90 |
+
+  The hull never overshoots by more than 26 px. The missing pixels are mostly the bow top in E and NE.
+- Per-vertex material (hair, skin, bow, eyes) is voted from the visible master pixels. The hull replaces the H2 head, bun and bow and is fused into the body by the voxel union.
+- Bones are re-anchored on the hull:
+  - bow_knot / bow lobes: on the bow band at the back-top (widest bow-coloured slice at z 1.82–1.98)
+  - ribbon tails: the bow-coloured hull below it, weighted to hair_back.2/3
+  - bun: at the top-back
+  - fringe: ends at the brows
+  - hair_back: hair-coloured hull only
+- **Projection.** In `build_rig.py`, each view gets UV `pj_<V>` (master cell coordinates) and a face mask `pm_<V>`. The mask covers head-group faces (hull + side locks) not occluded at rest (BVH ray toward the camera).
+- **Textures.** `rig/make_tex.py` writes `rig/tex/tex_<V>.png`: the master with transparent pixels filled by their nearest opaque pixel, so a 1–2 px overshoot still gets head colours.
+- **Render.** `render_motion.py` pass **`tex`** is EEVEE emission of the texture at 1 sample, with Closest filtering: exact master colours, alpha = mask. The preview shows the textured head.
+- **Pixel step.** `render/r_tex_head.py` `tex_head(T, g)` gives each sprite cell more than 50 % covered by the tex pass its majority colour, snapped to the palette.
+  - At rest this reproduces the master head (`rig/qa/r2_rest_vs_master.png`, 5 views).
+  - Turns and tilts up to ±20°, and hair, bow and bun swings at M's limits, keep the master look (`rig/qa/r2_stress_SE.png`). Beyond about 40°, unseen texture regions smear (twist30_head40 = 70° total).
+  - `--stamp` is retired (`OLDSTAMP` is not needed).
+
+**Legs and body.**
+- Thighs +8 % radius and hips (skirt) +3 %. The thigh centres are spread (±.097 at the hem) to keep a gap of 3 cm or more, so a narrow track can't fuse the inner thighs.
+- The skin band is wider (sock top 0.622) and the red sock-top band is 0.026.
+- Shoulders are 6 mm back and down. The spine, neck and head bones are vertical, so the rest pose stands upright.
+
+**Limb IDs.** Pass **`lid`** (Workbench flat): her-left leg red, right leg green, left arm/sleeve/hand blue, right arm yellow. P also has its own part-ID pass.
+
+**QA.**
+- `rig/qa/r2_stress_SE.png`: 18 poses at 6× smooth, 4× pixel and 1× pixel. The 8 new poses are head turn L20 + tilt 10, head turn R20 + tilt −10, head nod, hair at the round-2 limits, contrapposto, hip sway, pointed toes and close soft knees.
+- The R QA chain is `render/r_qa_chain.py`: the round-1 chain plus the tex head. The production pixel step belongs to P.
+- Open issues for P: in SE the far leg can merge into the near one at 1×, and the bare-thigh band reads as separate blobs.
+
+**Round 1 vs round 2.**
+- `render/r2_all.sh` renders 8× passes, previews and the R QA chain into `render/out/r2/<act>/`.
+- `render/r2_compare.py` builds `render/out/r2/compare_<act>_<view>.gif`: round 1 (stamp) | round 2 R QA | round 2 P chain | preview.
+
 ### Known issues / next
 - **Placeholder head.** The H2 head has a ragged hair/skin boundary and blob eyes. Use `--stamp` for now. The proper fix is heads96 layers that turn with the head.
 - **SE body yaw.** The master SE is drawn more frontal than a true 45° camera. `--yaw=-15` approximates this (not the default).
@@ -338,3 +384,83 @@ The critics also contradict each other on stride length and foot placement, so t
   - Mirroring these needs no change on my side.
 - **Sock-top creases** show in the idle when the free knee bends.
 - **Run travel speed** is 2.5 m/s = 11.9 px per 70 ms frame at 1x. If that is too fast for the game, scale `T` up, or play at about 80 ms per frame.
+
+## M: round 2 (owner: "gradual improvements… legs flicker… whole body incl. head, hair should move… not stiff"; posing: "elegant, not slouched, confident, feminine")
+
+**Result.** All 4 actions were re-baked against R's r5 rig: animatable master-textured head, new hair/bow/bun bones, SE yaw −10.
+- Rendered through P's round-2 pixel chain with no head stamp, so head and hair motion now shows.
+- A/B round 1 → round 2 at 1x and 4x on the same rig and chain (`crit/r10_ab2_*`):
+
+  | action | Opus | Argon |
+  |---|---|---|
+  | walk | 4 → 5 | 4 → 6 |
+  | run | 4 → 5 | 4 → 6 |
+  | idle | 4 → 5 | 4 → 6 |
+  | jump | 5 → 5 | 4 → 6 |
+
+- Posing sub-scores for B: Argon gives elegance 6 and no-slouch 6–8; Opus stays at 4 / 3–6 (it still sees the head pitching forward in parts of the idle and jump).
+- Every motion is now ≥ 1 px at 1x or held (table below). Target 7 not reached.
+
+**What changed**
+- **Pixel-aware amplitudes**, checked per part per frame with the new `scripts/mpx.py`. It projects through R's camera at 1x (67.88 px/m, per-view yaw from `rig/align.json`) and measures:
+  - pelvis and head-top bob
+  - head roll, nod and yaw
+  - spring tip displacement against a rigidly attached secondary
+  - tip direction flips
+  - hand distance from the sleeve hem
+  - L/R leg screen separation
+  - planted-foot slip at the game travel speed
+- **Snappier timing with holds**, sampled phase-correctly (no time warp, so no foot slip):
+  - walk 90/120/90/120 ms (contact / **down held** / passing / **up held**)
+  - run 60/80/60/80 ms (down and flight held)
+  - The motion keys were moved onto those sample phases.
+- **Posture (owner addendum)**
+  - Walk: chest lifted (chest pitch −4°, nod limited to 2°), chin up 7°, shoulders back and down 5° / 3°, poised hip sway (roll 5.5°), pelvis yaw cut to ±6° (the ±10° read as the whole body turning in SE). Feet closer to the midline but never crossing (track 0.62 of hip width), toes pointed in swing (−45°), lighter heel strike (18°).
+  - Arms: soft and close (abduction −16°), forearm leads and wrist trails (lag 0 / 0.13), swing −20/+26°, wrists bent 10–32°.
+  - Run: upright, lean 8° (from the hips), chin level, elbows about 90° held in close, hip yaw ±6°, bob cut to 3.9 px.
+  - Idle: contrapposto kept and stronger (hip shift ±8.5 cm, roll ±11°, free knee relaxed inward, free heel up 30°). Chest lifted 6°. **Right hand rests at the front of the obi** (elbow 98°). The left arm hangs soft along the skirt. The head turn toward the camera is cut to 20° (R's limit), and the breath is bigger (chest +5%, shoulders +7°).
+  - Jump: shallower crouch with the hips hinged and the chest open (lean 10°). **Arched apex**: chest −13°, chin up, lower legs swept back, toes pointed −55°, knees together. Arms make an asymmetric up-and-out V with soft elbows. Soft landing (−12 cm, lean 6°) with an overshoot onto the toes.
+- **Springs, and two bugs found with the px measurements**
+  1. **The output clamp saturated.** Most chains sat at their max angle 80–100% of the time, so they flapped between the limits frame to frame. It is now a soft `tanh` limit, and the gains were re-tuned to target tip p-p.
+  2. **The chain-curl feedback (`follow`) made long hair flail.** Run hair_back went 20 px → 6 px with follow off. follow is now 0–0.15.
+  - Frequencies now avoid the step bob (walk 2.4 Hz, run 3.6 Hz): bow 3.4 Hz with ζ .5, bun 3.6 Hz, long hair 1.9–2.0 Hz with ζ .7.
+  - R's r5 limits are respected: hair_front 14, hair_side 22, hair_back 28, bow 24, bun 16°.
+  - Loop seams ≤ 0.3 mm.
+
+**1x amplitudes in SE (px p-p, `out/mpx_<act>_SE*.json`; round 1 → round 2, same rig)**
+
+| | pelvis bob | head-top bob | head roll / nod (°) | bangs | side locks | back hair | bun | bow | skirt | min leg sep | foot slip |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| walk | 4.5 → **3.1** | 7.7 → 6.5 | 11 / 2 → **15 / 6** | 1.6 → **2.3** | 13.5 → 5.8 | 16.6 → 7.0 | 3.0 → 2.7 | 5.6 → 4.3 | 6.3 → 4.7 | 1.7 → 0.0 (at passing) | 0.6 → 0.7 |
+| run | 5.3 → **3.9** | 9.7 → 8.3 | 8 / 7 → **15 / 9** | 3.4 → 4.2 | 10.7 → 8.4 | 12.6 → 12.3 | 2.9 → 2.8 | 5.8 → 5.5 | 11.2 → 7.0 | 1.3 → 0.8 | 0 |
+| idle | 3.6 → 4.0 | 5.0 → 5.1 | 17 / 4 → 19 / 3 | 5.0 → 2.4 | 12.6 → 7.2 | 11.0 → 5.3 | 4.0 → 3.4 | 5.2 → 4.3 | 10.1 → 6.0 | 8.0 → 6.4 | 0 |
+| jump | 31 → 27 | 42 → 36 | 19 / 27 → 12 / 20 | 4.8 → 2.0 | 13.5 → 10.8 | 9.8 → 8.2 | 2.2 → 1.9 | 5.9 → 5.4 | 9.1 → 7.5 | 8.8 → 6.5 | 0 |
+
+- **Round 1's tips already moved in the data**, but they flailed at the clamp, and the owner never saw them because `--stamp` covered the head.
+- **Round 2 tips are calmer and coherent.** The flip share is 0.25–0.5, meaning 1–2 reversals per bounce, not frame-to-frame jitter.
+- **Walk leg separation reaches 0 px at passing and contact R in SE.** Legs pass each other in SE with a feminine narrow track. This is left to P's overlap separation, plus R's thigh gap.
+
+**pxeval seq** (P chain, SE, `out/pxeval2_*`; round 1 → round 2):
+
+| action | boil | shade_swap | pose_range | sil_change |
+|---|---|---|---|---|
+| walk | .022 → **.016** (BOILING flag gone) | .043 → .039 | .47 → .46 | .24 → .21 |
+| run | .087 → .057 | .049 → .043 | .52 → .44 | .36 → .29 |
+| idle | .008 → .007 | .027 → .027 | .45 → .50 | .15 → .15 |
+| jump | .083 → .070 | .046 → .045 | .77 → .74 | .38 → .31 |
+
+The rest of the flags (SHADE_SWAP, FEET_JITTER) come from the chain, which is P's.
+
+**Files (new)**
+- `scripts/mpx.py`: 1x amplitude check.
+- `scripts/r2_render.sh`: R render + P part pass + P chain → `prev/r2/` (round 1 motion → `prev/r1cmp/` via `MDIR=motion/round1 OTAG=r1cmp`).
+- `scripts/msil.py`: silhouette sheets, 1x/4x strips, A/B board.
+- `scripts/ab2.sh`: critic prompt. It scores elegance/confidence/femininity and no-slouch explicitly.
+- Outputs in `out/`: `cmp2_<act>_SE_r1_vs_r2.gif`, `r2_<act>_SE_px4x.gif`, `sil_<act>_SE.png`, `strip_<act>_SE_r2.png`, `mpx_*`, `pxeval2_*`.
+- Round 1 motion is kept in `motion/round1/`.
+
+**Still open**
+- Opus keeps seeing a forward head and slouch in the idle settle and the jump fall.
+- The bell sleeves still flare wide on one half of the SE walk.
+- Bun motion is at the 16° limit, about 2–3 px.
+- The run hair_back swings about 12 px. That is lively, maybe too much.

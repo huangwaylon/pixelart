@@ -11,7 +11,7 @@ NPZ, BLEND, SKJ = a[:3]
 K = 0.775
 bpy.ops.wm.read_factory_settings(use_empty=True)
 d = np.load(NPZ, allow_pickle=True); G = json.loads(str(d["G"])); DZ = G["DZ"]
-V = d["V"].astype(float); FC = [tuple(f) for f in d["F"]]; fmat = d["fmat"]; vlab = d["vlab"]; HV = d["head_v"]; BUNV = d["bun_v"]
+V = d["V"].astype(float); FC = [tuple(f) for f in d["F"]]; fmat = d["fmat"]; vlab = d["vlab"]; HV = d["head_v"]
 MATS = {'hair': (61, 50, 53), 'dress': (192, 59, 61), 'skin': (248, 218, 194), 'sleeve': (142, 34, 44), 'socks': (38, 42, 71),
         'boots': (42, 34, 42), 'bow': (232, 96, 79), 'obi': (69, 56, 73), 'eyes': (85, 128, 162)}
 MN = list(MATS)
@@ -20,9 +20,9 @@ def Fw(p):  # H2 frame -> contract frame
 nv = len(V)
 # majority filter on the H2 head's hair/skin/eye labels (the H2 vertex-colour boundary is ragged after the remesh): 3 passes face->vertex->face
 flab = d["flab"]; fmat = fmat.astype(object)
-FA_ = np.array([f[:3] for f in FC]); headf = np.nonzero(flab == "head")[0]; HM = ["hair", "skin", "eyes"]
-for it in range(int(os.environ.get("HEADMAJ", "3"))):
-    vv = np.zeros((nv, 3))
+FA_ = np.array([f[:3] for f in FC]); headf = np.nonzero(flab == "head")[0]; HM = ["hair", "skin", "eyes", "bow"]
+for it in range(int(os.environ.get("HEADMAJ", "1"))):
+    vv = np.zeros((nv, len(HM)))
     for j, m in enumerate(HM):
         sel = headf[fmat[headf] == m]
         for c in range(3): np.add.at(vv[:, j], FA_[sel, c], 1)
@@ -33,6 +33,9 @@ vm_votes = {}
 vmat = np.empty(nv, dtype=object)
 for fi, f in enumerate(FC):
     for v in f: vmat[v] = fmat[fi]  # last wins; refined below for hair
+bowv = np.zeros(nv, bool)
+for fi, f in enumerate(FC):
+    if fmat[fi] == "bow" and flab[fi] == "head": bowv[list(f)] = True
 hairv = np.zeros(nv, bool)
 for fi, f in enumerate(FC):
     if fmat[fi] == "hair":
@@ -69,12 +72,13 @@ for s, sx in (("L", 1), ("R", -1)):
     bone(f"sleeve.{s}.2", mid + 0.03 * B2 - 0.02 * A2, cc + 0.06 * B2 - 0.06 * A2, f"sleeve.{s}.1")
 # hair chains from the head mesh
 HC = np.array([0, .01, 1.62 + DZ])
+HMAT_ = d["head_mat"].astype(str) if "head_mat" in d else np.array(["hair"] * len(HV))
 def col_pts(x0, cond, w=0.025):
-    m = (np.abs(HV[:, 0] - x0) < w) & cond; return HV[m]
+    m = (np.abs(HV[:, 0] - x0) < w) & cond & (HMAT_ == "hair"); return HV[m]  # hair-coloured hull only (no bow ribbons / face)
 FR = {}
 for nm, x0 in (("L", .13), ("C", 0.0), ("R", -.13)):
     P_ = col_pts(x0, HV[:, 1] < -0.12)
-    zb = float(np.percentile(P_[:, 2], 2)); zt = 1.80 + DZ
+    P_ = P_[P_[:, 2] > 1.60 + DZ]; zb = float(np.percentile(P_[:, 2], 2)); zt = 1.80 + DZ  # fringe ends at the brows (not the side hair)
     def yf(z):
         q = P_[np.abs(P_[:, 2] - z) < 0.015]; return float(q[:, 1].min()) + 0.03 if len(q) else -0.2
     p0 = [x0, yf(zt), zt]; p2 = [x0 * 1.05, yf(zb + .01), zb + 0.005]; p1 = [x0 * 1.02, yf((zt + zb) / 2), (zt + zb) / 2]
@@ -84,12 +88,12 @@ for s, sx in (("L", 1), ("R", -1)):
     lk = np.array(G["lock." + s]); lk[0, 2] += 0.02
     for i in range(3): bone(f"hair_side.{s}.{i+1}", lk[i], lk[i + 1], "head" if i == 0 else f"hair_side.{s}.{i}")
 Pb = col_pts(0.0, HV[:, 1] > 0.08, 0.04)
-zlow = float(np.percentile(Pb[:, 2], 1.5)); ztop = 1.78 + DZ
+zlow = max(float(np.percentile(Pb[:, 2], 1.5)), 1.47 + DZ); ztop = 1.78 + DZ
 def yb(z):
     q = Pb[np.abs(Pb[:, 2] - z) < 0.015]; return float(q[:, 1].max()) - 0.035 if len(q) else 0.2
 zz = np.linspace(ztop, zlow + 0.01, 4)
 for i in range(3): bone(f"hair_back.{i+1}", [0, yb(zz[i]), zz[i]], [0, yb(zz[i + 1]), zz[i + 1]], "head" if i == 0 else f"hair_back.{i}")
-bc = BUNV.mean(0); bd = (bc - HC) / np.linalg.norm(bc - HC); br = float(np.linalg.norm(BUNV - bc, axis=1).max())
+bc = np.array(G["bun"]["c"]); bd = (bc - HC) / np.linalg.norm(bc - HC); br = float(G["bun"]["r"])
 bone("bun", bc - bd * br * 0.9, bc + bd * br, "head")
 kn = np.array(G["bow_knot"]); bone("bow_knot", kn, kn + [0, .06, 0], "head", UP)
 for s in "LR":
@@ -98,7 +102,7 @@ for s in "LR":
 SKA = {"F": 0, "FL": 45, "L": 90, "BL": 135, "B": 180, "BR": 225, "R": 270, "FR": 315}
 ztopS = 0.975 + DZ; hem = G["hem"]
 def skr(z):  # skirt ellipse radii at z (build_mesh sk)
-    zs = [hem, .82 + DZ, .88 + DZ, .94 + DZ, .975 + DZ]; rx = [.200, .182, .163, .149, .141]; ry = [.160, .142, .123, .109, .101]
+    zs = [hem, .82 + DZ, .88 + DZ, .94 + DZ, .975 + DZ]; rx = [.205, .188, .170, .151, .141]; ry = [.163, .146, .127, .110, .101]
     return np.interp(z, zs, rx), np.interp(z, zs, ry)
 for n, ph in SKA.items():
     dv = np.array([math.sin(math.radians(ph)), -math.cos(math.radians(ph))])
@@ -160,13 +164,6 @@ for s, sx in (("L", 1), ("R", -1)):
     ws = chain_w(P, ["head"] + [f"hair_side.{s}.{i}" for i in (1, 2, 3)],
                  [(lk[0][0] - [0, 0, 0.03], -UP), (lk[1][0], unit(lk[0][1] - lk[0][0] + lk[1][1] - lk[1][0])), (lk[2][0], unit(lk[1][1] - lk[1][0] + lk[2][1] - lk[2][0]))], [0.03, 0.03, 0.03])
     addw(idx, ["head"] + [f"hair_side.{s}.{i}" for i in (1, 2, 3)], ws)
-    # bow lobes
-    idx = np.nonzero(L == f"lobe_{s}")[0]; P = V[idx]; b1, b2 = B[f"bow.{s}.1"], B[f"bow.{s}.2"]
-    ws = chain_w(P, ["bow_knot", f"bow.{s}.1", f"bow.{s}.2"], [(b1[0] + unit(b1[1] - b1[0]) * 0.01, unit(b1[1] - b1[0])), (b2[0], unit(b2[1] - b1[0]))], [0.02, 0.03])
-    addw(idx, ["bow_knot", f"bow.{s}.1", f"bow.{s}.2"], ws)
-    # ribbon tails hang on the back hair: knot -> hair_back.2 -> hair_back.3
-    idx = np.nonzero(L == f"ribbon_{s}")[0]; P = V[idx]; rb = np.array(G["ribbon." + s]); uu = (rb[0][2] - P[:, 2]) / (rb[0][2] - rb[-1][2])
-    addw(idx, ["bow_knot", "hair_back.2", "hair_back.3"], [1 - ss(0.0, 0.35, uu), ss(0.0, 0.35, uu) * (1 - ss(0.5, 0.9, uu)), ss(0.5, 0.9, uu)])
     # hands handled with arms
 # torso + obi: pelvis | spine | chest, shoulders, neck base
 idx = np.nonzero(np.isin(L, ["torso", "obi"]))[0]; P = V[idx]
@@ -207,6 +204,23 @@ vf = hv * ss(zt_ - 0.02, zt_ - 0.10, P[:, 2]) * (P[:, 1] < -0.06) * ss(-0.06, -0
 vb = hv * ss(1.66 + DZ, 1.55 + DZ, P[:, 2]) * win(180, 75)
 vs = {s: hv * ss(1.62 + DZ, 1.50 + DZ, P[:, 2]) * win(sg * 95, 45) * 0.6 for s, sg in (("L", 1), ("R", -1))}
 used = np.zeros(len(P))
+# round 2 hull head: bow (knot, lobes, ribbon tails) and bun are regions of the head part (master colours / position)
+bw_ = bowv[idx]; Pb_ = P[bw_]; ib_ = np.nonzero(bw_)[0]; zc_ = G["bow_zcut"]
+rib = Pb_[:, 2] < zc_; zmin_ = Pb_[:, 2].min() if len(Pb_) else zc_ - 0.2
+uu = np.clip((zc_ - Pb_[:, 2]) / max(zc_ - zmin_, 1e-3), 0, 1)
+for k_, (n_, w_) in enumerate((("bow_knot", 1 - ss(0.0, 0.35, uu)), ("hair_back.2", ss(0.0, 0.35, uu) * (1 - ss(0.5, 0.9, uu))), ("hair_back.3", ss(0.5, 0.9, uu)))):
+    W[idx[ib_], BI[n_]] += w_ * rib
+up_ = ~rib; lob = {}
+for s in "LR":
+    b1, b2 = B[f"bow.{s}.1"], B[f"bow.{s}.2"]
+    ws_ = chain_w(Pb_, ["bow_knot", f"bow.{s}.1", f"bow.{s}.2"], [(b1[0] + unit(b1[1] - b1[0]) * 0.005, unit(b1[1] - b1[0])), (b2[0], unit(b2[1] - b1[0]))], [0.02, 0.03])
+    side_ = (Pb_[:, 0] * (1 if s == "L" else -1)) > 0
+    for n_, w_ in zip(["bow_knot", f"bow.{s}.1", f"bow.{s}.2"], ws_): W[idx[ib_], BI[n_]] += w_ * up_ * side_
+W[idx[ib_], BI["bow_knot"]] += up_ * (Pb_[:, 0] == 0)
+used[ib_] = 1.0
+bdist = np.linalg.norm(P - np.array(G["bun"]["c"]), axis=1); wbun = hv * (1 - ss(0.6 * br, 1.0 * br, bdist)) * (~bw_)
+W[idx, BI["bun"]] += wbun; used += wbun; hv = hv * (1 - wbun) if False else hv
+vf = vf * (1 - wbun); vb = vb * (1 - wbun); vs = {s: vs[s] * (1 - wbun) for s in vs}
 for nm in "LCR":
     w = vf * wfront[nm] / sf; b1 = B[f"hair_front.{nm}.1"]; b2 = B[f"hair_front.{nm}.2"]
     s2 = ss(-0.02, 0.02, (P - b2[0]) @ unit(b1[1] - b1[0] + b2[1] - b2[0]))
@@ -217,12 +231,9 @@ for k in range(3): W[idx, BI[f"hair_back.{k+1}"]] += vb * sbw[k]
 used += vb
 for s in "LR":
     W[idx, BI[f"hair_side.{s}.1"]] += vs[s] * 0.6; W[idx, BI[f"hair_side.{s}.2"]] += vs[s] * 0.4 * ss(1.55 + DZ, 1.47 + DZ, P[:, 2]); used += vs[s] * (0.6 + 0.4 * ss(1.55 + DZ, 1.47 + DZ, P[:, 2]))
-skin_low = (~hv) * ss(1.45 + DZ, 1.40 + DZ, P[:, 2])
+skin_low = (~hv) * (~bowv[idx]) * ss(1.45 + DZ, 1.40 + DZ, P[:, 2])
 W[idx, BI["neck"]] += skin_low; used += skin_low
 W[idx, BI["head"]] += np.clip(1 - used, 0, 1)
-for nm, bn in (("bun", "bun"), ("knot", "bow_knot")):
-    idx = np.nonzero(L == nm)[0]; W[idx, BI[bn]] += 1
-idx = np.nonzero(L == "bun")[0]
 # unlabelled -> nearest bone head fallback
 miss = W.sum(1) < 1e-6
 if miss.any():
@@ -285,6 +296,42 @@ for p in me.polygons:
     hx_ = PVC[fmat[p.index]]; c = [int(hx_[i:i + 2], 16) / 255 for i in (1, 3, 5)] + [1]
     for li in p.loop_indices: cp.data[li].color_srgb = c
 me.color_attributes.active_color = ca; me.color_attributes.render_color_index = me.color_attributes.find("Color")
+# ---------------- round 2: per-view master projection for the head group (hull head + side locks) + limb ID colours
+from mathutils.bvhtree import BVHTree
+AL = json.load(open(os.path.join(os.path.dirname(os.path.abspath(BLEND)), "align.json")))
+AZC = {"SE": (1, 1), "E": (1, 0), "S": (0, 1), "NE": (1, -1), "N": (0, -1)}
+def camH2(view):
+    ax, ay = AZC[view]; c = np.array([-ax, -ay, 0.0]); c /= np.linalg.norm(c); el = np.radians(30)
+    loc = np.array([c[0] * np.cos(el), c[1] * np.cos(el), np.sin(el)]); f = -loc / np.linalg.norm(loc)
+    r = np.cross(f, [0, 0, 1.0]); r /= np.linalg.norm(r); u = np.cross(r, f)
+    ps = np.radians(AL[view].get("yaw", 0.0)); Rz = np.array([[np.cos(ps), -np.sin(ps), 0], [np.sin(ps), np.cos(ps), 0], [0, 0, 1]]); a_ = AL[view]
+    def proj(P):
+        Q = P @ Rz.T; return np.stack([96 + 52.608 * (Q @ r) - 32 + a_["dx"], 152 - 52.608 * (Q @ u) - 32 + a_["dy"]], -1)
+    return proj, Rz.T @ (-f)
+nf = len(me.polygons); cen = np.zeros(nf * 3); nrm = np.zeros(nf * 3)
+me.polygons.foreach_get("center", cen); me.polygons.foreach_get("normal", nrm)
+cenH = (cen.reshape(-1, 3) * np.array([-1, -1, 1.0])) / K; nrmH = nrm.reshape(-1, 3) * np.array([-1, -1, 1.0])
+lv = np.zeros(len(me.loops), int); me.loops.foreach_get("vertex_index", lv)
+bvh = BVHTree.FromPolygons([Vector(v) for v in V], FC)
+headgrp = np.isin(np.array(flab).astype(str), ["head", "lock_L", "lock_R"])
+for view in AZC:
+    proj, dv = camH2(view); uvl = me.uv_layers.new(name="pj_" + view)
+    cr = proj(V[lv]); uv = np.stack([cr[:, 0] / 128.0, 1 - cr[:, 1] / 128.0], 1); uvl.data.foreach_set("uv", uv.ravel())
+    pm = np.zeros(nf, np.float32); D = Vector(dv)
+    for fi in np.nonzero(headgrp & ((nrmH @ dv) > -0.05))[0]:
+        hit = bvh.ray_cast(Vector(cenH[fi]) + D * 0.006, D, 2.0)
+        if hit[0] is None or hit[3] < 0.008: pm[fi] = 1.0
+    at = me.attributes.new("pm_" + view, "FLOAT", "FACE"); at.data.foreach_set("value", pm)
+    print("proj", view, int(pm.sum()), "of", int(headgrp.sum()), "head-group faces visible", flush=True)
+LIDC = {"leg_L": (255, 0, 0), "boot_L": (255, 0, 0), "foot_L": (255, 0, 0), "leg_R": (0, 255, 0), "boot_R": (0, 255, 0), "foot_R": (0, 255, 0),
+        "arm_L": (0, 0, 255), "sleeve_L": (0, 0, 255), "hand_L": (0, 0, 255), "arm_R": (255, 255, 0), "sleeve_R": (255, 255, 0), "hand_R": (255, 255, 0)}
+cl = me.color_attributes.new("LID", "BYTE_COLOR", "CORNER"); lc = np.zeros((len(me.loops), 4), np.float32); lc[:, 3] = 1
+fl = np.array(flab).astype(str); lst = np.zeros(nf, int); me.polygons.foreach_get("loop_start", lst); ltot = np.zeros(nf, int); me.polygons.foreach_get("loop_total", ltot)
+for fi in range(nf):
+    c_ = LIDC.get(fl[fi])
+    if c_: lc[lst[fi]:lst[fi] + ltot[fi], :3] = np.array(c_) / 255.0
+cl.data.foreach_set("color_srgb", lc.ravel()) if hasattr(cl.data[0], "color_srgb") else None
+me.color_attributes.active_color = ca
 bo = bpy.data.objects.new("body", me); sc.collection.objects.link(bo); bo.parent = ao
 for j, n in enumerate(BN):
     vg = bo.vertex_groups.new(name=n); nz = np.nonzero(W[:, j] > 0)[0]

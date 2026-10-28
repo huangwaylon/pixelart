@@ -1,0 +1,19 @@
+SCORE A: 3.5/10, SCORE B: 5.5/10
+
+**B Breakdown:**
+* Whole-body motion incl. head: 6/10
+* Secondary (hair/bow/bun/skirt/sleeves) at 1x: 4/10
+* Timing/holds: 6.5/10
+* Elegance/confidence/femininity: 5.5/10
+* No slouch: 6/10
+* Legs/contacts readability: 6.5/10
+* Appeal: 5.5/10
+
+**Critique:** B fixes A's bowed knees and hunched neck, creating a much cleaner upright silhouette and contrapposto. However, it still reads as a mechanical rig rotation rather than organic pixel animation.
+
+**Top 5 Remaining Problems in B:**
+1. **f0–f2 & f11 (Legs/Silhouette):** Left and right legs completely merge into a single thick column in silhouette. Shift back (left) leg 1–2 px screen-left to maintain a 1 px negative-space gap or clear step-offset at all times.
+2. **f0–f3 (Screen-left Arm/Obi):** Forearm crosses the belly, creating a bulky silhouette lump and hiding the waist. Rotate shoulder back 15° and drop wrist 1–2 px down/inward for a softer, feminine silhouette.
+3. **f3–f5 & f8–f10 (Bun/Bow/Hair):** Zero follow-through; the bun moves rigidly locked to the skull. Delay bun/bow apex by 1 frame (drag 1–2 px opposite the head turn, then settle 1 px past).
+4. **f5–f8 (Torso/Pelvis):** Weight shift to R flattens the contrapposto into a stiff, vertical block. Tilt pelvis 5°–8° (drop screen-left hip 1 px) and lift chest 1 px on f6–f7 for an S-curve.
+5. **f2–f4 & f8–f10 (Bell Sleeves/Skirt Hem):** Sub-pixel rig movement causes 1 px edge-crawling noise without true secondary motion. Add a deliberate 1–2 px outward flare/drag on sleeves during transfers, settling on f5/f11.

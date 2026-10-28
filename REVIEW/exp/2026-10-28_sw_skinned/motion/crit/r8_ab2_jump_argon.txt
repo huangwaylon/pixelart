@@ -1,0 +1,17 @@
+SCORE A: 4.5/10, SCORE B: 5.5/10
+
+**B Breakdown (1-10):**
+* **Whole-body motion incl. head:** 5/10 (Better torso arc than A, but head tilt is still locked to spine in air).
+* **Secondary readable at 1x:** 6/10 (Hair tips/skirt flare on F10–F11 improved, though single-pixel noise appears).
+* **Timing/holds:** 6/10 (Good hang/squash beats, though F8–F10 lacks downward acceleration).
+* **Elegance/confidence/femininity:** 5/10 (Apex arch F6–F7 is much prettier, but descent arms look stiff/zombie-like).
+* **No slouch:** 5.5/10 (Chest opened in F0–F1 and F6–F7; F2 and F12 still turtle the neck).
+* **Legs/contacts readability:** 5.5/10 (Less flicker than A, but silhouettes merge into a single column on F4 and F8–F10).
+* **Appeal:** 6/10
+
+**Top 5 Remaining Problems in B:**
+1. **F9–F11, Screen-Right Arm (Front):** Pokes straight forward like a stiff plank during fall/landing. Bend elbow down 2px and drop wrist 1–2px (or ~25°) into a soft, feminine curve closer to the torso.
+2. **F4 & F8–F10, Both Legs/Feet:** Silhouette merges into a single vertical peg at 1x, losing leg identity. Separate calves by 1px gap and point toes downward by 1–2px (~20°) to sell an elegant aerial line.
+3. **F2 & F12, Head/Chest:** Crouches collapse the neck into a heavy forward slouch. Pitch chest upright by ~15° and lift chin 1px so she squats with poised spine rather than hunching.
+4. **F5–F7, Head/Bun:** Head stays locked to torso angle at apex. Pitch head back/up 1px (~10°) on F5–F6, then lag bun/bow down 1px on F7 for organic overlap.
+5. **F10–F11, Hair Fringe/Sides:** Rig quantization creates stray 1px dark/red edge clusters ("pixel confetti"). Consolidate hair silhouette outward by 1–2px as a clean unified mass on impact.

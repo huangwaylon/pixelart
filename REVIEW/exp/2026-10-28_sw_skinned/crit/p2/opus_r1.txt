@@ -1,0 +1,27 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+I couldn't make pixel-level crops: the local sandbox proxy timed out when I ran the crop script. These scores come from the boards at their displayed size, which is enough to read the leg pixels in the zoomed legs board.
+
+## Scores (1–10)
+
+| Criterion | r1 shipped | P2 |
+|---|---|---|
+| 1. Limb continuity (no vanishing or merging, near and far legs separate) | **3**: the far leg disappears completely in walk SE f00, f03 and f04 (one-legged frames), and run SE f01/f02 shows a single dark leg | **6**: both legs are present in every frame. But at the passing pose (walk SE f03–f05, run SE f01–f02) they merge into one thick dark column that only splits at the feet |
+| 2. Thighs connected to the skirt (skin band, red sock top) | **3**: most frames go straight from skirt to black sock with no skin. Thighs look cut off or hanging (f01, f02, f05) | **7**: the skin band and red sock-top band are present and attached in nearly every frame, which is the biggest win. They are sometimes too wide or too bright (see defect 2) |
+| 3. Frame-to-frame flicker and noise | **4**: leg count changes from frame to frame, the classic flicker the owner rejected | **5**: leg shapes are now stable. The new noise is the skirt-hem shading: pink and mid-red patches change shape every frame (f03→f06) and flicker at 1x |
+| 4. Readability at 1x vs the master | **6**: the face and head stay close to the master and the legs read as "one leg hopping" | **6**: legs read as two legs and the face is restored (far better than r1 chain's dark hair blob). The pink blush blocks and pink hem patches read as smudges at 1x |
+| 5. Silhouette elegance | **5**: clean outlines, but one-legged frames break the shape | **5**: the cape/skirt flare is nice. The merged-leg "trunk" frames look heavy and the boots show doubled toe tips |
+
+## Top 5 defects in P2
+
+1. **Legs merge at the passing pose (walk SE f03, f04, f05).** Near and far legs fuse into one wide dark column with only a 1-px seam, and two boot tips stick out side by side at the bottom. The far leg needs its own value: one dark step lighter, or a 1-px dark outline gap along the near leg's edge.
+2. **The thigh skin band is too big and blotchy (walk SE f03, f05, f06).** The pink band under the hem is 3–5 px tall and spreads sideways into the skirt's underside, so it reads like a pink lump or bloomers instead of two thighs. f06 has two large pink blocks on the skirt that belong to neither leg.
+3. **The skirt hem flickers (walk SE f02–f07, run SE f05–f06).** The skirt's underside switches between dark red, mid red and pink clusters every frame, with no consistent shape. This is now the loudest flicker source at 1x. Clamp the hem to 2 ramp values and stabilise the shading over time.
+4. **The red sock-top band is inconsistent (walk SE f07, run SE f00 and f05).** One leg gets skin plus red band while the other gets only red or only skin. In run SE f05 a pink diagonal stripe runs across the raised near thigh. Both legs should keep the same skin → red → black order every frame.
+5. **Knee and boot clumps when one leg is raised (run SE f01, f02; walk SE f02).** The raised knee becomes a dark lump overlapping the support leg with no edge between them, and the boot toes come out as 1-px spurs or doubled tips (walk SE f04 bottom left, f03). Add a selective outline between overlapping legs and clean the toe tips by hand.
+
+**Notes:** Walk E is P2's strongest board: the legs are separated in almost every frame and only touch at f02. The remaining minor issue there is a light-red lump at the back of the skirt in f03 and f06. Face artifacts (blush blocks, eye shapes changing in walk SE f03–f05) are outside the legs scope but hurt 1x readability.
+
+P2 fixes the two failures the owner rejected (legs vanishing, and thighs disconnected from the skirt). What's left is mostly about separating overlapping legs and cleaning up the hem and skin colours.
+
+SCORE: 6/10 vs 4/10

@@ -1,0 +1,20 @@
+SCORE A: 4/10, SCORE B: 6/10
+
+**B Breakdown:**
+- Whole-body motion incl. head: 6/10
+- Secondary (hair/bow/bun/skirt/sleeves) at 1x: 5/10
+- Timing/holds: 6/10
+- Elegance/confidence/femininity: 6/10
+- No slouch: 7/10
+- Legs/contacts readability: 5/10
+- Appeal: 7/10
+
+**Critique:**
+B eliminates A’s forward slouch, opens the torso to a confident SE 3/4 angle, and adds needed head/torso bounce. However, at true 1x, silhouettes on frames 3–5 merge the legs into a single trunk, and secondary hair/bow motion is sub-pixel jitter rather than clear overlapping arcs.
+
+**Top 5 Remaining Problems in B:**
+1. **f3, f4, f5 – Back/Passing Leg:** Occluded by front leg, creating a 1-legged silhouette at 1x. Offset the back leg/foot **1–2 px screen-left (West)** to maintain a readable gap or clear heel/toe silhouette peel.
+2. **f7 -> f0 – Back Right Leg:** Pops forward **4 px instantly** from straight double-leg stance (f7) to wide scissor (f0). On f7, swing the right knee/foot forward **2 px screen-down/right** and lift the heel **1–2 px up** with a pointed toe.
+3. **f1, f2, f5, f6 – Bow & Side-locks:** Stiffly locked to head translation. Add **1–2 px vertical drag** (up on down-frames f1/f5, down on up-frames f3/f7) and **10° rotation lag** so it reads at 1x.
+4. **f0, f1 – Arms/Sleeves:** Clipped completely into the torso silhouette. Swing the front/back bell sleeves outward **1–2 px** on f0/f1 to match the wide flare of f4/f5.
+5. **f2, f6 – Pelvis/Hips:** Lacks requested feminine model sway. Shift hips **1 px laterally** toward the weight-bearing leg on passing frames.

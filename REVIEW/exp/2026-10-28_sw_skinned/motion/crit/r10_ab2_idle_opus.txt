@@ -1,0 +1,21 @@
+SCORE A: 4/10, SCORE B: 5/10
+
+**B category scores**
+- Whole-body motion incl. head: 6. The head now tilts and the torso sways. Much less frozen than A.
+- Secondary motion readable at 1x: 4. The bow and bun shift about 1 px, but the hair ends and sleeves barely move and the skirt hem only flickers.
+- Timing/holds: 5. The 300 ms holds work. The f3→f4 and f11→f0 changes are pops, not transfers.
+- Elegance/confidence/femininity: 4.
+- No slouch: 3. The head pitches down from f4 to f9, and f0 to f3 is a sway-back lean with the belly pushed forward.
+- Legs/contacts readability: 5. No limbs drop out now, but f0 and f11 cross the feet.
+- Appeal: 5.
+
+**Top 5 problems in B**
+1. **f4–f9, head pitch:** the chin drops about 15° and the face drops 2 px into the collar, which reads as moping. Pitch the head up 10–15° and keep the neck visible (at least 1 px). Use roll (about 5° tilt toward the weight hip) for the look instead.
+2. **f0–f3, spine:** the torso leans back about 10° with the pelvis thrust forward 2–3 px. Stack the chest over the pelvis, lift the chest 1 px and keep the shoulders level.
+3. **f0 and f11, feet:** the free leg crosses in front of the standing leg. Uncross it, keep about 2 px between the feet, and put the free foot on its toe, turned out.
+4. **f5–f8, legs:** a wide, square, symmetric stance with both knees straight. It isn't contrapposto. Narrow it by 3 px, bend the free knee 1–2 px inward, and drop the hip on that side by 1 px.
+5. **f3→f4 and f11→f0, transitions:** the whole body jumps 3–4 px in a single frame. Add an in-between, or ease the move into 1 px steps. Also add a 1 px hair-end and sleeve-hem drag lagging 1 frame behind each head move, so the secondary motion reads at 1x.
+
+Smaller notes:
+- The left forearm drawn across the belly in f0–f3 reads as guarded, not soft. Lower it and leave a 1 px gap from the body.
+- In f6–f7, a hair strand cuts across the face.

@@ -1,0 +1,2 @@
+jump opus: SCORE A: 4/10, SCORE B: 5/10 (    1730 bytes)
+jump argon: SCORE A: 4/10, SCORE B: 6/10 (    1678 bytes)

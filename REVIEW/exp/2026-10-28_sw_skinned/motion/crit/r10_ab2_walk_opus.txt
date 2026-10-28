@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 5/10
+
+**B scores (1–10)**
+- Whole-body motion, including the head: 5. The head now tilts and bobs about 1–2 px. The torso still moves mostly as one rigid block.
+- Secondary motion readable at 1x: 4. The bun and bow shift about 1 px. The skirt and sleeves don't swing; they pop between a narrow tube and a wide bell.
+- Timing and holds: 6. Alternating 90/120 ms beats work, and the down/up frames read.
+- Elegance, confidence, femininity: 4.
+- No slouch: 4.
+- Legs and contacts readable: 5. f0–f2 are clear; f3–f5 collapse into one column.
+- Appeal: 5.
+
+**Top 5 remaining problems in B**
+1. **Skirt and sleeves pop between frames.** From f2 to f3 and from f5 to f6, the skirt jumps about 5–6 px wider on each side at 1x. Sleeves jump out about 3–4 px. It reads as a shape swap, not a swing. Keep the hem within ±2 px of the average width, and let the hem lag behind the hips by 1 frame with a 1–2 px sway toward the trailing side.
+2. **Legs merge at f3–f5.** Both socks line up into a single column, so a leg disappears at 1x. Offset the feet sideways by at least 2–3 px. Keep the feet narrow but never crossing, and lift the passing knee about 2 px more.
+3. **Slouch.** At f3–f5 the head drops forward about 8–10°, chin to chest. At f0/f1/f7 the head sits about 2 px behind the chest. Hold the head upright over the sternum, and tilt the chest back about 5° so the shoulders read back and down.
+4. **Arms are too wide at f3–f5 and hidden at f0/f1/f7.** At f3–f5 the hands flare 4 px out from the body; at f0/f1/f7 the arms vanish behind it. Keep the arms soft and close, within about 1–2 px of the body, with a visible small swing of about 2 px from front to back.
+5. **No hip sway, and the bounce is too small.** The pelvis doesn't shift sideways. Add 1 px of side-to-side hip shift on each contact and a 2 px rise at f3/f7. At the passing frames (f2/f6), the toe on the leg in the air should point down for at least 1 px, not stay flat.

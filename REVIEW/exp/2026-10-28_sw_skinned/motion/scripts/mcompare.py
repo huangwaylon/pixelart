@@ -64,3 +64,24 @@ def abboard(act, out):
     y = 342 + 40; d.text((4, y - 18), f"B = NEW {act}  frames f0..f{len(new2)-1}, ms {m['timing_ms']}", fill=(255, 255, 255))
     for k, im in enumerate(new2): B.paste(im, (k * cw, y)); d.text((k * cw + 4, y + 2), f"B f{k} {m['frames'][k].get('key','')}", fill=(255, 255, 0))
     B.save(out); print(out)
+
+
+def sbs(ga, gb, out, la="ROUND 1", lb="ROUND 2"):
+    """side-by-side GIF of two GIFs on a common 10 ms timeline (2 loops of the longer)."""
+    A = frames(ga); Bf = frames(gb); H = max(A[0][0].height, Bf[0][0].height)
+    def at(seq, t):
+        T = sum(d for _, d in seq); t %= T
+        for i, (_, d) in enumerate(seq):
+            if t < d: return i
+            t -= d
+        return len(seq) - 1
+    L = 2 * max(sum(d for _, d in A), sum(d for _, d in Bf)); ev = []
+    for t in range(0, L, 10):
+        k = (at(A, t), at(Bf, t))
+        if ev and ev[-1][0] == k: ev[-1][1] += 10
+        else: ev.append([k, 10])
+    W = A[0][0].width + Bf[0][0].width + 8; ims = []
+    for (i, j), d in ev:
+        c = Image.new("RGB", (W, H + 18), (110, 110, 110)); c.paste(A[i][0], (0, 18)); c.paste(Bf[j][0], (A[0][0].width + 8, 18))
+        dr = ImageDraw.Draw(c); dr.text((4, 3), f"{la} f{i}", fill=(255, 255, 255)); dr.text((A[0][0].width + 12, 3), f"{lb} f{j}", fill=(255, 255, 160)); ims.append(c)
+    ims[0].save(out, save_all=True, append_images=ims[1:], duration=[d for _, d in ev], loop=0); print(out)

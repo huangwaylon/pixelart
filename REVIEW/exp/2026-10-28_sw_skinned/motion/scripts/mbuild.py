@@ -29,12 +29,13 @@ ACTIONS = {
 
 
 SPRING = {  # per-action overrides of msim.GROUPS. Rule: natural freq < ~0.4 x sprite fps or the springs alias into jitter
-    "walk": {"hair_side": dict(z=0.44, gain=2.7), "hair_back": dict(z=0.5, gain=2.7)},
-    "run": {"hair_side": dict(z=0.5, gain=2.7), "hair_back": dict(z=0.45), "hair_front": dict(z=0.4), "bow": dict(f=3.4), "bun": dict(f=3.8)},
-    "idle": {"bow": dict(f=1.7, z=0.3, gain=3.0, mx=24), "bun": dict(f=1.9, z=0.3, gain=3.4), "hair_side": dict(f=1.6, gain=3.0), "hair_back": dict(f=1.5, gain=3.0),
-             "hair_front": dict(f=2.2, gain=2.0), "skirt": dict(f=1.9, gain=3.0), "sleeve": dict(f=1.6, gain=1.8)},
-    "jump": {"hair_side": dict(f=1.7, z=0.3, gain=2.8, mx=28, cd=5.0), "hair_back": dict(f=1.6, z=0.3, gain=2.8, cd=5.0), "bow": dict(f=2.2, z=0.18, gain=2.8, cd=4.0),
-             "bun": dict(f=2.5, gain=3.2, cd=2.0), "skirt": dict(f=2.2, gain=3.0, cd=5.0), "sleeve": dict(f=1.8, gain=1.8, mx=35, cd=5.0), "hair_front": dict(cd=3.0)},
+    # avoid resonance with the step bob (walk 2.4 Hz, run 3.6 Hz): stiff parts above it, long hair below it
+    "walk": {},
+    "run": {"hair_front": dict(f=2.6, z=0.45, gain=0.5), "bow": dict(f=2.3, gain=0.35), "bun": dict(f=2.5, z=0.4), "hair_side": dict(gain=0.5), "hair_back": dict(gain=0.5), "sleeve": dict(gain=0.4), "skirt": dict(gain=1.6)},
+    "idle": {"bow": dict(f=1.6, z=0.5, gain=1.4), "bun": dict(f=1.8, z=0.5), "hair_side": dict(f=1.5, z=0.55), "hair_back": dict(f=1.4, z=0.55),
+             "hair_front": dict(f=2.0, z=0.5, gain=0.4), "skirt": dict(f=1.8, z=0.5, gain=1.5), "sleeve": dict(f=1.5, z=0.5)},
+    "jump": {"hair_side": dict(f=1.7, z=0.35, cd=5.0), "hair_back": dict(f=1.6, z=0.35, cd=5.0), "bow": dict(f=2.2, z=0.25, cd=4.0),
+             "bun": dict(f=2.5, cd=2.0), "skirt": dict(f=2.2, cd=5.0), "sleeve": dict(f=1.8, mx=35, cd=5.0), "hair_front": dict(cd=3.0)},
 }
 BASE_GROUPS = {k: dict(v) for k, v in msim.GROUPS.items()}
 
@@ -50,7 +51,10 @@ def build(action, tune=None):
         if P.get("geo"): gen.build_geo()
         else: mbody.auto_base(gen)
         T = P["T"]
-        times = [(k + P.get("frame_off", 0.0)) * T / A["n"] for k in range(A["n"])]; pre = 6
+        times = [(k + P.get("frame_off", 0.0)) * T / A["n"] for k in range(A["n"])]
+        if P.get("frame_ms"):   # uneven display times (holds on key poses), sampled phase-correctly
+            ms = list(P["frame_ms"]) * 2; sc = T * 1000 / sum(ms); times = [0.0]
+            for d in ms[:-1]: times.append(times[-1] + d * sc / 1000); pre = 6
     elif action == "idle":
         gen = mbody.Idle(po); T = gen.T; times = A["times"]; pre = 2
     else:
@@ -89,6 +93,7 @@ def build(action, tune=None):
             rc, pts = cs.output(D, H, T_)
             if i in samp: frames[samp[i]] = (r, root, sc, rc, pts)
             else: ref[i_ref[i]] = pts
+    print("saturation:", {g: round(a / max(1, b), 2) for g, (a, b) in msim.SAT.items()}); msim.SAT.clear()
     perr = None
     if ref:
         errs = {c: max(float(np.abs(ref[k][c] - frames[k][4][c]).max()) for k in ref) for c in ref[0]}; perr = max(errs.values())

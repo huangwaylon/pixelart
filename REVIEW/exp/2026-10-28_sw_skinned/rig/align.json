@@ -1,0 +1,28 @@
+{
+ "_doc": "R: fixed per-view alignment of the rig render to the m96 master cell (integer sprite-px shift dx,dy applied to the 128-cell crop; feet rule, rest pose) and the per-view yaw cheat used by render_motion.py. Used by head_hull.py (texture projection) and the pixel chain.",
+ "S": {
+  "dx": 0,
+  "dy": 3,
+  "yaw": 0.0
+ },
+ "SE": {
+  "dx": 2,
+  "dy": 1,
+  "yaw": -10.0
+ },
+ "E": {
+  "dx": 4,
+  "dy": 2,
+  "yaw": 0.0
+ },
+ "NE": {
+  "dx": 1,
+  "dy": 2,
+  "yaw": -25.0
+ },
+ "N": {
+  "dx": 0,
+  "dy": 4,
+  "yaw": 0.0
+ }
+}

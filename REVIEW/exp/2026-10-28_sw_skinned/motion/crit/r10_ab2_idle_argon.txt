@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 6/10
+
+**B Breakdown (1-10):**
+* **Whole-body motion incl. head:** 6/10 (Clear weight shift, but head/torso rotate as a stiff block).
+* **Secondary readable at 1x:** 5/10 (Side-locks and sleeves move >=1px, but bun/bow merely shear with head; noisy pixel crawl).
+* **Timing/holds:** 6/10 (300ms holds anchor extremes, 80-160ms transfers work, f11->f0 loop snaps).
+* **Elegance/confidence/femininity:** 6/10 (f0-f2 rest hand nicely on hip; f5-f9 lose grace as arms splay wide).
+* **No slouch:** 6/10 (f0-f3 upright; f6-f8 still pitch forward/slouch during R-settle).
+* **Legs/contacts readability:** 5/10 (f5-f9 clear 2px gap; f0-f2 and f11 legs merge into a 1px-gap blob in silhouette).
+* **Appeal:** 6/10 (Charming design, much livelier than A, marred by rig-rotation artifacts on hair/hem).
+
+**Top 5 Remaining Problems in B:**
+1. **f0–f2 & f11, Legs:** Screen-left leg crosses/merges into screen-right leg in silhouette. Separate screen-left foot/calf 2px screen-left to keep a clean 1–2px negative-space gap.
+2. **f5–f9, Screen-Right Arm/Sleeve:** Splays outward stiffly like an A-pose. Rotate upper arm 15° inward (2px screen-left at wrist) with a soft inward wrist curl.
+3. **f6–f8, Head & Upper Torso:** Pitches forward into a slouch on the R-weight hold. Raise chest/chin 1–2px up and 1px screen-left to maintain upright contrapposto.
+4. **f4–f8, Hair Side-Locks & Bun:** Rig deformation causes disconnected floating pixels and flat shearing. Clean side-lock clusters by 1–2px inward and add 1px delayed vertical follow-through on the bow/bun at f5 and f11.
+5. **f11 -> f0 transition, Pelvis/Torso:** Abrupt 2px horizontal pop on loop reset. Ease torso/hips 1px screen-left on f11.

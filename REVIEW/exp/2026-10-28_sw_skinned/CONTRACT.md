@@ -101,6 +101,30 @@ it in R's status log, and M will then omit it.
   with your mbuild.py --noprev (run seam is now 3.8 mm) and ran final.sh. The ab_*_SE_old_vs_new.png boards were rebuilt with render/ab_board.py.
   Pre-r4 motion and pxeval copies are in motion/out/pre_r4/.
 
+- 18:20 R: **ROUND 2 rig (r5) is in rig/rig.blend + rig/rest_skeleton.json.**
+  - **Head = the rig's own animatable head that carries the master pixels.** rig/head_hull.py builds a visual hull from the m96 head stamps
+    (S, SE, E, NE, N + mirrored SW/W/NW; reprojection IoU vs the master masks S .95, SE .88, E .88, NE .85, N .90). It is fused into the
+    body mesh, and hair/bow/bun materials come from the master colours. Each view's master (rig/tex/tex_<V>.png) is camera-projected
+    onto the head + side locks (UV `pj_<V>`, visibility mask `pm_<V>`). New 8x pass **`tex`** = projected master pixels (exact palette
+    colours, 1 sample, alpha = head mask). It deforms with head / hair_* / bow* / bun, so turns and tilts up to +-20 deg keep the master look
+    (QA rig/qa/r2_stress_SE.png). **`--stamp` is retired**: the pixel step should take head cells from `tex` (helper: `render/r_tex_head.py`,
+    tex_head(T, g) = per-cell majority tex colour -> palette char). My QA-only chain render/r_qa_chain.py = r1 chain + tex head.
+  - **Per-view yaw now comes from rig/align.json** (SE -10, NE -25, others 0, fitted against the masters; it also holds the fixed dx/dy
+    alignment per view). info json has "yaw" and "tex" now (P request b).
+  - **Limb IDs:** new 8x pass **`lid`** (flat, AA off): her-left leg red (255,0,0), right leg green (0,255,0), left arm+sleeve+hand blue
+    (0,0,255), right arm yellow (255,255,0), rest black. `guide` matid colours unchanged (= hx.MATS). P: use it or keep your part pass.
+  - **Legs:** fuller thighs (r +8%) and hips (skirt +3%). Thigh centres are spread so there is a >= 3 cm gap below the hem (no inner-thigh
+    fusion on a narrow track). The skin band is wider (sock top 0.622 H2 units = 0.482 m) and the red sock-top band is 2 cm.
+  - **Posture:** shoulders 6 mm back and down. The spine and neck bones are vertical (upright). Stress QA covers contrapposto,
+    hip sway, pointed toes and close soft knees (rig/qa/r2_stress_SE.png).
+  - **Skeleton changes for M:** hair_front.* (fringe now ends at the brows), hair_back.1-3, bow_knot / bow.*.1-2 (bow on the back-top of
+    the head), bun, hair_side.*.1 head, arms +6 mm. **Please re-bake against the new rest_skeleton.json.** Body bones are unchanged.
+    Limits stay: hair_front <= 14, hair_side <= 22, hair_back <= 28, bow <= 24, bun <= 16 deg; head turn/tilt <= +-20 deg keeps the master look.
+
+- 18:50 R: rendered all 4 actions x SE/E/S on M's 18:35 bake (against the r5 skeleton): 8x passes incl. tex/lid, previews and my QA chain
+  are in render/out/r2/<act>/. Round 1 vs round 2 side-by-sides: render/out/r2/compare_<act>_SE.gif and compare_walk_{E,S}.gif (they include P's
+  chain column when render/out/p2 exists). When M posts the final round-2 motion, re-run `render/r2_all.sh` then `render/r2_compare.py <act> <view>`.
+
 ## Status log (M)
 - (M writes here)
 - 2026-10-28 11:50 M: started. Building `motion/scripts/` (FK + analytic 2-bone leg IK + spring sim + own capsule preview). Until `rig/rest_skeleton.json` exists I use a stand-in `motion/standin_skeleton.json` (H2 armature joints rotated to face +Y, so .L = -X, plus guessed secondary chains). Assumptions about R's file: armature object at identity, `roll` = EditBone.roll in radians, bone rest matrix = Blender vec_roll_to_mat3(tail-head, roll); `rot` = pose rotation_quaternion with L = B^-1 * r * B. I will NOT scale pelvis (Blender inherit_scale would shrink the legs); scale only on spine/chest/head, small (0.96..1.04).
@@ -116,3 +140,69 @@ it in R's status log, and M will then omit it.
   Outputs are in `motion/out/` (pixel GIFs with stamp, SE/E/S previews, old|new comparisons, pxeval) and documented in NOTES.md (M section).
   Hub entry: REVIEW/entries/2026-10-28_sw_skinned_motion.json.
   If you mirror the sleeve and hair_side bones, I can re-bake. `swordswoman/.venv/bin/python motion/scripts/mbuild.py <act> --noprev` takes about 10 s per action, then run `zsh motion/scripts/final.sh`.
+
+---
+- 18:55 M: **ROUND 2 motion re-baked against r5** (`motion/{walk,run,idle,jump}.json`; round 1 copies are in `motion/round1/`).
+  - 1x amplitudes are checked with `motion/scripts/mpx.py`: every part moves >= 1 px or holds. Walk pelvis bob 3.1 px, run 3.9 px. Head roll/nod: walk 15/6 deg p-p, run 15/9. Spring tips >= 2 px.
+  - Timing has holds: walk 90/120/90/120 ms, run 60/80/60/80 ms.
+  - Posing is elegant and upright per the addendum. The idle right hand rests at the obi.
+  - Your r5 limits are respected; I use align.json yaw.
+  - P: the walk legs overlap in SE at passing and contact R (narrow track, 0 px screen gap), so please separate them.
+  - Renders of my motion are in motion/prev/r2 (my copy of your chain call).
+
+# ROUND 2 (2026-10-28, owner feedback on round 1)
+> "Gradual improvements. Limbs like legs sometimes flicker and disappear. I need movement in the whole body including the
+> head, hair should move, need animated movements, not stiff. I still see disconnected parts like legs, thighs."
+
+Lead diagnosis (from render/out/walk/walk_SE_px_hs + walk_SE_px, at 4x):
+1. **Legs vanish** (f00/f03/f07): the feet track on one line, so the legs cross in the SE view. Both are flat black sock, so an overlapping leg merges into one shape. The pixel chain can also drop limbs thinner than about 2 px.
+2. **Disconnected legs/thighs:** the skirt goes straight into black socks with almost no thigh mass or skin band. Dark sock against the dark outline leaves no interior form, so the legs read as detached sticks.
+3. **Head and hair frozen:** the `--stamp` paste (rigid master head) hides all head and hair motion. The rig's own head is unusable.
+4. **Sub-pixel motion reads as flicker, not motion.** Every motion must be either ≥ 1 px at 1x or held.
+
+## Round 2 owners
+- **R (rigger)**: owns `rig/`.
+  - **Head:** a real animatable head that looks like the master. Hair, bangs, side locks, bun and bow geometry are modelled to the m96 masters' silhouettes per view. Project each view's master head pixels as a texture onto the head mesh (camera projection per view, so SE/E/S each use their own master; handle the back and N later). Hair/bow/bun then deform with their spring bones, and the head can tilt and turn about ±20° while keeping the master's face and hair look. `--stamp` gets retired.
+  - **Legs:** fuller thighs/hips (chibi), a visible skin band between hem and sock top that follows the design, and the sock top band.
+  - **Materials:** split near/far legs into separable materials or IDs (`leg_near` / `leg_far` per view, or a left/right ID) so the pixel chain can separate them.
+- **P (pixel engineer, new)**: owns `render/pixel_chain.py` and the post-process in `render/` (R hands over the pixel step; the Blender render stays R's).
+  - **Limb protection:** a minimum 2 px width for limbs, legs never dropped.
+  - **Overlap separation:** a 1 px separating line or shade step between overlapping same-material limbs, with the far limb one shade darker.
+  - **Sock form:** a 2-tone sock with a lit edge.
+  - **Temporal stability:** reuse the previous frame's pixels where the guide didn't move, snap parts to whole pixels, kill shade swaps.
+  - **Gates:** pxeval gates (boil ≤ .02, shade swap ≤ .015, no FEET_JITTER).
+- **M (animator)**: owns `motion/`.
+  - **Amplitude for 1x:** pelvis bob 2–3 px in walk and 3–4 px in run, head bob plus tilt (±6–10°), and visible hair, bow, bun and skirt bounce of ≥ 2 px at the tips.
+  - **Legs:** wider foot track (hip-width, never crossing), clear arm swing that shows outside the sleeves (hands visible).
+  - **Head:** head turns and tilts with overlap.
+  - **Timing:** snappier timing with holds on the key poses. Re-tune the springs within R's new limits.
+## Status log (P)
+- (P writes here)
+- 17:40 P: started; I own `render/pixel_chain.py` now (round-1 chain kept as `render/pixel_chain_r1.py`, still used for `--preview`).
+  New chain = material/ID vote (no k-centroid): matid x **part ID** -> 2 px limb guarantee, outline outside the fill, far-side overlap lines,
+  sock/skin-band shading, temporal hysteresis. **Part IDs come from my own extra pass** `render/p_parts.py` (runs R's render_motion.py with
+  KINDS=guide after setting a vertex colour = dominant deform bone; same camera/pose/yaw; writes `<outdir>/parts/*_part.png` + `bones.json`).
+  So **R: no native leg_near/leg_far ID is needed** as long as the vertex-group names stay as in the contract. Please (a) keep the `guide`
+  matid colours = hx.MATS or tell me the new ones here, (b) add `"yaw"` to the `<stem>.json` info so my part pass matches non-default yaws.
+  End-to-end: `render/p2_run.sh "<acts>" "<views>"` -> render/out/p2/<act>/ (renders passes + parts together, so a rig/motion update can't
+  desync them). render_motion.py's post stage calls the new chain unchanged (it auto-renders the part pass if missing).
+
+## ROUND 2 addendum: posing direction (owner, 2026-10-28)
+> "I want more elegant posing during the different actions. Not slouched, needs to be confident, feminine."
+
+This applies to M (poses and keys), with R (rest pose) and P (readability) supporting.
+- **Posture.** Upright spine, chest lifted, shoulders back and down (never hunched forward), long neck, chin level or slightly up.
+  There is no forward slouch in any action. Run lean comes from the hips and ankles with a straight back, kept under about 8°.
+- **Hips.** Contrapposto in idle: weight on one leg, a gentle hip tilt and shift, the free knee relaxed inward, and shoulders counter-tilted.
+  Walk gets a feminine hip sway, with a hip roll of about 4–6° and pelvis yaw.
+- **Legs.** A narrower, graceful track: the feet land close to the midline but **never cross**, and P separates overlaps. Knees stay soft and close,
+  with toes slightly turned out or pointed when off the ground. Steps are light (heel-toe with a lift), not stompy.
+- **Arms and hands.** Elbows soft and close to the body, a light, graceful swing (forearm leads, wrist trails), and relaxed hands with soft
+  wrists. No stiff straight arms or flapping. In the idle, one hand may rest near the obi or the skirt.
+- **Head.** Confident carriage, with small bright tilts on accents, the head leading turns slightly, and hair and bow reacting.
+- **Per action:**
+  - **Idle:** contrapposto + breathing + a weight shift.
+  - **Walk:** poised and bouncy, like a model walk in chibi proportions.
+  - **Run:** light and springy, upright, arms bent at about 90° with an elegant swing.
+  - **Jump:** a graceful arc, with the body arched or extended at the apex, toes pointed, knees together on the tuck, and a soft land with a settle.
+- **Silhouette check.** Each key pose must read as confident and feminine at 1x (96 px). M includes a key-pose silhouette sheet (solid fill) per action for review.

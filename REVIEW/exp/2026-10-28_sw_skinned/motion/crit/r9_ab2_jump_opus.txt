@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 5/10
+
+**B sub-scores**
+- Whole-body motion incl. head: 6. The head now tilts and bobs, and the torso arcs through the jump.
+- Secondary at 1x: 6. The bow and bun flick clearly on landing (f10–f14). Skirt and sleeve drag are mostly lost at 1x.
+- Timing/holds: 5. The crouch hold and apex hang read well. f9 (40 ms) and f10 (35 ms) flash by too fast to register.
+- Elegance/confidence/femininity: 4.
+- No slouch: 5. She is upright in the air, but the head sinks into the shoulders on the ground.
+- Legs/contacts: 5. The legs no longer vanish, but at f6–f7 they merge into one dark lump.
+- Appeal: 5.
+
+**Top 5 problems in B**
+1. **f6–f7 apex legs:** both shins fold back together and read as a single blob, with no pointed toe. Split the legs: front knee forward about 2 px, rear foot back about 3 px, toes pointed down roughly 30°. Also arch the back about 10° and lift the chest.
+2. **f2–f3 crouch/launch arms:** the sleeves fling straight out sideways, about 6 px past the body each side, which reads as flapping. Keep the elbows within about 2 px of the torso, sweep the arms back and down, and soften the wrists.
+3. **f10, f13 landing arm:** one arm points stiffly forward, horizontal and straight, about 8 px out. Bring it in about 4 px and drop it about 20° with a bent wrist.
+4. **f11–f12 squash head:** the head drops about 3 px into the shoulders, which looks hunched. Limit it to 1–2 px, keep the neck visible, and put the squash into the knees and skirt instead.
+5. **f8–f9 fall timing:** at 40 ms, f9 is barely seen, and the fall pose is just stiff, dangling legs. Hold f9 for 80 ms with the lead foot reaching down 1–2 px and the toes pointed, then 60 ms for the f10 contact.

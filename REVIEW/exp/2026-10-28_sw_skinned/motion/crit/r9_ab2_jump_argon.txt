@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 6/10
+
+**B Breakdown:**
+- Whole-body motion incl. head: 6/10 (Upright spine fixed the turtle-neck slouch in F2/F12, but torso twist is static F6–F8).
+- Secondary readable at 1x: 6/10 (Bow/hair drag in F5–F11 is visible at 1x, but gets noisy/detached on F11–F14).
+- Timing/holds: 7/10 (Good hang-time and squash durations).
+- Elegance/confidence/femininity: 5/10 (Chest is prouder, legs narrower, toes pointed; ruined by stiff "zombie" screen-right arm on descent).
+- No slouch: 7/10 (Vast improvement over A's hunched crouch/landing).
+- Legs/contacts readability: 6/10 (Narrow stance looks much more feminine, though legs merge into a single silhouette column in F4/F9/F13).
+- Appeal: 6/10
+
+**Top 5 Remaining Problems in B:**
+1. **F9–F11, Screen-Right Arm (front arm):** Extends straight out horizontally like a stiff plank, ruining feminine elegance. Bend elbow down 2px and angle forearm up 25° with a soft dropped wrist.
+2. **F4–F5, Both Arms:** Hands clip behind the head, creating a boxy, headless blob silhouette at 1x. Open the arms outward by 2px on each side into a graceful "V" or keep hands lower near the chest/cheeks.
+3. **F6–F8, Torso/Spine:** Apex lacks the requested "arched apex." Push chest 1px down-right (SE) and tilt head back 1px up-left to create a C-curve arch at F7.
+4. **F11 & F14, Hair Bow/Bun:** Over-rotates and detaches into noisy stray pixels on the left silhouette edge. Pull bow 2px right (inward toward head mass) to clean the 1x silhouette.
+5. **F4, F9, F13, Legs:** Calves merge into a 1-legged column in silhouette. Offset the back (left) leg 1px up-left for depth separation without widening the stance.

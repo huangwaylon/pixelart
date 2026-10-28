@@ -1,0 +1,51 @@
+{
+ "pxeval": 1,
+ "cmd": "seq",
+ "source": "REVIEW/exp/2026-10-28_sw_skinned/motion/prev/r2/idle/idle_SE_px",
+ "row": null,
+ "row_name": null,
+ "cell": null,
+ "scale_removed": 1,
+ "size": [
+  128,
+  128
+ ],
+ "n_frames": 12,
+ "loop": true,
+ "figure_px_mean": 2119.25,
+ "colours": 17,
+ "durations_ms": null,
+ "changed_mean": 0.429,
+ "changed_max": 0.631,
+ "resid_mean": 0.1451,
+ "flicker": 0.1207,
+ "boil": 0.0074,
+ "shade_swap": 0.0271,
+ "motion_px": 0.5988,
+ "articulation": 0.1984,
+ "rigid_share": 0.3636,
+ "sil_change": 0.1521,
+ "pose_range": 0.5012,
+ "holds": 0,
+ "area_cv": 0.04,
+ "centroid_std": [
+  2.4638,
+  1.37
+ ],
+ "feet_range": 2.0,
+ "top_range": 5.0,
+ "height_range": 6.0,
+ "width_range": 7.0,
+ "head_range": [
+  9.3494,
+  4.8813
+ ],
+ "head_jerk": 3.8633,
+ "centroid_jerk": 2.1405,
+ "seam_changed": 0.3841,
+ "seam_resid": 0.1708,
+ "seam_ratio": 0.6087,
+ "flags": [
+  "SHADE_SWAP"
+ ]
+}

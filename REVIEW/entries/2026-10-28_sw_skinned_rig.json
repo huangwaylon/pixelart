@@ -3,12 +3,12 @@
  "date": "2026-10-28",
  "project": "swordswoman",
  "kind": "experiment",
- "status": "promising",
- "title": "Skinned rig (R): one connected deformable mesh replaces the rigid-parts rig H2",
+ "status": "needs-review",
+ "title": "Skinned rig (R): one connected deformable mesh; round 2 adds an animatable head carrying the projected master pixels",
  "question": "Owner on the H2 animations: 'body parts are not connected, stiff, joints look off; need bouncing parts'. Can one skinned mesh with secondary chains fix connectivity and deformation, while also fixing the design errors (T-pose sleeves, thin obi, short bell skirt, cinched waist)?",
  "method": "rig/build_mesh.py: H2 head and bun plus procedural lofts fitted to the m96 masters (no-cinch torso, wide obi, straight skirt, bell sleeves with arms down 26 deg, thigh-highs, boots, side locks, bow and ribbons), unioned by a 0.006 voxel remesh into one shell of ~118k verts. rig/build_rig.py: 63 bones (contract names plus shoulders, no obi_tail); weights are part-aware and analytic (joint-plane partition of unity, azimuth skirt panels, sleeve bag chains, hair windows fading to 0 at the skin), Laplacian-smoothed; dual-quaternion Preserve Volume. render/render_motion.py: game camera; preview at 2x, or full 8x guide/lum/dep passes into render/pixel_chain.py (hires3d best chain celo, k-centroid, palette lock and fix, optional m96 head stamp). Iterated on SE stress poses against Opus critiques.",
- "result": "One continuous silhouette in every stress pose and in M's walk/run/idle/jump (SE/E/S). Fixed during QA: bang tear (hair weights now fade near skin), obi smear into the armpit (sleeve and obi were fused in the remesh), hands pixelizing to detached 1-2 px. Band churn SE (raw celo_kc) walk .187, run .184, idle .120, versus H2 hires3d walk .173 and idle .084. r4 (follow-up): sleeve.* and hair_side.* bones, weights and geometry mirrored exactly about x=0. Cause: the sleeve loft's back axis flipped sign per side, so the L sleeve bag sat forward (75-129 mm off); the H2 head is asymmetric. Every .L/.R pair is now mirror-symmetric (error 0). Legs thickened toward the chibi masters (knee r .050->.057, calf .051->.059, boots +12%). Hands are now a 3x3 px blob at 1x. SE yaw sweep against EC0_SE_96: 0/-10/-15/-20/-25 gives silhouette IoU .850/.863/.861/.848/.830; -15 adopted as the SE default (closest 3/4 frontality, rig/qa/yaw_SE_sweep.png). Band churn SE raw: walk .152, run .156, idle .112, jump .179.",
- "verdict": "Promising: Opus calls it 'a clear improvement'. Old H2 vs new: connectivity 3 vs 8, deformation 3 vs 6. Not shippable yet. Remaining: placeholder rig head (use --stamp); deep crouch collapses the solid skirt; flat sleeve-cuff disc on big arm raises; skirt only coupled to the legs at the hem; bangs limited to 15 deg (surface-painted).",
+ "result": "One continuous silhouette in every stress pose and in M's walk/run/idle/jump (SE/E/S). Fixed during QA: bang tear (hair weights now fade near skin), obi smear into the armpit (sleeve and obi were fused in the remesh), hands pixelizing to detached 1-2 px. Band churn SE (raw celo_kc) walk .187, run .184, idle .120, versus H2 hires3d walk .173 and idle .084. r4 (follow-up): sleeve.* and hair_side.* bones, weights and geometry mirrored exactly about x=0. Cause: the sleeve loft's back axis flipped sign per side, so the L sleeve bag sat forward (75-129 mm off); the H2 head is asymmetric. Every .L/.R pair is now mirror-symmetric (error 0). Legs thickened toward the chibi masters (knee r .050->.057, calf .051->.059, boots +12%). Hands are now a 3x3 px blob at 1x. SE yaw sweep against EC0_SE_96: 0/-10/-15/-20/-25 gives silhouette IoU .850/.863/.861/.848/.830; -15 adopted as the SE default (closest 3/4 frontality, rig/qa/yaw_SE_sweep.png). Band churn SE raw: walk .152, run .156, idle .112, jump .179. ROUND 2 (r5): the head is now a visual hull of the m96 head stamps (5 views + 3 mirrored; reprojection IoU S .95, SE .88, E .88, NE .85, N .90), fused into the mesh. Each view's master is camera-projected onto it (UV pj_<V>, visibility mask pm_<V>; new 8x 'tex' pass with exact palette colours). Hair, bow and bun deform with their springs and the head turns or tilts up to +-20 deg with the master look; --stamp is retired. Also: fuller thighs/hips with no inner-thigh fusion, a wider skin band plus a 2 cm red sock-top band, shoulders back and down, a 'lid' limb-ID pass (L/R legs and arms), and per-view yaw/alignment in rig/align.json (SE -10, NE -25).",
+ "verdict": "OWNER (2026-10-28, round 1): 'Gradual improvements. Limbs like legs sometimes flicker and disappear. I need movement in the whole body including the head, hair should move, need animated movements, not stiff. I still see disconnected parts like legs, thighs.' Round 2: projected master head on an animatable head, fuller thighs, near/far leg IDs, an ID-driven pixel chain with limb protection and temporal stability, and pixel-aware (≥1 px or hold) bigger amplitudes. Earlier: Promising: Opus calls it 'a clear improvement'. Old H2 vs new: connectivity 3 vs 8, deformation 3 vs 6. Not shippable yet. Remaining: placeholder rig head (use --stamp); deep crouch collapses the solid skirt; flat sleeve-cuff disc on big arm raises; skirt only coupled to the legs at the hem; bangs limited to 15 deg (surface-painted). Round 2: rest heads now match the masters in 5 views and keep the master look under head motion. Still open (P's side): in SE the far leg can merge into the near one at 1x.",
  "scores": {
   "Opus connectivity old/new": "3 / 8",
   "Opus deformation old/new": "3 / 6",
@@ -16,6 +16,41 @@
   "Opus rig r1": "6.5 vs H2 4"
  },
  "media": [
+  {
+   "src": "exp/2026-10-28_sw_skinned/rig/qa/r2_rest_vs_master.png",
+   "caption": "Round 2 rest: master | rig with the projected master head (S, SE, E, NE, N)",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/rig/qa/r2_stress_SE.png",
+   "caption": "Round 2 stress QA from SE: 18 poses incl. head turn/tilt +-20, hair at the limits, contrapposto, hip sway, pointed toes, knees close; smooth 6x, pixel 4x and 1x",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/rig/qa/head_hull_reproj.png",
+   "caption": "Head hull reprojection vs the master head masks (white = match, red = extra, blue = missing)",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/render/out/r2/compare_walk_SE.gif",
+   "caption": "walk SE: round 1 (stamp) | round 2 R QA chain | round 2 P chain | preview"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/render/out/r2/compare_run_SE.gif",
+   "caption": "run SE, round 1 vs round 2"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/render/out/r2/compare_idle_SE.gif",
+   "caption": "idle SE, round 1 vs round 2"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/render/out/r2/compare_jump_SE.gif",
+   "caption": "jump SE, round 1 vs round 2"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/render/out/r2/compare_walk_E.gif",
+   "caption": "walk E, round 1 vs round 2"
+  },
   {
    "src": "exp/2026-10-28_sw_skinned/rig/qa/stress_SE_final.png",
    "caption": "Deformation QA from SE: stress poses, smooth 6x (top) and through the pixel chain at 4x (bottom)",
@@ -95,5 +130,5 @@
    "label": "Opus final"
   }
  ],
- "next": "Heads96 layered head that turns with the rig (replace the H2 placeholder head); corrective hip/knee helpers; drive the front/back skirt panels from thigh swing in M's sim; an open cuff (inner shell) for bell sleeves; SE yaw -15 is now the default."
+ "next": "Mirror textures for SW/W/NW; inpaint the hidden (back) head regions for turns beyond 20 deg; P integrates the tex head and the leg overlap separation; re-render once M's round-2 motion is final."
 }

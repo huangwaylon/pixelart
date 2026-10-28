@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 5/10
+
+**B scores**
+- Whole-body motion incl. head: 6. The head and hair now move with the body. But most of the motion is a yaw swing of about 40° (3/4-left at f0–f3 → front at f5–f7 → back at f11). That reads as the character turning, not shifting weight.
+- Secondary (hair/bow/bun/skirt/sleeves) readable at 1x: 4. The bow, bun and hair just follow the head with no lag or overlap. The skirt hem shifts by only about 1 px.
+- Timing/holds: 5. The 80/120 ms transfers are good. f0/f1 and f6/f7 are identical apart from the blink, so at 1x the hold looks frozen.
+- Elegance/confidence/femininity of posing: 4
+- No slouch: 4
+- Legs/contacts readability: 4
+- Appeal: 5
+
+**Top 5 problems in B**
+1. **f0–f3 and f10–f11, legs:** the legs merge into one mass in the silhouette, and the feet cross or overlap. Open the stance by 2 px and keep the front foot outward. This breaks the "never crossing" rule.
+2. **f0–f4, posture:** the head and neck jut forward and the upper back rounds. Pull the head back 1–2 px over the chest and lift the chest about 8°.
+3. **f5–f7, contrapposto:** both legs are straight and parallel and the hips are level. Tilt the pelvis 6–8°, shift the hips 1–2 px over the standing leg, bend the free knee, and lift that heel 1 px.
+4. **f2–f10, front arm:** the hand sticks out sideways about 3 px past the sleeve, like a rigid paddle (the separated hand in the f5 silhouette shows it). Tuck it 2 px toward the hip and soften the wrist droop.
+5. **All frames, secondary and holds:** the bun and bow need 1–2 frames of drag on the transfers (1 px against the head's direction, then settle). The sleeve hems need ±1 px sway. The holds need a 1 px breathing rise in the chest/shoulders so they read as alive, not paused.

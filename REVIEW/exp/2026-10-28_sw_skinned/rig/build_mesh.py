@@ -80,9 +80,16 @@ G = {}  # geometry spec (also used by build_rig.py: joint positions)
 # master-fit (qa/v0 vs EC0 masters): the H2 head/obi rows match the masters absolutely but the legs were ~3 rows short -> legs lengthened and
 # everything above the knees lifted by DZ so the soles stay on z=0 (the pixel chain aligns soles to the master bottom row, as hires3d did)
 DZ = 0.044
-imp["head"].data.transform(Matrix.Translation(Vector((0, 0, DZ))))
-imp["bun"].data.transform(Matrix.Translation(Vector((0, 0.055, DZ - 0.075))))  # bun to the back-top (master E), not on the crown
-bpy.data.objects.remove(imp.pop("bow"))
+# ROUND 2: the head is the visual hull of the m96 master head stamps (rig/head_hull.py, already in the rig's master-aligned frame);
+# bow, bun and ribbon tails are part of the hull (master silhouettes) -> the H2 head/bun/bow parts are retired.
+for n_ in ("head", "bun", "bow"): bpy.data.objects.remove(imp.pop(n_))
+_hh = np.load(os.path.join(os.path.dirname(os.path.abspath(OUT)), "head_hull.npz"), allow_pickle=True)
+_me = bpy.data.meshes.new("head"); _me.from_pydata([tuple(v) for v in _hh["V"]], [], [tuple(int(i) for i in f) for f in _hh["F"]]); _me.validate()
+_ca = _me.color_attributes.new("Color", "BYTE_COLOR", "POINT")
+for i, m_ in enumerate(_hh["mat"]): _ca.data[i].color_srgb = [x / 255 for x in MATS[str(m_)]] + [1]
+_bm = bmesh.new(); _bm.from_mesh(_me); bmesh.ops.recalc_face_normals(_bm, faces=_bm.faces); _bm.to_mesh(_me); _bm.free()
+imp["head"] = bpy.data.objects.new("head", _me); bpy.context.scene.collection.objects.link(imp["head"])
+HMAT = np.array([str(m_) for m_ in _hh["mat"]])
 HV = np.array([v.co[:] for v in imp["head"].data.vertices])
 def back_y(x0, z0, w=0.03):
     m = (np.abs(HV[:, 0] - x0) < w) & (np.abs(HV[:, 2] - z0) < 0.015); return float(HV[m, 1].max()) if m.any() else 0.2
@@ -96,12 +103,12 @@ loft("neck", [{"c": [0, .006, 1.26 + DZ], "ra": .047, "rb": .045}, {"c": [0, .01
 G["obi"] = (0.957 + DZ, 1.052 + DZ)
 loft("obi", [{"c": [0, 0, z], "ra": .150, "rb": .112} for z in G["obi"]], [1, 0, 0], n=64, p=2.6)
 G["hem"] = 0.767
-sk = [(0.975 + DZ, .141, .101, 0), (0.94 + DZ, .149, .109, .002), (0.88 + DZ, .163, .123, .004), (0.82 + DZ, .182, .142, .006), (G["hem"], .200, .160, .008)]
+sk = [(0.975 + DZ, .141, .101, 0), (0.94 + DZ, .151, .110, .002), (0.88 + DZ, .170, .127, .004), (0.82 + DZ, .188, .146, .006), (G["hem"], .205, .163, .008)]  # r2: fuller hips
 loft("skirt", [{"c": [0, y, z], "ra": rx, "rb": ry} for z, rx, ry, y in sk], [1, 0, 0], n=72, p=2.3)
 # ------------------------------------------------------------------ arms (+ sleeves, hands), sx = +1 her left (+X)
 ABD = math.radians(26.0); UA, FA, HL = 0.22, 0.215, 0.10
 for side, sx in (("L", 1), ("R", -1)):
-    Sh = np.array([sx * .158, 0.0, 1.195 + DZ]); d1 = np.array([sx * math.sin(ABD), -0.03, -math.cos(ABD)]); d1 /= np.linalg.norm(d1)
+    Sh = np.array([sx * .158, 0.008, 1.188 + DZ]); d1 = np.array([sx * math.sin(ABD), -0.03, -math.cos(ABD)]); d1 /= np.linalg.norm(d1)
     d2 = np.array([sx * math.sin(ABD + math.radians(3)), -0.07, -math.cos(ABD + math.radians(3))]); d2 /= np.linalg.norm(d2)
     El = Sh + UA * d1; Wr = El + FA * d2; Ht = Wr + HL * d2
     G["arm." + side] = {"sh": Sh.tolist(), "el": El.tolist(), "wr": Wr.tolist(), "ht": Ht.tolist(), "d1": d1.tolist(), "d2": d2.tolist()}
@@ -123,15 +130,16 @@ for side, sx in (("L", 1), ("R", -1)):
     Tt = np.array([sx * .100, -0.135, 0.03])
     G["leg." + side] = {"hip": Hp.tolist(), "knee": Kn.tolist(), "ankle": An.tolist(), "toe": Tt.tolist(), "ball": [sx * .1, -.07, .035]}
     # r4: thicker legs toward the chibi masters (S master: thigh ~8 px, sock ~6 px incl. outline), centres spread at the hem to keep a gap
-    lg = [(Hp + np.array([0, 0, .06]), .072, .072), (Hp, .078, .076), (np.array([sx * .092, -.002, .77]), .074, .073),
-          (np.array([sx * .093, -.003, .65]), .068, .068), (np.array([sx * .094, -.004, .55]), .061, .062), (Kn, .057, .058),
+    # round 2: fuller chibi thighs (r +8%), centres spread to keep a >= 3 cm gap below the hem (no inner-thigh fusion)
+    lg = [(Hp + np.array([0, 0, .06]), .076, .076), (Hp, .084, .082), (np.array([sx * .097, -.002, .77]), .080, .079),
+          (np.array([sx * .097, -.003, .65]), .072, .072), (np.array([sx * .096, -.004, .55]), .063, .064), (Kn, .057, .058),
           (np.array([sx * .097, .0, .35]), .059, .061), (np.array([sx * .099, .006, .22]), .051, .053), (An, .044, .046)]
     loft("leg_" + side, [{"c": c.tolist(), "ra": ra, "rb": rb} for c, ra, rb in lg], [1, 0, 0], n=40)
     loft("boot_" + side, [{"c": [sx * .099, .008, .196], "ra": .060, "rb": .062}, {"c": [sx * .100, .010, .12], "ra": .061, "rb": .064},
                           {"c": [sx * .100, .012, .05], "ra": .062, "rb": .066}], [1, 0, 0], n=40)
     loft("foot_" + side, [{"c": [sx * .100, .045, .046], "ra": .056, "rb": .046}, {"c": [sx * .100, -.04, .044], "ra": .058, "rb": .044},
                           {"c": [sx * .100, -.105, .037], "ra": .053, "rb": .037}], [1, 0, 0], n=40, cap0="round", cap1="round", p=2.6)
-G["sock_top"] = 0.634; G["sock_band"] = 0.024; G["boot_top"] = 0.196
+G["sock_top"] = 0.622; G["sock_band"] = 0.026; G["boot_top"] = 0.196
 # ------------------------------------------------------------------ hair locks (front side locks to the shoulder), bow (knot + 2 lobes) + ribbon tails
 for side, sx in (("L", 1), ("R", -1)):
     zs = [1.60, 1.47, 1.38, 1.30]; rr_ = [(.030, .034), (.026, .030), (.020, .024), (.010, .013)]
@@ -139,19 +147,21 @@ for side, sx in (("L", 1), ("R", -1)):
     lk = [([sx * x, -.10, z + DZ], ra, rb) for x, z, (ra, rb) in zip(xs, zs, rr_)]
     loft("lock_" + side, [{"c": c, "ra": ra, "rb": rb} for c, ra, rb in lk], [1, 0, 0], n=24, cap1="round")
     G["lock." + side] = [c for c, _, _ in lk]
-kz = 1.845 + DZ; kn = [0.0, back_y(0, kz) - 0.005, kz]
-G["bow_knot"] = kn
-loft("knot", [{"c": [0, kn[1] - 0.02, kz], "ra": .040, "rb": .045}, {"c": [0, kn[1] + 0.035, kz], "ra": .036, "rb": .042}], [1, 0, 0], n=32, cap1="round")
-G["bow"] = {}
+# bow (knot + lobes) and bun bone anchors from the hull's master-coloured regions
+BW = HV[HMAT == "bow"]; BK = BW[BW[:, 1] > 0.08]  # the bow sits on the BACK of the head (N/NE/E masters); lobes spread sideways
+zs_ = np.arange(1.82, 1.98, 0.02); wd_ = [np.abs(BK[np.abs(BK[:, 2] - z_) < 0.01, 0]).max() if (np.abs(BK[:, 2] - z_) < 0.01).sum() > 5 else 0 for z_ in zs_]
+zw = float(zs_[int(np.argmax(wd_))]); band = BK[np.abs(BK[:, 2] - zw) < 0.08]
+kq = band[np.abs(band[:, 0]) < 0.04]; kn = kq[np.argsort(-kq[:, 1])[: max(10, len(kq) // 4)]].mean(0); kn[0] = 0.0
+G["bow_knot"] = kn.tolist(); G["bow"] = {}
 for side, sx in (("L", 1), ("R", -1)):
-    p0 = np.array([sx * .03, kn[1] + .01, kz]); p2 = np.array([sx * .215, kn[1] + .01, kz + .02]); p1 = (p0 + p2) / 2 + np.array([0, .005, 0.0])
-    loft("lobe_" + side, [{"c": p0.tolist(), "ra": .022, "rb": .032}, {"c": p1.tolist(), "ra": .030, "rb": .062}, {"c": p2.tolist(), "ra": .026, "rb": .060}],
-         [0, 1, 0], n=36, cap1="round", p=2.2)
+    Q = band[sx * band[:, 0] > 0.06]
+    far = Q[np.argsort(-np.abs(Q[:, 0]))[: max(5, len(Q) // 10)]].mean(0)
+    p0 = kn + np.array([sx * 0.035, 0, 0]); p2 = far; p1 = (p0 + p2) / 2 + np.array([0, 0.01, 0])
     G["bow"][side] = [p0.tolist(), p1.tolist(), p2.tolist()]
-    zz = [kz - .03, kz - .15, kz - .27]; xs = [sx * .025, sx * .05, sx * .07]
-    rb_ = [([x, back_y(x, z) + .012, z], .024 + .004 * i, .008) for i, (x, z) in enumerate(zip(xs, zz))]
-    loft("ribbon_" + side, [{"c": c, "ra": ra, "rb": rb} for c, ra, rb in rb_], [1, 0, 0], n=20)
-    G["ribbon." + side] = [c for c, _, _ in rb_]
+G["bow_zcut"] = float(zw - 0.085)  # bow-coloured hull below this = ribbon tails
+HR = HV[HMAT == "hair"]; zt = HR[:, 2].max(); cand = HR[(HR[:, 2] > zt - 0.12) & (HR[:, 1] > 0.04)]
+bc = cand[np.argsort(-(cand[:, 1] * 0.6 + cand[:, 2]))[: max(20, len(cand) // 8)]].mean(0) if len(cand) else np.array([0, .15, zt - .05])
+bc[0] = 0.0; G["bun"] = {"c": (bc - np.array([0, 0.03, 0.03])).tolist(), "r": 0.075}
 G["DZ"] = DZ
 # ------------------------------------------------------------------ union by voxel remesh
 parts = {o.name: o for o in bpy.context.scene.objects if o.type == "MESH"}
@@ -197,8 +207,7 @@ FC = np.array([VB[list(f)].mean(0) for f in FB]); flab, ffid, _ = label(FC)
 def mat_of(n, fi, p):
     x, y, z = p
     if n == "head": return headmat[src["head"][2][fi][0]]
-    if n.startswith(("ribbon", "knot", "lobe")): return "bow"
-    if n == "bun" or n.startswith("lock"): return "hair"
+    if n.startswith("lock"): return "hair"
     if n == "obi": return "obi"
     if n.startswith(("hand", "neck")): return "skin"
     if n.startswith(("boot", "foot")): return "boots"
@@ -215,6 +224,6 @@ def mat_of(n, fi, p):
     return "dress"
 fmat = [mat_of(flab[i], ffid[i], FC[i]) for i in range(len(FB))]
 np.savez_compressed(OUT, V=VB, F=np.array(FB, dtype=object), fmat=np.array(fmat), vlab=vlab.astype(str), flab=flab.astype(str), G=json.dumps(G),
-                    head_v=HV, bun_v=np.array([v.co[:] for v in imp["bun"].data.vertices]))
+                    head_v=HV, head_mat=HMAT)
 print("BODY", len(VB), len(FB), {m: fmat.count(m) for m in MN}, flush=True)
 bpy.ops.wm.save_as_mainfile(filepath=OUT.replace(".npz", "_parts.blend"))

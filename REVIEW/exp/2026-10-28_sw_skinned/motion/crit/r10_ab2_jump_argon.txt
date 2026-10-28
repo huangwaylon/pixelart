@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 6/10
+
+**B Breakdown:**
+- **Whole-body motion incl. head:** 6/10 (Better torso/head alignment than A, but head angle stays too locked to screen-plane).
+- **Secondary readable at 1x:** 5/10 (Sleeves read well; hair/bow/bun barely register >=1px independent drag/overlap).
+- **Timing/holds:** 6/10 (Arc is readable, F13 overshoot feels stiff/robotic).
+- **Elegance/confidence/femininity:** 6/10 (Closed legs and cleaner posture improve A's awkwardness, but arms still look stiff in fall).
+- **No slouch:** 7/10 (F2/F12 crouches fixed A's severe forward hunch).
+- **Legs/contacts readability:** 6/10 (No more wide-legged bow-iness, but 1x silhouettes merge legs into a single pillar).
+- **Appeal:** 6/10
+
+**Top 5 Remaining Problems in B:**
+1. **F5–F7 (Arms/Hands):** Raised arms clip into the head silhouette, creating a muddy blob at 1x. Open both arms outward/away from head by **2px (or ~15°)** to preserve negative space.
+2. **F8–F11 (Screen-Right Arm):** Lacks feminine grace; extends out like a rigid zombie arm during descent. Bend elbow and soften wrist downward by **~25° (pull hand 2–3px closer to body)**.
+3. **F4–F10 (Hair Bun/Bow/Locks):** Frozen to skull at 1x. Lag the bow/bun **1–2px UP** during fall (F8–F10) and compress **1–2px DOWN** on landing squash (F12).
+4. **F6–F8 (Legs/Feet Silhouette):** In Image 2, both legs merge into one thick stump. Offset the back (left) lower leg **1–2px higher/back** and point toes downward **~15°** for a dainty silhouette split.
+5. **F13 (Full Body Overshoot):** Reads as a stiff vertical pop rather than graceful recovery. Soften knee lock (drop pelvis **1px**) and add **1px** downward sleeve/skirt drag.

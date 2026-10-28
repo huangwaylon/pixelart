@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 5/10
+
+**B category scores**
+- Whole-body motion incl. head: 6. The head bobs about 2 px at 1x and dips at f5, which A did not do. The upper body still moves as one rigid block.
+- Secondary (hair/bow/bun/skirt/sleeves) at 1x: 4. The bow moves about 1 px. The sleeves and skirt barely move from frame to frame.
+- Timing/holds: 6. The 60/80 ms rhythm reads well. Down frames are not held longer than the others.
+- Elegance/confidence/femininity: 4.
+- No slouch: 4.
+- Legs/contacts readability: 5. Better than A, but the legs still merge into one shape at f2 and f4.
+- Appeal: 5.
+
+**Top 5 problems in B**
+1. **Hunched upper body at f0, f1 and f5.** The back bulges and the head pushes forward. Tilt the chest back 8–10° and pull the head back 1 px. Lift the chin about 5° at f5 so the dip comes from the knees, not the neck.
+2. **Arms locked at the chest in every frame.** The hands sit as fists under the chin and the sleeves read as one blob. Swing the arms about 20° the opposite way to the legs. Let the sleeve tips lag 1–2 px behind and trail 1 frame late. Soften the wrists.
+3. **Legs cross or overlap at f2 and f4.** The silhouettes show a single merged column. Open a 1–2 px gap between the legs at the knees and ankles. Keep the feet on separate lines.
+4. **Blunt feet in the air at f3, f6 and f7.** Point the toes down about 30° so they read as a clear 1–2 px taper. Shorten the f7 back kick by 1 px for a lighter step.
+5. **Hair and skirt barely move.** At f3 and f7 (flight) the bun and bow should rise 1 px and the skirt hem should flare 1–2 px. At f1 and f5 (down) they should drop 1 px, one frame behind the body. Right now they track the head rigidly, so it looks stiff at 1x.

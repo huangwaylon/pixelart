@@ -123,7 +123,8 @@ class Gait:
             abd = P["abd0"] + P["abd_amp"] * abs(sw) / max(1e-6, P["arm_amp_ref"])
             arm[side] = dict(swing=sw, abd=abd, cross=(P["cross"] * max(0, sw) - P.get("cross_back", 0.0) * max(0, -sw)) / max(1e-6, P["arm_amp_ref"]), elbow=elbow, wrist=P["wrist0"] + wr,
                              twist=P.get("twist", 0), elbow_in=P.get("elbow_in", 0) * max(0, fw_ness))
-            sh[side] = (P["sh_elev"] * max(0.0, sw / P["arm_amp_ref"]) + P["sh_bob"] * float(pkey(P["bob"], h - 0.12)), P["sh_fwd"] * sw / P["arm_amp_ref"])
+            sh[side] = (P.get("sh_elev0", 0.0) + P["sh_elev"] * max(0.0, sw / P["arm_amp_ref"]) + P["sh_bob"] * float(pkey(P["bob"], h - 0.12)),
+                        P.get("sh_fwd0", 0.0) + P["sh_fwd"] * sw / P["arm_amp_ref"])
         spec["arm"] = arm; spec["shoulder"] = sh
         feet = {}
         for side, off in (("L", 0.0), ("R", 0.5)):
@@ -144,38 +145,40 @@ def pkey_clamped(keys, u):
 
 # ---------------------------------------------------------------- parameter sets
 WALK = dict(
-    T=0.84, sf=0.60, a=0.22, track=0.45, toe_out=5.0, geo=True, geo_pre=0.0, geo_off=0.0, foot_y=0.0,
-    # r2: DOWN deepest (f1/f5), PASSING mid (f2/f6), UP highest (f3/f7, push-off on the ball)
-    dip=[(0.0, 0.1), (0.13, 1.0), (0.27, 0.80), (0.45, 0.0, "flat"), (0.8, 0.05)], dip_amp=0.045,
-    strike_pitch=30.0, flat_at=0.2, heel_rise=0.30, lift_pitch=-42.0, arm_lean_comp=0.5,
-    strike_vel=0.6, lift_vel=1.0,
-    swing_dz=[(0, 0), (0.30, 0.10), (0.62, 0.06), (1.0, 0.0)], swing_dy=[(0, 0), (0.35, -0.01), (0.75, 0.03), (1.0, 0.0)],
-    swing_pitch=[(0, -42.0), (0.25, -40.0), (0.6, -4.0), (1.0, 30.0)], swing_toe=[(0, 0.0), (0.2, -20.0), (0.6, -4.0), (1.0, 30.0)],
-    bob=[(0.0, -0.35), (0.14, -1.0, "flat"), (0.30, 0.2), (0.45, 1.0, "flat"), (0.8, 0.35)], bob_amp=0.026,
-    sway=0.026, sway_ph=0.27, pel_yaw=13.0, pel_yaw_ph=0.02, pel_roll=7.5, pel_roll_ph=0.18, pel_pitch=4.0, pel_pitch_bob=1.5,
-    ch_yaw=10.0, ch_yaw_ph=0.04, ch_roll=4.5, lean=10.0, ch_pitch_bob=2.5, ch_bob_lag=0.08,
-    hd_yaw=-5.0, hd_roll=-4.0, hd_pitch=-4.0, hd_pitch_bob=-0.5, hd_bob_lag=0.25,
-    arm_swing=[(0.0, -24.0), (0.5, 28.0)], arm_amp_ref=28.0, lag_upper=0.0, lag_fore=0.06, lag_hand=0.14,
-    elbow0=16.0, elbow_amp=30.0, elbow_bob=5.0, wrist0=4.0, wrist_amp=16.0, abd0=-14.0, abd_amp=0.0, cross=22.0, cross_back=18.0, elbow_in=12.0,
-    sh_elev=5.0, sh_bob=-2.0, sh_fwd=6.0,
-    sq_chest=0.03, sq_head=0.008, sq_lag=0.04,
+    # ROUND 2 (owner: elegant, confident, feminine; >=1 px or held; snappier with holds): poised chibi model walk
+    T=0.84, frame_ms=[90, 120, 90, 120], sf=0.60, a=0.20, track=0.62, toe_out=6.0, geo=True, geo_pre=0.0, geo_off=0.0, foot_y=0.0,
+    # key phases (half cycle): contact 0, DOWN .214 (held 120 ms), PASSING .5, UP .714 (held 120 ms)
+    dip=[(0.0, 0.15), (0.214, 1.0), (0.5, 0.55), (0.714, 0.0, "flat"), (0.9, 0.05)], dip_amp=0.018,
+    strike_pitch=18.0, flat_at=0.2, heel_rise=0.32, lift_pitch=-40.0, arm_lean_comp=0.0,
+    strike_vel=0.5, lift_vel=1.0, knee_out=-3.0,
+    swing_dz=[(0, 0), (0.30, 0.09), (0.62, 0.06), (1.0, 0.0)], swing_dy=[(0, 0), (0.35, -0.01), (0.75, 0.03), (1.0, 0.0)],
+    swing_pitch=[(0, -40.0), (0.3, -45.0), (0.65, -18.0), (1.0, 18.0)], swing_toe=[(0, 0.0), (0.2, -25.0), (0.65, -15.0), (1.0, 18.0)],
+    bob=[(0.0, -0.35), (0.214, -1.0, "flat"), (0.5, 0.2), (0.714, 1.0, "flat"), (0.9, 0.35)], bob_amp=0.026,
+    sway=0.026, sway_ph=0.27, pel_yaw=6.0, pel_yaw_ph=0.02, pel_roll=5.5, pel_roll_ph=0.2, pel_pitch=2.0, pel_pitch_bob=1.0,
+    ch_yaw=4.0, ch_yaw_ph=0.06, ch_roll=3.5, lean=-4.0, ch_pitch_bob=1.0, ch_bob_lag=0.08,
+    hd_yaw=3.0, hd_roll=-6.0, hd_pitch=-7.0, hd_pitch_bob=2.0, hd_bob_lag=0.25,
+    arm_swing=[(0.0, -20.0), (0.5, 26.0)], arm_amp_ref=26.0, lag_upper=0.04, lag_fore=0.0, lag_hand=0.13,
+    elbow0=22.0, elbow_amp=26.0, elbow_bob=4.0, wrist0=10.0, wrist_amp=22.0, abd0=-16.0, abd_amp=0.0, cross=18.0, cross_back=14.0, elbow_in=10.0,
+    sh_elev=3.0, sh_bob=-1.5, sh_fwd=4.0, sh_elev0=-3.0, sh_fwd0=-5.0,
+    sq_chest=0.03, sq_head=0.01, sq_lag=0.04,
 )
 
 RUN = dict(
-    T=0.56, frame_off=0.15, arm_lean_comp=0.7, sf=0.30, a=0.21, track=0.55, toe_out=3.0, foot_y=0.0,
-    strike_pitch=14.0, flat_at=0.2, heel_rise=0.38, lift_pitch=-55.0,
+    # ROUND 2: light, springy, upright (lean from hips/ankles <= 8 deg), arms ~90 deg with an elegant swing
+    T=0.56, frame_ms=[60, 80, 60, 80], frame_off=0.0, arm_lean_comp=0.7, sf=0.30, a=0.20, track=0.45, toe_out=4.0, foot_y=0.0,
+    strike_pitch=10.0, flat_at=0.2, heel_rise=0.38, lift_pitch=-55.0,
     strike_vel=0.4, lift_vel=0.5,
-    swing_dz=[(0, 0), (0.15, 0.17), (0.4, 0.30), (0.62, 0.32), (0.85, 0.10), (1.0, 0.0)], swing_dy=[(0, 0), (0.15, -0.06), (0.62, 0.16), (0.85, 0.10), (1.0, 0.0)],
-    swing_pitch=[(0, -55.0), (0.3, -62.0), (0.7, -10.0), (1.0, 14.0)], swing_toe=[(0, 0.0), (0.25, -40.0), (0.7, -8.0), (1.0, 14.0)],
-    # run bob (half cycle): contact 0, DOWN (deepest) .15, push-off .5, FLIGHT apex .8
-    bob=[(0.0, 0.3), (0.17, -1.0, "flat"), (0.5, 0.6), (0.8, 1.0, "flat"), (0.95, 0.65)], bob_amp=0.052,
-    sway=0.012, sway_ph=0.2, pel_yaw=8.0, pel_yaw_ph=0.0, pel_roll=4.0, pel_roll_ph=0.12, pel_pitch=12.0, pel_pitch_bob=2.0,
-    ch_yaw=12.0, ch_yaw_ph=0.03, ch_roll=3.0, lean=24.0, ch_pitch_bob=5.0, ch_bob_lag=0.08,
-    hd_yaw=-6.0, hd_roll=3.0, hd_pitch=8.0, hd_pitch_bob=-4.0, hd_bob_lag=0.25,
-    arm_swing=[(0.0, -52.0), (0.5, 62.0)], arm_amp_ref=62.0, lag_upper=0.0, lag_fore=0.08, lag_hand=0.15,
-    elbow0=80.0, elbow_amp=28.0, elbow_bob=6.0, wrist0=8.0, wrist_amp=20.0, abd0=-6.0, abd_amp=3.0, cross=26.0, cross_back=16.0, elbow_in=12.0,
-    sh_elev=8.0, sh_bob=-3.0, sh_fwd=9.0,
-    sq_chest=0.07, sq_head=0.035, sq_lag=0.05, knee_out=8.0,
+    swing_dz=[(0, 0), (0.15, 0.17), (0.4, 0.28), (0.62, 0.28), (0.85, 0.10), (1.0, 0.0)], swing_dy=[(0, 0), (0.15, -0.06), (0.62, 0.14), (0.85, 0.09), (1.0, 0.0)],
+    swing_pitch=[(0, -55.0), (0.3, -65.0), (0.7, -20.0), (1.0, 10.0)], swing_toe=[(0, 0.0), (0.25, -40.0), (0.7, -15.0), (1.0, 10.0)],
+    # half cycle: contact 0, DOWN .214 (held 80 ms), push-off .5, FLIGHT .714 (held 80 ms)
+    bob=[(0.0, 0.3), (0.214, -1.0, "flat"), (0.5, 0.6), (0.714, 1.0, "flat"), (0.9, 0.65)], bob_amp=0.03,
+    sway=0.012, sway_ph=0.2, pel_yaw=6.0, pel_yaw_ph=0.0, pel_roll=4.0, pel_roll_ph=0.12, pel_pitch=7.0, pel_pitch_bob=1.5,
+    ch_yaw=7.0, ch_yaw_ph=0.03, ch_roll=3.0, lean=8.0, ch_pitch_bob=2.0, ch_bob_lag=0.08,
+    hd_yaw=-4.0, hd_roll=-5.0, hd_pitch=-7.0, hd_pitch_bob=2.0, hd_bob_lag=0.25,
+    arm_swing=[(0.0, -40.0), (0.5, 48.0)], arm_amp_ref=48.0, lag_upper=0.03, lag_fore=0.0, lag_hand=0.12,
+    elbow0=88.0, elbow_amp=12.0, elbow_bob=4.0, wrist0=14.0, wrist_amp=18.0, abd0=-15.0, abd_amp=0.0, cross=20.0, cross_back=16.0, elbow_in=18.0,
+    sh_elev=5.0, sh_bob=-2.5, sh_fwd=6.0, sh_elev0=-2.0, sh_fwd0=-4.0,
+    sq_chest=0.05, sq_head=0.025, sq_lag=0.05, knee_out=0.0,
 )
 
 
@@ -200,7 +203,7 @@ class Idle:
         L = poser.leg
         self.feet = {sd: L[sd]["a0"].copy() for sd in "LR"}
         for sd in "LR":
-            self.feet[sd][0] *= 1.12  # a touch wider than rest for a stable stance
+            self.feet[sd][0] *= 1.05  # R2: feminine stance, feet close but clearly apart (never merging)
         self.feet["L"][1] += 0.03; self.feet["R"][1] -= 0.02   # slight stagger (free foot forward)
 
     def w(self, t):
@@ -215,27 +218,31 @@ class Idle:
         br_l = 0.5 - 0.5 * c(2 * x - 0.16)
         z = float(okey([(0, 0.005), (0.05, 0.0), (0.22, 0.0, "flat"), (0.29, -0.010), (0.335, -0.016, "flat"), (0.40, 0.007), (0.47, 0.0, "flat"),
                         (0.72, 0.0, "flat"), (0.79, -0.010), (0.835, -0.016, "flat"), (0.90, 0.007), (0.97, 0.0, "flat"), (1.0, 0.005)], x))
-        root = [-0.075 * w, 0.0, self.zbase - 0.008 + z + 0.006 * br]
-        pel = (-5.0 * w, 1.5, 11.0 * w)                      # stance hip up/out: tilt down toward the free side
-        chest = (3.0 * w_l, -0.5 - 3.5 * br, -7.0 * w_l)     # contrapposto counter-tilt, chest lifts on the inhale
-        look = float(okey([(0, 0), (0.22, 0.0, "flat"), (0.28, -6.0), (0.34, -14.0), (0.40, -24.0), (0.47, -32.0), (0.55, -27.0, "flat"), (0.74, -27.0, "flat"), (0.82, -10.0), (0.88, 3.0), (0.94, 0.0), (1.0, 0)], x))
+        root = [-0.085 * w, 0.0, self.zbase - 0.008 + z + 0.006 * br]
+        pel = (-3.0 * w, 1.0, 11.0 * w)                      # stance hip up/out: tilt down toward the free side
+        chest = (2.0 * w_l, -6.0 - 4.0 * br, -6.0 * w_l)     # R2: chest lifted; contrapposto counter-tilt; lifts more on the inhale
+        look = float(okey([(0, 0), (0.22, 0.0, "flat"), (0.28, -4.0), (0.34, -9.0), (0.40, -15.0), (0.47, -20.0), (0.55, -17.0, "flat"), (0.74, -17.0, "flat"), (0.82, -6.0), (0.88, 2.0), (0.94, 0.0), (1.0, 0)], x))
         nod = float(okey([(0, 0), (0.30, 0.0), (0.36, 6.0), (0.46, -3.0), (0.55, 0.0), (0.8, 2.0), (0.9, -1.5), (1.0, 0)], x))
-        head = (look, -1.0 + nod - 2.0 * br_l, 8.0 * self.w(t - 0.18) - 1.5 * w_l)   # tilt toward the free hip, lags the body
+        head = (look, -7.0 + 0.6 * nod - 2.0 * br_l, 8.0 * self.w(t - 0.18) - 1.5 * w_l)   # chin slightly up; tilt toward the free hip, lags the body
         arm, sh = {}, {}
         for sd, sg in (("L", 1.0), ("R", -1.0)):
             stance = max(0.0, sg * w_ll)    # this arm's side carries the weight
-            arm[sd] = dict(swing=1.0 + 7.0 * sg * (w_ll - w_l) + 3.0 * s(2 * x - 0.3), abd=-14.0 + 6.0 * sg * w_ll + 3.0 * br_l,
-                           elbow=16.0 + 6.0 * (1 - stance) + 4.0 * br_l, wrist=14.0 + 8.0 * sg * (w_ll - w_l) + 4.0 * s(2 * x - 0.4),
-                           cross=0.0, wrist_out=-14.0)
-            sh[sd] = (5.0 * br - 2.5 * sg * w_l, 0.5)
+            if sd == "R":   # R2: right hand rests lightly at the front of the obi (elbow soft and close)
+                arm[sd] = dict(swing=2.0 + 4.0 * sg * (w_ll - w_l), abd=1.0 + 2.0 * br_l, elbow=98.0 + 4.0 * br_l, elbow_in=50.0,
+                               wrist=20.0 + 6.0 * s(2 * x - 0.4), cross=0.0, wrist_out=-25.0)
+            else:           # left arm relaxed along the skirt, soft wrist, sways 2 frames late
+                arm[sd] = dict(swing=2.0 + 7.0 * sg * (w_ll - w_l) + 3.0 * s(2 * x - 0.3), abd=-21.0 + 4.0 * sg * w_ll + 2.0 * br_l,
+                               elbow=26.0 + 6.0 * (1 - stance) + 4.0 * br_l, wrist=16.0 + 8.0 * sg * (w_ll - w_l) + 4.0 * s(2 * x - 0.4),
+                               cross=0.0, wrist_out=-14.0)
+            sh[sd] = (-2.0 + 7.0 * br - 2.5 * sg * w_l, -5.0)   # shoulders back and down, rise on the breath
         feet = {}
         for sd, sg in (("L", 1.0), ("R", -1.0)):
             free = max(0.0, -sg * w)  # 1 when this leg is free
-            feet[sd] = dict(pos=None, pitch=-24.0 * free, toe=0.0, yaw=8.0, knee_yaw=2.0 + 5.0 * free)
+            feet[sd] = dict(pos=None, pitch=-30.0 * free, toe=0.0, yaw=10.0, knee_yaw=-9.0 * free)   # free knee relaxes inward
             feet[sd]["pivot"] = ("ball", self._ballg(sd))
         sq = float(okey([(0, 0.006), (0.05, 0.0), (0.30, 0.0), (0.335, -0.03), (0.40, 0.012), (0.47, 0.0), (0.80, 0.0), (0.835, -0.03), (0.90, 0.012), (0.97, 0.0), (1.0, 0.006)], x))
         return dict(root=root, pelvis=pel, chest=chest, head=head, arm=arm, shoulder=sh, foot=feet,
-                    scale={"chest": (1 + 0.015 * br - 0.6 * sq, 1 + 0.035 * br + sq), "head": (1.0, 1.0)}, travel=0.0)
+                    scale={"chest": (1 + 0.02 * br - 0.6 * sq, 1 + 0.05 * br + sq), "head": (1.0, 1.0)}, travel=0.0)
 
     def _ballg(self, sd):
         L = self.po.leg[sd]; a = self.feet[sd]
@@ -250,14 +257,14 @@ class Jump:
     def __init__(self, poser):
         self.po = poser; self.zbase = 0.0
         self.feet = {sd: poser.leg[sd]["a0"].copy() for sd in "LR"}
-        for sd in "LR": self.feet[sd][0] *= 1.1
+        for sd in "LR": self.feet[sd][0] *= 0.85   # R2: feet together, graceful
 
     def pel_z(self, t):
         T0, T1 = self.T0, self.T1
         if t < T0:
-            return float(okey([(0, -0.015), (0.05, -0.006), (0.14, -0.12), (0.22, -0.125, "flat"), (0.26, -0.03), (0.30, 0.08)], t))
+            return float(okey([(0, -0.01), (0.05, -0.004), (0.14, -0.10), (0.22, -0.105, "flat"), (0.26, -0.02), (0.30, 0.08)], t))
         if t > T1:
-            return float(okey([(T1, -0.01), (0.82, -0.19, "flat"), (0.95, 0.06), (1.03, -0.03), (1.14, -0.015)], t))
+            return float(okey([(T1, -0.01), (0.82, -0.12, "flat"), (0.95, 0.04), (1.03, -0.02), (1.14, -0.01)], t))
         u = (t - T0) / (T1 - T0); z0, z1, Hpk = 0.08, -0.01, 0.33
         return z0 + (z1 - z0) * u + 4 * Hpk * u * (1 - u)   # pure ballistic: fast launch, slow apex, fast fall (spacing 50/30/15)
 
@@ -265,17 +272,18 @@ class Jump:
         po = self.po; T0, T1 = self.T0, self.T1
         z = self.pel_z(t)
         root = [0.0, -0.02 * float(okey([(0, 0), (0.14, 1), (0.26, 1), (0.30, 0)], t)), self.zbase + z]
-        lean = float(okey([(0, 0), (0.14, 24.0), (0.22, 26.0, "flat"), (0.26, 8.0), (0.30, -10.0), (0.40, 0.0), (0.46, 8.0), (0.52, 14.0), (0.60, 10.0), (0.66, 6.0),
-                           (0.74, 8.0), (0.82, 32.0, "flat"), (0.95, -8.0), (1.03, 6.0), (1.14, 2.0), (1.2, 2.0)], t))
-        hd = float(okey([(0, -1), (0.14, 10.0), (0.22, 8.0), (0.30, -16.0), (0.40, -6.0), (0.52, 5.0), (0.66, 4.0), (0.74, 4.0), (0.84, 14.0),
-                         (0.95, -9.0), (1.03, 3.0), (1.11, -1.0), (1.2, -1.0)], t))
-        spec = dict(root=root, pelvis=(0, 2 + 0.75 * lean, 0), chest=(0, lean, 0), head=(0, hd, 0), spine_mix=0.6)
+        lean = float(okey([(0, -4), (0.14, 10.0), (0.22, 11.0, "flat"), (0.26, 2.0), (0.30, -10.0), (0.40, -12.0), (0.46, -13.0), (0.52, -12.0), (0.60, -6.0), (0.66, 0.0),
+                           (0.74, 2.0), (0.82, 6.0, "flat"), (0.95, -8.0), (1.03, 6.0), (1.14, 2.0), (1.2, 2.0)], t))
+        hd = float(okey([(0, -6), (0.14, 0.0), (0.22, -1.0), (0.30, -14.0), (0.40, -12.0), (0.52, -12.0), (0.66, -4.0), (0.74, -2.0), (0.84, 2.0),
+                         (0.95, -10.0), (1.03, -5.0), (1.11, -6.0), (1.2, -6.0)], t))
+        spec = dict(root=root, pelvis=(0, 4 + 1.1 * max(lean, 0) + 0.9 * min(lean, 0), 0), chest=(0, lean, 0), head=(0, hd, 0), spine_mix=0.6)   # hips hinge, chest stays open
         sw = float(okey([(0, 2), (0.14, -50.0), (0.22, -58.0, "flat"), (0.26, 50.0), (0.30, 172.0), (0.36, 170.0), (0.44, 150.0), (0.52, 130.0),
                          (0.60, 120.0), (0.66, 95.0), (0.71, 70.0), (0.74, 45.0), (0.82, 10.0), (0.95, 14.0), (1.03, -6.0), (1.14, 2.0)], t))
-        abd = float(okey([(0, -6), (0.14, 6), (0.30, 10), (0.44, 40), (0.52, 45), (0.60, 40), (0.68, 32), (0.74, 28), (0.82, 25), (0.95, 26), (1.03, 0), (1.14, -6)], t))
-        el = float(okey([(0, 15), (0.14, 25), (0.26, 10), (0.30, 2), (0.36, 4), (0.44, 20), (0.52, 30), (0.64, 38), (0.74, 30), (0.82, 45), (0.95, 15), (1.03, 24), (1.14, 15)], t))
+        abd = float(okey([(0, -12), (0.14, 0), (0.30, 10), (0.44, 42), (0.52, 50), (0.60, 46), (0.68, 36), (0.74, 28), (0.82, 22), (0.95, 18), (1.03, -4), (1.14, -12)], t))
+        el = float(okey([(0, 20), (0.14, 28), (0.26, 14), (0.30, 8), (0.36, 10), (0.44, 22), (0.52, 26), (0.64, 34), (0.74, 30), (0.82, 40), (0.95, 22), (1.03, 26), (1.14, 20)], t))
         wr = float(okey([(0, 6), (0.16, -20), (0.26, -30), (0.32, 25), (0.5, 15), (0.66, -15), (0.74, -10), (0.80, 25), (0.92, -8), (1.2, 6)], t))
-        arm = {sd: dict(swing=sw + (10 if sd == "L" else -4) * float(okey([(0, 0), (0.28, 1), (0.6, 0.5), (0.9, 0)], t)), abd=abd + (5 if sd == "R" else 0), elbow=el, wrist=wr, cross=0) for sd in "LR"}
+        asym = float(okey([(0, 0), (0.30, 0.6), (0.48, 1.0), (0.66, 0.8), (0.84, 0.2), (1.0, 0)], t))   # one arm high, one lower (graceful, not twinned)
+        arm = {sd: dict(swing=sw + (22 if sd == "L" else -22) * asym, abd=0.75 * abd + (6 if sd == "R" else 0), elbow=el + 8, elbow_in=10.0, wrist=wr + 8, wrist_out=-10, cross=0) for sd in "LR"}
         she = float(okey([(0, 0), (0.14, -4), (0.30, 12), (0.52, 12), (0.74, 6), (0.80, -6), (0.92, 2), (1.2, 0)], t))
         spec["arm"] = arm; spec["shoulder"] = {sd: (she, 0) for sd in "LR"}
         feet = {}
@@ -286,14 +294,14 @@ class Jump:
                 feet[sd] = dict(pivot=("ball", self._ballg(sd)), pitch=ph, toe=0.0, yaw=6.0)
             else:
                 u = (t - (T0 - 0.03)) / (T1 - (T0 - 0.03))
-                lift = float(okey([(0, 0.0), (0.1, 0.0), (0.3, 0.18), (0.5, 0.26), (0.68, 0.10), (0.9, 0.0, "flat"), (1.0, 0.0)], u)) + (0.05 if sd == "L" else 0.0) * float(okey([(0, 0), (0.45, 1), (0.85, 0)], u))
-                fwd = float(okey([(0, 0.0), (0.45, 0.12), (0.7, 0.04), (1.0, 0.0)], u)) + (-0.02 if sd == "R" else 0.0) * float(okey([(0, 0), (0.5, 1), (0.9, 0)], u))
-                ph = float(okey([(0, -40.0), (0.15, -50.0), (0.5, -35.0), (0.8, -25.0), (1.0, -22.0)], u))
+                lift = float(okey([(0, 0.0), (0.1, 0.0), (0.3, 0.14), (0.5, 0.20), (0.68, 0.08), (0.9, 0.0, "flat"), (1.0, 0.0)], u)) + (0.05 if sd == "L" else 0.0) * float(okey([(0, 0), (0.45, 1), (0.85, 0)], u))
+                fwd = float(okey([(0, 0.0), (0.45, -0.07), (0.7, -0.02), (1.0, 0.0)], u))   # lower legs sweep back at the apex (arched line) + (-0.02 if sd == "R" else 0.0) * float(okey([(0, 0), (0.5, 1), (0.9, 0)], u))
+                ph = float(okey([(0, -40.0), (0.15, -55.0), (0.5, -55.0), (0.8, -35.0), (1.0, -22.0)], u))   # toes pointed in the air
                 base = po.ankle_from_pivot(sd, "ball", self._ballg(sd), ph, 6.0)
                 feet[sd] = dict(pos=base + po.wpos([0, fwd, max(0.0, z - 0.03) + lift]), pitch=ph, toe=ph + float(okey([(0, 0), (0.3, -10), (1, 0)], u)), yaw=6.0)
-            feet[sd]["knee_yaw"] = 12.0
+            feet[sd]["knee_yaw"] = -2.0   # knees together
         spec["foot"] = feet
-        sqc = float(okey([(0, 0), (0.14, -0.05), (0.22, -0.06), (0.28, 0.05), (0.36, 0.06), (0.52, 0.0), (0.70, 0.03), (0.80, -0.08), (0.90, 0.04), (1.0, -0.01), (1.15, 0)], t))
+        sqc = float(okey([(0, 0), (0.14, -0.04), (0.22, -0.05), (0.28, 0.05), (0.36, 0.06), (0.52, 0.02), (0.70, 0.03), (0.80, -0.06), (0.90, 0.03), (1.0, -0.01), (1.15, 0)], t))
         sqh = float(okey([(0, 0), (0.18, -0.03), (0.32, 0.03), (0.5, 0.0), (0.76, 0.0), (0.84, -0.045), (0.94, 0.025), (1.05, 0.0)], t))
         spec["scale"] = {"chest": (1 - 0.5 * sqc, 1 + sqc), "head": (1 - 0.5 * sqh, 1 + sqh)}
         spec["travel"] = 0.0

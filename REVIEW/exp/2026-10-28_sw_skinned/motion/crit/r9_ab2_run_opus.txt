@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 5/10
+
+**B scores**
+- Whole-body motion incl. head: 6. The head now tilts and bobs, a big step up from A's frozen head. But the bob is uneven: the head drops about 2 px at f5 (down R) and only about 1 px at f1 (down L), so the run limps.
+- Secondary readable at 1x: 5. The bow and bun visibly flick up at f2–f4. The skirt hem and bell sleeves barely change shape from frame to frame.
+- Timing/holds: 6. The 60/80 ms alternation works. The flight frames (f3, f7) are no higher than push-off, so the run has no lift.
+- Elegance/confidence/femininity: 4.
+- No slouch: 4.
+- Legs/contacts readability: 6. The legs no longer drop out. The passing leg at f1 and f5 is still a stub.
+- Appeal: 5.
+
+**Top 5 problems in B**
+1. **f5, chest and head:** she hunches forward and down. Pitch the chest back about 8° and raise the head about 2 px so the head sits over the hips.
+2. **f3 and f7, root:** flight has no lift. Raise the whole body 1–2 px above f2/f6, and lower the contact frames f0/f4 by 1 px to match.
+3. **All frames, arms and sleeves:** the arms read as 2–3 px nubs at the chest, and the sleeves never swing. Swing the sleeve tips forward and back about 3 px each, opposite to the legs, and flare the sleeve hem outward at f3 and f7.
+4. **f2, f6, f7, bow:** the bow breaks into scattered single pixels that read as noise at 1x. Keep it as one solid shape and let it trail the head by 1 frame, swinging about 2 px.
+5. **f0, f4 and the flight frames, feet and skirt:** the rear boot is flat and blocky. Point the toe down about 20° and keep the feet narrow without crossing at f4. The skirt hem should also rise about 1 px at flight and settle at contact.

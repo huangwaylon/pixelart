@@ -1,0 +1,45 @@
+### Pixel-Art Animation Critique: P2 vs. R1 Shipped
+
+Overall, **P2** is a massive leap toward production readiness. Fixing the underlying rig completely eliminated the catastrophic single-leg amputations of `r1 shipped` (Walk `f00`, Idle `f00`), and replacing the `r1 chain` pixel pass with P2 saved the character's head/face from turning into a melted, unrecognizable blob. 
+
+However, looking closely at P2's procedural pixel rules, a few of your new constraints (specifically the **guaranteed red sock-top row** and **hem smoothing**) are fighting the 3D/2D projection at 96px, creating new localized artifacts at the skirt-thigh boundary.
+
+---
+
+### Category Breakdown & Scores
+
+#### 1. Limb Continuity & Near-Far Leg Separation
+* **r1 shipped (2/10):** Catastrophic failure. The far leg completely vanishes in Walk `f00` and Idle `f00`. In overlapping frames (Walk `f03`–`f05`), both legs merge into a single undifferentiated black trunk with no internal depth cues.
+* **P2 (8/10):** Huge improvement. Both legs are consistently present, and the new lit rim along the near-leg separation line successfully breaks up the black silhouette during the passing poses (`f03`–`f05` in Walk). At 1x, you can actually read which leg is in front during the cross-over. *Minor ding:* In Walk `f03`, the overlapping feet at the very bottom still mush into a slightly wide, club-like base.
+
+#### 2. Thighs Connected to the Skirt
+* **r1 shipped (3/10):** In Walk `f01` and `f07`, the black outline of the skirt hem cuts hard across the top of the legs, making the thighs look like detached pegs floating beneath a rigid bell. 
+* **P2 (7/10):** The flesh-tone thighs now bridge into the skirt volume much better, especially in the Run cycle (`f00`, `f03`, `f07`). However, the new "hem smoothing" and lack of a clean dividing outline cause the skin tone of the thighs to bleed upward into the red skirt pixels in Walk `f01` and `f02`, creating an awkward, lumpy "flesh-colored apron" effect where the pelvis should be tucked under the cloth.
+
+#### 3. Frame-to-Frame Flicker & Noise
+* **r1 shipped (3/10):** Severe macro-flicker due to whole limbs popping in and out of existence, plus massive silhouette popping on the sleeves and skirt flares between Walk `f02`–`f05`.
+* **P2 (6.5/10):** Macro-flicker is gone, and the 2-tone skirt is much calmer than `r1 chain`. However, **micro-flicker** is still an issue in two places: 
+  1. **The guaranteed red sock-top row:** Because the legs move at sub-pixel angles, forcing a 1px red band at the top of the stockings causes single red/brown pixels to step, stair-case, and pop erratically across Walk `f01`–`f06`.
+  2. **Hair/Face:** In the Idle cycle (`f06`–`f09`), stray dark outline pixels drop down over her forehead and right eye, creating a distracting "blinking/twitching" noise on a pose that should be calm.
+
+#### 4. 1x Readability vs. Hand-Drawn Master
+* **r1 shipped (5/10):** Ironically, because `r1 shipped` hugs the master art's upper body closely (likely via simple warping), the head, bow, and facial expression read quite well at 1x—until your eye drops to the broken, flickering legs.
+* **P2 (7.5/10):** Compared to `r1 chain` (which completely destroyed the face and hair bow into a noisy mess), P2 restores the chibi charm, the white eye-whites, and the clean red tunic + grey obi read at 1x. However, in the 3/4 turn of the Walk (`f01`–`f04`) and Run, her face loses the master's crisp dark lash/iris contrast, reading slightly "blank" and doughy at 1x compared to the master still.
+
+#### 5. Silhouette Elegance (Lumps, Toe Tips)
+* **r1 shipped (4/10):** The sleeves look like inflated balloons in Walk `f03`–`f05`, though the individual boot tips (when visible, like `f02`) actually retained a nice, sharp chibi point.
+* **P2 (7/10):** Slimming the legs helped tremendously, and tucking the arms into the body silhouette cleaned up the messy sleeve wings of `r1 shipped`. The main silhouette flaw left is **pixel-doubling/blunting at the extremities**: her rear/lifted toes frequently terminate in flat 2–3px square blocks (Walk `f01`, `f02`, `f06`) instead of tapering to a 1px point like the master still, and her right hand (screen-right) forms a jagged claw in Idle `f05`–`f09`.
+
+---
+
+### Top 5 Concrete P2 Defects (To Fix Before Final Sign-Off)
+
+1. **Idle `f06`–`f09` (Face/Bangs Contamination):** Dark hair/outline pixels drop straight down into the middle of her face and over her screen-right eye during the middle of the breathing cycle. At 1x, this reads like her face is glitching or she's growing a mustache/scar mid-idle.
+2. **Walk `f01` & `f02` (Thigh/Skirt Hem Bleed - see Closeup Board 2):** Without a dark hemline or shadow under the skirt, the bright skin pixels of both thighs merge into aU-shaped flesh blob that eats upward into the red tunic, ruining the clean horizontal line of her skirt.
+3. **Walk `f03` (Club-Foot Silhouette Merge - see Closeup Board 2):** While the lit rim separates the calves, the two feet merge at the bottom into a single, bumpy, double-wide boot base with a jagged stair-cased left edge. Needs a 1–2px notch in the silhouette to separate the heel from the toe.
+4. **Walk `f01`, `f02`, `f06` & Run `f05` (Squared-Off "Brick" Toe Tips):** On the lifted back foot, the outline wraps around the toe in a flat horizontal/vertical box rather than tapering. Shaving 1–2 corner pixels off the bottom of the lifted foot will restore the dainty pointed boot silhouette of the master.
+5. **Walk `f02`–`f05` (Noisy Red Sock-Top Rule - see Closeup Board 2):** The forced red sock-top row creates isolated 1px red/maroon orphans floating between the bright skin and dark boot outline, especially when one leg crosses behind the other (`f03`, `f04`). At 96px, a darker skin-shadow tone (or dark boot rim) works much better than a forced 1px bright red stripe, which buzzes at 1x.
+
+---
+
+SCORE: 7.2/10 vs 3.4/10

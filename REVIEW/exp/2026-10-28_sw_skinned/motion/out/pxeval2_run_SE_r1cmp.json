@@ -1,0 +1,53 @@
+{
+ "pxeval": 1,
+ "cmd": "seq",
+ "source": "REVIEW/exp/2026-10-28_sw_skinned/motion/prev/r1cmp/run/run_SE_px",
+ "row": null,
+ "row_name": null,
+ "cell": null,
+ "scale_removed": 1,
+ "size": [
+  128,
+  128
+ ],
+ "n_frames": 8,
+ "loop": true,
+ "figure_px_mean": 1853.25,
+ "colours": 17,
+ "durations_ms": null,
+ "changed_mean": 0.7186,
+ "changed_max": 0.8097,
+ "resid_mean": 0.3913,
+ "flicker": 0.3305,
+ "boil": 0.0873,
+ "shade_swap": 0.0486,
+ "motion_px": 0.9369,
+ "articulation": 0.3163,
+ "rigid_share": 0.2066,
+ "sil_change": 0.3562,
+ "pose_range": 0.52,
+ "holds": 0,
+ "area_cv": 0.0814,
+ "centroid_std": [
+  0.5757,
+  1.5596
+ ],
+ "feet_range": 9.0,
+ "top_range": 8.0,
+ "height_range": 11.0,
+ "width_range": 9.0,
+ "head_range": [
+  4.2529,
+  8.601
+ ],
+ "head_jerk": 6.3588,
+ "centroid_jerk": 3.0049,
+ "seam_changed": 0.6453,
+ "seam_resid": 0.299,
+ "seam_ratio": 0.7969,
+ "flags": [
+  "BOILING",
+  "SHADE_SWAP",
+  "FEET_JITTER"
+ ]
+}

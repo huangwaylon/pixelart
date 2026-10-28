@@ -16,7 +16,8 @@ pos = [x for x in argv if not x.startswith("--")]; flags = [x for x in argv if x
 MOT, VIEW, OUT = pos[:3]
 PREVIEW = "--preview" in flags; STAMP = "--stamp" in flags; NOPOST = "--no-post" in flags
 FR = next((f.split("=")[1] for f in flags if f.startswith("--frames=")), None)
-YAW = float(next((f.split("=")[1] for f in flags if f.startswith("--yaw=")), {"SE": -15.0}.get(VIEW, 0.0)))  # view cheat: whole-rig turn about Z (deg, - = toward the SE camera); SE default -15 = master 3/4 frontality (rig/qa/yaw_SE_sweep.png)
+_AL = json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "rig", "align.json")))
+YAW = float(next((f.split("=")[1] for f in flags if f.startswith("--yaw=")), _AL.get(VIEW, {}).get("yaw", 0.0)))  # per-view yaw cheat (rig/align.json; SE -10, NE -25 = master 3/4 frontality, fitted by head_hull.py + rest IoU)
 HERE = os.path.dirname(os.path.abspath(__file__)); EXP = os.path.dirname(HERE)
 PYX = "/Users/waylonhuang/Documents/other/pixelart/.models/pixtools/venv/bin/python"
 os.makedirs(OUT, exist_ok=True)
@@ -64,8 +65,15 @@ sun.rotation_euler = (-ld).to_track_quat("-Z", "Y").to_euler(); sun.data.energy 
 if not sc.world: sc.world = bpy.data.worlds.new("w")
 sc.render.resolution_x = sc.render.resolution_y = CELL * SC; sc.render.film_transparent = True; sc.render.resolution_percentage = 100
 # ------------------------------------------------------------------ materials
+TEXV = VIEW if ("pj_" + VIEW) in body.data.uv_layers and os.path.exists(os.path.join(EXP, "rig", "tex", f"tex_{VIEW}.png")) else None
+def _texnodes(N, L):
+    """master-projection colour (Closest) through UV pj_<VIEW> + face mask pm_<VIEW> (1 = head-group face visible from this view at rest)"""
+    im = N.new("ShaderNodeTexImage"); im.image = bpy.data.images.load(os.path.join(EXP, "rig", "tex", f"tex_{TEXV}.png"), check_existing=True)
+    im.interpolation = "Closest"; im.extension = "EXTEND"; uvn = N.new("ShaderNodeUVMap"); uvn.uv_map = "pj_" + TEXV; L.new(uvn.outputs[0], im.inputs[0])
+    pm = N.new("ShaderNodeAttribute"); pm.attribute_type = "GEOMETRY"; pm.attribute_name = "pm_" + TEXV
+    return im, pm
 def mk(kind):
-    nm = "rm_" + kind
+    nm = "rm_" + kind + "_" + str(TEXV)
     if nm in bpy.data.materials: return bpy.data.materials[nm]
     m = bpy.data.materials.new(nm); m.use_nodes = True; nt = m.node_tree; N = nt.nodes; L = nt.links
     for n in list(N): N.remove(n)
@@ -73,7 +81,15 @@ def mk(kind):
     if kind == "pv":
         at = N.new("ShaderNodeAttribute"); at.attribute_name = "PV" if "PV" in body.data.color_attributes else "Color"; df = N.new("ShaderNodeBsdfPrincipled")
         L.new(at.outputs["Color"], df.inputs["Base Color"]); df.inputs["Roughness"].default_value = 0.8
-        L.new(df.outputs[0], out.inputs[0]); return m
+        if TEXV:  # head shows the projected master pixels (flat), body smooth-shaded
+            im, pm = _texnodes(N, L); em = N.new("ShaderNodeEmission"); L.new(im.outputs["Color"], em.inputs[0]); mx = N.new("ShaderNodeMixShader")
+            L.new(pm.outputs["Fac"], mx.inputs[0]); L.new(df.outputs[0], mx.inputs[1]); L.new(em.outputs[0], mx.inputs[2]); L.new(mx.outputs[0], out.inputs[0])
+        else: L.new(df.outputs[0], out.inputs[0])
+        return m
+    if kind == "tex":
+        im, pm = _texnodes(N, L); em = N.new("ShaderNodeEmission"); L.new(im.outputs["Color"], em.inputs[0]); tr = N.new("ShaderNodeBsdfTransparent")
+        mx = N.new("ShaderNodeMixShader"); L.new(pm.outputs["Fac"], mx.inputs[0]); L.new(tr.outputs[0], mx.inputs[1]); L.new(em.outputs[0], mx.inputs[2]); L.new(mx.outputs[0], out.inputs[0])
+        return m
     em = N.new("ShaderNodeEmission"); L.new(em.outputs[0], out.inputs[0])
     if kind == "lum":
         df = N.new("ShaderNodeBsdfDiffuse"); df.inputs[0].default_value = (1, 1, 1, 1)
@@ -87,16 +103,24 @@ def mk(kind):
 def set_mat(kind):
     body.data.materials.clear(); body.data.materials.append(mk(kind))
 def rpass(path, kind):
-    sc.view_settings.view_transform = "Standard"; sc.render.image_settings.color_depth = "8"
-    if kind == "guide":
+    """passes: guide (matid flat, AA off) | lid (limb IDs flat: L leg red, R leg green, L arm blue, R arm yellow; .L = her left) |
+    tex (projected master head pixels, alpha = head-group mask) | lum | dep | pv (preview)"""
+    sc.view_settings.view_transform = "Standard"; sc.view_settings.look = "None"; sc.view_settings.exposure = 0; sc.view_settings.gamma = 1
+    sc.render.image_settings.color_depth = "8"; sc.render.image_settings.color_mode = "RGBA"
+    cas = body.data.color_attributes
+    if kind in ("guide", "lid"):
+        cas.active_color = cas["LID" if kind == "lid" else "Color"]
         sc.render.engine = "BLENDER_WORKBENCH"; sh = sc.display.shading; sh.light = "FLAT"; sh.color_type = "VERTEX"
         sh.show_object_outline = False; sh.show_cavity = False; sc.display.render_aa = "OFF"
+        sc.render.filepath = path; bpy.ops.render.render(write_still=True); cas.active_color = cas["Color"]; return
+    if kind == "tex" and not TEXV: return
+    sc.render.engine = "BLENDER_EEVEE"; sc.eevee.taa_render_samples = 16 if kind != "pv" else 8; set_mat(kind)
+    if kind == "pv":
+        sc.world.color = (0.32, 0.32, 0.34); sun.data.energy = 3.0
+    elif kind == "tex":
+        sc.world.color = (0, 0, 0); sc.eevee.taa_render_samples = 1  # 1 sample: no AA, exact master colours
     else:
-        sc.render.engine = "BLENDER_EEVEE"; sc.eevee.taa_render_samples = 16 if kind != "pv" else 8; set_mat(kind)
-        if kind == "pv":
-            sc.world.color = (0.32, 0.32, 0.34); sun.data.energy = 3.0
-        else:
-            sc.world.color = (0, 0, 0); sc.view_settings.view_transform = "Raw"; sc.render.image_settings.color_depth = "16"
+        sc.world.color = (0, 0, 0); sc.view_settings.view_transform = "Raw"; sc.render.image_settings.color_depth = "16"
     sc.render.filepath = path; bpy.ops.render.render(write_still=True)
 def px(p):
     co = world_to_camera_view(sc, cam, p); return [round(co.x * CELL, 3), round((1 - co.y) * CELL, 3)]
@@ -106,12 +130,12 @@ def meta():
     for s in "LR": m["foot." + s] = px(W_("toe." + s, "head")); m["hand." + s] = px(W_("hand." + s, "head"))
     return m
 # ------------------------------------------------------------------ render
-kinds = ["pv"] if PREVIEW else os.environ.get("KINDS", "guide,lum,dep").split(",")
+kinds = ["pv"] if PREVIEW else os.environ.get("KINDS", "guide,lum,dep,tex,lid").split(",")
 stem = os.path.join(OUT, f"{act}_{VIEW}")
 t0 = time.time()
 apply({"bones": {}}); rest_meta = meta()
 if not PREVIEW: rpass(stem + "_rest_guide.png", "guide")
-info = {"action": act, "view": VIEW, "cell_1x": CELL, "pivot_1x": PIV, "ppu_h2": PPU, "m_per_h2": K, "scale": SC, "preview": PREVIEW,
+info = {"action": act, "view": VIEW, "cell_1x": CELL, "pivot_1x": PIV, "ppu_h2": PPU, "m_per_h2": K, "scale": SC, "preview": PREVIEW, "yaw": YAW, "tex": TEXV,
         "rest": rest_meta, "frames": []}
 for i in idxs:
     fr = frames[i]; apply(fr)

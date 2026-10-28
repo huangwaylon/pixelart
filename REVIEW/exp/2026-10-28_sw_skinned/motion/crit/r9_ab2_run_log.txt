@@ -1,0 +1,2 @@
+run opus: SCORE A: 4/10, SCORE B: 5/10 (    1685 bytes)
+run argon: SCORE A: 3.5/10, SCORE B: 5.5/10 (    1812 bytes)

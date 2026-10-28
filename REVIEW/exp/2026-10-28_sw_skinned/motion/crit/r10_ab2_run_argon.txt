@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 6/10
+
+**B Breakdown (1-10):**
+* **Whole-body motion incl. head:** 6/10 (Good vertical bounce, but head lacks pitch/nod).
+* **Secondary readable at 1x:** 5/10 (Bun/bow shift slightly, but hair ends, skirt hem, and sleeves lack delayed overlap).
+* **Timing/holds:** 7/10 (60/80ms spacing adds nice weight to down/flight frames).
+* **Elegance/confidence/femininity:** 6/10 (Much more poised than A, nicer arm carriage, but f6 leg stance is clunky).
+* **No slouch:** 8/10 (Spine upright, chest lifted, shoulders down; huge upgrade over A's hunch).
+* **Legs/contacts readability:** 6/10 (No crossing in f1/f2 unlike A, but f0-f2 silhouettes merge and f6 is too wide).
+* **Appeal:** 7/10 (Cute, upright silhouette, clean face projection).
+
+**Top 5 Remaining Problems in B (at 1x):**
+1. **f6 (push-off R), Right/Front Leg:** Stance is bow-legged and masculine ("frog-legged"). Translate right knee/calf **2px left (inward)** to keep a narrow, feminine track.
+2. **f1 & f5 (down), Bun & Bow:** Lack delayed follow-through. Rotate bun/bow **+15° up (shift tip 1-2px up-left)** on down frames, then **1-2px down** on f2/f6 (push-off) for snappy overlap.
+3. **f0–f2, Back Leg (Right):** Merges into front leg silhouette (see Image 2). Shift lifted right calf/foot **1-2px up-left** in f0/f1 to break the silhouette with negative space.
+4. **f3 & f7 (flight), Airborne Feet:** Feet look flexed/flat. Point toes downward (**rotate ankle +20°, shift toe tip 1-2px down-left**) for a graceful arc.
+5. **f3 & f7 (flight), Bell Sleeves & Skirt Hem:** Rigidly glued to torso. Flare bottom edges **1-2px outward/up** on down/contact, trailing **1px down** in flight.

@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 5/10
+
+**B scores**
+- Whole-body motion incl. head: 6. The bob reads, about 7 px of head travel at 1x. The head tilts and the bow shifts 1–2 px.
+- Secondary readable at 1x: 5. The bow/bun moves, but the hair mass barely moves and the skirt hem is nearly static.
+- Timing/holds: 6. The 90/120 alternation works, but the L and R halves don't match.
+- Elegance/confidence/femininity: 4.
+- No slouch: 4.
+- Legs/contacts readability: 4.
+- Appeal: 5.
+
+**Top 5 problems in B**
+1. **f3–f5, legs:** the legs merge into one column and the far leg disappears in all three frames (the owner's flicker complaint is still there). Keep a gap of at least 1 px between the thighs and offset the far leg 2–3 px back, so two feet are always visible.
+2. **f4 contact R vs f0 contact L:** the R stride is about 3 px at 1x against about 7 px for L, so the walk limps. Mirror the f0 stride exactly; the feet should be narrow but never touch or cross.
+3. **f3–f6, arms/sleeves:** the arms swing out to a wide cape shape, about 4–5 px past the torso on each side. That reads as flapping, not soft close arms. Keep the elbows within 1–2 px of the body, move the swing forward and back, and let only the sleeve hem trail.
+4. **f0–f1 and f7, posture:** the head sits about 2 px behind the torso and the chest is caved in, so she reads slouched and stiff. Pitch the chest up about 8°, pull the shoulders back, and stack the head over the pelvis. In f7 the legs are straight and parallel like posts: give the passing leg a lifted, pointed toe, 2 px off the ground.
+5. **Bounce asymmetry, f2 vs f6:** the head is about 4 px lower in f6 than in f2. Match the two halves of the cycle. Also add hip sway, which is currently 0: move the pelvis 1 px toward the stance leg, with a counter-tilt of about 4°, and have the hair and skirt trail 1 frame behind.

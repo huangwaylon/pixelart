@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 5.5/10
+
+**B Sub-scores:**
+* Whole-body motion incl. head: 5/10 (vertical bounce works, torso twists well, head/neck lacks tilt/overlap)
+* Secondary readable at 1x: 4/10 (sleeves/skirt flare f3–f5, but hair/bun/bow are completely frozen)
+* Timing/holds: 6/10 (90/120ms split adds weight, though down-poses feel slightly heavy for a "light" walk)
+* Elegance/confidence/femininity: 5/10 (more poised than A, but arms flare symmetrically like a cone on f3–f5)
+* No slouch: 6/10 (much more upright than A, though f1/f5 still dip forward slightly)
+* Legs/contacts readability: 5/10 (f3 silhouette merges into one thick leg; f4/f5 legs cross tightly)
+* Appeal: 6/10
+
+**Top 5 Remaining Problems in B (at 1x):**
+1. **f3 (up L) – Left (back) leg:** Completely hidden behind the right leg in silhouette, making her look one-legged. Shift back foot/calf **2 px left (SW)** with a pointed toe to separate silhouettes.
+2. **f1–f2 & f5–f6 – Hair bun, bow, and bob tips:** Frozen solid relative to the skull. Add **1–2 px vertical lag/drag** (up on down-frames f1/f5, down on up-frames f3/f7) for overlapping action.
+3. **f3, f4, f5 – Both arms/sleeves:** Flare out symmetrically into a stiff A-frame tent, hiding torso shape. Bring the forward-swinging arm **1–2 px inward** toward the chest with a soft wrist, and pull the back sleeve **1 px back** to break symmetry.
+4. **f7 (up R) – Both legs:** Parallel vertical "tuning fork" columns (stiff). Bend the passing/lifting left knee slightly and point the toe **1 px up-left**, narrowing the gap at the ankles.
+5. **f1 & f5 (down poses) – Chest/shoulders:** Still hunch forward slightly on impact. Rotate upper torso/chest **~5° upright (1 px back/up at collarbone)** to maintain a proud, model-walk posture.

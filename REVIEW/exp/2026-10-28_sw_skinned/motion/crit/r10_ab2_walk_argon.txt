@@ -1,0 +1,17 @@
+SCORE A: 4/10, SCORE B: 6/10
+
+**B Breakdown:**
+- Whole-body motion incl. head: 6/10 (good 2px vertical bounce and head pitch/yaw, but torso/hips feel rigid on the R-step).
+- Secondary readable at 1x: 5/10 (skirt/sleeves flare well on f3–f6, but bow/bun/sidelocks mostly Crawl/noise rather than clear 1–2px overlap arcs).
+- Timing/holds: 6/10 (90/120ms adds weight, though passing-to-up feels slightly floaty vs snappy contact).
+- Elegance/confidence/femininity: 6/10 (much calmer arms than A’s wild flailing, softer wrists, narrower track).
+- No slouch: 7/10 (chest is upright, neck visible, head held higher than A).
+- Legs/contacts readability: 5/10 (L-step f0–f2 is clean; R-step f3–f5 merges into a single dark silhouette column).
+- Appeal: 6/10 (cute silhouette, cleaner face projection, cohesive dress volume).
+
+**Top 5 Remaining Problems in B (at 1x):**
+1. **f3–f5 (Up L to Down R) – Legs/Feet:** Back and front legs completely merge in the silhouette (scissoring/crossing). Separate the lifted/swinging L-leg **1–2px screen-left (W/NW)** so the gap/step reads like f0–f2.
+2. **f7 (Up R) – Feet/Pose:** Both feet land nearly parallel at equal height, looking like a sudden standing stop. Lift the trailing R-foot **2px up** with a **+20° pointed toe** to drive into f0 contact.
+3. **f2 & f6 (Passing) – Bow/Bun:** Secondary lag doesn't read clearly at 1x. Delay and flare the red bow/bun **1–2px up/back (NW)** on Down/Passing (f1–f2, f5–f6), snapping down on Up (f3, f7).
+4. **f4–f5 (Contact/Down R) – Front (R) Arm:** Hand/sleeve merges into the hip contour. Swing the R-hand **1–2px back/left (W)** to open the waist silhouette and counter the R-leg.
+5. **f3–f5 – Head/Chin:** Projected face pixels jitter and lose the dark jawline on f3/f4. Lock the chin outline **1px lower/cleaner** across f3–f5.

@@ -1,0 +1,17 @@
+SCORE A: 3.5/10, SCORE B: 5.5/10
+
+**B Breakdown (1-10):**
+* **Whole-body motion incl. head:** 6/10 (Good 2px vertical bounce, fixes A’s hunch, but torso/pelvis stays rigid).
+* **Secondary readable at 1x:** 5/10 (Bow/hair trails move 1–2px, but rasterize as noisy stray pixels rather than clean shapes).
+* **Timing/holds:** 6/10 (60/80ms cadence helps weight, though flight/down swap weight unevenly between halves).
+* **Elegance/confidence/femininity:** 5.5/10 (Posture is upright and arms tucked, but high knees look like heavy marching, not light/graceful).
+* **No slouch:** 7.5/10 (Major improvement over A’s goblin-hunch; spine is vertical).
+* **Legs/contacts readability:** 5/10 (Better than A, but f1/f4/f5 silhouette merge makes legs read as a single stump).
+* **Appeal:** 6/10 (Charming proportions, held back by procedural pixel-crawl).
+
+**Top 5 Remaining Problems in B:**
+1. **f1 & f5 (Back/Passing Leg):** Completely merges into the standing leg silhouette. Offset the passing knee/shin 1–2px SE or add a 1px dark outline separator so the legs don't vanish into one blob at 1x.
+2. **f5 & f6 (Front/Right Knee):** Lifts way too high (~85° hip flexion), looking like a heavy stomp/march. Lower the knee by 2px at 1x (~20° lower) for a light, feminine jog.
+3. **f0–f7 (Airborne Feet):** Toes are blunt/dorsiflexed on f0, f3, f4, f6. Rotate airborne ankles 20–30° downward (1–2px toe extension down-back) to get the requested pointed toes.
+4. **f2, f3, f4, f6 (Hair/Bow Top):** Single-pixel "antennas" pop 1–2px above the head outline and flicker at 1x. Clamp/connect stray pixels directly to the main hair/bow mass.
+5. **f2 & f6 (Rear Arm/Sleeve):** Completely swallowed by the torso silhouette. Pull the rear elbow/bell-sleeve 1–2px NW (back) on push-off to read the counter-swing.
