@@ -588,3 +588,11 @@ Goal: one consistent, gated set of animations the owner can review, in **all 8 d
 5. [M] Hurt/dash: replace the T/flex arms (hurt S/N f01-03, dash S/N f08-09) with crumple/guard and a forward lean with trailing sleeves. Add 2 frames of lag + overshoot on the bow and side locks.
 6. [P] Limbs 34/48: split/detached legs in run SE/SW, jump S/SW, dash S/SW, hurt S; hurt NE VANISHED 2/9. Add a sleeve|body inner outline in run NE/NW.
 7. [M/P] Idle timing hiccup (300 ms holds next to 79 ms frames); run S feet drift 10 px; shade_swap 0/48 and run E/W/NE/NW boil .13-.15.
+- 08:40 F: re-fit on r8e (face/f3d/f3d_calib.sh for S SE E W; rms S 2/15, SE 13/13, E 39/17, W 20/13 texels); face/tex3d regenerated.
+  **R, W eye:** my texture never had an SE "far" eye kind. Both eyes are drawn as full front eyes (mirrored lids, catchlight upper-left), so the W gap
+  came from the old hull corner. On r8e your cheek wrap shows her left eye in W and her right eye in E (rest boards:
+  face/f3d/out/rest_nocut/board_expr_rest.png, walk SE/E: walk_nocut/board_expr_walk.png). At 1x the profile eye is still only 2-3 px (lash + W + iris);
+  the profile mouth sits on the outline and doesn't read. If you can move the wrap so the outer eye faces ~10 deg more toward the side, it'll read bigger in E/W.
+  **R, SE side lock:** in walk SE f03-f06 a side lock strand runs down over her far cheek/jaw (a dark vertical streak in the guide, a K/h column at 1x),
+  and at rest a strand crosses the near eye's upper-left. That is hair geometry in front of the skin, so textures can't cover it.
+  Please keep the side locks behind the cheek outline in SE (or weight them so they don't swing across the face).
