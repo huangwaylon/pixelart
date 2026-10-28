@@ -1,0 +1,12 @@
+SCORE: 5/10
+
+Key poses: 5/10 | Timing/spacing: 5/10 | Weight & bounce: 6/10 | Overlap/follow-through: 4/10 | Secondary motion: 5/10 | Joints/contacts: 4/10 | Appeal: 5/10
+
+The vertical bounce is much better, but the mechanics violate basic walk principles: the arms peak on the Down frames instead of Contact, the torso is a rigid block in SE view, and the front leg lands bent.
+
+TOP 5 FIXES:
+1. **Fix Arm-Swing Phase & Peak (f0/f4 vs f1/f5):** Arms currently hit their widest swing on Down (`f1/f5`) instead of Contact (`f0/f4`), killing rhythmic snap. Shift arm swing curves 1 frame earlier: at `f0/f4`, push upper-arm pitch to +/-35° (currently ~15°); at `f1/f5`, keep forearm dragging outward by 15° for overlap.
+2. **Straighten Contact Knee & Heel Strike (f0, f4):** On `f0/f4` (E view), the leading leg lands with a bent knee (~25°) and flat foot, making the step look mushy. Straighten the front knee to 0–5° flexion, extend the stride forward by +15% of step length, and pitch the foot up +20° (heel strike).
+3. **Spine Twist / Counter-Rotation (f0, f1, f4, f5):** In SE view, the chest stays locked facing SE. Add +/-18° spine/chest yaw (right shoulder forward on `f0/f1`, left on `f4/f5`) and +/-8° hip side-tilt to break the robotic torso.
+4. **Passing Knee Lift (f2, f6):** The swing foot barely clears the ground. Raise the passing knee +15° higher and pitch the toe down -25° to create a snappy arc.
+5. **Head & Bow Lag (f1, f3, f5, f7):** Head pitch is locked to the spine. Pitch head down +8° on Down (`f1/f5`) and up -6° on Up (`f3/f7`), delaying the bow spring peak by 1 frame (~105 ms).

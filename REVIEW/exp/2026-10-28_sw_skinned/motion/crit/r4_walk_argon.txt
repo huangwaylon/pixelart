@@ -1,0 +1,12 @@
+SCORE: 6/10
+
+Key poses: 6/10 | Timing/spacing: 5/10 | Weight & bounce: 7/10 | Overlap/follow-through: 5/10 | Secondary motion: 6/10 | Joints/contacts: 5/10 | Appeal: 6/10
+
+**Critique:** The vertical hip/head bounce (f1/f5 down, f2/f6 high) has improved weight, but the cycle still reads mechanical. According to Richard Williams' walk mechanics, your highest point is peaking on Passing (f2/f6) instead of Up (f3/f7), making the bounce feel rushed. Spine/neck are locked Together, elbows lack overlap, and feet are flat on contact/push-off.
+
+**TOP 5 CONCRETE FIXES:**
+1. **Peak Bounce on "Up" (f2–f3, f6–f7, Pelvis):** Shift the highest vertical pelvis translation from Passing (f2/f6) to Up (f3/f7). Lower Pelvis Y on f2/f6 by 25% of total bounce height, and raise f3/f7 by 15% so she lifts off the toe push.
+2. **Foot Roll / Ankle Mechanics (f0, f3, f4, f7, Feet):** Contacts (f0 L-foot, f4 R-foot) are flat—pitch ankle UP +25° (heel strike). On Up (f3 R-foot, f7 L-foot), keep the back toe planted and pitch ankle DOWN -35° for push-off instead of lifting the whole foot flat.
+3. **Head/Spine Overlap (f1, f2, f5, f6, Head/Neck):** Break the stiff neck. On Down (f1/f5), lag the head by pitching it UP +8°; on Passing/Up (f2–f3, f6–f7), pitch it DOWN -10° to create a snappy nod.
+4. **Chest Counter-Twist in SE View (f0, f1, f4, f5, Spine2):** Increase Y-axis (yaw) torso twist by +15° (right shoulder further forward on f0/f1, left on f4/f5) so the silhouette twists clearly at 30° ortho.
+5. **Forearm Drag (f1, f5, Elbows):** Delay forearm swing on Down frames by rotating elbows backward 20° relative to the upper arm.

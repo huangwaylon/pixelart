@@ -1,0 +1,10 @@
+SCORE A: 4/10, SCORE B: 5/10
+B vs owner complaint: partly. B adds forward lean, bigger arm swing and real up-and-down bounce (head drops in f1/f5, rises in f3/f7), but the legs and head still read mechanical, and the two halves of the cycle don't match.
+
+Top 5 remaining problems in B:
+
+1. **Flight frames f3 and f7, legs:** a foot still reaches the ground line, so she never visibly leaves the ground. Raise the whole body about 2–3 px above f2/f6. Tuck the trailing foot up toward the butt, and keep the leading foot about 3 px above the ground.
+2. **Contact f4 vs f0, legs:** the two halves don't match. In f4 the free knee is tucked high and crosses the planted leg, so it reads as a passing pose. In f0 the leading leg sits under the body instead of reaching forward. In both, plant the leading heel about 3–4 px ahead of the hips with the knee nearly straight.
+3. **Arms f3–f6:** the sleeves fling out sideways, which reads as flailing rather than a counter-swing. Swing them forward and back instead, about 60% of the current width. In f1 and f5 the arms clamp against the body; open the elbows about 2 px.
+4. **Torso f6:** she leans back on push-off. Tilt forward about 10–15°, with shoulders 2 px ahead of the hips, the same as f2.
+5. **Head and hair, all frames:** the head stays rigid. Delay the head bob one frame behind the hips and add a ±1 px tilt. The spring motion on the bun, bow and skirt hem barely shows: in f2/f6 add a 1–2 px trailing lag, and in f3/f7 add a 1–2 px upward lift.

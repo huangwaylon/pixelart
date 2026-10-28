@@ -1,0 +1,21 @@
+SCORE: 4/10
+
+| Category | Score |
+|---|---|
+| Key poses | 4 |
+| Timing/spacing | 4 |
+| Weight & bounce | 3 |
+| Overlap/follow-through | 4 |
+| Secondary motion | 5 |
+| Joints/contacts | 3 |
+| Appeal | 4 |
+
+The body is still mostly a rigid block. Arms, torso and hips barely change across the loop. Only the head and the springy parts move, so it still reads stiff. The onion skin shows wide arcs on the bow and bun, but the torso barely moves at all.
+
+**TOP 5 fixes**
+
+1. **f2–f4 transfer has no spacing, then pops at f5.** f2 and f3 are nearly identical to f1, and the head turn from 3/4 (f5) to front (f6) snaps in one frame. Ease the pelvis shift over about 30%, 60%, 85%, 100% of the move. Start the head turn on f4: about 15° yaw, then 35° on f5, then the full turn on f6.
+2. **No weight or bounce.** Drop the pelvis about 0.06 of a head height on the first frame of each settle (f5, f11), overshoot about 0.02 upward on the next frame, then hold. Tilt the pelvis 6–8° toward the weighted leg and counter-tilt the shoulders 4–5° the other way. Right now the hips sit level.
+3. **Knee and sock-top skinning breaks.** At f4–f5 and f9–f11 a skin gap and creases open at the thigh-high bands. Fix the weights there, and keep the free knee bent at 12–18° rather than locked straight.
+4. **Arms and sleeves are dead.** Swing the arms 6–10° about 60 ms (one frame) after each pelvis move, and let the sleeves trail the arms by one more frame. Have the hands settle with a small 3° overshoot on f6 and f0.
+5. **Breathing is invisible, and the bow jitters.** Scale the chest 3–4% and lift the shoulders about 0.02 of a head on f1 and f7. In the E view, the bow lobes on f2–f4 flicker frame to frame. Add damping (roughly double it) so the bow drags one frame behind the head and then settles, instead of buzzing.

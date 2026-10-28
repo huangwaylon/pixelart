@@ -1,0 +1,17 @@
+SCORE: 5/10
+
+* Key poses: 5/10
+* Timing/spacing: 5/10
+* Weight & bounce: 6/10
+* Overlap/follow-through: 4/10
+* Secondary motion: 5/10
+* Joints/contacts: 4/10
+* Appeal: 5/10
+
+**TOP 5 CONCRETE FIXES:**
+
+1. **Inverted Vertical Timing (Pelvis/Root, f2–f3 & f6–f7):** The head and pelvis peak on Passing (f2, f6) instead of Up (f3, f7)—classic Williams walk error. Lower pelvis on f2/f6 by ~30% of total bounce height, and make f3/f7 the true highest point (+20% higher than current f2/f6) so f3->f4 and f7->f0 read as snappy drops into Contact.
+2. **Bent Front Knee & Flat Foot on Contact (Legs/Feet, f0 & f4):** The leading leg lands bent and nearly flat-footed, killing stride silhouette and snap. Extend the front knee on f0 (L) and f4 (R) to near-straight (~5–10° bend) and pitch the foot up +25° for a clear heel-strike; snap the foot flat on Down (f1, f5).
+3. **Asymmetric Arm Swing & Broken Elbows (Arms, f0, f1, f3, f7):** In SE view, f3/f7 lose silhouette completely compared to f4/f5. Increase shoulder swing amplitude by +20° forward/back on f0/f4; keep elbows flexed forward 15–25° across all frames to prevent the stiff hyper-extended look on f0/f4 back arms.
+4. **Spine & Head Counter-Overlap (Spine/Neck, f1, f3, f5, f7):** The head and torso move as a rigid block. Delay head pitch by 1 frame: on Down (f1, f5) tilt head back +8° (drag); on Up/Contact (f3–f4, f7–f0) nod chin down -8° (follow-through). Add +10° chest Z-twist opposing the hips on f0/f4.
+5. **Spring Phase Lag (Bow/Bun/Skirt, all frames):** Secondary parts peak with the body instead of dragging. Offset spring phase by 1 frame (~105 ms): flare bow lobes and skirt up/back +20° on Down (f1, f5) and compress/drop them -15° on Up (f3, f7).

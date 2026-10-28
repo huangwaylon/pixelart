@@ -1,0 +1,11 @@
+SCORE: 5/10
+
+Key poses: 5/10 | Timing/spacing: 5/10 | Weight & bounce: 5/10 | Overlap/follow-through: 4/10 | Secondary motion: 5/10 | Joints/contacts: 5/10 | Appeal: 6/10
+
+**TOP 5 CONCRETE FIXES:**
+
+1. **Twinning / Stiff Legs (Asymmetry & Silhouette):** Both legs move as an identical fused block throughout the jump. In **f5–f8**, stagger the legs: tuck the left knee **20–25° higher** and trail the right leg **15° lower** with toes pointed down **30°** to break symmetry and improve game-view silhouette.
+2. **Board-Stiff Spine & Neck (Overlap):** In the side view (**f4–f10**), the spine and head stay locked upright, causing the rejected "stiff" feel. In **f2 & f12**, pitch chest forward **+15°** further. At **f4–f5**, arch spine back **15°** and tilt head back **20°** (looking up). At **f7 (apex)**, curl spine forward **15°** before falling.
+3. **Floaty Timing & Weak Jump Height (Timing/Weight):** A 1330ms standing jump feels underwater. Cut total duration to **~950ms**: reduce **f2** to 70ms, **f4** to 40ms, **f5–f6** to 55ms each, **f8** to 45ms, and **f13–f14** to 60ms each. Raise pelvis peak height in **f6–f7** by **+0.5 head-heights** for snappy contrast against **f2/f12**.
+4. **Robotic Arm Arcs (Follow-Through):** Arms freeze in a stiff V-shape from **f6–f8**. In **f4–f5**, reach arms **20° higher** overhead. During **f8–f10 (fall)**, let arms trail *upward* **25–30°** behind the falling torso due to air resistance, then whip them down in **f12–f13** (**40°** past hips) to lag behind the body.
+5. **Damped Secondary Bounce (Exaggeration):** Hair bun, bow, and skirt barely react. On fall (**f8–f10**), flare skirt hem up **25°** and trail bow lobes straight up **40°**. On squash (**f12–f13**), snap the bun/bow downward **35°** with a vibrant **+20°** upward rebound at **f14**.

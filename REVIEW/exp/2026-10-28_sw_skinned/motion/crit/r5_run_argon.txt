@@ -1,0 +1,8 @@
+SCORE: 5/10
+Key poses: 5 | Timing/spacing: 5 | Weight & bounce: 6 | Overlap/follow-through: 4 | Secondary motion: 4 | Joints/contacts: 4 | Appeal: 5
+
+1. **f0, f4 (Contact) – Front Foot & Knee:** Front leg is already bent and flat-footed *under* the hip, killing stride reach and creating a mushy step. Extend the front leg forward by +0.25 step length, straighten the knee by ~20°, and pitch the foot up +25° for a clear heel-strike.
+2. **f2, f6 (Push-off) – Back Leg & Spine:** The push-off is vertical and weak; the character pops straight up instead of driving forward. Straighten the pushing knee completely (+25° extension), plantar-flex the ankle +30° onto the toe tip, and pitch the torso/spine forward +15° across the whole cycle to establish forward momentum.
+3. **f3, f7 (Flight) – Arms & Legs:** Silhouettes are muddy because the arms drop out of sync with the legs, and the trailing shin drops too early. Drive the forward elbow up +25° (hand to chin level) and tuck the trailing heel up toward the glutes (+30° knee flexion) to widen the flight split.
+4. **f1, f5 (Down) vs f3, f7 (Flight) – Head/Neck:** The head is locked to the torso, dipping forward too much on f1/f5. Counter-rotate the head +15° up on f1/f5 to keep eyes locked forward, and add a 1-frame delayed nod (-10° pitch) on f2/f6.
+5. **All Frames – Secondary (Bow, Bun, Skirt):** Spring damping is too stiff; the bow barely moves. Delay the bow/bun peak rotation by 1–2 frames: flare bow lobes back -30° on f1/f5 (descent) and snap them forward/down +25° on f2/f6 (push-off).

@@ -1,0 +1,10 @@
+SCORE A: 4/10, SCORE B: 5/10
+B vs owner complaint: partly fixed. B now has a vertical bob, the skirt and sleeves follow through, and the far sleeve swings. But the joints and gait still read wrong: contacts look like marching and the near arm is frozen.
+
+Top 5 remaining problems in B. Amounts are in display pixels, about 300 px per body height.
+
+1. **Contact poses (f0, f4), legs.** The contact leg is planted straight down under the hips, not reaching forward. Move the heel forward about 25–30 px and give the knee a slight bend of about 10°. f4 currently reads as a knee-raise.
+2. **Near arm (all frames).** The fist sits fixed at the chest, swinging less than 10 px. It should pump against the legs: forward and up about 30 px at f2 and f3, back past the hip about 25 px at f6 and f7.
+3. **f7 flight, legs.** The legs are almost closed and one is vertical, so she looks grounded. Open the stride to match f3 (about 60 px foot spread) and raise both feet about 10 px. Right now the left and right halves of the cycle don't match.
+4. **Body bob, f1 and f5.** The down positions only drop about 10–15 px and the torso doesn't compress. Drop about 20 px, add a 1–2 px squash on the torso, and stretch about 5 px at push-off (f2, f6).
+5. **Head and torso, all frames.** No lean or twist comes through the spine: the head angle is the same in every frame. Lean forward 8–10° and keep it, counter-rotate the chest about 5° against the hips, and add a 2–3 px head lag after each contact. The bun and bow trail too little; add another 4–6 px of drag at f1 and f5.

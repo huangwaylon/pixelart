@@ -1,0 +1,13 @@
+SCORE A: 4/10, SCORE B: 5/10
+
+B vs owner complaint: partly. B has more whole-body motion and real secondary motion (sleeves, skirt, bob), but the arms flap outward instead of swinging forward and back, the two halves of the cycle don't match, and the legs still look like straight sticks, so it still reads as unnatural.
+
+Top 5 remaining problems in B:
+
+1. **Arms, f3–f5:** both sleeves fly out sideways at the same time, about 8–10 px past the torso, almost a T-pose, so it reads as flapping. The arms should swing forward and back, opposite to the legs, by about ±4 px. They should drop to about 2–3 px flare, not hang dead straight as in f0, f1, f6 and f7.
+2. **Contact poses, f0 and f4:** the stride is too narrow. At f4 the legs nearly overlap, which should never happen on a contact frame. The feet need about 6–8 px of front-to-back spread, with a straight leading leg and a heel strike.
+3. **Left and right halves don't match:** f2 has a big torso twist and skirt flare, but f6 has almost none. The arm flare happens at f3–f5 but has no match at f7–f1. Each half should mirror the other.
+4. **Skirt and dress outline:** it jumps from a narrow tube (f0, f1, f7) to a wide bell (f2–f5), roughly 6 px wider each side. The spring is too loose and the flare starts all at once. Lower the stiffness so it overshoots by about 2–3 px with a 1-frame delay.
+5. **Knees and hair:**
+   - The knees barely bend. The passing leg in f2 and f6 needs about 3 px of knee lift with the toe pointing down. f1 and f5 need a visible knee bend of about 1–2 px to absorb the landing.
+   - The bun and bow barely move. They should trail the head bob by 1 frame, about 1–2 px up and down, peaking at f1 and f5.

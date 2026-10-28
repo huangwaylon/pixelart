@@ -1,0 +1,8 @@
+#!/bin/zsh
+# ab.sh ACT TAG -> motion/crit/<TAG>_ab_<ACT>_{opus,argon}.txt : A/B of OLD (rejected) vs NEW pixel frames
+A=$1; T=$2; C=/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/motion/crit; IMG=$C/ab_${A}.png
+Q="You are a strict senior game animator (Pokemon / Octopath / Sea of Stars / PMD sprite standards, Richard Williams mechanics). The image shows two versions of the same ${A} animation of a chibi pixel-art girl (SE game view), frame by frame: row A = OLD version, which the owner rejected as 'stiff and unnatural, the joints look off; need more dynamic movement, more movement details across the whole body, bouncing parts'; row B = NEW version (new skinned rig + new motion with whole-body mechanics and spring-simulated hair/bun/bow/sleeves/skirt). Both are raw automatic pixel renders (no hand cleanup), and the B rig is smaller/differently proportioned - judge the MOTION only. Answer in <= 220 words. First line exactly 'SCORE A: N/10, SCORE B: N/10' (motion quality, strict: 5 = usable but stiff, 7 = good game quality). Second line: 'B vs owner complaint: fixed / partly / not' and why in one sentence. Then the top 5 remaining problems in B, each with frame numbers, body part, direction and amount."
+zsh -ic "claude-as be_system --dangerously-skip-permissions --model claude-opus-5-5 -p \"$Q  Use the Read tool to view this image (absolute path): $IMG . Do not modify any files.\"" > $C/${T}_ab_${A}_opus.txt 2>/dev/null &
+(cd /Users/waylonhuang/Documents/other/pixelart/swordswoman && .venv/bin/python tools/gemini.py ask "$Q Do not inflate." $IMG > $C/${T}_ab_${A}_argon.txt 2>&1) &
+wait
+for w in opus argon; do echo "$A $w: $(grep -m1 'SCORE A' $C/${T}_ab_${A}_${w}.txt) ($(wc -c < $C/${T}_ab_${A}_${w}.txt) bytes)"; done

@@ -1,0 +1,19 @@
+SCORE: 5/10
+
+- Key poses: 5
+- Timing/spacing: 6
+- Weight & bounce: 5
+- Overlap/follow-through: 4
+- Secondary motion: 4
+- Joints/contacts: 4
+- Appeal: 5
+
+The crouch (f1–f2) and the landing squash (f12) read well. The airborne section is the weak part. The apex and fall frames (f6–f10) all share nearly the same pose. In the E view the spine and head arch backward at the top. Feet stay flat at take-off, and the rig parts don't react when the body changes direction.
+
+**Top 5 fixes**
+
+1. **f3–f4 take-off stretch:** Point the feet down 40° so the toes leave the ground last. Raise the arms 30° to straight overhead, elbows bent no more than 10°. Lift the pelvis by 0.08 of body height. Right now f4 is only half stretched.
+2. **f6–f7 apex:** Remove the backward lean of about 20° in the E view; tilt the head 5° forward instead. Tuck both knees: hips bent 80°, knees bent 100°. Lengthen f7 from 80ms to 120ms so the hang reads.
+3. **f8–f10 fall:** Make this a distinct pose. Arms trail upward, 40° above the shoulder. Legs straighten and reach down with toes pointed 30°. The hair ends, bun and bow lobes should lift about 0.1 head height, and the skirt hem should flip up 15–20°. Drive the springs with upward lag while she falls.
+4. **f11–f12 landing:** Cut contact from 60ms to 35ms and land toe, then heel. Squash deeper: hips drop another 0.1 of body height, knees splay 10°. The sleeves and hair should bottom out one frame late, at f13.
+5. **f13–f14 recovery, plus f0/f15:** Make the overshoot readable. Heels come up 15°, chest lifts 8°, arms flare out 20°. The f14 dip should be 0.05 of body height, at 80ms. In the standing frames f0/f15, bend the knees and elbows 10–15° and add a small hip tilt to remove the locked, stiff look.

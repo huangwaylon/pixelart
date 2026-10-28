@@ -1,0 +1,19 @@
+SCORE: 5/10
+
+- Key poses: 5
+- Timing/spacing: 6
+- Weight & bounce: 4
+- Overlap/follow-through: 5
+- Secondary motion: 5
+- Joints/contacts: 4
+- Appeal: 5
+
+The contacts and passing poses read clearly in the E view, and the arm and sleeve swing works. But the up poses (f3, f7) look like she's standing still, and in the onion skin the head barely moves, so the bounce is mostly missing. The torso is upright and rigid from the hips up, which makes the cycle look like legs on a post.
+
+**TOP 5 FIXES**
+
+1. **Vertical bounce (f1/f5 down, f3/f7 up):** Drop the pelvis by about 0.12 of a head at f1/f5 and raise it by about 0.10 of a head at f3/f7, so the total bounce is about 0.2 head. Ease into the top and snap out of the bottom.
+2. **Up pose (f3/f7):** Push off the trailing foot. Lift its heel 30–40° (toe stays planted) and bend the forward knee about 25° as it swings through. Right now both legs are straight and vertical, which reads as a dead frame.
+3. **Foot contacts (f0/f4):** Land the leading heel first with the toe up about 20°, then roll the foot flat at f1/f5. Lengthen the stride by about 15%, and bend the trailing knee about 10° at contact.
+4. **Torso and hips (all frames):** Lean the torso forward 6–8° all the time. Rotate the pelvis ±10° and the shoulders ±8° in the opposite direction, peaking at the contacts. Tilt the hip down on the swing-leg side about 5° at passing.
+5. **Delayed secondary motion:** Make the bun, bow lobes, and skirt hem lag the pelvis by one frame (about 105 ms) and roughly double how far they move. The bow should flip up about 15° at f1/f5 and settle at f3/f7. The skirt should flare about 10° toward the back leg. Let the sleeve tips trail the forearm by one frame, and add a ±4° head tilt that also lags the torso by one frame.

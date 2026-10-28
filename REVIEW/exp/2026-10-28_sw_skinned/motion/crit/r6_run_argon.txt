@@ -1,0 +1,19 @@
+SCORE: 5/10
+
+Key poses: 5/10
+Timing/spacing: 5/10
+Weight & bounce: 6/10
+Overlap/follow-through: 4/10
+Secondary motion: 5/10
+Joints/contacts: 4/10
+Appeal: 5/10
+
+The vertical bounce is much improved, especially on the down frames (f1, f5), and the high knees on push-off (f2, f6) add good energy. However, the mechanics of the contact/flight phases are reversed, and the upper body remains a rigid block.
+
+TOP 5 CONCRETE FIXES:
+
+1. **f0, f4 (Contact) – Front Leg & Foot:** The front leg contacts with a bent knee and flat foot directly under the hip, killing stride length. Extend the front leg forward by +0.3 stride lengths, straighten the knee to ~165°, and pitch the foot up +25° for a clear heel strike.
+2. **f2, f6 (Push-off) vs f3, f7 (Flight) – Back Leg:** The back leg actually drops *down* during flight (f3/f7) instead of kicking up after push-off, making the flight look like a walk step. On f3/f7, curl the trailing lower leg up by +45° (heel toward glutes) and extend the hip back +15°.
+3. **f0–f7 (All) – Spine & Head Pitch:** The torso and head stay locked vertically. Add +15° forward spine lean across the cycle. Add head overlap: pitch the head down +10° on f2/f6 (push-off) and snap it back/up +12° on f1/f5 (down).
+4. **f1, f5 (Down) vs f3, f7 (Flight) – Chest Twist (Y-axis):** Increase counter-rotation in the upper body so the bell sleeves clear the torso silhouette. Rotate the chest +20° toward the forward knee on f3/f7, peaking with a +5° overshoot on f0/f4.
+5. **f1, f2 & f5, f6 – Bow/Hair Springs:** The red bow barely deforms. Delay the spring peak by 1 frame (70 ms): flatten the bow lobes down -25° on f1/f5 (from downward inertia) and flare them up +30° on f3/f7.

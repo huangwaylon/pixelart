@@ -75,3 +75,8 @@ REVIEW/exp/*/frames/
 REVIEW/exp/*/tmp/
 REVIEW/exp/*/work/
 REVIEW/exp/*/out/
+# per-frame render passes: keep only the GIFs and sheets
+REVIEW/exp/*/render/out/*/*
+!REVIEW/exp/*/render/out/*/*.gif
+!REVIEW/exp/*/render/out/*/*_sheet.png
+REVIEW/exp/*/motion/prev/

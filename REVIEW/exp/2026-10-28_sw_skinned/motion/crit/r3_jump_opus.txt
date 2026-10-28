@@ -1,0 +1,37 @@
+SCORE: 5/10
+
+- Key poses: 5
+- Timing/spacing: 4
+- Weight & bounce: 4
+- Overlap/follow-through: 4
+- Secondary motion: 4
+- Joints/contacts: 4
+- Appeal: 5
+
+**Top 5 fixes**
+
+1. **Body height spacing is backwards (f4–f11).** The rise speeds up and then stops dead, and the fall slows down into the ground. Measured foot drops on the fall are 18→20→15→10 px. Re-space as a fraction of apex height:
+   - Rise: f5 55%, f6 90%, f7 100%. Make f7 the true apex; right now f7 sits lower than f6.
+   - Fall: f8 92%, f9 65%, f10 25%, f11 0.
+   - Raise the apex about 40% (it's currently only ~0.2 of body height).
+
+2. **Take-off stretch (f3–f4).** f3 still reads as the crouch. Make it a half-extended in-between with knees around 40°.
+   - f4: heels off the ground, ankles pointed down 45°.
+   - f4: both arms straight overhead (shoulders 160°, elbows under 15°), not bent beside the head.
+   - f4: spine arched back 10°, head tilted back 15°.
+
+3. **Landing (f11–f13).** At f11 the knees are locked and the feet land flat. Instead:
+   - f11 (40 ms): knees bent 20°, toes touch first.
+   - f12 (120 ms): drop the pelvis 25% of leg length, pitch the torso forward 20°, chin down 10°.
+   - f13: really rise onto the toes, with heels lifted ~4 px at final sprite scale. It isn't visible at all right now.
+
+4. **Secondary drag (hair, bun, bow lobes, skirt, sleeves).** These parts barely move.
+   - f5–f6: trail downward 15°.
+   - f8–f10: float upward 25–30°, with the skirt flaring 25%.
+   - f12: slam down past rest by 10°, rebound on f13, settle by f14.
+   - Bow lobes should lag the head by one frame. Lower the spring stiffness about 30%.
+
+5. **Joints and air pose.**
+   - f1–f3: the knees knock and cross. Turn the hips out 10° and keep the knees over the toes.
+   - f6–f7: bring the knees forward 70° instead of trailing behind. Offset one leg by 15° for asymmetry, and point the toes.
+   - f2: lengthen the crouch hold to 120 ms.

@@ -1,0 +1,16 @@
+SCORE: 5/10
+
+- Key poses: 5. Push-off (f2/f6) and flight (f3/f7) read well. The contacts (f0/f4) look like a second down pose: the foot lands under the hips with a bent knee, so there is no reach.
+- Timing/spacing: 5. The 70 ms frames are even and have no accent. The head drops only at f1/f5, so f0 to f1 and f3 to f4 have almost no vertical change.
+- Weight & bounce: 4. The body moves up and down too little (about 4% of height in the onion skin). There is no squash at down and no stretch at push-off.
+- Overlap/follow-through: 5. The bow lobes flick, but the hair, bun and skirt move with the body and don't lag behind it.
+- Secondary motion: 5. The sleeves swing, but the skirt hardly flares.
+- Joints/contacts: 4. At f1 (SE) the pelvis and trunk twist sharply toward the camera. At f6 the back knee bends at an odd angle. The f5 knee goes almost to the chest.
+- Appeal: 5. The silhouettes are readable, but the trunk is upright and the motion feels mechanical.
+
+TOP 5 FIXES
+1. **f0/f4 contact:** put the landing foot about 0.3 of a step ahead of the pelvis, with the knee bent about 15° (nearly straight). Pull the back foot to about 0.4 step behind.
+2. **f1/f5 down:** drop the pelvis an extra 0.06 of body height. Scale the torso about 0.92 in Y and 1.05 in XZ. At f2/f6, stretch it to about 1.06 in Y and raise the pelvis about 0.04 at f3/f7.
+3. **Whole cycle:** lean the trunk forward 12–15° (it's now about 5°). Add 4° more lean at f1/f5 and come back up 4° at f3/f7.
+4. **f1:** cut the pelvis/trunk yaw by about 60%, so it peaks around 10°. Keep the counter-twist between shoulders and hips at about 8°. At f5, lower the knee lift by about 20°. At f6, open the back knee to about 160°.
+5. **Springs:** hair and bun should trail the head by about 1 frame (70 ms), and the bow lobes by about 1.5 frames. Peak skirt flare should come at f3/f7, rising about 20°. Peak sleeve swing should land 1 frame after the arm's extreme.

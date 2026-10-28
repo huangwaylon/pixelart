@@ -1,0 +1,19 @@
+SCORE: 4/10
+
+- Key poses: 4
+- Timing/spacing: 5
+- Weight & bounce: 4
+- Overlap/follow-through: 4
+- Secondary motion: 4
+- Joints/contacts: 3
+- Appeal: 4
+
+The cycle has started to move, but the poses don't read yet. The stride is short, the bounce is weak and in the wrong frames, and the arms flap out to the sides instead of swinging. The onion skin shows feet bunched in a small clump with almost no fore/aft travel, so it reads as shuffling, not walking.
+
+**Top 5 fixes**
+
+1. **Stride and contacts (f0, f4):** Lengthen the stride by about 40%. Feet should land about 0.6 head-width apart in E view. The front heel should strike with the toe up about 20°, and the back toe should push off with the heel up about 30°. Right now both feet look flat-ish and close together.
+2. **Bounce (f1/f5 vs f3/f7):** The body bobs only about 3–5 px, and f3/f7 ("up") are no higher than f2/f6. Drop the pelvis by about 8% of body height at f1/f5, with the knee bent about 25°. Raise it about 4% above contact height at f3/f7, with the stance leg straight.
+3. **Arms (f2–f5, f6–f1):** The sleeves go out to the sides like wings in SE f3–f5. Bring the arms in to about 15° from the body and swing them forward/back ±35° in the sagittal plane, opposite to the legs. Set the peak swing at the contacts, not one frame later.
+4. **Head:** It nods sharply at f1/f5, about 15°, which reads as pecking. Cut that to about 5°. Add a counter-tilt of about 4° to each side and delay the head by 1 frame (105 ms) behind the pelvis.
+5. **Secondary motion (all frames):** The side hair lock pokes straight out at f2–f3; stiffen its spring or limit its angle to 20°. Give the bun and bow 1–2 frames of lag with about 10° of overshoot after the f1/f5 drops. Give the skirt a hem flare of about 10° that lags 1 frame behind the hip sway.

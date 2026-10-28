@@ -1,0 +1,16 @@
+SCORE: 5/10
+
+- Key poses: 5. Contact and down read well. Passing (f2/f6) is an upright "stand" pose, and up (f3/f7) is not clearly the highest frame.
+- Timing/spacing: 5. All frames are evenly 105 ms, so there are no holds or snap.
+- Weight & bounce: 6. The f1/f5 drop is good, but the high point lands on f2 instead of f3, so the bounce feels hiccupy.
+- Overlap/follow-through: 4. Hair, bun and bow mostly move with the head and lag by less than one frame.
+- Secondary motion: 4. The skirt barely flares. The sleeves flap, but at the same phase as the arms.
+- Joints/contacts: 5. Contact feet land flat (no heel strike). The f6 passing leg crosses the midline (scissoring). Knees stay soft and under-bent in the passing frames.
+- Appeal: 5
+
+**Top 5 fixes:**
+1. **Bounce peak (f2/f6 → f3/f7):** Lower the pelvis at passing by about 0.04 step. Raise the up frames so they are the highest, about 0.08 step above contact. Add a 1-frame delay on the head so it trails the pelvis.
+2. **Contacts (f0/f4):** Toe up 15–20°, heel strikes first. Lengthen the stride by about 15%. On f1/f5, bend the front knee 25° and roll the foot flat.
+3. **Passing leg (f2/f6):** Knee up to about 70° and foot under the hip, not across the midline (move it out about 0.1 step). Ankle points down 20°.
+4. **Torso/arms:** Twist the torso ±10° against the hips and roll the shoulders ±6°. Raise arm swing to ±35°, with forearms trailing 1 frame and wrists flicking at the extremes. On f1/f5, tilt the head down 5° into the drop.
+5. **Secondary:** Lag the bun, bow lobes and hair tips 2 frames (about 210 ms) behind the head, at roughly 1.5× their current amplitude. Lift the skirt hem 8–10° on the up frames and pinch it in on the down frames. Lag sleeve tips 1–2 frames behind the hands. Optionally use 90/120 ms timing on the down/up frames for snap.

@@ -1,0 +1,19 @@
+SCORE: 5/10
+
+- Key poses: 5
+- Timing/spacing: 5
+- Weight & bounce: 5
+- Overlap/follow-through: 4
+- Secondary motion: 4
+- Joints/contacts: 4
+- Appeal: 5
+
+This is a clear step up from the stiff version. The torso lean, the f1/f5 crouch and the trailing leg in flight are all there. But the legs read as a forward-leaning shuffle-hop, not a run. The front leg never reaches ahead of the hips, so all the leg spread happens behind the body. The head is tucked down and the springs barely lag.
+
+**TOP 5 fixes:**
+
+1. **f0/f4 contact, leading leg:** Plant the foot about 0.35 of a step ahead of the pelvis, knee about 15° bent. Right now the contact foot lands under or behind the hips, which looks like a passing pose.
+2. **f3/f7 flight, front thigh:** Raise it 25–35° so the knee drives forward and up toward hip height, with the shin angled down and forward. This should match the trailing leg's backward extension, which is already good.
+3. **Head and neck, all frames:** Lift the chin 15–20° and cut the forward pitch to about 10°. Bob the head about 6% of body height, lowest on f1/f5 and highest on f3/f7. The onion skin shows the head almost static, and the face is lost in the SE view.
+4. **Arms, f2/f6 and f3/f7:** Swing the arms 30–40° past their current limits, with the forward fist reaching chin height. Let the sleeve hems trail the forearm by 1 frame (70 ms). Today the fists stay close to the chest and the sleeves move with the arms in lockstep.
+5. **Springs (bun, bow lobes, hair, skirt):** Delay their peaks 1–2 frames behind the pelvis. Add about 10–15° of up-flip on landing (f1/f5) and a lift in flight (f3/f7). The bun and bow currently move with the skull, and the skirt only flares on f5. Also hold the squash on f1/f5 a little longer, about 90 ms, and shorten flight to about 50 ms for snap.

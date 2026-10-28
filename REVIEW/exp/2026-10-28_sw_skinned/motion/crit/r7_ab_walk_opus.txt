@@ -1,0 +1,10 @@
+SCORE A: 4/10, SCORE B: 5/10
+B vs owner complaint: partly. B adds real vertical bob, torso lean/twist and some secondary motion on the skirt and bow, but the arm action and stride are still weak, and the two halves of the cycle don't match, so it reads as stiff in a different way.
+
+Top 5 remaining problems in B:
+
+1. **Arms, f0/f1/f7 vs f3–f5:** the arms don't swing forward and back. In f0, f1 and f7 the sleeves are pinned to the torso with almost no swing. In f3–f5 both sleeves flare out sideways at once, about 6–8 px each, like a shrug or flap. They need opposite forward/back swing, about ±25°, counter to the legs.
+2. **Left/right cycle asymmetry, f0–f3 vs f4–f7:** the second half doesn't mirror the first. f4 and f5 are wide and squat, while f0 and f1 are narrow and closed.
+3. **Torso yaw, f2→f4:** the chest swings from 3/4 view to almost front-on, about 30°, then back. That's too much. It should twist about 10°, and the hips should counter-rotate.
+4. **Legs, f6/f7:** at f6 (passing) the knees cross inward. At f7 the back leg is hidden behind the skirt, so only one leg reads. Spread the stride 2–3 px and keep both feet visible.
+5. **Bob and secondary timing, f1/f5:** the down poses drop the body only about 2–4 px and the head goes down at the same time. The hair, bun and bow should lag 1 frame behind the body and overshoot about 2 px. Right now the bow barely moves. The skirt flares left at f2 (about 5 px) but has no matching flare at f6.

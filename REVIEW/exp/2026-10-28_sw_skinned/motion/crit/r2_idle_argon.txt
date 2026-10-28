@@ -1,0 +1,11 @@
+SCORE: 5/10
+Key poses: 5 | Timing/spacing: 5 | Weight & bounce: 4 | Overlap/follow-through: 4 | Secondary motion: 5 | Joints/contacts: 5 | Appeal: 5
+
+The motion still suffers from mechanical twinning, flat horizontal weight shifts, and locked joints. The onion skin reveals minimal vertical bounce and a rigid spine.
+
+TOP 5 FIXES:
+1. **Add vertical dip & overshoot (Weight/Bounce):** In transfers (f3, f9), drop pelvis vertically by ~10% of leg length, bending knees +20° for a clear passing breakdown. In settle frames (f5, f11), add a slight downward overshoot (-5% height) before rising into holds (f6, f0).
+2. **Exaggerate contrapposto & spine C-curve (Key Poses/Joints):** In weight holds (f0-f1, f6-f7), tilt pelvis 12–15° down toward the unweighted leg and counter-tilt shoulders 10° opposite. Straighten the load-bearing leg and bend the relaxed knee +25° with heel lifted.
+3. **Break arm symmetry & A-pose stiffness (Joints/Appeal):** Both arms hang in a rigid A-pose throughout (f0–f11). Lower elbows closer to ribs (-15° abduction), bend elbows asymmetrically (+25° L vs +10° R), and swing forearms 15° opposite to pelvis shift, trailing by 1 frame.
+4. **Stagger head turn & add pitch arc (Overlap/Arcs):** Head and torso rotate simultaneously between f2–f6 and f8–f11. Delay head yaw by 1 frame behind chest rotation, and dip chin down 10° during mid-transfers (f3, f9) for a scooped arc.
+5. **Amplify spring physics & breathing (Secondary Motion):** On settle frames (f5, f6, f11, f0), flare bow lobes, hairlocks, and bell sleeves +20° outward/upward, settling 1 frame after the body. Increase chest pitch +8° on inhales (f1, f7).

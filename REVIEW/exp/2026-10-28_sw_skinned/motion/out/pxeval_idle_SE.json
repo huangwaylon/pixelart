@@ -1,0 +1,53 @@
+{
+ "pxeval": 1,
+ "cmd": "seq",
+ "source": "/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/motion/prev/px/idle/idle_SE_px_hs",
+ "row": null,
+ "row_name": null,
+ "cell": null,
+ "scale_removed": 1,
+ "size": [
+  128,
+  128
+ ],
+ "n_frames": 12,
+ "loop": true,
+ "figure_px_mean": 2085.75,
+ "colours": 18,
+ "durations_ms": null,
+ "changed_mean": 0.4603,
+ "changed_max": 0.6961,
+ "resid_mean": 0.132,
+ "flicker": 0.1551,
+ "boil": 0.0237,
+ "shade_swap": 0.0303,
+ "motion_px": 0.7011,
+ "articulation": 0.1666,
+ "rigid_share": 0.5398,
+ "sil_change": 0.162,
+ "pose_range": 0.4814,
+ "holds": 0,
+ "area_cv": 0.042,
+ "centroid_std": [
+  2.6069,
+  1.567
+ ],
+ "feet_range": 3.0,
+ "top_range": 5.0,
+ "height_range": 6.0,
+ "width_range": 8.0,
+ "head_range": [
+  9.0,
+  5.0
+ ],
+ "head_jerk": 3.2524,
+ "centroid_jerk": 2.6724,
+ "seam_changed": 0.5635,
+ "seam_resid": 0.0757,
+ "seam_ratio": 0.8095,
+ "flags": [
+  "BOILING",
+  "SHADE_SWAP",
+  "FEET_JITTER"
+ ]
+}

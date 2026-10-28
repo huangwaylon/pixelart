@@ -1,0 +1,17 @@
+SCORE: 5/10
+
+- Key poses: 5/10
+- Timing/spacing: 5/10
+- Weight & bounce: 6/10
+- Overlap/follow-through: 4/10
+- Secondary motion: 5/10
+- Joints/contacts: 4/10
+- Appeal: 5/10
+
+TOP 5 CONCRETE FIXES:
+
+1. **Extend Contact & Flight Stride (Exaggeration/Silhouette):** In f0/f4 (Contact) and f3/f7 (Flight), the legs never fully straighten, looking like a tip-toe jog. In f0/f4, extend the front knee by +25° to land heel-first (+0.25 step length forward). In f2/f6 (Push-off), straighten the back knee to ~170° and plantar-flex the ankle +30° for a snappy drive.
+2. **Add Forward Run Lean & Spine Pitch (Weight/Appeal):** The torso is too upright (~5°), making her look weightless. Pitch the pelvis/spine forward +15° across the entire cycle. Add a 6° forward chest nod on f1/f5 (Down) and arch back +6° on f2/f6 (Push-off).
+3. **Break Arm/Sleeve Symmetry (Pose Readability):** In SE view (f1, f3, f5), the sleeves hug the ribcage and merge with the skirt silhouette. Swing the forward forearm up +25° (hand to chin height) and flare the back arm outward/backward +20° on f0/f3/f4/f7 to open a clear gap behind the back.
+4. **Fix Spine/Hip Counter-Rotation (Joints):** In SE f0–f1, the hips and chest face the same angle. Add ±15° Y-axis counter-twist between pelvis and chest on f0/f3/f4/f7 so the back shoulder pulls visibly behind the torso.
+5. **Delay Hair Bow & Skirt Overlap (Follow-Through):** The bow peaks prematurely on f2/f6. Delay the bow/bun spring by 1 frame (70 ms): snap the bow lobes down -25° on f2/f6, peaking up +30° on f3/f7, and slamming down on f0/f4.

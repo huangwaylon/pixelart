@@ -1,0 +1,19 @@
+SCORE: 5/10
+
+- Key poses: 5
+- Timing/spacing: 5
+- Weight & bounce: 4
+- Overlap/follow-through: 5
+- Secondary motion: 5
+- Joints/contacts: 5
+- Appeal: 5
+
+What's wrong: the head bounces, but the high point lands on passing (f2/f6) instead of up (f3/f7). The torso stays upright and square, with no lean, twist or hip roll. At f3/f7 the feet sit flat side by side, so the pose looks like standing still. Arm swing peaks about 2 frames late (sleeves hang at f0/f1 and flare at f3/f4). The secondary parts move too little to read at sprite size.
+
+**TOP 5 FIXES**
+
+1. **Arm swing timing (f0/f4).** Put the biggest swing on the contact frames: shoulders ±30° forward/back, elbows bent about 20°, and the same amount on both sides. Arms hang neutral at passing (f2/f6). Sleeves should trail the arms by 1 frame (105 ms).
+2. **Bounce curve.** Lowest point at f1/f5: drop the pelvis about 1/12 of the head height and bend the stance knee 15–20°. Highest point at f3/f7, not f2/f6. At f3/f7 the stance foot should push off onto its toe.
+3. **Up pose (f3/f7).** Lift the swing knee 40–50° forward with the foot about 1/3 of a step ahead. Make the stride about 20% longer. At contact (f0/f4) the front knee is nearly straight and lands on the heel, toe up about 15°.
+4. **Torso (whole cycle).** Lean forward 6–8°. Twist hips and shoulders in opposite directions about ±8°, biggest at f0/f4. Roll the hips ±5° with the stance-side hip up at f1/f5. Roll the head ±3° the opposite way.
+5. **Secondary motion.** Double the spring amplitude on hair, bun and bow lobes, and keep them about 1 frame behind the head's vertical movement. Bow lobes should flick up at f1/f5 and droop at f3/f7. The skirt hem should swing ±10° against the hip roll and lift at f1/f5.

@@ -1,0 +1,11 @@
+SCORE: 5/10
+Key poses: 5 | Timing/spacing: 5 | Weight & bounce: 5 | Overlap/follow-through: 4 | Secondary motion: 3 | Joints/contacts: 5 | Appeal: 5
+
+The motion still reads as rigid 3D interpolation rather than snappy sprite animation. The limbs move synchronously (twinning), the spine lacks C/S-curve reversals, and secondary elements (hair, bow, skirt, sleeves) are glued to the body instead of dragging and overlapping.
+
+TOP 5 FIXES:
+1. Break leg twinning in mid-air (f5–f9): Both legs bend identically at the exact same angle. Offset the near leg vs. far leg: on f6–f7, tuck the lead knee 25° higher toward the chest and trail the other leg 20° lower so the silhouette reads clearly in both E and SE views.
+2. Spine & head overlap on launch/fall (f4, f8–f9): On f4 (stretch), arch the chest back 15° and tilt head back 20° (nose up) for a dynamic launch line. On f8–f9 (fall), pitch head down 15° to look at the landing spot while arms trail upward 30° behind the shoulders (drag).
+3. Exaggerate landing squash & widen stance (f11–f12): f12 (100ms) is too slow and narrow-kneed. Drop pelvis 20% lower, splay knees outward 25° in SE view for a cute chibi silhouette, pitch torso forward 15°, and cut f12 hold from 100ms to 65ms so she rebounds with snap.
+4. Secondary bounce & drag (f4–f13): Spring simulation is barely visible. Boost hair bun, bow lobes, and skirt amplitude by 2.5x: drag bow/skirt downward 30° on launch (f4–f5), flare skirt/hair upward 35° during fall (f8–f9), and whip downward with 2-frame delay on f12–f13.
+5. Fix stiff "zombie" arms on descent (f9–f11): Instead of holding arms straight forward in side view, sweep them back/up 40° during f8–f9, then whip them down and forward on f11–f12 to counter-balance the landing squash.

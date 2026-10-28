@@ -1,0 +1,102 @@
+{
+ "id": "2026-10-28_sw_skinned_motion",
+ "date": "2026-10-28",
+ "project": "swordswoman",
+ "kind": "experiment",
+ "status": "needs-review",
+ "title": "Skinned rig: new whole-body motion + baked spring secondary (idle, walk, run, jump)",
+ "question": "Does authored whole-body motion (pelvis bob/sway/rotation, counter-rotating chest, overlapping arms, IK-planted feet with heel-to-toe roll, lagging head, squash and stretch) with spring-simulated hair, bun, bow, sleeves and skirt fix the owner's verdict on the H2 animations ('stiff and unnatural, joints off, need more dynamic movement and bouncing parts')?",
+ "method": "Motion files in the CONTRACT format (motion/<act>.json, 24 fps source, sprite frames with timing_ms) baked by motion/scripts/mbuild.py: analytic 2-bone leg IK on a treadmill foot track (no slide at travel_m_per_s); compass-gait pelvis height for the walk (DOWN lowest, UP highest); phase-lag overlap from shoulder to hand; head lag spring; damped particle chains for every secondary chain (gravity hang, travel drag, cone limits, head/thigh/torso collision, skirt panels driven by the thighs, settled loops with seam <= 0.4 mm). Rendered with R's render_motion.py (--preview for the boards; full pixel chain + head stamp for the GIFs). 7 critique rounds (Opus + Argon) on numbered SE/E frame grids + onion skins, then A/B against the old rejected frames. pxeval seq on the SE pixel frames.",
+ "result": "walk 8×105 ms (bob 4.6 cm p-p, heel strike 30°, arms ±24–28° moving inward); run 8×70 ms (30% stance with a flight phase, lean 24°, arms −52/+62°); idle 12 frames over 2.4 s (holds 300/300, eased transfers 80/120/160, settle 240, contrapposto ±11°, head turn toward the camera); jump 16 frames one-shot (crouch hold, take-off stretch, ballistic rise, 120 ms apex, 35 ms toe landing, squash, overshoot onto the toes). pxeval walk boil .13→.06, idle pose_range .27→.46, head_range 1–4→5–7 px (the head now bobs and tilts instead of a rigid stamp). A/B old→new: walk 4→5 (Opus) / 4→5 (Argon); run 4→5 / 3.5→5.5; idle 4→5 / 3.5→5.5; both say 'partly fixed'. Absolute critic scores plateaued at 5–6 (jump Opus 6, key poses 7). Target 7 not reached. | r4 (R, 13:45): re-baked against the mirrored rig (sleeve/hair_side bones were 75-129/14 mm off symmetry, so the sleeves flared on one half of the cycle only), thicker legs, larger hands, SE yaw -15; re-rendered with final.sh. pxeval walk SE before -> after: flicker .292->.262, boil .058->.056, rigid_share .434->.355, sil_change .292->.264, motion_px 1.16->.97, head_jerk 3.7->4.5, centroid_jerk 3.9->5.6; flags unchanged (BOILING, SHADE_SWAP, FEET_JITTER). Run loop seam 3.8 mm after the re-bake. Pre-r4 files: motion/out/pre_r4/.",
+ "verdict": "Needs the owner's eye: clearly livelier than the H2 frames in every A/B, but not yet game quality. Open issues: sleeves read as 'wings' on one half of the SE cycle (SE projection + asymmetric sleeve bones in the rig, reported to R); torso twist/roll too small on screen; bun/bow/skirt bounce limited by the rig's deformation caps; big boots hide heel strikes. Critics contradict each other on stride length and foot placement, so further critic rounds have low value.",
+ "scores": {
+  "A/B walk (Opus/Argon)": "4→5 / 4→5",
+  "A/B run": "4→5 / 3.5→5.5",
+  "A/B idle": "4→5 / 3.5→5.5",
+  "abs walk/run/idle/jump (Opus)": "5 / 5 / 5 / 6",
+  "abs (Argon)": "5 / 6 / 6 / 5",
+  "pxeval walk boil": ".13 → .06",
+  "pxeval idle pose_range": ".27 → .46",
+  "loop seam": "<= 0.4 mm"
+ },
+ "media": [
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/cmp_walk_SE_old_vs_new.gif",
+   "caption": "walk SE: OLD (H2 rigid rig, rejected) | NEW (skinned + new motion), pixel chain + head stamp",
+   "wide": false
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/cmp_run_SE_old_vs_new.gif",
+   "caption": "run SE: OLD | NEW"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/cmp_idle_SE_old_vs_new.gif",
+   "caption": "idle SE: OLD | NEW"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/jump_SE_px4x.gif",
+   "caption": "jump SE (new; no old version), pixel chain 4x"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/walk_SE_preview.gif",
+   "caption": "walk SE smooth preview"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/walk_E_preview.gif",
+   "caption": "walk E smooth preview"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/run_E_preview.gif",
+   "caption": "run E smooth preview"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/idle_SE_preview.gif",
+   "caption": "idle SE smooth preview"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/jump_E_preview.gif",
+   "caption": "jump E smooth preview"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/ab_walk_SE_old_vs_new.png",
+   "caption": "A/B walk SE, OLD H2 vs NEW r4 (mirrored rig)",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/ab_run_SE_old_vs_new.png",
+   "caption": "A/B run SE, r4",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/out/ab_idle_SE_old_vs_new.png",
+   "caption": "A/B idle SE, r4",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/crit/board_jump_SE_final.png",
+   "caption": "jump SE frames (preview render)",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/crit/board_walk_E_final.png",
+   "caption": "walk E frames (preview render)",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/motion/crit/board_run_E_final.png",
+   "caption": "run E frames (preview render)",
+   "wide": true
+  }
+ ],
+ "links": [
+  {
+   "href": "exp/2026-10-28_sw_skinned/NOTES.md",
+   "label": "NOTES (M section: keys, timing, springs, round log)"
+  },
+  {
+   "href": "exp/2026-10-28_sw_skinned/CONTRACT.md",
+   "label": "contract + status logs"
+  }
+ ],
+ "next": "Owner review of the old-vs-new GIFs. Then: R mirrors the sleeve bones; try a camera-aware SE cheat (more chest twist, less outward arm swing in diagonal views); raise the bow/skirt deformation caps if the rig allows; add E/S full pixel renders."
+}

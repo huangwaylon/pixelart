@@ -1,0 +1,9 @@
+SCORE: 6/10
+Key poses: 6/10 | Timing/spacing: 7/10 | Weight & bounce: 5/10 | Overlap/follow-through: 6/10 | Secondary motion: 6/10 | Joints/contacts: 5/10 | Appeal: 6/10
+
+TOP 5 CONCRETE FIXES:
+1. **Flat vertical arc & backwards transfer mechanic (Weight & Bounce):** In E-view/onion skin, the pelvis/head stay on a flat horizontal line and dip slightly *up* on f2/f8 instead of dipping down through the transfer. Drop pelvis down -10% leg length on f3/f4 and f9/f10 (crouch through the middle of the weight shift), then pop up into the settles (f5, f11) to create a true U-shaped bounce arc.
+2. **Dead 600ms holds (Moving Hold / Breathing):** f0->f1 and f6->f7 (300ms each) are nearly identical in the body, creating a robotic 600ms freeze. Add chest/head breathing expansion on f1 and f7: pitch spine back +4 deg, raise shoulders +2 deg, and tilt head up +3 deg so the holds stay alive.
+3. **Weak contrapposto & stiff arms (Key Poses):** On weight holds (f0-f1, f6-f7), the hips and shoulders stay too level and arms stay Frozen in A-pose. Tilt pelvis +8 deg toward the supporting leg, counter-tilt chest -6 deg, and relax/drop elbows inward by 10 deg during holds, flaring them out +12 deg only during transfers (f3-f4, f9-f10).
+4. **Head leads the body (Overlap):** On f2-f4 and f8-f10, the head rotates simultaneously with the torso. Delay head yaw by 1 frame (keep looking SE on f2, whip across on f3-f4, overshoot +5 deg on f5, settle on f6).
+5. **Foot sliding/rolling (Contacts):** The planted R foot twists/rolls slightly on the ground between f3-f5, and the unloaded L foot slides from f6-f8. Lock IK foot rotation on planted feet, and peel the unloaded heel up +15 deg on f6-f7.

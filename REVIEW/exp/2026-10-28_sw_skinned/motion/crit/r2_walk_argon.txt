@@ -1,0 +1,13 @@
+SCORE: 5/10
+
+Key poses: 5 | Timing/spacing: 5 | Weight & bounce: 6 | Overlap/follow-through: 4 | Secondary motion: 5 | Joints/contacts: 4 | Appeal: 5
+
+The bounce is visible now, but the cycle still fails Williams' mechanics: the pelvis/root vertical timing is inverted (peaking at Passing instead of Up), the arms are severely asymmetrical, and the legs stay bent throughout, creating a "Groucho walk" with zero toe-off/heel-strike readability.
+
+TOP 5 FIXES:
+
+1. Fix inverted vertical bounce curve (Pelvis/Head, f1–f3, f5–f7): Currently, the head peaks on Passing (f2, f6) and drops on Up (f3, f7). Shift the root Y-translation curve 1 frame later (+105ms): make f1/f5 the absolute lowest point, f2/f6 mid-rise, and f3/f7 the highest peak (+15% higher than current f2).
+2. Symmetrize arm swings & fix peaks (Shoulders/Elbows, f0, f1, f4, f5): f4 has wide arm extension while f0 is tucked; peak swing happens on f4 (Contact) instead of f5 (Down). Match f0 to f4's wider spread, then delay peak arm extension to Down (f1/f5) by +15° shoulder rotation, with elbows dragging behind by 1 frame.
+3. Straighten legs on Contact & add foot roll (Knees/Ankles, f0, f4): Both knees are bent on Contact, making her look sunken. Straighten the front leg knee by +20° on f0 (L) and f4 (R) with heel pitched up +25°; push the back foot into a +35° toe-off pitch.
+4. Add spine/head drag (Head/Neck, f1, f3, f5, f7): The head pitches forward in lockstep with the torso on Down (f1, f5). Offset head pitch by 1 frame: tilt chin UP +10° on Down (f1, f5) to drag against the fall, and tilt chin DOWN -12° on Up (f3, f7).
+5. Clean up spring simulation on bow & sleeves (Bow/Sleeves, f1, f2, f5, f6): On f1/f5 (E view), the hair bun/bow collapses forward into the skull. Clamp forward spring rotation by 20° and set sleeve/bow upward flare to peak strictly on f2/f6 (as body rises) and flatten downward on f0/f4.

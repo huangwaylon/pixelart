@@ -1,0 +1,13 @@
+SCORE: 5/10
+
+Key poses 5 · Timing/spacing 6 · Weight & bounce 5 · Overlap/follow-through 5 · Secondary motion 5 · Joints/contacts 4 · Appeal 5
+
+**What works:** the transfers now dip, and the head turn from away (f0) to camera (f6) is clear acting. The 80/120/160 ms easing into each transfer is snappy.
+
+**Top 5 fixes:**
+
+1. **f6–f7 weight-R pose is flat.** The hips are level and both legs are straight, so it reads as standing on both feet. Drop the pelvis 8–10° toward the free L side and shift it 0.15 step over the R foot. Bend the free knee 15° and put that heel up about 2 px. The torso should counter-tilt 5° the other way. Also check that f0–f1 is still this strong.
+2. **f4/f10 transfer extreme is a knock-kneed crouch.** The knees cave in and, in the E view, the torso pitches forward about 15°. Cut the dip to about 60% of its depth and keep the knees over the toes (no inward collapse). Hold the torso pitch at 5° or less. Make the downward squash read through the pelvis, not the knees.
+3. **The holds are dead.** f0≈f1 and f6≈f7. Add a moving hold: chest rises 1.5–2% and shoulders lift 2° on each breath, and the head drifts 2–3° over the 600 ms. Move the blink to the second half of the hold.
+4. **The bow lobes over-swing.** In the onion skin they fan about 40° and stand straight up like horns at f2, f3 and f10. Add about 30% more spring damping and cap travel at about 15°. The peak should land 1 frame (~120 ms) after the head stops.
+5. **The arms don't drag.** The hands stay fixed at the hips while the pelvis travels. Delay the arm swing 1 frame behind the pelvis, with 6–8° of shoulder roll opposite the hip shift. Give the sleeve hems 1 frame more lag and about 10° of overshoot at f5 and f11.

@@ -1,0 +1,308 @@
+# build_rig.py (skinned rig, R): Blender -b --factory-startup -P build_rig.py -- work/body.npz rig.blend rest_skeleton.json
+# body.npz (build_mesh.py, H2 frame: 2.0 units tall, front -Y, her left +X) -> CONTRACT frame: metres (K = 0.775 m per H2 unit), front +Y,
+# her left -X (Blender .L = character's left), Z up, soles on z=0.  Armature with the contract bone names + secondary chains, part-aware
+# analytic skin weights (joint-plane partition of unity per body part, smooth windows for hair / skirt / sleeve / bow chains), Laplacian
+# weight smoothing over the mesh graph, Armature modifier with Preserve Volume (dual quaternion).
+import bpy, sys, os, json, math
+import numpy as np
+from mathutils import Vector, Matrix
+a = sys.argv[sys.argv.index("--") + 1:]
+NPZ, BLEND, SKJ = a[:3]
+K = 0.775
+bpy.ops.wm.read_factory_settings(use_empty=True)
+d = np.load(NPZ, allow_pickle=True); G = json.loads(str(d["G"])); DZ = G["DZ"]
+V = d["V"].astype(float); FC = [tuple(f) for f in d["F"]]; fmat = d["fmat"]; vlab = d["vlab"]; HV = d["head_v"]; BUNV = d["bun_v"]
+MATS = {'hair': (61, 50, 53), 'dress': (192, 59, 61), 'skin': (248, 218, 194), 'sleeve': (142, 34, 44), 'socks': (38, 42, 71),
+        'boots': (42, 34, 42), 'bow': (232, 96, 79), 'obi': (69, 56, 73), 'eyes': (85, 128, 162)}
+MN = list(MATS)
+def Fw(p):  # H2 frame -> contract frame
+    p = np.asarray(p, float); return np.stack([-K * p[..., 0], -K * p[..., 1], K * p[..., 2]], -1)
+nv = len(V)
+# majority filter on the H2 head's hair/skin/eye labels (the H2 vertex-colour boundary is ragged after the remesh): 3 passes face->vertex->face
+flab = d["flab"]; fmat = fmat.astype(object)
+FA_ = np.array([f[:3] for f in FC]); headf = np.nonzero(flab == "head")[0]; HM = ["hair", "skin", "eyes"]
+for it in range(int(os.environ.get("HEADMAJ", "3"))):
+    vv = np.zeros((nv, 3))
+    for j, m in enumerate(HM):
+        sel = headf[fmat[headf] == m]
+        for c in range(3): np.add.at(vv[:, j], FA_[sel, c], 1)
+    fv = vv[FA_[headf]].sum(1); fv[:, 2] *= 1.6  # keep the eyes from eroding
+    fmat[headf] = np.array(HM, dtype=object)[fv.argmax(1)]
+# per-vertex material (majority of incident faces) -> used for hair masks
+vm_votes = {}
+vmat = np.empty(nv, dtype=object)
+for fi, f in enumerate(FC):
+    for v in f: vmat[v] = fmat[fi]  # last wins; refined below for hair
+hairv = np.zeros(nv, bool)
+for fi, f in enumerate(FC):
+    if fmat[fi] == "hair":
+        hairv[list(f)] = True
+# ------------------------------------------------------------------ skeleton (H2 frame)
+B = {}  # name -> (head, tail, parent, zaxis_hint in H2 frame)
+FWD = np.array([0, -1.0, 0]); UP = np.array([0, 0, 1.0])
+def bone(n, h, t, par, z=FWD): B[n] = (np.array(h, float), np.array(t, float), par, np.array(z, float))
+bone("root", [0, 0, 0], [0, -0.2, 0], None, UP)
+bone("pelvis", [0, 0, 0.90], [0, 0, 1.00], "root")
+bone("spine", [0, 0, 1.00], [0, 0, 1.12], "pelvis")
+bone("chest", [0, 0, 1.12], [0, 0, 1.30], "spine")
+bone("neck", [0, .008, 1.30], [0, .012, 1.43], "chest")
+bone("head", [0, .012, 1.43], [0, .012, 1.85], "neck")
+for s, sx in (("L", 1), ("R", -1)):
+    L_ = G["leg." + s]
+    bone(f"thigh.{s}", L_["hip"], L_["knee"], "pelvis"); bone(f"shin.{s}", L_["knee"], L_["ankle"], f"thigh.{s}")
+    bone(f"foot.{s}", L_["ankle"], L_["ball"], f"shin.{s}", UP); bone(f"toe.{s}", L_["ball"], L_["toe"], f"foot.{s}", UP)
+    A_ = G["arm." + s]
+    bone(f"shoulder.{s}", [sx * .03, 0, 1.275 + DZ - .04], A_["sh"], "chest")
+    bone(f"upper_arm.{s}", A_["sh"], A_["el"], f"shoulder.{s}"); bone(f"forearm.{s}", A_["el"], A_["wr"], f"upper_arm.{s}")
+    bone(f"hand.{s}", A_["wr"], A_["ht"], f"forearm.{s}")
+# sleeve bag chain: elbow -> cuff ring centre -> cuff lower/back corner of the bag
+SLV = {}
+for s, sx in (("L", 1), ("R", -1)):
+    A_ = G["arm." + s]; Sh, El, Wr = (np.array(A_[k]) for k in ("sh", "el", "wr")); d1, d2 = np.array(A_["d1"]), np.array(A_["d2"])
+    lat = np.array(G["sleeve." + s]["lat"]); cuff = G["sleeve." + s]["cuff_s"]; UA = np.linalg.norm(El - Sh)
+    t2 = d2; A2 = lat - (lat @ t2) * t2; A2 /= np.linalg.norm(A2); B2 = np.cross(t2, A2)
+    if B2[1] < 0: B2 = -B2  # mirror-safe: B2 toward her back on both sides (as build_mesh bdir)
+    cc = El + d2 * (cuff - UA) + (-.034) * A2 + .028 * B2  # cuff ring centre (as build_mesh sl[-1])
+    mid = El + d2 * (0.5 * (cuff - UA)) + (-.012) * A2 + .02 * B2
+    SLV[s] = dict(Sh=Sh, El=El, Wr=Wr, d1=d1, d2=d2, A2=A2, B2=B2, cuff=cuff, UA=UA)
+    bone(f"sleeve.{s}.1", El + 0.02 * B2, mid + 0.03 * B2 - 0.02 * A2, f"forearm.{s}")
+    bone(f"sleeve.{s}.2", mid + 0.03 * B2 - 0.02 * A2, cc + 0.06 * B2 - 0.06 * A2, f"sleeve.{s}.1")
+# hair chains from the head mesh
+HC = np.array([0, .01, 1.62 + DZ])
+def col_pts(x0, cond, w=0.025):
+    m = (np.abs(HV[:, 0] - x0) < w) & cond; return HV[m]
+FR = {}
+for nm, x0 in (("L", .13), ("C", 0.0), ("R", -.13)):
+    P_ = col_pts(x0, HV[:, 1] < -0.12)
+    zb = float(np.percentile(P_[:, 2], 2)); zt = 1.80 + DZ
+    def yf(z):
+        q = P_[np.abs(P_[:, 2] - z) < 0.015]; return float(q[:, 1].min()) + 0.03 if len(q) else -0.2
+    p0 = [x0, yf(zt), zt]; p2 = [x0 * 1.05, yf(zb + .01), zb + 0.005]; p1 = [x0 * 1.02, yf((zt + zb) / 2), (zt + zb) / 2]
+    bone(f"hair_front.{nm}.1", p0, p1, "head"); bone(f"hair_front.{nm}.2", p1, p2, f"hair_front.{nm}.1")
+    FR[nm] = (zb, zt)
+for s, sx in (("L", 1), ("R", -1)):
+    lk = np.array(G["lock." + s]); lk[0, 2] += 0.02
+    for i in range(3): bone(f"hair_side.{s}.{i+1}", lk[i], lk[i + 1], "head" if i == 0 else f"hair_side.{s}.{i}")
+Pb = col_pts(0.0, HV[:, 1] > 0.08, 0.04)
+zlow = float(np.percentile(Pb[:, 2], 1.5)); ztop = 1.78 + DZ
+def yb(z):
+    q = Pb[np.abs(Pb[:, 2] - z) < 0.015]; return float(q[:, 1].max()) - 0.035 if len(q) else 0.2
+zz = np.linspace(ztop, zlow + 0.01, 4)
+for i in range(3): bone(f"hair_back.{i+1}", [0, yb(zz[i]), zz[i]], [0, yb(zz[i + 1]), zz[i + 1]], "head" if i == 0 else f"hair_back.{i}")
+bc = BUNV.mean(0); bd = (bc - HC) / np.linalg.norm(bc - HC); br = float(np.linalg.norm(BUNV - bc, axis=1).max())
+bone("bun", bc - bd * br * 0.9, bc + bd * br, "head")
+kn = np.array(G["bow_knot"]); bone("bow_knot", kn, kn + [0, .06, 0], "head", UP)
+for s in "LR":
+    p0, p1, p2 = (np.array(p) for p in G["bow"][s])
+    bone(f"bow.{s}.1", p0, p1, "bow_knot", UP); bone(f"bow.{s}.2", p1, p2, f"bow.{s}.1", UP)
+SKA = {"F": 0, "FL": 45, "L": 90, "BL": 135, "B": 180, "BR": 225, "R": 270, "FR": 315}
+ztopS = 0.975 + DZ; hem = G["hem"]
+def skr(z):  # skirt ellipse radii at z (build_mesh sk)
+    zs = [hem, .82 + DZ, .88 + DZ, .94 + DZ, .975 + DZ]; rx = [.200, .182, .163, .149, .141]; ry = [.160, .142, .123, .109, .101]
+    return np.interp(z, zs, rx), np.interp(z, zs, ry)
+for n, ph in SKA.items():
+    dv = np.array([math.sin(math.radians(ph)), -math.cos(math.radians(ph))])
+    def sp(z, inset):
+        rx, ry = skr(z); r = 1 / math.sqrt((dv[0] / rx) ** 2 + (dv[1] / ry) ** 2); return [dv[0] * (r - inset), dv[1] * (r - inset) + .006, z]
+    za, zb_, zc = ztopS - 0.01, 0.5 * (ztopS + hem) - 0.02, hem + 0.004
+    rad = np.array([dv[0], dv[1], 0])
+    bone(f"skirt.{n}.1", sp(za, .03), sp(zb_, .025), "pelvis", rad); bone(f"skirt.{n}.2", sp(zb_, .025), sp(zc, .02), f"skirt.{n}.1", rad)
+# mirror-symmetrise every .L/.R pair about x=0 (average of the pair and its mirror): the H2 head mesh is slightly asymmetric
+MIR = np.array([-1.0, 1, 1])
+for n in list(B):
+    if ".L" in n and n.replace(".L", ".R") in B:
+        m = n.replace(".L", ".R"); hL, tL, pL, zL = B[n]; hR, tR, pR, zR = B[m]
+        h = (hL + hR * MIR) / 2; tt = (tL + tR * MIR) / 2
+        B[n] = (h, tt, pL, zL); B[m] = (h * MIR, tt * MIR, pR, zR * MIR if abs(zR[0]) > 0 else zR)
+# ------------------------------------------------------------------ weights (H2 frame)
+BN = list(B); BI = {n: i for i, n in enumerate(BN)}; W = np.zeros((nv, len(BN)), np.float32)
+def ss(e0, e1, x): t = np.clip((x - e0) / (e1 - e0), 0, 1); return t * t * (3 - 2 * t)
+def chain_w(P, names, joints, bws):
+    """joint-plane partition of unity: names[k] owns the slab between joints[k-1] and joints[k] (planes ⟂ the bisector of the adjacent bones)"""
+    n = len(names); s = []
+    for j, (J, nrm) in enumerate(joints):
+        nrm = np.asarray(nrm, float); nrm = nrm / np.linalg.norm(nrm); s.append(ss(-bws[j], bws[j], (P - np.asarray(J)) @ nrm))
+    out = []
+    for k in range(n):
+        w = np.ones(len(P))
+        if k > 0: w = w * s[k - 1]
+        if k < n - 1: w = w * (1 - s[k])
+        out.append(w)
+    return out
+def addw(idx, names, ws, scale=None):
+    for nm, w in zip(names, ws):
+        W[idx, BI[nm]] += w if scale is None else w * scale
+def unit(v): v = np.asarray(v, float); return v / np.linalg.norm(v)
+L = vlab
+for s, sx in (("L", 1), ("R", -1)):
+    # legs, boots, feet
+    idx = np.nonzero(np.isin(L, [f"leg_{s}", f"boot_{s}", f"foot_{s}"]))[0]; P = V[idx]
+    hp, knee, ank, ball = (B[f"thigh.{s}"][0], B[f"shin.{s}"][0], B[f"foot.{s}"][0], B[f"toe.{s}"][0])
+    dth, dsh, dft, dto = (unit(B[f"{b}.{s}"][1] - B[f"{b}.{s}"][0]) for b in ("thigh", "shin", "foot", "toe"))
+    ws = chain_w(P, ["pelvis", f"thigh.{s}", f"shin.{s}", f"foot.{s}", f"toe.{s}"],
+                 [(hp + [0, 0, -0.01], dth), (knee, unit(dth + dsh)), (ank + [0, 0, 0.012], unit(dsh + dft)), (ball, unit(dft + dto))], [0.05, 0.04, 0.03, 0.02])
+    addw(idx, ["pelvis", f"thigh.{s}", f"shin.{s}", f"foot.{s}", f"toe.{s}"], ws)
+    # arms, sleeves, hands
+    S_ = SLV[s]; idx = np.nonzero(np.isin(L, [f"arm_{s}", f"sleeve_{s}", f"hand_{s}"]))[0]; P = V[idx]
+    dsho = unit(S_["Sh"] - B[f"shoulder.{s}"][0])
+    names = ["chest", f"shoulder.{s}", f"upper_arm.{s}", f"forearm.{s}", f"hand.{s}"]
+    ws = chain_w(P, names, [(B[f"shoulder.{s}"][0] + dsho * 0.06, dsho), (S_["Sh"] - S_["d1"] * 0.01, unit(dsho + S_["d1"])), (S_["El"], unit(S_["d1"] + S_["d2"])), (S_["Wr"], S_["d2"])],
+                 [0.05, 0.05, 0.05, 0.02])
+    # sleeve bag: far from the forearm axis and past the elbow -> sleeve chain
+    isl = L[idx] == f"sleeve_{s}"
+    rel = P - S_["El"]; u = rel @ S_["d2"]; dist = np.linalg.norm(rel - np.outer(u, S_["d2"]), axis=1)
+    bag = isl * ss(0.045, 0.075, dist) * ss(-0.02, 0.05, u)
+    w2 = ss(0.07, 0.17, u)
+    for k in range(len(ws)): ws[k] = ws[k] * (1 - bag)
+    addw(idx, names + [f"sleeve.{s}.1", f"sleeve.{s}.2"], ws + [bag * (1 - w2), bag * w2])
+    # side locks
+    idx = np.nonzero(L == f"lock_{s}")[0]; P = V[idx]; lk = [B[f"hair_side.{s}.{i}"] for i in (1, 2, 3)]
+    ws = chain_w(P, ["head"] + [f"hair_side.{s}.{i}" for i in (1, 2, 3)],
+                 [(lk[0][0] - [0, 0, 0.03], -UP), (lk[1][0], unit(lk[0][1] - lk[0][0] + lk[1][1] - lk[1][0])), (lk[2][0], unit(lk[1][1] - lk[1][0] + lk[2][1] - lk[2][0]))], [0.03, 0.03, 0.03])
+    addw(idx, ["head"] + [f"hair_side.{s}.{i}" for i in (1, 2, 3)], ws)
+    # bow lobes
+    idx = np.nonzero(L == f"lobe_{s}")[0]; P = V[idx]; b1, b2 = B[f"bow.{s}.1"], B[f"bow.{s}.2"]
+    ws = chain_w(P, ["bow_knot", f"bow.{s}.1", f"bow.{s}.2"], [(b1[0] + unit(b1[1] - b1[0]) * 0.01, unit(b1[1] - b1[0])), (b2[0], unit(b2[1] - b1[0]))], [0.02, 0.03])
+    addw(idx, ["bow_knot", f"bow.{s}.1", f"bow.{s}.2"], ws)
+    # ribbon tails hang on the back hair: knot -> hair_back.2 -> hair_back.3
+    idx = np.nonzero(L == f"ribbon_{s}")[0]; P = V[idx]; rb = np.array(G["ribbon." + s]); uu = (rb[0][2] - P[:, 2]) / (rb[0][2] - rb[-1][2])
+    addw(idx, ["bow_knot", "hair_back.2", "hair_back.3"], [1 - ss(0.0, 0.35, uu), ss(0.0, 0.35, uu) * (1 - ss(0.5, 0.9, uu)), ss(0.5, 0.9, uu)])
+    # hands handled with arms
+# torso + obi: pelvis | spine | chest, shoulders, neck base
+idx = np.nonzero(np.isin(L, ["torso", "obi"]))[0]; P = V[idx]
+ws = chain_w(P, ["pelvis", "spine", "chest", "neck"], [([0, 0, 1.00], UP), ([0, 0, 1.13], UP), ([0, 0, 1.335], UP)], [0.035, 0.06, 0.025])
+for s, sx in (("L", 1), ("R", -1)):
+    sh = ss(0.07, 0.15, sx * P[:, 0]) * ss(1.16 + DZ, 1.24 + DZ, P[:, 2]) * 0.8
+    W[idx, BI[f"shoulder.{s}"]] += ws[2] * sh; ws[2] = ws[2] * (1 - sh)
+addw(idx, ["pelvis", "spine", "chest", "neck"], ws)
+# neck
+idx = np.nonzero(L == "neck")[0]; P = V[idx]
+addw(idx, ["chest", "neck", "head"], chain_w(P, ["chest", "neck", "head"], [([0, 0, 1.315], UP), ([0, 0, 1.43], UP)], [0.025, 0.03]))
+# skirt: pelvis -> 8 panel chains (azimuth windows), hem near a leg follows the thigh
+idx = np.nonzero(L == "skirt")[0]; P = V[idx]
+t = np.clip((ztopS - P[:, 2]) / (ztopS - hem), 0, 1)
+phi = np.degrees(np.arctan2(P[:, 0], -(P[:, 1] - .006)))
+pan = []
+for n, ph in SKA.items():
+    dd = (phi - ph + 180) % 360 - 180; pan.append(np.maximum(0, np.cos(np.radians(dd) * 2)) ** float(os.environ.get('SKPOW', '4')))  # near-rigid panels, narrow seams
+pan = np.array(pan); pan /= pan.sum(0) + 1e-9
+tot = ss(0.02, 0.40, t); w2 = ss(0.40, 0.85, t)
+leg = np.zeros(len(P)); legw = {}
+for s in "LR":
+    hp, kn_ = B[f"thigh.{s}"][0], B[f"thigh.{s}"][1]; dth = unit(kn_ - hp); rel = P - hp; u = rel @ dth
+    dist = np.linalg.norm(rel - np.outer(u, dth), axis=1)
+    f = (1 - ss(0.085, 0.140, dist)) * ss(0.35, 0.90, t); legw[s] = f; leg = leg + f
+leg = np.clip(leg, 0, 1); keep = 1 - leg
+W[idx, BI["pelvis"]] += (1 - tot) * keep
+for i, n in enumerate(SKA):
+    W[idx, BI[f"skirt.{n}.1"]] += pan[i] * tot * (1 - w2) * keep; W[idx, BI[f"skirt.{n}.2"]] += pan[i] * tot * w2 * keep
+for s in "LR": W[idx, BI[f"thigh.{s}"]] += legw[s] / np.maximum(1, leg)
+# head part: head + hair chains (hair material only)
+idx = np.nonzero(np.isin(L, ["head"]))[0]; P = V[idx]; hv = hairv[idx]
+ph = np.degrees(np.arctan2(P[:, 0], -(P[:, 1] - HC[1])))  # 0 front, +90 her left (+X)
+def win(c, wd): dd = (ph - c + 180) % 360 - 180; return np.maximum(0, np.cos(np.clip(np.radians(dd) * 90 / wd, -np.pi / 2, np.pi / 2)))
+wfront = {nm: win(c, 38) for nm, c in (("L", 34), ("C", 0), ("R", -34))}; sf = sum(wfront.values()) + 1e-9
+zb_, zt_ = FR["C"]
+vf = hv * ss(zt_ - 0.02, zt_ - 0.10, P[:, 2]) * (P[:, 1] < -0.06) * ss(-0.06, -0.14, P[:, 1])
+vb = hv * ss(1.66 + DZ, 1.55 + DZ, P[:, 2]) * win(180, 75)
+vs = {s: hv * ss(1.62 + DZ, 1.50 + DZ, P[:, 2]) * win(sg * 95, 45) * 0.6 for s, sg in (("L", 1), ("R", -1))}
+used = np.zeros(len(P))
+for nm in "LCR":
+    w = vf * wfront[nm] / sf; b1 = B[f"hair_front.{nm}.1"]; b2 = B[f"hair_front.{nm}.2"]
+    s2 = ss(-0.02, 0.02, (P - b2[0]) @ unit(b1[1] - b1[0] + b2[1] - b2[0]))
+    W[idx, BI[f"hair_front.{nm}.1"]] += w * (1 - s2); W[idx, BI[f"hair_front.{nm}.2"]] += w * s2; used += w
+hb = [B[f"hair_back.{i}"] for i in (1, 2, 3)]
+sbw = chain_w(P, ["hair_back.1", "hair_back.2", "hair_back.3"], [(hb[1][0], unit(hb[0][1] - hb[0][0] + hb[1][1] - hb[1][0])), (hb[2][0], unit(hb[1][1] - hb[1][0] + hb[2][1] - hb[2][0]))], [0.03, 0.03])
+for k in range(3): W[idx, BI[f"hair_back.{k+1}"]] += vb * sbw[k]
+used += vb
+for s in "LR":
+    W[idx, BI[f"hair_side.{s}.1"]] += vs[s] * 0.6; W[idx, BI[f"hair_side.{s}.2"]] += vs[s] * 0.4 * ss(1.55 + DZ, 1.47 + DZ, P[:, 2]); used += vs[s] * (0.6 + 0.4 * ss(1.55 + DZ, 1.47 + DZ, P[:, 2]))
+skin_low = (~hv) * ss(1.45 + DZ, 1.40 + DZ, P[:, 2])
+W[idx, BI["neck"]] += skin_low; used += skin_low
+W[idx, BI["head"]] += np.clip(1 - used, 0, 1)
+for nm, bn in (("bun", "bun"), ("knot", "bow_knot")):
+    idx = np.nonzero(L == nm)[0]; W[idx, BI[bn]] += 1
+idx = np.nonzero(L == "bun")[0]
+# unlabelled -> nearest bone head fallback
+miss = W.sum(1) < 1e-6
+if miss.any():
+    HP = np.array([B[n][0] for n in BN]); W[np.nonzero(miss)[0], np.linalg.norm(V[miss][:, None] - HP[None], axis=-1).argmin(1)] = 1
+print("missing", int(miss.sum()))
+# Laplacian smoothing over the mesh graph (heals label seams)
+E = set()
+for f in FC:
+    for i in range(len(f)):
+        u_, v_ = f[i], f[(i + 1) % len(f)]; E.add((min(u_, v_), max(u_, v_)))
+E = np.array(list(E)); deg = np.bincount(E.ravel(), minlength=nv).astype(np.float32)
+W /= W.sum(1, keepdims=True)
+for it in range(int(os.environ.get("WSMOOTH", "6"))):
+    acc = np.zeros_like(W); np.add.at(acc, E[:, 0], W[E[:, 1]]); np.add.at(acc, E[:, 1], W[E[:, 0]])
+    W = 0.5 * W + 0.5 * acc / np.maximum(deg, 1)[:, None]
+# hair over skin: the H2 bangs/bob edge is painted on one head surface, so hair-chain weight must fade to 0 at the hair|skin boundary
+# (geodesic distance in mesh edges from skin), else swinging a chain tears the forehead / nape; bangs capped at 0.6 (subtle by design)
+skinv = np.zeros(nv, bool)
+for fi, f in enumerate(FC):
+    if fmat[fi] in ("skin", "eyes") and flab[fi] in ("head", "neck"): skinv[list(f)] = True
+dsk = np.where(skinv, 0.0, np.inf); NE = int(os.environ.get("HAIRFADE", "10"))
+for k in range(1, NE + 1):
+    fr = dsk == k - 1
+    for a_, b_ in ((0, 1), (1, 0)):
+        m = fr[E[:, a_]] & np.isinf(dsk[E[:, b_]]); dsk[E[m, b_]] = k
+gfade = ss(0.0, NE, np.minimum(dsk, NE))
+hidx = [BI[n] for n in BN if n.startswith(("hair_front", "hair_back", "hair_side"))]
+hv_all = np.isin(vlab, ["head"])
+for j in hidx:
+    cap = 0.6 if BN[j].startswith("hair_front") else 1.0
+    new = np.where(hv_all, W[:, j] * gfade * cap, W[:, j])
+    W[:, BI["head"]] += W[:, j] - new; W[:, j] = new
+# torso / obi / skirt never follow the arms (a voxel bridge would otherwise smear obi colour into the armpit)
+tv = np.isin(vlab, ["torso", "obi", "skirt"])
+for j in [BI[n] for n in BN if n.startswith(("upper_arm", "forearm", "hand", "sleeve"))]:
+    W[tv, BI["chest"]] += W[tv, j]; W[tv, j] = 0
+# top-4 influences
+o4 = np.argsort(-W, 1)[:, 4:]; np.put_along_axis(W, o4, 0, 1); W[W < 0.01] = 0; W /= W.sum(1, keepdims=True)
+# ------------------------------------------------------------------ build Blender objects (contract frame)
+sc = bpy.context.scene
+arm = bpy.data.armatures.new("rig"); ao = bpy.data.objects.new("rig", arm); sc.collection.objects.link(ao)
+bpy.context.view_layer.objects.active = ao; bpy.ops.object.mode_set(mode="EDIT")
+for n in BN:
+    h, t_, par, zh = B[n]; eb = arm.edit_bones.new(n); eb.head = Vector(Fw(h)); eb.tail = Vector(Fw(t_))
+    zf = Fw(zh) / K; eb.align_roll(Vector(zf))
+for n in BN:
+    par = B[n][2]
+    if par: arm.edit_bones[n].parent = arm.edit_bones[par]; arm.edit_bones[n].use_connect = False
+bpy.ops.object.mode_set(mode="OBJECT")
+me = bpy.data.meshes.new("body"); me.from_pydata([tuple(p) for p in Fw(V)], [], FC); me.validate()
+for p in me.polygons: p.use_smooth = True
+ca = me.color_attributes.new("Color", "BYTE_COLOR", "CORNER")
+fa = me.attributes.new("mat", "INT", "FACE")
+for p in me.polygons:
+    m = fmat[p.index]; c = [x / 255 for x in MATS[m]] + [1]; fa.data[p.index].value = MN.index(m)
+    for li in p.loop_indices: ca.data[li].color_srgb = c
+PVC = {'hair': '#433833', 'dress': '#7d1918', 'skin': '#eaa991', 'sleeve': '#7d1918', 'socks': '#2b2927', 'boots': '#5e4a45', 'bow': '#962723', 'obi': '#857a90', 'eyes': '#342126'}
+cp = me.color_attributes.new("PV", "BYTE_COLOR", "CORNER")
+for p in me.polygons:
+    hx_ = PVC[fmat[p.index]]; c = [int(hx_[i:i + 2], 16) / 255 for i in (1, 3, 5)] + [1]
+    for li in p.loop_indices: cp.data[li].color_srgb = c
+me.color_attributes.active_color = ca; me.color_attributes.render_color_index = me.color_attributes.find("Color")
+bo = bpy.data.objects.new("body", me); sc.collection.objects.link(bo); bo.parent = ao
+for j, n in enumerate(BN):
+    vg = bo.vertex_groups.new(name=n); nz = np.nonzero(W[:, j] > 0)[0]
+    for i in nz: vg.add([int(i)], float(W[i, j]), "REPLACE")
+md = bo.modifiers.new("arm", "ARMATURE"); md.object = ao; md.use_deform_preserve_volume = os.environ.get("DQS", "1") == "1"
+for p in ao.pose.bones: p.rotation_mode = "QUATERNION"
+ao["mat_names"] = MN; ao["units_per_h2"] = K
+bpy.ops.wm.save_as_mainfile(filepath=BLEND)
+# rest_skeleton.json (world rest space == armature space, armature object at identity)
+out = {}
+for b in arm.bones:
+    M3 = b.matrix_local.to_3x3()
+    out[b.name] = {"head": [round(x, 5) for x in b.head_local], "tail": [round(x, 5) for x in b.tail_local],
+                   "roll": None,
+                   "parent": b.parent.name if b.parent else None,
+                   "matrix": [[round(M3[r][c], 5) for c in range(3)] for r in range(3)]}
+bpy.context.view_layer.objects.active = ao; bpy.ops.object.mode_set(mode="EDIT")
+for eb in arm.edit_bones: out[eb.name]["roll"] = round(eb.roll, 5)
+bpy.ops.object.mode_set(mode="OBJECT")
+json.dump(out, open(SKJ, "w"), indent=1)
+print("RIG", len(BN), "bones", nv, "verts", flush=True)

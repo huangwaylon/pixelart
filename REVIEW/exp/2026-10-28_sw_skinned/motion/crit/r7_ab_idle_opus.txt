@@ -1,0 +1,12 @@
+SCORE A: 4/10, SCORE B: 5/10
+B vs owner complaint: partly. B has real weight transfer and the sleeves and bow now move, but the legs and head are still rigid, and secondary motion is mostly limited to the sleeves.
+
+Top 5 remaining problems in B:
+
+1. **Feet pop during weight transfer (f3→f4, f10→f11).** The stance jumps from crossed ankles to feet apart, then back, so the feet slide about 3–4 px with no step or lift. Plant both feet and keep them still for the whole loop, or add a proper 2-frame step.
+2. **Legs stay straight during the hold (f4–f9).** Both legs are parallel and locked, with no contrapposto. On the loaded leg, drop the free-side hip 1 px and bend the free knee 1–2 px inward toward the other leg.
+3. **The torso lean has no counter-motion (f5–f7).** The upper body tilts about 2 px to the right, but the head stays upright and doesn't counter-tilt. Tilt the head about 3–5° left, and add about 1 px of down/up breathing compression on f1/f7.
+4. **Sleeves move too much and the skirt barely moves (f4–f6, f8–f10).** The right sleeve flares out about 4–5 px, like a gust, while the skirt hem moves about 0 px. Reduce the sleeve flare to 2–3 px, and give the skirt a 1–2 px lagging sway, about 1 frame behind the hips.
+5. **Timing stutters (f2, f8 at 80 ms).** The 80 ms transfer frames between 300 ms holds read as pops rather than easing. Even them out to a 120/160/200 ms ease-in/ease-out.
+
+Also, the bun and bow lag only 1 px or less, so they don't read as bouncing. Push them to 2 px of overshoot after f4 and after f10.

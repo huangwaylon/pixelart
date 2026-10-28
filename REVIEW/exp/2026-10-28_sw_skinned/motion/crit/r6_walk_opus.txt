@@ -1,0 +1,19 @@
+SCORE: 5/10
+
+- Key poses: 5
+- Timing/spacing: 5
+- Weight & bounce: 5
+- Overlap/follow-through: 4
+- Secondary motion: 4
+- Joints/contacts: 4
+- Appeal: 5
+
+This reads better than the rejected version. The body now bobs, the head dips on f1/f5 and the arms swing wide on f3–f5. The problems are that the contacts are weak, the head moves stiffly with the torso, and the spring parts (skirt, bun, bow) barely react.
+
+**Top 5 fixes:**
+
+1. **Contacts (f0/f4) and toe-off (f3/f7), feet and ankles.** The feet land flat. At contact, flex the front heel down with the toe up about 20° and lengthen the stride by about 15%. At the end of the up pose, curl the back toe down about 30° so it peels off the ground. Right now the feet look like they slide.
+2. **Down poses (f1/f5), hips and knees.** Drop the pelvis about 0.08 of a step lower than it is now, and bend the front knee 25–30°. Raise the up poses (f3/f7) by the same amount so the bounce reads clearly at sprite size. Give the down frames 120 ms and the passing frames 90 ms for snap.
+3. **Head (all frames).** The head nods forward about 15° on f1/f5, in sync with the drop, which looks like a loose neck. Delay the nod by 1 frame (peak on f2/f6), cut it to about 6°, and add a 4° side tilt toward the stance leg.
+4. **Torso twist, arms and shoulders.** f0, f6 and f7 (SE view) have the arms hanging limp, while f3–f5 swing hard. Counter-rotate the shoulders about 10° against the hips. Make the arm swing peak at contact (f0/f4), about 30° forward and 20° back, and pass the body on f2/f6.
+5. **Spring parts (whole cycle).** The skirt hem and bun hardly move. Increase the skirt flare by about 8° with a 1-frame lag behind the pelvis, so it lifts on f3/f7 and settles on f1/f5. The bow lobes and bun should bounce about 10°, lagging 1–2 frames behind the head. The sleeve hems should trail the arm by 1 frame and overshoot about 10° at the swing reversals.

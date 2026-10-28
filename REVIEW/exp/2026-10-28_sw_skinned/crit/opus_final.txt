@@ -1,0 +1,16 @@
+**Scores (old H2 vs new skinned rig)**
+- Joint connectivity: 3 vs 8. In the old rig, bare skin gaps open between the skirt and the stockings (walk r1, run r1 and r3, col1), the legs look stuck on, and the sleeves float as separate blobs. The new rig keeps one continuous silhouette in every row.
+- Deformation naturalness: 3 vs 6. Knees and hips now bend smoothly (run r2 and r3, col2). Big poses still break down (see defects).
+- Secondary-part attachment: 4 vs 5. Sleeves now follow the arms. But the skirt, sleeves and bow barely bounce in walk or run, so the "bouncing parts" complaint is only partly fixed.
+
+**Remaining rig defects visible at sprite scale**
+1. A hair lock pokes through the front of the face like a beak (walk r2 col3; stress hair_chains_40). Fix the weights or collision on the face-side hair strand.
+2. Hands are 1–2 isolated skin pixels hanging under the sleeve cuffs and look detached (walk r1 col2 and col3; stress rest, stride, skirt_40). Either the wrist weighting is wrong or the hands are too small to survive pixelization.
+3. Deep knee bend: the robe collapses into a flat cape, the knees go through the skirt, and the head sinks into the chest with no neck (stress deep_knee_bend).
+4. At elbow_120 the forearm sleeve sinks into the torso and makes a red lump on the chest. At arm_raise_120 the shoulder crumples and the cuff turns into a flat disc.
+5. skirt_40 shows a dark vertical crease or tear in the skirt (stress r2 and r4, col4).
+6. twist30_head40: the bow and bun separate from the skull and float to one side (stress r4 col1).
+7. The skirt is mostly rigid with the pelvis. There's very little flare or lag in walk or run (all col2 rows).
+8. When both sleeves cross in front, the torso turns into a blocky mass and its readability is lost (run r4 col2).
+
+**Verdict: promising, a clear improvement.** The skinned mesh fixes the owner's main complaint: the parts are now connected and the joints bend believably at normal walk and run angles. It's not shippable yet. Before judging motion, fix the face-hair clipping and the hand pixels, then add jiggle or spring bones to the skirt, sleeve cuffs and bow so the parts actually bounce.

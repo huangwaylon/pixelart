@@ -1,0 +1,12 @@
+SCORE: 5/10
+
+Key poses 5 · Timing/spacing 5 · Weight & bounce 4 · Overlap/follow-through 5 · Secondary motion 5 · Joints/contacts 4 · Appeal 5
+
+**Main problems:** In the onion skin the legs fan out well, but the head and torso barely move up and down or tilt. Contact (f0/f4) and flight (f3/f7) look almost the same: legs split wide each time, so it's hard to tell when a foot lands. The two halves of the cycle don't match: f1 is a crouch while f5 is a high knee, and f2 differs from f6. The arms are lost inside the sleeves.
+
+**TOP 5 fixes:**
+1. **Bounce, f1/f5 and f3/f7:** drop the pelvis about 0.12 head-heights at down and raise it about 0.15 at flight, so there's roughly 0.27 head-heights between lowest and highest. Add squash on f1/f5 (about 8% shorter in the torso) and stretch on f3/f7 (about 6% taller).
+2. **Contact, f0/f4:** the front foot reaches too far ahead. Move it back about 0.3 of a step so it lands nearly under the hips, flex the knee about 15°, and land the sole flat instead of toes-up. Close the legs at flight f3/f7 by about 25° so flight and contact read differently.
+3. **Mirror the halves:** make f5 and f6 exact left/right mirrors of f1 and f2. Right now f6's knee is about 30° higher than f2's.
+4. **Torso and head:** lean the spine forward 12–15° throughout and twist the chest ±10° against the hips. The head should lag about 1 frame behind the torso, nodding down about 5° at f1/f5.
+5. **Arms and secondary motion:** swing the upper arms ±45° front-to-back, opposite to the legs, with the elbows held near 90°. Have the bun, bow lobes and skirt hem settle 1–2 frames (70–140 ms) after the bounce. Flip the skirt up about 20° at f1/f5 and let it fall at f3/f7. Make the hair spring looser so the tips move about 10° more.

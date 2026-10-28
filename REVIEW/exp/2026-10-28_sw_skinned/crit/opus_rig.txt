@@ -1,0 +1,48 @@
+**Swordswoman skinned rig review (SE stress sheet, pixel stress sheet, walk compare, run SE, walk E)**
+
+**(a) Joint connectivity: 7/10**
+- The single mesh fixes the owner's main complaint: no frame shows a gap at the shoulders, elbows, hips, knees, ankles or neck. The old H2 column has a floating flared skirt disc and detached arms in walk frames 1 and 3. The new rig has none of that.
+- arm_raise_120: the armpit and obi area goes dark and pinched where the sleeve pulls on the torso. The hand comes out of a flat-capped tube as a stub.
+- elbow_120: the near hand pokes forward through the sleeve opening, and the sleeve end shows as a flat disc (pixel f04 reads as a red blob on the chest).
+- hair_chains_40: this is a real tear. The hair shell lifts off the head and leaves a jagged strip of bare scalp/face skin. At pixel scale (f06) it becomes a big lump on the back of the head.
+
+**(b) Deformation quality: 5/10**
+- deep_knee_bend: the thighs collapse into the skirt and the pelvis sinks with no volume kept. The skirt flattens into a cape and the feet roll sideways. Pixel f01 reads as a squashed blob.
+- stride: the back thigh thins badly (volume loss at the hip). The front thigh pushes out of the skirt side, so the bare-thigh band gets far too big.
+- arm_raise_120: the bell sleeve turns into a cylinder. The sleeve isn't keeping its shape; it is skinned straight to the arm.
+- skirt_40 and stride+skirt: the panels crumple into lumpy, faceted bags with dark interior creases. The skirt front balloons instead of swinging as stiff panels.
+- twist30_head40: the torso narrows, a mild candy-wrapper effect. It's acceptable.
+
+**(c) Secondary chains: 4/10**
+- Hair: tears, as above. The side-lock weights bleed into the head shell.
+- Bow: at 40° (bun_bow_sleeves_40, pixel f05 and f07) the loops splay into "horns or cat ears", which breaks the silhouette.
+- Sleeves: the swing works (bun_bow_sleeves_40), but the hem crumples at the middle.
+- Skirt: it bulges outward instead of rotating as rigid panels.
+- In walk frames 1, 2 and 4 (column 2), the sleeves stay glued to the body. In run f03–f05 they jump out into wing shapes. There is no middle state.
+
+**(d) Body design fidelity: 7/10**
+Matches the brief:
+- red kimono dress
+- wide lavender obi (reads well in pixels)
+- straight mid-thigh skirt
+- thin bare band, black thigh-highs, boots
+
+Misses:
+- At rest the bell sleeves are too narrow. They only read as bells when swung.
+- The torso is long compared with the legs, so the run frames look stumpy.
+- The boots render near-black in the smooth preview rather than brown.
+- At sprite scale the legs come out 1–2 px thin (stress f09, walk column 2 frame 4).
+
+**(e) New vs old rig: clearly better, about +2.5 points (old about 4, new about 6.5)**
+- Connectivity, the core complaint, is solved.
+- The silhouette is continuous and the design reads more faithfully.
+- Stiffness is not solved. Arms hang at the sides, and sleeve and skirt motion is binary.
+- Several of the new defects (hair tear, sleeve poke-through, skirt bagging) come from the weights, not from the animation.
+- The old rig's skirt flare had more life, even though it was disconnected.
+
+**Top 5 rig fixes, most important first**
+1. **Hair weights:** bind the hair shell 100% to the head bone. Only the side-lock and bun geometry should take chain weights, with a smooth falloff band 2–3 edge loops wide. Add a scalp underlayer in the hair colour so no skin can show.
+2. **Sleeves:** make each sleeve a separate skinned shell. Weight the upper part to the arm. Drive the bell part with its own 2-bone chain that hangs from the forearm (cloth-like lag, gravity-down). This keeps the bell shape at 120° and stops the hand poking through. Add a hand-hide or inner-sleeve backface.
+3. **Skirt:** use 6–8 panel bones, each rigidly weighted (no blended interiors), with 1–2 loops of blend only at the seams. Drive the front and back panels from thigh rotation (about 40–60%) so the legs never poke out. Add a collision cone or a clamp on the thigh angle.
+4. **Hip and knee volume:** add corrective joints or twist/helper bones (a hip-front helper, a knee cap, a thigh twist split). Fix the weight bleed from pelvis into thigh so stride and knee bend keep thigh volume and the bare band stays a fixed width.
+5. **Shoulders:** add a clavicle and an armpit helper bone. Re-weight the obi and chest so they're locked to the spine, so arm raises no longer pinch or darken the torso. Separately, shorten the bow's swing range or stiffen its base so the loops can't splay into horns.

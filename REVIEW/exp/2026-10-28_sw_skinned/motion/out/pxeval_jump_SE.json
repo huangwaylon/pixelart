@@ -1,0 +1,53 @@
+{
+ "pxeval": 1,
+ "cmd": "seq",
+ "source": "/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/motion/prev/px/jump/jump_SE_px_hs",
+ "row": null,
+ "row_name": null,
+ "cell": null,
+ "scale_removed": 1,
+ "size": [
+  128,
+  128
+ ],
+ "n_frames": 16,
+ "loop": true,
+ "figure_px_mean": 2029.0,
+ "colours": 18,
+ "durations_ms": null,
+ "changed_mean": 0.7886,
+ "changed_max": 0.963,
+ "resid_mean": 0.4761,
+ "flicker": 0.293,
+ "boil": 0.0843,
+ "shade_swap": 0.0522,
+ "motion_px": 0.9278,
+ "articulation": 0.2862,
+ "rigid_share": 0.2685,
+ "sil_change": 0.3917,
+ "pose_range": 0.8003,
+ "holds": 0,
+ "area_cv": 0.0585,
+ "centroid_std": [
+  1.6285,
+  11.5945
+ ],
+ "feet_range": 31.0,
+ "top_range": 39.0,
+ "height_range": 25.0,
+ "width_range": 20.0,
+ "head_range": [
+  9.0,
+  38.3166
+ ],
+ "head_jerk": 9.5145,
+ "centroid_jerk": 7.7387,
+ "seam_changed": 0.1145,
+ "seam_resid": 0.0551,
+ "seam_ratio": 0.1189,
+ "flags": [
+  "BOILING",
+  "SHADE_SWAP",
+  "FEET_JITTER"
+ ]
+}

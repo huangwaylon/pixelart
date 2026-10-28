@@ -1,0 +1,16 @@
+SCORE: 4/10
+
+- Key poses: 4. Weight-on-L and weight-on-R look almost the same. The hip shift is a few px, the "look" in f6 barely reads, and the silhouette never changes.
+- Timing/spacing: 5. The hold/transfer/settle structure is right (300/300/120×3/240), but the transfers move so little that the timing has nothing to show.
+- Weight & bounce: 3. There's no visible down-settle on landing and no overshoot in f5/f11. Breathing isn't visible.
+- Overlap/follow-through: 4. The bow and sleeves lag a little (see the onion skin), but the head and arms move in lockstep with the torso.
+- Secondary motion: 4. The springs are too stiff and damped. The skirt panels and back hair rods barely move, and the bun is static.
+- Joints/contacts: 5. Feet stay planted, which is good. But both knees stay locked straight, the free arm hangs like a rod, and the elbow and wrist never bend.
+- Appeal: 4. It reads as a mannequin standing still.
+
+TOP 5 fixes:
+1. **Hips (f0–1, f6–7):** shift the pelvis 0.35 of a step sideways over the support foot and tilt it 8°. Bend the free knee 15–20° and lift that heel. Counter-tilt the shoulders 5° the opposite way (contrapposto).
+2. **Root height (f5, f11):** drop 3–4% of height for the settle, overshoot down 120 ms, then rise back. Breathing: chest scale +4% and shoulders up 2 px, peaking at f1 and f7.
+3. **Head (f6–7):** turn 25° toward the camera and tilt 8°. Lead it 1 frame earlier (start at f4) and overshoot 5° before settling.
+4. **Springs:** loosen bow, bun, hair and skirt about 2× (less damping, more amplitude). Bow lobes should flick 10–15° and lag 1–2 frames on every transfer. Skirt hem should swing 6–8° toward the moving hip.
+5. **Arms (f2–4, f8–10):** bend elbows 15–25° and drift them 2 frames behind the torso. Sleeves should swing 10° on an arc and settle with one rebound inside the 240 ms settle frame.

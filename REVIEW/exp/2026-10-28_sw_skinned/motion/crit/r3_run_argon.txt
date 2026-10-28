@@ -1,0 +1,19 @@
+SCORE: 5/10
+
+* Key poses: 5/10
+* Timing/spacing: 5/10
+* Weight & bounce: 6/10
+* Overlap/follow-through: 4/10
+* Secondary motion: 5/10
+* Joints/contacts: 4/10
+* Appeal: 5/10
+
+**Critique:** Good vertical head bounce (seen in onion skin), but limbs are cramped, contacts lack classic Williams extension, and flight/contact poses blur together, causing a robotic, stepping-in-place feel.
+
+**TOP 5 CONCRETE FIXES:**
+
+1. **Fix "Broken" Contact Knees (Joints/Contacts):** On **f0 (L leg)** and **f4 (R leg)**, the front knees are flexed ~40° and planted directly under the hips. Extend the front knee to nearly straight (5–10° bend), reach the heel 0.3 step-lengths further forward, and pitch the foot toes-up by +30° for a crisp heel-strike.
+2. **Differentiate Flight vs. Contact (Key Poses/Spacing):** **f3** and **f4** (and **f7/f0**) have nearly identical leg silhouettes. In **f3/f7 (flight)**, fold the trailing heel up toward the glutes (+45° knee flexion) and drive the leading knee +20° higher to create an open, airborne "V" silhouette before snapping the shin out on contact.
+3. **Widen Arm Swing & Fix Elbow Lock (Arcs):** Elbows are locked at ~90° and arms hug the torso, muddying the silhouette in E view. On **f2/f3** and **f6/f7**, swing the back elbow +25° further behind the back and extend the elbow angle by +20°; drive the forward fist up to chin height.
+4. **Add Spine Counter-Rotation & Tilt (Weight):** Torso is a rigid block. On **f0/f4**, add +20° chest yaw (opposing the pelvis) and tilt the spine +10° further forward from the hips.
+5. **Offset Secondary Overlap (Follow-through):** Hair bun, bow, and bell sleeves peak in sync with the body. Delay their spring phase by **1 frame (70 ms)**: on **f1/f5 (down)**, flare bow lobes and sleeves upward (+25°); on **f3/f7 (flight)**, snap them down.

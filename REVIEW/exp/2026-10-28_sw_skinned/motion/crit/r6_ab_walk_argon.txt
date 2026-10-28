@@ -1,0 +1,9 @@
+SCORE A: 4/10, SCORE B: 4.5/10
+B vs owner complaint: partly — B adds vertical head/torso bounce and secondary follow-through, but destroys leg silhouettes, creates extreme arm asymmetry, and introduces broken knee joints.
+
+Top 5 remaining problems in B:
+1. **Severe arm swing asymmetry (Bf0–Bf1 vs Bf4–Bf5):** In Bf0–Bf1, both arms stay pinned to the torso (0px spread), whereas in Bf3–Bf5 they flare wildly outward (~12px wider). Needs symmetric counter-swing on both steps; open the arms in Bf7–Bf1 by ~6px and tone down Bf4–Bf5 by ~4px.
+2. **Broken/spindly knee joint & missing thigh (Bf1):** The back (right) leg is entirely hidden or collapsed into a 2px-wide vertical stick with an unnatural 90° hip/knee kink. Move the back knee/calf 4–5px screen-left so both legs read clearly.
+3. **Crushed stride length on contact poses (Bf0, Bf4):** Compared to A's clear wide strides (Af0, Af4), B's feet land only ~4–6px apart horizontally, making her look like she's tip-toeing in place. Widen foot separation on Bf0 and Bf4 by 5–6px along the SE walk axis.
+4. **Crunched neck/head dip on down poses (Bf1, Bf5):** The head drops ~3–4px too low into the shoulders while tilting forward, erasing the neck and creating a hunched posture. Reduce downward head translation by 2px.
+5. **Skirt/sleeve clipping & silhouette mud (Bf1, Bf7):** The spring-simulated sleeves collapse inward in Bf1/Bf7, merging entirely with the skirt/hips and hiding the hands. Offset the front hand/sleeve 3px screen-right/down.

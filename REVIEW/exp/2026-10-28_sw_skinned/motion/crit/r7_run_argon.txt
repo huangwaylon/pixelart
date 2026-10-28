@@ -1,0 +1,21 @@
+SCORE: 6/10
+
+Key poses: 6/10
+Timing/spacing: 6/10
+Weight & bounce: 7/10
+Overlap/follow-through: 5/10
+Secondary motion: 5/10
+Joints/contacts: 5/10
+Appeal: 6/10
+
+TOP 5 CONCRETE FIXES:
+
+1. **Fix "Stair-Climbing" Passing Legs (f1, f2, f5, f6):** The recovery knee drives way too high while the torso stays upright, reading like a march. In f1/f5, drop the passing knee by ~25° and tuck the heel closer to the glutes (increase knee flexion by 30°). In f2/f6, swing the thigh forward 15° less vertically and extend the shin forward earlier to prepare for f3/f7 flight.
+
+2. **Commit to Forward Run Lean & Spine Flexion (All frames):** The spine is stiff and vertical. Pitch the entire torso/pelvis forward by 15°–20° across the whole cycle. Add spine flexion (crunch) in Down frames (f1/f5, +10° forward) and arch the chest in Push-off/Flight (f2/f3, f6/f7, +10° extension) to create a dynamic line of action.
+
+3. **Flatten Contact Foot Plant (f0, f4):** On Contact (f0/f4), the leading foot lands flat-footed directly under the knee, killing forward momentum. Extend the leading leg further forward (+0.15 step length), straighten the knee by +20°, and pitch the foot up (+25° dorsiflexion) for a clear heel/mid-foot strike.
+
+4. **Delay Head Pitch & Amplify Bow Overlap (f1–f3, f5–f7):** The head is locked to the neck. Delay head pitch by 1 frame: tilt chin down 10° in f2/f6 (push-off) and snap it up 12° in f0/f4 (contact). Loosen bow/hair spring damping so the bow lobes flare up +30° in f1/f5 (down) and slap down in f3/f7 (flight).
+
+5. **Widen Arm Swing & Forearm Drag (f0, f3, f4, f7):** Forearms stay locked at ~90° flexion. On back-swings, open the elbow by +35° (extend hand back) in f3/f7, and drag the wrist behind the elbow by 20° on the forward swing in f1/f5.

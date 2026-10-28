@@ -1,0 +1,19 @@
+SCORE: 5/10
+
+- Key poses: 6
+- Timing/spacing: 5
+- Weight & bounce: 5
+- Overlap/follow-through: 4
+- Secondary motion: 4
+- Joints/contacts: 5
+- Appeal: 5
+
+The crouch (f2) and apex tuck (f6–f7) read clearly. The fall and landing (f8–f13) go stiff: legs stay straight like a mannequin and the arms lock into a near T-pose. Hair, bun and bow barely trail behind the body.
+
+**TOP 5 FIXES**
+
+1. **f8–f10, f13 arms:** Drop the T-pose. Lower the shoulders 25–35° below horizontal and bend the elbows 30–45°. Bring the arms down from overhead (f7) through a 45° up-and-out pose (f8) to forward and down at contact (f10). That gives them an arc instead of a snap.
+2. **f8–f9 legs:** Don't let them hang dead straight. Bend one knee 20° and the other 35°, and point the toes about 20°. Extend the legs fully only on f10, so contact reads as a reach.
+3. **Hair, bun, bow lobes:** Increase spring lag. While rising (f4–f6) they should trail downward 15–20°, and while falling (f8–f9) they should flip upward 20–25°. Let them keep moving 2 frames past contact, about 60 ms of overshoot into f12, then settle back during f13–f14.
+4. **f3–f4 launch:** At 25 ms, f3 is invisible; raise it to 50 ms. On f4, lift the heels off the ground, or raise the root by 0.1 step. Push the arms fully overhead and arch the spine back 8–10° so the stretch reads.
+5. **f12 squash and f13 overshoot:** Lower the pelvis an extra 0.15 of leg length and pitch the torso forward 15°. Let the skirt and sleeves flare out 10–15° on the impact. On f13, raise the heels higher with the chest lifted 5°. Then stretch f14 to 110 ms so the dip has weight before the 250 ms end hold.

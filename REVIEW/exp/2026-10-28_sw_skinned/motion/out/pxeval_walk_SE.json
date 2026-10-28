@@ -1,0 +1,53 @@
+{
+ "pxeval": 1,
+ "cmd": "seq",
+ "source": "REVIEW/exp/2026-10-28_sw_skinned/motion/prev/px/walk/walk_SE_px_hs",
+ "row": null,
+ "row_name": null,
+ "cell": null,
+ "scale_removed": 1,
+ "size": [
+  128,
+  128
+ ],
+ "n_frames": 8,
+ "loop": true,
+ "figure_px_mean": 1851.625,
+ "colours": 17,
+ "durations_ms": null,
+ "changed_mean": 0.6559,
+ "changed_max": 0.8034,
+ "resid_mean": 0.2663,
+ "flicker": 0.2617,
+ "boil": 0.0564,
+ "shade_swap": 0.0473,
+ "motion_px": 0.9742,
+ "articulation": 0.2886,
+ "rigid_share": 0.3547,
+ "sil_change": 0.264,
+ "pose_range": 0.4772,
+ "holds": 0,
+ "area_cv": 0.078,
+ "centroid_std": [
+  1.3825,
+  2.3631
+ ],
+ "feet_range": 8.0,
+ "top_range": 6.0,
+ "height_range": 7.0,
+ "width_range": 7.0,
+ "head_range": [
+  6.0,
+  6.0
+ ],
+ "head_jerk": 4.4604,
+ "centroid_jerk": 5.5946,
+ "seam_changed": 0.6275,
+ "seam_resid": 0.087,
+ "seam_ratio": 0.781,
+ "flags": [
+  "BOILING",
+  "SHADE_SWAP",
+  "FEET_JITTER"
+ ]
+}

@@ -1,0 +1,20 @@
+SCORE: 4/10
+
+Key poses: 4/10
+Timing/spacing: 5/10
+Weight & bounce: 3/10
+Overlap/follow-through: 4/10
+Secondary motion: 5/10
+Joints/contacts: 3/10
+Appeal: 4/10
+
+**Critique vs Principles:**
+The animation reverses the mechanics of a weight shift: the pelvis drops during the transfer (f5, f11) into a deep, double-bent-knee "ski-squat" and rises on the holds, making her look like she is doing squats rather than relaxing on a hip. There is severe backward neck hyperextension on the L-hold, and feet slide/float.
+
+**TOP 5 CONCRETE FIXES:**
+
+1. **Fix Neck Hyperextension (f0–f2, f10–f11):** In E-view, the head pitches backward ~25° (chin up) while the torso leans forward, breaking the neck joint. Rotate head forward (pitch down) by 20–25° on f0–f1 and f11 so the gaze is level.
+2. **Invert Pelvis Arc & Unbend Support Leg (f0–f1, f5, f6–f7, f11):** In f5/f11 ("settle"), both knees bend ~40° in a weightless squat. Instead, make f3 and f9 the lowest passing dip (drop pelvis ~5% body height), and make holds (f0–f1, f6–f7) settled contrapposto: straighten the weight-bearing leg (knee bend <10°), relax the unloaded knee (bend ~25°), and tilt pelvis 10–15° toward the unloaded side.
+3. **Lock Foot Contacts (f4–f7):** The right foot slides backward and lifts off the ground between f3 and f5 (E-view). Pin both feet firmly to the floor plane (0 translation) throughout; only allow a 10° heel lift on the unloaded foot during f0–f1 and f6–f7.
+4. **Add Spine C-Curve & Head Drag (f2–f5, f8–f11):** Torso moves as a rigid block. Delay head yaw/roll by 1 frame (80–120 ms) behind chest during transfers, and add 12° lateral spine side-bend opposing the hip tilt on holds.
+5. **Snap Transfer Spacing (f2–f4, f8–f10):** Spacing across 80/120/160 ms is too linear. Shift 60% of the lateral pelvis travel into f3–f4 (and f9–f10) with an overshoot of ~5% hip width on f5/f11 before settling into f6/f0.

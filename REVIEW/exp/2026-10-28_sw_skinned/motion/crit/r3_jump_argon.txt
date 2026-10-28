@@ -1,0 +1,17 @@
+SCORE: 6/10
+
+- Key poses: 6/10
+- Timing/spacing: 6/10
+- Weight & bounce: 6/10
+- Overlap/follow-through: 5/10
+- Secondary motion: 6/10
+- Joints/contacts: 5/10
+- Appeal: 6/10
+
+**TOP 5 CONCRETE FIXES:**
+
+1. **Break Limb Twinning (Asymmetry):** In **f2–f12**, both arms and legs mirror each other almost identically, causing robotic stiffness. Offset the left knee in **f6–f8** to tuck **20° higher** than the right; stagger the left arm to lead the upward swing by **1 frame** in **f3–f4**.
+2. **Fix Board-Straight Landing Legs:** In **f10–f11**, both knees lock at **0°** like stilts before snapping into **f12**. In **f10**, reach with the right foot **0.15 body-lengths lower** than the left (ankles extended **30°**); in **f11**, absorb impact with a **15° knee bend** on contact.
+3. **Spine C-Curves & Head Overlap:** The torso stays too vertical in **f4–f11**. In **f4–f5**, arch the chest back **15°** and tilt the head up **20°** looking at the apex. In **f7–f8**, curl the spine forward **15°** into a C-shape before the legs drop.
+4. **Exaggerate Squashes & Overshoot:** In **f2** and **f12**, drop the hips **20% lower** and flare knees outward **25°** in SE view to open the silhouette. In **f13**, push chest upward and rise onto toes (**+25° ankle plantarflexion**) so the overshoot visibly exceeds **f0** height.
+5. **Snappier Timing & Secondary Lag:** Cut **f4** to **40ms**, **f11** to **30ms**, and hold **f12** for **120ms** for heavy impact. Increase spring drag on bow, sleeves, and skirt in **f8–f10** to flare upward **35°** during descent, slapping down 1 frame late in **f13**.

@@ -1,0 +1,11 @@
+SCORE: 6/10
+
+Key poses: 5 | Timing/spacing: 6 | Weight & bounce: 6 | Overlap/follow-through: 7 | Secondary motion: 7 | Joints/contacts: 5 | Appeal: 6
+
+**TOP 5 CONCRETE FIXES:**
+
+1. **Fix Arm Asymmetry & Peak Timing (f0, f1, f4, f5):** The walk is lopsided. In E view, the L arm reaches ~70° forward on f4-f5, while the R arm only reaches ~30° on f0-f1. Match both forward swings to ~55°. Also, arm arcs peak on Down (f1, f5) instead of Contact (f0, f4), making the swing look late and robotic; shift the shoulder keys 1 frame earlier (-105ms).
+2. **Shift Bounce Peak from Passing to Up (f2, f3, f6, f7):** Following Richard Williams’ mechanics, the head/pelvis currently peak too early on Passing (f2, f6) and drop on Up (f3, f7). Raise pelvis/head on f3 and f7 by +15% of leg length so Up is the true apex, then drop sharply into Contact (f0, f4) for snappy weight.
+3. **Widen Stride & Fix Knee Pop (f0, f3, f4, f7):** The stride in onion skin is narrow (~0.5 head width), causing a shuffle. Extend front/back foot reach by +25% on f0/f4. On Up (f3, f7), the trailing leg straightens abruptly; keep ~15° knee flexion before lifting.
+4. **Clear Heel/Toe Contacts (f0, f1, f4, f5):** Feet land flat. On f0 (L) and f4 (R), pitch the leading foot toes up +25° for heel strike, snapping flat on f1/f5.
+5. **Add Spine Pitch & Head Bob Overlap (f1, f2, f5, f6):** The torso is a vertical rod. Add +8° forward chest lean overall, pitching the head +10° down on f2/f6 (1 frame after Down) for bouncy follow-through.

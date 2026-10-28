@@ -1,0 +1,21 @@
+SCORE: 5/10
+
+Key poses: 5/10
+Timing/spacing: 5/10
+Weight & bounce: 4/10
+Overlap/follow-through: 5/10
+Secondary motion: 5/10
+Joints/contacts: 6/10
+Appeal: 5/10
+
+TOP 5 CONCRETE FIXES:
+
+1. **Pelvis Dip on Transfers (f3, f9):** The center of mass moves linearly horizontally without a vertical U-arc. Drop the pelvis down in -Y by 10–15% of leg length on f3 and f9 (bending both knees +15°), then overshoot up +5% on f5 and f11 before settling on f6/f0.
+
+2. **Contraposto & Spine C-Curve (f0–f1, f6–f7):** The torso is a rigid block. On L-weight hold (f0–f1), roll pelvis +10° (left hip high) and counter-tilt chest -10° (left shoulder low) to create a clear S/C-curve; invert (+/-10°) for R-weight hold (f6–f7).
+
+3. **Head & Chest Overlap (f3–f5, f9–f11):** The head turns simultaneously with the torso. Delay head yaw by 1 frame (120ms): on f3–f4, keep head dragged back +12° toward the previous look direction, snapping into the new look on f5–f6 with a 5° pitch-down squash on f4.
+
+4. **Dead Holds & Breathing (f0–f1, f6–f7):** 600ms holds freeze the body (only blinking). Add chest inhalation pitch (-5° backward, +3% Y-scale) and shoulder rise (+5° clavicle Z) across f0→f1 and f6→f7 so the sprite stays alive during holds.
+
+5. **Bow/Bun Spring Amplitude (f4–f6, f10–f0):** Spring parts barely separate from the head silhouette. Decrease spring stiffness so bow lobes lag behind vertical drops: pitch bow +25° up on f3/f9 (down-frames) and slap down -20° on f5/f11 (settle frames).

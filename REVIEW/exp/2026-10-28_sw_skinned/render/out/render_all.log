@@ -1,0 +1,61 @@
+RENDERED 8 frames x ['pv'] in 0.4s
+preview /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/walk/walk_SE_preview.gif
+RENDERED 8 frames x ['guide', 'lum', 'dep'] in 3.1s
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/walk/walk_SE_4x.gif {'dx': 2, 'dy': 1}
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/walk/walk_SE_hs_4x.gif {'dx': 2, 'dy': 1}
+RENDERED 8 frames x ['pv'] in 0.4s
+preview /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/walk/walk_E_preview.gif
+RENDERED 8 frames x ['guide', 'lum', 'dep'] in 3.1s
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/walk/walk_E_4x.gif {'dx': 4, 'dy': 2}
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/walk/walk_E_hs_4x.gif {'dx': 4, 'dy': 2}
+RENDERED 8 frames x ['pv'] in 0.4s
+preview /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/walk/walk_S_preview.gif
+RENDERED 8 frames x ['guide', 'lum', 'dep'] in 2.9s
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/walk/walk_S_4x.gif {'dx': 0, 'dy': 3}
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/walk/walk_S_hs_4x.gif {'dx': 0, 'dy': 3}
+RENDERED 12 frames x ['pv'] in 0.6s
+preview /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/idle/idle_SE_preview.gif
+RENDERED 12 frames x ['guide', 'lum', 'dep'] in 4.6s
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/idle/idle_SE_4x.gif {'dx': 2, 'dy': 1}
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/idle/idle_SE_hs_4x.gif {'dx': 2, 'dy': 1}
+RENDERED 12 frames x ['pv'] in 0.6s
+preview /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/idle/idle_E_preview.gif
+RENDERED 12 frames x ['guide', 'lum', 'dep'] in 4.5s
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/idle/idle_E_4x.gif {'dx': 4, 'dy': 2}
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/idle/idle_E_hs_4x.gif {'dx': 4, 'dy': 2}
+RENDERED 12 frames x ['pv'] in 0.6s
+preview /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/idle/idle_S_preview.gif
+RENDERED 12 frames x ['guide', 'lum', 'dep'] in 4.6s
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/idle/idle_S_4x.gif {'dx': 0, 'dy': 3}
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/idle/idle_S_hs_4x.gif {'dx': 0, 'dy': 3}
+RENDERED 8 frames x ['pv'] in 0.4s
+preview /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/run/run_SE_preview.gif
+RENDERED 8 frames x ['guide', 'lum', 'dep'] in 3.0s
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/run/run_SE_4x.gif {'dx': 2, 'dy': 1}
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/run/run_SE_hs_4x.gif {'dx': 2, 'dy': 1}
+RENDERED 8 frames x ['pv'] in 0.4s
+preview /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/run/run_E_preview.gif
+RENDERED 8 frames x ['guide', 'lum', 'dep'] in 3.1s
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/run/run_E_4x.gif {'dx': 4, 'dy': 2}
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/run/run_E_hs_4x.gif {'dx': 4, 'dy': 2}
+RENDERED 8 frames x ['pv'] in 0.4s
+preview /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/run/run_S_preview.gif
+RENDERED 8 frames x ['guide', 'lum', 'dep'] in 3.1s
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/run/run_S_4x.gif {'dx': 0, 'dy': 3}
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/run/run_S_hs_4x.gif {'dx': 0, 'dy': 3}
+RENDERED 16 frames x ['pv'] in 0.8s
+preview /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/jump/jump_SE_preview.gif
+RENDERED 16 frames x ['guide', 'lum', 'dep'] in 6.1s
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/jump/jump_SE_4x.gif {'dx': 2, 'dy': 1}
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/jump/jump_SE_hs_4x.gif {'dx': 2, 'dy': 1}
+RENDERED 16 frames x ['pv'] in 0.9s
+preview /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/jump/jump_E_preview.gif
+RENDERED 16 frames x ['guide', 'lum', 'dep'] in 6.1s
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/jump/jump_E_4x.gif {'dx': 4, 'dy': 2}
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/jump/jump_E_hs_4x.gif {'dx': 4, 'dy': 2}
+RENDERED 16 frames x ['pv'] in 0.8s
+preview /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/jump/jump_S_preview.gif
+RENDERED 16 frames x ['guide', 'lum', 'dep'] in 6.0s
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/jump/jump_S_4x.gif {'dx': 0, 'dy': 3}
+full /Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/render/out/jump/jump_S_hs_4x.gif {'dx': 0, 'dy': 3}
+ALL_RENDERS_DONE

@@ -1,0 +1,10 @@
+SCORE A: 3/10, SCORE B: 5/10
+B vs owner complaint: partly. B adds whole-body weight shifts, head tilt and sleeve and skirt follow-through, but the transfers look like a squat-and-pop instead of a breathing idle, and the secondary parts barely move.
+
+Top 5 remaining problems in B:
+
+1. **f4 and f10, hips/knees:** The transfer frames drop the whole body about 4–5px and the knees bend hard toward each other. An idle bob should be 1–2px, so cut the dip by about 60% and keep the knees roughly over the feet.
+2. **f5 and f11, torso/head:** The settle pops straight back to full height in one frame. f11 also throws the torso about 3px right and leans it 10–15° back. Add a 1px overshoot frame and ease out over 2 frames. Reduce the lean to about 5°.
+3. **f2–f5 and f8–f10, screen-right sleeve and hand:** The sleeve stays flared 4–6px out from the body like a wing, and the hand sticks out stiffly. The arm should hang and the sleeve should trail the torso by about 1 frame. Limit the flare to 2px and drop the hand about 3px.
+4. **f0–f11, bow, bun and hair:** The spring parts move about 1px or less, so nothing reads as bouncing. Give the bow and bun a 2–3px lag after f4/f10, with 1 rebound at f5/f11 and f6/f0.
+5. **f3→f4→f5 and f9→f10→f11, feet:** The stance width changes by about 3px and the planted foot shifts. Lock the planted foot to the pixel and get the weight shift from the pelvis moving 2px sideways, not from the feet sliding.

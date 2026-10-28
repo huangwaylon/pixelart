@@ -1,0 +1,19 @@
+SCORE: 4/10
+
+- Key poses: 5
+- Timing/spacing: 5
+- Weight & bounce: 5
+- Overlap/follow-through: 4
+- Secondary motion: 4
+- Joints/contacts: 4
+- Appeal: 4
+
+The f2 crouch reads well. Problems: f3 is nearly a copy of f2. The neck snaps back in f5–f6 and forward in f10–f11 like it's broken. The arms cross in an X over the chest at the apex (f5–f7), which gives a muddy silhouette. The head clips the top of the cell in f6–f7. Skirt, sleeves and hair barely respond to the vertical motion.
+
+**TOP 5 FIXES**
+
+1. **Neck/head (f5–f7, f10–f11):** cut the back-pitch from about 45° to 15° at f5 and 0° at f7. Cut the forward nod from about 40° to 15° at f10. f11 is meant to be an overshoot, so make it go up, not deeper into a bow: head +5° up, rise onto the toes, root up about 0.1 of body height, knees nearly straight.
+2. **Arms (f4–f10):** at f4, swing the arms overhead to about 150° shoulder flexion; right now they stop at horizontal. At f5–f7, open them into an up-and-out V of about 110° instead of crossing them. At f8, let the arms drag above the shoulders. At f9–f10, drop them down and out to sell the impact.
+3. **Launch (f3):** make it a real in-between. Knees to about 120°, torso upright, heels off the ground. At f4, point the ankles about 40° with toe contact. At f9 contact, bend the knees about 15°, not locked straight.
+4. **Timing/height:** the rise is 220 ms; cut it to 150 ms (f5 = 80, f6 = 70). Raise the apex hang to 140 ms with a tighter knee tuck. Split f8 into two frames (70 + 60). Lower the jump height about 25% so the head stays inside the cell.
+5. **Secondary motion:** hair, bun and bow should trail down on the rise (f4–f5), float at f7, and lift 25–30° on the fall (f8–f9). Then overshoot down at f10 and bounce up once at f11, lagging one frame behind the body. Add 25° of skirt flare at f8–f9 and compress it at f10. The sleeves should lag the arms by one frame and swing 20° more.

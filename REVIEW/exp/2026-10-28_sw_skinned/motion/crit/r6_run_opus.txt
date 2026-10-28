@@ -1,0 +1,19 @@
+SCORE: 5/10
+
+- Key poses: 6
+- Timing/spacing: 5
+- Weight & bounce: 5
+- Overlap/follow-through: 4
+- Secondary motion: 4
+- Joints/contacts: 5
+- Appeal: 5
+
+The leg mechanics read better than before. The f1/f5 down frames have a real drop and the f5/f6 knee drive is good. But the upper body is still a rigid block on top of the legs. The head angle, torso lean and arms barely change across the cycle, and the f0 contact looks almost the same as the f7 flight, so the landing doesn't read.
+
+**Top 5 fixes**
+
+1. **Separate contact from flight (f0/f4 vs f3/f7).** Raise the root about 0.15 head height on f3/f7 and drop it about 0.08 on f0/f4. Push f1/f5 a further 0.05 lower, with a small squash (scale Y 0.95, X 1.04 on the torso and head). The key frame order should read clearly as contact, then down, then up.
+2. **Torso lean and twist (all frames).** Add 8–10° of forward lean throughout. Twist the chest about ±12° against the hips, so the chest turns toward the forward leg's opposite side. Make f1/f5 2° deeper.
+3. **Arm pump (all frames).** Increase the shoulder swing from about ±25° to ±45°. Bend the elbows to about 80° on the forward swing and open them to about 110° on the back swing. Let the hands overshoot a little on f2/f6.
+4. **Head counter-motion (f1–f3, f5–f7).** Tilt the head down 5° on f1/f5 and up 4° on f3/f7. Set it one frame (70 ms) behind the root bob so the big head bounces instead of riding stiffly on top.
+5. **Feet and secondary motion.** On f0/f4, strike heel first with the toe up 15°. On f2/f6, point the ankle down about 30° so the push-off happens through the toe. Delay the springs on the bun, bow lobes, hair and sleeves by one frame and boost them about 1.5×, so they peak on f2/f6 going up and on f0/f4 going down. Flare the skirt +10° on f1/f5.

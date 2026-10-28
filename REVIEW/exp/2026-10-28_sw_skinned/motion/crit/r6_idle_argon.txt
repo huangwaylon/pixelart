@@ -1,0 +1,19 @@
+SCORE: 5/10
+
+Key poses: 5/10
+Timing/spacing: 5/10
+Weight & bounce: 4/10
+Overlap/follow-through: 4/10
+Secondary motion: 5/10
+Joints/contacts: 5/10
+Appeal: 5/10
+
+The motion feels robotic because the spine, chest, and head rotate as a single rigid block (yawing left/right) rather than shifting weight laterally from hip to hip with contrapposto. The dip during transfers is too shallow to read as "bouncy" once pixelated.
+
+TOP 5 FIXES:
+
+1. **Pelvis Lateral Shift & Contrapposto (f0–f1, f5–f7, f11):** Translate the pelvis laterally over the planted foot by +15% of hip width (toward L on f11–f1, toward R on f5–f7). Add 12° pelvis roll (drop unweighted hip) and counter-tilt the chest 10° opposite so the spine forms an S-curve instead of a straight pole.
+2. **Deeper Transfer Down-Pose (f3–f4, f9–f10):** The vertical dip is barely visible in the E-view onion skin. Drop the pelvis an additional 10% of leg length downward on f4 and f10, bending knees +20° more, then pop up into an overshoot (+3% height) on f5 and f11.
+3. **Spine/Head Drag & Overlap (f2–f5, f8–f11):** Break the simultaneous rotation. Delay chest yaw/roll by 1 frame (80–120ms) behind the pelvis, and head yaw/tilt by 2 frames. On f3/f9, drag the head 10° behind the torso's travel direction.
+4. **Breathing & Hold Moving-Holds (f0–f1, f6–f7):** The 600ms holds freeze the body. Pitch chest up +6° and raise shoulders +5% on f1 and f7 (inhale) so the holds stay alive.
+5. **Unweighted Foot Release (f0–f1, f6–f7):** Peel the unweighted heel up 15° and roll the knee inward 8° toward the standing leg to sell relaxed weight.

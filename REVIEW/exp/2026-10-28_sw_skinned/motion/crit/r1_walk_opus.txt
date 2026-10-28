@@ -1,0 +1,13 @@
+SCORE: 5/10
+
+**Scores:** key poses 5, timing/spacing 5, weight & bounce 5, overlap/follow-through 6, secondary motion 5, joints/contacts 4, appeal 5
+
+**What I see:** The bounce is there but it peaks a frame early. In the E view the head is highest at f2/f6 (passing) and drops at f3/f7 (up), so the rise reads as a hiccup. Foot clearance is low and the contacts are flat-footed with no heel strike, so the walk shuffles. The torso stays upright and the head pokes forward, with little shoulder/hip counter-rotation. The sleeves fly out sideways like wings at f3–f6 and swamp the silhouette. The skirt barely reacts.
+
+**TOP 5 fixes**
+
+1. **Bounce timing (root, all frames):** Make f3/f7 the highest frames, about +0.06 head-heights above passing. Make f1/f5 the lowest, about −0.08 below contact. Ease into the low (f0→f1) and snap out of it (f1→f2).
+2. **Contacts and swing leg (f0/f4, f2/f6):** At contact, point the toe up 20–25° so the heel lands first, with the knee nearly straight (≤10° bend). At passing, lift the swing foot 0.25 of a step higher, with the knee bent about 70° and the toe pointing down 15°.
+3. **Torso (all frames):** Lean the whole body forward 6–8°. Counter-rotate shoulders against hips by ±12° (shoulders peak at f0/f4). Tilt the hips ±5° toward the stance leg at f1/f5.
+4. **Sleeves (f3–f6, mirrored f7–f2):** Add more damping and cut the spring amplitude about 40%. Swing them forward and back with the arms, not out to the side. They should trail the arms by 1 frame (105 ms). Cap outward flare at 25°.
+5. **Skirt, bun and bow (all):** Lag them 1–2 frames behind the root bounce. The skirt hem should lift 0.05 head at f2/f6 and kick up after f1/f5. Delay the bun and bow lobes 1 frame and give them ±10° of rotation that overshoots on the landing. Swing the arms ±30° from the shoulder, not just the forearm.

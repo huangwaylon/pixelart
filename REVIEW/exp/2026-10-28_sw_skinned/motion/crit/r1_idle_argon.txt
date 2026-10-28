@@ -1,0 +1,19 @@
+SCORE: 4/10
+
+Key poses: 4/10
+Timing/spacing: 5/10
+Weight & bounce: 3/10
+Overlap/follow-through: 4/10
+Secondary motion: 4/10
+Joints/contacts: 5/10
+Appeal: 4/10
+
+**Critique:** The onion skin exposes the core flaw: the motion envelope is tiny. For a 3-head chibi sprite, subtle realistic shifts read as dead/frozen in-game. It lacks vertical bounce, contrapposto, and snappy exaggeration.
+
+**TOP 5 CONCRETE FIXES:**
+
+1. **Add Vertical Bounce (Weight/Arcs):** The pelvis moves horizontally without a vertical U-arc. On passing frames **f3** and **f9**, drop the pelvis DOWN by **15% of leg length** ( bending both knees +25°) or push UP into a high-point, then overshoot DOWN by **8%** on settle frames **f5** and **f11**.
+2. **Exaggerate Contrapposto (Key Poses):** Spine is a stiff vertical rod. On **f0–f1** (weight L), translate hips Left **+0.25 head-widths**, tilt pelvis **15°**, and counter-tilt chest/shoulders **15°** opposite. Mirror on **f6–f7** (weight R).
+3. **Break Up Dead Holds (Timing/Breathing):** **f0–f1** and **f6–f7** (600ms total each) freeze the body. Add breathing expansion on **f1** and **f7**: pitch chest UP **+8°**, raise shoulders **+5%**, and delay head pitch UP **+6°** onto **f2** and **f8**.
+4. **Push Head Turn & Anticipation (Appeal):** The look toward camera on **f6** is barely readable. On **f4**, dip head DOWN **10°** (anticipation), then by **f6** yaw head **+30°** toward SE camera with a **12°** cute side-tilt.
+5. **Amplify Secondary Lag (Follow-Through):** Hair, bow, and sleeves barely move. Delay bow lobes and side-locks by **1–2 frames** (120–240ms): during transfers (**f3, f9**), drag them **25–35°** opposite the head's travel, overshooting **+15°** on **f6** and **f0**.

@@ -1,0 +1,20 @@
+SCORE: 4/10
+
+| Category | Score |
+|---|---|
+| Key poses | 4 |
+| Timing/spacing | 4 |
+| Weight & bounce | 4 |
+| Overlap/follow-through | 3 |
+| Secondary motion | 4 |
+| Joints/contacts | 4 |
+| Appeal | 4 |
+
+**What I see:** The weight-on-R key (f6–7) is almost symmetrical. The legs are straight and parallel, the hips are level, and the only change is the head. The transfer (f4–5) drops into a forward-leaning knee-bent squat rather than a hip slide. The arms and hands stay frozen in the same spread pose in every frame. In the onion skin the torso hardly moves, while the bow lobes jitter and jump around.
+
+**Top 5 fixes:**
+1. **f6–f7, contrapposto on R.** Push the pelvis 0.15 step toward R and tilt it 8° (L hip down). Bend the free L knee 15° and lift that heel 0.05 step. Counter-tilt the shoulders 5° the opposite way. Mirror all of this for f0–f1, which only shows about half of it now.
+2. **f3–f5, flatten the transfer.** Cut the knee bend to 10° or less and the forward lean to 3° or less. Move the hips sideways along a shallow U-arc: dip 0.03 step at f3, rise at f5. Drop the deep crouch and the knock-knee in f5.
+3. **Timing.** Re-space the transfers to 80/120/200 ms (slow-in at the end) and add a 1-frame overshoot past the target hip position at f5 and f11 (0.03 step) before settling. This gives the snap and bounce the owner asked for.
+4. **Arms and sleeves, every frame.** Unlock the arms. Lag the forearms 2 frames behind the hips with ±10° swing, and relax the wrists (bend them down 20°; the hands currently stick out like stubs). Give the sleeves a 1–2 frame lag after each transfer and a swing of about 0.1 sleeve length.
+5. **Hair, bow and breathing.** Damp the bow-lobe spring: it flips between f3 and f4, and its rotation should stay within about 15° per frame. Increase the side-hair and bun lag to 2 frames after head turns. Make the breathing visible: chest and shoulders rise 2–3% at f1 and f7, with the head following 1 frame later.

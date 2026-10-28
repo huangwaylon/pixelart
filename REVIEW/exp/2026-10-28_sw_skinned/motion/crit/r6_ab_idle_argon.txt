@@ -1,0 +1,9 @@
+SCORE A: 3/10, SCORE B: 6/10
+B vs owner complaint: partly — B introduces genuine weight transfer, dip-and-settle arcs, and secondary overlap on sleeves/bow, but legs bow unnaturally, feet slide, and the upper spine/head remain too rigid during shifts.
+
+Top 5 remaining problems in B:
+1. **Bow-legged knees & foot sliding (B f4–f9, legs/feet):** During weight transfer (f4) through the right settle (f5–f7), both knees bend outward into an unnatural parenthetical "( )" shape, and the planted feet shift horizontally by ~2–3px instead of locking to the ground plane.
+2. **Locked neck/head angle (B f0–f11, head):** The head translates with the torso but never counter-rotates or lags; add ~4–6° tilt and 1–2px delay on f4–f5 and f9–f10.
+3. **Rigid torso/pelvis block (B f2–f5, f8–f10, spine/hips):** Sash and shoulders stay parallel throughout; needs contrapposto (hip tilt opposite to shoulders by ~1–2px vertically) on weight-settle frames f0, f5–f6.
+4. **Abrupt sleeve pop (B f3–f4, character's left sleeve):** Screen-right arm flares outward by ~4–5px in a single 80ms frame (f3) without follow-through settle on f5–f6.
+5. **Sub-pixel hair/bow bounce (B f4–f6, f9–f11, bow/bangs):** Spring physics barely register at pixel scale (<1px); exaggerate vertical lag/overshoot to a clear 1–2px on f5 and f11.

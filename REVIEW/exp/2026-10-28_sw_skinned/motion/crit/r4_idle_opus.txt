@@ -1,0 +1,23 @@
+SCORE: 5/10
+
+| Category | Score |
+|---|---|
+| Key poses | 5 |
+| Timing/spacing | 5 |
+| Weight & bounce | 4 |
+| Overlap/follow-through | 5 |
+| Secondary motion | 5 |
+| Joints/contacts | 4 |
+| Appeal | 5 |
+
+This is livelier than before. The head turn and the bow and bun lag now read. But the body still moves as one stiff block, there's no bounce when she lands on each foot, and the legs break the silhouette.
+
+**Top 5 fixes**
+
+1. **Legs cross in f9–f11 and the knees knock in f3–f5.** Keep the feet about 0.25 step apart at all times. Point the free knee outward 10–15° instead of inward. Lift the free heel 15–20° on f5 and f11, but keep its toe on the ground. The planted foot must not slide at all.
+2. **No settle bounce in f5 and f11.** Drop the pelvis 4–5% of body height on the first 120 ms. Then let it come up past rest by 1–2% before the hold. Add a matching torso squash of about 3% height and 2% width.
+3. **The hips barely shift.** On the weighted holds (f0–f1, f6–f7), move the pelvis sideways about 0.35 step so it sits over the standing foot. Tilt the pelvis 8° and tilt the shoulders 5° the opposite way.
+4. **Hands stick straight out of the sleeves in f2–f5 and f10.** Drop the forearms 20–25° so the hands rest near the obi or skirt. Delay the arm swing 1 frame (about 120 ms) behind the torso, then let it overshoot about 6°.
+5. **The sleeves and skirt are too stiff, and the breathing doesn't show.** Spring lag on the sleeve and skirt hems should be 1–2 frames, with a 10–15° swing on the transfers and a small settle after. Breathing: raise the chest and shoulders 2% of height on f1 and f7, and keep the head about 1 frame behind.
+
+Also speed up the transfers. Use 80, 120 and 160 ms instead of three even 120 ms frames, so she moves fast out of each hold and slows into the next.

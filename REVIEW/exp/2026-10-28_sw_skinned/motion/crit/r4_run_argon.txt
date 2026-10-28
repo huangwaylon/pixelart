@@ -1,0 +1,19 @@
+SCORE: 5/10
+
+Key poses: 5/10
+Timing/spacing: 5/10
+Weight & bounce: 6/10
+Overlap/follow-through: 4/10
+Secondary motion: 4/10
+Joints/contacts: 4/10
+Appeal: 5/10
+
+The vertical bounce is much better now, but the cycle still reads as stiff and "stair-stepping" because the legs never fully extend on contact or push-off, the torso is locked, and the spring parts barely react.
+
+TOP 5 FIXES:
+
+1. **f0, f4 (Contacts) – Front Leg & Foot:** The front knee is bent (~35°) with the foot landing flat directly under the hip, killing forward momentum. Extend the front leg forward by +0.25 step length, straighten the knee to ~10-15° flexion, and pitch the foot +25° (heel-first strike, toes up).
+2. **f2, f6 (Push-offs) – Back Leg:** The push-off leg stays bent (~30°) and leaves the ground early, making the run look like a high-knee march. Straighten the back knee to ~5° and plantar-flex the ankle +30° to form a strong diagonal line of action from toe to head.
+3. **f3, f7 (Flight) – Arm Spacing & Silhouette:** Arms barely pass the torso midline on f2/f6 and lack extreme stretch on f3/f7. Drive the forward hand +20° higher (to chin height) and the rear elbow +25° further back on f3/f7 to open the silhouette.
+4. **f0–f7 – Spine & Head Overlap:** The head and chest stay locked together. Add 1-frame drag: pitch the head +8° down on f2/f6 (recovering from the f1/f5 drop) and tilt it -8° back on f3/f7 during flight.
+5. **f1, f5 (Down) & f2, f6 (Push-off) – Secondary Bounce:** Bow lobes, bun, and hair tips look rigid. Delay their spring peak by 1 frame: flare the bow/hair upward +20° on f1/f5 (drag during drop), then snap them down -25° on f2/f6 as the body pushes up.

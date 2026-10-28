@@ -1,0 +1,22 @@
+SCORE: 5/10
+
+**Scores**
+- Key poses: 5. Flight and push-off read clearly. The contacts (f0, f4) don't read as contacts.
+- Timing/spacing: 5
+- Weight & bounce: 5
+- Overlap/follow-through: 4
+- Secondary motion: 4
+- Joints/contacts: 4
+- Appeal: 5
+
+**Top 5 fixes**
+
+1. **Contacts f0 and f4: extend the landing leg.** Right now the landing foot is tucked under the knee, so the contact looks like a hop. Plant the foot about 0.25 of a step ahead of the hips, with the knee only about 15° bent. Point the toe up 10° at strike. Keep the back leg trailing at about 35° behind vertical.
+
+2. **Vertical bounce: move the peak to flight.** The head is highest at push-off (f2/f6) and drops at flight (f3/f7). That puts the top of the arc in the wrong place. Put the highest point at f3/f7 and the lowest at f1/f5. Use about 0.12 of the character's height between them, with slow-in at the top and a fast drop into the down frames.
+
+3. **Arms f0–f7: add a real counter-swing.** In most frames both hands sit forward in front of the chest. Swing the upper arm ±45° from the shoulder, opposite to the legs, with the elbow fixed at about 80°. Reach the far forward and far back positions on the contact frames. Then let the sleeves trail 1 frame (70 ms) behind the arm.
+
+4. **Torso and head: add lean and twist.** Lean the torso forward 12–15° for the whole cycle. Add a 10° hip/shoulder counter-twist that peaks on the contacts. Drop the head 4° at the down frames and lift it 3° in flight, one frame behind the body.
+
+5. **Make the two halves match and delay the soft parts.** The sleeves and skirt flare a lot at f4–f5 but hardly at f0–f1, so the run looks like a limp. Set the springs so both halves mirror each other. Delay the hair, bun and bow lobes by 1–2 frames, with about 8–12° of vertical travel. The skirt should lift at f3/f7 and squash down at f1/f5.

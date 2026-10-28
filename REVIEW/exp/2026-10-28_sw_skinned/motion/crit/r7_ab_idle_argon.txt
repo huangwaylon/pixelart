@@ -1,0 +1,9 @@
+SCORE A: 3.5/10, SCORE B: 5.5/10
+B vs owner complaint: partly — B introduces genuine weight shifts, dip arcs, and spring overlap on sleeves/skirt/bow, but still reads mechanical due to twin-syncing limbs, rigid spine/head orientation, and abrupt foot planting.
+
+Top 5 remaining problems in B:
+1. **Stiff spine/neck counter-tilt (f0–f3, f5–f8):** Head and torso tilt as a single rigid block. In f0–f2 (weight L), tilt the head 3–4° CW (screen-right) to counter-balance the left hip jut; reverse 3–4° CCW in f5–f7.
+2. **Knee/foot pop on weight settle (f3→f4→f5):** Screen-right leg snaps from bent/lifted to planted too abruptly. In f4, keep the right heel 2px higher and shift pelvis 1–2px further screen-left so f5 feels like a cushioned settle rather than a lock.
+3. **Symmetrical arm twinning (f4–f8):** Both forearms/sleeves flare outward at nearly identical angles. Drop the screen-left (back) arm 2–3px lower and tuck it 3px closer to the body in f5–f7 to preserve SE depth.
+4. **Under-driven hair/bow follow-through (f4–f6, f9–f11):** During the lowest vertical dip (f4, f9), the bow tips and side locks barely lag. Drag the bow tips 2–3px upward in f4/f9, then overshoot 2px downward in f5/f11.
+5. **Robotic double-blink (f1, f7):** Blinking on every half-cycle (both holds) looks metronomic. Remove the f7 blink; keep only f1.

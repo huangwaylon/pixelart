@@ -1,0 +1,9 @@
+SCORE A: 4/10, SCORE B: 5/10
+B vs owner complaint: partly — B adds vertical bounce and torso twist, but loses stride openness and creates severe symmetry/silhouette bugs that make it read worse than A in several poses.
+
+Top 5 remaining problems in B:
+1. **Asymmetric arm swing (Bf0–Bf1 vs Bf4–Bf5):** Arms are pinned flat against the torso on the L step (Bf0–Bf1, 0px silhouette gap) but swing wide out on the R step (Bf4–Bf5, ~6–8px out). Match L step arm amplitude to R step (+6px outward on Bf0–Bf1).
+2. **Missing leg in Bf7:** The back/swinging leg completely disappears behind the skirt/standing leg in Bf7, leaving a 1-legged silhouette. Push the swinging lower leg/foot 4–5px screen-left (back) or down to stay readable.
+3. **Closed, shuffling stride on contacts (Bf0, Bf4):** Compared to A (Af0/Af4), B’s feet are too close together horizontally (~5–6px narrower), making the walk look tiptoed/mincing. Extend lead foot +3px forward-right and trail foot +3px back-left on Bf0 and Bf4.
+4. **Dead secondary motion on hair/bow (Bf0–Bf7):** Despite spring simulation, the bow and side-locks barely move (<1px offset across all frames). Delay bow/hair tips by 1–2 frames and add 2–3px vertical/rotational drag on Down/Up frames (Bf1, Bf3, Bf5, Bf7).
+5. **Back-foot toe-drag on Passing (Bf2, Bf6):** The passing leg’s knee lifts too low, keeping the foot cramped. Lift passing knee +2–3px higher.

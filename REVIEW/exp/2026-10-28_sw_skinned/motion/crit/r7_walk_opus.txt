@@ -1,0 +1,23 @@
+SCORE: 5/10
+
+| Category | Score |
+|---|---|
+| Key poses | 5 |
+| Timing/spacing | 6 |
+| Weight & bounce | 5 |
+| Overlap/follow-through | 5 |
+| Secondary motion | 5 |
+| Joints/contacts | 4 |
+| Appeal | 5 |
+
+The bounce now reads, and the up and down frames are different from each other. But the stride is short, the feet look flat and planted, and in the down frames the head drops further than the body, so it reads as a nod instead of weight.
+
+**TOP 5 fixes**
+
+1. **Contacts, f0 and f4 (legs):** Make the stride about 30% longer. Lift the front toe so the heel strikes first (ankle about 15–20° dorsiflexed). Put the back foot up on its toe (heel up about 25°). Right now both feet are flat and the poses look glued to the floor.
+2. **Down frames, f1 and f5 (head and torso):** Cut the forward head pitch from about 15° to about 5°. Move the drop into the hips instead: pelvis down about 0.08 head-heights, front knee bent about 20°. The weight should land in the legs, not the neck.
+3. **Passing frames, f2 and f6 (swing leg):** Lift the swing foot higher, with the knee raised about 45° and the foot at mid-shin of the other leg. In the SE view (f2 and f6) the swing foot scrapes the ground and the knee folds strangely behind the sock line.
+4. **Arms, f2 and f3 (and f6, f7):** Pull the sleeves back in toward the body. Arm abduction at passing should be about 10°, not the current 30–35°, which looks like airplane arms. Push the forward/back swing to ±30° at contact, and delay it by 1 frame (about 105 ms) behind the hips so the arms drag.
+5. **Secondary motion (skirt, bun, bow):** Make the springs looser so their peaks come 1–2 frames after the pelvis peaks. Skirt hem should flare about 10° on f3 and f7 and settle on f1 and f5. Bun and bow should overshoot about 8° after each down frame. Right now they move almost in lockstep with the head.
+
+Also: add pelvis roll of ±6° and counter-rotate the shoulders by ±8° to get rid of the stiff, boxed-in torso.

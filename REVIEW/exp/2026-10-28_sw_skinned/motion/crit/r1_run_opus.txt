@@ -1,0 +1,21 @@
+SCORE: 5/10
+
+| Category | Score |
+|---|---|
+| Key poses | 5 |
+| Timing/spacing | 5 |
+| Weight & bounce | 4 |
+| Overlap/follow-through | 6 |
+| Secondary motion | 6 |
+| Joints/contacts | 4 |
+| Appeal | 5 |
+
+It reads as a run now, and the sleeves and skirt are working. But the body still moves like a stiff stack. The torso hardly leans and the head barely bobs. The legs keep a short, bent-knee shuffle that never fully pushes off. The forearms are stuck pointing forward.
+
+**Top 5 fixes:**
+
+1. **Push-off and flight (f2/f6, f3/f7, legs):** At push-off, straighten the back leg fully (knee 175°, toe pointed). At flight, lift both feet 0.15 of a step clear of the ground. Right now f3 and f7 look like contact frames, so there is no visible air time.
+2. **Root bounce and squash (f1/f5 low, f3/f7 high, pelvis):** Drop the pelvis by 0.12 of the body height at f1/f5 and raise it 0.08 above neutral at f3/f7. Add 5–8% squash on the down frames and 5% stretch in flight. Delay the head by one frame (+70 ms) so it settles after the body.
+3. **Torso lean and twist (all frames, spine):** Lean the whole body forward 12–15° (currently about 3°). Add ±12° of shoulder twist against the hips, with the shoulder leading the opposite leg.
+4. **Arms (all frames):** Swing the shoulders ±45° forward and back, not just pumping the forearms. Open the elbow to 110° on the back swing and close it to 70° on the forward swing. Peak the swing on the contact frames (f0/f4).
+5. **Contacts and secondary damping (f0/f4 feet, side locks, sleeves):** Plant the contact foot 0.2 of a step ahead of the hips with the heel down. Stiffen the side-lock and bang springs about 30% so they stop splaying sideways. Cap sleeve inflation (f4/f5 balloon to about twice their size) and give them a one-frame lag that reverses direction at the extremes.

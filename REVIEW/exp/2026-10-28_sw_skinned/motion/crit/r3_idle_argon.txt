@@ -1,0 +1,19 @@
+SCORE: 5/10
+
+* Key poses: 5/10
+* Timing/spacing: 5/10
+* Weight & bounce: 4/10
+* Overlap/follow-through: 4/10
+* Secondary motion: 5/10
+* Joints/contacts: 5/10
+* Appeal: 5/10
+
+The motion fails the owner's request for dynamic bounce. In a weight transfer, the body usually rises through the middle or dips into a snappy breakdown, then settles into a grounded hold. Here it is inverted: holds (`f0–f1`, `f6–f7`) are stiff with locked knees, while transfers (`f4–f5`, `f10–f11`) sink into an awkward, sustained crouch. Secondary springs are over-damped.
+
+### TOP 5 FIXES:
+
+1. **Fix Inverted Bounce & Knee Bend (`f3–f5`, `f9–f11`):** In `f4–f5`, knees bend ~35° into a deep squat just before snapping straight in `f6`. Invert this: make `f3` and `f9` the snappy passing dip (drop pelvis 0.1 head-heights, knee bend ~20°), rise slightly into the `f5`/`f11` overshoot, and settle into `f6`/`f0` with a soft, grounded 10° knee bend.
+2. **Add Contrapposto to Key Poses (`f0–f1`, `f6–f7`):** The spine is board-straight. In `f0–f1` (weight L), tilt pelvis 8° down on R and counter-tilt chest 8° down on L. Reverse for `f6–f7`.
+3. **Eliminate Dead Twin Holds (`f0–f1`, `f6–f7`):** 600ms of near-frozen body posture kills pixel-art life. Offset `f1` and `f7` as breathing apexes: pitch chest up 5° and raise shoulders 0.05 head-heights so the torso breathes *through* the hold.
+4. **Head & Neck Overlap (`f4–f5`, `f10–f11`):** The head turns simultaneously with the torso. Delay head yaw by 1 frame (120ms) during transfers, and add a 10° downward nod at `f3`/`f9` (scooping arc) before looking up at `f6`.
+5. **Loosen Secondary Springs (`f4–f6`, `f10–f0`):** Bow lobes and bell sleeves barely react. Increase spring amplitude so bow tips lag/overshoot by 20–25° on `f5`/`f6` and sleeves flare outward 15° during `f3–f4` transfers.

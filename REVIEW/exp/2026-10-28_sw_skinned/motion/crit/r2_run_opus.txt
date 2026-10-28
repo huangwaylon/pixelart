@@ -1,0 +1,16 @@
+SCORE: 5/10
+
+- Key poses: 5. The contact and push-off frames are readable. f1/f5 "down" barely differ from contact, and the passing frames don't show a strong knee drive.
+- Timing/spacing: 5. 70 ms per frame is fine, but the spacing is even, so nothing snaps.
+- Weight & bounce: 4. In the onion skin the head blobs sit almost on top of each other, so the body barely rises and falls.
+- Overlap/follow-through: 5
+- Secondary motion: 5. The skirt flares well at f4–f5. The bun, bow lobes and side hair barely move, and the sleeves just hang.
+- Joints/contacts: 4. Knees look knock-kneed in SE f1/f5, both legs are stiff and straight in f6, and the front foot lands under the hips instead of ahead.
+- Appeal: 5
+
+**Top 5 fixes**
+1. **Bounce:** drop the pelvis about 0.12 head-heights below contact at f1/f5 and raise it about 0.15 above contact at f3/f7. Ease into the low frame and snap out of it. Squash the torso about 5% at f1/f5 and stretch it about 5% at f2/f6.
+2. **Forward lean:** add 10–12° of forward lean throughout, plus about 4° more at push-off (f2/f6). Counter with the head tilted about 5° up so the face stays readable.
+3. **Leg arcs:** at f3/f7, lift the front thigh to 70–80° from vertical and kick the back heel up toward the butt (knee bent about 110°). At f0/f4, put the contact foot about 0.2 of a step ahead of the hips. At f6, bend the trailing knee at least 25°.
+4. **Arms and shoulders:** swing the arms ±45° at the shoulder with elbows bent 90°, opposite to the legs. Twist the shoulders ±12° against hips at ±8°. Spread the knees apart to fix the knock-knee in SE view.
+5. **Secondary motion:** make the hair, bun and bow lag the head by 1–2 frames (70–140 ms). Have them rise up to 15° at f1/f5 and settle at f3/f7. Swing the sleeves about 20° behind each arm, and make the skirt hem lift at f3/f7 as well as f4/f5.

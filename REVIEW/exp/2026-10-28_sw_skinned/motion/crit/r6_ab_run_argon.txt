@@ -1,0 +1,9 @@
+SCORE A: 4/10, SCORE B: 4/10
+B vs owner complaint: partly — torso/arm mechanics and secondary motion exist now, but vertical bounce was halved compared to A and the gait is crippled by inverted arm-leg coordination and asymmetrical high-knee marching.
+
+Top 5 remaining problems in B:
+1. **Inverted arm-leg opposition (all frames, f0–f7):** Arms swing homolaterally (same side forward as leg). On f0–f1 (L contact/down), R arm swings back instead of forward; on f4–f5 (R contact/down), R arm swings forward with the R leg. Swap arm phase by 4 frames (180°).
+2. **Asymmetrical "marching" L leg (f4–f7):** Passing/swing L knee lifts way too high in front (f5–f6 thigh goes horizontal, +8px higher than R swing leg on f1–f2) with zero back-kick after push-off (f3). Drop L knee on f5–f6 by 6–8px and swing L leg behind hip on f3–f4 by 6px.
+3. **Dead vertical bounce (f0–f7, whole body):** Head height barely moves (~2px vs A's ~7px). Drop pelvis/head on down frames (f1, f5) by 3–4px and raise on flight (f3, f7) by 2px.
+4. **Disconnected flight poses (f3, f7, legs):** Neither leg extends into a push-off line; f7 L leg vanishes into a stump. Extend trailing leg back/down by 6–8px.
+5. **Muted secondary bounce (f0–f7, bow/skirt/hair):** Spring amplitude is <1–2px; increase lag/overshoot on f1–f2 and f5–f6 by 3–4px.

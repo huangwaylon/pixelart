@@ -1,0 +1,13 @@
+SCORE: 5/10
+
+Key poses: 5 | Timing/spacing: 5 | Weight & bounce: 5 | Overlap/follow-through: 4 | Secondary motion: 5 | Joints/contacts: 5 | Appeal: 5
+
+The motion is still robotic, floaty, and twin-symmetrical. The head gets cropped off the top of the frame (f6–f8), breaking readability, and the arms awkwardly cross the chest during the jump instead of opening the silhouette.
+
+TOP 5 FIXES:
+
+1. **f6–f7 (Apex Pose & Framing):** Lower peak pelvis height by ~15% so the head stays inside the camera frame. Uncross the arms: swing shoulders up and out into a celebratory "Y" or wide "V" pose (+45° abduction, elbows bent 30°) to open the silhouette, with feet tucked back under the hips (+25° knee flexion) and offset asynchronously (left foot 0.15 units higher than right).
+2. **f2 vs f10 (Crouch & Landing Squash):** Drop pelvis 20% lower in f2 and f10, pitching the torso forward +20° (f2) and +25° (f10). Push knees outward (+15° abduction) in SE view to fix the stiff, parallel leg tubes.
+3. **f3–f6 & f8 (Timing/Snappiness):** Jump is too floaty (1700ms). Cut f3 to 30ms, f4 to 50ms, f5 to 70ms, f6 to 90ms, and f8 to 70ms so she snaps into the air and accelerates fast into the ground.
+4. **f8–f11 (Secondary Lag & Whip):** In f8 (fall), stream hair, bow lobes, and sleeves upward (+40°). In f10–f11, whip them downward past rest (+35° overshoot) 1 frame after the pelvis bottoms out.
+5. **f4 & f9 (Foot Contacts):** Keep toe tips planted on the ground line in f4 (stretch) and f9 (landing contact) with -40° ankle plantarflexion to sell push-off and impact.

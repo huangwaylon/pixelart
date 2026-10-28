@@ -1,0 +1,19 @@
+SCORE: 5/10
+
+- Key poses: 5
+- Timing/spacing: 5
+- Weight & bounce: 4
+- Overlap/follow-through: 5
+- Secondary motion: 5
+- Joints/contacts: 5
+- Appeal: 5
+
+The feet stay planted and the head tilt and look (f4–f6, f11) read well. But the onion skin shows the pelvis and legs barely moving. Most of the motion is the head rocking on a stiff body, so it still looks "stiff". The weight shift doesn't show in the hips, knees or sleeves.
+
+**Top 5 fixes:**
+
+1. **Pelvis and contrapposto (f0–1, f6–7):** Shift the hips sideways over the standing foot by about 0.25 of a step (roughly ⅓ of hip width). Tilt the pelvis 8–10° (free hip lower) and tilt the shoulders the opposite way 5–6°. Lock the standing knee and bend the free knee 15–20°, with the heel lifted onto the toe.
+2. **Transfer dip and bounce (f2–4, f8–10):** Drop the pelvis 3–4% of body height at f3/f9. Overshoot the hips past the new foot by 0.05 of a step at f4/f10, then settle back on f5/f11. Hold the overshoot pose for 80 ms.
+3. **Breathing (holds f0–1, f6–7):** Right now it can't be seen. Raise the chest/shoulders 1.5–2% of height and scale the torso 2–3% on the inhale, and lag the head 1 frame behind it.
+4. **Sleeves and skirt follow-through (f4–5, f10–11):** The sleeves should swing 12–15° opposite to the hip travel and lag 1–2 frames, and the skirt hem should flare 6–8° in the same direction. Give the arms a small 5–8° elbow swing to drive this. Hands currently hang dead.
+5. **Spacing (f2–f5):** The transfer takes 360 ms, but the timing is even. Use 120 / 80 / 80 / 160 instead (slow out, fast middle). Lead with the head 1 frame early: anticipate with a 3° tilt at f1 and f7 before the hips move. The bow lobes and bun should bounce 1 frame after the head stops (overshoot of about 10°).

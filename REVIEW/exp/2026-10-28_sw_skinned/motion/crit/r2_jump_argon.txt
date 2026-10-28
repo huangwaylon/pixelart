@@ -1,0 +1,11 @@
+SCORE: 5/10
+Key poses: 5/10 | Timing/spacing: 5/10 | Weight & bounce: 5/10 | Overlap/follow-through: 4/10 | Secondary motion: 4/10 | Joints/contacts: 5/10 | Appeal: 5/10
+
+The motion still feels robotic and floaty: twins in limbs, linear spacing in the air, stiff spine, and invisible spring physics.
+
+TOP 5 FIXES:
+1. **Break limb twinning & push silhouettes (f2, f6–f11):** Arms and legs mirror identically. In **f6–f8**, offset one knee higher by **25°** (classic Mario/PMD asymmetrical jump) and stagger arm heights by **15°**. Push **f2** & **f11** pelvis down **20% more** and flare knees outward **20°** in SE view so silhouettes read clearly.
+2. **Spine C-curves & head drag (f2, f4, f7, f11):** Spine is a rigid stick. Pitch chest forward **+20°** in **f2/f11** (crouch/squash). In **f4–f5** (launch/rise), arch spine back **15°** and drag chin down **15°**. At **f7** (apex), curl spine forward **15°** anticipating the drop.
+3. **Snappy air spacing & timing (f4–f9):** Spacing is too even/floaty. Cut **f5** and **f8** to **50ms**. Raise **f5** pelvis **60% closer** to **f6** height for an explosive launch ease-out. Keep **f8** pelvis closer to **f7** (hang longer), then drop **f9** down **40% lower** for fast gravity acceleration.
+4. **Fix arm pop & dead overshoot (f3–f4, f12):** Arms teleport **~150°** from back (**f2**) to overhead (**f4**). Swing arms forward to chest level (**+60°**) in **f3** to lead the jump. In **f12** (overshoot), stretch pelvis up **+10% above f0** and arch chest back **10°** (currently looks identical to idle).
+5. **Amplify secondary spring lag (f4–f12):** Hair, bow, and skirt barely move. Reduce spring stiffness by **50%**: drag bow lobes and skirt down **-35°** during rise (**f4–f5**), flare skirt/sleeves up **+40°** during fall (**f8–f10**), and whip hair/bun forward **+30°** on squash (**f11**).

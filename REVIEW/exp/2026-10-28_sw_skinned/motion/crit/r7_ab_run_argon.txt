@@ -1,0 +1,9 @@
+SCORE A: 3.5/10, SCORE B: 5.5/10
+B vs owner complaint: partly — joint deformations and arm/leg coordination are vastly cleaner, but overall vertical bounce, secondary hair/skirt motion, and silhouette dynamism were actually dampened rather than amplified compared to A.
+
+Top 5 remaining problems in B:
+1. **Bf1, Bf5 vs Bf3, Bf7 (Pelvis/Head):** Vertical bounce is far too flat (~2–3px total amplitude). Drop the pelvis/head an extra 3–4px down on down-frames (Bf1, Bf5) and push up 2px on flight (Bf3, Bf7) for snappy chibi weight.
+2. **Bf0–Bf7 (Bow/Hair/Skirt):** Spring simulation is over-damped (<2px motion). Needs 3–5px vertical lag: bow/skirt should flare UP on down-frames (Bf1, Bf5) and drag DOWN on push-off/flight (Bf2–3, Bf6–7).
+3. **Bf7 (Back/Left Leg):** Completely disappears behind the skirt/body, reading as a one-legged hop. Pull the back knee/shin 4–5px screen-left (rearward) so the trailing kick silhouette is visible like Bf3.
+4. **Bf2, Bf6 (Push-off Stance Leg):** Knees remain too bent during push-off. Straighten the stance leg by pushing the hip/body 2–3px forward-up and extending the ankle for a clear diagonal drive line.
+5. **Bf0–Bf1 vs Bf3–Bf4 (Torso/Arms):** Torso counter-rotation is asymmetric—arms flare wide in Bf3–Bf5, but collapse inward in Bf0–Bf1. Swing the front (left) elbow 3–4px screen-left in Bf0–Bf1 to open the silhouette.

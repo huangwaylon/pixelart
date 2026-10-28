@@ -1,0 +1,13 @@
+SCORE: 5/10
+
+Key poses: 5 | Timing/spacing: 5 | Weight & bounce: 5 | Overlap/follow-through: 4 | Secondary motion: 5 | Joints/contacts: 5 | Appeal: 5
+
+The cycle is readable, and the vertical bounce (down on f1/f5) is visible, but the motion remains mechanical and linear—lacking snappy chibi personality and true overlapping action.
+
+**TOP 5 CONCRETE FIXES:**
+
+1. **Inverted Vertical Peak (f2/f3 & f6/f7, Hips/Head):** The head and hips peak at *Passing* (f2/f6) instead of *Up* (f3/f7). Lower the pelvis on f2/f6 by ~25% of total bounce height and push f3/f7 up to be the true apex for a snappy "push-off."
+2. **Rigid Spine/Head Pitch (f1/f5 & f3/f7, Spine/Neck):** The torso is a stiff vertical block. On *Down* (f1/f5), pitch the chest forward +6° and counter-pitch the head +5° (lagging). On *Up* (f3/f7), pitch chest back -4° and drag the chin down -6° for follow-through.
+3. **Arm Swing Phase Lock (f0–f7, Upper/Lower Arms):** Arms peak on *Down* (f1/f5) with zero elbow lag. Shift the upper-arm swing extrema to *Contact* (f0/f4, +10° further forward/back). Delay the forearms by 1 frame (105 ms) so wrists drag back on f0/f4 and whip through on f1/f5 (+20° elbow bend).
+4. **Dead Torso Twist/Tilt (f0/f4 & f1/f5, Chest/Hips):** In the SE view, the upper body lacks counter-rotation. Add +12° chest yaw opposing the hips on *Contact* (f0/f4), and +6° lateral hip drop toward the swing side on *Down* (f1/f5).
+5. **Foot & Toe Mechanics (f0/f4 & f3/f7, Feet):** Lead foot on f0/f4 is flat; pitch heel-up/toe-up +20° for a crisp heel strike. On f3/f7, keep the trailing toe planted (+30° bend) instead of floating early.

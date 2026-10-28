@@ -1,0 +1,25 @@
+SCORE: 6/10
+
+| Category | Score |
+|---|---|
+| Key poses | 7 |
+| Timing/spacing | 6 |
+| Weight & bounce | 6 |
+| Overlap/follow-through | 5 |
+| Secondary motion | 4 |
+| Joints/contacts | 5 |
+| Appeal | 6 |
+
+The key poses read clearly: the crouch, the tucked apex and the squash all work. Fall is faster than rise, which is good. The weak spots are the lift-off and landing frames, and the spring parts, which mostly move with the body instead of trailing it.
+
+**Top 5 fixes**
+
+1. **Secondary motion drag (f4–f6, f8–f10).** On the way up, the hair, bun, bow lobes and sleeve tips should hang below the body by about 15–25° (bob ends ~0.1 head). On the way down, flip that: the bob and sleeves float up by 20–30°, and the skirt hem flares up and out by about 0.15 of the skirt length. At f12, add an extra 10° downward hair whip and an outward skirt flare. Right now they track the body almost rigidly.
+
+2. **Contact and absorb (f10–f11).** At f10 the legs are locked straight. Bend the knees 10–15° and keep the arms raised from the fall (about 30° above horizontal). Make f11 bend 35–40° so the drop into the f12 squash is spread out instead of happening all at once.
+
+3. **Knees caving in (f2, f11, f12, SE view).** The knees fall inward while the feet stay apart. Rotate each thigh outward 8–12° so the knees line up over the toes.
+
+4. **Launch (f3).** It reads like f1 played backwards. Push the hips forward and up by about 0.25 of a step. Straighten the knees to about 150°. Swing the arms forward past the hips, already at about 45° above horizontal, so they lead into the f4 arms-overhead stretch. At f4, raise both arms above the head (not just one) and stretch the torso about 5% taller.
+
+5. **Height and hang (f5–f8).** The jump is only about a quarter of body height. Raise the apex by about 30%. Ease f6 more slowly into the apex (spacing ratio about 1:0.5). Stretch the apex hang to 140 ms, then accelerate: f8 at 50 ms, f9 at 35 ms. At f13, raise the heels by about 20° for a visible toe-pop, and at f14 add a 5° head nod that settles 40 ms after the body.

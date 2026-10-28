@@ -1,0 +1,11 @@
+SCORE: 5/10
+Key poses: 5/10 | Timing/spacing: 6/10 | Weight & bounce: 5/10 | Overlap/follow-through: 4/10 | Secondary motion: 4/10 | Joints/contacts: 5/10 | Appeal: 6/10
+
+The jump still reads as mechanical. The spine stays too vertical in the side view, the arms hold a stiff T-pose throughout the fall/landing (f7–f11), and the spring-sim secondary parts (hair/bow/skirt) barely react to the vertical forces.
+
+TOP 5 FIXES:
+1. **Spine & Head Arc (f2, f4, f7, f12):** Spine is a rigid pole. In f2/f12 (crouch/squash), pitch spine forward +25° and head +15° (nose down). In f4 (stretch), arch spine back -15° and tilt head up -20°. At f7 (apex), round spine forward +15° into a mid-air tuck.
+2. **Dead T-Pose Arms (f7–f12):** Arms freeze horizontally from apex to squash. At f8–f9 (fall), trail arms upward (+45° above horizontal) via drag. On f11–f12 (impact/squash), whip arms down past the hips (-60°) to show heavy G-force follow-through.
+3. **Hyperextended Knees & Contacts (f4, f8–f10):** Legs in f4 and f8–f9 snap into 180° robotic straight lines. Keep a 10°–15° micro-bend, or bow the legs slightly outward for a stylized silhouette. In f10 (contact), point ankles downward (-35°) so toes clearly strike first before heels plant in f11.
+4. **Secondary Spring Amplitude (f4–f13):** Hair, bun, and bow look glued on. Double spring softness/limits: bow lobes and hair tips must fold down (-40°) during rise (f4–f5), flare up (+45°) during fall (f8–f10), and whip downward with a 1-frame delay on f13 after the f12 squash.
+5. **Snappier Timing & Deeper Squash (f3–f5, f12):** Cut f4 (stretch) from 60ms to 35ms so she snaps into the air. In f12 (squash), drop pelvis 20% lower and cut hold from 100ms to 70ms so she rebounds with elastic energy instead of sticking to the floor.

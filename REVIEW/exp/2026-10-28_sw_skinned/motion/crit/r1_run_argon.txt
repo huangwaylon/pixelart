@@ -1,0 +1,12 @@
+SCORE: 6/10
+
+Key poses: 5/10 | Timing/spacing: 6/10 | Weight & bounce: 7/10 | Overlap/follow-through: 6/10 | Secondary motion: 6/10 | Joints/contacts: 5/10 | Appeal: 6/10
+
+The vertical bounce is much improved, but the silhouette reads like a fast march/stair-climb because the stride lacks horizontal extension, the torso is upright, and the flight frames collapse inward instead of stretching into wide airborne silhouettes.
+
+TOP 5 FIXES:
+1. **f3, f7 (Flight) – Legs/Stride:** You lose silhouette right at the apex; the legs scissor together vertically. Keep the back leg trailing behind (+25° hip extension) and drive the front knee higher/forward (+20° hip flexion) so flight is your widest horizontal pose.
+2. **f0–f7 – Spine/Pelvis:** The torso is too vertical (80–85°), making her look stiff. Pitch the chest forward +15° continuously. Add +8° forward spine nod on **f1/f5 (Down)** and -5° arch back on **f2/f6 (Push-off)**.
+3. **f0, f4 (Contact) – Front Knee/Foot:** The landing leg is bent (~30°) and plants flat under the hips. Extend the front knee to near-straight (~5–10° bend), reach the foot +0.25 step further forward, and pitch the toe up +25° for a snappy heel strike.
+4. **f1, f5 (Down) vs f3, f7 (Flight) – Forearms:** Elbows stay locked at ~90° throughout. Open the elbow +30° on backswings (**f0/f4**) and close to 60° on forward drives; delay wrists by 1 frame.
+5. **f1, f2 & f5, f6 – Bow/Hair/Skirt:** Spring damping is too stiff. Delay peak upward flare of hair rods and bow lobes to **f1/f5** (+30° up) and snap them down on **f2/f6** (-25°).

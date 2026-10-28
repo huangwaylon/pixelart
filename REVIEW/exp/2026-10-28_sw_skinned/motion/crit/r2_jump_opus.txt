@@ -1,0 +1,23 @@
+SCORE: 5/10
+
+- Key poses: 6
+- Timing/spacing: 4
+- Weight & bounce: 5
+- Overlap/follow-through: 4
+- Secondary motion: 4
+- Joints/contacts: 5
+- Appeal: 5
+
+The anticipation crouch (f2) and the landing squash (f11) read well. The rest is weak: the jump is low, the take-off has no real stretch, the rise and fall don't accelerate or slow down like a real jump, and the recovery has no bounce.
+
+**TOP 5 FIXES**
+
+1. **f4 take-off stretch:** Raise the arms fully overhead. Shoulders up about 150°, elbows nearly straight (under 20° bend), so the hands stop covering the face and the elbows stop clipping into the head. Point the toes and stretch the body about 10–12% taller. Cut f3 to 1 frame with f4 at 40ms for more snap.
+2. **f4–f9 jump height and spacing:** The feet only rise about 0.2 body heights. Raise the apex to about 0.4–0.5 body heights. Going up, the spacing should shrink each frame (now it grows: f4→f5 small, f5→f6 large). Use roughly 50/30/15% of the height for f4→f5→f6. Mirror it on the way down (15/30/50%). Add a 40ms frame between f9 and f10.
+3. **f12 recover overshoot:** Right now it's just the stand pose. Make it a real rebound: heels lift 0.05 body heights, chest up, head tilted back about 8°, arms flicked out about 20°. Then f13 dips 3% before settling.
+4. **Secondary motion (springs):** The hair, bun, bow and sleeves barely lag. Lower the spring stiffness and damping so that:
+   - at f4–f5 the bow lobes and bob hair trail down about 20–25°
+   - at f7–f8 they float up
+   - at f11–f12 they whip down past rest, then rebound about 2 times over f12–f14
+   - at f11 the sleeves and skirt flare outward about 15°
+5. **f13–f14 timing and stillness:** 580ms of near-static ending is dead time. Cut it to about 300ms total. Add a 2–3° hip and torso sway and keep the hair settling, so the last frames don't freeze completely.

@@ -1,0 +1,14 @@
+SCORE: 5/10
+
+Key poses: 5/10 | Timing/spacing: 5/10 | Weight & bounce: 5/10 | Overlap/follow-through: 4/10 | Secondary motion: 5/10 | Joints/contacts: 5/10 | Appeal: 5/10
+
+**Critique vs Principles:**
+The vertical bounce arc on f2/f6 vs f1/f5 is inverted/mismatched against classic walk mechanics (f2/f6 passing are higher than f3/f7 up). In SE view, f0/f1/f2/f7 have zero arm silhouette—sleeves are glued to the torso. Spring sims on the bow/sleeves snap instead of showing clean 1-frame drag.
+
+**TOP 5 Concrete Fixes:**
+
+1. **Fix Inverted Vertical Bounce (Pelvis/COG):** Currently f2/f6 (passing) are the highest frames, making her pop up too early. Lower Pelvis Y on f2/f6 by 30% of current bounce height, and raise f3/f7 (up) so f3/f7 is the true apex before dropping into f4/f0 contact.
+2. **Asymmetrical Arm Swing & Silhouette (Shoulders/Elbows):** In SE view, arms disappear on f0–f2. On f0/f1, rotate R arm forward +20° and L arm back -25° (and abduct both +12° outward from body) to match the clear split seen on f4/f5.
+3. **Arm Overlap/Drag (Wrists/Sleeves):** Arms peak at f0/f4 with the legs. Delay arm reversal by 1 frame: keep wrists/sleeves extending +10° further into f1/f5 (down) before swinging back on f2/f6.
+4. **Spine & Head Counter-Bounce (Torso/Head):** Torso is a rigid vertical pillar. Pitch chest/head forward +8° on f1/f5 (down) and lag the head tilt back -10° on f2/f6 for overlapping weight.
+5. **Foot Roll & Ground Plane (Ankles):** In E onion skin, grounded feet sink lower on f1/f5 than f0/f4. Lock planted foot Y height across f0–f2 and f4–f6; add +25° toe-up pitch on f0/f4 heel strike.

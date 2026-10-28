@@ -1,0 +1,19 @@
+SCORE: 5/10
+
+- Key poses: 5
+- Timing/spacing: 5
+- Weight & bounce: 4
+- Overlap/follow-through: 4
+- Secondary motion: 5
+- Joints/contacts: 4
+- Appeal: 5
+
+**What I see:** The weight-L and weight-R holds (f0–f1, f6–f7) are nearly straight-legged with stacked hips, so the weight shift barely reads. f5 has one sudden deep crouch with both knees bent and the pelvis dropped, and f11 has no matching dip, so the loop feels lopsided and hiccups. In the onion skin the body stays almost in one place and only the bow and hair leave trails. The arms hang stiff, and in f2–f3 the forearm pokes straight forward.
+
+**Top 5 fixes:**
+
+1. **Hips and shoulders in f0–f1 and f6–f7.** Shift the pelvis about 0.3 foot-width over the weight foot and tilt the hips 8–10° up on the weight side. Tilt the shoulders 4–5° the other way. Bend the free knee 15–20°.
+2. **Pelvis dips at f5 and f11.** Cut the f5 dip to about 3% of height (knees about 15°). Add the same dip at f11. Put the lowest point at f4 and let f5 and f11 rise about 1% past rest before settling. That gives a U-shaped arc with ease-out.
+3. **Body path in f2–f4 and f8–f10.** Move the pelvis along a downward curve instead of a straight line. Start the head turn at f2 so it leads the torso by about 1 frame (80–120 ms), instead of snapping at f5–f6.
+4. **Arms and sleeves.** Bend the elbows 15–25° and stop the f2–f3 forearm poking forward. Make the hands and sleeves trail the torso by 1 frame, swing 10–15°, and overshoot about 8° at f5 and f11 before settling.
+5. **Make the holds move.** On f1 and f7, raise the chest and shoulders 2–3% for breathing and tilt the head 2–3°. Make the bun and bow lobes trail 1 frame and overshoot 10° at each settle. Sway the skirt 5–8° with the hips, lagging about 120 ms.
