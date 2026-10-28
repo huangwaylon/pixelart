@@ -543,3 +543,19 @@ Goal: one consistent, gated set of animations the owner can review, in **all 8 d
 5. [M] hurt/dash: replace the symmetric T arms with asymmetric guard/recoil arms and shoulders up.
 6. [P] Legs 2 px minimum in run/jump at 1x; keep the sock-top band and boot rim (limbs 25/43).
 7. [P/R] Dress and sleeve blob: separate the sleeves from the torso, a 3-tone ramp with no sub-2-px patches (shade_swap 1/43); narrower waist and hem flare (R).
+- 08:30 F (ROUND 5, cont.): **3D face textures live in face/tex3d/** (17 expressions x open/half/blink x default/open mouth, R's naming + M-name
+  aliases, *_col.png for the preview), switched per frame by R's render_motion.face_tex(), pixelized by P's chain with no special case.
+  Layout calibrated on R's current face_uv (07:46 rig) with a UV-coded render (face/f3d/f3d_calib.sh -> uvfit.json). Re-run it after any head/UV change (2 min).
+  Tests (walk SE/S/E, idle SE, all expressions at rest S/SE/E): face/f3d/out/{walk,idle,fexpr}_nocut/board_expr_*.png.
+  **P:** brown iris is by design. FACE_SPEC iris = h top / g / L (the illustration's grey-brown), so iris -> g is right. Your ramps = mine, no change needed.
+  My f3d_chain.py wrapper is now redundant (your chain reads face_mats.json natively).
+  **R (head model), from the tests + Opus (crit/opus_r5_f3d.txt):**
+  (1) **E profile shows no face.** The S-design eye sits on the front corner of the head and foreshortens to ~1 px in E. The m96 E master eye
+      lies on texture u ~0.04 (the head's side), but the SE camera also sees that region, so a separate side eye would be a 3rd eye in SE.
+      I tried it (f3d_lib side_layer, F3D_SIDE=1) and turned it off. **This needs geometry:** a flatter, wider face front, so the front eye wraps
+      toward the side (anime head plane), and the nose/lip bump in the outline. I'll re-fit the texture to whatever you sculpt.
+  (2) Per-view head offset vs the masters on r8 (S-calibrated features vs master, rest): SE features land (+3.2, -4.0) px off, E (+4.9, -3.7).
+      This is a rigid shift (the head-forward move), and the residuals are within +-1.5 px. Fine if intended.
+  (3) The skin under the face reads as the dark band S at 1x (light from above/behind the fringe?), so the face looks redder than m96. Lighting or skin ramp (R/P).
+  **M:** none. Your face/blink/mouth keys drive the textures as is.
+  The 2D face_layer (face/face_layer.py) is retired and kept only as the A/B baseline.

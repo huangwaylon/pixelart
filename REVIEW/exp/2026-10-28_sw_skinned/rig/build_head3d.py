@@ -51,6 +51,14 @@ visor = front & (fz > 1.60) & (fz < 1.95) & (fy < syF - thick)  # hull volume in
 hair = keep & ~skull & ~curtain & ~visor & ~(front & (fz < tipz) & (fz > 1.60))
 hair = hair | (fr & ~skull)
 hair = nd.binary_closing(hair, iterations=1) & ~nd.binary_erosion(skull, iterations=1)
+# r8d: profile balance (owner: "head looks jutted back"). Compress the back-of-head hair depth (incl. the bun overhang) toward the head:
+# y' = Y0 + (y - Y0) * BACKK for y > Y0, resampled on the voxel grid. Front views keep their silhouette (x/z untouched); the fringe is in front.
+Y0 = 0.06; BACKK = float(os.environ.get("BACKK", "0.62"))
+yy = G[0, :, 0, 1]; src_y = np.where(yy > Y0, Y0 + (yy - Y0) / BACKK, yy)  # for each destination y, the source y
+src_j = np.clip(np.round((src_y - lo[1]) / VOX - 0.5).astype(int), 0, n[1] - 1); inb = src_y <= lo[1] + VOX * n[1]
+hair_c = hair[:, src_j, :] & inb[None, :, None]
+hair = np.where((yy > Y0)[None, :, None], hair_c, hair) | (hair & (yy <= Y0)[None, :, None])
+hair = hair & ~nd.binary_erosion(skull, iterations=1)
 # drop tiny crumbs; keep components with > 200 voxels
 lab, nl = nd.label(hair); sz = nd.sum(hair, lab, range(1, nl + 1)); hair = np.isin(lab, 1 + np.nonzero(sz > 200)[0])
 # bow colour only inside the bow (back-top band + knot) and the ribbon tails (back, near the midline); stray bow-class voxels -> hair

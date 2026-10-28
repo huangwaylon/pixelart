@@ -1,0 +1,12 @@
+**Scores**
+- **(a) Eyes survive at 1x: 4/10.** In the S view the eyes come out as 2–3 px grey-brown blobs with a white dot. The lash line, iris and white of the eye blend into a muddy mid-tone, so at 1x they read as smudges.
+- **(b) On-model vs m96: 3/10.** The skin is darker and redder than the master's peach. The forehead is bare skin with two skin "ears" at the top corners, where the master has full bangs and side locks framing the face. The jaw is also blocky.
+- **(c) Expressions distinct: 4/10.** Joyful_open and surprised read because of the open mouths. Neutral, smile and determined look the same. Blink, half, squint, hurt and wince all collapse into the same 1 px dashes.
+- **(d) Face follows the head: 6/10.** It tracks, but the walk jitters. Frame 3 in both SE and S has a sudden bright skin patch, and eye width and highlights jump between frames in walk S.
+- **(e) E profile: 1/10.** The face is gone except for a 1 px white dot on the outline. There's no nose, mouth or eye shape.
+
+**Top 4 fixes**
+1. **Eye art (S, SE):** Make the eyes about 1.3–1.5x taller. The top lash should be a solid near-black band at least one output pixel thick. Use a flat dark-brown iris and pure white for the eye white, with no soft gradients. Snap the face material to the palette, or downsample it with majority-vote instead of averaging, to stop the grey halo.
+2. **Head/hair model (S):** Model bangs that come down to the brow line and side locks in front of the cheeks, so the forehead and corner skin are covered. Lighten the skin ramp to match m96.
+3. **Profile (E, plus the far eye in SE):** Wrap the near eye around the side of the head as a triangular profile eye. Add a nose and lip bump to the head mesh outline. In SE, move the far eye inward so it doesn't smear into the outline.
+4. **Expression shapes:** Closed eyes need 2 px strokes in distinct shapes: a low flat line for blink, a lid over the iris for half, and a bold ">" for squint. Make the smile mouth wider and dark red, 2 px. The brows will be hidden by the bangs, so put the expression into the eye and mouth shapes.

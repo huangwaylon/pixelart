@@ -975,3 +975,22 @@ Re-baked against R's r8b skeleton (neck, head and hair/bow/bun bones moved forwa
 - **The remaining wide SE silhouette in walk f3–f6 is the bell sleeves, not the skirt.** The silhouette width at the hip–hem band is 37–41 px in f3–f6 against 21 px in the other frames.
   - Arms closer (abduction −20°), back-swing inward (26°) and sleeve gain .45 / hang .55 cut it by 4 px (41 → 37).
   - Making the arm swing smaller doesn't help further.
+
+### F round 5: the face as 3D texture art (the 2D face_layer is retired and kept as the A/B baseline)
+- **Pipeline.** Everything is standard. `face/f3d/f3d_lib.py` writes hi-res vector anime face art to `face/tex3d/<face>[_blink|_half][_open].png`: 1024², matid-coded, alpha 0 = base skin, plus `_col.png` palette colours for the preview.
+  - R's `render_motion.py` maps it on the head with R's `face_uv`/`fmask` and switches it per frame from M's face/blink/mouth keys.
+  - P's `pixel_chain.py` pixelizes it like any other material: lash, iris_top/iris/iris_low, eye_white, brow, mouth/mouth_in, blush, nose (`rig/face_mats.json`).
+- **Design source.** The m96 face (FACE_SPEC/eye_spec) is redrawn as smooth shapes in m96 S design coordinates: dome lash plus wing, banded iris, pupil, catchlight, brows, mouths and blush.
+- **Calibration** (`f3d_calib.sh`). A UV-coded texture is rendered at rest S/SE/E through R's renderer, and `f3d_fit.py` fits design coordinates to texture (cubic; `uvfit.json`). Features then land on the master's S rows and cols.
+- **Multi-view check** (`f3d_layout.py`, `out/master_consistency.txt`). The masters are not mutually consistent on R's head: a joint S+SE+E layout still leaves 2–3 px errors. So the layout stays S-exact, and SE/E are whatever the 3D head gives.
+  - E shows no face. The fix is head geometry: a flatter, wider face front. A side-of-head eye texture would show as a third eye in SE (tried; `F3D_SIDE`, off).
+- **Pixelization tuning** (rendered and pixelized each time, never painted):
+  - lash 1.3 px and closed-eye strokes 1.7 px (thinner ones lose the vote);
+  - iris 2.25 × 2.2 px with a small L rim;
+  - catchlight 1.3, brows 1.3 px set 0.6 px under the fringe edge, mouth 1.4 px.
+  - Flat ramps per face material.
+  - Expression sheets need the chain's `--no-temporal`, otherwise temporal hysteresis blends neighbouring expressions.
+- **Critique** (one Opus round, `crit/opus_r5_f3d.txt`, on the pre-tuning textures): eyes at 1x 4, on-model 3, expressions 4, follows the head 6, E profile 1.
+  - Applied afterwards: bigger eyes, thicker lash and closed strokes, a wider mouth.
+  - Open, for R/P: E geometry, skin shading band, bangs/side locks framing the face.
+- **Tools:** `f3d_expr.sh "<views>" [motion]` renders and pixelizes into `face/f3d/out/<act>_nocut/board_expr_*.png`. `f3d_cut.py` is a test stand-in that cuts the fringe at the agreed hairline (used before R's r8 bangs).

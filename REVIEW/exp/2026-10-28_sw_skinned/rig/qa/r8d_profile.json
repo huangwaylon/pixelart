@@ -1,0 +1,105 @@
+{
+ "doc": "qa_profile.py : before/after profile balance sheet -> rig/qa/r8d_profile_QA.png + r8d_profile.json\nFor E/W/NE rest + walk (8 frames): head silhouette horizontal centre (opaque cells above the neck row, 1x) vs the neck-base x (neck bone head,\nprojected). Marked on the 4x tiles: yellow = silhouette centre, cyan = neck base. offset = centre - neck, signed toward her FRONT (+ = forward).",
+ "summary": {
+  "before": {
+   "E": {
+    "mean_px": -1.97,
+    "min_px": -2.68
+   },
+   "W": {
+    "mean_px": -1.97,
+    "min_px": -2.68
+   },
+   "NE": {
+    "mean_px": -2.08,
+    "min_px": -3.2
+   }
+  },
+  "after": {
+   "E": {
+    "mean_px": -0.64,
+    "min_px": -1.68
+   },
+   "W": {
+    "mean_px": -0.64,
+    "min_px": -1.68
+   },
+   "NE": {
+    "mean_px": -0.75,
+    "min_px": -1.7
+   }
+  }
+ },
+ "per_frame": {
+  "before": {
+   "E": [
+    -2.68,
+    -2.09,
+    -2.63,
+    -1.3,
+    -1.77,
+    -2.09,
+    -2.13,
+    -1.3,
+    -1.77
+   ],
+   "W": [
+    -2.68,
+    -2.09,
+    -2.13,
+    -1.3,
+    -1.77,
+    -2.09,
+    -2.63,
+    -1.3,
+    -1.77
+   ],
+   "NE": [
+    -3.2,
+    -2.25,
+    -2.36,
+    -2.02,
+    -2.5,
+    -2.8,
+    -2.26,
+    -0.43,
+    -0.89
+   ]
+  },
+  "after": {
+   "E": [
+    -1.68,
+    -1.09,
+    -1.13,
+    0.2,
+    -0.27,
+    -1.09,
+    -0.63,
+    0.2,
+    -0.27
+   ],
+   "W": [
+    -1.68,
+    -1.09,
+    -0.63,
+    0.2,
+    -0.27,
+    -1.09,
+    -1.13,
+    0.2,
+    -0.27
+   ],
+   "NE": [
+    -1.7,
+    -0.75,
+    -1.36,
+    -1.02,
+    -1.5,
+    -1.3,
+    -0.76,
+    1.07,
+    0.61
+   ]
+  }
+ }
+}

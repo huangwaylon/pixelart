@@ -208,12 +208,12 @@
   "half_blink+bclosed+mopen"
  ],
  "knobs": {
-  "closed": 1.35,
-  "lash": 1.0,
+  "closed": 1.7,
+  "lash": 1.3,
   "brow": 1.3,
-  "mouth": 1.05,
-  "iris_rx": 2.05,
-  "iris_ry": 1.85,
+  "mouth": 1.4,
+  "iris_rx": 2.25,
+  "iris_ry": 2.2,
   "catch": 1.3,
   "blush": 1.0
  }

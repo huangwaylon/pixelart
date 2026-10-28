@@ -34,8 +34,8 @@ RAMPS = {'lash': 'KKK', 'iris_top': 'hhh', 'iris': 'ggg', 'iris_low': 'LLL', 'ey
 MATS = {m: (tuple(_FM.get(m, F_ADD.get(m, _DEF.get(m)))) if m in _FM else tuple(F_ADD.get(m, _DEF.get(m))), RAMPS[m]) for m in RAMPS}
 PV = {m: r[0] for m, r in RAMPS.items()}
 # feature size knobs (sprite px), tuned by rendering + pixelizing (f3d_iter)
-K = dict(closed=float(os.environ.get('F3D_CLOSED', '1.35')), lash=float(os.environ.get('F3D_LASH', '1.0')), brow=float(os.environ.get('F3D_BROW', '1.3')), mouth=float(os.environ.get('F3D_MOUTH', '1.05')),
-         iris_rx=float(os.environ.get('F3D_IRX', '2.05')), iris_ry=float(os.environ.get('F3D_IRY', '1.85')),
+K = dict(closed=float(os.environ.get('F3D_CLOSED', '1.7')), lash=float(os.environ.get('F3D_LASH', '1.3')), brow=float(os.environ.get('F3D_BROW', '1.3')), mouth=float(os.environ.get('F3D_MOUTH', '1.4')),
+         iris_rx=float(os.environ.get('F3D_IRX', '2.25')), iris_ry=float(os.environ.get('F3D_IRY', '2.2')),
          catch=float(os.environ.get('F3D_CATCH', '1.3')), blush=float(os.environ.get('F3D_BLUSH', '1.0')))
 
 
@@ -96,7 +96,7 @@ def iris(cv, cx, cy, rx, ry, clip_top=None, clip_bot=None):
     d.ellipse([X0_, Y0_, X1_, Y1_], fill=cv.col('iris'))
     band = Image.new('L', cv.im.size, 0); bd = ImageDraw.Draw(band)
     bd.rectangle([0, 0, TEXN, y - ry * SY * float(os.environ.get('F3D_IRTOP', '0.25'))], fill=1)      # top -> h
-    bd.rectangle([0, y + ry * SY * float(os.environ.get('F3D_IRLOW', '0.62')), TEXN, TEXN], fill=2)   # bottom rim -> L
+    bd.rectangle([0, y + ry * SY * float(os.environ.get('F3D_IRLOW', '0.8')), TEXN, TEXN], fill=2)   # bottom rim -> L
     a = np.array(lay); b = np.array(band); m = a[..., 3] > 0
     a[m & (b == 1), :3] = MATS['iris_top'][0]; a[m & (b == 2), :3] = MATS['iris_low'][0]
     lay = Image.fromarray(a); d = ImageDraw.Draw(lay)
