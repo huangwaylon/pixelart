@@ -1,5 +1,5 @@
 {
- "_doc": "R: per view: reg_dx/reg_dy = registration of the rig render to the m96 master cell (feet rule, rest pose), used for the head hull and texture projection; dx/dy = OUTPUT placement of the sprite in the 128 cell (= reg shifted up by lift_px so stepping soles are not clipped at the cell bottom, round 3); yaw = per-view rig turn (view cheat) used by render_motion.py. The pixel chain uses dx/dy.",
+ "_doc": "R: per view: reg_dx/reg_dy = registration of the rig render to the m96 master cell (feet rule, rest pose), used for the head hull and texture projection; dx/dy = OUTPUT placement of the sprite in the 128 cell (= reg shifted up by lift_px so stepping soles are not clipped at the cell bottom, round 3); yaw = per-view rig turn (view cheat) used by render_motion.py. The pixel chain uses dx/dy. SW/W/NW (round 4) mirror SE/E/NE: dx -> -dx, yaw -> -yaw; their masters/textures are the horizontally flipped SE/E/NE masters.",
  "S": {
   "dx": 0,
   "dy": -1,
@@ -39,5 +39,32 @@
   "reg_dx": 0,
   "reg_dy": 4,
   "lift_px": 2
+ },
+ "SW": {
+  "dx": -2,
+  "dy": -2,
+  "yaw": 10.0,
+  "reg_dx": -2,
+  "reg_dy": 1,
+  "lift_px": 3,
+  "mirror_of": "SE"
+ },
+ "W": {
+  "dx": -4,
+  "dy": 1,
+  "yaw": -0.0,
+  "reg_dx": -4,
+  "reg_dy": 2,
+  "lift_px": 1,
+  "mirror_of": "E"
+ },
+ "NW": {
+  "dx": -1,
+  "dy": 0,
+  "yaw": 25.0,
+  "reg_dx": -1,
+  "reg_dy": 2,
+  "lift_px": 2,
+  "mirror_of": "NE"
  }
 }

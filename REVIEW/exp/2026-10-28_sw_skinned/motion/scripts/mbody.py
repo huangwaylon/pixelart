@@ -311,3 +311,114 @@ class Jump:
     def _ballg(self, sd):
         L = self.po.leg[sd]; a = self.feet[sd]
         return np.array([a[0] + L["ball0"][0] - L["a0"][0], a[1] + L["ball0"][1] - L["a0"][1], 0.0])
+
+
+# ---------------------------------------------------------------- ROUND 4: dash and hurt (one-shots)
+def K(keys, t): return float(okey(keys, t))
+
+
+class _OneShot:
+    """shared helpers: feet keyed as (fwd offset, lift, pitch) per side relative to the stance spot; grounded feet pivot on the
+    ball (pitch < 0, heel up) or the heel (pitch > 0, toes up) so planted feet never slide."""
+    def __init__(self, poser, width=1.0):
+        self.po = poser; self.zbase = 0.0
+        self.feet = {sd: poser.leg[sd]["a0"].copy() for sd in "LR"}
+        for sd in "LR": self.feet[sd][0] *= width
+
+    def foot(self, sd, dy, lift, pitch, yaw=6.0, knee_yaw=0.0):
+        L = self.po.leg[sd]; a = self.feet[sd]
+        if lift <= 1e-4:
+            if pitch <= 0:
+                piv = ("ball", np.array([a[0] + L["ball0"][0] - L["a0"][0], a[1] + dy + L["ball0"][1] - L["a0"][1], 0.0]))
+            else:
+                piv = ("heel", np.array([a[0], a[1] + dy + L["heel0"][1] - L["a0"][1], 0.0]))
+            return dict(pivot=piv, pitch=pitch, toe=0.0 if pitch <= 0 else pitch, yaw=yaw, knee_yaw=knee_yaw)
+        base = self.po.ankle_from_pivot(sd, "ball", np.array([a[0] + L["ball0"][0] - L["a0"][0], a[1] + dy + L["ball0"][1] - L["a0"][1], 0.0]), pitch, yaw)
+        return dict(pos=base + self.po.wpos([0, 0, lift]), pitch=pitch, toe=pitch, yaw=yaw, knee_yaw=knee_yaw)
+
+
+class Dash(_OneShot):
+    """dash (one-shot, in place; the game moves the sprite). Beats (s):
+    0 stand | .00-.10 anticipation: crouch + lean BACK, weight on the back foot, arms cocked | hold to .16 |
+    .20 burst SMEAR 1 (40 ms, stretched along travel) | .24 SMEAR 2 (50 ms) | .29-.45 glide (stretched, skimming) |
+    .45 skid contact (front heel plants, torso pitches back) | .53 brake hold (deepest) | .62 overshoot | .74-.86 recover | 1.0 end.
+    travel(t) drives the spring sim: hair/skirt stream back on the burst and whip forward past rest on the brake."""
+    def __init__(self, poser):
+        super().__init__(poser, 0.9)
+
+    def travel(self, t):
+        return K([(0, 0.0), (0.16, 0.0), (0.20, 3.5), (0.26, 4.2), (0.45, 3.6), (0.53, 0.6), (0.62, 0.0), (1.4, 0.0)], t)
+
+    def spec(self, t):
+        z = K([(0, -0.01), (0.08, -0.06), (0.16, -0.065, "flat"), (0.20, 0.015), (0.24, 0.02), (0.29, 0.0), (0.45, -0.03), (0.53, -0.075, "flat"),
+               (0.62, -0.02), (0.74, 0.008), (0.86, -0.006), (1.0, -0.01)], t)
+        ry = K([(0, 0), (0.16, -0.05), (0.20, 0.06), (0.29, 0.03), (0.45, 0.0), (0.53, -0.03), (0.74, 0.0), (1.0, 0)], t)
+        lean = K([(0, -4), (0.08, -14.0), (0.16, -15.0, "flat"), (0.20, 30.0), (0.24, 27.0), (0.29, 20.0), (0.45, 12.0), (0.53, -10.0, "flat"),
+                  (0.62, 4.0), (0.74, -5.0), (0.86, -3.0), (1.0, -4.0)], t)
+        pel = K([(0, 2), (0.08, -2.0), (0.16, -3.0), (0.20, 22.0), (0.29, 18.0), (0.45, 8.0), (0.53, -6.0), (0.62, 4.0), (0.74, 1.0), (1.0, 2.0)], t)
+        hd = K([(0, -6), (0.16, -8.0), (0.20, -14.0), (0.29, -16.0), (0.45, -8.0), (0.53, -2.0), (0.62, -10.0), (0.74, -5.0), (0.86, -7.0), (1.0, -6.0)], t)
+        roll = K([(0, 0), (0.16, -3.0), (0.24, 2.0), (0.53, 4.0), (0.74, -2.0), (1.0, 0)], t)
+        spec = dict(root=[0.0, ry, self.zbase + z], pelvis=(4.0 * K([(0, 0), (0.16, 1), (0.24, -1), (0.45, 0), (1, 0)], t), pel, 0.0),
+                    chest=(-6.0 * K([(0, 0), (0.16, 1), (0.24, -1), (0.45, 0), (1, 0)], t), lean, roll), head=(0.0, hd, -roll * 0.6), spine_mix=0.55)
+        # arms: cocked back on the anticipation, swept back on the burst (graceful trail), out for balance on the brake
+        sw = K([(0, 2), (0.08, -25.0), (0.16, -30.0), (0.20, -72.0), (0.24, -66.0), (0.29, -48.0), (0.45, -20.0), (0.53, 35.0), (0.62, 20.0), (0.74, 4.0), (1.0, 2.0)], t)
+        abd = K([(0, -12), (0.16, -6.0), (0.20, 10.0), (0.29, 16.0), (0.45, 25.0), (0.53, 48.0), (0.62, 30.0), (0.74, -4.0), (1.0, -12.0)], t)
+        el = K([(0, 18), (0.16, 50.0), (0.20, 15.0), (0.29, 20.0), (0.45, 25.0), (0.53, 30.0), (0.62, 35.0), (0.74, 22.0), (1.0, 18.0)], t)
+        wr = K([(0, 10), (0.16, 25.0), (0.20, -20.0), (0.29, -15.0), (0.45, 5.0), (0.53, -10.0), (0.62, 25.0), (0.74, 10.0), (1.0, 10.0)], t)
+        arm = {sd: dict(swing=sw + (8 if sd == "R" else -8) * K([(0, 0), (0.2, 1), (0.6, 0.5), (1, 0)], t), abd=abd, elbow=el, wrist=wr, wrist_out=-10,
+                        cross=0.0) for sd in "LR"}
+        spec["arm"] = arm; spec["shoulder"] = {sd: (K([(0, -2), (0.16, -4), (0.20, 6), (0.53, -4), (0.62, 4), (1, -2)], t), -3.0) for sd in "LR"}
+        # feet: L = front foot, R = back (push-off) foot
+        fL = (K([(0, 0.0), (0.08, 0.06), (0.16, 0.07, "flat"), (0.20, 0.17), (0.24, 0.20), (0.29, 0.18), (0.45, 0.22), (0.53, 0.22, "flat"), (0.62, 0.16), (0.74, 0.04), (0.86, 0.02), (1.0, 0.02)], t),
+              K([(0, 0.0), (0.16, 0.0, "flat"), (0.20, 0.07), (0.24, 0.10), (0.29, 0.06), (0.40, 0.02), (0.45, 0.0, "flat"), (1.0, 0.0)], t),
+              K([(0, 0.0), (0.16, 0.0), (0.20, -30.0), (0.29, -20.0), (0.42, 10.0), (0.45, 22.0), (0.53, 18.0), (0.62, 0.0, "flat"), (1.0, 0.0)], t))
+        fR = (K([(0, 0.0), (0.08, -0.07), (0.16, -0.08, "flat"), (0.20, -0.19), (0.24, -0.22), (0.29, -0.16), (0.45, -0.06), (0.53, -0.04), (0.62, -0.02), (0.74, -0.03), (1.0, -0.03)], t),
+              K([(0, 0.0), (0.18, 0.0, "flat"), (0.22, 0.06), (0.29, 0.14), (0.40, 0.10), (0.45, 0.04), (0.50, 0.0, "flat"), (1.0, 0.0)], t),
+              K([(0, 0.0), (0.16, -10.0), (0.20, -45.0), (0.29, -60.0), (0.45, -30.0), (0.50, -12.0), (0.62, 0.0, "flat"), (1.0, 0.0)], t))
+        spec["foot"] = {"L": self.foot("L", *fL, knee_yaw=2.0), "R": self.foot("R", *fR, knee_yaw=2.0)}
+        sq = K([(0, 0), (0.08, -0.05), (0.16, -0.07), (0.20, 0.12), (0.24, 0.09), (0.29, 0.05), (0.45, 0.0), (0.53, -0.07), (0.62, 0.03), (0.74, -0.01), (1.0, 0)], t)
+        sqh = K([(0, 0), (0.18, -0.02), (0.22, 0.05), (0.29, 0.03), (0.50, -0.03), (0.58, -0.04), (0.68, 0.02), (0.8, 0), (1.0, 0)], t)
+        spec["scale"] = {"chest": (1 - 0.5 * sq, 1 + sq), "head": (1 - 0.5 * sqh, 1 + sqh)}
+        spec["travel"] = self.travel(t)
+        return spec
+
+
+class Hurt(_OneShot):
+    """hurt (one-shot, PMD-style snap + hold). Beats (s): 0 stand | .04 HIT snap (head whips back first, shoulders back, hips
+    forward, arms fly up/out) | .08-.22 recoil hold (8 ticks; bends back, steps back) | .30 buckle (knees give, head drops LATE) |
+    .42 stagger (catch on the back foot, arms out) | .56 recover (upright, head last) | .72 settle | .9 end."""
+    def __init__(self, poser):
+        super().__init__(poser, 1.0)
+
+    def travel(self, t):   # knockback velocity (m/s, negative = backward)
+        return K([(0, 0.0), (0.03, 0.0), (0.05, -1.6), (0.14, -0.8), (0.30, -0.2), (0.42, 0.0), (1.2, 0.0)], t)
+
+    def spec(self, t):
+        z = K([(0, -0.01), (0.04, 0.012), (0.10, 0.0), (0.22, -0.02), (0.30, -0.055, "flat"), (0.42, -0.03), (0.56, 0.006), (0.72, -0.012), (0.9, -0.01)], t)
+        ry = K([(0, 0.0), (0.04, 0.02), (0.10, -0.03), (0.22, -0.05), (0.30, -0.06), (0.42, -0.05), (0.56, -0.02), (0.9, 0.0)], t)
+        lean = K([(0, -4), (0.03, -4.0), (0.05, -20.0), (0.10, -24.0), (0.22, -22.0, "flat"), (0.30, 6.0), (0.42, 2.0), (0.56, -6.0), (0.72, -3.0), (0.9, -4.0)], t)
+        pel = K([(0, 2), (0.05, -10.0), (0.22, -8.0), (0.30, 8.0), (0.42, 4.0), (0.56, 1.0), (0.9, 2.0)], t)
+        hd = K([(0, -6), (0.03, -6.0), (0.045, -34.0), (0.10, -28.0), (0.22, -24.0), (0.30, -4.0), (0.36, 6.0), (0.42, 0.0), (0.56, -4.0), (0.62, -9.0), (0.72, -6.0), (0.9, -6.0)], t)
+        hr = K([(0, 0), (0.045, 14.0), (0.22, 10.0), (0.30, -4.0), (0.42, -6.0), (0.56, 3.0), (0.72, 0.0), (0.9, 0)], t)
+        hy = K([(0, 0), (0.045, 12.0), (0.22, 8.0), (0.42, -4.0), (0.56, 0.0), (0.9, 0)], t)
+        spec = dict(root=[0.0, ry, self.zbase + z], pelvis=(K([(0, 0), (0.05, -6), (0.30, 4), (0.56, 0), (0.9, 0)], t), pel, K([(0, 0), (0.05, 4), (0.30, -4), (0.56, 0), (0.9, 0)], t)),
+                    chest=(K([(0, 0), (0.05, 10), (0.30, -6), (0.56, 0), (0.9, 0)], t), lean, K([(0, 0), (0.05, 8), (0.30, -6), (0.56, 2), (0.9, 0)], t)),
+                    head=(hy, hd, hr), spine_mix=0.6, neck_mix=0.5)
+        sw = K([(0, 2), (0.03, 2.0), (0.05, 70.0), (0.10, 80.0), (0.22, 60.0), (0.30, 10.0), (0.42, 25.0), (0.56, 5.0), (0.72, 2.0), (0.9, 2.0)], t)
+        abd = K([(0, -12), (0.05, 40.0), (0.10, 55.0), (0.22, 45.0), (0.30, 10.0), (0.42, 35.0), (0.56, -6.0), (0.72, -12.0), (0.9, -12.0)], t)
+        el = K([(0, 18), (0.05, 20.0), (0.10, 35.0), (0.22, 50.0), (0.30, 60.0), (0.42, 30.0), (0.56, 22.0), (0.9, 18.0)], t)
+        wr = K([(0, 10), (0.05, -30.0), (0.12, 20.0), (0.22, 30.0), (0.30, 10.0), (0.42, -10.0), (0.56, 15.0), (0.9, 10.0)], t)
+        arm = {sd: dict(swing=sw + (12 if sd == "L" else -6) * K([(0, 0), (0.08, 1), (0.4, 0.4), (0.9, 0)], t), abd=abd + (8 if sd == "R" else 0), elbow=el,
+                        wrist=wr, wrist_out=-12, cross=0.0) for sd in "LR"}
+        spec["arm"] = arm; spec["shoulder"] = {sd: (K([(0, -2), (0.05, 10), (0.22, 8), (0.30, -6), (0.42, 2), (0.56, -2), (0.9, -2)], t), K([(0, -3), (0.05, -10), (0.30, 4), (0.56, -3), (0.9, -3)], t)) for sd in "LR"}
+        # feet: the R foot steps back to catch the knockback, the L foot lifts its heel on the snap
+        fR = (K([(0, 0.0), (0.10, 0.0), (0.16, -0.06), (0.22, -0.10), (0.42, -0.10, "flat"), (0.56, -0.05), (0.72, 0.0), (0.9, 0.0)], t),
+              K([(0, 0.0), (0.09, 0.0), (0.14, 0.05), (0.21, 0.0, "flat"), (0.56, 0.0), (0.62, 0.025), (0.70, 0.0, "flat"), (0.9, 0.0)], t),
+              K([(0, 0.0), (0.12, -25.0), (0.20, 10.0), (0.24, 0.0, "flat"), (0.9, 0.0)], t))
+        fL = (K([(0, 0.0), (0.9, 0.0)], t), 0.0, K([(0, 0.0), (0.05, 14.0), (0.14, 10.0), (0.22, 0.0, "flat"), (0.30, -10.0), (0.42, 0.0, "flat"), (0.9, 0.0)], t))
+        spec["foot"] = {"L": self.foot("L", *fL, knee_yaw=0.0), "R": self.foot("R", *fR, knee_yaw=0.0)}
+        sq = K([(0, 0), (0.045, 0.03), (0.10, 0.02), (0.30, -0.06), (0.42, 0.01), (0.56, 0.0), (0.9, 0)], t)
+        sqh = K([(0, 0), (0.05, 0.03), (0.30, 0.0), (0.36, -0.03), (0.48, 0.0), (0.9, 0)], t)
+        spec["scale"] = {"chest": (1 - 0.5 * sq, 1 + sq), "head": (1 - 0.5 * sqh, 1 + sqh)}
+        spec["travel"] = self.travel(t)
+        return spec

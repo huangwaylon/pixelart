@@ -103,8 +103,14 @@ loft("neck", [{"c": [0, .006, 1.26 + DZ], "ra": .047, "rb": .045}, {"c": [0, .01
 G["obi"] = (0.957 + DZ, 1.052 + DZ)
 loft("obi", [{"c": [0, 0, z], "ra": .150, "rb": .112} for z in G["obi"]], [1, 0, 0], n=64, p=2.6)
 G["hem"] = 0.767
-sk = [(0.975 + DZ, .143, .103, 0), (0.95 + DZ, .162, .118, .002), (0.90 + DZ, .176, .131, .004), (0.84 + DZ, .184, .140, .006), (0.80 + DZ, .189, .146, .007), (G["hem"], .192, .150, .008)]  # r3: A-line (hip flare then near-straight sides), less tent
+sk = [(0.975 + DZ, .143, .103, 0), (0.95 + DZ, .160, .117, .002), (0.90 + DZ, .171, .128, .004), (0.84 + DZ, .176, .135, .006), (0.80 + DZ, .178, .139, .007), (G["hem"], .180, .142, .008)]  # r4: narrower straight A-line (hem .180, was .192)
 loft("skirt", [{"c": [0, y, z], "ra": rx, "rb": ry} for z, rx, ry, y in sk], [1, 0, 0], n=72, p=2.3)
+# round 4: front / back panel separation = shallow side-seam grooves that deepen toward the hem (reads as two panels, not a tent)
+_so = bpy.data.objects["skirt"]; _zt = sk[0][0]
+for v_ in _so.data.vertices:
+    x_, y_, z_ = v_.co; tt = max(0.0, min(1.0, (_zt - z_) / (_zt - G["hem"])))
+    ph_ = math.degrees(math.atan2(x_, -(y_ - 0.006))); g_ = math.exp(-((ph_ - 90) / 11) ** 2) + math.exp(-((ph_ + 90) / 11) ** 2)
+    k_ = 1 - 0.045 * tt ** 1.3 * g_; v_.co.x = x_ * k_; v_.co.y = 0.006 + (y_ - 0.006) * k_
 # ------------------------------------------------------------------ arms (+ sleeves, hands), sx = +1 her left (+X)
 ABD = math.radians(26.0); UA, FA, HL = 0.22, 0.215, 0.10
 for side, sx in (("L", 1), ("R", -1)):
@@ -131,10 +137,12 @@ for side, sx in (("L", 1), ("R", -1)):
     G["leg." + side] = {"hip": Hp.tolist(), "knee": Kn.tolist(), "ankle": An.tolist(), "toe": Tt.tolist(), "ball": [sx * .1, -.07, .035]}
     # r4: thicker legs toward the chibi masters (S master: thigh ~8 px, sock ~6 px incl. outline), centres spread at the hem to keep a gap
     # round 2: fuller chibi thighs (r +8%), centres spread to keep a >= 3 cm gap below the hem (no inner-thigh fusion)
-    lg = [(Hp + np.array([0, 0, .06]), .076, .076), (Hp, .084, .082), (np.array([sx * .097, -.002, .77]), .080, .079),
-          (np.array([sx * .097, -.003, .65]), .072, .072), (np.array([sx * .096, -.004, .55]), .063, .064), (Kn, .057, .058),
-          (np.array([sx * .097, .0, .35]), .059, .061), (np.array([sx * .099, .006, .22]), .051, .053), (An, .044, .046)]
-    loft("leg_" + side, [{"c": c.tolist(), "ra": ra, "rb": rb} for c, ra, rb in lg], [1, 0, 0], n=40)
+    # round 4: inner thigh slimmer (outer side keeps the chibi volume) so a >= 3 px leg gap shows under the narrower hem
+    lg = [(Hp + np.array([0, 0, .06]), .076, .076, .076), (Hp, .084, .082, .080), (np.array([sx * .092, -.002, .77]), .074, .076, .064),
+          (np.array([sx * .093, -.003, .65]), .071, .071, .062), (np.array([sx * .095, -.004, .55]), .062, .064, .058), (Kn, .057, .058, .055),
+          (np.array([sx * .097, .0, .35]), .059, .061, .059), (np.array([sx * .099, .006, .22]), .051, .053, .051), (An, .044, .046, .044)]
+    # ring a-axis = +X: ra = +X side, ra2 = -X side; the inner side is -X for L (sx=+1), +X for R
+    loft("leg_" + side, [{"c": c.tolist(), "ra": (ro if sx > 0 else ri), "ra2": (ri if sx > 0 else ro), "rb": rb} for c, ro, rb, ri in lg], [1, 0, 0], n=40)
     loft("boot_" + side, [{"c": [sx * .099, .008, .196], "ra": .060, "rb": .062}, {"c": [sx * .100, .010, .12], "ra": .061, "rb": .064},
                           {"c": [sx * .100, .012, .05], "ra": .062, "rb": .066}], [1, 0, 0], n=40)
     loft("foot_" + side, [{"c": [sx * .100, .045, .046], "ra": .056, "rb": .046}, {"c": [sx * .100, -.04, .044], "ra": .058, "rb": .044},

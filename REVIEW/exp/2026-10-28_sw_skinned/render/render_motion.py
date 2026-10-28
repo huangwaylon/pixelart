@@ -142,7 +142,7 @@ def face_meta():
     global _NHF
     dg = bpy.context.evaluated_depsgraph_get(); be = body.evaluated_get(dg); me_ = be.data
     if _NHF is None:  # occluders = everything except the head group (the visual-hull head over-estimates the face -> self-hits are not real)
-        pmA = [me_.attributes.get("pm_" + v_) for v_ in ("S", "SE", "E", "NE", "N")]; fl_ = [0.0] * len(me_.polygons); hg = [0.0] * len(me_.polygons)
+        pmA = [me_.attributes.get("pm_" + v_) for v_ in ("S", "SE", "E", "NE", "N", "SW", "W", "NW")]; fl_ = [0.0] * len(me_.polygons); hg = [0.0] * len(me_.polygons)
         for at_ in pmA:
             if at_: at_.data.foreach_get("value", fl_); hg = [max(x, y) for x, y in zip(hg, fl_)]
         _NHF = [tuple(p_.vertices) for p_, h_ in zip(me_.polygons, hg) if h_ < 0.5]

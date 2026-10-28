@@ -1,0 +1,12 @@
+{
+ "_doc": "I: action -> motion file (relative to the experiment root). Default = M's canonical motion/<act>.json (M: the variants in motion/variants/ are the owner's pick list; swap a path here when a variant becomes the default). loop null = take the motion file's 'loop'. Actions with a missing motion file are skipped (dash/hurt appear when M posts them). dirs 'auto' = every view in rig/align.json; override with env DIRS='SE E S'.",
+ "actions": {
+  "walk": {"motion": "motion/walk.json", "loop": null},
+  "run":  {"motion": "motion/run.json", "loop": null},
+  "idle": {"motion": "motion/idle.json", "loop": null},
+  "jump": {"motion": "motion/jump.json", "loop": false},
+  "dash": {"motion": "motion/dash.json", "loop": null},
+  "hurt": {"motion": "motion/hurt.json", "loop": null}
+ },
+ "dirs": "auto"
+}

@@ -13,5 +13,33 @@
   "dx": 0,
   "dy": -1,
   "match": 0.989
+ },
+ "NE": {
+  "dx": 0,
+  "dy": -2,
+  "match": 0.996
+ },
+ "N": {
+  "dx": 0,
+  "dy": -2,
+  "match": 0.997
+ },
+ "W": {
+  "dx": 0,
+  "dy": -1,
+  "match": null,
+  "from": "E"
+ },
+ "SW": {
+  "dx": 0,
+  "dy": -3,
+  "match": null,
+  "from": "SE"
+ },
+ "NW": {
+  "dx": 0,
+  "dy": -2,
+  "match": null,
+  "from": "NE"
  }
 }

@@ -142,6 +142,18 @@ it in R's status log, and M will then omit it.
     For jumps I recommend exporting root height as a per-frame offset instead of moving it inside the cell.
   - **Skirt:** an A-line (flares over the hips, then the sides run nearly straight to a 0.192 hem; was a straight 0.141 -> 0.205 cone). The skirt bones follow the new shape.
 
+- 20:40 R: **ROUND 4 rig (r7) landed** (I: please re-render). Bones unchanged vs r6 apart from the skirt.*.1/2 positions, which follow the narrower hem.
+  - **8 directions natively**: render_motion.py renders S SE E NE N NW W SW with real camera azimuths. rig/align.json has all 8. SW/W/NW mirror
+    SE/E/NE: dx -> -dx, yaw -> -yaw (SW +10, NW +25). Feet check vs the flipped masters: 0 px off in x, dy = -lift exactly (rig/qa/r4_rest_8dir.png).
+  - **Head projection for all 8 views**: UV `pj_<V>` + mask `pm_<V>` for the 8 views. N/NE come from EC0_N/NE_96; SW/W/NW use the horizontally flipped
+    SE/E/NE masters (rig/tex/tex_{SW,W,NW}.png, plus face masks; the bow, bun and ribbons are centred, so the flip is correct). The face is still masked out for F.
+  - **Skirt**: hem narrowed to .180 (was .192) with straight A-line sides, plus side-seam grooves (4.5 % at the hem) so the front and back
+    panels read separately. Inner thighs are slimmer (outer volume kept) and the hem gap between the legs is about 3 px. The remaining 1x "tent" in walk f3-f6 is the
+    skirt springs flaring the panels outward. **M:** cap the outward skirt swing at about 15 deg or lower the gain (side panels first).
+  - **E nose bump**: an explicit nose blob on the midline at the master's E bump (now in the geometry, so it survives head motion).
+  - **Red collar over the chin**: the head stamps included the kimono collar, which became hull geometry and moved with the head. It is removed from the head
+    masks (dress-red pixels below the mouth row) and the hull is rebuilt; no red over the chin in walk/run SE now (rig/qa/r4_walk_run_SE.png).
+
 ## Status log (M)
 - (M writes here)
 - 2026-10-28 11:50 M: started. Building `motion/scripts/` (FK + analytic 2-bone leg IK + spring sim + own capsule preview). Until `rig/rest_skeleton.json` exists I use a stand-in `motion/standin_skeleton.json` (H2 armature joints rotated to face +Y, so .L = -X, plus guessed secondary chains). Assumptions about R's file: armature object at identity, `roll` = EditBone.roll in radians, bone rest matrix = Blender vec_roll_to_mat3(tail-head, roll); `rot` = pose rotation_quaternion with L = B^-1 * r * B. I will NOT scale pelvis (Blender inherit_scale would shrink the legs); scale only on spine/chest/head, small (0.96..1.04).

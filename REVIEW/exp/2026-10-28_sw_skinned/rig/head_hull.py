@@ -14,6 +14,7 @@ VOX = float(sys.argv[1]) if len(sys.argv) > 1 else 0.006; DIL = int(sys.argv[2])
 AL = json.load(open(os.path.join(H, 'align.json')))
 for k_, v_ in json.loads(os.environ.get('YAWS', '{}')).items(): AL[k_]['yaw'] = v_
 PPU = 52.608
+ANC = json.load(open(hx.SW + 'v2/m96/heads/anchor.json'))['views']
 AZC = {'SE': (1, 1), 'E': (1, 0), 'S': (0, 1), 'NE': (1, -1), 'N': (0, -1)}  # contract-frame camera azimuth (render_motion.AZ)
 
 
@@ -37,10 +38,16 @@ def views():
         t, x0, y0 = hx.stamp_of(v); g = np.full((128, 128), '.', dtype='<U1'); g = hx.paste(g, t, x0, y0)
         M = hx.read_grid(hx.SW + f'v2/m96/masters/EC0_{v}_96.txt')
         yaw = AL[v].get('yaw', 0.0); proj, d = cam(v, yaw)
-        out.append((v, g != '.', M, proj, d))
+        m = g != '.'
+        # round 4: the stamps include the red kimono collar under the chin -> it became hull geometry that moved with the head and drew
+        # red over the chin. Drop dress-red pixels in the stamp's lower part (below the mouth / the lowest 5 rows) from the head mask.
+        red = np.isin(g, list('ReE')); an = ANC.get(v, {}); ycut = (an['mouth'][1] + 3) if an.get('mouth') else (t.shape[0] + y0 - 5)
+        lowrows = np.arange(128)[:, None] >= ycut
+        m = m & ~(red & lowrows)
+        out.append((v, m, M, proj, d))
         if v in ('SE', 'E', 'NE'):  # mirrored view of her other side: mirror the model (x -> -x) and reuse the same image
             def projm(P, proj=proj): return proj(P * np.array([-1, 1, 1.0]))
-            out.append((v + '_m', g != '.', M, projm, d * np.array([-1, 1, 1.0])))
+            out.append((v + '_m', m, M, projm, d * np.array([-1, 1, 1.0])))
     return out
 
 
@@ -63,6 +70,19 @@ def main():
         # bow / bun / ribbon zone (back of the head): the masters disagree most there -> allow 2 dissenting views
         zone = (P[:, 1] > 0.06) & (P[:, 2] > 1.86 + 0.044)
         keep[:, :, k] = (strict | (zone & kk & (cnt >= len(V) - SOFT - 2))).reshape(X.shape)
+    # round 4: E-profile nose bump. Triangulate the nose tip from the S nose pixels and the E profile bump (anchor.json nose), add a small
+    # ellipsoid of voxels there (the strict carve shaved it: the other views don't resolve a 1-2 px bump)
+    def aff(v):
+        proj, _ = cam(v, AL[v].get('yaw', 0.0)); c0 = proj(np.zeros((1, 3)))[0]; return np.stack([proj(np.eye(3)[i][None])[0] - c0 for i in range(3)], 1), c0
+    (Ms, cs), (Me, ce) = aff('S'), aff('E')
+    ns = np.array([[x + 0.5, y + 0.5] for x, y, _ in ANC['S']['nose']]).mean(0); ne = np.array([79.0, 55.0])  # E bump: K outline col 79, rows 54-55
+    A_ = np.vstack([Ms, Me]); b_ = np.concatenate([ns - cs, ne - ce]); NT = np.linalg.lstsq(A_, b_, rcond=None)[0]
+    G_ = np.stack(np.meshgrid(*xs, indexing='ij'), -1)
+    col = keep & (np.abs(G_[..., 0]) < 0.02) & (np.abs(G_[..., 2] - NT[2]) < 0.012)
+    yf = float(G_[..., 1][col].min()) if col.any() else NT[1]; NT = np.array([0.0, min(NT[1], yf - 0.006), NT[2]])  # midline, just proud of the face
+    dd = (G_ - NT) / np.array([0.014, 0.016, 0.016])
+    nose = (dd ** 2).sum(-1) < 1.0; print('nose tip', NT.round(4), 'voxels', int(nose.sum()))
+    keep = keep | nose
     lab, nl = nd.label(keep); sz = nd.sum(keep, lab, range(1, nl + 1)); keep = lab == 1 + int(np.argmax(sz))
     print('voxels', int(keep.sum()), 'components', nl)
     KV = np.stack(np.nonzero(keep), 1) * VOX + lo + VOX * 0.5

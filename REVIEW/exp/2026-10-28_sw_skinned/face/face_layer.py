@@ -98,24 +98,27 @@ def _hround(v, prev, band):
 def plan_clip(fj, act, loop=True):
     """per frame: {'G': (gx, gy), 'R': {anchor: (rx, ry)}, 'kinds': {eye.i: kind or None}, 'expr', 'blink', 'g_cont'}"""
     if fj in _CACHE: return _CACHE[fj]
-    d = json.load(open(fj)); V = d['view']; parts = json.load(open(os.path.join(HERE, 'parts.json')))[V]
+    d = json.load(open(fj)); V = d['view']; parts = json.load(open(os.path.join(HERE, 'parts.json'))).get(V, {})
     rest = d['anchors_rest']; frs = d['frames']; n = len(frs)
     order = (list(range(n)) if loop and n > 2 else []) + list(range(n))
     out = [None] * n; Gp = [None, None]; Rp = {}; kp = {}; RRp = {}
     for t in order:
         f = frs[t]; A = f['anchors']; hd = f['head']
         o = {k: (A[k]['xy'][0] - rest[k][0], A[k]['xy'][1] - rest[k][1]) for k in A}
-        core = [k for k in o if k.startswith('eye.') or k == 'mouth']
+        core = [k for k in o if k.startswith('eye.') or k == 'mouth'] or list(o)
+        if not core:
+            out[t] = {'G': (0, 0), 'R': {}, 'kinds': {}, 'expr': expr_for(act, f)[0], 'blink': None, 'mouth': None, 'g_cont': (0, 0), 'head': hd}; continue
         g = (sum(o[k][0] for k in core) / len(core), sum(o[k][1] for k in core) / len(core))
         G = (_hround(g[0], Gp[0], HYS_G), _hround(g[1], Gp[1], HYS_G)); Gp = list(G)
         R = {}; RR = {}
         # eye.0 against the face offset; every other part RELATIVE to eye.0 with a wider dead band, so the face's internal
         # spacing only changes when the 3D projection really moved it by ~1 px (yaw spacing, pitch eye-mouth, roll)
-        px, py = Rp.get('eye.0', (None, None))
-        R['eye.0'] = (_hround(o['eye.0'][0] - G[0], px, HYS_R), _hround(o['eye.0'][1] - G[1], py, HYS_R))
-        b0 = R['eye.0']
+        k0 = 'eye.0' if 'eye.0' in o else core[0]
+        px, py = Rp.get(k0, (None, None))
+        R[k0] = (_hround(o[k0][0] - G[0], px, HYS_R), _hround(o[k0][1] - G[1], py, HYS_R))
+        b0 = R[k0]
         for k in o:
-            if k == 'eye.0': continue
+            if k == k0: continue
             px, py = RRp.get(k, (None, None)); hb = HYS_R + (0.13 if k.startswith('eye.') else 0.25)
             rel = (_hround(o[k][0] - G[0] - b0[0], px, hb), _hround(o[k][1] - G[1] - b0[1], py, hb))
             RR[k] = rel; R[k] = (b0[0] + rel[0], b0[1] + rel[1])
@@ -131,7 +134,7 @@ def plan_clip(fj, act, loop=True):
                 if abs(y0 - y1) > lim: y1 = y0 + (lim if y1 > y0 else -lim)
             R['eye.0'], R['eye.1'] = (x0, y0), (x1, y1)
         # face proportions: mouth/nose stay within 1 px (y) of the eye-pair mean and 1 px (x) of the eye-pair centre
-        ey = [R[k] for k in R if k.startswith('eye.')]; emx = sum(e[0] for e in ey) / len(ey); emy = sum(e[1] for e in ey) / len(ey)
+        ey = [R[k] for k in R if k.startswith('eye.')] or [b0]; emx = sum(e[0] for e in ey) / len(ey); emy = sum(e[1] for e in ey) / len(ey)
         for k in ('mouth', 'nose'):
             if k in R:
                 R[k] = (int(max(math.floor(emx - 1), min(math.ceil(emx + 1), R[k][0]))), int(max(math.floor(emy - 1), min(math.ceil(emy + 1), R[k][1]))))
@@ -140,7 +143,7 @@ def plan_clip(fj, act, loop=True):
             if k.startswith('brow.'): R[k] = R['eye.' + k.split('.')[1]]
         for k in list(R):
             if k.startswith('cheek.'):
-                e = R.get('eye.' + k.split('.')[1], R['eye.0']); m = R.get('mouth', e)
+                e = R.get('eye.' + k.split('.')[1], R.get('eye.0', R[k])); m = R.get('mouth', e)
                 R[k] = (max(e[0] - 1, min(e[0] + 1, R[k][0])), max(min(e[1], m[1]) - 1, min(max(e[1], m[1]) + 1, R[k][1])))
         if 'nose' in R and 'mouth' in R:
             m = R['mouth']; R['nose'] = (max(m[0] - 1, min(m[0] + 1, R['nose'][0])), max(m[1] - 1, min(m[1] + 1, R['nose'][1])))
@@ -150,12 +153,12 @@ def plan_clip(fj, act, loop=True):
         for k, a in parts.items():
             if not k.startswith('eye.'): continue
             base = a['kind']; prev = kp.get(k, base); kind = base
-            if V == 'SE' and base == 'far':
-                dy_ = hd['dyaw']
-                kind = 'far'
-                if dy_ < (-11 if prev == 'far' else -8): kind = 'far3'
+            if V in ('SE', 'SW') and base in ('far', 'far_left'):
+                dy_ = hd['dyaw']; f3 = 'far3' if base == 'far' else 'far3_left'; fo = 'front_right' if base == 'far' else 'front_left'
+                kind = base
+                if dy_ < (-11 if prev == base else -8): kind = f3
                 if dy_ < (-24 if prev != 'hidden' else -20): kind = 'hidden'
-                if dy_ > (13 if prev != 'front_right' else 9): kind = 'front_right'   # turned toward the camera: the far eye opens up
+                if dy_ > (13 if prev != fo else 9): kind = fo   # turned toward the camera: the far eye opens up
             elif V == 'S':
                 tr = hd['turn']; thr = 8 if prev != base else 12
                 far_right = tr < -thr; far_left = tr > thr     # sign: + turn = her left = screen right in S
@@ -189,9 +192,11 @@ def face_cells(V, parts, G, R, kinds, ex):
         if kind == 'far3': x0 += 1                     # narrowed far eye keeps its outer edge at the cheek
         if kind == 'far' and base == 'front_right': x0 += 1
         if kind == 'front_right' and base == 'far': x0 -= 1
+        if kind == 'front_left' and base == 'far_left': x0 -= 1
         if kind == 'far_left' and base == 'front_left': x0 += 1
         ee = e_eye
         if ex.get('wink') and n_ == 0: ee = 'joy'       # wink: the screen-left eye closes in a happy arc
+        if n_ == 1 and ex.get('eye1'): ee = ex['eye1']  # wince: the second eye only squints
         t = FL.eye_tmpl(kind, ee)
         for j, r in enumerate(t):
             ink = [i for i, c in enumerate(r) if c not in '._']
@@ -203,6 +208,9 @@ def face_cells(V, parts, G, R, kinds, ex):
                 out.append((x0 + i, y0 + j, 'W' if c == '@' else c, 'eye', n_))
         for dx, dy, c in FL.wing_tmpl(kind, ee):
             out.append((x0 + dx, y0 + dy, c, 'wing', n_))
+        if ex.get('tear'):   # 2 px W tear under the outer corner (outer = screen side away from the nose)
+            w = len(t[0]); outer = 0 if kind in ('front_left', 'profile', 'far_left', 'far3_left') else w - 2
+            out += [(x0 + outer, y0 + 5, 'W', 'skin', -1), (x0 + outer, y0 + 6, 'W', 'skin', -1)]
         bt = FL.brow_tmpl(kind, ex['brow'])
         top = min([j for j, r in enumerate(bt) if 'h' in r] or [0])
         for j, r in enumerate(bt):
@@ -215,6 +223,7 @@ def face_cells(V, parts, G, R, kinds, ex):
     if 'mouth' in parts:
         mx, my = parts['mouth']['origin']; rx, ry = R['mouth']; mx += G[0] + rx; my += G[1] + ry
         mt = FL.mouth_tmpl(ex['mouth'])
+        if parts['mouth'].get('mirror'): mt = [r[::-1] for r in mt]
         if V in ('E', 'W'):   # profile: 3 px mouth set 1 px back from the muzzle edge (a 4 px mouth touched the jaw outline)
             mt = [r[:3] if V == 'E' else r[1:] for r in mt]; mx += -1 if V == 'E' else 1
             mt = [r if any(c not in '._' for c in r) else r for r in mt]
@@ -228,10 +237,17 @@ def face_cells(V, parts, G, R, kinds, ex):
         if kinds.get('eye.' + idx) == 'hidden': continue
         bx, by = parts[k]['origin']; rx, ry = R[k]; bx += G[0] + rx; by += G[1] + ry
         kind = parts[k]['kind']
-        if kinds.get('eye.' + idx) == 'far3': kind = 'far'
-        for j, r in enumerate(FL.blush_tmpl(kind, ex['blush'])):
+        bt = FL.blush_tmpl(kind, ex['blush'])
+        if parts[k].get('mirror'): bt = [r[::-1] for r in bt]
+        sh = 1 if kinds.get('eye.' + idx) == 'far3' else 0
+        for j, r in enumerate(bt):
             for i, c in enumerate(r):
-                if c == 'k': out.append((bx + i + (1 if kinds.get('eye.' + idx) == 'far3' else 0), by + j, 'k', 'blush', -1))
+                if c == 'k': out.append((bx + i + sh, by + j, 'k', 'blush', -1))
+    for k in sorted(parts):   # NE/NW: lash tip px poking past the cheek outline (count per expression, eye_spec ne_lash)
+        if not k.startswith('lash.'): continue
+        lx, ly = parts[k]['origin']; rx, ry = R[k]; lx += G[0] + rx; ly += G[1] + ry
+        nl = FL.SPEC['ne_lash'].get(FL.ET.expr_key(e_eye), 1)
+        for dx, dy in parts[k]['px'][:nl]: out.append((lx + dx, ly + dy, 'K', 'lash', -1))
     if 'nose' in parts and V != 'E':
         nx, ny = parts['nose']['origin']; rx, ry = R['nose']; nx += G[0] + rx; ny += G[1] + ry
         for dx, dy, c in parts['nose']['px']: out.append((nx + dx, ny + dy, c, 'skin', -1))
@@ -285,11 +301,16 @@ def draw(g, gn, T, V, parts, pl):
         elif layer == 'wing':
             if b != '.' and T[y, x]: g[y, x] = c
         elif layer == 'brow':
-            if sk(b) and not _edge(g, x, y): g[y, x] = c
+            if sk(b) and not _edge(g, x, y):
+                g[y, x] = c
+                # round 4: angled brows clear of the fringe: the bang px right above a brow px becomes skin (1 px gap)
+                if y > 0 and g[y - 1, x] in 'HhgLmK' and not _edge(g, x, y - 1) and T[y - 1, x]: g[y - 1, x] = 's'
         elif layer == 'skin':
             if (sk(b) or b == 'm') and not _edge(g, x, y): g[y, x] = c
         elif layer == 'blush':
             if b in 'sS' and not _edge(g, x, y): g[y, x] = c
+        elif layer == 'lash':   # outside the silhouette, touching it
+            if b == '.' and any(0 <= y + bb < N and 0 <= x + aa < N and g[y + bb, x + aa] != '.' for aa, bb in ((1, 0), (-1, 0), (0, 1), (0, -1))): g[y, x] = c
     # orphan guard: single brow/blush px -> skin
     for x, y, c, layer, _e in cells:
         if layer in ('brow', 'blush') and 0 < x < N - 1 and 0 < y < N - 1 and g[y, x] == c:
@@ -309,6 +330,7 @@ def face_layer(frame_info, pixel_frame, passes=None):
     fj, tp = _paths(frame_info)
     loop = frame_info.get('loop', frame_info['action'] != 'jump')
     C = plan_clip(fj, frame_info['action'], loop)
+    if not C['parts']: return pixel_frame   # N / NW without face parts
     d = C['json']; idx = [f['i'] for f in d['frames']].index(int(frame_info['i'])); pl = dict(C['plan'][idx])
     if frame_info.get('expr'): pl['expr'] = frame_info['expr']; pl['blink'] = frame_info.get('blink'); pl['mouth'] = frame_info.get('mouth')
     rf = passes.get('rface') or frame_info.get('rface')     # R's per-frame anchors (render info frames[i].face): body/arm/hand occlusion

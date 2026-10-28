@@ -24,6 +24,9 @@ INK_EYE = set('KhgLW')
 SMILE_CLOSED = ['____', 'm..m', '.mm.']          # closed smile: corners on the mouth row, centre 1 row lower (never touches the nose)
 MOUTH_FLAT = ['____', 'mmmm', '____']
 MOUTH_SMALL_O = ['____', '.RR.', '.RR.']
+MOUTH_GRIT = ['____', 'mWWm', '____']           # round 4: effort = a flat dark slit with 2 px of teeth (the spec's m__m read as a pout)
+MOUTH_GRIT_OPEN = ['____', 'mWWm', '.RR.']      # effort with the mouth open (M's mouth: open) -- 4x2 max, no red lips ring
+MOUTH_HURT = ['____', 'mmmm', '_RR_']           # spec pain mouth (grimace)
 EXPR = {
     #  name          eye (eye_spec expr)  brow          mouth (eye_spec expr or template)   blush
     'neutral':    dict(eye='neutral',    brow='neutral',    mouth='neutral',      blush='neutral'),
@@ -31,8 +34,13 @@ EXPR = {
     'smile_open': dict(eye='cheerful',   brow='cheerful',   mouth='cheerful',     blush='cheerful'),
     'joyful':     dict(eye='joy',        brow='joy',        mouth='joy',          blush='joy'),
     'determined': dict(eye='determined', brow='determined', mouth=MOUTH_FLAT,     blush='neutral'),
-    'effort':     dict(eye='blink_half', brow='effort',     mouth='effort',       blush='neutral'),   # narrowed, focused eyes (not shut while running)
-    'strain':     dict(eye='effort',     brow='effort',     mouth='effort',       blush='neutral'),   # spec effort: eyes squeezed shut
+    'effort':     dict(eye='blink_half', brow='effort',     mouth=MOUTH_GRIT,     blush='neutral'),   # narrowed, focused eyes (not shut while running)
+    'strain':     dict(eye='effort',     brow='effort',     mouth=MOUTH_GRIT,     blush='neutral'),
+    # round 4: dash + hurt
+    'focused':    dict(eye='blink_half', brow='determined', mouth=MOUTH_FLAT,     blush='neutral'),   # dash: narrowed eyes, V brows, set mouth
+    'hurt':       dict(eye='pain',       brow='pain',       mouth=MOUTH_HURT,     blush='neutral'),   # pained > <, brows tilted up to the centre
+    'wince':      dict(eye='pain',       brow='pain',       mouth=MOUTH_GRIT,     blush='neutral', eye1='blink_half'),   # one eye shut, one squinting
+    'hurt_tear':  dict(eye='pain',       brow='pain',       mouth=MOUTH_HURT,     blush='neutral', tear=True),   # spec effort: eyes squeezed shut
     'shout':      dict(eye='shout',      brow='shout',      mouth='shout',        blush='neutral'),
     'surprised':  dict(eye='surprised',  brow='surprised',  mouth=MOUTH_SMALL_O,  blush='neutral'),
     'squint':     dict(eye='pain',       brow='effort',     mouth=MOUTH_FLAT,     blush='neutral'),   # landing: > < eyes
@@ -41,14 +49,15 @@ EXPR = {
     'half_blink': dict(eye='blink_half', brow='neutral',    mouth='neutral',      blush='neutral'),
 }
 ALIASES = {'joy': 'joyful', 'cheerful': 'smile_open', 'blink_closed': 'blink', 'blink_half': 'half_blink', 'half-blink': 'half_blink',
-           'land': 'squint', 'pain': 'squint', 'hurt': 'squint'}
+           'land': 'squint', 'pain': 'hurt', 'dash': 'focused', 'tear': 'hurt_tear', 'tears': 'hurt_tear'}
 CLOSED_EYES = {'joy', 'effort', 'pain', 'blink_closed'}
 
 
 MOUTH_OPEN = {'neutral': 'cheerful', 'smile': 'cheerful', 'smile_open': 'cheerful', 'joyful': 'joy', 'determined': ['____', 'mmmm', '.RR.'],
-              'effort': 'shout', 'shout': 'shout', 'surprised': MOUTH_SMALL_O, 'squint': ['____', 'mmmm', '.RR.'], 'wink': 'cheerful',
+              'effort': MOUTH_GRIT_OPEN, 'strain': MOUTH_GRIT_OPEN, 'focused': ['____', 'mmmm', '.RR.'], 'hurt': MOUTH_HURT,
+              'hurt_tear': MOUTH_HURT, 'wince': MOUTH_GRIT_OPEN, 'shout': 'shout', 'surprised': MOUTH_SMALL_O, 'squint': ['____', 'mmmm', '.RR.'], 'wink': 'cheerful',
               'blink': 'neutral', 'half_blink': 'neutral'}
-MOUTH_CLOSED = {'smile_open': SMILE_CLOSED, 'joyful': SMILE_CLOSED, 'shout': MOUTH_FLAT, 'surprised': ['____', '.mm.', '____'], 'wink': SMILE_CLOSED}
+MOUTH_CLOSED = {'hurt': MOUTH_GRIT, 'hurt_tear': MOUTH_GRIT, 'smile_open': SMILE_CLOSED, 'joyful': SMILE_CLOSED, 'shout': MOUTH_FLAT, 'surprised': ['____', '.mm.', '____'], 'wink': SMILE_CLOSED}
 
 
 def resolve(expr, blink=None, mouth=None):
@@ -61,7 +70,7 @@ def resolve(expr, blink=None, mouth=None):
     b = {'closed': 'blink_closed', 'blink': 'blink_closed', True: 'blink_closed', 'half': 'blink_half', 'half_blink': 'blink_half'}.get(blink)
     if b and d['eye'] not in CLOSED_EYES:
         if not (b == 'blink_half' and d['eye'] == 'blink_closed'): d['eye'] = b
-        d['wink'] = False
+        d['wink'] = False; d.pop('eye1', None)
     return d
 
 
@@ -108,11 +117,47 @@ def view_anchors(v):
         mx, my = a['mouth']; out['mouth'] = {'xy': [mx + 2.0, my + 1.5], 'origin': [mx, my]}
     for i, (bx, by, kind) in enumerate(a.get('blush', [])):
         w = len(ET.blush_tmpl(kind, 'neutral')[0]); out[f'cheek.{i}'] = {'xy': [bx + w / 2.0, by + 1.0], 'kind': kind, 'origin': [bx, by]}
+    if a.get('ne_lash'):
+        xs = [p[0] for p in a['ne_lash']]; ys = [p[1] for p in a['ne_lash']]
+        out['lash.0'] = {'xy': [xs[0] + .5, ys[0] + .5], 'origin': [xs[0], ys[0]], 'px': [[x - xs[0], y - ys[0]] for x, y in zip(xs, ys)]}
     if a.get('nose'):
         xs = [p[0] for p in a['nose']]; ys = [p[1] for p in a['nose']]
         out['nose'] = {'xy': [sum(xs) / len(xs) + .5, sum(ys) / len(ys) + .5], 'origin': [min(xs), min(ys)],
                        'px': [[p[0] - min(xs), p[1] - min(ys), p[2]] for p in a['nose']]}
     return out
+
+
+MIRROR = {'W': 'E', 'SW': 'SE', 'NW': 'NE'}
+MKIND = {'front_left': 'front_right', 'front_right': 'front_left', 'far': 'far_left', 'far_left': 'far', 'profile': 'front_right',
+         'far3': 'far3_left', 'far3_left': 'far3', 'front': 'front', 'ne': 'ne'}
+
+
+def kind_w(kind):
+    return len(eye_tmpl(kind, 'neutral')[0])
+
+
+def mirror_anchors(src):
+    """W/SW/NW parts = the E/SE/NE parts mirrored in the 128 cell (x -> 128 - x; blocks: x0 -> 128 - x0 - w); mirrored kinds, templates
+    mirrored at draw time ('mirror': True); the catchlight stays top-left (eyetmpl mirror keeps the iris span)."""
+    out = {}
+    for k, a in view_anchors(src).items():
+        b = dict(a); b['xy'] = [128 - a['xy'][0], a['xy'][1]]
+        if k.startswith(('eye.', 'brow.')):
+            b['kind'] = MKIND[a['kind']]; w = kind_w(a['kind']); b['origin'] = [128 - a['origin'][0] - w, a['origin'][1]]
+        elif k == 'mouth': b['origin'] = [128 - a['origin'][0] - 4, a['origin'][1]]
+        elif k.startswith('cheek.'):
+            w = len(ET.blush_tmpl(a['kind'], 'neutral')[0]); b['origin'] = [128 - a['origin'][0] - w, a['origin'][1]]
+        elif k == 'nose':
+            w = max(p[0] for p in a['px']) + 1; b['origin'] = [128 - a['origin'][0] - w, a['origin'][1]]
+            b['px'] = [[w - 1 - p[0], p[1], p[2]] for p in a['px']]
+        elif k.startswith('lash.'):
+            b['origin'] = [127 - a['origin'][0], a['origin'][1]]; b['px'] = [[-p[0], p[1]] for p in a['px']]
+        b['mirror'] = True; out[k] = b
+    return out
+
+
+def parts_for(v):
+    return mirror_anchors(MIRROR[v]) if v in MIRROR else (view_anchors(v) if v in ANC else {})
 
 
 # ---------------------------------------------------------------- faceless master (face features erased at the master positions)
@@ -186,7 +231,18 @@ def build():
                 if f[y][x] != m[y][x]:
                     a[y, x, :3] = rgb[f[y][x]]; n += 1
         Image.fromarray(a).save(f'{od}/tex_{v}_nf.png'); rep[v] = n
-    parts = {v: view_anchors(v) for v in ('S', 'SE', 'E')}
+    # mirrored views: R projects the mirrored masters; the faceless texture = R's tex_<W> with the mirrored source erase applied
+    for v, src in MIRROR.items():
+        f = [r[::-1] for r in rd(f'{od}/EC0_{src}_nf.txt')]; m = [r[::-1] for r in rd(f'{M96}masters/EC0_{src}_96.txt')]
+        open(f'{od}/EC0_{v}_nf.txt', 'w').write('\n'.join(''.join(r) for r in f) + '\n')
+        tp = f'{EXP}/rig/tex/tex_{v}.png'
+        if not os.path.exists(tp): rep[v] = 'no rig tex yet'; continue
+        a = np.array(Image.open(tp).convert('RGBA')); n = 0
+        for y in range(len(m)):
+            for x in range(len(m[0])):
+                if f[y][x] != m[y][x]: a[y, x, :3] = rgb[f[y][x]]; n += 1
+        Image.fromarray(a).save(f'{od}/tex_{v}_nf.png'); rep[v] = n
+    parts = {v: parts_for(v) for v in ('S', 'SE', 'E', 'NE', 'N', 'W', 'SW', 'NW')}
     json.dump(parts, open(os.path.join(HERE, 'parts.json'), 'w'), indent=1)
     print('faceless textures', rep, '->', od)
 
@@ -197,7 +253,11 @@ def calib():
     master_xy - off, i.e. where the master's eye really shows on the rig head."""
     import face_layer as F
     out = {}
-    for V in ('S', 'SE', 'E'):
+    for V in ('S', 'SE', 'E', 'NE', 'N', 'W', 'SW', 'NW'):
+        if not os.path.exists(f'{HERE}/out/rest/rest_{V}_f00_tex.png'):
+            src = MIRROR.get(V)
+            if src in out: out[V] = {'dx': -out[src]['dx'], 'dy': out[src]['dy'], 'match': None, 'from': src}
+            continue
         d = json.load(open(f'{HERE}/out/rest/rest_{V}_face.json'))
         T, gn = F.tex_cells(F.load_ftex(f'{HERE}/out/rest/rest_{V}_f00_tex.png', d['align']['dx'], d['align']['dy']))
         m = np.array(rd(f'{HERE}/tex/EC0_{V}_nf.txt')); best = None

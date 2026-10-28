@@ -134,7 +134,7 @@ class ChainSim:
         k = np.cross(-UP, FWD)
         return Dp @ Rot.from_rotvec(k / np.linalg.norm(k) * self.SKIRT_KD * amt).as_matrix() @ Dp.T
 
-    def step(self, D, H, T, dt, travel=0.0):
+    def step(self, D, H, T, dt, travel=0.0, frame_acc=None):
         sk = self.sk; self.curD = D
         v_air = -FWD * travel
         for g, ch, anc in self.chains:
@@ -149,6 +149,7 @@ class ChainSim:
             tg, _ = self.targets(g, ch, D[anc], x, P)
             vT = (tg - st["T"]) / dt; st["T"] = tg
             acc = w * w * (tg - x) - 2 * P["z"] * w * (v - vT) - P["cd"] * (v - v_air)
+            if frame_acc is not None: acc = acc - frame_acc   # in-place frame accelerating (dash): hair/skirt stream back, overshoot on the brake
             vn = v + acc * dt; xn = x + vn * dt; xn[0] = anchor
             for i, b in enumerate(ch):
                 xn[i + 1] = xn[i] + nrm(xn[i + 1] - xn[i]) * self.lens[b]

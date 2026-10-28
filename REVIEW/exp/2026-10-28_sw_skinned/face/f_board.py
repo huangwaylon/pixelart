@@ -22,7 +22,12 @@ def gif(ims, durs, path):
 def head_box(fs, V, act):
     """common crop box around the head over all frames (from the face json anchors)"""
     d = json.load(open(f'{EXP}/face/out/{act}/{act}_{V}_face.json'))
-    xs = [f['anchors']['eye.0']['xy'][0] for f in d['frames']]; ys = [f['anchors']['eye.0']['xy'][1] for f in d['frames']]
+    k0 = next((k for k in ('eye.0', 'cheek.0') if k in d['frames'][0]['anchors']), None)
+    if k0 is None:   # N: no face anchors -> head bone point of the render info (192 -> 128 cell)
+        inf = json.load(open(f'{EXP}/face/out/{act}/{act}_{V}.json')); al = d['align']
+        xs = [f['pts']['head'][0] - 32 + al['dx'] - 3 for f in inf['frames']]; ys = [f['pts']['head'][1] - 32 + al['dy'] + 10 for f in inf['frames']]
+    else:
+        xs = [f['anchors'][k0]['xy'][0] for f in d['frames']]; ys = [f['anchors'][k0]['xy'][1] for f in d['frames']]
     cx = int(round(sum(xs) / len(xs))) + {'SE': 6, 'S': 8, 'E': 0}.get(V, 4); cy = int(round(sum(ys) / len(ys)))
     return cx - 22, cy - 26, cx + 22, cy + 16
 
@@ -43,7 +48,7 @@ def clip(act, V):
         a = hx.render(g0[y0:y1, x0:x1], S, BG); cl = hx.render(g1[y0:y1, x0:x1], S, BG); b = hx.render(g1[y0:y1, x0:x1], S, BG).convert('RGB'); dr = ImageDraw.Draw(b)
         for k, an in fr['anchors'].items():
             ax, ay = (an['xy'][0] - x0) * S, (an['xy'][1] - y0) * S
-            col = {'e': (0, 255, 255), 'b': (255, 0, 255), 'm': (255, 255, 0), 'c': (255, 120, 0), 'n': (0, 255, 0)}[k[0]]
+            col = {'e': (0, 255, 255), 'b': (255, 0, 255), 'm': (255, 255, 0), 'c': (255, 120, 0), 'n': (0, 255, 0), 'l': (255, 255, 255)}[k[0]]
             dr.rectangle([ax - 1, ay - 1, ax + 1, ay + 1], fill=col)
         h = pl['head']
         dr.text((3, 2), f"f{i:02d} {pl['expr']}{' b' + str(pl['blink']) if pl['blink'] else ''}{' ' + pl['mouth'] if pl.get('mouth') else ''}", fill=(255, 255, 160))

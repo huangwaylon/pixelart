@@ -205,6 +205,23 @@ Coordination contract: `CONTRACT.md`. This experiment has two roles: R (rigger: 
 
 **Skirt.** A-line: rx .143 waist → .162/.176 over the hips → .184/.189 → .192 hem (was a cone .141 → .205), with depth to match.
 
+### Round 4 (R): 8 directions, mirrored projection, skirt, nose, collar (rig r7)
+**8 directions.**
+- `render_motion.py` already had the 8 azimuths. `rig/align.json` now has SW/W/NW as mirrors of SE/E/NE: dx and yaw negated, dy, lift and registration as the source.
+- The rig image of W is exactly the mirror of E about the cell centre (pivot on the column boundary 64), so mirrored masters register with no extra shift. Feet check: 0 px.
+- `build_rig.py` writes `pj_`/`pm_` for all 8 views. `make_tex.py` writes `tex_{SW,W,NW}` (plus face masks) as horizontal flips.
+- Board: `rig/qa/r4_rest_8dir.png` (flipped/lifted master | rig, 8 views).
+
+**Head.**
+- `head_hull.py` drops dress-red pixels below the mouth row (or in the stamp's bottom 5 rows) from the stamp masks. That collar used to become head geometry and draw red over the chin.
+- It adds a nose ellipsoid (r .014/.016/.016) on the midline, at the master S nose / E profile bump and 6 mm proud of the face.
+
+**Skirt and legs.**
+- Hem .180/.142, near-straight sides.
+- Side-seam grooves: −4.5 % × t^1.3 within ±11° of the sides.
+- Inner thigh radius at the hem .064 (outer .074), centres ±.092: a leg gap of about 3 px under the hem.
+- Board: `rig/qa/r4_walk_run_SE.png`.
+
 ### Known issues / next
 - **Placeholder head.** The H2 head has a ragged hair/skin boundary and blob eyes. Use `--stamp` for now. The proper fix is heads96 layers that turn with the head.
 - **SE body yaw.** The master SE is drawn more frontal than a true 45° camera. `--yaw=-15` approximates this (not the default).

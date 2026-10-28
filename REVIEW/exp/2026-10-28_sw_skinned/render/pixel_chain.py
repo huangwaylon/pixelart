@@ -41,6 +41,10 @@ LKEEP = float(os.environ.get('LKEEP', '0.75'))  # keep the previous label if its
 OBILINE = os.environ.get('OBILINE', '0') == '1'  # K line on the far side of obi|dress edges (master has them)
 PROTECT_ARMS = os.environ.get('PROTECT_ARMS', '1') == '1'  # round 3: arms (sleeve tube + bag) get the 2 px guarantee too
 SPECK = int(os.environ.get('SPECK', '6'))  # limb crumbs smaller than this, detached from the limb's main piece, are relabelled
+SHAPE = os.environ.get('SHAPE', '1') == '1'  # round 3 shape fixes (A-line skirt, smooth hem, skin cap, round toes)
+HIPF = float(os.environ.get('HIPF', '0.35'))  # A-line envelope starts at this fraction of the skirt height (hip)
+ALINE = float(os.environ.get('ALINE', '0.6'))  # skirt widening per row and side (px)
+SKINMAX = int(os.environ.get('SKINMAX', '3'))  # max skin-band rows under the hem
 RIM = os.environ.get('RIM', 'g')  # near-leg rim tone along the leg|leg separation (d = sock sheen; g = boot light, stronger)
 SMOOTH = os.environ.get('SMOOTH', '1') == '1'
 HOLE = int(os.environ.get('HOLE', '4'))  # enclosed background holes up to this many px are filled
@@ -247,6 +251,72 @@ def mat_major(F, T):
     return out
 
 
+# ------------------------------------------------------------------ round 3 shape fixes (on the label grid, before the outline)
+def _part(lab): return np.where(lab >= 0, SEG_P[np.maximum(lab, 0)], -1)
+
+
+def _mat(lab): return np.where(lab >= 0, SEG_M[np.maximum(lab, 0)], -1)
+
+
+def shape_fixes(lab, locked):
+    """A-line skirt envelope, smooth hem line, skin-band height cap, rounded boot toes"""
+    lab = lab.copy(); P_ = _part(lab); M_ = _mat(lab)
+    sk = P_ == PI['skirt']
+    rows = np.nonzero(sk.any(1))[0]
+    if len(rows) > 3:
+        # 1. A-line: below the hip row (HIPF of the skirt height) the skirt may widen by at most ALINE px per row and side; only the
+        #    outer flare that is open to the background is shaved (never a hole inside the figure, never a sleeve/arm/leg cell)
+        yh = rows[0] + int(HIPF * (rows[-1] - rows[0]))
+        xs = np.nonzero(sk[yh])[0]; el, er = float(xs.min()), float(xs.max())
+        for y in rows[rows > yh]:
+            xs = np.nonzero(sk[y])[0]
+            if not len(xs): continue
+            el = max(float(xs.min()), el - ALINE); er = min(float(xs.max()), er + ALINE)
+            L_, R_ = int(np.ceil(el - 1e-6)), int(np.floor(er + 1e-6))
+            for x in range(xs.min(), L_):
+                if lab[y, x] >= 0 and P_[y, x] == PI['skirt'] and (x == 0 or lab[y, x - 1] < 0) and not locked[y, x]: lab[y, x] = -1
+                else: break
+            for x in range(xs.max(), R_, -1):
+                if lab[y, x] >= 0 and P_[y, x] == PI['skirt'] and (x == N - 1 or lab[y, x + 1] < 0) and not locked[y, x]: lab[y, x] = -1
+                else: break
+        P_ = _part(lab); sk = P_ == PI['skirt']
+        # 2. hem line: where the hem is open to the background, its bottom row per column is median-smoothed (no stair-step corners)
+        cols = np.nonzero(sk.any(0))[0]
+        yb = np.full(N, -1)
+        for x in cols:
+            ys = np.nonzero(sk[:, x])[0]; y = ys.max()
+            if y + 1 < N and lab[y + 1, x] < 0: yb[x] = y
+        open_ = yb >= 0
+        if open_.sum() >= 3:
+            ys_ = yb.astype(float); sm = yb.copy()
+            for x in np.nonzero(open_)[0]:
+                nb = [ys_[k] for k in (x - 1, x, x + 1) if 0 <= k < N and open_[k]]
+                if len(nb) == 3: sm[x] = int(np.median(nb))
+            for x in np.nonzero(open_)[0]:
+                if sm[x] < yb[x]: lab[sm[x] + 1:yb[x] + 1, x] = np.where(locked[sm[x] + 1:yb[x] + 1, x], lab[sm[x] + 1:yb[x] + 1, x], -1)
+                elif sm[x] > yb[x]: lab[yb[x] + 1:sm[x] + 1, x] = lab[yb[x], x]
+        P_ = _part(lab); M_ = _mat(lab); sk = P_ == PI['skirt']
+    # 3. skin band: at most SKINMAX rows of leg skin directly under the skirt per column (more = the skirt rides up; extend the hem)
+    for x in range(N):
+        col = P_[:, x]
+        for y in range(1, N):
+            if col[y - 1] == PI['skirt'] and col[y] in LEG and M_[y, x] == MI['skin']:
+                n = 0
+                while y + n < N and P_[y + n, x] == col[y] and M_[y + n, x] == MI['skin']: n += 1
+                if n > SKINMAX: lab[y:y + n - SKINMAX, x] = lab[y - 1, x]
+    P_ = _part(lab); M_ = _mat(lab)
+    # 4. rounded boot toes: convex boot corners open to the background on two sides are shaved (if the boot stays >= 3 wide there)
+    f = lab >= 0
+    boot = np.isin(P_, LEG) & (M_ == MI['boots'])
+    pf = np.pad(f, 1)
+    Nn, Ss, Ww, Ee = ~pf[:-2, 1:-1], ~pf[2:, 1:-1], ~pf[1:-1, :-2], ~pf[1:-1, 2:]
+    conv = boot & (((Nn | Ss) & (Ww | Ee)))
+    for y, x in zip(*np.nonzero(conv)):
+        xs = np.nonzero(boot[y])[0]; run = ((xs >= x - 3) & (xs <= x + 3)).sum()
+        if run >= 3 and not locked[y, x]: lab[y, x] = -1
+    return lab
+
+
 # ------------------------------------------------------------------ temporal helpers
 def best_shift(prev_mask, cov, r=3):
     if prev_mask is None or not prev_mask.any() or cov.sum() == 0: return (0, 0)
@@ -414,6 +484,7 @@ def frame(F, prev, opt):
                 v = pl[y:y + 3, x:x + 3].ravel(); v = v[v >= 0]
                 if len(v): lab[y, x] = np.bincount(v).argmax()
         lab[rem] = -1
+    if SHAPE: lab = shape_fixes(lab, locked)
     # small enclosed holes (slits between arm and body that the erosion opened) -> filled, else they become dotted K rings
     hl, nh = nd.label(lab < 0)
     if nh:
@@ -583,11 +654,11 @@ def frame(F, prev, opt):
     # as long as the limb keeps a core (it can't vanish this way)
     for q in LIMBQ():
         Lq = limb_cells(lab, q) & (g != 'K') & (g != '.')
+        if texg is not None: Lq &= ~T
         if not Lq.any(): continue
         core = nd.binary_opening(np.pad(Lq, 1), np.ones((2, 2)))[1:-1, 1:-1]
         if not core.any(): continue
         thin = Lq & ~nd.binary_dilation(core, CROSS)
-        if texg is not None: thin &= ~T
         g[thin] = 'K'
     g0 = g; g = hx.Z.clean_orphans(g, keep='WKd')
     if texg is not None: g[T] = g0[T]
@@ -634,7 +705,7 @@ def run(stem, info, opt):
     sh = align(stem, view)
     Fs = [load(stem, f['i'], sh['dx'], sh['dy'], pdir) for f in frs]
     if not all(F['part_ok'] for F in Fs): print('WARN part pass missing/mismatched -> fallback single leg part')
-    loop = len(frs) > 2 and info.get('loop', True) and info['action'] not in ('jump',)
+    loop = is_loop(info)
     prev = None; order = (list(range(len(Fs))) if loop and opt['temporal'] else []) + list(range(len(Fs)))
     out = [None] * len(Fs); sts = [None] * len(Fs)
     for n_, i in enumerate(order):
@@ -643,8 +714,34 @@ def run(stem, info, opt):
         out[i], sts[i] = g, st; prev = st
     if opt['temporal']: out = kill_flips(out, loop)
     out = [hx.main_comp(hx.drop_bare_k(g)) for g in out]
+    if opt.get('face'): out = apply_face(out, info, stem, loop)
     aud = [limb_audit(g, st, F) for g, st, F in zip(out, sts, Fs)]
     return out, sts, sh, aud
+
+
+def is_loop(info):
+    return len(info['frames']) > 2 and info.get('loop', True) and not str(info['action']).startswith(('jump', 'dash', 'hurt'))
+
+
+def apply_face(G, info, stem, loop):
+    """F's face layer (face/face_layer.py): pixel face parts on the 3D head anchors, per frame, after the chain.  Anchors + faceless head
+    pass come from face/f_render.py rendered into <clip dir>/face/ (p3_run.sh) or F's face/out/<act>/."""
+    fd = os.path.join(EXP, 'face')
+    if not os.path.exists(os.path.join(fd, 'face_layer.py')): print('WARN no face layer'); return G
+    if fd not in sys.path: sys.path.insert(0, fd)
+    from face_layer import face_layer
+    act, V = info['action'], info['view']
+    cand = [os.path.join(os.path.dirname(stem), 'face'), os.path.join(fd, 'out', act)]
+    fdir = next((c for c in cand if os.path.exists(os.path.join(c, f'{act}_{V}_face.json'))), None)
+    if fdir is None: print('WARN face anchors missing for', act, V, '-> run face/f_render.py (p3_run.sh does)'); return G
+    out = []
+    for f, g in zip(info['frames'], G):
+        try:
+            out.append(np.asarray(face_layer({'action': act, 'view': V, 'i': f['i'], 'face_dir': fdir, 'loop': loop}, g.copy(), {'rface': f.get('face')})))
+        except Exception as e:  # never lose a frame to the face step
+            print('WARN face_layer failed', act, V, f['i'], repr(e)[:200]); out.append(g)
+    print('FACE', act, V, 'from', os.path.relpath(fdir, EXP))
+    return out
 
 
 # ------------------------------------------------------------------ limb audit (round 3 gate)
@@ -696,7 +793,8 @@ def main():
     if info['preview']:
         sys.argv = [sys.argv[0]] + sys.argv[1:]; import importlib.util as iu
         spec = iu.spec_from_file_location('r1', os.path.join(HERE, 'pixel_chain_r1.py')); m = iu.module_from_spec(spec); spec.loader.exec_module(m); m.main(); return
-    opt = {'temporal': '--no-temporal' not in sys.argv, 'protect': '--no-protect' not in sys.argv, 'sep': '--no-sep' not in sys.argv}
+    opt = {'temporal': '--no-temporal' not in sys.argv, 'protect': '--no-protect' not in sys.argv, 'sep': '--no-sep' not in sys.argv,
+           'face': '--no-face' not in sys.argv and os.environ.get('FACE', '1') == '1'}
     stamp = '--stamp' in sys.argv; view = info['view']; frs = info['frames']; durs = [int(f['ms']) for f in frs]
     G, sts, sh, aud = run(stem, info, opt)
     od = stem + '_px'; os.makedirs(od, exist_ok=True)

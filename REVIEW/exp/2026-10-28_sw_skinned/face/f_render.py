@@ -62,11 +62,9 @@ def head_m():
 apply({"bones": {}})
 dg = bpy.context.evaluated_depsgraph_get()
 H0 = head_m(); H0i = H0.inverted()
-pview = PARTS.get(VIEW)
-if pview is None:   # NE/N/W...: use the nearest drawn view's anchors (face hidden or partial)
-    pview = PARTS["SE" if VIEW in ("NE",) else "S"]
+pview = PARTS.get(VIEW, {})   # N: no face parts (anchors {})
 loc = {}
-cal = CAL.get(VIEW if VIEW in PARTS else ("SE" if VIEW == "NE" else "S"), {"dx": 0, "dy": 0})
+cal = CAL.get(VIEW, {"dx": 0, "dy": 0})
 TO = (cal["dx"], cal["dy"])   # rendered head vs master offset (face/calib.json)
 for n, a in pview.items():
     x, y = a["xy"][0] + TO[0], a["xy"][1] + TO[1]; o = ray_origin(x, y)

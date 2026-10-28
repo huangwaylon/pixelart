@@ -102,7 +102,7 @@ for s in "LR":
 SKA = {"F": 0, "FL": 45, "L": 90, "BL": 135, "B": 180, "BR": 225, "R": 270, "FR": 315}
 ztopS = 0.975 + DZ; hem = G["hem"]
 def skr(z):  # skirt ellipse radii at z (build_mesh sk)
-    zs = [hem, .80 + DZ, .84 + DZ, .90 + DZ, .95 + DZ, .975 + DZ]; rx = [.192, .189, .184, .176, .162, .143]; ry = [.150, .146, .140, .131, .118, .103]
+    zs = [hem, .80 + DZ, .84 + DZ, .90 + DZ, .95 + DZ, .975 + DZ]; rx = [.180, .178, .176, .171, .160, .143]; ry = [.142, .139, .135, .128, .117, .103]
     return np.interp(z, zs, rx), np.interp(z, zs, ry)
 for n, ph in SKA.items():
     dv = np.array([math.sin(math.radians(ph)), -math.cos(math.radians(ph))])
@@ -299,7 +299,7 @@ me.color_attributes.active_color = ca; me.color_attributes.render_color_index = 
 # ---------------- round 2: per-view master projection for the head group (hull head + side locks) + limb ID colours
 from mathutils.bvhtree import BVHTree
 AL = json.load(open(os.path.join(os.path.dirname(os.path.abspath(BLEND)), "align.json")))
-AZC = {"SE": (1, 1), "E": (1, 0), "S": (0, 1), "NE": (1, -1), "N": (0, -1)}
+AZC = {"SE": (1, 1), "E": (1, 0), "S": (0, 1), "NE": (1, -1), "N": (0, -1), "SW": (-1, 1), "W": (-1, 0), "NW": (-1, -1)}  # contract-frame camera azimuths (render_motion.AZ)
 def camH2(view):
     ax, ay = AZC[view]; c = np.array([-ax, -ay, 0.0]); c /= np.linalg.norm(c); el = np.radians(30)
     loc = np.array([c[0] * np.cos(el), c[1] * np.cos(el), np.sin(el)]); f = -loc / np.linalg.norm(loc)

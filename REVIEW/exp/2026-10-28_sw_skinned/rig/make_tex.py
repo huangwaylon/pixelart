@@ -36,3 +36,8 @@ for v in ('S', 'SE', 'E', 'NE', 'N'):
         b = arr[iy, ix]; b[..., 3] = 255; Image.fromarray(b, 'RGBA').save(os.path.join(H, 'tex', nm))
     Image.fromarray((clear * 255).astype(np.uint8)).save(os.path.join(H, 'tex', f'face_mask_{v}.png'))
     print(v, 'cleared', int(clear.sum()), 'px')
+# round 4: mirrored views (her other side) = horizontally flipped SE/E/NE textures and masks (design is symmetric: centred bow/bun)
+for v, src in (('SW', 'SE'), ('W', 'E'), ('NW', 'NE')):
+    for nm in ('tex_{}.png', 'tex_{}_face.png', 'face_mask_{}.png'):
+        Image.open(os.path.join(H, 'tex', nm.format(src))).transpose(Image.FLIP_LEFT_RIGHT).save(os.path.join(H, 'tex', nm.format(v)))
+    print(v, 'mirrored from', src)

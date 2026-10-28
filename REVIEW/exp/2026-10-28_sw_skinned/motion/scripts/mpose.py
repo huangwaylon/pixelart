@@ -35,9 +35,12 @@ class Poser:
                                   heel0=heel0, ball0=ballg0, tip0=tipg0)
         self.overreach = 0.0
 
-    def W(self, ypr):
+    def W(self, ypr, lean_yaw=0.0):
+        """lean_yaw (deg, + toward her left): the pitch (lean) axis is turned about UP, so the lean tips toward a direction other
+        than straight forward. Used as a per-view cheat so a forward lean reads on screen in 3/4 views."""
         y, p, r = ypr
-        return axang(self.YAW, y) @ axang(self.PITCH, p) @ axang(self.ROLL, r)
+        pa = self.PITCH if not lean_yaw else axang(UP, lean_yaw * (1 if np.dot(self.YAW, UP) > 0 else -1)) @ self.PITCH
+        return axang(self.YAW, y) @ axang(pa, p) @ axang(self.ROLL, r)
 
     def wpos(self, v):
         v = np.asarray(v, float); return v[0] * self.RIGHT + v[1] * FWD + v[2] * UP
@@ -54,7 +57,8 @@ class Poser:
 
     def solve(self, spec):
         sk = self.sk; r = {}
-        Wp = self.W(spec.get("pelvis", (0, 0, 0))); Wc = self.W(spec.get("chest", (0, 0, 0))); Wh = self.W(spec.get("head", (0, 0, 0)))
+        ly = spec.get("lean_yaw", 0.0)
+        Wp = self.W(spec.get("pelvis", (0, 0, 0)), ly); Wc = self.W(spec.get("chest", (0, 0, 0)), ly); Wh = self.W(spec.get("head", (0, 0, 0)))
         Ws = slerp_m(Wp, Wc, spec.get("spine_mix", 0.5)); Wn = slerp_m(Wc, Wh, spec.get("neck_mix", 0.45))
         r["pelvis"] = Wp; r["spine"] = Wp.T @ Ws; r["chest"] = Ws.T @ Wc; r["neck"] = Wc.T @ Wn; r["head"] = Wn.T @ Wh
         for side in "LR":

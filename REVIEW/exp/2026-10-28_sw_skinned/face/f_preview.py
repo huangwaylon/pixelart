@@ -21,6 +21,8 @@ def main(act, V):
     info = json.load(open(f'{pd}/{act}_{V}.json')); SC = info['scale']
     fj = f'{od}/{act}_{V}_face.json'; d = json.load(open(fj)); DX, DY = d['align']['dx'], d['align']['dy']
     C = FLY.plan_clip(fj, act, act != 'jump')
+    if not C['parts']:
+        print('preview', act, V, '(no face parts: back view)'); return
     r2 = f'{EXP}/render/out/r2/{act}'
     ims, cmp_, durs = [], [], []
     for k, fr in enumerate(d['frames']):
@@ -50,7 +52,9 @@ def main(act, V):
     ims[0].save(f'{od}/{act}_{V}_preview_face.gif', append_images=ims[1:], **kw)
     cmp_[0].save(f'{od}/cmp_preview_face_{act}_{V}.gif', append_images=cmp_[1:], **kw)
     # head-crop sheet (face close-up at 2x preview res, x2)
-    hb = [int((np.mean([f['anchors']['eye.0']['xy'][0] for f in d['frames']]) + 32 - DX) * SC), int((np.mean([f['anchors']['eye.0']['xy'][1] for f in d['frames']]) + 32 - DY) * SC)]
+    k0 = next((k for k in ('eye.0', 'cheek.0') if k in d['frames'][0]['anchors']), None)
+    if k0 is None: print('preview', act, V, '(no face parts)'); return
+    hb = [int((np.mean([f['anchors'][k0]['xy'][0] for f in d['frames']]) + 32 - DX) * SC), int((np.mean([f['anchors'][k0]['xy'][1] for f in d['frames']]) + 32 - DY) * SC)]
     cw = 46 * SC
     tiles = [im.crop(tuple(2 * v for v in (hb[0] - cw // 2 + 4 * SC, hb[1] - 28 * SC, hb[0] + cw // 2 + 4 * SC, hb[1] + 18 * SC))) for im in ims]
     S = Image.new('RGB', (sum(t.width for t in tiles), tiles[0].height), BGC); x = 0

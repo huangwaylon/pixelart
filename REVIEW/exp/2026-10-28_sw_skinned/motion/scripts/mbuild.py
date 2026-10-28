@@ -25,6 +25,11 @@ ACTIONS = {
     "jump": dict(loop=False, times=[0, .10, .18, .25, .30, .36, .44, .52, .64, .70, .74, .775, .85, .95, 1.03, 1.14],
                  keys=["stand", "anticipation", "crouch (hold)", "launch", "take-off stretch", "rise", "rise (slowing)", "apex (hang)", "fall",
                        "fall (reach)", "land contact (toes)", "land absorb", "squash (deepest)", "recover overshoot (toes)", "settle dip", "end"]),
+    "dash": dict(loop=False, times=[0, .05, .09, .20, .24, .29, .37, .45, .53, .62, .74, .86, 1.0],
+                 keys=["stand", "anticipation (lean back)", "anticipation (hold)", "burst SMEAR 1", "burst SMEAR 2", "glide", "glide",
+                       "skid contact", "brake (hold)", "overshoot", "recover", "settle", "end"]),
+    "hurt": dict(loop=False, times=[0, .045, .09, .22, .30, .42, .56, .72, .90],
+                 keys=["stand", "HIT snap", "recoil (hold)", "recoil", "buckle", "stagger", "recover", "settle", "end"]),
 }
 
 
@@ -34,6 +39,10 @@ SPRING = {  # per-action overrides of msim.GROUPS. Rule: natural freq < ~0.4 x s
     "run": {"hair_front": dict(f=2.6, z=0.45, gain=0.5), "bow": dict(f=2.3, gain=0.35), "bun": dict(f=2.5, z=0.4), "hair_side": dict(gain=0.5), "hair_back": dict(gain=0.5), "sleeve": dict(gain=0.4), "skirt": dict(gain=1.6)},
     "idle": {"bow": dict(f=1.6, z=0.5, gain=1.4), "bun": dict(f=1.8, z=0.5), "hair_side": dict(f=1.5, z=0.55), "hair_back": dict(f=1.4, z=0.55),
              "hair_front": dict(f=2.0, z=0.5, gain=0.4), "skirt": dict(f=1.8, z=0.5, gain=1.5), "sleeve": dict(f=1.5, z=0.5)},
+    "dash": {"hair_side": dict(f=1.8, z=0.4, cd=3.0), "hair_back": dict(f=1.6, z=0.45, cd=3.0), "bow": dict(f=2.4, z=0.3, cd=2.5, gain=1.0),
+             "bun": dict(f=2.6, z=0.3), "skirt": dict(f=2.2, z=0.3, cd=3.0, gain=2.4), "sleeve": dict(f=1.8, z=0.35, cd=3.0, gain=0.8, mx=30), "hair_front": dict(cd=1.5)},
+    "hurt": {"hair_side": dict(f=1.8, z=0.4), "hair_back": dict(f=1.7, z=0.4), "bow": dict(f=2.4, z=0.3, gain=1.0), "bun": dict(f=2.6, z=0.3),
+             "skirt": dict(f=2.2, z=0.35), "sleeve": dict(f=1.8, z=0.35, mx=30), "hair_front": dict(cd=0.5, gain=0.5)},
     "jump": {"hair_side": dict(f=1.7, z=0.35, cd=5.0), "hair_back": dict(f=1.6, z=0.35, cd=5.0), "bow": dict(f=2.2, z=0.25, cd=4.0),
              "bun": dict(f=2.5, cd=2.0), "skirt": dict(f=2.2, cd=5.0), "sleeve": dict(f=1.8, mx=35, cd=5.0), "hair_front": dict(cd=3.0)},
 }
@@ -77,8 +86,19 @@ def expression(action, key, k, n):
     if action == "idle":
         f = {"face": "neutral", "blink": 0.0, "mouth": "closed"}
         if "blink" in key: f["blink"] = 1.0
-        if "look" in key or "blink-hold R" in key: f["face"] = "smile"
+        if key.startswith("weight R"): f["face"] = "smile"   # look-at-camera smile spans the 2 R-hold frames (>= 2 frames)
         return f
+    if action == "dash":
+        D = [("stand", "neutral", "closed"), ("anticipation", "focused", "closed"), ("burst", "effort", "closed"), ("glide", "focused", "closed"),
+             ("skid", "determined", "open"), ("brake", "determined", "open"), ("overshoot", "determined", "closed"), ("recover", "smile", "closed"),
+             ("settle", "smile", "closed"), ("end", "smile", "closed")]
+        for kk, fc, mo in D:
+            if key.startswith(kk): return {"face": fc, "blink": 0.0, "mouth": mo}
+    if action == "hurt":
+        H = [("stand", "neutral", "closed", 0.0), ("HIT", "pained", "open", 1.0), ("recoil", "pained", "open", 1.0), ("buckle", "wince", "closed", 0.5),
+             ("stagger", "wince", "closed", 0.5), ("recover", "determined", "closed", 0.0), ("settle", "neutral", "closed", 0.0), ("end", "neutral", "closed", 0.0)]
+        for kk, fc, mo, bl in H:
+            if key.startswith(kk): return {"face": fc, "blink": bl, "mouth": mo}
     # jump beats
     J = {"stand": ("neutral", "closed"), "anticipation": ("determined", "closed"), "crouch": ("determined", "closed"),
          "launch": ("effort", "open"), "take-off": ("effort", "open"), "rise": ("joyful", "open"), "apex": ("joyful", "open"),
@@ -109,6 +129,30 @@ def jump_warp(antic=1.0, hang=1.0):
     return tau, real, R0[-1]
 
 
+def min_runs(frames, loop, keys=("face", "mouth"), n=2):
+    """ROUND 4 (F): an expression change must last >= n frames. A shorter run takes the value of its longer neighbour
+    (the previous one if tied); blinks stay free (a blink is a 1-frame event by design)."""
+    N = len(frames)
+    for key in keys:
+        for _ in range(N):
+            vals = [f[key] for f in frames]; changed = False
+            runs = []; i = 0
+            while i < N:
+                j = i
+                while j + 1 < N and vals[j + 1] == vals[i]: j += 1
+                runs.append((i, j)); i = j + 1
+            if loop and len(runs) > 1 and vals[0] == vals[-1]:   # wrap-around run
+                (a0, b0), (a1, b1) = runs[0], runs[-1]; runs = [(a1, b0 + N)] + runs[1:-1]
+            for r, (a_, b_) in enumerate(runs):
+                if b_ - a_ + 1 >= n or len(runs) == 1: continue
+                prev = runs[r - 1] if r > 0 else (runs[-1] if loop else None); nxt = runs[(r + 1) % len(runs)] if (r + 1 < len(runs) or loop) else None
+                cand = [c for c in (prev, nxt) if c is not None]
+                best = max(cand, key=lambda c: c[1] - c[0]); v = vals[best[0] % N]
+                for k in range(a_, b_ + 1): frames[k % N][key] = v
+                changed = True; break
+            if not changed: break
+
+
 def build(action, tune=None, var=None):
     """var (round 3): dict(name, n, feel, T, antic, hang, head_hold) -> motion/variants/<name>.json"""
     var = var or {}
@@ -132,6 +176,9 @@ def build(action, tune=None, var=None):
         xs = IDLE_PH["holds"][n] if feel == "holds" else [k / n for k in range(n)]
         times = [x * T for x in xs]; pre = 2
         keys = [[nm for x0, nm in IDLE_KEYS if x >= x0 - 1e-6][-1] for x in xs]
+    elif action in ("dash", "hurt"):
+        gen = mbody.Dash(po) if action == "dash" else mbody.Hurt(po); T = A["times"][-1] + 0.2; pre = 0
+        times = list(A["times"]); keys = A["keys"]
     else:
         tau, real, L = jump_warp(var.get("antic", 1.0), var.get("hang", 1.0))
         gen0 = mbody.Jump(po)
@@ -150,16 +197,21 @@ def build(action, tune=None, var=None):
         t0 = 1.2; t_end = t0 + T; tt = np.arange(0, t_end + 1e-9, dt)
         tclip = lambda t: max(0.0, t - t0)
     specs = [gen.spec(tclip(t)) for t in tt]
+    if var.get("lean_yaw"):
+        for sp in specs: sp["lean_yaw"] = var["lean_yaw"]
+    trv = np.array([sp.get("travel", 0.0) for sp in specs]); facc = np.gradient(trv, dt) if action in ("dash", "hurt") else np.zeros_like(trv)
+    facc_k = {"dash": 1.0, "hurt": 0.5}.get(action, 0.0)
     # pass 1: neck-base path -> head lag spring
     neck = []
     for sp in specs:
         _, _, _, (D, H, T_) = po.solve(sp); neck.append(H["neck"].copy())
     neck = np.array(neck); acc = np.zeros_like(neck); acc[1:-1] = (neck[2:] - 2 * neck[1:-1] + neck[:-2]) / dt ** 2
     HL = {"walk": dict(k_up=30, k_fwd=40, k_side=250), "run": dict(k_up=55, k_fwd=30, k_side=120),
-          "idle": dict(k_up=100, k_fwd=40, k_side=300), "jump": dict(k_up=25, k_fwd=10, k_side=20)}
+          "idle": dict(k_up=100, k_fwd=40, k_side=300), "jump": dict(k_up=25, k_fwd=10, k_side=20),
+          "dash": dict(k_up=25, k_fwd=12, k_side=20), "hurt": dict(k_up=15, k_fwd=8, k_side=10)}
     hl = msim.HeadLag(**HL[action])
     for i, sp in enumerate(specs):
-        th = hl.step(char_acc(po, acc[i]), dt)
+        th = hl.step(char_acc(po, acc[i] + FWD * facc[i] * facc_k), dt)
         y, p, r = sp["head"]; sp["head"] = (y, p + th[0], r + th[1])
         cy, cp, cr = sp["chest"]; sp["chest"] = (cy, cp + 0.25 * th[0], cr + 0.25 * th[1])
     # pass 2: body pose + secondary chains
@@ -169,7 +221,7 @@ def build(action, tune=None, var=None):
     nT = int(round(T / dt)); i_ref = {i - nT: k for i, k in samp.items()} if A["loop"] else {}
     for i, (t, sp) in enumerate(zip(tt, specs)):
         r, root, sc, (D, H, T_) = po.solve(sp)
-        cs.step(D, H, T_, dt, travel=sp.get("travel", 0.0))
+        cs.step(D, H, T_, dt, travel=sp.get("travel", 0.0) * (0.3 if action == "hurt" else 1.0), frame_acc=FWD * facc[i] * facc_k if facc_k else None)
         if i in samp or i in i_ref:
             rc, pts = cs.output(D, H, T_)
             if i in samp: frames[samp[i]] = (r, root, sc, rc, pts)
@@ -193,8 +245,11 @@ def build(action, tune=None, var=None):
             bones[n] = {"rot": sk.local_quat(n, allr.get(n, np.eye(3)))}
         fr = {"t": round(times[k] * 24, 3), "key": A["keys"][k], "root": {"loc": [round(float(v), 5) for v in root]}, "bones": bones}
         fr.update(expression(action, A["keys"][k], k, len(frames)))
+        if "SMEAR" in A["keys"][k]:   # ROUND 4: smear cue for P (stretched pose is in the bones; P paints the streaks)
+            fr["smear"] = {"strength": 1.0 if A["keys"][k].endswith("1") else 0.6, "dir_world": [0.0, 1.0, 0.0], "parts": ["body", "arms", "legs", "hair", "skirt"]}
         if sc: fr["scale"] = {b: [round(float(x), 4) for x in v] for b, v in sc.items()}
         out["frames"].append(fr)
+    min_runs(out["frames"], A["loop"])
     tl = list(times) + ([times[0] + T] if A["loop"] else [times[-1] + 0.25])
     out["timing_ms"] = [int(round((tl[k + 1] - tl[k]) * 1000)) for k in range(len(times))]
     if not A["loop"]: out["timing_ms"][-1] = 250
