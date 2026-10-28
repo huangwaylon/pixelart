@@ -1,0 +1,22 @@
+{
+ "id": "2026-10-27_sw_pixelize_bakeoff",
+ "date": "2026-10-27",
+ "project": "swordswoman",
+ "kind": "experiment",
+ "status": "winner",
+ "title": "Pixelize bake-off: methods (k-centroid, PixelOE, Gemini) × sizes (48/64/80/96)",
+ "result": "E2 (k-centroid + face pass) was best at every size. PixelOE gave crisp outlines but noisy hair. Gemini ignores the requested size.",
+ "media": [
+  {
+   "src": "swordswoman/pixelize/board.png",
+   "caption": "full board",
+   "wide": true
+  }
+ ],
+ "links": [
+  {
+   "href": "../swordswoman/v2/pixelize/RESULTS.md",
+   "label": "RESULTS.md"
+  }
+ ]
+}

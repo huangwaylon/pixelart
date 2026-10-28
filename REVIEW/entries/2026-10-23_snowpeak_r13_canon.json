@@ -1,0 +1,19 @@
+{
+ "id": "2026-10-23_snowpeak_r13_canon",
+ "date": "2026-10-23",
+ "project": "snowpeak",
+ "kind": "result",
+ "status": "approved",
+ "title": "Snowpeak r13 hand-pixel canon (busts, turnaround, poses)",
+ "verdict": "The best-looking snowpeak art. It is the canon the sprites are judged against, at about 5.5 heads vs the sprite's 3.4.",
+ "media": [
+  {
+   "src": "../00_REVIEW/r13_anime_pixel/poses/idle_x4.png",
+   "caption": "idle pose x4"
+  },
+  {
+   "src": "../00_REVIEW/r13_anime_pixel/poses/cheer_x4.png",
+   "caption": "cheer x4"
+  }
+ ]
+}

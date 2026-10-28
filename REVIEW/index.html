@@ -1,0 +1,131 @@
+<!doctype html><meta charset="utf-8"><title>pixelart review hub</title><style>
+body{background:#1e1f22;color:#ddd;font:14px/1.45 -apple-system,system-ui,sans-serif;margin:0}
+header{position:sticky;top:0;background:#16171a;padding:10px 18px;border-bottom:1px solid #333;z-index:5}
+h1{margin:0 0 6px;font-size:19px;color:#fff} h2{color:#ffd;margin:26px 18px 8px;font-size:17px}
+.filters button{background:#2b2d31;color:#ccc;border:1px solid #444;border-radius:12px;padding:2px 10px;margin:2px;cursor:pointer}
+.filters button.on{background:#ffd;color:#111}
+main{padding:0 18px 40px}
+.card{background:#26282c;border:1px solid #393b40;border-radius:8px;margin:12px 0;padding:12px 14px}
+.card h3{margin:0 0 4px;font-size:16px;color:#fff}
+.meta{font-size:12px;color:#999;margin-bottom:6px}
+.badge{display:inline-block;border-radius:10px;padding:0 8px;font-size:12px;color:#111;font-weight:600;margin-right:6px}
+.proj{background:#444;color:#ddd}
+dl{display:grid;grid-template-columns:90px 1fr;gap:2px 10px;margin:6px 0} dt{color:#aaa} dd{margin:0}
+.scores span{display:inline-block;background:#33363b;border-radius:4px;padding:0 6px;margin:0 4px 4px 0;font-size:12px}
+.media{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+figure{margin:0;background:#4a4a4a;padding:6px;border-radius:4px;max-width:100%}
+figure.wide{flex-basis:100%}
+figure img{image-rendering:pixelated;max-width:100%;max-height:520px;display:block;cursor:zoom-in}
+figure.wide img{max-height:none}
+figcaption{font-size:12px;color:#ddd;margin-top:4px}
+a{color:#79c0ff}
+#zoom{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9;overflow:auto;cursor:zoom-out}
+#zoom img{image-rendering:pixelated;display:block;margin:20px auto;max-width:none}
+.pinned{border-color:#3fb950}
+</style>
+<header><h1>pixelart review hub: every attempt and test</h1><div class="filters">
+project: <button data-k="project" data-v="all" class="on">all</button><button data-k="project" data-v="snowpeak" class="">snowpeak</button><button data-k="project" data-v="swordswoman" class="">swordswoman</button>
+ &nbsp; status: <button data-k="status" data-v="all" class="on">all</button><button data-k="status" data-v="winner" class="">winner</button><button data-k="status" data-v="approved" class="">approved</button><button data-k="status" data-v="needs-review" class="">needs-review</button><button data-k="status" data-v="rejected" class="">rejected</button>
+</div></header><main>
+<p>Newest first. Click any image to zoom (nearest-neighbour). Rebuild with <code>python3 REVIEW/build.py</code>. Team summary: <a href="../docs/team_review/2026-10-28/00_SUMMARY.md">docs/team_review/2026-10-28/00_SUMMARY.md</a>.</p>
+<h2>Current best</h2>
+<div class="card pinned" data-project="swordswoman" data-status="winner" id="2026-10-27_sw_m96_masters">
+<h3>Swordswoman 96 px masters (M96 READY): illustration → E2 pixelize → polish</h3>
+<div class="meta"><span class="badge" style="background:#3fb950">winner</span><span class="badge proj">swordswoman</span>result · 2026-10-27 · <a href="#2026-10-27_sw_m96_masters">#</a></div>
+<dl><dt>method</dt><dd>Gemini turnaround illustrations (v2/hair/turnE_final) → E2 k-centroid + face pass + palette lock at 96 px → m96 polish and eye spec → 45 head stamps</dd><dt>result</dt><dd>ssim_b .953–.968, face_ssim about .86. Argon 7–8, Opus 6–7.</dd><dt>verdict</dt><dd>The first base the user didn&#x27;t reject outright (detail notes only). Every 48/64 px attempt failed on fidelity.</dd></dl>
+<div class="scores"><span>Argon: <b>7-8</b></span><span>Opus: <b>6-7</b></span></div>
+<div class="media">
+<figure class="wide"><img loading="lazy" src="swordswoman/m96/sheet.png"><figcaption>illustration | master | 1x, per view</figcaption></figure>
+<figure class="wide"><img loading="lazy" src="swordswoman/m96/stamps.png"><figcaption>expression stamps</figcaption></figure>
+</div>
+</div>
+<div class="card pinned" data-project="snowpeak" data-status="approved" id="2026-10-24_snowpeak_hero_release">
+<h3>Snowpeak hero release: S4_hd_actions_v1 (13 clips, 8 directions)</h3>
+<div class="meta"><span class="badge" style="background:#3fb950">approved</span><span class="badge proj">snowpeak</span>release · 2026-10-24 · <a href="#2026-10-24_snowpeak_hero_release">#</a></div>
+<dl><dt>result</dt><dd>Approved by the art, animation and game directors. Idle is 34 px tall in all 8 directions, with 0 orphan pixels and 0 foot slide.</dd><dt>verdict</dt><dd>This is the snowpeak deliverable. Built before the r14 retimes and the r15/r16 face work.</dd></dl>
+<div class="media">
+<figure class=""><img loading="lazy" src="../releases/S4_hd_actions_v1/idle/idle_8dir.gif"><figcaption>idle, 8 directions</figcaption></figure>
+<figure class=""><img loading="lazy" src="../releases/S4_hd_actions_v1/run/run_8dir.gif"><figcaption>run, 8 directions</figcaption></figure>
+<figure class=""><img loading="lazy" src="../releases/S4_hd_actions_v1/walk/walk_8dir.gif"><figcaption>walk, 8 directions</figcaption></figure>
+</div>
+<p><a href="../releases/README.md">releases</a> · <a href="../docs/team_review/2026-10-28/01_snowpeak_retrospective.md">retrospective</a></p>
+</div>
+<h2>All attempts and tests (newest first)</h2>
+<div class="card" data-project="both" data-status="approved" id="2026-10-28_team_review">
+<h3>Team review: what worked, what didn&#x27;t, best pipeline, untried ideas</h3>
+<div class="meta"><span class="badge" style="background:#3fb950">approved</span><span class="badge proj">both</span>review · 2026-10-28 · <a href="#2026-10-28_team_review">#</a></div>
+<dl><dt>verdict</dt><dd>Use 3D for placement and motion, and make the art in 2D at target size from an approved design. Snowpeak has the best system; swordswoman has the best look.</dd></dl>
+<p><a href="../docs/team_review/2026-10-28/00_SUMMARY.md">summary</a> · <a href="../docs/team_review/2026-10-28/03_research_untried.md">research: untried</a></p>
+</div>
+<div class="card" data-project="swordswoman" data-status="winner" id="2026-10-27_sw_pixelize_bakeoff">
+<h3>Pixelize bake-off: methods (k-centroid, PixelOE, Gemini) × sizes (48/64/80/96)</h3>
+<div class="meta"><span class="badge" style="background:#3fb950">winner</span><span class="badge proj">swordswoman</span>experiment · 2026-10-27 · <a href="#2026-10-27_sw_pixelize_bakeoff">#</a></div>
+<dl><dt>result</dt><dd>E2 (k-centroid + face pass) was best at every size. PixelOE gave crisp outlines but noisy hair. Gemini ignores the requested size.</dd></dl>
+<div class="media">
+<figure class="wide"><img loading="lazy" src="swordswoman/pixelize/board.png"><figcaption>full board</figcaption></figure>
+</div>
+<p><a href="../swordswoman/v2/pixelize/RESULTS.md">RESULTS.md</a></p>
+</div>
+<div class="card" data-project="swordswoman" data-status="winner" id="2026-10-27_sw_m96_masters">
+<h3>Swordswoman 96 px masters (M96 READY): illustration → E2 pixelize → polish</h3>
+<div class="meta"><span class="badge" style="background:#3fb950">winner</span><span class="badge proj">swordswoman</span>result · 2026-10-27 · <a href="#2026-10-27_sw_m96_masters">#</a></div>
+<dl><dt>method</dt><dd>Gemini turnaround illustrations (v2/hair/turnE_final) → E2 k-centroid + face pass + palette lock at 96 px → m96 polish and eye spec → 45 head stamps</dd><dt>result</dt><dd>ssim_b .953–.968, face_ssim about .86. Argon 7–8, Opus 6–7.</dd><dt>verdict</dt><dd>The first base the user didn&#x27;t reject outright (detail notes only). Every 48/64 px attempt failed on fidelity.</dd></dl>
+<div class="scores"><span>Argon: <b>7-8</b></span><span>Opus: <b>6-7</b></span></div>
+<div class="media">
+<figure class="wide"><img loading="lazy" src="swordswoman/m96/sheet.png"><figcaption>illustration | master | 1x, per view</figcaption></figure>
+<figure class="wide"><img loading="lazy" src="swordswoman/m96/stamps.png"><figcaption>expression stamps</figcaption></figure>
+</div>
+</div>
+<div class="card" data-project="swordswoman" data-status="rejected" id="2026-10-27_sw_anim96_pilot">
+<h3>Animation pilot at 96 px: per-frame Opus redraw over rig guides (idle_SE, walk_SE)</h3>
+<div class="meta"><span class="badge" style="background:#f85149">rejected</span><span class="badge proj">swordswoman</span>experiment · 2026-10-27 · <a href="#2026-10-27_sw_anim96_pilot">#</a></div>
+<dl><dt>result</dt><dd>QC gate passes, but motion scored 3–5.</dd><dt>verdict</dt><dd>Lifeless. The A-pose master overrides the guide (T-pose sleeves), the head is a rigid stamp, independent redraws boil, it ran on old guides, and there are no smears.</dd></dl>
+<div class="media">
+<figure class=""><img loading="lazy" src="swordswoman/anim96/idle_SE.gif"><figcaption>idle SE</figcaption></figure>
+<figure class=""><img loading="lazy" src="swordswoman/anim96/walk_SE.gif"><figcaption>walk SE</figcaption></figure>
+<figure class="wide"><img loading="lazy" src="swordswoman/anim96/walk_SE_sheet.png"><figcaption>walk sheet</figcaption></figure>
+</div>
+<p><a href="../docs/team_review/2026-10-28/02_swordswoman_retrospective.md">retrospective</a></p>
+</div>
+<div class="card" data-project="snowpeak" data-status="needs-review" id="2026-10-24_snowpeak_s4_hd2">
+<h3>Snowpeak S4_hd2 (r21): smoother rebuilt bangs, side locks, bow, coat, mittens</h3>
+<div class="meta"><span class="badge" style="background:#d29922">needs-review</span><span class="badge proj">snowpeak</span>result · 2026-10-24 · <a href="#2026-10-24_snowpeak_s4_hd2">#</a></div>
+<dl><dt>result</dt><dd>Only idle, walk and run are built. QA passes, and S4_hd output is unchanged byte-for-byte.</dd><dt>verdict</dt><dd>Open issues: the bow is small in the S view, fringe roots show ridges, thin sheets are noisy. Decision needed: finish the other 10 clips, or freeze?</dd></dl>
+<div class="media">
+<figure class="wide"><img loading="lazy" src="../00_REVIEW/r21_s4_hd2/latest/d_idle_8dir_2x_old_vs_new.png"><figcaption>idle 8 dirs, old vs new (2x)</figcaption></figure>
+<figure class=""><img loading="lazy" src="../00_REVIEW/r21_s4_hd2/latest/e_walk_8dir_old_vs_new.gif"><figcaption>walk old vs new</figcaption></figure>
+</div>
+<p><a href="../00_REVIEW/r21_s4_hd2/latest/critique.md">critique</a></p>
+</div>
+<div class="card" data-project="snowpeak" data-status="approved" id="2026-10-24_snowpeak_hero_release">
+<h3>Snowpeak hero release: S4_hd_actions_v1 (13 clips, 8 directions)</h3>
+<div class="meta"><span class="badge" style="background:#3fb950">approved</span><span class="badge proj">snowpeak</span>release · 2026-10-24 · <a href="#2026-10-24_snowpeak_hero_release">#</a></div>
+<dl><dt>result</dt><dd>Approved by the art, animation and game directors. Idle is 34 px tall in all 8 directions, with 0 orphan pixels and 0 foot slide.</dd><dt>verdict</dt><dd>This is the snowpeak deliverable. Built before the r14 retimes and the r15/r16 face work.</dd></dl>
+<div class="media">
+<figure class=""><img loading="lazy" src="../releases/S4_hd_actions_v1/idle/idle_8dir.gif"><figcaption>idle, 8 directions</figcaption></figure>
+<figure class=""><img loading="lazy" src="../releases/S4_hd_actions_v1/run/run_8dir.gif"><figcaption>run, 8 directions</figcaption></figure>
+<figure class=""><img loading="lazy" src="../releases/S4_hd_actions_v1/walk/walk_8dir.gif"><figcaption>walk, 8 directions</figcaption></figure>
+</div>
+<p><a href="../releases/README.md">releases</a> · <a href="../docs/team_review/2026-10-28/01_snowpeak_retrospective.md">retrospective</a></p>
+</div>
+<div class="card" data-project="snowpeak" data-status="approved" id="2026-10-23_snowpeak_r13_canon">
+<h3>Snowpeak r13 hand-pixel canon (busts, turnaround, poses)</h3>
+<div class="meta"><span class="badge" style="background:#3fb950">approved</span><span class="badge proj">snowpeak</span>result · 2026-10-23 · <a href="#2026-10-23_snowpeak_r13_canon">#</a></div>
+<dl><dt>verdict</dt><dd>The best-looking snowpeak art. It is the canon the sprites are judged against, at about 5.5 heads vs the sprite&#x27;s 3.4.</dd></dl>
+<div class="media">
+<figure class=""><img loading="lazy" src="../00_REVIEW/r13_anime_pixel/poses/idle_x4.png"><figcaption>idle pose x4</figcaption></figure>
+<figure class=""><img loading="lazy" src="../00_REVIEW/r13_anime_pixel/poses/cheer_x4.png"><figcaption>cheer x4</figcaption></figure>
+</div>
+</div>
+<h2>Earlier history</h2><ul><li><a href="legacy/swordswoman_2026-10-27.html">swordswoman_2026-10-27.html</a></li></ul>
+</main><div id="zoom"><img></div><script>
+const st={project:'all',status:'all'};
+function apply(){document.querySelectorAll('.card').forEach(c=>{
+ const ok=(st.project==='all'||c.dataset.project===st.project||c.dataset.project==='both')&&(st.status==='all'||c.dataset.status===st.status);
+ c.style.display=ok?'':'none';});}
+document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{
+ const k=b.dataset.k; st[k]=b.dataset.v; document.querySelectorAll('.filters button[data-k='+k+']').forEach(x=>x.classList.toggle('on',x===b)); apply();});
+const z=document.getElementById('zoom'),zi=z.querySelector('img');
+document.querySelectorAll('figure img').forEach(i=>i.onclick=()=>{zi.src=i.src;zi.style.width=(i.naturalWidth*Math.max(1,Math.floor(1600/Math.max(i.naturalWidth,1))))+'px';z.style.display='block';});
+z.onclick=()=>z.style.display='none';
+</script>

@@ -22,7 +22,7 @@ swordswoman/.venv/
 # bulky generated meshes / frame dumps / iterations: kept on disk, not in git
 swordswoman/v2/hy3d/out/
 swordswoman/v2/hy3d/frames_*/
-swordswoman/v2/REVIEW/3d/
+REVIEW/swordswoman/3d/
 swordswoman/v2/design/turnE/
 swordswoman/v2/design/r3iso/
 swordswoman/v2/design/turnD/

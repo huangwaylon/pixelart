@@ -1,0 +1,35 @@
+{
+ "id": "2026-10-24_snowpeak_hero_release",
+ "date": "2026-10-24",
+ "project": "snowpeak",
+ "kind": "release",
+ "status": "approved",
+ "pinned": true,
+ "title": "Snowpeak hero release: S4_hd_actions_v1 (13 clips, 8 directions)",
+ "result": "Approved by the art, animation and game directors. Idle is 34 px tall in all 8 directions, with 0 orphan pixels and 0 foot slide.",
+ "verdict": "This is the snowpeak deliverable. Built before the r14 retimes and the r15/r16 face work.",
+ "media": [
+  {
+   "src": "../releases/S4_hd_actions_v1/idle/idle_8dir.gif",
+   "caption": "idle, 8 directions"
+  },
+  {
+   "src": "../releases/S4_hd_actions_v1/run/run_8dir.gif",
+   "caption": "run, 8 directions"
+  },
+  {
+   "src": "../releases/S4_hd_actions_v1/walk/walk_8dir.gif",
+   "caption": "walk, 8 directions"
+  }
+ ],
+ "links": [
+  {
+   "href": "../releases/README.md",
+   "label": "releases"
+  },
+  {
+   "href": "../docs/team_review/2026-10-28/01_snowpeak_retrospective.md",
+   "label": "retrospective"
+  }
+ ]
+}

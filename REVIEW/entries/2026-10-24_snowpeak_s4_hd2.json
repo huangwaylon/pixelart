@@ -1,0 +1,27 @@
+{
+ "id": "2026-10-24_snowpeak_s4_hd2",
+ "date": "2026-10-24",
+ "project": "snowpeak",
+ "kind": "result",
+ "status": "needs-review",
+ "title": "Snowpeak S4_hd2 (r21): smoother rebuilt bangs, side locks, bow, coat, mittens",
+ "result": "Only idle, walk and run are built. QA passes, and S4_hd output is unchanged byte-for-byte.",
+ "verdict": "Open issues: the bow is small in the S view, fringe roots show ridges, thin sheets are noisy. Decision needed: finish the other 10 clips, or freeze?",
+ "media": [
+  {
+   "src": "../00_REVIEW/r21_s4_hd2/latest/d_idle_8dir_2x_old_vs_new.png",
+   "caption": "idle 8 dirs, old vs new (2x)",
+   "wide": true
+  },
+  {
+   "src": "../00_REVIEW/r21_s4_hd2/latest/e_walk_8dir_old_vs_new.gif",
+   "caption": "walk old vs new"
+  }
+ ],
+ "links": [
+  {
+   "href": "../00_REVIEW/r21_s4_hd2/latest/critique.md",
+   "label": "critique"
+  }
+ ]
+}

@@ -1,0 +1,28 @@
+{
+ "id": "2026-10-27_sw_m96_masters",
+ "date": "2026-10-27",
+ "project": "swordswoman",
+ "kind": "result",
+ "status": "winner",
+ "pinned": true,
+ "title": "Swordswoman 96 px masters (M96 READY): illustration → E2 pixelize → polish",
+ "method": "Gemini turnaround illustrations (v2/hair/turnE_final) → E2 k-centroid + face pass + palette lock at 96 px → m96 polish and eye spec → 45 head stamps",
+ "result": "ssim_b .953–.968, face_ssim about .86. Argon 7–8, Opus 6–7.",
+ "verdict": "The first base the user didn't reject outright (detail notes only). Every 48/64 px attempt failed on fidelity.",
+ "scores": {
+  "Argon": "7-8",
+  "Opus": "6-7"
+ },
+ "media": [
+  {
+   "src": "swordswoman/m96/sheet.png",
+   "caption": "illustration | master | 1x, per view",
+   "wide": true
+  },
+  {
+   "src": "swordswoman/m96/stamps.png",
+   "caption": "expression stamps",
+   "wide": true
+  }
+ ]
+}

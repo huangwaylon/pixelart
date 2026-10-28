@@ -14,7 +14,7 @@ covers what worked, what didn't, the recommended pipeline, what hasn't been trie
 | Swordswoman (illustration → 96 px pixel, Hunyuan3D rig guides) | `swordswoman/` | `swordswoman/v2/m96/` masters (M96 READY) | animation in progress, see [`swordswoman/README.md`](swordswoman/README.md) |
 
 ## Look here first
-- **Reviews:** [`00_REVIEW/README.md`](00_REVIEW/README.md) (snowpeak round index, newest first). The swordswoman hub is `swordswoman/v2/REVIEW/index.html`.
+- **Reviews:** [`00_REVIEW/README.md`](00_REVIEW/README.md) (snowpeak round index, newest first). **Main review hub: `REVIEW/index.html`** (open it in a browser). It covers every attempt and test, filterable by project and status.
 - **Releases:** [`releases/README.md`](releases/README.md)
 - **Decisions:** [`docs/DECISIONS.md`](docs/DECISIONS.md)
 - **Snowpeak pipeline manual:** [`docs/SNOWPEAK_PIPELINE.md`](docs/SNOWPEAK_PIPELINE.md)

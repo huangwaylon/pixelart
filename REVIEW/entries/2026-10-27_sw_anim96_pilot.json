@@ -1,0 +1,31 @@
+{
+ "id": "2026-10-27_sw_anim96_pilot",
+ "date": "2026-10-27",
+ "project": "swordswoman",
+ "kind": "experiment",
+ "status": "rejected",
+ "title": "Animation pilot at 96 px: per-frame Opus redraw over rig guides (idle_SE, walk_SE)",
+ "result": "QC gate passes, but motion scored 3–5.",
+ "verdict": "Lifeless. The A-pose master overrides the guide (T-pose sleeves), the head is a rigid stamp, independent redraws boil, it ran on old guides, and there are no smears.",
+ "media": [
+  {
+   "src": "swordswoman/anim96/idle_SE.gif",
+   "caption": "idle SE"
+  },
+  {
+   "src": "swordswoman/anim96/walk_SE.gif",
+   "caption": "walk SE"
+  },
+  {
+   "src": "swordswoman/anim96/walk_SE_sheet.png",
+   "caption": "walk sheet",
+   "wide": true
+  }
+ ],
+ "links": [
+  {
+   "href": "../docs/team_review/2026-10-28/02_swordswoman_retrospective.md",
+   "label": "retrospective"
+  }
+ ]
+}

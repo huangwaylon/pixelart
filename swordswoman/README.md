@@ -56,7 +56,7 @@ The pipeline that won, from `v2/BRIEF.md` onward:
 | TRELLIS | Noisy mesh that isn't watertight, with a near-black texture. |
 | Hunyuan3D-Omni | Kept only as a pose-guide fallback. |
 
-Overall review hub: `v2/REVIEW/index.html`. Each strand has its own `v2/<strand>/NOTES.md`.
+Overall review hub: `../REVIEW/index.html` (repo-wide hub; old swordswoman page in `../REVIEW/legacy/`). Each strand has its own `v2/<strand>/NOTES.md`.
 
 ## Research
 `docs/`: `hunyuan3d_research.md`, `sota_image_to_3d_2026.md`, `trellis_and_hunyuan_studio.md`,

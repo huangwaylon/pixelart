@@ -1,0 +1,19 @@
+{
+ "id": "2026-10-28_team_review",
+ "date": "2026-10-28",
+ "project": "both",
+ "kind": "review",
+ "status": "approved",
+ "title": "Team review: what worked, what didn't, best pipeline, untried ideas",
+ "verdict": "Use 3D for placement and motion, and make the art in 2D at target size from an approved design. Snowpeak has the best system; swordswoman has the best look.",
+ "links": [
+  {
+   "href": "../docs/team_review/2026-10-28/00_SUMMARY.md",
+   "label": "summary"
+  },
+  {
+   "href": "../docs/team_review/2026-10-28/03_research_untried.md",
+   "label": "research: untried"
+  }
+ ]
+}
