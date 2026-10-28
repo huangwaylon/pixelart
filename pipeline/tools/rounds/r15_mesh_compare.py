@@ -1,7 +1,7 @@
 """r15: compare our SDF model (meshexport) with an external (Gemini) mesh in the pipeline camera.
 
-    .venv/bin/python -m pipeline.tools.r15_mesh_compare export            # ours -> 00_REVIEW/r15_model_gemini/ours_idle.obj
-    .venv/bin/python -m pipeline.tools.r15_mesh_compare compare <gemini.obj> [tag]
+    .venv/bin/python -m pipeline.tools.rounds.r15_mesh_compare export            # ours -> 00_REVIEW/r15_model_gemini/ours_idle.obj
+    .venv/bin/python -m pipeline.tools.rounds.r15_mesh_compare compare <gemini.obj> [tag]
 """
 import json
 import os

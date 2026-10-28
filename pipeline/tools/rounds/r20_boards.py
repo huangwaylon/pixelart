@@ -1,6 +1,6 @@
 """r20: compose the r20_render.py outputs into review boards.
 
-    .venv/bin/python -m pipeline.tools.r20_boards <render_dir> <tag> [<out_dir>]
+    .venv/bin/python -m pipeline.tools.rounds.r20_boards <render_dir> <tag> [<out_dir>]
 
 Writes <tag>_turnaround.png, <tag>_faces.png, <tag>_iso8.png, <tag>_px8_x6.png (and <tag>_sheet.png = all of them
 stacked) into out_dir (default: render_dir).

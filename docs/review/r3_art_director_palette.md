@@ -1,7 +1,7 @@
 # r3 Art Director: Master Palette & Colourways
 
 Board: `docs/review/r3_palette_board.png`.
-Files: `data/palettes/cw_{cranberry,navy,oatmeal,forest,lavender,charcoal}.json`. Generator: `pipeline/tools/make_r3_palettes.py`.
+Files: `data/palettes/cw_{cranberry,navy,oatmeal,forest,lavender,charcoal}.json`. Generator: `pipeline/tools/rounds/make_r3_palettes.py`.
 
 ## Palette rationale (32 colours)
 - **Shared shadows make it cohesive.** `plum_0` is the shadow for cranberry, lavender, espresso hair and boots. `ink` covers navy, charcoal and blue-black hair. `teal_0` covers forest and teal. Every cream and light neutral shades into the lilac `mauve`. All shadows lean cool and purple; all lights lean warm.

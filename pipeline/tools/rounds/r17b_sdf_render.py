@@ -1,6 +1,6 @@
 """r17b: render the Gemini-generated SDF base model (track B) with pipeline/meshrender.py.
 
-    .venv/bin/python -m pipeline.tools.r17b_sdf_render <model.obj> <tag> [--gemini DIR] [--refs DIR] [--final]
+    .venv/bin/python -m pipeline.tools.rounds.r17b_sdf_render <model.obj> <tag> [--gemini DIR] [--refs DIR] [--final]
 
 Writes 00_REVIEW/r17b_gemini_sdf_model/<tag>_turnaround.png (front, 3/4, side, back; elevation 0) and <tag>_head.png.
 --final also writes <tag>_iso8.png (sprite camera, 16 deg) and <tag>_sprite48.png (48x64 pixelisation, our palette +
@@ -14,8 +14,8 @@ import numpy as np
 from PIL import Image
 
 from pipeline import meshrender as mr
-from pipeline.tools.r15_mesh_compare import palette, label, row, col, DIRS, ROOT
-from pipeline.tools.r17_gemini_render import load, pal_hires, turnaround, sprite_row
+from pipeline.tools.rounds.r15_mesh_compare import palette, label, row, col, DIRS, ROOT
+from pipeline.tools.rounds.r17_gemini_render import load, pal_hires, turnaround, sprite_row
 
 OUT = os.path.join(ROOT, "00_REVIEW", "r17b_gemini_sdf_model")
 SPRITE_H = 50.0          # standing height in sprite units for the 48x64 read (about the S4_hd height)

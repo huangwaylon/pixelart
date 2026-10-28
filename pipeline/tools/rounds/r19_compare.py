@@ -6,7 +6,7 @@ import sys
 import numpy as np
 from PIL import Image, ImageDraw
 
-ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 sys.path.insert(0, ROOT)
 from pipeline.render import jaggy_count  # noqa: E402
 

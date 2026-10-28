@@ -1,6 +1,6 @@
 """r20: neutral render harness for the from-scratch Blender base models (same camera/light for every track).
 
-    Blender -b <model.blend> -P pipeline/tools/r20_render.py -- <outdir> [--tag NAME]
+    Blender -b <model.blend> -P pipeline/tools/rounds/r20_render.py -- <outdir> [--tag NAME]
 
 Contract with the model: Z up, feet at z=0, character faces -Y, HER left = +X. Every visible mesh's material has
 diffuse_color (viewport colour) set to its base colour. Optional Empty "head_center" with custom prop "head_h"

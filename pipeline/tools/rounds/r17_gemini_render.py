@@ -1,6 +1,6 @@
 """r17: render a Gemini-generated base model (y-up, faces +Z, metres, height ~1) with pipeline/meshrender.py.
 
-    .venv/bin/python -m pipeline.tools.r17_gemini_render <model.obj> <tag> [--refs DIR] [--final]
+    .venv/bin/python -m pipeline.tools.rounds.r17_gemini_render <model.obj> <tag> [--refs DIR] [--final]
 
 Writes 00_REVIEW/r17_gemini_model/<tag>_turnaround.png (front, 3/4, side, back hi-res, elevation 0), and with --final
 also <tag>_iso8.png, <tag>_sprite48_vs_S4_hd.png and compare_turnaround.png (vs S4_hd). --gemini DIR writes the
@@ -14,7 +14,7 @@ import numpy as np
 from PIL import Image
 
 from pipeline import meshrender as mr
-from pipeline.tools.r15_mesh_compare import palette, label, row, col, OUT as R15_OUT, DIRS, ROOT
+from pipeline.tools.rounds.r15_mesh_compare import palette, label, row, col, OUT as R15_OUT, DIRS, ROOT
 
 OUT = os.path.join(ROOT, "00_REVIEW", "r17_gemini_model")
 # hi-res: keep Gemini's own colour roles (ramps dark -> light in our palette)

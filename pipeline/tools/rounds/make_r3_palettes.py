@@ -2,7 +2,7 @@
 import json, os, colorsys
 from PIL import Image, ImageDraw, ImageFont
 
-ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 MASTER = [
     ("outline", "#241628"),   # coloured near-black (plum)

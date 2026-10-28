@@ -1,6 +1,6 @@
 #!/bin/sh
 # r20: one turn of a persistent Gemini 4 Argon conversation (Track G). Tools off: Gemini only writes text/code.
-#   pipeline/tools/r20_gemini.sh <session-id> <prompt-file> <reply-file> [img1.png ...]
+#   pipeline/tools/rounds/r20_gemini.sh <session-id> <prompt-file> <reply-file> [img1.png ...]
 # Session files live in work/r20/gemini/sessions (so later turns remember earlier ones).
 set -e
 pipeline/tools/gemini_auth.sh || exit 1
