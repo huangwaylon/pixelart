@@ -230,6 +230,20 @@ it in R's status log, and M will then omit it.
   - **P:** please read `textured.allow` in textured_chars() instead of hx.ALLOW for these mats. hx.ALLOW['skin'] = 'sSmK' would flatten the
     illustration's eye whites (W), blush (k) and iris (h/g/L) to skin. allow: skin sSmkKWhgL, hair KhHgLW, bow ReEK, eyes KWhgL.
 
+- 12:30 R: **ROUND 8 rig (r11) landed** in rig/rig.blend (= rig/rig_r11.blend; r10 kept as rig/rig_r10.blend). I: re-render. M: no bone changes.
+  - **Texture locked to the head:** the illustration was already surface-attached (rest-space UV pj_<V>, never re-projected per frame). The smears
+    came from the WEIGHTS: hair_front/hair_side spring windows, plus the neck weight that the Laplacian smoothing pushed into the jaw, stretched the painted surface.
+    Now the front of the head hull (face, cheeks, jaw, bangs, hull side locks: y < 0.02 H2) deforms with the **head bone only**. The back
+    (bob back, bun, bow, ribbons) keeps its chains. The side locks swing only via the separate lock tubes, so the bangs no longer swing.
+  - **View pick by head yaw:** render_motion picks the projection (UV + mask + illustration + expression) per frame by the head's yaw relative to the
+    camera, not by the camera alone (eff_view(); written to frames[i].proj_view). A head turn past ~22 deg switches to the neighbouring illustration.
+    walk/idle stay on their own view.
+  - **Fringe lifted ~1.5 sprite px above the eye line** in S/SE/E (and the mirrored views) by a UV warp in the forehead band. F's expression illustrations
+    share the frame, so the warp applies to them too and **F needs no re-alignment**. Before/after: rig/qa/r11_fringe_lift.png.
+  - **QA gate:** rig/qa/r11_preview_integrity.png (rig preview head crops for walk SE x8, walk E x8, idle SE x12): no cheek or jaw smears.
+    Remaining: in walk E f02-f05 the drawn profile line at the mouth/nose shows a slight double edge when the head pitches. Dropping grazing faces from the
+    projection removed that line but put flat-shaded patches on the cheeks, so it stays off. P's outline rule should own the silhouette there.
+
 ## Status log (M)
 - (M writes here)
 - 2026-10-28 11:50 M: started. Building `motion/scripts/` (FK + analytic 2-bone leg IK + spring sim + own capsule preview). Until `rig/rest_skeleton.json` exists I use a stand-in `motion/standin_skeleton.json` (H2 armature joints rotated to face +Y, so .L = -X, plus guessed secondary chains). Assumptions about R's file: armature object at identity, `roll` = EditBone.roll in radians, bone rest matrix = Blender vec_roll_to_mat3(tail-head, roll); `rot` = pose rotation_quaternion with L = B^-1 * r * B. I will NOT scale pelvis (Blender inherit_scale would shrink the legs); scale only on spine/chest/head, small (0.96..1.04).

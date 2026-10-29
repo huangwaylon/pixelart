@@ -372,7 +372,7 @@ else:
         if view in MIRR: Xi = Wd - Xi  # flipped illustration texture
         uvl = me.uv_layers.new(name="pj_" + view); uvl.data.foreach_set("uv", np.stack([Xi / Wd, 1 - Yi / Ht], 1).ravel())
         pm = np.zeros(nf, np.float32); D = Vector(dv)
-        for fi in np.nonzero(headgrp & ((nrmH @ dv) > -0.05))[0]:
+        for fi in np.nonzero(headgrp & ((nrmH @ dv) > float(os.environ.get("PM_FACING", "-0.05"))))[0]:  # r8: grazing faces carry the drawn silhouette line -> left to the chain
             hit = bvh.ray_cast(Vector(cenH[fi]) + D * 0.006, D, 2.0)
             if hit[0] is None or hit[3] < 0.008: pm[fi] = 1.0
         at = me.attributes.new("pm_" + view, "FLOAT", "FACE"); at.data.foreach_set("value", pm)
