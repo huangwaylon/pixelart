@@ -1,31 +1,17 @@
 SCORE: 5/10
 SCORE R7: 5/10
 SCORE R4HEAD: 6/10
+(restored by I from the integrator log after an accidental overwrite at 17:30; verbatim from lines 4+)
 
-**Sub-scores (B):**
-- Face acting per beat: 5. The beats are right: blink, a wince in hurt f00–f05, a squint at the jump apex. But the pixelized face loses most of it.
-- Face locked to head in motion: 8. I found no sliding or smearing in run, dash or jump.
-- Posing/stance: 6. Hurt is now a real guard with the forearm up and then a crouched recoil, not a T. The idle turn is fine. Walk and idle sit slightly hunched.
-- Secondary motion: 5. The bow tails and side locks lag a little. The bell sleeves are stiff and the skirt doesn't follow through.
+**Sub-scores (B):** face acting per beat 5 (the beats are right: blink, a wince in hurt f00–f05, a squint at the jump apex; the pixelized face loses most of it) · face locked to head in motion 8 (no sliding or smearing in run, dash or jump) · posing/stance 6 (hurt is now a real guard with the forearm up and then a crouched recoil, not a T; the idle turn is fine; walk and idle sit slightly hunched) · secondary motion 5 (bow tails and side locks lag a little; bell sleeves stiff, skirt doesn't follow through).
 
-**A/B (r7 / r4head / B):**
-| | r7 | r4head | B |
-|---|---|---|---|
-| Face follows head | 7 | 5 | 8 |
-| Face on-model | 5 | 7 | 5 |
-| Face readable at 1x | 4 | 7 | 4 |
-| Expressive | 5 | 6 | 5 |
-| No smears in motion | 6 | 5 | 8 |
-| Bangs full | 7 | 6 | 7 |
-| Stance natural | 6 | 6 | 7 |
+**A/B (r7 / r4head / B):** face follows head 7/5/8 · face on-model 5/7/5 · face readable at 1x 4/7/4 · expressive 5/6/5 · no smears in motion 6/5/8 · bangs full 7/6/7 · stance natural 6/6/7
 
 **VERDICT:** B has the best head structurally (locked, no smears, better hurt pose), but r4head still has the most readable, on-model face at 1x. Ship neither as-is: move the r4head-style face read onto B's baked head.
 
 **ISSUES:**
-1. **[OWNER P] all actions, S/SE/SW, all frames:** The face pixelizes to dark mush. The eyes become one-pixel dark slits under the bangs, and the skin is muddied by 3D shading (shade gate 0/48). -> Composite the face on its own and keep its flat illustrated colours (no lighting). Snap eyes to a fixed m96 template of 2–3 px wide with a white highlight. Clamp skin to the master's 2-tone ramp.
-2. **[OWNER R] idle/walk, SE/SW, all frames:** The bangs' shadow and a low fringe cover the upper eye, so she reads sleepy or sullen instead of bright like m96. -> Lift the fringe UV by about 1 px. Turn off cast shadow on the face mesh, or paint the bangs-shadow band into the texture instead of lighting it.
-3. **[OWNER F] hurt, S/W/NW, f01–f03:** The wince and the raised hand merge into a noisy pink blob. Hurt f04–f06 has low contrast. -> Draw a wince made for 1x: thick ">_<" eyes and an open dark mouth. Keep the guarding hand below the chin line.
-4. **[OWNER P] idle/run, all directions:** The hair and face boil (boil gate 13/48), with stray light specks in the hair (E/NE idle f07–f09, N run). -> Temporally lock the palette indices on the head region. Extend the PZCLEAN speck rule to isolated highlights.
-5. **[OWNER M] walk/idle, all directions:** The stance is stiff and the sleeves have no overlap. Idle has an asymmetric hand on the hip, and the walk's E contact frames f02 and f06 look the same. -> Add 1–2 frames of sleeve and skirt drag after each step. Add a subtle 1 px head bob offset from the body. Make the idle arms relaxed and symmetric, or bring the hand to the sword hilt.
-
-I reviewed every image except the walk preview sheet, which I didn't open. No files were changed.
+1. [P] all actions, S/SE/SW, all frames: the face pixelizes to dark mush; eyes become one-pixel dark slits under the bangs, skin muddied by 3D shading (shade gate 0/48) -> composite the face on its own with flat illustrated colours (no lighting); snap eyes to a fixed m96 template 2–3 px wide with a white highlight; clamp skin to the master's 2-tone ramp.
+2. [R] idle/walk, SE/SW, all frames: the bangs' shadow and a low fringe cover the upper eye, so she reads sleepy -> lift the fringe UV by about 1 px; no cast shadow on the face mesh, or paint the bangs-shadow band into the texture.
+3. [F] hurt, S/W/NW, f01–f03: the wince and the raised hand merge into a noisy pink blob; f04–f06 low contrast -> a wince made for 1x: thick ">_<" eyes and an open dark mouth; keep the guarding hand below the chin line.
+4. [P] idle/run, all directions: hair and face boil (13/48), stray light specks in the hair (E/NE idle f07–f09, N run) -> temporally lock the palette indices on the head region; extend the PZCLEAN speck rule to isolated highlights.
+5. [M] walk/idle, all directions: stiff stance, no sleeve overlap; idle hand on hip asymmetric; walk E contact f02/f06 identical -> 1–2 frames of sleeve and skirt drag after each step; a subtle 1 px head bob offset; relaxed symmetric idle arms or the hand to the sword hilt.

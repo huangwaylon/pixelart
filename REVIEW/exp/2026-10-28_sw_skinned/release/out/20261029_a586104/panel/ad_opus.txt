@@ -1,6 +1,7 @@
 SCORE: 5/10
 SCORE R7: 4/10
 SCORE R4HEAD: 4/10
+(restored by I from the integrator log after an accidental overwrite at 17:30; the text below is verbatim from lines 4+ of the original)
 
 **B sub-scores:** on-model 5 · face at 1x 4 · cleanliness 6 · silhouette/hair 7
 

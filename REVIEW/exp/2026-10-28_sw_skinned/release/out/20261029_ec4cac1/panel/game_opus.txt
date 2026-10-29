@@ -1,0 +1,23 @@
+SCORE: 6/10
+SCORE R8: 5/10
+SCORE R4HEAD: 6/10
+
+**Sub-scores (B):** 1x readability 6 · face readability at 1x (S/SE/SW) 5 · direction consistency 7 · action clarity 7 · limb integrity 7 · ship-readiness 5
+
+**A/B (r8 / r4head / B):**
+- Face follows head: 8 / 5 / 8
+- Face on-model: 6 / 8 / 6
+- Face readable at 1x: 5 / 7 / 6
+- Expressive: 5 / 7 / 6
+- No smears in motion: 6 / 5 / 6
+- Bangs full: 7 / 7 / 8
+- Stance natural: 7 / 7 / 7
+
+**VERDICT:** r4head still has the best front face (cleanest eyes, most on-model with the m96 masters). B is the best rig head (follows the head, full bangs) but is still about 2 points below the ≥8 target on S/SE/SW readability.
+
+**ISSUES:**
+1. **[OWNER F] idle/walk/hurt, SE, f03–f05 and f09–f11:** the near eye shows up as a hard square box, like glasses, on the cheek edge. It reads as a glyph, not an eye. → Redraw the SE eye as a rounded 3×4 shape: dark lash on top, a 1 px highlight, no closed outline on the side nearest the cheek. Clip the illustration's eye at the head silhouette.
+2. **[OWNER P] SW, all actions (worst in idle f01–f03, run f00–f07, hurt f01–f03):** the face turns to mush. Blush and eye pixels blur together into reddish noise and the eyes drop below 2 px of contrast. → For S/SE/SW, protect the eyes, brows and mouth from palette merging. Snap blush to one 2 px tone and keep it away from the eye rows.
+3. **[OWNER R] idle E (also NE), f06–f09:** the head turns so far that only back hair and the bow are visible, so the face disappears. Run E f05 has the same problem. → Limit head yaw to about 35° away from the facing direction. Keep at least one eye and the nose tip on screen.
+4. **[OWNER M] run S, f00 and f04; run N, f01:** the two legs merge into one stick, so the stride can't be read at 1x. Walk SE f03–f04 has a near-single leg too. → Add 2–3 px of sideways leg splay on front and back views at contact. Lift the back foot so it shows a heel.
+5. **[OWNER F/R] S idle, f06–f09 (look-away expression):** a dark hair streak crosses the eyes, which makes them look shut or bruised. That is the main reason r4head's S row beats B. → Lift the fringe UV by 1–2 px over the eyes on expression swaps. Alternatively, take the eye area from the r4head decal (keep the bangs from B) for front views.

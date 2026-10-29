@@ -1,0 +1,25 @@
+SCORE: 5/10
+SCORE R8: 4/10
+SCORE R4HEAD: 6/10
+
+**Sub-scores (B):** on-model 5 · face quality at 1x 5 (S 6, SE/SW 4) · cleanliness 4 · silhouette/hair 7 · motion/limbs 6 · stance 7
+
+**EYES r9 vs r7:** r9 6/10, r7 4/10. r9 reads better at 1x. On S, the r9 iris and lash masses are darker and bigger, so the eyes hold up at 1x where r7 turns into grey smudges. On SE neither set works: r9 eyes become boxy "goggle" rectangles, and r7 eyes mostly vanish into the cheek.
+
+**A/B (r8 / r4head / B):**
+- face follows head: 7 / 5 / 8
+- face on-model: 4 / 7 / 5
+- face readable at 1x: 4 / 7 / 6
+- expressive: 5 / 5 / 6
+- no smears in motion: 4 / 6 / 5
+- bangs full: 6 / 7 / 7
+- stance natural: 6 / 6 / 7
+
+**VERDICT:** r4head still has the best front faces (S cleanest and closest to the m96 masters). B is now the best overall head because its face follows turns, but r9 doesn't reach r4head front readability (target 8; B ~6).
+
+**ISSUES:**
+1. **[F] idle/walk/run, SE/SW, idle f03–f05, f10–f11, walk f03–f04:** the r9 SE eyes pixelize into hard rectangular rings that read as glasses → redraw the 3/4 eye as a solid dark iris block with a 1-px highlight and a lash cap on top only, with no full outline box. Test it pixelized at 1x before baking.
+2. **[F/P] idle S/SE f01–f02, f07–f08 (blinks):** closed eyes leave blurred skin-tone smears and leftover lid fragments → add a dedicated closed-eye illustration (one dark 2-px curved line per eye) and protect it from the pz.py averaging.
+3. **[P] all actions, S/SE/N:** single-pixel white specks in hair, at the cheek edges (walk S f01, f05–f07) and on the N backs. Face_int is 14/30 → after the cleanup pass, remove isolated light pixels outside the face mask with fewer than 2 same-colour neighbours.
+4. **[F/R] run S/SE f02, f05–f06:** the effort mouth turns into a grey "gritted teeth" smear → swap in a simple 2–3 px open-mouth shape and stop the texture from resampling the mouth area mid-swap.
+5. **[R] idle E f06–f09 (look-back):** the head shows a speckled back-of-head with the face gone, and the bow breaks into fragments → limit look-back yaw to ±60° so an eye and the cheek edge stay visible. Snap the bow to master pixels, as done for r4head.

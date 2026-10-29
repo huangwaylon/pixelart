@@ -600,7 +600,8 @@ def hub(bid):
     for act, a in man['actions'].items():
         media.append({'src': f"{rel}/{a['sheet']}", 'caption': f'{act}: contact sheet (3x) — rows = directions', 'wide': True})
     for d_, nm, cap in (('ab', 'ab_heads_idle', 'A/B idle heads 6x: round-4 projected face (A) vs this build (B)'), ('ab', 'ab_walk', 'A/B walk 3x: A round 4 vs B this build'),
-                        ('ab_r7', 'ab_heads_idle', 'A/B idle heads 6x: r7 (A) vs this build (B)'), ('ab_hyb', 'ab_heads_idle', 'A/B idle heads 6x: r4 head hybrid (A) vs this build (B)')):
+                        ('ab_r7', 'ab_heads_idle', 'A/B idle heads 6x: r7 (A) vs this build (B)'), ('ab_r8', 'ab_heads_idle', 'A/B idle heads 6x: r8 (A) vs this build (B)'),
+                        ('ab_eyes', 'ab_eyes_r9_vs_r7_idle', "F's eyes: round-9 vs round-7 illustrations, same build/passes, idle S/SE heads 6x"), ('ab_hyb', 'ab_heads_idle', 'A/B idle heads 6x: r4 head hybrid (A) vs this build (B)')):
         if os.path.exists(f'{B}/{d_}/{nm}.png'): media.append({'src': f'{rel}/{d_}/{nm}.png', 'caption': cap, 'wide': True})
     worst = []
     for r in G['clips']:

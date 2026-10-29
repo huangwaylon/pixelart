@@ -1,0 +1,23 @@
+SCORE: 6/10
+SCORE R8: 5/10
+SCORE R4HEAD: 6/10
+
+**Sub-scores (B):** face acting per beat 6, face locked to head 8, posing/stance 7 (idle hip-hand and head turn read well; hurt is a real flinch with the forearm to the face, not a T), secondary motion 7 (bow tails and sleeve drag are good), 1x front-face readability 6 (target 8 not met).
+
+**A/B: r8 / r4head / B**
+- Face follows head: 8 / 5 / 8
+- Face on-model: 6 / 8 / 6
+- Face readable at 1x: 5 / 8 / 6
+- Expressive: 6 / 5 / 7
+- No smears in motion: 6 / 7 / 6
+- Bangs full: 8 / 7 / 8
+- Stance natural: 7 / 7 / 7
+
+VERDICT: B is the better-integrated head (it stays locked to the head, is more expressive and has fuller bangs), but r4head still has the most readable front face at 1x, so B isn't ready to replace it yet.
+
+ISSUES:
+1. **[F/P] walk SE f03, f06; idle SE f05–f06, SW f05:** the near eye turns into a grey rectangle that looks like glasses. → F: redraw the 3/4 eye as a dark lash wedge with a 1 px catchlight. P: keep the eye pixels from being merged into the grey obi colour, and add face pixels to the cleanup's protected (exempt) mask.
+2. **[F] S/SW in every action:** the eyes are small, low-contrast and shaded by the bangs, and the skin is redder and darker than on r4head, so at 1x the face reads as a smudge. → Make the iris at least 3×4 px with a white catchlight, use a single-colour dark lash line, lift the face skin one shade, and copy r4head's eye spacing.
+3. **[R] SE/SW in walk, run and idle:** the head turns so far that the face reads near-profile and the side locks cover half of it (r4head shows the full 3/4 face). → In the SE/SW views, rotate the head about 10° back toward the camera, and pull the side-lock mesh back behind the cheek line.
+4. **[M] jump S/SW/N f09–f11; dash S/N/SE f05–f09; hurt N f02:** the arms swing out straight sideways, which reads as a T-pose. → Bend the elbows 30–40° and drop them below the shoulders, make the two arms asymmetric, and let them lag one frame behind the landing.
+5. **[P] hair in all clips, worst in walk E f02–f07, idle NW f06–f08 and run N:** single white pixels flicker on the hair and cheek, which is part of why only 13/48 clips pass the flicker ("boil") gate. → Lock the hair highlight colours from frame to frame and remove isolated 1 px light pixels inside the hair.

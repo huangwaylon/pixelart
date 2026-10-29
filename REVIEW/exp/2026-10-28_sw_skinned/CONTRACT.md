@@ -895,3 +895,16 @@ the deforming head. Fix this at the source before tuning pixels.
     SSIM drops in SE because the bigger, darker eye blobs don't match the master's exact pixel pattern (lash K + iris h/g + W), and the catchlight
     rarely survives P's cleanup in SE. **P:** a 1-2 px W next to iris/lash K is the catchlight; please keep it (the orphan rule from my round-6 note).
     **R:** the renderer was being edited during my runs (view-pick weights), so re-render the walk to compare against your current build.
+- 17:45 I (ROUND 9): **round-9 build 20261029_ec4cac1** = release/out/latest and the pinned hub entry (R r12, F's round-9 eyes, P limb rules after the cleanup, M 10:05 bake). 48/48 clips.
+  Gates: **limbs 47/48** (target ≥ 44; r8 33), bangs 48/48, face integrity 14/30, posture 2/2 2/2 6/6, feet 8/24, boil 13/48, shade_swap 0/48, GIF 48/48, PZCLEAN ran 48/48.
+  Opus A/B (one pass; B / r8 / r4head): AD 5/4/6, anim 6/5/6, game 6/5/6. **Front-face readable at 1x: B 6** (target 8; r4head 7-8).
+  **F's eyes, r9 vs r7 (same build and passes, ab_eyes board): 6 vs 4**. r9 is better in S, but the SE/SW near eye pixelizes into a "glasses" box. PANEL.md; ROUND 10 proposals below.
+  Note: my panel run briefly overwrote the round-8 raw critique files. They are restored verbatim from my log (marked in each file).
+
+# ROUND 10 proposals (I: Opus A/B r9 vs r8 vs r4 head; release/out/20261029_ec4cac1/PANEL.md)
+1. [F] SE/SW eye: a solid iris/lash wedge + 1 px catchlight, no outline box, clipped at the silhouette. Closed eyes as a 2 px curve; a simple 2-3 px effort mouth. Test at 1x before baking.
+2. [F/P] S/SW: iris ≥ 3x4 px + white catchlight, skin one shade lighter, blush one 2 px tone off the eye rows; eye/brow/mouth exempt from the cleanup palette merge.
+3. [R] SE/SW head ~10° back toward the camera; side locks behind the cheek; limit the idle E/NE look-back yaw; fringe off the eyes on the S look-away f06-09.
+4. [P] Hair/cheek light specks (boil 13/48); shade_swap 0/48.
+5. [M] Bent, asymmetric, lagging arms in jump f09-11, dash f05-09, hurt N f02; run S/N leg splay 2-3 px at contact.
+6. [R] Profile (E/W) cheek/jaw face-integrity fails (14/30).

@@ -5,131 +5,138 @@
  "kind": "release",
  "status": "needs-review",
  "pinned": true,
- "title": "Swordswoman current build (20261029_a586104)",
+ "title": "Swordswoman current build (20261029_ec4cac1)",
  "question": "The latest gated review set: every action x direction on the current rig (R), motion (M), pixel chain (P) and face layer (F).",
- "method": "release/make_all.sh (I): R render_motion.py --no-post + P p_parts.py -> P pixel_chain.py -> F face_layer; F faceless preview + face composite. Pipeline r7 (hybrid = r4 projected master head + F face layer on R's archived r7 rig, with the r5 body/motion; r5 = 3D head; r4 = round 4). Actions walk, run, idle, jump, dash, hurt; directions S SE E NE N NW W SW. Gates: pxeval seq, P limb audit, gifcheck. Build 20261029_a586104 (2026-10-29 14:56).",
- "result": "Gates pass/total: boil 13/48, shade 0/48, feet 6/24, seam 24/24, limbs 33/48, gif 48/48, bangs 48/48, face_int 13/30, pzclean_ran 48/48; torso 2/2, head 2/2, head_fwd 6/6. Failing clips: walk S: shade/feet; walk SE: shade/feet/limbs; walk E: boil/shade/feet/limbs/face_int; walk NE: boil/shade/feet; walk N: shade/feet; walk NW: boil/shade/feet; walk W: boil/shade/feet/limbs/face_int; walk SW: shade/feet; run S: boil/shade/feet; run SE: boil/shade/feet; run E: boil/shade/feet/limbs/face_int; run NE: boil/shade/feet/limbs; run N: boil/shade/feet; run NW: boil/shade/feet/limbs; run W: boil/shade/feet/limbs/face_int; run SW: boil/shade/feet/face_int; idle S: shade/feet; idle SE: shade/face_int; idle E: shade/limbs/face_int; idle NE: shade/limbs; idle N: shade/feet; idle NW: shade; idle W: shade/face_int; idle SW: shade; jump S: boil/shade/face_int; jump SE: boil/shade; jump E: boil/shade/limbs/face_int; jump NE: boil/shade; jump N: boil/shade; jump NW: boil/shade; jump W: boil/shade/face_int; jump SW: boil/shade; dash S: shade/face_int; dash SE: boil/shade/limbs; dash E: boil/shade/limbs/face_int; dash NE: boil/shade/limbs; dash N: boil/shade; dash NW: boil/shade; dash W: boil/shade/limbs/face_int; dash SW: boil/shade/face_int; hurt S: boil/shade; hurt SE: boil/shade; hurt E: boil/shade/limbs/face_int; hurt NE: boil/shade; hurt N: boil/shade; hurt NW: boil/shade; hurt W: boil/shade/face_int; hurt SW: boil/shade. Full table: exp/.../release/out/20261029_a586104/GATES.md",
- "verdict": "Round 8 has the best head structurally: - It stays locked to the head with the fewest smears (the \"no smears in motion\" score is 7-8 vs r7 5-6 and r4head 3-5). - It has full bangs (8-9) and the most natural stance (7). The hurt reaction now reads as a guard plus recoil, not a T.  The r4 head (projected master + decals) still has the most readable, on-model face at 1x in the front views (8 vs 5 for B). In S/SE/SW, B's eyes come out as small sleepy slits under the fringe, with blotchy pink skin. - Verdict: B is the base going forward. Move the r4-style face read (big master eyes, a flat 2-tone face) onto B's baked head.  Gates (B vs r7): - bangs 48/48 vs 48/48 - preview face integrity (new) 13/30 vs 13/30 clips. The E/W profiles still show cheek/jaw streaks (walk E f3/f6, run E f2-6, hurt E f3-5). - **limbs 33/48 vs 44/48** (regressed with PZCLEAN) - boil 13/48 vs 13/48 - shade_swap 0/48 vs 0/48 - posture torso 2/2, head pitch 2/2, head-forward 6/6 - GIF 48/48 - PZCLEAN ran on 48/48 clips (8x colour frames present, 0 warnings).",
+ "method": "release/make_all.sh (I): R render_motion.py --no-post + P p_parts.py -> P pixel_chain.py -> F face_layer; F faceless preview + face composite. Pipeline r7 (hybrid = r4 projected master head + F face layer on R's archived r7 rig, with the r5 body/motion; r5 = 3D head; r4 = round 4). Actions walk, run, idle, jump, dash, hurt; directions S SE E NE N NW W SW. Gates: pxeval seq, P limb audit, gifcheck. Build 20261029_ec4cac1 (2026-10-29 17:18).",
+ "result": "Gates pass/total: boil 13/48, shade 0/48, feet 8/24, seam 24/24, limbs 47/48, gif 48/48, bangs 48/48, face_int 14/30, pzclean_ran 48/48; torso 2/2, head 2/2, head_fwd 6/6. Failing clips: walk S: shade/feet; walk SE: shade/feet; walk E: boil/shade/feet/face_int; walk NE: boil/shade/feet; walk N: shade/feet; walk NW: boil/shade/feet; walk W: boil/shade/feet/face_int; walk SW: shade/feet; run S: boil/shade/feet; run SE: boil/shade/feet; run E: boil/shade/feet/face_int; run NE: boil/shade/feet; run N: boil/shade/feet; run NW: boil/shade/feet; run W: boil/shade/feet/face_int; run SW: boil/shade/feet/face_int; idle S: shade; idle SE: shade; idle E: shade/face_int; idle NE: shade; idle N: shade; idle NW: shade; idle W: shade/face_int; idle SW: shade/face_int; jump S: boil/shade/face_int; jump SE: boil/shade; jump E: boil/shade/face_int; jump NE: boil/shade; jump N: boil/shade; jump NW: boil/shade; jump W: boil/shade/limbs/face_int; jump SW: boil/shade; dash S: shade/face_int; dash SE: boil/shade; dash E: boil/shade/face_int; dash NE: boil/shade; dash N: boil/shade; dash NW: boil/shade; dash W: boil/shade/face_int; dash SW: boil/shade; hurt S: boil/shade; hurt SE: boil/shade; hurt E: boil/shade/face_int; hurt NE: boil/shade; hurt N: boil/shade; hurt NW: boil/shade; hurt W: boil/shade/face_int; hurt SW: boil/shade. Full table: exp/.../release/out/20261029_ec4cac1/GATES.md",
+ "verdict": "Round 9 targets: - **Limbs: met.** 47/48 (r8 33/48, target ≥ 44). The one failure left is hurt E (arm/hand). - **Front-face readability at 1x: not met.** B scores 6 against the target of 8. r8 was 4-5, r4head 7-8.  What changed: - B is now level with or ahead of the r4 head on everything except front-face readability and on-model. It follows the head (8 vs 5), is more expressive (6-7 vs 5-7) and has full bangs. - **F's eyes, r9 vs r7: r9 6/10 vs r7 4/10.** r9 reads better in S. In SE/SW the r9 near eye pixelizes into a hard rectangular ring that reads as glasses, and blinks leave lid fragments.  Gates: - bangs 48/48 - preview face integrity 14/30 (r8 13/30) - posture torso 2/2, head pitch 2/2, head-forward 6/6 - feet 8/24 - boil 13/48, shade_swap 0/48 - GIF 48/48 - PZCLEAN ran 48/48",
  "scores": {
   "Opus AD": "5/10",
-  "Opus AD r7": "4/10",
-  "Opus AD r4head": "4/10",
-  "Opus anim": "5/10",
-  "Opus anim r7": "5/10",
+  "Opus AD r8": "4/10",
+  "Opus AD r4head": "6/10",
+  "Opus anim": "6/10",
+  "Opus anim r8": "5/10",
   "Opus anim r4head": "6/10",
-  "Opus game": "5/10",
-  "Opus game r7": "5/10",
-  "Opus game r4head": "6/10"
+  "Opus game": "6/10",
+  "Opus game r8": "5/10",
+  "Opus game r4head": "6/10",
+  "Front face 1x (B/r4head)": "6/7-8",
+  "Eyes r9 vs r7": "6 vs 4"
  },
  "media": [
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/walk/walk_8dir.gif",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/walk/walk_8dir.gif",
    "caption": "walk: all 8 directions (S SE E NE N NW W SW), 4x pixel + face",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/run/run_8dir.gif",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/run/run_8dir.gif",
    "caption": "run: all 8 directions (S SE E NE N NW W SW), 4x pixel + face",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/idle/idle_8dir.gif",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/idle/idle_8dir.gif",
    "caption": "idle: all 8 directions (S SE E NE N NW W SW), 4x pixel + face",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/jump/jump_8dir.gif",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/jump/jump_8dir.gif",
    "caption": "jump: all 8 directions (S SE E NE N NW W SW), 4x pixel + face",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/dash/dash_8dir.gif",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/dash/dash_8dir.gif",
    "caption": "dash: all 8 directions (S SE E NE N NW W SW), 4x pixel + face",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/hurt/hurt_8dir.gif",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/hurt/hurt_8dir.gif",
    "caption": "hurt: all 8 directions (S SE E NE N NW W SW), 4x pixel + face",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/walk/walk_8dir_preview.gif",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/walk/walk_8dir_preview.gif",
    "caption": "walk: smooth preview with face",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/run/run_8dir_preview.gif",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/run/run_8dir_preview.gif",
    "caption": "run: smooth preview with face",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/idle/idle_8dir_preview.gif",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/idle/idle_8dir_preview.gif",
    "caption": "idle: smooth preview with face",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/jump/jump_8dir_preview.gif",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/jump/jump_8dir_preview.gif",
    "caption": "jump: smooth preview with face",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/dash/dash_8dir_preview.gif",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/dash/dash_8dir_preview.gif",
    "caption": "dash: smooth preview with face",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/hurt/hurt_8dir_preview.gif",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/hurt/hurt_8dir_preview.gif",
    "caption": "hurt: smooth preview with face",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/walk/walk_sheet.png",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/walk/walk_sheet.png",
    "caption": "walk: contact sheet (3x) — rows = directions",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/run/run_sheet.png",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/run/run_sheet.png",
    "caption": "run: contact sheet (3x) — rows = directions",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/idle/idle_sheet.png",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/idle/idle_sheet.png",
    "caption": "idle: contact sheet (3x) — rows = directions",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/jump/jump_sheet.png",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/jump/jump_sheet.png",
    "caption": "jump: contact sheet (3x) — rows = directions",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/dash/dash_sheet.png",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/dash/dash_sheet.png",
    "caption": "dash: contact sheet (3x) — rows = directions",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/hurt/hurt_sheet.png",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/hurt/hurt_sheet.png",
    "caption": "hurt: contact sheet (3x) — rows = directions",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/ab_r7/ab_heads_idle.png",
-   "caption": "A/B idle heads 6x: r7 (A) vs this build (B)",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/ab_r8/ab_heads_idle.png",
+   "caption": "A/B idle heads 6x: r8 (A) vs this build (B)",
    "wide": true
   },
   {
-   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/ab_hyb/ab_heads_idle.png",
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/ab_eyes/ab_eyes_r9_vs_r7_idle.png",
+   "caption": "F's eyes: round-9 vs round-7 illustrations, same build/passes, idle S/SE heads 6x",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/ab_hyb/ab_heads_idle.png",
    "caption": "A/B idle heads 6x: r4 head hybrid (A) vs this build (B)",
    "wide": true
   }
  ],
  "links": [
   {
-   "href": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/GATES.md",
+   "href": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/GATES.md",
    "label": "GATES.md"
   },
   {
-   "href": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/PANEL.md",
+   "href": "exp/2026-10-28_sw_skinned/release/out/20261029_ec4cac1/PANEL.md",
    "label": "PANEL.md"
   },
   {
@@ -163,6 +170,14 @@
   {
    "href": "exp/2026-10-28_sw_skinned/release/out/20261029_3831ac8/PANEL.md",
    "label": "20261029_3831ac8 PANEL.md"
+  },
+  {
+   "href": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/GATES.md",
+   "label": "20261029_a586104 GATES.md"
+  },
+  {
+   "href": "exp/2026-10-28_sw_skinned/release/out/20261029_a586104/PANEL.md",
+   "label": "20261029_a586104 PANEL.md"
   },
   {
    "href": "exp/2026-10-28_sw_skinned/release/out/20261029_d240736/GATES.md",
