@@ -1,0 +1,954 @@
+{
+ "S": {
+  "box": [
+   150,
+   50,
+   600,
+   500
+  ],
+  "ysplit900": 760,
+  "xsplit900": 400,
+  "have": [
+   "blink",
+   "determined",
+   "effort",
+   "half",
+   "hurt",
+   "joyful",
+   "smile",
+   "squint",
+   "surprised"
+  ],
+  "names": {
+   "neutral": [
+    "base",
+    "base"
+   ],
+   "neutral_open": [
+    "base",
+    "surprised"
+   ],
+   "neutral_half": [
+    "half",
+    "base"
+   ],
+   "neutral_half_open": [
+    "half",
+    "surprised"
+   ],
+   "neutral_blink": [
+    "blink",
+    "base"
+   ],
+   "neutral_blink_open": [
+    "blink",
+    "surprised"
+   ],
+   "smile": [
+    "smile",
+    "smile"
+   ],
+   "smile_open": [
+    "smile",
+    "joyful"
+   ],
+   "smile_half": [
+    "half",
+    "smile"
+   ],
+   "smile_half_open": [
+    "half",
+    "joyful"
+   ],
+   "smile_blink": [
+    "blink",
+    "smile"
+   ],
+   "smile_blink_open": [
+    "blink",
+    "joyful"
+   ],
+   "joyful": [
+    "joyful",
+    "smile"
+   ],
+   "joyful_open": [
+    "joyful",
+    "joyful"
+   ],
+   "joyful_half": [
+    "joyful",
+    "smile"
+   ],
+   "joyful_half_open": [
+    "joyful",
+    "joyful"
+   ],
+   "joyful_blink": [
+    "joyful",
+    "smile"
+   ],
+   "joyful_blink_open": [
+    "joyful",
+    "joyful"
+   ],
+   "determined": [
+    "determined",
+    "determined"
+   ],
+   "determined_open": [
+    "determined",
+    "effort"
+   ],
+   "determined_half": [
+    "half",
+    "determined"
+   ],
+   "determined_half_open": [
+    "half",
+    "effort"
+   ],
+   "determined_blink": [
+    "blink",
+    "determined"
+   ],
+   "determined_blink_open": [
+    "blink",
+    "effort"
+   ],
+   "focused": [
+    "determined",
+    "determined"
+   ],
+   "focused_open": [
+    "determined",
+    "effort"
+   ],
+   "focused_half": [
+    "half",
+    "determined"
+   ],
+   "focused_half_open": [
+    "half",
+    "effort"
+   ],
+   "focused_blink": [
+    "blink",
+    "determined"
+   ],
+   "focused_blink_open": [
+    "blink",
+    "effort"
+   ],
+   "effort": [
+    "effort",
+    "determined"
+   ],
+   "effort_open": [
+    "effort",
+    "effort"
+   ],
+   "effort_half": [
+    "half",
+    "determined"
+   ],
+   "effort_half_open": [
+    "half",
+    "effort"
+   ],
+   "effort_blink": [
+    "blink",
+    "determined"
+   ],
+   "effort_blink_open": [
+    "blink",
+    "effort"
+   ],
+   "surprised": [
+    "surprised",
+    "base"
+   ],
+   "surprised_open": [
+    "surprised",
+    "surprised"
+   ],
+   "surprised_half": [
+    "half",
+    "base"
+   ],
+   "surprised_half_open": [
+    "half",
+    "surprised"
+   ],
+   "surprised_blink": [
+    "blink",
+    "base"
+   ],
+   "surprised_blink_open": [
+    "blink",
+    "surprised"
+   ],
+   "squint": [
+    "squint",
+    "squint"
+   ],
+   "squint_open": [
+    "squint",
+    "hurt"
+   ],
+   "squint_half": [
+    "squint",
+    "squint"
+   ],
+   "squint_half_open": [
+    "squint",
+    "hurt"
+   ],
+   "squint_blink": [
+    "squint",
+    "squint"
+   ],
+   "squint_blink_open": [
+    "squint",
+    "hurt"
+   ],
+   "hurt": [
+    "hurt",
+    "squint"
+   ],
+   "hurt_open": [
+    "hurt",
+    "hurt"
+   ],
+   "hurt_half": [
+    "hurt",
+    "squint"
+   ],
+   "hurt_half_open": [
+    "hurt",
+    "hurt"
+   ],
+   "hurt_blink": [
+    "hurt",
+    "squint"
+   ],
+   "hurt_blink_open": [
+    "hurt",
+    "hurt"
+   ],
+   "wince": [
+    "('hurt', 'half')",
+    "squint"
+   ],
+   "wince_open": [
+    "('hurt', 'half')",
+    "hurt"
+   ],
+   "wince_half": [
+    "('hurt', 'half')",
+    "squint"
+   ],
+   "wince_half_open": [
+    "('hurt', 'half')",
+    "hurt"
+   ],
+   "wince_blink": [
+    "('hurt', 'blink')",
+    "squint"
+   ],
+   "wince_blink_open": [
+    "('hurt', 'blink')",
+    "hurt"
+   ],
+   "blink": [
+    "blink",
+    "base"
+   ],
+   "blink_open": [
+    "blink",
+    "surprised"
+   ],
+   "blink_half": [
+    "blink",
+    "base"
+   ],
+   "blink_half_open": [
+    "blink",
+    "surprised"
+   ],
+   "blink_blink": [
+    "blink",
+    "base"
+   ],
+   "blink_blink_open": [
+    "blink",
+    "surprised"
+   ]
+  }
+ },
+ "SE": {
+  "box": [
+   150,
+   58,
+   600,
+   508
+  ],
+  "ysplit900": 771,
+  "xsplit900": 545,
+  "have": [
+   "blink",
+   "determined",
+   "effort",
+   "half",
+   "hurt",
+   "joyful",
+   "smile",
+   "squint",
+   "surprised"
+  ],
+  "names": {
+   "neutral": [
+    "base",
+    "base"
+   ],
+   "neutral_open": [
+    "base",
+    "surprised"
+   ],
+   "neutral_half": [
+    "half",
+    "base"
+   ],
+   "neutral_half_open": [
+    "half",
+    "surprised"
+   ],
+   "neutral_blink": [
+    "blink",
+    "base"
+   ],
+   "neutral_blink_open": [
+    "blink",
+    "surprised"
+   ],
+   "smile": [
+    "smile",
+    "smile"
+   ],
+   "smile_open": [
+    "smile",
+    "joyful"
+   ],
+   "smile_half": [
+    "half",
+    "smile"
+   ],
+   "smile_half_open": [
+    "half",
+    "joyful"
+   ],
+   "smile_blink": [
+    "blink",
+    "smile"
+   ],
+   "smile_blink_open": [
+    "blink",
+    "joyful"
+   ],
+   "joyful": [
+    "joyful",
+    "smile"
+   ],
+   "joyful_open": [
+    "joyful",
+    "joyful"
+   ],
+   "joyful_half": [
+    "joyful",
+    "smile"
+   ],
+   "joyful_half_open": [
+    "joyful",
+    "joyful"
+   ],
+   "joyful_blink": [
+    "joyful",
+    "smile"
+   ],
+   "joyful_blink_open": [
+    "joyful",
+    "joyful"
+   ],
+   "determined": [
+    "determined",
+    "determined"
+   ],
+   "determined_open": [
+    "determined",
+    "effort"
+   ],
+   "determined_half": [
+    "half",
+    "determined"
+   ],
+   "determined_half_open": [
+    "half",
+    "effort"
+   ],
+   "determined_blink": [
+    "blink",
+    "determined"
+   ],
+   "determined_blink_open": [
+    "blink",
+    "effort"
+   ],
+   "focused": [
+    "determined",
+    "determined"
+   ],
+   "focused_open": [
+    "determined",
+    "effort"
+   ],
+   "focused_half": [
+    "half",
+    "determined"
+   ],
+   "focused_half_open": [
+    "half",
+    "effort"
+   ],
+   "focused_blink": [
+    "blink",
+    "determined"
+   ],
+   "focused_blink_open": [
+    "blink",
+    "effort"
+   ],
+   "effort": [
+    "effort",
+    "determined"
+   ],
+   "effort_open": [
+    "effort",
+    "effort"
+   ],
+   "effort_half": [
+    "half",
+    "determined"
+   ],
+   "effort_half_open": [
+    "half",
+    "effort"
+   ],
+   "effort_blink": [
+    "blink",
+    "determined"
+   ],
+   "effort_blink_open": [
+    "blink",
+    "effort"
+   ],
+   "surprised": [
+    "surprised",
+    "base"
+   ],
+   "surprised_open": [
+    "surprised",
+    "surprised"
+   ],
+   "surprised_half": [
+    "half",
+    "base"
+   ],
+   "surprised_half_open": [
+    "half",
+    "surprised"
+   ],
+   "surprised_blink": [
+    "blink",
+    "base"
+   ],
+   "surprised_blink_open": [
+    "blink",
+    "surprised"
+   ],
+   "squint": [
+    "squint",
+    "squint"
+   ],
+   "squint_open": [
+    "squint",
+    "hurt"
+   ],
+   "squint_half": [
+    "squint",
+    "squint"
+   ],
+   "squint_half_open": [
+    "squint",
+    "hurt"
+   ],
+   "squint_blink": [
+    "squint",
+    "squint"
+   ],
+   "squint_blink_open": [
+    "squint",
+    "hurt"
+   ],
+   "hurt": [
+    "hurt",
+    "squint"
+   ],
+   "hurt_open": [
+    "hurt",
+    "hurt"
+   ],
+   "hurt_half": [
+    "hurt",
+    "squint"
+   ],
+   "hurt_half_open": [
+    "hurt",
+    "hurt"
+   ],
+   "hurt_blink": [
+    "hurt",
+    "squint"
+   ],
+   "hurt_blink_open": [
+    "hurt",
+    "hurt"
+   ],
+   "wince": [
+    "('hurt', 'half')",
+    "squint"
+   ],
+   "wince_open": [
+    "('hurt', 'half')",
+    "hurt"
+   ],
+   "wince_half": [
+    "('hurt', 'half')",
+    "squint"
+   ],
+   "wince_half_open": [
+    "('hurt', 'half')",
+    "hurt"
+   ],
+   "wince_blink": [
+    "('hurt', 'blink')",
+    "squint"
+   ],
+   "wince_blink_open": [
+    "('hurt', 'blink')",
+    "hurt"
+   ],
+   "blink": [
+    "blink",
+    "base"
+   ],
+   "blink_open": [
+    "blink",
+    "surprised"
+   ],
+   "blink_half": [
+    "blink",
+    "base"
+   ],
+   "blink_half_open": [
+    "blink",
+    "surprised"
+   ],
+   "blink_blink": [
+    "blink",
+    "base"
+   ],
+   "blink_blink_open": [
+    "blink",
+    "surprised"
+   ]
+  }
+ },
+ "E": {
+  "box": [
+   150,
+   65,
+   600,
+   515
+  ],
+  "ysplit900": 699,
+  "xsplit900": null,
+  "have": [
+   "blink",
+   "determined",
+   "effort",
+   "half",
+   "hurt",
+   "joyful",
+   "smile",
+   "squint",
+   "surprised"
+  ],
+  "names": {
+   "neutral": [
+    "base",
+    "base"
+   ],
+   "neutral_open": [
+    "base",
+    "surprised"
+   ],
+   "neutral_half": [
+    "half",
+    "base"
+   ],
+   "neutral_half_open": [
+    "half",
+    "surprised"
+   ],
+   "neutral_blink": [
+    "blink",
+    "base"
+   ],
+   "neutral_blink_open": [
+    "blink",
+    "surprised"
+   ],
+   "smile": [
+    "smile",
+    "smile"
+   ],
+   "smile_open": [
+    "smile",
+    "joyful"
+   ],
+   "smile_half": [
+    "half",
+    "smile"
+   ],
+   "smile_half_open": [
+    "half",
+    "joyful"
+   ],
+   "smile_blink": [
+    "blink",
+    "smile"
+   ],
+   "smile_blink_open": [
+    "blink",
+    "joyful"
+   ],
+   "joyful": [
+    "joyful",
+    "smile"
+   ],
+   "joyful_open": [
+    "joyful",
+    "joyful"
+   ],
+   "joyful_half": [
+    "joyful",
+    "smile"
+   ],
+   "joyful_half_open": [
+    "joyful",
+    "joyful"
+   ],
+   "joyful_blink": [
+    "joyful",
+    "smile"
+   ],
+   "joyful_blink_open": [
+    "joyful",
+    "joyful"
+   ],
+   "determined": [
+    "determined",
+    "determined"
+   ],
+   "determined_open": [
+    "determined",
+    "effort"
+   ],
+   "determined_half": [
+    "half",
+    "determined"
+   ],
+   "determined_half_open": [
+    "half",
+    "effort"
+   ],
+   "determined_blink": [
+    "blink",
+    "determined"
+   ],
+   "determined_blink_open": [
+    "blink",
+    "effort"
+   ],
+   "focused": [
+    "determined",
+    "determined"
+   ],
+   "focused_open": [
+    "determined",
+    "effort"
+   ],
+   "focused_half": [
+    "half",
+    "determined"
+   ],
+   "focused_half_open": [
+    "half",
+    "effort"
+   ],
+   "focused_blink": [
+    "blink",
+    "determined"
+   ],
+   "focused_blink_open": [
+    "blink",
+    "effort"
+   ],
+   "effort": [
+    "effort",
+    "determined"
+   ],
+   "effort_open": [
+    "effort",
+    "effort"
+   ],
+   "effort_half": [
+    "half",
+    "determined"
+   ],
+   "effort_half_open": [
+    "half",
+    "effort"
+   ],
+   "effort_blink": [
+    "blink",
+    "determined"
+   ],
+   "effort_blink_open": [
+    "blink",
+    "effort"
+   ],
+   "surprised": [
+    "surprised",
+    "base"
+   ],
+   "surprised_open": [
+    "surprised",
+    "surprised"
+   ],
+   "surprised_half": [
+    "half",
+    "base"
+   ],
+   "surprised_half_open": [
+    "half",
+    "surprised"
+   ],
+   "surprised_blink": [
+    "blink",
+    "base"
+   ],
+   "surprised_blink_open": [
+    "blink",
+    "surprised"
+   ],
+   "squint": [
+    "squint",
+    "squint"
+   ],
+   "squint_open": [
+    "squint",
+    "hurt"
+   ],
+   "squint_half": [
+    "squint",
+    "squint"
+   ],
+   "squint_half_open": [
+    "squint",
+    "hurt"
+   ],
+   "squint_blink": [
+    "squint",
+    "squint"
+   ],
+   "squint_blink_open": [
+    "squint",
+    "hurt"
+   ],
+   "hurt": [
+    "hurt",
+    "squint"
+   ],
+   "hurt_open": [
+    "hurt",
+    "hurt"
+   ],
+   "hurt_half": [
+    "hurt",
+    "squint"
+   ],
+   "hurt_half_open": [
+    "hurt",
+    "hurt"
+   ],
+   "hurt_blink": [
+    "hurt",
+    "squint"
+   ],
+   "hurt_blink_open": [
+    "hurt",
+    "hurt"
+   ],
+   "wince": [
+    "('hurt', 'half')",
+    "squint"
+   ],
+   "wince_open": [
+    "('hurt', 'half')",
+    "hurt"
+   ],
+   "wince_half": [
+    "('hurt', 'half')",
+    "squint"
+   ],
+   "wince_half_open": [
+    "('hurt', 'half')",
+    "hurt"
+   ],
+   "wince_blink": [
+    "('hurt', 'blink')",
+    "squint"
+   ],
+   "wince_blink_open": [
+    "('hurt', 'blink')",
+    "hurt"
+   ],
+   "blink": [
+    "blink",
+    "base"
+   ],
+   "blink_open": [
+    "blink",
+    "surprised"
+   ],
+   "blink_half": [
+    "blink",
+    "base"
+   ],
+   "blink_half_open": [
+    "blink",
+    "surprised"
+   ],
+   "blink_blink": [
+    "blink",
+    "base"
+   ],
+   "blink_blink_open": [
+    "blink",
+    "surprised"
+   ]
+  }
+ },
+ "r9": {
+  "params": {
+   "EYE_S": 1.22,
+   "LASH": 5,
+   "IRIS": 0.72,
+   "CATCH": 3,
+   "MOUTH": 0.7
+  },
+  "views": {
+   "S": {
+    "eyes": [
+     {
+      "c": [
+       304.5,
+       395.8
+      ],
+      "box": [
+       269,
+       365,
+       71,
+       56
+      ],
+      "area": 2812
+     },
+     {
+      "c": [
+       447.5,
+       395.8
+      ],
+      "box": [
+       413,
+       365,
+       69,
+       56
+      ],
+      "area": 2768
+     }
+    ],
+    "ysplit": 430
+   },
+   "SE": {
+    "eyes": [
+     {
+      "c": [
+       379.0,
+       414.65
+      ],
+      "box": [
+       344,
+       380,
+       70,
+       63
+      ],
+      "area": 2997
+     },
+     {
+      "c": [
+       495.5,
+       408.1
+      ],
+      "box": [
+       470,
+       374,
+       51,
+       62
+      ],
+      "area": 2226
+     }
+    ],
+    "ysplit": 443
+   },
+   "E": {
+    "eyes": [
+     {
+      "c": [
+       473.5,
+       374.4
+      ],
+      "box": [
+       444,
+       337,
+       59,
+       68
+      ],
+      "area": 2174
+     }
+    ],
+    "ysplit": 414
+   }
+  }
+ }
+}

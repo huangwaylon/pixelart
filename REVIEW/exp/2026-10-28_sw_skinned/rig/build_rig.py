@@ -353,7 +353,7 @@ else:
     nf = len(me.polygons); cen = np.zeros(nf * 3); nrm = np.zeros(nf * 3); me.polygons.foreach_get("center", cen); me.polygons.foreach_get("normal", nrm)
     cenH = (cen.reshape(-1, 3) * np.array([-1, -1, 1.0])) / K; nrmH = nrm.reshape(-1, 3) * np.array([-1, -1, 1.0])
     lv = np.zeros(len(me.loops), int); me.loops.foreach_get("vertex_index", lv); bvh = _BVH.FromPolygons([Vector(v) for v in V], FC)
-    headgrp = np.isin(np.array(flab).astype(str), ["head", "lock_L", "lock_R"]); SHIFT = np.array([0, HF, 0])  # undo the head-forward move
+    headgrp = np.isin(np.array(flab).astype(str), ["head"]); SHIFT = np.array([0, HF, 0])  # undo the head-forward move; r9: lock tubes stay flat hair (their projected cheek strip streaked when they swung)
     MIRR = {"SW": "SE", "W": "E", "NW": "NE"}; ANC = json.load(open("/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/anchor.json"))["views"]
     for view in AZC:
         src = MIRR.get(view, view); mp = IM[src]; proj, dv = camH2(view)
@@ -364,7 +364,7 @@ else:
         # a surface point in the band samples the texture from up to LIFT master rows lower -> the bang edge reads higher, eyes untouched
         an = ANC.get(src, {}); ey = [e["y0"] for e in an.get("eyes", [])]
         if ey:
-            LIFT = float(os.environ.get("FRINGE_LIFT", "1.5")); y0e = min(ey); ytop, ybot = y0e - 5.0, y0e + 1.0  # master rows: above the brows .. lash row
+            LIFT = {"SE": 3.0, "SW": 3.0}.get(view, float(os.environ.get("FRINGE_LIFT", "1.5"))); y0e = min(ey); ytop, ybot = y0e - 5.0, y0e + 1.0  # master rows: above the brows .. lash row  # r9: SE/SW lifted 1.5 px more (fringe crowded the near eye)
             exs = [e["x0"] for e in an["eyes"]]; xl, xr = min(exs) - 3.0, max(exs) + 9.0
             xm = cr[:, 0] if view not in MIRR else 128.0 - cr[:, 0]; ym = cr[:, 1]
             tt = np.clip((ym - ytop) / (ybot - ytop), 0, 1); inband = (ym > ytop) & (ym < ybot) & (xm > xl) & (xm < xr)
@@ -376,6 +376,8 @@ else:
             hit = bvh.ray_cast(Vector(cenH[fi]) + D * 0.006, D, 2.0)
             if hit[0] is None or hit[3] < 0.008: pm[fi] = 1.0
         at = me.attributes.new("pm_" + view, "FLOAT", "FACE"); at.data.foreach_set("value", pm)
+        fa = (np.clip(nrmH @ dv, 0, 1) * pm).astype(np.float32)  # r9: rest facing of each face toward this view's camera (per-face view pick)
+        at2 = me.attributes.new("fa_" + view, "FLOAT", "FACE"); at2.data.foreach_set("value", fa)
         print("illus proj", view, int(pm.sum()), "of", int(headgrp.sum()), flush=True)
     ao["head_mode"] = "illus"
 LIDC = {"leg_L": (255, 0, 0), "boot_L": (255, 0, 0), "foot_L": (255, 0, 0), "leg_R": (0, 255, 0), "boot_R": (0, 255, 0), "foot_R": (0, 255, 0),

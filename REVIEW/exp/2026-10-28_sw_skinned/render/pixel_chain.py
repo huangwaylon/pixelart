@@ -723,7 +723,7 @@ def run(stem, info, opt):
         out[i], sts[i] = g, st; prev = st
     if opt['temporal']: out = kill_flips(out, loop)
     if ORPHAN: out = [orphan_rule(g, st) for g, st in zip(out, sts)]
-    if PZCLEAN: out = [pz_cleanup(g, F) for g, F in zip(out, Fs)]
+    if PZCLEAN: out = [pz_cleanup(g, F, st) for g, F, st in zip(out, Fs, sts)]
     if EDGESKIN: out = [edge_skin_rule(g) for g in out]  # after the masters' cleanup so its face pass sees the plain skin
     out = [hx.main_comp(hx.drop_bare_k(g)) for g in out]
     if opt.get('smear', True):
@@ -802,7 +802,7 @@ def apply_smear(G, info):
     return G, sm
 
 
-def pz_cleanup(g, F):
+def pz_cleanup(g, F, st=None):
     """PZCLEAN=1: the masters' E2 cleanup stage (pz.py cleanup(): data-driven face-feature pass from the source colours + orphans + skin
     specks + outline gaps) run on the chain's grid with the 8x colour render as its source - the same code the masters used, applied to
     the whole frame (it finds the face itself from the skin hull of the source)."""
@@ -813,9 +813,17 @@ def pz_cleanup(g, F):
     xf = x[oy * P:y1 * P, ox * P:x1 * P]; mf = al[oy * P:y1 * P, ox * P:x1 * P]
     if mf.sum() == 0: return g
     try:
-        return PZ_.cleanup(g.copy(), xf, mf, y1 - oy, ox, oy, hx.KEYS, np.array(hx.RGB, float))
+        c = PZ_.cleanup(g.copy(), xf, mf, y1 - oy, ox, oy, hx.KEYS, np.array(hx.RGB, float))
     except Exception as e:
         print('WARN pz cleanup', repr(e)[:120]); return g
+    if st is not None:  # round 9, global: limb cells (legs, arms, hands) and designed thin-feature materials (eyes, lashes, mouth...) are not
+        # rewritten by the cleanup - it would thin limbs (its outline-gap/skin-speck passes) and erase flat-face features
+        lab = st['lab']; keep = np.zeros(g.shape, bool)
+        for q in LIMBQ(): keep |= limb_cells(lab, q)
+        keep |= (lab >= 0) & np.isin(_mat(lab), [MI[m] for m in THINF if m in MI])
+        keep &= (g != '.')
+        c[keep] = g[keep]
+    return c
 
 
 def textured_chars(g, tex, sel, M_):

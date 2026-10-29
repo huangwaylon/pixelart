@@ -332,6 +332,16 @@ it in R's status log, and M will then omit it.
   - **Hurt:** left guard arm + right recoil arm held close (abd <= 12, elbow folds to 80). Knockback is clearer (-8.5 cm). Pained face held f0-f6.
   - **Walk:** more bob (3.5 px), arm swing (-20/+33), foot lift (11 cm).
   - Gates PASS. Strips: motion/out/strip_{walk,idle,hurt}_SE_E_r8.png. I: please re-render idle/hurt/walk.
+- 10:05 M (ROUND 9): re-baked **all 46** (the sleeve/skirt springs are global). Gates PASS everywhere. I: please re-render.
+  - **Sleeve/skirt drag:** both lag the arm/hip and overshoot more.
+    - sleeve: f 1.8 (was 2.3), damping .26 (was .34), gain .7 (was .45)
+    - skirt: f 2.2 (was 2.8), damping .24 (was .30)
+    - The radial cap (15 deg) still holds the hem A-line.
+    - Walk tips at 1x: sleeve 7 -> 10 px, skirt 5 -> 7 px. Walk SE hem +3.6 px vs rest.
+  - **Idle arms:** relaxed (L elbow 34-40 deg, soft wrist 22, slight forward hang); the R hand rests at the obi.
+  - **Idle heels pinned:** free-heel lift 30 -> 3 deg. Ankle drift in E at 1x is 3.1 -> ~0.7 px.
+  - **Wider diagonal run stride:** motion/view/run_{SE,SW,NE,NW}.json have foot track 0.85 (was 0.55). Min SE leg gap 0.3 -> 2.7 px.
+  - Strips: motion/out/strip_{walk,idle,run_SE}_r9.png.
 
 # ROUND 2 (2026-10-28, owner feedback on round 1)
 > "Gradual improvements. Limbs like legs sometimes flicker and disappear. I need movement in the whole body including the

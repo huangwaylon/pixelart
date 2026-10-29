@@ -233,14 +233,14 @@ class Idle:
                 arm[sd] = dict(swing=2.0 + 4.0 * sg * (w_ll - w_l), abd=1.0 + 2.0 * br_l, elbow=98.0 + 4.0 * br_l, elbow_in=50.0,
                                wrist=20.0 + 6.0 * s(2 * x - 0.4), cross=0.0, wrist_out=-25.0)
             else:           # left arm relaxed along the skirt, soft wrist, sways 2 frames late
-                arm[sd] = dict(swing=2.0 + 7.0 * sg * (w_ll - w_l) + 3.0 * s(2 * x - 0.3), abd=-21.0 + 4.0 * sg * w_ll + 2.0 * br_l,
-                               elbow=26.0 + 6.0 * (1 - stance) + 4.0 * br_l, wrist=16.0 + 8.0 * sg * (w_ll - w_l) + 4.0 * s(2 * x - 0.4),
+                arm[sd] = dict(swing=6.0 + 7.0 * sg * (w_ll - w_l) + 3.0 * s(2 * x - 0.3), abd=-19.0 + 4.0 * sg * w_ll + 2.0 * br_l,
+                               elbow=34.0 + 6.0 * (1 - stance) + 4.0 * br_l, wrist=22.0 + 8.0 * sg * (w_ll - w_l) + 4.0 * s(2 * x - 0.4),   # R9: relaxed, soft elbow + wrist
                                cross=0.0, wrist_out=-14.0)
             sh[sd] = (-0.5 + 5.0 * br - 2.0 * sg * w_l, 0.0)   # relaxed shoulders   # shoulders back and down, rise on the breath
         feet = {}
         for sd, sg in (("L", 1.0), ("R", -1.0)):
             free = max(0.0, -sg * w)  # 1 when this leg is free
-            feet[sd] = dict(pos=None, pitch=-30.0 * free, toe=0.0, yaw=10.0, knee_yaw=-9.0 * free)   # free knee relaxes inward
+            feet[sd] = dict(pos=None, pitch=-3.0 * free, toe=0.0, yaw=10.0, knee_yaw=-9.0 * free)   # R9: heels stay (almost) pinned; the free knee bends from the hip drop   # free knee relaxes inward
             feet[sd]["pivot"] = ("ball", self._ballg(sd))
         sq = float(okey([(0, 0.006), (0.05, 0.0), (0.30, 0.0), (0.335, -0.03), (0.40, 0.012), (0.47, 0.0), (0.80, 0.0), (0.835, -0.03), (0.90, 0.012), (0.97, 0.0), (1.0, 0.006)], x))
         return dict(root=root, pelvis=pel, chest=chest, head=head, arm=arm, shoulder=sh, foot=feet,

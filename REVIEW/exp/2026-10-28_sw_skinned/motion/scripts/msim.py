@@ -15,8 +15,8 @@ GROUPS = {
     "hair_back": dict(f=1.9, z=0.70, gw=0.20, cd=1.4, follow=0.0, gain=0.8, mx=28),
     "bun": dict(f=3.6, z=0.30, gw=0.00, cd=0.2, follow=0.0, gain=3.0, mx=16),
     "bow": dict(f=3.4, z=0.50, gw=0.08, cd=0.8, follow=0.15, gain=0.8, mx=24),
-    "sleeve":     dict(f=2.3, z=0.34, gw=0.55, cd=1.6, follow=0.15, gain=0.45, mx=22),
-    "skirt":      dict(f=2.8, z=0.3, gw=0.12, cd=1.4, follow=0.15, gain=1.7, mx=34),
+    "sleeve":     dict(f=1.8, z=0.26, gw=0.55, cd=1.6, follow=0.15, gain=0.7, mx=25),
+    "skirt":      dict(f=2.2, z=0.24, gw=0.12, cd=1.4, follow=0.15, gain=1.7, mx=34),
     "obi_tail":   dict(f=2.0, z=0.22, gw=0.50, cd=1.5, follow=0.8, gain=1.5, mx=40),
 }
 COLL = {  # radii in metres for the R rig (~1.55 m); clamped to 0.97 x rest distance per particle

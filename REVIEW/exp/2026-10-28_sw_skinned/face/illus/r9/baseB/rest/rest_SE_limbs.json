@@ -1,0 +1,66 @@
+{
+"summary": {
+"frames": 1,
+"failed_frames": 0,
+"fails": {},
+"pass": true
+},
+"per_frame": [
+{
+"leg.L": {
+"px": 141,
+"hi_px": 203.0,
+"pieces": 1,
+"hi_pieces": 2,
+"thin": 0,
+"detached": 0,
+"flags": []
+},
+"leg.R": {
+"px": 137,
+"hi_px": 217.5,
+"pieces": 1,
+"hi_pieces": 2,
+"thin": 0,
+"detached": 0,
+"flags": []
+},
+"arm.L": {
+"px": 159,
+"hi_px": 185.3,
+"pieces": 1,
+"hi_pieces": 1,
+"thin": 0,
+"detached": 0,
+"flags": []
+},
+"arm.R": {
+"px": 251,
+"hi_px": 270.8,
+"pieces": 1,
+"hi_pieces": 1,
+"thin": 0,
+"detached": 0,
+"flags": []
+},
+"hand.L": {
+"px": 9,
+"hi_px": 8.2,
+"pieces": 1,
+"hi_pieces": 1,
+"thin": 0,
+"detached": 0,
+"flags": []
+},
+"hand.R": {
+"px": 17,
+"hi_px": 20.9,
+"pieces": 1,
+"hi_pieces": 1,
+"thin": 0,
+"detached": 0,
+"flags": []
+}
+}
+]
+}

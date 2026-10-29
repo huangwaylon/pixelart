@@ -97,11 +97,34 @@ def illus_tex(fr, view=None):
         im.pixels.foreach_set(comp.ravel()); im.filepath_raw = out; im.file_format = "PNG"; im.save(); bpy.data.images.remove(im)
     return out
 def _texnodes(N, L):
-    """master-projection colour (Closest) through UV pj_<VIEW> + face mask pm_<VIEW> (1 = head-group face visible from this view at rest)"""
-    im = N.new("ShaderNodeTexImage"); im.name = "ILLUS_TEX"; im.image = bpy.data.images.load(_tex_base(TEXV), check_existing=True)
-    im.interpolation = "Linear" if ILLUS else "Closest"; im.extension = "EXTEND"; uvn = N.new("ShaderNodeUVMap"); uvn.name = "ILLUS_UV"; uvn.uv_map = "pj_" + TEXV; L.new(uvn.outputs[0], im.inputs[0])
-    pm = N.new("ShaderNodeAttribute"); pm.name = "ILLUS_PM"; pm.attribute_type = "GEOMETRY"; pm.attribute_name = "pm_" + TEXV
-    return im, pm
+    """illustration colour through TWO projections (A = best view, B = second view by head yaw vs camera, weights ILLUS_WA/WB set per frame):
+    colour = mix(A, B, wB pmB / (wA pmA + wB pmB)); mask = max(pmA [wA>0], pmB [wB>0]) -> no blank face at a view switch.
+    returns (colour socket, mask socket)"""
+    sets = []
+    for tag in ("", "2"):
+        im = N.new("ShaderNodeTexImage"); im.name = "ILLUS_TEX" + tag; im.image = bpy.data.images.load(_tex_base(TEXV), check_existing=True)
+        im.interpolation = "Linear" if ILLUS else "Closest"; im.extension = "EXTEND"; uvn = N.new("ShaderNodeUVMap"); uvn.name = "ILLUS_UV" + tag; uvn.uv_map = "pj_" + TEXV; L.new(uvn.outputs[0], im.inputs[0])
+        pm = N.new("ShaderNodeAttribute"); pm.name = "ILLUS_PM" + tag; pm.attribute_type = "GEOMETRY"; pm.attribute_name = "pm_" + TEXV
+        w = N.new("ShaderNodeValue"); w.name = "ILLUS_W" + ("A" if tag == "" else "B"); w.outputs[0].default_value = 1.0 if tag == "" else 0.0
+        fa = N.new("ShaderNodeAttribute"); fa.name = "ILLUS_FA" + tag; fa.attribute_type = "GEOMETRY"; fa.attribute_name = ("fa_" if ("fa_" + TEXV) in body.data.attributes else "pm_") + TEXV
+        wp = N.new("ShaderNodeMath"); wp.operation = "MULTIPLY"; L.new(w.outputs[0], wp.inputs[0]); L.new(fa.outputs["Fac"], wp.inputs[1])
+        sets.append((im, pm, w, wp))
+    (ia, pa, wa, wpa), (ib, pb, wb, wpb) = sets
+    den = N.new("ShaderNodeMath"); den.operation = "ADD"; L.new(wpa.outputs[0], den.inputs[0]); L.new(wpb.outputs[0], den.inputs[1])
+    den2 = N.new("ShaderNodeMath"); den2.operation = "MAXIMUM"; L.new(den.outputs[0], den2.inputs[0]); den2.inputs[1].default_value = 1e-4
+    fb = N.new("ShaderNodeMath"); fb.operation = "GREATER_THAN"; L.new(wpb.outputs[0], fb.inputs[0]); L.new(wpa.outputs[0], fb.inputs[1])  # r9: per-face pick (no ghosting): B where wB faB > wA faA
+    mx = N.new("ShaderNodeMix"); mx.data_type = "RGBA"; L.new(fb.outputs[0], mx.inputs[0]); L.new(ia.outputs["Color"], mx.inputs[6]); L.new(ib.outputs["Color"], mx.inputs[7])
+    ga = N.new("ShaderNodeMath"); ga.operation = "GREATER_THAN"; L.new(wa.outputs[0], ga.inputs[0]); ga.inputs[1].default_value = 1e-3
+    gb = N.new("ShaderNodeMath"); gb.operation = "GREATER_THAN"; L.new(wb.outputs[0], gb.inputs[0]); gb.inputs[1].default_value = 1e-3
+    ma = N.new("ShaderNodeMath"); ma.operation = "MULTIPLY"; L.new(ga.outputs[0], ma.inputs[0]); L.new(pa.outputs["Fac"], ma.inputs[1])
+    mb = N.new("ShaderNodeMath"); mb.operation = "MULTIPLY"; L.new(gb.outputs[0], mb.inputs[0]); L.new(pb.outputs["Fac"], mb.inputs[1])
+    mk_ = N.new("ShaderNodeMath"); mk_.operation = "MAXIMUM"; L.new(ma.outputs[0], mk_.inputs[0]); L.new(mb.outputs[0], mk_.inputs[1])
+    # r9: surfaces that turn grazing to the camera in motion compress the drawn lines into streaks -> fade the texture out there
+    # (current facing = Normal . Incoming); those pixels fall back to the flat material colour like any untextured surface
+    geo = N.new("ShaderNodeNewGeometry"); dot = N.new("ShaderNodeVectorMath"); dot.operation = "DOT_PRODUCT"; L.new(geo.outputs["Normal"], dot.inputs[0]); L.new(geo.outputs["Incoming"], dot.inputs[1])
+    mr = N.new("ShaderNodeMapRange"); mr.interpolation_type = "SMOOTHSTEP"; mr.inputs[1].default_value = float(os.environ.get("GRAZE0", "0.12")); mr.inputs[2].default_value = float(os.environ.get("GRAZE1", "0.30"))
+    L.new(dot.outputs["Value"], mr.inputs[0]); fm = N.new("ShaderNodeMath"); fm.operation = "MULTIPLY"; L.new(mk_.outputs[0], fm.inputs[0]); L.new(mr.outputs[0], fm.inputs[1])
+    return mx.outputs[2], fm.outputs[0]
 # ---- round 5: 3D face textures (UV face_uv, mask fmask), switched per frame from M's face/blink/mouth keys
 FACE_DIRS = [os.path.join(EXP, "face", "tex3d"), os.path.join(EXP, "rig", "face_tex")]
 HASFACE = "face_uv" in body.data.uv_layers and "fmask" in body.data.attributes
@@ -131,29 +154,40 @@ def _facenodes(N, L, col):
     fm = N.new("ShaderNodeAttribute"); fm.attribute_type = "GEOMETRY"; fm.attribute_name = "fmask"
     mul = N.new("ShaderNodeMath"); mul.operation = "MULTIPLY"; L.new(fm.outputs["Fac"], mul.inputs[0]); L.new(im.outputs["Alpha"], mul.inputs[1])
     return im, mul
-def eff_view():
-    """projection view whose rest camera direction (in the head's rest frame, per-view yaw cheat removed) is closest to this frame's camera
-    direction seen from the posed head: a head turn beyond ~22 deg switches to the neighbouring illustration instead of smearing the current one"""
+FACEV = ("S", "SE", "E", "SW", "W")  # views whose illustration shows the face (NE/N/NW: back views)
+def eff_views():
+    """round 9: the two projection views whose rest camera direction (head rest frame, per-view yaw cheat removed) best matches this frame's
+    camera direction seen from the posed head, with blend weights. While the camera is in front of the face only face views are used
+    (no blank face from a back-view illustration). Returns [(view, weight), (view, weight)]."""
     R = (ao.matrix_world @ pbs["head"].matrix).to_3x3() @ REST["head"].to_3x3().inverted()
-    ch = R.transposed() @ cam.matrix_world.to_3x3().col[2].normalized(); ch.z = 0; ch.normalize(); best, bv = -9, VIEW
+    ch = R.transposed() @ cam.matrix_world.to_3x3().col[2].normalized(); ch.z = 0; ch.normalize()
+    cands = []
     for v, (ax_, ay_) in AZ.items():
         if ("pj_" + v) not in body.data.uv_layers or not os.path.exists(_tex_base(v)): continue
+        if v != VIEW and ch.y > -0.5 and v not in FACEV: continue  # face visible from the camera (her front = +Y): never switch to a back-view illustration
         yv = math.radians(_AL.get(v, {}).get("yaw", 0.0)); c = Vector((ax_, ay_, 0)).normalized()
         cv = Vector((c.x * math.cos(-yv) - c.y * math.sin(-yv), c.x * math.sin(-yv) + c.y * math.cos(-yv), 0))
-        s = ch.dot(cv) + (1e-3 if v == VIEW else 0)
-        if s > best: best, bv = s, v
-    return bv
+        cands.append((ch.dot(cv) + 0.15 * cv.y + (1e-3 if v == VIEW else 0), v))  # r9: bias toward more frontal drawings (they degrade more gracefully on a turn)
+    cands.sort(reverse=True); cands = cands[:2] if len(cands) > 1 else cands + [(-1, cands[0][1])]
+    # B fades in only near the bisector: 0 while B is >= 15 deg farther than A, 0.5 when equidistant (each view is pure at its own rest)
+    aA, aB = (math.degrees(math.acos(max(-1, min(1, s_)))) for s_, _ in cands)
+    w = [1.0, 0.0]  # r9: whole-head switch (per-face mixing of two drawings fragmented the eyes); the B slot stays wired for later blending
+    return [(cands[0][1], w[0]), (cands[1][1], w[1])]
+def eff_view(): return eff_views()[0][0]
 def set_face(fr):
-    if ILLUS and TEXV:  # round 7: expression swap on the illustration texture; round 8: projection view picked by head yaw vs the camera
-        ev = eff_view(); CUR["eff"] = ev; pth = illus_tex(fr, ev)
+    if ILLUS and TEXV:  # round 7: expression swap; round 8/9: two projections picked + blended by head yaw vs the camera
+        (va, wa), (vb, wb) = eff_views(); CUR["eff"] = va; CUR["eff2"] = [vb, round(wb, 3)]; pa, pb = illus_tex(fr, va), illus_tex(fr, vb)
         for m in bpy.data.materials:
             if m.use_nodes:
                 for nd_ in m.node_tree.nodes:
-                    if nd_.name == "ILLUS_UV": nd_.uv_map = "pj_" + ev
-                    if nd_.name == "ILLUS_PM": nd_.attribute_name = "pm_" + ev
-                    if nd_.name == "ILLUS_TEX" and pth:
-                        im_ = bpy.data.images.load(pth, check_existing=True); im_.reload() if im_.filepath == pth else None; nd_.image = im_
-        return os.path.basename(pth) if pth else None
+                    for tag, v_, w_, p_ in (("", va, wa, pa), ("2", vb, wb, pb)):
+                        if nd_.name == "ILLUS_UV" + tag: nd_.uv_map = "pj_" + v_
+                        if nd_.name == "ILLUS_PM" + tag: nd_.attribute_name = "pm_" + v_
+                        if nd_.name == "ILLUS_FA" + tag: nd_.attribute_name = ("fa_" if ("fa_" + v_) in body.data.attributes else "pm_") + v_
+                        if nd_.name == "ILLUS_W" + ("A" if tag == "" else "B"): nd_.outputs[0].default_value = w_
+                        if nd_.name == "ILLUS_TEX" + tag and p_:
+                            im_ = bpy.data.images.load(p_, check_existing=True); nd_.image = im_
+        return os.path.basename(pa) if pa else None
     if not HASFACE: return None
     pm, pc = face_tex(fr), face_tex(fr, col=True)
     for m in bpy.data.materials:
@@ -183,13 +217,13 @@ def mk(kind):
             L.new(mul.outputs[0], mx.inputs[0]); L.new(at.outputs["Color"], mx.inputs[6]); L.new(im.outputs["Color"], mx.inputs[7]); L.new(mx.outputs[2], df.inputs["Base Color"])
         else: L.new(at.outputs["Color"], df.inputs["Base Color"])
         if TEXV:  # head shows the projected master pixels (flat), body smooth-shaded
-            im, pm = _texnodes(N, L); em = N.new("ShaderNodeEmission"); L.new(im.outputs["Color"], em.inputs[0]); mx = N.new("ShaderNodeMixShader")
-            L.new(pm.outputs["Fac"], mx.inputs[0]); L.new(df.outputs[0], mx.inputs[1]); L.new(em.outputs[0], mx.inputs[2]); L.new(mx.outputs[0], out.inputs[0])
+            col_, msk_ = _texnodes(N, L); em = N.new("ShaderNodeEmission"); L.new(col_, em.inputs[0]); mx = N.new("ShaderNodeMixShader")
+            L.new(msk_, mx.inputs[0]); L.new(df.outputs[0], mx.inputs[1]); L.new(em.outputs[0], mx.inputs[2]); L.new(mx.outputs[0], out.inputs[0])
         else: L.new(df.outputs[0], out.inputs[0])
         return m
     if kind == "tex":
-        im, pm = _texnodes(N, L); em = N.new("ShaderNodeEmission"); L.new(im.outputs["Color"], em.inputs[0]); tr = N.new("ShaderNodeBsdfTransparent")
-        mx = N.new("ShaderNodeMixShader"); L.new(pm.outputs["Fac"], mx.inputs[0]); L.new(tr.outputs[0], mx.inputs[1]); L.new(em.outputs[0], mx.inputs[2]); L.new(mx.outputs[0], out.inputs[0])
+        col_, msk_ = _texnodes(N, L); em = N.new("ShaderNodeEmission"); L.new(col_, em.inputs[0]); tr = N.new("ShaderNodeBsdfTransparent")
+        mx = N.new("ShaderNodeMixShader"); L.new(msk_, mx.inputs[0]); L.new(tr.outputs[0], mx.inputs[1]); L.new(em.outputs[0], mx.inputs[2]); L.new(mx.outputs[0], out.inputs[0])
         return m
     em = N.new("ShaderNodeEmission"); L.new(em.outputs[0], out.inputs[0])
     if kind == "lum":
@@ -277,7 +311,7 @@ info = {"action": act, "view": VIEW, "cell_1x": CELL, "pivot_1x": PIV, "ppu_h2":
 for i in idxs:
     fr = frames[i]; apply(fr); CUR["fr"] = fr; ftex = set_face(fr)
     for k in kinds: rpass(f"{stem}_f{i:02d}_{k}.png", k)
-    info["frames"].append({"i": i, "t": fr.get("t", i), "ms": tim[i] if i < len(tim) else tim[-1], "pts": meta(), "face": face_meta(), "face_tex": ftex, "proj_view": CUR.get("eff")})
+    info["frames"].append({"i": i, "t": fr.get("t", i), "ms": tim[i] if i < len(tim) else tim[-1], "pts": meta(), "face": face_meta(), "face_tex": ftex, "proj_view": CUR.get("eff"), "proj_view2": CUR.get("eff2")})
 json.dump(info, open(stem + ".json", "w"), indent=0)
 print(f"RENDERED {len(idxs)} frames x {kinds} in {time.time() - t0:.1f}s", flush=True)
 if not NOPOST:

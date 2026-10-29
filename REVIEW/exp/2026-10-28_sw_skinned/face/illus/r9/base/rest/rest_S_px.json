@@ -1,0 +1,1 @@
+{"limb_audit": {"frames": 1, "failed_frames": 0, "fails": {}, "pass": true}, "align": {"dx": 0, "dy": -1}, "chain": "P2", "opt": {"temporal": true, "protect": true, "sep": true}, "farleg": [null], "band_churn": null}

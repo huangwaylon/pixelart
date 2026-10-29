@@ -1098,3 +1098,10 @@ Other changes:
 - Hair-speck rule is global: back views went from 1/4/2 near-white hair singletons (N/NE/NW) to 0.
 - Profile skin rule is global: skin on the silhouette's shadow side takes S, and the mouth stays off the silhouette edge.
 - `p_run.sh` now also renders the 8x colour pass (`PVS=8 --preview`).
+
+## M: round 9
+- **Sleeve/skirt drag.** Lower frequency and less damping: sleeve f 1.8, ζ .26, gain .7; skirt f 2.2, ζ .24. The skirt radial cap is kept.
+- **Idle arms relaxed.** Elbow 34–40°, soft wrist.
+- **Idle heels pinned.** Free-heel lift is now 3°. E-view ankle drift is ≤ 1 px.
+- **Diagonal run views use a wider track (0.85).** The minimum SE leg gap goes from 0.3 to 2.7 px.
+- All 46 files are re-baked and the gates pass.
