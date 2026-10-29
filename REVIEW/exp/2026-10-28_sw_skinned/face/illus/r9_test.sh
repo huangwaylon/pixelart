@@ -4,7 +4,7 @@
 EXP=/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned
 B=/Applications/Blender.app/Contents/MacOS/Blender; PY=/Users/waylonhuang/Documents/other/pixelart/.models/pixtools/venv/bin/python
 T=$1; O=$EXP/face/illus/r9/$T
-for spec in "rest S" "rest SE" "$EXP/motion/walk.json SE"; do
+for spec in "rest S" "rest SE" "$EXP/motion/walk.json SE" ${=EXTRA}; do
   m=${spec% *}; v=${spec##* }; a=${m:t:r}; o=$O/$a; mkdir -p $o/parts
   $B -b $EXP/rig/rig.blend -P $EXP/render/render_motion.py -- $m $v $o --no-post 2>&1 | grep -E "FATAL|rror"
   [ -f $o/parts/${a}_${v}_f00_part.png ] || $B -b $EXP/rig/rig.blend -P $EXP/render/p_parts.py -- $m $v $o/parts 2>&1 | grep -E "rror"

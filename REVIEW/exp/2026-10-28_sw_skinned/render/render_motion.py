@@ -48,6 +48,21 @@ def apply(fr):
     for n, s in (fr.get("scale") or {}).items():
         if n in pbs: pbs[n].scale = Vector(s)
     bpy.context.view_layer.update()
+    head_cheat()
+def head_cheat():
+    """round 10 view cheats (rig/align.json per view): head_yaw_off = extra head yaw (deg, about the vertical through the head pivot; SE -10 /
+    SW +10 turn the face toward the camera so more face shows); head_yaw_limit = clamp of the head yaw vs rest (E/W/NE/NW 10 deg: limits the
+    idle look-back so the neighbouring drawing's far-side hair seams never show). Applied on top of the motion, every frame (rest included)."""
+    cfg = _AL.get(VIEW, {}); off = float(cfg.get("head_yaw_off", 0.0)); lim = cfg.get("head_yaw_limit")
+    if not off and lim is None: return
+    pb = pbs["head"]; M = pb.matrix.copy(); f = (M.to_3x3() @ Vector((0, 0, 1))); f0 = REST["head"].to_3x3() @ Vector((0, 0, 1))
+    yaw = math.degrees(math.atan2(f0.x * f.y - f0.y * f.x, f0.x * f.x + f0.y * f.y))
+    tgt = yaw + off
+    if lim is not None: tgt = max(-float(lim) + off, min(float(lim) + off, tgt))
+    d = math.radians(tgt - yaw)
+    if abs(d) < 1e-6: return
+    h = M.translation.copy(); pb.matrix = Matrix.Translation(h) @ Matrix.Rotation(d, 4, "Z") @ Matrix.Translation(-h) @ M
+    bpy.context.view_layer.update()
 # ------------------------------------------------------------------ camera / light (contract frame: her front +Y, her left -X)
 AZ = {"SE": (1, 1), "E": (1, 0), "S": (0, 1), "SW": (-1, 1), "NE": (1, -1), "N": (0, -1), "W": (-1, 0), "NW": (-1, -1)}
 cam = bpy.data.objects.get("cam") or bpy.data.objects.new("cam", bpy.data.cameras.new("cam"))
@@ -110,6 +125,11 @@ def _texnodes(N, L):
         wp = N.new("ShaderNodeMath"); wp.operation = "MULTIPLY"; L.new(w.outputs[0], wp.inputs[0]); L.new(fa.outputs["Fac"], wp.inputs[1])
         sets.append((im, pm, w, wp))
     (ia, pa, wa, wpa), (ib, pb, wb, wpb) = sets
+    if "hairmask" in body.data.attributes:  # r10: the B projection may only fill hair/bow faces (a second drawing on the face = fragments)
+        hmk = N.new("ShaderNodeAttribute"); hmk.attribute_type = "GEOMETRY"; hmk.attribute_name = "hairmask"
+        wpb2 = N.new("ShaderNodeMath"); wpb2.operation = "MULTIPLY"; L.new(wpb.outputs[0], wpb2.inputs[0]); L.new(hmk.outputs["Fac"], wpb2.inputs[1]); wpb = wpb2
+        mb_h = N.new("ShaderNodeMath"); mb_h.operation = "MULTIPLY"; L.new(pb.outputs["Fac"], mb_h.inputs[0]); L.new(hmk.outputs["Fac"], mb_h.inputs[1]); pb_mask = mb_h
+    else: pb_mask = None
     den = N.new("ShaderNodeMath"); den.operation = "ADD"; L.new(wpa.outputs[0], den.inputs[0]); L.new(wpb.outputs[0], den.inputs[1])
     den2 = N.new("ShaderNodeMath"); den2.operation = "MAXIMUM"; L.new(den.outputs[0], den2.inputs[0]); den2.inputs[1].default_value = 1e-4
     fb = N.new("ShaderNodeMath"); fb.operation = "GREATER_THAN"; L.new(wpb.outputs[0], fb.inputs[0]); L.new(wpa.outputs[0], fb.inputs[1])  # r9: per-face pick (no ghosting): B where wB faB > wA faA
@@ -117,7 +137,7 @@ def _texnodes(N, L):
     ga = N.new("ShaderNodeMath"); ga.operation = "GREATER_THAN"; L.new(wa.outputs[0], ga.inputs[0]); ga.inputs[1].default_value = 1e-3
     gb = N.new("ShaderNodeMath"); gb.operation = "GREATER_THAN"; L.new(wb.outputs[0], gb.inputs[0]); gb.inputs[1].default_value = 1e-3
     ma = N.new("ShaderNodeMath"); ma.operation = "MULTIPLY"; L.new(ga.outputs[0], ma.inputs[0]); L.new(pa.outputs["Fac"], ma.inputs[1])
-    mb = N.new("ShaderNodeMath"); mb.operation = "MULTIPLY"; L.new(gb.outputs[0], mb.inputs[0]); L.new(pb.outputs["Fac"], mb.inputs[1])
+    mb = N.new("ShaderNodeMath"); mb.operation = "MULTIPLY"; L.new(gb.outputs[0], mb.inputs[0]); L.new((pb_mask.outputs[0] if pb_mask else pb.outputs["Fac"]), mb.inputs[1])
     mk_ = N.new("ShaderNodeMath"); mk_.operation = "MAXIMUM"; L.new(ma.outputs[0], mk_.inputs[0]); L.new(mb.outputs[0], mk_.inputs[1])
     # r9: surfaces that turn grazing to the camera in motion compress the drawn lines into streaks -> fade the texture out there
     # (current facing = Normal . Incoming); those pixels fall back to the flat material colour like any untextured surface
@@ -168,10 +188,35 @@ def eff_views():
         yv = math.radians(_AL.get(v, {}).get("yaw", 0.0)); c = Vector((ax_, ay_, 0)).normalized()
         cv = Vector((c.x * math.cos(-yv) - c.y * math.sin(-yv), c.x * math.sin(-yv) + c.y * math.cos(-yv), 0))
         cands.append((ch.dot(cv) + 0.45 * cv.y + (0.15 if v == VIEW else 0), v))  # r9: bias toward more frontal drawings (they degrade more gracefully on a turn)
-    cands.sort(reverse=True); cands = cands[:2] if len(cands) > 1 else cands + [(-1, cands[0][1])]
+    cands.sort(reverse=True)
+    # r10: slot B = the best OTHER view among all (back views included); it only fills faces the chosen view never saw at rest (pm_A = 0,
+    # e.g. far-side back hair exposed by the SE/SW head-yaw cheat). Faces A saw keep A (B weight 0.05 vs A 0.95 in the per-face pick).
+    allv = []
+    for v, (ax_, ay_) in AZ.items():
+        if v == cands[0][1] or ("pj_" + v) not in body.data.uv_layers or not os.path.exists(_tex_base(v)): continue
+        yv = math.radians(_AL.get(v, {}).get("yaw", 0.0)); c = Vector((ax_, ay_, 0)).normalized()
+        cv = Vector((c.x * math.cos(-yv) - c.y * math.sin(-yv), c.x * math.sin(-yv) + c.y * math.cos(-yv), 0)); allv.append((ch.dot(cv), v))
+    allv.sort(reverse=True); cands = [cands[0], allv[0] if allv else (-1, cands[0][1])]
+    # pick B by coverage: the view that saw the most faces that A never saw and that face the camera in this frame
+    try:
+        import numpy as np
+        dg = bpy.context.evaluated_depsgraph_get(); me_ = body.evaluated_get(dg).data; nf_ = len(me_.polygons)
+        nr_ = np.zeros(nf_ * 3); me_.polygons.foreach_get("normal", nr_); nr_ = nr_.reshape(-1, 3) @ np.array(body.matrix_world.to_3x3()).T
+        tc = np.array(cam.matrix_world.to_3x3().col[2].normalized()); vis_now = (nr_ @ tc) > 0.1
+        def pmv(v):
+            a_ = me_.attributes.get("pm_" + v); b_ = np.zeros(nf_, np.float32)
+            if a_: a_.data.foreach_get("value", b_)
+            return b_ > 0.5
+        miss = vis_now & ~pmv(cands[0][1]); best_ = (-1, None)
+        for _, v in allv:
+            n_ = int((miss & pmv(v)).sum())
+            if n_ > best_[0]: best_ = (n_, v)
+        if best_[1]: cands[1] = (dict((v, s) for s, v in allv).get(best_[1], -1), best_[1])
+    except Exception as e_:
+        print("eff_views coverage pick failed:", e_)
     # B fades in only near the bisector: 0 while B is >= 15 deg farther than A, 0.5 when equidistant (each view is pure at its own rest)
     aA, aB = (math.degrees(math.acos(max(-1, min(1, s_)))) for s_, _ in cands)
-    w = [1.0, 0.0]  # r9: whole-head switch (per-face mixing of two drawings fragmented the eyes); the B slot stays wired for later blending
+    _wb = float(os.environ.get("ILLUS_WB", "0.05")); w = [1 - _wb, _wb]  # r9/r10: whole-head choice of A; B fills only what A never saw (see the per-face pick in _texnodes)
     return [(cands[0][1], w[0]), (cands[1][1], w[1])]
 def eff_view(): return eff_views()[0][0]
 def set_face(fr):

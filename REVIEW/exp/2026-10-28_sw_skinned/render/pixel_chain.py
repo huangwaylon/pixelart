@@ -725,6 +725,7 @@ def run(stem, info, opt):
     if ORPHAN: out = [orphan_rule(g, st) for g, st in zip(out, sts)]
     if PZCLEAN: out = [pz_cleanup(g, F, st) for g, F, st in zip(out, Fs, sts)]
     if EDGESKIN: out = [edge_skin_rule(g) for g in out]  # after the masters' cleanup so its face pass sees the plain skin
+    out = [speck_rule(g) for g in out]  # round 10: specks the cleanup may have introduced
     out = [final_limb_rules(g, st) for g, st in zip(out, sts)]  # round 9: limb rules re-applied last (after every colour/cleanup stage)
     out = [hx.main_comp(hx.drop_bare_k(g)) for g in out]
     if opt.get('smear', True):
@@ -824,6 +825,18 @@ def pz_cleanup(g, F, st=None):
         keep |= (lab >= 0) & np.isin(_mat(lab), [MI[m] for m in THINF if m in MI])
         keep &= (g != '.')
         c[keep] = g[keep]
+    # round 10, global by colour family: the cleanup's merges must not eat eye/mouth features.  A pre-cleanup catchlight/eye-white W that
+    # touches iris or lash colours (K h g L) after the cleanup comes back; so do iris pixels (h g L) next to a lash K and a W, and a mouth m
+    # that is not on the silhouette edge.
+    dk = np.isin(c, list('KhgL')); pc8 = np.pad(dk, 1)
+    near_dk = sum(pc8[1 + dy:1 + dy + c.shape[0], 1 + dx:1 + dx + c.shape[1]] for dy in (-1, 0, 1) for dx in (-1, 0, 1) if dy or dx) > 0
+    rw = (g == 'W') & (c != 'W') & near_dk; c[rw] = 'W'
+    wW = np.pad(c == 'W', 1); kK = np.pad(c == 'K', 1)
+    nW = sum(wW[1 + dy:1 + dy + c.shape[0], 1 + dx:1 + dx + c.shape[1]] for dy in (-1, 0, 1) for dx in (-1, 0, 1) if dy or dx) > 0
+    nK = sum(kK[1 + dy:1 + dy + c.shape[0], 1 + dx:1 + dx + c.shape[1]] for dy in (-1, 0, 1) for dx in (-1, 0, 1) if dy or dx) > 0
+    ri = np.isin(g, list('hgL')) & np.isin(c, list('sSk')) & nW & nK; c[ri] = g[ri]
+    bg = np.pad(c == '.', 1); onedge = sum(bg[1 + dy:1 + dy + c.shape[0], 1 + dx:1 + dx + c.shape[1]] for dy in (-1, 0, 1) for dx in (-1, 0, 1)) > 0
+    rm = (g == 'm') & (c != 'm') & np.isin(c, list('sS')) & ~onedge; c[rm] = 'm'
     return c
 
 
@@ -879,7 +892,7 @@ def final_limb_rules(g, st):
     """last pass, global: (1) limb width - a limb fill pixel outside a 2x2 core + 1 px fringe of its limb becomes outline (only while the
     limb keeps a core); (2) limb crumbs - a limb piece < SPECK_END px that is not its largest piece is folded into the surrounding colour"""
     g = g.copy(); lab = st['lab']
-    for q in LIMBQ():
+    for q in LIMBQ() + LIMBQ():  # twice: a grown 2x2 block can leave the limb's other pixels as a fringe-less tail
         Lq = limb_cells(lab, q) & (g != 'K') & (g != '.')
         if not Lq.any(): continue
         core = nd.binary_opening(np.pad(Lq, 1), np.ones((2, 2)))[1:-1, 1:-1]
@@ -903,8 +916,14 @@ def speck_rule(g):
     skin = np.isin(pg, list('sSmk'))
     near_skin = sum(skin[2 + dy:2 + dy + H, 2 + dx:2 + dx + W] for dy in range(-2, 3) for dx in range(-2, 3)) > 0
     same = sum((pg[2 + dy:2 + dy + H, 2 + dx:2 + dx + W] == g) for dy in (-1, 0, 1) for dx in (-1, 0, 1) if dy or dx)
-    bad = np.isin(g, list('WQL')) & (same == 0) & ~near_skin
-    out = g.copy()
+    light = np.isin(g, list('WQL'))
+    cl, n = nd.label(light, np.ones((3, 3)))
+    small = np.isin(cl, [k for k in range(1, n + 1) if (cl == k).sum() <= 2]) if n else np.zeros_like(light)
+    bad = light & small & ~near_skin  # light 1-2 px clusters on hair/bow, away from any skin: specks (back views, hair sheen flicker)
+    dk = np.isin(pg, list('KhHg'))
+    near_dk = sum(dk[2 + dy:2 + dy + H, 2 + dx:2 + dx + W] for dy in (-1, 0, 1) for dx in (-1, 0, 1) if dy or dx) > 0
+    cheek = (g == 'W') & ~near_dk & near_skin  # a white on skin with no lash/iris next to it is a cheek speck, not a catchlight
+    out = g.copy(); out[cheek] = 's'
     for y, x in zip(*np.nonzero(bad)):
         nb = [pg[2 + y + dy, 2 + x + dx] for dy in (-1, 0, 1) for dx in (-1, 0, 1) if (dy or dx) and pg[2 + y + dy, 2 + x + dx] not in '.K']
         if nb: out[y, x] = max(set(nb), key=nb.count)

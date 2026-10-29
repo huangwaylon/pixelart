@@ -31,12 +31,12 @@ def main():
     tags = sys.argv[1:]; rows = []; rep = {}
     for T in tags:
         res = {}; tl = []
-        for a, V in (('rest', 'S'), ('rest', 'SE'), ('walk', 'SE')):
+        for a, V in (('rest', 'S'), ('rest', 'SE'), ('walk', 'SE'), ('idle', 'SE')):
             fs = sorted(glob.glob(f'{D}/r9/{T}/{a}/{a}_{V}_px/f*.txt'))
             sc = []
             for f in fs:
                 s, gs, m = score(hx.read_grid(f), V); sc.append(s)
-                if len(tl) < 12:
+                if len(tl) < 16:
                     x0, y0, x1, y1 = FB[V]; t = hx.render(gs[y0 - 8:y1 + 3, x0 - 4:x1 + 4], 6, BG).convert('RGB')
                     ImageDraw.Draw(t).text((3, 2), f'{T} {a} {V} {os.path.basename(f)[:3]} {s:.3f}', fill=(255, 255, 150)); tl.append(t)
             res[f'{a}_{V}'] = round(float(np.mean(sc)), 4) if sc else None

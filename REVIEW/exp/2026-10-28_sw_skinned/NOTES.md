@@ -1115,3 +1115,9 @@ Other changes:
   |---|---|---|
   | latest build, 48 clips | 47/48 (build had 33/48) | – |
   | p8 frame set | 9/9 | .298 |
+
+## M: round 10
+- **Asymmetric bent arms.** `mbody.ASYM` holds per-side offsets plus a phase lag for walk and run. Elbow floors: walk 22°, run 72°. Jump and dash arms are asymmetric too.
+  - Minimum elbow bend: walk 24°, run 78°, jump 20°, dash 20°.
+- **Wider run legs.** Track 0.80 with a 4° knee splay (diagonal views 1.0). Leg gap at 1x is ≥ 2 px.
+- Gates pass.

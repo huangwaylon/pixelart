@@ -1,0 +1,21 @@
+#!/bin/zsh
+# panel_ab.sh <build> <baseline1_id> <baseline1_label> (I): ONE Opus pass in 3 roles (AD / animation / game director) with A/B boards vs
+# baseline1 (ab_<label>/) and the r4-head hybrid (ab_hyb/), written to out/<build>/panel/ (refuses to overwrite existing panel files).
+# env BDESC = one-line description of build B.  Make the boards first: rl.py ab <build> <base> _<label> "A <label>"; rl.py ab <build> 20261029_3831ac8 _hyb "A r4head"
+EXP=/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned
+B=$EXP/release/out/$1; P=$B/panel; A1=${2}; A1L=${3}; mkdir -p $P; [ -n "$(ls $P/*_opus.txt 2>/dev/null)" ] && { echo "panel files exist in $P - refusing to overwrite"; exit 1; }
+GATES=$(sed -n '/^\*\*Totals/p' $B/GATES.md | tr '"' "'")
+CTX="Chibi swordswoman game sprite (96 px master art in a 128 px cell; dark bob with full bangs, side locks, bun, big red bow; red kimono-dress with bell sleeves, obi, short skirt, thigh-high socks). Build B (${BDESC}): 3D rig whose head carries the hi-res Gemini illustration as a baked UV texture (with illustrated expression swaps), pixelized by the standard chain plus the masters' pz.py cleanup. FOCUS: front-face (S/SE/SW) readability at 1x (target >= 8, the r4head level) and limbs never split/vanish. Owner goals: faces follow the head, on-model with the m96 masters, expressive and readable at 1x; no texture smears in motion; natural stance (no lean back), head not jutted back, full bangs. Team: R = rig/head/texture, M = motion, P = pixel chain, F = face illustrations. Gate totals for B: $GATES"
+AB="A/B boards: files ab_${A1L}_* compare 'A ${A1L}' (previous build ${A1}) vs 'B now'; files ab_hyb_* compare 'A r4head' (round-4 pipeline: projected m96 master head pixels + 2D face decals) vs 'B now'. ab_heads = head close-ups 6x, ab_<act> = full figure 3x."
+FMT="Answer in <= 380 words. Line 1 exactly 'SCORE: N/10' for B (strict: 5 = usable but flawed, 7 = good game quality). Line 2 'SCORE ${(U)A1L}: N/10', line 3 'SCORE R4HEAD: N/10' (your criteria applied to each baseline). Then 1-10 sub-scores for your criteria for B. Then 'A/B:' rating ${A1L} / r4head / B (1-10 each) for: face follows head, face on-model, face readable at 1x, expressive, no smears in motion, bangs full, stance natural. Then 'VERDICT:' one line: which head is best now. Then 'ISSUES:' the 5 most important problems in B as '[OWNER R|M|P|F] action direction frames: problem -> concrete fix'."
+H7=($B/ab_${A1L}/ab_heads_idle.png $B/ab_${A1L}/ab_heads_walk.png $B/ab_${A1L}/ab_heads_run.png); HH=($B/ab_hyb/ab_heads_idle.png $B/ab_hyb/ab_heads_walk.png $B/ab_hyb/ab_heads_run.png)
+F7=($B/ab_${A1L}/ab_walk.png); FH=($B/ab_hyb/ab_walk.png)
+SH=($B/walk/walk_sheet.png $B/idle/idle_sheet.png $B/run/run_sheet.png $B/hurt/hurt_sheet.png $B/dash/dash_sheet.png $B/jump/jump_sheet.png)
+PV=($B/idle/idle_preview_sheet.png $B/walk/walk_preview_sheet.png $B/hurt/hurt_preview_sheet.png)
+ST=($B/walk/walk_strip1x.png $B/idle/idle_strip1x.png $B/run/run_strip1x.png)
+opus() { local Q=$1 O=$2; shift 2; for t in 1 2; do zsh -ic "claude-as be_system --dangerously-skip-permissions --model claude-opus-5-5 -p \"$Q  Use the Read tool to view these images (absolute paths): $* . Do not modify any files.\"" > $O 2>/dev/null; grep -q SCORE $O && break; done; }
+opus "You are the ART DIRECTOR (pixel-art game, Octopath/Sea of Stars standards). $CTX First image = approved m96 masters. Criteria: on-model, face quality at 1x, cleanliness (orphans/speckle), silhouette/hair. $AB $FMT" $P/ad_opus.txt $B/masters_ref.png $H7 $HH $SH[1,3] &
+opus "You are the ANIMATION DIRECTOR (12 principles, PMD/Pokemon sprite animation). $CTX Criteria: face acting/expressions per beat, face stays locked to the head in motion (no smears), posing/stance (idle head turn, hurt reaction must be a guard/recoil, not a T), secondary motion. Preview sheets are the smooth 3D render. $AB $FMT" $P/anim_opus.txt $F7 $FH $SH $PV &
+opus "You are the GAME DIRECTOR shipping this sprite. $CTX *_strip1x images are TRUE in-game size (rows = 8 directions). Criteria: 1x readability (face included), direction consistency, action clarity, ship-readiness. $AB $FMT" $P/game_opus.txt $ST $SH $H7[1] $HH[1] &
+wait
+for f in $P/*_opus.txt; do echo "$(basename $f): $(grep -m3 SCORE $f | tr '\n' ' ') ($(wc -c < $f) bytes)"; done

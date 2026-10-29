@@ -36,7 +36,7 @@ if __name__ == "__main__":
     for act in sys.argv[1].split(","):
         for v in AZ:
             ly = lean_yaw_for(v, sk)
-            tune = {"track": 0.85} if (act == "run" and v in ("SE", "SW", "NE", "NW")) else None   # R9: wider diagonal run stride (legs separate)
+            tune = {"track": 1.0} if (act == "run" and v in ("SE", "SW", "NE", "NW")) else None   # R9: wider diagonal run stride (legs separate)
             p = mbuild.build(act, tune=tune, var=dict(name=f"{act}_{v}", lean_yaw=ly, lean_gain=1.3 if ly else 1.0))
             m = json.load(open(p)); m["action"] = f"{act}_{v}"; m["view_cheat"] = {"view": v, "lean_yaw_deg": ly, "lean_gain": 1.3 if ly else 1.0}
             out = os.path.join(EXP, "motion", "view", f"{act}_{v}.json"); json.dump(m, open(out, "w"), indent=0); os.remove(p)

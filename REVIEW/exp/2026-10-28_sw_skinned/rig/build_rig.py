@@ -379,6 +379,7 @@ else:
         fa = (np.clip(nrmH @ dv, 0, 1) * pm).astype(np.float32)  # r9: rest facing of each face toward this view's camera (per-face view pick)
         at2 = me.attributes.new("fa_" + view, "FLOAT", "FACE"); at2.data.foreach_set("value", fa)
         print("illus proj", view, int(pm.sum()), "of", int(headgrp.sum()), flush=True)
+    hm_ = me.attributes.new("hairmask", "FLOAT", "FACE"); hm_.data.foreach_set("value", np.isin(np.array(fmat).astype(str), ["hair", "bow"]).astype(np.float32))  # r10: B-slot fill only on hair/bow
     ao["head_mode"] = "illus"
 LIDC = {"leg_L": (255, 0, 0), "boot_L": (255, 0, 0), "foot_L": (255, 0, 0), "leg_R": (0, 255, 0), "boot_R": (0, 255, 0), "foot_R": (0, 255, 0),
         "arm_L": (0, 0, 255), "sleeve_L": (0, 0, 255), "hand_L": (0, 0, 255), "arm_R": (255, 255, 0), "sleeve_R": (255, 255, 0), "hand_R": (255, 255, 0)}

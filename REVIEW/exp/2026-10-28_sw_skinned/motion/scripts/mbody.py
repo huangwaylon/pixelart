@@ -115,12 +115,15 @@ class Gait:
         # arms: left arm swings forward with the right leg (p = 0.5)
         arm, sh = {}, {}
         for side, off in (("L", 0.0), ("R", 0.5)):
-            ph = p - off
-            sw = float(pkey(P["arm_swing"], ph - P["lag_upper"])) - P.get("arm_lean_comp", 0.0) * ch_pitch   # +fwd, measured from world vertical
+            asy = ASYM.get(P.get("asym_set", ""), {}).get(side, {})   # R10: the two arms never mirror each other
+            ph = p - off - asy.get("lag", 0.0)
+            sw = float(pkey(P["arm_swing"], ph - P["lag_upper"])) - P.get("arm_lean_comp", 0.0) * ch_pitch + asy.get("swing", 0.0)   # +fwd, from world vertical
             fw_ness = float(pkey(P["arm_swing"], ph - P["lag_fore"])) / max(1e-6, P["arm_amp_ref"])
             elbow = P["elbow0"] + P["elbow_amp"] * fw_ness + P["elbow_bob"] * float(pkey(P["bob"], (2 * ph - P["lag_fore"]) % 1))
             wr = P["wrist_amp"] * (float(pkey(P["arm_swing"], ph - P["lag_hand"])) - float(pkey(P["arm_swing"], ph - P["lag_fore"]))) / max(1e-6, P["arm_amp_ref"])
-            abd = P["abd0"] + P["abd_amp"] * abs(sw) / max(1e-6, P["arm_amp_ref"])
+            abd = P["abd0"] + P["abd_amp"] * abs(sw) / max(1e-6, P["arm_amp_ref"]) + asy.get("abd", 0.0)
+            elbow = max(P.get("elbow_min", 0.0), elbow + asy.get("elbow", 0.0))   # R10: never a straight arm
+            wr = wr + asy.get("wrist", 0.0)
             arm[side] = dict(swing=sw, abd=abd, cross=(P["cross"] * max(0, sw) - P.get("cross_back", 0.0) * max(0, -sw)) / max(1e-6, P["arm_amp_ref"]), elbow=elbow, wrist=P["wrist0"] + wr,
                              twist=P.get("twist", 0), elbow_in=P.get("elbow_in", 0) * max(0, fw_ness))
             sh[side] = (P.get("sh_elev0", 0.0) + P["sh_elev"] * max(0.0, sw / P["arm_amp_ref"]) + P["sh_bob"] * float(pkey(P["bob"], h - 0.12)),
@@ -144,9 +147,15 @@ def pkey_clamped(keys, u):
 
 
 # ---------------------------------------------------------------- parameter sets
+ASYM = {   # R10: per-side offsets (deg) and phase lag (cycle fraction) so the arms are never mirrored
+    "walk": {"L": dict(elbow=0.0, swing=0.0, abd=0.0, wrist=4.0, lag=0.0), "R": dict(elbow=9.0, swing=3.0, abd=2.5, wrist=-3.0, lag=0.025)},
+    "run": {"L": dict(elbow=0.0, swing=0.0, abd=0.0, wrist=3.0, lag=0.0), "R": dict(elbow=10.0, swing=-4.0, abd=3.0, wrist=-4.0, lag=0.02)},
+}
+
+
 WALK = dict(
     # ROUND 2 (owner: elegant, confident, feminine; >=1 px or held; snappier with holds): poised chibi model walk
-    T=0.84, frame_ms=[90, 120, 90, 120], sf=0.60, a=0.20, track=0.62, toe_out=6.0, geo=True, geo_pre=0.0, geo_off=0.0, foot_y=0.0,
+    T=0.84, frame_ms=[90, 120, 90, 120], asym_set="walk", elbow_min=22.0, sf=0.60, a=0.20, track=0.62, toe_out=6.0, geo=True, geo_pre=0.0, geo_off=0.0, foot_y=0.0,
     # key phases (half cycle): contact 0, DOWN .214 (held 120 ms), PASSING .5, UP .714 (held 120 ms)
     dip=[(0.0, 0.15), (0.214, 1.0), (0.5, 0.55), (0.714, 0.0, "flat"), (0.9, 0.05)], dip_amp=0.024,
     strike_pitch=18.0, flat_at=0.2, heel_rise=0.32, lift_pitch=-40.0, arm_lean_comp=0.0,
@@ -167,7 +176,7 @@ WALK = dict(
 RUN = dict(
     # ROUND 3 (owner: E preview "very stiff and awkward, more leaning forward, more natural"): confident 12-18 deg lean from the
     # ankles/hips with a straight back, chest lifted, head up looking ahead; knee drive, heel kick-back, flight, 90 deg arm pump, bounce
-    T=0.56, frame_ms=[60, 80, 60, 80], frame_off=0.0, arm_lean_comp=0.85, sf=0.30, a=0.21, track=0.55, toe_out=4.0, foot_y=-0.05,
+    T=0.56, frame_ms=[60, 80, 60, 80], asym_set="run", elbow_min=72.0, frame_off=0.0, arm_lean_comp=0.85, sf=0.30, a=0.21, track=0.80, knee_out=4.0, toe_out=4.0, foot_y=-0.05,
     strike_pitch=8.0, flat_at=0.2, heel_rise=0.36, lift_pitch=-58.0,
     strike_vel=0.4, lift_vel=0.4,
     # heel kicks up behind first (u .2), then the knee drives forward and up (u .5-.65), then the foot reaches down under the hips
@@ -180,7 +189,7 @@ RUN = dict(
     arm_swing=[(0.0, -44.0), (0.5, 52.0)], arm_amp_ref=52.0, lag_upper=0.02, lag_fore=0.0, lag_hand=0.12,
     elbow0=90.0, elbow_amp=14.0, elbow_bob=6.0, wrist0=12.0, wrist_amp=18.0, abd0=-12.0, abd_amp=0.0, cross=22.0, cross_back=14.0, elbow_in=14.0,
     sh_elev=6.0, sh_bob=-3.0, sh_fwd=10.0, sh_elev0=-1.0, sh_fwd0=0.0,
-    sq_chest=0.06, sq_head=0.03, sq_lag=0.05, knee_out=0.0,
+    sq_chest=0.06, sq_head=0.03, sq_lag=0.05,
 )
 
 
@@ -282,8 +291,8 @@ class Jump:
         abd = float(okey([(0, -12), (0.14, 0), (0.30, 10), (0.44, 42), (0.52, 50), (0.60, 46), (0.68, 36), (0.74, 28), (0.82, 22), (0.95, 18), (1.03, -4), (1.14, -12)], t))
         el = float(okey([(0, 20), (0.14, 28), (0.26, 14), (0.30, 8), (0.36, 10), (0.44, 22), (0.52, 26), (0.64, 34), (0.74, 30), (0.82, 40), (0.95, 22), (1.03, 26), (1.14, 20)], t))
         wr = float(okey([(0, 6), (0.16, -20), (0.26, -30), (0.32, 25), (0.5, 15), (0.66, -15), (0.74, -10), (0.80, 25), (0.92, -8), (1.2, 6)], t))
-        asym = float(okey([(0, 0), (0.30, 0.6), (0.48, 1.0), (0.66, 0.8), (0.84, 0.2), (1.0, 0)], t))   # one arm high, one lower (graceful, not twinned)
-        arm = {sd: dict(swing=sw + (22 if sd == "L" else -22) * asym, abd=0.75 * abd + (6 if sd == "R" else 0), elbow=el + 8, elbow_in=10.0, wrist=wr + 8, wrist_out=-10, cross=0) for sd in "LR"}
+        asym = float(okey([(0, 0.25), (0.30, 0.6), (0.48, 1.0), (0.66, 0.9), (0.84, 0.7), (1.0, 0.3), (1.2, 0.25)], t))   # R10: never twinned, incl. fall/land   # one arm high, one lower (graceful, not twinned)
+        arm = {sd: dict(swing=sw + (22 if sd == "L" else -22) * asym, abd=0.75 * abd + (6 if sd == "R" else 0), elbow=el + (8 if sd == "L" else 22), elbow_in=10.0, wrist=wr + (8 if sd == "L" else -4), wrist_out=-10, cross=0) for sd in "LR"}
         she = float(okey([(0, 0), (0.14, -4), (0.30, 12), (0.52, 12), (0.74, 6), (0.80, -6), (0.92, 2), (1.2, 0)], t))
         spec["arm"] = arm; spec["shoulder"] = {sd: (she, 0) for sd in "LR"}
         feet = {}
@@ -368,8 +377,8 @@ class Dash(_OneShot):
         wr = K([(0, 10), (0.16, 25.0), (0.20, -10.0), (0.29, -5.0), (0.45, 10.0), (0.53, 20.0), (0.62, 25.0), (0.74, 12.0), (1.0, 10.0)], t)
         arm = {"L": _arm(K(early_sw + [(0.53, 38.0), (0.62, 24.0), (0.74, 5.0), (1.0, 2.0)], t), K(early_ab + [(0.53, 20.0), (0.62, 10.0), (0.74, -8.0), (1.0, -12.0)], t),
                          K(early_el + [(0.53, 72.0), (0.62, 58.0), (0.74, 28.0), (1.0, 18.0)], t), wr),
-               "R": _arm(K(early_sw[:-1] + [(0.45, -26.0), (0.53, -22.0), (0.62, -8.0), (0.74, 2.0), (1.0, 2.0)], t), K(early_ab + [(0.53, 24.0), (0.62, 12.0), (0.74, -8.0), (1.0, -12.0)], t),
-                         K(early_el + [(0.53, 46.0), (0.62, 38.0), (0.74, 24.0), (1.0, 18.0)], t), wr + 5)}
+               "R": _arm(K(early_sw[:-1] + [(0.45, -26.0), (0.53, -22.0), (0.62, -8.0), (0.74, 2.0), (1.0, 2.0)], t - 0.03), K(early_ab + [(0.53, 24.0), (0.62, 12.0), (0.74, -8.0), (1.0, -12.0)], t - 0.03),
+                         K(early_el + [(0.53, 46.0), (0.62, 38.0), (0.74, 24.0), (1.0, 18.0)], t - 0.03) + 15.0 * K([(0, 0), (0.24, 1), (0.62, 1), (0.9, 0)], t), wr + 5)}   # R10: R arm lags 30 ms, bends more
         spec["arm"] = arm; spec["shoulder"] = {sd: (K([(0, -2), (0.16, -4), (0.20, 6), (0.53, -4), (0.62, 4), (1, -2)], t), -3.0) for sd in "LR"}
         # feet: L = front foot, R = back (push-off) foot
         fL = (K([(0, 0.0), (0.08, 0.06), (0.16, 0.07, "flat"), (0.20, 0.17), (0.24, 0.20), (0.29, 0.18), (0.45, 0.22), (0.53, 0.22, "flat"), (0.62, 0.16), (0.74, 0.04), (0.86, 0.02), (1.0, 0.02)], t),

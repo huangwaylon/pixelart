@@ -1,0 +1,9 @@
+KeyError: '/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/illus/../../motion/idle.json'
+KeyError: '/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/illus/../../motion/idle.json'
+Traceback (most recent call last):
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/illus/r9/r10/idle/idle_/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/illus/../../motion/idle.json.json'
+FileNotFoundError: [Errno 2] No such file or directory: 'SE'
+FileNotFoundError: [Errno 2] No such file or directory: 'SE'
+Traceback (most recent call last):
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/face/illus/r9/r10/SE/SE_SE.json'
+r10 {'rest_S': 0.4438, 'rest_SE': 0.0339, 'walk_SE': 0.0712, 'idle_SE': None}

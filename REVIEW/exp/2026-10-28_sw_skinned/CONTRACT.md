@@ -354,6 +354,14 @@ it in R's status log, and M will then omit it.
   - **Idle heels pinned:** free-heel lift 30 -> 3 deg. Ankle drift in E at 1x is 3.1 -> ~0.7 px.
   - **Wider diagonal run stride:** motion/view/run_{SE,SW,NE,NW}.json have foot track 0.85 (was 0.55). Min SE leg gap 0.3 -> 2.7 px.
   - Strips: motion/out/strip_{walk,idle,run_SE}_r9.png.
+- 10:40 M (ROUND 10): re-baked walk, run, jump, dash, the 16 view files and the walk/run/jump variants. Idle and hurt are unchanged (already asymmetric). Gates PASS everywhere. I: please re-render.
+  - **Arms never mirrored, never straight:**
+    - walk/run: the R arm differs (elbow +9/+10 deg, its own swing/abd/wrist offsets, 2-2.5% phase lag); elbow floor 22 deg walk, 72 deg run.
+    - jump: arms stay asymmetric through the fall/land (R elbow +14).
+    - dash: the R arm lags 30 ms and bends +15 deg through glide/skid/brake.
+    - Measured min elbow bend: walk 24, run 78, jump 20, dash 20 deg.
+  - **Wider run legs:** main run track 0.55 -> 0.80 with 4 deg knee splay; diagonal view files 1.0. Min leg gap at 1x: run (SE cam) 0.3 -> 2.0 px, run_SE 2.7 px.
+  - Strips: motion/out/strip_{walk,run,dash,jump}_SE_E_r10.png.
 
 # ROUND 2 (2026-10-28, owner feedback on round 1)
 > "Gradual improvements. Limbs like legs sometimes flicker and disappear. I need movement in the whole body including the
