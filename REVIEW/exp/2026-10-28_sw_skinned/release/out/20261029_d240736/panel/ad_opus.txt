@@ -1,0 +1,27 @@
+SCORE: 5/10
+SCORE A: 5/10
+
+On-model 5 · Outline/cleanliness 4 · Shading/form 5 · Silhouette 6 · Face 4
+
+(a) **Head jutted back:** mostly no. It is mild in idle E/W f05–f08 and run W f06–f07, where the chin lifts and the skull sits about 1 px behind the neck line.
+(b) **Balding:** not in B. The bangs are full, if anything too heavy. A shows a forehead wedge through a centre part in S across all walk, run and idle frames.
+(c) **Lean back:** yes, a sway-back with the belly pushed out in idle SE f00–f04, idle NE f00–f03 and walk SE f00/f07. The rest is roughly upright.
+
+ISSUES:
+1. [F] all actions, S/SE/SW, all frames: the fringe covers one or both eyes, and blush and mouth are missing at 1x (walk S f00/f06, SE f05–f07). She reads as sullen or blank. -> Lift the bang texture 2 px, keep both eyes clear, and draw the pupil, highlight and blush as fixed-palette overlays after the E2 pass.
+2. [P] all actions, N/NE/NW plus hair in every direction: stray white pixels (run N f01/f05, idle N f06–f09) and speckled hair from k-centroid. -> Clamp E2 to the hair ramp (3 tones plus 1 highlight) and add white to the orphan rule.
+3. [P] E/W profile, all actions: the face is a flat, unlit peach blob with no jaw or nose outline and a mouth on the silhouette edge (walk E f03–f06). -> Add a selective-outline pass on skin, plus one shade tone under the jaw.
+4. [R] idle SE/NE f00–f04, walk SE f00/f07: belly forward, chest back. -> Pitch the spine 2–3° forward and level the neck.
+5. [R/P] body, all frames: the dress reads as a sack-hoodie. The obi is a grey slab instead of lavender/dark, sleeves are blobs, the skirt has no flare, and the red sock band is thin or missing. -> Recolour the obi, flare the skirt hem, and make the sock band 2 px.
+6. [M] run S f00, run N f01, run E f05: a leg disappears or merges into the other. -> Keep at least 2 px between the legs, and draw the far leg in shadow tone instead of letting the near leg hide it.
+
+A/B (A vs B):
+- Face follows head: 5 vs 8
+- Face on-model: 7 vs 5
+- Face expressive: 6 vs 5
+- Face readable at 1x: 7 vs 4
+- Stance natural: 6 vs 6
+- Head position: 7 vs 7
+- Bangs full: 5 vs 9
+
+VERDICT: Mixed. B is better on structure (the face stays on the head in every turn and the bangs are full), but it loses face readability and appeal (eyes hidden, no blush or mouth, flat skin, speckles). Keep the B geometry and put A-style feature decals on top.

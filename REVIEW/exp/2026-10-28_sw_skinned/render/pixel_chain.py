@@ -47,6 +47,7 @@ HIPF = float(os.environ.get('HIPF', '0.35'))  # A-line envelope starts at this f
 ALINE = float(os.environ.get('ALINE', '0.6'))  # skirt widening per row and side (px)
 SKINMAX = int(os.environ.get('SKINMAX', '3'))  # max skin-band rows under the hem
 ORPHAN = os.environ.get('ORPHAN', '1') == '1'  # round 6 orphan rule for every material
+COLOR = os.environ.get('COLOR', 'vote')  # colour stage: vote (material ramps + E2 textures) | ec0 (pz EC0 on the 8x colour render 'pv')
 RIM = os.environ.get('RIM', 'g')  # near-leg rim tone along the leg|leg separation (d = sock sheen; g = boot light, stronger)
 SMOOTH = os.environ.get('SMOOTH', '1') == '1'
 HOLE = int(os.environ.get('HOLE', '4'))  # enclosed background holes up to this many px are filled
@@ -141,6 +142,9 @@ def load(stem, i, dx, dy, pdir):
         w = hx.cells(al.astype(float)).sum((2, 3))
         F['rpos'] = np.stack([hx.cells(rp[..., k] * al).sum((2, 3)) for k in range(3)], -1) / np.maximum(w, 1)[..., None]
         F['rpos_ok'] = w > 0
+    if COLOR == 'ec0':
+        pv = f'{stem}_f{i:02d}_pv.png'
+        if os.path.exists(pv): F['pv'] = crop(hx.rd16(pv), dx, dy)
     if TEXMATS or TEXAUTO:
         tp = f'{stem}_f{i:02d}_{TEXPASS}.png'
         if os.path.exists(tp): F['texc'] = crop(hx.rd16(tp), dx, dy)
@@ -594,9 +598,17 @@ def frame(F, prev, opt):
     # far-limb dark fallback for suppressed lines
     for a_, b_ in (('D', 'd'), ('S', 's'), ('R', 'E'), ('h', 'H'), ('H', 'g')):
         g[dark & (g == a_)] = b_
-    if 'texc' in F:
+    if 'texc' in F and COLOR != 'ec0':
         sel = fill & (np.isin(M_, [MI[m] for m in TEXMATS if m in MI]) if TEXMATS else True)
         g = textured_chars(g, F['texc'], sel, M_)
+    if 'pv' in F:  # COLOR=ec0: the masters' E2 recipe (pz.py EC0 incl. its face pass) on the 8x colour render gives the colours of every fill
+        # cell (body + head alike); the chain keeps geometry (fill, limb protection, lines, outline, temporal, orphans).  EC0's own K is kept
+        # only in the interior (eyes, lashes, folds) - near our silhouette its outline would double ours.
+        import p8_ec0
+        e = p8_ec0.ec0_frame(np.clip(F['pv'] * 255, 0, 255).astype(np.uint8))
+        edge = fill & ~nd.binary_erosion(fill, CROSS, iterations=1)
+        take = fill & (e != '.') & ~((e == 'K') & edge)
+        g = np.where(take, e, g)
     g[line] = 'K'
     # surface lock: a fill cell showing the same surface point (rest-pose correspondence) and segment as in the previous frame keeps the
     # previous frame's exact shade unless its lum moved by more than LOCK (moving shading boundaries stick to the surface)

@@ -1,0 +1,322 @@
+{
+ "build": "20261029_d240736",
+ "dirs": [
+  "S",
+  "SE",
+  "E",
+  "NE",
+  "N",
+  "NW",
+  "W",
+  "SW"
+ ],
+ "actions": {
+  "walk": {
+   "dirs": [
+    "S",
+    "SE",
+    "E",
+    "NE",
+    "N",
+    "NW",
+    "W",
+    "SW"
+   ],
+   "frames": 8,
+   "ms": [
+    71,
+    118,
+    126,
+    105,
+    71,
+    118,
+    126,
+    105
+   ],
+   "gifs": {
+    "S": "walk/S.gif",
+    "SE": "walk/SE.gif",
+    "E": "walk/E.gif",
+    "NE": "walk/NE.gif",
+    "N": "walk/N.gif",
+    "NW": "walk/NW.gif",
+    "W": "walk/W.gif",
+    "SW": "walk/SW.gif"
+   },
+   "pv": {
+    "S": "walk/S_preview.gif",
+    "SE": "walk/SE_preview.gif",
+    "E": "walk/E_preview.gif",
+    "NE": "walk/NE_preview.gif",
+    "N": "walk/N_preview.gif",
+    "NW": "walk/NW_preview.gif",
+    "W": "walk/W_preview.gif",
+    "SW": "walk/SW_preview.gif"
+   },
+   "8dir": "walk/walk_8dir.gif",
+   "strip1x": "walk/walk_strip1x.png",
+   "sheet": "walk/walk_sheet.png",
+   "8dir_pv": "walk/walk_8dir_preview.gif",
+   "pv_sheet": "walk/walk_preview_sheet.png"
+  },
+  "run": {
+   "dirs": [
+    "S",
+    "SE",
+    "E",
+    "NE",
+    "N",
+    "NW",
+    "W",
+    "SW"
+   ],
+   "frames": 8,
+   "ms": [
+    60,
+    80,
+    60,
+    80,
+    60,
+    80,
+    60,
+    80
+   ],
+   "gifs": {
+    "S": "run/S.gif",
+    "SE": "run/SE.gif",
+    "E": "run/E.gif",
+    "NE": "run/NE.gif",
+    "N": "run/N.gif",
+    "NW": "run/NW.gif",
+    "W": "run/W.gif",
+    "SW": "run/SW.gif"
+   },
+   "pv": {
+    "S": "run/S_preview.gif",
+    "SE": "run/SE_preview.gif",
+    "E": "run/E_preview.gif",
+    "NE": "run/NE_preview.gif",
+    "N": "run/N_preview.gif",
+    "NW": "run/NW_preview.gif",
+    "W": "run/W_preview.gif",
+    "SW": "run/SW_preview.gif"
+   },
+   "8dir": "run/run_8dir.gif",
+   "strip1x": "run/run_strip1x.png",
+   "sheet": "run/run_sheet.png",
+   "8dir_pv": "run/run_8dir_preview.gif",
+   "pv_sheet": "run/run_preview_sheet.png"
+  },
+  "idle": {
+   "dirs": [
+    "S",
+    "SE",
+    "E",
+    "NE",
+    "N",
+    "NW",
+    "W",
+    "SW"
+   ],
+   "frames": 12,
+   "ms": [
+    270,
+    250,
+    120,
+    130,
+    150,
+    280,
+    270,
+    250,
+    120,
+    130,
+    150,
+    280
+   ],
+   "gifs": {
+    "S": "idle/S.gif",
+    "SE": "idle/SE.gif",
+    "E": "idle/E.gif",
+    "NE": "idle/NE.gif",
+    "N": "idle/N.gif",
+    "NW": "idle/NW.gif",
+    "W": "idle/W.gif",
+    "SW": "idle/SW.gif"
+   },
+   "pv": {
+    "S": "idle/S_preview.gif",
+    "SE": "idle/SE_preview.gif",
+    "E": "idle/E_preview.gif",
+    "NE": "idle/NE_preview.gif",
+    "N": "idle/N_preview.gif",
+    "NW": "idle/NW_preview.gif",
+    "W": "idle/W_preview.gif",
+    "SW": "idle/SW_preview.gif"
+   },
+   "8dir": "idle/idle_8dir.gif",
+   "strip1x": "idle/idle_strip1x.png",
+   "sheet": "idle/idle_sheet.png",
+   "8dir_pv": "idle/idle_8dir_preview.gif",
+   "pv_sheet": "idle/idle_preview_sheet.png"
+  },
+  "jump": {
+   "dirs": [
+    "S",
+    "SE",
+    "E",
+    "NE",
+    "N",
+    "NW",
+    "W",
+    "SW"
+   ],
+   "frames": 16,
+   "ms": [
+    100,
+    80,
+    70,
+    50,
+    60,
+    80,
+    80,
+    120,
+    60,
+    40,
+    35,
+    75,
+    100,
+    80,
+    110,
+    250
+   ],
+   "gifs": {
+    "S": "jump/S.gif",
+    "SE": "jump/SE.gif",
+    "E": "jump/E.gif",
+    "NE": "jump/NE.gif",
+    "N": "jump/N.gif",
+    "NW": "jump/NW.gif",
+    "W": "jump/W.gif",
+    "SW": "jump/SW.gif"
+   },
+   "pv": {
+    "S": "jump/S_preview.gif",
+    "SE": "jump/SE_preview.gif",
+    "E": "jump/E_preview.gif",
+    "NE": "jump/NE_preview.gif",
+    "N": "jump/N_preview.gif",
+    "NW": "jump/NW_preview.gif",
+    "W": "jump/W_preview.gif",
+    "SW": "jump/SW_preview.gif"
+   },
+   "8dir": "jump/jump_8dir.gif",
+   "strip1x": "jump/jump_strip1x.png",
+   "sheet": "jump/jump_sheet.png",
+   "8dir_pv": "jump/jump_8dir_preview.gif",
+   "pv_sheet": "jump/jump_preview_sheet.png"
+  },
+  "dash": {
+   "dirs": [
+    "S",
+    "SE",
+    "E",
+    "NE",
+    "N",
+    "NW",
+    "W",
+    "SW"
+   ],
+   "frames": 13,
+   "ms": [
+    50,
+    40,
+    110,
+    40,
+    50,
+    80,
+    80,
+    80,
+    90,
+    120,
+    120,
+    140,
+    250
+   ],
+   "gifs": {
+    "S": "dash/S.gif",
+    "SE": "dash/SE.gif",
+    "E": "dash/E.gif",
+    "NE": "dash/NE.gif",
+    "N": "dash/N.gif",
+    "NW": "dash/NW.gif",
+    "W": "dash/W.gif",
+    "SW": "dash/SW.gif"
+   },
+   "pv": {
+    "S": "dash/S_preview.gif",
+    "SE": "dash/SE_preview.gif",
+    "E": "dash/E_preview.gif",
+    "NE": "dash/NE_preview.gif",
+    "N": "dash/N_preview.gif",
+    "NW": "dash/NW_preview.gif",
+    "W": "dash/W_preview.gif",
+    "SW": "dash/SW_preview.gif"
+   },
+   "8dir": "dash/dash_8dir.gif",
+   "strip1x": "dash/dash_strip1x.png",
+   "sheet": "dash/dash_sheet.png",
+   "8dir_pv": "dash/dash_8dir_preview.gif",
+   "pv_sheet": "dash/dash_preview_sheet.png"
+  },
+  "hurt": {
+   "dirs": [
+    "S",
+    "SE",
+    "E",
+    "NE",
+    "N",
+    "NW",
+    "W",
+    "SW"
+   ],
+   "frames": 9,
+   "ms": [
+    45,
+    45,
+    130,
+    80,
+    120,
+    140,
+    160,
+    180,
+    250
+   ],
+   "gifs": {
+    "S": "hurt/S.gif",
+    "SE": "hurt/SE.gif",
+    "E": "hurt/E.gif",
+    "NE": "hurt/NE.gif",
+    "N": "hurt/N.gif",
+    "NW": "hurt/NW.gif",
+    "W": "hurt/W.gif",
+    "SW": "hurt/SW.gif"
+   },
+   "pv": {
+    "S": "hurt/S_preview.gif",
+    "SE": "hurt/SE_preview.gif",
+    "E": "hurt/E_preview.gif",
+    "NE": "hurt/NE_preview.gif",
+    "N": "hurt/N_preview.gif",
+    "NW": "hurt/NW_preview.gif",
+    "W": "hurt/W_preview.gif",
+    "SW": "hurt/SW_preview.gif"
+   },
+   "8dir": "hurt/hurt_8dir.gif",
+   "strip1x": "hurt/hurt_strip1x.png",
+   "sheet": "hurt/hurt_sheet.png",
+   "8dir_pv": "hurt/hurt_8dir_preview.gif",
+   "pv_sheet": "hurt/hurt_preview_sheet.png"
+  }
+ },
+ "time": "2026-10-29 11:26"
+}

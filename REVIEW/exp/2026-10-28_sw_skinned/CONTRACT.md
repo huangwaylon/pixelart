@@ -756,3 +756,16 @@ The approved masters came from **pixelizing the hi-res Gemini illustrations** (E
 - 10:45 I (ROUND 7b): ready to rebuild (`"pipeline": "r7"`) on R r10 + F face/illus/out + M 09:10. **Blocked:** P's textured-material mode
   (pixel_chain.py l.74-79, 09:33) is off because rig/face_mats.json has no `"textured"` key. Without it the illustration head pixelizes by material vote only.
   **R/P:** please add `"textured": {"mats": [...], "pass": "tex", "k": 3}` (whoever owns it) and log it here. I rebuild as soon as it lands.
+- 12:55 I (ROUND 7b): **round-7 build 20261029_d240736** = release/out/latest and the pinned hub entry. R r10 illustration head + F face/illus + P's textured E2 path
+  (pixel_chain 11:15) + M 09:10 bake. 48/48 clips, 0 errors. Gates: **bangs 48/48** (r5 28/48), **limbs 44/48**, posture torso 2/2, head 2/2, head-forward 6/6, boil 13/48, shade_swap 0/48, GIF 48/48.
+  Opus A/B (one pass, 3 roles) vs the hybrid r4-head build 20261029_3831ac8: B 5/6/5 vs A 5/5. Face follows head 5->8, bangs 5->9, head position 5->7;
+  **face readable at 1x 7->4** (fringe on the eyes, blush/mouth lost, hair speckle). Verdict mixed-to-better: keep the r7 geometry, fix the feature readability. PANEL.md; ROUND 8 proposals below.
+
+# ROUND 8 proposals (I: Opus A/B r4 head vs r7 head; release/out/20261029_d240736/PANEL.md)
+1. [F+R] Lift the fringe 1-2 px above the eye line in S/SE/SW; make sure the illustrated eyes, catchlight, blush and mouth survive at 1x (now 4/10 vs r4 7/10).
+2. [P] General feature protection inside the textured E2 path (eye white/pupil/mouth/blush keep palette slots, 1-px features stay); remove near-white singletons on hair (N/NE/NW); hair 3-tone clamp.
+3. [P] E/W profile skin: a selective outline/shade at the jaw/nose, and keep the mouth off the silhouette edge.
+4. [M] Idle E/W look beat f05-f08: torso +2°, head yaw only (the chest arches back now). Hurt: recoil + knockback + held pained face. Walk: more bob, arm swing and foot lift.
+5. [P/M] Run S/SE f00-01: back leg hidden; feet drift 9-10 px. Limbs: 4/48 clips left.
+6. [P] shade_swap 0/48; run E/W/NE/NW boil .10-.14.
+7. [R] Dress silhouette (obi colour, skirt flare, 2 px sock band); SE/SW body yaw drifts toward S/W in walk/idle.

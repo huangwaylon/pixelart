@@ -1,0 +1,27 @@
+SCORE: 6/10
+SCORE A: 5/10
+
+**Sub-scores (B):** key poses/appeal 6 · timing/spacing 6 · bounce/weight 5 · secondary motion 5 · posture 6 · face acting 5
+
+**(a) Head jutted back:** Mostly no. The head sits over the neck in the E/W walk and run. It is mildly jutted back and up in idle E/W f05–f08, the look-around beat. In hurt E f02–f03 it is meant to recoil. A juts back more in idle E f06–f10, where the bun mass hangs behind the neck.
+**(b) Balding:** No scalp showing in B. The fringe is full in every direction, if anything too heavy. A shows a high, parted hairline in walk/idle S, all frames.
+**(c) Lean back:** Idle E/W f05–f08 arches the chest back by about 3–5°. Dash f00–f02 leans back as anticipation, which is fine. The other actions are neutral or lean forward.
+
+**ISSUES:**
+1. [F] all actions S/SE/SW all frames: after pixelization the eyes become dark slits under the bangs, and the expressions shown in the 3D preview (gritted teeth while running, eye-smile in idle) are lost at 1x → give eye whites and pupils and the mouth a protected palette and pixel mask, and raise the bangs 1 px above the eye line.
+2. [P] all actions NE/N/NW, every frame: stray white specular pixels on the hair and back flicker from frame to frame → clamp the hair highlights in the E2 k-centroid step and remove isolated single pixels.
+3. [M] walk S/N f00–f07: hardly any vertical bob, stiff hanging arms, short foot lift → add a 2 px down-up bob, about 15° of arm swing and a visible foot passing position.
+4. [M] idle E/W f05–f08: the chest arches back during the head turn → hold the torso at +2°, turn the head on its yaw axis only, and keep the head over the neck.
+5. [M] walk/idle all directions: the skirt, sleeves and bow trail the body by too little → add 1–2 frames of spring lag and 2–3 px of overshoot to the bow and skirt hem.
+6. [M] jump all directions f02/f10–f12: the take-off crouch and landing compress too little → squash the body about 8% at f02 and f11, and stretch it at f04.
+
+**A/B (A vs B):**
+- Face follows head: A 5 / B 8
+- Face on-model: A 6 / B 6
+- Face expressive: A 5 / B 6
+- Face readable at 1x: A 7 / B 4
+- Stance natural (not leaning back): A 6 / B 6
+- Head position (not jutted back): A 5 / B 7
+- Bangs full (not balding): A 5 / B 8
+
+**VERDICT:** Mixed. B fixes the head tracking, the bangs and the jutted head, but its face is less readable at sprite size than A's decals. Fix the eye/mouth readability (issue 1) before shipping B.

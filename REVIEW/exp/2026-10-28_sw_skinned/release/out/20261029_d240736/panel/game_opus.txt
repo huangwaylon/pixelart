@@ -1,0 +1,21 @@
+SCORE: 5/10
+
+- 1x readability: 5
+- Direction consistency: 5
+- Action clarity: 6
+- Timing/feel: 6
+- Ship-readiness: 4
+
+**(a) Head jutted back:** Yes, in the profile directions. In idle E f00–f04 and W f00–f04, the head and bun mass sit behind the spine line. Walk E f00–f02 and W f05–f07 have the torso pitched forward with the head held back over the shoulders, which reads as a hunched "turtle" pose. Jump E/W f00–f03 show the same thing. S and N look fine.
+
+**(b) Balding / thin bangs:** No real balding. The fringe is full in S/SE/SW. Two smaller problems: in the profile views (idle E f06–f08, W f05/f08, hurt W f01–f02) the forehead skin shows high above the eye. And white single-pixel specks are scattered over the hair in nearly every N/NE/NW frame and in run E. At 1x those specks read as scalp showing through.
+
+**(c) Leaning back:** Yes. In idle E f05–f11, W f05–f11, NE f04–f08 and NW f05–f10 the chest and belly push forward with the head tipped back. Walk E f03/f07 and W f03/f07 are upright-to-backward, and hurt E f06–f08 also lean back. None of these show the 0–4° forward torso you asked for.
+
+ISSUES:
+1. [R|M] idle/walk/jump E, W, NE, NW f00–f11: the head sits behind the spine and the torso leans back → move the neck/head pivot forward 1–2 px, add a 2–3° forward spine bias, and make "head level, behind-spine offset ≤ 0" a pose gate.
+2. [P] all actions N/NE/NW + run E/W: white speck pixels on the hair, plus noisy dithered hair texture → remove isolated near-white pixels on hair material, and k-centroid the hair to 3 tones with no singletons.
+3. [P] all clips: shade_swap fails everywhere (the dress light/dark bands flip from frame to frame), and boil is high on run E/W/NE/NW (0.10–0.14) → lock the dress shading to a temporal palette index and add hysteresis on band thresholds.
+4. [R] walk SE f03–f05, SW f03–f06, idle SE/SW: the body yaw drifts toward the adjacent direction, so SE becomes nearly S and SW nearly W → clamp root yaw per direction to ±5° and keep the camera alignment fixed.
+5. [M] hurt all directions: reads as an arm wave rather than a hit (S f01–f03 looks like the jump arms), with no knockback or recoil → add a backward head snap and torso recoil in f00–f02, a 2–3 px root pushback, a squash, and a pained expression held across f01–f04.
+6. [M|P] run S f00–f01, SE f00–f01: the back leg vanishes behind the front one, and feet slide (feet px 9–10) → offset the legs 1–2 px laterally, plant contact frames, and pin foot contact to the root.
