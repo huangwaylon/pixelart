@@ -22,8 +22,8 @@ def tile(im, nearest=True):
 
 
 rows = [('S', 'rest', 0), ('SE', 'rest', 0), ('E', 'rest', 0), ('SE', 'walk', 0), ('E', 'walk', 3), ('SE', 'idle', 6)]
-B = Image.new('RGB', (5 * (CW + 6) + 70, len(rows) * (CH + 16) + 18), (40, 40, 44)); d = ImageDraw.Draw(B)
-for k, t in enumerate(('illustration', 'm96 master', 'rig preview (8x colour)', 'current chain', 'EC0 on render')): d.text((70 + k * (CW + 6), 3), t, fill=(230, 230, 120))
+B = Image.new('RGB', (7 * (CW + 6) + 70, len(rows) * (CH + 16) + 18), (40, 40, 44)); d = ImageDraw.Draw(B)
+for k, t in enumerate(('illustration', 'm96 master', 'rig preview (8x colour)', 'chain (r7)', 'EC0 on render', 'per-material composite', 'chain + masters cleanup (new)')): d.text((70 + k * (CW + 6), 3), t, fill=(230, 230, 120))
 for r, (V, act, fi) in enumerate(rows):
     y = 18 + r * (CH + 16); d.text((4, y + 4), f'{act} {V} f{fi:02d}', fill=(230, 230, 230))
     il = Image.open(Z.srcpath(V)).convert('RGBA')
@@ -35,5 +35,7 @@ for r, (V, act, fi) in enumerate(rows):
     ims.append(tile(Image.open(P8 + f'{act}/{act}_{V}_f{fi:02d}_pv.png'), False))
     ims.append(tile(Image.open(P8 + f'{act}/{act}_{V}_px/f{fi:02d}.png')))
     ims.append(tile(Image.open(P8 + f'{act}/{act}_{V}_ec0/f{fi:02d}.png')))
+    ims.append(tile(Image.open(P8 + f'{act}/{act}_{V}_cmp/f{fi:02d}.png')))
+    ims.append(tile(Image.open(P8 + f'{act}/{act}_{V}_pzc/f{fi:02d}.png')))
     for k, im in enumerate(ims): B.paste(im, (70 + k * (CW + 6), y))
-B.save(P8 + 'board_ec0_vs_chain.png'); print(P8 + 'board_ec0_vs_chain.png')
+B.save(P8 + 'board_r8_composite.png'); print(P8 + 'board_r8_composite.png')

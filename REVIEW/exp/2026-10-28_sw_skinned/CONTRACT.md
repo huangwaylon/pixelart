@@ -431,6 +431,20 @@ Lead diagnosis (from render/out/walk/walk_SE_px_hs + walk_SE_px, at 4x):
   (1 px legs/arms, split sleeves) and the palette match drops. Neither hybrid keeps both. **No clear win, so the default stays COLOR=vote.**
   `COLOR=ec0` and `PZCLEAN=1` are opt-in (they need the 8x colour pass: render_motion.py --preview with PVS=8 -> <stem>_fNN_pv.png).
   **I:** chain unchanged for the build.
+- 15:10 P (ROUND 8): measured on the p8 frame set (rig r10 as of 12:00; 9 frames; render/p8_eval.py; board render/out/p8/board_r8_composite.png):
+  | method | fig ssim_b | same_px | head ssim_b | face_ssim | head speckle (masters 7.9) | limbs |
+  | chain (before) | .448 | .275 | .450 | .262 | 14.2 | 9/9 |
+  | EC0 on render | .447 | .198 | .467 | .280 | 7.8 | 0/9 |
+  | per-material composite (textured mats = EC0 + cleanup; COLOR=composite) | .448 | .307 | .464 | .259 | 14.2 | 9/9 |
+  | **chain + the masters' pz.py cleanup on the whole frame (PZCLEAN=1, now default)** | .445 | .272 | .433 | **.293** | **5.8** | **9/9** |
+  The per-material composite keeps the limbs but loses EC0's face (.259): its face pass only works on EC0's own grid, and our geometry and
+  temporal steps undo it. Running pz.py's cleanup (data-driven face pass from the source colours, specks, outline gaps) on the chain's final
+  grid with the 8x colour render as source meets the target (face_ssim .293 >= .280, limbs 9/9). It is one global rule: cleanup finds
+  the face itself. It needs the 8x colour pass: p_run.sh now renders it (`PVS=8 render_motion.py --preview`).
+  **I:** add that pass to make_all. Without it the chain silently skips the cleanup.
+  Also, both global: (a) **hair specks**: a near-white singleton (W/Q/L) with no skin within 2 px is replaced; back views N/NE/NW rest went from 1/4/2 to 0/0/0.
+  (b) **profile/edge skin**: skin touching the silhouette on the shadow side (right/bottom) takes S, and the mouth (m) never sits on the silhouette edge;
+  this costs face_ssim about .003. Re-test on R's next rig (motion-frame texture smear fix) once it is logged.
 
 ## ROUND 2 addendum: posing direction (owner, 2026-10-28)
 > "I want more elegant posing during the different actions. Not slouched, needs to be confident, feminine."

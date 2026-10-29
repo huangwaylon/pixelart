@@ -47,7 +47,7 @@ HIPF = float(os.environ.get('HIPF', '0.35'))  # A-line envelope starts at this f
 ALINE = float(os.environ.get('ALINE', '0.6'))  # skirt widening per row and side (px)
 SKINMAX = int(os.environ.get('SKINMAX', '3'))  # max skin-band rows under the hem
 ORPHAN = os.environ.get('ORPHAN', '1') == '1'  # round 6 orphan rule for every material
-PZCLEAN = os.environ.get('PZCLEAN', '0') == '1'  # masters' pz.py cleanup (face pass) on the final grid, source = 8x colour render
+PZCLEAN = os.environ.get('PZCLEAN', '1') == '1'  # default on (round 8): active when the 8x colour pass <stem>_fNN_pv.png exists  # masters' pz.py cleanup (face pass) on the final grid, source = 8x colour render
 EDGESKIN = os.environ.get('EDGESKIN', '1') == '1'  # round 8 global skin edge shading + mouth off the silhouette
 COLOR = os.environ.get('COLOR', 'vote')  # colour stage: vote (material ramps + E2 textures) | ec0 (pz EC0 on the 8x colour render 'pv')
 RIM = os.environ.get('RIM', 'g')  # near-leg rim tone along the leg|leg separation (d = sock sheen; g = boot light, stronger)
@@ -723,8 +723,8 @@ def run(stem, info, opt):
         out[i], sts[i] = g, st; prev = st
     if opt['temporal']: out = kill_flips(out, loop)
     if ORPHAN: out = [orphan_rule(g, st) for g, st in zip(out, sts)]
-    if EDGESKIN: out = [edge_skin_rule(g) for g in out]
     if PZCLEAN: out = [pz_cleanup(g, F) for g, F in zip(out, Fs)]
+    if EDGESKIN: out = [edge_skin_rule(g) for g in out]  # after the masters' cleanup so its face pass sees the plain skin
     out = [hx.main_comp(hx.drop_bare_k(g)) for g in out]
     if opt.get('smear', True):
         out, smk = apply_smear(out, info)

@@ -1084,3 +1084,17 @@ The masters have a head speckle of 7.9. The hybrids (`COLOR=ec0`, `PZCLEAN=1`) d
 - **Hurt:** a guard arm plus a close recoil arm (no T), clearer knockback (−8.5 cm), and a held pained face.
 - **Walk:** bob 3.5 px, arm swing −20/+33°, foot lift 11 cm.
 - Gates pass. Re-baked: walk, idle, hurt and the walk/idle variants.
+
+**Round 8 (P).** Results on the p8 set (9 frames, rig r10), scored with `render/p8_eval.py`. Board: `render/out/p8/board_r8_composite.png`.
+
+| method | face_ssim | limb audit |
+|---|---|---|
+| chain + pz.py cleanup with the 8x colour render as source (`PZCLEAN=1`, now the default) | .293 | 9/9 |
+| EC0 alone | .280 | 0/9 |
+| per-material composite | .259 | 9/9 |
+| previous chain | .262 | 9/9 |
+
+Other changes:
+- Hair-speck rule is global: back views went from 1/4/2 near-white hair singletons (N/NE/NW) to 0.
+- Profile skin rule is global: skin on the silhouette's shadow side takes S, and the mouth stays off the silhouette edge.
+- `p_run.sh` now also renders the 8x colour pass (`PVS=8 --preview`).

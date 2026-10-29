@@ -12,6 +12,7 @@ for a in $ACTS; do for v in $VIEWS; do
   M=$EXP/motion/$a.json; [ -f $M ] || M=$EXP/motion/variants/$a.json; [ -f $M ] || { echo "no motion $a"; continue; }
   o=$EXP/render/out/${OUTD:-p5}/$a; mkdir -p $o/parts
   if [ -z "$NORENDER" ]; then
+    PVS=8 $B -b $EXP/rig/rig.blend -P $EXP/render/render_motion.py -- $M $v $o --preview --no-post 2>&1 | grep -E "rror"   # 8x colour pass (pv) for the masters' cleanup
     $B -b $EXP/rig/rig.blend -P $EXP/render/render_motion.py -- $M $v $o --no-post 2>&1 | grep -E "RENDERED|rror"
     $B -b $EXP/rig/rig.blend -P $EXP/render/p_parts.py -- $M $v $o/parts 2>&1 | grep -E "PARTS_DONE|rror"
   fi
