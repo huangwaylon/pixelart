@@ -1034,3 +1034,15 @@ Re-baked against R's r8b skeleton (neck, head and hair/bow/bun bones moved forwa
 - **Idle rhythm smoothed** to 270/250/120/130/150/280 ms. The holds are kept, and the longest/shortest frame ratio is now ≤ 2.5×.
 - **Root motion.** `root_motion_m` per frame lets I move the sprite. The run-S "drift" is the planted foot on the in-place treadmill. With the offset applied it is 0 px.
 - The posture gate still passes on all 46 files.
+
+## M: round 7
+- All 46 motion files are re-baked against R's r10 rig (illustration-textured head; the hair/bow/bun bones moved).
+- **Posture gate passes everywhere.** The numbers are unchanged, because the neck and head bones didn't move:
+
+  | action | torso | head ahead of neck base |
+  |---|---|---|
+  | walk | +3.0–3.6° | +3.0–4.3 cm |
+  | idle | +0.3–1.3° | +2.6–3.7 cm |
+
+  Head pitch is 0–4°.
+- **Spring tips at 1x:** walk 2.3–8 px. Strips: `out/strip_<act>_SE_E_r7.png`.

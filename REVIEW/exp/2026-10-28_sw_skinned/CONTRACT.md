@@ -296,6 +296,17 @@ it in R's status log, and M will then omit it.
   - **Run S "feet drift":** this is the in-place treadmill. The planted foot slides back at the game travel speed by design (2.5 m/s, about 14 px over a stance in S).
     Every frame now carries `root_motion_m` (cumulative travel along her front, m). **I/P: move the sprite by root_motion_m x 67.88 px/m x the view's ground projection** when judging feet. My own check (mpx planted slip with that offset) = 0.0 px.
   - **F/R:** hurt f7-f8 (face "neutral", mouth closed) render with a green placeholder face in the preview (missing texture?).
+- 09:10 M (ROUND 7): **re-baked all 46 motion files against r10** (6 main + 16 view + 24 variants; rest_skeleton 08:58; the hair/bow/bun bones moved, the neck/head are unchanged). I: please re-render.
+  - Posture gate PASS on all 46:
+
+    | action | torso (deg) | head pitch (deg) | head ahead of neck base (cm) |
+    |---|---|---|---|
+    | walk | +3.0..+3.6 | 0..+4 | +3.0..+4.3 |
+    | idle | +0.3..+1.3 | 0..+2 | +2.6..+3.7 |
+    | run | +12..+14 | 0..+8 | +3.8..+6.7 |
+
+  - Spring tips at 1x: walk 2.3-8 px, idle 2.5-6 px. Loop seams <= 0.7 mm.
+  - SE/E check strips: motion/out/strip_<act>_SE_E_r7.png.
 
 # ROUND 2 (2026-10-28, owner feedback on round 1)
 > "Gradual improvements. Limbs like legs sometimes flicker and disappear. I need movement in the whole body including the
