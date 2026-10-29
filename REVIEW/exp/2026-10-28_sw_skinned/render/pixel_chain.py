@@ -50,6 +50,7 @@ ORPHAN = os.environ.get('ORPHAN', '1') == '1'  # round 6 orphan rule for every m
 PZCLEAN = os.environ.get('PZCLEAN', '1') == '1'  # default on (round 8): active when the 8x colour pass <stem>_fNN_pv.png exists  # masters' pz.py cleanup (face pass) on the final grid, source = 8x colour render
 EDGESKIN = os.environ.get('EDGESKIN', '1') == '1'  # round 8 global skin edge shading + mouth off the silhouette
 COLOR = os.environ.get('COLOR', 'vote')  # colour stage: vote (material ramps + E2 textures) | ec0 (pz EC0 on the 8x colour render 'pv')
+R10 = os.environ.get('R10', '1') == '1'  # round-10 feature restore after cleanup + stronger speck rule (0 = round-9 behaviour)
 RIM = os.environ.get('RIM', 'g')  # near-leg rim tone along the leg|leg separation (d = sock sheen; g = boot light, stronger)
 SMOOTH = os.environ.get('SMOOTH', '1') == '1'
 HOLE = int(os.environ.get('HOLE', '4'))  # enclosed background holes up to this many px are filled
@@ -725,7 +726,7 @@ def run(stem, info, opt):
     if ORPHAN: out = [orphan_rule(g, st) for g, st in zip(out, sts)]
     if PZCLEAN: out = [pz_cleanup(g, F, st) for g, F, st in zip(out, Fs, sts)]
     if EDGESKIN: out = [edge_skin_rule(g) for g in out]  # after the masters' cleanup so its face pass sees the plain skin
-    out = [speck_rule(g) for g in out]  # round 10: specks the cleanup may have introduced
+    if R10: out = [speck_rule(g) for g in out]  # round 10: specks the cleanup may have introduced
     out = [final_limb_rules(g, st) for g, st in zip(out, sts)]  # round 9: limb rules re-applied last (after every colour/cleanup stage)
     out = [hx.main_comp(hx.drop_bare_k(g)) for g in out]
     if opt.get('smear', True):
@@ -828,6 +829,7 @@ def pz_cleanup(g, F, st=None):
     # round 10, global by colour family: the cleanup's merges must not eat eye/mouth features.  A pre-cleanup catchlight/eye-white W that
     # touches iris or lash colours (K h g L) after the cleanup comes back; so do iris pixels (h g L) next to a lash K and a W, and a mouth m
     # that is not on the silhouette edge.
+    if not R10: return c
     dk = np.isin(c, list('KhgL')); pc8 = np.pad(dk, 1)
     near_dk = sum(pc8[1 + dy:1 + dy + c.shape[0], 1 + dx:1 + dx + c.shape[1]] for dy in (-1, 0, 1) for dx in (-1, 0, 1) if dy or dx) > 0
     rw = (g == 'W') & (c != 'W') & near_dk; c[rw] = 'W'
@@ -918,12 +920,13 @@ def speck_rule(g):
     same = sum((pg[2 + dy:2 + dy + H, 2 + dx:2 + dx + W] == g) for dy in (-1, 0, 1) for dx in (-1, 0, 1) if dy or dx)
     light = np.isin(g, list('WQL'))
     cl, n = nd.label(light, np.ones((3, 3)))
-    small = np.isin(cl, [k for k in range(1, n + 1) if (cl == k).sum() <= 2]) if n else np.zeros_like(light)
+    small = np.isin(cl, [k for k in range(1, n + 1) if (cl == k).sum() <= (2 if R10 else 1)]) if n else np.zeros_like(light)
     bad = light & small & ~near_skin  # light 1-2 px clusters on hair/bow, away from any skin: specks (back views, hair sheen flicker)
     dk = np.isin(pg, list('KhHg'))
     near_dk = sum(dk[2 + dy:2 + dy + H, 2 + dx:2 + dx + W] for dy in (-1, 0, 1) for dx in (-1, 0, 1) if dy or dx) > 0
     cheek = (g == 'W') & ~near_dk & near_skin  # a white on skin with no lash/iris next to it is a cheek speck, not a catchlight
-    out = g.copy(); out[cheek] = 's'
+    out = g.copy()
+    if R10: out[cheek] = 's'
     for y, x in zip(*np.nonzero(bad)):
         nb = [pg[2 + y + dy, 2 + x + dx] for dy in (-1, 0, 1) for dx in (-1, 0, 1) if (dy or dx) and pg[2 + y + dy, 2 + x + dx] not in '.K']
         if nb: out[y, x] = max(set(nb), key=nb.count)

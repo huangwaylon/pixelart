@@ -491,6 +491,16 @@ Lead diagnosis (from render/out/walk/walk_SE_px_hs + walk_SE_px, at 4x):
   - (b) a final limb pass as the very last step: width repair, and a limb with no 2x2 core (1-2 px hand tip) is grown to 2x2.
   Results: **48 clips of I's latest inputs (20261029_a586104): limb audit 47/48** (was 33/48 in the build, 43/48 before (b); left: hurt E f03 arm/hand);
   **p8 set: face_ssim .298 (EC0 .280), limbs 9/9**, head speckle 5.8 (masters 7.9). shade_swap is unchanged (0/48) and boil passes 13/48.
+- 21:00 P (ROUND 10, resumed): pixel_chain.py (CLI unchanged; `R10=0` restores the round-9 behaviour). Measured on the p8 set re-rendered on **rig r13**
+  (render/out/p10, render/p10_eval.py; 6 clips / 31 frames):
+  - **Features vs the cleanup's merging** (global, by colour family): after pz cleanup, a W that touches iris/lash colours (K h g L) comes back, and so do
+    iris pixels next to a lash and a white, and a mouth m off the silhouette edge. Eye W pixels: 142 -> **151**.
+  - **Specks:** light (W/Q/L) clusters of <= 2 px with no skin within 2 px go, and so does a W on skin with no lash/iris next to it. The speck rule runs again after the cleanup.
+    Hair light specks: 59 -> **5**; cheek W specks: 4 -> **0**.
+  - **hurt E f03:** the final limb pass runs twice (a grown 2x2 hand left a fringe-less tail). hurt E now passes, so the latest-build inputs are 48/48 on that
+    clip set (was 47). p8/r13 limb audit: 6/6 clips pass.
+  - face_ssim .171 -> .172, head ssim_b .404 both. The drop from round 9's .297 comes from the r13 head (the r9 config scores .171 on r13 too), not from the chain.
+    Idle SE blinks f01/f02/f07/f08 keep their closed-eye dark strokes (K/h count +0..+6), and no stray W appears (0-2 W, unchanged).
 
 ## ROUND 2 addendum: posing direction (owner, 2026-10-28)
 > "I want more elegant posing during the different actions. Not slouched, needs to be confident, feminine."

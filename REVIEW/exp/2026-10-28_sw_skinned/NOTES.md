@@ -1121,3 +1121,16 @@ Other changes:
   - Minimum elbow bend: walk 24°, run 78°, jump 20°, dash 20°.
 - **Wider run legs.** Track 0.80 with a 4° knee splay (diagonal views 1.0). Leg gap at 1x is ≥ 2 px.
 - Gates pass.
+
+**Round 10 (P, rig r13).** Benchmark: `render/p10_eval.py`.
+
+| check | before → after |
+|---|---|
+| eye/mouth features restored after cleanup (eye W pixels) | 142 → 151 |
+| hair light specks | 59 → 5 |
+| cheek W specks | 4 → 0 |
+| hurt E f03 arm/hand | fixed |
+| limb audit | 6/6 clips |
+| face_ssim | .171 → .172 |
+
+The lower face_ssim than in round 9 comes from the r13 head, not the chain.
