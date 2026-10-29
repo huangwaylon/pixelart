@@ -1,0 +1,23 @@
+SCORE: 5/10
+SCORE R7: 4/10
+SCORE R4HEAD: 4/10
+
+**B sub-scores:** on-model 5 · face at 1x 4 · cleanliness 6 · silhouette/hair 7
+
+**A/B (r7 / r4head / B):**
+- Face follows head: 7 / 4 / 8
+- Face on-model: 5 / 7 / 5
+- Face readable at 1x: 5 / 7 / 5
+- Expressive: 4 / 6 / 6
+- No smears in motion: 5 / 3 / 7
+- Bangs full: 8 / 3 / 9
+- Stance natural: 6 / 6 / 7
+
+**VERDICT:** B is the best head now. It locks to the head, has full bangs and the fewest smears and specks. But its faces are still sleepy and muddy compared with r4head's bright master-style eyes, so pull r4head's eye design into the F illustrations.
+
+**ISSUES:**
+1. **[F] idle/walk/run S, SE, SW, all frames:** the default eyes are small, half-lidded and look sullen. The masters have large round irises with a clear highlight, so B reads as tired, not cute. → Redraw the neutral eye about 1.3x larger, open, with a 2 px highlight and a dark upper lash line. Keep narrowed eyes only for the pained/blink swaps.
+2. **[R] idle E/NE f06–f10, SE f07–f09:** when head yaw crosses the view threshold, the face becomes a blank or mottled pink patch (NE f07–f08 has no eye at all). → Bake separate 3/4 and profile face textures. After pixelizing, snap the eye and mouth to fixed pixel clusters. Add hysteresis to the view pick so it stops flipping between frames.
+3. **[P] SE/SW all actions, S walk f03, run S f05–f06:** facial skin has blotchy pink dithering and freckle-like noise that looks smeared at 1x. → Clamp the face mask to 3 skin tones and run the PZCLEAN orphan pass inside it. Draw blush as a solid 2×1 block. This links to the shade gate failing 0/48: shading should come from fixed ramps, not texture noise.
+4. **[R] SE/SW 3/4 views, idle and run:** the fringe and side lock still cover the near eye, so the face reads as hair plus a cheek. → Lift the fringe another 1–2 px in 3/4 views only and mask the bangs so they stop at the brow over the visible eye. The full-bangs look is fine in S.
+5. **[P/M] run N/NE f02, f04, f07 and walk N f03:** white hair specks remain. On the body, the dress reads as a boxy sweater and the obi is a flat grey bar, not the masters' banded sash. → Lower the speckle filter's lightness threshold on hair. (M) Taper the bell sleeves and flare the skirt hem to match the masters. (P) Give the obi the master 2-tone ramp. Also fix boil (13/48) by holding the face pixels static on held idle frames.

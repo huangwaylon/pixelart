@@ -838,3 +838,20 @@ the deforming head. Fix this at the source before tuning pixels.
 - **I (integrator):** after R, P and M land, run one rebuild + gates (add the preview-face-integrity check) + one Opus A/B vs
   `20261029_d240736` and vs the hybrid `3831ac8`.
 - **F:** idle unless R needs the expression illustrations re-aligned to the baked UV.
+- 13:20 I (ROUND 8): **round-8 build 20261029_a586104** = release/out/latest and the pinned hub entry. R r11 + M walk/idle/hurt + P chain with **PZCLEAN**:
+  the 8x colour render (PVS=8 --preview) goes into the pass cache and is linked next to the passes. Per-clip flag: "ran" on 48/48 clips (48/48 frames, 0 warnings).
+  **New gate: preview face integrity** (release/rl_faceint.py). Each smooth-preview frame's interior face skin is compared with the rest-pose preview
+  wearing the same expression, warped by the head transform (similarity fit on R's face anchors). BAD = dE76 > 25. Gate: max <= .03 per clip; head turns > 12° are reported, not gated.
+  Result: 13/30 (r7 also 13/30). Remaining profile streaks: walk E f3/f6, run E f2-6, hurt E f3-5, jump E f4/f13.
+  Gates: bangs 48/48, **limbs 33/48 (r7 44/48 -> regression with PZCLEAN, P)**, posture 2/2 2/2 6/6, boil 13/48, shade_swap 0/48, GIF 48/48.
+  Opus A/B (one pass, 3 roles; B / r7 / r4head): AD 5/4/4, animation 5/5/6, game 5/5/6. B is the best head structurally (locked to the head, fewest smears, full bangs,
+  hurt now a guard). r4head is still the most readable front face at 1x (8 vs 5). PANEL.md; ROUND 9 proposals below.
+
+# ROUND 9 proposals (I: Opus A/B r8 vs r7 vs r4 head; release/out/20261029_a586104/PANEL.md)
+1. [F+R] Front eyes about 1.3x larger and open, with a highlight and a dark lash line, in the illustration/UV texture. Narrowed eyes only on blink/pained (B front face at 1x is 5 vs r4head 8).
+2. [R] Fringe another 1-2 px up in SE/SW (it covers the near eye at yaw > 20°). View-pick hysteresis (idle E/NE f06-10 face goes blank).
+3. [P] Flat face: 2-3 tone skin, solid blush; the eye and mouth clusters survive pz cleanup/despeckle.
+4. [P] Limbs 44 -> 33/48 since PZCLEAN: run the limb rules after the cleanup, or exempt limb cells.
+5. [R] E/W profile cheek/jaw streaks (face-integrity fails: walk E f3/f6, run E f2-6, hurt E f3-5, jump E f4/f13).
+6. [P] Hair/bow highlight specks flicker; boil 13/48, shade_swap 0/48.
+7. [M] Sleeve/skirt drag, relaxed idle arms, heels pinned in idle E/W (feet 6/24), wider diagonal run stride.

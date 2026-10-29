@@ -108,9 +108,9 @@ def run(cmd, log, env=None):
     return r
 
 
-def blender(script, mot, V, out, log, extra=()):
+def blender(script, mot, V, out, log, extra=(), env=None):
     os.makedirs(out, exist_ok=True)
-    return run([BL, '-b', BLEND(), '-P', script, '--', mot, V, out, *extra], log)
+    return run([BL, '-b', BLEND(), '-P', script, '--', mot, V, out, *extra], log, env=env)
 
 
 def clip(bid, act, V):
@@ -185,11 +185,20 @@ def pipeline():
 def clip_r5(W, C, st, mot, V, stem, log):
     if not glob.glob(f'{C}/pv/*_pv.png'):
         blender(f'{EXP}/render/render_motion.py', mot, V, f'{C}/pv', log, ['--preview', '--no-post'])
-    for p in glob.glob(f'{C}/*'):
+    # round 8: P's PZCLEAN (masters' pz.py cleanup on the final grid) needs the 8x colour render <stem>_fNN_pv.png next to the passes
+    # (as render/p_run.sh: PVS=8 render_motion.py --preview).  Rendered into C/pv8 (so the full-mode <stem>.json is not overwritten) and linked.
+    if not glob.glob(f'{C}/pv8/*_pv.png'):
+        blender(f'{EXP}/render/render_motion.py', mot, V, f'{C}/pv8', log, ['--preview', '--no-post'], env={'PVS': '8'})
+    if os.environ.get('WARM'): return done(W, st)  # WARM=1: only fill the Blender pass cache (owners' chain still in flux)
+    for p in glob.glob(f'{C}/*') + glob.glob(f'{C}/pv8/*_pv.png'):
         d = f'{W}/{os.path.basename(p)}'
-        if os.path.basename(p) in ('DONE', 'pv') or os.path.lexists(d): continue
+        if os.path.basename(p) in ('DONE', 'pv', 'pv8') or os.path.lexists(d): continue
         os.symlink(p, d)
-    r = run([PY, f'{EXP}/render/pixel_chain.py', f'{W}/{stem}.json'], log)
+    r = run([PY, f'{EXP}/render/pixel_chain.py', f'{W}/{stem}.json'], log, env={'PZCLEAN': '1'})
+    nfr = len(json.load(open(f'{W}/{stem}.json'))['frames']); npv = len(glob.glob(f'{W}/{stem}_f??_pv.png'))
+    pzw = [l for l in r.stdout.splitlines() if 'WARN pz' in l]
+    pzon = 'PZCLEAN' in open(f'{EXP}/render/pixel_chain.py').read()
+    st['pzclean'] = ('ran' if (pzon and npv == nfr and not pzw) else ('PARTIAL' if pzon and npv else 'SKIPPED')) + f' ({npv}/{nfr} 8x colour frames, {len(pzw)} warnings)'
     if not glob.glob(f'{W}/{stem}_px/f*.txt'):
         st['errors'].append('P pixel_chain failed (see clip.log): ' + (r.stderr.strip().splitlines() or ['?'])[-1][:200]); return done(W, st)
     m = re.search(r'LIMB_AUDIT \S+ (.*)', r.stdout); st['limb_line'] = m.group(1)[:300] if m else None
@@ -381,16 +390,16 @@ def masters_board(B):
 
 
 # ------------------------------------------------------------------ A/B boards (round 4 baseline vs this build)
-def ab(bid, base, views=('S', 'SE', 'E', 'NE', 'N')):
+def ab(bid, base, views=('S', 'SE', 'E', 'NE', 'N'), tag='', alabel='A r4'):
     """out/<bid>/ab/ab_<act>.png: per view two rows (A = baseline, B = this build) at 3x, plus ab_heads_<act>.png = head close-ups at 6x"""
-    B = f'{OUTR}/{bid}'; A_ = f'{OUTR}/{base}'; od = f'{B}/ab'; os.makedirs(od, exist_ok=True); made = []
+    B = f'{OUTR}/{bid}'; A_ = f'{OUTR}/{base}'; od = f'{B}/ab{tag}'; os.makedirs(od, exist_ok=True); made = []
     man = json.load(open(f'{B}/manifest.json'))
     for act in man['actions']:
         rows = []
         for V in views:
-            for tag, D in (('A r4', A_), ('B now', B)):
+            for lab_, D in ((alabel, A_), ('B now', B)):
                 fs = sorted(glob.glob(f'{D}/work/{act}/{V}/final/f??_rgba.png'))
-                if fs: rows.append((f'{tag} {V}', [Image.open(p).convert('RGBA') for p in fs]))
+                if fs: rows.append((f'{lab_} {V}', [Image.open(p).convert('RGBA') for p in fs]))
         if not rows: continue
         n = max(len(r[1]) for r in rows); bb = bbox_union([im for _, r in rows for im in r], 2)
         cw, ch = bb[2] - bb[0], bb[3] - bb[1]
@@ -398,7 +407,7 @@ def ab(bid, base, views=('S', 'SE', 'E', 'NE', 'N')):
         for name, box, S in (('ab', bb, 3), ('ab_heads', hb, 6)):
             w, h = box[2] - box[0], box[3] - box[1]; L = 110
             c = Image.new('RGB', (L + n * (w * S + 4), 26 + len(rows) * (h * S + 4)), (60, 60, 64)); d = ImageDraw.Draw(c)
-            d.text((4, 4), f'{act}: A = round-4 baseline {base} (projected face) | B = {bid}', fill=(255, 255, 210), font=font(15))
+            d.text((4, 4), f'{act}: A = {alabel} ({base}) | B = {bid}', fill=(255, 255, 210), font=font(15))
             for r, (lab, ims) in enumerate(rows):
                 y = 26 + r * (h * S + 4); d.text((6, y + h * S // 2 - 9), lab, fill=(255, 220, 160) if lab.startswith('A') else (170, 255, 170), font=font(17))
                 for k, im in enumerate(ims[:n]): c.paste(on_bg(im.crop(box)).resize((w * S, h * S), Image.NEAREST), (L + k * (w * S + 4), y))
@@ -441,7 +450,7 @@ def gates(bid):
                     fint = FI.check(f"{REL}/{st['passes']}/pv", st['stem'], V, RESTPV[V])
                 except Exception as e:  # noqa: BLE001
                     fint = {'error': repr(e)[:200]}
-            rows.append({'act': act, 'view': V, 'loop': loop, 'bangs': bangs, 'faceint': fint, 'px': {k: px.get(k) for k in ('boil', 'shade_swap', 'flicker', 'feet_range', 'seam_ratio',
+            rows.append({'act': act, 'view': V, 'loop': loop, 'bangs': bangs, 'faceint': fint, 'pzclean': st.get('pzclean'), 'px': {k: px.get(k) for k in ('boil', 'shade_swap', 'flicker', 'feet_range', 'seam_ratio',
                          'articulation_per_s', 'motion_px', 'flags', 'n_frames', 'cycle_ms')}, 'limbs': la, 'gif': gc, 'hub_gif': hubp,
                          'errors': st.get('errors', []), 'face_layer': st.get('face_layer'), 'preview': st.get('preview')})
     for act in acts:  # clips that were planned but did not produce frames
@@ -527,7 +536,7 @@ def write_gates_md(bid, rows, allg, posture=None):
          f"feet_range ≤ {GATE['feet']} px (loops only; in SE/E/NE and the other off-axis views a real stride projects ~5–7 px lower at 30° elevation, so "
          f"FEET there is partly perspective, P notes), seam_ratio ≤ {GATE['seam']} (loops); P's limb audit (VANISHED/SPLIT/THIN/DETACHED, failed frames / frames); "
          'GIF = render/gifcheck.py (loop=0, ≥20 ms, disposal/ghosting, seam, dup frames) + REVIEW/build.py gif_check on the per-direction 4x GIF.', '',
-         '| clip | boil | shade_swap | feet px | seam | limb audit | GIF | bangs (skin px above brow, max / bad frames) | preview face integrity (max smear, bad frames; turned) | other pxeval flags | notes |', '|---|---|---|---|---|---|---|---|---|---|---|']
+         '| clip | boil | shade_swap | feet px | seam | limb audit | GIF | bangs (skin px above brow, max / bad frames) | preview face integrity (max smear, bad frames; turned) | P pz cleanup | other pxeval flags | notes |', '|---|---|---|---|---|---|---|---|---|---|---|---|']
     tot = {k: [0, 0] for k in ('boil', 'shade', 'feet', 'seam', 'limbs', 'gif', 'bangs', 'face_int')}
     for r in rows:
         v = clip_verdict(r); p = r['px']
@@ -547,7 +556,7 @@ def write_gates_md(bid, rows, allg, posture=None):
                                                     + (f"; turned {fi['turned']} (max {fi['turned_max']:.3f})" if fi.get('turned') else ''))
         bt = 'n/a' if bgd.get('max') is None else f"{bgd['max']} / {bgd['frames_bad']}/{bgd['frames']} {pf(bgd['max'] == 0)}"
         L.append(f"| {r['act']} {r['view']} | {_f(p.get('boil'))} {pf(v['boil'])} | {_f(p.get('shade_swap'))} {pf(v['shade'])} | {ft} | "
-                 f"{_f(p.get('seam_ratio'), 2)} {pf(v['seam'])} | {lt} | {gt} | {bt} | {fit} | {other} | {notes} |")
+                 f"{_f(p.get('seam_ratio'), 2)} {pf(v['seam'])} | {lt} | {gt} | {bt} | {fit} | {r.get('pzclean') or 'n/a'} | {other} | {notes} |")
     pt = {'torso': [0, 0], 'head': [0, 0], 'head_fwd': [0, 0]}
     if posture and '_error' not in posture:
         L += ['', '## Posture gates (E profile; round 5 B + addendum)', '',
@@ -566,6 +575,8 @@ def write_gates_md(bid, rows, allg, posture=None):
         L += ['', 'Per-frame values: gates.json -> posture.<act>.frames.']
     elif posture:
         L += ['', f"Posture gates failed to run: {posture['_error'][:300]}"]
+    pzr = [r.get('pzclean') for r in rows if r.get('pzclean')]
+    if pzr: tot['pzclean_ran'] = [sum(x.startswith('ran') for x in pzr), len(rows)]
     L += ['', '**Totals (pass / gated clips):** ' + ', '.join(f'{k} {a}/{b}' for k, (a, b) in tot.items())
           + ('; posture (actions): ' + ', '.join(f'{k} {a}/{b}' for k, (a, b) in pt.items()) if posture else ''), '']
     bad = [g for g in allg if g['flags'] or g['hub']]
@@ -588,8 +599,9 @@ def hub(bid):
         if a.get('8dir_pv'): media.append({'src': f"{rel}/{a['8dir_pv']}", 'caption': f'{act}: smooth preview with face', 'wide': True})
     for act, a in man['actions'].items():
         media.append({'src': f"{rel}/{a['sheet']}", 'caption': f'{act}: contact sheet (3x) — rows = directions', 'wide': True})
-    for nm, cap in (('ab_heads_idle', 'A/B idle heads 6x: round-4 projected face (A) vs this build (B)'), ('ab_walk', 'A/B walk 3x: A round 4 vs B this build')):
-        if os.path.exists(f'{B}/ab/{nm}.png'): media.append({'src': f'{rel}/ab/{nm}.png', 'caption': cap, 'wide': True})
+    for d_, nm, cap in (('ab', 'ab_heads_idle', 'A/B idle heads 6x: round-4 projected face (A) vs this build (B)'), ('ab', 'ab_walk', 'A/B walk 3x: A round 4 vs B this build'),
+                        ('ab_r7', 'ab_heads_idle', 'A/B idle heads 6x: r7 (A) vs this build (B)'), ('ab_hyb', 'ab_heads_idle', 'A/B idle heads 6x: r4 head hybrid (A) vs this build (B)')):
+        if os.path.exists(f'{B}/{d_}/{nm}.png'): media.append({'src': f'{rel}/{d_}/{nm}.png', 'caption': cap, 'wide': True})
     worst = []
     for r in G['clips']:
         v = clip_verdict(r); fails = [k for k, x in v.items() if x is False]
@@ -622,4 +634,4 @@ if __name__ == '__main__':
     elif a[0] == 'assemble': assemble(a[1])
     elif a[0] == 'gates': sys.exit(0 if gates(a[1])[0] else 2)
     elif a[0] == 'hub': hub(a[1])
-    elif a[0] == 'ab': ab(a[1], a[2])
+    elif a[0] == 'ab': ab(a[1], a[2], tag=a[3] if len(a) > 3 else '', alabel=a[4] if len(a) > 4 else 'A r4')

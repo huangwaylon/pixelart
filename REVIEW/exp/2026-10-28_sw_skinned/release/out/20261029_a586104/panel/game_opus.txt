@@ -1,0 +1,23 @@
+SCORE: 5/10
+SCORE R7: 5/10
+SCORE R4HEAD: 6/10
+
+**B sub-scores:** 1x readability 5 (face) / 7 (silhouette) · direction consistency 6 · action clarity 7 · ship-readiness 4
+
+**A/B (r7 / r4head / B):**
+- Face follows head: 7 / 5 / 8
+- Face on-model: 6 / 8 / 5
+- Face readable at 1x: 5 / 8 / 5
+- Expressive: 5 / 6 / 6 (the pained swap reads in hurt S f01–f03)
+- No smears in motion: 6 / 5 / 6
+- Bangs full: 7 / 7 / 8
+- Stance natural: 6 / 6 / 7
+
+VERDICT: The r4head head is still the best for S/SE/SW, which are the views the player sees most: crisp big eyes, on-model with the m96 masters. B's baked head is the best only in E/NE/W/NW turns. Ship a hybrid: r4head face pixels in the front views, B for side views and turns.
+
+**ISSUES:**
+1. **[OWNER F/P] idle/walk/run S, SE, SW, all frames:** In B, the face texture comes out as blotchy pink-brown noise. Blush blooms over the cheeks and the eyes shrink to 2–3 grey pixels, so the face is unreadable at 1x and darker than the masters. → Reduce the illustration to an m96-sized face before baking (fixed palette, 2×3 eye blocks with a white highlight, blush at most 2 px). Leave eyes and mouth out of the PZCLEAN despeckle.
+2. **[OWNER R] idle SE f01–f02, S f06–f08, walk SE f03–f06:** When the head yaws, the fringe covers the eyes completely, so the face disappears for several frames. → Lift the fringe UV or geometry a further 1–2 px in the ¾ views, or stop the eye layer from being hidden by bangs when yaw is above 20°.
+3. **[OWNER P] hurt S f02, W f02–f03; run S f01, f05:** The expression swap shows white/grey mouth smears and leaves the cheek half-dithered. → Swap the expression on a full-face layer before pixelizing, and run the face_int gate on every frame (it currently passes 13/30).
+4. **[OWNER P] all clips:** Shading fails on every clip (0/48) and boil passes only 13/48. You can see it as flickering highlight specks on the hair and bow and noisy pixels in the dress folds. → Lock the hair highlight to a fixed texture, clamp to two tones per material, and smooth each pixel over neighbouring frames (temporal majority vote).
+5. **[OWNER M] idle E/W, all frames; run SE f01, f04:** The feet fail their gate (6/24): the figure stands on tiptoe or floats about 1 px above the ground. In run, the forward leg crosses the body unreadably. → Pin the heels to the ground plane in idle and spread the stride sideways about 2 px in the diagonal views.

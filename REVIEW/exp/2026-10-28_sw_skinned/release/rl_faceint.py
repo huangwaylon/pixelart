@@ -4,8 +4,8 @@ texture streaked across cheek/jaw in walk SE f00, walk E f03, idle SE f06).
 Reference = R's smooth preview of the REST pose in the same view, wearing the same expression texture as the frame (render_motion.py rest <V> --preview, cached per rig hash).  For every
 motion frame, a similarity transform (scale + rotation + translation, least squares) is fitted from the rest face anchors to the frame's
 face anchors (R's per-frame info `face`: eye/brow/cheek/mouth px, visible flags; the anchors are children of the head bone, so this is the
-head transform as seen on screen).  Every rest face-skin pixel (skin colour: L > 60, a > 4; inside the anchor hull grown by 2 px, minus discs around the eyes, brows and
-mouth, whose expressions legitimately change) is mapped into the frame; it is BAD if the frame colour there differs by dE76 > 25
+head transform as seen on screen).  Every rest face-skin pixel (the face-skin colour cluster of the rest render near the head; eyes, brows and mouth are not
+skin-coloured, and the reference wears the frame's expression) is mapped into the frame; it is BAD if the frame colour there differs by dE76 > 25
 from the rest colour (the head material is unlit, so the same surface point must keep its colour).
 smear = bad / checked per frame; the gate is max smear <= GATE.  Anchors hidden in the frame are dropped; frames with < 3 shared anchors are skipped, and frames
 with the head turned > TURN deg (3D turn, not modelled by the 2D fit) are reported separately, not gated.  N/NE/NW (no face) -> n/a."""
@@ -16,6 +16,8 @@ from PIL import Image
 EXP = '/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned'
 BL = '/Applications/Blender.app/Contents/MacOS/Blender'
 GATE = 0.03
+ERODE = 2     # preview px (= 1x px at the default 2x preview) the rest skin region is eroded by
+TOL = 0       # preview px search radius for the matching colour
 TURN = 12.0   # deg: frames with head |yaw| or |pitch| beyond this vs rest are 3D turns a 2D similarity can't model -> reported, not gated
 DE = 25.0
 EXCL = {'eye': 3.5, 'brow': 2.0, 'mouth': 3.0}   # 1x px radii of the feature discs left out of the check
@@ -79,17 +81,21 @@ def check(pv_dir, stem, V, rest):
     prep = {}
 
     def region(key):
+        """rest face skin: the face anchors are only used as rigid head points for the transform (they need not sit on the drawn features);
+        the region is the rest pixels of the face-skin colour (mode of warm light pixels around the head, dE < 18) within 10 px of the anchors."""
         if key in prep: return prep[key]
         rf, rimg = rest['ref'].get(key) or rest['ref']['_any']
         rP = _pts(rf.get('face'), SC, dxdy); H, W = rimg.shape[:2]; yy, xx = np.mgrid[0:H, 0:W]
-        hull = np.array([p for p, vis in rP.values() if vis])
-        if len(hull) < 3: prep[key] = None; return None
-        x0, y0 = hull.min(0) - 2 * SC; x1, y1 = hull.max(0) + 2 * SC
-        reg = (xx >= x0) & (xx <= x1) & (yy >= y0) & (yy <= y1) & (rimg[..., 3] > 200)
-        for k, (p, _) in rP.items():
-            r = next((v for n, v in EXCL.items() if k.startswith(n)), None)
-            if r: reg &= (xx - p[0]) ** 2 + (yy - p[1]) ** 2 > (r * SC) ** 2
-        Lr = lab(rimg[..., :3]); reg &= (Lr[..., 0] > 60) & (Lr[..., 1] > 4)  # rest SKIN only (hair moves with its springs, legitimately)
+        if len(rP) < 3: prep[key] = None; return None
+        hull = np.array([p for p, _ in rP.values()])
+        x0, y0 = hull.min(0) - 10 * SC; x1, y1 = hull.max(0) + 10 * SC
+        box = (xx >= x0) & (xx <= x1) & (yy >= y0) & (yy <= y1) & (rimg[..., 3] > 200)
+        Lr = lab(rimg[..., :3]); warm = box & (Lr[..., 0] > 55) & (Lr[..., 1] > 6) & (Lr[..., 2] > 6)
+        if warm.sum() < 20: prep[key] = None; return None
+        q = np.round(Lr[warm] / 4); u, c = np.unique(q, axis=0, return_counts=True); skin = u[c.argmax()] * 4
+        reg = box & (np.sqrt(((Lr - skin) ** 2).sum(-1)) < 18)
+        from scipy import ndimage as nd
+        reg = nd.binary_erosion(reg, iterations=ERODE)  # interior skin only: spring hair (bangs, locks) legitimately sweeps the skin edges
         ys, xs = np.nonzero(reg); prep[key] = (rP, np.stack([xs, ys], 1).astype(float), Lr[ys, xs], W, H, key in rest['ref'])
         return prep[key]
     res = []
@@ -98,7 +104,7 @@ def check(pv_dir, stem, V, rest):
         if R_ is None: res.append({'i': f['i'], 'smear': None, 'skip': 'rest anchors'}); continue
         rP, P0, L0, W, H, same_expr = R_
         fP = _pts(f.get('face'), SC, dxdy)
-        common = [n for n in rP if n in fP and rP[n][1] and fP[n][1]]   # anchors visible in both (far-side / occluded ones dropped)
+        common = [n for n in rP if n in fP]   # rigid head points: visibility is irrelevant for the transform
         hd = (f.get('face') or {}).get('_head') or {}
         turned = max(abs(hd.get('yaw', 0)), abs(hd.get('pitch', 0))) > TURN
         if len(common) < 3:
@@ -110,7 +116,11 @@ def check(pv_dir, stem, V, rest):
         img = np.array(Image.open(p).convert('RGBA'))
         ok = (q[:, 0] >= 0) & (q[:, 0] < W) & (q[:, 1] >= 0) & (q[:, 1] < H)
         qq = q[ok]; al = img[qq[:, 1], qq[:, 0], 3] > 200
-        L1 = lab(img[qq[al, 1], qq[al, 0], :3]); de = np.sqrt(((L1 - L0[ok][al]) ** 2).sum(-1))
+        Lf = lab(img[..., :3]); r_ = TOL; de = np.full(int(al.sum()), np.inf); Lref = L0[ok][al]; qa = qq[al]
+        for oy in range(-r_, r_ + 1):        # best match within TOL px (1x): 1-px registration slop is not a smear
+            for ox in range(-r_, r_ + 1):
+                y_ = np.clip(qa[:, 1] + oy, 0, H - 1); x_ = np.clip(qa[:, 0] + ox, 0, W - 1)
+                de = np.minimum(de, np.sqrt(((Lf[y_, x_] - Lref) ** 2).sum(-1)))
         bad = de > DE
         res.append({'i': f['i'], 'smear': round(float(bad.mean()) if len(bad) else 0.0, 4), 'checked': int(len(bad)), 'turned': turned,
                     'yaw': hd.get('yaw'), 'pitch': hd.get('pitch'), 'expr_ref': same_expr, 'face_tex': f.get('face_tex'),
