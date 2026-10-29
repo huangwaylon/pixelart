@@ -725,6 +725,7 @@ def run(stem, info, opt):
     if ORPHAN: out = [orphan_rule(g, st) for g, st in zip(out, sts)]
     if PZCLEAN: out = [pz_cleanup(g, F, st) for g, F, st in zip(out, Fs, sts)]
     if EDGESKIN: out = [edge_skin_rule(g) for g in out]  # after the masters' cleanup so its face pass sees the plain skin
+    out = [final_limb_rules(g, st) for g, st in zip(out, sts)]  # round 9: limb rules re-applied last (after every colour/cleanup stage)
     out = [hx.main_comp(hx.drop_bare_k(g)) for g in out]
     if opt.get('smear', True):
         out, smk = apply_smear(out, info)
@@ -872,6 +873,27 @@ def orphan_rule(g, st):
                 out[y, x] = max(set(c8), key=c8.count) if c8 else 'K'  # a lone fill pixel boxed in by outline folds into the outline
         g = out
     return speck_rule(g)
+
+
+def final_limb_rules(g, st):
+    """last pass, global: (1) limb width - a limb fill pixel outside a 2x2 core + 1 px fringe of its limb becomes outline (only while the
+    limb keeps a core); (2) limb crumbs - a limb piece < SPECK_END px that is not its largest piece is folded into the surrounding colour"""
+    g = g.copy(); lab = st['lab']
+    for q in LIMBQ():
+        Lq = limb_cells(lab, q) & (g != 'K') & (g != '.')
+        if not Lq.any(): continue
+        core = nd.binary_opening(np.pad(Lq, 1), np.ones((2, 2)))[1:-1, 1:-1]
+        if core.any(): g[Lq & ~nd.binary_dilation(core, CROSS)] = 'K'; continue
+        # no 2x2 core at all (a 1-2 px hand tip): grow it to the 2x2 block over its pixels that stays most inside the figure
+        ys, xs = np.nonzero(Lq); best, blk = -1, None
+        for y0 in range(ys.min() - 1, ys.max() + 1):
+            for x0 in range(xs.min() - 1, xs.max() + 1):
+                if y0 < 0 or x0 < 0 or y0 + 2 > N or x0 + 2 > N: continue
+                b = (slice(y0, y0 + 2), slice(x0, x0 + 2)); v = 3 * Lq[b].sum() + (g[b] != '.').sum()
+                if Lq[b].any() and v > best: best, blk = v, b
+        if blk is not None:
+            ch = g[Lq][0]; sg = lab[Lq][0]; g[blk] = ch; lab[blk] = sg
+    return g
 
 
 def speck_rule(g):

@@ -1105,3 +1105,13 @@ Other changes:
 - **Idle heels pinned.** Free-heel lift is now 3°. E-view ankle drift is ≤ 1 px.
 - **Diagonal run views use a wider track (0.85).** The minimum SE leg gap goes from 0.3 to 2.7 px.
 - All 46 files are re-baked and the gates pass.
+
+**Round 9 (P).** Limb rules now run after the masters' cleanup.
+- The cleanup can no longer rewrite limb cells or thin-feature materials.
+- A final limb pass runs last: width repair, and a limb with no 2×2 core (a 1–2 px hand tip) is grown to 2×2.
+- Results:
+
+  | set | limb audit | face_ssim |
+  |---|---|---|
+  | latest build, 48 clips | 47/48 (build had 33/48) | – |
+  | p8 frame set | 9/9 | .298 |

@@ -467,6 +467,12 @@ Lead diagnosis (from render/out/walk/walk_SE_px_hs + walk_SE_px, at 4x):
   Also, both global: (a) **hair specks**: a near-white singleton (W/Q/L) with no skin within 2 px is replaced; back views N/NE/NW rest went from 1/4/2 to 0/0/0.
   (b) **profile/edge skin**: skin touching the silhouette on the shadow side (right/bottom) takes S, and the mouth (m) never sits on the silhouette edge;
   this costs face_ssim about .003. Re-test on R's next rig (motion-frame texture smear fix) once it is logged.
+- 17:30 P (ROUND 9): limb rules now run **after** the masters' cleanup (pixel_chain.py, CLI unchanged; I: rebuild picks it up):
+  - (a) the cleanup can't rewrite limb cells (legs, arms, hands) or designed thin-feature materials (eyes/iris/lash/mouth...). This is the global
+    feature protection for flat-shaded faces. On r7 the face is textured, so the flat case is covered by the rule but not measured here.
+  - (b) a final limb pass as the very last step: width repair, and a limb with no 2x2 core (1-2 px hand tip) is grown to 2x2.
+  Results: **48 clips of I's latest inputs (20261029_a586104): limb audit 47/48** (was 33/48 in the build, 43/48 before (b); left: hurt E f03 arm/hand);
+  **p8 set: face_ssim .298 (EC0 .280), limbs 9/9**, head speckle 5.8 (masters 7.9). shade_swap is unchanged (0/48) and boil passes 13/48.
 
 ## ROUND 2 addendum: posing direction (owner, 2026-10-28)
 > "I want more elegant posing during the different actions. Not slouched, needs to be confident, feminine."
