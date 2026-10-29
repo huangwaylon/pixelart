@@ -244,6 +244,18 @@ it in R's status log, and M will then omit it.
     Remaining: in walk E f02-f05 the drawn profile line at the mouth/nose shows a slight double edge when the head pitches. Dropping grazing faces from the
     projection removed that line but put flat-shaded patches on the cheeks, so it stays off. P's outline rule should own the silhouette there.
 
+- 16:10 R: **ROUND 9 rig (r12)** landed: rig/rig.blend (= rig_r12.blend) + render/render_motion.py. I: re-render. M/F: nothing to redo.
+  - **Fringe:** SE/SW are lifted 3.0 sprite px above the eye line (others 1.5), via the forehead-band UV warp. Expression illustrations follow automatically.
+  - **No blank face on turns:** the projection view is picked per frame from the head yaw vs the camera, with a bias toward more frontal drawings
+    (+0.45 x front component) and a bonus for the frame's own view (+0.15). A back-view illustration (NE/N/NW) is **never** picked while the face is visible
+    (that caused the blank face in hurt E f01-03 / idle E-NE). Examples: idle E f06-09 (head turned 15-17 deg toward the camera) -> SE; idle NE f06-09 -> E;
+    walk/run/jump/hurt E stay E. The shader has a second, wired projection slot (per-face pick by rest facing, ILLUS_*2) but it is off (weight 0):
+    mixing two drawings per face fragmented the eyes. info: frames[i].proj_view / proj_view2.
+  - **Profile streaks:** the lock tubes no longer carry the projection (their projected cheek strip streaked when they swung). Flat hair now.
+    The textured mask fades out on surfaces that turn grazing to the camera (Normal.Incoming smoothstep .12-.30), so they fall back to the flat material.
+  - QA gate sheet: rig/qa/r12_preview_integrity.png (preview head crops: walk SE/E, run E, hurt E, jump E, idle E/NE). No streaks in walk E f3/f6,
+    run E f2-6, hurt E f3-5, jump E f4/f13, and no blank faces. Residual: idle E f06-09 shows the SE drawing on a profile-ish head, with hair seams on the far side.
+
 ## Status log (M)
 - (M writes here)
 - 2026-10-28 11:50 M: started. Building `motion/scripts/` (FK + analytic 2-bone leg IK + spring sim + own capsule preview). Until `rig/rest_skeleton.json` exists I use a stand-in `motion/standin_skeleton.json` (H2 armature joints rotated to face +Y, so .L = -X, plus guessed secondary chains). Assumptions about R's file: armature object at identity, `roll` = EditBone.roll in radians, bone rest matrix = Blender vec_roll_to_mat3(tail-head, roll); `rot` = pose rotation_quaternion with L = B^-1 * r * B. I will NOT scale pelvis (Blender inherit_scale would shrink the legs); scale only on spine/chest/head, small (0.96..1.04).
@@ -865,3 +877,15 @@ the deforming head. Fix this at the source before tuning pixels.
 5. [R] E/W profile cheek/jaw streaks (face-integrity fails: walk E f3/f6, run E f2-6, hurt E f3-5, jump E f4/f13).
 6. [P] Hair/bow highlight specks flicker; boil 13/48, shade_swap 0/48.
 7. [M] Sleeve/skirt drag, relaxed idle arms, heels pinned in idle E/W (feet 6/24), wider diagonal run stride.
+- 13:20 F (ROUND 9 #1, pixel-readable expression illustrations): **face/illus/out/ = round-9 set (active)**; round-7 set kept in face/illus/out_r7/.
+  0 Gemini calls: face/illus/enhance.py edits every variant (66 x S/SE/E + aliases) programmatically, inside the face region only.
+  - Eyes 1.22x via a bulge warp about each eye centre (centres from the open-vs-blink diff, so hair/brows never count and all variants match).
+  - Thicker, darker lash (min filter, x0.6 on dark strokes), iris x0.72 darker, catchlight = near-white INSIDE the iris only, grown 3 px to pure white.
+  - Mouth darker/thicker, blush +14 % saturation (smooth weight, feathered across the eye/mouth split). face_mask.png grows by the eye discs; outside it the files are
+    still pixel-identical to turnE_final. Coverage check passes (compose.py check).
+  - **Verify (R's renderer + P's standard chain, same renderer version for A and B; face/illus/r9/board_baseB_vs_r9b.png):**
+    face_ssim vs m96 (face box, best-shift aligned): rest S .394 -> .394, rest SE .352 -> .303, walk SE .213 -> .196.
+    Visually the SE eyes now survive (2 dark eyes in every walk frame, where the base near eye often vanishes), and S eyes are bigger and darker.
+    SSIM drops in SE because the bigger, darker eye blobs don't match the master's exact pixel pattern (lash K + iris h/g + W), and the catchlight
+    rarely survives P's cleanup in SE. **P:** a 1-2 px W next to iris/lash K is the catchlight; please keep it (the orphan rule from my round-6 note).
+    **R:** the renderer was being edited during my runs (view-pick weights), so re-render the walk to compare against your current build.

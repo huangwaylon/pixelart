@@ -167,7 +167,7 @@ def eff_views():
         if v != VIEW and ch.y > -0.5 and v not in FACEV: continue  # face visible from the camera (her front = +Y): never switch to a back-view illustration
         yv = math.radians(_AL.get(v, {}).get("yaw", 0.0)); c = Vector((ax_, ay_, 0)).normalized()
         cv = Vector((c.x * math.cos(-yv) - c.y * math.sin(-yv), c.x * math.sin(-yv) + c.y * math.cos(-yv), 0))
-        cands.append((ch.dot(cv) + 0.15 * cv.y + (1e-3 if v == VIEW else 0), v))  # r9: bias toward more frontal drawings (they degrade more gracefully on a turn)
+        cands.append((ch.dot(cv) + 0.45 * cv.y + (0.15 if v == VIEW else 0), v))  # r9: bias toward more frontal drawings (they degrade more gracefully on a turn)
     cands.sort(reverse=True); cands = cands[:2] if len(cands) > 1 else cands + [(-1, cands[0][1])]
     # B fades in only near the bisector: 0 while B is >= 15 deg farther than A, 0.5 when equidistant (each view is pure at its own rest)
     aA, aB = (math.degrees(math.acos(max(-1, min(1, s_)))) for s_, _ in cands)
