@@ -68,18 +68,33 @@ sc.render.resolution_x = sc.render.resolution_y = CELL * SC; sc.render.film_tran
 ILLUS = ao.get("head_mode", "") == "illus"
 def _tex_base(v): return os.path.join(EXP, "rig", "tex_illus", f"{v}.png") if ILLUS else os.path.join(EXP, "rig", "tex", f"tex_{v}.png")
 TEXV = VIEW if ("pj_" + VIEW) in body.data.uv_layers and os.path.exists(_tex_base(VIEW)) else None
+EXPR_SRC = {"S": ("S", False), "SE": ("SE", False), "E": ("E", False), "SW": ("SE", True), "W": ("E", True)}  # NE/N/NW: no face swap
 def illus_tex(fr):
-    """round 7: per-view illustration texture for this frame. F's aligned expression illustrations: face/illus/<VIEW>/<name>.png with the
-    same lookup as face_tex() (<face>[_blink|_half][_open] ... neutral); falls back to the base illustration rig/tex_illus/<VIEW>.png"""
+    """round 7: per-view illustration texture for this frame. F's aligned expression illustrations: face/illus/out/<S|SE|E>/<face>[_half|_blink][_open].png
+    (+ face_mask.png); W/SW use the flipped E/SE files; NE/N/NW have no face swap (base illustration). The exact name must exist: a missing
+    file raises (no silent fallback / placeholder). The swap is composited into the background-filled base texture inside F's face_mask and cached
+    as rig/tex_illus/expr/<VIEW>/<name>.png."""
     if not (ILLUS and TEXV): return None
+    if VIEW not in EXPR_SRC: return _tex_base(VIEW)
     f_ = str(fr.get("face", "neutral")); bl = fr.get("blink", 0) or 0
     try: bl = float(bl)
     except Exception: bl = 1.0 if str(bl) in ("closed", "blink") else 0.5 if str(bl) == "half" else 0.0
     b_ = "blink" if bl >= 0.75 else "half" if bl >= 0.25 else ""; m_ = "open" if str(fr.get("mouth", "")) == "open" else ""
-    for n in ("_".join(x for x in (f_, b_, m_) if x), "_".join(x for x in (f_, b_) if x), "_".join(x for x in (f_, m_) if x), f_, "_".join(x for x in ("neutral", b_) if x), "neutral"):
-        pth = os.path.join(EXP, "face", "illus", VIEW, n + ".png")
-        if os.path.exists(pth): return pth
-    return _tex_base(VIEW)
+    name = "_".join(x for x in (f_, b_, m_) if x); sv, flip = EXPR_SRC[VIEW]
+    src = os.path.join(EXP, "face", "illus", "out", sv, name + ".png")
+    if not os.path.exists(src):  # fail loudly: message + non-zero exit code (Blender would otherwise exit 0 after a script exception)
+        print(f"FATAL render_motion: missing expression illustration {src} (frame keys face={f_!r} blink={bl} mouth={fr.get('mouth')!r})", flush=True); os._exit(3)
+    out = os.path.join(EXP, "rig", "tex_illus", "expr", VIEW, name + ".png")
+    if not os.path.exists(out) or os.path.getmtime(out) < os.path.getmtime(src):
+        import numpy as np
+        def arr(pth):
+            im = bpy.data.images.load(pth); a = np.array(im.pixels[:], dtype=np.float32).reshape(im.size[1], im.size[0], 4); bpy.data.images.remove(im); return a
+        base = arr(os.path.join(EXP, "rig", "tex_illus", f"{sv}.png")); ex = arr(src); mk = arr(os.path.join(EXP, "face", "illus", "out", sv, "face_mask.png"))[..., :1] > 0.5
+        comp = np.where(mk, ex, base); comp[..., 3] = 1.0
+        if flip: comp = comp[:, ::-1]
+        os.makedirs(os.path.dirname(out), exist_ok=True); im = bpy.data.images.new("expr_tmp", comp.shape[1], comp.shape[0], alpha=True)
+        im.pixels.foreach_set(comp.ravel()); im.filepath_raw = out; im.file_format = "PNG"; im.save(); bpy.data.images.remove(im)
+    return out
 def _texnodes(N, L):
     """master-projection colour (Closest) through UV pj_<VIEW> + face mask pm_<VIEW> (1 = head-group face visible from this view at rest)"""
     im = N.new("ShaderNodeTexImage"); im.name = "ILLUS_TEX"; im.image = bpy.data.images.load(_tex_base(TEXV), check_existing=True)
@@ -121,7 +136,8 @@ def set_face(fr):
         for m in bpy.data.materials:
             if m.use_nodes:
                 for nd_ in m.node_tree.nodes:
-                    if nd_.name == "ILLUS_TEX" and pth: nd_.image = bpy.data.images.load(pth, check_existing=True)
+                    if nd_.name == "ILLUS_TEX" and pth:
+                        im_ = bpy.data.images.load(pth, check_existing=True); im_.reload() if im_.filepath == pth else None; nd_.image = im_
         return os.path.basename(pth) if pth else None
     if not HASFACE: return None
     pm, pc = face_tex(fr), face_tex(fr, col=True)

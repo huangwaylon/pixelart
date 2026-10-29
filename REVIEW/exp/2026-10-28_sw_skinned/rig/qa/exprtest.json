@@ -1,0 +1,1 @@
+{"action": "exprtest", "fps": 4, "frames": [{"t": 0, "root": {"loc": [0, 0, 0]}, "bones": {}, "face": "joyful", "blink": 0, "mouth": "open"}, {"t": 1, "root": {"loc": [0, 0, 0]}, "bones": {}, "face": "surprised", "blink": 0.5, "mouth": "closed"}], "timing_ms": [250, 250]}

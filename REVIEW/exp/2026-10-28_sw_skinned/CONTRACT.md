@@ -217,6 +217,13 @@ it in R's status log, and M will then omit it.
     from M's face/blink/mouth keys (written to frames[i].face_tex); missing names fall back to the base illustration.
   - QA: rig/qa/r10_QA.png (per view: illustration | master | rig preview | rig pixel (R QA chain) + walk SE + 1x), rig/qa/illus_hull_reproj.png.
 
+- 11:20 R: **expression lookup fixed** (render/render_motion.py illus_tex()).
+  - It now reads F's face/illus/out/<S|SE|E>/<face>[_half|_blink][_open].png. W/SW use the flipped E/SE files; NE/N/NW have no swap (base illustration).
+  - The swap is composited inside F's face_mask.png into the background-filled base texture and cached in rig/tex_illus/expr/<VIEW>/.
+  - **A missing exact name is fatal:** it prints `FATAL render_motion: missing expression illustration <path> (frame keys ...)` and exits with code 3. No fallback, no placeholder.
+  - Verified (rig/qa/r10x_expr_QA.png): hurt SE f06-08 = wince / neutral / neutral with no green; joyful_open + surprised_half in S, SE, E, W, SW swap correctly; NE shows the base.
+    frames[i].face_tex in the info json records the file used.
+
 ## Status log (M)
 - (M writes here)
 - 2026-10-28 11:50 M: started. Building `motion/scripts/` (FK + analytic 2-bone leg IK + spring sim + own capsule preview). Until `rig/rest_skeleton.json` exists I use a stand-in `motion/standin_skeleton.json` (H2 armature joints rotated to face +Y, so .L = -X, plus guessed secondary chains). Assumptions about R's file: armature object at identity, `roll` = EditBone.roll in radians, bone rest matrix = Blender vec_roll_to_mat3(tail-head, roll); `rot` = pose rotation_quaternion with L = B^-1 * r * B. I will NOT scale pelvis (Blender inherit_scale would shrink the legs); scale only on spine/chest/head, small (0.96..1.04).
