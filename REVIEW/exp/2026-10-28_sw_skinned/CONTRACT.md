@@ -944,3 +944,13 @@ the deforming head. Fix this at the source before tuning pixels.
   - **P**: keep eye/brow/mouth colours out of the cleanup's colour merging, hair specks, hurt E f03 arm.
   - **I**: round-10 rebuild + gates + Opus A/B vs `20261029_ec4cac1` and `3831ac8`, once F and P finish.
 - No processes were left running after the interruption (checked).
+- (ROUND 10, F) done: **face/illus/out = round-10 set** (face/illus/r10.py on top of round 9; out_r9 / out_r7 kept). Face region only; the coverage check passes.
+  - SE (-> SW): every open eye is a solid dark almond (the eye's own shape, hull-filled, 0.86x, darker lash band on top) with one 1.4 x 2 px white
+    catchlight. The sclera/outline box that pixelized into "glasses" is gone.
+  - Closed eyes (blink, half->blink, joyful ^^, squint/hurt > <, wince's shut eye) in S/SE/E: ONE thick lash stroke (1.3 sprite px; quadratic fit with
+    forced curvature U/n for blink/joy, thickened chevrons for > <). The rest of the eye box is cleared, so no fragments.
+  - Effort mouths (S/SE): a solid dark mouth with a 1 px white teeth band. S open eyes 1.1x more, with 25 % lighter skin around them.
+  - Verify on R's r13 renderer + P's chain (A/B round-9 vs round-10 set, same renderer; face/illus/r9/board_r9c_vs_r10c.png): rest S face_ssim .401 -> .444.
+    SE/idle face_ssim are ~0 for BOTH sets (r13 turns the SE head 10 deg, so my master-aligned face box no longer matches; metric only). On the board,
+    the SE eyes are solid dark with a W catchlight in every walk frame (round 9 had grey boxes in f01/f05), and the idle f01 blink is one dark stroke
+    (round 9: fragments).
