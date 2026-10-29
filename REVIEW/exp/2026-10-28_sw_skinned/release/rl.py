@@ -433,7 +433,15 @@ def gates(bid):
                          'src': sorted({b.get('src') for b in bg if b.get('src')}), 'worst': max(bg, key=lambda b: b['skin_px'] or 0)}
             except Exception as e:  # noqa: BLE001
                 bangs = {'error': repr(e)[:200]}
-            rows.append({'act': act, 'view': V, 'loop': loop, 'bangs': bangs, 'px': {k: px.get(k) for k in ('boil', 'shade_swap', 'flicker', 'feet_range', 'seam_ratio',
+            fint = None
+            if pipeline() in ('r5', 'r7') and st.get('passes'):
+                try:
+                    import rl_faceint as FI
+                    if V not in RESTPV: RESTPV[V] = FI.rest_preview(V, BLEND(), f'{B}/work/gates/restpv', expr_combos(B))
+                    fint = FI.check(f"{REL}/{st['passes']}/pv", st['stem'], V, RESTPV[V])
+                except Exception as e:  # noqa: BLE001
+                    fint = {'error': repr(e)[:200]}
+            rows.append({'act': act, 'view': V, 'loop': loop, 'bangs': bangs, 'faceint': fint, 'px': {k: px.get(k) for k in ('boil', 'shade_swap', 'flicker', 'feet_range', 'seam_ratio',
                          'articulation_per_s', 'motion_px', 'flags', 'n_frames', 'cycle_ms')}, 'limbs': la, 'gif': gc, 'hub_gif': hubp,
                          'errors': st.get('errors', []), 'face_layer': st.get('face_layer'), 'preview': st.get('preview')})
     for act in acts:  # clips that were planned but did not produce frames
@@ -455,6 +463,17 @@ def gates(bid):
     json.dump({'clips': rows, 'gifs': allg, 'posture': posture}, open(f'{B}/gates.json', 'w'), indent=1)
     write_gates_md(bid, rows, allg, posture)
     return rows, allg
+
+
+RESTPV = {}
+
+
+def expr_combos(B):
+    """every (face, blink, mouth) used by the build's motion snapshots -> one rest-pose preview frame each (face integrity reference)"""
+    cs = {}
+    for m in sorted(glob.glob(f'{B}/work/*/*/motion.json')):
+        for f in json.load(open(m))['frames']: cs[(f.get('face'), f.get('blink'), f.get('mouth'))] = 1
+    return [{'face': a, 'blink': b, 'mouth': c} for a, b, c in cs]
 
 
 def posture_gates(B, man, acts):
@@ -497,6 +516,7 @@ def clip_verdict(r):
     out['limbs'] = None if r['limbs'] is None else r['limbs']['pass']
     out['gif'] = not r['gif']['flags'] and not r['hub_gif']
     b = (r.get('bangs') or {}).get('max'); out['bangs'] = None if b is None else b == 0
+    fm = (r.get('faceint') or {}).get('max'); out['face_int'] = None if fm is None else fm <= 0.03
     return out
 
 
@@ -507,8 +527,8 @@ def write_gates_md(bid, rows, allg, posture=None):
          f"feet_range ≤ {GATE['feet']} px (loops only; in SE/E/NE and the other off-axis views a real stride projects ~5–7 px lower at 30° elevation, so "
          f"FEET there is partly perspective, P notes), seam_ratio ≤ {GATE['seam']} (loops); P's limb audit (VANISHED/SPLIT/THIN/DETACHED, failed frames / frames); "
          'GIF = render/gifcheck.py (loop=0, ≥20 ms, disposal/ghosting, seam, dup frames) + REVIEW/build.py gif_check on the per-direction 4x GIF.', '',
-         '| clip | boil | shade_swap | feet px | seam | limb audit | GIF | bangs (skin px above brow, max / bad frames) | other pxeval flags | notes |', '|---|---|---|---|---|---|---|---|---|---|']
-    tot = {k: [0, 0] for k in ('boil', 'shade', 'feet', 'seam', 'limbs', 'gif', 'bangs')}
+         '| clip | boil | shade_swap | feet px | seam | limb audit | GIF | bangs (skin px above brow, max / bad frames) | preview face integrity (max smear, bad frames; turned) | other pxeval flags | notes |', '|---|---|---|---|---|---|---|---|---|---|---|']
+    tot = {k: [0, 0] for k in ('boil', 'shade', 'feet', 'seam', 'limbs', 'gif', 'bangs', 'face_int')}
     for r in rows:
         v = clip_verdict(r); p = r['px']
         for k, x in v.items():
@@ -522,9 +542,12 @@ def write_gates_md(bid, rows, allg, posture=None):
         gt = 'PASS' if v['gif'] else '**FAIL** ' + ' '.join(r['gif']['flags'] + r['hub_gif'])
         notes = '; '.join(r['errors']) or ('' if str(r.get('face_layer', '')).startswith('ok') else f"face: {r.get('face_layer')}")
         bgd = r.get('bangs') or {}
+        fi = r.get('faceint') or {}
+        fit = 'n/a' if fi.get('max') is None else (f"{fi['max']:.3f} {pf(v['face_int'])}" + (f" f{','.join(map(str, fi['bad_frames']))}" if fi['bad_frames'] else '')
+                                                    + (f"; turned {fi['turned']} (max {fi['turned_max']:.3f})" if fi.get('turned') else ''))
         bt = 'n/a' if bgd.get('max') is None else f"{bgd['max']} / {bgd['frames_bad']}/{bgd['frames']} {pf(bgd['max'] == 0)}"
         L.append(f"| {r['act']} {r['view']} | {_f(p.get('boil'))} {pf(v['boil'])} | {_f(p.get('shade_swap'))} {pf(v['shade'])} | {ft} | "
-                 f"{_f(p.get('seam_ratio'), 2)} {pf(v['seam'])} | {lt} | {gt} | {bt} | {other} | {notes} |")
+                 f"{_f(p.get('seam_ratio'), 2)} {pf(v['seam'])} | {lt} | {gt} | {bt} | {fit} | {other} | {notes} |")
     pt = {'torso': [0, 0], 'head': [0, 0], 'head_fwd': [0, 0]}
     if posture and '_error' not in posture:
         L += ['', '## Posture gates (E profile; round 5 B + addendum)', '',

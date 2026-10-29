@@ -38,7 +38,12 @@ tmp = P8 + '/eval_tmp'; os.makedirs(tmp, exist_ok=True); rows = []
 for act, V, fis in FR:
     stem = f'{P8}/{act}/{act}_{V}'; info = json.load(open(stem + '.json'))
     G, sts, sh, aud = pc.run(stem, info, {'temporal': True, 'protect': True, 'sep': True})
-    os.environ['COLOR'] = 'ec0'; import importlib; importlib.reload(pc)
+    import importlib
+    os.environ['COLOR'] = 'composite'; importlib.reload(pc)
+    Gm, stsm, _, _ = pc.run(stem, info, {'temporal': True, 'protect': True, 'sep': True})
+    md = f'{stem}_cmp'; os.makedirs(md, exist_ok=True)
+    for f_, g_ in zip(info['frames'], Gm): hx.save(g_, f"{md}/f{f_['i']:02d}", V)
+    os.environ['COLOR'] = 'ec0'; importlib.reload(pc)
     Gh, stsh, _, _ = pc.run(stem, info, {'temporal': True, 'protect': True, 'sep': True})
     os.environ['COLOR'] = 'vote'; os.environ['PZCLEAN'] = '1'; importlib.reload(pc)
     Gc, stsc, _, _ = pc.run(stem, info, {'temporal': True, 'protect': True, 'sep': True})
@@ -52,12 +57,12 @@ for act, V, fis in FR:
         k = [f['i'] for f in info['frames']].index(fi)
         F = pc.load(stem, fi, sh['dx'], sh['dy'], f'{P8}/{act}/parts')
         hm = headcrop(MAST.format(V), f'{tmp}/m_{V}.png')
-        for meth, png in (('chain', f'{stem}_px/f{fi:02d}.png'), ('EC0', f'{stem}_ec0/f{fi:02d}.png'), ('chain+EC0 colour', f'{stem}_hyb/f{fi:02d}.png'), ('chain+pz cleanup', f'{stem}_pzc/f{fi:02d}.png')):
+        for meth, png in (('chain', f'{stem}_px/f{fi:02d}.png'), ('EC0', f'{stem}_ec0/f{fi:02d}.png'), ('chain+EC0 colour', f'{stem}_hyb/f{fi:02d}.png'), ('chain+pz cleanup', f'{stem}_pzc/f{fi:02d}.png'), ('composite', f'{stem}_cmp/f{fi:02d}.png')):
             g = hx.read_grid(png[:-4] + '.txt')
             a = still(png, ref=MAST.format(V)).get('vs_ref', {}); hc = headcrop(png, f'{tmp}/{meth}_{act}_{V}_{fi}.png')
             hb = still(f'{tmp}/{meth}_{act}_{V}_{fi}.png', ref=f'{tmp}/m_{V}.png').get('vs_ref', {})
             il = still(png, illus=Z.srcpath(V)).get('vs_illus', {})
-            la = pc.limb_audit(g, (stsh if meth == 'chain+EC0 colour' else stsc if meth == 'chain+pz cleanup' else sts)[k], F); fl = {l: v['flags'] for l, v in la.items() if v['flags']}
+            la = pc.limb_audit(g, (stsh if meth == 'chain+EC0 colour' else stsc if meth == 'chain+pz cleanup' else stsm if meth == 'composite' else sts)[k], F); fl = {l: v['flags'] for l, v in la.items() if v['flags']}
             rows.append({'frame': f'{act} {V} f{fi:02d}', 'method': meth, 'ssim_b': a.get('ssim_b'), 'same_px': a.get('same_px'),
                          'head_ssim_b': hb.get('ssim_b'), 'face_ssim': il.get('face_ssim'), 'speckle': speck(hc), 'master_speckle': speck(hm),
                          'limbs': 'PASS' if not fl else json.dumps(fl)})
@@ -66,7 +71,7 @@ f4 = lambda v: '-' if v is None else f'{v:.3f}'
 print('| frame | method | ssim_b | same_px | head ssim_b | face_ssim | speckle (master) | limbs |\n|---|---|---|---|---|---|---|---|')
 for r in rows:
     print(f"| {r['frame']} | {r['method']} | {f4(r['ssim_b'])} | {f4(r['same_px'])} | {f4(r['head_ssim_b'])} | {f4(r['face_ssim'])} | {r['speckle']} ({r['master_speckle']}) | {r['limbs']} |")
-for m in ('chain', 'EC0', 'chain+EC0 colour', 'chain+pz cleanup'):
+for m in ('chain', 'EC0', 'chain+EC0 colour', 'chain+pz cleanup', 'composite'):
     R = [r for r in rows if r['method'] == m]
     mean = lambda k: np.mean([r[k] for r in R if r[k] is not None])
     print(f"MEAN {m}: ssim_b {mean('ssim_b'):.3f} same_px {mean('same_px'):.3f} head_ssim_b {mean('head_ssim_b'):.3f} face_ssim {mean('face_ssim'):.3f} "

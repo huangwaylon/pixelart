@@ -96,7 +96,7 @@ def expression(action, key, k, n):
         for kk, fc, mo in D:
             if key.startswith(kk): return {"face": fc, "blink": 0.0, "mouth": mo}
     if action == "hurt":
-        H = [("stand", "neutral", "closed", 0.0), ("HIT", "pained", "open", 1.0), ("recoil", "pained", "open", 1.0), ("buckle", "wince", "closed", 0.5),
+        H = [("stand", "neutral", "closed", 0.0), ("HIT", "pained", "open", 1.0), ("recoil", "pained", "open", 1.0), ("buckle", "pained", "closed", 1.0),
              ("stagger", "wince", "closed", 0.5), ("recover", "determined", "closed", 0.0), ("settle", "neutral", "closed", 0.0), ("end", "neutral", "closed", 0.0)]
         for kk, fc, mo, bl in H:
             if key.startswith(kk): return {"face": fc, "blink": bl, "mouth": mo}
@@ -219,7 +219,8 @@ def build(action, tune=None, var=None):
     for i, sp in enumerate(specs):
         th = hl.step(char_acc(po, acc[i] + FWD * facc[i] * facc_k), dt)
         y, p, r = sp["head"]; sp["head"] = (y, p + th[0], r + th[1])
-        cy, cp, cr = sp["chest"]; sp["chest"] = (cy, cp + 0.25 * th[0], cr + 0.25 * th[1])
+        if action != "idle":   # R8: the idle chest no longer follows the head-lag nod (it read as arching back during the look)
+            cy, cp, cr = sp["chest"]; sp["chest"] = (cy, cp + 0.25 * th[0], cr + 0.25 * th[1])
     # pass 2: body pose + secondary chains
     cs = msim.ChainSim(sk)
     samp = {int(round((t0 + ts) / dt)): k for k, ts in enumerate(times)}

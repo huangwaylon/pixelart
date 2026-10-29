@@ -281,6 +281,20 @@ for j in hidx:
 tv = np.isin(vlab, ["torso", "obi", "skirt"])
 for j in [BI[n] for n in BN if n.startswith(("upper_arm", "forearm", "hand", "sleeve"))]:
     W[tv, BI["chest"]] += W[tv, j]; W[tv, j] = 0
+# round 8 (ILLUS): the textured face must move rigidly with the head - no hair/neck weight on the head hull's front (face, cheeks, jaw, bangs,
+# hull side locks): the illustration is painted on one surface, so any other bone there stretches the texture (smears / doubled edges).
+# Only the back of the hull (bob back, bun, bow, ribbons: y > 0.02 H2) keeps its spring chains; side locks swing via the separate lock tubes.
+if ILLUS:
+    hidx = np.nonzero(vlab == "head")[0]; front = V[hidx, 1] < 0.02 - HF
+    keepb = {BI[n] for n in BN if n.startswith(("hair_back", "bun", "bow"))}
+    for j in range(len(BN)):
+        if j == BI["head"] or j in keepb: continue
+        W[hidx[front], BI["head"]] += W[hidx[front], j]; W[hidx[front], j] = 0
+    for j in keepb:  # back chains: never on the front
+        W[hidx[front], BI["head"]] += W[hidx[front], j]; W[hidx[front], j] = 0
+    for j in range(len(BN)):  # any neck/chest weight that the smoothing pushed up into the jaw -> head
+        if BN[j] in ("neck", "chest") or BN[j].startswith("hair_front") or BN[j].startswith("hair_side"):
+            W[hidx, BI["head"]] += W[hidx, j]; W[hidx, j] = 0
 # top-4 influences
 o4 = np.argsort(-W, 1)[:, 4:]; np.put_along_axis(W, o4, 0, 1); W[W < 0.01] = 0; W /= W.sum(1, keepdims=True)
 # ------------------------------------------------------------------ build Blender objects (contract frame)
@@ -340,12 +354,21 @@ else:
     cenH = (cen.reshape(-1, 3) * np.array([-1, -1, 1.0])) / K; nrmH = nrm.reshape(-1, 3) * np.array([-1, -1, 1.0])
     lv = np.zeros(len(me.loops), int); me.loops.foreach_get("vertex_index", lv); bvh = _BVH.FromPolygons([Vector(v) for v in V], FC)
     headgrp = np.isin(np.array(flab).astype(str), ["head", "lock_L", "lock_R"]); SHIFT = np.array([0, HF, 0])  # undo the head-forward move
-    MIRR = {"SW": "SE", "W": "E", "NW": "NE"}
+    MIRR = {"SW": "SE", "W": "E", "NW": "NE"}; ANC = json.load(open("/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/m96/heads/anchor.json"))["views"]
     for view in AZC:
         src = MIRR.get(view, view); mp = IM[src]; proj, dv = camH2(view)
         cr = proj(V[lv] + SHIFT)  # master-cell coords of this view
         if view in MIRR: cr[:, 0] = 128.0 - cr[:, 0]  # mirrored view = mirror of the source view's master cell
         Xi = (cr[:, 0] - mp["bx"]) / mp["ax"]; Yi = (cr[:, 1] - mp["by"]) / mp["ay"]; Wd, Ht = mp["size"]
+        # round 8: lift the fringe ~1.5 sprite px above the eye line (UV warp in the forehead band, so expression textures follow):
+        # a surface point in the band samples the texture from up to LIFT master rows lower -> the bang edge reads higher, eyes untouched
+        an = ANC.get(src, {}); ey = [e["y0"] for e in an.get("eyes", [])]
+        if ey:
+            LIFT = float(os.environ.get("FRINGE_LIFT", "1.5")); y0e = min(ey); ytop, ybot = y0e - 5.0, y0e + 1.0  # master rows: above the brows .. lash row
+            exs = [e["x0"] for e in an["eyes"]]; xl, xr = min(exs) - 3.0, max(exs) + 9.0
+            xm = cr[:, 0] if view not in MIRR else 128.0 - cr[:, 0]; ym = cr[:, 1]
+            tt = np.clip((ym - ytop) / (ybot - ytop), 0, 1); inband = (ym > ytop) & (ym < ybot) & (xm > xl) & (xm < xr)
+            Yi = Yi + np.where(inband, LIFT * np.sin(np.pi * tt) / mp["ay"], 0.0)
         if view in MIRR: Xi = Wd - Xi  # flipped illustration texture
         uvl = me.uv_layers.new(name="pj_" + view); uvl.data.foreach_set("uv", np.stack([Xi / Wd, 1 - Yi / Ht], 1).ravel())
         pm = np.zeros(nf, np.float32); D = Vector(dv)

@@ -48,6 +48,7 @@ ALINE = float(os.environ.get('ALINE', '0.6'))  # skirt widening per row and side
 SKINMAX = int(os.environ.get('SKINMAX', '3'))  # max skin-band rows under the hem
 ORPHAN = os.environ.get('ORPHAN', '1') == '1'  # round 6 orphan rule for every material
 PZCLEAN = os.environ.get('PZCLEAN', '0') == '1'  # masters' pz.py cleanup (face pass) on the final grid, source = 8x colour render
+EDGESKIN = os.environ.get('EDGESKIN', '1') == '1'  # round 8 global skin edge shading + mouth off the silhouette
 COLOR = os.environ.get('COLOR', 'vote')  # colour stage: vote (material ramps + E2 textures) | ec0 (pz EC0 on the 8x colour render 'pv')
 RIM = os.environ.get('RIM', 'g')  # near-leg rim tone along the leg|leg separation (d = sock sheen; g = boot light, stronger)
 SMOOTH = os.environ.get('SMOOTH', '1') == '1'
@@ -143,7 +144,7 @@ def load(stem, i, dx, dy, pdir):
         w = hx.cells(al.astype(float)).sum((2, 3))
         F['rpos'] = np.stack([hx.cells(rp[..., k] * al).sum((2, 3)) for k in range(3)], -1) / np.maximum(w, 1)[..., None]
         F['rpos_ok'] = w > 0
-    if COLOR == 'ec0' or PZCLEAN:
+    if COLOR in ('ec0', 'composite') or PZCLEAN:
         pv = f'{stem}_f{i:02d}_pv.png'
         if os.path.exists(pv): F['pv'] = crop(hx.rd16(pv), dx, dy)
     if TEXMATS or TEXAUTO:
@@ -599,10 +600,22 @@ def frame(F, prev, opt):
     # far-limb dark fallback for suppressed lines
     for a_, b_ in (('D', 'd'), ('S', 's'), ('R', 'E'), ('h', 'H'), ('H', 'g')):
         g[dark & (g == a_)] = b_
-    if 'texc' in F and COLOR != 'ec0':
+    TXCELL = np.zeros((N, N), bool)
+    if 'texc' in F and COLOR not in ('ec0', 'composite'):
         sel = fill & (np.isin(M_, [MI[m] for m in TEXMATS if m in MI]) if TEXMATS else True)
         g = textured_chars(g, F['texc'], sel, M_)
-    if 'pv' in F:  # COLOR=ec0: the masters' E2 recipe (pz.py EC0 incl. its face pass) on the 8x colour render gives the colours of every fill
+    if 'pv' in F and COLOR == 'composite' and 'texc' in F:
+        # round 8 per-material composite: cells of a TEXTURED material (rig/face_mats.json, covered by the tex pass) take the masters' EC0
+        # recipe colours (k-centroid + palette lock + pz cleanup incl. its face pass) computed on the 8x colour render; flat materials keep
+        # the chain's colours.  The global rules (limb width/crumbs, outline, orphans, temporal) run on the composite afterwards.
+        import p8_ec0
+        e = p8_ec0.ec0_frame(np.clip(F['pv'] * 255, 0, 255).astype(np.uint8))
+        txa = hx.cells((F['texc'][..., 3] > 0.5).astype(float)).mean((2, 3)) >= 0.5
+        TXCELL = fill & txa & (np.isin(M_, [MI[m] for m in TEXMATS if m in MI]) if TEXMATS else True) & (e != '.')
+        edge = fill & ~nd.binary_erosion(fill, CROSS, iterations=1)
+        TXCELL &= ~((e == 'K') & edge)  # EC0's silhouette K would double the chain outline; its interior K (lashes, pupils) stays
+        g = np.where(TXCELL, e, g)
+    if 'pv' in F and COLOR == 'ec0':  # COLOR=ec0: the masters' E2 recipe (pz.py EC0 incl. its face pass) on the 8x colour render gives the colours of every fill
         # cell (body + head alike); the chain keeps geometry (fill, limb protection, lines, outline, temporal, orphans).  EC0's own K is kept
         # only in the interior (eyes, lashes, folds) - near our silhouette its outline would double ours.
         import p8_ec0
@@ -664,7 +677,7 @@ def frame(F, prev, opt):
     thinm = fill & np.isin(M_, [MI[m] for m in THINF if m in MI]); g[thinm] = g0[thinm]
     if 'texc' in F: txm = fill & (hx.cells((F['texc'][..., 3] > 0.5).astype(float)).mean((2, 3)) >= 0.5); g[txm] = g0[txm]  # texture colours: only the global orphan rule
     bmask = np.where(fill, dom_b, -1)
-    st = {'lcell': l, 'rpos': F.get('rpos'), 'rpos_ok': F.get('rpos_ok'), 'dom_b': dom_b, 'line': line, 'lab': lab, 'band': band, 'fill': fill, 'bmask': bmask, 'g': g, 'mid': F['mid'], 'part': F['part'], 'lum': F['lum'],
+    st = {'txcell': TXCELL, 'lcell': l, 'rpos': F.get('rpos'), 'rpos_ok': F.get('rpos_ok'), 'dom_b': dom_b, 'line': line, 'lab': lab, 'band': band, 'fill': fill, 'bmask': bmask, 'g': g, 'mid': F['mid'], 'part': F['part'], 'lum': F['lum'],
           'farleg': farleg}
     return g, st
 
@@ -710,6 +723,7 @@ def run(stem, info, opt):
         out[i], sts[i] = g, st; prev = st
     if opt['temporal']: out = kill_flips(out, loop)
     if ORPHAN: out = [orphan_rule(g, st) for g, st in zip(out, sts)]
+    if EDGESKIN: out = [edge_skin_rule(g) for g in out]
     if PZCLEAN: out = [pz_cleanup(g, F) for g, F in zip(out, Fs)]
     out = [hx.main_comp(hx.drop_bare_k(g)) for g in out]
     if opt.get('smear', True):
@@ -835,6 +849,7 @@ def orphan_rule(g, st):
         nb = [(dy, dx) for dy in (-1, 0, 1) for dx in (-1, 0, 1) if dy or dx]
         same = sum((pg[1 + dy:1 + dy + H, 1 + dx:1 + dx + W] == g).astype(int) for dy, dx in nb)
         cand = (g != '.') & (g != 'K') & (same == 0) & (lab >= 0)
+        if st.get('txcell') is not None: cand &= ~st['txcell']  # textured (EC0) pixels: its face pass already decided; only the speck rule below
         if not cand.any(): break
         out = g.copy()
         for y, x in zip(*np.nonzero(cand)):
@@ -848,7 +863,38 @@ def orphan_rule(g, st):
                 c8 = [pg[1 + y + dy, 1 + x + dx] for dy, dx in nb if pg[1 + y + dy, 1 + x + dx] not in '.K']
                 out[y, x] = max(set(c8), key=c8.count) if c8 else 'K'  # a lone fill pixel boxed in by outline folds into the outline
         g = out
-    return g
+    return speck_rule(g)
+
+
+def speck_rule(g):
+    """global: a near-white singleton (W/Q/L) with no skin-class pixel within 2 px is a hair speck (back views), not an eye catchlight -> the
+    most common neighbour colour"""
+    H, W = g.shape; pg = np.pad(g, 2, constant_values='.')
+    skin = np.isin(pg, list('sSmk'))
+    near_skin = sum(skin[2 + dy:2 + dy + H, 2 + dx:2 + dx + W] for dy in range(-2, 3) for dx in range(-2, 3)) > 0
+    same = sum((pg[2 + dy:2 + dy + H, 2 + dx:2 + dx + W] == g) for dy in (-1, 0, 1) for dx in (-1, 0, 1) if dy or dx)
+    bad = np.isin(g, list('WQL')) & (same == 0) & ~near_skin
+    out = g.copy()
+    for y, x in zip(*np.nonzero(bad)):
+        nb = [pg[2 + y + dy, 2 + x + dx] for dy in (-1, 0, 1) for dx in (-1, 0, 1) if (dy or dx) and pg[2 + y + dy, 2 + x + dx] not in '.K']
+        if nb: out[y, x] = max(set(nb), key=nb.count)
+    return out
+
+
+def edge_skin_rule(g):
+    """global skin rules at the silhouette: (1) skin pixels touching the outline on the shadow side (light from screen-left/top: the right and
+    bottom neighbours) take the skin shadow S - profile jaw/nose/hands read as form; (2) mouth (m) never sits on the silhouette edge -> S"""
+    H, W = g.shape; pg = np.pad(g, 1, constant_values='.'); out = g.copy()
+    outer = lambda c: c in '.K'
+    R_, D_ = pg[1:-1, 2:], pg[2:, 1:-1]; L_, U_ = pg[1:-1, :-2], pg[:-2, 1:-1]
+    sh = (g == 's') & ((np.isin(R_, list('.K'))) | (np.isin(D_, list('.K'))))
+    # only where the outside really is background beyond the outline (silhouette), not an interior K line
+    pg2 = np.pad(g, 2, constant_values='.')
+    bg_near = sum((pg2[2 + dy:2 + dy + H, 2 + dx:2 + dx + W] == '.') for dy in (-2, -1, 0, 1, 2) for dx in (-2, -1, 0, 1, 2)) > 0
+    out[sh & bg_near] = 'S'
+    mo = (g == 'm') & bg_near & ((np.isin(R_, list('.K'))) | np.isin(L_, list('.K')) | np.isin(D_, list('.K')) | np.isin(U_, list('.K')))
+    out[mo] = 'S'
+    return out
 
 
 def is_loop(info):

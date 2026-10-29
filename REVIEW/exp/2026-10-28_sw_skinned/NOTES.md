@@ -1078,3 +1078,9 @@ Re-baked against R's r8b skeleton (neck, head and hair/bow/bun bones moved forwa
 | current chain | .450 | .266 | 14.1 | 9/9 |
 
 The masters have a head speckle of 7.9. The hybrids (`COLOR=ec0`, `PZCLEAN=1`) do not keep both the face gains and the limb gate, so the chain default is unchanged and both remain opt-in.
+
+## M: round 8
+- **Idle:** the chest is held at +2.5°, with no breath pitch and no head-lag coupling. The torso is +1.6–1.8° in every frame, so there is no arch during the E/W look.
+- **Hurt:** a guard arm plus a close recoil arm (no T), clearer knockback (−8.5 cm), and a held pained face.
+- **Walk:** bob 3.5 px, arm swing −20/+33°, foot lift 11 cm.
+- Gates pass. Re-baked: walk, idle, hurt and the walk/idle variants.

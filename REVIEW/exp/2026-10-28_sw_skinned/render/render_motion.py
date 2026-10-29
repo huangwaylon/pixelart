@@ -69,22 +69,23 @@ ILLUS = ao.get("head_mode", "") == "illus"
 def _tex_base(v): return os.path.join(EXP, "rig", "tex_illus", f"{v}.png") if ILLUS else os.path.join(EXP, "rig", "tex", f"tex_{v}.png")
 TEXV = VIEW if ("pj_" + VIEW) in body.data.uv_layers and os.path.exists(_tex_base(VIEW)) else None
 EXPR_SRC = {"S": ("S", False), "SE": ("SE", False), "E": ("E", False), "SW": ("SE", True), "W": ("E", True)}  # NE/N/NW: no face swap
-def illus_tex(fr):
+def illus_tex(fr, view=None):
     """round 7: per-view illustration texture for this frame. F's aligned expression illustrations: face/illus/out/<S|SE|E>/<face>[_half|_blink][_open].png
     (+ face_mask.png); W/SW use the flipped E/SE files; NE/N/NW have no face swap (base illustration). The exact name must exist: a missing
     file raises (no silent fallback / placeholder). The swap is composited into the background-filled base texture inside F's face_mask and cached
     as rig/tex_illus/expr/<VIEW>/<name>.png."""
     if not (ILLUS and TEXV): return None
-    if VIEW not in EXPR_SRC: return _tex_base(VIEW)
+    view = view or VIEW
+    if view not in EXPR_SRC: return _tex_base(view)
     f_ = str(fr.get("face", "neutral")); bl = fr.get("blink", 0) or 0
     try: bl = float(bl)
     except Exception: bl = 1.0 if str(bl) in ("closed", "blink") else 0.5 if str(bl) == "half" else 0.0
     b_ = "blink" if bl >= 0.75 else "half" if bl >= 0.25 else ""; m_ = "open" if str(fr.get("mouth", "")) == "open" else ""
-    name = "_".join(x for x in (f_, b_, m_) if x); sv, flip = EXPR_SRC[VIEW]
+    name = "_".join(x for x in (f_, b_, m_) if x); sv, flip = EXPR_SRC[view]
     src = os.path.join(EXP, "face", "illus", "out", sv, name + ".png")
     if not os.path.exists(src):  # fail loudly: message + non-zero exit code (Blender would otherwise exit 0 after a script exception)
         print(f"FATAL render_motion: missing expression illustration {src} (frame keys face={f_!r} blink={bl} mouth={fr.get('mouth')!r})", flush=True); os._exit(3)
-    out = os.path.join(EXP, "rig", "tex_illus", "expr", VIEW, name + ".png")
+    out = os.path.join(EXP, "rig", "tex_illus", "expr", view, name + ".png")
     if not os.path.exists(out) or os.path.getmtime(out) < os.path.getmtime(src):
         import numpy as np
         def arr(pth):
@@ -98,8 +99,8 @@ def illus_tex(fr):
 def _texnodes(N, L):
     """master-projection colour (Closest) through UV pj_<VIEW> + face mask pm_<VIEW> (1 = head-group face visible from this view at rest)"""
     im = N.new("ShaderNodeTexImage"); im.name = "ILLUS_TEX"; im.image = bpy.data.images.load(_tex_base(TEXV), check_existing=True)
-    im.interpolation = "Linear" if ILLUS else "Closest"; im.extension = "EXTEND"; uvn = N.new("ShaderNodeUVMap"); uvn.uv_map = "pj_" + TEXV; L.new(uvn.outputs[0], im.inputs[0])
-    pm = N.new("ShaderNodeAttribute"); pm.attribute_type = "GEOMETRY"; pm.attribute_name = "pm_" + TEXV
+    im.interpolation = "Linear" if ILLUS else "Closest"; im.extension = "EXTEND"; uvn = N.new("ShaderNodeUVMap"); uvn.name = "ILLUS_UV"; uvn.uv_map = "pj_" + TEXV; L.new(uvn.outputs[0], im.inputs[0])
+    pm = N.new("ShaderNodeAttribute"); pm.name = "ILLUS_PM"; pm.attribute_type = "GEOMETRY"; pm.attribute_name = "pm_" + TEXV
     return im, pm
 # ---- round 5: 3D face textures (UV face_uv, mask fmask), switched per frame from M's face/blink/mouth keys
 FACE_DIRS = [os.path.join(EXP, "face", "tex3d"), os.path.join(EXP, "rig", "face_tex")]
@@ -130,12 +131,26 @@ def _facenodes(N, L, col):
     fm = N.new("ShaderNodeAttribute"); fm.attribute_type = "GEOMETRY"; fm.attribute_name = "fmask"
     mul = N.new("ShaderNodeMath"); mul.operation = "MULTIPLY"; L.new(fm.outputs["Fac"], mul.inputs[0]); L.new(im.outputs["Alpha"], mul.inputs[1])
     return im, mul
+def eff_view():
+    """projection view whose rest camera direction (in the head's rest frame, per-view yaw cheat removed) is closest to this frame's camera
+    direction seen from the posed head: a head turn beyond ~22 deg switches to the neighbouring illustration instead of smearing the current one"""
+    R = (ao.matrix_world @ pbs["head"].matrix).to_3x3() @ REST["head"].to_3x3().inverted()
+    ch = R.transposed() @ cam.matrix_world.to_3x3().col[2].normalized(); ch.z = 0; ch.normalize(); best, bv = -9, VIEW
+    for v, (ax_, ay_) in AZ.items():
+        if ("pj_" + v) not in body.data.uv_layers or not os.path.exists(_tex_base(v)): continue
+        yv = math.radians(_AL.get(v, {}).get("yaw", 0.0)); c = Vector((ax_, ay_, 0)).normalized()
+        cv = Vector((c.x * math.cos(-yv) - c.y * math.sin(-yv), c.x * math.sin(-yv) + c.y * math.cos(-yv), 0))
+        s = ch.dot(cv) + (1e-3 if v == VIEW else 0)
+        if s > best: best, bv = s, v
+    return bv
 def set_face(fr):
-    if ILLUS and TEXV:  # round 7: expression swap on the illustration texture
-        pth = illus_tex(fr)
+    if ILLUS and TEXV:  # round 7: expression swap on the illustration texture; round 8: projection view picked by head yaw vs the camera
+        ev = eff_view(); CUR["eff"] = ev; pth = illus_tex(fr, ev)
         for m in bpy.data.materials:
             if m.use_nodes:
                 for nd_ in m.node_tree.nodes:
+                    if nd_.name == "ILLUS_UV": nd_.uv_map = "pj_" + ev
+                    if nd_.name == "ILLUS_PM": nd_.attribute_name = "pm_" + ev
                     if nd_.name == "ILLUS_TEX" and pth:
                         im_ = bpy.data.images.load(pth, check_existing=True); im_.reload() if im_.filepath == pth else None; nd_.image = im_
         return os.path.basename(pth) if pth else None
@@ -262,7 +277,7 @@ info = {"action": act, "view": VIEW, "cell_1x": CELL, "pivot_1x": PIV, "ppu_h2":
 for i in idxs:
     fr = frames[i]; apply(fr); CUR["fr"] = fr; ftex = set_face(fr)
     for k in kinds: rpass(f"{stem}_f{i:02d}_{k}.png", k)
-    info["frames"].append({"i": i, "t": fr.get("t", i), "ms": tim[i] if i < len(tim) else tim[-1], "pts": meta(), "face": face_meta(), "face_tex": ftex})
+    info["frames"].append({"i": i, "t": fr.get("t", i), "ms": tim[i] if i < len(tim) else tim[-1], "pts": meta(), "face": face_meta(), "face_tex": ftex, "proj_view": CUR.get("eff")})
 json.dump(info, open(stem + ".json", "w"), indent=0)
 print(f"RENDERED {len(idxs)} frames x {kinds} in {time.time() - t0:.1f}s", flush=True)
 if not NOPOST:

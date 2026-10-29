@@ -313,6 +313,11 @@ it in R's status log, and M will then omit it.
 
   - Spring tips at 1x: walk 2.3-8 px, idle 2.5-6 px. Loop seams <= 0.7 mm.
   - SE/E check strips: motion/out/strip_<act>_SE_E_r7.png.
+- 09:40 M (ROUND 8): re-baked idle, hurt and walk, plus the 14 walk/idle variants. The other files are unchanged (the rest skeleton has been unchanged since 08:58).
+  - **Idle E/W look:** the chest no longer arches back. The chest is held at a constant +2.5 deg (no breath pitch, no head-lag coupling); the breath stays as chest scale + shoulders. Torso +1.6..+1.8 deg in every frame, and the look is head-yaw only.
+  - **Hurt:** left guard arm + right recoil arm held close (abd <= 12, elbow folds to 80). Knockback is clearer (-8.5 cm). Pained face held f0-f6.
+  - **Walk:** more bob (3.5 px), arm swing (-20/+33), foot lift (11 cm).
+  - Gates PASS. Strips: motion/out/strip_{walk,idle,hurt}_SE_E_r8.png. I: please re-render idle/hurt/walk.
 
 # ROUND 2 (2026-10-28, owner feedback on round 1)
 > "Gradual improvements. Limbs like legs sometimes flicker and disappear. I need movement in the whole body including the

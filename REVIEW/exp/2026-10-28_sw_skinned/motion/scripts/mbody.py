@@ -148,17 +148,17 @@ WALK = dict(
     # ROUND 2 (owner: elegant, confident, feminine; >=1 px or held; snappier with holds): poised chibi model walk
     T=0.84, frame_ms=[90, 120, 90, 120], sf=0.60, a=0.20, track=0.62, toe_out=6.0, geo=True, geo_pre=0.0, geo_off=0.0, foot_y=0.0,
     # key phases (half cycle): contact 0, DOWN .214 (held 120 ms), PASSING .5, UP .714 (held 120 ms)
-    dip=[(0.0, 0.15), (0.214, 1.0), (0.5, 0.55), (0.714, 0.0, "flat"), (0.9, 0.05)], dip_amp=0.018,
+    dip=[(0.0, 0.15), (0.214, 1.0), (0.5, 0.55), (0.714, 0.0, "flat"), (0.9, 0.05)], dip_amp=0.024,
     strike_pitch=18.0, flat_at=0.2, heel_rise=0.32, lift_pitch=-40.0, arm_lean_comp=0.0,
     strike_vel=0.5, lift_vel=1.0, knee_out=-3.0,
-    swing_dz=[(0, 0), (0.30, 0.09), (0.62, 0.06), (1.0, 0.0)], swing_dy=[(0, 0), (0.35, -0.01), (0.75, 0.03), (1.0, 0.0)],
+    swing_dz=[(0, 0), (0.30, 0.11), (0.62, 0.07), (1.0, 0.0)], swing_dy=[(0, 0), (0.35, -0.01), (0.75, 0.03), (1.0, 0.0)],
     swing_pitch=[(0, -40.0), (0.3, -45.0), (0.65, -18.0), (1.0, 18.0)], swing_toe=[(0, 0.0), (0.2, -25.0), (0.65, -15.0), (1.0, 18.0)],
     bob=[(0.0, -0.35), (0.214, -1.0, "flat"), (0.5, 0.2), (0.714, 1.0, "flat"), (0.9, 0.35)], bob_amp=0.026,
     # R5: natural feminine gait from mocap (Bandai walk_feminine_001: pelvis yaw +-8, hip drop +-8, sway .06 L, bob .046 L), torso 2-3 deg forward, head level
     sway=0.034, sway_ph=0.27, pel_yaw=8.0, pel_yaw_ph=0.02, pel_roll=7.0, pel_roll_ph=0.2, pel_pitch=4.0, pel_pitch_bob=1.0,
     ch_yaw=5.0, ch_yaw_ph=0.06, ch_roll=3.5, lean=4.5, ch_pitch_bob=1.0, ch_bob_lag=0.08,
     hd_yaw=3.0, hd_roll=-6.0, hd_pitch=1.0, hd_pitch_bob=2.0, hd_bob_lag=0.25,
-    arm_swing=[(0.0, -16.0), (0.5, 30.0)], arm_amp_ref=30.0, lag_upper=0.04, lag_fore=0.0, lag_hand=0.13,
+    arm_swing=[(0.0, -20.0), (0.5, 33.0)], arm_amp_ref=33.0, lag_upper=0.04, lag_fore=0.0, lag_hand=0.13,
     elbow0=22.0, elbow_amp=26.0, elbow_bob=4.0, wrist0=10.0, wrist_amp=22.0, abd0=-20.0, abd_amp=0.0, cross=22.0, cross_back=26.0, elbow_in=12.0,
     sh_elev=3.0, sh_bob=-1.5, sh_fwd=4.0, sh_elev0=-1.0, sh_fwd0=0.0,
     sq_chest=0.03, sq_head=0.01, sq_lag=0.04,
@@ -222,7 +222,7 @@ class Idle:
                         (0.72, 0.0, "flat"), (0.79, -0.010), (0.835, -0.016, "flat"), (0.90, 0.007), (0.97, 0.0, "flat"), (1.0, 0.005)], x))
         root = [-0.085 * w, 0.022, self.zbase - 0.008 + z + 0.006 * br]   # R5: centre of mass over the mid-foot/balls
         pel = (-3.0 * w, 3.0, 12.0 * w)                      # stance hip up/out: tilt down toward the free side
-        chest = (2.0 * w_l, 2.0 - 1.5 * br, -6.5 * w_l)   # R5: natural, slightly forward torso (breath lifts it a touch)     # R2: chest lifted; contrapposto counter-tilt; lifts more on the inhale
+        chest = (1.0 * w_l, 2.5, -6.5 * w_l)   # R8: constant +2.5 deg forward (no breath arch; the breath is chest scale + shoulders)   # R5: natural, slightly forward torso (breath lifts it a touch)     # R2: chest lifted; contrapposto counter-tilt; lifts more on the inhale
         look = float(okey([(0, 0), (0.22, 0.0, "flat"), (0.28, -4.0), (0.34, -9.0), (0.40, -15.0), (0.47, -20.0), (0.55, -17.0, "flat"), (0.74, -17.0, "flat"), (0.82, -6.0), (0.88, 2.0), (0.94, 0.0), (1.0, 0)], x))
         nod = float(okey([(0, 0), (0.30, 0.0), (0.36, -2.0), (0.46, -4.0), (0.55, 0.0), (0.8, -1.0), (0.9, -3.0), (1.0, 0)], x))   # R3: no forward nod in the settles
         head = (look, 1.5 + 0.6 * nod - 0.8 * br_l, 8.0 * self.w(t - 0.18) - 1.5 * w_l)   # chin slightly up; tilt toward the free hip, lags the body
@@ -398,7 +398,7 @@ class Hurt(_OneShot):
 
     def spec(self, t):
         z = K([(0, -0.01), (0.04, 0.012), (0.10, 0.0), (0.22, -0.02), (0.30, -0.055, "flat"), (0.42, -0.03), (0.56, 0.006), (0.72, -0.012), (0.9, -0.01)], t)
-        ry = K([(0, 0.0), (0.04, 0.02), (0.10, -0.03), (0.22, -0.05), (0.30, -0.06), (0.42, -0.05), (0.56, -0.02), (0.9, 0.0)], t)
+        ry = K([(0, 0.0), (0.04, 0.015), (0.10, -0.045), (0.22, -0.075), (0.30, -0.085), (0.42, -0.07), (0.56, -0.03), (0.9, 0.0)], t)   # R8: clearer knockback
         lean = K([(0, 1), (0.03, 1.0), (0.05, -18.0), (0.10, -22.0), (0.22, -20.0, "flat"), (0.30, 8.0), (0.42, 4.0), (0.56, 1.0), (0.72, 2.0), (0.9, 1.0)], t)
         pel = K([(0, 2), (0.05, -10.0), (0.22, -8.0), (0.30, 8.0), (0.42, 4.0), (0.56, 1.0), (0.9, 2.0)], t)
         hd = K([(0, 1), (0.03, 1.0), (0.045, -2.0), (0.10, -2.0), (0.22, -1.0), (0.30, 4.0), (0.36, 9.0), (0.42, 3.0), (0.56, 1.0), (0.62, 3.0), (0.72, 1.0), (0.9, 1.0)], t)   # R5: no chin-up; the whip is roll + yaw
@@ -415,9 +415,10 @@ class Hurt(_OneShot):
                          K([(0, -12), (0.05, 6.0), (0.10, 10.0), (0.22, 6.0), (0.30, -6.0), (0.42, 2.0), (0.56, -10.0), (0.9, -12.0)], t),
                          K([(0, 18), (0.05, 95.0), (0.10, 115.0), (0.22, 110.0), (0.30, 88.0), (0.42, 60.0), (0.56, 30.0), (0.9, 18.0)], t), wr,
                          K([(0, 0), (0.05, 30.0), (0.22, 30.0), (0.42, 10.0), (0.56, 0.0), (0.9, 0)], t)),
-               "R": _arm(K([(0, 2), (0.03, 2.0), (0.05, -26.0), (0.10, -34.0), (0.22, -24.0), (0.30, -6.0), (0.42, 8.0), (0.56, 4.0), (0.72, 2.0), (0.9, 2.0)], t),
-                         K([(0, -12), (0.05, 20.0), (0.10, 24.0), (0.22, 16.0), (0.30, 0.0), (0.42, 10.0), (0.56, -8.0), (0.9, -12.0)], t),
-                         K([(0, 18), (0.05, 35.0), (0.10, 45.0), (0.22, 58.0), (0.30, 68.0), (0.42, 40.0), (0.56, 24.0), (0.9, 18.0)], t), wr)}
+               "R": _arm(K([(0, 2), (0.03, 2.0), (0.05, -18.0), (0.10, -24.0), (0.22, -18.0), (0.30, 4.0), (0.42, 10.0), (0.56, 4.0), (0.72, 2.0), (0.9, 2.0)], t),
+                         K([(0, -12), (0.05, 8.0), (0.10, 12.0), (0.22, 8.0), (0.30, -4.0), (0.42, 4.0), (0.56, -10.0), (0.9, -12.0)], t),
+                         K([(0, 18), (0.05, 50.0), (0.10, 62.0), (0.22, 70.0), (0.30, 80.0), (0.42, 50.0), (0.56, 26.0), (0.9, 18.0)], t), wr,
+                 K([(0, 0), (0.05, 15.0), (0.30, 25.0), (0.56, 5.0), (0.9, 0)], t))}   # R8: recoil arm stays close (abd <= 12), elbow folds in
         spec["arm"] = arm; spec["shoulder"] = {sd: (K([(0, -2), (0.05, 14), (0.22, 11), (0.30, -4), (0.42, 2), (0.56, -2), (0.9, -2)], t), K([(0, -3), (0.05, -10), (0.30, 4), (0.56, -3), (0.9, -3)], t)) for sd in "LR"}
         # feet: the R foot steps back to catch the knockback, the L foot lifts its heel on the snap
         fR = (K([(0, 0.0), (0.10, 0.0), (0.16, -0.06), (0.22, -0.10), (0.42, -0.10, "flat"), (0.56, -0.05), (0.72, 0.0), (0.9, 0.0)], t),
