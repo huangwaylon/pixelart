@@ -926,3 +926,11 @@ the deforming head. Fix this at the source before tuning pixels.
 4. [P] Hair/cheek light specks (boil 13/48); shade_swap 0/48.
 5. [M] Bent, asymmetric, lagging arms in jump f09-11, dash f05-09, hurt N f02; run S/N leg splay 2-3 px at contact.
 6. [R] Profile (E/W) cheek/jaw face-integrity fails (14/30).
+
+## ROUND 10 status (lead, 2026-10-29 20:10 JST): paused by the daily API budget ($500)
+- Done and committed: **M** (asymmetric bent arms, wider run legs) and **R** (r13: SE/SW head turned 10° toward the camera, idle look-back capped).
+- Interrupted mid-task (resume from here):
+  - **F**: 3/4 eye wedge, closed-eye stroke, effort mouth, S iris. R's 17:20 QA notes "F's 15:31 art" is already partly in `face/illus/out`. Verify and finish.
+  - **P**: keep eye/brow/mouth colours out of the cleanup's colour merging, hair specks, hurt E f03 arm.
+  - **I**: round-10 rebuild + gates + Opus A/B vs `20261029_ec4cac1` and `3831ac8`, once F and P finish.
+- No processes were left running after the interruption (checked).
