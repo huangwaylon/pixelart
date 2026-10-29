@@ -110,5 +110,28 @@
   "mouth_in": "RRR",
   "blush": "kkk",
   "nose": "SSS"
+ },
+ "textured": {
+  "mats": [
+   "hair",
+   "skin",
+   "bow",
+   "eyes"
+  ],
+  "pass": "tex",
+  "k": 3,
+  "allow": {
+   "skin": "sSmkKWhgL",
+   "hair": "KhHgLW",
+   "bow": "ReEK",
+   "eyes": "KWhgL"
+  },
+  "ramps": {
+   "skin": "Sss",
+   "hair": "hHg",
+   "bow": "REe",
+   "eyes": "hgL"
+  },
+  "_doc": "R round 7: the illustration-textured head. Its guide matids (hair/skin/bow/eyes, classified from the illustration colours) take their colour from the 'tex' pass (unlit projected illustration, alpha = head mask) by E2 k-centroid, snapped to the palette. The rule only applies where tex alpha >= .5 (head group: hull + side locks), so body skin, hands and the obi are unaffected. 'allow' = palette chars each textured material may snap to: skin cells include the face features (W eye white, k blush, m mouth, h/g/L iris, K lash), so the face is not flattened to skin. 'ramps' = dark/base/light for any banding."
  }
 }

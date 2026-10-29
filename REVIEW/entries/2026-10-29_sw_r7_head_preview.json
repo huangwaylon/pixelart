@@ -1,0 +1,26 @@
+{
+ "id": "2026-10-29_sw_r7_head_preview",
+ "date": "2026-10-29",
+ "project": "swordswoman",
+ "kind": "experiment",
+ "status": "needs-review",
+ "title": "Round 7: illustration-textured 3D head, smooth preview (walk SE/E)",
+ "method": "Rig r10: head carved from the turnE illustration outlines, per-view illustration projection (unlit), expression illustrations swapped per frame; round-7 motion re-bake. Smooth preview only; the pixel version waits on P's E2 tuning for textured materials.",
+ "result": "The face, eyes, bangs, bow and bun carry the illustration look through the walk. GIFs loop with frames of at least 70 ms.",
+ "verdict": "Lead: clearly on-model in preview. The pixel version (E2 on the textured head) is next, then the integrator's round-7 build and A/B against the round-4 head.",
+ "media": [
+  {
+   "src": "exp/2026-10-28_sw_skinned/render/out/r7prev/walk_SE_preview.gif",
+   "caption": "walk SE, smooth preview, illustration head"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/render/out/r7prev/walk_E_preview.gif",
+   "caption": "walk E, smooth preview, illustration head"
+  },
+  {
+   "src": "exp/2026-10-28_sw_skinned/rig/qa/r10_QA.png",
+   "caption": "illustration | master | rig preview | rig pixel (quick QA pixelizer, not final)",
+   "wide": true
+  }
+ ]
+}

@@ -77,6 +77,16 @@ project: <button data-k="project" data-v="all" class="on">all</button><button da
 <p><a href="../releases/README.md">releases</a> · <a href="../docs/team_review/2026-10-28/01_snowpeak_retrospective.md">retrospective</a></p>
 </div>
 <h2>All attempts and tests (newest first)</h2>
+<div class="card" data-project="swordswoman" data-status="needs-review" id="2026-10-29_sw_r7_head_preview">
+<h3>Round 7: illustration-textured 3D head, smooth preview (walk SE/E)</h3>
+<div class="meta"><span class="badge" style="background:#d29922">needs-review</span><span class="badge proj">swordswoman</span>experiment · 2026-10-29 · <a href="#2026-10-29_sw_r7_head_preview">#</a></div>
+<dl><dt>method</dt><dd>Rig r10: head carved from the turnE illustration outlines, per-view illustration projection (unlit), expression illustrations swapped per frame; round-7 motion re-bake. Smooth preview only; the pixel version waits on P&#x27;s E2 tuning for textured materials.</dd><dt>result</dt><dd>The face, eyes, bangs, bow and bun carry the illustration look through the walk. GIFs loop with frames of at least 70 ms.</dd><dt>verdict</dt><dd>Lead: clearly on-model in preview. The pixel version (E2 on the textured head) is next, then the integrator&#x27;s round-7 build and A/B against the round-4 head.</dd></dl>
+<div class="media">
+<figure class=""><img loading="lazy" src="exp/2026-10-28_sw_skinned/render/out/r7prev/walk_SE_preview.gif"><figcaption>walk SE, smooth preview, illustration head</figcaption></figure>
+<figure class=""><img loading="lazy" src="exp/2026-10-28_sw_skinned/render/out/r7prev/walk_E_preview.gif"><figcaption>walk E, smooth preview, illustration head</figcaption></figure>
+<figure class="wide"><img loading="lazy" src="exp/2026-10-28_sw_skinned/rig/qa/r10_QA.png"><figcaption>illustration | master | rig preview | rig pixel (quick QA pixelizer, not final)</figcaption></figure>
+</div>
+</div>
 <div class="card" data-project="swordswoman" data-status="needs-review" id="2026-10-28_sw_current_build">
 <h3>Swordswoman current build (20261029_3831ac8)</h3>
 <div class="meta"><span class="badge" style="background:#d29922">needs-review</span><span class="badge proj">swordswoman</span>release · 2026-10-29 · <a href="#2026-10-28_sw_current_build">#</a></div>

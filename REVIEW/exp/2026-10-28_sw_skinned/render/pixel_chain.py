@@ -76,7 +76,10 @@ T1M = {'skin': float(os.environ.get('SKIN_T1', '0.10'))}
 # Config in rig/face_mats.json: "textured": {"mats": ["hair", "skin", ...], "pass": "tex", "k": 3}.  Off when absent.
 _TX = (json.load(open(_mj)).get('textured') if os.path.exists(_mj) else None) or {}
 TEXMATS = set(os.environ.get('TEXMATS', ','.join(_TX.get('mats', []))).split(',')) - {''}
-TEXPASS = _TX.get('pass', 'tex'); TEXK = int(_TX.get('k', 3))
+TEXPASS = _TX.get('pass', 'tex'); TEXK = int(os.environ.get('TEXK', _TX.get('k', 3)))
+# without an explicit list, every pixel the texture pass covers is textured (R r10: tex = unlit illustration colours, alpha = textured surface)
+TEXALLOW = os.environ.get('TEXALLOW', 'all')  # palette lock for textured pixels: all keys, or the cell material's ramp ('mat')
+TEXAUTO = os.environ.get('TEXAUTO', '1') == '1'; TEXPRE = os.environ.get('TEXPRE', '1') == '1'
 THINF = {'iris': 2, 'eyes': 2, 'eye_white': 1, 'lash': 1, 'mouth': 1, 'iris_top': 1, 'iris_low': 1, 'brow': 1, 'mouth_in': 1, 'nose': 1}  # thin features: min width (1 = presence only, 2 = 2x2 core)
 PARTS = ["torso", "head", "skirt", "leg.L", "leg.R", "arm.L", "arm.R", "sleeve.L", "sleeve.R"]; NP = len(PARTS); PI = {p: i for i, p in enumerate(PARTS)}
 PCOL = np.array([((i + 1) * 25, 255 - (i + 1) * 25, (i * 67) % 256) for i in range(NP)], float) / 255
@@ -138,7 +141,7 @@ def load(stem, i, dx, dy, pdir):
         w = hx.cells(al.astype(float)).sum((2, 3))
         F['rpos'] = np.stack([hx.cells(rp[..., k] * al).sum((2, 3)) for k in range(3)], -1) / np.maximum(w, 1)[..., None]
         F['rpos_ok'] = w > 0
-    if TEXMATS:
+    if TEXMATS or TEXAUTO:
         tp = f'{stem}_f{i:02d}_{TEXPASS}.png'
         if os.path.exists(tp): F['texc'] = crop(hx.rd16(tp), dx, dy)
     # skirt cloth weighted to the thighs (hem ring) is skirt, not leg: leg = skin band, sock band, socks, boots only
@@ -589,8 +592,9 @@ def frame(F, prev, opt):
     # far-limb dark fallback for suppressed lines
     for a_, b_ in (('D', 'd'), ('S', 's'), ('R', 'E'), ('h', 'H'), ('H', 'g')):
         g[dark & (g == a_)] = b_
-    if 'texc' in F and TEXMATS:
-        g = textured_chars(g, F['texc'], fill & np.isin(M_, [MI[m] for m in TEXMATS if m in MI]), M_)
+    if 'texc' in F:
+        sel = fill & (np.isin(M_, [MI[m] for m in TEXMATS if m in MI]) if TEXMATS else True)
+        g = textured_chars(g, F['texc'], sel, M_)
     g[line] = 'K'
     # surface lock: a fill cell showing the same surface point (rest-pose correspondence) and segment as in the previous frame keeps the
     # previous frame's exact shade unless its lum moved by more than LOCK (moving shading boundaries stick to the surface)
@@ -771,12 +775,13 @@ def textured_chars(g, tex, sel, M_):
     """E2 k-centroid (pz.kcentroid, k=TEXK, line-aware) of the texture pass per cell, snapped in Lab to the material's allowed palette chars"""
     if not sel.any(): return g
     al = tex[..., 3] > 0.5; img = tex[..., :3] * 255; img[~al] = 255
-    lo = hx.PZ.kcentroid(img, TEXK, line=True, prefilter=True)
+    lo = hx.PZ.kcentroid(img, TEXK, line=True, prefilter=TEXPRE)
     lab = hx.Z.rgb2lab(lo); plab = hx.Z.rgb2lab(hx.RGB)
     d = ((lab[:, :, None, :] - plab[None, None]) ** 2).sum(-1)
     g = g.copy()
     for j in np.unique(M_[sel]):
-        allow = hx.ALLOW.get(MN[j]); cols = [hx.CH[c] for c in allow] if allow else list(range(len(hx.KEYS)))
+        allow = hx.ALLOW.get(MN[j]) if TEXALLOW == 'mat' else None  # 'all': the texture decides (eyes/mouth drawn inside skin cells)
+        cols = [hx.CH[c] for c in allow] if allow else list(range(len(hx.KEYS)))
         m = sel & (M_ == j) & hx.cells(al.astype(float)).mean((2, 3)).__ge__(0.5)
         g[m] = np.array(hx.KEYS)[np.array(cols)[d[m][:, cols].argmin(1)]]
     return g
