@@ -40,6 +40,7 @@ FAMB = float(os.environ.get('FAMB', '0.2'))    # fill hysteresis half-band aroun
 LKEEP = float(os.environ.get('LKEEP', '0.75'))  # keep the previous label if its score >= LKEEP x best
 OBILINE = os.environ.get('OBILINE', '0') == '1'  # K line on the far side of obi|dress edges (master has them)
 PROTECT_ARMS = os.environ.get('PROTECT_ARMS', '1') == '1'  # round 3: arms (sleeve tube + bag) get the 2 px guarantee too
+SPECK_END = int(os.environ.get('SPECK_END', '10'))  # late limb crumbs (after lines/outline)
 SPECK = int(os.environ.get('SPECK', '6'))  # limb crumbs smaller than this, detached from the limb's main piece, are relabelled
 SHAPE = os.environ.get('SHAPE', '1') == '1'  # round 3 shape fixes (A-line skirt, smooth hem, skin cap, round toes)
 HIPF = float(os.environ.get('HIPF', '0.35'))  # A-line envelope starts at this fraction of the skirt height (hip)
@@ -70,6 +71,12 @@ for _n in MN:  # any new matid without a ramp: its nearest locked-palette colour
 BIAS = dict(hx.BIAS)
 # dark-band (shadow) lum threshold per material; default hx.T1 = .22.  Skin is lower so skin (face, hands, thighs) sits mostly in s like the masters
 T1M = {'skin': float(os.environ.get('SKIN_T1', '0.10'))}
+# round 7: TEXTURED materials (e.g. R's illustration-textured head): their colour comes from the texture pass by E2 k-centroid per cell
+# (the method that made the approved masters from the illustrations), snapped to the locked palette - a global per-material rule.
+# Config in rig/face_mats.json: "textured": {"mats": ["hair", "skin", ...], "pass": "tex", "k": 3}.  Off when absent.
+_TX = (json.load(open(_mj)).get('textured') if os.path.exists(_mj) else None) or {}
+TEXMATS = set(os.environ.get('TEXMATS', ','.join(_TX.get('mats', []))).split(',')) - {''}
+TEXPASS = _TX.get('pass', 'tex'); TEXK = int(_TX.get('k', 3))
 THINF = {'iris': 2, 'eyes': 2, 'eye_white': 1, 'lash': 1, 'mouth': 1, 'iris_top': 1, 'iris_low': 1, 'brow': 1, 'mouth_in': 1, 'nose': 1}  # thin features: min width (1 = presence only, 2 = 2x2 core)
 PARTS = ["torso", "head", "skirt", "leg.L", "leg.R", "arm.L", "arm.R", "sleeve.L", "sleeve.R"]; NP = len(PARTS); PI = {p: i for i, p in enumerate(PARTS)}
 PCOL = np.array([((i + 1) * 25, 255 - (i + 1) * 25, (i * 67) % 256) for i in range(NP)], float) / 255
@@ -131,6 +138,9 @@ def load(stem, i, dx, dy, pdir):
         w = hx.cells(al.astype(float)).sum((2, 3))
         F['rpos'] = np.stack([hx.cells(rp[..., k] * al).sum((2, 3)) for k in range(3)], -1) / np.maximum(w, 1)[..., None]
         F['rpos_ok'] = w > 0
+    if TEXMATS:
+        tp = f'{stem}_f{i:02d}_{TEXPASS}.png'
+        if os.path.exists(tp): F['texc'] = crop(hx.rd16(tp), dx, dy)
     # skirt cloth weighted to the thighs (hem ring) is skirt, not leg: leg = skin band, sock band, socks, boots only
     part[np.isin(part, LEG) & np.isin(mid, [MI['dress'], MI['sleeve'], MI['obi']])] = PI['skirt']
     part[~al] = -1; F['part'] = part
@@ -375,7 +385,11 @@ def frame(F, prev, opt):
         LM = limb_masks(F); skc = {}
         for q, mk in LM.items():
             ml, mn = nd.label(mk)  # hi-res slivers under ~1.5 sprite px are not limbs to protect
-            if mn: mk = np.isin(ml, [k for k in range(1, mn + 1) if (ml == k).sum() >= (0.35 if q >= 300 else 1.5) * P * P])
+            if mn:
+                szs = [(ml == k).sum() for k in range(1, mn + 1)]
+                keep = [k for k in range(1, mn + 1) if szs[k - 1] >= (0.35 if q >= 300 else 1.5) * P * P]
+                if not keep and mk.sum() >= 2 * P * P: keep = [1 + int(np.argmax(szs))]  # visible enough to count (audit VANISHED rule): keep its largest piece
+                mk = np.isin(ml, keep)
             if mk.sum() < 20: continue
             sk = skeletonize(mk); skc[q] = hx.cells(sk.astype(float)).sum((2, 3)) > 0
         # skeleton cells: nearest limb wins
@@ -575,6 +589,8 @@ def frame(F, prev, opt):
     # far-limb dark fallback for suppressed lines
     for a_, b_ in (('D', 'd'), ('S', 's'), ('R', 'E'), ('h', 'H'), ('H', 'g')):
         g[dark & (g == a_)] = b_
+    if 'texc' in F and TEXMATS:
+        g = textured_chars(g, F['texc'], fill & np.isin(M_, [MI[m] for m in TEXMATS if m in MI]), M_)
     g[line] = 'K'
     # surface lock: a fill cell showing the same surface point (rest-pose correspondence) and segment as in the previous frame keeps the
     # previous frame's exact shade unless its lum moved by more than LOCK (moving shading boundaries stick to the surface)
@@ -610,6 +626,21 @@ def frame(F, prev, opt):
         if not core.any(): continue
         thin = Lq & ~nd.binary_dilation(core, CROSS)
         g[thin] = 'K'
+    # late limb crumbs: after lines/outline, a limb piece < SPECK_END px that is not the limb's largest piece (e.g. a thigh peeking through a
+    # skirt notch, a heel tip cut off by the far-leg line) is repainted with its surroundings and relabelled, so the limb stays one piece
+    for q in LIMBQ():
+        Lq = limb_cells(lab, q) & (g != 'K') & (g != '.')
+        rl, rn = nd.label(Lq, np.ones((3, 3)))
+        if rn <= 1: continue
+        sz = nd.sum(Lq, rl, range(1, rn + 1)); main = 1 + int(np.argmax(sz))
+        for k_ in range(1, rn + 1):
+            if k_ == main or sz[k_ - 1] >= SPECK_END: continue
+            cm = rl == k_; ring_ = nd.binary_dilation(cm, np.ones((3, 3))) & ~cm & ~Lq & (g != '.') & (g != 'K') & (lab >= 0)
+            if ring_.any():
+                v = lab[ring_]; nl = np.bincount(v).argmax(); cs = list(g[ring_ & (lab == nl)])
+                lab[cm] = nl; g[cm] = max(set(cs), key=cs.count)
+            else:
+                g[cm] = 'K'  # enclosed by outline only: fold into the outline
     g0 = g; g = hx.Z.clean_orphans(g, keep='WKd')
     thinm = fill & np.isin(M_, [MI[m] for m in THINF if m in MI]); g[thinm] = g0[thinm]
     bmask = np.where(fill, dom_b, -1)
@@ -736,6 +767,21 @@ def apply_smear(G, info):
     return G, sm
 
 
+def textured_chars(g, tex, sel, M_):
+    """E2 k-centroid (pz.kcentroid, k=TEXK, line-aware) of the texture pass per cell, snapped in Lab to the material's allowed palette chars"""
+    if not sel.any(): return g
+    al = tex[..., 3] > 0.5; img = tex[..., :3] * 255; img[~al] = 255
+    lo = hx.PZ.kcentroid(img, TEXK, line=True, prefilter=True)
+    lab = hx.Z.rgb2lab(lo); plab = hx.Z.rgb2lab(hx.RGB)
+    d = ((lab[:, :, None, :] - plab[None, None]) ** 2).sum(-1)
+    g = g.copy()
+    for j in np.unique(M_[sel]):
+        allow = hx.ALLOW.get(MN[j]); cols = [hx.CH[c] for c in allow] if allow else list(range(len(hx.KEYS)))
+        m = sel & (M_ == j) & hx.cells(al.astype(float)).mean((2, 3)).__ge__(0.5)
+        g[m] = np.array(hx.KEYS)[np.array(cols)[d[m][:, cols].argmin(1)]]
+    return g
+
+
 def orphan_rule(g, st):
     """round 6, every material (faces included): a fill pixel with no same-colour 8-neighbour is an orphan.  A shade speck (a same-material
     neighbour exists) takes the most common same-material neighbour colour; a lone pixel of another material takes the 4-neighbour majority,
@@ -755,6 +801,9 @@ def orphan_rule(g, st):
             if MN[m] in THINF and THINF[MN[m]] < 2: continue
             c4 = [pg[1 + y + dy, 1 + x + dx] for dy, dx in ((-1, 0), (1, 0), (0, -1), (0, 1)) if pg[1 + y + dy, 1 + x + dx] not in '.K']
             if c4: out[y, x] = max(set(c4), key=c4.count)
+            else:
+                c8 = [pg[1 + y + dy, 1 + x + dx] for dy, dx in nb if pg[1 + y + dy, 1 + x + dx] not in '.K']
+                out[y, x] = max(set(c8), key=c8.count) if c8 else 'K'  # a lone fill pixel boxed in by outline folds into the outline
         g = out
     return g
 
@@ -789,8 +838,8 @@ def limb_audit(g, st, F):
         det = 0
         rest = opaque & ~L
         for k in range(1, sn + 1):
-            c = (sl == k) & L
-            if not (nd.binary_dilation(c, np.ones((3, 3)), iterations=2) & rest & (g != 'K')).any(): det += 1
+            c = (sl == k) & L  # attached = within 1 px of outline of any other figure fill (another piece of the same limb counts:
+            if not (nd.binary_dilation(c, np.ones((3, 3)), iterations=2) & opaque & (g != 'K') & ~c).any(): det += 1  # a shin behind its thigh)
         fl = []
         if hia >= 2 and L.sum() == 0: fl.append('VANISHED')
         if sn > max(1, hcomp): fl.append('SPLIT')

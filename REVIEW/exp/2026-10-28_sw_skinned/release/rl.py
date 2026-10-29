@@ -68,7 +68,7 @@ def hfiles(paths):
 def g(pat): return sorted(glob.glob(f'{EXP}/{pat}'))
 
 
-RIG_IN = lambda: [BLEND(), *g('rig/tex_illus/*.png'), *g('rig/illus_map.json'), *g('face/illus/*/*.png'), *g('rig/face_mats.json'), f'{EXP}/rig/align.json', f'{EXP}/rig/face_anchors.json', *g('rig/tex/*.png'),
+RIG_IN = lambda: [BLEND(), *g('rig/tex_illus/*.png'), *g('rig/illus_map.json'), *g('face/illus/out/*/*.png'), *g('rig/face_mats.json'), f'{EXP}/rig/align.json', f'{EXP}/rig/face_anchors.json', *g('rig/tex/*.png'),
                   f'{EXP}/render/render_motion.py', f'{EXP}/render/p_parts.py']
 FACE_IN = lambda: [*g('face/*.py'), f'{EXP}/face/parts.json', f'{EXP}/face/calib.json', *g('face/tex/*')]
 CODE_IN = lambda: [*g('render/pixel_chain.py'), *g('render/r_tex_head.py'), *g('render/gifio.py'), *g('render/gifcheck.py'),

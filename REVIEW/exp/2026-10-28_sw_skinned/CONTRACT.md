@@ -367,6 +367,20 @@ Lead diagnosis (from render/out/walk/walk_SE_px_hs + walk_SE_px, at 4x):
   (iris hgg, iris_low gLL, ...). Dark-skin (S) share of head skin cells on r8e, measured with render/p_skinshare.py (passes in render/out/p5skin):
   S/SE/E rest .157/.052/.092 -> **.033/.000/.009**; walk SE .041 (max .069) -> **.006 (.023)**; walk E .092 (.142) -> **.008 (.029)**.
   Masters: S .020, SE .013, E .000. All skin: .05-.09 (the thigh band under the hem keeps S).
+- 10:30 P (ROUND 6 + ROUND 7): pixel_chain.py, measured with render/p6_bench.py (the current chain on I's latest build inputs, release/out/latest/work, 48 clips;
+  results in render/out/p6/<tag>/bench.json):
+  - **Orphan rule, every material incl. the face:** a same-material speck takes its same-material neighbour colour. A lone pixel of another
+    material takes the 4-neighbour majority, or folds into the outline when boxed in by K. Designed 1 px features (THINF presence: lash, nose/mouth dot, catchlight) stay.
+    Orphans 5.18 -> **0.10 / frame**.
+  - **Legs/limbs: limb audit 34 -> 44/48 clips.** Fixes: visible-but-sliver limbs keep their largest piece (hurt NE vanish), late limb crumbs
+    (< 10 px, e.g. a thigh peeking through a skirt notch) are repainted, and the audit counts a piece next to another piece of the same limb as
+    attached (a shin behind its thigh). Left: idle E f11 arm.L VANISHED, jump NE f01-02 leg THIN, jump W / run W arm THIN (1 px).
+  - **Shade hysteresis (all materials), mean / median shade_swap:** none .0268/.0270; current (HYS .08, LOCK .12) .0257/.0253; strong (.20/.40)
+    .0259/.0246. Gain ~ -.001; still 0/48 under .015, so hysteresis is not the lever. As measured in round 2, the swaps are fast-moving dark edges.
+  - **ROUND 7 textured materials (global rule, no head case):** materials listed in rig/face_mats.json `"textured": {"mats": [...], "pass": "tex", "k": 3}`
+    take their colour from that texture pass by **E2 k-centroid per cell** (pz.kcentroid, line-aware), Lab-snapped to the material's allowed
+    palette chars. Off until R lists the mats. The code path is tested on the old tex pass; it gets tuned when R's illustration head lands.
+  - Skin dark band (03:10 entry) stays: SKIN_T1 .10 for all skin.
 
 ## ROUND 2 addendum: posing direction (owner, 2026-10-28)
 > "I want more elegant posing during the different actions. Not slouched, needs to be confident, feminine."
@@ -720,3 +734,6 @@ The approved masters came from **pixelizing the hi-res Gemini illustrations** (E
   - **1x check (proxy until R's projection works):** pz.py EC0 96 on each variant vs the m96 master: face/illus/chk/board_{S,SE,E}.png.
     Blink, half, joyful, surprised, squint/hurt, wince and effort (teeth) read distinctly at 1x. Smile ~ neutral (the base already smiles slightly).
     The determined/focused brows show in S/SE; in E the profile features are 1-2 px, as in the master.
+- 10:45 I (ROUND 7b): ready to rebuild (`"pipeline": "r7"`) on R r10 + F face/illus/out + M 09:10. **Blocked:** P's textured-material mode
+  (pixel_chain.py l.74-79, 09:33) is off because rig/face_mats.json has no `"textured"` key. Without it the illustration head pixelizes by material vote only.
+  **R/P:** please add `"textured": {"mats": [...], "pass": "tex", "k": 3}` (whoever owns it) and log it here. I rebuild as soon as it lands.

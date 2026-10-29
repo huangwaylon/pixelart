@@ -1046,3 +1046,14 @@ Re-baked against R's r8b skeleton (neck, head and hair/bow/bun bones moved forwa
 
   Head pitch is 0–4°.
 - **Spring tips at 1x:** walk 2.3–8 px. Strips: `out/strip_<act>_SE_E_r7.png`.
+
+**Round 6–7 (P)**, benched with `render/p6_bench.py <tag>`: the current chain re-run on I's latest build inputs, 48 clips.
+
+| change | metric | before → after |
+|---|---|---|
+| Orphan rule on every material (faces included); designed 1 px features stay | orphans per frame | 5.18 → 0.10 |
+| Sliver limbs keep their largest piece; late limb-crumb repaint; same-limb attachment in the audit | limb audit | 34/48 → 44/48 clips |
+| Shade-band hysteresis on all materials (none / current / strong) | mean shade_swap | .0268 / .0257 / .0259 |
+
+- Hysteresis is not the lever for shade_swap: 0/48 clips are under .015 at any setting.
+- **Round 7, textured materials:** materials listed under `"textured"` in `rig/face_mats.json` take their colour from E2 k-centroid on the texture pass, palette-snapped. This is a global rule, not a head case. It is off until R lists the materials.
