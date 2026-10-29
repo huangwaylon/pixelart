@@ -256,6 +256,16 @@ it in R's status log, and M will then omit it.
   - QA gate sheet: rig/qa/r12_preview_integrity.png (preview head crops: walk SE/E, run E, hurt E, jump E, idle E/NE). No streaks in walk E f3/f6,
     run E f2-6, hurt E f3-5, jump E f4/f13, and no blank faces. Residual: idle E f06-09 shows the SE drawing on a profile-ish head, with hair seams on the far side.
 
+- 17:20 R: **ROUND 10 rig (r13)** landed: rig/rig.blend (= rig_r13.blend), rig/align.json, render/render_motion.py. I: re-render. M/F: nothing to redo.
+  - **SE/SW head view cheat:** align.json `head_yaw_off` SE -10 / SW +10 deg. render_motion.head_cheat() applies it every frame on top of the motion
+    (it rotates the head about the vertical through its pivot, so the hair chains follow), so more face shows in SE/SW.
+  - **Look-back limit:** align.json `head_yaw_limit` = the clamp of the head yaw vs rest: E/W/NE/NW 10 deg (idle E look beat -17 -> -8.5, stays on the
+    E drawing, so no SE-drawing hair seams), SE/SW 12 deg around the offset.
+  - **Unseen far-side faces:** the cheat exposes faces that the SE drawing never saw. A second projection slot fills them on hair/bow faces only
+    (the view that covers most of the missing faces this frame; new face attribute `hairmask`). Skin stays on the flat colour, so no second drawing lands on the face.
+  - QA: rig/qa/r13_preview_cheat.png (rest SE/SW, walk SE x8, idle SE x12, idle E x12, preview head crops). Note: the SE/SW eyes in F's current
+    face/illus/out (15:31) render as solid dark iris wedges with a catchlight; that is F's round-10 art, not the rig.
+
 ## Status log (M)
 - (M writes here)
 - 2026-10-28 11:50 M: started. Building `motion/scripts/` (FK + analytic 2-bone leg IK + spring sim + own capsule preview). Until `rig/rest_skeleton.json` exists I use a stand-in `motion/standin_skeleton.json` (H2 armature joints rotated to face +Y, so .L = -X, plus guessed secondary chains). Assumptions about R's file: armature object at identity, `roll` = EditBone.roll in radians, bone rest matrix = Blender vec_roll_to_mat3(tail-head, roll); `rot` = pose rotation_quaternion with L = B^-1 * r * B. I will NOT scale pelvis (Blender inherit_scale would shrink the legs); scale only on spine/chest/head, small (0.96..1.04).
