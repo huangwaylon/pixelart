@@ -76,7 +76,7 @@ T1M = {'skin': float(os.environ.get('SKIN_T1', '0.10'))}
 # Config in rig/face_mats.json: "textured": {"mats": ["hair", "skin", ...], "pass": "tex", "k": 3}.  Off when absent.
 _TX = (json.load(open(_mj)).get('textured') if os.path.exists(_mj) else None) or {}
 TEXMATS = set(os.environ.get('TEXMATS', ','.join(_TX.get('mats', []))).split(',')) - {''}
-TEXPASS = _TX.get('pass', 'tex'); TEXK = int(os.environ.get('TEXK', _TX.get('k', 3)))
+TEXPASS = _TX.get('pass', 'tex'); TEXK = int(os.environ.get('TEXK', 4))  # round 7 bench: k=4 best balance (R's json suggests 3)
 # without an explicit list, every pixel the texture pass covers is textured (R r10: tex = unlit illustration colours, alpha = textured surface)
 TEXALLOW = os.environ.get('TEXALLOW', 'all')  # palette lock for textured pixels: all keys, or the cell material's ramp ('mat')
 TEXAUTO = os.environ.get('TEXAUTO', '1') == '1'; TEXPRE = os.environ.get('TEXPRE', '1') == '1'
@@ -486,6 +486,7 @@ def frame(F, prev, opt):
     if opt['sep']:
         hairg = {MI['hair'], MI['bow']}
         cand = []  # (far cell, near cell)
+        TXC = (hx.cells((F['texc'][..., 3] > 0.5).astype(float)).mean((2, 3)) >= 0.5) if 'texc' in F else None
         for dy, dx in ((1, 0), (-1, 0), (0, 1), (0, -1)):
             nb = lambda a: np.roll(np.roll(a, -dy, 0), -dx, 1)
             Bn, Mn, Pn, Dn = nb(B_), nb(M_), nb(P_), nb(ldep)
@@ -499,6 +500,7 @@ def frame(F, prev, opt):
                    ((Mn == MI['skin']) & np.isin(Pn, [PI['arm.L'], PI['arm.R']]) & np.isin(M_, [MI['sleeve'], MI['dress']]))
             obil = OBILINE & (((M_ == MI['obi']) & np.isin(Mn, [MI['dress'], MI['sleeve']])) | ((Mn == MI['obi']) & np.isin(M_, [MI['dress'], MI['sleeve']])))
             headm = headm | obil
+            if TXC is not None: headm = headm & ~(TXC & nb(TXC))  # textured surfaces carry their own drawn lines: no material lines inside them
             for y, x in zip(*np.nonzero(far & (legs | armb | headm | hand))):
                 cand.append(((y, x), ((y + dy) % N, (x + dx) % N)))
         LQ = {}
@@ -647,6 +649,7 @@ def frame(F, prev, opt):
                 g[cm] = 'K'  # enclosed by outline only: fold into the outline
     g0 = g; g = hx.Z.clean_orphans(g, keep='WKd')
     thinm = fill & np.isin(M_, [MI[m] for m in THINF if m in MI]); g[thinm] = g0[thinm]
+    if 'texc' in F: txm = fill & (hx.cells((F['texc'][..., 3] > 0.5).astype(float)).mean((2, 3)) >= 0.5); g[txm] = g0[txm]  # texture colours: only the global orphan rule
     bmask = np.where(fill, dom_b, -1)
     st = {'lcell': l, 'rpos': F.get('rpos'), 'rpos_ok': F.get('rpos_ok'), 'dom_b': dom_b, 'line': line, 'lab': lab, 'band': band, 'fill': fill, 'bmask': bmask, 'g': g, 'mid': F['mid'], 'part': F['part'], 'lum': F['lum'],
           'farleg': farleg}
@@ -780,30 +783,35 @@ def textured_chars(g, tex, sel, M_):
     d = ((lab[:, :, None, :] - plab[None, None]) ** 2).sum(-1)
     g = g.copy()
     for j in np.unique(M_[sel]):
-        allow = hx.ALLOW.get(MN[j]) if TEXALLOW == 'mat' else None  # 'all': the texture decides (eyes/mouth drawn inside skin cells)
+        allow = (_TX.get('allow', {}).get(MN[j]) or hx.ALLOW.get(MN[j])) if TEXALLOW == 'mat' else None  # R's per-material allow list; 'all' = any key
         cols = [hx.CH[c] for c in allow] if allow else list(range(len(hx.KEYS)))
         m = sel & (M_ == j) & hx.cells(al.astype(float)).mean((2, 3)).__ge__(0.5)
         g[m] = np.array(hx.KEYS)[np.array(cols)[d[m][:, cols].argmin(1)]]
     return g
 
 
+FEATURE_CHARS = set(os.environ.get('FEATURE_CHARS', 'Wmk'))  # palette feature colours (eye white/highlight, mouth/nose dot, blush): 1 px is a feature
+
+
 def orphan_rule(g, st):
-    """round 6, every material (faces included): a fill pixel with no same-colour 8-neighbour is an orphan.  A shade speck (a same-material
-    neighbour exists) takes the most common same-material neighbour colour; a lone pixel of another material takes the 4-neighbour majority,
-    unless its material is a designed thin feature (THINF presence-only: nose/mouth dot, lash, catchlight) - those are features, not specks."""
+    """round 6/7, every pixel (faces and textures included): a fill pixel with no same-colour 8-neighbour is an orphan.  A shade speck (a
+    neighbour of the same colour class exists, hx.CLS: hair/skin/red/obi/sock...) takes the most common same-class neighbour colour; a lone
+    pixel of another class takes the 4-neighbour majority (or folds into the outline when boxed in by K) - unless it is a palette feature
+    colour (W, m, k) or a designed thin-feature material (THINF presence-only), which are features, not specks."""
     g = g.copy(); lab = st['lab']; M_ = _mat(lab); H, W = g.shape
+    cl = np.vectorize(lambda c: CLS.get(c, c))
     for _ in range(2):
-        pg = np.pad(g, 1, constant_values='.'); pm = np.pad(M_, 1, constant_values=-1)
+        pg = np.pad(g, 1, constant_values='.'); pc_ = np.pad(cl(g), 1, constant_values='.')
         nb = [(dy, dx) for dy in (-1, 0, 1) for dx in (-1, 0, 1) if dy or dx]
         same = sum((pg[1 + dy:1 + dy + H, 1 + dx:1 + dx + W] == g).astype(int) for dy, dx in nb)
         cand = (g != '.') & (g != 'K') & (same == 0) & (lab >= 0)
         if not cand.any(): break
         out = g.copy()
         for y, x in zip(*np.nonzero(cand)):
-            m = M_[y, x]
-            cs = [pg[1 + y + dy, 1 + x + dx] for dy, dx in nb if pm[1 + y + dy, 1 + x + dx] == m and pg[1 + y + dy, 1 + x + dx] not in '.K']
+            c0 = pc_[1 + y, 1 + x]
+            cs = [pg[1 + y + dy, 1 + x + dx] for dy, dx in nb if pc_[1 + y + dy, 1 + x + dx] == c0 and pg[1 + y + dy, 1 + x + dx] not in '.K']
             if cs: out[y, x] = max(set(cs), key=cs.count); continue
-            if MN[m] in THINF and THINF[MN[m]] < 2: continue
+            if g[y, x] in FEATURE_CHARS or (MN[M_[y, x]] in THINF and THINF[MN[M_[y, x]]] < 2): continue
             c4 = [pg[1 + y + dy, 1 + x + dx] for dy, dx in ((-1, 0), (1, 0), (0, -1), (0, 1)) if pg[1 + y + dy, 1 + x + dx] not in '.K']
             if c4: out[y, x] = max(set(c4), key=c4.count)
             else:

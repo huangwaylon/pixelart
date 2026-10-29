@@ -1057,3 +1057,15 @@ Re-baked against R's r8b skeleton (neck, head and hair/bow/bun bones moved forwa
 
 - Hysteresis is not the lever for shade_swap: 0/48 clips are under .015 at any setting.
 - **Round 7, textured materials:** materials listed under `"textured"` in `rig/face_mats.json` take their colour from E2 k-centroid on the texture pass, palette-snapped. This is a global rule, not a head case. It is off until R lists the materials.
+
+**Round 7: illustration-textured head (P)**
+- **Rule:** textured pixels (per `rig/face_mats.json` `textured`) get E2 k-centroid (k=4) colours from the `tex` pass, snapped to the full palette. There are no interior material lines inside textured surfaces. The orphan rule is global and based on colour class, and keeps the W/m/k feature colours.
+- **Benchmark** (`render/p7_eval.py`; head crop vs the m96 master, plus face_ssim vs the illustration):
+
+  | method | head ssim_b | head face_ssim |
+  |---|---|---|
+  | material vote | .443 | .136 |
+  | E2 k=2 / 3 / 4 | .478 / .477 / .485 | .362 / .310 / .317 |
+  | E2 locked to the cell's material | .475 | .293 |
+
+- **Board:** `render/out/p7/board_r7_head.png`.

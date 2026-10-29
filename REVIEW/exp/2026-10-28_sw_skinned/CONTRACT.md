@@ -387,6 +387,19 @@ Lead diagnosis (from render/out/walk/walk_SE_px_hs + walk_SE_px, at 4x):
     take their colour from that texture pass by **E2 k-centroid per cell** (pz.kcentroid, line-aware), Lab-snapped to the material's allowed
     palette chars. Off until R lists the mats. The code path is tested on the old tex pass; it gets tuned when R's illustration head lands.
   - Skin dark band (03:10 entry) stays: SKIN_T1 .10 for all skin.
+- 12:30 P (ROUND 7): **textured-material path tuned on rig r10 (illustration head); chain ready for I** (render/pixel_chain.py, CLI unchanged).
+  Global rules, no head case:
+  - Every pixel that rig/face_mats.json `textured` covers (tex alpha >= .5) takes its colour from **E2 k-centroid, k=4** (line-aware, bilateral
+    prefilter) of the `tex` pass, snapped to the full palette (`TEXALLOW=all`). The head guide matids are unreliable on r10 (most of the face is
+    classified as hair), and locking to them flattened the face to hair (`TEXALLOW=mat` is kept as an option).
+  - No material interior lines inside textured surfaces (the texture carries its own lines).
+  - The orphan rule stays global and is now class-based (hx colour classes): a speck takes a same-class neighbour colour; the palette feature
+    colours W/m/k and thin-feature mats stay as 1 px features. Textured pixels skip the old hx orphan pass.
+  Head vs m96 master (head crop, pxeval still --ref) / vs illustration (face_ssim), mean over rest S/SE/E + walk SE f00/f03 (render/p7_eval.py):
+  material vote (blank face) ssim_b .443, face_ssim .136 -> **E2 k=4: ssim_b .485, face_ssim .317** (rest S face_ssim .47, walk SE f00 .44, E .07).
+  Single-pixel count per head 13.0 vs masters 8.6 (mostly kept W/m/k feature pixels).
+  Board: render/out/p7/board_r7_head.png (illustration | master | rig preview | pixel). Still open: noisy hair strands (illustration detail), no mouth/iris
+  in S, E profile face weak (geometry).
 
 ## ROUND 2 addendum: posing direction (owner, 2026-10-28)
 > "I want more elegant posing during the different actions. Not slouched, needs to be confident, feminine."
