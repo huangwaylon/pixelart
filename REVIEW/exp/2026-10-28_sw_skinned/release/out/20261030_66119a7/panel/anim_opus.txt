@@ -1,0 +1,23 @@
+SCORE: 6/10
+SCORE R9: 5/10
+SCORE R4HEAD: 6/10
+
+**Sub-scores (B):** face acting per beat 6 · face locked to head in motion 7 · posing/stance 7 · hurt reaction (guard/recoil) 7 · idle head turn 6 · secondary motion 5 · front-face readability at 1x 6 (target 8 not reached)
+
+**A/B (r9 / r4head / B):**
+- face follows head: 6 / 5 / 7
+- face on-model: 6 / 8 / 6
+- face readable at 1x: 5 / 8 / 6
+- expressive: 5 / 4 / 7
+- no smears in motion: 6 / 7 / 6
+- bangs full: 6 / 7 / 6
+- stance natural: 6 / 6 / 7
+
+**VERDICT:** B is now the best overall head. It follows the head and acts the beats: the hurt grimace, joyful closed eyes on the jump apex, blinks. r4head is still the best at plain front-face readability at 1x, mostly on S. B's S face is close to that, but its SE/SW faces drop to about 5.
+
+**ISSUES:**
+1. **[OWNER P] walk/idle SE f00–f03, idle SE f00/f03:** The SE face turns into a dark muddy patch. Blush, iris and hair shadow merge into one value, so the eyes don't read at 1x. → Set a skin floor brightness inside the face mask. Run the protected eye palette as 2 values (dark iris + one white catchlight) and limit blush to 1–2 px under each eye.
+2. **[OWNER F] run/dash SW f00–f05, run SE f03–f05:** The almond eyes come out as dark-ringed round "panda" sockets. The lash line and iris fill merge, so she looks shocked, not determined. → Redraw the SW/SE "determined/effort" textures with a thinner top lash and a lighter lower lid. Keep the eye whites 2 px wide.
+3. **[OWNER R] SE/SW all actions:** The bangs break into streaky, ragged strands across the forehead. That reads thinner than the full block bangs on the m96 masters. → Thicken the bang mesh/texture into one solid mass with 2 shading values. Push the bang edge down 1 px so it meets the eyebrows.
+4. **[OWNER M] hurt E/W f02–f04, S f02:** The guard is better, but the raised forearm covers the face as a red blob (E f03), and the recoil stays upright. → Hold the forearm below the chin. Add a 2–3 px backward hip shift and head tilt on f01–f02, then a 1-frame squash on f04 before recovery.
+5. **[OWNER M] idle all dirs, jump f10–f12:** Secondary motion is weak. The bun, bow tails and side locks barely trail, and the landing squash is only about 1 px. → Add a follow-through delay of 1–2 frames on the bow tails and side locks. Make the landing squash 3 px with a sleeve overshoot on f11. In idle, add a 1 px bow-tail sway synced to the breath.

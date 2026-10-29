@@ -1,0 +1,23 @@
+SCORE: 6/10
+SCORE R9: 5/10
+SCORE R4HEAD: 7/10
+
+**Sub-scores (B):** 1x readability 6 · face at 1x 5 · direction consistency 7 · action clarity 7 · ship-readiness 5
+
+**A/B (r9 / r4head / B):**
+- Face follows head: 6 / 5 / 8
+- Face on-model: 5 / 8 / 6
+- Face readable at 1x: 5 / 8 / 6
+- Expressive: 4 / 6 / 6
+- No smears in motion: 5 / 6 / 6
+- Bangs full: 7 / 8 / 8
+- Stance natural: 6 / 6 / 7
+
+**VERDICT:** r4head still has the most readable front face, especially SE. B is the better system: the face tracks the head, it never splits and expressions swap in. But B's SE/SW faces are not yet at r4head's level, so for now B is the base to keep building on, not a ship.
+
+**ISSUES:**
+1. **[R] idle/walk SE, all frames (worst f00, f03, f06–f09):** the near-side lock and bangs fall over the cheek and the near eye. At 1x the face shows as a dark blob with one eye. → Tuck the SE/SW side-lock geometry about 2 px back behind the cheek, and lift the bang hem 1 px above the eye line in the head mesh.
+2. **[F] idle E/NE f01–02, f07–08; hurt E f00–04; jump W f11–12:** the closed-eye strokes and squints turn into a thick dark bar from eye to temple, which reads as sunglasses. → Redraw closed and squint eyes for E/NE/W as a short 1 px curved lash (3–4 px long) with skin above it. No horizontal bar.
+3. **[P] idle S f06–f08, SE f07–f09:** when the head turns, dark hair-shade pixels stripe across the forehead and cheek, giving a smeared, dirty face. → In pz.py, mask out the face-skin region (the area the UV face covers) before hair-colour merging, and drop isolated dark pixels inside it.
+4. **[F/P] SE/SW all actions:** the almond eyes come out at 2×2 px, with a catchlight that is lost or turns grey. Next to the r4head SE (3×4 eye, clear white highlight) they look small and sleepy. → Scale the SE/SW eye illustration up about 20%, force a 1 px white catchlight after the cleanup, and add a darker upper lash line.
+5. **[M] hurt S/SE/SW f01–f03; dash S/SE f03–f04:** in hurt, the raised arm covers the face and the head squashes, so the pained face can't be read. In dash, a pink ghost trail covers the whole body. → Keep the hurt arm below chin height on the front views. Cut the dash ghost to 2 thin trailing silhouettes at 40% alpha that sit behind the body, not on top of it.

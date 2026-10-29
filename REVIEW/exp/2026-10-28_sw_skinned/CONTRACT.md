@@ -954,3 +954,16 @@ the deforming head. Fix this at the source before tuning pixels.
     SE/idle face_ssim are ~0 for BOTH sets (r13 turns the SE head 10 deg, so my master-aligned face box no longer matches; metric only). On the board,
     the SE eyes are solid dark with a W catchlight in every walk frame (round 9 had grey boxes in f01/f05), and the idle f01 blink is one dark stroke
     (round 9: fragments).
+- 19:40 I (ROUND 10): **round-10 build 20261030_66119a7** = release/out/latest and the pinned hub entry (R r13, F round-10 eyes, P round-10 chain, M 10:40 bake). 48/48 clips, 0 errors.
+  Gates: limbs 47/48 (jump W, 1 frame SPLIT), bangs 48/48, face integrity 15/30, posture 2/2 2/2 6/6, feet 8/24, boil 13/48, shade_swap 0/48, GIF 48/48, PZCLEAN ran 48/48.
+  face_ssim .172 (P): not comparable to r9 because of the r13 SE/SW head turn, so not counted as a regression; the panel judged faces visually.
+  Opus A/B (one pass, 3 roles; B / r9 / r4head): AD 5/4/6, anim 6/5/6, game 6/5/7. **Front face readable at 1x: B 5-6 (target 8; r4head 7-8).**
+  B is better than r9, the most expressive, and the base to build on. The SE/SW far eye goes to a dark blob; cheeks dither. PANEL.md; ROUND 11 proposals below.
+
+# ROUND 11 proposals (I: Opus A/B r10 vs r9 vs r4 head; release/out/20261030_66119a7/PANEL.md)
+1. [F/P] SE/SW eyes: far eye 1 px narrower and a lighter iris; eyes about 20% larger with a forced 1 px catchlight and sclera edge in the protected mask; thinner top lash (no dark eye blob at 1x).
+2. [P] SE/SW cheeks: 2 skin tones + a 1-2 px blush, a skin brightness floor; drop isolated dark hair pixels on face skin (idle S f06-08, SE f07-09).
+3. [R] SE/SW side lock 2 px behind the cheek; bang hem one solid mass, 1 px above the eyes; run S head pitch ≤ 5°.
+4. [F] Closed/squint eyes in E/NE/W as a short curved lash (no temple bar); effort/pained mouth 2-3 px drawn for 1x.
+5. [M] Hurt guard arm below the chin in the front views, hip shift + squash; bow-tail/side-lock follow-through; 3 px landing squash.
+6. [P] Dash ghost trail behind the body and thinner; hair-outline near-white orphans; boil 13/48, shade_swap 0/48; jump W limb SPLIT.

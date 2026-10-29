@@ -1,0 +1,25 @@
+SCORE: 5/10
+SCORE R9: 4/10
+SCORE R4HEAD: 6/10
+
+**Sub-scores for B:** on-model 5 · face quality at 1x 5 (S 6, SE/SW 4) · cleanliness 5 · silhouette/hair 7
+
+**A/B (r9 / r4head / B):**
+- Face follows head: 5 / 4 / 7
+- Face on-model: 4 / 7 / 5
+- Face readable at 1x: 4 / 7 / 5
+- Expressive: 5 / 6 / 6
+- No smears in motion: 4 / 6 / 5
+- Bangs full: 6 / 5 / 7
+- Stance natural: 6 / 6 / 7
+
+B is clearly better than r9. The SE/SW eyes are no longer glyphs pushed off the edge of the silhouette. The face now follows the head, and the S closed-eye strokes and full bangs read well. The front 3/4 face is still well short of the r4head face, and short of the target of 8. The far eye turns dark, the skin is blotchy, and the mouth is lost.
+
+VERDICT: r4head still has the best face. B has the best head (it follows the turn, has a clean silhouette and full bangs), but its SE/SW face rendering isn't yet good enough to replace r4head.
+
+ISSUES:
+1. **[F/P] all actions, SE/SW (run SE f0, f1, f4; walk SE f1, f2; idle SW f3–f8):** the far almond eye collapses into a black "raccoon" blob. → Make the far eye ~1 px narrower and use a lighter iris tone (not near-black). Lock a 1 px catchlight plus a 1 px sclera edge into the protected eye mask.
+2. **[P] idle SE f5–f8, walk SE f3–f5, idle/run SW:** the cheeks get a mottled pink-brown dither, so the face looks dirty. → Snap the face region to the master palette before cleanup: 2 skin tones plus one 2×1 blush cluster per cheek. Remove isolated skin-shade pixels.
+3. **[R] run S f1, f2, f5, f6:** the head pitches down and the bangs cover the eyes, which smear into the fringe. → Cap head pitch in run S/SE/SW at ≤5°, or shift the face UV up 1 px for run.
+4. **[F] run SE f5, run W f5, idle E f7–f8:** the effort/pained mouth is a brown smear, and the closed-eye strokes in profile read as a dark glasses bar. → Draw a 2–3 px mouth for each expression at 1x. Profile closed eyes should be a single 2 px downward-curved stroke that doesn't touch the bang line.
+5. **[P] idle S f4–f5, walk SE f6 (hair streak), run N f5–f7, NE:** near-white orphan pixels remain on the hair outline. → In pz.py, delete isolated near-white pixels outside the eye mask, and clamp hair highlights to the mid-hair tone.
