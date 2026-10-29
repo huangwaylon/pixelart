@@ -579,10 +579,11 @@ def hub(bid):
          'status': 'needs-review', 'pinned': True, 'title': f'Swordswoman current build ({bid})',
          'question': 'The latest gated review set: every action x direction on the current rig (R), motion (M), pixel chain (P) and face layer (F).',
          'method': f"release/make_all.sh (I): R render_motion.py --no-post + P p_parts.py -> P pixel_chain.py -> F face_layer; F faceless preview + face composite. "
-                   f"Actions {', '.join(man['actions'])}; directions {' '.join(man['dirs'])}. Gates: pxeval seq, P limb audit, gifcheck. Build {bid} ({man['time']}).",
+                   f"Pipeline {pipeline()} (hybrid = r4 projected master head + F face layer on R's archived r7 rig, with the r5 body/motion; r5 = 3D head; r4 = round 4). Actions {', '.join(man['actions'])}; directions {' '.join(man['dirs'])}. Gates: pxeval seq, P limb audit, gifcheck. Build {bid} ({man['time']}).",
          'result': f"Gates pass/total: {summ}. Failing clips: " + ('; '.join(worst) if worst else 'none') + f'. Full table: exp/.../release/out/{bid}/GATES.md',
          'verdict': verdict, 'scores': sc, 'media': media,
          'links': [{'href': f'{rel}/GATES.md', 'label': 'GATES.md'}, {'href': f'{rel}/PANEL.md', 'label': 'PANEL.md'},
+                   *[{'href': f"{os.path.relpath(OUTR, ROOT + '/REVIEW')}/{b}/{x}", 'label': f'{b} {x}'} for b in sorted(os.listdir(OUTR)) if b[:2] == '20' and b != bid for x in ('GATES.md', 'PANEL.md') if os.path.exists(f'{OUTR}/{b}/{x}')],
                    {'href': f'{os.path.relpath(EXP, ROOT + "/REVIEW")}/CONTRACT.md', 'label': 'CONTRACT.md'}],
          'next': 'ROUND 5 proposals in CONTRACT.md (ranked fix list from PANEL.md).'}
     p = f'{ROOT}/REVIEW/entries/2026-10-28_sw_current_build.json'; json.dump(e, open(p, 'w'), indent=1, ensure_ascii=False)

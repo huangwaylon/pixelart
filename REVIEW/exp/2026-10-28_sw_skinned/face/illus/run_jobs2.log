@@ -1,0 +1,27 @@
+skip S smile
+skip S joyful
+skip S determined
+skip S surprised
+skip S squint
+skip S hurt
+skip S effort
+skip SE blink
+skip SE smile
+skip SE joyful
+skip SE determined
+skip SE surprised
+skip SE squint
+done SE hurt False
+skip SE effort
+skip E blink
+skip E smile
+skip E joyful
+skip E determined
+skip E surprised
+skip E squint
+skip E hurt
+skip E effort
+done S half True
+done SE half True
+done E half True
+JOBS_DONE

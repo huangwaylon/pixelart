@@ -31,6 +31,8 @@ for it in range(int(os.environ.get("HEADMAJ", "1"))):
 # round 5: face zone on the skull (front-facing, z 1.38..1.80, |x| < 0.23) -> skin + face texture (forehead under the fringe included)
 _P3 = V[np.array([f[:3] for f in FC])]; _nr = np.cross(_P3[:, 1] - _P3[:, 0], _P3[:, 2] - _P3[:, 0]); _nr /= np.linalg.norm(_nr, axis=1, keepdims=True) + 1e-12
 _cz = _P3.mean(1); FZ = (flab == "head") & (_cz[:, 2] > 1.36) & (_cz[:, 2] < 1.80) & (np.abs(_cz[:, 0]) < 0.235) & (_nr[:, 1] < 0.35) & (_cz[:, 1] < 0.0 - float(G.get("head_fwd", 0.0)))  # F: all front skin + the cheek sides (profile views)
+ILLUS = G.get("head_mode", "") == "illus"
+if ILLUS: FZ[:] = False  # round 7: the illustration texture carries the face; keep the hull classification
 fmat[FZ] = "skin"; fmat[(flab == "head") & ~FZ & (fmat == "skin") & ((_cz[:, 2] > 1.70) | (np.abs(_cz[:, 0]) > 0.215))] = "hair"  # scalp/temple outside the face = hair colour
 # per-vertex material (majority of incident faces) -> used for hair masks
 vm_votes = {}
@@ -202,9 +204,9 @@ for s in "LR": W[idx, BI[f"thigh.{s}"]] += legw[s] / np.maximum(1, leg)
 # head part: head + hair chains (hair material only)
 # round 5: SKULL (fused, face + cranium/scalp) = rigid head, blending to the neck under the chin
 idx = np.nonzero(L == "head")[0]; P = V[idx]
-addw(idx, ["neck", "head"], chain_w(P, ["neck", "head"], [([0, -HF, 1.44], UP)], [0.03]))
+if not ILLUS: addw(idx, ["neck", "head"], chain_w(P, ["neck", "head"], [([0, -HF, 1.44], UP)], [0.03]))
 # HAIR SHELL (separate, attached): head + hair chains (bangs, sides, back, bun, bow, ribbons)
-idx = np.nonzero(L == "hair_shell")[0]; P = V[idx]; hv = hairv[idx]
+idx = np.nonzero(L == ("head" if ILLUS else "hair_shell"))[0]; P = V[idx]; hv = hairv[idx]  # round 7: the illustration hull carries the hair chains (+ skin fade below)
 ph = np.degrees(np.arctan2(P[:, 0], -(P[:, 1] - HC[1])))  # 0 front, +90 her left (+X)
 def win(c, wd): dd = (ph - c + 180) % 360 - 180; return np.maximum(0, np.cos(np.clip(np.radians(dd) * 90 / wd, -np.pi / 2, np.pi / 2)))
 wfront = {nm: win(c, 38) for nm, c in (("L", 34), ("C", 0), ("R", -34))}; sf = sum(wfront.values()) + 1e-9
@@ -325,9 +327,34 @@ bvh = BVHTree.FromPolygons([Vector(v) for v in V], FC)
 headgrp = np.isin(np.array(flab).astype(str), ["head", "lock_L", "lock_R"])
 # round 5: no master-pixel projection. FACE UV for F's textures: front-orthographic planar map of the head (H2 frame):
 #   u = 0.5 + x / 0.44 (her left = image right), v = (z - 1.38) / 0.44; mask attribute fmask = 1 on the front-facing skull faces of the face zone
-uvf = me.uv_layers.new(name="face_uv"); VL = V[lv]; uvf.data.foreach_set("uv", np.stack([0.5 + VL[:, 0] / 0.44, (VL[:, 2] - 1.38) / 0.44], 1).ravel())
-fmk = me.attributes.new("fmask", "FLOAT", "FACE"); fmk.data.foreach_set("value", FZ.astype(np.float32))
-print("face zone faces", int(FZ.sum()), flush=True)
+if not ILLUS:
+    uvf = me.uv_layers.new(name="face_uv"); VL = V[lv]; uvf.data.foreach_set("uv", np.stack([0.5 + VL[:, 0] / 0.44, (VL[:, 2] - 1.38) / 0.44], 1).ravel())
+    fmk = me.attributes.new("fmask", "FLOAT", "FACE"); fmk.data.foreach_set("value", FZ.astype(np.float32))
+    print("face zone faces", int(FZ.sum()), flush=True)
+else:
+    # round 7: per-view projection of the hi-res illustrations (rig/illus_map.json: illustration -> master map; master registration from
+    # align.json). UV pj_<V> = illustration px / size; mask pm_<V> = head-group faces (hull + side locks) visible at rest from that view.
+    IM = json.load(open(os.path.join(os.path.dirname(os.path.abspath(BLEND)), "illus_map.json")))
+    from mathutils.bvhtree import BVHTree as _BVH
+    nf = len(me.polygons); cen = np.zeros(nf * 3); nrm = np.zeros(nf * 3); me.polygons.foreach_get("center", cen); me.polygons.foreach_get("normal", nrm)
+    cenH = (cen.reshape(-1, 3) * np.array([-1, -1, 1.0])) / K; nrmH = nrm.reshape(-1, 3) * np.array([-1, -1, 1.0])
+    lv = np.zeros(len(me.loops), int); me.loops.foreach_get("vertex_index", lv); bvh = _BVH.FromPolygons([Vector(v) for v in V], FC)
+    headgrp = np.isin(np.array(flab).astype(str), ["head", "lock_L", "lock_R"]); SHIFT = np.array([0, HF, 0])  # undo the head-forward move
+    MIRR = {"SW": "SE", "W": "E", "NW": "NE"}
+    for view in AZC:
+        src = MIRR.get(view, view); mp = IM[src]; proj, dv = camH2(view)
+        cr = proj(V[lv] + SHIFT)  # master-cell coords of this view
+        if view in MIRR: cr[:, 0] = 128.0 - cr[:, 0]  # mirrored view = mirror of the source view's master cell
+        Xi = (cr[:, 0] - mp["bx"]) / mp["ax"]; Yi = (cr[:, 1] - mp["by"]) / mp["ay"]; Wd, Ht = mp["size"]
+        if view in MIRR: Xi = Wd - Xi  # flipped illustration texture
+        uvl = me.uv_layers.new(name="pj_" + view); uvl.data.foreach_set("uv", np.stack([Xi / Wd, 1 - Yi / Ht], 1).ravel())
+        pm = np.zeros(nf, np.float32); D = Vector(dv)
+        for fi in np.nonzero(headgrp & ((nrmH @ dv) > -0.05))[0]:
+            hit = bvh.ray_cast(Vector(cenH[fi]) + D * 0.006, D, 2.0)
+            if hit[0] is None or hit[3] < 0.008: pm[fi] = 1.0
+        at = me.attributes.new("pm_" + view, "FLOAT", "FACE"); at.data.foreach_set("value", pm)
+        print("illus proj", view, int(pm.sum()), "of", int(headgrp.sum()), flush=True)
+    ao["head_mode"] = "illus"
 LIDC = {"leg_L": (255, 0, 0), "boot_L": (255, 0, 0), "foot_L": (255, 0, 0), "leg_R": (0, 255, 0), "boot_R": (0, 255, 0), "foot_R": (0, 255, 0),
         "arm_L": (0, 0, 255), "sleeve_L": (0, 0, 255), "hand_L": (0, 0, 255), "arm_R": (255, 255, 0), "sleeve_R": (255, 255, 0), "hand_R": (255, 255, 0)}
 cl = me.color_attributes.new("LID", "BYTE_COLOR", "CORNER"); lc = np.zeros((len(me.loops), 4), np.float32); lc[:, 3] = 1

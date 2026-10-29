@@ -99,6 +99,20 @@ for _it in range(int(os.environ.get("HAIRSMOOTH", "14"))):
         _acc = np.zeros_like(HSV); np.add.at(_acc, _E[:, 0], HSV[_E[:, 1]]); np.add.at(_acc, _E[:, 1], HSV[_E[:, 0]])
         HSV = HSV + _lam * (_acc / np.maximum(_deg, 1)[:, None] - HSV)
 HMAT = HSL; HV = HSV  # bone anchors (fringe, back hair, bow, bun) come from the hair shell
+# ROUND 7 (HEADMODE=illus, default): ILLUSTRATION-TEXTURED HEAD. The head is the hi-res visual hull of the Gemini illustration head
+# silhouettes (rig/illus_head.py), fused into the body like round 2; the illustration texture is projected per view in build_rig.py.
+# No separate hair shell, no modelled bow (bow, bun, bangs and locks come from the illustration silhouettes + texture).
+HEADMODE = os.environ.get("HEADMODE", "illus")
+if HEADMODE == "illus":
+    bpy.data.objects.remove(imp.pop("head"))
+    _hi = np.load(os.path.join(os.path.dirname(os.path.abspath(OUT)), "head_illus.npz"), allow_pickle=True)
+    _V = np.array(_hi["V"], float) - np.array([0, HEAD_FWD, 0]); _HM = np.array([str(m_) for m_ in _hi["mat"]])
+    _me = bpy.data.meshes.new("head"); _me.from_pydata([tuple(v) for v in _V], [], [tuple(int(i) for i in f) for f in _hi["F"]]); _me.validate()
+    _ca = _me.color_attributes.new("Color", "BYTE_COLOR", "POINT")
+    for i, m_ in enumerate(_HM): _ca.data[i].color_srgb = [x / 255 for x in MATS[m_]] + [1]
+    _bm = bmesh.new(); _bm.from_mesh(_me); bmesh.ops.recalc_face_normals(_bm, faces=_bm.faces); _bm.to_mesh(_me); _bm.free()
+    imp["head"] = bpy.data.objects.new("head", _me); bpy.context.scene.collection.objects.link(imp["head"])
+    HSV = np.zeros((0, 3)); HSF = np.zeros((0, 3), int); HSL = np.zeros(0, dtype="<U5"); HMAT = _HM; HV = _V
 def back_y(x0, z0, w=0.03):
     m = (np.abs(HV[:, 0] - x0) < w) & (np.abs(HV[:, 2] - z0) < 0.015); return float(HV[m, 1].max()) if m.any() else 0.2
 def side_x(sx, y0, z0, w=0.03):
@@ -179,7 +193,7 @@ G["bow_zcut"] = float(zw - 0.085)  # bow-coloured hull below this = ribbon tails
 HR = HV[HMAT == "hair"]; zt = HR[:, 2].max(); cand = HR[(HR[:, 2] > zt - 0.12) & (HR[:, 1] > 0.04)]
 bc = cand[np.argsort(-(cand[:, 1] * 0.6 + cand[:, 2]))[: max(20, len(cand) // 8)]].mean(0) if len(cand) else np.array([0, .15, zt - .05])
 bc[0] = 0.0; G["bun"] = {"c": (bc - np.array([0, 0.03, 0.03])).tolist(), "r": 0.075}
-if "bun_c" in _h3: G["bun"] = {"c": np.array(_h3["bun_c"], float).tolist(), "r": 0.08}  # r9: explicit round bun
+if "bun_c" in _h3 and HEADMODE != "illus": G["bun"] = {"c": np.array(_h3["bun_c"], float).tolist(), "r": 0.08}  # r9: explicit round bun
 G["DZ"] = DZ
 # ------------------------------------------------------------------ union by voxel remesh
 parts = {o.name: o for o in bpy.context.scene.objects if o.type == "MESH"}
@@ -243,15 +257,15 @@ def mat_of(n, fi, p):
 fmat = [mat_of(flab[i], ffid[i], FC[i]) for i in range(len(FB))]
 # ---- round 5: modelled bow (knot + 2 lobes + 2 ribbon tails) as part of the separate hair group (deformed by bow_knot / bow.* / hair_back.*)
 _kn = np.array(G["bow_knot"]); _kn[2] += 0.04; _kn[1] = back_y(0.0, _kn[2]) + 0.012; G["bow_knot"] = _kn.tolist(); BOWO = []  # r9: bow seated higher at the back-top (N master)
-BOWO.append(loft("bow_knot_m", [{"c": [0, _kn[1] - 0.03, _kn[2]], "ra": .046, "rb": .050}, {"c": [0, _kn[1] + 0.03, _kn[2]], "ra": .044, "rb": .048}], [1, 0, 0], n=28, cap0="round", cap1="round"))
+(BOWO.append if HEADMODE != "illus" else (lambda *_: None))(loft("bow_knot_m", [{"c": [0, _kn[1] - 0.03, _kn[2]], "ra": .046, "rb": .050}, {"c": [0, _kn[1] + 0.03, _kn[2]], "ra": .044, "rb": .048}], [1, 0, 0], n=28, cap0="round", cap1="round"))
 for side, sx in (("L", 1), ("R", -1)):
     p0 = _kn + np.array([sx * 0.03, 0.0, 0.0]); p2 = np.array([sx * 0.185, _kn[1] + 0.055, _kn[2] - 0.005]); p1 = (p0 + p2) / 2 + np.array([0, 0.03, 0.025])  # r8c: lobes angle back, tips level (read as a bow edge-on)
     G["bow"][side] = [p0.tolist(), p1.tolist(), p2.tolist()]
-    BOWO.append(loft("bow_lobe_" + side, [{"c": p0.tolist(), "ra": .036, "rb": .036}, {"c": p1.tolist(), "ra": .058, "rb": .064}, {"c": p2.tolist(), "ra": .046, "rb": .056}],
+    (BOWO.append if HEADMODE != "illus" else (lambda *_: None))(loft("bow_lobe_" + side, [{"c": p0.tolist(), "ra": .036, "rb": .036}, {"c": p1.tolist(), "ra": .058, "rb": .064}, {"c": p2.tolist(), "ra": .046, "rb": .056}],
                      [0, 1, 0], n=32, cap1="round", p=2.2))
     zz = [_kn[2] - .03, _kn[2] - .16, _kn[2] - .29]; xs_ = [sx * .025, sx * .048, sx * .066]
     rb_ = [[x, back_y(x, z) + .014, z] for x, z in zip(xs_, zz)]
-    BOWO.append(loft("bow_ribbon_" + side, [{"c": c, "ra": .022 + .003 * i, "rb": .008} for i, c in enumerate(rb_)], [1, 0, 0], n=16))
+    (BOWO.append if HEADMODE != "illus" else (lambda *_: None))(loft("bow_ribbon_" + side, [{"c": c, "ra": .022 + .003 * i, "rb": .008} for i, c in enumerate(rb_)], [1, 0, 0], n=16))
 G["bow_zcut"] = float(_kn[2] - 0.06)
 for o_ in BOWO:
     bm_ = bmesh.new(); bm_.from_mesh(o_.data); bmesh.ops.triangulate(bm_, faces=bm_.faces); bm_.to_mesh(o_.data); bm_.free()
@@ -262,7 +276,7 @@ from collections import Counter as _Ct
 o_ = len(VB); VB = np.vstack([VB, HSV]); FB = FB + [tuple(int(i) + o_ for i in f) for f in HSF]
 fmat = fmat + [_Ct([HSL[i] for i in f]).most_common(1)[0][0] for f in HSF]
 vlab = np.concatenate([vlab.astype(str), np.array(["hair_shell"] * len(HSV))]); flab = np.concatenate([flab.astype(str), np.array(["hair_shell"] * len(HSF))])
-G["head_fwd"] = HEAD_FWD
+G["head_fwd"] = HEAD_FWD; G["head_mode"] = HEADMODE
 np.savez_compressed(OUT, V=VB, F=np.array(FB, dtype=object), fmat=np.array(fmat), vlab=vlab.astype(str), flab=flab.astype(str), G=json.dumps(G),
                     head_v=HV, head_mat=HMAT)
 print("BODY", len(VB), len(FB), {m: fmat.count(m) for m in MN}, flush=True)

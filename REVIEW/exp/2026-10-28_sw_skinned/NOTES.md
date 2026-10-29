@@ -268,6 +268,20 @@ Coordination contract: `CONTRACT.md`. This experiment has two roles: R (rigger: 
   - Superellipse anime face plane: FW .218, FD .20, FP 3.2, lip bump.
   - QA: `rig/qa/r8d_profile_QA.png`, `rig/qa/r8e_QA.png`; numbers in `rig/qa/r8d_profile.json` and `rig/qa/r8e_QA.json`.
 
+### Round 7 (R): illustration-textured head (rig r10)
+- `rig/illus_head.py`: illustration→master maps per view, a hi-res hull of the illustration head silhouettes, colour classes, and filled textures.
+- `build_mesh.py` (HEADMODE=illus) fuses the hull, with no hair shell and no modelled bow.
+- `build_rig.py` writes `pj_`/`pm_` from the illustration maps for 8 views; ILLUS weights = round-2 hair windows + skin fade.
+- `render_motion.py`: the `tex` pass is the unlit illustration, with an expression swap from `face/illus/<V>/`.
+- **Silhouette IoU at 4x, per view:**
+
+| S | E | N | NE | SE |
+|---|---|---|---|---|
+| .91 | .88 | .85 | .83 | .79 |
+
+  The views are inconsistent, so .9 is met only in S.
+- QA: `rig/qa/r10_QA.png`.
+
 ### Known issues / next
 - **Placeholder head.** The H2 head has a ragged hair/skin boundary and blob eyes. Use `--stamp` for now. The proper fix is heads96 layers that turn with the head.
 - **SE body yaw.** The master SE is drawn more frontal than a true 45° camera. `--yaw=-15` approximates this (not the default).

@@ -197,6 +197,26 @@ it in R's status log, and M will then omit it.
     biased up a little) so the face sits in s, like the masters. Lighting stays global (no face special case).
   - **F, seen in W rest:** her left eye (eye.L, u = 0.72) doesn't show in W while eye.R shows in E. The texture seems to draw eye.L as the SE "far" eye; W needs it as a near eye.
 
+- 10:30 R: **ROUND 7 rig (r10) landed: illustration-textured 3D head** in rig/rig.blend (= rig/rig_r10.blend). r9 is archived in rig/work/rig_r9.blend.
+  The round-5/6 sculpted head and the face_uv textures are retired. **I:** re-render. **M:** re-bake (the head/hair/bow/bun bones moved with the new hull).
+  - **Projection cameras (rig/illus_head.py -> rig/illus_map.json):** each Gemini illustration (turnE_final iso_S, iso_SE_fixed, iso_E, iso_NE, iso_N)
+    gets a fitted 2D map onto the m96 master cell (bbox init + IoU search; illustration vs master silhouette IoU .93/.91/.90/.90/.95).
+    Composed with the rig's master registration (align.json reg_* + yaw), that is the camera per view. SW/W/NW use the flipped SE/E/NE.
+  - **Head geometry:** a hi-res visual hull of the illustration head silhouettes (4x master resolution, voxel 0.004, master-stamp ROI with the
+    collar excluded), fused into the body. Bangs, side locks, bun and bow come from the illustration silhouettes (full fringe, no temple wedge).
+    Hair/bow/bun weights use the round-2 windows with the skin fade. **Silhouette IoU at rest, 4x:** S .91, E .88, N .85, NE .83, SE .79.
+    The .9 target is met only in S: the five drawings are not mutually consistent in 3D, so a single mesh can't hit .9 everywhere.
+  - **Texture:** per-view textures picked by camera yaw. The view's own illustration (rig/tex_illus/<V>.png, background filled from solid
+    interior colours, no white halo) is projected through UV `pj_<V>` with visibility mask `pm_<V>`. The 8x **`tex` pass = unlit illustration colours**
+    (emission, Linear filter, alpha = head mask). The preview shows the textured head unlit. guide/lum/dep/lid are unchanged; the head guide matids = hair/skin/bow
+    classified from the illustration colours.
+  - **P:** treat `tex` as a textured material (E2 k-centroid / palette lock as a global rule for textured pixels). My QA-chain helper (per-cell
+    majority + nearest palette) is too naive for continuous colours (speckle). The neck skin is the flat body skin; the palette lock should unify it with the face s/S.
+  - **Expressions (F):** drop aligned expression illustrations into **face/illus/<VIEW>/<name>.png** (same size and alignment as the base
+    illustration, VIEW in S SE E NE N SW W NW, names as face_tex(): <face>[_blink|_half][_open], e.g. smile.png, neutral_blink.png). render_motion swaps the texture per frame
+    from M's face/blink/mouth keys (written to frames[i].face_tex); missing names fall back to the base illustration.
+  - QA: rig/qa/r10_QA.png (per view: illustration | master | rig preview | rig pixel (R QA chain) + walk SE + 1x), rig/qa/illus_hull_reproj.png.
+
 ## Status log (M)
 - (M writes here)
 - 2026-10-28 11:50 M: started. Building `motion/scripts/` (FK + analytic 2-bone leg IK + spring sim + own capsule preview). Until `rig/rest_skeleton.json` exists I use a stand-in `motion/standin_skeleton.json` (H2 armature joints rotated to face +Y, so .L = -X, plus guessed secondary chains). Assumptions about R's file: armature object at identity, `roll` = EditBone.roll in radians, bone rest matrix = Blender vec_roll_to_mat3(tail-head, roll); `rot` = pose rotation_quaternion with L = B^-1 * r * B. I will NOT scale pelvis (Blender inherit_scale would shrink the legs); scale only on spine/chest/head, small (0.96..1.04).
@@ -659,3 +679,8 @@ The approved masters came from **pixelizing the hi-res Gemini illustrations** (E
   - **I:** (a) a **hybrid "current best" build** now: round-5 body/motion/stance + round-4 head (projected master + face parts),
     if feasible on the current rig; else pin both builds side by side. (b) Rebuild + gates + A/B (r4 head vs r7 head) when R, F and P land.
 - The round-5/6 sculpted head and hand-made face textures are archived as the rejected baseline.
+- 08:50 I (ROUND 7a): **hybrid "current best" build 20261029_3831ac8** = release/out/latest and the pinned hub entry. Head = round-4 pipeline: R's archived
+  rig/work/rig_r7.blend projected master head (render/r_tex_head.tex_head) plus F's face_layer on 3D anchors. Body and stance = M's 07:55 round-5 bake through
+  P's current chain; the body bones are identical in r7 and r8b. `"pipeline": "hybrid"` in release/actions.json (r5 = 3D head; r7 next).
+  48/48 clips, 0 errors. Posture holds: torso 2/2, head 2/2, head-forward 6/6 (E +0.3..+1.1 px). boil 12/48, shade 0/48, limbs 35/48, GIF 48/48.
+  The r5 build (20261029_29614c2) and the r4 baseline (20261028_854761b) are linked from the pinned entry. Waiting for R/F/P round 7 to rebuild and A/B the r4 vs r7 head.

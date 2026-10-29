@@ -17,9 +17,11 @@ sys.path.insert(0, '/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-
 import hx  # noqa: E402
 H = os.path.dirname(os.path.abspath(__file__)); SW = '/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/'
 SRC = {'S': 'iso_S.png', 'SE': 'iso_SE_fixed.png', 'E': 'iso_E.png', 'NE': 'iso_NE.png', 'N': 'iso_N.png'}
-AL = json.load(open(os.path.join(H, 'align.json'))); ANC = json.load(open(SW + 'm96/heads/anchor.json'))['views']
+AL = json.load(open(os.path.join(H, 'align.json')))
+for k_, v_ in json.loads(os.environ.get('YAWS', '{}')).items(): AL[k_]['yaw'] = v_
+ANC = json.load(open(SW + 'm96/heads/anchor.json'))['views']
 PPU = 52.608; SUP = 4  # carve masks at 4x master resolution
-VOX = float(os.environ.get('IVOX', '0.004')); ISOFT = int(os.environ.get('ISOFT', '1'))
+VOX = float(os.environ.get('IVOX', '0.004')); ISOFT = int(os.environ.get('ISOFT', '0'))
 AZC = {'SE': (1, 1), 'E': (1, 0), 'S': (0, 1), 'NE': (1, -1), 'N': (0, -1)}
 
 
@@ -82,7 +84,8 @@ def main():
             def pm(P, proj=proj): return proj(P * np.array([-1, 1, 1.0]))
             V.append((v + '_m', hm, img4, pm, d * np.array([-1, 1, 1.0])))
         # texture: illustration with the background filled by the nearest figure colour
-        _, (iy, ix) = nd.distance_transform_edt(~m, return_indices=True); tex = a[iy, ix]
+        solid = nd.binary_erosion(m, iterations=3)  # drop the anti-aliased white halo: fill only from solid interior colours
+        _, (iy, ix) = nd.distance_transform_edt(~solid, return_indices=True); tex = a[iy, ix]
         Image.fromarray(tex).save(os.path.join(H, 'tex_illus', f'{v}.png'))
         if v in ('SE', 'E', 'NE'): Image.fromarray(tex[:, ::-1]).save(os.path.join(H, 'tex_illus', {'SE': 'SW', 'E': 'W', 'NE': 'NW'}[v] + '.png'))
     json.dump({'_doc': 'R round 7: illustration -> master-cell map per view: x_m = ax*X + bx, y_m = ay*Y + by (X, Y illustration px). Mirrored views SW/W/NW use the flipped SE/E/NE illustration: X_flip = size_x - 1 - X.', **MAP},
@@ -114,7 +117,7 @@ def main():
         zb = np.full(512 * 512, -9.0); np.maximum.at(zb, key, dep); zb2 = nd.grey_dilation(zb.reshape(512, 512), size=(5, 5)).ravel()
         vis = (dep >= zb2[key] - 0.015) & ((normals @ d) > 0.15)
         col = img4[np.clip(cc[:, 1], 0, 511), np.clip(cc[:, 0], 0, 511)].astype(int); r_, g_, b_ = col[:, 0], col[:, 1], col[:, 2]
-        bow = (r_ > 120) & (r_ > g_ + 55) & (r_ > b_ + 45); skin = ~bow & ((r_ + g_ + b_) > 420) & (r_ > b_ + 10)
+        bow = (r_ > 110) & (g_ < 0.5 * r_) & (b_ < 0.55 * r_); skin = ~bow & (r_ > 150) & (g_ > 0.52 * r_) & (r_ > b_ + 25)
         w = (normals @ d).clip(0, 1) * vis * (0.7 if name.endswith('_m') else 1.0)
         votes['bow'] += w * bow; votes['skin'] += w * skin; votes['hair'] += w * (~bow & ~skin)
         im = np.zeros(m_.shape + (3,), np.uint8); im[m_] = (90, 90, 90); im[sil & m_] = (230, 230, 230); im[sil & ~m_] = (230, 60, 60); im[m_ & ~sil] = (60, 120, 230)

@@ -92,3 +92,5 @@ REVIEW/exp/*/face/out/p2cur/
 # any nested work/ dumps inside experiments (e.g. release/out/<build>/work/)
 REVIEW/exp/**/work/
 REVIEW/exp/*/face/f3d/out/
+REVIEW/exp/*/face/illus/out/
+REVIEW/exp/*/face/illus/raw/

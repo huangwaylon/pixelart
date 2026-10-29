@@ -65,11 +65,25 @@ sun.rotation_euler = (-ld).to_track_quat("-Z", "Y").to_euler(); sun.data.energy 
 if not sc.world: sc.world = bpy.data.worlds.new("w")
 sc.render.resolution_x = sc.render.resolution_y = CELL * SC; sc.render.film_transparent = True; sc.render.resolution_percentage = 100
 # ------------------------------------------------------------------ materials
-TEXV = VIEW if ("pj_" + VIEW) in body.data.uv_layers and os.path.exists(os.path.join(EXP, "rig", "tex", f"tex_{VIEW}.png")) else None
+ILLUS = ao.get("head_mode", "") == "illus"
+def _tex_base(v): return os.path.join(EXP, "rig", "tex_illus", f"{v}.png") if ILLUS else os.path.join(EXP, "rig", "tex", f"tex_{v}.png")
+TEXV = VIEW if ("pj_" + VIEW) in body.data.uv_layers and os.path.exists(_tex_base(VIEW)) else None
+def illus_tex(fr):
+    """round 7: per-view illustration texture for this frame. F's aligned expression illustrations: face/illus/<VIEW>/<name>.png with the
+    same lookup as face_tex() (<face>[_blink|_half][_open] ... neutral); falls back to the base illustration rig/tex_illus/<VIEW>.png"""
+    if not (ILLUS and TEXV): return None
+    f_ = str(fr.get("face", "neutral")); bl = fr.get("blink", 0) or 0
+    try: bl = float(bl)
+    except Exception: bl = 1.0 if str(bl) in ("closed", "blink") else 0.5 if str(bl) == "half" else 0.0
+    b_ = "blink" if bl >= 0.75 else "half" if bl >= 0.25 else ""; m_ = "open" if str(fr.get("mouth", "")) == "open" else ""
+    for n in ("_".join(x for x in (f_, b_, m_) if x), "_".join(x for x in (f_, b_) if x), "_".join(x for x in (f_, m_) if x), f_, "_".join(x for x in ("neutral", b_) if x), "neutral"):
+        pth = os.path.join(EXP, "face", "illus", VIEW, n + ".png")
+        if os.path.exists(pth): return pth
+    return _tex_base(VIEW)
 def _texnodes(N, L):
     """master-projection colour (Closest) through UV pj_<VIEW> + face mask pm_<VIEW> (1 = head-group face visible from this view at rest)"""
-    im = N.new("ShaderNodeTexImage"); im.image = bpy.data.images.load(os.path.join(EXP, "rig", "tex", f"tex_{TEXV}.png"), check_existing=True)
-    im.interpolation = "Closest"; im.extension = "EXTEND"; uvn = N.new("ShaderNodeUVMap"); uvn.uv_map = "pj_" + TEXV; L.new(uvn.outputs[0], im.inputs[0])
+    im = N.new("ShaderNodeTexImage"); im.name = "ILLUS_TEX"; im.image = bpy.data.images.load(_tex_base(TEXV), check_existing=True)
+    im.interpolation = "Linear" if ILLUS else "Closest"; im.extension = "EXTEND"; uvn = N.new("ShaderNodeUVMap"); uvn.uv_map = "pj_" + TEXV; L.new(uvn.outputs[0], im.inputs[0])
     pm = N.new("ShaderNodeAttribute"); pm.attribute_type = "GEOMETRY"; pm.attribute_name = "pm_" + TEXV
     return im, pm
 # ---- round 5: 3D face textures (UV face_uv, mask fmask), switched per frame from M's face/blink/mouth keys
@@ -102,6 +116,13 @@ def _facenodes(N, L, col):
     mul = N.new("ShaderNodeMath"); mul.operation = "MULTIPLY"; L.new(fm.outputs["Fac"], mul.inputs[0]); L.new(im.outputs["Alpha"], mul.inputs[1])
     return im, mul
 def set_face(fr):
+    if ILLUS and TEXV:  # round 7: expression swap on the illustration texture
+        pth = illus_tex(fr)
+        for m in bpy.data.materials:
+            if m.use_nodes:
+                for nd_ in m.node_tree.nodes:
+                    if nd_.name == "ILLUS_TEX" and pth: nd_.image = bpy.data.images.load(pth, check_existing=True)
+        return os.path.basename(pth) if pth else None
     if not HASFACE: return None
     pm, pc = face_tex(fr), face_tex(fr, col=True)
     for m in bpy.data.materials:
