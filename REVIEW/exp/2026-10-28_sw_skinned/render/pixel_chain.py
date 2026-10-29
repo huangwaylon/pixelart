@@ -47,6 +47,7 @@ HIPF = float(os.environ.get('HIPF', '0.35'))  # A-line envelope starts at this f
 ALINE = float(os.environ.get('ALINE', '0.6'))  # skirt widening per row and side (px)
 SKINMAX = int(os.environ.get('SKINMAX', '3'))  # max skin-band rows under the hem
 ORPHAN = os.environ.get('ORPHAN', '1') == '1'  # round 6 orphan rule for every material
+PZCLEAN = os.environ.get('PZCLEAN', '0') == '1'  # masters' pz.py cleanup (face pass) on the final grid, source = 8x colour render
 COLOR = os.environ.get('COLOR', 'vote')  # colour stage: vote (material ramps + E2 textures) | ec0 (pz EC0 on the 8x colour render 'pv')
 RIM = os.environ.get('RIM', 'g')  # near-leg rim tone along the leg|leg separation (d = sock sheen; g = boot light, stronger)
 SMOOTH = os.environ.get('SMOOTH', '1') == '1'
@@ -142,7 +143,7 @@ def load(stem, i, dx, dy, pdir):
         w = hx.cells(al.astype(float)).sum((2, 3))
         F['rpos'] = np.stack([hx.cells(rp[..., k] * al).sum((2, 3)) for k in range(3)], -1) / np.maximum(w, 1)[..., None]
         F['rpos_ok'] = w > 0
-    if COLOR == 'ec0':
+    if COLOR == 'ec0' or PZCLEAN:
         pv = f'{stem}_f{i:02d}_pv.png'
         if os.path.exists(pv): F['pv'] = crop(hx.rd16(pv), dx, dy)
     if TEXMATS or TEXAUTO:
@@ -709,6 +710,7 @@ def run(stem, info, opt):
         out[i], sts[i] = g, st; prev = st
     if opt['temporal']: out = kill_flips(out, loop)
     if ORPHAN: out = [orphan_rule(g, st) for g, st in zip(out, sts)]
+    if PZCLEAN: out = [pz_cleanup(g, F) for g, F in zip(out, Fs)]
     out = [hx.main_comp(hx.drop_bare_k(g)) for g in out]
     if opt.get('smear', True):
         out, smk = apply_smear(out, info)
@@ -784,6 +786,22 @@ def apply_smear(G, info):
         else:
             base = k
     return G, sm
+
+
+def pz_cleanup(g, F):
+    """PZCLEAN=1: the masters' E2 cleanup stage (pz.py cleanup(): data-driven face-feature pass from the source colours + orphans + skin
+    specks + outline gaps) run on the chain's grid with the 8x colour render as its source - the same code the masters used, applied to
+    the whole frame (it finds the face itself from the skin hull of the source)."""
+    if 'pv' not in F: return g
+    sys.path.insert(0, '/Users/waylonhuang/Documents/other/pixelart/swordswoman/v2/pixelize/tools'); import pz as PZ_
+    hi = np.clip(F['pv'] * 255, 0, 255); al = hi[..., 3] > 127; x = hi[..., :3].copy(); x[~al] = 255
+    a = g != '.'; ys, xs = np.nonzero(a); oy, y1, ox, x1 = ys.min(), ys.max() + 1, xs.min(), xs.max() + 1
+    xf = x[oy * P:y1 * P, ox * P:x1 * P]; mf = al[oy * P:y1 * P, ox * P:x1 * P]
+    if mf.sum() == 0: return g
+    try:
+        return PZ_.cleanup(g.copy(), xf, mf, y1 - oy, ox, oy, hx.KEYS, np.array(hx.RGB, float))
+    except Exception as e:
+        print('WARN pz cleanup', repr(e)[:120]); return g
 
 
 def textured_chars(g, tex, sel, M_):

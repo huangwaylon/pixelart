@@ -400,6 +400,18 @@ Lead diagnosis (from render/out/walk/walk_SE_px_hs + walk_SE_px, at 4x):
   Single-pixel count per head 13.0 vs masters 8.6 (mostly kept W/m/k feature pixels).
   Board: render/out/p7/board_r7_head.png (illustration | master | rig preview | pixel). Still open: noisy hair strands (illustration detail), no mouth/iris
   in S, E profile face weak (geometry).
+- 13:40 P: **EC0-on-render experiment** (the masters' pz.py EC0 recipe on R's whole 8x colour render, at the fixed game scale; render/p8_ec0.py).
+  Rig r10; 9 frames (rest S/SE/E, walk SE/E f00/f03, idle SE f00/f06); render/p8_eval.py, board render/out/p8/board_ec0_vs_chain.png.
+  pz.py finds the face itself (face_hull = skin hull of the source colours), so no anchors are needed. Means:
+  | method | fig ssim_b | same_px | head ssim_b | face_ssim | head speckle (masters 7.9) | limb audit |
+  | current chain | .448 | .277 | .450 | .266 | 14.1 | 9/9 |
+  | EC0 on render | .447 | .198 | **.467** | **.280** | **7.8** | **0/9** |
+  | chain + EC0 colours (COLOR=ec0) | .429 | .196 | .450 | .259 | 3.3 | 3/9 |
+  | chain + pz cleanup (PZCLEAN=1) | .429 | .194 | .438 | .284 | 6.3 | 3/9 |
+  Visually EC0 gives cleaner, master-like faces (S/SE eyes with iris + catchlight, smoother hair), but its limbs fail the gate everywhere
+  (1 px legs/arms, split sleeves) and the palette match drops. Neither hybrid keeps both. **No clear win, so the default stays COLOR=vote.**
+  `COLOR=ec0` and `PZCLEAN=1` are opt-in (they need the 8x colour pass: render_motion.py --preview with PVS=8 -> <stem>_fNN_pv.png).
+  **I:** chain unchanged for the build.
 
 ## ROUND 2 addendum: posing direction (owner, 2026-10-28)
 > "I want more elegant posing during the different actions. Not slouched, needs to be confident, feminine."
@@ -769,3 +781,27 @@ The approved masters came from **pixelizing the hi-res Gemini illustrations** (E
 5. [P/M] Run S/SE f00-01: back leg hidden; feet drift 9-10 px. Limbs: 4/48 clips left.
 6. [P] shade_swap 0/48; run E/W/NE/NW boil .10-.14.
 7. [R] Dress silhouette (obi colour, skirt flare, 2 px sock band); SE/SW body yaw drifts toward S/W in walk/idle.
+
+---
+# ROUND 8 (lead, 2026-10-29). Based on the I panel (r7 vs r4) and P's EC0 test (render/out/p8/board_ec0_vs_chain.png)
+**Key finding:** the *3D preview itself* breaks in motion. In walk SE f00, walk E f03 and idle SE f06 the illustration texture smears
+dark streaks across the cheek/jaw and doubles the face edge. Rest frames are fine. So the per-view projection does not stay locked to
+the deforming head. Fix this at the source before tuning pixels.
+
+- **R (rigger):**
+  - (1) Bake the per-view illustration projections into the head's **UV texture in object/rest space**, so the texture moves rigidly
+    with the head and its deform, never re-projected from the camera per frame. Blend the views at the seams by normal, and pick the
+    texture per frame *by head yaw relative to the camera*, not by the camera alone, if the views must stay separate. Remove the
+    skin-weight smear: the face region must deform with the `head` bone only, with no hair/neck weights on the face.
+  - (2) Lift the fringe so it sits *above* the eyes in S/SE/E, as in the illustrations (the panel says it covers the eyes).
+  - QA: a rig-preview sheet over the motion frames walk SE/E ×8 and idle SE ×12 with no smears. This is a gate. Have I add a
+    "preview face integrity" check (face region colour vs rest-pose texture, warped by the head transform).
+- **P (pixel):** a **per-material** rule, not a head special case. Materials flagged `textured` take EC0 colours and EC0's
+  cleanup (its face pass included). Flat materials keep the current chain, including all limb rules. Composite by material ID,
+  then run the global limb, orphan and outline rules. Target: face_ssim ≥ EC0's, limb audit 9/9 on the p8 frame set.
+  Also: hair-speck removal (white specks in the back views) as a global orphan-colour rule, and profile face shading.
+- **M (animator):** remove the chest arching back during the idle E/W head turn, and make the hurt reaction read as natural
+  (a guard arm, a recoil, no T). Keep all posture gates.
+- **I (integrator):** after R, P and M land, run one rebuild + gates (add the preview-face-integrity check) + one Opus A/B vs
+  `20261029_d240736` and vs the hybrid `3831ac8`.
+- **F:** idle unless R needs the expression illustrations re-aligned to the baked UV.

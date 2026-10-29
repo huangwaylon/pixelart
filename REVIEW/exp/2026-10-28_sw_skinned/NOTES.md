@@ -1069,3 +1069,12 @@ Re-baked against R's r8b skeleton (neck, head and hair/bow/bun bones moved forwa
   | E2 locked to the cell's material | .475 | .293 |
 
 - **Board:** `render/out/p7/board_r7_head.png`.
+
+**EC0 on the render (P).** The masters' pz.py EC0 recipe was applied to the whole 8x colour render at game scale (`render/p8_ec0.py`), scored with `render/p8_eval.py`. Board: `render/out/p8/board_ec0_vs_chain.png`. Means over 9 frames:
+
+| | head ssim_b | face_ssim | head speckle | limbs passing |
+|---|---|---|---|---|
+| EC0 | .467 | .280 | 7.8 | 0/9 |
+| current chain | .450 | .266 | 14.1 | 9/9 |
+
+The masters have a head speckle of 7.9. The hybrids (`COLOR=ec0`, `PZCLEAN=1`) do not keep both the face gains and the limb gate, so the chain default is unchanged and both remain opt-in.
