@@ -684,3 +684,21 @@ The approved masters came from **pixelizing the hi-res Gemini illustrations** (E
   P's current chain; the body bones are identical in r7 and r8b. `"pipeline": "hybrid"` in release/actions.json (r5 = 3D head; r7 next).
   48/48 clips, 0 errors. Posture holds: torso 2/2, head 2/2, head-forward 6/6 (E +0.3..+1.1 px). boil 12/48, shade 0/48, limbs 35/48, GIF 48/48.
   The r5 build (20261029_29614c2) and the r4 baseline (20261028_854761b) are linked from the pinned entry. Waiting for R/F/P round 7 to rebuild and A/B the r4 vs r7 head.
+- 10:40 F (ROUND 7): **expression illustrations for the illustration-textured head**, in face/illus/ (big files under face/illus/{raw,out,chk}).
+  - **Source:** turnE_final heads (S = iso_S, SE = iso_SE_fixed, E = iso_E; head crop box in face/illus/src/boxes.json, sent to Gemini at 900 px).
+    29 gemini-3-pro-image edits ("change ONLY the expression, same style/framing, white background"). Base expressions per view: blink, half, smile, joyful,
+    determined, surprised, squint, hurt, effort. Retries: SE hurt was blocked once (re-prompted as an "ouch" face); SE blink came back as a wink (re-asked for both eyes).
+    NE was skipped: its face is hidden in the illustration (only cheek and ear).
+  - **Alignment:** compose.py registers each edit to the base head (ECC affine; the second pass uses only the non-face area), takes the face region
+    from the union of edit diffs (feathered), and blends ONLY that region into the full base illustration. Outside face_mask.png the files are
+    pixel-identical to turnE_final. Eyes+brows and mouth are separate regions (split rows/cols in out/index.json), so the 9 edits combine into every
+    face x {""/half/blink} x {""/open} (66 names per view + aliases pained/pain/joy/cheerful/dash/land/half_blink).
+  - **Files for R:** `face/illus/out/<S|SE|E>/<face>[_half|_blink][_open].png` (752x1424, same frame as the turnE_final source; R's face_tex() naming)
+    + `face_mask.png` (where the swap differs) per view. W/SW = flip of E/SE (same as your projection). wince = one eye squeezed, the other half-closed.
+  - **Coverage gate (M's request):** `python face/illus/compose.py check` scans motion/*.json, motion/view/*.json and motion/variants/*.json for every
+    face/blink/mouth combination (16 used now) and **exits 1 listing anything missing**, both in face/illus/out/<V>/ and in face/tex3d/.
+    It passes now (FACE_COVERAGE_OK). M's green hurt f07-08 placeholder (face=neutral, mouth closed -> "neutral") exists in both sets, so the green comes from
+    the renderer's lookup dir. **R:** please point FACE_DIRS at face/illus/out/<V>/ for the round-7 head and make a missing file an error, not green.
+  - **1x check (proxy until R's projection works):** pz.py EC0 96 on each variant vs the m96 master: face/illus/chk/board_{S,SE,E}.png.
+    Blink, half, joyful, surprised, squint/hurt, wince and effort (teeth) read distinctly at 1x. Smile ~ neutral (the base already smiles slightly).
+    The determined/focused brows show in S/SE; in E the profile features are 1-2 px, as in the master.

@@ -68,7 +68,7 @@ def hfiles(paths):
 def g(pat): return sorted(glob.glob(f'{EXP}/{pat}'))
 
 
-RIG_IN = lambda: [BLEND(), f'{EXP}/rig/align.json', f'{EXP}/rig/face_anchors.json', *g('rig/tex/*.png'),
+RIG_IN = lambda: [BLEND(), *g('rig/tex_illus/*.png'), *g('rig/illus_map.json'), *g('face/illus/*/*.png'), *g('rig/face_mats.json'), f'{EXP}/rig/align.json', f'{EXP}/rig/face_anchors.json', *g('rig/tex/*.png'),
                   f'{EXP}/render/render_motion.py', f'{EXP}/render/p_parts.py']
 FACE_IN = lambda: [*g('face/*.py'), f'{EXP}/face/parts.json', f'{EXP}/face/calib.json', *g('face/tex/*')]
 CODE_IN = lambda: [*g('render/pixel_chain.py'), *g('render/r_tex_head.py'), *g('render/gifio.py'), *g('render/gifcheck.py'),
@@ -83,7 +83,7 @@ def motion_for(act, V, acts):
 
 
 def pass_hash(act, V, acts):
-    r5 = pipeline() == 'r5'  # r5: R's render may read F's 3D face textures -> they are pass inputs too
+    r5 = pipeline() in ('r5', 'r7')  # r5/r7: R's render may read F's 3D face textures -> they are pass inputs too
     return hfiles(RIG_IN() + (FACE_IN() if r5 else []) + [motion_for(act, V, acts)]) + f'_{act}_{V}' + ('_r5' if r5 else '')
 
 
@@ -129,7 +129,7 @@ def clip(bid, act, V):
         if os.path.exists(f'{C}/{stem}.json') and glob.glob(f'{C}/parts/*_part.png'): open(f'{C}/DONE', 'w').close()
         else: st['errors'].append('R render / P parts failed (see clip.log)'); return done(W, st)
     st['passes'] = os.path.relpath(C, REL)
-    if pipeline() == 'r5': return clip_r5(W, C, st, mot, V, stem, log)
+    if pipeline() in ('r5', 'r7'): return clip_r5(W, C, st, mot, V, stem, log)  # r7 = illustration-textured head, same one-pipeline path
     # 2. F's faceless head pass + anchors, full and preview (cached)
     F = f'{CACHE}/f_{face_hash(act, V, acts)}'
     if not os.path.exists(f'{F}/DONE'):
@@ -193,7 +193,7 @@ def clip_r5(W, C, st, mot, V, stem, log):
     if not glob.glob(f'{W}/{stem}_px/f*.txt'):
         st['errors'].append('P pixel_chain failed (see clip.log): ' + (r.stderr.strip().splitlines() or ['?'])[-1][:200]); return done(W, st)
     m = re.search(r'LIMB_AUDIT \S+ (.*)', r.stdout); st['limb_line'] = m.group(1)[:300] if m else None
-    copy_px(W, stem[:-len(V) - 1], V); st['face_layer'] = 'ok (3D face, r5: no face layer)'; st['pipeline'] = 'r5'
+    copy_px(W, stem[:-len(V) - 1], V); st['face_layer'] = f'ok (3D head, {pipeline()}: no face layer)'; st['pipeline'] = pipeline()
     od = f'{W}/pv_final'; os.makedirs(od, exist_ok=True); pv = sorted(glob.glob(f'{C}/pv/{stem}_f??_pv.png'))
     for p in pv: shutil.copy(p, f"{od}/{re.search(r'_(f\d\d)_pv', p).group(1)}.png")
     st['preview'] = f'ok (R preview, {len(pv)} frames)' if pv else 'missing'
