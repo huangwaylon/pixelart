@@ -369,25 +369,6 @@ REGION = {'contact': [(x0, y, 'contact arm/hand repaint', [r]) for x0, y, r in [
         (76, 83, '     KsSK.'),
         (76, 84, '      KK..'),
     ]]}
-REGION_V2A = {'contact': [
-    (46, 79, 'contact arms, hand-drawn: near forearm swung forward (sleeve underside line, cuff/hand line, 4-px mitten in front of the '
-             'skirt; skirt edge runs 1-1-1-1-3); far arm swung back (cuff line, hand tucked behind the hip; right contour 2-7)', [
-        '.......KEEEERKoOOOOOOOOOOOOOoKRRRK.....',
-        '........KEEEERKOOOOOOOOOOOoooKRRRK.....',
-        '.........KEEERKoOOOOooooooRRRKKKK......',
-        '.........KEEEERKooooRRRRRREERRKsssK....',
-        '........KEKEEEERKRRREEEEREEEERRKssK....',
-        '.......KEEEKEERRRKEEEEEEREEEERRKSK.....',
-        '......KEEEEEKKKKKKKEEEEEREEEERRRKK.....',
-        '.....KEEEEEEEKssssKEEEEEREEEEERRRK.....',
-        '....KEEEEEEEEKsssSKEEEEEREEEEERRRK.....',
-        '....KEEEEEEEEKsssSKEEEEEREEEEERRRK.....',
-        '....KEEEEEEEEEKssSKEEEEEREEEEERRRK.....',
-        '.....KKKEEEEEERKKKEEEEEEEREEEEERRK.....',
-        '........KKKEE                          ']),
-]}
-
-
 def render(g, s=1, bg=None):
     a = np.zeros((N, N, 4), np.uint8)
     if bg is not None: a[:] = (*bg, 255)

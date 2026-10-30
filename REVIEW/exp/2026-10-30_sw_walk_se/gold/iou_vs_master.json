@@ -1,14 +1,14 @@
 {
  "contact": {
-  "full": 0.663,
-  "head": 0.827,
+  "full": 0.662,
+  "head": 0.825,
   "torso": 0.73,
-  "head+torso": 0.792
+  "head+torso": 0.791
  },
  "passing": {
   "full": 0.744,
-  "head": 0.827,
+  "head": 0.825,
   "torso": 0.769,
-  "head+torso": 0.799
+  "head+torso": 0.798
  }
 }

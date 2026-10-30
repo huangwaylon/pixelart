@@ -4,23 +4,64 @@
  "project": "swordswoman",
  "kind": "result",
  "status": "needs-review",
- "title": "Gold frames: walk SE contact + passing, hand-authored to the design lock",
- "question": "What does 'done' look like for walk SE? These are two hand-polished frames (contact L, passing L) that follow DESIGN_LOCK.md exactly, for the owner to approve as the target the pipeline is tuned to.",
- "method": "Authored by hand in REVIEW/exp/2026-10-30_sw_walk_se/gold/build_gold.py. Large masses are polygons with hand-picked vertices; legs and boots are pixel spans with uniform 1:2 slopes. The bow and bun are a char block (bow_block.txt); hands, cuffs and skirt corners are char-block repaints. Line rules: closed 1-px K silhouette, interior K only at the listed overlaps, pixel-perfect clean-up. Flat 2-tone shading plus one hair sheen. facesys 'open' eyes and brows at the SE layout. Poses follow walk.json keys 0 and 2 and the round-10 SE strip. Gates: lamet.py metrics plus a palette check (gates.py). One Opus critique, with its fixes applied.",
- "result": "Both frames pass every gate: zigzags 0, redundant L-corners 0, outline gaps 0, line-art 2x2 K clumps 0, unlisted interior K 0, one connected piece, 12 colours (K h H g L s S E R O o W), none off-palette. The 5 raw K clumps per frame are inside the exact facesys eye templates (reported separately). Opus round 1 scored line 7, consistency 6, appeal 6 and anatomy 6, before the fixes. Applied fixes: wider V stride on contact, bent passing knee with the foot tucked, asymmetric arms, stronger SE head and body turn, hem raised 2 px, bow redrawn (no mouse ears) with a 1:2 tail, sheen arc, clean mitten hands.",
- "verdict": "Needs the owner's review. Open questions: approve as gold or mark up pixels; accept the eye-template clumps; jaw/shoulder bob (illustration) or the master's longer wavy side locks.",
+ "title": "Gold frames v2: walk SE contact + passing (master SE angle, lively poses, long locks)",
+ "question": "Owner: 'approve style, revise pose' (DESIGN_LOCK Amendment 1). v2 keeps the approved clean style and adds the master EC0_SE_96 view angle and proportions, a dynamic contact pose, a clearly different risen passing pose, and the master's longer side locks.",
+ "method": "Hand-authored in exp/2026-10-30_sw_walk_se/gold/build_gold.py. Hair, face, neck and collar are placed from measurements of the master; dress, wide obi and narrow sleeves are hand-placed polygons; legs and boots are pixel spans. The bow block and the arm and hand repaints are hand-drawn char rows, each with a reason. Same line rules as v1 (closed 1-px K outline, interior K only at listed overlaps) and the same 14-colour lock. Gates: lamet.py metrics, palette check, one connected piece, silhouette IoU against the master. One Opus critique, with its fixes applied. v1 is kept in gold/v1/.",
+ "result": "Both frames pass every gate: zigzags 0, L-corners 0, gaps 0, line-art clumps 0 (the 7 eye-template clumps are accepted), unlisted interior K 0, one piece, 12 lock colours. Silhouette IoU against the master: head 0.825 (v1 0.807); full figure 0.662 contact and 0.744 passing (v1 0.644 and 0.714). Torso IoU is capped by the narrow sleeves the lock requires. Contact: heel-strike V stride, back leg on its toe, bent asymmetric arm swing. Passing: body 2 px higher, knee leading, hands crossing the body line. Hair: long wavy side locks and full bangs with the eyes clear. Opus scores before the fixes: line 7, master match 5, liveliness 5, hair 6, appeal 6.",
+ "verdict": "Needs the owner's review. Open: approve v2 as gold, and confirm the +1 px eye offset toward the far side for the pipeline.",
  "media": [
-  {"src": "exp/2026-10-30_sw_walk_se/gold/board_gold_walk_SE.png", "caption": "master | pose guide f00 | pose guide f02 | GOLD contact | GOLD passing, 1x and 6x on mid-grey", "wide": true},
-  {"src": "exp/2026-10-30_sw_walk_se/gold/gold_toggle.gif", "caption": "2-frame toggle (contact / passing), 400 ms, 4x"},
-  {"src": "exp/2026-10-30_sw_walk_se/gold/gold_toggle_1x.gif", "caption": "toggle at 1x"},
-  {"src": "exp/2026-10-30_sw_walk_se/gold/walk_SE_contact.png", "caption": "gold contact, 1x RGBA"},
-  {"src": "exp/2026-10-30_sw_walk_se/gold/walk_SE_passing.png", "caption": "gold passing, 1x RGBA"}
+  {
+   "src": "exp/2026-10-30_sw_walk_se/gold/board_gold_walk_SE.png",
+   "caption": "v2: master | pose guide f00 | pose guide f02 | GOLD contact | GOLD passing, 1x and 6x on mid-grey",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-30_sw_walk_se/gold/gold_toggle.gif",
+   "caption": "2-frame toggle (contact / passing), 400 ms, 4x"
+  },
+  {
+   "src": "exp/2026-10-30_sw_walk_se/gold/gold_toggle_1x.gif",
+   "caption": "toggle at 1x"
+  },
+  {
+   "src": "exp/2026-10-30_sw_walk_se/gold/walk_SE_contact.png",
+   "caption": "gold contact, 1x RGBA"
+  },
+  {
+   "src": "exp/2026-10-30_sw_walk_se/gold/walk_SE_passing.png",
+   "caption": "gold passing, 1x RGBA"
+  },
+  {
+   "src": "exp/2026-10-30_sw_walk_se/gold/v1/board_gold_walk_SE.png",
+   "caption": "v1 (superseded): style approved, poses revised in v2",
+   "wide": true
+  }
  ],
  "links": [
-  {"href": "exp/2026-10-30_sw_walk_se/gold/NOTES.md", "label": "NOTES"},
-  {"href": "exp/2026-10-30_sw_walk_se/DESIGN_LOCK.md", "label": "design lock"},
-  {"href": "exp/2026-10-30_sw_walk_se/gold/gates.json", "label": "gates.json"},
-  {"href": "exp/2026-10-30_sw_walk_se/gold/critique_opus.txt", "label": "Opus critique"}
+  {
+   "href": "exp/2026-10-30_sw_walk_se/gold/NOTES.md",
+   "label": "NOTES (v2)"
+  },
+  {
+   "href": "exp/2026-10-30_sw_walk_se/DESIGN_LOCK.md",
+   "label": "design lock + Amendment 1"
+  },
+  {
+   "href": "exp/2026-10-30_sw_walk_se/gold/gates.json",
+   "label": "gates.json"
+  },
+  {
+   "href": "exp/2026-10-30_sw_walk_se/gold/iou_vs_master.json",
+   "label": "IoU vs master"
+  },
+  {
+   "href": "exp/2026-10-30_sw_walk_se/gold/critique_opus.txt",
+   "label": "Opus critique (v2)"
+  },
+  {
+   "href": "exp/2026-10-30_sw_walk_se/gold/v1/board_gold_walk_SE.png",
+   "label": "v1 board"
+  }
  ],
  "next": "Owner approval or pixel mark-up, then tune the walk SE pipeline to match these two frames, with the last fixes going through the override layer."
 }
