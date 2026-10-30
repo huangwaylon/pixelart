@@ -57,3 +57,11 @@ Source: `docs/team_review/2026-10-30/00_SUMMARY.md` (+ 01/02/03). Pipeline asset
 - **Shared SE standard (lead):** the gold frames and the pipeline use the **same view angle and proportions as the master EC0_SE_96**. That covers the
   3/4 turn amount, head width, visible neck, collar V, a wide obi band across the front, leg length and boot size. The pipeline reaches the angle with a per-view body
   yaw cheat, and both are measured against the master's silhouette (IoU).
+
+## Amendment 2 (owner, 2026-10-30)
+> Gold v2: "nope, not good at all." Garment volume: "needs to be more based on the 3D models."
+- The hand-authored gold frames (v1, v2) are **rejected**. Targets are no longer hand-drawn from the 2D master.
+- **Shapes, proportions, garments and poses come from the 3D model** (rig + motion). The 2D master is a colour/style reference only.
+  The pixel art is the 3D render made clean: lines, palette, eyes+brows.
+- Section 4 "silhouette simplifications" (narrow sleeves etc.) is superseded where it conflicts with the 3D model's garments. Silhouette changes are
+  made **in the 3D model**, not in 2D.

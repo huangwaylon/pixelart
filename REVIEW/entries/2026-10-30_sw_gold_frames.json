@@ -3,12 +3,12 @@
  "date": "2026-10-30",
  "project": "swordswoman",
  "kind": "result",
- "status": "needs-review",
+ "status": "rejected",
  "title": "Gold frames v2: walk SE contact + passing (master SE angle, lively poses, long locks)",
  "question": "Owner: 'approve style, revise pose' (DESIGN_LOCK Amendment 1). v2 keeps the approved clean style and adds the master EC0_SE_96 view angle and proportions, a dynamic contact pose, a clearly different risen passing pose, and the master's longer side locks.",
  "method": "Hand-authored in exp/2026-10-30_sw_walk_se/gold/build_gold.py. Hair, face, neck and collar are placed from measurements of the master; dress, wide obi and narrow sleeves are hand-placed polygons; legs and boots are pixel spans. The bow block and the arm and hand repaints are hand-drawn char rows, each with a reason. Same line rules as v1 (closed 1-px K outline, interior K only at listed overlaps) and the same 14-colour lock. Gates: lamet.py metrics, palette check, one connected piece, silhouette IoU against the master. One Opus critique, with its fixes applied. v1 is kept in gold/v1/.",
  "result": "Both frames pass every gate: zigzags 0, L-corners 0, gaps 0, line-art clumps 0 (the 7 eye-template clumps are accepted), unlisted interior K 0, one piece, 12 lock colours. Silhouette IoU against the master: head 0.825 (v1 0.807); full figure 0.662 contact and 0.744 passing (v1 0.644 and 0.714). Torso IoU is capped by the narrow sleeves the lock requires. Contact: heel-strike V stride, back leg on its toe, bent asymmetric arm swing. Passing: body 2 px higher, knee leading, hands crossing the body line. Hair: long wavy side locks and full bangs with the eyes clear. Opus scores before the fixes: line 7, master match 5, liveliness 5, hair 6, appeal 6.",
- "verdict": "Needs the owner's review. Open: approve v2 as gold, and confirm the +1 px eye offset toward the far side for the pipeline.",
+ "verdict": "OWNER (2026-10-30): gold v2 'nope, not good at all'; garments 'needs to be more based on the 3d models'. Hand-drawn targets dropped; 3D model drives shapes. Needs the owner's review. Open: approve v2 as gold, and confirm the +1 px eye offset toward the far side for the pipeline.",
  "media": [
   {
    "src": "exp/2026-10-30_sw_walk_se/gold/board_gold_walk_SE.png",
