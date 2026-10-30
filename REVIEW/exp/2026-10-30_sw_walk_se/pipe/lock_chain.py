@@ -489,13 +489,15 @@ def limb_tips(g, sub1, mat1, inside, line, iline, ink):
         k = SI[nm]
         L = inside & (sub1 == k) & (g != 'K')
         core = nd.binary_opening(np.pad(L, 1), np.ones((2, 2)))[1:-1, 1:-1]
-        if not core.any(): continue
+        if not core.any():  # a 1-2 px crumb in a pocket of the line (e.g. the far arm under the chin): it joins the outline
+            if 0 < L.sum() <= 2 and (L & nd.binary_dilation(line, CROSS)).sum() == L.sum(): g[L] = 'K'; line |= L
+            continue
         thin = L & ~nd.binary_dilation(core, CROSS) & ~ink; edge = thin & nd.binary_dilation(line, CROSS)
         g[edge] = 'K'; line |= edge
         for y, x in zip(*np.nonzero(thin & ~edge)):  # inner crumb: take the colour + label of the most common non-limb neighbour
             nb = [(yy, xx) for yy, xx in ((y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)) if inside[yy, xx] and g[yy, xx] != 'K' and sub1[yy, xx] != k]
             if nb:
-                c = max(set(g[q] for q in nb), key=[g[q] for q in nb].count); q = next(q for q in nb if g[q] == c); g[y, x] = c; sub1[y, x] = sub1[q]; mat1[y, x] = mat1[q]
+                c = max(sorted(set(g[q] for q in nb)), key=[g[q] for q in nb].count); q = next(q for q in nb if g[q] == c); g[y, x] = c; sub1[y, x] = sub1[q]; mat1[y, x] = mat1[q]
     return g
 
 

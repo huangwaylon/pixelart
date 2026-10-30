@@ -5,7 +5,8 @@ Blocking gates (lock section 6: only gates that map to the owner's words):
            clump (2x2 K) = 0; interior K only at listed overlaps (every K is outline, a listed-overlap line or face ink) and every
            interior line piece >= 4 px.
   palette  colours per frame <= 14, every pixel one of the 14 lock keys, no material uses another material's colours.
-  limbs    P's limb audit (render/pixel_chain.limb_audit / p_audit.py rules) on leg.L/R, arm.L/R, hand.L/R: VANISHED, SPLIT, THIN, DETACHED.
+  limbs    P's limb audit (render/pixel_chain.limb_audit / p_audit.py rules) on leg.L/R, arm.L/R, hand.L/R: VANISHED, SPLIT, THIN, DETACHED
+           (3D visibility measured inside the drawn line: the 8x alpha eroded by SHRINK + 1 px).
   posture  M's motion gate (motion/scripts/mgate.py) on the re-baked motion.
   gif      loop=0, every frame >= 20 ms (render/gifcheck.py flags: NO_LOOP SHORT_FRAME GHOST_RISK GHOSTING SEAM DUP_FRAMES).
 Report only: pxeval seq boil / shade_swap, temporal line pops (outline px present for a single frame), colours used."""
@@ -29,7 +30,9 @@ def limb_audit(g, sub1, iline, F):
     opaque = g != '.'; fillg = opaque & (g != 'K'); out = {}
     for name, subs in LIMBS.items():
         ids = [LC.SI[s] for s in subs]
-        L = fillg & np.isin(sub1, ids); hi = np.isin(F['sub'], ids)
+        # visible in 3D = inside the drawn line: the lock outline sits ON the silhouette edge (traced on the alpha eroded by SHRINK),
+        # so the outer 1 px of the 3D silhouette is line, not fill (P's chain drew its outline outside an eroded fill instead)
+        L = fillg & np.isin(sub1, ids); hi = np.isin(F['sub'], ids) & nd.binary_erosion(F['alpha'], iterations=LC.SHRINK + P)
         hia = hi.sum() / (P * P); hl, hn = nd.label(hi, np.ones((3, 3)))
         hcomp = int(sum(1 for k in range(1, hn + 1) if (hl == k).sum() >= P * P)) if hn else 0
         Lc = L | (iline & nd.binary_dilation(L, LC.CROSS) & (g == 'K'))

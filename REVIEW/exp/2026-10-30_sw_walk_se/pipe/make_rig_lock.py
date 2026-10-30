@@ -75,7 +75,7 @@ if me.color_attributes.get("PARTID"): me.color_attributes.remove(me.color_attrib
 ca = me.color_attributes.new("PARTID", "BYTE_COLOR", "CORNER")
 cols = []
 for poly in me.polygons:
-    vs = [vp[i] for i in poly.vertices]; c = PARTC[max(set(vs), key=vs.count)]
+    vs = [vp[i] for i in poly.vertices]; c = PARTC[max(sorted(set(vs)), key=vs.count)]
     for l in poly.loop_indices: cols.extend((*c, 1.0))
 ca.data.foreach_set("color", cols)
 json_parts = {k: list(v) for k, v in PARTC.items()}
@@ -91,7 +91,7 @@ img = bpy.data.images.load("/Users/waylonhuang/Documents/other/pixelart/REVIEW/e
 mk = np.array(img.pixels[:]).reshape(img.size[1], img.size[0], 4)[::-1, :, 0] > 0.5
 mk[:FACE_ROW0] = False
 mkd = mk.copy(); mkd[1:] |= mk[:-1]; mkd[:-1] |= mk[1:]; mkd[:, 1:] |= mk[:, :-1]; mkd[:, :-1] |= mk[:, 1:]
-fc = np.array([p.center for p in me.polygons]); fdom = np.array([max(set(dom[list(p.vertices)].tolist()), key=list(dom[list(p.vertices)]).count) for p in me.polygons])
+fc = np.array([p.center for p in me.polygons]); fdom = np.array([max(sorted(set(dom[list(p.vertices)].tolist())), key=list(dom[list(p.vertices)]).count) for p in me.polygons])
 u = np.floor(CX0 - fc[:, 0] / CXS).astype(int); w = np.floor(CY0 - (fc[:, 2] - CZ0) / CZS).astype(int)
 inb = (u >= 0) & (u < 128) & (w >= 0) & (w < 128)
 hit = np.zeros(len(fc), bool); hit[inb] = mkd[w[inb], u[inb]]

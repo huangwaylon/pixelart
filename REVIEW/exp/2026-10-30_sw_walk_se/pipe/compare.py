@@ -74,12 +74,16 @@ def gold_diff(i, name, outd, cmpd, lab):
         px.append({'x': int(x), 'y': int(y), 'ours': str(o), 'key': str(g), 'reason': why})
     cnt = {}
     for p in px: cnt[p['reason']] = cnt.get(p['reason'], 0) + 1
-    res = {'frame': f'f{i:02d}', 'gold': os.path.relpath(gp, outd), 'align_dy_dx': [best[1], best[2]], 'diff_px': len(px), 'by_reason': cnt,
+    band = {}
+    for p in px:
+        b = 'head (y<62)' if p['y'] < 62 else 'body (62-90)' if p['y'] < 91 else 'legs (>=91)'; band[b] = band.get(b, 0) + 1
+    res = {'frame': f'f{i:02d}', 'gold': os.path.relpath(gp, outd), 'align_dy_dx': [best[1], best[2]], 'diff_px': len(px), 'by_reason': cnt, 'by_band': band,
+           'figure_px': {'build': int((ours != '.').sum()), 'gold': int((gold != '.').sum())},
            'candidate_overrides': px}
     json.dump(res, open(os.path.join(cmpd, f'gold_diff_f{i:02d}.json'), 'w'), indent=0)
     r = subprocess.run([PY, '-I', ROOT + '/pipeline/tools/pxeval.py', 'still', os.path.join(os.path.abspath(outd), f'f{i:02d}.png'), '--ref', os.path.abspath(gp),
                         '--json', os.path.join(os.path.abspath(cmpd), f'pxeval_f{i:02d}_vs_gold.json'), '--compact'], capture_output=True, text=True, cwd=ROOT)
-    try: res['pxeval'] = {k: v for k, v in json.loads(r.stdout).get('ref', json.loads(r.stdout)).items() if not isinstance(v, (list, dict))}
+    try: res['pxeval'] = json.loads(r.stdout)['vs_ref']
     except Exception: res['pxeval'] = {'error': r.stderr[-300:]}
     # board: ours | gold | diff
     def img(gr):

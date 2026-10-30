@@ -49,3 +49,11 @@ Source: `docs/team_review/2026-10-30/00_SUMMARY.md` (+ 01/02/03). Pipeline asset
 - Only gates that map to the owner's words block a build: line gates, palette gates, limb connectivity, posture, loop/timing. Boil and shade_swap
   are reported only.
 - Lean: at most 2 agents at a time, and one critique per round.
+
+## Amendment 1 (owner, 2026-10-30)
+- **Gold frames:** the clean style is approved. Revise the poses: a stronger SE 3/4 turn of head + body, a more dynamic contact stride and arm swing,
+  and a passing pose clearly different from contact (lively, natural, feminine, per the earlier motion notes). The revised frames become the gold standard.
+- **Hair:** use the **master's longer, wavier side locks** framing the face (EC0_SE_96), not the jaw-length bob. Full bangs, eyes clear.
+- **Shared SE standard (lead):** the gold frames and the pipeline use the **same view angle and proportions as the master EC0_SE_96**. That covers the
+  3/4 turn amount, head width, visible neck, collar V, a wide obi band across the front, leg length and boot size. The pipeline reaches the angle with a per-view body
+  yaw cheat, and both are measured against the master's silhouette (IoU).

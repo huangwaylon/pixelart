@@ -13,6 +13,15 @@
 "interior_line": 181,
 "face": 40
 },
+"by_band": {
+"head (y<62)": 660,
+"body (62-90)": 565,
+"legs (>=91)": 536
+},
+"figure_px": {
+"build": 1608,
+"gold": 2376
+},
 "candidate_overrides": [
 {
 "x": 63,

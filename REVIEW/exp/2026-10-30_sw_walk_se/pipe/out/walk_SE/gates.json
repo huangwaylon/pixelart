@@ -23,7 +23,7 @@
    "kink": 0,
    "intK": 0,
    "orphK": 0,
-   "K": 343
+   "K": 344
   },
   {
    "zig": 0,
@@ -160,7 +160,7 @@
   {
    "leg.L": {
     "px": 141,
-    "hi_px": 221.3,
+    "hi_px": 111.8,
     "pieces": 2,
     "hi_pieces": 2,
     "thin": 0,
@@ -168,7 +168,7 @@
    },
    "leg.R": {
     "px": 126,
-    "hi_px": 187.9,
+    "hi_px": 101.1,
     "pieces": 2,
     "hi_pieces": 2,
     "thin": 0,
@@ -176,7 +176,7 @@
    },
    "arm.L": {
     "px": 10,
-    "hi_px": 12.0,
+    "hi_px": 1.4,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -184,7 +184,7 @@
    },
    "arm.R": {
     "px": 156,
-    "hi_px": 177.5,
+    "hi_px": 158.1,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -200,7 +200,7 @@
    },
    "hand.R": {
     "px": 16,
-    "hi_px": 27.6,
+    "hi_px": 15.1,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -210,7 +210,7 @@
   {
    "leg.L": {
     "px": 160,
-    "hi_px": 218.8,
+    "hi_px": 112.9,
     "pieces": 2,
     "hi_pieces": 2,
     "thin": 0,
@@ -218,25 +218,23 @@
    },
    "leg.R": {
     "px": 108,
-    "hi_px": 185.0,
+    "hi_px": 102.9,
     "pieces": 2,
     "hi_pieces": 2,
     "thin": 0,
     "flags": []
    },
    "arm.L": {
-    "px": 1,
-    "hi_px": 10.5,
-    "pieces": 1,
+    "px": 0,
+    "hi_px": 1.0,
+    "pieces": 0,
     "hi_pieces": 1,
-    "thin": 1,
-    "flags": [
-     "THIN"
-    ]
+    "thin": 0,
+    "flags": []
    },
    "arm.R": {
     "px": 163,
-    "hi_px": 181.0,
+    "hi_px": 159.8,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -252,7 +250,7 @@
    },
    "hand.R": {
     "px": 18,
-    "hi_px": 26.8,
+    "hi_px": 15.0,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -262,7 +260,7 @@
   {
    "leg.L": {
     "px": 124,
-    "hi_px": 186.7,
+    "hi_px": 107.6,
     "pieces": 2,
     "hi_pieces": 2,
     "thin": 0,
@@ -270,7 +268,7 @@
    },
    "leg.R": {
     "px": 133,
-    "hi_px": 194.9,
+    "hi_px": 130.1,
     "pieces": 1,
     "hi_pieces": 2,
     "thin": 0,
@@ -278,7 +276,7 @@
    },
    "arm.L": {
     "px": 30,
-    "hi_px": 46.9,
+    "hi_px": 16.1,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -286,7 +284,7 @@
    },
    "arm.R": {
     "px": 145,
-    "hi_px": 184.4,
+    "hi_px": 156.0,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -294,7 +292,7 @@
    },
    "hand.L": {
     "px": 8,
-    "hi_px": 17.2,
+    "hi_px": 5.0,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -312,15 +310,15 @@
   {
    "leg.L": {
     "px": 40,
-    "hi_px": 52.2,
+    "hi_px": 14.5,
     "pieces": 2,
-    "hi_pieces": 4,
+    "hi_pieces": 2,
     "thin": 0,
     "flags": []
    },
    "leg.R": {
     "px": 191,
-    "hi_px": 231.9,
+    "hi_px": 166.5,
     "pieces": 2,
     "hi_pieces": 2,
     "thin": 0,
@@ -328,7 +326,7 @@
    },
    "arm.L": {
     "px": 90,
-    "hi_px": 125.4,
+    "hi_px": 88.6,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -336,7 +334,7 @@
    },
    "arm.R": {
     "px": 136,
-    "hi_px": 176.2,
+    "hi_px": 134.9,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -344,7 +342,7 @@
    },
    "hand.L": {
     "px": 9,
-    "hi_px": 24.0,
+    "hi_px": 8.9,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -352,7 +350,7 @@
    },
    "hand.R": {
     "px": 18,
-    "hi_px": 27.6,
+    "hi_px": 14.0,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -362,7 +360,7 @@
   {
    "leg.L": {
     "px": 56,
-    "hi_px": 104.4,
+    "hi_px": 61.3,
     "pieces": 3,
     "hi_pieces": 3,
     "thin": 0,
@@ -370,7 +368,7 @@
    },
    "leg.R": {
     "px": 160,
-    "hi_px": 235.6,
+    "hi_px": 161.8,
     "pieces": 2,
     "hi_pieces": 2,
     "thin": 0,
@@ -378,7 +376,7 @@
    },
    "arm.L": {
     "px": 85,
-    "hi_px": 121.8,
+    "hi_px": 88.3,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -386,7 +384,7 @@
    },
    "arm.R": {
     "px": 117,
-    "hi_px": 137.4,
+    "hi_px": 101.9,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -394,7 +392,7 @@
    },
    "hand.L": {
     "px": 11,
-    "hi_px": 22.2,
+    "hi_px": 10.0,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -402,7 +400,7 @@
    },
    "hand.R": {
     "px": 8,
-    "hi_px": 23.4,
+    "hi_px": 9.1,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -412,7 +410,7 @@
   {
    "leg.L": {
     "px": 67,
-    "hi_px": 108.7,
+    "hi_px": 64.1,
     "pieces": 3,
     "hi_pieces": 3,
     "thin": 0,
@@ -420,7 +418,7 @@
    },
    "leg.R": {
     "px": 183,
-    "hi_px": 229.2,
+    "hi_px": 158.6,
     "pieces": 2,
     "hi_pieces": 2,
     "thin": 0,
@@ -428,15 +426,15 @@
    },
    "arm.L": {
     "px": 94,
-    "hi_px": 132.9,
+    "hi_px": 98.5,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
     "flags": []
    },
    "arm.R": {
-    "px": 108,
-    "hi_px": 130.0,
+    "px": 109,
+    "hi_px": 96.5,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -444,7 +442,7 @@
    },
    "hand.L": {
     "px": 13,
-    "hi_px": 22.7,
+    "hi_px": 9.3,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -452,7 +450,7 @@
    },
    "hand.R": {
     "px": 10,
-    "hi_px": 19.5,
+    "hi_px": 7.5,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -462,7 +460,7 @@
   {
    "leg.L": {
     "px": 61,
-    "hi_px": 124.5,
+    "hi_px": 66.5,
     "pieces": 3,
     "hi_pieces": 3,
     "thin": 0,
@@ -470,7 +468,7 @@
    },
    "leg.R": {
     "px": 153,
-    "hi_px": 209.2,
+    "hi_px": 133.0,
     "pieces": 2,
     "hi_pieces": 2,
     "thin": 0,
@@ -478,7 +476,7 @@
    },
    "arm.L": {
     "px": 85,
-    "hi_px": 136.0,
+    "hi_px": 86.1,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -486,7 +484,7 @@
    },
    "arm.R": {
     "px": 132,
-    "hi_px": 154.7,
+    "hi_px": 116.4,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -494,7 +492,7 @@
    },
    "hand.L": {
     "px": 11,
-    "hi_px": 24.1,
+    "hi_px": 7.2,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -502,7 +500,7 @@
    },
    "hand.R": {
     "px": 17,
-    "hi_px": 24.3,
+    "hi_px": 12.8,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -512,7 +510,7 @@
   {
    "leg.L": {
     "px": 151,
-    "hi_px": 205.6,
+    "hi_px": 106.3,
     "pieces": 2,
     "hi_pieces": 2,
     "thin": 0,
@@ -520,7 +518,7 @@
    },
    "leg.R": {
     "px": 119,
-    "hi_px": 203.4,
+    "hi_px": 105.0,
     "pieces": 1,
     "hi_pieces": 2,
     "thin": 0,
@@ -528,7 +526,7 @@
    },
    "arm.L": {
     "px": 42,
-    "hi_px": 59.9,
+    "hi_px": 26.6,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -536,7 +534,7 @@
    },
    "arm.R": {
     "px": 163,
-    "hi_px": 178.3,
+    "hi_px": 154.4,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -544,7 +542,7 @@
    },
    "hand.L": {
     "px": 8,
-    "hi_px": 19.9,
+    "hi_px": 7.2,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -552,7 +550,7 @@
    },
    "hand.R": {
     "px": 23,
-    "hi_px": 26.5,
+    "hi_px": 23.5,
     "pieces": 1,
     "hi_pieces": 1,
     "thin": 0,
@@ -689,7 +687,7 @@
   "min_ms": 70
  },
  "report": {
-  "flicker": 0.2051,
+  "flicker": 0.2052,
   "boil": 0.0275,
   "shade_swap": 0.0107,
   "seam_changed": 0.5442,
@@ -705,11 +703,11 @@
   "palette_le_14": true,
   "palette_on_lock": true,
   "palette_no_cross_material": true,
-  "limbs_connected": false,
+  "limbs_connected": true,
   "posture": true,
   "gif_loop_timing": true
  },
- "pass": false,
+ "pass": true,
  "summary": {
   "zig_max": 0,
   "zig_mean": 0.0,
@@ -720,9 +718,7 @@
   "stray_K": 0,
   "colours_max": 12,
   "cross_px": 0,
-  "limb_fail_frames": [
-   1
-  ],
+  "limb_fail_frames": [],
   "line_pops_total": 100
  }
 }
