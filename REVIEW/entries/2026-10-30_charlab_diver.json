@@ -1,0 +1,62 @@
+{
+ "id": "2026-10-30_charlab_diver",
+ "date": "2026-10-30",
+ "project": "charlab",
+ "kind": "experiment",
+ "status": "needs-review",
+ "title": "charlab: Marin (diver), data-driven 3D -> pixel walk, 36 tier/body/size variants",
+ "question": "Can one spec-driven pipeline (designer JSON -> primitive 3D body + parts -> shared walk -> locked pixel chain) give clean walk cycles across 3 complexity tiers x 3 body presets x 4 sprite heights?",
+ "method": "charlab/lab/run.sh (model.py SDF primitives + marching cubes + automatic weights; blender_walk.py armature, shared 8-frame procedural walk, ID + normal/depth passes; pixel.py vector outline, toon-normal 2-tone cel + hair hi, occlusion shadows, interior lines at part/depth edges, eyes+brows stamped at 3D eye points, locked palette; boards.py). Deterministic. No critic calls.",
+ "result": "36 variant-sizes. Colours/frame max 12 (palette 13, 0 off-palette), silhouette gaps 0, lamet zigzag max per frame 0-1. Per-cell gates in summary.json. All 36 cells pass the blocking gates; deterministic.",
+ "verdict": "Needs owner/reviewer look. Tall dark figure with a bright yellow cylinder on her back: the tank is visible in front, 3/4, side and back views, so facing is always readable. The teal side stripe marks the body edge against the d",
+ "scores": {
+  "variants": "36",
+  "colours max": "12",
+  "palette": "13",
+  "gaps": "0",
+  "zig max": "0-1"
+ },
+ "media": [
+  {
+   "src": "../charlab/lab/out/diver/grid_SE_4x.gif",
+   "caption": "walk SE: rows = tier x body preset, cols = 32/48/64/96 px, all shown at the same on-screen height (green corner = designer-recommended size)",
+   "wide": false
+  },
+  {
+   "src": "../charlab/lab/out/diver/boards.png",
+   "caption": "left: SE contact frame (matched scale); right: S | SE | E contact frames at true relative size (x3)",
+   "wide": true
+  },
+  {
+   "src": "../charlab/lab/out/diver/simple_slim/96/walk_4x.gif",
+   "caption": "simple / slim / 96 px: S | SE | E walk, 4x"
+  },
+  {
+   "src": "../charlab/lab/out/diver/medium_slim/96/walk_4x.gif",
+   "caption": "medium / slim / 96 px: S | SE | E walk, 4x"
+  },
+  {
+   "src": "../charlab/lab/out/diver/detailed_slim/96/walk_4x.gif",
+   "caption": "detailed / slim / 96 px: S | SE | E walk, 4x"
+  }
+ ],
+ "links": [
+  {
+   "href": "../charlab/lab/NOTES.md",
+   "label": "lab notes"
+  },
+  {
+   "href": "../charlab/lab/SPEC.md",
+   "label": "spec format"
+  },
+  {
+   "href": "../charlab/designs/diver.json",
+   "label": "design spec"
+  },
+  {
+   "href": "../charlab/lab/out/diver/summary.json",
+   "label": "gates summary"
+  }
+ ],
+ "next": "Reviewer pass on line/shading at 1x; pick the body preset, tier and size per character."
+}

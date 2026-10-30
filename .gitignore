@@ -98,3 +98,7 @@ REVIEW/exp/*/pipe/tmp/
 # charlab intermediates
 charlab/**/work/
 charlab/**/tmp/
+# charlab per-variant frame dumps (keep GIFs/boards/summary)
+charlab/lab/out/*/*/**/*.png
+charlab/lab/out/*/*/**/*.txt
+!charlab/lab/out/*/*/*.gif

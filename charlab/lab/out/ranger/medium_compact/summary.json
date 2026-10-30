@@ -1,0 +1,58 @@
+{
+ "32": {
+  "PASS": true,
+  "zig_max": 0,
+  "zig_mean": 0.0,
+  "dbl_max": 0,
+  "gap_max": 0,
+  "clump_max": 2,
+  "mono_mean": 0.818,
+  "colours_max": 12,
+  "palette": 13,
+  "off_palette": 0,
+  "eyes_min": 1,
+  "boil_sil": 0.052
+ },
+ "48": {
+  "PASS": true,
+  "zig_max": 0,
+  "zig_mean": 0.0,
+  "dbl_max": 0,
+  "gap_max": 0,
+  "clump_max": 5,
+  "mono_mean": 0.847,
+  "colours_max": 12,
+  "palette": 13,
+  "off_palette": 0,
+  "eyes_min": 2,
+  "boil_sil": 0.061
+ },
+ "64": {
+  "PASS": true,
+  "zig_max": 0,
+  "zig_mean": 0.0,
+  "dbl_max": 0,
+  "gap_max": 0,
+  "clump_max": 6,
+  "mono_mean": 0.851,
+  "colours_max": 13,
+  "palette": 13,
+  "off_palette": 0,
+  "eyes_min": 2,
+  "boil_sil": 0.103
+ },
+ "96": {
+  "PASS": true,
+  "zig_max": 0,
+  "zig_mean": 0.0,
+  "dbl_max": 1,
+  "gap_max": 0,
+  "clump_max": 5,
+  "mono_mean": 0.781,
+  "colours_max": 13,
+  "palette": 13,
+  "off_palette": 0,
+  "eyes_min": 2,
+  "boil_sil": 0.172
+ }
+}

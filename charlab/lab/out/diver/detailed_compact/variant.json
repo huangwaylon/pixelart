@@ -1,0 +1,69 @@
+{
+ "model": {
+  "verts": 82097,
+  "tris": 164202,
+  "warnings": [],
+  "mats": [
+   [
+    "skin",
+    "skin_shade",
+    null
+   ],
+   [
+    "hair",
+    "hair_shade",
+    null
+   ],
+   [
+    "suit",
+    "suit_shade",
+    null
+   ],
+   [
+    "teal",
+    null,
+    null
+   ],
+   [
+    "tank",
+    "tank_shade",
+    null
+   ],
+   [
+    "outline",
+    null,
+    null
+   ],
+   [
+    "accent",
+    null,
+    null
+   ],
+   [
+    "lens",
+    null,
+    null
+   ],
+   [
+    "suit_shade",
+    null,
+    null
+   ]
+  ],
+  "palette": {
+   "outline": "#2b2235",
+   "skin": "#c48a64",
+   "skin_shade": "#9a6347",
+   "hair": "#8a3b2e",
+   "hair_shade": "#5e2620",
+   "suit": "#2c3440",
+   "suit_shade": "#1c222b",
+   "teal": "#2bb3a8",
+   "tank": "#f5c242",
+   "tank_shade": "#c7962a",
+   "accent": "#e0475b",
+   "lens": "#9fe0f0"
+  }
+ },
+ "seconds": 30.7
+}

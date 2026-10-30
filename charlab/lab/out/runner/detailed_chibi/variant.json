@@ -1,0 +1,56 @@
+{
+ "model": {
+  "verts": 115574,
+  "tris": 231058,
+  "warnings": [
+   "shade key 'hair_shade' not in palette: derived from 'hair' (base x 0.75 value)"
+  ],
+  "mats": [
+   [
+    "skin",
+    "skin_shade",
+    null
+   ],
+   [
+    "hair",
+    "hair_shade",
+    "hair_hi"
+   ],
+   [
+    "coral",
+    "coral_shade",
+    null
+   ],
+   [
+    "navy",
+    "navy_auto",
+    null
+   ],
+   [
+    "teal",
+    "navy",
+    null
+   ],
+   [
+    "white",
+    null,
+    null
+   ]
+  ],
+  "palette": {
+   "outline": "#2b2235",
+   "skin": "#a8714f",
+   "skin_shade": "#835236",
+   "hair": "#2a2230",
+   "hair_hi": "#4d4560",
+   "coral": "#f2695c",
+   "coral_shade": "#c44a44",
+   "navy": "#2f3b6e",
+   "white": "#f4f4f0",
+   "teal": "#3fc1c9",
+   "hair_shade": "#1f1724",
+   "navy_auto": "#1c2752"
+  }
+ },
+ "seconds": 30.0
+}

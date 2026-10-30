@@ -1,0 +1,62 @@
+{
+ "id": "2026-10-30_charlab_ranger",
+ "date": "2026-10-30",
+ "project": "charlab",
+ "kind": "experiment",
+ "status": "needs-review",
+ "title": "charlab: Fern (ranger), data-driven 3D -> pixel walk, 36 tier/body/size variants",
+ "question": "Can one spec-driven pipeline (designer JSON -> primitive 3D body + parts -> shared walk -> locked pixel chain) give clean walk cycles across 3 complexity tiers x 3 body presets x 4 sprite heights?",
+ "method": "charlab/lab/run.sh (model.py SDF primitives + marching cubes + automatic weights; blender_walk.py armature, shared 8-frame procedural walk, ID + normal/depth passes; pixel.py vector outline, toon-normal 2-tone cel + hair hi, occlusion shadows, interior lines at part/depth edges, eyes+brows stamped at 3D eye points, locked palette; boards.py). Deterministic. No critic calls.",
+ "result": "36 variant-sizes. Colours/frame max 13 (palette 13, 0 off-palette), silhouette gaps 0, lamet zigzag max per frame 0-1. Per-cell gates in summary.json. All 36 cells pass the blocking gates; deterministic.",
+ "verdict": "Needs owner/reviewer look. Wide hat disc on top + big red oval behind the body: a mushroom/turtle silhouette that is unique in the cast. The red pack is visible from every angle; earth palette is very cohesive (only red is satu",
+ "scores": {
+  "variants": "36",
+  "colours max": "13",
+  "palette": "13",
+  "gaps": "0",
+  "zig max": "0-1"
+ },
+ "media": [
+  {
+   "src": "../charlab/lab/out/ranger/grid_SE_4x.gif",
+   "caption": "walk SE: rows = tier x body preset, cols = 32/48/64/96 px, all shown at the same on-screen height (green corner = designer-recommended size)",
+   "wide": false
+  },
+  {
+   "src": "../charlab/lab/out/ranger/boards.png",
+   "caption": "left: SE contact frame (matched scale); right: S | SE | E contact frames at true relative size (x3)",
+   "wide": true
+  },
+  {
+   "src": "../charlab/lab/out/ranger/simple_compact/64/walk_4x.gif",
+   "caption": "simple / compact / 64 px: S | SE | E walk, 4x"
+  },
+  {
+   "src": "../charlab/lab/out/ranger/medium_compact/64/walk_4x.gif",
+   "caption": "medium / compact / 64 px: S | SE | E walk, 4x"
+  },
+  {
+   "src": "../charlab/lab/out/ranger/detailed_compact/64/walk_4x.gif",
+   "caption": "detailed / compact / 64 px: S | SE | E walk, 4x"
+  }
+ ],
+ "links": [
+  {
+   "href": "../charlab/lab/NOTES.md",
+   "label": "lab notes"
+  },
+  {
+   "href": "../charlab/lab/SPEC.md",
+   "label": "spec format"
+  },
+  {
+   "href": "../charlab/designs/ranger.json",
+   "label": "design spec"
+  },
+  {
+   "href": "../charlab/lab/out/ranger/summary.json",
+   "label": "gates summary"
+  }
+ ],
+ "next": "Reviewer pass on line/shading at 1x; pick the body preset, tier and size per character."
+}

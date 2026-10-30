@@ -1,0 +1,48 @@
+{
+ "model": {
+  "verts": 95921,
+  "tris": 191886,
+  "warnings": [],
+  "mats": [
+   [
+    "skin",
+    "skin_shade",
+    null
+   ],
+   [
+    "hair",
+    "hair_shade",
+    null
+   ],
+   [
+    "suit",
+    "suit_shade",
+    null
+   ],
+   [
+    "visor",
+    null,
+    null
+   ],
+   [
+    "orange",
+    "orange_shade",
+    null
+   ]
+  ],
+  "palette": {
+   "outline": "#2b2235",
+   "skin": "#f3cfb3",
+   "skin_shade": "#d8a184",
+   "hair": "#6b4a3a",
+   "hair_shade": "#4a3128",
+   "suit": "#f2f2ee",
+   "suit_shade": "#c9cbd3",
+   "orange": "#f08a3c",
+   "orange_shade": "#c4612a",
+   "visor": "#8fd3f0",
+   "accent": "#3b6fd8"
+  }
+ },
+ "seconds": 18.4
+}

@@ -1,0 +1,76 @@
+{
+ "model": {
+  "verts": 139886,
+  "tris": 279630,
+  "warnings": [
+   "shade key 'hair_shade' not in palette: derived from 'hair' (base x 0.75 value)"
+  ],
+  "mats": [
+   [
+    "skin",
+    "skin_shade",
+    null
+   ],
+   [
+    "hair",
+    "hair_shade",
+    "hair_hi"
+   ],
+   [
+    "white",
+    "denim_shade",
+    null
+   ],
+   [
+    "denim",
+    "denim_shade",
+    null
+   ],
+   [
+    "denim",
+    null,
+    null
+   ],
+   [
+    "red",
+    null,
+    null
+   ],
+   [
+    "yellow",
+    null,
+    null
+   ],
+   [
+    "brown",
+    "hair",
+    null
+   ],
+   [
+    "brown",
+    null,
+    null
+   ],
+   [
+    "denim_shade",
+    null,
+    null
+   ]
+  ],
+  "palette": {
+   "outline": "#2b2235",
+   "skin": "#8e5a3f",
+   "skin_shade": "#6a3f2b",
+   "hair": "#231c22",
+   "hair_hi": "#3d3138",
+   "denim": "#4a78b8",
+   "denim_shade": "#335690",
+   "white": "#f1efe8",
+   "red": "#d8433e",
+   "yellow": "#f2c14e",
+   "brown": "#7a5236",
+   "hair_shade": "#1a1419"
+  }
+ },
+ "seconds": 44.3
+}

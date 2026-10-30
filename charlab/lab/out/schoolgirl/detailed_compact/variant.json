@@ -1,0 +1,70 @@
+{
+ "model": {
+  "verts": 78474,
+  "tris": 156940,
+  "warnings": [],
+  "mats": [
+   [
+    "skin",
+    "skin_shade",
+    null
+   ],
+   [
+    "hair",
+    "hair_shade",
+    "hair_hi"
+   ],
+   [
+    "white",
+    "white_shade",
+    null
+   ],
+   [
+    "navy",
+    "navy_shade",
+    null
+   ],
+   [
+    "accent",
+    null,
+    null
+   ],
+   [
+    "navy",
+    null,
+    null
+   ],
+   [
+    "loafer",
+    "loafer_auto",
+    null
+   ],
+   [
+    "white",
+    null,
+    null
+   ],
+   [
+    "navy_shade",
+    null,
+    null
+   ]
+  ],
+  "palette": {
+   "outline": "#2b2235",
+   "skin": "#f6d3b8",
+   "skin_shade": "#dca88a",
+   "hair": "#7a4a35",
+   "hair_shade": "#55311f",
+   "hair_hi": "#9a6448",
+   "navy": "#2e3a66",
+   "navy_shade": "#1f2747",
+   "white": "#f4f4f0",
+   "white_shade": "#c9ccd6",
+   "accent": "#d8434e",
+   "loafer": "#6b4232",
+   "loafer_auto": "#502d1f"
+  }
+ },
+ "seconds": 24.8
+}
