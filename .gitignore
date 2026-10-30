@@ -105,3 +105,5 @@ charlab/lab/out/*/*/**/*.txt
 # third-party clones used for experiments
 charlab/**/ext/
 charlab/mesh/refs/raw/
+charlab/mesh/rig/inputs/
+charlab/mesh/*/out/
