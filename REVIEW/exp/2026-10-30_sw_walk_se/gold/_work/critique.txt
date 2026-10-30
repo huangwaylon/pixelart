@@ -1,0 +1,22 @@
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+**Scores**
+1. Line art: 7/10. The outline is mostly a clean 1 px with no gaps. Problem areas are the bow knot and tail, the bottom edge of the bangs, the hand boxes and the left skirt corner.
+2. Consistency with master: 6/10. Palette, obi, sleeves and face follow the lock. Off-lock drift: the hair has become a blunt jaw-length bob, while the master has wavy side locks down to the chest. The legs are about 6 px shorter: the hem sits near y100 against about y94 on the master, with feet at y124 on both. The head reads front-on (S) more than SE.
+3. Appeal and readability at 1x: 6/10. The obi and leg gap read well. The arms are almost identical between the two frames, the contact stride is small, and passing reads as a kick-back rather than a passing pose.
+4. Anatomy and construction: 6/10. The arms are stiff, straight tubes. The passing free leg has no knee bend. The skirt flares only toward the back. The face and body are frontal while the feet point SE.
+
+**Fixes, in priority order** (coordinates are in the 128 cell and approximate)
+1. **Arm swing, both frames.** The lock asks for asymmetric bent arms. Contact: swing the near arm (screen right, about x75-80, y66-92) back, with the hand about 2 px higher and partly hidden behind the hip. Bring the far arm (x52-60, y66-93) forward and bend it at the elbow near y78. Passing: put both arms close to neutral, with the hands at different heights. Right now the hands sit at about y88-93 in both frames.
+2. **SE head turn, both frames.** Move both eyes and brows 1-2 px right. Cut the far eye (about x72-76, y51-54) to 4 px wide, as the lock requires. Pull the right cheek and jaw in by 1 px (x77-78, y55-62) and give the left side of the head 1 px more hair. The chin point (about y63) should move right with the face.
+3. **Contact stride.** Move the front boot (screen right, about x73-81, y112-124) about 3 px further right and down, landing heel-first with the toe raised. Move the back boot (about x54-63, y110-119) about 2 px further left, standing on its toe. The legs should form a clear V, not two near-parallel pegs.
+4. **Passing free leg** (about x55-66, y104-119). It is a straight diagonal peg. Bend the knee at about y110 and tuck the foot under the body, just behind the support leg (x60-66). The toe should point down and back.
+5. **Skirt hem.** Round the sharp paper-like corner at x49-52, y96-99 in both frames. Also make the flare follow the legs: wider and swung forward on contact, narrower on passing. Currently both frames trail left by the same amount.
+6. **Waist break.** Add a 1 px inward step at both ends of the obi (x57 and x74, y77-82) so the torso narrows above the skirt flare. As it stands, the sleeves hide the waist and the obi reads as a flat stripe.
+7. **Match master proportions and hair.** Raise the hem 2-3 px (y100 to about y97) and give the socks the extra length. Add one wavy side lock on each side reaching about y66, as on the master. Shrink the bun (about x49-55, y29-34) or tuck it further behind the bow, because at 1x the bun and bow read as mouse ears. Break the three-dash hair highlight (about x60-70, y40) into an angled arc so it doesn't read as a headband.
+8. **Line cleanup.**
+   - Bow knot (about x55-58, y36-39): remove the near-2×2 `K` clump.
+   - Bow tail (x47-52, y41-56): redraw as one ribbon with a uniform 1:2 slope and no stacked inner `K` segments.
+   - Bottom edge of the bangs (x60-76, y47-49): even out the runs, which currently go 1-3-1.
+   - Hands (about x57-61, y89-93 and x75-79, y88-92): replace the 4×4 boxes with mitten shapes that have a 1 px thumb notch and no `K` across the top where the hand meets the sleeve.
+   - Shoulder steps (about x52-58, y66-70 and x73-77, y67-70): smooth to a uniform 2:1 run.

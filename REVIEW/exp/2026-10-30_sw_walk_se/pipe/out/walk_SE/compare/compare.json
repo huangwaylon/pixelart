@@ -1,0 +1,47 @@
+{
+ "r10_vs_lock": [
+  "r10_vs_lock_strip1x.png",
+  "r10_vs_lock_4x.png",
+  "r10_vs_lock_4x.gif"
+ ],
+ "gold": [
+  {
+   "frame": "f00",
+   "gold": "../../../gold/walk_SE_contact.png",
+   "align_dy_dx": [
+    -1,
+    1
+   ],
+   "diff_px": 1761,
+   "by_reason": {
+    "silhouette": 866,
+    "outline": 207,
+    "fill": 467,
+    "interior_line": 181,
+    "face": 40
+   },
+   "pxeval": {
+    "error": ""
+   }
+  },
+  {
+   "frame": "f02",
+   "gold": "../../../gold/walk_SE_passing.png",
+   "align_dy_dx": [
+    -2,
+    3
+   ],
+   "diff_px": 1850,
+   "by_reason": {
+    "silhouette": 961,
+    "outline": 146,
+    "fill": 502,
+    "interior_line": 176,
+    "face": 65
+   },
+   "pxeval": {
+    "error": ""
+   }
+  }
+ ]
+}

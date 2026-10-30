@@ -1,0 +1,272 @@
+{
+ "frames": [
+  {
+   "f": 0,
+   "expr": "open",
+   "snapped_vertices": 12,
+   "vertices": 42,
+   "eyes": {
+    "eye.R": {
+     "show": true,
+     "frac": 1.0,
+     "occluded": false,
+     "X0": 62,
+     "Y0": 47
+    },
+    "eye.L": {
+     "show": true,
+     "frac": 0.77,
+     "occluded": false,
+     "X0": 74,
+     "Y0": 43,
+     "raw": true
+    }
+   },
+   "interior_px": {
+    "arm|body": 30,
+    "bangs|face": 35,
+    "bow|hair": 29,
+    "chin|neck": 0,
+    "hand|sleeve": 2,
+    "leg|leg": 0
+   }
+  },
+  {
+   "f": 1,
+   "expr": "open",
+   "snapped_vertices": 14,
+   "vertices": 42,
+   "eyes": {
+    "eye.R": {
+     "show": true,
+     "frac": 0.94,
+     "occluded": false,
+     "X0": 64,
+     "Y0": 48
+    },
+    "eye.L": {
+     "show": true,
+     "frac": 0.85,
+     "occluded": false,
+     "X0": 77,
+     "Y0": 45,
+     "raw": true
+    }
+   },
+   "interior_px": {
+    "arm|body": 29,
+    "bangs|face": 33,
+    "bow|hair": 26,
+    "chin|neck": 0,
+    "hand|sleeve": 4,
+    "leg|leg": 0
+   }
+  },
+  {
+   "f": 2,
+   "expr": "open",
+   "snapped_vertices": 10,
+   "vertices": 43,
+   "eyes": {
+    "eye.R": {
+     "show": true,
+     "frac": 0.94,
+     "occluded": false,
+     "X0": 67,
+     "Y0": 47
+    },
+    "eye.L": {
+     "show": true,
+     "frac": 0.69,
+     "occluded": false,
+     "X0": 79,
+     "Y0": 45,
+     "raw": true
+    }
+   },
+   "interior_px": {
+    "arm|body": 32,
+    "bangs|face": 34,
+    "bow|hair": 34,
+    "chin|neck": 1,
+    "hand|sleeve": 5,
+    "leg|leg": 13
+   }
+  },
+  {
+   "f": 3,
+   "expr": "open",
+   "snapped_vertices": 7,
+   "vertices": 41,
+   "eyes": {
+    "eye.R": {
+     "show": true,
+     "frac": 1.0,
+     "occluded": false,
+     "X0": 66,
+     "Y0": 43
+    },
+    "eye.L": {
+     "show": true,
+     "frac": 0.85,
+     "occluded": false,
+     "X0": 78,
+     "Y0": 41,
+     "raw": true
+    }
+   },
+   "interior_px": {
+    "arm|body": 22,
+    "bangs|face": 34,
+    "bow|hair": 32,
+    "chin|neck": 0,
+    "hand|sleeve": 6,
+    "leg|leg": 0
+   }
+  },
+  {
+   "f": 4,
+   "expr": "open",
+   "snapped_vertices": 14,
+   "vertices": 43,
+   "eyes": {
+    "eye.R": {
+     "show": true,
+     "frac": 1.0,
+     "occluded": false,
+     "X0": 63,
+     "Y0": 46
+    },
+    "eye.L": {
+     "show": true,
+     "frac": 0.85,
+     "occluded": false,
+     "X0": 76,
+     "Y0": 43,
+     "raw": true
+    }
+   },
+   "interior_px": {
+    "arm|body": 17,
+    "bangs|face": 30,
+    "bow|hair": 37,
+    "chin|neck": 0,
+    "hand|sleeve": 7,
+    "leg|leg": 15
+   }
+  },
+  {
+   "f": 5,
+   "expr": "open",
+   "snapped_vertices": 18,
+   "vertices": 44,
+   "eyes": {
+    "eye.R": {
+     "show": true,
+     "frac": 1.0,
+     "occluded": false,
+     "X0": 61,
+     "Y0": 49
+    },
+    "eye.L": {
+     "show": true,
+     "frac": 0.92,
+     "occluded": false,
+     "X0": 74,
+     "Y0": 46,
+     "raw": true
+    }
+   },
+   "interior_px": {
+    "arm|body": 26,
+    "bangs|face": 29,
+    "bow|hair": 33,
+    "chin|neck": 0,
+    "hand|sleeve": 7,
+    "leg|leg": 12
+   }
+  },
+  {
+   "f": 6,
+   "expr": "open",
+   "snapped_vertices": 11,
+   "vertices": 46,
+   "eyes": {
+    "eye.R": {
+     "show": true,
+     "frac": 0.94,
+     "occluded": false,
+     "X0": 59,
+     "Y0": 50
+    },
+    "eye.L": {
+     "show": true,
+     "frac": 0.69,
+     "occluded": false,
+     "X0": 72,
+     "Y0": 46,
+     "raw": true
+    }
+   },
+   "interior_px": {
+    "arm|body": 20,
+    "bangs|face": 33,
+    "bow|hair": 34,
+    "chin|neck": 0,
+    "hand|sleeve": 0,
+    "leg|leg": 4
+   }
+  },
+  {
+   "f": 7,
+   "expr": "open",
+   "snapped_vertices": 13,
+   "vertices": 44,
+   "eyes": {
+    "eye.R": {
+     "show": true,
+     "frac": 1.0,
+     "occluded": false,
+     "X0": 60,
+     "Y0": 46
+    },
+    "eye.L": {
+     "show": true,
+     "frac": 1.0,
+     "occluded": false,
+     "X0": 72,
+     "Y0": 42,
+     "raw": true
+    }
+   },
+   "interior_px": {
+    "arm|body": 48,
+    "bangs|face": 30,
+    "bow|hair": 35,
+    "chin|neck": 0,
+    "hand|sleeve": 6,
+    "leg|leg": 0
+   }
+  }
+ ],
+ "ms": [
+  71,
+  118,
+  126,
+  105,
+  71,
+  118,
+  126,
+  105
+ ],
+ "keys": [
+  "contact L",
+  "down L",
+  "passing L",
+  "up L",
+  "contact R",
+  "down R",
+  "passing R",
+  "up R"
+ ]
+}

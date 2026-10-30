@@ -1,0 +1,34 @@
+{
+ "_doc": "calib_face.py -> face_calib.json  (step 4 calibration, run once; read-only on the round-10 release passes).\nfacesys option b': the rest-space SURFACE point of each SE eye (surfanchor.calib: centroid of the drawn eye on the head surface,\nidle SE f00 of build 20261030_66119a7, snapped onto the mesh; far eye = mirror of the near eye) and the fixed offset from that\npoint to the template origin (master layout). The pipeline then only needs these numbers: the point is re-found on the posed\nmesh every frame by the renderer (nearest rest vertex, deformed), so placement follows the 3D head exactly.",
+ "view": "SE",
+ "eyes": [
+  {
+   "key": "eye.R",
+   "rest_m": [
+    0.09408,
+    0.16209,
+    1.26129
+   ],
+   "off_px": [
+    -3.278,
+    -5.944
+   ],
+   "side": "left",
+   "kind": "front"
+  },
+  {
+   "key": "eye.L",
+   "rest_m": [
+    -0.09329,
+    0.16006,
+    1.26129
+   ],
+   "off_px": [
+    -2.7,
+    -6.3
+   ],
+   "side": "right",
+   "kind": "far"
+  }
+ ]
+}
