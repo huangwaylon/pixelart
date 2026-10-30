@@ -1,0 +1,13 @@
+{"views": [
+ {"view": "front", "src": "raw/mechanic_turn_a.png", "fig": 0},
+ {"view": "right", "src": "raw/mechanic_turn_a.png", "fig": 1},
+ {"view": "back",  "src": "raw/mechanic_turn_a.png", "fig": 2},
+ {"view": "left",  "src": "raw/mechanic_turn_a.png", "fig": 3},
+ {"view": "fr34",  "src": "raw/mechanic_34_b.png", "fig": 0},
+ {"view": "fl34",  "src": "raw/mechanic_34_b.png", "fig": 0, "flip": true},
+ {"view": "head_front", "src": "raw/mechanic_head_a.png", "fig": 0, "group": "head"},
+ {"view": "head_side",  "src": "raw/mechanic_head_a.png", "fig": 1, "group": "head"}
+],
+"yaw": {"front": 0, "left": 90, "back": 180, "right": -90, "fl34": 45, "fr34": -45, "head_front": 0, "head_side": 90},
+"yaw_note": {"fr34": "nominal -45; Gemini rendered ~30-35 deg", "fl34": "mirror of fr34 (design is symmetric), nominal +45, actual ~30-35"},
+"notes": "front/left/back/right from one 4-view turnaround call (same scale in source). Alt single front: raw/mechanic_front_a.png."}

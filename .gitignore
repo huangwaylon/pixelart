@@ -104,3 +104,4 @@ charlab/lab/out/*/*/**/*.txt
 !charlab/lab/out/*/*/*.gif
 # third-party clones used for experiments
 charlab/**/ext/
+charlab/mesh/refs/raw/

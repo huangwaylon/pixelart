@@ -7,8 +7,9 @@ JOBS.jsonl: one JSON object per line:
 Re-reads the job file after every job (so jobs can be appended while it runs); skips names whose .glb exists.
 Stops when no pending job is left (or a file OUT_DIR/STOP exists). Writes OUT_DIR/<name>.glb (raw MC mesh, no cleanup)
 and appends a row to OUT_DIR/runs.jsonl.
-Point/voxel inputs are given in the glb frame (Y up, faces +Z); they are converted to Omni's control frame
-(180 deg about Y, found in the swordswoman runs) and normalised to [-0.98, 0.98] like the upstream demo.
+Point/voxel inputs are given in the glb frame (Y up, faces +Z) = Omni's control frame (same as pose); they are
+normalised to [-0.98, 0.98] like the upstream demo. "rot": true rotates 180 deg about Y (the swordswoman 2mv glb
+needed it; the charlab lab meshes do not: rot=true gave a back-to-front astronaut, run astronaut_point_rot180).
 """
 import argparse, os, sys, time, json, resource
 
@@ -72,9 +73,9 @@ while True:
     elif c.startswith('pose:'):
         kw['pose'] = torch.from_numpy(np.loadtxt(c[5:]).astype(np.float32)).to(device=pdev, dtype=pdt).unsqueeze(0)
     elif c.startswith('points:'):
-        kw['point'] = torch.from_numpy(load_points(c[7:], j.get('npts', 40000), j.get('rot', True))).to(device=pdev, dtype=pdt).unsqueeze(0)
+        kw['point'] = torch.from_numpy(load_points(c[7:], j.get('npts', 40000), j.get('rot', False))).to(device=pdev, dtype=pdt).unsqueeze(0)
     elif c.startswith('voxel:'):
-        kw['voxel'] = torch.from_numpy(load_points(c[6:], 81920, j.get('rot', True))).to(device=pdev, dtype=pdt).unsqueeze(0)
+        kw['voxel'] = torch.from_numpy(load_points(c[6:], 81920, j.get('rot', False))).to(device=pdev, dtype=pdt).unsqueeze(0)
     else:
         raise ValueError(c)
     try:

@@ -1,0 +1,72 @@
+23:45:31 | INFO: Data are loaded, start creating Blender stuff
+23:45:31 | INFO: Blender create Mesh node tmpvu5_cx5e.ply
+23:45:32 | INFO: glTF import finished in 1.21s
+[autorig] import: 3.53s
+[autorig] cleanup {'components_in': 1, 'floaters_removed': 0, 'removed_area_pct': 0.0, 'voxel': 0.00831, 'tris': 30000, 'verts': 14946, 'components_out': 3, 'watertight': True}
+[autorig] cleanup: 11.3s
+[autorig] orient {'toe_dy_over_H': np.float64(0.0134), 'notes': ['yaw corrected 45.0 deg', 'rotated 180 deg to face -Y'], 'scale': np.float64(1.0461)}
+[autorig] orient+colour: 3.09s
+Reloading external rigs...
+Reloading external metarigs...
+[autorig] landmarks-1: 10.79s
+[autorig] fit+skin-1: 11.27s
+[autorig] pass1 dev {'thigh.L': 17.6, 'shin.L': 10.3, 'thigh.R': 25.3, 'shin.R': 24.4, 'upper_arm.L': 111.4, 'forearm.L': 44.8, 'hand.L': 38.6, 'upper_arm.R': 49.1, 'forearm.R': 17.2, 'hand.R': 13.7, 'foot.L': 28.3, 'foot.R': 10.6}
+[autorig] NOTE input pose differed from A-pose by up to 111 deg -> re-remesh after bake
+[autorig] NOTE voxel remesh failed sign test -> retry via shell (solidify) + remesh
+[autorig] pose-normalise: 6.97s
+[autorig] NOTE arm L too short (0.325) -> fused arm, shoulder from torso width
+[autorig] NOTE arm L too short (0.325) -> fused arm, shoulder from torso width
+[autorig] landmarks-2: 12.97s
+[autorig] fit+skin-2: 8.23s
+[autorig] cand voxel lbs {'score': 135940.2, 'flags': 17, 'squat_knee': 0.882, 'squat_elbow': 30.452, 'wrist_twist': 0.001}
+[autorig] cand voxel dqs {'score': 41337.9, 'flags': 17, 'squat_knee': 1.08, 'squat_elbow': 7.643, 'wrist_twist': 0.001}
+[autorig] cand voxel lbs+cs {'score': 111721.0, 'flags': 15, 'squat_knee': 0.894, 'squat_elbow': 24.667, 'wrist_twist': 0.638}
+[autorig] cand voxel dqs+cs {'score': 14961.8, 'flags': 14, 'squat_knee': 1.043, 'squat_elbow': 0.405, 'wrist_twist': 0.871}
+[autorig] cand heat lbs {'score': 50461.3, 'flags': 18, 'squat_knee': 0.959, 'squat_elbow': 8.857, 'wrist_twist': 0.32}
+[autorig] cand heat dqs {'score': 45739.4, 'flags': 17, 'squat_knee': 1.104, 'squat_elbow': 8.69, 'wrist_twist': 0.606}
+[autorig] cand heat lbs+cs {'score': 53628.5, 'flags': 18, 'squat_knee': 0.945, 'squat_elbow': 8.881, 'wrist_twist': 0.01}
+[autorig] cand heat dqs+cs {'score': 49921.6, 'flags': 17, 'squat_knee': 1.122, 'squat_elbow': 9.0, 'wrist_twist': 0.442}
+[autorig] skin-select: 35.06s
+01:44.887  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/color_front.png'
+01:44.941  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/color_q34.png'
+01:44.987  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/color_side.png'
+01:45.419  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/rest_front.png'
+01:45.474  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/rest_q34.png'
+01:45.517  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/rest_side.png'
+01:46.084  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/walk_contact_front.png'
+01:46.128  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/walk_contact_q34.png'
+01:46.165  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/walk_contact_side.png'
+01:46.504  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/walk_passing_front.png'
+01:46.543  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/walk_passing_q34.png'
+01:46.580  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/walk_passing_side.png'
+01:47.046  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/arms_up_120_front.png'
+01:47.084  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/arms_up_120_q34.png'
+01:47.136  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/arms_up_120_side.png'
+01:47.794  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/deep_squat_front.png'
+01:47.828  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/deep_squat_q34.png'
+01:47.870  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/deep_squat_side.png'
+01:48.166  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/twist_30_front.png'
+01:48.215  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/twist_30_q34.png'
+01:48.264  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/twist_30_side.png'
+01:48.568  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/head_turn_40_front.png'
+01:48.615  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/head_turn_40_q34.png'
+01:48.657  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/head_turn_40_side.png'
+01:48.952  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/wrist_twist_90_front.png'
+01:49.010  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/wrist_twist_90_q34.png'
+01:49.045  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead/tiles/wrist_twist_90_side.png'
+[autorig] pose-tests: 4.54s
+[autorig] actions: 0.96s
+Info: Saved as "hy_omni_overhead.blend"
+INFO Draco is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_draco_bridge.dylib
+INFO MeshOptimizer is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_meshopt_bridge.dylib
+23:47:20 | INFO: Starting glTF 2.0 export
+23:47:20 | INFO: Extracting primitive: body.002
+23:47:20 | INFO: Primitives created: 1
+23:47:20 | WARNING: There are more than 4 joint vertex influences.The 4 with highest weight will be used (and normalized).
+23:47:20 | INFO: Finished glTF 2.0 export in 0.4819169044494629 s
+
+[autorig] save: 0.56s
+[autorig] OK /Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_overhead
+Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:31:22)
+
+Blender quit

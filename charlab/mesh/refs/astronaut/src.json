@@ -1,0 +1,67 @@
+{
+ "views": [
+  {
+   "view": "front",
+   "src": "raw/astronaut_turn_a.png",
+   "fig": 0
+  },
+  {
+   "view": "right",
+   "src": "raw/astronaut_turn_a.png",
+   "fig": 1,
+   "flip": true
+  },
+  {
+   "view": "back",
+   "src": "raw/astronaut_turn_a.png",
+   "fig": 2
+  },
+  {
+   "view": "left",
+   "src": "raw/astronaut_turn_a.png",
+   "fig": 3
+  },
+  {
+   "view": "fr34",
+   "src": "raw/astronaut_34_a.png",
+   "fig": 0
+  },
+  {
+   "view": "fl34",
+   "src": "raw/astronaut_34_a.png",
+   "fig": 0,
+   "flip": true
+  },
+  {
+   "view": "head_front",
+   "src": "raw/astronaut_head_a.png",
+   "fig": 0,
+   "group": "head"
+  },
+  {
+   "view": "head_side",
+   "src": "raw/astronaut_head_a.png",
+   "fig": 1,
+   "group": "head"
+  }
+ ],
+ "yaw": {
+  "front": 0,
+  "left": 90,
+  "back": 180,
+  "right": -90,
+  "fl34": 45,
+  "fr34": -45,
+  "head_front": 0,
+  "head_side": 90
+ },
+ "yaw_note": {
+  "fl34": "mirror of fr34 (design ~symmetric), nominal +45, actual ~45 deg by eye",
+  "right": "mirror of the second left profile in the turnaround (Gemini drew both profiles facing left); only the small chest patch is asymmetric",
+  "fr34": "nominal -45, actual ~45 deg by eye"
+ },
+ "notes": "front/left/back/right from one 4-view turnaround call. Alt single front: raw/astronaut_front_a.png. White suit on white: matte = union of strict flood fill (min RGB>=249) and rembg u2net, holes filled.",
+ "tol_min": 249,
+ "tol_chroma": 6,
+ "matte": "union"
+}

@@ -37,6 +37,15 @@ def iou(render, ref):
     return float((m & ref).sum() / max(1, (m | ref).sum()))
 
 
+def self_x(m):
+    try:
+        import pymeshlab
+        ms = pymeshlab.MeshSet(); ms.add_mesh(pymeshlab.Mesh(m.vertices, m.faces))
+        ms.compute_selection_by_self_intersections_per_face(); return int(ms.current_mesh().selected_face_number())
+    except Exception:
+        return None
+
+
 refF = ref_canvas(a.front)
 refS = ref_canvas(a.side) if a.side else None
 rows = []
@@ -47,13 +56,13 @@ for p in a.meshes:
     nf = len(m.faces); big = max(parts, key=lambda q: len(q.faces))
     sig = [q for q in parts if len(q.faces) > 0.001 * nf]
     V = m.vertices; h = np.ptp(V[:, 1])
-    pts = np.asarray(big.sample(20000)); c = (pts.min(0) + pts.max(0)) / 2
-    q = pts - c; mir = q * [-1, 1, 1]
+    pts = np.asarray(big.sample(150000)); c = (pts.min(0) + pts.max(0)) / 2
+    q = pts - c; mir = q[:20000] * [-1, 1, 1]
     d = cKDTree(q).query(mir)[0]
     row = dict(name=name, tris=nf, watertight=bool(m.is_watertight), main_watertight=bool(big.is_watertight),
                components=len(parts), sig_components=len(sig), floater_frac=round(1 - len(big.faces) / nf, 4),
                sym_err_pct=round(100 * float(d.mean()) / h, 3), sym_p95_pct=round(100 * float(np.percentile(d, 95)) / h, 3),
-               self_intersect=None)
+               self_intersect=self_x(m))
     fr = os.path.join(a.rdir, name + '_front.png')
     if os.path.exists(fr):
         row['iou_front'] = round(iou(fr, refF), 4)

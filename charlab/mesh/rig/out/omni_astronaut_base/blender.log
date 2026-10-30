@@ -1,0 +1,75 @@
+23:45:31 | INFO: Data are loaded, start creating Blender stuff
+23:45:31 | INFO: Blender create Mesh node geometry_0
+23:45:31 | INFO: glTF import finished in 0.20s
+[autorig] import: 0.56s
+[autorig] cleanup {'components_in': 1, 'floaters_removed': 0, 'removed_area_pct': 0.0, 'voxel': 0.00868, 'tris': 30000, 'verts': 15002, 'components_out': 1, 'watertight': True}
+[autorig] cleanup: 3.6s
+[autorig] orient {'toe_dy_over_H': np.float64(0.0057), 'notes': ['yaw corrected 92.9 deg', 'toe test inconclusive (dy=0.0057H), kept importer front -Y'], 'scale': np.float64(1.00143)}
+[autorig] orient+colour: 0.83s
+Reloading external rigs...
+Reloading external metarigs...
+[autorig] NOTE arm R too short (0.592) -> fused arm, shoulder from torso width
+[autorig] landmarks-1: 15.73s
+[autorig] fit+skin-1: 13.83s
+[autorig] pass1 dev {'thigh.L': 13.8, 'shin.L': 12.7, 'thigh.R': 8.3, 'shin.R': 7.1, 'upper_arm.L': 24.3, 'forearm.L': 27.1, 'hand.L': 15.2, 'upper_arm.R': 56.5, 'forearm.R': 9.3, 'hand.R': 11.0, 'foot.L': 13.6, 'foot.R': 43.6}
+[autorig] NOTE input pose differed from A-pose by up to 93 deg -> re-remesh after bake
+[autorig] NOTE voxel remesh failed sign test -> retry via shell (solidify) + remesh
+[autorig] pose-normalise: 8.23s
+[autorig] NOTE no arm candidate on side L
+[autorig] NOTE arm R too short (0.217) -> fused arm, shoulder from torso width
+[autorig] NOTE no arm candidate on side L
+[autorig] NOTE arm R too short (0.217) -> fused arm, shoulder from torso width
+[autorig] landmarks-2: 15.76s
+[autorig] fit+skin-2: 12.18s
+[autorig] cand voxel lbs {'score': 8269.2, 'flags': 15, 'squat_knee': 0.742, 'squat_elbow': None, 'wrist_twist': None}
+[autorig] cand voxel dqs {'score': 5555.5, 'flags': 12, 'squat_knee': 0.901, 'squat_elbow': None, 'wrist_twist': None}
+[autorig] cand voxel lbs+cs {'score': 9347.4, 'flags': 13, 'squat_knee': 0.668, 'squat_elbow': None, 'wrist_twist': None}
+[autorig] cand voxel dqs+cs {'score': 6396.9, 'flags': 13, 'squat_knee': 0.87, 'squat_elbow': None, 'wrist_twist': None}
+[autorig] cand heat lbs {'score': 8936.0, 'flags': 13, 'squat_knee': 0.641, 'squat_elbow': None, 'wrist_twist': None}
+[autorig] cand heat dqs {'score': 5712.2, 'flags': 11, 'squat_knee': 0.759, 'squat_elbow': None, 'wrist_twist': None}
+[autorig] cand heat lbs+cs {'score': 9298.2, 'flags': 10, 'squat_knee': 0.673, 'squat_elbow': None, 'wrist_twist': None}
+[autorig] cand heat dqs+cs {'score': 6379.1, 'flags': 11, 'squat_knee': 0.762, 'squat_elbow': None, 'wrist_twist': None}
+[autorig] skin-select: 31.51s
+01:44.494  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/color_front.png'
+01:44.548  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/color_q34.png'
+01:44.592  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/color_side.png'
+01:44.989  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/rest_front.png'
+01:45.070  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/rest_q34.png'
+01:45.124  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/rest_side.png'
+01:45.567  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/walk_contact_front.png'
+01:45.605  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/walk_contact_q34.png'
+01:45.653  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/walk_contact_side.png'
+01:45.901  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/walk_passing_front.png'
+01:45.940  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/walk_passing_q34.png'
+01:45.973  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/walk_passing_side.png'
+01:46.364  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/arms_up_120_front.png'
+01:46.397  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/arms_up_120_q34.png'
+01:46.440  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/arms_up_120_side.png'
+01:46.892  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/deep_squat_front.png'
+01:46.917  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/deep_squat_q34.png'
+01:46.951  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/deep_squat_side.png'
+01:47.244  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/twist_30_front.png'
+01:47.281  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/twist_30_q34.png'
+01:47.312  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/twist_30_side.png'
+01:47.571  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/head_turn_40_front.png'
+01:47.604  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/head_turn_40_q34.png'
+01:47.640  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/head_turn_40_side.png'
+01:47.856  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/wrist_twist_90_front.png'
+01:47.890  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/wrist_twist_90_q34.png'
+01:47.922  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base/tiles/wrist_twist_90_side.png'
+[autorig] pose-tests: 4.62s
+[autorig] actions: 0.16s
+Info: Saved as "omni_astronaut_base.blend"
+INFO Draco is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_draco_bridge.dylib
+INFO MeshOptimizer is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_meshopt_bridge.dylib
+23:47:18 | INFO: Starting glTF 2.0 export
+23:47:18 | INFO: Extracting primitive: body.002
+23:47:18 | INFO: Primitives created: 1
+23:47:18 | WARNING: There are more than 4 joint vertex influences.The 4 with highest weight will be used (and normalized).
+23:47:18 | INFO: Finished glTF 2.0 export in 0.3332059383392334 s
+
+[autorig] save: 0.37s
+[autorig] OK /Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/omni_astronaut_base
+Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:31:22)
+
+Blender quit

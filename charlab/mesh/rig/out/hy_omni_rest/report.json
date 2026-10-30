@@ -1,0 +1,501 @@
+{
+ "name": "hy_omni_rest",
+ "input": "/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/inputs/hy_omni_rest.glb",
+ "args": {
+  "input": "inputs/hy_omni_rest.glb",
+  "out": "/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/hy_omni_rest",
+  "height": 2.0,
+  "facing": "+Y",
+  "tris": 30000,
+  "weights": "auto",
+  "deform": "auto",
+  "sym": "auto",
+  "chains": "auto",
+  "arm_angle": 40.0,
+  "apose_tol": 15.0,
+  "force_apose": false,
+  "res": 160,
+  "in_front": "auto",
+  "rigify": false,
+  "no_tests": false,
+  "tile": 300,
+  "board_only": false,
+  "stem": "hy_omni_rest"
+ },
+ "timings": {
+  "import": 3.13,
+  "cleanup": 8.32,
+  "orient+colour": 2.78,
+  "landmarks-1": 6.86,
+  "fit+skin-1": 7.78,
+  "pose-normalise": 3.06,
+  "landmarks-2": 15.7,
+  "fit+skin-2": 14.34,
+  "skin-select": 37.25,
+  "pose-tests": 4.43,
+  "actions": 0.3,
+  "save": 0.35
+ },
+ "notes": [
+  "arm L too short (0.282) -> fused arm, shoulder from torso width",
+  "input pose differed from A-pose by up to 38 deg -> re-remesh after bake",
+  "arm R too short (0.254) -> fused arm, shoulder from torso width",
+  "arm R too short (0.254) -> fused arm, shoulder from torso width"
+ ],
+ "input_stats": {
+  "verts": 277109,
+  "tris": 554242,
+  "parts": 1,
+  "textures": 0,
+  "has_colour": false
+ },
+ "cleanup": {
+  "components_in": 1,
+  "floaters_removed": 0,
+  "removed_area_pct": 0.0,
+  "voxel": 0.0083,
+  "tris": 30000,
+  "verts": 15000,
+  "components_out": 3,
+  "watertight": true
+ },
+ "orient": {
+  "toe_dy_over_H": 0.0159,
+  "notes": [
+   "rotated 180 deg to face -Y"
+  ],
+  "scale": 1.04828
+ },
+ "views": [
+  "front",
+  "q34",
+  "side"
+ ],
+ "tile": 300,
+ "pass1_bone_dev": {
+  "thigh.L": 15.8,
+  "shin.L": 5.9,
+  "thigh.R": 15.3,
+  "shin.R": 5.5,
+  "upper_arm.L": 30.0,
+  "forearm.L": 8.6,
+  "hand.L": 10.6,
+  "upper_arm.R": 38.2,
+  "forearm.R": 33.1,
+  "hand.R": 15.0,
+  "foot.L": 19.8,
+  "foot.R": 3.5
+ },
+ "pass1": {
+  "max_rotation_deg": 38.2,
+  "landmark_methods": {
+   "arm_L": "fallback-straight",
+   "wrist_L": "proportion",
+   "elbow_L": "proportion (max bend 0)",
+   "arm_R": "levelset",
+   "wrist_R": "proportion",
+   "elbow_R": "bend 41deg",
+   "ankle_L": "turn",
+   "hip_L": "crotch",
+   "knee_L": "midpoint (max bend 11)",
+   "ankle_R": "turn",
+   "hip_R": "crotch",
+   "knee_R": "midpoint (max bend 12)"
+  },
+  "hem": false
+ },
+ "cleanup2": {
+  "components_in": 3,
+  "floaters_removed": 2,
+  "removed_area_pct": 0.0,
+  "voxel": 0.0087,
+  "tris": 30000,
+  "verts": 14994,
+  "components_out": 2,
+  "watertight": true
+ },
+ "symmetry": {
+  "plane_x": 0.0071,
+  "p50": 0.008,
+  "p90": 0.0277,
+  "p97": 0.0532,
+  "applied": false
+ },
+ "mesh": {
+  "tris": 30000,
+  "verts": 14994,
+  "height": 2.0,
+  "volume": 0.29833,
+  "components": 2
+ },
+ "landmarks": {
+  "crotch_z": 0.4,
+  "neck_z": 1.025,
+  "head_top": [
+   0.0032,
+   -0.0566,
+   1.9875
+  ],
+  "hem": false,
+  "chest_halfwidth": 0.4187,
+  "arms": {
+   "L": {
+    "tip": [
+     0.6655,
+     -0.1466,
+     0.4375
+    ],
+    "wrist": [
+     0.6197,
+     -0.1296,
+     0.4657
+    ],
+    "elbow": [
+     0.5241,
+     -0.0962,
+     0.5173
+    ],
+    "shoulder": [
+     0.3683,
+     -0.1221,
+     0.6712
+    ],
+    "r_up": 0.0717,
+    "r_el": 0.0518
+   },
+   "R": {
+    "tip": [
+     -0.5345,
+     -0.0841,
+     0.3875
+    ],
+    "wrist": [
+     -0.4901,
+     -0.0639,
+     0.518
+    ],
+    "elbow": [
+     -0.4254,
+     -0.0345,
+     0.7081
+    ],
+    "shoulder": [
+     -0.3495,
+     -0.0,
+     0.9313
+    ],
+    "r_up": 0.0692,
+    "r_el": 0.0676
+   }
+  },
+  "legs": {
+   "L": {
+    "toe": [
+     0.1155,
+     -0.1341,
+     0.0375
+    ],
+    "ankle": [
+     0.0866,
+     -0.0306,
+     0.1182
+    ],
+    "heel": [
+     0.0405,
+     0.0409,
+     0.025
+    ],
+    "knee": [
+     0.0889,
+     0.0009,
+     0.2867
+    ],
+    "hip": [
+     0.08,
+     -0.0143,
+     0.457
+    ],
+    "r_th": 0.0795,
+    "r_kn": 0.0825
+   },
+   "R": {
+    "toe": [
+     -0.072,
+     -0.1341,
+     0.05
+    ],
+    "ankle": [
+     -0.08,
+     -0.0111,
+     0.1424
+    ],
+    "heel": [
+     -0.047,
+     0.0659,
+     0.0375
+    ],
+    "knee": [
+     -0.0918,
+     0.015,
+     0.2969
+    ],
+    "hip": [
+     -0.0801,
+     0.0018,
+     0.4526
+    ],
+    "r_th": 0.0807,
+    "r_kn": 0.0834
+   }
+  },
+  "methods": {
+   "arm_L": "levelset",
+   "wrist_L": "area-min",
+   "elbow_L": "bend 35deg",
+   "arm_R": "fallback-straight",
+   "wrist_R": "proportion",
+   "elbow_R": "proportion (max bend 0)",
+   "ankle_L": "turn",
+   "hip_L": "crotch",
+   "knee_L": "midpoint (max bend 19)",
+   "ankle_R": "turn",
+   "hip_R": "crotch",
+   "knee_R": "midpoint (max bend 15)"
+  },
+  "chains": [
+   "hair:hair1.01.R",
+   "hair:hair2.01.L",
+   "hair:hair3.01.R"
+  ]
+ },
+ "bones": [
+  "spine",
+  "spine.001",
+  "spine.002",
+  "spine.003",
+  "spine.004",
+  "spine.005",
+  "spine.006",
+  "hair1.01.R",
+  "hair1.02.R",
+  "hair1.03.R",
+  "hair2.01.L",
+  "hair2.02.L",
+  "hair2.03.L",
+  "hair3.01.R",
+  "hair3.02.R",
+  "hair3.03.R",
+  "shoulder.L",
+  "upper_arm.L",
+  "forearm.L",
+  "hand.L",
+  "shoulder.R",
+  "upper_arm.R",
+  "forearm.R",
+  "hand.R",
+  "thigh.L",
+  "shin.L",
+  "foot.L",
+  "toe.L",
+  "heel.02.L",
+  "thigh.R",
+  "shin.R",
+  "foot.R",
+  "toe.R",
+  "heel.02.R"
+ ],
+ "skin": {
+  "info": {
+   "heat_empty_pct": 0.02,
+   "heat_s": 1.12
+  },
+  "candidates": {
+   "voxel/lbs": {
+    "score": 321123.6,
+    "flags": 8,
+    "squat_knee": 1.051,
+    "squat_elbow": 0.842,
+    "wrist_twist": 0.642
+   },
+   "voxel/dqs": {
+    "score": 315992.6,
+    "flags": 7,
+    "squat_knee": 1.123,
+    "squat_elbow": 0.985,
+    "wrist_twist": 1.011
+   },
+   "voxel/lbs+cs": {
+    "score": 321790.8,
+    "flags": 8,
+    "squat_knee": 1.025,
+    "squat_elbow": 0.853,
+    "wrist_twist": 0.673
+   },
+   "voxel/dqs+cs": {
+    "score": 337275.9,
+    "flags": 6,
+    "squat_knee": 1.139,
+    "squat_elbow": 0.993,
+    "wrist_twist": 1.005
+   },
+   "heat/lbs": {
+    "score": 355028.0,
+    "flags": 10,
+    "squat_knee": 0.798,
+    "squat_elbow": 0.832,
+    "wrist_twist": 0.759
+   },
+   "heat/dqs": {
+    "score": 451354.2,
+    "flags": 7,
+    "squat_knee": 0.893,
+    "squat_elbow": 0.949,
+    "wrist_twist": 0.983
+   },
+   "heat/lbs+cs": {
+    "score": 355483.5,
+    "flags": 12,
+    "squat_knee": 0.816,
+    "squat_elbow": 0.834,
+    "wrist_twist": 0.769
+   },
+   "heat/dqs+cs": {
+    "score": 413781.5,
+    "flags": 8,
+    "squat_knee": 0.906,
+    "squat_elbow": 0.947,
+    "wrist_twist": 0.964
+   }
+  },
+  "deform": "dqs",
+  "method": "voxel"
+ },
+ "tests": [
+  {
+   "name": "rest",
+   "metrics": {
+    "collapsed": 0,
+    "stretched": 0,
+    "isect_new": 0,
+    "vol_ratio": 1.0,
+    "joint_vol": {}
+   },
+   "flags": []
+  },
+  {
+   "name": "walk_contact",
+   "metrics": {
+    "collapsed": 23,
+    "stretched": 147,
+    "isect_new": 140,
+    "vol_ratio": 0.9972,
+    "joint_vol": {
+     "knee.L": 1.008,
+     "knee.R": 0.99,
+     "elbow.L": 0.993,
+     "elbow.R": 1.078
+    }
+   },
+   "flags": [
+    "intersect",
+    "stretch"
+   ]
+  },
+  {
+   "name": "walk_passing",
+   "metrics": {
+    "collapsed": 43,
+    "stretched": 13,
+    "isect_new": 48,
+    "vol_ratio": 0.9971,
+    "joint_vol": {
+     "knee.L": 1.071,
+     "knee.R": 0.957
+    }
+   },
+   "flags": []
+  },
+  {
+   "name": "arms_up_120",
+   "metrics": {
+    "collapsed": 9,
+    "stretched": 1584,
+    "isect_new": 252,
+    "vol_ratio": 1.1244,
+    "joint_vol": {
+     "shoulder.L": 1.019,
+     "shoulder.R": 78.0,
+     "elbow.L": 0.995,
+     "elbow.R": 0.927
+    }
+   },
+   "flags": [
+    "intersect",
+    "stretch"
+   ]
+  },
+  {
+   "name": "deep_squat",
+   "metrics": {
+    "collapsed": 91,
+    "stretched": 1411,
+    "isect_new": 1239,
+    "vol_ratio": 1.0031,
+    "joint_vol": {
+     "knee.L": 1.123,
+     "knee.R": 1.285,
+     "elbow.L": 0.985,
+     "elbow.R": 1.583,
+     "hip.L": 0.851,
+     "hip.R": 0.869
+    }
+   },
+   "flags": [
+    "collapse",
+    "intersect",
+    "stretch"
+   ]
+  },
+  {
+   "name": "twist_30",
+   "metrics": {
+    "collapsed": 50,
+    "stretched": 60,
+    "isect_new": 75,
+    "vol_ratio": 0.9984,
+    "joint_vol": {
+     "waist": 1.0
+    }
+   },
+   "flags": []
+  },
+  {
+   "name": "head_turn_40",
+   "metrics": {
+    "collapsed": 5,
+    "stretched": 33,
+    "isect_new": 30,
+    "vol_ratio": 1.0005,
+    "joint_vol": {
+     "neck": 1.002
+    }
+   },
+   "flags": []
+  },
+  {
+   "name": "wrist_twist_90",
+   "metrics": {
+    "collapsed": 3,
+    "stretched": 28,
+    "isect_new": 38,
+    "vol_ratio": 1.0002,
+    "joint_vol": {
+     "wrist.L": 1.011,
+     "wrist.R": 1.043
+    }
+   },
+   "flags": []
+  }
+ ],
+ "total_s": 104.3
+}

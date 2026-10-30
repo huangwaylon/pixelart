@@ -1,0 +1,65 @@
+{
+ "views": [
+  {
+   "view": "front",
+   "src": "raw/schoolgirl_turn_a.png",
+   "fig": 0
+  },
+  {
+   "view": "right",
+   "src": "raw/schoolgirl_turn_a.png",
+   "fig": 1
+  },
+  {
+   "view": "back",
+   "src": "raw/schoolgirl_turn_a.png",
+   "fig": 2
+  },
+  {
+   "view": "left",
+   "src": "raw/schoolgirl_turn_a.png",
+   "fig": 3
+  },
+  {
+   "view": "fr34",
+   "src": "raw/schoolgirl_34_a.png",
+   "fig": 0
+  },
+  {
+   "view": "fl34",
+   "src": "raw/schoolgirl_34_a.png",
+   "fig": 0,
+   "flip": true
+  },
+  {
+   "view": "head_front",
+   "src": "raw/schoolgirl_head_a.png",
+   "fig": 0,
+   "group": "head"
+  },
+  {
+   "view": "head_side",
+   "src": "raw/schoolgirl_head_a.png",
+   "fig": 1,
+   "group": "head"
+  }
+ ],
+ "yaw": {
+  "front": 0,
+  "left": 90,
+  "back": 180,
+  "right": -90,
+  "fl34": 45,
+  "fr34": -45,
+  "head_front": 0,
+  "head_side": -90
+ },
+ "yaw_note": {
+  "fl34": "mirror of fr34 (design ~symmetric), nominal +45, actual ~40 deg by eye",
+  "fr34": "nominal -45, actual ~40 deg by eye"
+ },
+ "notes": "front/left/back/right from one 4-view turnaround call. Alt single front: raw/schoolgirl_front_a.png. White blouse: matte = union of flood fill (min RGB>=248) and rembg.",
+ "matte": "union",
+ "tol_min": 248,
+ "tol_chroma": 8
+}

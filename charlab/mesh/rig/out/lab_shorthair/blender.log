@@ -1,0 +1,67 @@
+[autorig] import: 0.57s
+[autorig] cleanup {'components_in': 1, 'floaters_removed': 0, 'removed_area_pct': 0.0, 'voxel': 0.01561, 'tris': 30000, 'verts': 15002, 'components_out': 1, 'watertight': True}
+[autorig] cleanup: 2.93s
+[autorig] orient {'toe_dy_over_H': np.float64(-0.0124), 'notes': [], 'scale': np.float64(0.55707)}
+[autorig] orient+colour: 0.65s
+Reloading external rigs...
+Reloading external metarigs...
+[autorig] landmarks-1: 4.26s
+[autorig] fit+skin-1: 5.02s
+[autorig] pass1 dev {'thigh.L': 10.0, 'shin.L': 10.4, 'thigh.R': 10.1, 'shin.R': 10.5, 'upper_arm.L': 24.0, 'forearm.L': 12.8, 'hand.L': 14.4, 'upper_arm.R': 23.5, 'forearm.R': 12.8, 'hand.R': 15.5, 'foot.L': 10.0, 'foot.R': 9.0}
+[autorig] NOTE input pose differed from A-pose by up to 24 deg -> re-remesh after bake
+[autorig] pose-normalise: 2.83s
+[autorig] landmarks-2: 12.76s
+[autorig] fit+skin-2: 8.38s
+[autorig] cand voxel lbs {'score': 11897.6, 'flags': 7, 'squat_knee': 0.545, 'squat_elbow': 0.863, 'wrist_twist': 0.606}
+[autorig] cand voxel dqs {'score': 2078.9, 'flags': 5, 'squat_knee': 0.91, 'squat_elbow': 1.007, 'wrist_twist': 0.991}
+[autorig] cand voxel lbs+cs {'score': 12088.2, 'flags': 6, 'squat_knee': 0.522, 'squat_elbow': 0.864, 'wrist_twist': 0.616}
+[autorig] cand voxel dqs+cs {'score': 2247.4, 'flags': 4, 'squat_knee': 0.882, 'squat_elbow': 1.0, 'wrist_twist': 0.985}
+[autorig] cand heat lbs {'score': 12060.0, 'flags': 7, 'squat_knee': 0.444, 'squat_elbow': 0.878, 'wrist_twist': 0.883}
+[autorig] cand heat dqs {'score': 5775.1, 'flags': 8, 'squat_knee': 0.658, 'squat_elbow': 0.963, 'wrist_twist': 0.992}
+[autorig] cand heat lbs+cs {'score': 11887.4, 'flags': 6, 'squat_knee': 0.45, 'squat_elbow': 0.866, 'wrist_twist': 0.881}
+[autorig] cand heat dqs+cs {'score': 6125.5, 'flags': 6, 'squat_knee': 0.613, 'squat_elbow': 0.946, 'wrist_twist': 0.989}
+[autorig] skin-select: 45.36s
+01:23.840  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/color_front.png'
+01:23.898  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/color_q34.png'
+01:23.948  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/color_side.png'
+01:24.400  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/rest_front.png'
+01:24.450  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/rest_q34.png'
+01:24.508  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/rest_side.png'
+01:25.163  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/walk_contact_front.png'
+01:25.247  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/walk_contact_q34.png'
+01:25.308  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/walk_contact_side.png'
+01:25.683  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/walk_passing_front.png'
+01:25.725  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/walk_passing_q34.png'
+01:25.783  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/walk_passing_side.png'
+01:26.380  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/arms_up_120_front.png'
+01:26.410  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/arms_up_120_q34.png'
+01:26.452  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/arms_up_120_side.png'
+01:27.142  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/deep_squat_front.png'
+01:27.184  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/deep_squat_q34.png'
+01:27.236  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/deep_squat_side.png'
+01:27.628  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/twist_30_front.png'
+01:27.687  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/twist_30_q34.png'
+01:27.751  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/twist_30_side.png'
+01:28.167  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/head_turn_40_front.png'
+01:28.197  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/head_turn_40_q34.png'
+01:28.248  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/head_turn_40_side.png'
+01:28.645  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/wrist_twist_90_front.png'
+01:28.675  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/wrist_twist_90_q34.png'
+01:28.710  render           | Saved: '/Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair/tiles/wrist_twist_90_side.png'
+[autorig] pose-tests: 5.23s
+[autorig] actions: 0.36s
+Info: Saved as "lab_shorthair.blend"
+INFO Draco is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_draco_bridge.dylib
+INFO MeshOptimizer is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_meshopt_bridge.dylib
+23:46:59 | INFO: Starting glTF 2.0 export
+23:46:59 | INFO: Extracting primitive: body.001
+23:46:59 | INFO: Primitives created: 1
+23:46:59 | WARNING: There are more than 4 joint vertex influences.The 4 with highest weight will be used (and normalized).
+23:46:59 | INFO: Finished glTF 2.0 export in 0.3566880226135254 s
+
+[autorig] save: 0.44s
+[autorig] OK /Users/waylonhuang/Documents/other/pixelart/charlab/mesh/rig/out/lab_shorthair
+Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:31:22)
+PLY import of 'lab_shorthair.ply' took 33.47 ms
+
+Blender quit

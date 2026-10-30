@@ -1,0 +1,13 @@
+{"views": [
+ {"view": "front", "src": "raw/shorthair_turn_a.png", "fig": 0},
+ {"view": "back",  "src": "raw/shorthair_turn_a.png", "fig": 2},
+ {"view": "left",  "src": "raw/shorthair_turn_a.png", "fig": 3},
+ {"view": "right", "src": "raw/shorthair_right_a.png", "fig": 0},
+ {"view": "fr34",  "src": "raw/shorthair_34r_b.png", "fig": 0},
+ {"view": "fl34",  "src": "raw/shorthair_34l_b.png", "fig": 0},
+ {"view": "head_front", "src": "raw/shorthair_head_a.png", "fig": 0, "group": "head"},
+ {"view": "head_side",  "src": "raw/shorthair_head_a.png", "fig": 1, "group": "head"}
+],
+"yaw": {"front": 0, "left": 90, "back": 180, "right": -90, "fl34": 45, "fr34": -45, "head_front": 0, "head_side": 90},
+"yaw_note": {"fl34": "nominal +45, Gemini gave ~30 deg (2nd try; first try ~20)", "fr34": "nominal -45, actual ~30 deg (2nd try)", "right": "separate call (the turnaround drew two left profiles); scale normalised by height"},
+"notes": "front/back/left from the turnaround; right, fl34, fr34 generated separately (fringe is asymmetric, so no mirroring)."}

@@ -1,0 +1,66 @@
+{
+ "id": "mechanic",
+ "canvas": 1024,
+ "copies_512": "512/",
+ "convention": "yaw = camera azimuth around the character, degrees. 0 = camera in front (she faces the viewer); +90 = camera at HER LEFT side (she faces screen-left); 180 = back; -90 = camera at her right (she faces screen-right). Same convention as swordswoman/v2/hy3d/inputsD (2mv 'left' = she faces screen-left). Orthographic-ish, camera at mid-height, elevation 0.",
+ "framing": "body views: same scale, body height = 0.86 of canvas, feet baseline y = 0.93 (from top), x centred on the feet band. head views: shared scale within the head group, baseline y = 0.93.",
+ "views": {
+  "front": {
+   "file": "front.png",
+   "yaw": 0,
+   "src": "raw/mechanic_turn_a.png",
+   "flip": false
+  },
+  "right": {
+   "file": "right.png",
+   "yaw": -90,
+   "src": "raw/mechanic_turn_a.png",
+   "flip": false
+  },
+  "back": {
+   "file": "back.png",
+   "yaw": 180,
+   "src": "raw/mechanic_turn_a.png",
+   "flip": false
+  },
+  "left": {
+   "file": "left.png",
+   "yaw": 90,
+   "src": "raw/mechanic_turn_a.png",
+   "flip": false
+  },
+  "fr34": {
+   "file": "fr34.png",
+   "yaw": -45,
+   "src": "raw/mechanic_34_b.png",
+   "flip": false,
+   "yaw_note": "nominal -45; Gemini rendered ~30-35 deg"
+  },
+  "fl34": {
+   "file": "fl34.png",
+   "yaw": 45,
+   "src": "raw/mechanic_34_b.png",
+   "flip": true,
+   "yaw_note": "mirror of fr34 (design is symmetric), nominal +45, actual ~30-35"
+  },
+  "head_front": {
+   "file": "head_front.png",
+   "yaw": 0,
+   "src": "raw/mechanic_head_a.png",
+   "flip": false
+  },
+  "head_side": {
+   "file": "head_side.png",
+   "yaw": 90,
+   "src": "raw/mechanic_head_a.png",
+   "flip": false
+  }
+ },
+ "hunyuan_mv": {
+  "front": "front.png",
+  "left": "left.png",
+  "back": "back.png",
+  "right": "right.png"
+ },
+ "notes": "front/left/back/right from one 4-view turnaround call (same scale in source). Alt single front: raw/mechanic_front_a.png."
+}
