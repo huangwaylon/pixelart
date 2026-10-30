@@ -1,0 +1,652 @@
+{
+ "chain/walk/SE/f00": {
+  "sil": 263,
+  "gap": 0,
+  "gap_runs": 0,
+  "gap_cols": {},
+  "dbl": 9,
+  "clump": 6,
+  "wK": [
+   0,
+   190,
+   26,
+   47
+  ],
+  "wD": [
+   0,
+   106,
+   20,
+   137
+  ],
+  "zig": 6,
+  "irr": 0,
+  "kink": 4,
+  "contour": 254,
+  "bump": 2,
+  "mono": 0.45454545454545453,
+  "intK": 44,
+  "orphK": 4,
+  "K": 397
+ },
+ "proto/walk/SE/f00": {
+  "sil": 269,
+  "gap": 0,
+  "gap_runs": 0,
+  "gap_cols": {},
+  "dbl": 4,
+  "clump": 10,
+  "wK": [
+   0,
+   179,
+   42,
+   48
+  ],
+  "wD": [
+   0,
+   92,
+   42,
+   135
+  ],
+  "zig": 2,
+  "irr": 0,
+  "kink": 2,
+  "contour": 269,
+  "bump": 4,
+  "mono": 0.7142857142857143,
+  "intK": 51,
+  "orphK": 11,
+  "K": 378
+ },
+ "selout/walk/SE/f00": {
+  "sil": 269,
+  "gap": 41,
+  "gap_runs": 7,
+  "gap_cols": {
+   "R": 34,
+   "S": 5,
+   "m": 2
+  },
+  "dbl": 4,
+  "clump": 9,
+  "wK": [
+   41,
+   152,
+   41,
+   35
+  ],
+  "wD": [
+   41,
+   65,
+   39,
+   124
+  ],
+  "zig": 2,
+  "irr": 0,
+  "kink": 2,
+  "contour": 269,
+  "bump": 4,
+  "mono": 0.7142857142857143,
+  "intK": 51,
+  "orphK": 11,
+  "K": 337
+ },
+ "chain/walk/SE/f01": {
+  "sil": 264,
+  "gap": 1,
+  "gap_runs": 1,
+  "gap_cols": {
+   "g": 1
+  },
+  "dbl": 11,
+  "clump": 3,
+  "wK": [
+   1,
+   177,
+   35,
+   51
+  ],
+  "wD": [
+   1,
+   90,
+   28,
+   145
+  ],
+  "zig": 8,
+  "irr": 1,
+  "kink": 5,
+  "contour": 252,
+  "bump": 5,
+  "mono": 0.5,
+  "intK": 42,
+  "orphK": 0,
+  "K": 387
+ },
+ "proto/walk/SE/f01": {
+  "sil": 259,
+  "gap": 0,
+  "gap_runs": 0,
+  "gap_cols": {},
+  "dbl": 3,
+  "clump": 5,
+  "wK": [
+   0,
+   182,
+   40,
+   37
+  ],
+  "wD": [
+   0,
+   97,
+   30,
+   132
+  ],
+  "zig": 0,
+  "irr": 0,
+  "kink": 2,
+  "contour": 259,
+  "bump": 3,
+  "mono": 0.7142857142857143,
+  "intK": 43,
+  "orphK": 1,
+  "K": 351
+ },
+ "selout/walk/SE/f01": {
+  "sil": 259,
+  "gap": 38,
+  "gap_runs": 5,
+  "gap_cols": {
+   "R": 32,
+   "S": 4,
+   "m": 2
+  },
+  "dbl": 3,
+  "clump": 5,
+  "wK": [
+   38,
+   156,
+   37,
+   28
+  ],
+  "wD": [
+   38,
+   70,
+   28,
+   123
+  ],
+  "zig": 0,
+  "irr": 0,
+  "kink": 2,
+  "contour": 259,
+  "bump": 3,
+  "mono": 0.7142857142857143,
+  "intK": 44,
+  "orphK": 2,
+  "K": 313
+ },
+ "chain/walk/SE/f02": {
+  "sil": 230,
+  "gap": 0,
+  "gap_runs": 0,
+  "gap_cols": {},
+  "dbl": 6,
+  "clump": 5,
+  "wK": [
+   0,
+   150,
+   35,
+   45
+  ],
+  "wD": [
+   0,
+   86,
+   31,
+   113
+  ],
+  "zig": 4,
+  "irr": 1,
+  "kink": 1,
+  "contour": 230,
+  "bump": 3,
+  "mono": 0.5555555555555556,
+  "intK": 35,
+  "orphK": 7,
+  "K": 368
+ },
+ "proto/walk/SE/f02": {
+  "sil": 227,
+  "gap": 0,
+  "gap_runs": 0,
+  "gap_cols": {},
+  "dbl": 5,
+  "clump": 4,
+  "wK": [
+   0,
+   160,
+   24,
+   43
+  ],
+  "wD": [
+   0,
+   89,
+   23,
+   115
+  ],
+  "zig": 0,
+  "irr": 0,
+  "kink": 3,
+  "contour": 227,
+  "bump": 7,
+  "mono": 1.0,
+  "intK": 51,
+  "orphK": 7,
+  "K": 336
+ },
+ "selout/walk/SE/f02": {
+  "sil": 227,
+  "gap": 43,
+  "gap_runs": 5,
+  "gap_cols": {
+   "R": 37,
+   "S": 4,
+   "m": 2
+  },
+  "dbl": 4,
+  "clump": 4,
+  "wK": [
+   43,
+   128,
+   27,
+   29
+  ],
+  "wD": [
+   43,
+   56,
+   25,
+   103
+  ],
+  "zig": 0,
+  "irr": 0,
+  "kink": 3,
+  "contour": 227,
+  "bump": 7,
+  "mono": 1.0,
+  "intK": 51,
+  "orphK": 7,
+  "K": 293
+ },
+ "chain/walk/SE/f03": {
+  "sil": 221,
+  "gap": 0,
+  "gap_runs": 0,
+  "gap_cols": {},
+  "dbl": 8,
+  "clump": 6,
+  "wK": [
+   0,
+   145,
+   33,
+   43
+  ],
+  "wD": [
+   0,
+   93,
+   33,
+   95
+  ],
+  "zig": 9,
+  "irr": 2,
+  "kink": 1,
+  "contour": 221,
+  "bump": 3,
+  "mono": 0.3333333333333333,
+  "intK": 38,
+  "orphK": 6,
+  "K": 346
+ },
+ "proto/walk/SE/f03": {
+  "sil": 224,
+  "gap": 0,
+  "gap_runs": 0,
+  "gap_cols": {},
+  "dbl": 3,
+  "clump": 12,
+  "wK": [
+   0,
+   143,
+   39,
+   42
+  ],
+  "wD": [
+   0,
+   88,
+   39,
+   97
+  ],
+  "zig": 1,
+  "irr": 0,
+  "kink": 2,
+  "contour": 224,
+  "bump": 3,
+  "mono": 0.8333333333333334,
+  "intK": 36,
+  "orphK": 7,
+  "K": 325
+ },
+ "selout/walk/SE/f03": {
+  "sil": 224,
+  "gap": 37,
+  "gap_runs": 4,
+  "gap_cols": {
+   "R": 31,
+   "S": 3,
+   "E": 2,
+   "m": 1
+  },
+  "dbl": 3,
+  "clump": 12,
+  "wK": [
+   37,
+   114,
+   38,
+   35
+  ],
+  "wD": [
+   37,
+   59,
+   38,
+   90
+  ],
+  "zig": 1,
+  "irr": 0,
+  "kink": 2,
+  "contour": 224,
+  "bump": 3,
+  "mono": 0.8333333333333334,
+  "intK": 36,
+  "orphK": 7,
+  "K": 288
+ },
+ "chain/idle/SE/f00": {
+  "sil": 267,
+  "gap": 0,
+  "gap_runs": 0,
+  "gap_cols": {},
+  "dbl": 10,
+  "clump": 3,
+  "wK": [
+   0,
+   170,
+   51,
+   46
+  ],
+  "wD": [
+   0,
+   90,
+   41,
+   136
+  ],
+  "zig": 6,
+  "irr": 1,
+  "kink": 3,
+  "contour": 253,
+  "bump": 5,
+  "mono": 0.4,
+  "intK": 20,
+  "orphK": 4,
+  "K": 382
+ },
+ "proto/idle/SE/f00": {
+  "sil": 231,
+  "gap": 0,
+  "gap_runs": 0,
+  "gap_cols": {},
+  "dbl": 2,
+  "clump": 10,
+  "wK": [
+   0,
+   155,
+   37,
+   39
+  ],
+  "wD": [
+   0,
+   94,
+   42,
+   95
+  ],
+  "zig": 0,
+  "irr": 0,
+  "kink": 3,
+  "contour": 231,
+  "bump": 3,
+  "mono": 0.7692307692307693,
+  "intK": 56,
+  "orphK": 5,
+  "K": 340
+ },
+ "selout/idle/SE/f00": {
+  "sil": 231,
+  "gap": 36,
+  "gap_runs": 4,
+  "gap_cols": {
+   "R": 30,
+   "S": 4,
+   "m": 2
+  },
+  "dbl": 2,
+  "clump": 10,
+  "wK": [
+   36,
+   127,
+   29,
+   39
+  ],
+  "wD": [
+   36,
+   66,
+   34,
+   95
+  ],
+  "zig": 0,
+  "irr": 0,
+  "kink": 3,
+  "contour": 231,
+  "bump": 3,
+  "mono": 0.7692307692307693,
+  "intK": 56,
+  "orphK": 5,
+  "K": 304
+ },
+ "chain/idle/S/f00": {
+  "sil": 296,
+  "gap": 0,
+  "gap_runs": 0,
+  "gap_cols": {},
+  "dbl": 11,
+  "clump": 14,
+  "wK": [
+   0,
+   196,
+   38,
+   62
+  ],
+  "wD": [
+   0,
+   139,
+   53,
+   104
+  ],
+  "zig": 7,
+  "irr": 1,
+  "kink": 5,
+  "contour": 269,
+  "bump": 2,
+  "mono": 0.5,
+  "intK": 18,
+  "orphK": 2,
+  "K": 432
+ },
+ "proto/idle/S/f00": {
+  "sil": 292,
+  "gap": 0,
+  "gap_runs": 0,
+  "gap_cols": {},
+  "dbl": 3,
+  "clump": 9,
+  "wK": [
+   0,
+   216,
+   30,
+   46
+  ],
+  "wD": [
+   0,
+   154,
+   41,
+   97
+  ],
+  "zig": 1,
+  "irr": 0,
+  "kink": 2,
+  "contour": 286,
+  "bump": 2,
+  "mono": 0.6428571428571429,
+  "intK": 54,
+  "orphK": 3,
+  "K": 401
+ },
+ "selout/idle/S/f00": {
+  "sil": 292,
+  "gap": 56,
+  "gap_runs": 10,
+  "gap_cols": {
+   "R": 42,
+   "m": 9,
+   "S": 4,
+   "o": 1
+  },
+  "dbl": 2,
+  "clump": 9,
+  "wK": [
+   56,
+   174,
+   24,
+   38
+  ],
+  "wD": [
+   56,
+   113,
+   35,
+   88
+  ],
+  "zig": 1,
+  "irr": 0,
+  "kink": 2,
+  "contour": 286,
+  "bump": 2,
+  "mono": 0.6428571428571429,
+  "intK": 55,
+  "orphK": 4,
+  "K": 345
+ },
+ "chain/idle/E/f00": {
+  "sil": 228,
+  "gap": 0,
+  "gap_runs": 0,
+  "gap_cols": {},
+  "dbl": 7,
+  "clump": 12,
+  "wK": [
+   0,
+   154,
+   30,
+   44
+  ],
+  "wD": [
+   0,
+   106,
+   31,
+   91
+  ],
+  "zig": 7,
+  "irr": 0,
+  "kink": 2,
+  "contour": 228,
+  "bump": 5,
+  "mono": 0.6111111111111112,
+  "intK": 31,
+  "orphK": 2,
+  "K": 355
+ },
+ "proto/idle/E/f00": {
+  "sil": 226,
+  "gap": 0,
+  "gap_runs": 0,
+  "gap_cols": {},
+  "dbl": 8,
+  "clump": 14,
+  "wK": [
+   0,
+   161,
+   27,
+   38
+  ],
+  "wD": [
+   0,
+   119,
+   25,
+   82
+  ],
+  "zig": 1,
+  "irr": 0,
+  "kink": 5,
+  "contour": 226,
+  "bump": 5,
+  "mono": 0.7142857142857143,
+  "intK": 30,
+  "orphK": 4,
+  "K": 328
+ },
+ "selout/idle/E/f00": {
+  "sil": 226,
+  "gap": 48,
+  "gap_runs": 7,
+  "gap_cols": {
+   "R": 36,
+   "o": 6,
+   "m": 3,
+   "S": 3
+  },
+  "dbl": 7,
+  "clump": 14,
+  "wK": [
+   48,
+   123,
+   25,
+   30
+  ],
+  "wD": [
+   48,
+   82,
+   22,
+   74
+  ],
+  "zig": 1,
+  "irr": 0,
+  "kink": 5,
+  "contour": 226,
+  "bump": 5,
+  "mono": 0.7142857142857143,
+  "intK": 45,
+  "orphK": 4,
+  "K": 280
+ },
+ "boil/chain/walk/SE": [
+  0.29027991657933766,
+  0.16624136097820308
+ ],
+ "boil/proto/walk/SE": [
+  0.30696578460705415,
+  0.2390497542686325
+ ]
+}

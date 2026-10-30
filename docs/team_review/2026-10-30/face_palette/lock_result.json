@@ -1,0 +1,44 @@
+{
+ "walk_SE": {
+  "swap_before": 0.08214879084364039,
+  "swap_after": 0.053262808290792794,
+  "colours_before": 16.125,
+  "colours_after": 12.125,
+  "top_after": {
+   "Hh": 401,
+   "Kh": 275,
+   "ER": 113,
+   "Ss": 60,
+   "Ee": 12,
+   "Hg": 5
+  }
+ },
+ "run_SE": {
+  "swap_before": 0.09500177242112726,
+  "swap_after": 0.057826343768458355,
+  "colours_before": 16.75,
+  "colours_after": 12.75,
+  "top_after": {
+   "Hh": 402,
+   "Kh": 365,
+   "ER": 121,
+   "Ss": 61,
+   "Ee": 23,
+   "Hg": 7
+  }
+ },
+ "idle_S": {
+  "swap_before": 0.0357434488902086,
+  "swap_after": 0.02104483141904409,
+  "colours_before": 16.083333333333332,
+  "colours_after": 11.916666666666666,
+  "top_after": {
+   "Kh": 231,
+   "Hh": 166,
+   "ER": 64,
+   "Ss": 60,
+   "Ee": 39,
+   "Hg": 8
+  }
+ }
+}
