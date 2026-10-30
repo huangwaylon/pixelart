@@ -6,24 +6,24 @@
    "dbl": 0,
    "gap": 0,
    "clump": 0,
-   "mono": 0.75,
+   "mono": 0.8125,
    "irr": 0,
    "kink": 0,
-   "intK": 9,
-   "orphK": 0,
-   "K": 377
+   "intK": 17,
+   "orphK": 3,
+   "K": 304
   },
   {
    "zig": 0,
    "dbl": 0,
    "gap": 0,
    "clump": 0,
-   "mono": 0.75,
+   "mono": 0.8125,
    "irr": 0,
    "kink": 0,
-   "intK": 0,
+   "intK": 16,
    "orphK": 0,
-   "K": 368
+   "K": 301
   },
   {
    "zig": 0,
@@ -33,9 +33,9 @@
    "mono": 0.5833333333333334,
    "irr": 0,
    "kink": 0,
-   "intK": 27,
-   "orphK": 0,
-   "K": 336
+   "intK": 33,
+   "orphK": 1,
+   "K": 273
   },
   {
    "zig": 0,
@@ -45,9 +45,9 @@
    "mono": 0.6923076923076923,
    "irr": 0,
    "kink": 1,
-   "intK": 17,
-   "orphK": 0,
-   "K": 319
+   "intK": 32,
+   "orphK": 1,
+   "K": 261
   },
   {
    "zig": 0,
@@ -57,21 +57,21 @@
    "mono": 0.7142857142857143,
    "irr": 0,
    "kink": 0,
-   "intK": 17,
-   "orphK": 0,
-   "K": 313
+   "intK": 44,
+   "orphK": 3,
+   "K": 278
   },
   {
    "zig": 0,
    "dbl": 0,
    "gap": 0,
    "clump": 0,
-   "mono": 0.6363636363636364,
+   "mono": 0.6666666666666666,
    "irr": 0,
    "kink": 0,
-   "intK": 14,
-   "orphK": 0,
-   "K": 312
+   "intK": 40,
+   "orphK": 3,
+   "K": 277
   },
   {
    "zig": 0,
@@ -81,9 +81,9 @@
    "mono": 0.7,
    "irr": 0,
    "kink": 0,
-   "intK": 25,
-   "orphK": 0,
-   "K": 335
+   "intK": 33,
+   "orphK": 2,
+   "K": 282
   },
   {
    "zig": 1,
@@ -93,64 +93,64 @@
    "mono": 0.8571428571428571,
    "irr": 0,
    "kink": 0,
-   "intK": 24,
-   "orphK": 0,
-   "K": 386
+   "intK": 34,
+   "orphK": 1,
+   "K": 312
   }
  ],
  "palette": [
   {
-   "colours": 12,
-   "used": "EHKLORSWeghs",
+   "colours": 13,
+   "used": "EHKLORSWeghos",
    "off_lock": [],
    "cross_material_px": 0,
    "cross": {}
   },
   {
-   "colours": 12,
-   "used": "EHKLORSWeghs",
+   "colours": 13,
+   "used": "EHKLORSWeghos",
    "off_lock": [],
    "cross_material_px": 0,
    "cross": {}
   },
   {
-   "colours": 12,
-   "used": "EHKLORSWeghs",
+   "colours": 13,
+   "used": "EHKLORSWeghos",
    "off_lock": [],
    "cross_material_px": 0,
    "cross": {}
   },
   {
-   "colours": 12,
-   "used": "EHKLORSWeghs",
+   "colours": 14,
+   "used": "EHKLOQRSWeghos",
    "off_lock": [],
    "cross_material_px": 0,
    "cross": {}
   },
   {
-   "colours": 12,
-   "used": "EHKLORSWeghs",
+   "colours": 14,
+   "used": "EHKLOQRSWeghos",
    "off_lock": [],
    "cross_material_px": 0,
    "cross": {}
   },
   {
-   "colours": 12,
-   "used": "EHKLORSWeghs",
+   "colours": 14,
+   "used": "EHKLOQRSWeghos",
    "off_lock": [],
    "cross_material_px": 0,
    "cross": {}
   },
   {
-   "colours": 12,
-   "used": "EHKLORSWeghs",
+   "colours": 13,
+   "used": "EHKLORSWeghos",
    "off_lock": [],
    "cross_material_px": 0,
    "cross": {}
   },
   {
-   "colours": 12,
-   "used": "EHKLORSWeghs",
+   "colours": 13,
+   "used": "EHKLORSWeghos",
    "off_lock": [],
    "cross_material_px": 0,
    "cross": {}
@@ -183,7 +183,7 @@
     "flags": []
    },
    "arm.R": {
-    "px": 149,
+    "px": 154,
     "hi_px": 153.7,
     "pieces": 1,
     "hi_pieces": 1,
@@ -233,7 +233,7 @@
     "flags": []
    },
    "arm.R": {
-    "px": 155,
+    "px": 158,
     "hi_px": 155.9,
     "pieces": 1,
     "hi_pieces": 1,
@@ -259,7 +259,7 @@
   },
   {
    "leg.L": {
-    "px": 118,
+    "px": 119,
     "hi_px": 117.2,
     "pieces": 2,
     "hi_pieces": 2,
@@ -325,7 +325,7 @@
     "flags": []
    },
    "arm.L": {
-    "px": 86,
+    "px": 96,
     "hi_px": 90.8,
     "pieces": 1,
     "hi_pieces": 1,
@@ -333,7 +333,7 @@
     "flags": []
    },
    "arm.R": {
-    "px": 141,
+    "px": 137,
     "hi_px": 125.7,
     "pieces": 1,
     "hi_pieces": 1,
@@ -375,7 +375,7 @@
     "flags": []
    },
    "arm.L": {
-    "px": 87,
+    "px": 86,
     "hi_px": 92.2,
     "pieces": 1,
     "hi_pieces": 1,
@@ -383,7 +383,7 @@
     "flags": []
    },
    "arm.R": {
-    "px": 108,
+    "px": 101,
     "hi_px": 94.4,
     "pieces": 1,
     "hi_pieces": 1,
@@ -425,7 +425,7 @@
     "flags": []
    },
    "arm.L": {
-    "px": 89,
+    "px": 92,
     "hi_px": 102.1,
     "pieces": 1,
     "hi_pieces": 1,
@@ -433,7 +433,7 @@
     "flags": []
    },
    "arm.R": {
-    "px": 100,
+    "px": 94,
     "hi_px": 91.3,
     "pieces": 1,
     "hi_pieces": 1,
@@ -449,7 +449,7 @@
     "flags": []
    },
    "hand.R": {
-    "px": 8,
+    "px": 12,
     "hi_px": 6.8,
     "pieces": 1,
     "hi_pieces": 1,
@@ -475,7 +475,7 @@
     "flags": []
    },
    "arm.L": {
-    "px": 89,
+    "px": 97,
     "hi_px": 91.5,
     "pieces": 1,
     "hi_pieces": 1,
@@ -483,7 +483,7 @@
     "flags": []
    },
    "arm.R": {
-    "px": 116,
+    "px": 115,
     "hi_px": 111.3,
     "pieces": 1,
     "hi_pieces": 1,
@@ -533,7 +533,7 @@
     "flags": []
    },
    "arm.R": {
-    "px": 148,
+    "px": 153,
     "hi_px": 149.4,
     "pieces": 1,
     "hi_pieces": 1,
@@ -563,98 +563,140 @@
    "stray_K": 0,
    "short_pieces": [],
    "px_by_overlap": {
-    "arm|body": 32,
-    "bangs|face": 36,
-    "bow|hair": 20,
+    "arm|body": 40,
+    "bangs|face": 39,
+    "bow|hair": 30,
     "chin|neck": 9,
-    "hand|sleeve": 5,
-    "leg|leg": 0
+    "collar": 12,
+    "hand|sleeve": 7,
+    "leg|leg": 0,
+    "obi edge": 8,
+    "hair clump": 20,
+    "skirt fold": 10
    }
   },
   {
    "stray_K": 0,
    "short_pieces": [],
    "px_by_overlap": {
-    "arm|body": 29,
+    "arm|body": 36,
     "bangs|face": 42,
-    "bow|hair": 15,
-    "chin|neck": 8,
-    "hand|sleeve": 3,
-    "leg|leg": 0
-   }
-  },
-  {
-   "stray_K": 0,
-   "short_pieces": [],
-   "px_by_overlap": {
-    "arm|body": 31,
-    "bangs|face": 36,
-    "bow|hair": 23,
-    "chin|neck": 8,
-    "hand|sleeve": 0,
-    "leg|leg": 10
-   }
-  },
-  {
-   "stray_K": 0,
-   "short_pieces": [],
-   "px_by_overlap": {
-    "arm|body": 18,
-    "bangs|face": 35,
-    "bow|hair": 28,
-    "chin|neck": 6,
+    "bow|hair": 30,
+    "chin|neck": 10,
+    "collar": 12,
     "hand|sleeve": 5,
-    "leg|leg": 4
+    "leg|leg": 0,
+    "obi edge": 8,
+    "hair clump": 6,
+    "skirt fold": 10
    }
   },
   {
    "stray_K": 0,
    "short_pieces": [],
    "px_by_overlap": {
-    "arm|body": 12,
-    "bangs|face": 38,
-    "bow|hair": 24,
-    "chin|neck": 6,
+    "arm|body": 37,
+    "bangs|face": 34,
+    "bow|hair": 39,
+    "chin|neck": 8,
+    "collar": 11,
     "hand|sleeve": 0,
-    "leg|leg": 8
+    "leg|leg": 10,
+    "obi edge": 9,
+    "hair clump": 16,
+    "skirt fold": 0
    }
   },
   {
    "stray_K": 0,
    "short_pieces": [],
    "px_by_overlap": {
-    "arm|body": 16,
-    "bangs|face": 31,
-    "bow|hair": 18,
+    "arm|body": 48,
+    "bangs|face": 34,
+    "bow|hair": 35,
     "chin|neck": 9,
-    "hand|sleeve": 6,
-    "leg|leg": 10
+    "collar": 15,
+    "hand|sleeve": 8,
+    "leg|leg": 4,
+    "obi edge": 10,
+    "hair clump": 11,
+    "skirt fold": 7
    }
   },
   {
    "stray_K": 0,
    "short_pieces": [],
    "px_by_overlap": {
-    "arm|body": 24,
+    "arm|body": 53,
+    "bangs|face": 37,
+    "bow|hair": 33,
+    "chin|neck": 9,
+    "collar": 13,
+    "hand|sleeve": 2,
+    "leg|leg": 8,
+    "obi edge": 11,
+    "hair clump": 14,
+    "skirt fold": 18
+   }
+  },
+  {
+   "stray_K": 0,
+   "short_pieces": [],
+   "px_by_overlap": {
+    "arm|body": 48,
     "bangs|face": 33,
-    "bow|hair": 24,
-    "chin|neck": 9,
-    "hand|sleeve": 0,
-    "leg|leg": 4
+    "bow|hair": 37,
+    "chin|neck": 10,
+    "collar": 14,
+    "hand|sleeve": 6,
+    "leg|leg": 10,
+    "obi edge": 11,
+    "hair clump": 9,
+    "skirt fold": 19
    }
   },
   {
    "stray_K": 0,
    "short_pieces": [],
    "px_by_overlap": {
-    "arm|body": 45,
+    "arm|body": 52,
     "bangs|face": 35,
-    "bow|hair": 24,
-    "chin|neck": 7,
-    "hand|sleeve": 5,
-    "leg|leg": 0
+    "bow|hair": 31,
+    "chin|neck": 8,
+    "collar": 10,
+    "hand|sleeve": 4,
+    "leg|leg": 4,
+    "obi edge": 11,
+    "hair clump": 13,
+    "skirt fold": 22
+   }
+  },
+  {
+   "stray_K": 0,
+   "short_pieces": [],
+   "px_by_overlap": {
+    "arm|body": 54,
+    "bangs|face": 33,
+    "bow|hair": 29,
+    "chin|neck": 9,
+    "collar": 14,
+    "hand|sleeve": 6,
+    "leg|leg": 0,
+    "obi edge": 9,
+    "hair clump": 10,
+    "skirt fold": 9
    }
   }
+ ],
+ "shade_pops_flow": [
+  13,
+  18,
+  14,
+  19,
+  13,
+  20,
+  25,
+  21
  ],
  "line_pops_flow": [
   1,
@@ -663,7 +705,7 @@
   7,
   7,
   0,
-  4,
+  5,
   3
  ],
  "line_pops": [
@@ -697,12 +739,12 @@
   "min_ms": 70
  },
  "report": {
-  "flicker": 0.2083,
-  "boil": 0.0282,
-  "shade_swap": 0.009,
-  "seam_changed": 0.5344,
-  "seam_resid": 0.1211,
-  "seam_ratio": 0.8511
+  "flicker": 0.2332,
+  "boil": 0.0253,
+  "shade_swap": 0.0405,
+  "seam_changed": 0.62,
+  "seam_resid": 0.1629,
+  "seam_ratio": 0.8557
  },
  "gates": {
   "zigzags_le_1": true,
@@ -724,12 +766,13 @@
   "dbl_max": 0,
   "gap_max": 0,
   "clump_max": 0,
-  "mono_mean": 0.71,
+  "mono_mean": 0.73,
   "stray_K": 0,
-  "colours_max": 12,
+  "colours_max": 14,
   "cross_px": 0,
   "limb_fail_frames": [],
   "line_pops_total": 81,
-  "line_pops_flow_total": 26
+  "line_pops_flow_total": 27,
+  "shade_pops_flow_total": 143
  }
 }

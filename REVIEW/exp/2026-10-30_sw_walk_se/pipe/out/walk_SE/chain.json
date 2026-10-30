@@ -23,13 +23,19 @@
     }
    },
    "interior_px": {
-    "arm|body": 33,
+    "arm|body": 40,
     "bangs|face": 39,
     "bow|hair": 30,
     "chin|neck": 9,
-    "hand|sleeve": 5,
-    "leg|leg": 0
-   }
+    "collar": 12,
+    "hand|sleeve": 7,
+    "leg|leg": 0,
+    "obi edge": 8,
+    "hair clump": 20,
+    "skirt fold": 10
+   },
+   "cast_px": 82,
+   "temporal_fixed_px": 35
   },
   {
    "f": 1,
@@ -54,13 +60,19 @@
     }
    },
    "interior_px": {
-    "arm|body": 30,
-    "bangs|face": 44,
+    "arm|body": 36,
+    "bangs|face": 42,
     "bow|hair": 30,
-    "chin|neck": 8,
-    "hand|sleeve": 3,
-    "leg|leg": 0
-   }
+    "chin|neck": 10,
+    "collar": 12,
+    "hand|sleeve": 5,
+    "leg|leg": 0,
+    "obi edge": 8,
+    "hair clump": 6,
+    "skirt fold": 10
+   },
+   "cast_px": 84,
+   "temporal_fixed_px": 15
   },
   {
    "f": 2,
@@ -85,13 +97,19 @@
     }
    },
    "interior_px": {
-    "arm|body": 31,
-    "bangs|face": 36,
+    "arm|body": 37,
+    "bangs|face": 34,
     "bow|hair": 39,
     "chin|neck": 8,
+    "collar": 11,
     "hand|sleeve": 0,
-    "leg|leg": 10
-   }
+    "leg|leg": 10,
+    "obi edge": 9,
+    "hair clump": 16,
+    "skirt fold": 0
+   },
+   "cast_px": 84,
+   "temporal_fixed_px": 27
   },
   {
    "f": 3,
@@ -116,13 +134,19 @@
     }
    },
    "interior_px": {
-    "arm|body": 18,
-    "bangs|face": 37,
-    "bow|hair": 36,
-    "chin|neck": 6,
-    "hand|sleeve": 5,
-    "leg|leg": 4
-   }
+    "arm|body": 48,
+    "bangs|face": 34,
+    "bow|hair": 35,
+    "chin|neck": 9,
+    "collar": 15,
+    "hand|sleeve": 8,
+    "leg|leg": 4,
+    "obi edge": 10,
+    "hair clump": 11,
+    "skirt fold": 7
+   },
+   "cast_px": 101,
+   "temporal_fixed_px": 16
   },
   {
    "f": 4,
@@ -147,13 +171,19 @@
     }
    },
    "interior_px": {
-    "arm|body": 12,
-    "bangs|face": 39,
-    "bow|hair": 34,
-    "chin|neck": 6,
-    "hand|sleeve": 0,
-    "leg|leg": 8
-   }
+    "arm|body": 53,
+    "bangs|face": 37,
+    "bow|hair": 33,
+    "chin|neck": 9,
+    "collar": 13,
+    "hand|sleeve": 2,
+    "leg|leg": 8,
+    "obi edge": 11,
+    "hair clump": 14,
+    "skirt fold": 18
+   },
+   "cast_px": 119,
+   "temporal_fixed_px": 13
   },
   {
    "f": 5,
@@ -178,13 +208,19 @@
     }
    },
    "interior_px": {
-    "arm|body": 16,
-    "bangs|face": 31,
+    "arm|body": 48,
+    "bangs|face": 33,
     "bow|hair": 37,
-    "chin|neck": 9,
+    "chin|neck": 10,
+    "collar": 14,
     "hand|sleeve": 6,
-    "leg|leg": 10
-   }
+    "leg|leg": 10,
+    "obi edge": 11,
+    "hair clump": 9,
+    "skirt fold": 19
+   },
+   "cast_px": 119,
+   "temporal_fixed_px": 24
   },
   {
    "f": 6,
@@ -209,13 +245,19 @@
     }
    },
    "interior_px": {
-    "arm|body": 24,
+    "arm|body": 52,
     "bangs|face": 35,
     "bow|hair": 31,
-    "chin|neck": 9,
-    "hand|sleeve": 0,
-    "leg|leg": 4
-   }
+    "chin|neck": 8,
+    "collar": 10,
+    "hand|sleeve": 4,
+    "leg|leg": 4,
+    "obi edge": 11,
+    "hair clump": 13,
+    "skirt fold": 22
+   },
+   "cast_px": 88,
+   "temporal_fixed_px": 23
   },
   {
    "f": 7,
@@ -240,13 +282,19 @@
     }
    },
    "interior_px": {
-    "arm|body": 45,
-    "bangs|face": 35,
+    "arm|body": 54,
+    "bangs|face": 33,
     "bow|hair": 29,
-    "chin|neck": 7,
-    "hand|sleeve": 5,
-    "leg|leg": 0
-   }
+    "chin|neck": 9,
+    "collar": 14,
+    "hand|sleeve": 6,
+    "leg|leg": 0,
+    "obi edge": 9,
+    "hair clump": 10,
+    "skirt fold": 9
+   },
+   "cast_px": 80,
+   "temporal_fixed_px": 18
   }
  ],
  "ms": [

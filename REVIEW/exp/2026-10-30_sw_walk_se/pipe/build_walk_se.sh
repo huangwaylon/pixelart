@@ -16,4 +16,5 @@ $PY lock_chain.py $W/walk_SE.json $O                                            
 $PY export.py $O $W/walk_SE.json
 $PY gates.py $O $W/walk_SE.json $H/walk_lock.json $O/walk_SE_4x.gif | tee $O/gates.txt              # 5
 $PY compare.py $O                                                                                # 6
+[ -d $H/out/before_r3 ] && $PY before_after.py $H/out/before_r3 $O $O/compare 'round 2 lock build (before)' 'round 3 lines + shading (after)'
 grep -q "^GATES PASS" $O/gates.txt

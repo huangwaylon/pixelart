@@ -4,53 +4,43 @@
  "project": "swordswoman",
  "kind": "experiment",
  "status": "needs-review",
- "title": "Walk SE under the DESIGN LOCK: lean deterministic pipeline (milestone 1, round 2: Amendment 1)",
- "question": "Can one lean pipeline (rig copy, 10 springs, 14-colour 2-tone palette, vector outline, overlap-only interior lines, eyes+brows stamps) produce walk SE that passes every lock gate, and how far is it from the gold frames?",
- "method": "pipe/build_walk_se.sh (~35 s, deterministic). Rig r13 copy with narrower sleeves, a waist step at the obi, a flat-skin face and a solid bow. Walk re-baked through M's mbuild with 10 simulated spring bones. 8x guide/part/normal/depth passes. lock_chain.py: N.L 2-tone ramps on the 14 lock keys, a vector-line outline with part-wise temporal vertex hysteresis and dezig/polish, far-side K only at the listed overlaps, facesys b' eyes at the tracked surface point. Gates: lamet line, palette, P's limb audit, M's posture gate, gifcheck. Round 2 (Amendment 1): SE body yaw cheat -15 deg with head -10 (yaw_sweep.py, rest IoU vs EC0_SE_96); rig-copy edits toward the master (head x1.10, visible neck and collar V, full-width obi band, mid-shin boots, side locks stretched x1.7 and waved); temporal snap that follows surface points (new rpos pass) and also the next frame's line.",
- "result": "All blocking gates PASS (round 2): zigzags <= 1, L-corners 0, gaps 0, clumps 0, stray interior K 0, <= 12 colours, 0 off-lock or cross-material, limbs 8/8, posture PASS, GIF ok. Report only: boil .0282, shade_swap .0090. Single-frame outline pops: 100 -> 81 on the part-shift metric, 26 on the flow metric (round-1 method on the new rig: 94/27). Yaw sweep: rest silhouette IoU vs the master is flat from -5 to -15 (.79-.77) and falls at -20/-25 (.755/.732), so -15 was chosen. Head-band width 35 px = master. Gold v2 (17:39 version): sil IoU .70 (f00) / .61 (f02), up from .63/.56 against v1; 1583/1674 px differ.",
- "verdict": "On-lock and closer to the master's head, neck, collar, locks and boots. The gold gap is now mostly pose (gold v2's drawn arm, skirt and knee) and garment volume, which need motion keys or a lock decision rather than overrides.",
+ "title": "Walk SE, 3D-first locked pipeline, round 3: lines + shading",
+ "question": "Owner (Amendment 2): the biggest gap is lines and shading. Can cel shading, occlusion shadows, hair clumps and sel-out form lines, all derived from the 3D model, clean up walk SE while keeping every lock gate and determinism?",
+ "method": "pipe/build_walk_se.sh (deterministic). New shade_lines.py: N.L bands from the camera normals with one upper-left key light, smoothed per material; clean cel shapes (opening/closing, minimum shape size); highlights only as lit-side rims (red e, obi Q top sheen); occlusion shadows (bangs, chin/neck, far jaw rim, thighs under the hem, under the obi, between the legs); hair highlight ring and clump seams, and skirt folds at the rig's panel seams, all attached to the rest position; sel-out interior lines (dark tone of the material on lit cells, K on shadow cells, outer silhouette K); new form lines: collar V and obi edge. Temporal: band hysteresis and N.L averaging along the surface-point flow, plus a temporal median on fill colours. One Opus line/shading critique (4/10), with its fixes applied.",
+ "result": "All gates PASS: zigzags <= 1, L-corners 0, gaps 0, clumps 0, stray interior K 0, 13-14 colours (e and Q now used), 0 cross-material px, limbs 8/8, posture and GIF ok. Shading flips per surface point over 8 frames: 143 (317 before the temporal median; the round-2 2-tone build had 103). pxeval shade_swap .041 (round 2 .009), boil .025. Opus (on the first round-3 pass): 4/10; its fixes are applied, with no second critique.",
+ "verdict": "Clearly more form: hair clumps and highlight band, collar V and obi edges, fold seams, cast shadows, and the sleeve separating from the body. Shading changes more between frames than the flat 2-tone build. Still needs owner review of the look at 1x.",
  "scores": {
   "zig": "<=1",
   "L-corners": "0",
   "gaps": "0",
   "clumps": "0",
-  "colours": "12",
+  "colours": "14",
   "limbs": "8/8",
-  "boil": ".0282",
-  "shade_swap": ".0090",
-  "pops part/flow": "81/26",
-  "gold sil IoU": ".70/.61",
-  "rest IoU vs master": ".774"
+  "boil": ".025",
+  "shade_swap": ".041",
+  "Opus line+shading": "4/10 (pre-fix)"
  },
  "media": [
   {
    "src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/walk_SE_4x.gif",
-   "caption": "lock build walk SE, 4x, motion timing"
+   "caption": "round 3 walk SE, 4x"
   },
   {
-   "src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/r10_vs_lock_4x.gif",
-   "caption": "round 10 (left) vs lock build (right), 4x"
+   "src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/before_after_4x.gif",
+   "caption": "round 2 (left) vs round 3 lines + shading (right), 4x"
   },
   {
-   "src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/r10_vs_lock_4x.png",
-   "caption": "round 10 (top) vs lock build (bottom), 8 frames, 4x",
+   "src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/before_after_4x.png",
+   "caption": "before (top) / after (bottom), 8 frames, 4x",
    "wide": true
   },
   {
-   "src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/r10_vs_lock_strip1x.png",
-   "caption": "the same at 1x"
+   "src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/before_after_strip1x.png",
+   "caption": "before / after at 1x"
   },
   {
-   "src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/rest_vs_master_4x.png",
-   "caption": "rest pose at the lock SE view: master | r13 rig | lock rig after Amendment 1"
-  },
-  {
-   "src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/gold_board_f00.png",
-   "caption": "f00 vs gold contact: build | gold | diff (cyan silhouette, red outline, orange interior, magenta face, yellow fill)"
-  },
-  {
-   "src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/gold_board_f02.png",
-   "caption": "f02 vs gold passing"
+   "src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/crit/zoom_f00_f02_8x.png",
+   "caption": "the frames the Opus critique saw (f00, f02, 8x; before its fixes)"
   }
  ],
  "links": [
@@ -60,12 +50,16 @@
   },
   {
    "href": "exp/2026-10-30_sw_walk_se/DESIGN_LOCK.md",
-   "label": "design lock"
+   "label": "design lock + amendments"
+  },
+  {
+   "href": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/crit/opus_lines_shading.txt",
+   "label": "Opus critique"
   },
   {
    "href": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/gates.json",
    "label": "gates.json"
   }
  ],
- "next": "M: pose keys toward gold v2 (near arm down on contact, a clearer passing knee). Rig: sock top and red band up (thigh skin from 6 to 3-4 px). Owner: skirt and sleeve volume vs the lock's narrow sleeves. Then sparse overrides from gold_diff_fNN.json."
+ "next": "Owner look at 1x. Model-side fixes the 2D pass can't make: sock-top band width, obi width stability. Possibly a stronger temporal lock on the hair ring and the red highlight rims."
 }

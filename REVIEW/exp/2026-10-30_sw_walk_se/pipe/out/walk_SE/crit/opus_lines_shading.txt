@@ -1,0 +1,27 @@
+SCORE: 4/10
+
+**Category scores**
+- Outer line: 6. The outline is closed, but it doubles up and has jaggy steps.
+- Interior/form lines: 3
+- Shadow shapes: 4
+- Light consistency: 4
+- Cast shadows: 4
+- Hair shading: 3
+- Cloth shading: 4
+- Temporal stability: 3
+
+**Coordinates.** The 8x zoom holds two 64-px-wide panels, so I give 1x coordinates inside each panel (L = f00, R = f02).
+
+**Top 6 fixes**
+
+1. **Hair, all frames.** The crown highlight is a 1-px light arc at about L x29–41, y15–17 that reads as a scratch, not a band. Make it a 2–3-px L band that breaks into clump tips, and keep it in the same place every frame. Replace the noisy vertical h strokes in the bangs (about y21–26) with 3–4 clear clump wedges using H and h, with K only on the right/shadow side. Remove the stray red and hair pixels on the left side (L about x14–17, y18–22; also in the f01/f03 side locks).
+
+2. **Sleeve highlight, f00 and f01.** There is a floating bright e blob at L x30–35, y51–55 that lights nothing. Delete it, or move it to the top-left of the upper sleeve. Add a sel-out line (E on the lit side, K on the shadow side) where the sleeve meets the torso so the arm separates from the body.
+
+3. **Obi, all frames, worst in f02–f05.** It's a flat lavender slab with ragged steps (R x30–32, y47–52). Add O shadow on its lower and right third, give it a straight top and bottom edge, and add an E cast shadow on the cloth just below it. Keep its width consistent: right now it swings between f00/f07 and f03–f05.
+
+4. **Face, all frames.** The skin is lit flat. Add an S shadow on the far (right) cheek and jaw, and make the cast shadow under the bangs a clean 1-px S row that follows the fringe zigzag (L y25–27). Thicken the chin shadow onto the neck (L x30–36, y38–40).
+
+5. **Skirt hem and thighs, f02 (also f04/f06).** The hem breaks into scattered red and skin pixels (R x27–31, y61–65). Give it one clean edge, a 1–2-px E cast shadow onto the thighs, and an S shadow between the legs.
+
+6. **Boots, f00 (and f04/f07).** At about L x36–40, y83 the colour cuts straight from dark to light, which reads as a seam. Shade the boots vertically instead: H on the left and front, h on the right, and a g gleam on the shin. Square off the doubled K corners at the toes (around y93–96). Lock the sock-top R band to 2 px in every frame.

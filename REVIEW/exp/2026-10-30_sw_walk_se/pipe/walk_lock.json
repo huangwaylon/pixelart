@@ -4214,7 +4214,7 @@
 126,
 105
 ],
-"notes": "M 2026-10-30 17:37: skeleton=rig/rest_skeleton.json; cycle 0.840s; in place (root.loc = bob/sway only). Game travel speed 0.794 m/s = 3.82 px/frame at 1x (67.88 px/m, R camera) for planted feet to hold still. Secondary chains spring-baked (motion/scripts/msim.py). t = source frame at 24 fps (may be fractional). | LOCK re-bake (pipe/bake_walk_lock.py): 10 simulated spring bones ['bun', 'bow.L.1', 'bow.R.1', 'hair_back.2', 'hair_back.3', 'hair_side.L.1', 'hair_side.R.1', 'skirt.F.1', 'skirt.B.1', 'sleeve.L.2']; driven ['bow.L.2', 'bow.R.2', 'hair_side.L.2', 'hair_side.L.3', 'hair_side.R.2', 'hair_side.R.3', 'skirt.B.2', 'skirt.BL.1', 'skirt.BL.2', 'skirt.BR.1', 'skirt.BR.2', 'skirt.F.2', 'skirt.FL.1', 'skirt.FL.2', 'skirt.FR.1', 'skirt.FR.2'] + sleeve.R.2 (shared, mirrored half-cycle); others static.",
+"notes": "M 2026-10-30 18:02: skeleton=rig/rest_skeleton.json; cycle 0.840s; in place (root.loc = bob/sway only). Game travel speed 0.794 m/s = 3.82 px/frame at 1x (67.88 px/m, R camera) for planted feet to hold still. Secondary chains spring-baked (motion/scripts/msim.py). t = source frame at 24 fps (may be fractional). | LOCK re-bake (pipe/bake_walk_lock.py): 10 simulated spring bones ['bun', 'bow.L.1', 'bow.R.1', 'hair_back.2', 'hair_back.3', 'hair_side.L.1', 'hair_side.R.1', 'skirt.F.1', 'skirt.B.1', 'sleeve.L.2']; driven ['bow.L.2', 'bow.R.2', 'hair_side.L.2', 'hair_side.L.3', 'hair_side.R.2', 'hair_side.R.3', 'skirt.B.2', 'skirt.BL.1', 'skirt.BL.2', 'skirt.BR.1', 'skirt.BR.2', 'skirt.F.2', 'skirt.FL.1', 'skirt.FL.2', 'skirt.FR.1', 'skirt.FR.2'] + sleeve.R.2 (shared, mirrored half-cycle); others static.",
 "travel_m_per_s": 0.7937,
 "cycle_s": 0.84,
 "seam_mm": 0.0,

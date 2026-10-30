@@ -111,7 +111,8 @@ def main(outd):
         c = Image.new('RGBA', ((box[2] - box[0]) * 2 + 4, box[3] - box[1]), BG); c.alpha_composite(a.crop(box), (0, 0)); c.alpha_composite(b.crop(box), (box[2] - box[0] + 4, 0)); sbs.append(c)
     write_gif(os.path.join(cmpd, 'r10_vs_lock_4x.gif'), sbs, ms, bg=BG[:3], scale=4)
     lab = np.load(os.path.join(outd, 'labels.npz'))
-    gold = [gold_diff(0, 'walk_SE_contact.png', outd, cmpd, lab), gold_diff(2, 'walk_SE_passing.png', outd, cmpd, lab)]
+    # Amendment 2: the hand-drawn gold frames are rejected; the gold diff only runs on request (COMPARE_GOLD=1)
+    gold = [gold_diff(0, 'walk_SE_contact.png', outd, cmpd, lab), gold_diff(2, 'walk_SE_passing.png', outd, cmpd, lab)] if os.environ.get('COMPARE_GOLD') else []
     json.dump({'r10_vs_lock': ['r10_vs_lock_strip1x.png', 'r10_vs_lock_4x.png', 'r10_vs_lock_4x.gif'], 'gold': gold}, open(os.path.join(cmpd, 'compare.json'), 'w'), indent=1)
     print('COMPARE', json.dumps(gold))
 

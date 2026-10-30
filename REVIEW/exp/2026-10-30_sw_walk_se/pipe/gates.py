@@ -81,6 +81,21 @@ def line_pops_flow(lines, Fs):
     return pops
 
 
+def shade_pops_flow(grids, Fs):
+    """fill px whose colour differs from what BOTH neighbour frames show at that surface point (moved by the rpos flow) while those
+    two agree: a 1-frame shading flip (lines/outline excluded); per frame"""
+    n = len(grids); out = []
+    for t in range(n):
+        g = grids[t]; fill = (g != '.') & (g != 'K'); nb = []
+        for u in ((t - 1) % n, (t + 1) % n):
+            w = np.full(g.shape, '', dtype='<U1'); src = np.argwhere(grids[u] != '.'); D = LC.flow(Fs[u], Fs[t])
+            if D is None: nb = None; break
+            dst = LC.warp_pts(grids[u] != '.', D); w[dst[:, 0], dst[:, 1]] = grids[u][src[:, 0], src[:, 1]]; nb.append(w)
+        if nb is None: out.append(None); continue
+        a, c = nb; out.append(int((fill & (a == c) & (a != '') & (a != 'K') & (a != g)).sum()))
+    return out
+
+
 def main(outd, jp, motion, gif):
     lab = np.load(os.path.join(outd, 'labels.npz')); info = json.load(open(jp)); n = len(info['frames']); stem = jp[:-5]
     LC.RPOS_BOX = info.get('rpos_box'); Fs = []
@@ -91,8 +106,8 @@ def main(outd, jp, motion, gif):
         gl = g.copy(); gl[ink] = 's'  # line art only
         m = LM.metrics(gl); res['line'].append({k: m[k] for k in ('zig', 'dbl', 'gap', 'clump', 'mono', 'irr', 'kink', 'intK', 'orphK', 'K')})
         K = g == 'K'; stray = K & ~line & ~il & ~ink
-        lb, nl = nd.label(il & K, np.ones((3, 3))); short = [int((lb == k).sum()) for k in range(1, nl + 1) if (lb == k).sum() < LC.MINLEN]
-        kinds = lab[f'kind{i:02d}']; per = {k: int(((kinds == k) & K).sum()) for k in sorted(set(LC.PAIRS.values()))}
+        lb, nl = nd.label(il & (g != '.'), np.ones((3, 3))); short = [int((lb == k).sum()) for k in range(1, nl + 1) if (lb == k).sum() < LC.MINLEN]
+        kinds = lab[f'kind{i:02d}']; per = {k: int(((kinds == k) & (g != '.')).sum()) for k in sorted(set(LC.PAIRS.values())) + LC.FORM_KINDS}
         res['interior'].append({'stray_K': int(stray.sum()), 'short_pieces': short, 'px_by_overlap': per})
         used = sorted(set(g[g != '.'].tolist())); off = [c for c in used if c not in LC.LOCK14]
         cross = 0; cross_ex = {}
@@ -102,6 +117,7 @@ def main(outd, jp, motion, gif):
         res['palette'].append({'colours': len(used), 'used': ''.join(used), 'off_lock': off, 'cross_material_px': cross, 'cross': cross_ex})
         F = LC.load(stem, info['frames'][i]['i'], info['align']); Fs.append(F)
         res['limbs'].append(limb_audit(g, sub1, il, F))
+    res['shade_pops_flow'] = shade_pops_flow(grids, Fs)
     res['line_pops_flow'] = line_pops_flow([lab[f'line{i:02d}'] for i in range(n)], Fs)
     res['line_pops'] = line_pops([lab[f'line{i:02d}'] for i in range(n)], [lab[f'sub1{i:02d}'] for i in range(n)])
     # posture (M's gate on the re-baked motion)
@@ -137,7 +153,7 @@ def main(outd, jp, motion, gif):
                       'mono_mean': round(float(np.mean([x['mono'] for x in L])), 3), 'stray_K': sum(x['stray_K'] for x in res['interior']),
                       'colours_max': max(x['colours'] for x in res['palette']), 'cross_px': sum(x['cross_material_px'] for x in res['palette']),
                       'limb_fail_frames': [i for i, a in enumerate(lim) if any(v['flags'] for v in a.values())],
-                      'line_pops_total': int(sum(res['line_pops'])), 'line_pops_flow_total': int(sum(res['line_pops_flow']))}
+                      'line_pops_total': int(sum(res['line_pops'])), 'line_pops_flow_total': int(sum(res['line_pops_flow'])), 'shade_pops_flow_total': int(sum(x or 0 for x in res['shade_pops_flow']))}
     json.dump(res, open(os.path.join(outd, 'gates.json'), 'w'), indent=1, default=lambda o: o.tolist() if hasattr(o, 'tolist') else str(o))
     return res
 

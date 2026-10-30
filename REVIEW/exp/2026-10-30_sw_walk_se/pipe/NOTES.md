@@ -145,3 +145,80 @@ Remaining differences, largest first:
 5. **Bow** `e/E` (build) vs `E/R` (gold), and the gold's bigger upright bow.
 
 The candidate override pixels per frame are in `compare/gold_diff_f00.json` and `gold_diff_f02.json`. Items 1–2 must be fixed at the source first; after that the override layer is realistic.
+
+## Round 3: lines + shading (Amendment 2: 3D-first; the gold frames are rejected, and the gold comparison runs only with `COMPARE_GOLD=1`)
+The new code is `shade_lines.py`, called from `lock_chain.py` frame step C. The temporal steps are `flow`/`warp_field` and `temporal_shade_median`. `before_after.py` builds the boards. `build_walk_se.sh` is unchanged apart from the before/after call. Two builds give identical frames.
+
+**Shading** (everything from the 3D passes):
+- **Key light:** one key from the screen's upper left, `KEY` = (−.55, .62, −.56) in camera space.
+- **Bands:** N·L comes from the camera normals, smoothed inside each material (`NSIG`; dress 4 px, so cloth gets big flat shapes). Three bands with per-material thresholds (`TONES`):
+  - red cloth `R/E/e`, obi `o/O/Q`, skin `S/s`, hair `h/H`, socks `h/H`, boots `H/g`
+  - obi, boots and socks thresholds are set so the right/lower third of each cylinder is in shadow
+- **Highlights are rims:** `e` only within 2 px of the shape's upper/left edge, `Q` only on the obi's top row. There are no floating blobs.
+- **Clean shapes** (`clean_bands`): opening/closing per material removes 1-px spurs and notches (the material edge counts as the band, so shadows may touch it). Shapes smaller than `MINB` (dress 6, sleeve 5, hair 4, others 3) merge into their surroundings.
+- **Label cleanup before shading:** material crumbs under 3 cells (bow/hair flecks, scattered hem px) take their neighbour's material (`mat_specks`). The obi gets straight top/bottom edges (`smooth_band_edges`: per-column median).
+- **Cast/occlusion shadows** (`cast`, about 80–120 px per frame):
+  - 1 px under the bangs, following the fringe
+  - the neck under the chin
+  - a 1-px jaw rim on the far side
+  - 2 px on the thighs under the hem
+  - 1 px on the dress under the obi
+  - the farther leg where the legs overlap (by depth)
+  - The face stays flat `s` apart from these (lock §1 plus the palette rules of 02).
+- **Hair:** `h/H` by N·L. One highlight band of 1–2 rows of `L` is a ring at a fixed rest height on the head, so it stays on the model and is stable. Clump seams in `h` sit every 30° of azimuth around the head below the ring, and the ring breaks at each seam.
+- **Temporal:**
+  - Band hysteresis against the previous frame's bands, moved by the surface-point flow.
+  - N·L averaged along the flow with both neighbours (2:1:1).
+  - A band median.
+  - A final temporal median on fill colours: a pixel that differs from what both neighbours show at that surface point, while they agree, takes their colour if it belongs to its own material. 13–35 px per frame.
+
+**Lines:**
+- The outer outline is unchanged: K, vector line, gates.
+- **Interior form lines** from 3D part/depth edges:
+  - arm/hand over body (depth step only 4 mm now, so the sleeve separates from the dress)
+  - hand|sleeve, leg|leg, bangs|face, bow|hair, chin|neck
+  - new: **collar V** (neck skin | dress, on the dress) and the **obi top edge** (the bottom edge is its cast shadow)
+- **Surface-attached form lines** from the rest position: **skirt folds** at the 8 skirt-panel seams of the rig (22.5° + 45°·k around the pelvis), and the **hair clump** seams.
+- **Line colour by context** (`selout`):
+  - an interior line on a lit cell takes the darker tone of the material it sits in (R on red, h on hair/socks, o on obi, S on skin)
+  - on a shadow cell it is K
+  - the outer silhouette is always K
+  - The fold and clump lines are always the dark tone. All of them are 1 px, pixel-perfect and ≥ 4 px (folds ≥ 5).
+- The interior-K gate counts only K pixels. The listed overlaps are extended by the owner's round-3 list (collar, obi edge, skirt fold, hair clump). Short-piece checks now cover the whole line, whatever its colour.
+
+**Opus critique** (one call; `out/walk_SE/crit/opus_lines_shading.txt`; boards in `crit/`), run on the first round-3 pass: **SCORE 4/10**. Sub-scores: outer line 6, interior 3, shadows 4, light 4, cast 4, hair 3, cloth 4, temporal 3. What I changed in response:
+
+| Opus finding | Change |
+|---|---|
+| 1-px hair arc reads as a scratch | 2-row L band, broken at clump seams |
+| noisy bangs strokes | clumps every 30° instead of 20° |
+| stray red/hair px | `mat_specks` |
+| floating `e` blob on the sleeve | highlights are rims only |
+| no sleeve/body separation | arm\|body depth threshold 2 cm → 4 mm, sel-out colour |
+| flat ragged obi | `o` on its lower/right part, straight edges, `Q` only as a top sheen row, R cast shadow below |
+| flat face | far jaw rim, 1-px fringe shadow, neck shadow |
+| ragged hem | specks, 2-px thigh cast shadow, shadow between the legs |
+| boots seam | cylinder threshold, right side `H` |
+
+Not changed:
+- The sock-top band width (it comes from the 3D model; a model change).
+- Obi width varying between frames (3D).
+- "Doubled" toe corners: the line gates already show 0 L-corners and 0 clumps there.
+
+**Numbers** (`out/walk_SE/gates.json`; all gates PASS):
+
+| | round 2 (before) | round 3 (after) |
+|---|---|---|
+| zigzags max / L-corners / gaps / clumps | ≤ 1 / ≤ 1 / 0 / 0 | ≤ 1 / 0 / 0 / 0 |
+| colours per frame | 12 | 13–14 (`e` and `Q` now used) |
+| cross-material px / stray interior K / limb fails | 0 / 0 / 0 | 0 / 0 / 0 |
+| outline pops (part / flow) | 81 / 26 | 81 / 27 |
+| 1-frame shading flips (flow) | 103 | 143 |
+| pxeval shade_swap | .009 | .041 |
+| pxeval boil | .028 | .025 |
+
+The shading flips went up because there are three tones, cast shadows and hair marks instead of two flat tones. They were 317 before the temporal median. I have not run a second critique after the fixes; the brief allowed only one.
+
+Interior line px in f00, by kind: arm|body 40, bangs|face 39, bow|hair 30, hair clump 20, collar 12, skirt fold 10, chin|neck 9, obi edge 8, hand|sleeve 7.
+
+Deliverables (`out/walk_SE/compare/`): `before_after_strip1x.png`, `before_after_4x.png`, `before_after_4x.gif`. The before is round 2 (`out/before_r3/`).

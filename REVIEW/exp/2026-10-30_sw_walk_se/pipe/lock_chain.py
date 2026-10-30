@@ -28,6 +28,8 @@ ROOT = '/Users/waylonhuang/Documents/other/pixelart'
 sys.path.insert(0, ROOT + '/docs/team_review/2026-10-30/line_art')
 sys.path.insert(0, ROOT + '/docs/team_review/2026-10-30/face_palette/scripts')
 import proto_vecline as PV  # noqa: E402  (clean_seg, bres, pixel_perfect, smooth_closed)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import shade_lines as SL  # noqa: E402  (round 3: shading + form lines)
 import facesys as FS  # noqa: E402  (eye templates T, eye(), mirror/narrow)
 from lamet import run_defects as LM_run_defects, doubles as LM_doubles  # noqa: E402  (defect counts used by the cleanup)
 
@@ -36,6 +38,7 @@ _E = lambda k, d: float(os.environ.get('LOCK_' + k, d))  # tuning overrides (def
 TFLOW = _E('TFLOW', 1) > 0; TNEXT = _E('TNEXT', 1) > 0  # temporal hysteresis follows surface points (rpos flow) instead of whole-part shifts
 SHRINK, SIG, EPS, PIN, SNAP, HOLE_MIN = int(_E('SHRINK', 4)), _E('SIG', 0.9), _E('EPS', 0.8), _E('PIN', 100.0), _E('SNAP', 1.0), 6
 DSTEP, MINLEN, HYS = 0.02, 4, 0.06
+DSTEP_ARM = 0.004  # arm/hand over the body: the sleeve hugs the dress, a small depth step is enough for the separating line
 PAL = {k: tuple(int(v['hex'][i:i + 2], 16) for i in (1, 3, 5)) for k, v in json.load(open(ROOT + '/swordswoman/v2/pixelize/palette.json'))['colors'].items()}
 LOCK14 = list('KhHgLsSeERQOoW')
 PAL = {k: PAL[k] for k in LOCK14}
@@ -52,12 +55,13 @@ NSIG = {'dress': 3.0, 'sleeve': 3.0, 'skin': 2.0, 'socks': 1.5, 'boots': 1.5, 'h
 HAIR_L = 0.88   # hair highlight band (top row of the cells above it becomes L)
 SUN = np.array([-0.32, 0.67, -0.67]); SUN /= np.linalg.norm(SUN)  # render_motion.py sun (-right*.6 + up*.9 + toward-cam*.9) in camera space
 # allowed colours per material (palette gate: no material uses another material's colours); K = line everywhere
-ALLOW = {'hair': 'hHLK', 'socks': 'hHK', 'boots': 'HgK', 'skin': 'sSK', 'dress': 'REK', 'sleeve': 'REK', 'bow': 'eEK', 'obi': 'oOK'}
+ALLOW = {'hair': 'hHLK', 'socks': 'hHK', 'boots': 'HgK', 'skin': 'sSK', 'dress': 'eREK', 'sleeve': 'eREK', 'bow': 'eEK', 'obi': 'QoOK'}
 FACE_INK = 'KgWh'
 PAIRS = {('leg.L', 'leg.R'): 'leg|leg', ('arm.L', 'torso'): 'arm|body', ('arm.R', 'torso'): 'arm|body', ('hand.L', 'torso'): 'arm|body',
          ('hand.R', 'torso'): 'arm|body', ('hand.L', 'arm.L'): 'hand|sleeve', ('hand.R', 'arm.R'): 'hand|sleeve', ('face', 'hair'): 'bangs|face',
-         ('bow', 'hair'): 'bow|hair', ('face', 'neck'): 'chin|neck'}
-SAMEHULL = {'bangs|face', 'bow|hair'}  # same surface, colour boundary: no depth step required
+         ('bow', 'hair'): 'bow|hair', ('face', 'neck'): 'chin|neck', ('neck', 'torso'): 'collar'}
+FORM_KINDS = ['obi edge', 'hair clump', 'skirt fold']  # round 3 surface/material form lines (sel-out tones, never K)
+SAMEHULL = {'bangs|face', 'bow|hair', 'collar'}  # same surface, colour boundary: no depth step required
 EXMAP = {'neutral': 'open', 'smile': 'open', 'joyful': 'happy', 'joy': 'happy', 'determined': 'determined', 'focused': 'determined',
          'effort': 'determined', 'surprised': 'surprised', 'pained': 'hurt', 'wince': 'hurt', 'squint': 'half'}  # face_palette/scripts/proto.py
 CROSS = nd.generate_binary_structure(2, 1)
@@ -105,7 +109,7 @@ def load(stem, i, al_):
     if os.path.exists(st + 'rpos.png') and RPOS_BOX is not None:  # rest position per cell (mean over the cell's opaque 8x px)
         lo, hi = np.array(RPOS_BOX[0]), np.array(RPOS_BOX[1]); rp = crop(rd(st + 'rpos.png'), dx, dy)[..., :3] * (hi - lo) + lo
         w = blocks(alpha.astype(float)).sum(-1); F['rp1'] = np.stack([(blocks(rp[..., k]) * blocks(alpha.astype(float))).sum(-1) for k in range(3)], -1) / np.maximum(w, 1)[..., None]
-        F['rp_ok'] = w >= P * P * 0.5
+        F['rp_ok'] = w >= P * P * 0.5; F['rp8'] = rp.astype(np.float32)
     return F
 
 
@@ -126,6 +130,13 @@ def flow(Fa, Fb):
     if not have.any(): return None
     idx = nd.distance_transform_edt(~have, return_distances=False, return_indices=True)
     return D[idx[0], idx[1]]
+
+
+def warp_field(v, valid, D):
+    """scalar per-cell field moved by the per-cell motion D (NaN where nothing lands)"""
+    if D is None: return None
+    out = np.full(v.shape, np.nan); src = np.argwhere(valid); dst = warp_pts(valid, D)
+    out[dst[:, 0], dst[:, 1]] = v[src[:, 0], src[:, 1]]; return out
 
 
 def warp_pts(mask, D):
@@ -305,10 +316,12 @@ def interior(F, sub1, inside, outline):
             for y, x in zip(*np.nonzero(nb)):
                 if nm == 'bangs|face':
                     far = xn == 'hair'  # bangs edge drawn on the hair side (keeps the face width for the eyes)
+                elif nm == 'collar':
+                    far = xn == 'torso'  # the collar V edge is the dress's edge
                 else:
                     ys, xs = slice(max(y - 1, 0), y + 2), slice(max(x - 1, 0), x + 2)
                     dx_ = dep1[y, x, SI[xn]]; dy_ = np.nanmin(np.where(Y[ys, xs], dep1[ys, xs, SI[yn]], np.inf))
-                    far = np.isfinite(dx_) and np.isfinite(dy_) and dx_ > dy_ + (0.0 if nm in SAMEHULL else DSTEP)
+                    far = np.isfinite(dx_) and np.isfinite(dy_) and dx_ > dy_ + (0.0 if nm in SAMEHULL else DSTEP if nm == 'leg|leg' else DSTEP_ARM)
                 if far: line[y, x] = True; kind[y, x] = nm
     line = thin_pp(line)
     lab, n = nd.label(line, np.ones((3, 3)))
@@ -398,7 +411,7 @@ def cleanup(g, outline, iline, ink, fillcol):
                 if z1 > z0: g[y, x], iline[y, x], outline[y, x] = save
                 else: z0 = z1; changed = True
         if not changed: break
-    lab, n = nd.label(iline & (g == 'K'), np.ones((3, 3)))
+    lab, n = nd.label(iline & (g != '.'), np.ones((3, 3)))
     bgn = nd.binary_dilation(g == '.', CROSS)
     for k in range(1, n + 1):
         m = lab == k
@@ -565,6 +578,59 @@ def limb_repair(sub1, mat1, inside, line):
 
 
 # ------------------------------------------------------------------ driver
+def mat_specks(mat1, sub1, inside, line, n=3):
+    """non-limb material crumbs (< n cells, e.g. bow/hair flecks, scattered hem px) take their most common neighbour's material+label"""
+    fill = inside & ~line; limb = np.isin(sub1, [SI[k] for k in LIMB_SUBS])
+    for k in range(len(MN)):
+        lab, cnt = nd.label(fill & (mat1 == k) & ~limb, np.ones((3, 3)))
+        for c in range(1, cnt + 1):
+            m = lab == c
+            if m.sum() >= n: continue
+            ring = nd.binary_dilation(m, CROSS) & fill & ~m & (mat1 != k)
+            if not ring.any(): continue
+            vals, cn = np.unique(mat1[ring], return_counts=True); t = int(vals[cn.argmax()]); q = ring & (mat1 == t)
+            sv, sc = np.unique(sub1[q], return_counts=True); mat1[m] = t; sub1[m] = int(sv[sc.argmax()])
+    return mat1, sub1
+
+
+def smooth_band_edges(mat1, sub1, inside, line, k):
+    """straight top/bottom edges for a horizontal band material (the obi): per column the band's top and bottom rows are median-
+    filtered over 3 columns; cells leaving the band take the material above/below"""
+    M = inside & (mat1 == k); cols = np.nonzero(M.any(0))[0]
+    if len(cols) < 3: return mat1
+    top = np.array([np.nonzero(M[:, x])[0].min() for x in cols]); bot = np.array([np.nonzero(M[:, x])[0].max() for x in cols])
+    t2 = nd.median_filter(top, 3, mode='nearest'); b2 = nd.median_filter(bot, 3, mode='nearest')
+    for x, a0, a1, c0, c1 in zip(cols, top, bot, t2, b2):
+        for y in range(min(a0, c0), max(a1, c1) + 1):
+            if not (inside[y, x] and not line[y, x]) or sub1[y, x] != SI['torso']: continue
+            want = c0 <= y <= c1
+            if want and mat1[y, x] != k and mat1[y, x] == MI['dress']: mat1[y, x] = k
+            elif not want and mat1[y, x] == k: mat1[y, x] = MI['dress']
+    return mat1
+
+
+def temporal_shade_median(R, Fs):
+    """F2. temporal median on the final shading: a FILL px (not outline, interior line or face ink) whose colour differs from what both
+    neighbour frames show at the same surface point (moved by the rpos flow), while those two agree, takes their colour if it is one of
+    its own material's colours. Removes 1-frame shadow/highlight pops; lines are untouched. Neighbours are read before any change."""
+    n = len(R); G0 = [r['g'].copy() for r in R]
+    for t in range(n):
+        r = R[t]; g = r['g']; nb = []
+        for u in ((t - 1) % n, (t + 1) % n):
+            D = flow(Fs[u], Fs[t])
+            if D is None: nb = None; break
+            w = np.full(g.shape, '', dtype='<U1'); src = np.argwhere(G0[u] != '.'); dst = warp_pts(G0[u] != '.', D)
+            w[dst[:, 0], dst[:, 1]] = G0[u][src[:, 0], src[:, 1]]; nb.append(w)
+        if nb is None: continue
+        a, c = nb; fill = (g != '.') & (g != 'K') & ~r['line'] & ~r['iline'] & ~r['ink']
+        fix = fill & (a == c) & (a != '') & (a != 'K') & (a != g)
+        ok = np.zeros_like(fix)
+        for y, x in zip(*np.nonzero(fix)):
+            m = r['mat1'][y, x]
+            if m >= 0 and a[y, x] in ALLOW[MN[m]] and not (r['sub1'][y, x] == SI['face'] and a[y, x] != 's' and g[y, x] == 's'): ok[y, x] = True
+        g[ok] = a[ok]; r['tfix'] = int(ok.sum())
+
+
 def frame(F, fr, cal, st):
     line, inside, snap = trace(nd.binary_erosion(F['alpha'], iterations=SHRINK), st.get('prev_line_al'))
     mat1 = fill_nearest(vote(F['mid'], F['alpha'], len(MN)), inside)
@@ -572,16 +638,41 @@ def frame(F, fr, cal, st):
     sub1 = np.where((sub1 >= 0) & inside, sub1, -1); sub1 = fill_nearest(sub1, inside)
     sub1, mat1 = limb_specks(sub1, mat1, inside, line)
     sub1, mat1 = limb_repair(sub1, mat1, inside, line)
-    ndl = ndl_cells(F, mat1)
-    g, band = colour(mat1, sub1, ndl, inside, st.get('prev_band_al'))
+    mat1, sub1 = mat_specks(mat1, sub1, inside, line)
+    mat1 = smooth_band_edges(mat1, sub1, inside, line, MI['obi'])
+    ndl = SL.tones(F, mat1, MN, blocks, P)                                            # C. shading (round 3)
+    nb = [a for a in st.get('ndl_nb', []) if a is not None]
+    if nb:  # temporal smoothing of N.L along the surface-point flow: (2 x this frame + neighbours) / (2 + k)
+        acc = 2 * ndl; w = np.full(ndl.shape, 2.0)
+        for a in nb: ok = np.isfinite(a); acc[ok] += a[ok]; w[ok] += 1
+        ndl = acc / w
+    band = SL.clean_bands(SL.bands(ndl, mat1, inside, MN, st.get('prev_band_al')), mat1, inside, MN)
+    bn = st.get('band_nb', [])
+    if len(bn) == 2 and all(a is not None for a in bn):  # temporal median: a 1-frame band flip against agreeing neighbours goes
+        a, c = bn; flip = inside & (a >= 0) & (a == c) & (band >= 0) & (band != a)
+        band[flip] = a[flip]; band = SL.clean_bands(band, mat1, inside, MN)
+    band[inside & (sub1 == SI['face']) & (mat1 == MI['skin'])] = 1                   # face flat s, only cast shadow on it
+    band0 = band.copy()
+    cmask = SL.cast(band, mat1, sub1, inside, line, F, MI, SI, blocks)
+    g = SL.paint(band, mat1, sub1, inside, MN, MI, SI)
+    mk = SL.marks(F, mat1, sub1, inside, line, ndl, band, MI, SI, blocks, thin_pp)
+    g[mk['ring'] & (g == 'H')] = 'L'
+    g[mk['clump'] & (g == 'H')] = 'h'; g[mk['fold'] & np.isin(g, ['E', 'e'])] = 'R'      # surface form lines (sel-out tones)
     fillcol = g.copy()
-    iline, kind = interior(F, sub1, inside, line)
+    iline, kind = interior(F, sub1, inside, line)                                     # D. interior lines (part/depth edges)
+    obi = inside & (mat1 == MI['obi'])                                                # obi top edge (bottom edge = its cast shadow)
+    oe = inside & ~line & (mat1 == MI['dress']) & (sub1 == SI['torso']) & np.roll(obi, -1, 0) & ~iline
+    oe = thin_pp(oe); lab_, n_ = nd.label(oe, np.ones((3, 3)))
+    for k_ in range(1, n_ + 1):
+        if (lab_ == k_).sum() < MINLEN: oe[lab_ == k_] = False
+    iline |= oe; kind[oe] = 'obi edge'
     iline, kind = protect_limbs(iline, kind, sub1, inside, line)
-    g[iline] = 'K'
+    g = SL.selout(g, iline, band, mat1, MN)                                           # lit side: material's dark tone, shadow side: K
     g[line] = 'K'
+    for k_, m_ in (('hair clump', mk['clump']), ('skirt fold', mk['fold'])): kind[m_ & ~iline] = k_
     ink = np.zeros((N, N), bool)
     ex, vis = stamp_eyes(g, sub1, inside, line, F, fr, cal, None)
-    return dict(g=g, line=line, inside=inside, mat1=mat1, sub1=sub1, band=band, fillcol=fillcol, iline=iline, kind=kind, ink=ink, ex=ex, vis=vis, snap=snap)
+    return dict(g=g, line=line, inside=inside, mat1=mat1, sub1=sub1, band=band, fillcol=fillcol, iline=iline, kind=kind, ink=ink, ex=ex, vis=vis, snap=snap, cast=cmask, ndl=ndl, band0=band0)
 
 
 def run(jp, outd):
@@ -601,7 +692,15 @@ def run(jp, outd):
                 if D is not None and it > 0 and nx is not None and TNEXT:  # 2nd loop pass: the next frame's line (moved back) is a candidate too
                     Dn = flow(Fs[(i + 1) % n], Fs[i])
                     if Dn is not None: cand = np.concatenate([cand, warp_pts(nx['line'], Dn)], 0)
+                if D is not None:  # previous bands moved by the surface-point flow (shadow shapes follow the body)
+                    band = np.full((N, N), -1, np.int8); w_ = warp_pts(pr['band'] >= 0, D); src = np.argwhere(pr['band'] >= 0)
+                    band[w_[:, 0], w_[:, 1]] = pr['band'][src[:, 0], src[:, 1]]
                 st = {'prev_line_al': cand, 'prev_band_al': band}
+                if it > 0 and TFLOW:  # neighbours' N.L moved onto this frame (previous frame of this pass, next frame of the last pass)
+                    Dj = {j: flow(Fs[j], Fs[i]) for j in ((i - 1) % n, (i + 1) % n)}
+                    st['ndl_nb'] = [warp_field(R[j]['ndl'], R[j]['inside'], Dj[j]) for j in Dj if R[j] is not None]
+                    bw = [warp_field(R[j]['band0'].astype(float), R[j]['band0'] >= 0, Dj[j]) for j in Dj]
+                    st['band_nb'] = [None if b_ is None else np.where(np.isfinite(b_), b_, -1).astype(np.int8) for b_ in bw]
             R[i] = frame(Fs[i], frs[i], cal, st)
     # E. far-eye 2-frame hysteresis (cyclic): a visibility change must persist 2 frames, else the previous state is kept
     far = [e['key'] for e in cal['eyes'] if e['kind'] == 'far']
@@ -614,7 +713,7 @@ def run(jp, outd):
             R[i]['vis'][k]['raw'] = raw[i]; R[i]['vis'][k]['show'] = out[i]
             if out[i] and not R[i]['vis'][k]['ok']: R[i]['vis'][k]['show'] = False
     os.makedirs(outd, exist_ok=True); rec = []
-    for i, r in enumerate(R):
+    for i, r in enumerate(R):  # (finish every frame first: eyes, limbs, cleanup; the temporal shade median below needs all of them)
         apply_eyes(r['g'], r['ink'], r['vis'], r['inside'], r['line'])
         r['g'] = limb_tips(r['g'], r['sub1'], r['mat1'], r['inside'], r['line'], r['iline'], r['ink'])
         r['g'] = cleanup(r['g'], r['line'], r['iline'], r['ink'], r['fillcol'])
@@ -622,13 +721,16 @@ def run(jp, outd):
         r['g'] = limb_tips(r['g'], r['sub1'], r['mat1'], r['inside'], r['line'], r['iline'], r['ink'])  # the cleanup may re-expose a 1 px limb edge
         r['g'] = cleanup(r['g'], r['line'], r['iline'], r['ink'], r['fillcol'])
         r['g'] = polish(r['g'], r['line'], r['iline'], r['ink'], r['mat1'], r['sub1'])
+        rec.append(None)
+    temporal_shade_median(R, Fs)
+    for i, r in enumerate(R):
         g = r['g']; open(os.path.join(outd, f'f{i:02d}.txt'), 'w').write('\n'.join(''.join(row) for row in g) + '\n')
         a = np.zeros((N, N, 4), np.uint8)
         for k, c in PAL.items(): a[g == k, :3] = c
         a[g != '.', 3] = 255; Image.fromarray(a).save(os.path.join(outd, f'f{i:02d}.png'))
-        rec.append({'f': i, 'expr': r['ex'], 'snapped_vertices': r['snap'][0], 'vertices': r['snap'][1],
+        rec[i] = ({'f': i, 'expr': r['ex'], 'snapped_vertices': r['snap'][0], 'vertices': r['snap'][1],
                     'eyes': {k: {kk: v[kk] for kk in ('show', 'frac', 'occluded', 'X0', 'Y0') if kk in v} | ({'raw': v['raw']} if 'raw' in v else {}) for k, v in r['vis'].items()},
-                    'interior_px': {nm: int((r['kind'] == nm).sum()) for nm in sorted(set(PAIRS.values()))}})
+                    'interior_px': {nm: int((r['kind'] == nm).sum()) for nm in sorted(set(PAIRS.values())) + FORM_KINDS}, 'cast_px': int(r['cast'].sum()), 'temporal_fixed_px': r.get('tfix', 0)})
     np.savez_compressed(os.path.join(outd, 'labels.npz'), **{f'{k}{i:02d}': R[i][k] for i in range(n) for k in ('mat1', 'sub1', 'line', 'iline', 'ink', 'inside')},
                         **{f'kind{i:02d}': R[i]['kind'].astype(str) for i in range(n)})
     json.dump({'frames': rec, 'ms': [f['ms'] for f in frs], 'keys': [f['key'] for f in frs]}, open(os.path.join(outd, 'chain.json'), 'w'), indent=1)
