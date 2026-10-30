@@ -1,0 +1,33 @@
+I looked at all three sheets.
+
+**1. Ranking (appeal + shippability)**
+
+1. **Hana (schoolgirl).** Best overall. The shapes read clearly, the sailor collar works, the colours are clean and the face reads.
+2. **Rio (mechanic).** Strong colours and a clear headband. But the body looks like a potato sack, and the gloves stick out to the sides.
+3. **Mika (shorthair, chibi).** Cute and simple. It's the chibi preset, so it can't sit alongside the 64px cast.
+4. **Nova (astronaut).** Easy to read, but the E view is a faceless white blob.
+5. **Kai (runner).** Nice colours, but the legs are too thin and the walk looks stilted.
+6. **Zip (courier).** The pink hair and green cap merge into one confusing shape.
+7. **Marin (diver).** The teal stripes break into fragments and the goggles are noise.
+8. **Fern (ranger).** The hat swallows the face, and the slim body falls apart (see defect 1).
+
+**2. Top 5 defects (most severe first)**
+
+1. **Limbs break apart at slim/thin sizes.** In the ranger sheet, legs split into floating chunks (S f05–f07) and arms become 1px sticks that come loose (E f03–f04).
+   *Fix:* Make limbs at least 3px thick at 64px, by setting the SDF radius floor in pixel units. Blend the joints together, and add a gate that rejects frames where a limb is disconnected.
+2. **The bodies don't read as feminine.** Torsos are straight tubes or barrels, with no waist and no hips. Arms hang in an A-pose away from the body, and Rio's gloves point outward.
+   *Fix:* Pinch the waist, make the hips wider than the waist, and narrow the shoulders. Keep the upper arms close to the body with a slight elbow bend and relaxed hands.
+3. **The walk has no weight.** The S view barely moves; the legs just scissor. SE arms swing like stiff pendulums. There's no bob and no hip sway.
+   *Fix:* Add a 1px body bob that dips at contact and rises at passing. Rotate hips and shoulders against each other, make the arm swing smaller and add an elbow bend, and lock the planted foot to the ground.
+4. **Shading is blotchy.** Rio's white bib, Fern's shorts and Marin's suit show random clusters and stray single pixels. The 3D lighting is leaking through as noise.
+   *Fix:* Limit each material to 2–3 flat light bands, and work out the bands per body part rather than per pixel. Remove pixel islands smaller than 3px after quantizing. Small parts get flat colour.
+5. **Faces and heads are unreliable.** Hats and hair hide the face (Fern, Zip, Nova in E view), eyes drift between frames in SE, and brows disappear.
+   *Fix:* Stamp eyes and brows as a 2D decal after pixelization, at a fixed anchor point per view. Raise hat brims, and cut bangs above the brow line.
+
+The outlines also vary: some are doubled and some interior lines are missing. Run one outline pass at the end of the chain.
+
+**3. Viability**
+
+Yes, as a base-generator, but not as final art. The SE view and the colour palettes already look like shippable GBA/DS work. This method reliably gets you about 70% of the way: proportions, view consistency and in-betweens. It will never reliably produce faces, hands, feet or a clean silhouette on thin limbs.
+
+Budget hand polish of faces, hands and feet on every frame. That's 24 frames per character (W can be a mirror of E), roughly 1–2 hours each. Fix defects 1–4 in code first, or the polish cost doubles. Drop the slim preset at 64px. Pick one size tier for the whole cast; mixing chibi 48px with 64px characters won't work.

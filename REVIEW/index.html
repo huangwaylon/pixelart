@@ -150,6 +150,18 @@ project: <button data-k="project" data-v="all" class="on">all</button><button da
 </div>
 <p><a href="../charlab/lab/NOTES.md">lab notes</a> · <a href="../charlab/lab/SPEC.md">spec format</a> · <a href="../charlab/designs/runner.json">design spec</a> · <a href="../charlab/lab/out/runner/summary.json">gates summary</a></p>
 </div>
+<div class="card" data-project="charlab" data-status="promising" id="2026-10-30_charlab_review_r1">
+<h3>charlab review r1: 8 characters x 36 cells. Sweet spot medium/compact/64 (chibi/48 alt); round 2 = Rio, Hana, Nova</h3>
+<div class="meta"><span class="badge" style="background:#58a6ff">promising</span><span class="badge proj">charlab</span>review · 2026-10-30 · <a href="#2026-10-30_charlab_review_r1">#</a></div>
+<dl><dt>question</dt><dd>Which character, body, size and tier combinations from the data-driven 3D -&gt; pixel walk lab are closest to shippable, where does the pipeline break, and what should round 2 fix?</dd><dt>method</dt><dd>Art, animation and game-director panel. Looked at every boards.png and at the 4x sheets and 1x strips of key cells. Ran pxeval seq on 10 SE walks, plus a connectivity scan over all 6,912 frames (scripts in charlab/review_r1/scripts). Opus second opinion on 3 boards.</dd><dt>result</dt><dd>Ranking: Rio, Hana, Nova (feasibility 4/5), then Zip, Mika, Kai, Fern, Marin. Colours and outline are clean everywhere. The slim body fragments in 18-23 % of frames at 64/96 px. The E profile loses the face (0 eyes in 43 % of Fern&#x27;s E frames, 34 % of Hana&#x27;s). 96 px boils. Detailed decals turn into specks below 64 px. Bodies read as tubes or barrels with A-pose arms, so posture does not look feminine.</dd><dt>verdict</dt><dd>Viable base generator, not yet beautiful. Iterate Rio and Hana at medium/compact/64 and Nova at medium/chibi/48. Lab fixes, in priority order: limb connectivity gate, compact_f feminine body, walk (narrow step, hip sway, elbow bend), eyes on skin in profile, shading hysteresis. Drop slim below 64 and drop 96.</dd><dt>next</dt><dd>Round 2: lab implements fixes 1-5 and 7-8 and design does fix 6 (REVIEW_r1.md). Rebuild Rio, Hana and Nova, then re-review against the exit criteria.</dd></dl>
+<div class="scores"><span>top3: <b>Rio / Hana / Nova</b></span><span>sweet spot: <b>medium/compact/64</b></span><span>slim 64/96 frag: <b>18 / 23 %</b></span><span>boil (best): <b>.006-.016</b></span></div>
+<div class="media">
+<figure class="wide"><img loading="lazy" src="../charlab/review_r1/top_picks.png"><figcaption>best cell per character, ranked; 1x and 4x, S | SE | E</figcaption></figure>
+<figure class="wide"><img loading="lazy" src="../charlab/review_r1/top3_walk_4x.gif"><figcaption>top 3 walks (Rio medium/compact/64, Hana medium/compact/64, Nova medium/chibi/48), S | SE | E, 4x, 120 ms</figcaption></figure>
+<figure class="wide"><img loading="lazy" src="../charlab/review_r1/defects.png"><figcaption>one frame per defect: detached limbs (slim), faceless E view, barrel torso and A-pose arms, ponytail spike, decal specks, mushroom hat</figcaption></figure>
+</div>
+<p><a href="../charlab/REVIEW_r1.md">review r1 (full)</a> · <a href="../charlab/review_r1/opus_critique.txt">Opus second opinion</a> · <a href="../charlab/review_r1/fragments.json">fragment scan</a> · <a href="../charlab/lab/NOTES.md">lab notes</a></p>
+</div>
 <div class="card" data-project="charlab" data-status="needs-review" id="2026-10-30_charlab_ranger">
 <h3>charlab: Fern (ranger), data-driven 3D -&gt; pixel walk, 36 tier/body/size variants</h3>
 <div class="meta"><span class="badge" style="background:#d29922">needs-review</span><span class="badge proj">charlab</span>experiment · 2026-10-30 · <a href="#2026-10-30_charlab_ranger">#</a></div>

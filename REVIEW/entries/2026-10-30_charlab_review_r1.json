@@ -1,0 +1,25 @@
+{
+ "id": "2026-10-30_charlab_review_r1",
+ "date": "2026-10-30",
+ "project": "charlab",
+ "kind": "review",
+ "status": "promising",
+ "title": "charlab review r1: 8 characters x 36 cells. Sweet spot medium/compact/64 (chibi/48 alt); round 2 = Rio, Hana, Nova",
+ "question": "Which character, body, size and tier combinations from the data-driven 3D -> pixel walk lab are closest to shippable, where does the pipeline break, and what should round 2 fix?",
+ "method": "Art, animation and game-director panel. Looked at every boards.png and at the 4x sheets and 1x strips of key cells. Ran pxeval seq on 10 SE walks, plus a connectivity scan over all 6,912 frames (scripts in charlab/review_r1/scripts). Opus second opinion on 3 boards.",
+ "result": "Ranking: Rio, Hana, Nova (feasibility 4/5), then Zip, Mika, Kai, Fern, Marin. Colours and outline are clean everywhere. The slim body fragments in 18-23 % of frames at 64/96 px. The E profile loses the face (0 eyes in 43 % of Fern's E frames, 34 % of Hana's). 96 px boils. Detailed decals turn into specks below 64 px. Bodies read as tubes or barrels with A-pose arms, so posture does not look feminine.",
+ "verdict": "Viable base generator, not yet beautiful. Iterate Rio and Hana at medium/compact/64 and Nova at medium/chibi/48. Lab fixes, in priority order: limb connectivity gate, compact_f feminine body, walk (narrow step, hip sway, elbow bend), eyes on skin in profile, shading hysteresis. Drop slim below 64 and drop 96.",
+ "scores": {"top3": "Rio / Hana / Nova", "sweet spot": "medium/compact/64", "slim 64/96 frag": "18 / 23 %", "boil (best)": ".006-.016"},
+ "media": [
+  {"src": "../charlab/review_r1/top_picks.png", "caption": "best cell per character, ranked; 1x and 4x, S | SE | E", "wide": true},
+  {"src": "../charlab/review_r1/top3_walk_4x.gif", "caption": "top 3 walks (Rio medium/compact/64, Hana medium/compact/64, Nova medium/chibi/48), S | SE | E, 4x, 120 ms", "wide": true},
+  {"src": "../charlab/review_r1/defects.png", "caption": "one frame per defect: detached limbs (slim), faceless E view, barrel torso and A-pose arms, ponytail spike, decal specks, mushroom hat", "wide": true}
+ ],
+ "links": [
+  {"href": "../charlab/REVIEW_r1.md", "label": "review r1 (full)"},
+  {"href": "../charlab/review_r1/opus_critique.txt", "label": "Opus second opinion"},
+  {"href": "../charlab/review_r1/fragments.json", "label": "fragment scan"},
+  {"href": "../charlab/lab/NOTES.md", "label": "lab notes"}
+ ],
+ "next": "Round 2: lab implements fixes 1-5 and 7-8 and design does fix 6 (REVIEW_r1.md). Rebuild Rio, Hana and Nova, then re-review against the exit criteria."
+}

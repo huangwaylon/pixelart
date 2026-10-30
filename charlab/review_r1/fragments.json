@@ -1,0 +1,40 @@
+{
+ "body_size_pct": {
+  "chibi/32": 0.0,
+  "chibi/48": 1.7,
+  "chibi/64": 3.1,
+  "chibi/96": 4.5,
+  "compact/32": 0.0,
+  "compact/48": 2.4,
+  "compact/64": 8.0,
+  "compact/96": 2.3,
+  "slim/32": 0.0,
+  "slim/48": 1.0,
+  "slim/64": 18.4,
+  "slim/96": 22.6
+ },
+ "tier_size_pct": {
+  "detailed/32": 0.0,
+  "detailed/48": 1.7,
+  "detailed/64": 11.3,
+  "detailed/96": 9.7,
+  "medium/32": 0.0,
+  "medium/48": 1.9,
+  "medium/64": 9.4,
+  "medium/96": 9.9,
+  "simple/32": 0.0,
+  "simple/48": 1.6,
+  "simple/64": 8.9,
+  "simple/96": 9.7
+ },
+ "char_pct": {
+  "astronaut": 1.4,
+  "courier": 3.2,
+  "diver": 6.4,
+  "mechanic": 3.2,
+  "ranger": 4.4,
+  "runner": 8.2,
+  "schoolgirl": 13.4,
+  "shorthair": 2.4
+ }
+}
