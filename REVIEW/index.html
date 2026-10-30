@@ -24,7 +24,7 @@ a{color:#79c0ff}
 .pinned{border-color:#3fb950}
 </style>
 <header><h1>pixelart review hub: every attempt and test</h1><div class="filters">
-project: <button data-k="project" data-v="all" class="on">all</button><button data-k="project" data-v="snowpeak" class="">snowpeak</button><button data-k="project" data-v="swordswoman" class="">swordswoman</button>
+project: <button data-k="project" data-v="all" class="on">all</button><button data-k="project" data-v="charlab" class="">charlab</button><button data-k="project" data-v="snowpeak" class="">snowpeak</button><button data-k="project" data-v="swordswoman" class="">swordswoman</button>
  &nbsp; status: <button data-k="status" data-v="all" class="on">all</button><button data-k="status" data-v="winner" class="">winner</button><button data-k="status" data-v="approved" class="">approved</button><button data-k="status" data-v="promising" class="">promising</button><button data-k="status" data-v="needs-review" class="">needs-review</button><button data-k="status" data-v="inconclusive" class="">inconclusive</button><button data-k="status" data-v="rejected" class="">rejected</button>
 </div></header><main>
 <p>Newest first. Click any image to zoom (nearest-neighbour). Rebuild with <code>python3 REVIEW/build.py</code>. Team summary: <a href="../docs/team_review/2026-10-28/00_SUMMARY.md">docs/team_review/2026-10-28/00_SUMMARY.md</a>.</p>
@@ -107,6 +107,16 @@ project: <button data-k="project" data-v="all" class="on">all</button><button da
 <figure class="wide"><img loading="lazy" src="exp/2026-10-30_sw_walk_se/gold/v1/board_gold_walk_SE.png"><figcaption>v1 (superseded): style approved, poses revised in v2</figcaption></figure>
 </div>
 <p><a href="exp/2026-10-30_sw_walk_se/gold/NOTES.md">NOTES (v2)</a> · <a href="exp/2026-10-30_sw_walk_se/DESIGN_LOCK.md">design lock + Amendment 1</a> · <a href="exp/2026-10-30_sw_walk_se/gold/gates.json">gates.json</a> · <a href="exp/2026-10-30_sw_walk_se/gold/iou_vs_master.json">IoU vs master</a> · <a href="exp/2026-10-30_sw_walk_se/gold/critique_opus.txt">Opus critique (v2)</a> · <a href="exp/2026-10-30_sw_walk_se/gold/v1/board_gold_walk_SE.png">v1 board</a></p>
+</div>
+<div class="card" data-project="charlab" data-status="needs-review" id="2026-10-30_charlab_designs">
+<h3>Character lab: 8 simple female character designs, ranked for pixel feasibility</h3>
+<div class="meta"><span class="badge" style="background:#d29922">needs-review</span><span class="badge proj">charlab</span>experiment · 2026-10-30 · <a href="#2026-10-30_charlab_designs">#</a></div>
+<dl><dt>question</dt><dd>Owner: start over from character design with simpler characters. Which designs are most feasible as pixel-art sprites across body presets (chibi, compact, slim) and complexity tiers?</dd><dt>method</dt><dd>8 specs (astronaut, short-haired girl, schoolgirl, diver, mechanic, plus courier, ranger and runner) written in a shared primitive vocabulary (charlab/designs/VOCAB.md): body preset + build, hair style from a vocabulary of 6, eyes+brows-only face, 10-12 colour palette, pieces as cover shells or primitives with colour roles, simple/medium/detailed tier lists, and 0-2 secondary parts. One Gemini concept call per character (8 calls, front + 3/4 view). Small-size check: area-downscale of the concepts to 32/48/64 px.</dd><dt>result</dt><dd>8 JSON specs, with 3-6 pieces in the simple tier, 8-12 in detailed, and at most 2 secondary parts each (3 characters have none). The concepts came out clean and on-palette. At small size, the diver is a thin dark figure that loses its read, and the ranger&#x27;s olive/khaki blurs.</dd><dt>verdict</dt><dd>Ranking: 1 Mika (short hair), 2 Kai (runner), 3 Hana (schoolgirl), 4 Rio (mechanic), 5 Nova (astronaut), 6 Fern (ranger), 7 Zip (courier), 8 Marin (diver). Suggest building Mika at the simple tier first, then Kai (slim) and Nova (chibi) to compare presets.</dd><dt>next</dt><dd>Owner picks 2-3 designs. The lab builds Mika (simple tier, compact) end to end, then compares the chibi/compact/slim presets at 32-96 px.</dd></dl>
+<div class="media">
+<figure class="wide"><img loading="lazy" src="exp/2026-10-30_charlab_designs/board.png"><figcaption>8 concepts in ranking order (front + 3/4, Gemini)</figcaption></figure>
+<figure class="wide"><img loading="lazy" src="exp/2026-10-30_charlab_designs/smallsize_4x.png"><figcaption>rough small-size read: concepts downscaled to 32/48/64 px, shown at 4x (not real pixel art)</figcaption></figure>
+</div>
+<p><a href="../charlab/designs/DESIGNS.md">DESIGNS.md (ranking)</a> · <a href="../charlab/designs/VOCAB.md">VOCAB.md (part vocabulary)</a> · <a href="../charlab/designs/shorthair.json">example spec: shorthair.json</a></p>
 </div>
 <div class="card" data-project="swordswoman" data-status="needs-review" id="2026-10-28_sw_current_build">
 <h3>Swordswoman current build (20261030_66119a7)</h3>

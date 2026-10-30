@@ -1,0 +1,264 @@
+{
+ "id": "schoolgirl",
+ "name": "Hana",
+ "concept": "A schoolgirl in a navy sailor uniform with a red neckerchief and a chin-length bob: iconic, two-colour, one rigid skirt.",
+ "body": {
+  "recommended": "compact",
+  "allowed": [
+   "chibi",
+   "compact",
+   "slim"
+  ],
+  "build": {
+   "preset": "average",
+   "shoulder": 0.95,
+   "hip": 1.05,
+   "limb_radius": 0.95
+  },
+  "pose_rest": "A-pose 25 deg, weight even, feet hip-width; idle contrapposto handled by the animator, not the model",
+  "test_sprite_heights_px": {
+   "chibi": [
+    32,
+    48
+   ],
+   "compact": [
+    48,
+    64
+   ],
+   "slim": [
+    64,
+    96
+   ]
+  }
+ },
+ "hair": {
+  "style": "short_bob",
+  "length": 0.55,
+  "volume": 1.1,
+  "fringe": "straight",
+  "fringe_length": 0.5,
+  "colour": "hair",
+  "shade": "hair_shade",
+  "hi": "hair_hi",
+  "note": "bob ends at the chin as one closed mass; ends curve in. No loose side locks."
+ },
+ "face": {
+  "eyes": "oval_tall",
+  "eye_size": 0.13,
+  "eye_spacing": 0.3,
+  "brows": "soft_arch",
+  "brow_colour": "hair_shade",
+  "highlight": true
+ },
+ "palette": {
+  "outline": "#2b2235",
+  "skin": "#f6d3b8",
+  "skin_shade": "#dca88a",
+  "hair": "#7a4a35",
+  "hair_shade": "#55311f",
+  "hair_hi": "#9a6448",
+  "navy": "#2e3a66",
+  "navy_shade": "#1f2747",
+  "white": "#f4f4f0",
+  "white_shade": "#c9ccd6",
+  "accent": "#d8434e",
+  "loafer": "#6b4232"
+ },
+ "pieces": {
+  "blouse": {
+   "geom": "cover",
+   "segments": [
+    "chest",
+    "belly",
+    "upper_arm",
+    "forearm_top"
+   ],
+   "inflate": 0.03,
+   "colour": "white",
+   "shade": "white_shade",
+   "piece": "top",
+   "sleeve": "short",
+   "hem": "waist"
+  },
+  "sailor_collar": {
+   "geom": "box",
+   "attach": "chest",
+   "dims": [
+    0.85,
+    0.55,
+    0.05
+   ],
+   "offset": [
+    0,
+    0.1,
+    0.28
+   ],
+   "colour": "navy",
+   "shade": "navy_shade",
+   "piece": "collar",
+   "note": "square flap on the back + V in front, bent over shoulders; 1 white stripe in detailed"
+  },
+  "neckerchief": {
+   "geom": "ellipsoid",
+   "attach": "chest",
+   "dims": [
+    0.22,
+    0.1,
+    0.2
+   ],
+   "offset": [
+    0,
+    -0.36,
+    0.18
+   ],
+   "colour": "accent",
+   "shade": null,
+   "piece": "decal",
+   "note": "knot only; tails are a flat triangle in detailed"
+  },
+  "skirt": {
+   "geom": "cone",
+   "attach": "pelvis",
+   "dims": [
+    1.05,
+    0.95,
+    0.55
+   ],
+   "offset": [
+    0,
+    0,
+    -0.15
+   ],
+   "colour": "navy",
+   "shade": "navy_shade",
+   "piece": "skirt",
+   "note": "truncated cone, top r=hip, bottom r=1.4x hip; rigid, rotates with pelvis; pleats = vertical shade stripes in detailed",
+   "length": 0.45
+  },
+  "socks": {
+   "geom": "cover",
+   "segments": [
+    "shin"
+   ],
+   "inflate": 0.02,
+   "colour": "navy",
+   "shade": null,
+   "piece": "socks",
+   "length": 0.8
+  },
+  "loafers": {
+   "geom": "cover",
+   "segments": [
+    "foot"
+   ],
+   "inflate": 0.03,
+   "colour": "loafer",
+   "shade": null,
+   "piece": "shoes",
+   "shade_auto": true
+  },
+  "cuffs": {
+   "geom": "cover",
+   "segments": [
+    "forearm_top"
+   ],
+   "inflate": 0.04,
+   "colour": "navy",
+   "shade": null,
+   "piece": "band"
+  },
+  "collar_stripe": {
+   "geom": "box",
+   "attach": "chest",
+   "dims": [
+    0.8,
+    0.5,
+    0.01
+   ],
+   "offset": [
+    0,
+    0.1,
+    0.29
+   ],
+   "colour": "white",
+   "shade": null,
+   "piece": "decal",
+   "note": "inset 0.04H from collar edge"
+  },
+  "skirt_pleats": {
+   "geom": "stripe_pattern",
+   "attach": "skirt",
+   "count": 8,
+   "colour": "navy_shade",
+   "piece": "decal"
+  },
+  "kerchief_tails": {
+   "geom": "box",
+   "attach": "chest",
+   "dims": [
+    0.14,
+    0.02,
+    0.22
+   ],
+   "offset": [
+    0,
+    -0.38,
+    0.02
+   ],
+   "colour": "accent",
+   "shade": null,
+   "piece": "decal"
+  }
+ },
+ "tiers": {
+  "simple": [
+   "blouse",
+   "sailor_collar",
+   "neckerchief",
+   "skirt",
+   "socks",
+   "loafers"
+  ],
+  "medium": [
+   "blouse",
+   "sailor_collar",
+   "neckerchief",
+   "skirt",
+   "socks",
+   "loafers",
+   "cuffs",
+   "kerchief_tails"
+  ],
+  "detailed": [
+   "blouse",
+   "sailor_collar",
+   "neckerchief",
+   "skirt",
+   "socks",
+   "loafers",
+   "cuffs",
+   "kerchief_tails",
+   "collar_stripe",
+   "skirt_pleats"
+  ]
+ },
+ "secondary_motion": [
+  {
+   "part": "skirt",
+   "type": "rigid_flare",
+   "dof": "pelvis-follow + 0..6 deg hem lift on run",
+   "note": "no cloth sim, no panels"
+  },
+  {
+   "part": "hair_bob",
+   "type": "rigid_lag",
+   "dof": "1-frame lag, max 3 deg"
+  }
+ ],
+ "silhouette_notes": "Navy-white-navy stacking (collar, blouse, skirt, socks) gives a striped vertical read even at 32 px; the red knot is the focal point under the face. Skirt is a single trapezoid; bob is a single rounded helmet ending at the chin.",
+ "animation_notes": "Skirt is the only cloth and it is rigid; a 2-key hem lift on run contacts is enough. Avoid the swordswoman trap: no extra panels, no ribbons, no long hair.",
+ "risks": [
+  "The skirt trapezoid can hide thigh motion; keep skirt length <= 0.45 of thigh",
+  "Large white blouse areas need white_shade, not outline, for interior folds"
+ ]
+}

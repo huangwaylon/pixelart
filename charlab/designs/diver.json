@@ -1,0 +1,241 @@
+{
+ "id": "diver",
+ "name": "Marin",
+ "concept": "A scuba diver in a sleek wetsuit with a yellow tank and a mask on her forehead: a tall, clean body line with one bold prop on the back.",
+ "body": {
+  "recommended": "slim",
+  "allowed": [
+   "chibi",
+   "compact",
+   "slim"
+  ],
+  "build": {
+   "preset": "athletic",
+   "shoulder": 1.05,
+   "hip": 1.0,
+   "limb_radius": 0.9
+  },
+  "pose_rest": "A-pose 25 deg, weight even, feet hip-width; idle contrapposto handled by the animator, not the model",
+  "test_sprite_heights_px": {
+   "chibi": [
+    32,
+    48
+   ],
+   "compact": [
+    48,
+    64
+   ],
+   "slim": [
+    64,
+    96
+   ]
+  }
+ },
+ "hair": {
+  "style": "buns",
+  "bun_count": 1,
+  "bun_pos": "top_back",
+  "bun_radius": 0.22,
+  "length": 0.1,
+  "volume": 1.03,
+  "fringe": "none",
+  "colour": "hair",
+  "shade": "hair_shade",
+  "note": "slicked-back shell + one sphere bun; no fringe, forehead taken by the mask"
+ },
+ "face": {
+  "eyes": "oval_tall",
+  "eye_size": 0.11,
+  "eye_spacing": 0.3,
+  "brows": "short_flat",
+  "brow_colour": "hair_shade",
+  "highlight": false
+ },
+ "palette": {
+  "outline": "#2b2235",
+  "skin": "#c48a64",
+  "skin_shade": "#9a6347",
+  "hair": "#8a3b2e",
+  "hair_shade": "#5e2620",
+  "suit": "#2c3440",
+  "suit_shade": "#1c222b",
+  "teal": "#2bb3a8",
+  "tank": "#f5c242",
+  "tank_shade": "#c7962a",
+  "accent": "#e0475b",
+  "lens": "#9fe0f0"
+ },
+ "pieces": {
+  "wetsuit": {
+   "geom": "cover",
+   "segments": [
+    "chest",
+    "belly",
+    "pelvis",
+    "upper_arm",
+    "forearm",
+    "thigh",
+    "shin"
+   ],
+   "inflate": 0.015,
+   "colour": "suit",
+   "shade": "suit_shade",
+   "piece": "one_piece_suit",
+   "note": "skin-tight; hands, neck and face bare"
+  },
+  "side_panels": {
+   "geom": "cover",
+   "segments": [
+    "torso_side",
+    "thigh_side"
+   ],
+   "inflate": 0.017,
+   "colour": "teal",
+   "shade": null,
+   "piece": "band",
+   "note": "vertical stripe down each side; reads as a light edge on the dark suit"
+  },
+  "tank": {
+   "geom": "cylinder",
+   "attach": "chest",
+   "dims": [
+    0.32,
+    0.32,
+    1.05
+   ],
+   "offset": [
+    0,
+    0.3,
+    -0.05
+   ],
+   "colour": "tank",
+   "shade": "tank_shade",
+   "piece": "tank",
+   "cap": "hemisphere",
+   "valve": "small cylinder 0.10H dark on top"
+  },
+  "mask": {
+   "geom": "box",
+   "attach": "head",
+   "dims": [
+    0.8,
+    0.18,
+    0.28
+   ],
+   "offset": [
+    0,
+    -0.4,
+    0.32
+   ],
+   "colour": "accent",
+   "shade": null,
+   "piece": "goggles",
+   "lens": "lens",
+   "note": "rests on forehead above brows; strap is a thin band around the head"
+  },
+  "booties": {
+   "geom": "cover",
+   "segments": [
+    "foot",
+    "shin_low"
+   ],
+   "inflate": 0.03,
+   "colour": "suit_shade",
+   "shade": null,
+   "piece": "boots"
+  },
+  "weight_belt": {
+   "geom": "cover",
+   "segments": [
+    "waist"
+   ],
+   "inflate": 0.04,
+   "colour": "suit_shade",
+   "shade": null,
+   "piece": "belt",
+   "buckle": "tank"
+  },
+  "harness": {
+   "geom": "strap",
+   "from": "shoulder",
+   "to": "waist",
+   "width": 0.08,
+   "colour": "suit_shade",
+   "piece": "strap",
+   "mirror": true
+  },
+  "gloves": {
+   "geom": "cover",
+   "segments": [
+    "hand"
+   ],
+   "inflate": 0.02,
+   "colour": "suit_shade",
+   "shade": null,
+   "piece": "gloves"
+  },
+  "fins": {
+   "geom": "box",
+   "attach": "foot",
+   "dims": [
+    0.28,
+    0.7,
+    0.03
+   ],
+   "offset": [
+    0,
+    -0.35,
+    0.0
+   ],
+   "colour": "teal",
+   "shade": null,
+   "piece": "fins",
+   "note": "detailed only; switch walk to a flipper waddle or drop for land clips"
+  }
+ },
+ "tiers": {
+  "simple": [
+   "wetsuit",
+   "tank",
+   "mask",
+   "booties"
+  ],
+  "medium": [
+   "wetsuit",
+   "side_panels",
+   "tank",
+   "mask",
+   "booties",
+   "weight_belt"
+  ],
+  "detailed": [
+   "wetsuit",
+   "side_panels",
+   "tank",
+   "mask",
+   "booties",
+   "weight_belt",
+   "harness",
+   "gloves",
+   "fins"
+  ]
+ },
+ "secondary_motion": [
+  {
+   "part": "bun",
+   "type": "none",
+   "note": "rigid with head"
+  },
+  {
+   "part": "tank",
+   "type": "rigid_lag",
+   "dof": "0.5 frame lag on run, max 4 deg"
+  }
+ ],
+ "silhouette_notes": "Tall dark figure with a bright yellow cylinder on her back: the tank is visible in front, 3/4, side and back views, so facing is always readable. The teal side stripe marks the body edge against the dark suit; the red mask frames the face from above.",
+ "animation_notes": "Very low secondary motion (tank lag optional). Skin-tight suit = the purest body animation test for the slim preset; posture flaws show up immediately, which is useful for the lab.",
+ "risks": [
+  "Dark suit on dark backgrounds: side panels + tank must carry the silhouette",
+  "Fins break walk cycles; keep them detailed-tier only"
+ ]
+}

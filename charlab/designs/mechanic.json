@@ -1,0 +1,260 @@
+{
+ "id": "mechanic",
+ "name": "Rio",
+ "concept": "A garage mechanic in denim bib overalls, a red bandana and yellow gloves: chunky boots, a swinging ponytail, all-business posture.",
+ "body": {
+  "recommended": "compact",
+  "allowed": [
+   "chibi",
+   "compact",
+   "slim"
+  ],
+  "build": {
+   "preset": "sturdy",
+   "shoulder": 1.05,
+   "hip": 1.08,
+   "limb_radius": 1.05
+  },
+  "pose_rest": "A-pose 25 deg, weight even, feet hip-width; idle contrapposto handled by the animator, not the model",
+  "test_sprite_heights_px": {
+   "chibi": [
+    32,
+    48
+   ],
+   "compact": [
+    48,
+    64
+   ],
+   "slim": [
+    64,
+    96
+   ]
+  }
+ },
+ "hair": {
+  "style": "ponytail",
+  "tail_pos": "high_back",
+  "length": 0.9,
+  "volume": 1.05,
+  "fringe": "none",
+  "tail_segments": 3,
+  "tail_taper": 0.55,
+  "colour": "hair",
+  "shade": "hair_shade",
+  "hi": "hair_hi",
+  "note": "pulled-back shell under the bandana, one tapered 3-segment tail"
+ },
+ "face": {
+  "eyes": "oval_tall",
+  "eye_size": 0.12,
+  "eye_spacing": 0.31,
+  "brows": "short_flat",
+  "brow_colour": "hair",
+  "highlight": true
+ },
+ "palette": {
+  "outline": "#2b2235",
+  "skin": "#8e5a3f",
+  "skin_shade": "#6a3f2b",
+  "hair": "#231c22",
+  "hair_hi": "#3d3138",
+  "denim": "#4a78b8",
+  "denim_shade": "#335690",
+  "white": "#f1efe8",
+  "red": "#d8433e",
+  "yellow": "#f2c14e",
+  "brown": "#7a5236"
+ },
+ "pieces": {
+  "tank_top": {
+   "geom": "cover",
+   "segments": [
+    "chest",
+    "belly"
+   ],
+   "inflate": 0.02,
+   "colour": "white",
+   "shade": "denim_shade",
+   "piece": "top",
+   "sleeve": "none"
+  },
+  "overalls": {
+   "geom": "cover",
+   "segments": [
+    "belly",
+    "pelvis",
+    "thigh",
+    "shin"
+   ],
+   "inflate": 0.05,
+   "colour": "denim",
+   "shade": "denim_shade",
+   "piece": "bottom",
+   "note": "wide straight legs; bib is a box on the chest"
+  },
+  "bib": {
+   "geom": "box",
+   "attach": "chest",
+   "dims": [
+    0.5,
+    0.06,
+    0.35
+   ],
+   "offset": [
+    0,
+    -0.3,
+    -0.08
+   ],
+   "colour": "denim",
+   "shade": "denim_shade",
+   "piece": "bib"
+  },
+  "straps": {
+   "geom": "strap",
+   "from": "bib_corner",
+   "to": "back_waist",
+   "width": 0.07,
+   "colour": "denim",
+   "piece": "strap",
+   "mirror": true
+  },
+  "bandana": {
+   "geom": "cover",
+   "segments": [
+    "head_band"
+   ],
+   "inflate": 0.05,
+   "colour": "red",
+   "shade": null,
+   "piece": "headband",
+   "knot": "small sphere at back"
+  },
+  "gloves": {
+   "geom": "cover",
+   "segments": [
+    "hand",
+    "forearm_low"
+   ],
+   "inflate": 0.05,
+   "colour": "yellow",
+   "shade": null,
+   "piece": "gloves",
+   "note": "gauntlet cuff"
+  },
+  "boots": {
+   "geom": "cover",
+   "segments": [
+    "foot",
+    "shin_low"
+   ],
+   "inflate": 0.07,
+   "colour": "brown",
+   "shade": "hair",
+   "piece": "boots",
+   "note": "chunky, toe-cap round"
+  },
+  "tool_belt": {
+   "geom": "cover",
+   "segments": [
+    "waist"
+   ],
+   "inflate": 0.07,
+   "colour": "brown",
+   "shade": null,
+   "piece": "belt"
+  },
+  "pouches": {
+   "geom": "box",
+   "attach": "pelvis",
+   "dims": [
+    0.18,
+    0.12,
+    0.18
+   ],
+   "offset": [
+    0.38,
+    -0.05,
+    -0.05
+   ],
+   "colour": "brown",
+   "shade": "hair",
+   "piece": "decal",
+   "mirror": true
+  },
+  "cuffs_rolled": {
+   "geom": "cover",
+   "segments": [
+    "shin_low"
+   ],
+   "inflate": 0.07,
+   "colour": "denim_shade",
+   "shade": null,
+   "piece": "band"
+  },
+  "rag": {
+   "geom": "box",
+   "attach": "pelvis",
+   "dims": [
+    0.12,
+    0.02,
+    0.25
+   ],
+   "offset": [
+    -0.35,
+    0.3,
+    -0.1
+   ],
+   "colour": "red",
+   "shade": null,
+   "piece": "decal",
+   "note": "hangs from back pocket; rigid"
+  }
+ },
+ "tiers": {
+  "simple": [
+   "tank_top",
+   "overalls",
+   "bib",
+   "gloves",
+   "boots"
+  ],
+  "medium": [
+   "tank_top",
+   "overalls",
+   "bib",
+   "straps",
+   "bandana",
+   "gloves",
+   "boots",
+   "tool_belt"
+  ],
+  "detailed": [
+   "tank_top",
+   "overalls",
+   "bib",
+   "straps",
+   "bandana",
+   "gloves",
+   "boots",
+   "tool_belt",
+   "pouches",
+   "cuffs_rolled",
+   "rag"
+  ]
+ },
+ "secondary_motion": [
+  {
+   "part": "ponytail",
+   "type": "spring_chain",
+   "bones": 3,
+   "stiffness": "medium",
+   "note": "the one lively part; clamp swing to 25 deg"
+  }
+ ],
+ "silhouette_notes": "Blue bottom-heavy block (wide overall legs, chunky boots) with a white/brown top and a red stripe on the head. Yellow gloves make the hands pop, which helps any work/gesture animation. The ponytail adds a side-view tell.",
+ "animation_notes": "One spring chain (ponytail) = lively but controlled. Wide stance and sturdy build read as confident; keep shoulders relaxed to stay feminine.",
+ "risks": [
+  "Deep skin + dark hair: hair_hi and the red bandana separate head from hair",
+  "Ponytail must stay one closed shape (3 tapered ellipsoids, no strands)"
+ ]
+}

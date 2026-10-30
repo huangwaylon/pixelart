@@ -1,0 +1,223 @@
+{
+ "id": "shorthair",
+ "name": "Mika",
+ "concept": "A casual short-haired girl in an oversized hoodie and shorts: the baseline 'everyday' heroine, a hair silhouette that never moves.",
+ "body": {
+  "recommended": "compact",
+  "allowed": [
+   "chibi",
+   "compact",
+   "slim"
+  ],
+  "build": {
+   "preset": "petite",
+   "shoulder": 0.95,
+   "hip": 1.0,
+   "limb_radius": 0.95
+  },
+  "pose_rest": "A-pose 25 deg, weight even, feet hip-width; idle contrapposto handled by the animator, not the model",
+  "test_sprite_heights_px": {
+   "chibi": [
+    32,
+    48
+   ],
+   "compact": [
+    48,
+    64
+   ],
+   "slim": [
+    64,
+    96
+   ]
+  }
+ },
+ "hair": {
+  "style": "pixie",
+  "length": 0.15,
+  "volume": 1.08,
+  "fringe": "side_swept",
+  "fringe_length": 0.45,
+  "part": "left",
+  "colour": "hair",
+  "shade": "hair_shade",
+  "hi": "hair_hi",
+  "note": "one solid shell + one swept fringe slab; nape tapers to a point"
+ },
+ "face": {
+  "eyes": "oval_tall",
+  "eye_size": 0.12,
+  "eye_spacing": 0.3,
+  "brows": "soft_arch",
+  "brow_colour": "hair",
+  "highlight": true
+ },
+ "palette": {
+  "outline": "#2b2235",
+  "skin": "#f5d0b5",
+  "skin_shade": "#dba487",
+  "hair": "#2f2a3d",
+  "hair_shade": "#1d1a28",
+  "hair_hi": "#4c4566",
+  "hoodie": "#f2c14e",
+  "hoodie_shade": "#c9952f",
+  "shorts": "#4f6fae",
+  "shoes": "#f4f1ea",
+  "accent": "#e0475b"
+ },
+ "pieces": {
+  "hoodie": {
+   "geom": "cover",
+   "segments": [
+    "chest",
+    "belly",
+    "pelvis_top",
+    "upper_arm",
+    "forearm"
+   ],
+   "inflate": 0.07,
+   "colour": "hoodie",
+   "shade": "hoodie_shade",
+   "piece": "top",
+   "sleeve": "long",
+   "hem": "hip",
+   "note": "boxy: torso is one box with rounded edges; sleeves widen slightly at the cuff"
+  },
+  "hood_down": {
+   "geom": "ellipsoid",
+   "attach": "neck",
+   "dims": [
+    0.75,
+    0.45,
+    0.25
+   ],
+   "offset": [
+    0,
+    0.18,
+    0.0
+   ],
+   "colour": "hoodie",
+   "shade": "hoodie_shade",
+   "piece": "collar",
+   "note": "flattened donut behind the neck"
+  },
+  "shorts": {
+   "geom": "cover",
+   "segments": [
+    "pelvis",
+    "thigh_top"
+   ],
+   "inflate": 0.04,
+   "colour": "shorts",
+   "shade": null,
+   "piece": "bottom",
+   "length": 0.35,
+   "shade_auto": true
+  },
+  "sneakers": {
+   "geom": "cover",
+   "segments": [
+    "foot"
+   ],
+   "inflate": 0.05,
+   "colour": "shoes",
+   "shade": "hoodie_shade",
+   "piece": "shoes",
+   "note": "rounded box, sole 0.04H in shade colour"
+  },
+  "shoe_stripe": {
+   "geom": "box",
+   "attach": "foot",
+   "dims": [
+    0.02,
+    0.25,
+    0.05
+   ],
+   "offset": [
+    0.12,
+    0,
+    0.05
+   ],
+   "colour": "accent",
+   "shade": null,
+   "piece": "decal"
+  },
+  "pocket": {
+   "geom": "box",
+   "attach": "belly",
+   "dims": [
+    0.45,
+    0.03,
+    0.15
+   ],
+   "offset": [
+    0,
+    -0.3,
+    -0.05
+   ],
+   "colour": "hoodie_shade",
+   "shade": null,
+   "piece": "decal",
+   "note": "kangaroo pocket as a shade band"
+  },
+  "drawstrings": {
+   "geom": "cylinder",
+   "attach": "chest",
+   "dims": [
+    0.02,
+    0.02,
+    0.2
+   ],
+   "offset": [
+    0.08,
+    -0.33,
+    0.05
+   ],
+   "colour": "accent",
+   "shade": null,
+   "piece": "decal",
+   "mirror": true
+  },
+  "socks": {
+   "geom": "cover",
+   "segments": [
+    "shin_low"
+   ],
+   "inflate": 0.02,
+   "colour": "shoes",
+   "shade": null,
+   "piece": "socks",
+   "length": 0.12
+  }
+ },
+ "tiers": {
+  "simple": [
+   "hoodie",
+   "shorts",
+   "sneakers"
+  ],
+  "medium": [
+   "hoodie",
+   "hood_down",
+   "shorts",
+   "sneakers",
+   "shoe_stripe"
+  ],
+  "detailed": [
+   "hoodie",
+   "hood_down",
+   "shorts",
+   "sneakers",
+   "shoe_stripe",
+   "pocket",
+   "drawstrings",
+   "socks"
+  ]
+ },
+ "secondary_motion": [],
+ "silhouette_notes": "Dark helmet-like pixie cap against a bright yellow block: the head is a crisp dark shape with a single swept fringe point. Bare legs are a strong 'two sticks' read under the boxy hoodie, so walk/run poses are unmistakable.",
+ "animation_notes": "No secondary parts. Life comes from the oversized hoodie (rigid, follows chest with 1-frame lag allowed) and body bob. Easiest character to keep stable.",
+ "risks": [
+  "Bare legs + shorts need clean knee silhouette at 48 px",
+  "Must not be confused with schoolgirl when both use compact preset: different palette families (warm yellow vs navy)"
+ ]
+}

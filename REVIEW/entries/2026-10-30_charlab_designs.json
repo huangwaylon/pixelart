@@ -1,0 +1,22 @@
+{
+ "id": "2026-10-30_charlab_designs",
+ "date": "2026-10-30",
+ "project": "charlab",
+ "kind": "experiment",
+ "status": "needs-review",
+ "title": "Character lab: 8 simple female character designs, ranked for pixel feasibility",
+ "question": "Owner: start over from character design with simpler characters. Which designs are most feasible as pixel-art sprites across body presets (chibi, compact, slim) and complexity tiers?",
+ "method": "8 specs (astronaut, short-haired girl, schoolgirl, diver, mechanic, plus courier, ranger and runner) written in a shared primitive vocabulary (charlab/designs/VOCAB.md): body preset + build, hair style from a vocabulary of 6, eyes+brows-only face, 10-12 colour palette, pieces as cover shells or primitives with colour roles, simple/medium/detailed tier lists, and 0-2 secondary parts. One Gemini concept call per character (8 calls, front + 3/4 view). Small-size check: area-downscale of the concepts to 32/48/64 px.",
+ "result": "8 JSON specs, with 3-6 pieces in the simple tier, 8-12 in detailed, and at most 2 secondary parts each (3 characters have none). The concepts came out clean and on-palette. At small size, the diver is a thin dark figure that loses its read, and the ranger's olive/khaki blurs.",
+ "verdict": "Ranking: 1 Mika (short hair), 2 Kai (runner), 3 Hana (schoolgirl), 4 Rio (mechanic), 5 Nova (astronaut), 6 Fern (ranger), 7 Zip (courier), 8 Marin (diver). Suggest building Mika at the simple tier first, then Kai (slim) and Nova (chibi) to compare presets.",
+ "media": [
+  {"src": "exp/2026-10-30_charlab_designs/board.png", "caption": "8 concepts in ranking order (front + 3/4, Gemini)", "wide": true},
+  {"src": "exp/2026-10-30_charlab_designs/smallsize_4x.png", "caption": "rough small-size read: concepts downscaled to 32/48/64 px, shown at 4x (not real pixel art)", "wide": true}
+ ],
+ "links": [
+  {"href": "../charlab/designs/DESIGNS.md", "label": "DESIGNS.md (ranking)"},
+  {"href": "../charlab/designs/VOCAB.md", "label": "VOCAB.md (part vocabulary)"},
+  {"href": "../charlab/designs/shorthair.json", "label": "example spec: shorthair.json"}
+ ],
+ "next": "Owner picks 2-3 designs. The lab builds Mika (simple tier, compact) end to end, then compares the chibi/compact/slim presets at 32-96 px."
+}
