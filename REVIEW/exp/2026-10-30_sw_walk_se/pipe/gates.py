@@ -67,8 +67,23 @@ def line_pops(lines, subs):
     return pops
 
 
+def line_pops_flow(lines, Fs):
+    """the same, but each neighbour frame's line is moved by the surface-point motion from the rest-position pass (per cell), so a
+    swinging leg's line is compared with where that leg's surface really went (a pop = line that does not follow the body)"""
+    n = len(lines); pops = []
+    for t in range(n):
+        a = lines[t]; cnt = np.zeros_like(a, int)
+        for u in ((t - 1) % n, (t + 1) % n):
+            m = np.zeros_like(a); w = LC.warp_pts(lines[u], LC.flow(Fs[u], Fs[t]))
+            if len(w): m[w[:, 0], w[:, 1]] = True
+            cnt += nd.binary_dilation(m, np.ones((3, 3)))
+        pops.append(int((a & (cnt == 0)).sum()))
+    return pops
+
+
 def main(outd, jp, motion, gif):
     lab = np.load(os.path.join(outd, 'labels.npz')); info = json.load(open(jp)); n = len(info['frames']); stem = jp[:-5]
+    LC.RPOS_BOX = info.get('rpos_box'); Fs = []
     grids = [LM.load_txt(os.path.join(outd, f'f{i:02d}.txt')) for i in range(n)]
     res = {'frames': n, 'line': [], 'palette': [], 'limbs': [], 'interior': []}
     for i, g in enumerate(grids):
@@ -85,8 +100,9 @@ def main(outd, jp, motion, gif):
             sel = (mat1 == LC.MI[mname]) & (g != '.') & ~ink & ~np.isin(g, list(allow))
             if sel.any(): cross += int(sel.sum()); cross_ex[mname] = sorted(set(g[sel].tolist()))
         res['palette'].append({'colours': len(used), 'used': ''.join(used), 'off_lock': off, 'cross_material_px': cross, 'cross': cross_ex})
-        F = LC.load(stem, info['frames'][i]['i'], info['align'])
+        F = LC.load(stem, info['frames'][i]['i'], info['align']); Fs.append(F)
         res['limbs'].append(limb_audit(g, sub1, il, F))
+    res['line_pops_flow'] = line_pops_flow([lab[f'line{i:02d}'] for i in range(n)], Fs)
     res['line_pops'] = line_pops([lab[f'line{i:02d}'] for i in range(n)], [lab[f'sub1{i:02d}'] for i in range(n)])
     # posture (M's gate on the re-baked motion)
     md = os.path.dirname(os.path.abspath(motion)); mn = os.path.splitext(os.path.basename(motion))[0]
@@ -121,7 +137,7 @@ def main(outd, jp, motion, gif):
                       'mono_mean': round(float(np.mean([x['mono'] for x in L])), 3), 'stray_K': sum(x['stray_K'] for x in res['interior']),
                       'colours_max': max(x['colours'] for x in res['palette']), 'cross_px': sum(x['cross_material_px'] for x in res['palette']),
                       'limb_fail_frames': [i for i, a in enumerate(lim) if any(v['flags'] for v in a.values())],
-                      'line_pops_total': int(sum(res['line_pops']))}
+                      'line_pops_total': int(sum(res['line_pops'])), 'line_pops_flow_total': int(sum(res['line_pops_flow']))}
     json.dump(res, open(os.path.join(outd, 'gates.json'), 'w'), indent=1, default=lambda o: o.tolist() if hasattr(o, 'tolist') else str(o))
     return res
 

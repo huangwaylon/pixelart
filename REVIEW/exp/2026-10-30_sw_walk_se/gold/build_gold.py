@@ -1,18 +1,13 @@
-"""Gold frames, walk SE (contact L, passing L), authored to DESIGN_LOCK.md (owner-approved 2026-10-30).
+"""Gold frames v2, walk SE (contact L, passing L), authored to DESIGN_LOCK.md + Amendment 1 (owner 2026-10-30).
 
-Authoring method (all hand-placed, no rig/renderer input):
- 1. SHAPES: every part is a polygon / ellipse with hand-picked vertices in 1x pixel units (head() and body() below), drawn
-    back-to-front into a part map (8x supersampled, coverage >= 0.5).
- 2. FILL: flat 2-tone per material (base + shadow band on the side away from an upper-left light; hair also gets the one
-    L sheen band), plus explicit cast shadows (under obi, under hem, under chin) and fold lines.
- 3. LINE (lock 3): closed 1-px K silhouette (inner ring), interior K only on the listed overlaps (LINES), then pixel-perfect
-    clean-up (redundant elbows, 2x2 clumps).
- 4. FACE (lock 1): facesys.py eye + brow templates at the SE layout (front eye 5 px, far eye 4 px); brows in K where on hair.
- 5. HAND: bow+bun drawn as a char block (bow_block.txt); hands/cuffs/skirt corners repainted as char blocks (REGION) and single
-    pixels (PATCH), each with a reason; these were redrawn after the Opus critique.
-Writes walk_SE_<key>.txt (char map, '.' = transparent) + walk_SE_<key>.png (128x128 RGBA).
+v2 (after "approve style, revise pose"): head + side locks traced from the approved master EC0_SE_96 (same view angle and
+proportions), master leg length / hem / boot size / obi band, re-posed by hand: dynamic contact (heel planted, back leg on its toe,
+bent asymmetric arm swing) and a risen passing pose (knee forward, arms crossing the body line). v1 is in gold/v1/.
 
-Usage: <pixtools venv python> build_gold.py
+Method: part map (master-traced masks for hair/face/neck; hand-placed polygons for dress/obi/sleeves/hands; hand-placed pixel
+spans for legs/boots) -> flat 2-tone fill -> closed 1-px K silhouette + interior K only on listed overlaps -> pixel-perfect
+clean-up -> facesys eyes -> hand-drawn char blocks (bow_block.txt, REGION) and single-pixel PATCHes, each with a reason.
+Usage: <pixtools venv python> build_gold.py   -> walk_SE_<key>.txt/.png
 """
 import os, sys, json
 import numpy as np, cv2
@@ -47,6 +42,8 @@ def spans(*rows):
 
 
 def rast(poly):
+    if isinstance(poly, np.ndarray):
+        return poly.astype(bool)
     if isinstance(poly, dict):
         m = np.zeros((N, N), bool)
         for y, x0, x1 in poly['spans']: m[y, x0:x1 + 1] = True
@@ -65,74 +62,6 @@ def n4(m):
     p = np.pad(m, 1)
     return p[:-2, 1:-1], p[2:, 1:-1], p[1:-1, :-2], p[1:-1, 2:]
 
-
-# ------------------------------------------------------------------------------------------------------------------ shapes
-def head(dy):
-    P = lambda pts: [(x, y + dy) for x, y in pts]
-    return [
-        ('hairback', 'hairback', P([(52, 41), (57, 35.5), (60.5, 34.2), (64.5, 33.3), (68, 33.1), (71.5, 33.7), (74.6, 34.8), (77.4, 36.4), (79.2, 38.8), (80.2, 42), (80.6, 48), (80.2, 55),
-                                    (79.8, 61), (79, 64.6), (76.8, 64.6), (76, 60), (61.4, 63.6), (57.6, 65), (53, 65.2),
-                                    (49.2, 60), (48, 52), (48.6, 45)])),
-        ('neck', 'neck', P([(63.6, 58), (70, 58), (70.4, 64), (67.4, 67.6), (63.6, 64)])),
-        ('face', 'face', P([(58, 43), (76.6, 43), (77.8, 48), (77.8, 53), (77, 57), (74.8, 60.4), (72.4, 62.7), (69.4, 63.4),
-                            (65.6, 62.4), (61.4, 59.6), (58.5, 55.5), (57.5, 49)])),
-        ('hair', 'hair', P([(54, 44), (56.8, 39.5), (62, 36.5), (69, 35.8), (75, 37), (79, 40), (80.6, 44),
-                            # bangs lower edge, right -> left; tips swept down-left, shorter on the far (right) side
-                            (79.6, 46), (78.2, 45.2), (76.6, 47.6), (75.2, 45.2), (72.8, 47.6), (70.8, 45.4), (67.8, 47.8),
-                            (65.8, 45.6), (62.8, 48.4), (61.2, 46.8),
-                            # near side lock (screen-left) hanging in front of the cheek
-                            (59.2, 50.6), (59.8, 56), (60.2, 62), (58, 64.8), (55.4, 59.5), (54, 52)])),
-    ]
-
-
-def body(f, dy):
-    """Screen-left = her right side = NEAR side in SE (near arm armN, near leg legB). Legs are planted (no bob)."""
-    P = lambda pts: [(x, y + dy) for x, y in pts]
-    Q = lambda pts: pts
-    if f == 'contact':
-        # contact L: left leg (screen-right, legF) forward heel-strike, right leg (screen-left, legB) back on the toe
-        legB = [('legB', 'sock', spans(*[(y, 58 - (y - 98) // 2, 65 - (y - 98) // 2) for y in range(98, 112)])),
-                ('bootB', 'boot', spans((112, 52, 59), (113, 52, 60), (114, 52, 61), (115, 53, 61), (116, 53, 62), (117, 54, 62),
-                                        (118, 55, 62), (119, 56, 61)))]
-        legF = [('legF', 'sock', spans(*[(y, 65 + (y - 98) // 2, 72 + (y - 98) // 2) for y in range(98, 112)])),
-                ('bootF', 'boot', spans((112, 72, 79), (113, 72, 79), (114, 72, 80), (115, 72, 80), (116, 72, 81), (117, 72, 82),
-                                        (118, 72, 83), (119, 72, 83), (120, 72, 83), (121, 72, 82), (122, 72, 81), (123, 72, 80),
-                                        (124, 73, 79)))]
-        legs = legB + legF
-        # contact: near arm (her right) swings forward -> hand in front of the skirt; far arm back
-        armFar = [('sleeveFar', 'redfar', P([(72, 66), (75.8, 66.6), (78.2, 72), (79.6, 79), (80.2, 85.6), (76, 87.4), (74.6, 81), (73.4, 76)]))]
-        handFar = [('handFar', 'skin', P(ell(79.4, 87.6, 2.4, 2.6)))]
-        armN = [('sleeveN', 'red', P([(58.6, 66.2), (55, 66.6), (52.6, 72), (51.8, 78), (53.8, 83.6), (57.4, 87.6), (62, 87), (60.6, 82), (58.6, 76), (58.8, 70)])),
-                ('handN', 'skin', P(ell(60.4, 90.2, 3.0, 2.9)))]
-    else:
-        # passing L: left leg (screen-right) planted straight; right leg (screen-left, near) passes in front, foot lifted behind
-        legF = [('legF', 'sock', spans(*[(y, 66, 73) for y in range(98, 105)], *[(y, 67, 73) for y in range(105, 113)])),
-                ('bootF', 'boot', spans(*[(y, 66, 73) for y in range(113, 118)], (118, 66, 74), (119, 66, 75), (120, 66, 76),
-                                        (121, 66, 77), (122, 66, 77), (123, 66, 77), (124, 67, 76)))]
-        legB = [('legB', 'sock', spans(*[(y, 58, 65) for y in range(98, 102)], *[(y, 59, 66) for y in range(102, 109)],
-                                       (109, 58, 65), (110, 57, 64), (111, 57, 64), (112, 56, 63))),
-                ('bootB', 'boot', spans((113, 56, 63), (114, 56, 63), (115, 56, 62), (116, 56, 62), (117, 57, 62), (118, 57, 61),
-                                        (119, 58, 60)))]
-        legs = legF + legB
-        armFar = [('sleeveFar', 'redfar', P([(72, 66), (75.8, 66.6), (78, 72), (79.2, 79), (79.8, 86.4), (75, 87.4), (74.2, 81), (73.4, 76)]))]
-        handFar = [('handFar', 'skin', P(ell(78.8, 88.4, 2.4, 2.6)))]
-        armN = [('sleeveN', 'red', P([(58.2, 66.2), (55, 66.6), (52.8, 72), (52, 79), (52.2, 85.8), (57, 86.8), (57.6, 81), (57.6, 74), (58.6, 70)])),
-                ('handN', 'skin', P(ell(54.6, 89.4, 2.5, 2.8)))]
-    dress = [('torso', 'red', P([(59.4, 63.4), (71, 63.4), (74.6, 65.8), (75.6, 70), (75, 75.5), (74, 77), (56.6, 77), (55.2, 73), (55, 68.5), (56.4, 65.4)])),
-             ('skirt', 'red', P([(56.6, 81), (74.2, 81), (76.4, 86), (78.4, 92.5), (79, 97.6), (75, 99.2), (65, 99.2), (57, 98.6),
-                                 (52.4, 98.2), (49.8, 97.4), (49.2, 95.6), (50.4, 91.5), (53.4, 86)])),
-             ('obi', 'obi', P([(56, 76), (74.6, 76), (74.6, 82), (56, 82)]))]
-    return armFar + legs + dress + handFar + armN
-
-
-def lines_for(f):
-    front_leg = ({'legF', 'bootF'}, {'legB', 'bootB'}) if f == 'contact' else ({'legB', 'bootB'}, {'legF', 'bootF'})
-    return [front_leg,                                                            # leg/leg
-            ({'sleeveN', 'handN', 'handFar'}, {'torso', 'obi', 'skirt'}),         # arm over body
-            ({'torso', 'skirt', 'obi'}, {'sleeveFar'}),                           # body over the far arm (arm/body edge)
-            ({'sleeveN'}, {'handN'}), ({'sleeveFar'}, {'handFar'}),               # hand/sleeve (cuff)
-            ({'hair'}, {'face'}), ({'face'}, {'hairback'}),                       # bangs/face (bow/hair lines live in bow_block.txt)
-            ({'face'}, {'neck'})]                                                 # chin/neck
 
 
 def compose(parts):
@@ -187,9 +116,148 @@ def line_px(pts):
     return out
 
 
+
+# ------------------------------------------------------------------------------------------------------------------ master
+MASTER = ROOT + '/swordswoman/v2/m96/masters/EC0_SE_96.txt'
+
+
+def master_masks():
+    """Head parts traced from the approved master EC0_SE_96 (Amendment 1: same view angle + proportions, longer wavy side locks).
+    Every master px (outline included) gets the material of its nearest non-outline px; face = skin above the chin (holes filled),
+    neck = skin below it, hair = hair px of the head (master bun/bow dropped: the bow block replaces them)."""
+    from scipy import ndimage as nd
+    g = np.array([list(l.rstrip('\n')) for l in open(MASTER)])
+    op = g != '.'
+    cls = np.zeros(g.shape, int)
+    for chs, c in (('hHgL', 1), ('sSmk', 2), ('eER', 3), ('QOo', 4), ('Dd', 5), ('W', 2)):
+        cls[np.isin(g, list(chs))] = c
+    idx = nd.distance_transform_edt(cls == 0, return_distances=False, return_indices=True)
+    lab = cls[idx[0], idx[1]] * op
+    yy = np.arange(N)[:, None] * np.ones((1, N), int)
+    xx = np.ones((N, 1), int) * np.arange(N)[None, :]
+    skin = (lab == 2) & (yy >= 44) & (yy <= 66) & (xx >= 57)
+    face = nd.binary_fill_holes(nd.binary_closing(skin & (yy <= 61), np.ones((3, 3))) | (skin & (yy <= 61)))
+    face &= op
+    face = nd.binary_opening(face, np.ones((2, 2))) | (face & nd.binary_erosion(face))
+    hair = (lab == 1) & (yy <= 69) & ~face
+    hair |= (lab == 2) & (yy <= 61) & ~face & (xx < 62)      # the master's ear/cheek px inside the side hair -> hair
+    hair &= ~((yy < 36) & (xx < 58))                          # master bun: replaced by the bow block
+    hair &= ~((lab == 3) & (yy <= 54))
+    hair = nd.binary_opening(hair, np.ones((2, 2))) | (hair & nd.binary_erosion(hair, np.ones((3, 3))))
+    neck = (lab == 2) & (yy > 59) & (yy <= 66) & (xx >= 61) & (xx <= 70) & ~face
+    return hair, face, neck
+
+
+def polygonize(m, eps=0.9, sig=0.7):
+    """smooth a 1x mask: trace its contour, Gaussian-smooth along the curve, simplify, refill at 8x (vector-line method)."""
+    cs, _ = cv2.findContours(m.astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    out = np.zeros((N, N), bool)
+    for c in cs:
+        if len(c) < 6: continue
+        pts = c[:, 0, :].astype(np.float64) + 0.5
+        k = max(1, int(3 * sig)); w = np.exp(-np.arange(-k, k + 1) ** 2 / (2 * sig * sig)); w /= w.sum()
+        sm = np.stack([np.convolve(np.r_[pts[-k:, i], pts[:, i], pts[:k, i]], w, 'valid') for i in (0, 1)], 1)
+        ap = cv2.approxPolyDP(sm.astype(np.float32), eps, True)[:, 0, :]
+        out |= rast([(x, y) for x, y in ap])
+    return out
+
+
+def bang_tips(face):
+    """full bangs: strand tips cut into the top of the face, pointing down-left, kept off the eyes (eyes clear)."""
+    tips = [[(57.5, 46), (61.4, 46), (59.4, 51)], [(61.2, 46), (65, 46), (63, 49.4)], [(64.6, 46), (68.8, 46), (66.8, 50.2)],
+            [(67.2, 46), (71.8, 46), (69.6, 51.2)], [(71.2, 46), (74.6, 46), (72.6, 49.4)], [(74, 46), (78.8, 46), (76.6, 51.4)]]
+    m = face.copy()
+    for t in tips: m &= ~rast(t)
+    return m
+
+
+_H, _F, _N = master_masks()
+FACE = bang_tips(rast([(58, 46), (76.6, 46), (77, 50), (76.2, 54.6), (74.2, 58.4), (71.4, 61.4), (69.6, 62.6), (66.4, 61.8), (62, 59.4), (59.4, 56.2), (58.2, 51)]))
+_yy = np.arange(N)[:, None] * np.ones((1, N), int); _xx = np.ones((N, 1), int) * np.arange(N)[None, :]
+# hair silhouette: hand-placed vertices measured on the master (crown, far lock, near front lock, wavy near-side mass + lock)
+HAIRPOLY = [(57, 38), (60.4, 35.6), (64.4, 34.5), (68.4, 34.5), (72.2, 35.4), (75.2, 37.2), (77.6, 39.6), (79.2, 44), (79.8, 48), (79.6, 53), (78.8, 57),
+            (80.6, 61.4), (80.2, 64.6), (79.2, 67.2), (77.6, 68.2), (76.4, 64.6), (75.6, 61), (75.4, 57.6), (76.6, 52), (75, 60.5), (62.4, 62.6),
+            (61, 65.2), (60.4, 67.6), (61.4, 69.8), (59.4, 70.6), (57.6, 68), (57.4, 65.4), (56.6, 62),
+            (55.6, 62.6), (55.8, 64.6), (54.8, 67.8), (52.6, 68.4), (51.8, 65.6), (50.4, 62.8), (49.2, 59.6), (48.8, 56), (49, 53),
+            (48.4, 50), (48.4, 47), (49.8, 42.4), (53, 39.4)]
+HAIR = rast(HAIRPOLY) & ~FACE
+NECK = rast([(63, 58), (70.4, 58), (71, 64.4), (68, 68.4), (63, 64.4)]) & ~FACE & ~HAIR
+
+
+def shift(m, dx, dy):
+    return np.roll(np.roll(m, dy, 0), dx, 1)
+
+
+def head(dx, dy):
+    return [('hair', 'hair', shift(HAIR, dx, dy)), ('neck', 'neck', shift(NECK, dx, dy) & ~shift(FACE, dx, dy)),
+            ('face', 'face', shift(FACE, dx, dy))]
+
+
+def leg_spans(rows):
+    return spans(*[(y, l, r) for y, l, r in rows])
+
+
+def body(f, dy):
+    """Screen-left = her right = NEAR side in SE (armN, legB). Legs are planted (no bob)."""
+    P = lambda pts: [(x, y + dy) for x, y in pts]
+    if f == 'contact':
+        # contact L: left leg (screen-right) forward, heel planted, toe up; right leg (screen-left) back on its toe
+        legF = [('legF', 'sock', spans(*[(y, 65 + (y - 89) // 4, 65 + (y - 89) // 4 + 7) for y in range(89, 114)])),
+                ('bootF', 'boot', spans(*[(y, 71, 77) for y in range(114, 118)], (118, 71, 78), (119, 71, 79), (120, 71, 80),
+                                        (121, 71, 80), (122, 71, 79), (123, 71, 77), (124, 72, 75)))]
+        legB = [('legB', 'sock', spans(*[(y, 58 - (y - 88) // 5, 58 - (y - 88) // 5 + 7) for y in range(89, 103)],
+                                       *[(y, 55 - (y - 103) // 3, 55 - (y - 103) // 3 + 7) for y in range(103, 114)])),
+                ('bootB', 'boot', spans((114, 51, 58), (115, 50, 58), (116, 51, 58), (117, 52, 59), (118, 53, 59), (119, 54, 59),
+                                        (120, 54, 59), (121, 55, 58)))]
+        legs = legB + legF
+        # near arm swings forward (bent, hand in front of the obi/skirt); far arm swings back (bent, hand behind the hip)
+        armFar = [('sleeveFar', 'redfar', P([(73, 65.6), (76.8, 66.2), (79.4, 69.6), (81.8, 73.4), (83.4, 78.4), (79.8, 79.8), (78.2, 75.6), (75.6, 72), (74.4, 70)])),
+                  ('handFar', 'skin', P(ell(82.2, 81.4, 2.2, 2.3)))]           # swung back: elbow bent at ~(80,73), hand behind
+        handFar = []
+        armN = [('sleeveN', 'red', P([(58.6, 65.6), (54.6, 66.2), (52.2, 71), (52.4, 76.6), (55.4, 79.6), (61.6, 83.2), (63.2, 80.4), (58.6, 75.6), (58.6, 70)])),
+                ('handN', 'skin', P(ell(64.6, 84.4, 2.6, 2.5)))]
+    else:
+        # passing L: left leg (screen-right) planted straight; right (near) leg passes in front, knee forward, foot lifted behind
+        legF = [('legF', 'sock', spans(*[(y, 66, 72 if y < 101 else 71) for y in range(89, 114)])),
+                ('bootF', 'boot', spans(*[(y, 66, 72) for y in range(114, 118)], (118, 66, 73), (119, 66, 74), (120, 66, 75),
+                                        (121, 66, 75), (122, 66, 75), (123, 66, 75), (124, 67, 74)))]
+        legB = [('legB', 'sock', spans(*[(y, 58 + (y - 89) * 3 // 7, 58 + (y - 89) * 3 // 7 + 7) for y in range(89, 104)],
+                                       *[(y, 64 - (y - 104) * 6 // 8, 64 - (y - 104) * 6 // 8 + 6) for y in range(104, 113)])),
+                ('bootB', 'boot', spans((113, 57, 63), (114, 57, 63), (115, 57, 62), (116, 57, 62), (117, 58, 62), (118, 58, 61),
+                                        (119, 59, 61)))]
+        legs = legF + legB
+        armFar = [('sleeveFar', 'redfar', P([(73, 65.6), (76.8, 66.2), (79.4, 71), (80.2, 76), (79.4, 79.6), (76, 80), (75.4, 76), (74.4, 71)])),
+                  ('handFar', 'skin', P(ell(77.4, 81.4, 2.2, 2.3)))]          # slightly back: hand half behind the hip
+        handFar = []
+        armN = [('sleeveN', 'red', P([(58.4, 65.6), (54.6, 66.2), (52.4, 71), (52.2, 76.6), (54.2, 80.6), (59.8, 82.4), (60.6, 78.6), (58.2, 74), (58.4, 70)])),
+                ('handN', 'skin', P(ell(61.8, 83.8, 2.6, 2.5)))]
+    dress = [('torso', 'red', P([(59, 63.4), (70.6, 63.4), (75, 65.4), (76.6, 69.5), (76.4, 76), (56, 77.6), (55.4, 72), (55.8, 67.4), (57, 65)])),
+             ('skirt', 'red', P([(56.4, 81), (75.6, 78), (77.8, 83), (79.8, 88.4), (80.2, 90.2 if f == 'contact' else 89.4), (73, 91.2 if f == 'contact' else 90.6), (65, 91.4), (57, 90.8),
+                                 (51.8, 90.2), (49.8, 89.2), (49.6, 87.6), (51.6, 84.4), (54.4, 81.6)])),
+             ('obi', 'obi', P([(56.2, 76.6), (75.8, 73.4), (76, 79.8), (56.4, 83)] if f == 'contact' else
+                              [(56.2, 76.8), (75.8, 72.6), (76, 79), (56.4, 83.2)]))]
+    return armFar + legs + dress + handFar + armN
+
+
+def lines_for(f):
+    front_leg = ({'legF', 'bootF'}, {'legB', 'bootB'}) if f == 'contact' else ({'legB', 'bootB'}, {'legF', 'bootF'})
+    return [front_leg,                                                            # leg/leg
+            ({'sleeveN', 'handN', 'handFar'}, {'torso', 'obi', 'skirt'}),         # arm over body
+            ({'torso', 'skirt', 'obi'}, {'sleeveFar'}),                           # body over the far arm (arm/body edge)
+            ({'sleeveN'}, {'handN'}), ({'sleeveFar'}, {'handFar'}),               # hand/sleeve (cuff)
+            ({'hair'}, {'face'}),                                                 # bangs/face + side locks over the cheek
+            ({'face'}, {'neck'})]                                                 # chin/neck (bow/hair lines live in bow_block.txt)
+
+
+BOB = {'contact': 1, 'passing': -1}
+EYEDX = 1   # eyes 1 px toward the far side vs the facesys master layout (stronger 3/4 read; Amendment 1)
+HEADX = {'contact': 0, 'passing': 0}
+SOCK_TOP = 95
+
+
 def build(f):
-    bob = 1 if f == 'contact' else 0
-    lab, mat = compose(body(f, bob) + head(bob))
+    bob = BOB[f]
+    lab, mat = compose(body(f, bob) + head(HEADX[f], bob))
     op = lab != ''
     yy = np.arange(N)[:, None] * np.ones((1, N), int)
     xx = np.ones((N, 1), int) * np.arange(N)[None, :]
@@ -204,78 +272,67 @@ def build(f):
             for k in range(1, w + 1): lit &= sh(m, 0, -k)
             g[m & ~lit] = shd
     L = lambda n: lab == n
-    # obi: lower edge in shadow; skirt under obi in shadow
     g[L('obi') & ~sh(L('obi'), -1, 0)] = 'o'
+    g[L('obi') & ~sh(L('obi'), 1, 0) & (xx < 70)] = 'O'
     g[L('skirt') & sh(L('obi'), 1, 0)] = 'R'
-    # sleeve openings: bottom row of each sleeve = inside of the sleeve (R)
-    for s_ in ('sleeveN',):
-        m = L(s_); g[m & ~sh(m, -1, 0)] = 'R'
-    # torso: kimono collar (R lapel lines) + skin V is the neck part
-    for pts in ([(62, 64 + bob), (67, 69 + bob)], [(72, 64 + bob), (66, 76 + bob)]):
+    m = L('sleeveN'); g[m & ~sh(m, -1, 0)] = 'R'
+    # collar: lapels (R) meeting in a V at the obi, neck skin above
+    for pts in ([(62, 63 + bob), (68, 69 + bob)], [(72, 63 + bob), (67, 76 + bob)]):
         for y, x in line_px(pts):
             if lab[y, x] == 'torso': g[y, x] = 'R'
-    # skirt fold lines
-    for pts in ([(61.5, 83 + bob), (59.5, 99 + bob)], [(70.5, 83 + bob), (71.5, 99 + bob)]):
+    for pts in ([(61, 83 + bob), (59.5, 90 + bob)], [(70, 81 + bob), (71, 90 + bob)]):
         for y, x in line_px(pts):
             if lab[y, x] == 'skirt': g[y, x] = 'R'
-    # legs: thigh skin (hem -> sock top), red sock band, sock
-    sock_top = 103
     for nm in ('legB', 'legF'):
         lg = L(nm)
-        thigh = lg & (yy < sock_top)
+        thigh = lg & (yy < SOCK_TOP)
         g[thigh] = 's'
         g[thigh & ~sh(lg, 0, -1)] = 'S'
-        g[lg & (sh(L('skirt'), 1, 0))] = 'S'
-        g[lg & (yy == sock_top)] = 'E'
-    # hands: lower-right shade
+        g[lg & sh(L('skirt'), 1, 0)] = 'S'
+        g[lg & (yy == SOCK_TOP)] = 'E'
     for nm in ('handN', 'handFar'):
         hm = L(nm); g[hm & ~sh(hm, -1, -1)] = 'S'
-    # hair: sheen band (L) on the crown, broken into strands; strand lines (h) up from the bang valleys; shadow under the bow
+    # hair: sheen arc (L) on the lit crown; wave/strand splits (h) on the side locks; lock tips in shadow
     hr = L('hair')
-    d = np.hypot((xx - 67.5) / 12.0, (yy - (49.5 + bob)) / 11.0)
-    ang = np.degrees(np.arctan2(yy - (49.5 + bob), xx - 67.5))
-    band = hr & (d > 0.86) & (d < 0.97) & (ang > -138) & (ang < -78) & ~np.isin(xx, [62, 68, 73])
-    g[band] = 'L'
-    for x0, y0 in ((76, 49), (71.5, 47.8), (66, 47.6), (61, 48)):
-        for k in range(1, 4):
-            y, x = int(y0 + bob) - k, int(round(x0))
-            if lab[y, x] == 'hair' and g[y, x] == 'H': g[y, x] = 'h'
-    hb = L('hairback'); a_, b_, c_, d_ = n4(hr)
-    g[hb & (a_ | b_ | c_ | d_)] = 'h'                     # strand split between the near lock and the side mass
-    g[hb & ~sh(hb, -1, 0)] = 'h'                          # lock tips
-    # hand-drawn stamps (bow + bun): '.' clears, ' ' keeps, anything else is placed as-is (own K lines included)
+    cx, cy = 66.5 + HEADX[f], 49.0 + bob
+    d = np.hypot((xx - cx) / 12.5, (yy - cy) / 11.5)
+    ang = np.degrees(np.arctan2(yy - cy, xx - cx))
+    g[hr & (d > 0.84) & (d < 0.95) & (ang > -140) & (ang < -80) & (g == 'H')] = 'L'
+    for pts in STRANDS:
+        for y, x in line_px([(px + HEADX[f], py + bob) for px, py in pts]):
+            if lab[y, x] == 'hair': g[y, x] = 'h'
+    g[hr & ~sh(hr, -1, 0)] = 'h'
+    # bow + bun block
     for fn, x0, y0 in STAMPS:
         rows = [r.rstrip('\n') for r in open(f'{HERE}/{fn}') if not r.startswith('#')]
         for r, line in enumerate(rows):
             for c, ch in enumerate(line):
-                y, x = y0 + bob + r, x0 + c
+                y, x = y0 + bob + r, x0 + HEADX[f] + c
                 if ch == ' ': continue
                 if ch == '.':
                     if lab[y, x] == '': g[y, x] = '.'
                     continue
                 g[y, x] = ch; lab[y, x] = 'stamp'
     op = lab != ''
-    bw = lab == 'stamp'                                   # the bow shades the hair right under it
-    g[np.isin(lab, ['hair', 'hairback']) & (sh(bw, 1, 0) | sh(bw, 1, 1)) & (g == 'H')] = 'h'
+    bw = lab == 'stamp'
+    g[(lab == 'hair') & (sh(bw, 1, 0) | sh(bw, 1, 1)) & (g == 'H')] = 'h'
     fill = g.copy()
-    # ---- line: silhouette + listed overlaps
     g[silmask(g)] = 'K'
     for F_, B_ in lines_for(f):
         fm = np.isin(lab, list(F_)); a, b, c, d_ = n4(np.isin(lab, list(B_)))
         g[fm & (a | b | c | d_)] = 'K'
     g = clean(g, fill)
-    # ---- face
     for (ox, oy), side, kind in FS.LAYOUT['SE']:
         for r, line in enumerate(FS.eye(EXPR, side, kind)):
             for c, ch in enumerate(line):
-                y, x = oy + bob + r, ox + c
+                y, x = oy + bob + r, ox + HEADX[f] + EYEDX + c
                 if ch in ' .': continue
                 if ch == 'h':
                     if lab[y, x] == 'face' and g[y, x] == 's': g[y, x] = 'h'
                     elif lab[y, x] == 'hair': g[y, x] = 'K'
                 else:
                     g[y, x] = {'@': 'W', 'K': 'K', 'g': 'g', 'W': 'W'}[ch]
-    for (x0, y0, why, rows) in REGION.get(f, []):      # hand-drawn region repaints (' ' keeps)
+    for (x0, y0, why, rows) in REGION.get(f, []):
         for r, line in enumerate(rows):
             for c, ch in enumerate(line):
                 if ch != ' ': g[y0 + r, x0 + c] = ch
@@ -284,62 +341,51 @@ def build(f):
     return lab, g
 
 
-PATCH = {'contact': {(48, 56): ('K', 'hair edge runs 4-3-2-1 under the bow tail'), (48, 57): ('K', 'idem'), (49, 56): ('H', 'idem'),
-                     (49, 57): ('H', 'idem'), (77, 65): ('.', 'far lock tip: no 2x2 K'), (78, 65): ('.', 'idem'),
-                     (70, 63): ('K', 'close the chin/neck line')},
-         'passing': {(48, 55): ('K', 'hair edge runs 3-3-2-1 under the bow tail'), (48, 56): ('K', 'idem'), (49, 55): ('H', 'idem'),
-                     (49, 56): ('H', 'idem'), (77, 64): ('.', 'far lock tip: no 2x2 K'), (78, 64): ('.', 'idem'),
-                     (70, 62): ('K', 'close the chin/neck line'),
-                     (51, 89): ('.', 'stray skirt-edge K left beside the hand'), (51, 90): ('.', 'idem'), (50, 91): ('.', 'idem')}}
-REGION = {'contact': [
-    (49, 87, 'near hand in front of the skirt: sleeve opening (R), cuff/hand line, 4-px mitten; skirt edge runs 2-1-2-3-3', [
-        '    KRRRRRRRK',
-        '    KKKKKKKKKK',
-        '   KEEEEKssssK',
-        '  KEEEEEKsssSK',
-        '  KEEEEEKsssSK',
-        ' KEEEEEEEKssSK',
-        ' KEEEEEEEEKKK',
-        '             ',
-        'KE           ']),
-    (73, 85, 'far hand under its sleeve, flush with the sleeve edge (x79); skirt edge x78 below', [
-        'RKRRRRK...',
-        'RKKKKKK...',
-        'RRKsssK...',
-        'RRKsssK...',
-        'RRKssSK...',
-        'RRRKSK....',
-        'RRRRKK....',
-        'EERRRK....',
-        'EERRRK....']),
-  ], 'passing': [
-    (49, 85, 'near hand: 1 px in from the sleeve edge (x52 -> x53) so sleeve and skirt contours are separate monotone stretches; '
-             'hem corner runs 5-2-2-1 then 3-4', [
-        '   KRRRKEE',
-        '   .KKKKKE',
-        '   .KsssKE',
-        '   .KsssKE',
-        '   .KssSKE',
-        '   .KssSKE',
-        '  ..KKKKEE',
-        '...KEEEEEE',
-        '...KEEEEEE',
-        '..KEEEEEEE',
-        '..KEEEEEEE',
-        '.KEEEEEEEE',
-        '..KKKEEEEE',
-        '.....KKKKE']),
-    (73, 85, 'far hand under its sleeve (3 px, farther away), flush with the sleeve edge; skirt edge x78 below', [
-        'RRKRRRK...',
-        'RRKKKKK...',
-        'RRKsssK...',
-        'RRKsssK...',
-        'RRKssSK...',
-        'RRRKSK....',
-        'RRRRKK....',
-        'EERRRK....']),
-]}
+# wave / strand splits on the side locks, in master coords (polyline vertices)
+STRANDS = [[(53.4, 47), (52.6, 50), (52.8, 52)], [(53.6, 56), (54.4, 59), (54, 62)], [(57.4, 51), (56.8, 54)], [(57.4, 58), (58.2, 61), (58, 64)], [(78.6, 51), (78.4, 54)], [(78.6, 58), (79.2, 61)]]
 STAMPS = [('bow_block.txt', 44, 27)]
+PATCH = {'contact': {(80, 83): ('.', 'far hand: drop leftover outline elbow'), (81, 84): ('.', 'idem')}, 'passing': {}}
+# contact arms, hand-drawn rows (x0, y, row; ' ' keeps): near forearm swung forward (sleeve underside, cuff, 4-px mitten in front of the
+# skirt; skirt edge runs 1-1-1-1-1-1-3; hem 4-3); far arm swung back, elbow bent, hand behind (right contour 2-3-2-2)
+REGION = {'contact': [(x0, y, 'contact arm/hand repaint', [r]) for x0, y, r in [
+        (46, 80, '.........KEEEERK'),
+        (46, 81, '..........KEEEERKOOO'),
+        (46, 82, '.........KEKEEERRKKKKK'),
+        (46, 83, '........KEEEKEERRKsssK'),
+        (46, 84, '.......KEEEEEKRRRKsssK'),
+        (46, 85, '......KEEEEEEEKKKKssSK'),
+        (46, 86, '.....KEEEEEEEEEEEKssSK'),
+        (46, 87, '....KEEEEEEEEEEEEEKKKE'),
+        (46, 90, '.....KKKK'),
+        (46, 91, '.........KKK'),
+        (76, 75, ' KRRRK....'),
+        (76, 76, ' .KRRK....'),
+        (76, 77, ' ..KRRK...'),
+        (76, 78, ' ..KRRK...'),
+        (76, 79, ' ..KRRK...'),
+        (76, 80, ' ...KRRK..'),
+        (76, 81, ' ...KKKK..'),
+        (76, 82, ' ...KsssK.'),
+        (76, 83, '     KsSK.'),
+        (76, 84, '      KK..'),
+    ]]}
+REGION_V2A = {'contact': [
+    (46, 79, 'contact arms, hand-drawn: near forearm swung forward (sleeve underside line, cuff/hand line, 4-px mitten in front of the '
+             'skirt; skirt edge runs 1-1-1-1-3); far arm swung back (cuff line, hand tucked behind the hip; right contour 2-7)', [
+        '.......KEEEERKoOOOOOOOOOOOOOoKRRRK.....',
+        '........KEEEERKOOOOOOOOOOOoooKRRRK.....',
+        '.........KEEERKoOOOOooooooRRRKKKK......',
+        '.........KEEEERKooooRRRRRREERRKsssK....',
+        '........KEKEEEERKRRREEEEREEEERRKssK....',
+        '.......KEEEKEERRRKEEEEEEREEEERRKSK.....',
+        '......KEEEEEKKKKKKKEEEEEREEEERRRKK.....',
+        '.....KEEEEEEEKssssKEEEEEREEEEERRRK.....',
+        '....KEEEEEEEEKsssSKEEEEEREEEEERRRK.....',
+        '....KEEEEEEEEKsssSKEEEEEREEEEERRRK.....',
+        '....KEEEEEEEEEKssSKEEEEEREEEEERRRK.....',
+        '.....KKKEEEEEERKKKEEEEEEEREEEEERRK.....',
+        '........KKKEE                          ']),
+]}
 
 
 def render(g, s=1, bg=None):
@@ -352,6 +398,7 @@ def render(g, s=1, bg=None):
 def save(g, path_noext):
     open(path_noext + '.txt', 'w').write('\n'.join(''.join(r) for r in g) + '\n')
     cv2.imwrite(path_noext + '.png', cv2.cvtColor(render(g), cv2.COLOR_RGBA2BGRA))
+
 
 
 if __name__ == '__main__':

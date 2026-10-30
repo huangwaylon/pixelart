@@ -1,0 +1,122 @@
+import os, sys, json
+import numpy as np, cv2
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = '/Users/waylonhuang/Documents/other/pixelart'
+sys.path.insert(0, ROOT + '/docs/team_review/2026-10-30/face_palette/scripts')
+import facesys as FS
+
+PAL = {k: v['hex'] for k, v in json.load(open(ROOT + '/swordswoman/v2/pixelize/palette.json'))['colors'].items()}
+LOCK = list('KhHgLsSeERQOoW')
+RGB = {k: tuple(int(PAL[k][i:i + 2], 16) for i in (1, 3, 5)) for k in LOCK}
+N, SS = 128, 8
+EXPR = 'open'
+
+# material -> (base, shadow)
+MAT = {'hair': ('H', 'h'), 'hairback': ('H', 'h'), 'skin': ('s', 'S'), 'face': ('s', 's'), 'neck': ('S', 'S'),
+       'red': ('E', 'R'), 'redfar': ('R', 'R'), 'obi': ('O', 'o'), 'sock': ('H', 'h'), 'boot': ('g', 'H')}
+# shadow band width (px from the right edge) per part
+SHW = {'hairback': 2, 'torso': 3, 'skirt': 3, 'sleeveN': 2, 'hair': 2,
+       'legB': 1, 'legF': 1, 'bootB': 1, 'bootF': 1, 'obi': 2}
+
+
+def ell(cx, cy, rx, ry, n=48):
+    t = np.radians(np.linspace(0, 360, n, endpoint=False))
+    return [(cx + rx * np.cos(a), cy + ry * np.sin(a)) for a in t]
+
+
+def spans(*rows):
+    """hand-placed pixel spans: rows of (y, x0, x1) inclusive -> a part mask (pixel-exact, outline ring included)."""
+    return {'spans': rows}
+
+
+def rast(poly):
+    if isinstance(poly, np.ndarray):
+        return poly.astype(bool)
+    if isinstance(poly, dict):
+        m = np.zeros((N, N), bool)
+        for y, x0, x1 in poly['spans']: m[y, x0:x1 + 1] = True
+        return m
+    m = np.zeros((N * SS, N * SS), np.uint8)
+    pts = np.round(np.array(poly, np.float64) * SS * 16).astype(np.int32)
+    cv2.fillPoly(m, [pts], 1, lineType=cv2.LINE_8, shift=4)
+    return m.reshape(N, SS, N, SS).mean((1, 3)) >= 0.5
+
+
+def sh(m, dy, dx):
+    return np.roll(np.roll(m, dy, 0), dx, 1)
+
+
+def n4(m):
+    p = np.pad(m, 1)
+    return p[:-2, 1:-1], p[2:, 1:-1], p[1:-1, :-2], p[1:-1, 2:]
+
+
+
+#GENERIC
+def compose(parts):
+    lab = np.full((N, N), '', dtype=object)
+    mat = np.full((N, N), '', dtype=object)
+    for name, m, poly in parts:
+        r = rast(poly)
+        lab[r] = name; mat[r] = m
+    return lab, mat
+
+
+def elbows(K):
+    N_, S_, W_, E_ = n4(K)
+    p = np.pad(K, 1)
+    NE, NW, SE, SW = p[:-2, 2:], p[:-2, :-2], p[2:, 2:], p[2:, :-2]
+    return K & ((N_ & E_ & ~S_ & ~W_ & ~NE) | (E_ & S_ & ~N_ & ~W_ & ~SE) | (S_ & W_ & ~N_ & ~E_ & ~SW) | (W_ & N_ & ~S_ & ~E_ & ~NW))
+
+
+def silmask(g):
+    op = g != '.'
+    bN, bS, bW, bE = n4(~op)
+    return op & (bN | bS | bW | bE)
+
+
+def clean(g, fill):
+    """Pixel-perfect line clean-up: redundant elbows (silhouette -> bg if it touches no fill, interior -> fill) and 2x2 clumps."""
+    for _ in range(8):
+        K = g == 'K'; op = g != '.'; fl = op & ~K
+        fN, fS, fW, fE = n4(fl)
+        sil = silmask(g)
+        el = elbows(K)
+        g[el & ~(fN | fS | fW | fE) & sil] = '.'
+        K = g == 'K'; sil = silmask(g)
+        ie = elbows(K) & ~sil
+        g[ie] = fill[ie]
+        K = g == 'K'; sil = silmask(g)
+        c = K[:-1, :-1] & K[1:, :-1] & K[:-1, 1:] & K[1:, 1:]
+        for y, x in zip(*np.nonzero(c)):
+            for yy, xx in ((y, x), (y, x + 1), (y + 1, x), (y + 1, x + 1)):
+                if not sil[yy, xx] and g[yy, xx] == 'K' and fill[yy, xx] not in ('.', 'K'):
+                    g[yy, xx] = fill[yy, xx]; break
+    return g
+
+
+def line_px(pts):
+    """pixels of a polyline (Bresenham, pixel centres)."""
+    out = []
+    for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
+        n = int(max(abs(x1 - x0), abs(y1 - y0))) + 1
+        for t in np.linspace(0, 1, n):
+            out.append((int(np.floor(y0 + (y1 - y0) * t + 0.5)), int(np.floor(x0 + (x1 - x0) * t + 0.5))))
+    return out
+
+
+
+#TAIL
+def render(g, s=1, bg=None):
+    a = np.zeros((N, N, 4), np.uint8)
+    if bg is not None: a[:] = (*bg, 255)
+    for k, c in RGB.items(): a[g == k] = (*c, 255)
+    return cv2.resize(a, (N * s, N * s), interpolation=cv2.INTER_NEAREST)
+
+
+def save(g, path_noext):
+    open(path_noext + '.txt', 'w').write('\n'.join(''.join(r) for r in g) + '\n')
+    cv2.imwrite(path_noext + '.png', cv2.cvtColor(render(g), cv2.COLOR_RGBA2BGRA))
+
+

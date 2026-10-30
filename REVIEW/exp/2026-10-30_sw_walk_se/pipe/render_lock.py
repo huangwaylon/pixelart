@@ -13,11 +13,16 @@ from bpy_extras.object_utils import world_to_camera_view
 argv = sys.argv[sys.argv.index("--") + 1:]
 MOT, VIEW, OUT = argv[:3]
 SK = "/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned"
-AL = json.load(open(SK + "/rig/align.json"))[VIEW]
+AL = dict(json.load(open(SK + "/rig/align.json"))[VIEW])
+_LV = os.path.join(os.path.dirname(os.path.abspath(__file__)), "lock_view.json")  # Amendment 1: per-view overrides (yaw cheat, dx/dy) for the lock
+if os.path.exists(_LV): AL.update(json.load(open(_LV)).get(VIEW, {}))
+for _k in ("yaw", "head_yaw_off", "dx", "dy"):  # sweep overrides (env LOCK_<KEY>)
+    if os.environ.get("LOCK_" + _k.upper()) is not None: AL[_k] = float(os.environ["LOCK_" + _k.upper()])
+AL["dx"], AL["dy"] = int(AL.get("dx", 0)), int(AL.get("dy", 0))
 os.makedirs(OUT, exist_ok=True)
 sc = bpy.context.scene; ao = bpy.data.objects["rig"]; body = bpy.data.objects["body"]; pbs = ao.pose.bones
 K = float(ao.get("units_per_h2", 0.775)); CELL, PIV, PPU, SC = 192, (96, 152), 52.608, 8
-M = json.load(open(MOT)); frames = M["frames"]; act = M.get("action", "walk")
+M = json.load(open(MOT)) if MOT != "rest" else {"action": "rest", "frames": [{"bones": {}}]}; frames = M["frames"]; act = M.get("action", "walk")
 tim = M.get("timing_ms") or [round(1000 / M.get("fps", 24))] * len(frames)
 ao.rotation_mode = "XYZ"; ao.rotation_euler = (0, 0, math.radians(AL.get("yaw", 0.0)))
 for p in pbs: p.rotation_mode = "QUATERNION"
@@ -67,6 +72,9 @@ def emission_mat(kind):
     for n in list(N): N.remove(n)
     out = N.new("ShaderNodeOutputMaterial"); em = N.new("ShaderNodeEmission"); L.new(em.outputs[0], out.inputs[0])
     g = N.new("ShaderNodeNewGeometry"); vt = N.new("ShaderNodeVectorTransform"); vt.convert_from = "WORLD"; vt.convert_to = "CAMERA"
+    if kind == "rpos":  # rest position (normalised in the rig's lock_rpos_box), raw 16 bit
+        at = N.new("ShaderNodeAttribute"); at.attribute_type = "GEOMETRY"; at.attribute_name = "RPOS"; L.new(at.outputs["Color"], em.inputs[0])
+        return m
     if kind == "nrm":
         vt.vector_type = "NORMAL"; L.new(g.outputs["Normal"], vt.inputs[0])
         ma = N.new("ShaderNodeVectorMath"); ma.operation = "MULTIPLY_ADD"; ma.inputs[1].default_value = (.5, .5, .5); ma.inputs[2].default_value = (.5, .5, .5)
@@ -77,7 +85,7 @@ def emission_mat(kind):
     return m
 
 
-MATS = {k: emission_mat(k) for k in ("nrm", "dep")}
+MATS = {k: emission_mat(k) for k in ("nrm", "dep", "rpos")}
 
 
 def rpass(path, kind):
@@ -111,10 +119,10 @@ def eyes():
 
 
 W_ = lambda n, at: ao.matrix_world @ getattr(pbs[n], at)
-info = {"action": act, "view": VIEW, "align": AL, "cell": CELL, "scale": SC, "frames": []}
+info = {"action": act, "view": VIEW, "align": AL, "rpos_box": json.loads(ao.get("lock_rpos_box", "null")), "cell": CELL, "scale": SC, "frames": []}
 for i, fr in enumerate(frames):
     apply(fr)
-    for k in ("guide", "part", "nrm", "dep"): rpass(os.path.join(OUT, f"{act}_{VIEW}_f{i:02d}_{k}.png"), k)
+    for k in os.environ.get("LOCK_KINDS", "guide,part,nrm,dep,rpos").split(","): rpass(os.path.join(OUT, f"{act}_{VIEW}_f{i:02d}_{k}.png"), k)
     pts = {f"{j}.{s}": [round(x, 3) for x in px(W_(f"{j}.{s}", "head"))] for j in ("hand", "toe") for s in "LR"}
     info["frames"].append({"i": i, "ms": tim[i], "key": fr.get("key", ""), "face": fr.get("face"), "blink": fr.get("blink", 0),
                            "mouth": fr.get("mouth"), "root_motion_m": fr.get("root_motion_m"), "eyes": eyes(), "pts": pts})

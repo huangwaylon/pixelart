@@ -1,0 +1,83 @@
+{
+ "master_wh": [
+  40,
+  97
+ ],
+ "rows": [
+  {
+   "yaw": -5.0,
+   "head_yaw_off": -10.0,
+   "iou": 0.7908,
+   "class_iou": {
+    "skin": 0.381,
+    "red": 0.652,
+    "obi": 0.341
+   },
+   "class_mean": 0.458,
+   "dx": 0,
+   "dy": 2,
+   "w": 39,
+   "h": 99
+  },
+  {
+   "yaw": -10.0,
+   "head_yaw_off": -10.0,
+   "iou": 0.7909,
+   "class_iou": {
+    "skin": 0.36,
+    "red": 0.647,
+    "obi": 0.333
+   },
+   "class_mean": 0.447,
+   "dx": 0,
+   "dy": 3,
+   "w": 40,
+   "h": 99
+  },
+  {
+   "yaw": -15.0,
+   "head_yaw_off": -10.0,
+   "iou": 0.7737,
+   "class_iou": {
+    "skin": 0.352,
+    "red": 0.625,
+    "obi": 0.32
+   },
+   "class_mean": 0.432,
+   "dx": 0,
+   "dy": 3,
+   "w": 41,
+   "h": 99
+  },
+  {
+   "yaw": -20.0,
+   "head_yaw_off": -10.0,
+   "iou": 0.7547,
+   "class_iou": {
+    "skin": 0.362,
+    "red": 0.592,
+    "obi": 0.316
+   },
+   "class_mean": 0.423,
+   "dx": 0,
+   "dy": 3,
+   "w": 43,
+   "h": 99
+  },
+  {
+   "yaw": -25.0,
+   "head_yaw_off": -10.0,
+   "iou": 0.7316,
+   "class_iou": {
+    "skin": 0.359,
+    "red": 0.562,
+    "obi": 0.351
+   },
+   "class_mean": 0.424,
+   "dx": 1,
+   "dy": 3,
+   "w": 45,
+   "h": 99
+  }
+ ]
+}

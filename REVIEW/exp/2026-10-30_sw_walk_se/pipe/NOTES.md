@@ -9,7 +9,7 @@ pipe/build_walk_se.sh          # whole build, ~35 s, exit 1 if a blocking gate f
 ```
 Python: `.models/pixtools/venv`. Blender 5.2: `/Applications/Blender.app/Contents/MacOS/Blender`. Two builds in a row give pixel-identical passes and frames: render dither is off, and every tie-break is sorted.
 
-## What each step does
+## What each step does (round 1; round 2 changes are listed in its own section)
 | step | file | what |
 |---|---|---|
 | 1a rig | `make_rig_lock.py` (Blender, on a COPY of rig r13 -> `rig_lock.blend`) | Bones, weights and skeleton are unchanged; only rest vertices and attributes change. **Sleeves:** sleeve vertices are pulled radially toward the arm axis by a profile of 1.0 at the shoulder, 0.82 at the elbow and 0.58 at the cuff, and the cuff past the wrist is pulled back. The bell becomes a slim tube and the hand reads outside it. **Waist:** dress/obi vertices in the obi band (z .785–.872) come in by up to 7 %, giving an inward step at the obi. **Face flat skin:** the r13 illustration head labels the drawn eyes, mouth and blush as *hair*. 2,912 head faces inside the S face-feature mask (`rig/tex/face_mask_S.png`, eye-dome row and below plus the brow windows) are reset to skin. **Bow:** a voxel majority vote, then the SE illustration colour where that projection saw the head (red = bow). This gives a solid bow and no red specks in the hair. **PARTID** attribute (leg.L/R, arm.L/R, torso, head). **Eye vertices** for step 4. |
@@ -22,7 +22,7 @@ Python: `.models/pixtools/venv`. Blender 5.2: `/Applications/Blender.app/Content
 | 5 gates | `gates.py` -> `gates.json` | See below. |
 | 6 compare | `compare.py` -> `out/walk_SE/compare/` | Round 10 vs lock (1x strip, 4x board, side-by-side GIF). Gold f00/f02: `pxeval still --ref`, plus a per-pixel diff with the candidate override pixels. |
 
-## Gates (`out/walk_SE/gates.json`): all PASS
+## Round 1 gates (superseded by round 2 below): all PASS
 | gate (blocking) | result | limit |
 |---|---|---|
 | zigzags (lamet `zig`) per frame | 0 0 0 0 0 0 0 0 | ≤ 1 |
@@ -55,7 +55,7 @@ Notes on the gate definitions:
 
 Interior boil (lamet) went up, .26 → .67. The interior K is now few, deliberate pieces (leg\|leg appears only while the legs overlap, plus the eyes), so each change is a large fraction.
 
-## Gold comparison (`compare/gold_board_f00.png`, `gold_board_f02.png`, `gold_diff_fNN.json`)
+## Round 1 gold comparison vs gold v1 (now `../gold/v1/`; `compare/gold_board_f00.png`, `gold_board_f02.png`, `gold_diff_fNN.json`)
 `../gold/walk_SE_contact.png` → f00 and `walk_SE_passing.png` → f02. Both are needs-review; they arrived during this build.
 
 | | f00 vs contact | f02 vs passing |
@@ -78,3 +78,70 @@ Interior boil (lamet) went up, .26 → .67. The interior K is now few, deliberat
 - **Scripts:** `make_rig_lock.py`, `bake_walk_lock.py`, `render_lock.py`, `lock_chain.py`, `export.py`, `gates.py`, `compare.py`, `calib_face.py`, `build_walk_se.sh`.
 - **Generated data:** `rig_lock.blend`, `walk_lock.json`, `face_calib.json`, `work/walk_SE/` (8x passes plus the frame JSON), `out/walk_SE/`.
 - **Tuning knobs:** `LOCK_SIG`, `LOCK_EPS`, `LOCK_PIN`, `LOCK_SNAP`, `LOCK_SHRINK` (env). The constants at the top of `lock_chain.py` are RAMP, NSIG, HAIR_L, DSTEP and HYS. The defaults are the locked build.
+
+## Round 2: Amendment 1 (shared SE standard = master EC0_SE_96)
+`build_walk_se.sh` is unchanged; all the new behaviour is in the files below. Two builds give identical frames.
+
+**1. SE body yaw cheat** (`yaw_sweep.py` → `yaw_sweep.json`, chosen value in `lock_view.json`; `render_lock.py` reads it on top of align.json)
+- Method: render the rest guide pass, take the 1x silhouette plus the 1-px outline, and find the IoU vs the master's opaque mask at the best shift (±10 px). Also measure an interior class IoU (skin / red / obi) for where the face, dress front and obi sit.
+- Final rig, head yaw cheat −10:
+
+| body yaw | −5 | −10 | −15 | −20 | −25 |
+|---|---|---|---|---|---|
+| silhouette IoU | .791 | .791 | .774 | .755 | .732 |
+| class mean | .458 | .447 | .432 | .423 | .424 |
+| width (master 40) | 39 | 40 | 41 | 43 | 45 |
+
+- **The data does not support −20…−30°.** Stronger turns widen the figure past the master's 40 px. The rest arms spread, and the master's wide bell sleeves are deliberately not copied (lock §4).
+- **Chosen:** body yaw −15° (the strongest turn on the IoU plateau), head yaw cheat −10° (total head turn −25°, so the face reads near-frontal as in the master and gold). Registration dx 1, dy 0, which is the best fit (1, 3) lifted 3 px.
+- Rest board: `compare/rest_vs_master_4x.png`.
+
+**2. Rig-copy edits toward the master** (`make_rig_lock.py` §6, all values in `A1` and in the armature prop `lock_a1`; env `LOCKA1_<KEY>` for sweeps)
+- **Head:** head-group vertices scaled ×1.10 in x/y about the neck joint. Head-band width is now 35 px, the master's is 35 (r13: 32).
+- **Visible neck + collar V:** dress faces on the neck column (z > 1.035) and a V on the chest front become skin (714 faces). The neck bone now counts as torso, so chin\|neck is a part edge and the neck is `S`.
+- **Obi:** the band is cleaned to a full-width front band (455 faces). It is *not* made taller: r13's band is already 4–5 px at 1x, like the master's.
+- **Boots:** sock faces below 26 cm become boot (3,458 faces), so the boots reach mid-shin as in the master. They are not widened: the master's leg band is narrower than ours (16 vs 19 px).
+- **Side locks:** the vertices of the side-lock bones below z 1.20 are stretched ×1.7 down to chest level (z 0.92) and waved ±6 mm with a 7.5 cm wavelength. Full bangs are kept, and the eyes stay clear (eye visibility 0.69–1.0 in every frame, never dropped).
+- **Width profile** (top→bottom bands; master 35/34/31/40/27/16): r13 32/32/38/42/28/19 → lock 35/35/35/40/28/19.
+
+**3. Temporal outline**
+- The renderer has a new `rpos` pass: rest position per pixel, 16 bit, from a float attribute in a fixed box. `lock_chain.flow()` finds, per 1x cell, where the same surface point is in the neighbouring frame.
+- The vertex hysteresis now snaps to the previous frame's line moved by this surface-point motion, instead of a whole-part shift. On the second loop pass it also snaps to the next frame's line moved back. SNAP is 1.0 px.
+- A final limb pass plus cleanup and polish runs after the snap, so the gates hold.
+- Measured on the new rig:
+
+| setting | part-shift pops | flow pops | mono |
+|---|---|---|---|
+| round-1 method (part shift, snap .75) | 94 | 27 | .70 |
+| flow snap 1.0 | 79 | 19 | .73 |
+| flow snap 1.5 | 94 | 18 | .66 (mono drops) |
+
+- **Final build: part-shift pops 81, flow pops 26 over 8 frames.** Round 1 had 100 on the part-shift metric.
+- The flow metric (`line_pops_flow` in gates.json) is the fairer one. It compares each line pixel with where that surface really went, so the swinging leg's rotation is no longer counted as a pop. The part-shift number is kept for continuity.
+
+**Round 2 gates (`out/walk_SE/gates.json`): all PASS**
+- Line: zigzags ≤ 1 (mean 0.12), L-corners 0, gaps 0, clumps 0, 0 stray interior K.
+- Palette: ≤ 12 colours, 0 off-lock, 0 cross-material.
+- Limb audit: 0 failing frames.
+- Posture: PASS. GIF: PASS.
+- Report only: boil .0282, shade_swap .0090, mono .71.
+
+**Gold v2 comparison** (`../gold/walk_SE_*.png` of 17:39, which the gold artist may still revise (there is no gold NOTES yet), so re-run `compare.py out/walk_SE` after it changes; v1 moved to `../gold/v1/`)
+
+| | f00 vs contact | f02 vs passing |
+|---|---|---|
+| sil IoU (round 1 vs v1 → now vs v2) | .63 → .70 | .56 → .61 |
+| ssim_b | .38 | .34 |
+| differing px | 1583 (silhouette 711, fill 410, interior 211, outline 177, face 74) | 1674 (silhouette 816, fill 445, interior 230, outline 115, face 68) |
+| figure px (build / gold) | 1699 / 2232 | 1677 / 2119 |
+| width delta | −7 | −2 |
+| height delta | −3 | −7 |
+
+Remaining differences, largest first:
+1. **Pose.** The gold v2 poses are drawn (near arm hanging to the hem, a wide skirt flare, a passing knee lift). The build plays M's walk, with the near hand at the hip on contact and the leg tuck behind on passing. Matching needs motion-key changes (an M task), not pixels.
+2. **Skirt/sleeve volume.** The gold skirt and sleeves are fuller (about +25 % figure px). The build keeps the lock's narrow sleeves and r13's A-line hem.
+3. **Head/face.** The gold face is wider, with straight full bangs and locks framing both cheeks down to the chest. The build's face is narrower in SE, and its near-side lock hangs behind the shoulder.
+4. **Legs.** The gold has a thinner thigh skin band (sock tops higher) and longer socks. The build has about 6 px of thigh skin. The next rig step is to move the sock top and its red band up.
+5. **Bow** `e/E` (build) vs `E/R` (gold), and the gold's bigger upright bow.
+
+The candidate override pixels per frame are in `compare/gold_diff_f00.json` and `gold_diff_f02.json`. Items 1–2 must be fixed at the source first; after that the override layer is realistic.

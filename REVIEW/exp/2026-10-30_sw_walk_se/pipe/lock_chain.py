@@ -33,7 +33,8 @@ from lamet import run_defects as LM_run_defects, doubles as LM_doubles  # noqa: 
 
 P, N, OFF = 8, 128, 256
 _E = lambda k, d: float(os.environ.get('LOCK_' + k, d))  # tuning overrides (defaults = the locked build)
-SHRINK, SIG, EPS, PIN, SNAP, HOLE_MIN = int(_E('SHRINK', 4)), _E('SIG', 0.9), _E('EPS', 0.8), _E('PIN', 100.0), _E('SNAP', 0.75), 6
+TFLOW = _E('TFLOW', 1) > 0; TNEXT = _E('TNEXT', 1) > 0  # temporal hysteresis follows surface points (rpos flow) instead of whole-part shifts
+SHRINK, SIG, EPS, PIN, SNAP, HOLE_MIN = int(_E('SHRINK', 4)), _E('SIG', 0.9), _E('EPS', 0.8), _E('PIN', 100.0), _E('SNAP', 1.0), 6
 DSTEP, MINLEN, HYS = 0.02, 4, 0.06
 PAL = {k: tuple(int(v['hex'][i:i + 2], 16) for i in (1, 3, 5)) for k, v in json.load(open(ROOT + '/swordswoman/v2/pixelize/palette.json'))['colors'].items()}
 LOCK14 = list('KhHgLsSeERQOoW')
@@ -100,7 +101,39 @@ def load(stem, i, al_):
     lc, nlc = nd.label(legcloth); skirt = nd.binary_dilation((sub == SI['torso']) & np.isin(mid, [MI['dress'], MI['obi']]) & alpha, CROSS)
     touch = np.unique(lc[skirt & legcloth]); sub[np.isin(lc, touch[touch > 0])] = SI['torso']
     mid[~alpha] = -1; sub[~alpha] = -1; dep[~alpha] = np.inf
-    return dict(alpha=alpha, mid=mid, sub=sub, nrm=nrm, dep=dep)
+    F = dict(alpha=alpha, mid=mid, sub=sub, nrm=nrm, dep=dep)
+    if os.path.exists(st + 'rpos.png') and RPOS_BOX is not None:  # rest position per cell (mean over the cell's opaque 8x px)
+        lo, hi = np.array(RPOS_BOX[0]), np.array(RPOS_BOX[1]); rp = crop(rd(st + 'rpos.png'), dx, dy)[..., :3] * (hi - lo) + lo
+        w = blocks(alpha.astype(float)).sum(-1); F['rp1'] = np.stack([(blocks(rp[..., k]) * blocks(alpha.astype(float))).sum(-1) for k in range(3)], -1) / np.maximum(w, 1)[..., None]
+        F['rp_ok'] = w >= P * P * 0.5
+    return F
+
+
+RPOS_BOX = None
+FLOW_TOL = 0.015  # m: a surface point must be found again within this distance, else it is hidden in the other frame
+
+
+def flow(Fa, Fb):
+    """per-cell 2D motion a -> b from the rest-position pass: each visible cell of frame a finds the cell of frame b showing the same
+    surface point (nearest rest position, < FLOW_TOL); cells without a match take the nearest matched cell's motion. (N,N,2) or None"""
+    if 'rp1' not in Fa or 'rp1' not in Fb: return None
+    from scipy.spatial import cKDTree
+    ya, xa = np.nonzero(Fa['rp_ok']); yb, xb = np.nonzero(Fb['rp_ok'])
+    if len(ya) == 0 or len(yb) == 0: return None
+    d, j = cKDTree(Fb['rp1'][yb, xb]).query(Fa['rp1'][ya, xa]); ok = d < FLOW_TOL
+    D = np.full((N, N, 2), np.nan); D[ya[ok], xa[ok], 0] = yb[j[ok]] - ya[ok]; D[ya[ok], xa[ok], 1] = xb[j[ok]] - xa[ok]
+    have = ~np.isnan(D[..., 0])
+    if not have.any(): return None
+    idx = nd.distance_transform_edt(~have, return_distances=False, return_indices=True)
+    return D[idx[0], idx[1]]
+
+
+def warp_pts(mask, D):
+    """pixels of mask moved by the per-cell motion D (rounded) -> (k,2) int array"""
+    ys, xs = np.nonzero(mask)
+    if D is None or len(ys) == 0: return np.zeros((0, 2), int)
+    ny = np.clip(np.round(ys + D[ys, xs, 0]).astype(int), 0, N - 1); nx = np.clip(np.round(xs + D[ys, xs, 1]).astype(int), 0, N - 1)
+    return np.stack([ny, nx], 1)
 
 
 def vote(lab, alpha, n):
@@ -125,7 +158,8 @@ def fill_nearest(lab, inside):
 def trace(alpha8, prev_line=None):
     cs, hier = cv2.findContours(alpha8.astype(np.uint8), cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
     line = np.zeros((N, N), bool); snapped = total = 0
-    by_part, cur_part = prev_line if prev_line is not None else ({}, None)
+    if isinstance(prev_line, np.ndarray): by_part, cur_part = {0: prev_line}, np.zeros((N, N), int)  # flow-warped previous line
+    else: by_part, cur_part = prev_line if prev_line is not None else ({}, None)
     for c, h in zip(cs, hier[0]):
         if cv2.contourArea(c) / 64.0 < (HOLE_MIN if h[3] >= 0 else 4): continue
         pts = (c[:, 0, :].astype(float) + 0.5) / P
@@ -551,7 +585,8 @@ def frame(F, fr, cal, st):
 
 
 def run(jp, outd):
-    info = json.load(open(jp)); stem = jp[:-5]; al_ = info['align']; frs = info['frames']; n = len(frs)
+    global RPOS_BOX
+    info = json.load(open(jp)); stem = jp[:-5]; al_ = info['align']; frs = info['frames']; n = len(frs); RPOS_BOX = info.get('rpos_box')
     cal = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'face_calib.json')))
     Fs = [load(stem, f['i'], al_) for f in frs]
     R = [None] * n; st = {}
@@ -560,7 +595,13 @@ def run(jp, outd):
             if R[i - 1] is not None:
                 pr = R[i - 1]; cur_sub = vote(Fs[i]['sub'], Fs[i]['alpha'], len(SUB))
                 by_part, cp, band = part_motion(pr['sub1'], pr['line'], pr['band'], cur_sub)
-                st = {'prev_line_al': (by_part, cp), 'prev_band_al': band}
+                D = flow(Fs[i - 1], Fs[i]) if TFLOW else None  # surface-point motion (rest-position pass); part shifts as fallback
+                cand = warp_pts(pr['line'], D) if D is not None else (by_part, cp)
+                nx = R[(i + 1) % n]
+                if D is not None and it > 0 and nx is not None and TNEXT:  # 2nd loop pass: the next frame's line (moved back) is a candidate too
+                    Dn = flow(Fs[(i + 1) % n], Fs[i])
+                    if Dn is not None: cand = np.concatenate([cand, warp_pts(nx['line'], Dn)], 0)
+                st = {'prev_line_al': cand, 'prev_band_al': band}
             R[i] = frame(Fs[i], frs[i], cal, st)
     # E. far-eye 2-frame hysteresis (cyclic): a visibility change must persist 2 frames, else the previous state is kept
     far = [e['key'] for e in cal['eyes'] if e['kind'] == 'far']
@@ -578,6 +619,9 @@ def run(jp, outd):
         r['g'] = limb_tips(r['g'], r['sub1'], r['mat1'], r['inside'], r['line'], r['iline'], r['ink'])
         r['g'] = cleanup(r['g'], r['line'], r['iline'], r['ink'], r['fillcol'])
         r['g'] = polish(r['g'], r['line'], r['iline'], r['ink'], r['mat1'], r['sub1'])
+        r['g'] = limb_tips(r['g'], r['sub1'], r['mat1'], r['inside'], r['line'], r['iline'], r['ink'])  # the cleanup may re-expose a 1 px limb edge
+        r['g'] = cleanup(r['g'], r['line'], r['iline'], r['ink'], r['fillcol'])
+        r['g'] = polish(r['g'], r['line'], r['iline'], r['ink'], r['mat1'], r['sub1'])
         g = r['g']; open(os.path.join(outd, f'f{i:02d}.txt'), 'w').write('\n'.join(''.join(row) for row in g) + '\n')
         a = np.zeros((N, N, 4), np.uint8)
         for k, c in PAL.items(): a[g == k, :3] = c
@@ -585,7 +629,7 @@ def run(jp, outd):
         rec.append({'f': i, 'expr': r['ex'], 'snapped_vertices': r['snap'][0], 'vertices': r['snap'][1],
                     'eyes': {k: {kk: v[kk] for kk in ('show', 'frac', 'occluded', 'X0', 'Y0') if kk in v} | ({'raw': v['raw']} if 'raw' in v else {}) for k, v in r['vis'].items()},
                     'interior_px': {nm: int((r['kind'] == nm).sum()) for nm in sorted(set(PAIRS.values()))}})
-    np.savez_compressed(os.path.join(outd, 'labels.npz'), **{f'{k}{i:02d}': R[i][k] for i in range(n) for k in ('mat1', 'sub1', 'line', 'iline', 'ink')},
+    np.savez_compressed(os.path.join(outd, 'labels.npz'), **{f'{k}{i:02d}': R[i][k] for i in range(n) for k in ('mat1', 'sub1', 'line', 'iline', 'ink', 'inside')},
                         **{f'kind{i:02d}': R[i]['kind'].astype(str) for i in range(n)})
     json.dump({'frames': rec, 'ms': [f['ms'] for f in frs], 'keys': [f['key'] for f in frs]}, open(os.path.join(outd, 'chain.json'), 'w'), indent=1)
     return R, Fs, info

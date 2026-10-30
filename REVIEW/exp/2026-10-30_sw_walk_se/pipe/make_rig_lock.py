@@ -15,7 +15,7 @@ Bones, weights and the skeleton are unchanged (motion files stay valid); only re
  5. Eye tracking vertices (step 4, facesys b'): nearest face-skin rest vertex to each calibrated surface eye point
     (face_calib.json) -> armature prop 'lock_eye_verts'. The renderer reports their deformed screen position + depth.
     Sock/boot tones are a palette decision (lock_chain.py RAMP), not geometry."""
-import bpy, sys, json, numpy as np
+import bpy, sys, os, json, numpy as np
 SK_RIG = "/Users/waylonhuang/Documents/other/pixelart/REVIEW/exp/2026-10-28_sw_skinned/rig"
 argv = sys.argv[sys.argv.index("--") + 1:]
 OUT, CAL = argv[0], argv[1]
@@ -67,7 +67,7 @@ def part_of(g):
     for s in "LR":
         if g in (f"thigh.{s}", f"shin.{s}", f"foot.{s}", f"toe.{s}"): return "leg." + s
         if g in (f"shoulder.{s}", f"upper_arm.{s}", f"forearm.{s}", f"hand.{s}") or g.startswith(f"sleeve.{s}"): return "arm." + s
-    if g.startswith("skirt") or g in ("root", "pelvis", "spine", "chest"): return "torso"
+    if g.startswith("skirt") or g in ("root", "pelvis", "spine", "chest", "neck"): return "torso"  # neck = torso: chin|neck is a part edge
     return "head"
 vp = np.array([part_of(d) for d in dom])
 vp[np.char.startswith(vp, "leg") & np.isin(vm, [mi["dress"], mi["sleeve"], mi["obi"]])] = "torso"  # skirt cloth on the thighs
@@ -155,6 +155,54 @@ for e in cal["eyes"]:
     P = np.array(e["rest_m"]); i = int(cand[np.argmin(((co[cand] - P) ** 2).sum(1))]); ev[e["key"]] = i
     print("LOCK eye", e["key"], "vertex", i, "dist mm", round(float(np.linalg.norm(co[i] - P)) * 1000, 2))
 ao["lock_eye_verts"] = json.dumps(ev)
+# ---- 6. Amendment 1: toward the master EC0_SE_96 proportions (after the eye vertices are picked; bones unchanged)
+A1 = dict(HEAD_XY=1.10, HEAD_Z=1.0, NECK_Z=1.03, V_TOP=1.035, V_W0=0.012, V_K=0.75, V_Y=0.03, OBI_Z=(0.779, 0.876), OBI_Y=0.0,
+          BOOT_TOP=0.26, BOOT_XY=1.0, LOCK_K=1.7, LOCK_Z0=1.20, LOCK_WAVE=0.006, LOCK_WL=0.075)
+for _k in list(A1):  # tuning sweeps: env LOCKA1_<KEY> (scalars only)
+    if os.environ.get("LOCKA1_" + _k) is not None: A1[_k] = float(os.environ["LOCKA1_" + _k])
+def recolour(sel, mname):
+    src = int(np.where(fm == mi[mname])[0][0]); col = tuple(gc.data[me.polygons[src].loop_indices[0]].color)
+    for fi in np.where(sel)[0]:
+        for l in me.polygons[fi].loop_indices: gc.data[l].color = col
+    fm[sel] = mi[mname]
+fc = np.array([p.center for p in me.polygons])
+fdom = np.array([max(sorted(set(dom[list(p.vertices)].tolist())), key=list(dom[list(p.vertices)]).count) for p in me.polygons])
+# visible neck + collar V: dress faces on the neck / chest top become skin (the neck column above V_TOP, a V on the chest front)
+neck = (fm == mi["dress"]) & np.isin(fdom, ["neck", "chest", "head"]) & (fc[:, 2] > A1["V_TOP"])
+vee = (fm == mi["dress"]) & (fc[:, 1] > A1["V_Y"]) & (np.abs(fc[:, 0]) < A1["V_W0"] + A1["V_K"] * (fc[:, 2] - (A1["V_TOP"] - 0.075))) & (fc[:, 2] > A1["V_TOP"] - 0.075)
+recolour(neck | vee, "skin"); print("LOCK A1 neck + collar V faces -> skin:", int((neck | vee).sum()))
+# obi band: any dress face left inside r13's obi z band on the front becomes obi (a clean full-width band; the band height already
+# matches the master's ~4-5 px at 1x, so it is not made taller)
+ob = (fm == mi["dress"]) & np.isin(fdom, ["spine", "pelvis", "chest"]) & (fc[:, 2] > A1["OBI_Z"][0]) & (fc[:, 2] < A1["OBI_Z"][1]) & (fc[:, 1] > A1["OBI_Y"])
+recolour(ob, "obi"); print("LOCK A1 obi band faces:", int(ob.sum()))
+# taller, slightly bigger boots: sock faces below BOOT_TOP become boot; boot vertices widen around each leg's axis
+bt = (fm == mi["socks"]) & (fc[:, 2] < A1["BOOT_TOP"]); recolour(bt, "boots"); print("LOCK A1 sock -> boot faces:", int(bt.sum()))
+for p in me.polygons:
+    if fm[p.index] == mi["boots"]: vm[list(p.vertices)] = mi["boots"]
+for sg in (-1, 1):
+    bv = (vm == mi["boots"]) & (np.sign(co[:, 0]) == sg)
+    for z0 in np.arange(0, A1["BOOT_TOP"] + 0.02, 0.02):  # per 2 cm slice: scale about the slice centre (keeps the leg axis)
+        sl = bv & (co[:, 2] >= z0) & (co[:, 2] < z0 + 0.02)
+        if sl.sum() < 3: continue
+        c = co[sl, :2].mean(0); co[sl, :2] = c + (co[sl, :2] - c) * A1["BOOT_XY"]
+# longer, wavier side locks (master): vertices of the side-lock bones below LOCK_Z0 stretch down by LOCK_K and wave sideways
+lk = np.char.startswith(dom.astype(str), "hair_side") & (co[:, 2] < A1["LOCK_Z0"])
+dz = A1["LOCK_Z0"] - co[lk, 2]; co[lk, 2] = A1["LOCK_Z0"] - dz * A1["LOCK_K"]
+co[lk, 0] += np.sign(co[lk, 0]) * A1["LOCK_WAVE"] * np.sin(2 * np.pi * dz * A1["LOCK_K"] / A1["LOCK_WL"])
+print("LOCK A1 side-lock verts stretched:", int(lk.sum()), "new bottom z", round(float(co[lk, 2].min()), 3))
+# head width: head-group vertices (head, hair, bun, bow) scale about the head bone's head (neck joint)
+hd = np.isin(dom, ["head", "bun", "bow_knot"]) | np.char.startswith(dom.astype(str), "hair") | np.char.startswith(dom.astype(str), "bow.")
+pv = H("head"); co[hd, :2] = pv[:2] + (co[hd, :2] - pv[:2]) * A1["HEAD_XY"]; co[hd, 2] = pv[2] + (co[hd, 2] - pv[2]) * A1["HEAD_Z"]
+print("LOCK A1 head verts scaled:", int(hd.sum()))
+me.attributes["mat"].data.foreach_set("value", fm); me.vertices.foreach_set("co", co.ravel()); me.update()
+ao["lock_a1"] = json.dumps(A1)
+# ---- 7. RPOS: rest position per vertex (float colour, fixed box) -> the renderer's 'rpos' pass = exact surface correspondence between
+# frames (temporal contour hysteresis follows each surface point instead of a whole-part shift)
+RLO, RHI = np.array([-0.45, -0.40, -0.02]), np.array([0.45, 0.40, 1.62])
+if me.color_attributes.get("RPOS"): me.color_attributes.remove(me.color_attributes["RPOS"])
+ra = me.color_attributes.new("RPOS", "FLOAT_COLOR", "POINT"); rn = (co - RLO) / (RHI - RLO)
+ra.data.foreach_set("color", np.concatenate([rn, np.ones((n, 1))], 1).astype(np.float32).ravel())
+ao["lock_rpos_box"] = json.dumps([RLO.tolist(), RHI.tolist()])
 ao["lock"] = "pipe/make_rig_lock.py (DESIGN_LOCK 2026-10-30) on rig r13"
 bpy.ops.wm.save_as_mainfile(filepath=OUT, copy=False)
 print("LOCK_RIG_SAVED", OUT)

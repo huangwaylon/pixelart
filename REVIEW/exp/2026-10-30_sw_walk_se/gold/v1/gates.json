@@ -1,0 +1,96 @@
+{
+ "contact": {
+  "sil": 289,
+  "gap": 0,
+  "gap_runs": 0,
+  "gap_cols": {},
+  "dbl": 0,
+  "clump": 5,
+  "wK": [
+   0,
+   192,
+   44,
+   53
+  ],
+  "wD": [
+   0,
+   161,
+   59,
+   69
+  ],
+  "zig": 0,
+  "irr": 0,
+  "kink": 0,
+  "contour": 289,
+  "bump": 0,
+  "mono": 0.7894736842105263,
+  "intK": 20,
+  "orphK": 0,
+  "K": 473,
+  "clump_line": 0,
+  "clump_face": 5,
+  "colours": 12,
+  "palette": "EHKLORSWghos",
+  "offpal": [],
+  "intK_unlisted": [],
+  "components": 1,
+  "pass": {
+   "zig": true,
+   "Lcorner": true,
+   "gap": true,
+   "clump": true,
+   "colours": true,
+   "offpal": true,
+   "one_piece": true,
+   "interior_listed": true
+  },
+  "PASS": true
+ },
+ "passing": {
+  "sil": 273,
+  "gap": 0,
+  "gap_runs": 0,
+  "gap_cols": {},
+  "dbl": 0,
+  "clump": 5,
+  "wK": [
+   0,
+   198,
+   21,
+   54
+  ],
+  "wD": [
+   0,
+   167,
+   36,
+   70
+  ],
+  "zig": 0,
+  "irr": 0,
+  "kink": 0,
+  "contour": 273,
+  "bump": 1,
+  "mono": 0.8125,
+  "intK": 20,
+  "orphK": 0,
+  "K": 454,
+  "clump_line": 0,
+  "clump_face": 5,
+  "colours": 12,
+  "palette": "EHKLORSWghos",
+  "offpal": [],
+  "intK_unlisted": [],
+  "components": 1,
+  "pass": {
+   "zig": true,
+   "Lcorner": true,
+   "gap": true,
+   "clump": true,
+   "colours": true,
+   "offpal": true,
+   "one_piece": true,
+   "interior_listed": true
+  },
+  "PASS": true
+ }
+}

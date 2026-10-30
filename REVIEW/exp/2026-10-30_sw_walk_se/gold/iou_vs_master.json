@@ -1,0 +1,14 @@
+{
+ "contact": {
+  "full": 0.663,
+  "head": 0.827,
+  "torso": 0.73,
+  "head+torso": 0.792
+ },
+ "passing": {
+  "full": 0.744,
+  "head": 0.827,
+  "torso": 0.769,
+  "head+torso": 0.799
+ }
+}

@@ -4,24 +4,68 @@
  "project": "swordswoman",
  "kind": "experiment",
  "status": "needs-review",
- "title": "Walk SE under the DESIGN LOCK: lean deterministic pipeline (milestone 1)",
+ "title": "Walk SE under the DESIGN LOCK: lean deterministic pipeline (milestone 1, round 2: Amendment 1)",
  "question": "Can one lean pipeline (rig copy, 10 springs, 14-colour 2-tone palette, vector outline, overlap-only interior lines, eyes+brows stamps) produce walk SE that passes every lock gate, and how far is it from the gold frames?",
- "method": "pipe/build_walk_se.sh (~35 s, deterministic). Rig r13 copy with narrower sleeves, a waist step at the obi, a flat-skin face and a solid bow. Walk re-baked through M's mbuild with 10 simulated spring bones. 8x guide/part/normal/depth passes. lock_chain.py: N.L 2-tone ramps on the 14 lock keys, a vector-line outline with part-wise temporal vertex hysteresis and dezig/polish, far-side K only at the listed overlaps, facesys b' eyes at the tracked surface point. Gates: lamet line, palette, P's limb audit, M's posture gate, gifcheck.",
- "result": "All blocking gates PASS. Per frame: zigzags 0, L-corners <= 1, gaps 0, 2x2 clumps 0, stray interior K 0, 11-12 colours, 0 off-lock or cross-material px, limb audit 0 failing frames, posture PASS, GIF loop with 70-120 ms frames. Report only: boil .0275, shade_swap .0107. Against round 10: zigzags 6.6 -> 0, L-corners 7.1 -> 0.1, mono .44 -> .79, interior K 42 -> 11, colours 16.1 -> 11.6. Gold f00/f02: sil IoU .63/.56, ssim .19/.20, 1761/1850 px differ; about half are silhouette.",
- "verdict": "Clean and on-lock, but not yet the gold. The gold differences are structural (near-frontal 3/4 turn, a wider head with a neck, the kimono collar and obi, leg/boot proportions), not sparse override pixels. Next round: a stronger SE body yaw cheat and head/kimono shape changes, then re-diff against the gold.",
- "scores": {"zig": "0", "L-corners": "<=1", "gaps": "0", "clumps": "0", "colours": "12", "limbs": "8/8", "boil": ".0275", "shade_swap": ".0107", "gold sil IoU": ".63/.56"},
+ "method": "pipe/build_walk_se.sh (~35 s, deterministic). Rig r13 copy with narrower sleeves, a waist step at the obi, a flat-skin face and a solid bow. Walk re-baked through M's mbuild with 10 simulated spring bones. 8x guide/part/normal/depth passes. lock_chain.py: N.L 2-tone ramps on the 14 lock keys, a vector-line outline with part-wise temporal vertex hysteresis and dezig/polish, far-side K only at the listed overlaps, facesys b' eyes at the tracked surface point. Gates: lamet line, palette, P's limb audit, M's posture gate, gifcheck. Round 2 (Amendment 1): SE body yaw cheat -15 deg with head -10 (yaw_sweep.py, rest IoU vs EC0_SE_96); rig-copy edits toward the master (head x1.10, visible neck and collar V, full-width obi band, mid-shin boots, side locks stretched x1.7 and waved); temporal snap that follows surface points (new rpos pass) and also the next frame's line.",
+ "result": "All blocking gates PASS (round 2): zigzags <= 1, L-corners 0, gaps 0, clumps 0, stray interior K 0, <= 12 colours, 0 off-lock or cross-material, limbs 8/8, posture PASS, GIF ok. Report only: boil .0282, shade_swap .0090. Single-frame outline pops: 100 -> 81 on the part-shift metric, 26 on the flow metric (round-1 method on the new rig: 94/27). Yaw sweep: rest silhouette IoU vs the master is flat from -5 to -15 (.79-.77) and falls at -20/-25 (.755/.732), so -15 was chosen. Head-band width 35 px = master. Gold v2 (17:39 version): sil IoU .70 (f00) / .61 (f02), up from .63/.56 against v1; 1583/1674 px differ.",
+ "verdict": "On-lock and closer to the master's head, neck, collar, locks and boots. The gold gap is now mostly pose (gold v2's drawn arm, skirt and knee) and garment volume, which need motion keys or a lock decision rather than overrides.",
+ "scores": {
+  "zig": "<=1",
+  "L-corners": "0",
+  "gaps": "0",
+  "clumps": "0",
+  "colours": "12",
+  "limbs": "8/8",
+  "boil": ".0282",
+  "shade_swap": ".0090",
+  "pops part/flow": "81/26",
+  "gold sil IoU": ".70/.61",
+  "rest IoU vs master": ".774"
+ },
  "media": [
-  {"src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/walk_SE_4x.gif", "caption": "lock build walk SE, 4x, motion timing"},
-  {"src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/r10_vs_lock_4x.gif", "caption": "round 10 (left) vs lock build (right), 4x"},
-  {"src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/r10_vs_lock_4x.png", "caption": "round 10 (top) vs lock build (bottom), 8 frames, 4x", "wide": true},
-  {"src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/r10_vs_lock_strip1x.png", "caption": "the same at 1x"},
-  {"src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/gold_board_f00.png", "caption": "f00 vs gold contact: build | gold | diff (cyan silhouette, red outline, orange interior, magenta face, yellow fill)"},
-  {"src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/gold_board_f02.png", "caption": "f02 vs gold passing"}
+  {
+   "src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/walk_SE_4x.gif",
+   "caption": "lock build walk SE, 4x, motion timing"
+  },
+  {
+   "src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/r10_vs_lock_4x.gif",
+   "caption": "round 10 (left) vs lock build (right), 4x"
+  },
+  {
+   "src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/r10_vs_lock_4x.png",
+   "caption": "round 10 (top) vs lock build (bottom), 8 frames, 4x",
+   "wide": true
+  },
+  {
+   "src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/r10_vs_lock_strip1x.png",
+   "caption": "the same at 1x"
+  },
+  {
+   "src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/rest_vs_master_4x.png",
+   "caption": "rest pose at the lock SE view: master | r13 rig | lock rig after Amendment 1"
+  },
+  {
+   "src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/gold_board_f00.png",
+   "caption": "f00 vs gold contact: build | gold | diff (cyan silhouette, red outline, orange interior, magenta face, yellow fill)"
+  },
+  {
+   "src": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/compare/gold_board_f02.png",
+   "caption": "f02 vs gold passing"
+  }
  ],
  "links": [
-  {"href": "exp/2026-10-30_sw_walk_se/pipe/NOTES.md", "label": "pipeline notes"},
-  {"href": "exp/2026-10-30_sw_walk_se/DESIGN_LOCK.md", "label": "design lock"},
-  {"href": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/gates.json", "label": "gates.json"}
+  {
+   "href": "exp/2026-10-30_sw_walk_se/pipe/NOTES.md",
+   "label": "pipeline notes"
+  },
+  {
+   "href": "exp/2026-10-30_sw_walk_se/DESIGN_LOCK.md",
+   "label": "design lock"
+  },
+  {
+   "href": "exp/2026-10-30_sw_walk_se/pipe/out/walk_SE/gates.json",
+   "label": "gates.json"
+  }
  ],
- "next": "Pipeline changes toward the gold, judged against it one change set at a time: an SE body yaw cheat of about -25 deg, a wider head with a visible neck, the kimono collar V and a wide front obi, boot size. After that, sparse overrides from gold_diff_fNN.json."
+ "next": "M: pose keys toward gold v2 (near arm down on contact, a clearer passing knee). Rig: sock top and red band up (thigh skin from 6 to 3-4 px). Owner: skirt and sleeve volume vs the lock's narrow sleeves. Then sparse overrides from gold_diff_fNN.json."
 }

@@ -15,12 +15,15 @@ def face_boxes(bob):
     m = np.zeros((128, 128), bool)
     for (ox, oy), side, kind in FS.LAYOUT['SE']:
         w = 5 if kind == 'front' else 4
+        import build_gold as B_
+        ox += getattr(B_, 'EYEDX', 0)
         m[oy + bob:oy + bob + 8, ox:ox + w] = True
     return m
 
 
 res = {}
-for f, bob in (('contact', 1), ('passing', 0)):
+import build_gold as B
+for f, bob in (('contact', B.BOB['contact']), ('passing', B.BOB['passing'])):
     g = L.load_txt(f'{HERE}/walk_SE_{f}.txt')
     m = L.metrics(g)
     K = g == 'K'

@@ -10,24 +10,24 @@
    "gold": "../../../gold/walk_SE_contact.png",
    "align_dy_dx": [
     -1,
-    1
+    0
    ],
-   "diff_px": 1761,
+   "diff_px": 1583,
    "by_reason": {
-    "silhouette": 866,
-    "outline": 207,
-    "fill": 467,
-    "interior_line": 181,
-    "face": 40
+    "silhouette": 711,
+    "outline": 177,
+    "fill": 410,
+    "interior_line": 211,
+    "face": 74
    },
    "by_band": {
-    "head (y<62)": 660,
-    "body (62-90)": 565,
-    "legs (>=91)": 536
+    "head (y<62)": 577,
+    "body (62-90)": 630,
+    "legs (>=91)": 376
    },
    "figure_px": {
-    "build": 1608,
-    "gold": 2376
+    "build": 1699,
+    "gold": 2232
    },
    "pxeval": {
     "align": "cell",
@@ -35,45 +35,45 @@
      0,
      0
     ],
-    "ssim": 0.1916,
-    "ssim_b": 0.2814,
-    "dE": 37.7515,
-    "sil": 0.6275,
-    "bloat": 0.6768,
-    "same_px": 0.2618,
+    "ssim": 0.2432,
+    "ssim_b": 0.3775,
+    "dE": 33.7433,
+    "sil": 0.6966,
+    "bloat": 0.7612,
+    "same_px": 0.3112,
     "height_delta": -3,
-    "width_delta": -10,
+    "width_delta": -7,
     "centroid_offset": [
-     1.6607,
-     -2.527
+     0.0261,
+     -2.6805
     ],
-    "feet_delta": -3,
-    "colour_iou": 0.1931
+    "feet_delta": -1,
+    "colour_iou": 0.2267
    }
   },
   {
    "frame": "f02",
    "gold": "../../../gold/walk_SE_passing.png",
    "align_dy_dx": [
-    -2,
-    3
+    -1,
+    2
    ],
-   "diff_px": 1850,
+   "diff_px": 1674,
    "by_reason": {
-    "silhouette": 961,
-    "outline": 146,
-    "fill": 502,
-    "interior_line": 176,
-    "face": 65
+    "silhouette": 816,
+    "outline": 115,
+    "interior_line": 230,
+    "fill": 445,
+    "face": 68
    },
    "by_band": {
-    "head (y<62)": 783,
-    "body (62-90)": 550,
-    "legs (>=91)": 517
+    "head (y<62)": 817,
+    "body (62-90)": 535,
+    "legs (>=91)": 322
    },
    "figure_px": {
-    "build": 1604,
-    "gold": 2347
+    "build": 1677,
+    "gold": 2119
    },
    "pxeval": {
     "align": "cell",
@@ -81,20 +81,20 @@
      0,
      0
     ],
-    "ssim": 0.1956,
-    "ssim_b": 0.2292,
-    "dE": 43.2679,
-    "sil": 0.5648,
-    "bloat": 0.6834,
-    "same_px": 0.1984,
-    "height_delta": -5,
-    "width_delta": -6,
+    "ssim": 0.2679,
+    "ssim_b": 0.3404,
+    "dE": 38.4908,
+    "sil": 0.6058,
+    "bloat": 0.7914,
+    "same_px": 0.2627,
+    "height_delta": -7,
+    "width_delta": -2,
     "centroid_offset": [
-     4.6652,
-     -2.9685
+     3.7187,
+     0.6393
     ],
-    "feet_delta": -4,
-    "colour_iou": 0.147
+    "feet_delta": -3,
+    "colour_iou": 0.1976
    }
   }
  ]

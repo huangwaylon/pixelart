@@ -1,0 +1,9 @@
+{
+ "_doc": "Amendment 1: per-view overrides of rig/align.json for the lock renderer (render_lock.py). SE body yaw cheat -15 deg from yaw_sweep.py (rest silhouette + interior class IoU vs EC0_SE_96 on rig_lock.blend: flat optimum -5..-15, -15 = the strongest 3/4 turn inside it); head yaw cheat kept at -10 (total head turn -25: a near-frontal face like the master/gold; f00 gold sil .694 vs .696 at 0, face reads much better); dx/dy = best registration (dx 1, dy 3) lifted 3 px like align.json so stepping soles stay in the cell.",
+ "SE": {
+  "yaw": -15.0,
+  "head_yaw_off": -10.0,
+  "dx": 1,
+  "dy": 0
+ }
+}
