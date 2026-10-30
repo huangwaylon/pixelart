@@ -102,3 +102,5 @@ charlab/**/tmp/
 charlab/lab/out/*/*/**/*.png
 charlab/lab/out/*/*/**/*.txt
 !charlab/lab/out/*/*/*.gif
+# third-party clones used for experiments
+charlab/**/ext/
