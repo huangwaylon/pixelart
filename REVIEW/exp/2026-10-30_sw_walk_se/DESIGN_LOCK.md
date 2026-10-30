@@ -65,3 +65,6 @@ Source: `docs/team_review/2026-10-30/00_SUMMARY.md` (+ 01/02/03). Pipeline asset
   The pixel art is the 3D render made clean: lines, palette, eyes+brows.
 - Section 4 "silhouette simplifications" (narrow sleeves etc.) is superseded where it conflicts with the 3D model's garments. Silhouette changes are
   made **in the 3D model**, not in 2D.
+- Owner (2026-10-30): the 3D-first locked pipeline (`pipe/`) is the base; improve the 3D model. **Biggest gap: lines/shading.** The next round
+  is lines + shading only: clean cel shadow shapes from 3D normals, consistent light, occlusion shadows, hair clump shading, sel-out interior
+  form lines from 3D creases, temporal stability.
